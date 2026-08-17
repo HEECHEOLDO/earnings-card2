@@ -442,6 +442,49 @@ def build_tickers_file(corp_map, path="tickers_all.txt"):
     log("사용:  python3 collect.py --all --budget 12000")
 
 
+def data_unchanged(path, new):
+    """updated 날짜를 뺀 나머지가 기존 파일과 같으면 True."""
+    try:
+        with open(path, encoding="utf-8") as f:
+            old = json.load(f)
+    except Exception:      # noqa: BLE001
+        return False
+    a = {k: v for k, v in old.items() if k != "updated"}
+    b = {k: v for k, v in new.items() if k != "updated"}
+    return a == b
+
+
+def save_company(code, data):
+    """
+    값이 그대로면 파일을 건드리지 않는다.
+    (updated 날짜만 바뀌는 커밋이 매번 쌓이는 걸 막는다)
+    반환: True면 실제로 썼음
+    """
+    path = os.path.join(OUT_DIR, code + ".json")
+    if os.path.exists(path) and data_unchanged(path, data):
+        return False
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=1)
+    return True
+
+
+CHECKED_PATH = os.path.join(OUT_DIR, "_checked.json")
+
+
+def load_checked():
+    try:
+        with open(CHECKED_PATH, encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:      # noqa: BLE001
+        return {}
+
+
+def save_checked(d):
+    os.makedirs(OUT_DIR, exist_ok=True)
+    with open(CHECKED_PATH, "w", encoding="utf-8") as f:
+        json.dump(d, f, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+
+
 def load_done(refresh_days=None):
     """
     이미 data/ 에 파일이 있는 종목.
@@ -452,6 +495,7 @@ def load_done(refresh_days=None):
     if not os.path.isdir(OUT_DIR):
         return done, stale
     today = datetime.now(timezone(timedelta(hours=9))).date()
+    checked = load_checked()
     for fn in os.listdir(OUT_DIR):
         if not (fn.endswith(".json") and fn[:-5].isdigit()):
             continue
@@ -459,12 +503,18 @@ def load_done(refresh_days=None):
         if refresh_days is None:
             done.add(code)
             continue
+        # 마지막으로 '확인한' 날 기준. 값이 안 바뀌어도 확인은 한 것으로 친다.
+        ref = checked.get(code)
+        if not ref:
+            try:
+                with open(os.path.join(OUT_DIR, fn), encoding="utf-8") as f:
+                    ref = json.load(f).get("updated", "")
+            except Exception:      # noqa: BLE001
+                ref = ""
         try:
-            with open(os.path.join(OUT_DIR, fn), encoding="utf-8") as f:
-                upd = json.load(f).get("updated", "")
-            age = (today - datetime.strptime(upd, "%Y-%m-%d").date()).days
+            age = (today - datetime.strptime(ref, "%Y-%m-%d").date()).days
         except Exception:      # noqa: BLE001
-            age = 9999          # 날짜를 못 읽으면 오래된 것으로 본다
+            age = 9999
         if age >= refresh_days:
             stale[code] = age
         else:
@@ -507,9 +557,13 @@ def rebuild_index():
         except Exception:  # noqa: BLE001
             continue
     items.sort(key=lambda x: x["name"])
-    with open(os.path.join(OUT_DIR, "index.json"), "w", encoding="utf-8") as f:
-        json.dump({"updated": datetime.now(timezone(timedelta(hours=9))).strftime("%Y-%m-%d"),
-                   "count": len(items), "companies": items}, f, ensure_ascii=False, indent=1)
+    path = os.path.join(OUT_DIR, "index.json")
+    payload = {"updated": datetime.now(timezone(timedelta(hours=9))).strftime("%Y-%m-%d"),
+               "count": len(items), "companies": items}
+    # 목록이 그대로면 날짜만 바꿔 다시 쓰지 않는다
+    if not (os.path.exists(path) and data_unchanged(path, payload)):
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(payload, f, ensure_ascii=False, indent=1)
     return len(items)
 
 
@@ -716,6 +770,9 @@ def main():
     started = time.time()
     report = []
     stopped_early = False
+    unchanged = 0
+    checked = load_checked()
+    today_str = datetime.now(timezone(timedelta(hours=9))).strftime("%Y-%m-%d")
 
     for i, (code, alias) in enumerate(todo, 1):
         if ABORT:
@@ -750,19 +807,24 @@ def main():
 
         failed.pop(code, None)
         worst = data.pop("_worst_gap", None)
-        with open(os.path.join(OUT_DIR, code + ".json"), "w", encoding="utf-8") as f:
-            json.dump(data, f, ensure_ascii=False, indent=1)
+        wrote = save_company(code, data)
+        checked[code] = today_str
+        if not wrote:
+            unchanged += 1
 
         na, nq = len(data["annual"]), len(data["quarterly"])
         if na < YEARS or nq < QUARTERS:
             status, note = "부분", "연간 %d/%d, 분기 %d/%d" % (na, YEARS, nq, QUARTERS)
         elif worst is not None and worst >= 2:
             status, note = "검산", "분기합 차이 %.1f%%" % worst
+        elif not wrote:
+            status, note = "동일", "값 변동 없음"
         else:
             status, note = "정상", ""
         report.append((code, data["name"], status, na, nq, note))
 
     save_failed(failed)
+    save_checked(checked)
     total_in_index = rebuild_index()
 
     # ---- 요약 ----
@@ -782,6 +844,8 @@ def main():
 
     log("index.json 총 %d종목  |  누적 실패 %d종목 (data/_failed.json)"
         % (total_in_index, len(failed)))
+    if unchanged:
+        log("값이 그대로여서 파일을 다시 쓰지 않은 종목: %d개" % unchanged)
 
     remaining = len(todo) - len(report)
     if ABORT:
