@@ -547,7 +547,8 @@
       return {
         label: String(d.p), short: "'" + String(d.p).slice(2), yearMark: null,
         rev: num(d.rev), op: num(d.op), ni: num(d.ni),
-        dps: num(d.dps), payout: num(d.payout), yield: num(d.yield),
+        dps: num(d.dps_adj != null ? d.dps_adj : d.dps),
+        dpsRaw: num(d.dps), payout: num(d.payout), yield: num(d.yield),
         margin: d.rev ? num(d.op) / d.rev * 100 : 0
       };
     });
@@ -948,8 +949,9 @@
     ctx.font = font(600, T.type.unit);
     ctx.fillStyle = T.inkSoft;
     ctx.textAlign = 'right';
+    var adj = state.company.split_adjusted;
     var unitText = state.period === 'dividend'
-      ? '보통주 · 단위 원'
+      ? '보통주 · 원' + (adj ? ' · 액면분할 반영' : '')
       : '연결 · ' + unit + (spec.unitNote ? ' · ' + spec.unitNote : '');
     ctx.fillText(unitText, CX + CWID, legendY - 2);
     ctx.textAlign = 'left';
@@ -1185,7 +1187,9 @@
     t.innerHTML = '<thead><tr>' + head.map(function (h) { return '<th>' + h + '</th>'; }).join('') +
       '</tr></thead><tbody>' + body.map(function (b) { return '<tr>' + b + '</tr>'; }).join('') + '</tbody>';
     document.getElementById('table-note').textContent =
-      period === 'dividend' ? '보통주 기준' : '단위 ' + unit;
+      period === 'dividend'
+        ? '보통주 기준' + (state.company.split_adjusted ? ' · 액면분할 반영' : '')
+        : '단위 ' + unit;
   }
 
   /* ============================================================
@@ -1400,7 +1404,9 @@
         .filter(function (s) { return s && String(s).trim(); }).join(' · ');
     document.getElementById('chart1-title').textContent = L.chart1;
     document.getElementById('chart1-note').textContent =
-      state.period === 'dividend' ? '보통주 · 단위 원' : '연결 기준 · 단위 ' + unit;
+      state.period === 'dividend'
+        ? '보통주 · 단위 원' + (state.company.split_adjusted ? ' · 액면분할 반영' : '')
+        : '연결 기준 · 단위 ' + unit;
     document.getElementById('chart2-title').textContent = L.chart2;
     document.getElementById('chart2-note').textContent =
       state.period === 'annual' ? '주당배당금 · 배당성향'

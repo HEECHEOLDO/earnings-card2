@@ -293,6 +293,50 @@ def fetch_dividend(corp_code, year):
 
 # ------------------------------------------------- 수집 본체
 
+CLEAN_RATIOS = [2, 2.5, 3, 4, 5, 10, 20, 50, 100]
+
+
+def adjust_for_splits(rows):
+    """
+    액면분할을 감지해 과거 주당배당금을 '현재 주식 수 기준'으로 환산한다.
+
+    배당성향 = (DPS x 주식수) / 순이익  이므로
+        주식수 = 배당성향 x 순이익 / DPS
+    로 주식 수를 역산할 수 있다. 이 값이 어느 해에 갑자기 몇 배로 뛰면 분할이다.
+
+    rows 각 항목에 dps_adj 를 채우고, 분할이 있었으면 True 를 반환한다.
+    """
+    shares = []
+    for r in rows:
+        d, p, n = r.get("dps"), r.get("payout"), r.get("ni")
+        if d and p and n and d > 0 and p > 0:
+            shares.append(p / 100.0 * (n * 1e8) / d)
+        else:
+            shares.append(None)
+
+    # 뒤(최근)에서 앞으로 오면서 누적 분할배수를 만든다
+    factor = [1.0] * len(rows)
+    cum = 1.0
+    found = False
+    for i in range(len(rows) - 1, 0, -1):
+        a, b = shares[i - 1], shares[i]
+        if a and b and a > 0:
+            ratio = b / a
+            if ratio >= 1.8 or (0 < ratio <= 0.56):     # 분할 또는 병합
+                # 깔끔한 배수에 가까우면 그 값으로 맞춘다
+                target = ratio if ratio >= 1 else 1 / ratio
+                best = min(CLEAN_RATIOS, key=lambda c: abs(c - target))
+                if abs(best - target) / best <= 0.08:
+                    target = best
+                cum *= target if ratio >= 1 else 1 / target
+                found = True
+        factor[i - 1] = cum
+
+    for i, r in enumerate(rows):
+        r["dps_adj"] = round(r["dps"] / factor[i], 1) if r.get("dps") else r.get("dps")
+    return found
+
+
 def collect_annual(corp_code, latest_year):
     """올해 사업보고서는 아직 없을 수 있으므로 한 해 더 넓게 훑고 뒤에서 자른다."""
     rows = []
@@ -397,8 +441,17 @@ def collect_company(code, corp_map, latest_year, alias=None):
 
     worst = check_quarters_vs_annual(annual, quarterly)
 
+    split = adjust_for_splits(annual)
+    if split:
+        log("  [분할] 액면분할 감지 — 과거 주당배당금을 현재 주식 수 기준으로 환산했습니다")
+        for a in annual:
+            if a.get("dps") and a["dps"] != a.get("dps_adj"):
+                log("    %d년  공시 %s원 -> 환산 %s원"
+                    % (a["p"], f"{a['dps']:,.0f}", f"{a['dps_adj']:,.0f}"))
+
     return {
         "name": display,
+        "split_adjusted": split,
         "legal_name": info["name"],
         "code": code,
         "market": "",
