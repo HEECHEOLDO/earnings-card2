@@ -1,6 +1,6 @@
 {
  "updated": "2026-08-17",
- "count": 185,
+ "count": 245,
  "companies": [
   {
    "name": "BGF리테일",
@@ -143,6 +143,13 @@
    "updated": "2026-08-17"
   },
   {
+   "name": "HS화성",
+   "code": "002460",
+   "market": "",
+   "sector": "",
+   "updated": "2026-08-17"
+  },
+  {
    "name": "JW중외제약",
    "code": "001060",
    "market": "",
@@ -159,6 +166,13 @@
   {
    "name": "KG케미칼",
    "code": "001390",
+   "market": "",
+   "sector": "",
+   "updated": "2026-08-17"
+  },
+  {
+   "name": "KISCO홀딩스",
+   "code": "001940",
    "market": "",
    "sector": "",
    "updated": "2026-08-17"
@@ -262,8 +276,29 @@
    "updated": "2026-08-17"
   },
   {
+   "name": "SHD",
+   "code": "001770",
+   "market": "",
+   "sector": "",
+   "updated": "2026-08-17"
+  },
+  {
+   "name": "SH에너지화학",
+   "code": "002360",
+   "market": "",
+   "sector": "",
+   "updated": "2026-08-17"
+  },
+  {
    "name": "SK",
    "code": "034730",
+   "market": "",
+   "sector": "",
+   "updated": "2026-08-17"
+  },
+  {
+   "name": "SK네트웍스",
+   "code": "001740",
    "market": "",
    "sector": "",
    "updated": "2026-08-17"
@@ -311,6 +346,27 @@
    "updated": "2026-08-17"
   },
   {
+   "name": "SUN&L",
+   "code": "002820",
+   "market": "",
+   "sector": "",
+   "updated": "2026-08-17"
+  },
+  {
+   "name": "SYTS",
+   "code": "002170",
+   "market": "",
+   "sector": "",
+   "updated": "2026-08-17"
+  },
+  {
+   "name": "TCC스틸",
+   "code": "002710",
+   "market": "",
+   "sector": "",
+   "updated": "2026-08-17"
+  },
+  {
    "name": "가온전선",
    "code": "000500",
    "market": "",
@@ -332,6 +388,13 @@
    "updated": "2026-08-17"
   },
   {
+   "name": "경농",
+   "code": "002100",
+   "market": "",
+   "sector": "",
+   "updated": "2026-08-17"
+  },
+  {
    "name": "경방",
    "code": "000050",
    "market": "",
@@ -339,8 +402,22 @@
    "updated": "2026-08-17"
   },
   {
+   "name": "고려산업",
+   "code": "002140",
+   "market": "",
+   "sector": "",
+   "updated": "2026-08-17"
+  },
+  {
    "name": "고려아연",
    "code": "010130",
+   "market": "",
+   "sector": "",
+   "updated": "2026-08-17"
+  },
+  {
+   "name": "고려제강",
+   "code": "002240",
    "market": "",
    "sector": "",
    "updated": "2026-08-17"
@@ -355,6 +432,20 @@
   {
    "name": "국보",
    "code": "001140",
+   "market": "",
+   "sector": "",
+   "updated": "2026-08-17"
+  },
+  {
+   "name": "국제약품",
+   "code": "002720",
+   "market": "",
+   "sector": "",
+   "updated": "2026-08-17"
+  },
+  {
+   "name": "금양",
+   "code": "001570",
    "market": "",
    "sector": "",
    "updated": "2026-08-17"
@@ -388,6 +479,13 @@
    "updated": "2026-08-17"
   },
   {
+   "name": "넥센타이어",
+   "code": "002350",
+   "market": "",
+   "sector": "",
+   "updated": "2026-08-17"
+  },
+  {
    "name": "넷마블",
    "code": "251270",
    "market": "",
@@ -411,6 +509,13 @@
   {
    "name": "대동",
    "code": "000490",
+   "market": "",
+   "sector": "",
+   "updated": "2026-08-17"
+  },
+  {
+   "name": "대상",
+   "code": "001680",
    "market": "",
    "sector": "",
    "updated": "2026-08-17"
@@ -458,6 +563,13 @@
    "updated": "2026-08-17"
   },
   {
+   "name": "대한제당",
+   "code": "001790",
+   "market": "",
+   "sector": "",
+   "updated": "2026-08-17"
+  },
+  {
    "name": "대한제분",
    "code": "001130",
    "market": "",
@@ -472,8 +584,22 @@
    "updated": "2026-08-17"
   },
   {
+   "name": "도화엔지니어링",
+   "code": "002150",
+   "market": "",
+   "sector": "",
+   "updated": "2026-08-17"
+  },
+  {
    "name": "동국홀딩스",
    "code": "001230",
+   "market": "",
+   "sector": "",
+   "updated": "2026-08-17"
+  },
+  {
+   "name": "동성제약",
+   "code": "002210",
    "market": "",
    "sector": "",
    "updated": "2026-08-17"
@@ -488,6 +614,13 @@
   {
    "name": "동양",
    "code": "001520",
+   "market": "",
+   "sector": "",
+   "updated": "2026-08-17"
+  },
+  {
+   "name": "동일제강",
+   "code": "002690",
    "market": "",
    "sector": "",
    "updated": "2026-08-17"
@@ -528,6 +661,13 @@
    "updated": "2026-08-17"
   },
   {
+   "name": "디엘건설",
+   "code": "001880",
+   "market": "",
+   "sector": "",
+   "updated": "2026-08-17"
+  },
+  {
    "name": "롯데쇼핑",
    "code": "023530",
    "market": "",
@@ -544,6 +684,13 @@
   {
    "name": "롯데케미칼",
    "code": "011170",
+   "market": "",
+   "sector": "",
+   "updated": "2026-08-17"
+  },
+  {
+   "name": "롯데푸드",
+   "code": "002270",
    "market": "",
    "sector": "",
    "updated": "2026-08-17"
@@ -570,8 +717,36 @@
    "updated": "2026-08-17"
   },
   {
+   "name": "무림SP",
+   "code": "001810",
+   "market": "",
+   "sector": "",
+   "updated": "2026-08-17"
+  },
+  {
    "name": "미래에셋증권",
    "code": "006800",
+   "market": "",
+   "sector": "",
+   "updated": "2026-08-17"
+  },
+  {
+   "name": "미원상사",
+   "code": "002840",
+   "market": "",
+   "sector": "",
+   "updated": "2026-08-17"
+  },
+  {
+   "name": "범양건영",
+   "code": "002410",
+   "market": "",
+   "sector": "",
+   "updated": "2026-08-17"
+  },
+  {
+   "name": "보락",
+   "code": "002760",
    "market": "",
    "sector": "",
    "updated": "2026-08-17"
@@ -586,6 +761,13 @@
   {
    "name": "부국증권",
    "code": "001270",
+   "market": "",
+   "sector": "",
+   "updated": "2026-08-17"
+  },
+  {
+   "name": "비비안",
+   "code": "002070",
    "market": "",
    "sector": "",
    "updated": "2026-08-17"
@@ -668,6 +850,27 @@
    "updated": "2026-08-17"
   },
   {
+   "name": "삼영무역",
+   "code": "002810",
+   "market": "",
+   "sector": "",
+   "updated": "2026-08-17"
+  },
+  {
+   "name": "삼익악기",
+   "code": "002450",
+   "market": "",
+   "sector": "",
+   "updated": "2026-08-17"
+  },
+  {
+   "name": "삼일기업공사",
+   "code": "002290",
+   "market": "",
+   "sector": "",
+   "updated": "2026-08-17"
+  },
+  {
    "name": "삼일제약",
    "code": "000520",
    "market": "",
@@ -677,6 +880,13 @@
   {
    "name": "삼천당제약",
    "code": "000250",
+   "market": "",
+   "sector": "",
+   "updated": "2026-08-17"
+  },
+  {
+   "name": "삼화콘덴서공업",
+   "code": "001820",
    "market": "",
    "sector": "",
    "updated": "2026-08-17"
@@ -696,8 +906,22 @@
    "updated": "2026-08-17"
   },
   {
+   "name": "생고뱅코리아홀딩스",
+   "code": "002000",
+   "market": "",
+   "sector": "",
+   "updated": "2026-08-17"
+  },
+  {
    "name": "성창기업지주",
    "code": "000180",
+   "market": "",
+   "sector": "",
+   "updated": "2026-08-17"
+  },
+  {
+   "name": "세기상사",
+   "code": "002420",
    "market": "",
    "sector": "",
    "updated": "2026-08-17"
@@ -752,8 +976,57 @@
    "updated": "2026-08-17"
   },
   {
+   "name": "신신제약",
+   "code": "002800",
+   "market": "",
+   "sector": "",
+   "updated": "2026-08-17"
+  },
+  {
+   "name": "신영증권",
+   "code": "001720",
+   "market": "",
+   "sector": "",
+   "updated": "2026-08-17"
+  },
+  {
+   "name": "신일전자",
+   "code": "002700",
+   "market": "",
+   "sector": "",
+   "updated": "2026-08-17"
+  },
+  {
    "name": "아모레퍼시픽",
    "code": "090430",
+   "market": "",
+   "sector": "",
+   "updated": "2026-08-17"
+  },
+  {
+   "name": "아모레퍼시픽홀딩스",
+   "code": "002790",
+   "market": "",
+   "sector": "",
+   "updated": "2026-08-17"
+  },
+  {
+   "name": "아세아",
+   "code": "002030",
+   "market": "",
+   "sector": "",
+   "updated": "2026-08-17"
+  },
+  {
+   "name": "아세아제지",
+   "code": "002310",
+   "market": "",
+   "sector": "",
+   "updated": "2026-08-17"
+  },
+  {
+   "name": "아이파크영창",
+   "code": "001890",
    "market": "",
    "sector": "",
    "updated": "2026-08-17"
@@ -768,6 +1041,20 @@
   {
    "name": "안랩",
    "code": "053800",
+   "market": "",
+   "sector": "",
+   "updated": "2026-08-17"
+  },
+  {
+   "name": "알루코",
+   "code": "001780",
+   "market": "",
+   "sector": "",
+   "updated": "2026-08-17"
+  },
+  {
+   "name": "알보젠코리아",
+   "code": "002250",
    "market": "",
    "sector": "",
    "updated": "2026-08-17"
@@ -789,6 +1076,13 @@
   {
    "name": "에스엠",
    "code": "041510",
+   "market": "",
+   "sector": "",
+   "updated": "2026-08-17"
+  },
+  {
+   "name": "에스지신성건설",
+   "code": "001970",
    "market": "",
    "sector": "",
    "updated": "2026-08-17"
@@ -836,8 +1130,22 @@
    "updated": "2026-08-17"
   },
   {
+   "name": "오리엔트바이오",
+   "code": "002630",
+   "market": "",
+   "sector": "",
+   "updated": "2026-08-17"
+  },
+  {
    "name": "오리온",
    "code": "271560",
+   "market": "",
+   "sector": "",
+   "updated": "2026-08-17"
+  },
+  {
+   "name": "오리온홀딩스",
+   "code": "001800",
    "market": "",
    "sector": "",
    "updated": "2026-08-17"
@@ -913,6 +1221,13 @@
    "updated": "2026-08-17"
   },
   {
+   "name": "이화공영",
+   "code": "001840",
+   "market": "",
+   "sector": "",
+   "updated": "2026-08-17"
+  },
+  {
    "name": "이화산업",
    "code": "000760",
    "market": "",
@@ -941,6 +1256,13 @@
    "updated": "2026-08-17"
   },
   {
+   "name": "제일파마홀딩스",
+   "code": "002620",
+   "market": "",
+   "sector": "",
+   "updated": "2026-08-17"
+  },
+  {
    "name": "조비",
    "code": "001550",
    "market": "",
@@ -948,8 +1270,22 @@
    "updated": "2026-08-17"
   },
   {
+   "name": "조흥",
+   "code": "002600",
+   "market": "",
+   "sector": "",
+   "updated": "2026-08-17"
+  },
+  {
    "name": "종근당",
    "code": "185750",
+   "market": "",
+   "sector": "",
+   "updated": "2026-08-17"
+  },
+  {
+   "name": "종근당홀딩스",
+   "code": "001630",
    "market": "",
    "sector": "",
    "updated": "2026-08-17"
@@ -964,6 +1300,13 @@
   {
    "name": "중앙에너비스",
    "code": "000440",
+   "market": "",
+   "sector": "",
+   "updated": "2026-08-17"
+  },
+  {
+   "name": "진흥기업",
+   "code": "002780",
    "market": "",
    "sector": "",
    "updated": "2026-08-17"
@@ -985,6 +1328,27 @@
   {
    "name": "카카오게임즈",
    "code": "293490",
+   "market": "",
+   "sector": "",
+   "updated": "2026-08-17"
+  },
+  {
+   "name": "케이비아이동국실업",
+   "code": "001620",
+   "market": "",
+   "sector": "",
+   "updated": "2026-08-17"
+  },
+  {
+   "name": "케이씨씨",
+   "code": "002380",
+   "market": "",
+   "sector": "",
+   "updated": "2026-08-17"
+  },
+  {
+   "name": "코오롱",
+   "code": "002020",
    "market": "",
    "sector": "",
    "updated": "2026-08-17"
@@ -1060,6 +1424,13 @@
    "updated": "2026-08-17"
   },
   {
+   "name": "피에스텍",
+   "code": "002230",
+   "market": "",
+   "sector": "",
+   "updated": "2026-08-17"
+  },
+  {
    "name": "하이브",
    "code": "352820",
    "market": "",
@@ -1095,6 +1466,13 @@
    "updated": "2026-08-17"
   },
   {
+   "name": "한국수출포장공업",
+   "code": "002200",
+   "market": "",
+   "sector": "",
+   "updated": "2026-08-17"
+  },
+  {
    "name": "한국앤컴퍼니",
    "code": "000240",
    "market": "",
@@ -1104,6 +1482,13 @@
   {
    "name": "한국전력",
    "code": "015760",
+   "market": "",
+   "sector": "",
+   "updated": "2026-08-17"
+  },
+  {
+   "name": "한국제지",
+   "code": "002300",
    "market": "",
    "sector": "",
    "updated": "2026-08-17"
@@ -1137,6 +1522,13 @@
    "updated": "2026-08-17"
   },
   {
+   "name": "한독",
+   "code": "002390",
+   "market": "",
+   "sector": "",
+   "updated": "2026-08-17"
+  },
+  {
    "name": "한미반도체",
    "code": "042700",
    "market": "",
@@ -1158,6 +1550,13 @@
    "updated": "2026-08-17"
   },
   {
+   "name": "한양증권",
+   "code": "001750",
+   "market": "",
+   "sector": "",
+   "updated": "2026-08-17"
+  },
+  {
    "name": "한온시스템",
    "code": "018880",
    "market": "",
@@ -1165,8 +1564,29 @@
    "updated": "2026-08-17"
   },
   {
+   "name": "한일철강",
+   "code": "002220",
+   "market": "",
+   "sector": "",
+   "updated": "2026-08-17"
+  },
+  {
+   "name": "한진",
+   "code": "002320",
+   "market": "",
+   "sector": "",
+   "updated": "2026-08-17"
+  },
+  {
    "name": "한진칼",
    "code": "180640",
+   "market": "",
+   "sector": "",
+   "updated": "2026-08-17"
+  },
+  {
+   "name": "한탑",
+   "code": "002680",
    "market": "",
    "sector": "",
    "updated": "2026-08-17"

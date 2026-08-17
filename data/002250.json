@@ -1,0 +1,47 @@
+{
+ "name": "알보젠코리아",
+ "legal_name": "알보젠코리아",
+ "code": "002250",
+ "market": "",
+ "sector": "",
+ "updated": "2026-08-17",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 1811.8,
+   "op": 307.4,
+   "ni": 86.8,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2017,
+   "rev": 1900.6,
+   "op": 258.4,
+   "ni": 110.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2018,
+   "rev": 1937.3,
+   "op": 235.2,
+   "ni": 106.1,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2019,
+   "rev": 1897.4,
+   "op": 145.4,
+   "ni": 68.7,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  }
+ ],
+ "quarterly": []
+}

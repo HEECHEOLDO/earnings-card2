@@ -1,0 +1,172 @@
+{
+ "name": "세기상사",
+ "legal_name": "세기상사",
+ "code": "002420",
+ "market": "",
+ "sector": "",
+ "updated": "2026-08-17",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 54.7,
+   "op": -7.3,
+   "ni": -11.4,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2017,
+   "rev": 56.3,
+   "op": -3.7,
+   "ni": 0.9,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2018,
+   "rev": 51.8,
+   "op": -3.9,
+   "ni": -3.5,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2019,
+   "rev": 51.5,
+   "op": -4.6,
+   "ni": -9.4,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2020,
+   "rev": 22.3,
+   "op": -12.0,
+   "ni": -15.4,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2021,
+   "rev": 178.8,
+   "op": -15.5,
+   "ni": -19.4,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2022,
+   "rev": 337.1,
+   "op": -7.9,
+   "ni": -12.7,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2023,
+   "rev": 313.3,
+   "op": -8.2,
+   "ni": -15.6,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2024,
+   "rev": 320.3,
+   "op": -19.8,
+   "ni": -28.2,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2025,
+   "rev": 292.5,
+   "op": -5.7,
+   "ni": -16.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 85.6,
+   "op": -5.2,
+   "ni": -6.9
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 86.2,
+   "op": -3.3,
+   "ni": -4.8
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 74.9,
+   "op": -1.9,
+   "ni": -5.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 73.6,
+   "op": -9.3,
+   "ni": -11.6
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 69.2,
+   "op": -7.2,
+   "ni": -8.8
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 72.6,
+   "op": -0.8,
+   "ni": -2.2
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 76.4,
+   "op": 0.2,
+   "ni": -1.1
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 74.3,
+   "op": 2.1,
+   "ni": -3.9
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 71.7,
+   "op": 1.6,
+   "ni": 0.1
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 91.3,
+   "op": -1.7,
+   "ni": -3.1
+  }
+ ]
+}
