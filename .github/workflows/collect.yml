@@ -10,6 +10,10 @@ on:
         description: '이번 실행에서 쓸 API 호출 수'
         required: false
         default: '18000'
+      refresh_days:
+        description: '며칠 넘은 데이터를 다시 받을지'
+        required: false
+        default: '9'
 
 permissions:
   contents: write           # 커밋·푸시 권한
@@ -39,11 +43,13 @@ jobs:
           DART_API_KEY: ${{ secrets.DART_API_KEY }}
         run: python3 collect.py --build-tickers
 
-      - name: 수집 (이어받기)
+      - name: 수집 (미수집 우선, 그다음 오래된 순서로 갱신)
         env:
           DART_API_KEY: ${{ secrets.DART_API_KEY }}
         run: |
-          python3 collect.py --all --budget ${{ github.event.inputs.budget || '18000' }}
+          python3 collect.py --all \
+            --budget ${{ github.event.inputs.budget || '18000' }} \
+            --refresh-days ${{ github.event.inputs.refresh_days || '9' }}
 
       - name: 변경분 커밋
         run: |

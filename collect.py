@@ -442,15 +442,34 @@ def build_tickers_file(corp_map, path="tickers_all.txt"):
     log("사용:  python3 collect.py --all --budget 12000")
 
 
-def load_done():
-    """이미 data/ 에 파일이 있는 종목."""
-    done = set()
+def load_done(refresh_days=None):
+    """
+    이미 data/ 에 파일이 있는 종목.
+    refresh_days 를 주면 그보다 오래된 파일은 '안 받은 것'으로 취급해 다시 받는다.
+    반환: (건너뛸 코드 집합, {코드: updated날짜} — 오래된 것만)
+    """
+    done, stale = set(), {}
     if not os.path.isdir(OUT_DIR):
-        return done
+        return done, stale
+    today = datetime.now(timezone(timedelta(hours=9))).date()
     for fn in os.listdir(OUT_DIR):
-        if fn.endswith(".json") and fn[:-5].isdigit():
-            done.add(fn[:-5])
-    return done
+        if not (fn.endswith(".json") and fn[:-5].isdigit()):
+            continue
+        code = fn[:-5]
+        if refresh_days is None:
+            done.add(code)
+            continue
+        try:
+            with open(os.path.join(OUT_DIR, fn), encoding="utf-8") as f:
+                upd = json.load(f).get("updated", "")
+            age = (today - datetime.strptime(upd, "%Y-%m-%d").date()).days
+        except Exception:      # noqa: BLE001
+            age = 9999          # 날짜를 못 읽으면 오래된 것으로 본다
+        if age >= refresh_days:
+            stale[code] = age
+        else:
+            done.add(code)
+    return done, stale
 
 
 FAILED_PATH = os.path.join(OUT_DIR, "_failed.json")
@@ -588,7 +607,7 @@ def load_tickers(args):
 
 def parse_args():
     """--budget 3000 처럼 옵션이 값을 가지는 경우, 그 값을 종목코드로 오인하지 않게 한다."""
-    takes_value = {"--budget"}
+    takes_value = {"--budget", "--refresh-days"}
     args, skip = [], False
     for i, a in enumerate(sys.argv[1:]):
         if skip:
@@ -641,27 +660,53 @@ def main():
             except ValueError:
                 pass
 
+    # ---- 갱신 주기 ----
+    refresh_days = None
+    for i, a in enumerate(sys.argv):
+        if a == "--refresh-days" and i + 1 < len(sys.argv):
+            try:
+                refresh_days = int(sys.argv[i + 1])
+            except ValueError:
+                pass
+
     # ---- 이미 받은 것 / 이전에 실패한 것은 건너뛴다 ----
     force = "--force" in sys.argv
-    done = set() if force else load_done()
+    if force:
+        done, stale = set(), {}
+    else:
+        done, stale = load_done(refresh_days)
     failed = load_failed()
     skip_reasons = ("재무 데이터 없음(금융업?)", "corpCode 매핑 실패")
 
-    todo = []
+    fresh, refresh = [], []
     for code, alias in tickers:
         if code in done:
             continue
         if not force and failed.get(code, {}).get("reason") in skip_reasons:
             continue
-        todo.append((code, alias))
+        if code in stale:
+            refresh.append((stale[code], code, alias))
+        else:
+            fresh.append((code, alias))
 
-    log("\n목록 %d종목 | 이미 받음 %d | 이전 실패(건너뜀) %d | 이번 대상 %d"
-        % (len(tickers), len(done), len(failed), len(todo)))
+    # 아직 한 번도 안 받은 종목이 먼저, 그다음 오래된 순서로 갱신
+    refresh.sort(reverse=True)
+    todo = fresh + [(c, a) for _, c, a in refresh]
+
+    log("\n목록 %d종목 | 최신 %d | 미수집 %d | 갱신대상 %d | 이전 실패(건너뜀) %d"
+        % (len(tickers), len(done), len(fresh), len(refresh), len(failed)))
+    if refresh_days is not None:
+        log("갱신 주기 %d일 — %d일 넘은 데이터는 다시 받습니다." % (refresh_days, refresh_days))
+        if refresh:
+            log("가장 오래된 데이터: %d일 전" % refresh[0][0])
 
     if not todo:
         n = rebuild_index()
-        log("새로 받을 종목이 없습니다. index.json 갱신 완료 (%d종목)" % n)
-        log("전부 다시 받으려면 --force 를 붙이세요.")
+        log("받을 종목이 없습니다. index.json 갱신 완료 (%d종목)" % n)
+        if refresh_days is None:
+            log("주기적으로 갱신하려면 --refresh-days 9 를 붙이세요.")
+        else:
+            log("모든 데이터가 %d일 이내입니다." % refresh_days)
         return
 
     can_do = min(budget // 43, len(todo))
