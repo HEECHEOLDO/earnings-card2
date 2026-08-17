@@ -1,0 +1,9 @@
+# API 키 — 절대 올리지 않는다
+key.txt
+
+# 캐시 · 로컬 부산물
+.cache/
+.DS_Store
+*.pyc
+__pycache__/
+.env
