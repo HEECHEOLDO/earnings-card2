@@ -699,7 +699,7 @@ def load_tickers(args):
 
 def parse_args():
     """--budget 3000 처럼 옵션이 값을 가지는 경우, 그 값을 종목코드로 오인하지 않게 한다."""
-    takes_value = {"--budget", "--refresh-days", "--dividend"}
+    takes_value = {"--budget", "--refresh-days", "--dividend", "--max-minutes"}
     args, skip = [], False
     for i, a in enumerate(sys.argv[1:]):
         if skip:
@@ -768,6 +768,15 @@ def main():
             except ValueError:
                 pass
 
+    # ---- 시간 상한 (분) ----
+    max_minutes = None
+    for i, a in enumerate(sys.argv):
+        if a == "--max-minutes" and i + 1 < len(sys.argv):
+            try:
+                max_minutes = float(sys.argv[i + 1])
+            except ValueError:
+                pass
+
     # ---- 갱신 주기 ----
     refresh_days = None
     for i, a in enumerate(sys.argv):
@@ -820,6 +829,8 @@ def main():
     can_do = min(budget // 43, len(todo))
     log("예산 %s회 -> 이번에 약 %d종목 처리 예상 (%.0f분)"
         % (f"{budget:,}", can_do, can_do * 10.6 / 60))
+    if max_minutes:
+        log("시간 상한 %.0f분" % max_minutes)
 
     started = time.time()
     report = []
@@ -831,6 +842,11 @@ def main():
     for i, (code, alias) in enumerate(todo, 1):
         if ABORT:
             log("\n>> 중단: %s" % ABORT)
+            stopped_early = True
+            break
+
+        if max_minutes and (time.time() - started) / 60 >= max_minutes:
+            log("\n>> 시간 상한 %.0f분에 도달했습니다. 다음 실행에서 이어갑니다." % max_minutes)
             stopped_early = True
             break
 
