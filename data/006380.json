@@ -1,0 +1,183 @@
+{
+ "name": "카프로",
+ "split_adjusted": false,
+ "legal_name": "카프로",
+ "code": "006380",
+ "market": "",
+ "sector": "",
+ "updated": "2026-08-18",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 3454.6,
+   "op": -159.8,
+   "ni": -76.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 5413.0,
+   "op": 242.4,
+   "ni": 123.5,
+   "dps": 50.0,
+   "payout": 16.2,
+   "yield": 0.7,
+   "dps_adj": 50.0
+  },
+  {
+   "p": 2018,
+   "rev": 5792.6,
+   "op": 156.4,
+   "ni": 100.4,
+   "dps": 50.0,
+   "payout": 19.9,
+   "yield": 1.1,
+   "dps_adj": 50.0
+  },
+  {
+   "p": 2019,
+   "rev": 4402.3,
+   "op": -473.9,
+   "ni": -828.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 2547.2,
+   "op": -594.7,
+   "ni": -613.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 5824.3,
+   "op": 36.0,
+   "ni": 19.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 4271.9,
+   "op": -1222.8,
+   "ni": -1862.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 755.9,
+   "op": -394.7,
+   "ni": -491.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 70.7,
+   "op": -323.9,
+   "ni": 331.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 246.4,
+   "op": -211.2,
+   "ni": -323.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 25.3,
+   "op": -64.0,
+   "ni": -82.1
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 16.2,
+   "op": -72.4,
+   "ni": 646.8
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 15.4,
+   "op": -64.2,
+   "ni": -82.8
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 13.9,
+   "op": -123.2,
+   "ni": -150.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 23.4,
+   "op": -60.9,
+   "ni": -86.2
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 120.6,
+   "op": 172.0,
+   "ni": -117.4
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 56.8,
+   "op": 48.4,
+   "ni": -81.8
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 45.6,
+   "op": -370.7,
+   "ni": -38.3
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 74.2,
+   "op": -34.3,
+   "ni": -64.9
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 123.6,
+   "op": -2.7,
+   "ni": -35.2
+  }
+ ]
+}

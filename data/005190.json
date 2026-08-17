@@ -1,0 +1,62 @@
+{
+ "name": "동성화학",
+ "split_adjusted": false,
+ "legal_name": "동성화학",
+ "code": "005190",
+ "market": "",
+ "sector": "",
+ "updated": "2026-08-18",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 1767.9,
+   "op": 204.7,
+   "ni": 152.5,
+   "dps": 500.0,
+   "payout": 17.2,
+   "yield": 2.6,
+   "dps_adj": 500.0
+  },
+  {
+   "p": 2017,
+   "rev": 2042.5,
+   "op": 82.1,
+   "ni": 50.7,
+   "dps": null,
+   "payout": 30.5,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 1913.9,
+   "op": 67.8,
+   "ni": 53.7,
+   "dps": null,
+   "payout": 45.3,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 2010.1,
+   "op": 253.1,
+   "ni": 135.6,
+   "dps": null,
+   "payout": 23.8,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 1824.5,
+   "op": 273.4,
+   "ni": 281.7,
+   "dps": null,
+   "payout": 19.8,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

@@ -1,0 +1,183 @@
+{
+ "name": "흥아해운",
+ "split_adjusted": false,
+ "legal_name": "흥아해운",
+ "code": "003280",
+ "market": "",
+ "sector": "",
+ "updated": "2026-08-18",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 8317.5,
+   "op": 59.0,
+   "ni": -171.7,
+   "dps": 5.0,
+   "payout": -3.7,
+   "yield": 0.38,
+   "dps_adj": 5.0
+  },
+  {
+   "p": 2017,
+   "rev": 8364.3,
+   "op": -131.0,
+   "ni": -735.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 7538.7,
+   "op": -376.0,
+   "ni": -865.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 1021.7,
+   "op": -123.6,
+   "ni": -513.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 889.4,
+   "op": -58.0,
+   "ni": -508.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 817.2,
+   "op": -18.7,
+   "ni": 164.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 1778.6,
+   "op": 296.8,
+   "ni": 238.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 1648.1,
+   "op": 245.6,
+   "ni": 347.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 1880.0,
+   "op": 275.4,
+   "ni": 399.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 1808.1,
+   "op": 112.8,
+   "ni": 303.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 435.2,
+   "op": 56.8,
+   "ni": 44.6
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 481.4,
+   "op": 85.9,
+   "ni": 73.2
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 488.7,
+   "op": 93.0,
+   "ni": 101.1
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 474.7,
+   "op": 39.7,
+   "ni": 180.7
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 457.7,
+   "op": 46.7,
+   "ni": 31.2
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 486.9,
+   "op": 58.5,
+   "ni": 65.8
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 413.1,
+   "op": 12.2,
+   "ni": 0.4
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 450.4,
+   "op": -4.6,
+   "ni": 205.9
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 400.2,
+   "op": 11.0,
+   "ni": 5.5
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 499.6,
+   "op": 31.4,
+   "ni": 21.7
+  }
+ ]
+}

@@ -1,0 +1,90 @@
+{
+ "name": "성지건설",
+ "split_adjusted": false,
+ "legal_name": "성지건설",
+ "code": "005980",
+ "market": "",
+ "sector": "",
+ "updated": "2026-08-18",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 1085.3,
+   "op": -70.7,
+   "ni": -115.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 1124.3,
+   "op": -47.7,
+   "ni": -92.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 579.3,
+   "op": -174.0,
+   "ni": -251.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 533.0,
+   "op": -31.8,
+   "ni": 11.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 576.4,
+   "op": -46.9,
+   "ni": -211.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 597.3,
+   "op": -65.9,
+   "ni": -66.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 829.6,
+   "op": -55.6,
+   "ni": -30.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 1,
+   "rev": 231.6,
+   "op": -76.2,
+   "ni": -81.2
+  }
+ ]
+}

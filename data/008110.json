@@ -1,0 +1,183 @@
+{
+ "name": "대동전자",
+ "split_adjusted": false,
+ "legal_name": "대동전자",
+ "code": "008110",
+ "market": "",
+ "sector": "",
+ "updated": "2026-08-18",
+ "annual": [
+  {
+   "p": 2017,
+   "rev": 416.3,
+   "op": 13.1,
+   "ni": 22.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 398.1,
+   "op": -2.6,
+   "ni": 6.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 480.0,
+   "op": -2.0,
+   "ni": 34.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 450.1,
+   "op": 17.1,
+   "ni": 45.4,
+   "dps": 500.0,
+   "payout": 97.8,
+   "yield": 16.2,
+   "dps_adj": 500.0
+  },
+  {
+   "p": 2021,
+   "rev": 398.1,
+   "op": 30.4,
+   "ni": 32.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 436.2,
+   "op": 22.0,
+   "ni": 84.4,
+   "dps": 250.0,
+   "payout": 24.6,
+   "yield": 2.6,
+   "dps_adj": 250.0
+  },
+  {
+   "p": 2023,
+   "rev": 412.8,
+   "op": 22.0,
+   "ni": 87.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 290.3,
+   "op": 48.7,
+   "ni": 256.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 300.7,
+   "op": 67.9,
+   "ni": 126.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2026,
+   "rev": 182.8,
+   "op": 10.4,
+   "ni": -7.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 64.1,
+   "op": 18.3,
+   "ni": 55.8
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 75.2,
+   "op": 18.2,
+   "ni": 6.8
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 112.3,
+   "op": 33.6,
+   "ni": 82.1
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 38.8,
+   "op": -21.4,
+   "ni": 111.9
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 49.7,
+   "op": 6.8,
+   "ni": -53.2
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 55.7,
+   "op": -1.0,
+   "ni": -5.4
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 43.0,
+   "op": 6.7,
+   "ni": 33.1
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 152.3,
+   "op": 55.5,
+   "ni": 151.7
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 24.6,
+   "op": -7.1,
+   "ni": 23.9
+  },
+  {
+   "y": 2026,
+   "q": 4,
+   "rev": 182.8,
+   "op": 10.4,
+   "ni": -7.8
+  }
+ ]
+}

@@ -1,0 +1,52 @@
+{
+ "name": "고려개발",
+ "split_adjusted": false,
+ "legal_name": "고려개발",
+ "code": "004200",
+ "market": "",
+ "sector": "",
+ "updated": "2026-08-18",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 6238.6,
+   "op": 263.5,
+   "ni": -305.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 6631.0,
+   "op": 563.0,
+   "ni": 57.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 5540.6,
+   "op": 399.6,
+   "ni": 6.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 6849.4,
+   "op": 631.1,
+   "ni": 343.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

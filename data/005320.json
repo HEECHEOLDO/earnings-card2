@@ -1,0 +1,183 @@
+{
+ "name": "온타이드",
+ "split_adjusted": false,
+ "legal_name": "온타이드",
+ "code": "005320",
+ "market": "",
+ "sector": "",
+ "updated": "2026-08-18",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 1973.7,
+   "op": 105.6,
+   "ni": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 1916.0,
+   "op": -58.6,
+   "ni": -89.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 2195.5,
+   "op": 57.6,
+   "ni": 21.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 2230.8,
+   "op": -42.5,
+   "ni": -45.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 2534.2,
+   "op": 265.9,
+   "ni": 106.7,
+   "dps": 50.0,
+   "payout": 12.15,
+   "yield": 1.19,
+   "dps_adj": 50.0
+  },
+  {
+   "p": 2021,
+   "rev": 2269.6,
+   "op": -35.9,
+   "ni": -79.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 3298.8,
+   "op": 170.3,
+   "ni": 13.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 2244.4,
+   "op": -35.8,
+   "ni": -85.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 2659.2,
+   "op": -43.5,
+   "ni": -37.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 2314.9,
+   "op": -18.6,
+   "ni": -107.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 541.1,
+   "op": -39.6,
+   "ni": -43.8
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 594.5,
+   "op": -30.7,
+   "ni": -32.3
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 754.1,
+   "op": 30.0,
+   "ni": 12.7
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 769.4,
+   "op": -3.2,
+   "ni": 25.5
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 616.9,
+   "op": 35.7,
+   "ni": 2.9
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 578.0,
+   "op": -44.2,
+   "ni": -57.1
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 514.1,
+   "op": -7.8,
+   "ni": -9.3
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 605.9,
+   "op": -2.3,
+   "ni": -43.6
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 567.1,
+   "op": -55.2,
+   "ni": -51.7
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 700.0,
+   "op": 65.6,
+   "ni": 46.7
+  }
+ ]
+}

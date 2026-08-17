@@ -1,0 +1,32 @@
+{
+ "name": "보루네오가구",
+ "split_adjusted": false,
+ "legal_name": "보루네오가구",
+ "code": "004740",
+ "market": "",
+ "sector": "",
+ "updated": "2026-08-18",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 324.3,
+   "op": -154.8,
+   "ni": -143.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 15.7,
+   "op": -37.9,
+   "ni": -26.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

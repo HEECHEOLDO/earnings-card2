@@ -1,0 +1,159 @@
+{
+ "name": "신한",
+ "split_adjusted": false,
+ "legal_name": "신한",
+ "code": "005450",
+ "market": "",
+ "sector": "",
+ "updated": "2026-08-18",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 58.4,
+   "op": -97.8,
+   "ni": -171.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 467.3,
+   "op": 80.5,
+   "ni": -42.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 579.7,
+   "op": 229.9,
+   "ni": -16.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 375.2,
+   "op": 17.1,
+   "ni": -131.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 23.4,
+   "op": -19.9,
+   "ni": 9.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 22.2,
+   "op": -98.2,
+   "ni": -144.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 23.6,
+   "op": -35.8,
+   "ni": -40.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 25.2,
+   "op": -34.4,
+   "ni": -21.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 25.2,
+   "op": -34.4,
+   "ni": -21.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 1,
+   "rev": 5.8,
+   "op": -7.6,
+   "ni": 9.9
+  },
+  {
+   "y": 2023,
+   "q": 2,
+   "rev": 6.6,
+   "op": -6.0,
+   "ni": -8.2
+  },
+  {
+   "y": 2023,
+   "q": 3,
+   "rev": 6.4,
+   "op": -5.8,
+   "ni": -7.6
+  },
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 6.4,
+   "op": -14.9,
+   "ni": -16.0
+  },
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 6.3,
+   "op": -4.7,
+   "ni": -7.1
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 6.1,
+   "op": -3.3,
+   "ni": -0.6
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 6.5,
+   "op": -4.6,
+   "ni": -6.2
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 6.3,
+   "op": -21.8,
+   "ni": -7.9
+  }
+ ]
+}

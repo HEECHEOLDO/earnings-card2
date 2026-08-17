@@ -1,0 +1,113 @@
+{
+ "name": "엠소닉",
+ "split_adjusted": false,
+ "legal_name": "엠소닉",
+ "code": "008120",
+ "market": "",
+ "sector": "",
+ "updated": "2026-08-18",
+ "annual": [
+  {
+   "p": 2023,
+   "rev": 702.6,
+   "op": 19.0,
+   "ni": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 805.9,
+   "op": 32.6,
+   "ni": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 764.7,
+   "op": 44.5,
+   "ni": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 154.9,
+   "op": 2.4,
+   "ni": null
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 185.4,
+   "op": 8.2,
+   "ni": null
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 226.0,
+   "op": 9.6,
+   "ni": null
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 239.6,
+   "op": 12.4,
+   "ni": null
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 188.6,
+   "op": 10.1,
+   "ni": null
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 169.9,
+   "op": 6.3,
+   "ni": null
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 214.7,
+   "op": 17.1,
+   "ni": null
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 191.6,
+   "op": 10.9,
+   "ni": null
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 152.4,
+   "op": -5.1,
+   "ni": null
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 146.0,
+   "op": 2.6,
+   "ni": null
+  }
+ ]
+}

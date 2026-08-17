@@ -1,0 +1,173 @@
+{
+ "name": "조광피혁",
+ "split_adjusted": false,
+ "legal_name": "조광피혁",
+ "code": "004700",
+ "market": "",
+ "sector": "",
+ "updated": "2026-08-18",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 1985.7,
+   "op": 266.0,
+   "ni": 216.4,
+   "dps": null,
+   "payout": 1.7,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 1742.9,
+   "op": 245.6,
+   "ni": 220.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 1082.4,
+   "op": 158.5,
+   "ni": 145.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 973.2,
+   "op": 151.2,
+   "ni": 196.5,
+   "dps": 300.0,
+   "payout": 5.42,
+   "yield": 0.53,
+   "dps_adj": 300.0
+  },
+  {
+   "p": 2021,
+   "rev": 1042.5,
+   "op": 109.5,
+   "ni": 112.0,
+   "dps": 300.0,
+   "payout": 9.51,
+   "yield": 0.53,
+   "dps_adj": 300.0
+  },
+  {
+   "p": 2022,
+   "rev": 1220.1,
+   "op": 5.1,
+   "ni": 60.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 1265.7,
+   "op": 63.4,
+   "ni": 90.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 902.5,
+   "op": 72.3,
+   "ni": 126.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 978.8,
+   "op": 87.9,
+   "ni": 115.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 250.8,
+   "op": 30.0,
+   "ni": 40.6
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 230.8,
+   "op": 17.6,
+   "ni": 36.2
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 182.8,
+   "op": 0.9,
+   "ni": 7.6
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 238.2,
+   "op": 23.7,
+   "ni": 41.7
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 257.5,
+   "op": 24.8,
+   "ni": 30.9
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 264.3,
+   "op": 13.8,
+   "ni": 24.2
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 254.2,
+   "op": 23.2,
+   "ni": 30.6
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 202.8,
+   "op": 26.1,
+   "ni": 29.7
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 208.7,
+   "op": 16.0,
+   "ni": 33.5
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 213.0,
+   "op": -14.5,
+   "ni": 5.9
+  }
+ ]
+}

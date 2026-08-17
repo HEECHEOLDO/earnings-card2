@@ -1,0 +1,183 @@
+{
+ "name": "대한해운",
+ "split_adjusted": false,
+ "legal_name": "대한해운",
+ "code": "005880",
+ "market": "",
+ "sector": "",
+ "updated": "2026-08-18",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 5403.1,
+   "op": 440.7,
+   "ni": 307.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 15607.4,
+   "op": 1008.7,
+   "ni": 1091.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 12846.0,
+   "op": 1350.3,
+   "ni": 782.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 10056.6,
+   "op": 1287.8,
+   "ni": 1010.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 8840.8,
+   "op": 1459.4,
+   "ni": 275.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 11538.4,
+   "op": 2039.2,
+   "ni": 3065.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 16120.1,
+   "op": 2676.7,
+   "ni": 1722.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 13973.7,
+   "op": 2499.6,
+   "ni": 463.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 17471.9,
+   "op": 3286.4,
+   "ni": 1648.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 12769.7,
+   "op": 2071.6,
+   "ni": 1732.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 5152.1,
+   "op": 1267.5,
+   "ni": 823.9
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 4084.5,
+   "op": 721.7,
+   "ni": 519.3
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 4188.8,
+   "op": 677.7,
+   "ni": 495.1
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 4046.4,
+   "op": 619.5,
+   "ni": -190.1
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 3305.2,
+   "op": 639.1,
+   "ni": 621.2
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 3322.1,
+   "op": 330.4,
+   "ni": 493.8
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 3179.9,
+   "op": 593.1,
+   "ni": 430.6
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 2962.4,
+   "op": 509.1,
+   "ni": 187.1
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 2778.0,
+   "op": 744.5,
+   "ni": 629.7
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 3128.3,
+   "op": 629.3,
+   "ni": 574.8
+  }
+ ]
+}

@@ -1,0 +1,32 @@
+{
+ "name": "대덕GDS",
+ "split_adjusted": false,
+ "legal_name": "대덕GDS",
+ "code": "004130",
+ "market": "",
+ "sector": "",
+ "updated": "2026-08-18",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 4632.0,
+   "op": 48.6,
+   "ni": null,
+   "dps": 300.0,
+   "payout": 68.6,
+   "yield": 2.4,
+   "dps_adj": 300.0
+  },
+  {
+   "p": 2017,
+   "rev": 4823.6,
+   "op": 300.4,
+   "ni": 336.6,
+   "dps": 300.0,
+   "payout": 19.6,
+   "yield": 1.2,
+   "dps_adj": 300.0
+  }
+ ],
+ "quarterly": []
+}

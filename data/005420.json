@@ -1,0 +1,183 @@
+{
+ "name": "코스모화학",
+ "split_adjusted": false,
+ "legal_name": "코스모화학",
+ "code": "005420",
+ "market": "",
+ "sector": "",
+ "updated": "2026-08-18",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 2865.1,
+   "op": -139.8,
+   "ni": -725.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 4316.5,
+   "op": 206.8,
+   "ni": 273.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 6780.9,
+   "op": 62.5,
+   "ni": -88.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 4068.2,
+   "op": -52.2,
+   "ni": -145.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 3555.0,
+   "op": 50.0,
+   "ni": -156.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 5126.1,
+   "op": 304.8,
+   "ni": 235.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 7181.9,
+   "op": 414.3,
+   "ni": 314.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 7989.8,
+   "op": 30.1,
+   "ni": -74.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 7492.8,
+   "op": -20.0,
+   "ni": -522.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 6641.6,
+   "op": -159.9,
+   "ni": -309.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 1597.3,
+   "op": -4.3,
+   "ni": -34.5
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 2335.3,
+   "op": 42.4,
+   "ni": -23.5
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 1666.8,
+   "op": 11.6,
+   "ni": -2.1
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 1893.3,
+   "op": -69.6,
+   "ni": -462.7
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 1616.0,
+   "op": 9.5,
+   "ni": -6.3
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 1770.6,
+   "op": -47.2,
+   "ni": -41.1
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 1520.0,
+   "op": -49.2,
+   "ni": -105.6
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 1734.9,
+   "op": -73.0,
+   "ni": -156.5
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 1835.0,
+   "op": 59.9,
+   "ni": -2.1
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 2061.4,
+   "op": 76.4,
+   "ni": 15.5
+  }
+ ]
+}

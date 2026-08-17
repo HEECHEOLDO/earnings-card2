@@ -1,0 +1,183 @@
+{
+ "name": "KG모빌리티",
+ "split_adjusted": false,
+ "legal_name": "KG모빌리티",
+ "code": "003620",
+ "market": "",
+ "sector": "",
+ "updated": "2026-08-18",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 36285.4,
+   "op": 279.9,
+   "ni": 581.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 34946.4,
+   "op": -652.8,
+   "ni": -658.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 37047.9,
+   "op": -641.8,
+   "ni": -618.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 36238.8,
+   "op": -2819.1,
+   "ni": -3413.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 29501.8,
+   "op": -4493.9,
+   "ni": -5043.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 24293.3,
+   "op": -2612.6,
+   "ni": -2579.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 34233.4,
+   "op": -1119.5,
+   "ni": -601.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 37363.7,
+   "op": 125.5,
+   "ni": 89.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 39050.7,
+   "op": 14.3,
+   "ni": 338.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 43036.4,
+   "op": 361.6,
+   "ni": 465.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 10017.9,
+   "op": 151.2,
+   "ni": 538.8
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 9848.6,
+   "op": 105.8,
+   "ni": 326.1
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 8991.5,
+   "op": -400.2,
+   "ni": -520.1
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 10192.7,
+   "op": 157.6,
+   "ni": -6.4
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 9165.9,
+   "op": 56.8,
+   "ni": 30.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 9864.4,
+   "op": 80.1,
+   "ni": -77.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 12172.2,
+   "op": 14.2,
+   "ni": 82.5
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 11833.9,
+   "op": 210.4,
+   "ni": 430.3
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 11413.7,
+   "op": 95.9,
+   "ni": 272.9
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 12339.6,
+   "op": 52.2,
+   "ni": 149.0
+  }
+ ]
+}

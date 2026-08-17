@@ -1,0 +1,183 @@
+{
+ "name": "파미셀",
+ "split_adjusted": false,
+ "legal_name": "파미셀",
+ "code": "005690",
+ "market": "",
+ "sector": "",
+ "updated": "2026-08-18",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 278.4,
+   "op": -18.7,
+   "ni": -6.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 252.0,
+   "op": -44.6,
+   "ni": -392.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 283.5,
+   "op": 2.6,
+   "ni": -126.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 324.8,
+   "op": 19.6,
+   "ni": 43.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 377.5,
+   "op": 72.3,
+   "ni": 52.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 508.9,
+   "op": 76.1,
+   "ni": 95.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 601.8,
+   "op": 88.7,
+   "ni": 108.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 562.3,
+   "op": 13.0,
+   "ni": 35.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 648.5,
+   "op": 46.6,
+   "ni": 63.3,
+   "dps": 20.0,
+   "payout": null,
+   "yield": 0.2,
+   "dps_adj": 20.0
+  },
+  {
+   "p": 2025,
+   "rev": 1140.6,
+   "op": 343.0,
+   "ni": 402.9,
+   "dps": 50.0,
+   "payout": null,
+   "yield": 0.3,
+   "dps_adj": 50.0
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 109.7,
+   "op": -20.1,
+   "ni": -13.6
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 178.1,
+   "op": 22.3,
+   "ni": 28.3
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 145.9,
+   "op": 12.8,
+   "ni": 7.1
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 214.7,
+   "op": 31.4,
+   "ni": 41.5
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 270.3,
+   "op": 83.8,
+   "ni": 84.6
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 267.6,
+   "op": 81.6,
+   "ni": 73.8
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 256.5,
+   "op": 81.4,
+   "ni": 87.8
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 346.2,
+   "op": 96.2,
+   "ni": 156.7
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 366.9,
+   "op": 130.8,
+   "ni": 117.1
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 389.8,
+   "op": 132.3,
+   "ni": 103.8
+  }
+ ]
+}

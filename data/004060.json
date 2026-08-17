@@ -1,0 +1,183 @@
+{
+ "name": "SG세계물산",
+ "split_adjusted": false,
+ "legal_name": "SG세계물산",
+ "code": "004060",
+ "market": "",
+ "sector": "",
+ "updated": "2026-08-18",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 3086.2,
+   "op": 13.2,
+   "ni": -37.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 2854.3,
+   "op": -67.1,
+   "ni": -65.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 3202.0,
+   "op": 39.4,
+   "ni": 66.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 3125.5,
+   "op": 5.1,
+   "ni": 96.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 1678.0,
+   "op": -207.6,
+   "ni": -103.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 1357.5,
+   "op": -47.4,
+   "ni": 469.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 1613.0,
+   "op": 72.0,
+   "ni": 17.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 1430.8,
+   "op": 18.4,
+   "ni": -10.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 1388.0,
+   "op": -27.6,
+   "ni": 53.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 1323.5,
+   "op": -15.2,
+   "ni": 8.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 364.8,
+   "op": -7.2,
+   "ni": -0.3
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 317.8,
+   "op": -8.1,
+   "ni": 64.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 355.4,
+   "op": -7.1,
+   "ni": 46.7
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 350.0,
+   "op": -5.3,
+   "ni": -56.9
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 337.4,
+   "op": -8.2,
+   "ni": 2.3
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 287.9,
+   "op": -4.3,
+   "ni": 10.8
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 352.5,
+   "op": -6.2,
+   "ni": 3.2
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 345.7,
+   "op": 3.5,
+   "ni": -7.4
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 277.5,
+   "op": -18.7,
+   "ni": 30.1
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 272.8,
+   "op": -4.6,
+   "ni": 13.5
+  }
+ ]
+}
