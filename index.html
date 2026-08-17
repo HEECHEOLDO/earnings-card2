@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>10 Years FinCard Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #F4F6F8;
+    --surface: #FFFFFF;
+    --surface-2: #EDF1F5;
+    --border: #E2E6EB;
+    --border-strong: #D3DBE3;
+    --text: #16202B;
+    --text-soft: #5A6673;
+    --text-mute: #8894A2;
+    --accent: #1E4E8C;
+    --accent-soft: #E8F0FA;
+    --accent-text: #1E4E8C;
+    --pos: #1D6E4E;
+    --pos-soft: #E4F2EB;
+    --radius: 8px;
+  }
+  [data-mode="dark"] {
+    --bg: #0E141B;
+    --surface: #161F29;
+    --surface-2: #1D2833;
+    --border: #26313D;
+    --border-strong: #35424F;
+    --text: #E6EBF0;
+    --text-soft: #93A1B0;
+    --text-mute: #6C7A89;
+    --accent: #5B9BE8;
+    --accent-soft: #17293D;
+    --accent-text: #8FBDF0;
+    --pos: #59C79A;
+    --pos-soft: #14312A;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Noto Sans KR', -apple-system, 'Malgun Gothic', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  body { padding: 20px 16px 80px; }
+  .shell { max-width: 1080px; margin: 0 auto; }
+
+  .topbar {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 12px; padding-bottom: 14px; border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+  .brand { display: flex; align-items: baseline; gap: 8px; }
+  .brand h1 { font-size: 17px; font-weight: 800; margin: 0; letter-spacing: -0.01em; }
+  .brand span { font-size: 12px; color: var(--text-mute); }
+  .topbar-right { display: flex; align-items: center; gap: 8px; }
+
+  .pill {
+    font-size: 12px; font-weight: 600; padding: 5px 11px;
+    border-radius: 999px; background: var(--pos-soft); color: var(--pos);
+  }
+  .icon-btn {
+    width: 36px; height: 36px; border-radius: var(--radius);
+    border: 1px solid var(--border-strong); background: transparent;
+    color: var(--text-soft); cursor: pointer; font-size: 15px; line-height: 1;
+  }
+  .icon-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+  .searchrow { display: flex; gap: 8px; margin: 18px 0 6px; flex-wrap: wrap; }
+  input[type="text"], select {
+    font-family: inherit; font-size: 14px; color: var(--text);
+    background: var(--surface); border: 1px solid var(--border-strong);
+    border-radius: var(--radius); padding: 0 12px; height: 42px; min-width: 0;
+  }
+  input[type="text"] { flex: 1; }
+  input[type="text"]:focus, select:focus { outline: none; border-color: var(--accent); }
+  input[type="color"] {
+    width: 42px; height: 42px; padding: 0; border-radius: var(--radius);
+    border: 1px solid var(--border-strong); background: none; cursor: pointer;
+  }
+  .btn {
+    font-family: inherit; font-size: 14px; font-weight: 700; cursor: pointer;
+    border-radius: var(--radius); padding: 0 18px; height: 42px;
+    border: 1px solid var(--border-strong); background: transparent; color: var(--text);
+    white-space: nowrap; transition: border-color .12s, background .12s;
+  }
+  .btn:hover { border-color: var(--accent); color: var(--accent); }
+  .btn-primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .btn-primary:hover { opacity: .9; color: #fff; }
+  .meta { font-size: 12px; color: var(--text-mute); margin-bottom: 18px; }
+
+  .tabs { display: flex; gap: 6px; margin-bottom: 18px; }
+  .tab {
+    font-size: 13px; font-weight: 600; padding: 8px 16px; cursor: pointer;
+    border-radius: var(--radius); border: 1px solid var(--border-strong);
+    background: transparent; color: var(--text-soft); font-family: inherit;
+  }
+  .tab[aria-selected="true"] {
+    background: var(--accent-soft); border-color: transparent; color: var(--accent-text);
+  }
+
+  .metrics {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px; margin-bottom: 24px;
+  }
+  .metric { background: var(--surface); border-radius: var(--radius); padding: 15px 16px; }
+  .metric .lbl { font-size: 12px; color: var(--text-soft); margin-bottom: 5px; }
+  .metric .val { font-size: 23px; font-weight: 800; letter-spacing: -0.02em; }
+
+  .panel { background: var(--surface); border-radius: 12px; padding: 18px 18px 14px; margin-bottom: 18px; }
+  .panel-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-bottom: 12px; }
+  .panel-head h2 { font-size: 14px; font-weight: 700; margin: 0; }
+  .panel-head .note { font-size: 12px; color: var(--text-mute); }
+  .chart-box { position: relative; height: 260px; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+  th, td { padding: 8px 6px; text-align: right; white-space: nowrap; }
+  th:first-child, td:first-child { text-align: left; }
+  thead th { color: var(--text-soft); font-weight: 600; border-bottom: 1px solid var(--border-strong); }
+  tbody td { border-bottom: 1px solid var(--border); }
+  tbody tr:last-child td { border-bottom: none; font-weight: 700; }
+  .scroll-x { overflow-x: auto; }
+
+  .studio { display: grid; grid-template-columns: 420px 1fr; gap: 18px; align-items: start; }
+  @media (max-width: 860px) { .studio { grid-template-columns: 1fr; } }
+
+  .card-frame {
+    background: var(--surface); border-radius: 12px; padding: 18px;
+    display: flex; flex-direction: column; align-items: center; gap: 14px;
+  }
+  #card-canvas {
+    display: block; width: 100%; max-width: 384px; height: auto;
+    border-radius: 2px; touch-action: none; cursor: default;
+    box-shadow: 0 18px 40px -18px rgba(0,0,0,.4), 0 0 0 1px rgba(0,0,0,.07);
+  }
+  input[type="file"] { font-size: 12px; max-width: 190px; color: var(--text-soft); }
+  input[type="range"] { width: 130px; height: 26px; accent-color: var(--accent); }
+  .ctl-sep { width: 1px; height: 22px; background: var(--border-strong); }
+  .range-val { font-size: 12px; color: var(--text-soft); min-width: 42px; }
+  .btn-sm { height: 34px; padding: 0 12px; font-size: 12.5px; }
+  .btn-danger { color: #B32B22; border-color: #E1B7B2; }
+  .btn-danger:hover { border-color: #B32B22; color: #B32B22; }
+  #overlay-edit { display: none; flex-wrap: wrap; gap: 10px 12px; align-items: center; }
+  .ctl { display: flex; flex-direction: column; gap: 14px; }
+  .ctl-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .ctl-row label { font-size: 13px; color: var(--text-soft); font-weight: 600; }
+  .hint { font-size: 12px; color: var(--text-mute); line-height: 1.6; margin: 0; }
+  .check { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; color: var(--text-soft); cursor: pointer; }
+  .check input { width: 17px; height: 17px; accent-color: var(--accent); }
+  h3.sec { font-size: 13px; font-weight: 700; margin: 0 0 2px; }
+  .divider { height: 1px; background: var(--border); margin: 2px 0; }
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <div class="topbar">
+    <div class="brand">
+      <h1>10 Years FinCard Studio</h1>
+      <span>실적·배당 카드뉴스</span>
+    </div>
+    <div class="topbar-right">
+      <span class="pill" id="src-pill">샘플 데이터</span>
+      <button class="icon-btn" id="btn-mode" aria-label="다크 모드 전환">◐</button>
+    </div>
+  </div>
+
+  <div class="searchrow">
+    <input type="text" id="q" placeholder="삼성전자 또는 005930" autocomplete="off" list="company-list">
+    <datalist id="company-list"></datalist>
+    <button class="btn btn-primary" id="btn-load">불러오기</button>
+  </div>
+  <div class="meta" id="meta"></div>
+
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" data-period="annual" aria-selected="true">최근 10년</button>
+    <button class="tab" role="tab" data-period="quarterly" aria-selected="false">최근 10분기</button>
+  </div>
+
+  <div class="metrics" id="metrics"></div>
+
+  <div class="panel">
+    <div class="panel-head">
+      <h2 id="chart1-title">실적 추이</h2>
+      <span class="note" id="chart1-note">연결 기준</span>
+    </div>
+    <div class="chart-box"><canvas id="chart1"></canvas></div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-head">
+      <h2 id="chart2-title">배당 추이</h2>
+      <span class="note" id="chart2-note">주당배당금 · 시가배당률</span>
+    </div>
+    <div class="chart-box"><canvas id="chart2"></canvas></div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-head">
+      <h2>재무 요약</h2>
+      <span class="note" id="table-note"></span>
+    </div>
+    <div class="scroll-x"><table id="tbl"></table></div>
+  </div>
+
+  <div class="studio">
+    <div class="card-frame">
+      <canvas id="card-canvas" width="1080" height="1350"></canvas>
+      <p class="hint" id="card-caption"></p>
+    </div>
+
+    <div class="ctl">
+      <h3 class="sec">카드 만들기</h3>
+      <p class="hint">대시보드에서 고른 구간이 그대로 카드가 됩니다. 1080 × 1350, 인스타그램 4:5.</p>
+      <div class="divider"></div>
+
+      <div class="ctl-row">
+        <label for="color-base">포인트 색상</label>
+        <input type="color" id="color-base" value="#2E6FD9">
+        <span class="hint">매출은 밝게, 영업이익은 어둡게 두 톤이 자동으로 만들어집니다.</span>
+      </div>
+
+      <div class="ctl-row">
+        <label class="check"><input type="checkbox" id="chk-guide"> 안전영역 표시</label>
+        <label class="check"><input type="checkbox" id="chk-source" checked> DART 출처 표기</label>
+      </div>
+
+      <div class="ctl-row">
+        <label for="handle">서명</label>
+        <input type="text" id="handle" value="@돈굴돈굴" style="max-width:180px">
+      </div>
+
+      <div class="divider"></div>
+      <h3 class="sec">이미지 얹기</h3>
+      <div class="ctl-row">
+        <input type="file" id="ov-input" accept="image/*" multiple>
+        <button class="btn btn-sm btn-danger" id="ov-clear" type="button">전체 삭제</button>
+      </div>
+      <p class="hint">여러 장 올릴 수 있습니다. 미리보기에서 <b>끌어서 위치</b>를 잡고, 아래에서 크기·회전·투명도를 조절하세요. 빈 곳을 누르면 선택이 풀립니다.</p>
+
+      <div class="ctl-row" id="overlay-edit">
+        <label>크기 <input type="range" id="ov-size" min="60" max="1080" step="4"></label>
+        <span class="range-val" id="ov-size-val">–</span>
+        <span class="ctl-sep"></span>
+        <label>회전 <input type="range" id="ov-rot" min="-180" max="180" step="1"></label>
+        <span class="range-val" id="ov-rot-val">–</span>
+        <button class="btn btn-sm" id="ov-rot-reset" type="button">0°</button>
+        <span class="ctl-sep"></span>
+        <label>투명도 <input type="range" id="ov-opacity" min="10" max="100" step="1"></label>
+        <span class="range-val" id="ov-opacity-val">–</span>
+        <span class="ctl-sep"></span>
+        <button class="btn btn-sm" id="ov-front" type="button">맨 앞으로</button>
+        <button class="btn btn-sm" id="ov-back" type="button">맨 뒤로</button>
+        <button class="btn btn-sm btn-danger" id="ov-delete" type="button">삭제</button>
+      </div>
+
+      <div class="divider"></div>
+      <div class="ctl-row">
+        <button class="btn btn-primary" id="btn-png">PNG 내려받기</button>
+        <button class="btn" id="btn-csv">CSV 내려받기</button>
+      </div>
+      <p class="hint">PNG는 3배 스케일(3240 × 4050)로 저장됩니다.</p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ============================================================
+     TOKENS — 앱과 카드가 공유하는 단일 진실
+     ============================================================ */
+  var TOKENS = {
+    card: {
+      paper:      '#fafaf8',
+      ink:        '#101216',
+      inkSoft:    '#6B7078',
+      rule:       '#E6E4DD',
+      grid:       '#EAE8E1',
+      axis:       '#C9C6BC',
+      tick:       '#9AA0A8',
+      chipBg:     '#F2F0EA',
+      chipLabel:  '#4B4F58',
+      footer:     '#3A3E46',
+      gold:       '#B8862E',
+      guide:      'rgba(214,54,44,0.45)',
+      safe:       { top: 135, right: 100, bottom: 135, left: 100 },
+      grain:      { base: [250, 250, 248], amount: 14, speckle: 0.08, spike: 2.5 },
+      type: {
+        nameMax: 92, nameMin: 52, nameTrack: '-0.02em',
+        subMax: 60, subMin: 34, nameToSub: 0.22,
+        legend: 27, unit: 24, tick: 22,
+        basis: 27, chipLabel: 30, chipValue: 51,
+        period: 24, periodLast: 27, year: 22, footer: 27
+      },
+      gap: {
+        headToLegend: 34, legendToChart: 15,
+        chartToBasis: 22, basisToChips: 12,
+        chipsToRule: 26, ruleToText: 18, chipGap: 18
+      },
+      chip: { padX: 28, padTop: 30, labelToValue: 26, padBottom: 30 },
+      chartMinH: 360
+    }
+  };
+
+  var LABELS = {
+    annual: {
+      suffix: function (n, withDiv) {
+        return '최근 ' + n + '년 실적' + (withDiv ? '·배당' : '') + ' 추이';
+      },
+      chart1: '실적 추이', chart2: '배당 추이'
+    },
+    quarterly: {
+      suffix: function (n) { return '최근 ' + n + '분기 실적 추이'; },
+      chart1: '분기 실적 추이', chart2: '분기 수익성'
+    }
+  };
+
+  function cardTitle(period, rows, spec) {
+    var withDiv = spec && spec.chip3 === '주당배당금';
+    return LABELS[period].suffix(rows.length, withDiv);
+  }
+
+  /* ============================================================
+     MOCK DATA — 금액은 모두 억원. Phase 2에서 어댑터가 이 모양을 뱉는다.
+     ============================================================ */
+  var MOCK = {
+    '005930': {
+      name: '삼성전자', code: '005930', market: '코스피', sector: '전기전자',
+      annual: [
+        { p: 2016, rev: 2019536, op: 292407, ni: 227261, dps: 570,  payout: 17.8, yield: 1.6 },
+        { p: 2017, rev: 2395754, op: 536450, ni: 421867, dps: 850,  payout: 14.1, yield: 1.7 },
+        { p: 2018, rev: 2437714, op: 588867, ni: 443449, dps: 1416, payout: 21.9, yield: 3.7 },
+        { p: 2019, rev: 2304009, op: 277685, ni: 217389, dps: 1416, payout: 44.7, yield: 2.5 },
+        { p: 2020, rev: 2368070, op: 359939, ni: 264078, dps: 2994, payout: 78.0, yield: 4.0 },
+        { p: 2021, rev: 2796048, op: 516339, ni: 399075, dps: 1444, payout: 25.0, yield: 1.8 },
+        { p: 2022, rev: 3022314, op: 433766, ni: 556541, dps: 1444, payout: 17.6, yield: 2.6 },
+        { p: 2023, rev: 2589355, op: 65670,  ni: 154871, dps: 1444, payout: 67.8, yield: 1.8 },
+        { p: 2024, rev: 3009000, op: 327000, ni: 345000, dps: 1446, payout: 28.0, yield: 2.7 },
+        { p: 2025, rev: 3050000, op: 350000, ni: 360000, dps: 1450, payout: 27.0, yield: 2.5 }
+      ],
+      quarterly: [
+        { y: 2024, q: 1, rev: 719000, op: 66000,  ni: 67000  },
+        { y: 2024, q: 2, rev: 741000, op: 104000, ni: 98000  },
+        { y: 2024, q: 3, rev: 791000, op: 92000,  ni: 101000 },
+        { y: 2024, q: 4, rev: 758000, op: 65000,  ni: 75000  },
+        { y: 2025, q: 1, rev: 791000, op: 67000,  ni: 82000  },
+        { y: 2025, q: 2, rev: 746000, op: 47000,  ni: 55000  },
+        { y: 2025, q: 3, rev: 860000, op: 122000, ni: 130000 },
+        { y: 2025, q: 4, rev: 884000, op: 151000, ni: 160000 },
+        { y: 2026, q: 1, rev: 853000, op: 141000, ni: 148000 },
+        { y: 2026, q: 2, rev: 902000, op: 170000, ni: 178000 }
+      ]
+    },
+    '005380': {
+      name: '현대차', code: '005380', market: '코스피', sector: '운수장비',
+      annual: [
+        { p: 2016, rev: 936490,  op: 51935,  ni: 57197,  dps: 4000,  payout: 20.4, yield: 2.7 },
+        { p: 2017, rev: 963761,  op: 45747,  ni: 45464,  dps: 4000,  payout: 21.1, yield: 2.6 },
+        { p: 2018, rev: 968126,  op: 24222,  ni: 16450,  dps: 4000,  payout: 55.2, yield: 3.4 },
+        { p: 2019, rev: 1057464, op: 36847,  ni: 31856,  dps: 4000,  payout: 30.5, yield: 3.3 },
+        { p: 2020, rev: 1039976, op: 23947,  ni: 19246,  dps: 3000,  payout: 34.4, yield: 1.6 },
+        { p: 2021, rev: 1176106, op: 66789,  ni: 56931,  dps: 5000,  payout: 22.5, yield: 2.4 },
+        { p: 2022, rev: 1425275, op: 98249,  ni: 79836,  dps: 7000,  payout: 25.0, yield: 4.6 },
+        { p: 2023, rev: 1626636, op: 151269, ni: 122000, dps: 11400, payout: 25.0, yield: 5.6 },
+        { p: 2024, rev: 1750000, op: 142000, ni: 130000, dps: 12000, payout: 26.0, yield: 5.2 },
+        { p: 2025, rev: 1800000, op: 130000, ni: 120000, dps: 12500, payout: 28.0, yield: 5.0 }
+      ],
+      quarterly: [
+        { y: 2024, q: 1, rev: 407000, op: 36300, ni: 33000 },
+        { y: 2024, q: 2, rev: 450000, op: 42000, ni: 41000 },
+        { y: 2024, q: 3, rev: 428000, op: 35800, ni: 33000 },
+        { y: 2024, q: 4, rev: 465000, op: 28000, ni: 23000 },
+        { y: 2025, q: 1, rev: 445000, op: 36000, ni: 33000 },
+        { y: 2025, q: 2, rev: 480000, op: 36000, ni: 34000 },
+        { y: 2025, q: 3, rev: 462000, op: 32000, ni: 30000 },
+        { y: 2025, q: 4, rev: 495000, op: 26000, ni: 23000 },
+        { y: 2026, q: 1, rev: 470000, op: 34000, ni: 31000 },
+        { y: 2026, q: 2, rev: 505000, op: 38000, ni: 35000 }
+      ]
+    },
+    '033780': {
+      name: 'KT&G', code: '033780', market: '코스피', sector: '음식료품',
+      annual: [
+        { p: 2016, rev: 45033, op: 14701, ni: 11902, dps: 3600, payout: 42.0, yield: 3.2 },
+        { p: 2017, rev: 46672, op: 14261, ni: 11642, dps: 4000, payout: 48.0, yield: 3.5 },
+        { p: 2018, rev: 44715, op: 12551, ni: 9704,  dps: 4000, payout: 57.0, yield: 4.0 },
+        { p: 2019, rev: 49632, op: 13114, ni: 10367, dps: 4400, payout: 58.5, yield: 4.7 },
+        { p: 2020, rev: 50553, op: 14732, ni: 11716, dps: 4800, payout: 56.4, yield: 5.8 },
+        { p: 2021, rev: 52284, op: 13383, ni: 9718,  dps: 4800, payout: 68.0, yield: 6.0 },
+        { p: 2022, rev: 58514, op: 12680, ni: 10054, dps: 5000, payout: 68.0, yield: 5.5 },
+        { p: 2023, rev: 58724, op: 11679, ni: 9000,  dps: 5200, payout: 79.0, yield: 5.9 },
+        { p: 2024, rev: 59500, op: 12000, ni: 9500,  dps: 5400, payout: 78.0, yield: 5.0 },
+        { p: 2025, rev: 61000, op: 12800, ni: 10000, dps: 5600, payout: 77.0, yield: 4.8 }
+      ],
+      quarterly: [
+        { y: 2024, q: 1, rev: 13100, op: 2400, ni: 2000 },
+        { y: 2024, q: 2, rev: 15200, op: 3200, ni: 2600 },
+        { y: 2024, q: 3, rev: 15800, op: 3600, ni: 2900 },
+        { y: 2024, q: 4, rev: 15400, op: 2800, ni: 2000 },
+        { y: 2025, q: 1, rev: 13500, op: 2500, ni: 2100 },
+        { y: 2025, q: 2, rev: 15600, op: 3300, ni: 2700 },
+        { y: 2025, q: 3, rev: 16200, op: 3700, ni: 3000 },
+        { y: 2025, q: 4, rev: 15700, op: 3300, ni: 2200 },
+        { y: 2026, q: 1, rev: 14000, op: 2600, ni: 2200 },
+        { y: 2026, q: 2, rev: 16000, op: 3400, ni: 2800 }
+      ]
+    }
+  };
+
+  /* ============================================================
+     ADAPTER — data/ 폴더의 JSON을 우선 사용하고, 없으면 MOCK으로 폴백
+     ============================================================ */
+  var Adapter = {
+    index: null,
+    loaded: {},
+    source: 'mock',
+
+    init: function () {
+      return fetch('./data/index.json', { cache: 'no-cache' })
+        .then(function (r) { if (!r.ok) throw new Error('no index'); return r.json(); })
+        .then(function (j) {
+          Adapter.index = j.companies || [];
+          Adapter.source = 'dart';
+          return j;
+        })
+        .catch(function () {
+          Adapter.index = Object.keys(MOCK).map(function (k) {
+            return { name: MOCK[k].name, code: k, market: MOCK[k].market, sector: MOCK[k].sector };
+          });
+          Adapter.source = 'mock';
+          return null;
+        });
+    },
+
+    match: function (input) {
+      var s = String(input || '').trim();
+      if (!s) return null;
+      var list = Adapter.index || [];
+      var i;
+      for (i = 0; i < list.length; i++) if (list[i].code === s) return list[i];
+      for (i = 0; i < list.length; i++) if (list[i].name === s) return list[i];
+      for (i = 0; i < list.length; i++) if (list[i].name.indexOf(s) === 0) return list[i];
+      var low = s.toLowerCase();
+      for (i = 0; i < list.length; i++) {
+        if (list[i].name.toLowerCase().indexOf(low) >= 0) return list[i];
+      }
+      return null;
+    },
+
+    fillDatalist: function () {
+      var dl = document.getElementById('company-list');
+      if (!dl) return;
+      dl.innerHTML = (Adapter.index || []).map(function (c) {
+        return '<option value="' + c.name + '">' + c.code + '</option>';
+      }).join('');
+    },
+
+    load: function (code) {
+      if (Adapter.loaded[code]) return Promise.resolve(Adapter.loaded[code]);
+      if (Adapter.source === 'mock') {
+        return Promise.resolve(MOCK[code] || null);
+      }
+      return fetch('./data/' + code + '.json', { cache: 'no-cache' })
+        .then(function (r) { if (!r.ok) throw new Error('not found'); return r.json(); })
+        .then(function (d) {
+          d.annual = (d.annual || []).filter(function (x) { return x.rev != null && x.op != null; });
+          d.quarterly = (d.quarterly || []).filter(function (x) { return x.rev != null && x.op != null; });
+          Adapter.loaded[code] = d;
+          return d;
+        })
+        .catch(function () { return MOCK[code] || null; });
+    },
+
+    list: function () {
+      return (Adapter.index || []).map(function (c) { return c.name; });
+    }
+  };
+
+  /* ============================================================
+     정규화 모델 — 카드와 대시보드가 동일하게 소비하는 형태
+     ============================================================ */
+  function buildSeries(company, period) {
+    function num(v) { return (v === null || v === undefined || isNaN(v)) ? 0 : v; }
+    if (period === 'annual') {
+      return company.annual.map(function (d) {
+        return {
+          label: String(d.p), short: "'" + String(d.p).slice(2), yearMark: null,
+          bar1: num(d.rev), bar2: num(d.op), line: num(d.dps),
+          margin: d.rev ? num(d.op) / d.rev * 100 : 0,
+          payout: num(d.payout), yield: num(d.yield), ni: num(d.ni)
+        };
+      });
+    }
+    return company.quarterly.map(function (d, i) {
+      var showYear = (i === 0 || d.q === 1);
+      return {
+        label: d.y + '.' + d.q + 'Q', short: d.q + 'Q',
+        yearMark: showYear ? d.y + '년' : null,
+        bar1: num(d.rev), bar2: num(d.op),
+        line: d.rev ? num(d.op) / d.rev * 100 : 0, ni: num(d.ni)
+      };
+    });
+  }
+
+  function seriesSpec(period, rows) {
+    var marginSpec = {
+      bar1: '매출', bar2: '영업이익', line: '영업이익률',
+      lineUnit: '%',
+      lineFmt: function (v) { return v.toFixed(1) + '%'; },
+      chipFmt: function (v) { return v.toFixed(1) + '%'; },
+      unitNote: null, chip3: '영업이익률', lineKey: 'line'
+    };
+
+    if (period === 'annual') {
+      var paysDividend = (rows || []).some(function (r) { return r.line > 0; });
+      if (!paysDividend) {
+        // 배당을 한 번도 안 한 회사 — 배당 선을 그리면 0으로 눕는다.
+        return {
+          bar1: '매출', bar2: '영업이익', line: '영업이익률',
+          lineUnit: '%',
+          lineFmt: function (v) { return v.toFixed(1) + '%'; },
+          chipFmt: function (v) { return v.toFixed(1) + '%'; },
+          unitNote: null, chip3: '영업이익률', lineKey: 'margin',
+          basisFmt: function (last) { return "'" + last.label.slice(2) + '년 기준'; }
+        };
+      }
+      return {
+        bar1: '매출', bar2: '영업이익', line: '주당배당금',
+        lineUnit: '원',
+        lineFmt: function (v) { return Math.round(v).toLocaleString('ko-KR'); },
+        chipFmt: function (v) { return Math.round(v).toLocaleString('ko-KR') + '원'; },
+        unitNote: '배당 원',
+        chip3: '주당배당금', lineKey: 'line',
+        basisFmt: function (last) { return "'" + last.label.slice(2) + '년 기준'; }
+      };
+    }
+    marginSpec.basisFmt = function (last) { return "'" + last.label.slice(2) + ' 기준'; };
+    return marginSpec;
+  }
+
+  /* ============================================================
+     포맷터
+     ============================================================ */
+  function pickUnit(rows) {
+    var m = 0;
+    rows.forEach(function (r) { m = Math.max(m, Math.abs(r.bar1), Math.abs(r.bar2)); });
+    return m >= 100000 ? '조원' : '억원';
+  }
+  function fmtAmount(v, unit) {
+    if (v === null || v === undefined || isNaN(v)) return '-';
+    if (unit === '조원') {
+      var jo = v / 10000;
+      return jo.toLocaleString('ko-KR', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+    }
+    return Math.round(v).toLocaleString('ko-KR');
+  }
+  function fmtChip(v, unit) {
+    return unit === '조원' ? fmtAmount(v, unit) + '조' : fmtAmount(v, unit) + '억';
+  }
+
+  /* ============================================================
+     색 파생 — 포인트 색 하나에서 명도 앵커로 두 톤
+     ============================================================ */
+  function hexToHsl(hex) {
+    var r = parseInt(hex.slice(1, 3), 16) / 255,
+        g = parseInt(hex.slice(3, 5), 16) / 255,
+        b = parseInt(hex.slice(5, 7), 16) / 255;
+    var mx = Math.max(r, g, b), mn = Math.min(r, g, b), h, s, l = (mx + mn) / 2;
+    if (mx === mn) { h = s = 0; }
+    else {
+      var d = mx - mn;
+      s = l > 0.5 ? d / (2 - mx - mn) : d / (mx + mn);
+      if (mx === r) h = (g - b) / d + (g < b ? 6 : 0);
+      else if (mx === g) h = (b - r) / d + 2;
+      else h = (r - g) / d + 4;
+      h *= 60;
+    }
+    return { h: h, s: s * 100, l: l * 100 };
+  }
+  function hslToHex(h, s, l) {
+    s /= 100; l /= 100;
+    var c = (1 - Math.abs(2 * l - 1)) * s,
+        x = c * (1 - Math.abs((h / 60) % 2 - 1)),
+        m = l - c / 2, r = 0, g = 0, b = 0;
+    if (h < 60) { r = c; g = x; } else if (h < 120) { r = x; g = c; }
+    else if (h < 180) { g = c; b = x; } else if (h < 240) { g = x; b = c; }
+    else if (h < 300) { r = x; b = c; } else { r = c; b = x; }
+    function hx(v) { return Math.round((v + m) * 255).toString(16).padStart(2, '0'); }
+    return '#' + hx(r) + hx(g) + hx(b);
+  }
+  function deriveColors(base) {
+    var c = hexToHsl(base);
+    return {
+      bar1: hslToHex(c.h, Math.max(c.s - 8, 22), 76),
+      bar2: hslToHex(c.h, Math.min(c.s + 10, 95), 24),
+      line: TOKENS.card.gold
+    };
+  }
+
+  /* ============================================================
+     축 눈금
+     ============================================================ */
+  function niceStep(range, target) {
+    var raw = (range || 1) / Math.max(1, target);
+    var mag = Math.pow(10, Math.floor(Math.log10(raw)));
+    var n = raw / mag, sm;
+    if (n <= 1) sm = 1; else if (n <= 2) sm = 2; else if (n <= 2.5) sm = 2.5;
+    else if (n <= 5) sm = 5; else sm = 10;
+    return sm * mag;
+  }
+  function axisFor(values, targetTicks) {
+    var mx = Math.max.apply(null, values.concat([0]));
+    var mn = Math.min.apply(null, values.concat([0]));
+    var span = (mx - mn) || 1;
+    var top = mx + span * 0.14;
+    var bot = mn < 0 ? mn - span * 0.14 : 0;
+    var step = niceStep(top - bot, targetTicks || 4);
+    var ticks = [];
+    for (var k = Math.ceil(bot / step); k <= Math.floor(top / step); k++) ticks.push(k * step);
+    return { min: bot, max: top, step: step, ticks: ticks };
+  }
+
+  /* ============================================================
+     CANVAS 카드 렌더러
+     ============================================================ */
+  var CW = 1080, CH = 1350;
+  var canvas = document.getElementById('card-canvas');
+
+  function font(w, s) { return w + ' ' + s + 'px "Noto Sans KR"'; }
+
+  function fitFont(ctx, text, weight, start, min, maxW) {
+    var size = start;
+    ctx.font = font(weight, size);
+    while (ctx.measureText(text).width > maxW && size > min) {
+      size -= 2; ctx.font = font(weight, size);
+    }
+    return size;
+  }
+
+  function roundRect(ctx, x, y, w, h, r) {
+    r = Math.min(r, Math.abs(w) / 2, Math.abs(h) / 2);
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.arcTo(x + w, y, x + w, y + h, r);
+    ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r);
+    ctx.arcTo(x, y, x + w, y, r);
+    ctx.closePath();
+  }
+
+  var _tile = null;
+  function grainTile() {
+    if (_tile) return _tile;
+    var G = TOKENS.card.grain, S = 512;
+    var t = document.createElement('canvas');
+    t.width = S; t.height = S;
+    var tc = t.getContext('2d');
+    var img = tc.createImageData(S, S), d = img.data;
+    for (var i = 0; i < d.length; i += 4) {
+      var n = (Math.random() - 0.5) * 2 * G.amount;
+      if (Math.random() < G.speckle) n += (Math.random() - 0.5) * G.spike * G.amount;
+      n = Math.round(n);
+      d[i] = G.base[0] + n; d[i + 1] = G.base[1] + n; d[i + 2] = G.base[2] + n; d[i + 3] = 255;
+    }
+    tc.putImageData(img, 0, 0);
+    _tile = t;
+    return t;
+  }
+
+  function paintGrain(ctx) {
+    var pat = ctx.createPattern(grainTile(), 'repeat');
+    if (!pat) return;
+    ctx.save();
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.fillStyle = pat;
+    ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+    ctx.restore();
+  }
+
+  function drawCardChart(ctx, ox, oy, W, H, rows, colors, unit, spec) {
+    var T = TOKENS.card;
+    var padT = 10, padB = 62;
+
+    var barVals = [];
+    rows.forEach(function (r) { barVals.push(r.bar1, r.bar2); });
+    var A = axisFor(barVals, 4);
+    var lineKey = spec.lineKey || 'line';
+    var lineVals = rows.map(function (r) { return r[lineKey]; });
+    var B = axisFor(lineVals, 3);
+
+    ctx.font = font(600, T.type.tick);
+    var lw = 0, rw = 0;
+    A.ticks.forEach(function (t) { lw = Math.max(lw, ctx.measureText(fmtAmount(t, unit)).width); });
+    B.ticks.forEach(function (t) { rw = Math.max(rw, ctx.measureText(spec.lineFmt(t)).width); });
+    var padL = Math.ceil(lw) + 16, padR = Math.ceil(rw) + 16;
+
+    var plotL = ox + padL, plotR = ox + W - padR;
+    var plotT = oy + padT, plotB = oy + H - padB;
+    var plotW = plotR - plotL, plotH = plotB - plotT;
+    var n = rows.length, slot = plotW / n, gw = slot * 0.62, bw = gw / 2;
+
+    function yA(v) { return plotB - ((v - A.min) / (A.max - A.min)) * plotH; }
+    function yB(v) { return plotB - ((v - B.min) / (B.max - B.min)) * plotH; }
+    var zero = yA(0);
+
+    ctx.save();
+    ctx.strokeStyle = T.grid; ctx.lineWidth = 1.5;
+    A.ticks.forEach(function (t) {
+      if (Math.abs(t) < 1e-9) return;
+      var gy = yA(t);
+      ctx.beginPath(); ctx.moveTo(plotL, gy); ctx.lineTo(plotR, gy); ctx.stroke();
+    });
+    ctx.restore();
+
+    ctx.save();
+    ctx.font = font(600, T.type.tick);
+    ctx.fillStyle = T.tick;
+    ctx.textBaseline = 'middle';
+    ctx.textAlign = 'right';
+    A.ticks.forEach(function (t) { ctx.fillText(fmtAmount(t, unit), plotL - 10, yA(t)); });
+    ctx.textAlign = 'left';
+    B.ticks.forEach(function (t) { ctx.fillText(spec.lineFmt(t), plotR + 10, yB(t)); });
+    ctx.restore();
+    ctx.textBaseline = 'alphabetic';
+
+    rows.forEach(function (r, i) {
+      var gx = plotL + slot * i + (slot - gw) / 2;
+      [[r.bar1, colors.bar1, gx], [r.bar2, colors.bar2, gx + bw]].forEach(function (b) {
+        var y = yA(b[0]), top = b[0] >= 0 ? y : zero, h = Math.abs(zero - y);
+        if (h < 1) h = 1;
+        ctx.fillStyle = b[1];
+        roundRect(ctx, b[2], top, bw - 4, h, 4);
+        ctx.fill();
+      });
+    });
+
+    ctx.save();
+    ctx.strokeStyle = colors.line; ctx.lineWidth = 5;
+    ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+    ctx.beginPath();
+    rows.forEach(function (r, i) {
+      var cx = plotL + slot * i + slot / 2;
+      if (i === 0) ctx.moveTo(cx, yB(r[lineKey])); else ctx.lineTo(cx, yB(r[lineKey]));
+    });
+    ctx.stroke();
+    rows.forEach(function (r, i) {
+      var cx = plotL + slot * i + slot / 2;
+      ctx.fillStyle = colors.line;
+      ctx.beginPath();
+      ctx.arc(cx, yB(r[lineKey]), i === rows.length - 1 ? 9 : 6, 0, Math.PI * 2);
+      ctx.fill();
+    });
+    ctx.restore();
+
+    ctx.beginPath();
+    ctx.strokeStyle = T.axis; ctx.lineWidth = 3;
+    ctx.moveTo(plotL, zero); ctx.lineTo(plotR, zero); ctx.stroke();
+
+    ctx.textAlign = 'center';
+    rows.forEach(function (r, i) {
+      var cx = plotL + slot * i + slot / 2, last = i === rows.length - 1;
+      ctx.font = font(last ? 800 : 600, last ? T.type.periodLast : T.type.period);
+      ctx.fillStyle = last ? colors.bar2 : T.inkSoft;
+      ctx.fillText(r.short, cx, plotB + 32);
+      if (r.yearMark) {
+        ctx.font = font(600, T.type.year);
+        ctx.fillStyle = T.tick;
+        ctx.fillText(r.yearMark, cx, plotB + 58);
+      }
+    });
+    ctx.textAlign = 'left';
+  }
+
+  function paintOverlay(ctx, ov) {
+    if (!ov.img) return;
+    ctx.save();
+    ctx.globalAlpha = ov.opacity == null ? 1 : ov.opacity;
+    ctx.translate(ov.cx, ov.cy);
+    ctx.rotate(ov.rot || 0);
+    ctx.drawImage(ov.img, -ov.w / 2, -ov.h / 2, ov.w, ov.h);
+    ctx.restore();
+  }
+
+  function drawCard(ctx, state) {
+    var T = TOKENS.card, S = T.safe;
+    var CX = S.left, CWID = CW - S.left - S.right;
+    var rows = state.rows, spec = state.spec, colors = state.colors;
+    var unit = pickUnit(rows), last = rows[rows.length - 1];
+
+    ctx.clearRect(0, 0, CW, CH);
+    ctx.fillStyle = T.paper;
+    ctx.fillRect(0, 0, CW, CH);
+    paintGrain(ctx);
+
+    overlays.forEach(function (ov) { if (ov.layer === 'back') paintOverlay(ctx, ov); });
+
+    ctx.textBaseline = 'alphabetic';
+    ctx.textAlign = 'left';
+
+    /* 헤드라인 — 두 줄 모두 900/먹색, 회사명만 크게 */
+    var line1 = state.company.name;
+    var line2 = cardTitle(state.period, rows, spec);
+
+    var canTrack = 'letterSpacing' in ctx;
+    if (canTrack) ctx.letterSpacing = T.type.nameTrack;
+    var nameSize = fitFont(ctx, line1, 900, T.type.nameMax, T.type.nameMin, CWID);
+    if (canTrack) ctx.letterSpacing = '0px';
+    var subSize = fitFont(ctx, line2, 900, T.type.subMax, T.type.subMin, CWID);
+
+    var y = S.top + nameSize * 0.86;
+    ctx.fillStyle = T.ink;
+    ctx.font = font(900, nameSize);
+    if (canTrack) ctx.letterSpacing = T.type.nameTrack;
+    ctx.fillText(line1, CX, y);
+    if (canTrack) ctx.letterSpacing = '0px';
+
+    y += nameSize * T.type.nameToSub + subSize * 0.86;
+    ctx.font = font(900, subSize);
+    ctx.fillText(line2, CX, y);
+
+    /* 범례 + 단위 */
+    y += T.gap.headToLegend;
+    var legendY = y + T.type.legend * 0.8;
+    ctx.font = font(700, T.type.legend);
+    var lx = CX, sw = 26;
+    [[colors.bar1, spec.bar1], [colors.bar2, spec.bar2], [colors.line, spec.line]].forEach(function (it) {
+      ctx.fillStyle = it[0];
+      roundRect(ctx, lx, legendY - sw + 5, sw, sw, 5);
+      ctx.fill();
+      lx += sw + 9;
+      ctx.fillStyle = T.ink;
+      ctx.fillText(it[1], lx, legendY);
+      lx += ctx.measureText(it[1]).width + 26;
+    });
+    ctx.font = font(600, T.type.unit);
+    ctx.fillStyle = T.inkSoft;
+    ctx.textAlign = 'right';
+    ctx.fillText('연결 · ' + unit + (spec.unitNote ? ' · ' + spec.unitNote : ''), CX + CWID, legendY - 2);
+    ctx.textAlign = 'left';
+
+    /* ---- 아래쪽부터 역산해서 차트에 남은 공간을 전부 준다 ---- */
+    var chipH = T.chip.padTop + T.type.chipLabel * 0.8 + T.chip.labelToValue
+              + T.type.chipValue * 0.82 + T.chip.padBottom;
+
+    var footBase = CH - S.bottom - 4;
+    var ruleY = footBase - T.type.footer * 0.85 - T.gap.ruleToText;
+    var chipsTop = ruleY - T.gap.chipsToRule - chipH;
+    var basisBaseline = chipsTop - T.gap.basisToChips;
+    var chartTop = legendY + T.gap.legendToChart;
+    var chartH = Math.max(
+      T.chartMinH,
+      (basisBaseline - T.type.basis * 0.8) - T.gap.chartToBasis - chartTop
+    );
+
+    /* 차트 */
+    drawCardChart(ctx, CX, chartTop, CWID, chartH, rows, colors, unit, spec);
+
+    /* 기준 라벨 */
+    ctx.font = font(700, T.type.basis);
+    ctx.fillStyle = T.inkSoft;
+    ctx.fillText(spec.basisFmt(last), CX, basisBaseline);
+
+    /* 요약 3칸 */
+    var chips = [
+      { l: spec.bar1, v: fmtChip(last.bar1, unit), c: T.ink },
+      { l: spec.bar2, v: fmtChip(last.bar2, unit), c: colors.bar2 },
+      { l: spec.chip3, v: spec.chipFmt(last[spec.lineKey || 'line']), c: colors.line }
+    ];
+    var gap = T.gap.chipGap, cw = (CWID - gap * 2) / 3;
+    var labelBase = T.chip.padTop + T.type.chipLabel * 0.8;
+    var valueBase = labelBase + T.chip.labelToValue + T.type.chipValue * 0.82;
+    chips.forEach(function (c, i) {
+      var x = CX + (cw + gap) * i;
+      ctx.fillStyle = T.chipBg;
+      roundRect(ctx, x, chipsTop, cw, chipH, 12);
+      ctx.fill();
+      ctx.font = font(700, T.type.chipLabel);
+      ctx.fillStyle = T.chipLabel;
+      ctx.fillText(c.l, x + T.chip.padX, chipsTop + labelBase);
+      ctx.font = font(800, T.type.chipValue);
+      ctx.fillStyle = c.c;
+      ctx.fillText(c.v, x + T.chip.padX, chipsTop + valueBase);
+    });
+
+    /* 푸터 */
+    ctx.beginPath();
+    ctx.strokeStyle = T.rule; ctx.lineWidth = 2;
+    ctx.moveTo(CX, ruleY); ctx.lineTo(CX + CWID, ruleY); ctx.stroke();
+    ctx.font = font(700, T.type.footer);
+    ctx.fillStyle = T.footer;
+    if (state.showSource) ctx.fillText('자료 : 금융감독원 전자공시시스템(DART)', CX, footBase);
+    ctx.textAlign = 'right';
+    ctx.fillText(state.handle, CX + CWID, footBase);
+    ctx.textAlign = 'left';
+
+    overlays.forEach(function (ov) { if (ov.layer !== 'back') paintOverlay(ctx, ov); });
+
+    if (state.guide) {
+      ctx.save();
+      ctx.strokeStyle = T.guide; ctx.lineWidth = 3;
+      ctx.setLineDash([14, 11]);
+      ctx.strokeRect(S.left, S.top, CWID, CH - S.top - S.bottom);
+      ctx.restore();
+    }
+  }
+
+  /* ============================================================
+     대시보드
+     ============================================================ */
+  var chart1 = null, chart2 = null;
+
+  function cssVar(n) { return getComputedStyle(document.documentElement).getPropertyValue(n).trim(); }
+
+  function renderMetrics(company, period, rows) {
+    var box = document.getElementById('metrics'), items;
+    if (period === 'annual') {
+      var a = company.annual, first = a[0], last = a[a.length - 1];
+      var yrs = a.length - 1;
+      var cagr = (Math.pow(last.rev / first.rev, 1 / yrs) - 1) * 100;
+      var margin = a.reduce(function (s, d) { return s + d.op / d.rev * 100; }, 0) / a.length;
+      var payout = a.reduce(function (s, d) { return s + d.payout; }, 0) / a.length;
+      var streak = 0;
+      for (var i = a.length - 1; i >= 0; i--) { if (a[i].dps > 0) streak++; else break; }
+      items = [
+        ['매출 CAGR', cagr.toFixed(1) + '%'],
+        ['평균 영업이익률', margin.toFixed(1) + '%'],
+        ['평균 배당성향', payout.toFixed(1) + '%'],
+        ['연속 배당', streak + '년']
+      ];
+    } else {
+      var q = company.quarterly, lq = q[q.length - 1], yoy = q[q.length - 5];
+      var rg = (lq.rev / yoy.rev - 1) * 100;
+      var og = (lq.op / yoy.op - 1) * 100;
+      var avgM = q.reduce(function (s, d) { return s + d.op / d.rev * 100; }, 0) / q.length;
+      items = [
+        ['최근 분기 영업이익률', (lq.op / lq.rev * 100).toFixed(1) + '%'],
+        ['매출 YoY', (rg >= 0 ? '+' : '') + rg.toFixed(1) + '%'],
+        ['영업이익 YoY', (og >= 0 ? '+' : '') + og.toFixed(1) + '%'],
+        ['10분기 평균 이익률', avgM.toFixed(1) + '%']
+      ];
+    }
+    box.innerHTML = items.map(function (it) {
+      return '<div class="metric"><div class="lbl">' + it[0] + '</div><div class="val">' + it[1] + '</div></div>';
+    }).join('');
+  }
+
+  function renderCharts(rows, spec, period, unit, colors) {
+    var grid = cssVar('--border'), tick = cssVar('--text-mute'), lab = cssVar('--text-soft');
+    var labels = rows.map(function (r) { return r.label; });
+    var scale = unit === '조원' ? 10000 : 1;
+    var bar1 = rows.map(function (r) { return +(r.bar1 / scale).toFixed(1); });
+    var bar2 = rows.map(function (r) { return +(r.bar2 / scale).toFixed(1); });
+
+    if (chart1) chart1.destroy();
+    chart1 = new Chart(document.getElementById('chart1'), {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [
+          { label: spec.bar1, data: bar1, backgroundColor: colors.bar1, borderRadius: 3 },
+          { label: spec.bar2, data: bar2, backgroundColor: colors.bar2, borderRadius: 3 }
+        ]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { labels: { color: lab, boxWidth: 12, font: { family: 'Noto Sans KR' } } } },
+        scales: {
+          x: { grid: { display: false }, ticks: { color: tick, font: { family: 'Noto Sans KR' } } },
+          y: { grid: { color: grid }, border: { display: false }, ticks: { color: tick, font: { family: 'Noto Sans KR' } } }
+        }
+      }
+    });
+
+    if (chart2) chart2.destroy();
+    var d2 = period === 'annual'
+      ? [
+          { type: 'bar', label: '주당배당금(원)', data: rows.map(function (r) { return r.line; }), backgroundColor: colors.line, borderRadius: 3, yAxisID: 'y' },
+          { type: 'line', label: '배당성향(%)', data: rows.map(function (r) { return r.payout; }), borderColor: colors.bar2, backgroundColor: colors.bar2, tension: .3, yAxisID: 'y1' }
+        ]
+      : [
+          { type: 'line', label: '영업이익률(%)', data: rows.map(function (r) { return +r.line.toFixed(1); }), borderColor: colors.line, backgroundColor: colors.line, tension: .3, yAxisID: 'y' }
+        ];
+    chart2 = new Chart(document.getElementById('chart2'), {
+      data: { labels: labels, datasets: d2 },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { labels: { color: lab, boxWidth: 12, font: { family: 'Noto Sans KR' } } } },
+        scales: {
+          x: { grid: { display: false }, ticks: { color: tick, font: { family: 'Noto Sans KR' } } },
+          y: { grid: { color: grid }, border: { display: false }, ticks: { color: tick, font: { family: 'Noto Sans KR' } } },
+          y1: period === 'annual'
+            ? { position: 'right', grid: { display: false }, border: { display: false }, ticks: { color: tick, font: { family: 'Noto Sans KR' } } }
+            : { display: false }
+        }
+      }
+    });
+  }
+
+  function renderTable(rows, spec, period, unit) {
+    var t = document.getElementById('tbl');
+    var head, body;
+    if (period === 'annual') {
+      head = ['연도', '매출(' + unit + ')', '영업이익(' + unit + ')', '영업이익률', 'DPS(원)', '배당성향'];
+      body = rows.map(function (r) {
+        return ['<td>' + r.label + '</td>',
+          '<td>' + fmtAmount(r.bar1, unit) + '</td>',
+          '<td>' + fmtAmount(r.bar2, unit) + '</td>',
+          '<td>' + (r.bar2 / r.bar1 * 100).toFixed(1) + '%</td>',
+          '<td>' + r.line.toLocaleString('ko-KR') + '</td>',
+          '<td>' + r.payout.toFixed(1) + '%</td>'].join('');
+      });
+    } else {
+      head = ['분기', '매출(' + unit + ')', '영업이익(' + unit + ')', '순이익(' + unit + ')', '영업이익률'];
+      body = rows.map(function (r) {
+        return ['<td>' + r.label + '</td>',
+          '<td>' + fmtAmount(r.bar1, unit) + '</td>',
+          '<td>' + fmtAmount(r.bar2, unit) + '</td>',
+          '<td>' + fmtAmount(r.ni, unit) + '</td>',
+          '<td>' + r.line.toFixed(1) + '%</td>'].join('');
+      });
+    }
+    t.innerHTML = '<thead><tr>' + head.map(function (h) { return '<th>' + h + '</th>'; }).join('') +
+      '</tr></thead><tbody>' + body.map(function (b) { return '<tr>' + b + '</tr>'; }).join('') + '</tbody>';
+    document.getElementById('table-note').textContent = '단위 ' + unit;
+  }
+
+  /* ============================================================
+     상태 & 오케스트레이션
+     ============================================================ */
+  var state = {
+    company: MOCK['005930'],
+    period: 'annual',
+    rows: null, spec: null, colors: null,
+    guide: false, showSource: true,
+    handle: '@돈굴돈굴'
+  };
+  var fontsReady = false;
+
+  /* ============================================================
+     이미지 오버레이 — 카드 위에 얹는 스티커
+     ============================================================ */
+  var overlays = [];
+  var selected = -1;
+  var ovEdit = document.getElementById('overlay-edit');
+  var ovSize = document.getElementById('ov-size');
+  var ovRot = document.getElementById('ov-rot');
+  var ovOpacity = document.getElementById('ov-opacity');
+
+  function syncOverlayUI() {
+    var ov = overlays[selected];
+    if (!ov) {
+      ovEdit.style.display = 'none';
+      document.getElementById('ov-size-val').textContent = '–';
+      document.getElementById('ov-rot-val').textContent = '–';
+      document.getElementById('ov-opacity-val').textContent = '–';
+      return;
+    }
+    ovEdit.style.display = 'flex';
+    ovSize.value = Math.round(ov.w);
+    document.getElementById('ov-size-val').textContent = Math.round(ov.w / CW * 100) + '%';
+    var deg = Math.round((ov.rot || 0) * 180 / Math.PI);
+    ovRot.value = deg;
+    document.getElementById('ov-rot-val').textContent = deg + '°';
+    var op = ov.opacity == null ? 1 : ov.opacity;
+    ovOpacity.value = Math.round(op * 100);
+    document.getElementById('ov-opacity-val').textContent = Math.round(op * 100) + '%';
+  }
+
+  function drawSelection(ctx) {
+    var ov = overlays[selected];
+    if (!ov) return;
+    ctx.save();
+    ctx.translate(ov.cx, ov.cy);
+    ctx.rotate(ov.rot || 0);
+    ctx.strokeStyle = '#2E6FD9';
+    ctx.lineWidth = 4;
+    ctx.setLineDash([12, 9]);
+    ctx.strokeRect(-ov.w / 2, -ov.h / 2, ov.w, ov.h);
+    ctx.restore();
+  }
+
+  function toCanvasXY(e) {
+    var r = canvas.getBoundingClientRect();
+    return { x: (e.clientX - r.left) * (CW / r.width), y: (e.clientY - r.top) * (CH / r.height) };
+  }
+
+  function hitTest(p) {
+    for (var i = overlays.length - 1; i >= 0; i--) {
+      var ov = overlays[i];
+      var dx = p.x - ov.cx, dy = p.y - ov.cy, a = -(ov.rot || 0);
+      var lx = dx * Math.cos(a) - dy * Math.sin(a);
+      var ly = dx * Math.sin(a) + dy * Math.cos(a);
+      if (Math.abs(lx) <= ov.w / 2 && Math.abs(ly) <= ov.h / 2) return i;
+    }
+    return -1;
+  }
+
+  document.getElementById('ov-input').addEventListener('change', function (e) {
+    var files = e.target.files ? Array.prototype.slice.call(e.target.files) : [];
+    var self = this;
+    files.forEach(function (file, idx) {
+      var reader = new FileReader();
+      reader.onload = function () {
+        var img = new Image();
+        img.onload = function () {
+          var aspect = img.naturalWidth / img.naturalHeight || 1;
+          var w = Math.max(90, Math.min(CW * 0.25, img.naturalWidth));
+          overlays.push({
+            img: img, aspect: aspect, layer: 'front', opacity: 1, rot: 0,
+            w: w, h: w / aspect,
+            cx: CW / 2 + idx * 30, cy: CH / 2 + idx * 30
+          });
+          selected = overlays.length - 1;
+          syncOverlayUI();
+          drawPreview();
+        };
+        img.onerror = function () { alert('이미지를 불러오지 못했습니다.'); };
+        img.src = reader.result;
+      };
+      reader.readAsDataURL(file);
+    });
+    self.value = '';
+  });
+
+  document.getElementById('ov-clear').addEventListener('click', function () {
+    overlays.length = 0; selected = -1; syncOverlayUI(); drawPreview();
+  });
+  document.getElementById('ov-delete').addEventListener('click', function () {
+    if (selected < 0) return;
+    overlays.splice(selected, 1); selected = -1; syncOverlayUI(); drawPreview();
+  });
+  document.getElementById('ov-front').addEventListener('click', function () {
+    if (selected < 0) return;
+    var ov = overlays.splice(selected, 1)[0];
+    ov.layer = 'front'; overlays.push(ov);
+    selected = overlays.length - 1; syncOverlayUI(); drawPreview();
+  });
+  document.getElementById('ov-back').addEventListener('click', function () {
+    if (selected < 0) return;
+    var ov = overlays.splice(selected, 1)[0];
+    ov.layer = 'back'; overlays.unshift(ov);
+    selected = 0; syncOverlayUI(); drawPreview();
+  });
+  ovSize.addEventListener('input', function () {
+    var ov = overlays[selected]; if (!ov) return;
+    ov.w = parseFloat(this.value); ov.h = ov.w / ov.aspect;
+    document.getElementById('ov-size-val').textContent = Math.round(ov.w / CW * 100) + '%';
+    drawPreview();
+  });
+  ovRot.addEventListener('input', function () {
+    var ov = overlays[selected]; if (!ov) return;
+    var deg = parseFloat(this.value);
+    ov.rot = deg * Math.PI / 180;
+    document.getElementById('ov-rot-val').textContent = Math.round(deg) + '°';
+    drawPreview();
+  });
+  document.getElementById('ov-rot-reset').addEventListener('click', function () {
+    var ov = overlays[selected]; if (!ov) return;
+    ov.rot = 0; ovRot.value = 0;
+    document.getElementById('ov-rot-val').textContent = '0°';
+    drawPreview();
+  });
+  ovOpacity.addEventListener('input', function () {
+    var ov = overlays[selected]; if (!ov) return;
+    ov.opacity = parseFloat(this.value) / 100;
+    document.getElementById('ov-opacity-val').textContent = Math.round(ov.opacity * 100) + '%';
+    drawPreview();
+  });
+
+  var dragOffset = null;
+  canvas.addEventListener('pointerdown', function (e) {
+    var hit = hitTest(toCanvasXY(e));
+    if (hit >= 0) {
+      selected = hit;
+      var p = toCanvasXY(e), ov = overlays[hit];
+      dragOffset = { dx: p.x - ov.cx, dy: p.y - ov.cy };
+      canvas.setPointerCapture(e.pointerId);
+      canvas.style.cursor = 'grabbing';
+      e.preventDefault();
+    } else {
+      selected = -1;
+    }
+    syncOverlayUI();
+    drawPreview();
+  });
+  canvas.addEventListener('pointermove', function (e) {
+    if (dragOffset && selected >= 0) {
+      var p = toCanvasXY(e), ov = overlays[selected];
+      ov.cx = Math.max(0, Math.min(CW, p.x - dragOffset.dx));
+      ov.cy = Math.max(0, Math.min(CH, p.y - dragOffset.dy));
+      drawPreview();
+      e.preventDefault();
+    } else if (overlays.length) {
+      canvas.style.cursor = hitTest(toCanvasXY(e)) >= 0 ? 'grab' : 'default';
+    }
+  });
+  function endDrag(e) {
+    if (!dragOffset) return;
+    dragOffset = null;
+    canvas.style.cursor = 'grab';
+    try { canvas.releasePointerCapture(e.pointerId); } catch (err) {}
+  }
+  canvas.addEventListener('pointerup', endDrag);
+  canvas.addEventListener('pointercancel', endDrag);
+
+  function ensureFonts() {
+    if (fontsReady || !document.fonts) return Promise.resolve();
+    return Promise.all(['400', '600', '700', '800', '900'].map(function (w) {
+      return document.fonts.load(w + ' 40px "Noto Sans KR"');
+    })).then(function () { return document.fonts.ready; })
+      .then(function () { fontsReady = true; })
+      .catch(function () {});
+  }
+
+  function refresh() {
+    state.rows = buildSeries(state.company, state.period);
+    state.spec = seriesSpec(state.period, state.rows);
+    state.colors = deriveColors(document.getElementById('color-base').value);
+
+    var unit = pickUnit(state.rows);
+    var L = LABELS[state.period];
+
+    document.getElementById('meta').textContent =
+      [state.company.code, state.company.market, state.company.sector]
+        .filter(function (s) { return s && String(s).trim(); }).join(' · ');
+    document.getElementById('chart1-title').textContent = L.chart1;
+    document.getElementById('chart1-note').textContent = '연결 기준 · 단위 ' + unit;
+    document.getElementById('chart2-title').textContent = L.chart2;
+    document.getElementById('chart2-note').textContent =
+      state.period === 'annual' ? '주당배당금 · 배당성향' : '영업이익률';
+
+    renderMetrics(state.company, state.period, state.rows);
+    renderCharts(state.rows, state.spec, state.period, unit, state.colors);
+    renderTable(state.rows, state.spec, state.period, unit);
+
+    ensureFonts().then(drawPreview);
+  }
+
+  function drawPreview() {
+    var ctx = canvas.getContext('2d');
+    drawCard(ctx, state);
+    drawSelection(ctx);
+    document.getElementById('card-caption').textContent =
+      '1080 × 1350 · ' + state.company.name + ' ' + cardTitle(state.period, state.rows, state.spec);
+  }
+
+  /* 이벤트 */
+  document.getElementById('btn-load').addEventListener('click', function () {
+    var v = document.getElementById('q').value;
+    var hit = Adapter.match(v);
+    if (!hit) {
+      alert('찾을 수 없는 기업입니다.\n\n지금 쓸 수 있는 곳: ' + Adapter.list().join(', '));
+      return;
+    }
+    var btn = this;
+    btn.disabled = true;
+    Adapter.load(hit.code).then(function (c) {
+      btn.disabled = false;
+      if (!c) { alert('데이터 파일을 불러오지 못했습니다.'); return; }
+      if (!c.market) { c.market = hit.market || ''; c.sector = hit.sector || ''; }
+      state.company = c;
+      refresh();
+    });
+  });
+  document.getElementById('q').addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') document.getElementById('btn-load').click();
+  });
+
+  Array.prototype.forEach.call(document.querySelectorAll('.tab'), function (btn) {
+    btn.addEventListener('click', function () {
+      Array.prototype.forEach.call(document.querySelectorAll('.tab'), function (b) {
+        b.setAttribute('aria-selected', String(b === btn));
+      });
+      state.period = btn.dataset.period;
+      refresh();
+    });
+  });
+
+  document.getElementById('color-base').addEventListener('input', function () {
+    refresh();
+  });
+  document.getElementById('chk-guide').addEventListener('change', function () {
+    state.guide = this.checked; drawPreview();
+  });
+  document.getElementById('chk-source').addEventListener('change', function () {
+    state.showSource = this.checked; drawPreview();
+  });
+  document.getElementById('handle').addEventListener('input', function () {
+    state.handle = this.value; drawPreview();
+  });
+
+  document.getElementById('btn-mode').addEventListener('click', function () {
+    var root = document.documentElement;
+    var next = root.getAttribute('data-mode') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-mode', next);
+    refresh();
+  });
+
+  document.getElementById('btn-png').addEventListener('click', function () {
+    var SCALE = 3;
+    var off = document.createElement('canvas');
+    off.width = CW * SCALE; off.height = CH * SCALE;
+    var octx = off.getContext('2d');
+    octx.scale(SCALE, SCALE);
+    var snap = Object.assign({}, state, { guide: false });
+    drawCard(octx, snap);
+    off.toBlob(function (blob) {
+      if (!blob) { alert('이미지를 만들지 못했습니다. 새로고침 후 다시 시도해주세요.'); return; }
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = state.company.name + '_' + state.period + '_' + (CW * SCALE) + 'x' + (CH * SCALE) + '.png';
+      a.click();
+      setTimeout(function () { URL.revokeObjectURL(a.href); }, 5000);
+    }, 'image/png');
+  });
+
+  document.getElementById('btn-csv').addEventListener('click', function () {
+    var rows = state.rows, unit = '억원';
+    var head = state.period === 'annual'
+      ? ['구간', '매출(억원)', '영업이익(억원)', '순이익(억원)', 'DPS(원)', '배당성향(%)', '시가배당률(%)']
+      : ['구간', '매출(억원)', '영업이익(억원)', '순이익(억원)', '영업이익률(%)'];
+    var lines = [head.join(',')];
+    rows.forEach(function (r) {
+      lines.push(state.period === 'annual'
+        ? [r.label, r.bar1, r.bar2, r.ni, r.line, r.payout, r.yield].join(',')
+        : [r.label, r.bar1, r.bar2, r.ni, r.line.toFixed(1)].join(','));
+    });
+    var blob = new Blob(['\ufeff' + lines.join('\n')], { type: 'text/csv;charset=utf-8;' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = state.company.name + '_' + state.period + '.csv';
+    a.click();
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 5000);
+  });
+
+  document.getElementById('q').value = '삼성전자';
+  Adapter.init().then(function (idx) {
+    var pill = document.getElementById('src-pill');
+    Adapter.fillDatalist();
+    var n = (Adapter.index || []).length;
+    if (Adapter.source === 'dart') {
+      pill.textContent = 'DART · ' + n + '종목 · ' +
+        (idx && idx.updated ? idx.updated : '수집 데이터');
+      var first = Adapter.match('삼성전자') || Adapter.index[0];
+      if (first) {
+        document.getElementById('q').value = first.name;
+        return Adapter.load(first.code).then(function (c) {
+          if (c) state.company = c;
+          refresh();
+        });
+      }
+    } else {
+      pill.textContent = '샘플 데이터';
+    }
+    refresh();
+  });
+})();
+</script>
+</body>
+</html>

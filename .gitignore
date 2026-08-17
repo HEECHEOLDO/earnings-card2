@@ -1,0 +1,10 @@
+# 수집 스크립트는 올리지 않는다 (API 키가 들어 있어도 안전)
+collect.py
+tickers.txt
+
+# 캐시 · 파이썬 부산물
+.cache/
+*.pyc
+__pycache__/
+.env
+.DS_Store
