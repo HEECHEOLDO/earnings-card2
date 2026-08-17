@@ -257,7 +257,7 @@ def eok(v):
 # ------------------------------------------------- 배당
 
 def fetch_dividend(corp_code, year):
-    """배당에 관한 사항. 보통주 주당 현금배당금 / 배당성향 / 시가배당률."""
+    """배당에 관한 사항. 보통주 기준 주당 현금배당금 / 배당성향 / 시가배당률."""
     res = api_get("alotMatter.json", {
         "corp_code": corp_code, "bsns_year": str(year), "reprt_code": REPRT["YEAR"],
     })
@@ -271,13 +271,22 @@ def fetch_dividend(corp_code, year):
         val = to_num(r.get("thstrm"))
         if val is None:
             continue
-        if "주당현금배당금" in se:
-            if not knd or "보통" in knd:
+
+        # 우선주 줄은 건너뛴다. 보통주 줄이나 종류 표기가 없는 줄만 쓴다.
+        if knd and "우선" in knd:
+            continue
+        is_common = (not knd) or ("보통" in knd)
+
+        if "주당현금배당금" in se and is_common:
+            if out["dps"] is None:          # 먼저 찾은 값을 지킨다 (덮어쓰지 않음)
                 out["dps"] = val
+                dbg("DPS <- se='%s' stock_knd='%s' thstrm=%s"
+                    % (r.get("se"), r.get("stock_knd"), r.get("thstrm")))
         elif "현금배당성향" in se:
-            out["payout"] = val
-        elif "현금배당수익률" in se:
-            if not knd or "보통" in knd:
+            if out["payout"] is None:
+                out["payout"] = val
+        elif "현금배당수익률" in se and is_common:
+            if out["yield"] is None:
                 out["yield"] = val
     return out
 
@@ -567,6 +576,35 @@ def rebuild_index():
     return len(items)
 
 
+def show_dividend(corp_map, code, year):
+    """특정 종목·연도의 배당 원본 응답을 그대로 보여준다."""
+    info = corp_map.get(code)
+    if not info:
+        log("%s : corpCode.xml 에 없습니다" % code)
+        return
+    log("\n=== %s (%s) %d년 배당 원본 ===" % (info["name"], code, year))
+    res = api_get("alotMatter.json", {
+        "corp_code": info["corp_code"], "bsns_year": str(year),
+        "reprt_code": REPRT["YEAR"],
+    })
+    if not res:
+        log("응답 없음")
+        return
+    if res.get("status") != "000":
+        log("status=%s  %s" % (res.get("status"), res.get("message")))
+        return
+    log("%-26s %-10s %14s %14s" % ("구분(se)", "주식종류", "당기", "전기"))
+    log("-" * 68)
+    for r in res.get("list", []):
+        log("%-26s %-10s %14s %14s" % (
+            (r.get("se") or "")[:24], (r.get("stock_knd") or "-")[:8],
+            r.get("thstrm") or "-", r.get("frmtrm") or "-"))
+    log("-" * 68)
+    got = fetch_dividend(info["corp_code"], year)
+    log("스크립트가 고른 값 -> DPS=%s  배당성향=%s  시가배당률=%s"
+        % (got["dps"], got["payout"], got["yield"]))
+
+
 def verify(tickers, corp_map):
     """API를 쓰지 않고 종목코드가 실제로 어떤 회사에 붙는지만 확인한다."""
     ok, bad, mismatch = [], [], []
@@ -661,7 +699,7 @@ def load_tickers(args):
 
 def parse_args():
     """--budget 3000 처럼 옵션이 값을 가지는 경우, 그 값을 종목코드로 오인하지 않게 한다."""
-    takes_value = {"--budget", "--refresh-days"}
+    takes_value = {"--budget", "--refresh-days", "--dividend"}
     args, skip = [], False
     for i, a in enumerate(sys.argv[1:]):
         if skip:
@@ -694,6 +732,22 @@ def main():
     latest_year = datetime.now().year     # 분기보고서는 올해 것도 이미 나와 있다
 
     corp_map = load_corp_map()
+
+    if "--dividend" in sys.argv:
+        # 사용법: python3 collect.py --dividend 2025 005930
+        yr = None
+        for i, a in enumerate(sys.argv):
+            if a == "--dividend" and i + 1 < len(sys.argv):
+                try:
+                    yr = int(sys.argv[i + 1])
+                except ValueError:
+                    pass
+        if yr is None or not args:
+            log("사용법: python3 collect.py --dividend 2025 005930")
+            return
+        for code in args:
+            show_dividend(corp_map, code, yr)
+        return
 
     if "--build-tickers" in sys.argv:
         build_tickers_file(corp_map)

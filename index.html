@@ -72,7 +72,29 @@
   }
   .icon-btn:hover { border-color: var(--accent); color: var(--accent); }
 
-  .searchrow { display: flex; gap: 8px; margin: 18px 0 6px; flex-wrap: wrap; }
+  .searchrow { display: flex; gap: 8px; margin: 18px 0 6px; flex-wrap: nowrap; }
+  .search-wrap { position: relative; flex: 1; min-width: 0; }
+  .search-wrap input[type="text"] { width: 100%; }
+
+  #suggest {
+    display: none; position: absolute; z-index: 40; left: 0; right: 0; top: 46px;
+    margin: 0; padding: 4px; list-style: none;
+    max-height: 46vh; overflow-y: auto; -webkit-overflow-scrolling: touch;
+    background: var(--surface); border: 1px solid var(--border-strong);
+    border-radius: var(--radius); box-shadow: 0 14px 34px -12px rgba(0,0,0,.35);
+  }
+  #suggest li {
+    display: flex; align-items: center; justify-content: space-between; gap: 10px;
+    min-height: 44px; padding: 8px 12px; border-radius: 6px; cursor: pointer;
+    font-size: 15px; color: var(--text);
+  }
+  #suggest li:hover, #suggest li[aria-selected="true"] { background: var(--surface-2); }
+  #suggest li .code { font-size: 12px; color: var(--text-mute); font-variant-numeric: tabular-nums; }
+  #suggest li.empty { color: var(--text-mute); cursor: default; justify-content: center; font-size: 14px; }
+  #suggest .head {
+    padding: 6px 12px 8px; font-size: 12px; color: var(--text-mute);
+    border-bottom: 1px solid var(--border); margin-bottom: 4px;
+  }
   input[type="text"], select {
     font-family: inherit; font-size: 14px; color: var(--text);
     background: var(--surface); border: 1px solid var(--border-strong);
@@ -172,8 +194,11 @@
   </div>
 
   <div class="searchrow">
-    <input type="text" id="q" placeholder="삼성전자 또는 005930" autocomplete="off" list="company-list">
-    <datalist id="company-list"></datalist>
+    <div class="search-wrap">
+      <input type="text" id="q" placeholder="종목명 또는 코드 (눌러서 전체 보기)" autocomplete="off"
+             autocorrect="off" autocapitalize="off" spellcheck="false">
+      <ul id="suggest" role="listbox"></ul>
+    </div>
     <button class="btn btn-primary" id="btn-load">불러오기</button>
   </div>
   <div class="meta" id="meta"></div>
@@ -181,6 +206,7 @@
   <div class="tabs" role="tablist">
     <button class="tab" role="tab" data-period="annual" aria-selected="true">최근 10년</button>
     <button class="tab" role="tab" data-period="quarterly" aria-selected="false">최근 10분기</button>
+    <button class="tab" role="tab" data-period="dividend" aria-selected="false">배당금</button>
   </div>
 
   <div class="metrics" id="metrics"></div>
@@ -196,7 +222,7 @@
   <div class="panel">
     <div class="panel-head">
       <h2 id="chart2-title">배당 추이</h2>
-      <span class="note" id="chart2-note">주당배당금 · 시가배당률</span>
+      <span class="note" id="chart2-note">주당배당금 · 배당성향</span>
     </div>
     <div class="chart-box"><canvas id="chart2"></canvas></div>
   </div>
@@ -321,11 +347,15 @@
     quarterly: {
       suffix: function (n) { return '최근 ' + n + '분기 실적 추이'; },
       chart1: '분기 실적 추이', chart2: '분기 수익성'
+    },
+    dividend: {
+      suffix: function (n) { return '최근 ' + n + '년 배당 추이'; },
+      chart1: '주당배당금 추이', chart2: '배당성향'
     }
   };
 
   function cardTitle(period, rows, spec) {
-    var withDiv = spec && spec.chip3 === '주당배당금';
+    var withDiv = spec && spec.line && spec.line.label === '주당배당금';
     return LABELS[period].suffix(rows.length, withDiv);
   }
 
@@ -456,12 +486,22 @@
       return null;
     },
 
-    fillDatalist: function () {
-      var dl = document.getElementById('company-list');
-      if (!dl) return;
-      dl.innerHTML = (Adapter.index || []).map(function (c) {
-        return '<option value="' + c.name + '">' + c.code + '</option>';
-      }).join('');
+    search: function (q) {
+      var list = Adapter.index || [];
+      var s = String(q || '').trim().toLowerCase();
+      if (!s) return list.slice();
+      var out = [];
+      for (var i = 0; i < list.length; i++) {
+        var c = list[i], name = c.name.toLowerCase(), rank = -1;
+        if (c.code === s) rank = 0;
+        else if (name === s) rank = 1;
+        else if (name.indexOf(s) === 0) rank = 2;
+        else if (c.code.indexOf(s) === 0) rank = 3;
+        else if (name.indexOf(s) >= 0) rank = 4;
+        if (rank >= 0) out.push({ c: c, r: rank });
+      }
+      out.sort(function (a, b) { return a.r - b.r || a.c.name.localeCompare(b.c.name); });
+      return out.map(function (x) { return x.c; });
     },
 
     load: function (code) {
@@ -490,73 +530,130 @@
      ============================================================ */
   function buildSeries(company, period) {
     function num(v) { return (v === null || v === undefined || isNaN(v)) ? 0 : v; }
-    if (period === 'annual') {
-      return company.annual.map(function (d) {
+
+    if (period === 'quarterly') {
+      return company.quarterly.map(function (d, i) {
+        var showYear = (i === 0 || d.q === 1);
         return {
-          label: String(d.p), short: "'" + String(d.p).slice(2), yearMark: null,
-          bar1: num(d.rev), bar2: num(d.op), line: num(d.dps),
-          margin: d.rev ? num(d.op) / d.rev * 100 : 0,
-          payout: num(d.payout), yield: num(d.yield), ni: num(d.ni)
+          label: d.y + '.' + d.q + 'Q', short: d.q + 'Q',
+          yearMark: showYear ? d.y + '년' : null,
+          bar1: num(d.rev), bar2: num(d.op),
+          line: d.rev ? num(d.op) / d.rev * 100 : 0, ni: num(d.ni)
         };
       });
     }
-    return company.quarterly.map(function (d, i) {
-      var showYear = (i === 0 || d.q === 1);
+
+    var rows = company.annual.map(function (d) {
       return {
-        label: d.y + '.' + d.q + 'Q', short: d.q + 'Q',
-        yearMark: showYear ? d.y + '년' : null,
-        bar1: num(d.rev), bar2: num(d.op),
-        line: d.rev ? num(d.op) / d.rev * 100 : 0, ni: num(d.ni)
+        label: String(d.p), short: "'" + String(d.p).slice(2), yearMark: null,
+        rev: num(d.rev), op: num(d.op), ni: num(d.ni),
+        dps: num(d.dps), payout: num(d.payout), yield: num(d.yield),
+        margin: d.rev ? num(d.op) / d.rev * 100 : 0
       };
     });
+
+    if (period === 'dividend') {
+      // 배당 카드 — 배당을 한 해부터만 보여준다
+      var first = 0;
+      while (first < rows.length && rows[first].dps <= 0) first++;
+      rows = rows.slice(first);
+      rows.forEach(function (r) { r.bar1 = r.dps; r.line = r.payout; });
+      return rows;
+    }
+
+    rows.forEach(function (r) { r.bar1 = r.rev; r.bar2 = r.op; r.line = r.dps; });
+    return rows;
   }
 
   function seriesSpec(period, rows) {
-    var marginSpec = {
-      bar1: '매출', bar2: '영업이익', line: '영업이익률',
-      lineUnit: '%',
-      lineFmt: function (v) { return v.toFixed(1) + '%'; },
-      chipFmt: function (v) { return v.toFixed(1) + '%'; },
-      unitNote: null, chip3: '영업이익률', lineKey: 'line'
-    };
+    var won = function (v) { return Math.round(v).toLocaleString('ko-KR'); };
+    var pct = function (v) { return v.toFixed(1) + '%'; };
+    var yearBasis = function (last) { return "'" + last.label.slice(2) + '년 기준'; };
 
-    if (period === 'annual') {
-      var paysDividend = (rows || []).some(function (r) { return r.line > 0; });
-      if (!paysDividend) {
-        // 배당을 한 번도 안 한 회사 — 배당 선을 그리면 0으로 눕는다.
-        return {
-          bar1: '매출', bar2: '영업이익', line: '영업이익률',
-          lineUnit: '%',
-          lineFmt: function (v) { return v.toFixed(1) + '%'; },
-          chipFmt: function (v) { return v.toFixed(1) + '%'; },
-          unitNote: null, chip3: '영업이익률', lineKey: 'margin',
-          basisFmt: function (last) { return "'" + last.label.slice(2) + '년 기준'; }
-        };
-      }
+    if (period === 'dividend') {
       return {
-        bar1: '매출', bar2: '영업이익', line: '주당배당금',
-        lineUnit: '원',
-        lineFmt: function (v) { return Math.round(v).toLocaleString('ko-KR'); },
-        chipFmt: function (v) { return Math.round(v).toLocaleString('ko-KR') + '원'; },
-        unitNote: '배당 원',
-        chip3: '주당배당금', lineKey: 'line',
-        basisFmt: function (last) { return "'" + last.label.slice(2) + '년 기준'; }
+        bars: [{ key: 'bar1', label: '주당배당금', color: 'bar2' }],
+        line: { key: 'line', label: '배당성향', fmt: pct, chipFmt: pct },
+        barUnit: 'won', unitNote: '배당 원',
+        chips: function (last, unit, rows) {
+          var prev = rows && rows.length > 1 ? rows[rows.length - 2].dps : 0;
+          var yoy = prev > 0 ? (last.dps / prev - 1) * 100 : null;
+          return [
+            { l: '주당배당금', v: won(last.dps) + '원', c: 'bar2' },
+            { l: '전년 대비', v: yoy === null ? '-' : (yoy >= 0 ? '+' : '') + yoy.toFixed(1) + '%', c: 'ink' },
+            { l: '배당성향', v: pct(last.payout), c: 'line' }
+          ];
+        },
+        basisFmt: yearBasis
       };
     }
-    marginSpec.basisFmt = function (last) { return "'" + last.label.slice(2) + ' 기준'; };
-    return marginSpec;
+
+    if (period === 'quarterly') {
+      return {
+        bars: [{ key: 'bar1', label: '매출', color: 'bar1' },
+               { key: 'bar2', label: '영업이익', color: 'bar2' }],
+        line: { key: 'line', label: '영업이익률', fmt: pct, chipFmt: pct },
+        barUnit: 'auto', unitNote: null,
+        chips: function (last, unit) {
+          return [
+            { l: '매출', v: fmtChip(last.bar1, unit), c: 'ink' },
+            { l: '영업이익', v: fmtChip(last.bar2, unit), c: 'bar2' },
+            { l: '영업이익률', v: pct(last.line), c: 'line' }
+          ];
+        },
+        basisFmt: function (last) { return "'" + last.label.slice(2) + ' 기준'; }
+      };
+    }
+
+    // annual — 배당을 한 번도 안 한 회사는 선을 영업이익률로 바꾼다
+    var paysDividend = (rows || []).some(function (r) { return r.dps > 0; });
+    var bars = [{ key: 'bar1', label: '매출', color: 'bar1' },
+                { key: 'bar2', label: '영업이익', color: 'bar2' }];
+    if (!paysDividend) {
+      return {
+        bars: bars,
+        line: { key: 'margin', label: '영업이익률', fmt: pct, chipFmt: pct },
+        barUnit: 'auto', unitNote: null,
+        chips: function (last, unit) {
+          return [
+            { l: '매출', v: fmtChip(last.bar1, unit), c: 'ink' },
+            { l: '영업이익', v: fmtChip(last.bar2, unit), c: 'bar2' },
+            { l: '영업이익률', v: pct(last.margin), c: 'line' }
+          ];
+        },
+        basisFmt: yearBasis
+      };
+    }
+    return {
+      bars: bars,
+      line: { key: 'line', label: '주당배당금', fmt: won,
+              chipFmt: function (v) { return won(v) + '원'; } },
+      barUnit: 'auto', unitNote: '배당 원',
+      chips: function (last, unit) {
+        return [
+          { l: '매출', v: fmtChip(last.bar1, unit), c: 'ink' },
+          { l: '영업이익', v: fmtChip(last.bar2, unit), c: 'bar2' },
+          { l: '주당배당금', v: won(last.dps) + '원', c: 'line' }
+        ];
+      },
+      basisFmt: yearBasis
+    };
   }
 
   /* ============================================================
      포맷터
      ============================================================ */
-  function pickUnit(rows) {
+  function pickUnit(rows, spec) {
+    if (spec && spec.barUnit === 'won') return '원';
     var m = 0;
-    rows.forEach(function (r) { m = Math.max(m, Math.abs(r.bar1), Math.abs(r.bar2)); });
+    rows.forEach(function (r) {
+      m = Math.max(m, Math.abs(r.bar1 || 0), Math.abs(r.bar2 || 0));
+    });
     return m >= 100000 ? '조원' : '억원';
   }
   function fmtAmount(v, unit) {
     if (v === null || v === undefined || isNaN(v)) return '-';
+    if (unit === '원') return Math.round(v).toLocaleString('ko-KR');
     if (unit === '조원') {
       var jo = v / 10000;
       return jo.toLocaleString('ko-KR', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
@@ -564,6 +661,7 @@
     return Math.round(v).toLocaleString('ko-KR');
   }
   function fmtChip(v, unit) {
+    if (unit === '원') return Math.round(v).toLocaleString('ko-KR') + '원';
     return unit === '조원' ? fmtAmount(v, unit) + '조' : fmtAmount(v, unit) + '억';
   }
 
@@ -689,24 +787,27 @@
   function drawCardChart(ctx, ox, oy, W, H, rows, colors, unit, spec) {
     var T = TOKENS.card;
     var padT = 10, padB = 62;
+    var barDefs = spec.bars, nBars = barDefs.length;
+    var lineKey = spec.line.key;
 
     var barVals = [];
-    rows.forEach(function (r) { barVals.push(r.bar1, r.bar2); });
+    rows.forEach(function (r) {
+      barDefs.forEach(function (b) { barVals.push(r[b.key] || 0); });
+    });
     var A = axisFor(barVals, 4);
-    var lineKey = spec.lineKey || 'line';
-    var lineVals = rows.map(function (r) { return r[lineKey]; });
-    var B = axisFor(lineVals, 3);
+    var B = axisFor(rows.map(function (r) { return r[lineKey]; }), 3);
 
     ctx.font = font(600, T.type.tick);
     var lw = 0, rw = 0;
     A.ticks.forEach(function (t) { lw = Math.max(lw, ctx.measureText(fmtAmount(t, unit)).width); });
-    B.ticks.forEach(function (t) { rw = Math.max(rw, ctx.measureText(spec.lineFmt(t)).width); });
+    B.ticks.forEach(function (t) { rw = Math.max(rw, ctx.measureText(spec.line.fmt(t)).width); });
     var padL = Math.ceil(lw) + 16, padR = Math.ceil(rw) + 16;
 
     var plotL = ox + padL, plotR = ox + W - padR;
     var plotT = oy + padT, plotB = oy + H - padB;
     var plotW = plotR - plotL, plotH = plotB - plotT;
-    var n = rows.length, slot = plotW / n, gw = slot * 0.62, bw = gw / 2;
+    var n = rows.length, slot = plotW / n;
+    var gw = slot * (nBars === 1 ? 0.46 : 0.62), bw = gw / nBars;
 
     function yA(v) { return plotB - ((v - A.min) / (A.max - A.min)) * plotH; }
     function yB(v) { return plotB - ((v - B.min) / (B.max - B.min)) * plotH; }
@@ -728,17 +829,18 @@
     ctx.textAlign = 'right';
     A.ticks.forEach(function (t) { ctx.fillText(fmtAmount(t, unit), plotL - 10, yA(t)); });
     ctx.textAlign = 'left';
-    B.ticks.forEach(function (t) { ctx.fillText(spec.lineFmt(t), plotR + 10, yB(t)); });
+    B.ticks.forEach(function (t) { ctx.fillText(spec.line.fmt(t), plotR + 10, yB(t)); });
     ctx.restore();
     ctx.textBaseline = 'alphabetic';
 
     rows.forEach(function (r, i) {
       var gx = plotL + slot * i + (slot - gw) / 2;
-      [[r.bar1, colors.bar1, gx], [r.bar2, colors.bar2, gx + bw]].forEach(function (b) {
-        var y = yA(b[0]), top = b[0] >= 0 ? y : zero, h = Math.abs(zero - y);
+      barDefs.forEach(function (b, j) {
+        var v = r[b.key] || 0, y = yA(v);
+        var top = v >= 0 ? y : zero, h = Math.abs(zero - y);
         if (h < 1) h = 1;
-        ctx.fillStyle = b[1];
-        roundRect(ctx, b[2], top, bw - 4, h, 4);
+        ctx.fillStyle = colors[b.color];
+        roundRect(ctx, gx + bw * j, top, bw - (nBars === 1 ? 0 : 4), h, 4);
         ctx.fill();
       });
     });
@@ -794,7 +896,7 @@
     var T = TOKENS.card, S = T.safe;
     var CX = S.left, CWID = CW - S.left - S.right;
     var rows = state.rows, spec = state.spec, colors = state.colors;
-    var unit = pickUnit(rows), last = rows[rows.length - 1];
+    var unit = pickUnit(rows, spec), last = rows[rows.length - 1];
 
     ctx.clearRect(0, 0, CW, CH);
     ctx.fillStyle = T.paper;
@@ -832,7 +934,9 @@
     var legendY = y + T.type.legend * 0.8;
     ctx.font = font(700, T.type.legend);
     var lx = CX, sw = 26;
-    [[colors.bar1, spec.bar1], [colors.bar2, spec.bar2], [colors.line, spec.line]].forEach(function (it) {
+    var legendItems = spec.bars.map(function (b) { return [colors[b.color], b.label]; });
+    legendItems.push([colors.line, spec.line.label]);
+    legendItems.forEach(function (it) {
       ctx.fillStyle = it[0];
       roundRect(ctx, lx, legendY - sw + 5, sw, sw, 5);
       ctx.fill();
@@ -844,7 +948,10 @@
     ctx.font = font(600, T.type.unit);
     ctx.fillStyle = T.inkSoft;
     ctx.textAlign = 'right';
-    ctx.fillText('연결 · ' + unit + (spec.unitNote ? ' · ' + spec.unitNote : ''), CX + CWID, legendY - 2);
+    var unitText = state.period === 'dividend'
+      ? '보통주 · 단위 원'
+      : '연결 · ' + unit + (spec.unitNote ? ' · ' + spec.unitNote : '');
+    ctx.fillText(unitText, CX + CWID, legendY - 2);
     ctx.textAlign = 'left';
 
     /* ---- 아래쪽부터 역산해서 차트에 남은 공간을 전부 준다 ---- */
@@ -870,11 +977,10 @@
     ctx.fillText(spec.basisFmt(last), CX, basisBaseline);
 
     /* 요약 3칸 */
-    var chips = [
-      { l: spec.bar1, v: fmtChip(last.bar1, unit), c: T.ink },
-      { l: spec.bar2, v: fmtChip(last.bar2, unit), c: colors.bar2 },
-      { l: spec.chip3, v: spec.chipFmt(last[spec.lineKey || 'line']), c: colors.line }
-    ];
+    var palette = { ink: T.ink, bar1: colors.bar1, bar2: colors.bar2, line: colors.line };
+    var chips = spec.chips(last, unit, rows).map(function (c) {
+      return { l: c.l, v: c.v, c: palette[c.c] || T.ink };
+    });
     var gap = T.gap.chipGap, cw = (CWID - gap * 2) / 3;
     var labelBase = T.chip.padTop + T.type.chipLabel * 0.8;
     var valueBase = labelBase + T.chip.labelToValue + T.type.chipValue * 0.82;
@@ -922,27 +1028,47 @@
 
   function renderMetrics(company, period, rows) {
     var box = document.getElementById('metrics'), items;
-    if (period === 'annual') {
-      var a = company.annual, first = a[0], last = a[a.length - 1];
-      var yrs = a.length - 1;
-      var cagr = (Math.pow(last.rev / first.rev, 1 / yrs) - 1) * 100;
-      var margin = a.reduce(function (s, d) { return s + d.op / d.rev * 100; }, 0) / a.length;
-      var payout = a.reduce(function (s, d) { return s + d.payout; }, 0) / a.length;
-      var streak = 0;
-      for (var i = a.length - 1; i >= 0; i--) { if (a[i].dps > 0) streak++; else break; }
+
+    if (period === 'dividend') {
+      var paid = rows.filter(function (r) { return r.dps > 0; });
+      if (!paid.length) {
+        items = [['배당 이력', '없음'], ['', '-'], ['', '-'], ['', '-']];
+      } else {
+        var last = paid[paid.length - 1], first = paid[0];
+        var yrs = paid.length - 1;
+        var cagr = yrs > 0 && first.dps > 0
+          ? (Math.pow(last.dps / first.dps, 1 / yrs) - 1) * 100 : 0;
+        var avgPayout = paid.reduce(function (s2, d) { return s2 + d.payout; }, 0) / paid.length;
+        var maxDps = Math.max.apply(null, paid.map(function (d) { return d.dps; }));
+        var streak = 0;
+        for (var k = rows.length - 1; k >= 0; k--) { if (rows[k].dps > 0) streak++; else break; }
+        items = [
+          ['연속 배당', streak + '년'],
+          ['DPS 성장률', (cagr >= 0 ? '+' : '') + cagr.toFixed(1) + '%'],
+          ['평균 배당성향', avgPayout.toFixed(1) + '%'],
+          ['최고 DPS', Math.round(maxDps).toLocaleString('ko-KR') + '원']
+        ];
+      }
+    } else if (period === 'annual') {
+      var a = company.annual, f = a[0], l = a[a.length - 1], n = a.length - 1;
+      var rc = n > 0 && f.rev ? (Math.pow(l.rev / f.rev, 1 / n) - 1) * 100 : 0;
+      var margin = a.reduce(function (s2, d) { return s2 + (d.rev ? d.op / d.rev * 100 : 0); }, 0) / a.length;
+      var payout = a.reduce(function (s2, d) { return s2 + (d.payout || 0); }, 0) / a.length;
+      var st = 0;
+      for (var i = a.length - 1; i >= 0; i--) { if (a[i].dps > 0) st++; else break; }
       items = [
-        ['매출 CAGR', cagr.toFixed(1) + '%'],
+        ['매출 CAGR', rc.toFixed(1) + '%'],
         ['평균 영업이익률', margin.toFixed(1) + '%'],
         ['평균 배당성향', payout.toFixed(1) + '%'],
-        ['연속 배당', streak + '년']
+        ['연속 배당', st + '년']
       ];
     } else {
-      var q = company.quarterly, lq = q[q.length - 1], yoy = q[q.length - 5];
-      var rg = (lq.rev / yoy.rev - 1) * 100;
-      var og = (lq.op / yoy.op - 1) * 100;
-      var avgM = q.reduce(function (s, d) { return s + d.op / d.rev * 100; }, 0) / q.length;
+      var q = company.quarterly, lq = q[q.length - 1], yoy = q[Math.max(0, q.length - 5)];
+      var rg = yoy.rev ? (lq.rev / yoy.rev - 1) * 100 : 0;
+      var og = yoy.op ? (lq.op / yoy.op - 1) * 100 : 0;
+      var avgM = q.reduce(function (s2, d) { return s2 + (d.rev ? d.op / d.rev * 100 : 0); }, 0) / q.length;
       items = [
-        ['최근 분기 영업이익률', (lq.op / lq.rev * 100).toFixed(1) + '%'],
+        ['최근 분기 영업이익률', (lq.rev ? lq.op / lq.rev * 100 : 0).toFixed(1) + '%'],
         ['매출 YoY', (rg >= 0 ? '+' : '') + rg.toFixed(1) + '%'],
         ['영업이익 YoY', (og >= 0 ? '+' : '') + og.toFixed(1) + '%'],
         ['10분기 평균 이익률', avgM.toFixed(1) + '%']
@@ -956,51 +1082,71 @@
   function renderCharts(rows, spec, period, unit, colors) {
     var grid = cssVar('--border'), tick = cssVar('--text-mute'), lab = cssVar('--text-soft');
     var labels = rows.map(function (r) { return r.label; });
-    var scale = unit === '조원' ? 10000 : 1;
-    var bar1 = rows.map(function (r) { return +(r.bar1 / scale).toFixed(1); });
-    var bar2 = rows.map(function (r) { return +(r.bar2 / scale).toFixed(1); });
+    var F = { family: 'Noto Sans KR' };
+    var axes = function (extra) {
+      return Object.assign({
+        x: { grid: { display: false }, ticks: { color: tick, font: F } },
+        y: { grid: { color: grid }, border: { display: false }, ticks: { color: tick, font: F } }
+      }, extra || {});
+    };
+    var legend = { labels: { color: lab, boxWidth: 12, font: F } };
 
     if (chart1) chart1.destroy();
+    if (chart2) chart2.destroy();
+
+    if (period === 'dividend') {
+      chart1 = new Chart(document.getElementById('chart1'), {
+        type: 'bar',
+        data: { labels: labels, datasets: [
+          { label: '주당배당금(원)', data: rows.map(function (r) { return r.dps; }),
+            backgroundColor: colors.bar2, borderRadius: 3 }
+        ] },
+        options: { responsive: true, maintainAspectRatio: false,
+                   plugins: { legend: legend }, scales: axes() }
+      });
+      chart2 = new Chart(document.getElementById('chart2'), {
+        data: { labels: labels, datasets: [
+          { type: 'line', label: '배당성향(%)', data: rows.map(function (r) { return r.payout; }),
+            borderColor: colors.line, backgroundColor: colors.line, tension: .3 }
+        ] },
+        options: { responsive: true, maintainAspectRatio: false,
+                   plugins: { legend: legend }, scales: axes() }
+      });
+      return;
+    }
+
+    var scale = unit === '조원' ? 10000 : 1;
     chart1 = new Chart(document.getElementById('chart1'), {
       type: 'bar',
-      data: {
-        labels: labels,
-        datasets: [
-          { label: spec.bar1, data: bar1, backgroundColor: colors.bar1, borderRadius: 3 },
-          { label: spec.bar2, data: bar2, backgroundColor: colors.bar2, borderRadius: 3 }
-        ]
-      },
-      options: {
-        responsive: true, maintainAspectRatio: false,
-        plugins: { legend: { labels: { color: lab, boxWidth: 12, font: { family: 'Noto Sans KR' } } } },
-        scales: {
-          x: { grid: { display: false }, ticks: { color: tick, font: { family: 'Noto Sans KR' } } },
-          y: { grid: { color: grid }, border: { display: false }, ticks: { color: tick, font: { family: 'Noto Sans KR' } } }
-        }
-      }
+      data: { labels: labels, datasets: spec.bars.map(function (b) {
+        return { label: b.label,
+                 data: rows.map(function (r) { return +((r[b.key] || 0) / scale).toFixed(1); }),
+                 backgroundColor: colors[b.color], borderRadius: 3 };
+      }) },
+      options: { responsive: true, maintainAspectRatio: false,
+                 plugins: { legend: legend }, scales: axes() }
     });
 
-    if (chart2) chart2.destroy();
     var d2 = period === 'annual'
-      ? [
-          { type: 'bar', label: '주당배당금(원)', data: rows.map(function (r) { return r.line; }), backgroundColor: colors.line, borderRadius: 3, yAxisID: 'y' },
-          { type: 'line', label: '배당성향(%)', data: rows.map(function (r) { return r.payout; }), borderColor: colors.bar2, backgroundColor: colors.bar2, tension: .3, yAxisID: 'y1' }
-        ]
-      : [
-          { type: 'line', label: '영업이익률(%)', data: rows.map(function (r) { return +r.line.toFixed(1); }), borderColor: colors.line, backgroundColor: colors.line, tension: .3, yAxisID: 'y' }
-        ];
+      ? [{ type: 'bar', label: '주당배당금(원)', data: rows.map(function (r) { return r.dps; }),
+           backgroundColor: colors.line, borderRadius: 3, yAxisID: 'y' },
+         { type: 'line', label: '배당성향(%)', data: rows.map(function (r) { return r.payout; }),
+           borderColor: colors.bar2, backgroundColor: colors.bar2, tension: .3, yAxisID: 'y1' }]
+      : [{ type: 'line', label: '영업이익률(%)',
+           data: rows.map(function (r) { return +r.line.toFixed(1); }),
+           borderColor: colors.line, backgroundColor: colors.line, tension: .3, yAxisID: 'y' }];
+
     chart2 = new Chart(document.getElementById('chart2'), {
       data: { labels: labels, datasets: d2 },
       options: {
         responsive: true, maintainAspectRatio: false,
-        plugins: { legend: { labels: { color: lab, boxWidth: 12, font: { family: 'Noto Sans KR' } } } },
-        scales: {
-          x: { grid: { display: false }, ticks: { color: tick, font: { family: 'Noto Sans KR' } } },
-          y: { grid: { color: grid }, border: { display: false }, ticks: { color: tick, font: { family: 'Noto Sans KR' } } },
+        plugins: { legend: legend },
+        scales: axes({
           y1: period === 'annual'
-            ? { position: 'right', grid: { display: false }, border: { display: false }, ticks: { color: tick, font: { family: 'Noto Sans KR' } } }
+            ? { position: 'right', grid: { display: false }, border: { display: false },
+                ticks: { color: tick, font: F } }
             : { display: false }
-        }
+        })
       }
     });
   }
@@ -1008,14 +1154,22 @@
   function renderTable(rows, spec, period, unit) {
     var t = document.getElementById('tbl');
     var head, body;
-    if (period === 'annual') {
+    if (period === 'dividend') {
+      head = ['연도', '주당배당금(원)', '배당성향', '순이익(억원)'];
+      body = rows.map(function (r) {
+        return ['<td>' + r.label + '</td>',
+          '<td>' + Math.round(r.dps).toLocaleString('ko-KR') + '</td>',
+          '<td>' + r.payout.toFixed(1) + '%</td>',
+          '<td>' + Math.round(r.ni).toLocaleString('ko-KR') + '</td>'].join('');
+      });
+    } else if (period === 'annual') {
       head = ['연도', '매출(' + unit + ')', '영업이익(' + unit + ')', '영업이익률', 'DPS(원)', '배당성향'];
       body = rows.map(function (r) {
         return ['<td>' + r.label + '</td>',
           '<td>' + fmtAmount(r.bar1, unit) + '</td>',
           '<td>' + fmtAmount(r.bar2, unit) + '</td>',
-          '<td>' + (r.bar2 / r.bar1 * 100).toFixed(1) + '%</td>',
-          '<td>' + r.line.toLocaleString('ko-KR') + '</td>',
+          '<td>' + r.margin.toFixed(1) + '%</td>',
+          '<td>' + Math.round(r.dps).toLocaleString('ko-KR') + '</td>',
           '<td>' + r.payout.toFixed(1) + '%</td>'].join('');
       });
     } else {
@@ -1030,7 +1184,8 @@
     }
     t.innerHTML = '<thead><tr>' + head.map(function (h) { return '<th>' + h + '</th>'; }).join('') +
       '</tr></thead><tbody>' + body.map(function (b) { return '<tr>' + b + '</tr>'; }).join('') + '</tbody>';
-    document.getElementById('table-note').textContent = '단위 ' + unit;
+    document.getElementById('table-note').textContent =
+      period === 'dividend' ? '보통주 기준' : '단위 ' + unit;
   }
 
   /* ============================================================
@@ -1223,20 +1378,33 @@
 
   function refresh() {
     state.rows = buildSeries(state.company, state.period);
+
+    if (!state.rows.length) {
+      // 배당 이력이 없는 회사에서 배당 탭을 누른 경우
+      var msg = state.period === 'dividend'
+        ? state.company.name + ' 은(는) 배당 이력이 없어 배당 카드를 만들 수 없습니다.'
+        : '표시할 데이터가 없습니다.';
+      alert(msg);
+      setPeriod('annual');
+      return;
+    }
+
     state.spec = seriesSpec(state.period, state.rows);
     state.colors = deriveColors(document.getElementById('color-base').value);
 
-    var unit = pickUnit(state.rows);
+    var unit = pickUnit(state.rows, state.spec);
     var L = LABELS[state.period];
 
     document.getElementById('meta').textContent =
       [state.company.code, state.company.market, state.company.sector]
         .filter(function (s) { return s && String(s).trim(); }).join(' · ');
     document.getElementById('chart1-title').textContent = L.chart1;
-    document.getElementById('chart1-note').textContent = '연결 기준 · 단위 ' + unit;
+    document.getElementById('chart1-note').textContent =
+      state.period === 'dividend' ? '보통주 · 단위 원' : '연결 기준 · 단위 ' + unit;
     document.getElementById('chart2-title').textContent = L.chart2;
     document.getElementById('chart2-note').textContent =
-      state.period === 'annual' ? '주당배당금 · 배당성향' : '영업이익률';
+      state.period === 'annual' ? '주당배당금 · 배당성향'
+      : state.period === 'dividend' ? '배당성향' : '영업이익률';
 
     renderMetrics(state.company, state.period, state.rows);
     renderCharts(state.rows, state.spec, state.period, unit, state.colors);
@@ -1254,14 +1422,17 @@
   }
 
   /* 이벤트 */
-  document.getElementById('btn-load').addEventListener('click', function () {
-    var v = document.getElementById('q').value;
-    var hit = Adapter.match(v);
-    if (!hit) {
-      alert('찾을 수 없는 기업입니다.\n\n지금 쓸 수 있는 곳: ' + Adapter.list().join(', '));
-      return;
-    }
-    var btn = this;
+  var qInput = document.getElementById('q');
+  var sugBox = document.getElementById('suggest');
+  var sugItems = [];
+  var sugActive = -1;
+
+  function pickCompany(hit) {
+    if (!hit) return;
+    closeSuggest();
+    qInput.value = hit.name;
+    qInput.blur();
+    var btn = document.getElementById('btn-load');
     btn.disabled = true;
     Adapter.load(hit.code).then(function (c) {
       btn.disabled = false;
@@ -1270,19 +1441,84 @@
       state.company = c;
       refresh();
     });
-  });
-  document.getElementById('q').addEventListener('keydown', function (e) {
-    if (e.key === 'Enter') document.getElementById('btn-load').click();
+  }
+
+  function closeSuggest() {
+    sugBox.style.display = 'none';
+    sugActive = -1;
+  }
+
+  function openSuggest() {
+    var q = qInput.value;
+    sugItems = Adapter.search(q).slice(0, 300);
+    var total = (Adapter.index || []).length;
+    var html = '<div class="head">' +
+      (q.trim() ? sugItems.length + '개 일치' : '전체 ' + total + '종목 · 이름이나 코드를 입력해보세요') +
+      '</div>';
+    if (!sugItems.length) {
+      html += '<li class="empty">일치하는 종목이 없습니다</li>';
+    } else {
+      html += sugItems.map(function (c, i) {
+        return '<li role="option" data-i="' + i + '"><span>' + c.name +
+               '</span><span class="code">' + c.code + '</span></li>';
+      }).join('');
+    }
+    sugBox.innerHTML = html;
+    sugBox.style.display = 'block';
+    sugActive = -1;
+  }
+
+  qInput.addEventListener('focus', openSuggest);
+  qInput.addEventListener('input', openSuggest);
+
+  sugBox.addEventListener('mousedown', function (e) {
+    var li = e.target.closest('li[data-i]');
+    if (!li) return;
+    e.preventDefault();
+    pickCompany(sugItems[+li.dataset.i]);
   });
 
-  Array.prototype.forEach.call(document.querySelectorAll('.tab'), function (btn) {
-    btn.addEventListener('click', function () {
-      Array.prototype.forEach.call(document.querySelectorAll('.tab'), function (b) {
-        b.setAttribute('aria-selected', String(b === btn));
-      });
-      state.period = btn.dataset.period;
-      refresh();
+  qInput.addEventListener('keydown', function (e) {
+    if (sugBox.style.display !== 'block') return;
+    var lis = sugBox.querySelectorAll('li[data-i]');
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      if (!lis.length) return;
+      sugActive += (e.key === 'ArrowDown' ? 1 : -1);
+      if (sugActive < 0) sugActive = lis.length - 1;
+      if (sugActive >= lis.length) sugActive = 0;
+      for (var i = 0; i < lis.length; i++) {
+        lis[i].setAttribute('aria-selected', String(i === sugActive));
+      }
+      lis[sugActive].scrollIntoView({ block: 'nearest' });
+    } else if (e.key === 'Enter') {
+      e.preventDefault();
+      pickCompany(sugItems[sugActive >= 0 ? sugActive : 0]);
+    } else if (e.key === 'Escape') {
+      closeSuggest();
+    }
+  });
+
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('.search-wrap')) closeSuggest();
+  });
+
+  document.getElementById('btn-load').addEventListener('click', function () {
+    var hit = Adapter.match(qInput.value) || (Adapter.search(qInput.value)[0]);
+    if (!hit) { alert('찾을 수 없는 기업입니다.'); return; }
+    pickCompany(hit);
+  });
+
+  function setPeriod(p) {
+    state.period = p;
+    Array.prototype.forEach.call(document.querySelectorAll('.tab'), function (b) {
+      b.setAttribute('aria-selected', String(b.dataset.period === p));
     });
+    refresh();
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll('.tab'), function (btn) {
+    btn.addEventListener('click', function () { setPeriod(btn.dataset.period); });
   });
 
   document.getElementById('color-base').addEventListener('input', function () {
@@ -1324,16 +1560,20 @@
   });
 
   document.getElementById('btn-csv').addEventListener('click', function () {
-    var rows = state.rows, unit = '억원';
-    var head = state.period === 'annual'
-      ? ['구간', '매출(억원)', '영업이익(억원)', '순이익(억원)', 'DPS(원)', '배당성향(%)', '시가배당률(%)']
-      : ['구간', '매출(억원)', '영업이익(억원)', '순이익(억원)', '영업이익률(%)'];
+    var rows = state.rows;
+    var head, line;
+    if (state.period === 'dividend') {
+      head = ['연도', 'DPS(원)', '배당성향(%)', '순이익(억원)'];
+      line = function (r) { return [r.label, r.dps, r.payout, r.ni].join(','); };
+    } else if (state.period === 'annual') {
+      head = ['연도', '매출(억원)', '영업이익(억원)', '순이익(억원)', 'DPS(원)', '배당성향(%)'];
+      line = function (r) { return [r.label, r.bar1, r.bar2, r.ni, r.dps, r.payout].join(','); };
+    } else {
+      head = ['분기', '매출(억원)', '영업이익(억원)', '순이익(억원)', '영업이익률(%)'];
+      line = function (r) { return [r.label, r.bar1, r.bar2, r.ni, r.line.toFixed(1)].join(','); };
+    }
     var lines = [head.join(',')];
-    rows.forEach(function (r) {
-      lines.push(state.period === 'annual'
-        ? [r.label, r.bar1, r.bar2, r.ni, r.line, r.payout, r.yield].join(',')
-        : [r.label, r.bar1, r.bar2, r.ni, r.line.toFixed(1)].join(','));
-    });
+    rows.forEach(function (r) { lines.push(line(r)); });
     var blob = new Blob(['\ufeff' + lines.join('\n')], { type: 'text/csv;charset=utf-8;' });
     var a = document.createElement('a');
     a.href = URL.createObjectURL(blob);
@@ -1345,7 +1585,6 @@
   document.getElementById('q').value = '삼성전자';
   Adapter.init().then(function (idx) {
     var pill = document.getElementById('src-pill');
-    Adapter.fillDatalist();
     var n = (Adapter.index || []).length;
     if (Adapter.source === 'dart') {
       pill.textContent = 'DART · ' + n + '종목 · ' +
