@@ -1,0 +1,183 @@
+{
+ "name": "두산건설",
+ "split_adjusted": false,
+ "legal_name": "두산건설",
+ "code": "011160",
+ "market": "",
+ "sector": "",
+ "updated": "2026-08-19",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 12745.7,
+   "op": 128.0,
+   "ni": -3570.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 15358.6,
+   "op": 589.5,
+   "ni": -1840.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 15478.0,
+   "op": -521.5,
+   "ni": -5517.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 17819.3,
+   "op": 810.3,
+   "ni": -751.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 18286.6,
+   "op": 300.0,
+   "ni": -1650.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 13986.2,
+   "op": 833.2,
+   "ni": 72.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 11905.7,
+   "op": 301.1,
+   "ni": -2104.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 17175.0,
+   "op": 609.1,
+   "ni": -777.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 21753.2,
+   "op": 1080.9,
+   "ni": 198.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 17901.1,
+   "op": 1049.7,
+   "ni": 132.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 4964.0,
+   "op": 262.5,
+   "ni": 128.4
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 6474.0,
+   "op": 273.3,
+   "ni": 204.7
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 4656.2,
+   "op": 343.0,
+   "ni": 252.3
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 5658.9,
+   "op": 202.1,
+   "ni": -386.9
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 4247.8,
+   "op": 82.4,
+   "ni": 41.5
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 4436.0,
+   "op": 454.1,
+   "ni": 315.5
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 4642.1,
+   "op": 446.8,
+   "ni": 283.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 4575.2,
+   "op": 66.4,
+   "ni": -508.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 3593.7,
+   "op": 299.3,
+   "ni": 220.4
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 4051.1,
+   "op": 427.3,
+   "ni": 304.9
+  }
+ ]
+}

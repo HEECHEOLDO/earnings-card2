@@ -1,0 +1,183 @@
+{
+ "name": "대한광통신",
+ "split_adjusted": false,
+ "legal_name": "대한광통신",
+ "code": "010170",
+ "market": "",
+ "sector": "",
+ "updated": "2026-08-19",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 1164.7,
+   "op": -15.4,
+   "ni": -125.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 1396.6,
+   "op": 150.2,
+   "ni": 132.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 1671.5,
+   "op": 154.9,
+   "ni": 212.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 1543.0,
+   "op": -96.3,
+   "ni": -117.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 1360.9,
+   "op": -226.6,
+   "ni": -274.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 1566.1,
+   "op": -274.7,
+   "ni": -491.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 1901.1,
+   "op": 34.6,
+   "ni": -30.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 1802.6,
+   "op": -232.2,
+   "ni": -294.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 1527.2,
+   "op": -297.0,
+   "ni": -560.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 1394.5,
+   "op": -214.1,
+   "ni": -279.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 328.3,
+   "op": -83.7,
+   "ni": -104.4
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 401.7,
+   "op": -31.8,
+   "ni": -79.6
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 439.3,
+   "op": -44.4,
+   "ni": -66.9
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 357.9,
+   "op": -137.2,
+   "ni": -309.4
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 253.9,
+   "op": -69.2,
+   "ni": -70.3
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 416.4,
+   "op": -27.7,
+   "ni": -10.8
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 433.0,
+   "op": -67.1,
+   "ni": -81.9
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 291.2,
+   "op": -50.1,
+   "ni": -116.7
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 342.5,
+   "op": -39.6,
+   "ni": -36.7
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 490.5,
+   "op": 9.6,
+   "ni": 4.4
+  }
+ ]
+}

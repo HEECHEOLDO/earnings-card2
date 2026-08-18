@@ -1,0 +1,183 @@
+{
+ "name": "웰바이오텍",
+ "split_adjusted": false,
+ "legal_name": "웰바이오텍",
+ "code": "010600",
+ "market": "",
+ "sector": "",
+ "updated": "2026-08-19",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 852.9,
+   "op": -4.1,
+   "ni": -24.6,
+   "dps": null,
+   "payout": 0.0,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 707.9,
+   "op": -51.3,
+   "ni": -87.4,
+   "dps": null,
+   "payout": 0.0,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 739.3,
+   "op": -84.5,
+   "ni": -163.1,
+   "dps": null,
+   "payout": 0.0,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 838.2,
+   "op": -113.9,
+   "ni": -165.5,
+   "dps": null,
+   "payout": 0.0,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 604.3,
+   "op": -125.7,
+   "ni": -678.3,
+   "dps": null,
+   "payout": 0.0,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 1083.8,
+   "op": -43.2,
+   "ni": -333.0,
+   "dps": null,
+   "payout": 0.0,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 1581.2,
+   "op": 22.6,
+   "ni": -210.2,
+   "dps": null,
+   "payout": 0.0,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 721.3,
+   "op": -158.9,
+   "ni": -663.7,
+   "dps": null,
+   "payout": 0.0,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 833.0,
+   "op": -28.7,
+   "ni": -213.8,
+   "dps": null,
+   "payout": 0.0,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 780.3,
+   "op": -25.0,
+   "ni": -77.0,
+   "dps": null,
+   "payout": 0.0,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 203.5,
+   "op": -21.2,
+   "ni": -20.2
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 213.2,
+   "op": -2.6,
+   "ni": -32.4
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 230.6,
+   "op": 0.7,
+   "ni": -54.2
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 185.7,
+   "op": -5.6,
+   "ni": -107.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 216.2,
+   "op": 2.7,
+   "ni": -5.8
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 196.3,
+   "op": -5.6,
+   "ni": -22.2
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 199.5,
+   "op": -6.3,
+   "ni": -19.1
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 168.4,
+   "op": -15.8,
+   "ni": -29.9
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 180.5,
+   "op": -0.5,
+   "ni": -15.4
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 219.6,
+   "op": 2.6,
+   "ni": -6.0
+  }
+ ]
+}

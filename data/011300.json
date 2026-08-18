@@ -1,0 +1,183 @@
+{
+ "name": "우성머티리얼스",
+ "split_adjusted": false,
+ "legal_name": "우성머티리얼스",
+ "code": "011300",
+ "market": "",
+ "sector": "",
+ "updated": "2026-08-19",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 1957.2,
+   "op": -67.1,
+   "ni": -35.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 2031.1,
+   "op": -49.5,
+   "ni": -87.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 2201.7,
+   "op": -106.9,
+   "ni": -130.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 2168.6,
+   "op": -129.3,
+   "ni": -435.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 1280.2,
+   "op": -174.2,
+   "ni": -262.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 788.9,
+   "op": -61.1,
+   "ni": 205.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 724.6,
+   "op": -15.2,
+   "ni": -80.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 337.9,
+   "op": -93.3,
+   "ni": -429.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 254.9,
+   "op": -100.6,
+   "ni": -323.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 246.9,
+   "op": -23.3,
+   "ni": -76.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 84.8,
+   "op": -6.1,
+   "ni": -14.6
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 54.1,
+   "op": -19.2,
+   "ni": -150.8
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 50.4,
+   "op": -24.0,
+   "ni": -53.4
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 65.7,
+   "op": -51.2,
+   "ni": -104.7
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 43.4,
+   "op": 11.6,
+   "ni": -6.2
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 48.2,
+   "op": 4.2,
+   "ni": -18.8
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 80.6,
+   "op": 2.4,
+   "ni": -6.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 74.7,
+   "op": -41.5,
+   "ni": -45.7
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 26.8,
+   "op": -8.2,
+   "ni": -17.8
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 29.8,
+   "op": -4.8,
+   "ni": -15.4
+  }
+ ]
+}

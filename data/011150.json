@@ -1,0 +1,183 @@
+{
+ "name": "CJ씨푸드",
+ "split_adjusted": false,
+ "legal_name": "CJ씨푸드",
+ "code": "011150",
+ "market": "",
+ "sector": "",
+ "updated": "2026-08-19",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 1737.4,
+   "op": 58.6,
+   "ni": 53.7,
+   "dps": 0.0,
+   "payout": 0.0,
+   "yield": 0.0,
+   "dps_adj": 0.0
+  },
+  {
+   "p": 2017,
+   "rev": 1646.3,
+   "op": 65.6,
+   "ni": 45.9,
+   "dps": 0.0,
+   "payout": 0.0,
+   "yield": 0.0,
+   "dps_adj": 0.0
+  },
+  {
+   "p": 2018,
+   "rev": 1507.0,
+   "op": 41.3,
+   "ni": 21.5,
+   "dps": 0.0,
+   "payout": 0.0,
+   "yield": 0.0,
+   "dps_adj": 0.0
+  },
+  {
+   "p": 2019,
+   "rev": 1491.7,
+   "op": 37.0,
+   "ni": 18.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 1490.5,
+   "op": 39.6,
+   "ni": 21.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 1621.4,
+   "op": 45.0,
+   "ni": 22.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 1527.0,
+   "op": 41.4,
+   "ni": 74.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 1483.5,
+   "op": 41.4,
+   "ni": 44.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 1937.2,
+   "op": 43.6,
+   "ni": 50.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 1921.2,
+   "op": -9.1,
+   "ni": 28.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 525.0,
+   "op": 13.3,
+   "ni": 14.3
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 475.0,
+   "op": -1.7,
+   "ni": 0.7
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 536.2,
+   "op": 7.9,
+   "ni": 20.1
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 401.0,
+   "op": 24.1,
+   "ni": 15.1
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 525.3,
+   "op": -10.0,
+   "ni": 2.3
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 424.7,
+   "op": -14.9,
+   "ni": 3.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 494.2,
+   "op": -6.3,
+   "ni": 0.1
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 476.9,
+   "op": 22.1,
+   "ni": 22.9
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 549.5,
+   "op": -14.7,
+   "ni": -12.9
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 482.5,
+   "op": -5.8,
+   "ni": 7.4
+  }
+ ]
+}

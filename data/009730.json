@@ -1,0 +1,183 @@
+{
+ "name": "이렘",
+ "split_adjusted": false,
+ "legal_name": "이렘",
+ "code": "009730",
+ "market": "",
+ "sector": "",
+ "updated": "2026-08-19",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 539.4,
+   "op": -64.6,
+   "ni": -87.7,
+   "dps": 0.0,
+   "payout": 0.0,
+   "yield": 0.0,
+   "dps_adj": 0.0
+  },
+  {
+   "p": 2017,
+   "rev": 572.7,
+   "op": 10.3,
+   "ni": 43.3,
+   "dps": 0.0,
+   "payout": 0.0,
+   "yield": 0.0,
+   "dps_adj": 0.0
+  },
+  {
+   "p": 2018,
+   "rev": 546.9,
+   "op": -3.5,
+   "ni": -110.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 582.9,
+   "op": -37.1,
+   "ni": -567.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 376.2,
+   "op": -59.9,
+   "ni": -244.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 456.0,
+   "op": 10.5,
+   "ni": -25.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 666.1,
+   "op": 19.9,
+   "ni": 29.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 767.8,
+   "op": 9.8,
+   "ni": 1.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 1098.3,
+   "op": -47.2,
+   "ni": -149.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 919.9,
+   "op": -138.9,
+   "ni": -168.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 281.0,
+   "op": 2.4,
+   "ni": -2.2
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 266.2,
+   "op": -6.9,
+   "ni": -22.8
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 254.6,
+   "op": -9.5,
+   "ni": -20.5
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 296.6,
+   "op": -33.2,
+   "ni": -103.6
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 266.6,
+   "op": -28.9,
+   "ni": -39.3
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 230.7,
+   "op": -30.7,
+   "ni": -12.1
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 238.4,
+   "op": -28.0,
+   "ni": -36.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 184.2,
+   "op": -51.3,
+   "ni": -80.9
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 169.9,
+   "op": -23.6,
+   "ni": -30.1
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 157.5,
+   "op": -44.2,
+   "ni": -53.9
+  }
+ ]
+}

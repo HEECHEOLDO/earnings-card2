@@ -1,0 +1,183 @@
+{
+ "name": "유니켐",
+ "split_adjusted": false,
+ "legal_name": "유니켐",
+ "code": "011330",
+ "market": "",
+ "sector": "",
+ "updated": "2026-08-19",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 367.6,
+   "op": 23.1,
+   "ni": 17.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 660.5,
+   "op": 36.4,
+   "ni": 58.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 836.5,
+   "op": 131.8,
+   "ni": 117.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 1087.9,
+   "op": 179.3,
+   "ni": 161.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 1262.5,
+   "op": 153.3,
+   "ni": 111.9,
+   "dps": 50.0,
+   "payout": 30.3,
+   "yield": 3.53,
+   "dps_adj": 50.0
+  },
+  {
+   "p": 2021,
+   "rev": 1233.4,
+   "op": 95.1,
+   "ni": 35.3,
+   "dps": 30.0,
+   "payout": 61.0,
+   "yield": 2.33,
+   "dps_adj": 30.0
+  },
+  {
+   "p": 2022,
+   "rev": 1204.4,
+   "op": 32.7,
+   "ni": 13.0,
+   "dps": 20.0,
+   "payout": 111.0,
+   "yield": 1.65,
+   "dps_adj": 20.0
+  },
+  {
+   "p": 2023,
+   "rev": 1082.9,
+   "op": 47.4,
+   "ni": -62.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 682.2,
+   "op": -62.7,
+   "ni": -102.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 1062.4,
+   "op": -5.7,
+   "ni": -65.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 162.8,
+   "op": 0.4,
+   "ni": -3.1
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 182.5,
+   "op": -6.7,
+   "ni": -18.2
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 160.9,
+   "op": -21.2,
+   "ni": -21.1
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 175.9,
+   "op": -35.2,
+   "ni": -59.9
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 216.6,
+   "op": 11.9,
+   "ni": 10.9
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 308.7,
+   "op": 4.6,
+   "ni": 1.9
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 336.5,
+   "op": 4.9,
+   "ni": 3.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 200.6,
+   "op": -27.2,
+   "ni": -81.4
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 195.6,
+   "op": -12.4,
+   "ni": -27.9
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 309.6,
+   "op": -29.3,
+   "ni": -36.8
+  }
+ ]
+}

@@ -1,0 +1,183 @@
+{
+ "name": "한올바이오파마",
+ "split_adjusted": false,
+ "legal_name": "한올바이오파마",
+ "code": "009420",
+ "market": "",
+ "sector": "",
+ "updated": "2026-08-19",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 828.8,
+   "op": 2.9,
+   "ni": 20.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 842.3,
+   "op": 35.4,
+   "ni": 58.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 918.4,
+   "op": 54.7,
+   "ni": 33.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 1084.5,
+   "op": 170.9,
+   "ni": 191.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 886.0,
+   "op": 59.4,
+   "ni": 197.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 1015.9,
+   "op": 101.0,
+   "ni": 89.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 1100.0,
+   "op": 15.1,
+   "ni": 2.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 1349.1,
+   "op": 22.1,
+   "ni": 35.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 1389.4,
+   "op": 2.3,
+   "ni": -18.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 1551.8,
+   "op": -9.2,
+   "ni": -55.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 340.9,
+   "op": 1.2,
+   "ni": -3.2
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 315.9,
+   "op": -30.6,
+   "ni": -33.2
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 368.4,
+   "op": 4.3,
+   "ni": 2.2
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 364.2,
+   "op": 27.4,
+   "ni": 16.2
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 361.5,
+   "op": -3.9,
+   "ni": -2.1
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 406.8,
+   "op": 11.5,
+   "ni": 6.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 408.0,
+   "op": 3.5,
+   "ni": 3.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 375.5,
+   "op": -20.2,
+   "ni": -62.5
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 400.3,
+   "op": 8.4,
+   "ni": 2.8
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 442.8,
+   "op": 56.0,
+   "ni": -192.3
+  }
+ ]
+}

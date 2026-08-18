@@ -1,0 +1,183 @@
+{
+ "name": "KBI동양철관",
+ "split_adjusted": false,
+ "legal_name": "KBI동양철관",
+ "code": "008970",
+ "market": "",
+ "sector": "",
+ "updated": "2026-08-19",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 1293.1,
+   "op": -119.8,
+   "ni": -146.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 1471.4,
+   "op": -64.9,
+   "ni": -306.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 1620.0,
+   "op": -39.9,
+   "ni": -65.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 1634.3,
+   "op": 37.1,
+   "ni": 17.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 1738.2,
+   "op": 74.2,
+   "ni": 70.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 1820.2,
+   "op": -32.3,
+   "ni": -37.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 2661.7,
+   "op": 77.4,
+   "ni": 39.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 2783.0,
+   "op": 22.0,
+   "ni": -15.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 2503.0,
+   "op": 66.8,
+   "ni": -196.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 2347.8,
+   "op": -16.2,
+   "ni": -31.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 682.6,
+   "op": 15.6,
+   "ni": 4.5
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 654.9,
+   "op": 24.1,
+   "ni": -213.6
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 496.9,
+   "op": 15.9,
+   "ni": 10.2
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 668.5,
+   "op": 11.2,
+   "ni": 2.5
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 436.6,
+   "op": -0.3,
+   "ni": -12.1
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 548.5,
+   "op": -1.7,
+   "ni": 19.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 472.1,
+   "op": -7.2,
+   "ni": -17.1
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 890.7,
+   "op": -7.0,
+   "ni": -20.8
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 670.3,
+   "op": 41.9,
+   "ni": 17.1
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 603.0,
+   "op": -0.8,
+   "ni": -23.1
+  }
+ ]
+}

@@ -1,0 +1,183 @@
+{
+ "name": "갤럭시아에스엠",
+ "split_adjusted": false,
+ "legal_name": "갤럭시아에스엠",
+ "code": "011420",
+ "market": "",
+ "sector": "",
+ "updated": "2026-08-19",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 526.3,
+   "op": -37.1,
+   "ni": -15.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 372.8,
+   "op": -35.5,
+   "ni": -59.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 220.6,
+   "op": -103.4,
+   "ni": -160.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 287.3,
+   "op": -4.6,
+   "ni": -13.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 195.4,
+   "op": 13.8,
+   "ni": 9.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 289.0,
+   "op": 34.5,
+   "ni": 36.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 300.9,
+   "op": 41.7,
+   "ni": 46.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 329.5,
+   "op": 45.8,
+   "ni": 26.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 324.9,
+   "op": 32.3,
+   "ni": 29.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 403.4,
+   "op": 39.9,
+   "ni": 37.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 67.0,
+   "op": 3.5,
+   "ni": 3.5
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 100.4,
+   "op": 13.2,
+   "ni": 13.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 72.7,
+   "op": 5.9,
+   "ni": 4.7
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 84.8,
+   "op": 9.7,
+   "ni": 7.7
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 51.8,
+   "op": 0.1,
+   "ni": 4.7
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 104.2,
+   "op": 14.3,
+   "ni": 9.5
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 103.5,
+   "op": 10.9,
+   "ni": 9.6
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 143.9,
+   "op": 14.6,
+   "ni": 13.4
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 64.9,
+   "op": 0.7,
+   "ni": 0.7
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 110.2,
+   "op": 17.5,
+   "ni": 13.7
+  }
+ ]
+}

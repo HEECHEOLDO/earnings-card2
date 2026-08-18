@@ -1,0 +1,44 @@
+{
+ "name": "이마트에브리데이",
+ "split_adjusted": false,
+ "legal_name": "이마트에브리데이",
+ "code": "010090",
+ "market": "",
+ "sector": "",
+ "updated": "2026-08-19",
+ "annual": [
+  {
+   "p": 2023,
+   "rev": 14073.6,
+   "op": 187.6,
+   "ni": -47.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 3,
+   "rev": 10681.1,
+   "op": 163.4,
+   "ni": 24.5
+  },
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 3392.6,
+   "op": 24.2,
+   "ni": -71.8
+  },
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 3508.4,
+   "op": 36.0,
+   "ni": -7.5
+  }
+ ]
+}
