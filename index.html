@@ -117,7 +117,10 @@
   .btn-primary:hover { opacity: .9; color: #fff; }
   .meta { font-size: 12px; color: var(--text-mute); margin-bottom: 18px; }
 
-  .tabs { display: flex; gap: 6px; margin-bottom: 18px; }
+  .tabs { display: flex; gap: 6px; margin-bottom: 18px; align-items: center; flex-wrap: wrap; }
+  .range-pick { display: flex; align-items: center; gap: 7px; margin-left: auto; }
+  .range-pick label { font-size: 12px; color: var(--text-mute); }
+  .range-pick select { height: 34px; font-size: 13px; padding: 0 8px; }
   .tab {
     font-size: 13px; font-weight: 600; padding: 8px 16px; cursor: pointer;
     border-radius: var(--radius); border: 1px solid var(--border-strong);
@@ -207,6 +210,10 @@
     <button class="tab" role="tab" data-period="annual" aria-selected="true">최근 10년</button>
     <button class="tab" role="tab" data-period="quarterly" aria-selected="false">최근 10분기</button>
     <button class="tab" role="tab" data-period="dividend" aria-selected="false">배당금</button>
+    <div class="range-pick">
+      <label for="range-n">구간</label>
+      <select id="range-n"></select>
+    </div>
   </div>
 
   <div class="metrics" id="metrics"></div>
@@ -252,16 +259,6 @@
         <span class="hint">매출은 밝게, 영업이익은 어둡게 두 톤이 자동으로 만들어집니다.</span>
       </div>
 
-      <div class="ctl-row">
-        <label class="check"><input type="checkbox" id="chk-guide"> 안전영역 표시</label>
-        <label class="check"><input type="checkbox" id="chk-source" checked> DART 출처 표기</label>
-      </div>
-
-      <div class="ctl-row">
-        <label for="handle">서명</label>
-        <input type="text" id="handle" value="@돈굴돈굴" style="max-width:180px">
-      </div>
-
       <div class="divider"></div>
       <h3 class="sec">이미지 얹기</h3>
       <div class="ctl-row">
@@ -284,6 +281,21 @@
         <button class="btn btn-sm" id="ov-front" type="button">맨 앞으로</button>
         <button class="btn btn-sm" id="ov-back" type="button">맨 뒤로</button>
         <button class="btn btn-sm btn-danger" id="ov-delete" type="button">삭제</button>
+      </div>
+
+      <div class="divider"></div>
+      <div class="ctl-row">
+        <label class="check"><input type="checkbox" id="chk-line" checked> <span id="chk-line-label">주당배당금 선 표시</span></label>
+      </div>
+
+      <div class="ctl-row">
+        <label class="check"><input type="checkbox" id="chk-guide"> 안전영역 표시</label>
+        <label class="check"><input type="checkbox" id="chk-source" checked> DART 출처 표기</label>
+      </div>
+
+      <div class="ctl-row">
+        <label for="handle">서명</label>
+        <input type="text" id="handle" value="@돈굴돈굴" style="max-width:180px">
       </div>
 
       <div class="divider"></div>
@@ -333,7 +345,10 @@
         chipsToRule: 26, ruleToText: 18, chipGap: 18
       },
       chip: { padX: 28, padTop: 30, labelToValue: 26, padBottom: 30 },
-      chartMinH: 360
+      chartMinH: 360,
+      barMaxGroup: 200,      // 구간이 적을 때 막대가 지나치게 굵어지는 것을 막는다
+      valueLabelMax: 6,      // 구간이 이 이하이면 막대 위에 값을 적는다
+      valueLabel: 30
     }
   };
 
@@ -354,8 +369,8 @@
     }
   };
 
-  function cardTitle(period, rows, spec) {
-    var withDiv = spec && spec.line && spec.line.label === '주당배당금';
+  function cardTitle(period, rows, spec, showLine) {
+    var withDiv = showLine !== false && spec && spec.line && spec.line.label === '주당배당금';
     return LABELS[period].suffix(rows.length, withDiv);
   }
 
@@ -528,11 +543,12 @@
   /* ============================================================
      정규화 모델 — 카드와 대시보드가 동일하게 소비하는 형태
      ============================================================ */
-  function buildSeries(company, period) {
+  function buildSeries(company, period, count) {
     function num(v) { return (v === null || v === undefined || isNaN(v)) ? 0 : v; }
 
     if (period === 'quarterly') {
-      return company.quarterly.map(function (d, i) {
+      var qs = company.quarterly.slice(-(count || company.quarterly.length));
+      return qs.map(function (d, i) {
         var showYear = (i === 0 || d.q === 1);
         return {
           label: d.y + '.' + d.q + 'Q', short: d.q + 'Q',
@@ -559,11 +575,20 @@
       while (first < rows.length && rows[first].dps <= 0) first++;
       rows = rows.slice(first);
       rows.forEach(function (r) { r.bar1 = r.dps; r.line = r.payout; });
-      return rows;
+      return rows.slice(-(count || rows.length));
     }
 
     rows.forEach(function (r) { r.bar1 = r.rev; r.bar2 = r.op; r.line = r.dps; });
-    return rows;
+    return rows.slice(-(count || rows.length));
+  }
+
+  function maxCount(company, period) {
+    if (period === 'quarterly') return (company.quarterly || []).length;
+    var a = company.annual || [];
+    if (period !== 'dividend') return a.length;
+    var first = 0;
+    while (first < a.length && !(a[first].dps > 0)) first++;
+    return a.length - first;
   }
 
   function seriesSpec(period, rows) {
@@ -576,6 +601,9 @@
         bars: [{ key: 'bar1', label: '주당배당금', color: 'bar2' }],
         line: { key: 'line', label: '배당성향', fmt: pct, chipFmt: pct },
         barUnit: 'won', unitNote: '배당 원',
+        altChip: function (last) {
+          return { l: '순이익', v: Math.round(last.ni).toLocaleString('ko-KR') + '억', c: 'ink' };
+        },
         chips: function (last, unit, rows) {
           var prev = rows && rows.length > 1 ? rows[rows.length - 2].dps : 0;
           var yoy = prev > 0 ? (last.dps / prev - 1) * 100 : null;
@@ -595,6 +623,10 @@
                { key: 'bar2', label: '영업이익', color: 'bar2' }],
         line: { key: 'line', label: '영업이익률', fmt: pct, chipFmt: pct },
         barUnit: 'auto', unitNote: null,
+        altChip: function (last) {
+          // 선을 꺼도 영업이익률 값은 그대로 보여준다 (색만 막대색으로)
+          return { l: '영업이익률', v: pct(last.line), c: 'bar2' };
+        },
         chips: function (last, unit) {
           return [
             { l: '매출', v: fmtChip(last.bar1, unit), c: 'ink' },
@@ -615,6 +647,9 @@
         bars: bars,
         line: { key: 'margin', label: '영업이익률', fmt: pct, chipFmt: pct },
         barUnit: 'auto', unitNote: null,
+        altChip: function (last, unit) {
+          return { l: '순이익', v: fmtChip(last.ni, unit), c: 'ink' };
+        },
         chips: function (last, unit) {
           return [
             { l: '매출', v: fmtChip(last.bar1, unit), c: 'ink' },
@@ -630,6 +665,9 @@
       line: { key: 'line', label: '주당배당금', fmt: won,
               chipFmt: function (v) { return won(v) + '원'; } },
       barUnit: 'auto', unitNote: '배당 원',
+      altChip: function (last) {
+        return { l: '영업이익률', v: pct(last.margin), c: 'bar2' };
+      },
       chips: function (last, unit) {
         return [
           { l: '매출', v: fmtChip(last.bar1, unit), c: 'ink' },
@@ -785,7 +823,7 @@
     ctx.restore();
   }
 
-  function drawCardChart(ctx, ox, oy, W, H, rows, colors, unit, spec) {
+  function drawCardChart(ctx, ox, oy, W, H, rows, colors, unit, spec, showLine) {
     var T = TOKENS.card;
     var padT = 10, padB = 62;
     var barDefs = spec.bars, nBars = barDefs.length;
@@ -801,14 +839,19 @@
     ctx.font = font(600, T.type.tick);
     var lw = 0, rw = 0;
     A.ticks.forEach(function (t) { lw = Math.max(lw, ctx.measureText(fmtAmount(t, unit)).width); });
-    B.ticks.forEach(function (t) { rw = Math.max(rw, ctx.measureText(spec.line.fmt(t)).width); });
-    var padL = Math.ceil(lw) + 16, padR = Math.ceil(rw) + 16;
+    if (showLine) {
+      B.ticks.forEach(function (t) { rw = Math.max(rw, ctx.measureText(spec.line.fmt(t)).width); });
+    }
+    var padL = Math.ceil(lw) + 16, padR = showLine ? Math.ceil(rw) + 16 : 12;
 
     var plotL = ox + padL, plotR = ox + W - padR;
     var plotT = oy + padT, plotB = oy + H - padB;
     var plotW = plotR - plotL, plotH = plotB - plotT;
     var n = rows.length, slot = plotW / n;
-    var gw = slot * (nBars === 1 ? 0.46 : 0.62), bw = gw / nBars;
+    var gw = Math.min(slot * (nBars === 1 ? 0.46 : 0.62),
+                      T.barMaxGroup * (nBars === 1 ? 0.55 : 1));
+    var bw = gw / nBars;
+    var showVals = n <= T.valueLabelMax;
 
     function yA(v) { return plotB - ((v - A.min) / (A.max - A.min)) * plotH; }
     function yB(v) { return plotB - ((v - B.min) / (B.max - B.min)) * plotH; }
@@ -829,8 +872,10 @@
     ctx.textBaseline = 'middle';
     ctx.textAlign = 'right';
     A.ticks.forEach(function (t) { ctx.fillText(fmtAmount(t, unit), plotL - 10, yA(t)); });
-    ctx.textAlign = 'left';
-    B.ticks.forEach(function (t) { ctx.fillText(spec.line.fmt(t), plotR + 10, yB(t)); });
+    if (showLine) {
+      ctx.textAlign = 'left';
+      B.ticks.forEach(function (t) { ctx.fillText(spec.line.fmt(t), plotR + 10, yB(t)); });
+    }
     ctx.restore();
     ctx.textBaseline = 'alphabetic';
 
@@ -846,23 +891,42 @@
       });
     });
 
-    ctx.save();
-    ctx.strokeStyle = colors.line; ctx.lineWidth = 5;
-    ctx.lineJoin = 'round'; ctx.lineCap = 'round';
-    ctx.beginPath();
-    rows.forEach(function (r, i) {
-      var cx = plotL + slot * i + slot / 2;
-      if (i === 0) ctx.moveTo(cx, yB(r[lineKey])); else ctx.lineTo(cx, yB(r[lineKey]));
-    });
-    ctx.stroke();
-    rows.forEach(function (r, i) {
-      var cx = plotL + slot * i + slot / 2;
-      ctx.fillStyle = colors.line;
+    // 구간이 적으면 막대 위에 값을 적는다
+    if (showVals) {
+      ctx.textAlign = 'center';
+      ctx.font = font(800, T.type.valueLabel);
+      rows.forEach(function (r, i) {
+        var gx = plotL + slot * i + (slot - gw) / 2;
+        barDefs.forEach(function (b, j) {
+          var v = r[b.key] || 0, y = yA(v);
+          var cx = gx + bw * j + (bw - (nBars === 1 ? 0 : 4)) / 2;
+          ctx.fillStyle = colors[b.color];
+          if (v >= 0) ctx.fillText(fmtAmount(v, unit), cx, y - 12);
+          else ctx.fillText(fmtAmount(v, unit), cx, y + 12 + T.type.valueLabel * 0.82);
+        });
+      });
+      ctx.textAlign = 'left';
+    }
+
+    if (showLine) {
+      ctx.save();
+      ctx.strokeStyle = colors.line; ctx.lineWidth = 5;
+      ctx.lineJoin = 'round'; ctx.lineCap = 'round';
       ctx.beginPath();
-      ctx.arc(cx, yB(r[lineKey]), i === rows.length - 1 ? 9 : 6, 0, Math.PI * 2);
-      ctx.fill();
-    });
-    ctx.restore();
+      rows.forEach(function (r, i) {
+        var cx = plotL + slot * i + slot / 2;
+        if (i === 0) ctx.moveTo(cx, yB(r[lineKey])); else ctx.lineTo(cx, yB(r[lineKey]));
+      });
+      ctx.stroke();
+      rows.forEach(function (r, i) {
+        var cx = plotL + slot * i + slot / 2;
+        ctx.fillStyle = colors.line;
+        ctx.beginPath();
+        ctx.arc(cx, yB(r[lineKey]), i === rows.length - 1 ? 9 : 6, 0, Math.PI * 2);
+        ctx.fill();
+      });
+      ctx.restore();
+    }
 
     ctx.beginPath();
     ctx.strokeStyle = T.axis; ctx.lineWidth = 3;
@@ -909,9 +973,11 @@
     ctx.textBaseline = 'alphabetic';
     ctx.textAlign = 'left';
 
+    var showLine = state.showLine[state.period] !== false;
+
     /* 헤드라인 — 두 줄 모두 900/먹색, 회사명만 크게 */
     var line1 = state.company.name;
-    var line2 = cardTitle(state.period, rows, spec);
+    var line2 = cardTitle(state.period, rows, spec, showLine);
 
     var canTrack = 'letterSpacing' in ctx;
     if (canTrack) ctx.letterSpacing = T.type.nameTrack;
@@ -936,7 +1002,7 @@
     ctx.font = font(700, T.type.legend);
     var lx = CX, sw = 26;
     var legendItems = spec.bars.map(function (b) { return [colors[b.color], b.label]; });
-    legendItems.push([colors.line, spec.line.label]);
+    if (showLine) legendItems.push([colors.line, spec.line.label]);
     legendItems.forEach(function (it) {
       ctx.fillStyle = it[0];
       roundRect(ctx, lx, legendY - sw + 5, sw, sw, 5);
@@ -952,7 +1018,7 @@
     var adj = state.company.split_adjusted;
     var unitText = state.period === 'dividend'
       ? '보통주 · 원' + (adj ? ' · 액면분할 반영' : '')
-      : '연결 · ' + unit + (spec.unitNote ? ' · ' + spec.unitNote : '');
+      : '연결 · ' + unit + (showLine && spec.unitNote ? ' · ' + spec.unitNote : '');
     ctx.fillText(unitText, CX + CWID, legendY - 2);
     ctx.textAlign = 'left';
 
@@ -971,7 +1037,7 @@
     );
 
     /* 차트 */
-    drawCardChart(ctx, CX, chartTop, CWID, chartH, rows, colors, unit, spec);
+    drawCardChart(ctx, CX, chartTop, CWID, chartH, rows, colors, unit, spec, showLine);
 
     /* 기준 라벨 */
     ctx.font = font(700, T.type.basis);
@@ -980,7 +1046,9 @@
 
     /* 요약 3칸 */
     var palette = { ink: T.ink, bar1: colors.bar1, bar2: colors.bar2, line: colors.line };
-    var chips = spec.chips(last, unit, rows).map(function (c) {
+    var chipDefs = spec.chips(last, unit, rows);
+    if (!showLine && spec.altChip) chipDefs[2] = spec.altChip(last, unit);
+    var chips = chipDefs.map(function (c) {
       return { l: c.l, v: c.v, c: palette[c.c] || T.ink };
     });
     var gap = T.gap.chipGap, cw = (CWID - gap * 2) / 3;
@@ -1198,6 +1266,8 @@
   var state = {
     company: MOCK['005930'],
     period: 'annual',
+    counts: { annual: 10, quarterly: 10, dividend: 10 },
+    showLine: { annual: true, quarterly: true, dividend: true },
     rows: null, spec: null, colors: null,
     guide: false, showSource: true,
     handle: '@돈굴돈굴'
@@ -1380,8 +1450,34 @@
       .catch(function () {});
   }
 
+  function fillRangeOptions() {
+    var sel = document.getElementById('range-n');
+    var max = maxCount(state.company, state.period);
+    var unitTxt = state.period === 'quarterly' ? '분기' : '년';
+    var cur = Math.min(state.counts[state.period] || max, max);
+    if (cur < 2) cur = Math.min(2, max);
+    state.counts[state.period] = cur;
+
+    var html = '';
+    for (var i = max; i >= 2; i--) {
+      html += '<option value="' + i + '"' + (i === cur ? ' selected' : '') + '>' +
+              i + unitTxt + '</option>';
+    }
+    sel.innerHTML = html || '<option value="1">1' + unitTxt + '</option>';
+    sel.disabled = max < 2;
+  }
+
+  function syncLineToggle() {
+    var box = document.getElementById('chk-line');
+    var lab = document.getElementById('chk-line-label');
+    var name = (state.spec && state.spec.line && state.spec.line.label) || '보조 지표';
+    lab.textContent = name + ' 선 표시';
+    box.checked = state.showLine[state.period] !== false;
+  }
+
   function refresh() {
-    state.rows = buildSeries(state.company, state.period);
+    fillRangeOptions();
+    state.rows = buildSeries(state.company, state.period, state.counts[state.period]);
 
     if (!state.rows.length) {
       // 배당 이력이 없는 회사에서 배당 탭을 누른 경우
@@ -1412,6 +1508,7 @@
       state.period === 'annual' ? '주당배당금 · 배당성향'
       : state.period === 'dividend' ? '배당성향' : '영업이익률';
 
+    syncLineToggle();
     renderMetrics(state.company, state.period, state.rows);
     renderCharts(state.rows, state.spec, state.period, unit, state.colors);
     renderTable(state.rows, state.spec, state.period, unit);
@@ -1424,7 +1521,7 @@
     drawCard(ctx, state);
     drawSelection(ctx);
     document.getElementById('card-caption').textContent =
-      '1080 × 1350 · ' + state.company.name + ' ' + cardTitle(state.period, state.rows, state.spec);
+      '1080 × 1350 · ' + state.company.name + ' ' + cardTitle(state.period, state.rows, state.spec, state.showLine[state.period]);
   }
 
   /* 이벤트 */
@@ -1527,8 +1624,17 @@
     btn.addEventListener('click', function () { setPeriod(btn.dataset.period); });
   });
 
+  document.getElementById('range-n').addEventListener('change', function () {
+    state.counts[state.period] = parseInt(this.value, 10);
+    refresh();
+  });
+
   document.getElementById('color-base').addEventListener('input', function () {
     refresh();
+  });
+  document.getElementById('chk-line').addEventListener('change', function () {
+    state.showLine[state.period] = this.checked;
+    drawPreview();
   });
   document.getElementById('chk-guide').addEventListener('change', function () {
     state.guide = this.checked; drawPreview();
