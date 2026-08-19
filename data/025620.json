@@ -1,0 +1,183 @@
+{
+ "name": "차AI헬스케어",
+ "split_adjusted": false,
+ "legal_name": "차AI헬스케어",
+ "code": "025620",
+ "market": "",
+ "sector": "",
+ "updated": "2026-08-20",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 834.2,
+   "op": 133.4,
+   "ni": 125.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 1297.1,
+   "op": 223.0,
+   "ni": 274.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 1320.2,
+   "op": 71.4,
+   "ni": -14.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 526.2,
+   "op": -520.1,
+   "ni": -892.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 305.2,
+   "op": -122.6,
+   "ni": -220.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 205.3,
+   "op": -172.8,
+   "ni": -398.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 62.5,
+   "op": -106.7,
+   "ni": -217.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 170.3,
+   "op": -101.9,
+   "ni": -68.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 156.8,
+   "op": -54.5,
+   "ni": -94.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 73.1,
+   "op": -74.6,
+   "ni": 13.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 59.9,
+   "op": -12.7,
+   "ni": -4.1
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 54.4,
+   "op": 2.1,
+   "ni": -11.4
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 17.6,
+   "op": -24.5,
+   "ni": -41.7
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 25.0,
+   "op": -19.3,
+   "ni": -37.7
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 17.5,
+   "op": -19.0,
+   "ni": -23.6
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 19.7,
+   "op": -14.2,
+   "ni": 13.4
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 16.3,
+   "op": -21.3,
+   "ni": -21.8
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 19.6,
+   "op": -20.1,
+   "ni": 45.6
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 19.4,
+   "op": -23.7,
+   "ni": -46.3
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 29.1,
+   "op": -11.3,
+   "ni": 104.0
+  }
+ ]
+}

@@ -1,0 +1,183 @@
+{
+ "name": "키다리스튜디오",
+ "split_adjusted": false,
+ "legal_name": "키다리스튜디오",
+ "code": "020120",
+ "market": "",
+ "sector": "",
+ "updated": "2026-08-20",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 252.5,
+   "op": 2.3,
+   "ni": -62.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 142.9,
+   "op": -5.0,
+   "ni": -22.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 196.2,
+   "op": 2.7,
+   "ni": 1.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 267.4,
+   "op": 7.0,
+   "ni": 22.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 455.1,
+   "op": 45.9,
+   "ni": 0.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 1191.2,
+   "op": 69.2,
+   "ni": 35.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 1694.3,
+   "op": 42.6,
+   "ni": -25.4,
+   "dps": 50.0,
+   "payout": null,
+   "yield": 0.6,
+   "dps_adj": 50.0
+  },
+  {
+   "p": 2023,
+   "rev": 1710.4,
+   "op": -57.4,
+   "ni": -356.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 2052.1,
+   "op": 21.9,
+   "ni": -72.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 2174.8,
+   "op": 123.8,
+   "ni": 65.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 493.6,
+   "op": 5.1,
+   "ni": -7.1
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 497.7,
+   "op": 7.3,
+   "ni": -12.8
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 502.7,
+   "op": 5.4,
+   "ni": -0.6
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 558.1,
+   "op": 4.1,
+   "ni": -51.7
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 482.5,
+   "op": 5.1,
+   "ni": 20.4
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 517.7,
+   "op": 18.8,
+   "ni": 5.2
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 527.5,
+   "op": 35.6,
+   "ni": 31.4
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 647.1,
+   "op": 64.3,
+   "ni": 8.1
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 583.5,
+   "op": 34.4,
+   "ni": 63.5
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 644.3,
+   "op": 55.2,
+   "ni": 20.3
+  }
+ ]
+}

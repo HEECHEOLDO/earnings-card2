@@ -1,0 +1,183 @@
+{
+ "name": "시노펙스",
+ "split_adjusted": false,
+ "legal_name": "시노펙스",
+ "code": "025320",
+ "market": "",
+ "sector": "",
+ "updated": "2026-08-20",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 1550.2,
+   "op": 107.1,
+   "ni": -42.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 1811.9,
+   "op": 248.6,
+   "ni": -137.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 1654.0,
+   "op": 33.7,
+   "ni": 5.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 2170.6,
+   "op": 166.7,
+   "ni": 61.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 2154.9,
+   "op": -46.7,
+   "ni": -89.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 2315.1,
+   "op": 52.1,
+   "ni": 99.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 2447.7,
+   "op": 128.6,
+   "ni": 83.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 2621.7,
+   "op": 241.8,
+   "ni": 145.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 2383.4,
+   "op": 212.3,
+   "ni": 280.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 2615.4,
+   "op": 67.6,
+   "ni": 71.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 711.7,
+   "op": 81.0,
+   "ni": 78.1
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 557.6,
+   "op": 37.2,
+   "ni": 58.3
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 596.9,
+   "op": 39.1,
+   "ni": 14.4
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 517.3,
+   "op": 55.0,
+   "ni": 129.2
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 672.5,
+   "op": 67.8,
+   "ni": 57.1
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 676.5,
+   "op": 56.6,
+   "ni": 27.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 708.0,
+   "op": 8.3,
+   "ni": 61.7
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 558.3,
+   "op": -65.1,
+   "ni": -74.2
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 572.3,
+   "op": 13.2,
+   "ni": 29.6
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 538.1,
+   "op": -19.0,
+   "ni": -20.2
+  }
+ ]
+}

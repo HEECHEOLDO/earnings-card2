@@ -1,0 +1,183 @@
+{
+ "name": "명문제약",
+ "split_adjusted": false,
+ "legal_name": "명문제약",
+ "code": "017180",
+ "market": "",
+ "sector": "",
+ "updated": "2026-08-20",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 1421.8,
+   "op": 100.6,
+   "ni": 64.7,
+   "dps": 50.0,
+   "payout": 17.8,
+   "yield": 0.9,
+   "dps_adj": 50.0
+  },
+  {
+   "p": 2017,
+   "rev": 1401.4,
+   "op": 74.7,
+   "ni": 81.3,
+   "dps": null,
+   "payout": 29.4,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 1475.0,
+   "op": 49.4,
+   "ni": 3.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 1493.5,
+   "op": -142.9,
+   "ni": -208.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 1278.5,
+   "op": -289.6,
+   "ni": -277.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 1377.6,
+   "op": -58.8,
+   "ni": -68.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 1521.3,
+   "op": 64.3,
+   "ni": 79.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 1695.7,
+   "op": 9.6,
+   "ni": -48.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 1864.4,
+   "op": 19.3,
+   "ni": -37.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 1952.5,
+   "op": 68.3,
+   "ni": 14.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 442.3,
+   "op": -9.4,
+   "ni": -14.1
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 460.8,
+   "op": -6.7,
+   "ni": -16.6
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 469.8,
+   "op": 9.0,
+   "ni": -9.2
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 491.5,
+   "op": 26.4,
+   "ni": 2.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 458.7,
+   "op": -9.1,
+   "ni": -21.7
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 487.6,
+   "op": 56.8,
+   "ni": 34.3
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 498.6,
+   "op": 4.5,
+   "ni": -6.7
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 507.5,
+   "op": 16.1,
+   "ni": 8.3
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 480.0,
+   "op": 2.9,
+   "ni": -10.4
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 512.1,
+   "op": -8.4,
+   "ni": -16.9
+  }
+ ]
+}

@@ -1,0 +1,183 @@
+{
+ "name": "KBI메탈",
+ "split_adjusted": false,
+ "legal_name": "KBI메탈",
+ "code": "024840",
+ "market": "",
+ "sector": "",
+ "updated": "2026-08-20",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 3583.5,
+   "op": 91.3,
+   "ni": 31.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 4711.5,
+   "op": 174.2,
+   "ni": 61.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 4637.6,
+   "op": 52.9,
+   "ni": 44.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 4947.9,
+   "op": 103.2,
+   "ni": 68.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 4922.1,
+   "op": 107.8,
+   "ni": 23.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 6830.2,
+   "op": 135.2,
+   "ni": -7.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 7104.8,
+   "op": 53.6,
+   "ni": 23.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 6850.4,
+   "op": 78.2,
+   "ni": 6.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 7026.9,
+   "op": 175.0,
+   "ni": 16.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 7585.7,
+   "op": 243.4,
+   "ni": 13.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 1839.3,
+   "op": 42.7,
+   "ni": -7.9
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 1820.5,
+   "op": 132.7,
+   "ni": 27.5
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 1655.3,
+   "op": -35.8,
+   "ni": -1.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 1711.8,
+   "op": 35.4,
+   "ni": -2.1
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 1843.8,
+   "op": 51.4,
+   "ni": -0.9
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 2012.4,
+   "op": -19.9,
+   "ni": 8.2
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 1966.3,
+   "op": 31.5,
+   "ni": -43.3
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 1763.1,
+   "op": 180.5,
+   "ni": 49.7
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 2106.0,
+   "op": 155.3,
+   "ni": 84.6
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 2798.5,
+   "op": 128.7,
+   "ni": 113.1
+  }
+ ]
+}

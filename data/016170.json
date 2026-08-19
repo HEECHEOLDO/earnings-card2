@@ -1,0 +1,32 @@
+{
+ "name": "카카오엠",
+ "split_adjusted": false,
+ "legal_name": "카카오엠",
+ "code": "016170",
+ "market": "",
+ "sector": "",
+ "updated": "2026-08-20",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 4506.5,
+   "op": 799.1,
+   "ni": 621.4,
+   "dps": 1004.0,
+   "payout": 40.5,
+   "yield": 1.4,
+   "dps_adj": 1004.0
+  },
+  {
+   "p": 2017,
+   "rev": 5803.3,
+   "op": 1027.4,
+   "ni": 676.9,
+   "dps": 573.0,
+   "payout": 21.4,
+   "yield": 0.5,
+   "dps_adj": 573.0
+  }
+ ],
+ "quarterly": []
+}

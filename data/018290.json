@@ -1,0 +1,183 @@
+{
+ "name": "브이티",
+ "split_adjusted": false,
+ "legal_name": "브이티",
+ "code": "018290",
+ "market": "",
+ "sector": "",
+ "updated": "2026-08-20",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 411.4,
+   "op": -86.9,
+   "ni": -145.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 698.6,
+   "op": -66.8,
+   "ni": -130.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 1094.7,
+   "op": 134.0,
+   "ni": 107.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 1127.6,
+   "op": 102.6,
+   "ni": 34.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 1074.0,
+   "op": 54.6,
+   "ni": -13.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 2267.7,
+   "op": 263.9,
+   "ni": 175.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 2402.4,
+   "op": 235.5,
+   "ni": 132.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 2955.0,
+   "op": 455.5,
+   "ni": 316.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 4317.0,
+   "op": 1109.0,
+   "ni": 1040.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 4371.8,
+   "op": 828.7,
+   "ni": 642.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 1018.0,
+   "op": 239.6,
+   "ni": 183.6
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 1133.5,
+   "op": 270.2,
+   "ni": 160.7
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 1041.4,
+   "op": 308.3,
+   "ni": 332.5
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 1124.0,
+   "op": 290.8,
+   "ni": 363.1
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 1004.5,
+   "op": 290.2,
+   "ni": 233.4
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 1115.2,
+   "op": 290.7,
+   "ni": 212.7
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 1102.2,
+   "op": 121.2,
+   "ni": 88.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 1149.9,
+   "op": 126.6,
+   "ni": 108.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 1142.9,
+   "op": 173.3,
+   "ni": 184.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 1316.7,
+   "op": 106.8,
+   "ni": 32.2
+  }
+ ]
+}

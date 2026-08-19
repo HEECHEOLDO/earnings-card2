@@ -1,0 +1,183 @@
+{
+ "name": "원익큐브",
+ "split_adjusted": false,
+ "legal_name": "원익큐브",
+ "code": "014190",
+ "market": "",
+ "sector": "",
+ "updated": "2026-08-20",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 2077.1,
+   "op": 25.2,
+   "ni": 19.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 2401.7,
+   "op": 33.5,
+   "ni": 15.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 2318.1,
+   "op": -15.2,
+   "ni": -37.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 2038.8,
+   "op": -18.4,
+   "ni": 38.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 1954.2,
+   "op": 34.0,
+   "ni": 30.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 2583.8,
+   "op": 139.7,
+   "ni": 105.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 2459.8,
+   "op": 42.5,
+   "ni": 43.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 2443.8,
+   "op": 56.0,
+   "ni": 49.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 2868.1,
+   "op": 35.6,
+   "ni": 26.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 2847.6,
+   "op": 33.1,
+   "ni": 28.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 622.9,
+   "op": 12.5,
+   "ni": 11.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 780.6,
+   "op": 15.8,
+   "ni": 12.3
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 726.6,
+   "op": 9.0,
+   "ni": 10.5
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 737.9,
+   "op": -1.6,
+   "ni": -7.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 730.8,
+   "op": 6.4,
+   "ni": 6.2
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 789.5,
+   "op": 26.9,
+   "ni": 23.2
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 687.5,
+   "op": 10.7,
+   "ni": 8.1
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 639.8,
+   "op": -10.8,
+   "ni": -9.5
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 714.5,
+   "op": 25.3,
+   "ni": 17.7
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 784.8,
+   "op": 62.4,
+   "ni": 49.3
+  }
+ ]
+}

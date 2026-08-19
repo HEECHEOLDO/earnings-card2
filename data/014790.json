@@ -1,0 +1,183 @@
+{
+ "name": "HL D&I",
+ "split_adjusted": false,
+ "legal_name": "HL D&I",
+ "code": "014790",
+ "market": "",
+ "sector": "",
+ "updated": "2026-08-20",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 18318.2,
+   "op": 955.2,
+   "ni": 101.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 19206.1,
+   "op": 1572.3,
+   "ni": 466.1,
+   "dps": 100.0,
+   "payout": 84.11,
+   "yield": 2.55,
+   "dps_adj": 100.0
+  },
+  {
+   "p": 2018,
+   "rev": 13210.0,
+   "op": 601.6,
+   "ni": -120.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 13048.9,
+   "op": 676.9,
+   "ni": 27.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 15653.2,
+   "op": 966.6,
+   "ni": 1099.0,
+   "dps": 100.0,
+   "payout": 25.9,
+   "yield": 2.1,
+   "dps_adj": 100.0
+  },
+  {
+   "p": 2021,
+   "rev": 14753.0,
+   "op": 785.9,
+   "ni": 999.3,
+   "dps": null,
+   "payout": 9.17,
+   "yield": 1.9,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 14720.9,
+   "op": 526.2,
+   "ni": 251.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 15719.8,
+   "op": 506.6,
+   "ni": 306.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 15788.3,
+   "op": 578.9,
+   "ni": 214.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 17419.2,
+   "op": 797.9,
+   "ni": 151.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 3985.2,
+   "op": 183.3,
+   "ni": 119.1
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 3932.9,
+   "op": 111.7,
+   "ni": 55.3
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 3532.4,
+   "op": 132.4,
+   "ni": 54.2
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 4337.7,
+   "op": 151.5,
+   "ni": -14.6
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 3249.0,
+   "op": 141.7,
+   "ni": 33.7
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 4068.6,
+   "op": 197.7,
+   "ni": 88.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 4769.3,
+   "op": 255.2,
+   "ni": 28.8
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 5332.4,
+   "op": 203.3,
+   "ni": 1.4
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 3846.2,
+   "op": 189.8,
+   "ni": 65.5
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 4455.9,
+   "op": 265.2,
+   "ni": 105.5
+  }
+ ]
+}

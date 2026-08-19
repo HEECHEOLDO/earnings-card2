@@ -1,0 +1,183 @@
+{
+ "name": "모베이스전자",
+ "split_adjusted": false,
+ "legal_name": "모베이스전자",
+ "code": "012860",
+ "market": "",
+ "sector": "",
+ "updated": "2026-08-20",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 7311.7,
+   "op": 162.2,
+   "ni": 173.8,
+   "dps": null,
+   "payout": 8.4,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 7102.4,
+   "op": -142.6,
+   "ni": -435.6,
+   "dps": null,
+   "payout": -2.0,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 7179.9,
+   "op": 16.7,
+   "ni": -169.1,
+   "dps": null,
+   "payout": -3.9,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 7716.8,
+   "op": 108.7,
+   "ni": -99.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 7885.1,
+   "op": -6.1,
+   "ni": -169.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 7645.7,
+   "op": 155.4,
+   "ni": 55.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 9222.1,
+   "op": 439.1,
+   "ni": 68.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 9393.5,
+   "op": 277.5,
+   "ni": 77.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 9715.5,
+   "op": 343.9,
+   "ni": 168.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 10440.9,
+   "op": 367.9,
+   "ni": 207.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 2224.6,
+   "op": 79.0,
+   "ni": 76.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 2468.8,
+   "op": 132.5,
+   "ni": 62.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 2242.5,
+   "op": 67.1,
+   "ni": -20.7
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 2779.6,
+   "op": 65.3,
+   "ni": 51.7
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 2643.8,
+   "op": 80.8,
+   "ni": 54.8
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 2631.1,
+   "op": 93.8,
+   "ni": -12.6
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 2366.9,
+   "op": 95.3,
+   "ni": 84.2
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 2799.1,
+   "op": 98.0,
+   "ni": 81.6
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 2653.2,
+   "op": 74.2,
+   "ni": 60.1
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 2627.9,
+   "op": 28.4,
+   "ni": 20.6
+  }
+ ]
+}

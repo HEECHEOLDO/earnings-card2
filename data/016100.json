@@ -1,0 +1,183 @@
+{
+ "name": "리더스코스메틱",
+ "split_adjusted": false,
+ "legal_name": "리더스코스메틱",
+ "code": "016100",
+ "market": "",
+ "sector": "",
+ "updated": "2026-08-20",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 1813.1,
+   "op": 194.4,
+   "ni": 77.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 1399.3,
+   "op": -2.6,
+   "ni": -79.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 1391.9,
+   "op": -136.3,
+   "ni": -137.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 956.4,
+   "op": -278.2,
+   "ni": -577.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 937.2,
+   "op": -116.8,
+   "ni": 170.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 874.3,
+   "op": -41.9,
+   "ni": -39.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 866.6,
+   "op": 5.0,
+   "ni": -7.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 692.8,
+   "op": -43.1,
+   "ni": 1.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 735.0,
+   "op": -29.0,
+   "ni": -32.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 683.1,
+   "op": -70.9,
+   "ni": -82.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 181.2,
+   "op": -3.4,
+   "ni": -5.4
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 189.6,
+   "op": -0.1,
+   "ni": 5.5
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 178.0,
+   "op": -8.6,
+   "ni": -9.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 186.2,
+   "op": -16.9,
+   "ni": -23.6
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 183.6,
+   "op": -18.8,
+   "ni": -19.9
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 195.1,
+   "op": -5.2,
+   "ni": -7.2
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 188.6,
+   "op": -16.1,
+   "ni": -16.7
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 115.9,
+   "op": -30.8,
+   "ni": -39.1
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 172.5,
+   "op": -23.3,
+   "ni": -19.6
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 205.6,
+   "op": -14.6,
+   "ni": -16.5
+  }
+ ]
+}

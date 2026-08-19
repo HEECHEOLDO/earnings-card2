@@ -1,0 +1,183 @@
+{
+ "name": "아시아나항공",
+ "split_adjusted": false,
+ "legal_name": "아시아나항공",
+ "code": "020560",
+ "market": "",
+ "sector": "",
+ "updated": "2026-08-20",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 57635.5,
+   "op": 2564.8,
+   "ni": 525.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 62270.6,
+   "op": 2758.6,
+   "ni": 2479.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 71833.9,
+   "op": 282.3,
+   "ni": -1958.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 69657.9,
+   "op": -4437.1,
+   "ni": -8178.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 38953.1,
+   "op": -2763.6,
+   "ni": -5029.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 43397.1,
+   "op": 932.0,
+   "ni": -5168.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 62066.7,
+   "op": 5987.6,
+   "ni": 265.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 76233.5,
+   "op": 6199.3,
+   "ni": 1805.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 83185.7,
+   "op": 2756.9,
+   "ni": -4130.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 72668.5,
+   "op": -3451.9,
+   "ni": -2925.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 20088.7,
+   "op": 623.3,
+   "ni": -1528.6
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 20153.5,
+   "op": 180.0,
+   "ni": -1221.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 21772.7,
+   "op": 1768.0,
+   "ni": 2088.9
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 21170.8,
+   "op": 185.5,
+   "ni": -3469.5
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 20743.7,
+   "op": 554.2,
+   "ni": 1441.8
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 18870.5,
+   "op": -69.4,
+   "ni": 1792.4
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 16812.3,
+   "op": -1976.6,
+   "ni": -3363.7
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 16242.0,
+   "op": -1960.2,
+   "ni": -2795.5
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 16804.5,
+   "op": -523.6,
+   "ni": -2516.7
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 18441.1,
+   "op": -3562.8,
+   "ni": -4071.8
+  }
+ ]
+}

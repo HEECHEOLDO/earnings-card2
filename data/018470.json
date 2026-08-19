@@ -1,0 +1,183 @@
+{
+ "name": "조일알미늄",
+ "split_adjusted": false,
+ "legal_name": "조일알미늄",
+ "code": "018470",
+ "market": "",
+ "sector": "",
+ "updated": "2026-08-20",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 2734.3,
+   "op": -19.6,
+   "ni": 331.2,
+   "dps": 15.0,
+   "payout": 3.2,
+   "yield": 0.9,
+   "dps_adj": 15.0
+  },
+  {
+   "p": 2017,
+   "rev": 2991.7,
+   "op": -4.5,
+   "ni": -18.3,
+   "dps": 15.0,
+   "payout": null,
+   "yield": 1.3,
+   "dps_adj": 15.0
+  },
+  {
+   "p": 2018,
+   "rev": 3177.4,
+   "op": -81.9,
+   "ni": -104.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 3117.7,
+   "op": -121.7,
+   "ni": -767.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 3329.1,
+   "op": -40.3,
+   "ni": -88.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 4669.3,
+   "op": 182.8,
+   "ni": 156.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 5623.9,
+   "op": 158.3,
+   "ni": 178.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 4657.8,
+   "op": 84.7,
+   "ni": -1.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 4983.7,
+   "op": 201.1,
+   "ni": 109.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 4866.8,
+   "op": 138.0,
+   "ni": 79.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 1279.4,
+   "op": 46.2,
+   "ni": 26.3
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 1296.4,
+   "op": 60.3,
+   "ni": 31.6
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 1103.5,
+   "op": 26.9,
+   "ni": 7.7
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 1304.4,
+   "op": 67.6,
+   "ni": 44.3
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 1372.7,
+   "op": 119.5,
+   "ni": 84.6
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 1174.2,
+   "op": -3.0,
+   "ni": -11.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 1135.8,
+   "op": 10.0,
+   "ni": -4.2
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 1184.1,
+   "op": 11.5,
+   "ni": 10.3
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 1508.8,
+   "op": 131.0,
+   "ni": 100.4
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 1541.4,
+   "op": 100.2,
+   "ni": 74.6
+  }
+ ]
+}

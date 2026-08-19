@@ -1,0 +1,183 @@
+{
+ "name": "DKME",
+ "split_adjusted": false,
+ "legal_name": "DKME",
+ "code": "015590",
+ "market": "",
+ "sector": "",
+ "updated": "2026-08-20",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 1913.6,
+   "op": -115.0,
+   "ni": -193.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 1561.9,
+   "op": 67.4,
+   "ni": -70.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 902.2,
+   "op": -154.5,
+   "ni": -162.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 1471.2,
+   "op": 197.8,
+   "ni": 31.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 1249.4,
+   "op": 95.8,
+   "ni": 13.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 807.1,
+   "op": -149.7,
+   "ni": -130.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 1056.7,
+   "op": 129.4,
+   "ni": 112.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 1372.5,
+   "op": 128.8,
+   "ni": 127.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 1366.2,
+   "op": 100.2,
+   "ni": 22.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 1334.1,
+   "op": 100.3,
+   "ni": -28.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 351.6,
+   "op": 7.1,
+   "ni": 22.3
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 286.5,
+   "op": -3.9,
+   "ni": -2.4
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 359.5,
+   "op": 39.7,
+   "ni": -40.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 368.6,
+   "op": 57.4,
+   "ni": 42.9
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 371.5,
+   "op": 35.2,
+   "ni": 34.9
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 356.4,
+   "op": 58.4,
+   "ni": -35.9
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 334.2,
+   "op": 2.9,
+   "ni": 31.3
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 272.0,
+   "op": 3.8,
+   "ni": -59.2
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 203.6,
+   "op": 12.3,
+   "ni": 46.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 164.8,
+   "op": -54.8,
+   "ni": -58.1
+  }
+ ]
+}

@@ -1,0 +1,183 @@
+{
+ "name": "세우글로벌",
+ "split_adjusted": false,
+ "legal_name": "세우글로벌",
+ "code": "013000",
+ "market": "",
+ "sector": "",
+ "updated": "2026-08-20",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 423.8,
+   "op": 7.9,
+   "ni": 4.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 364.1,
+   "op": 16.7,
+   "ni": 4.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 322.4,
+   "op": 4.7,
+   "ni": 5.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 274.7,
+   "op": 11.4,
+   "ni": 0.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 274.5,
+   "op": 18.2,
+   "ni": 31.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 323.9,
+   "op": 26.1,
+   "ni": 21.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 280.7,
+   "op": 15.6,
+   "ni": 15.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 361.3,
+   "op": 23.7,
+   "ni": 25.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 358.7,
+   "op": 24.5,
+   "ni": 34.6,
+   "dps": 30.0,
+   "payout": 24.8,
+   "yield": 2.42,
+   "dps_adj": 30.0
+  },
+  {
+   "p": 2025,
+   "rev": 326.8,
+   "op": 24.3,
+   "ni": 37.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 88.1,
+   "op": 5.8,
+   "ni": 9.2
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 89.9,
+   "op": 6.2,
+   "ni": 8.2
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 91.1,
+   "op": 6.7,
+   "ni": 8.9
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 89.7,
+   "op": 5.9,
+   "ni": 8.3
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 82.3,
+   "op": 5.2,
+   "ni": 6.7
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 80.9,
+   "op": 7.5,
+   "ni": 4.4
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 81.7,
+   "op": 6.5,
+   "ni": 11.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 81.9,
+   "op": 5.1,
+   "ni": 15.1
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 86.7,
+   "op": 7.2,
+   "ni": 11.1
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 108.4,
+   "op": 9.2,
+   "ni": 17.4
+  }
+ ]
+}

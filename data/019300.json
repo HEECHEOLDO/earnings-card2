@@ -1,0 +1,42 @@
+{
+ "name": "태림페이퍼",
+ "split_adjusted": false,
+ "legal_name": "태림페이퍼",
+ "code": "019300",
+ "market": "",
+ "sector": "",
+ "updated": "2026-08-20",
+ "annual": [
+  {
+   "p": 2018,
+   "rev": 4828.5,
+   "op": 884.2,
+   "ni": 818.0,
+   "dps": 4311.0,
+   "payout": 73.0,
+   "yield": null,
+   "dps_adj": 4311.0
+  },
+  {
+   "p": 2019,
+   "rev": 4301.8,
+   "op": 772.2,
+   "ni": 597.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 7433.5,
+   "op": 738.3,
+   "ni": 763.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

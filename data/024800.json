@@ -1,0 +1,183 @@
+{
+ "name": "유성티엔에스",
+ "split_adjusted": false,
+ "legal_name": "유성티엔에스",
+ "code": "024800",
+ "market": "",
+ "sector": "",
+ "updated": "2026-08-20",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 4407.4,
+   "op": 161.4,
+   "ni": 109.6,
+   "dps": 10.0,
+   "payout": 1.83,
+   "yield": 0.17,
+   "dps_adj": 10.0
+  },
+  {
+   "p": 2017,
+   "rev": 4335.8,
+   "op": 131.2,
+   "ni": 120.3,
+   "dps": null,
+   "payout": 2.46,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 3929.8,
+   "op": 55.8,
+   "ni": 56.2,
+   "dps": null,
+   "payout": 6.28,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 3580.7,
+   "op": 74.5,
+   "ni": 237.7,
+   "dps": null,
+   "payout": 1.48,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 2940.9,
+   "op": 35.3,
+   "ni": 564.3,
+   "dps": null,
+   "payout": 0.63,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 2805.4,
+   "op": 17.6,
+   "ni": 436.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 2767.7,
+   "op": 26.9,
+   "ni": 554.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 2373.2,
+   "op": 21.0,
+   "ni": 695.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 1528.6,
+   "op": 49.3,
+   "ni": 708.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 670.4,
+   "op": 12.3,
+   "ni": 575.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 520.9,
+   "op": 6.6,
+   "ni": 316.9
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 289.4,
+   "op": 18.5,
+   "ni": 120.1
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 382.0,
+   "op": 1.0,
+   "ni": 162.1
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 336.3,
+   "op": 23.0,
+   "ni": 109.6
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 228.0,
+   "op": 2.9,
+   "ni": 110.3
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 160.3,
+   "op": 8.6,
+   "ni": 143.6
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 149.5,
+   "op": 2.6,
+   "ni": 127.6
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 132.7,
+   "op": -1.8,
+   "ni": 194.5
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 132.3,
+   "op": 9.3,
+   "ni": 74.2
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 135.8,
+   "op": 8.6,
+   "ni": 593.8
+  }
+ ]
+}

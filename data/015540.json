@@ -1,0 +1,142 @@
+{
+ "name": "에코바이브",
+ "split_adjusted": false,
+ "legal_name": "에코바이브",
+ "code": "015540",
+ "market": "",
+ "sector": "",
+ "updated": "2026-08-20",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 695.7,
+   "op": -42.1,
+   "ni": -108.2,
+   "dps": null,
+   "payout": 0.0,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 665.8,
+   "op": -58.4,
+   "ni": -73.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 377.8,
+   "op": -82.7,
+   "ni": -104.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 77.4,
+   "op": -133.4,
+   "ni": -278.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 97.0,
+   "op": -97.3,
+   "ni": -408.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 95.7,
+   "op": -48.9,
+   "ni": -11.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 75.8,
+   "op": -29.7,
+   "ni": -38.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 0.0,
+   "op": -32.0,
+   "ni": -77.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 1,
+   "rev": 16.0,
+   "op": -12.0,
+   "ni": -14.5
+  },
+  {
+   "y": 2023,
+   "q": 2,
+   "rev": 15.6,
+   "op": -11.3,
+   "ni": -8.4
+  },
+  {
+   "y": 2023,
+   "q": 3,
+   "rev": 13.9,
+   "op": -6.2,
+   "ni": -5.4
+  },
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": -45.5,
+   "op": -2.6,
+   "ni": -48.7
+  },
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 0.0,
+   "op": -2.5,
+   "ni": -0.9
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 0.0,
+   "op": -4.0,
+   "ni": -2.4
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 0.0,
+   "op": -0.6,
+   "ni": 1.0
+  }
+ ]
+}

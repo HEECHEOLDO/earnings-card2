@@ -1,0 +1,183 @@
+{
+ "name": "HLB이노베이션",
+ "split_adjusted": false,
+ "legal_name": "HLB이노베이션",
+ "code": "024850",
+ "market": "",
+ "sector": "",
+ "updated": "2026-08-20",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 408.5,
+   "op": -85.7,
+   "ni": -32.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 106.2,
+   "op": -11.3,
+   "ni": -17.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 500.2,
+   "op": 11.0,
+   "ni": 6.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 438.0,
+   "op": -19.9,
+   "ni": -8.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 380.3,
+   "op": -9.1,
+   "ni": 1.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 383.2,
+   "op": -27.3,
+   "ni": -38.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 507.5,
+   "op": 8.5,
+   "ni": -8.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 205.8,
+   "op": -9.4,
+   "ni": -7.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 253.6,
+   "op": -118.8,
+   "ni": -123.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 322.6,
+   "op": -375.5,
+   "ni": -336.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 61.3,
+   "op": -2.5,
+   "ni": 1.4
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 62.0,
+   "op": -1.9,
+   "ni": -2.2
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 57.6,
+   "op": -9.2,
+   "ni": -32.5
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 72.6,
+   "op": -105.2,
+   "ni": -90.3
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 75.5,
+   "op": -98.3,
+   "ni": -94.2
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 89.9,
+   "op": -95.2,
+   "ni": -100.2
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 75.6,
+   "op": -95.4,
+   "ni": -96.8
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 81.6,
+   "op": -86.6,
+   "ni": -45.3
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 94.5,
+   "op": -103.8,
+   "ni": -104.1
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 105.9,
+   "op": -92.3,
+   "ni": -84.1
+  }
+ ]
+}
