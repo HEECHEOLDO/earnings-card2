@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>10 Years FinCard Studio</title>
+<title>실적·배당 카드뉴스</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -41,6 +41,7 @@
     --pos-soft: #14312A;
   }
   * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
   html, body {
     margin: 0;
     background: var(--bg);
@@ -155,12 +156,69 @@
   .studio { display: grid; grid-template-columns: 420px 1fr; gap: 18px; align-items: start; }
   @media (max-width: 860px) { .studio { grid-template-columns: 1fr; } }
 
+  /* ---------- 태블릿 이하 ---------- */
+  @media (max-width: 720px) {
+    .chart-box { height: 220px; }
+    .metrics { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  }
+
+  /* ---------- 휴대폰 ---------- */
+  @media (max-width: 560px) {
+    body { padding: 14px 12px 56px; }
+
+    .brand h1 { font-size: 15px; }
+    .pill { font-size: 11px; padding: 4px 9px; }
+
+    /* iOS 는 16px 미만 입력창에 포커스하면 화면을 확대한다 */
+    input[type="text"], select { font-size: 16px; }
+
+    .searchrow { gap: 6px; }
+    .btn { padding: 0 14px; font-size: 13.5px; }
+    .meta { margin-bottom: 14px; }
+
+    .tabs { gap: 5px; }
+    .tab { padding: 8px 12px; font-size: 12.5px; }
+    .range-pick { margin-left: 0; width: 100%; justify-content: flex-end; }
+
+    .metrics { gap: 8px; margin-bottom: 18px; }
+    .metric { padding: 12px 13px; }
+    .metric .lbl { font-size: 11.5px; }
+    .metric .val { font-size: 20px; }
+
+    .panel { padding: 14px 13px 10px; border-radius: 10px; margin-bottom: 14px; }
+    .chart-box { height: 200px; }
+    table { font-size: 11.5px; }
+    th, td { padding: 7px 5px; }
+
+    .card-frame { padding: 12px; border-radius: 10px; }
+
+    /* 오버레이 조절 — 가로로 늘어놓으면 넘치므로 세로로 쌓는다 */
+    #overlay-edit { flex-direction: column; align-items: stretch; gap: 12px; }
+    #overlay-edit label {
+      display: flex; align-items: center; justify-content: space-between; gap: 10px;
+    }
+    #overlay-edit input[type="range"] { flex: 1; width: auto; min-width: 0; }
+    .ctl-sep { display: none; }
+    .range-val { text-align: right; }
+    #overlay-edit .btn-sm { width: 100%; }
+
+    .ctl-row .btn { flex: 1; }
+    input[type="file"] { max-width: 100%; }
+  }
+
+  /* ---------- 작은 휴대폰 ---------- */
+  @media (max-width: 380px) {
+    .tab { padding: 7px 10px; font-size: 12px; }
+    .metric .val { font-size: 18px; }
+    .btn { padding: 0 11px; }
+  }
+
   .card-frame {
     background: var(--surface); border-radius: 12px; padding: 18px;
     display: flex; flex-direction: column; align-items: center; gap: 14px;
   }
   #card-canvas {
-    display: block; width: 100%; max-width: 384px; height: auto;
+    display: block; width: 100%; max-width: 384px; height: auto; margin: 0 auto;
     border-radius: 2px; touch-action: none; cursor: default;
     box-shadow: 0 18px 40px -18px rgba(0,0,0,.4), 0 0 0 1px rgba(0,0,0,.07);
   }
@@ -187,8 +245,7 @@
 
   <div class="topbar">
     <div class="brand">
-      <h1>10 Years FinCard Studio</h1>
-      <span>실적·배당 카드뉴스</span>
+      <h1>실적·배당 카드뉴스</h1>
     </div>
     <div class="topbar-right">
       <span class="pill" id="src-pill">샘플 데이터</span>
@@ -214,32 +271,6 @@
       <label for="range-n">구간</label>
       <select id="range-n"></select>
     </div>
-  </div>
-
-  <div class="metrics" id="metrics"></div>
-
-  <div class="panel">
-    <div class="panel-head">
-      <h2 id="chart1-title">실적 추이</h2>
-      <span class="note" id="chart1-note">연결 기준</span>
-    </div>
-    <div class="chart-box"><canvas id="chart1"></canvas></div>
-  </div>
-
-  <div class="panel">
-    <div class="panel-head">
-      <h2 id="chart2-title">배당 추이</h2>
-      <span class="note" id="chart2-note">주당배당금 · 배당성향</span>
-    </div>
-    <div class="chart-box"><canvas id="chart2"></canvas></div>
-  </div>
-
-  <div class="panel">
-    <div class="panel-head">
-      <h2>재무 요약</h2>
-      <span class="note" id="table-note"></span>
-    </div>
-    <div class="scroll-x"><table id="tbl"></table></div>
   </div>
 
   <div class="studio">
@@ -295,7 +326,7 @@
 
       <div class="ctl-row">
         <label for="handle">서명</label>
-        <input type="text" id="handle" value="@돈굴돈굴" style="max-width:180px">
+        <input type="text" id="handle" value="@돈굴돈굴" style="max-width:180px;flex:1">
       </div>
 
       <div class="divider"></div>
@@ -305,6 +336,32 @@
       </div>
       <p class="hint">PNG는 3배 스케일(3240 × 4050)로 저장됩니다.</p>
     </div>
+  </div>
+
+  <div class="metrics" id="metrics"></div>
+
+  <div class="panel">
+    <div class="panel-head">
+      <h2 id="chart1-title">실적 추이</h2>
+      <span class="note" id="chart1-note">연결 기준</span>
+    </div>
+    <div class="chart-box"><canvas id="chart1"></canvas></div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-head">
+      <h2 id="chart2-title">배당 추이</h2>
+      <span class="note" id="chart2-note">주당배당금 · 배당성향</span>
+    </div>
+    <div class="chart-box"><canvas id="chart2"></canvas></div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-head">
+      <h2>재무 요약</h2>
+      <span class="note" id="table-note"></span>
+    </div>
+    <div class="scroll-x"><table id="tbl"></table></div>
   </div>
 
 </div>
