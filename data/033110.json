@@ -1,0 +1,77 @@
+{
+ "name": "코너스톤네트웍스",
+ "split_adjusted": false,
+ "legal_name": "코너스톤네트웍스",
+ "code": "033110",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-22",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 348.9,
+   "op": -67.4,
+   "ni": -106.6,
+   "assets": 1054.9,
+   "liab": 671.9,
+   "equity": 383.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 39.5,
+   "op": -63.5,
+   "ni": -535.4,
+   "assets": 415.8,
+   "liab": 211.2,
+   "equity": 204.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 88.9,
+   "op": -50.0,
+   "ni": -69.0,
+   "assets": 541.2,
+   "liab": 264.5,
+   "equity": 276.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 135.8,
+   "op": -108.9,
+   "ni": -520.4,
+   "assets": 797.2,
+   "liab": 431.2,
+   "equity": 366.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 52.5,
+   "op": -38.6,
+   "ni": -374.4,
+   "assets": 394.0,
+   "liab": 382.2,
+   "equity": 11.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

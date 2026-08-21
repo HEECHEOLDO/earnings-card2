@@ -1,0 +1,38 @@
+{
+ "name": "위너지스",
+ "split_adjusted": false,
+ "legal_name": "위너지스",
+ "code": "026260",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-22",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 306.3,
+   "op": -131.7,
+   "ni": -494.9,
+   "assets": 391.6,
+   "liab": 370.2,
+   "equity": 21.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 119.9,
+   "op": -117.4,
+   "ni": -128.3,
+   "assets": 517.1,
+   "liab": 221.2,
+   "equity": 295.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

@@ -1,0 +1,64 @@
+{
+ "name": "한화갤러리아타임월드",
+ "split_adjusted": false,
+ "legal_name": "한화갤러리아타임월드",
+ "code": "027390",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-22",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 2847.8,
+   "op": -123.0,
+   "ni": -186.5,
+   "assets": 4839.9,
+   "liab": 2381.1,
+   "equity": 2458.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 3307.0,
+   "op": -72.7,
+   "ni": -106.8,
+   "assets": 4893.1,
+   "liab": 2483.5,
+   "equity": 2409.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 3326.8,
+   "op": 7.6,
+   "ni": 95.5,
+   "assets": 4518.0,
+   "liab": 2319.0,
+   "equity": 2199.0,
+   "dps": 300.0,
+   "payout": 18.5,
+   "yield": 1.1,
+   "dps_adj": 300.0
+  },
+  {
+   "p": 2019,
+   "rev": 1424.3,
+   "op": 286.7,
+   "ni": -699.2,
+   "assets": 3484.7,
+   "liab": 2251.3,
+   "equity": 1233.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

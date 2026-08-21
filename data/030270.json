@@ -1,0 +1,64 @@
+{
+ "name": "에스마크",
+ "split_adjusted": false,
+ "legal_name": "에스마크",
+ "code": "030270",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-22",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 284.3,
+   "op": -162.6,
+   "ni": -209.1,
+   "assets": 1046.1,
+   "liab": 571.7,
+   "equity": 474.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 170.7,
+   "op": -105.6,
+   "ni": -844.7,
+   "assets": 658.1,
+   "liab": 326.3,
+   "equity": 331.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 142.2,
+   "op": -103.9,
+   "ni": -345.0,
+   "assets": 616.6,
+   "liab": 348.8,
+   "equity": 267.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 25.5,
+   "op": -39.7,
+   "ni": -145.3,
+   "assets": 458.7,
+   "liab": 274.9,
+   "equity": 183.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

@@ -1,0 +1,213 @@
+{
+ "name": "롯데관광개발",
+ "split_adjusted": false,
+ "legal_name": "롯데관광개발",
+ "code": "032350",
+ "market": "코스피",
+ "sector": "",
+ "updated": "2026-08-22",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 503.8,
+   "op": 32.9,
+   "ni": 15.2,
+   "assets": 3622.5,
+   "liab": 1961.0,
+   "equity": 1661.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 702.9,
+   "op": 52.2,
+   "ni": 33.8,
+   "assets": 4017.9,
+   "liab": 2293.2,
+   "equity": 1724.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 760.8,
+   "op": 30.0,
+   "ni": -1128.7,
+   "assets": 5067.9,
+   "liab": 2258.4,
+   "equity": 2809.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 884.5,
+   "op": -161.6,
+   "ni": -140.9,
+   "assets": 5661.5,
+   "liab": 2677.7,
+   "equity": 2983.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 167.7,
+   "op": -713.8,
+   "ni": -820.7,
+   "assets": 11984.5,
+   "liab": 9723.5,
+   "equity": 2261.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 1070.7,
+   "op": -1312.5,
+   "ni": -2007.0,
+   "assets": 13024.2,
+   "liab": 12497.4,
+   "equity": 526.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 1836.7,
+   "op": -1187.2,
+   "ni": -2247.1,
+   "assets": 18027.8,
+   "liab": 15710.9,
+   "equity": 2316.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 3135.5,
+   "op": -606.1,
+   "ni": -2023.3,
+   "assets": 17641.1,
+   "liab": 16985.5,
+   "equity": 655.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 4714.7,
+   "op": 390.1,
+   "ni": -1165.7,
+   "assets": 21666.2,
+   "liab": 18535.6,
+   "equity": 3130.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 6534.5,
+   "op": 1433.3,
+   "ni": 276.0,
+   "assets": 21676.5,
+   "liab": 17994.2,
+   "equity": 3682.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 1062.3,
+   "op": 87.9,
+   "ni": -384.3
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 1160.8,
+   "op": 58.9,
+   "ni": -25.2
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 1391.5,
+   "op": 221.6,
+   "ni": -290.4
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 1100.1,
+   "op": 21.7,
+   "ni": -465.8
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 1219.5,
+   "op": 130.2,
+   "ni": -236.9
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 1576.8,
+   "op": 331.1,
+   "ni": 59.1
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 1866.7,
+   "op": 529.6,
+   "ni": 64.9
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 1871.5,
+   "op": 442.3,
+   "ni": 388.8
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 1561.8,
+   "op": 287.8,
+   "ni": -74.6
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 2032.7,
+   "op": 519.3,
+   "ni": 146.3
+  }
+ ]
+}

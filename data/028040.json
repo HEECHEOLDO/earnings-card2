@@ -1,0 +1,64 @@
+{
+ "name": "미래SCI",
+ "split_adjusted": false,
+ "legal_name": "미래SCI",
+ "code": "028040",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-22",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 165.1,
+   "op": 20.3,
+   "ni": -72.9,
+   "assets": 454.2,
+   "liab": 290.4,
+   "equity": 163.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 191.1,
+   "op": -42.8,
+   "ni": -66.6,
+   "assets": 523.6,
+   "liab": 340.5,
+   "equity": 183.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 575.9,
+   "op": -42.7,
+   "ni": -213.4,
+   "assets": 661.6,
+   "liab": 427.3,
+   "equity": 234.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 148.0,
+   "op": -59.6,
+   "ni": -206.2,
+   "assets": 544.1,
+   "liab": 374.9,
+   "equity": 169.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

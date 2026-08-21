@@ -1,0 +1,118 @@
+{
+ "name": "비케이탑스",
+ "split_adjusted": false,
+ "legal_name": "비케이탑스",
+ "code": "030790",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-22",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 940.9,
+   "op": -66.4,
+   "ni": -39.7,
+   "assets": 964.3,
+   "liab": 548.3,
+   "equity": 416.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 862.6,
+   "op": -78.2,
+   "ni": -203.4,
+   "assets": 1018.5,
+   "liab": 230.2,
+   "equity": 788.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 699.9,
+   "op": -198.1,
+   "ni": -165.8,
+   "assets": 1906.5,
+   "liab": 1071.8,
+   "equity": 834.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 556.9,
+   "op": -140.5,
+   "ni": -370.4,
+   "assets": 955.0,
+   "liab": 563.3,
+   "equity": 391.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 98.6,
+   "op": -34.2,
+   "ni": -490.0,
+   "assets": 692.3,
+   "liab": 461.8,
+   "equity": 230.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 248.0,
+   "op": -103.4,
+   "ni": -341.6,
+   "assets": 1081.0,
+   "liab": 1030.7,
+   "equity": 50.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 319.1,
+   "op": -96.3,
+   "ni": -144.0,
+   "assets": 974.6,
+   "liab": 899.1,
+   "equity": 75.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 1,
+   "rev": 69.8,
+   "op": -12.0,
+   "ni": -36.7
+  },
+  {
+   "y": 2023,
+   "q": 3,
+   "rev": 99.2,
+   "op": -37.4,
+   "ni": -109.6
+  }
+ ]
+}

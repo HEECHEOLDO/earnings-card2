@@ -1,0 +1,77 @@
+{
+ "name": "녹십자셀",
+ "split_adjusted": false,
+ "legal_name": "녹십자셀",
+ "code": "031390",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-22",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 284.6,
+   "op": 7.7,
+   "ni": -0.9,
+   "assets": 517.5,
+   "liab": 125.6,
+   "equity": 391.9,
+   "dps": 50.0,
+   "payout": -628.0,
+   "yield": 0.2,
+   "dps_adj": 50.0
+  },
+  {
+   "p": 2017,
+   "rev": 195.4,
+   "op": 31.9,
+   "ni": 7.2,
+   "assets": 1204.1,
+   "liab": 722.5,
+   "equity": 481.6,
+   "dps": 50.0,
+   "payout": null,
+   "yield": 0.1,
+   "dps_adj": 50.0
+  },
+  {
+   "p": 2018,
+   "rev": 296.1,
+   "op": 37.7,
+   "ni": 139.1,
+   "assets": 1253.8,
+   "liab": 578.5,
+   "equity": 675.3,
+   "dps": 100.0,
+   "payout": 9.0,
+   "yield": 0.2,
+   "dps_adj": 100.0
+  },
+  {
+   "p": 2019,
+   "rev": 379.0,
+   "op": 56.9,
+   "ni": 110.6,
+   "assets": 1537.2,
+   "liab": 686.3,
+   "equity": 851.0,
+   "dps": 100.0,
+   "payout": 10.9,
+   "yield": 0.2,
+   "dps_adj": 100.0
+  },
+  {
+   "p": 2020,
+   "rev": 408.4,
+   "op": 12.3,
+   "ni": 20.1,
+   "assets": 1737.0,
+   "liab": 723.9,
+   "equity": 1013.1,
+   "dps": 100.0,
+   "payout": 62.7,
+   "yield": 0.2,
+   "dps_adj": 100.0
+  }
+ ],
+ "quarterly": []
+}
