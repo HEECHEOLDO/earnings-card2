@@ -192,15 +192,10 @@
 
     .card-frame { padding: 12px; border-radius: 10px; }
 
-    /* 오버레이 조절 — 가로로 늘어놓으면 넘치므로 세로로 쌓는다 */
-    #overlay-edit { flex-direction: column; align-items: stretch; gap: 12px; }
-    #overlay-edit label {
-      display: flex; align-items: center; justify-content: space-between; gap: 10px;
-    }
-    #overlay-edit input[type="range"] { flex: 1; width: auto; min-width: 0; }
     .ctl-sep { display: none; }
-    .range-val { text-align: right; }
-    #overlay-edit .btn-sm { width: 100%; }
+    #overlay-edit { padding: 10px 11px; gap: 8px; }
+    .ov-lbl { width: 42px; font-size: 12px; }
+    #overlay-edit .range-val { width: 42px; }
 
     .ctl-row .btn { flex: 1; }
     input[type="file"] { max-width: 100%; }
@@ -229,7 +224,18 @@
   .btn-sm { height: 34px; padding: 0 12px; font-size: 12.5px; }
   .btn-danger { color: #B32B22; border-color: #E1B7B2; }
   .btn-danger:hover { border-color: #B32B22; color: #B32B22; }
-  #overlay-edit { display: none; flex-wrap: wrap; gap: 10px 12px; align-items: center; }
+  #overlay-edit {
+    display: none; width: 100%; max-width: 384px;
+    flex-direction: column; gap: 9px;
+    padding: 11px 13px; border-radius: 9px;
+    background: var(--surface-2); border: 1px solid var(--border);
+  }
+  .ov-row { display: flex; align-items: center; gap: 10px; }
+  .ov-lbl { font-size: 12.5px; color: var(--text-soft); width: 46px; flex: none; }
+  #overlay-edit input[type="range"] { flex: 1; width: auto; min-width: 0; margin: 0; }
+  #overlay-edit .range-val { width: 46px; text-align: right; flex: none; }
+  .ov-btns { display: flex; gap: 6px; margin-top: 1px; }
+  .ov-btns .btn { flex: 1; height: 34px; padding: 0; font-size: 12.5px; }
   .ctl { display: flex; flex-direction: column; gap: 14px; }
   .ctl-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
   .ctl-row label { font-size: 13px; color: var(--text-soft); font-weight: 600; }
@@ -276,6 +282,30 @@
   <div class="studio">
     <div class="card-frame">
       <canvas id="card-canvas" width="1080" height="1350"></canvas>
+
+      <div id="overlay-edit">
+        <div class="ov-row">
+          <span class="ov-lbl">크기</span>
+          <input type="range" id="ov-size" min="60" max="1080" step="4">
+          <span class="range-val" id="ov-size-val">–</span>
+        </div>
+        <div class="ov-row">
+          <span class="ov-lbl">회전</span>
+          <input type="range" id="ov-rot" min="-180" max="180" step="1">
+          <span class="range-val" id="ov-rot-val">–</span>
+        </div>
+        <div class="ov-row">
+          <span class="ov-lbl">투명도</span>
+          <input type="range" id="ov-opacity" min="10" max="100" step="1">
+          <span class="range-val" id="ov-opacity-val">–</span>
+        </div>
+        <div class="ov-btns">
+          <button class="btn btn-sm" id="ov-rot-reset" type="button">0°</button>
+          <button class="btn btn-sm" id="ov-front" type="button">앞으로</button>
+          <button class="btn btn-sm" id="ov-back" type="button">뒤로</button>
+          <button class="btn btn-sm btn-danger" id="ov-delete" type="button">삭제</button>
+        </div>
+      </div>
       <p class="hint" id="card-caption"></p>
     </div>
 
@@ -298,21 +328,6 @@
       </div>
       <p class="hint">여러 장 올릴 수 있습니다. 미리보기에서 <b>끌어서 위치</b>를 잡고, 아래에서 크기·회전·투명도를 조절하세요. 빈 곳을 누르면 선택이 풀립니다.</p>
 
-      <div class="ctl-row" id="overlay-edit">
-        <label>크기 <input type="range" id="ov-size" min="60" max="1080" step="4"></label>
-        <span class="range-val" id="ov-size-val">–</span>
-        <span class="ctl-sep"></span>
-        <label>회전 <input type="range" id="ov-rot" min="-180" max="180" step="1"></label>
-        <span class="range-val" id="ov-rot-val">–</span>
-        <button class="btn btn-sm" id="ov-rot-reset" type="button">0°</button>
-        <span class="ctl-sep"></span>
-        <label>투명도 <input type="range" id="ov-opacity" min="10" max="100" step="1"></label>
-        <span class="range-val" id="ov-opacity-val">–</span>
-        <span class="ctl-sep"></span>
-        <button class="btn btn-sm" id="ov-front" type="button">맨 앞으로</button>
-        <button class="btn btn-sm" id="ov-back" type="button">맨 뒤로</button>
-        <button class="btn btn-sm btn-danger" id="ov-delete" type="button">삭제</button>
-      </div>
 
       <div class="divider"></div>
       <div class="ctl-row">
@@ -1408,6 +1423,13 @@
           selected = overlays.length - 1;
           syncOverlayUI();
           drawPreview();
+          if (idx === 0) {
+            try {
+              canvas.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } catch (e) {
+              canvas.scrollIntoView(true);
+            }
+          }
         };
         img.onerror = function () { alert('이미지를 불러오지 못했습니다.'); };
         img.src = reader.result;
@@ -1477,7 +1499,7 @@
     }
     syncOverlayUI();
     drawPreview();
-  });
+  }, { passive: false });
   canvas.addEventListener('pointermove', function (e) {
     if (dragOffset && selected >= 0) {
       var p = toCanvasXY(e), ov = overlays[selected];
