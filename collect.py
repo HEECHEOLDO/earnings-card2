@@ -256,6 +256,17 @@ def eok(v):
 
 # ------------------------------------------------- 배당
 
+CORP_CLS = {"Y": "코스피", "K": "코스닥", "N": "코넥스", "E": "기타"}
+
+
+def fetch_market(corp_code):
+    """기업개황에서 시장 구분을 가져온다. corp_cls: Y 유가 / K 코스닥 / N 코넥스 / E 기타"""
+    res = api_get("company.json", {"corp_code": corp_code})
+    if not res or res.get("status") != "000":
+        return ""
+    return CORP_CLS.get((res.get("corp_cls") or "").strip().upper(), "")
+
+
 def fetch_dividend(corp_code, year):
     """배당에 관한 사항. 보통주 기준 주당 현금배당금 / 배당성향 / 시가배당률."""
     res = api_get("alotMatter.json", {
@@ -454,7 +465,7 @@ def collect_company(code, corp_map, latest_year, alias=None):
         "split_adjusted": split,
         "legal_name": info["name"],
         "code": code,
-        "market": "",
+        "market": fetch_market(corp_code),
         "sector": "",
         "updated": datetime.now(timezone(timedelta(hours=9))).strftime("%Y-%m-%d"),
         "annual": annual,
@@ -619,9 +630,13 @@ def rebuild_index():
         except Exception:  # noqa: BLE001
             continue
     items.sort(key=lambda x: x["name"])
+    by_market = {}
+    for it in items:
+        key = it.get("market") or "미분류"
+        by_market[key] = by_market.get(key, 0) + 1
     path = os.path.join(OUT_DIR, "index.json")
     payload = {"updated": datetime.now(timezone(timedelta(hours=9))).strftime("%Y-%m-%d"),
-               "count": len(items), "companies": items}
+               "count": len(items), "markets": by_market, "companies": items}
     # 목록이 그대로면 날짜만 바꿔 다시 쓰지 않는다
     if not (os.path.exists(path) and data_unchanged(path, payload)):
         with open(path, "w", encoding="utf-8") as f:
@@ -967,6 +982,13 @@ def main():
 
     log("index.json 총 %d종목  |  누적 실패 %d종목 (data/_failed.json)"
         % (total_in_index, len(failed)))
+    try:
+        with open(os.path.join(OUT_DIR, "index.json"), encoding="utf-8") as f:
+            mk = json.load(f).get("markets", {})
+        if mk:
+            log("  시장별: " + "  ".join("%s %d" % (k, v) for k, v in sorted(mk.items())))
+    except Exception:      # noqa: BLE001
+        pass
     if unchanged:
         log("값이 그대로여서 파일을 다시 쓰지 않은 종목: %d개" % unchanged)
 

@@ -65,6 +65,11 @@
   .pill {
     font-size: 12px; font-weight: 600; padding: 5px 11px;
     border-radius: 999px; background: var(--pos-soft); color: var(--pos);
+    white-space: nowrap;
+  }
+  @media (max-width: 560px) {
+    .topbar-right { flex: 1; justify-content: flex-end; min-width: 0; }
+    .pill { white-space: normal; text-align: right; line-height: 1.45; }
   }
   .icon-btn {
     width: 36px; height: 36px; border-radius: var(--radius);
@@ -538,6 +543,7 @@
      ============================================================ */
   var Adapter = {
     index: null,
+    markets: null,
     loaded: {},
     source: 'mock',
 
@@ -546,6 +552,7 @@
         .then(function (r) { if (!r.ok) throw new Error('no index'); return r.json(); })
         .then(function (j) {
           Adapter.index = j.companies || [];
+          Adapter.markets = j.markets || null;
           Adapter.source = 'dart';
           return j;
         })
@@ -1166,6 +1173,20 @@
      ============================================================ */
   var chart1 = null, chart2 = null;
 
+  function badgeText(idx, total) {
+    var mk = (idx && idx.markets) || null;
+    var date = idx && idx.updated ? idx.updated : '';
+    var parts = [];
+    if (mk) {
+      ['코스피', '코스닥', '코넥스', '기타', '미분류'].forEach(function (k) {
+        if (mk[k]) parts.push(k + ' ' + mk[k].toLocaleString('ko-KR'));
+      });
+    }
+    if (!parts.length) parts.push('DART ' + total.toLocaleString('ko-KR') + '종목');
+    if (date) parts.push(date);
+    return parts.join(' · ');
+  }
+
   function cssVar(n) { return getComputedStyle(document.documentElement).getPropertyValue(n).trim(); }
 
   function renderMetrics(company, period, rows) {
@@ -1778,8 +1799,7 @@
     var pill = document.getElementById('src-pill');
     var n = (Adapter.index || []).length;
     if (Adapter.source === 'dart') {
-      pill.textContent = 'DART · ' + n + '종목 · ' +
-        (idx && idx.updated ? idx.updated : '수집 데이터');
+      pill.textContent = badgeText(idx, n);
       var first = Adapter.match('삼성전자') || Adapter.index[0];
       if (first) {
         document.getElementById('q').value = first.name;
