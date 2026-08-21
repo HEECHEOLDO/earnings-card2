@@ -59,6 +59,17 @@
   }
   .brand { display: flex; align-items: baseline; gap: 8px; }
   .brand h1 { font-size: 17px; font-weight: 800; margin: 0; letter-spacing: -0.01em; }
+  .navlink {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13px; font-weight: 700; text-decoration: none; white-space: nowrap;
+    height: 34px; padding: 0 14px; border-radius: 999px;
+    background: var(--accent); color: #fff;
+    box-shadow: 0 2px 8px -2px rgba(30,78,140,.5);
+    transition: opacity .12s, transform .1s;
+  }
+  .navlink:hover { opacity: .9; }
+  .navlink:active { transform: translateY(1px); }
+  [data-mode="dark"] .navlink { color: #0E141B; box-shadow: none; }
   .brand span { font-size: 12px; color: var(--text-mute); }
   .topbar-right { display: flex; align-items: center; gap: 8px; }
 
@@ -172,6 +183,8 @@
     body { padding: 14px 12px 56px; }
 
     .brand h1 { font-size: 15px; }
+    .brand { flex: 1; justify-content: space-between; width: 100%; }
+    .navlink { height: 32px; padding: 0 12px; font-size: 12.5px; }
     .pill { font-size: 11px; padding: 4px 9px; }
 
     /* iOS 는 16px 미만 입력창에 포커스하면 화면을 확대한다 */
@@ -257,6 +270,13 @@
   <div class="topbar">
     <div class="brand">
       <h1>실적·배당 카드뉴스</h1>
+      <a href="./screen.html" class="navlink">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path>
+        </svg>
+        종목 스크리닝
+      </a>
     </div>
     <div class="topbar-right">
       <span class="pill" id="src-pill">샘플 데이터</span>
@@ -447,7 +467,9 @@
   };
 
   function cardTitle(period, rows, spec, showLine) {
-    var withDiv = showLine !== false && spec && spec.line && spec.line.label === '주당배당금';
+    // 배당 선을 실제로 그릴 때만 제목에 '·배당' 을 붙인다
+    var withDiv = showLine !== false && !!spec && !!spec.line &&
+                  spec.line.label === '주당배당금';
     return LABELS[period].suffix(rows.length, withDiv);
   }
 
@@ -1580,12 +1602,22 @@
     state.rows = buildSeries(state.company, state.period, state.counts[state.period]);
 
     if (!state.rows.length) {
-      // 배당 이력이 없는 회사에서 배당 탭을 누른 경우
-      var msg = state.period === 'dividend'
-        ? state.company.name + ' 은(는) 배당 이력이 없어 배당 카드를 만들 수 없습니다.'
-        : '표시할 데이터가 없습니다.';
-      alert(msg);
-      setPeriod('annual');
+      // 이 구간에 쓸 데이터가 없다. 쓸 수 있는 다른 구간으로 옮긴다.
+      var order = ['annual', 'quarterly', 'dividend'];
+      var alt = null;
+      for (var oi = 0; oi < order.length; oi++) {
+        if (order[oi] === state.period) continue;
+        if (buildSeries(state.company, order[oi]).length) { alt = order[oi]; break; }
+      }
+      var what = state.period === 'dividend' ? '배당'
+               : state.period === 'quarterly' ? '분기 실적' : '연간 실적';
+      if (alt) {
+        alert(state.company.name + ' 은(는) ' + what + ' 데이터가 없습니다.');
+        setPeriod(alt);            // 데이터가 있는 구간이므로 재귀가 멈춘다
+      } else {
+        alert(state.company.name + ' 은(는) 표시할 데이터가 없습니다.');
+        renderEmpty();             // 어느 구간에도 데이터가 없으면 화면만 비운다
+      }
       return;
     }
 
@@ -1614,6 +1646,18 @@
     renderTable(state.rows, state.spec, state.period, unit);
 
     ensureFonts().then(drawPreview);
+  }
+
+  function renderEmpty() {
+    document.getElementById('metrics').innerHTML = '';
+    document.getElementById('tbl').innerHTML = '';
+    if (chart1) { chart1.destroy(); chart1 = null; }
+    if (chart2) { chart2.destroy(); chart2 = null; }
+    var ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, CW, CH);
+    ctx.fillStyle = TOKENS.card.paper;
+    ctx.fillRect(0, 0, CW, CH);
+    document.getElementById('card-caption').textContent = '표시할 데이터가 없습니다.';
   }
 
   function drawPreview() {
@@ -1800,7 +1844,8 @@
     var n = (Adapter.index || []).length;
     if (Adapter.source === 'dart') {
       pill.textContent = badgeText(idx, n);
-      var first = Adapter.match('삼성전자') || Adapter.index[0];
+      var qs = (location.search.match(/[?&]code=(\d{6})/) || [])[1];
+      var first = (qs && Adapter.match(qs)) || Adapter.match('삼성전자') || Adapter.index[0];
       if (first) {
         document.getElementById('q').value = first.name;
         return Adapter.load(first.code).then(function (c) {

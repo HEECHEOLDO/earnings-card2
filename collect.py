@@ -59,7 +59,22 @@ ACCOUNT_CANDIDATES = {
         "names": ["당기순이익", "당기순이익(손실)", "분기순이익", "반기순이익",
                   "당기순손익", "연결당기순이익"],
     },
+    # --- 재무상태표 (ROE / 부채비율용) ---
+    "assets": {
+        "ids": ["ifrs-full_Assets"],
+        "names": ["자산총계", "자산총계(자산총액)"],
+    },
+    "liab": {
+        "ids": ["ifrs-full_Liabilities"],
+        "names": ["부채총계", "부채총계(부채총액)"],
+    },
+    "equity": {
+        "ids": ["ifrs-full_Equity", "ifrs-full_EquityAttributableToOwnersOfParent"],
+        "names": ["자본총계", "자본총계(자본총액)", "지배기업소유주지분"],
+    },
 }
+
+BS_KINDS = {"assets", "liab", "equity"}
 
 DEBUG = False
 _call_count = 0
@@ -221,8 +236,9 @@ def pick_account(rows, kind, cumulative):
     if not rows:
         return None
     cand = ACCOUNT_CANDIDATES[kind]
-    is_rows = [r for r in rows if r.get("sj_div") in ("IS", "CIS")]
-    pool = is_rows or rows
+    want = ("BS",) if kind in BS_KINDS else ("IS", "CIS")
+    sub = [r for r in rows if r.get("sj_div") in want]
+    pool = sub or rows
 
     def value_of(r):
         if cumulative:
@@ -362,9 +378,13 @@ def collect_annual(corp_code, latest_year):
         if rev is None or op is None:
             log("  - %d년 매출/영업이익 매칭 실패, 건너뜀" % y)
             continue
+        assets = pick_account(fs, "assets", cumulative=False)
+        liab = pick_account(fs, "liab", cumulative=False)
+        equity = pick_account(fs, "equity", cumulative=False)
         div = fetch_dividend(corp_code, y)
         rows.append({
             "p": y, "rev": eok(rev), "op": eok(op), "ni": eok(ni),
+            "assets": eok(assets), "liab": eok(liab), "equity": eok(equity),
             "dps": div["dps"], "payout": div["payout"], "yield": div["yield"],
         })
         log("  %d년  매출 %s억  영업이익 %s억  DPS %s" %
@@ -612,6 +632,153 @@ def save_failed(d):
     os.makedirs(OUT_DIR, exist_ok=True)
     with open(FAILED_PATH, "w", encoding="utf-8") as f:
         json.dump(d, f, ensure_ascii=False, indent=1)
+
+
+SCREEN_FIELDS = [
+    "code", "name", "market", "years",
+    "rev", "op", "ni", "margin", "netMargin",
+    "roe", "roeAvg", "roa", "debt",
+    "revCagr3", "revCagr5", "revCagr10", "opCagr5",
+    "revStreak", "profitStreak", "lossCount", "marginStd", "turnaround",
+    "dps", "payout", "yield", "dpsCagr5", "divYears", "divGrowYears",
+    "qRev", "qOp", "qMargin", "qRevYoy", "qOpYoy",
+]
+
+
+def _cagr(rows, key, n):
+    """n년 연평균 성장률(%). 시작값이 0 이하면 계산 불가."""
+    if len(rows) < n + 1:
+        return None
+    a, b = rows[-(n + 1)].get(key), rows[-1].get(key)
+    if not a or not b or a <= 0 or b <= 0:
+        return None
+    return round((pow(b / a, 1.0 / n) - 1) * 100, 1)
+
+
+def _r(v, nd=1):
+    if v is None:
+        return None
+    x = round(v, nd)
+    # 소수점이 필요 없으면 정수로 — screen.json 크기를 줄인다
+    return int(x) if x == int(x) else x
+
+
+def build_screen():
+    """data/ 를 훑어 스크리닝용 지표를 미리 계산해 screen.json 으로 저장한다.
+    API를 쓰지 않는다 — 이미 받아둔 파일만 읽는다."""
+    out = []
+    for fn in sorted(os.listdir(OUT_DIR)):
+        if not (fn.endswith(".json") and fn[:-5].isdigit()):
+            continue
+        try:
+            with open(os.path.join(OUT_DIR, fn), encoding="utf-8") as f:
+                d = json.load(f)
+        except Exception:      # noqa: BLE001
+            continue
+
+        a = d.get("annual") or []
+        q = d.get("quarterly") or []
+        if not a:
+            continue
+        last = a[-1]
+
+        rev, op, ni = last.get("rev"), last.get("op"), last.get("ni")
+        eq, li, asset = last.get("equity"), last.get("liab"), last.get("assets")
+
+        margin = _r(op / rev * 100) if rev else None
+        netMargin = _r(ni / rev * 100) if (rev and ni is not None) else None
+        roe = _r(ni / eq * 100) if (eq and eq > 0 and ni is not None) else None
+        roa = _r(ni / asset * 100) if (asset and asset > 0 and ni is not None) else None
+        debt = _r(li / eq * 100) if (eq and eq > 0 and li is not None) else None
+
+        # 5년 평균 ROE
+        roes = [x["ni"] / x["equity"] * 100 for x in a[-5:]
+                if x.get("equity") and x["equity"] > 0 and x.get("ni") is not None]
+        roeAvg = _r(sum(roes) / len(roes)) if roes else None
+
+        # 영업이익률 시계열 → 변동성
+        margins = [x["op"] / x["rev"] * 100 for x in a if x.get("rev")]
+        if len(margins) >= 3:
+            mu = sum(margins) / len(margins)
+            marginStd = _r((sum((m - mu) ** 2 for m in margins) / len(margins)) ** 0.5)
+        else:
+            marginStd = None
+
+        # 연속 매출 증가
+        revStreak = 0
+        for i in range(len(a) - 1, 0, -1):
+            if a[i].get("rev") and a[i - 1].get("rev") and a[i]["rev"] > a[i - 1]["rev"]:
+                revStreak += 1
+            else:
+                break
+
+        # 연속 흑자 / 적자 횟수 / 턴어라운드
+        profitStreak = 0
+        for x in reversed(a):
+            if (x.get("op") or 0) > 0:
+                profitStreak += 1
+            else:
+                break
+        lossCount = sum(1 for x in a if (x.get("op") or 0) <= 0)
+        turnaround = 1 if (len(a) >= 2 and (a[-1].get("op") or 0) > 0
+                           and (a[-2].get("op") or 0) <= 0) else 0
+
+        # 배당
+        def dps_of(x):
+            v = x.get("dps_adj")
+            return v if v is not None else x.get("dps")
+        dps = dps_of(last)
+        divYears = 0
+        for x in reversed(a):
+            if (dps_of(x) or 0) > 0:
+                divYears += 1
+            else:
+                break
+        divGrowYears = 0
+        for i in range(len(a) - 1, 0, -1):
+            c, pv = dps_of(a[i]) or 0, dps_of(a[i - 1]) or 0
+            if c > pv > 0:
+                divGrowYears += 1
+            else:
+                break
+        paid = [x for x in a if (dps_of(x) or 0) > 0]
+        if len(paid) >= 6:
+            s0, s1 = dps_of(paid[-6]), dps_of(paid[-1])
+            dpsCagr5 = _r((pow(s1 / s0, 1 / 5.0) - 1) * 100) if s0 and s0 > 0 else None
+        else:
+            dpsCagr5 = None
+
+        # 분기
+        qRev = qOp = qMargin = qRevYoy = qOpYoy = None
+        if q:
+            lq = q[-1]
+            qRev, qOp = lq.get("rev"), lq.get("op")
+            qMargin = _r(qOp / qRev * 100) if qRev else None
+            if len(q) >= 5:
+                y0 = q[-5]
+                if y0.get("rev"):
+                    qRevYoy = _r((qRev / y0["rev"] - 1) * 100)
+                if y0.get("op") and y0["op"] > 0 and qOp is not None:
+                    qOpYoy = _r((qOp / y0["op"] - 1) * 100)
+
+        out.append([
+            d.get("code", fn[:-5]), d.get("name", ""), d.get("market", ""), len(a),
+            _r(rev, 0), _r(op, 0), _r(ni, 0), margin, netMargin,
+            roe, roeAvg, roa, debt,
+            _cagr(a, "rev", 3), _cagr(a, "rev", 5), _cagr(a, "rev", 9), _cagr(a, "op", 5),
+            revStreak, profitStreak, lossCount, marginStd, turnaround,
+            _r(dps, 0), _r(last.get("payout")), _r(last.get("yield")),
+            dpsCagr5, divYears, divGrowYears,
+            _r(qRev, 0), _r(qOp, 0), qMargin, qRevYoy, qOpYoy,
+        ])
+
+    path = os.path.join(OUT_DIR, "screen.json")
+    payload = {"updated": datetime.now(timezone(timedelta(hours=9))).strftime("%Y-%m-%d"),
+               "fields": SCREEN_FIELDS, "rows": out}
+    if not (os.path.exists(path) and data_unchanged(path, payload)):
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(payload, f, ensure_ascii=False, separators=(",", ":"))
+    return len(out)
 
 
 def rebuild_index():
@@ -887,7 +1054,8 @@ def main():
 
     if not todo:
         n = rebuild_index()
-        log("받을 종목이 없습니다. index.json 갱신 완료 (%d종목)" % n)
+        build_screen()
+        log("받을 종목이 없습니다. index.json / screen.json 갱신 완료 (%d종목)" % n)
         if refresh_days is None:
             log("주기적으로 갱신하려면 --refresh-days 9 를 붙이세요.")
         else:
@@ -964,6 +1132,7 @@ def main():
     save_failed(failed)
     save_checked(checked)
     total_in_index = rebuild_index()
+    screen_n = build_screen()
 
     # ---- 요약 ----
     log("\n" + "=" * 62)
@@ -980,8 +1149,8 @@ def main():
         "  ".join("%s %d" % (k, v) for k, v in sorted(counts.items())))
     log("소요 %.1f분  |  API 호출 %d회" % ((time.time() - started) / 60, _call_count))
 
-    log("index.json 총 %d종목  |  누적 실패 %d종목 (data/_failed.json)"
-        % (total_in_index, len(failed)))
+    log("index.json 총 %d종목  |  screen.json %d종목  |  누적 실패 %d종목"
+        % (total_in_index, screen_n, len(failed)))
     try:
         with open(os.path.join(OUT_DIR, "index.json"), encoding="utf-8") as f:
             mk = json.load(f).get("markets", {})
