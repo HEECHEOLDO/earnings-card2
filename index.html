@@ -1207,8 +1207,8 @@
       });
       var etc = (mk['코넥스'] || 0) + (mk['기타'] || 0);
       if (etc) parts.push('기타 ' + etc.toLocaleString('ko-KR'));
-      // 아직 시장 구분을 받지 못한 종목 — '기타'와 섞으면 오해를 부른다
-      if (mk['미분류']) parts.push('구분대기 ' + mk['미분류'].toLocaleString('ko-KR'));
+      // 시장 구분을 아직 받아오지 않은 종목 — '기타'와 섞으면 오해를 부른다
+      if (mk['미분류']) parts.push('확인중 ' + mk['미분류'].toLocaleString('ko-KR'));
     }
     if (!parts.length) parts.push('DART ' + total.toLocaleString('ko-KR') + '종목');
     if (date) parts.push(date);
