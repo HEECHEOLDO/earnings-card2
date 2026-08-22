@@ -1202,13 +1202,13 @@
     var date = idx && idx.updated ? idx.updated : '';
     var parts = [];
     if (mk) {
-      // 좁은 화면을 고려해 주요 시장만 앞에 두고 나머지는 묶는다
       ['코스피', '코스닥'].forEach(function (k) {
         if (mk[k]) parts.push(k + ' ' + mk[k].toLocaleString('ko-KR'));
       });
-      var etc = 0;
-      ['코넥스', '기타', '미분류'].forEach(function (k) { etc += mk[k] || 0; });
+      var etc = (mk['코넥스'] || 0) + (mk['기타'] || 0);
       if (etc) parts.push('기타 ' + etc.toLocaleString('ko-KR'));
+      // 아직 시장 구분을 받지 못한 종목 — '기타'와 섞으면 오해를 부른다
+      if (mk['미분류']) parts.push('구분대기 ' + mk['미분류'].toLocaleString('ko-KR'));
     }
     if (!parts.length) parts.push('DART ' + total.toLocaleString('ko-KR') + '종목');
     if (date) parts.push(date);
