@@ -1,0 +1,213 @@
+{
+ "name": "SG&G",
+ "split_adjusted": false,
+ "legal_name": "SG&G",
+ "code": "040610",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-08-23",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 12000.0,
+   "op": 464.3,
+   "ni": 257.3,
+   "assets": 12799.2,
+   "liab": 6821.2,
+   "equity": 5978.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 12175.9,
+   "op": 285.8,
+   "ni": -14.2,
+   "assets": 12342.9,
+   "liab": 6367.5,
+   "equity": 5975.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 10888.2,
+   "op": 88.9,
+   "ni": -59.4,
+   "assets": 12239.1,
+   "liab": 6126.2,
+   "equity": 6112.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 9388.9,
+   "op": 117.2,
+   "ni": 33.7,
+   "assets": 11215.2,
+   "liab": 4972.1,
+   "equity": 6243.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 403.9,
+   "op": 9.1,
+   "ni": 265.7,
+   "assets": 3311.2,
+   "liab": 547.0,
+   "equity": 2764.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 357.5,
+   "op": -5.3,
+   "ni": 125.8,
+   "assets": 3599.1,
+   "liab": 894.4,
+   "equity": 2704.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 427.2,
+   "op": 18.7,
+   "ni": 516.4,
+   "assets": 3782.1,
+   "liab": 646.4,
+   "equity": 3135.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 419.0,
+   "op": 29.5,
+   "ni": 199.7,
+   "assets": 4108.0,
+   "liab": 650.3,
+   "equity": 3457.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 507.6,
+   "op": 64.1,
+   "ni": 161.8,
+   "assets": 4534.2,
+   "liab": 728.9,
+   "equity": 3805.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 477.0,
+   "op": 36.7,
+   "ni": 272.0,
+   "assets": 4887.6,
+   "liab": 721.1,
+   "equity": 4166.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 134.3,
+   "op": 22.0,
+   "ni": 63.9
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 126.5,
+   "op": 15.9,
+   "ni": 60.7
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 113.6,
+   "op": 12.2,
+   "ni": 45.2
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 133.3,
+   "op": 14.0,
+   "ni": -7.9
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 114.8,
+   "op": 9.9,
+   "ni": 69.1
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 124.7,
+   "op": 8.6,
+   "ni": 22.3
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 106.2,
+   "op": 8.1,
+   "ni": 172.5
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 131.2,
+   "op": 10.1,
+   "ni": 8.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 124.7,
+   "op": 19.3,
+   "ni": 88.8
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 128.2,
+   "op": 14.4,
+   "ni": 684.1
+  }
+ ]
+}

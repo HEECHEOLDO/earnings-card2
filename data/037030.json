@@ -1,0 +1,187 @@
+{
+ "name": "파워넷",
+ "split_adjusted": false,
+ "legal_name": "파워넷",
+ "code": "037030",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-08-23",
+ "annual": [
+  {
+   "p": 2018,
+   "rev": 1168.7,
+   "op": 27.7,
+   "ni": 45.3,
+   "assets": 825.3,
+   "liab": 351.0,
+   "equity": 474.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 1285.5,
+   "op": 51.6,
+   "ni": 54.2,
+   "assets": 1062.8,
+   "liab": 531.7,
+   "equity": 531.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 1471.8,
+   "op": 65.9,
+   "ni": 2.1,
+   "assets": 1201.8,
+   "liab": 467.7,
+   "equity": 734.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 2078.6,
+   "op": 54.6,
+   "ni": 23.8,
+   "assets": 1571.5,
+   "liab": 728.5,
+   "equity": 842.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 2110.9,
+   "op": 56.7,
+   "ni": 16.6,
+   "assets": 1422.3,
+   "liab": 511.8,
+   "equity": 910.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 1861.6,
+   "op": 71.5,
+   "ni": -2.0,
+   "assets": 1483.1,
+   "liab": 546.5,
+   "equity": 936.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 3226.8,
+   "op": 133.0,
+   "ni": 128.0,
+   "assets": 4799.7,
+   "liab": 2159.1,
+   "equity": 2640.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 4470.4,
+   "op": 246.1,
+   "ni": 213.4,
+   "assets": 5838.1,
+   "liab": 2493.1,
+   "equity": 3345.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 535.7,
+   "op": 26.0,
+   "ni": 65.7
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 648.2,
+   "op": 35.9,
+   "ni": 52.9
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 1082.8,
+   "op": 47.0,
+   "ni": 113.4
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 960.1,
+   "op": 24.2,
+   "ni": -104.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 1059.9,
+   "op": 44.2,
+   "ni": 34.1
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 1166.1,
+   "op": 96.2,
+   "ni": 75.2
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 1005.2,
+   "op": 66.7,
+   "ni": 100.8
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 1239.1,
+   "op": 39.0,
+   "ni": 3.2
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 1065.8,
+   "op": 36.4,
+   "ni": 15.8
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 1042.4,
+   "op": 69.0,
+   "ni": 3.7
+  }
+ ]
+}

@@ -1,0 +1,51 @@
+{
+ "name": "럭슬",
+ "split_adjusted": false,
+ "legal_name": "럭슬",
+ "code": "033600",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-23",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 387.6,
+   "op": -50.8,
+   "ni": -121.7,
+   "assets": 549.0,
+   "liab": 337.1,
+   "equity": 211.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 254.7,
+   "op": -50.2,
+   "ni": -101.9,
+   "assets": 546.2,
+   "liab": 378.3,
+   "equity": 167.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 199.2,
+   "op": -54.6,
+   "ni": -97.4,
+   "assets": 661.4,
+   "liab": 518.6,
+   "equity": 142.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

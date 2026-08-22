@@ -1,0 +1,90 @@
+{
+ "name": "넥슨지티",
+ "split_adjusted": false,
+ "legal_name": "넥슨지티",
+ "code": "041140",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-23",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 611.8,
+   "op": 177.9,
+   "ni": 158.5,
+   "assets": 1517.1,
+   "liab": 125.3,
+   "equity": 1391.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 492.7,
+   "op": -23.2,
+   "ni": -132.4,
+   "assets": 1738.4,
+   "liab": 498.1,
+   "equity": 1240.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 324.6,
+   "op": -251.9,
+   "ni": -251.3,
+   "assets": 1698.2,
+   "liab": 670.4,
+   "equity": 1027.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 302.1,
+   "op": -287.2,
+   "ni": 29.3,
+   "assets": 1446.1,
+   "liab": 370.5,
+   "equity": 1075.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 278.4,
+   "op": 31.2,
+   "ni": 39.5,
+   "assets": 1466.4,
+   "liab": 349.5,
+   "equity": 1116.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 560.8,
+   "op": 273.0,
+   "ni": 270.9,
+   "assets": 1573.2,
+   "liab": 174.8,
+   "equity": 1398.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

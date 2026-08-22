@@ -1,0 +1,25 @@
+{
+ "name": "에스에스컴텍",
+ "split_adjusted": false,
+ "legal_name": "에스에스컴텍",
+ "code": "036500",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-23",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 525.3,
+   "op": -132.1,
+   "ni": -532.1,
+   "assets": 339.3,
+   "liab": 323.2,
+   "equity": 16.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

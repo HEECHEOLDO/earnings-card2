@@ -1,0 +1,51 @@
+{
+ "name": "글로앤웰",
+ "split_adjusted": false,
+ "legal_name": "글로앤웰",
+ "code": "035480",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-23",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 244.4,
+   "op": -188.9,
+   "ni": -222.8,
+   "assets": 801.0,
+   "liab": 231.5,
+   "equity": 569.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 81.2,
+   "op": -126.5,
+   "ni": -200.8,
+   "assets": 660.9,
+   "liab": 275.6,
+   "equity": 385.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 157.8,
+   "op": -60.2,
+   "ni": -49.9,
+   "assets": 390.8,
+   "liab": 67.2,
+   "equity": 323.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

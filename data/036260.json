@@ -1,0 +1,77 @@
+{
+ "name": "이매진아시아",
+ "split_adjusted": false,
+ "legal_name": "이매진아시아",
+ "code": "036260",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-23",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 321.0,
+   "op": -38.1,
+   "ni": -26.2,
+   "assets": 412.5,
+   "liab": 74.0,
+   "equity": 338.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 302.1,
+   "op": -57.2,
+   "ni": -150.9,
+   "assets": 546.7,
+   "liab": 170.4,
+   "equity": 376.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 261.9,
+   "op": -39.4,
+   "ni": -116.0,
+   "assets": 319.3,
+   "liab": 66.8,
+   "equity": 252.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 126.9,
+   "op": -37.8,
+   "ni": -198.5,
+   "assets": 179.2,
+   "liab": 60.1,
+   "equity": 119.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 55.2,
+   "op": -23.6,
+   "ni": -128.9,
+   "assets": 54.6,
+   "liab": 64.3,
+   "equity": -9.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

@@ -1,0 +1,77 @@
+{
+ "name": "케이맥",
+ "split_adjusted": false,
+ "legal_name": "케이맥",
+ "code": "043290",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-23",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 895.2,
+   "op": 118.9,
+   "ni": 97.2,
+   "assets": 1057.9,
+   "liab": 474.4,
+   "equity": 583.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 899.4,
+   "op": -4.6,
+   "ni": -71.6,
+   "assets": 787.6,
+   "liab": 265.2,
+   "equity": 522.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 1068.2,
+   "op": 80.5,
+   "ni": 78.3,
+   "assets": 871.4,
+   "liab": 303.4,
+   "equity": 568.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 629.8,
+   "op": -63.3,
+   "ni": -110.9,
+   "assets": 864.4,
+   "liab": 423.6,
+   "equity": 440.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 781.1,
+   "op": -123.5,
+   "ni": -190.0,
+   "assets": 691.2,
+   "liab": 401.5,
+   "equity": 289.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

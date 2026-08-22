@@ -1,0 +1,165 @@
+{
+ "name": "스포츠서울",
+ "split_adjusted": false,
+ "legal_name": "스포츠서울",
+ "code": "039670",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-23",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 154.8,
+   "op": -47.7,
+   "ni": -46.2,
+   "assets": 240.7,
+   "liab": 121.8,
+   "equity": 119.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 161.1,
+   "op": 3.1,
+   "ni": -5.1,
+   "assets": 284.8,
+   "liab": 109.1,
+   "equity": 175.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 236.7,
+   "op": -77.3,
+   "ni": -195.9,
+   "assets": 873.2,
+   "liab": 561.9,
+   "equity": 311.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 274.0,
+   "op": -96.4,
+   "ni": -478.3,
+   "assets": 717.6,
+   "liab": 515.4,
+   "equity": 202.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 123.7,
+   "op": -58.6,
+   "ni": -235.5,
+   "assets": 155.4,
+   "liab": 218.6,
+   "equity": -63.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 99.6,
+   "op": -34.6,
+   "ni": 39.9,
+   "assets": 155.5,
+   "liab": 93.5,
+   "equity": 62.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 91.7,
+   "op": -13.5,
+   "ni": -13.5,
+   "assets": 100.1,
+   "liab": 51.6,
+   "equity": 48.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 86.5,
+   "op": -12.4,
+   "ni": 2.5,
+   "assets": 83.7,
+   "liab": 32.7,
+   "equity": 51.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 81.3,
+   "op": -22.4,
+   "ni": -55.2,
+   "assets": 43.5,
+   "liab": 33.1,
+   "equity": 10.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 1,
+   "rev": 18.3,
+   "op": -4.1,
+   "ni": -4.1
+  },
+  {
+   "y": 2023,
+   "q": 2,
+   "rev": 14.8,
+   "op": -8.5,
+   "ni": -13.5
+  },
+  {
+   "y": 2023,
+   "q": 3,
+   "rev": 18.1,
+   "op": -5.7,
+   "ni": -5.8
+  },
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 35.4,
+   "op": 5.9,
+   "ni": 25.9
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 81.3,
+   "op": -22.4,
+   "ni": -55.2
+  }
+ ]
+}

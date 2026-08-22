@@ -1,0 +1,213 @@
+{
+ "name": "블루콤",
+ "split_adjusted": false,
+ "legal_name": "블루콤",
+ "code": "033560",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-08-23",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 2387.9,
+   "op": 270.0,
+   "ni": 233.7,
+   "assets": 1977.6,
+   "liab": 251.4,
+   "equity": 1726.2,
+   "dps": null,
+   "payout": 4.0,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 1166.0,
+   "op": 116.1,
+   "ni": 31.4,
+   "assets": 1799.5,
+   "liab": 147.4,
+   "equity": 1652.1,
+   "dps": null,
+   "payout": 28.8,
+   "yield": 0.7,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 738.7,
+   "op": 0.8,
+   "ni": 19.2,
+   "assets": 1722.7,
+   "liab": 61.2,
+   "equity": 1661.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 285.6,
+   "op": -121.0,
+   "ni": 18.2,
+   "assets": 1738.8,
+   "liab": 70.8,
+   "equity": 1668.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 535.5,
+   "op": -41.9,
+   "ni": -5.2,
+   "assets": 1758.4,
+   "liab": 103.6,
+   "equity": 1654.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 714.9,
+   "op": 14.2,
+   "ni": 0.6,
+   "assets": 1804.3,
+   "liab": 204.8,
+   "equity": 1599.5,
+   "dps": 5.0,
+   "payout": 132.0,
+   "yield": 0.05,
+   "dps_adj": 5.0
+  },
+  {
+   "p": 2022,
+   "rev": 586.2,
+   "op": -13.3,
+   "ni": -2.6,
+   "assets": 1753.5,
+   "liab": 150.0,
+   "equity": 1603.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 327.7,
+   "op": -77.1,
+   "ni": -27.5,
+   "assets": 1744.6,
+   "liab": 169.8,
+   "equity": 1574.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 183.1,
+   "op": -28.0,
+   "ni": 23.8,
+   "assets": 2015.1,
+   "liab": 415.6,
+   "equity": 1599.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 58.1,
+   "op": 6.5,
+   "ni": 163.7,
+   "assets": 2008.9,
+   "liab": 307.4,
+   "equity": 1701.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 48.3,
+   "op": -13.6,
+   "ni": 6.7
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 41.8,
+   "op": -7.3,
+   "ni": 0.6
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 85.4,
+   "op": -3.7,
+   "ni": 4.2
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 7.6,
+   "op": -3.4,
+   "ni": 12.3
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 5.8,
+   "op": -13.2,
+   "ni": 134.6
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 29.0,
+   "op": 2.4,
+   "ni": -26.9
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 16.8,
+   "op": 1.9,
+   "ni": 35.8
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 6.4,
+   "op": 15.4,
+   "ni": 20.1
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 18.2,
+   "op": 6.0,
+   "ni": 15.5
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 19.4,
+   "op": 1.6,
+   "ni": 5.7
+  }
+ ]
+}

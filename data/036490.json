@@ -1,0 +1,77 @@
+{
+ "name": "에스케이머티리얼즈",
+ "split_adjusted": false,
+ "legal_name": "에스케이머티리얼즈",
+ "code": "036490",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-23",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 4614.4,
+   "op": 1540.7,
+   "ni": 1104.5,
+   "assets": 9031.1,
+   "liab": 4659.7,
+   "equity": 4371.4,
+   "dps": null,
+   "payout": 34.4,
+   "yield": 2.0,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 5122.9,
+   "op": 1476.6,
+   "ni": 1040.6,
+   "assets": 11180.1,
+   "liab": 7098.7,
+   "equity": 4081.4,
+   "dps": null,
+   "payout": 34.9,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 6872.5,
+   "op": 1828.9,
+   "ni": 1234.4,
+   "assets": 13984.3,
+   "liab": 9951.3,
+   "equity": 4033.0,
+   "dps": 3750.0,
+   "payout": 31.6,
+   "yield": 2.5,
+   "dps_adj": 3750.0
+  },
+  {
+   "p": 2019,
+   "rev": 7721.9,
+   "op": 2147.5,
+   "ni": 1433.0,
+   "assets": 16158.3,
+   "liab": 10955.3,
+   "equity": 5203.1,
+   "dps": 3850.0,
+   "payout": 28.5,
+   "yield": 2.0,
+   "dps_adj": 3850.0
+  },
+  {
+   "p": 2020,
+   "rev": 9549.8,
+   "op": 2339.3,
+   "ni": 1520.5,
+   "assets": 20386.3,
+   "liab": 15339.4,
+   "equity": 5046.9,
+   "dps": 4000.0,
+   "payout": 27.7,
+   "yield": 1.2,
+   "dps_adj": 4000.0
+  }
+ ],
+ "quarterly": []
+}

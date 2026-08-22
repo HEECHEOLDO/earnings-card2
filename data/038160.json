@@ -1,0 +1,145 @@
+{
+ "name": "팍스넷",
+ "split_adjusted": false,
+ "legal_name": "팍스넷",
+ "code": "038160",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-23",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 222.4,
+   "op": 38.7,
+   "ni": 35.9,
+   "assets": 474.7,
+   "liab": 53.4,
+   "equity": 421.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 183.1,
+   "op": 12.7,
+   "ni": 18.8,
+   "assets": 496.3,
+   "liab": 53.6,
+   "equity": 442.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 178.8,
+   "op": -0.4,
+   "ni": -19.7,
+   "assets": 627.6,
+   "liab": 202.7,
+   "equity": 424.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 106.8,
+   "op": -161.6,
+   "ni": -299.7,
+   "assets": 789.5,
+   "liab": 657.2,
+   "equity": 132.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 102.6,
+   "op": -84.9,
+   "ni": -259.3,
+   "assets": 329.8,
+   "liab": 492.1,
+   "equity": -162.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 48.6,
+   "op": -58.3,
+   "ni": -100.8,
+   "assets": 250.9,
+   "liab": 477.9,
+   "equity": -227.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 20.3,
+   "op": -23.3,
+   "ni": -23.6,
+   "assets": 215.3,
+   "liab": 467.3,
+   "equity": -252.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 10.9,
+   "op": -36.7,
+   "ni": -38.9,
+   "assets": 165.9,
+   "liab": 463.1,
+   "equity": -297.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 1,
+   "rev": 2.5,
+   "op": -10.1,
+   "ni": -8.2
+  },
+  {
+   "y": 2023,
+   "q": 2,
+   "rev": 3.0,
+   "op": -8.9,
+   "ni": -10.4
+  },
+  {
+   "y": 2023,
+   "q": 3,
+   "rev": 3.1,
+   "op": -9.0,
+   "ni": -10.0
+  },
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 2.2,
+   "op": -8.6,
+   "ni": -10.4
+  }
+ ]
+}

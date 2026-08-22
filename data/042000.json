@@ -1,0 +1,200 @@
+{
+ "name": "카페24",
+ "split_adjusted": false,
+ "legal_name": "카페24",
+ "code": "042000",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-08-23",
+ "annual": [
+  {
+   "p": 2017,
+   "rev": 1425.8,
+   "op": 74.0,
+   "ni": 50.9,
+   "assets": 719.2,
+   "liab": 581.9,
+   "equity": 137.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 1653.9,
+   "op": 155.9,
+   "ni": -282.5,
+   "assets": 1486.0,
+   "liab": 339.1,
+   "equity": 1146.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 2172.4,
+   "op": 98.4,
+   "ni": 77.8,
+   "assets": 2314.3,
+   "liab": 791.7,
+   "equity": 1522.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 2473.4,
+   "op": 83.7,
+   "ni": 85.6,
+   "assets": 2540.3,
+   "liab": 945.8,
+   "equity": 1594.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 2762.7,
+   "op": -199.5,
+   "ni": -180.5,
+   "assets": 4161.6,
+   "liab": 1447.8,
+   "equity": 2713.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 2793.2,
+   "op": -297.4,
+   "ni": -498.6,
+   "assets": 3411.2,
+   "liab": 1717.3,
+   "equity": 1693.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 2781.1,
+   "op": -31.1,
+   "ni": 19.8,
+   "assets": 3218.4,
+   "liab": 1472.5,
+   "equity": 1745.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 3024.8,
+   "op": 319.4,
+   "ni": 234.9,
+   "assets": 3422.9,
+   "liab": 1267.2,
+   "equity": 2155.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 3147.6,
+   "op": 402.3,
+   "ni": 390.6,
+   "assets": 4156.0,
+   "liab": 1496.8,
+   "equity": 2659.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 668.5,
+   "op": 21.6,
+   "ni": 7.4
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 758.1,
+   "op": 69.2,
+   "ni": 67.3
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 764.9,
+   "op": 67.2,
+   "ni": 48.9
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 833.3,
+   "op": 161.4,
+   "ni": 111.4
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 712.5,
+   "op": 59.6,
+   "ni": 52.7
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 794.2,
+   "op": 112.4,
+   "ni": 131.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 767.7,
+   "op": 100.4,
+   "ni": 75.1
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 873.2,
+   "op": 129.9,
+   "ni": 131.8
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 755.0,
+   "op": 62.4,
+   "ni": 63.6
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 834.3,
+   "op": 82.3,
+   "ni": 88.3
+  }
+ ]
+}

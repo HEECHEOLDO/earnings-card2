@@ -1,0 +1,125 @@
+{
+ "name": "제이앤케이인더스트리",
+ "split_adjusted": false,
+ "legal_name": "제이앤케이인더스트리",
+ "code": "039230",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-23",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 352.7,
+   "op": -124.6,
+   "ni": -236.1,
+   "assets": 388.7,
+   "liab": 244.8,
+   "equity": 143.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 538.8,
+   "op": 26.8,
+   "ni": -53.3,
+   "assets": 536.1,
+   "liab": 361.1,
+   "equity": 174.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 377.7,
+   "op": 26.4,
+   "ni": -93.1,
+   "assets": 746.1,
+   "liab": 459.5,
+   "equity": 286.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 374.0,
+   "op": 31.5,
+   "ni": -111.8,
+   "assets": 680.4,
+   "liab": 175.9,
+   "equity": 504.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 292.1,
+   "op": -36.8,
+   "ni": -78.6,
+   "assets": 581.1,
+   "liab": 128.6,
+   "equity": 452.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 373389906.1,
+   "op": -32122692.0,
+   "ni": -162966287.0,
+   "assets": 502450474.1,
+   "liab": 182891348.4,
+   "equity": 319559125.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 3.5,
+   "op": -26.7,
+   "ni": -93.1,
+   "assets": 242.1,
+   "liab": 58.3,
+   "equity": 183.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 1,
+   "rev": 0.0,
+   "op": -4.1,
+   "ni": -14.1
+  },
+  {
+   "y": 2023,
+   "q": 2,
+   "rev": 0.0,
+   "op": -4.7,
+   "ni": -43.9
+  },
+  {
+   "y": 2023,
+   "q": 3,
+   "rev": 0.0,
+   "op": -3.6,
+   "ni": -4.6
+  }
+ ]
+}

@@ -1,0 +1,38 @@
+{
+ "name": "에임하이글로벌",
+ "split_adjusted": false,
+ "legal_name": "에임하이글로벌",
+ "code": "043580",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-23",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 44.4,
+   "op": -58.8,
+   "ni": -119.9,
+   "assets": 342.1,
+   "liab": 92.4,
+   "equity": 249.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 232.6,
+   "op": -45.8,
+   "ni": -210.8,
+   "assets": 1514.0,
+   "liab": 87.7,
+   "equity": 1426.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

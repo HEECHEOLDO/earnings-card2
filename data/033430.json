@@ -1,0 +1,186 @@
+{
+ "name": "디에스티",
+ "split_adjusted": false,
+ "legal_name": "디에스티",
+ "code": "033430",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-23",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 312.2,
+   "op": -0.2,
+   "ni": -462.5,
+   "assets": 786.3,
+   "liab": 673.1,
+   "equity": 113.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 331.6,
+   "op": 38.8,
+   "ni": 32.3,
+   "assets": 597.4,
+   "liab": 577.0,
+   "equity": 20.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 276.0,
+   "op": 10.8,
+   "ni": -16.8,
+   "assets": 570.1,
+   "liab": 394.6,
+   "equity": 175.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 208.1,
+   "op": -41.4,
+   "ni": -179.8,
+   "assets": 545.3,
+   "liab": 506.6,
+   "equity": 38.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 180.9,
+   "op": -30.1,
+   "ni": -26.6,
+   "assets": 559.2,
+   "liab": 528.0,
+   "equity": 31.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 251.4,
+   "op": 35.0,
+   "ni": 22.9,
+   "assets": 619.5,
+   "liab": 543.3,
+   "equity": 76.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 277.5,
+   "op": 39.6,
+   "ni": 18.7,
+   "assets": 345.4,
+   "liab": 257.7,
+   "equity": 87.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 208.6,
+   "op": 27.1,
+   "ni": 25.5,
+   "assets": 314.2,
+   "liab": 204.9,
+   "equity": 109.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 182.5,
+   "op": 18.2,
+   "ni": 16.5,
+   "assets": 305.6,
+   "liab": 179.8,
+   "equity": 125.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 1,
+   "rev": 53.0,
+   "op": 2.5,
+   "ni": 3.1
+  },
+  {
+   "y": 2023,
+   "q": 2,
+   "rev": 49.7,
+   "op": 11.7,
+   "ni": 8.4
+  },
+  {
+   "y": 2023,
+   "q": 3,
+   "rev": 44.0,
+   "op": 6.8,
+   "ni": 11.3
+  },
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 61.9,
+   "op": 6.1,
+   "ni": 2.7
+  },
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 40.0,
+   "op": 0.3,
+   "ni": 0.8
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 51.6,
+   "op": 7.4,
+   "ni": 6.7
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 45.0,
+   "op": -0.9,
+   "ni": -4.7
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 45.8,
+   "op": 11.4,
+   "ni": 13.8
+  }
+ ]
+}

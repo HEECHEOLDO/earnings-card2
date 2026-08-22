@@ -1,0 +1,200 @@
+{
+ "name": "위노바",
+ "split_adjusted": false,
+ "legal_name": "위노바",
+ "code": "039790",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-23",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 203.6,
+   "op": -27.7,
+   "ni": -264.9,
+   "assets": 319.6,
+   "liab": 65.6,
+   "equity": 254.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 78.7,
+   "op": -29.9,
+   "ni": -46.0,
+   "assets": 147.3,
+   "liab": 28.8,
+   "equity": 118.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 71.0,
+   "op": -30.3,
+   "ni": -21.4,
+   "assets": 133.2,
+   "liab": 35.3,
+   "equity": 97.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 76.4,
+   "op": -15.9,
+   "ni": -4.1,
+   "assets": 153.4,
+   "liab": 54.2,
+   "equity": 99.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 87.0,
+   "op": -36.5,
+   "ni": -94.3,
+   "assets": 134.6,
+   "liab": 62.0,
+   "equity": 72.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 67.2,
+   "op": -27.9,
+   "ni": -26.2,
+   "assets": 118.0,
+   "liab": 69.2,
+   "equity": 48.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 65.0,
+   "op": -20.2,
+   "ni": -22.6,
+   "assets": 109.1,
+   "liab": 83.1,
+   "equity": 26.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 69.0,
+   "op": -17.2,
+   "ni": -23.7,
+   "assets": 98.9,
+   "liab": 97.3,
+   "equity": 1.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 77.0,
+   "op": -15.9,
+   "ni": -19.1,
+   "assets": 86.6,
+   "liab": 103.7,
+   "equity": -17.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 18.9,
+   "op": -5.1,
+   "ni": -4.7
+  },
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 19.2,
+   "op": -0.4,
+   "ni": -2.4
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 17.3,
+   "op": -7.2,
+   "ni": -8.5
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 13.6,
+   "op": -4.4,
+   "ni": -5.3
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 18.8,
+   "op": -5.2,
+   "ni": -7.6
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 19.2,
+   "op": -5.2,
+   "ni": -5.9
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 16.5,
+   "op": -4.0,
+   "ni": -3.7
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 21.1,
+   "op": -1.7,
+   "ni": -2.4
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 20.2,
+   "op": -5.1,
+   "ni": -7.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 18.6,
+   "op": -2.8,
+   "ni": -2.6
+  }
+ ]
+}
