@@ -1,0 +1,77 @@
+{
+ "name": "금빛",
+ "split_adjusted": false,
+ "legal_name": "금빛",
+ "code": "045890",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-24",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 756.6,
+   "op": 41.7,
+   "ni": 26.5,
+   "assets": 1107.1,
+   "liab": 577.9,
+   "equity": 529.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 729.0,
+   "op": 0.6,
+   "ni": -54.0,
+   "assets": 1096.4,
+   "liab": 647.8,
+   "equity": 448.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 531.6,
+   "op": -168.7,
+   "ni": -66.4,
+   "assets": 1026.1,
+   "liab": 527.9,
+   "equity": 498.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 586.5,
+   "op": -161.1,
+   "ni": -368.2,
+   "assets": 1028.5,
+   "liab": 718.2,
+   "equity": 310.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 409.3,
+   "op": -188.5,
+   "ni": -177.9,
+   "assets": 1228.5,
+   "liab": 724.9,
+   "equity": 503.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

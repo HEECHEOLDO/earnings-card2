@@ -1,0 +1,38 @@
+{
+ "name": "디케이씨",
+ "split_adjusted": false,
+ "legal_name": "디케이씨",
+ "code": "047440",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-24",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 998.2,
+   "op": -115.8,
+   "ni": -177.0,
+   "assets": 850.8,
+   "liab": 446.1,
+   "equity": 404.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 802.8,
+   "op": -153.1,
+   "ni": -276.9,
+   "assets": 668.1,
+   "liab": 444.0,
+   "equity": 224.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

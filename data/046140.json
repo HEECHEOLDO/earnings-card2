@@ -1,0 +1,145 @@
+{
+ "name": "스튜디오에스",
+ "split_adjusted": false,
+ "legal_name": "스튜디오에스",
+ "code": "046140",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-24",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 2576.7,
+   "op": 143.1,
+   "ni": 31.2,
+   "assets": 2396.4,
+   "liab": 837.5,
+   "equity": 1558.9,
+   "dps": 100.0,
+   "payout": 68.8,
+   "yield": 1.2,
+   "dps_adj": 100.0
+  },
+  {
+   "p": 2017,
+   "rev": 1979.6,
+   "op": 1.3,
+   "ni": -60.7,
+   "assets": 2115.1,
+   "liab": 631.3,
+   "equity": 1483.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 1597.6,
+   "op": 32.2,
+   "ni": 82.5,
+   "assets": 2125.0,
+   "liab": 564.1,
+   "equity": 1561.0,
+   "dps": 75.0,
+   "payout": 19.5,
+   "yield": 1.5,
+   "dps_adj": 75.0
+  },
+  {
+   "p": 2019,
+   "rev": 1620.7,
+   "op": 19.2,
+   "ni": 5.5,
+   "assets": 1971.0,
+   "liab": 418.4,
+   "equity": 1552.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 1537.1,
+   "op": 72.4,
+   "ni": 78.5,
+   "assets": 1952.8,
+   "liab": 428.4,
+   "equity": 1524.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 1803.5,
+   "op": 110.7,
+   "ni": 148.6,
+   "assets": 2195.5,
+   "liab": 522.7,
+   "equity": 1672.9,
+   "dps": 75.0,
+   "payout": 9.8,
+   "yield": 0.9,
+   "dps_adj": 75.0
+  },
+  {
+   "p": 2022,
+   "rev": 1976.4,
+   "op": 120.9,
+   "ni": 96.2,
+   "assets": 2483.8,
+   "liab": 727.7,
+   "equity": 1756.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 2236.9,
+   "op": 53.1,
+   "ni": 36.9,
+   "assets": 2284.4,
+   "liab": 497.7,
+   "equity": 1786.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 1,
+   "rev": 503.5,
+   "op": 13.5,
+   "ni": 10.3
+  },
+  {
+   "y": 2023,
+   "q": 2,
+   "rev": 661.1,
+   "op": 20.8,
+   "ni": 22.3
+  },
+  {
+   "y": 2023,
+   "q": 3,
+   "rev": 578.3,
+   "op": 14.2,
+   "ni": 23.1
+  },
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 494.1,
+   "op": 4.5,
+   "ni": -18.8
+  }
+ ]
+}

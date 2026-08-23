@@ -1,0 +1,138 @@
+{
+ "name": "한일네트웍스",
+ "split_adjusted": false,
+ "legal_name": "한일네트웍스",
+ "code": "046110",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-24",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 1223.9,
+   "op": 42.6,
+   "ni": 44.4,
+   "assets": 739.8,
+   "liab": 319.2,
+   "equity": 420.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 1160.7,
+   "op": 71.6,
+   "ni": 166.8,
+   "assets": 828.7,
+   "liab": 250.6,
+   "equity": 578.1,
+   "dps": 70.0,
+   "payout": null,
+   "yield": 1.1,
+   "dps_adj": 70.0
+  },
+  {
+   "p": 2018,
+   "rev": 1266.0,
+   "op": 59.4,
+   "ni": 51.0,
+   "assets": 831.0,
+   "liab": 207.0,
+   "equity": 624.0,
+   "dps": 200.0,
+   "payout": null,
+   "yield": 3.8,
+   "dps_adj": 200.0
+  },
+  {
+   "p": 2019,
+   "rev": 1216.3,
+   "op": 87.2,
+   "ni": 70.4,
+   "assets": 1248.7,
+   "liab": 575.1,
+   "equity": 673.6,
+   "dps": 230.0,
+   "payout": 39.0,
+   "yield": 5.1,
+   "dps_adj": 230.0
+  },
+  {
+   "p": 2020,
+   "rev": 1174.4,
+   "op": 100.1,
+   "ni": 76.0,
+   "assets": 1358.8,
+   "liab": 592.7,
+   "equity": 766.1,
+   "dps": 240.0,
+   "payout": 37.7,
+   "yield": 4.7,
+   "dps_adj": 240.0
+  },
+  {
+   "p": 2021,
+   "rev": 1283.5,
+   "op": 130.1,
+   "ni": 93.1,
+   "assets": 1327.7,
+   "liab": 524.7,
+   "equity": 803.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 1226.0,
+   "op": 107.8,
+   "ni": 75.3,
+   "assets": 1435.6,
+   "liab": 550.4,
+   "equity": 885.2,
+   "dps": 3152.0,
+   "payout": 465.0,
+   "yield": 26.3,
+   "dps_adj": 3152.0
+  },
+  {
+   "p": 2024,
+   "rev": 1408.8,
+   "op": 180.3,
+   "ni": 117.0,
+   "assets": 1341.7,
+   "liab": 693.4,
+   "equity": 648.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 3,
+   "rev": 851.4,
+   "op": 80.0,
+   "ni": 58.5
+  },
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 374.6,
+   "op": 27.8,
+   "ni": 16.8
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 1408.8,
+   "op": 180.3,
+   "ni": 117.0
+  }
+ ]
+}

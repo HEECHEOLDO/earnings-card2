@@ -1,0 +1,213 @@
+{
+ "name": "오스템임플란트",
+ "split_adjusted": false,
+ "legal_name": "오스템임플란트",
+ "code": "048260",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-24",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 3445.8,
+   "op": 342.5,
+   "ni": 203.3,
+   "assets": 4752.6,
+   "liab": 3635.3,
+   "equity": 1117.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 3977.9,
+   "op": 217.0,
+   "ni": 56.6,
+   "assets": 5557.0,
+   "liab": 4353.0,
+   "equity": 1204.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 4601.5,
+   "op": 309.8,
+   "ni": 62.6,
+   "assets": 6379.3,
+   "liab": 5239.3,
+   "equity": 1140.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 5650.4,
+   "op": 429.0,
+   "ni": -219.6,
+   "assets": 7973.9,
+   "liab": 7150.5,
+   "equity": 823.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 6316.0,
+   "op": 981.0,
+   "ni": 1035.3,
+   "assets": 9586.7,
+   "liab": 7701.7,
+   "equity": 1885.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 8245.7,
+   "op": 1433.3,
+   "ni": 234.1,
+   "assets": 11518.4,
+   "liab": 9353.8,
+   "equity": 2164.6,
+   "dps": null,
+   "payout": 14.4,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 10534.7,
+   "op": 2345.7,
+   "ni": 1442.0,
+   "assets": 13723.2,
+   "liab": 10097.8,
+   "equity": 3625.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 12082.8,
+   "op": 2428.3,
+   "ni": 1599.6,
+   "assets": 16874.6,
+   "liab": 11454.5,
+   "equity": 5420.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 13155.5,
+   "op": 1617.8,
+   "ni": 535.7,
+   "assets": 19816.0,
+   "liab": 13825.0,
+   "equity": 5991.0,
+   "dps": 68500.0,
+   "payout": 189.9,
+   "yield": null,
+   "dps_adj": 68500.0
+  },
+  {
+   "p": 2025,
+   "rev": 13327.1,
+   "op": 800.6,
+   "ni": -140.9,
+   "assets": 18825.9,
+   "liab": 13708.9,
+   "equity": 5117.0,
+   "dps": 26800.0,
+   "payout": 145.8,
+   "yield": null,
+   "dps_adj": 26800.0
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 3231.2,
+   "op": 522.2,
+   "ni": 284.7
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 3413.4,
+   "op": 616.0,
+   "ni": 319.3
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 3199.9,
+   "op": 423.1,
+   "ni": 180.6
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 3311.0,
+   "op": 56.5,
+   "ni": -249.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 3169.7,
+   "op": 232.6,
+   "ni": 67.9
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 3398.4,
+   "op": 187.1,
+   "ni": 8.2
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 3423.2,
+   "op": 278.7,
+   "ni": 228.1
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 3335.8,
+   "op": 102.2,
+   "ni": -445.2
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 3284.2,
+   "op": 282.8,
+   "ni": 86.8
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 3626.5,
+   "op": 596.6,
+   "ni": 377.5
+  }
+ ]
+}
