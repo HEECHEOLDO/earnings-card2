@@ -299,7 +299,7 @@
         label:36, labelPct:32, footer:27
       },
       gap:{ headToChart:30, chartToRule:40, ruleToText:18 },
-      donut:{ holeRatio:0.58, gapDeg:0.9, minLabelPct:3,
+      donut:{ holeRatio:0.58, sepWidth:5, minLabelPct:3,
               labelGap:26, lineGap:8, labelPad:8, labelMin:16,
               vertZone:0.26, pushMax:170, pullMax:220, swingMax:20, swingFrac:0.6, maxShrink:18,
               fullSizeAt:8, smallSize:26,
@@ -488,22 +488,37 @@
   function drawDonut(ctx, cx, cy, R, rows, colors, bounds) {
     var T = TOKENS.card, D = T.donut;
     var r0 = R * D.holeRatio;
-    var gap = D.gapDeg * Math.PI / 180;
     var ang = -Math.PI/2;
 
+    // 조각을 빈틈 없이 채운다.
+    // 예전처럼 각도를 비워두면 뒤에 깐 사진이 그 틈으로 비친다.
     rows.forEach(function (r, i) {
       var sweep = r.pct/100 * Math.PI*2;
-      var a1 = ang + gap/2, a2 = ang + sweep - gap/2;
-      if (a2 > a1) {
-        ctx.beginPath();
-        ctx.arc(cx, cy, R, a1, a2, false);
-        ctx.arc(cx, cy, r0, a2, a1, true);
-        ctx.closePath();
-        ctx.fillStyle = colors[i];
-        ctx.fill();
-      }
+      ctx.beginPath();
+      ctx.arc(cx, cy, R, ang, ang + sweep, false);
+      ctx.arc(cx, cy, r0, ang + sweep, ang, true);
+      ctx.closePath();
+      ctx.fillStyle = colors[i];
+      ctx.fill();
       ang += sweep;
     });
+
+    // 경계는 종이색 선으로 위에 그린다
+    if (rows.length > 1) {
+      ctx.save();
+      ctx.strokeStyle = T.paper;
+      ctx.lineWidth = D.sepWidth;
+      ctx.lineCap = 'butt';
+      ang = -Math.PI/2;
+      rows.forEach(function (r) {
+        ctx.beginPath();
+        ctx.moveTo(cx + Math.cos(ang) * r0, cy + Math.sin(ang) * r0);
+        ctx.lineTo(cx + Math.cos(ang) * R, cy + Math.sin(ang) * R);
+        ctx.stroke();
+        ang += r.pct/100 * Math.PI*2;
+      });
+      ctx.restore();
+    }
 
     /* ---- 라벨 배치 ----
        연결선 없이 각 라벨을 자기 조각 옆에 붙인다.
