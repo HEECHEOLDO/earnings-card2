@@ -59,6 +59,36 @@
   }
   .brand { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
   .brand h1 { font-size: 17px; font-weight: 800; margin: 0; letter-spacing: -0.01em; }
+  /* ---------- 색상 선택 ---------- */
+  .cpick { width: 100%; }
+  .cp-head { display: flex; align-items: center; gap: 10px; margin-bottom: 9px; }
+  .cp-preview { width: 34px; height: 34px; border-radius: 8px; flex: none;
+    border: 1px solid var(--border-strong); }
+  .cp-tabs { display: flex; gap: 3px; padding: 3px; background: var(--surface-2);
+    border-radius: 999px; }
+  .cp-tab { font-family: inherit; font-size: 12.5px; font-weight: 700; cursor: pointer;
+    border: none; background: transparent; color: var(--text-soft);
+    padding: 6px 13px; border-radius: 999px; }
+  .cp-tab.on { background: var(--accent); color: #fff; }
+  [data-mode="dark"] .cp-tab.on { color: #0E141B; }
+  .cp-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 3px; }
+  .cp-sw { width: 100%; aspect-ratio: 1; border-radius: 4px; cursor: pointer;
+    border: 1px solid rgba(0,0,0,.08); padding: 0; }
+  .cp-sw.on { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .cp-rgb { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .cp-rgb label { display: inline-flex; align-items: center; gap: 5px;
+    font-size: 12px; color: var(--text-soft); font-weight: 600; }
+  .cp-rgb input[type="text"] { width: 92px; height: 36px; font-family: inherit;
+    font-size: 13px; text-transform: uppercase; }
+  .cp-rgb input[type="number"] { width: 58px; height: 36px; font-family: inherit;
+    font-size: 13px; text-align: right; color: var(--text); background: var(--bg);
+    border: 1px solid var(--border-strong); border-radius: 6px; padding: 0 7px; }
+  .cp-rgb input[type="color"] { width: 36px; height: 36px; }
+  @media (max-width: 560px) {
+    .cp-grid { grid-template-columns: repeat(12, 1fr); gap: 2px; }
+    .cp-rgb input[type="text"], .cp-rgb input[type="number"] { font-size: 16px; }
+  }
+
   /* ---------- 공통 메뉴 ---------- */
   .nav {
     display: flex; gap: 4px; margin: 14px 0 4px; padding: 4px;
@@ -365,9 +395,24 @@
       <div class="divider"></div>
 
       <div class="ctl-row">
-        <label for="color-base">포인트 색상</label>
-        <input type="color" id="color-base" value="#2E6FD9">
-        <span class="hint">매출은 밝게, 영업이익은 어둡게 두 톤이 자동으로 만들어집니다.</span>
+<div class="cpick">
+          <div class="cp-head">
+            <span class="cp-preview" id="cp-preview"></span>
+            <div class="cp-tabs">
+              <button type="button" class="cp-tab on" data-t="grid">색상표</button>
+              <button type="button" class="cp-tab" data-t="rgb">직접 입력</button>
+            </div>
+          </div>
+          <div class="cp-grid" id="cp-grid"></div>
+          <div class="cp-rgb" id="cp-rgb" style="display:none">
+            <label>HEX <input type="text" id="cp-hex" spellcheck="false" maxlength="7"></label>
+            <label>R <input type="number" id="cp-r" min="0" max="255"></label>
+            <label>G <input type="number" id="cp-g" min="0" max="255"></label>
+            <label>B <input type="number" id="cp-b" min="0" max="255"></label>
+            <input type="color" id="cp-native" aria-label="시스템 색 선택기">
+          </div>
+          <input type="color" id="color-base" value="#2E6FD9" style="display:none">
+        </div>
       </div>
 
       <div class="divider"></div>
@@ -862,9 +907,14 @@
   }
   function deriveColors(base) {
     var c = hexToHsl(base);
+    // 무채색(검정·회색·흰색)을 고르면 채도를 올리지 않고 그대로 회색 계조로 간다
+    var gray = c.s < 8;
+    // 고른 색의 밝기를 어두운 톤에 반영한다 (기본 파랑이면 24 / 76 로 떨어진다)
+    var dark = Math.max(6, Math.min(44, c.l - 27));
+    var light = Math.min(90, dark + 52);
     return {
-      bar1: hslToHex(c.h, Math.max(c.s - 8, 22), 76),
-      bar2: hslToHex(c.h, Math.min(c.s + 10, 95), 24),
+      bar1: hslToHex(c.h, gray ? 0 : Math.max(c.s - 8, 22), light),
+      bar2: hslToHex(c.h, gray ? 0 : Math.min(c.s + 10, 95), dark),
       line: TOKENS.card.gold
     };
   }
@@ -1697,6 +1747,105 @@
       '1080 × 1350 · ' + state.company.name + ' ' + cardTitle(state.period, state.rows, state.spec, state.showLine[state.period]);
   }
 
+
+  /* ============================================================
+     색상 선택 — 색상표 / 직접 입력
+     ============================================================ */
+  function setupColorPicker(onPick) {
+    var base = document.getElementById('color-base');
+    var grid = document.getElementById('cp-grid');
+    var prev = document.getElementById('cp-preview');
+    if (!grid) return;
+
+    // 첫 줄은 검정~흰색 무채색, 아래 세 줄은 색상 12계열 × 채도 3단계.
+    // 조각 색은 명도를 따로 정하므로, 결과를 바꾸는 건 색상과 채도다.
+    var GRAYS = [0, 9, 18, 27, 36, 45, 55, 64, 73, 82, 91, 100];
+    var HUES = [4, 20, 38, 52, 86, 140, 170, 195, 216, 245, 280, 320];
+    // [채도, 명도] — 진한 / 선명 / 중간 / 연한
+    var TONES = [[70, 28], [74, 46], [50, 58], [28, 68]];
+
+    function hsl2hex(h, s, l) {
+      s /= 100; l /= 100;
+      var c = (1-Math.abs(2*l-1))*s, x = c*(1-Math.abs((h/60)%2-1)), m = l-c/2,
+          r = 0, g = 0, b = 0;
+      if (h < 60) { r=c; g=x; } else if (h < 120) { r=x; g=c; }
+      else if (h < 180) { g=c; b=x; } else if (h < 240) { g=x; b=c; }
+      else if (h < 300) { r=x; b=c; } else { r=c; b=x; }
+      function q(v){ return Math.round((v+m)*255).toString(16).padStart(2,'0'); }
+      return '#'+q(r)+q(g)+q(b);
+    }
+
+    var html = '';
+    function cell(c) {
+      return '<button type="button" class="cp-sw" data-c="' + c +
+             '" style="background:' + c + '" aria-label="' + c + '"></button>';
+    }
+    for (var gi = 0; gi < GRAYS.length; gi++) html += cell(hsl2hex(0, 0, GRAYS[gi]));
+    for (var ti = 0; ti < TONES.length; ti++) {
+      for (var hi = 0; hi < HUES.length; hi++) {
+        html += cell(hsl2hex(HUES[hi], TONES[ti][0], TONES[ti][1]));
+      }
+    }
+    grid.innerHTML = html;
+
+    var hex = document.getElementById('cp-hex');
+    var rI = document.getElementById('cp-r');
+    var gI = document.getElementById('cp-g');
+    var bI = document.getElementById('cp-b');
+    var nat = document.getElementById('cp-native');
+
+    function sync(c) {
+      prev.style.background = c;
+      hex.value = c.toUpperCase();
+      rI.value = parseInt(c.slice(1,3),16);
+      gI.value = parseInt(c.slice(3,5),16);
+      bI.value = parseInt(c.slice(5,7),16);
+      nat.value = c;
+      var sws = grid.querySelectorAll('.cp-sw');
+      for (var i = 0; i < sws.length; i++) {
+        sws[i].classList.toggle('on', sws[i].dataset.c.toLowerCase() === c.toLowerCase());
+      }
+    }
+    function pick(c) {
+      if (!/^#[0-9a-fA-F]{6}$/.test(c)) return;
+      base.value = c;
+      sync(c);
+      onPick();
+    }
+
+    grid.addEventListener('click', function (e) {
+      var b = e.target.closest ? e.target.closest('.cp-sw') : null;
+      if (b) pick(b.dataset.c);
+    });
+    hex.addEventListener('input', function () {
+      var v = this.value.trim();
+      if (v.charAt(0) !== '#') v = '#' + v;
+      if (/^#[0-9a-fA-F]{6}$/.test(v)) pick(v);
+    });
+    [rI, gI, bI].forEach(function (el) {
+      el.addEventListener('input', function () {
+        function n(x) { var v = parseInt(x.value, 10); return isNaN(v) ? 0 : Math.max(0, Math.min(255, v)); }
+        pick('#' + [n(rI), n(gI), n(bI)].map(function (v) {
+          return v.toString(16).padStart(2, '0');
+        }).join(''));
+      });
+    });
+    nat.addEventListener('input', function () { pick(this.value); });
+
+    Array.prototype.forEach.call(document.querySelectorAll('.cp-tab'), function (t) {
+      t.addEventListener('click', function () {
+        Array.prototype.forEach.call(document.querySelectorAll('.cp-tab'), function (x) {
+          x.classList.toggle('on', x === t);
+        });
+        var isGrid = t.dataset.t === 'grid';
+        grid.style.display = isGrid ? 'grid' : 'none';
+        document.getElementById('cp-rgb').style.display = isGrid ? 'none' : 'flex';
+      });
+    });
+
+    sync(base.value);
+  }
+
   /* 이벤트 */
   var qInput = document.getElementById('q');
   var sugBox = document.getElementById('suggest');
@@ -1867,6 +2016,7 @@
     setTimeout(function () { URL.revokeObjectURL(a.href); }, 5000);
   });
 
+  setupColorPicker(refresh);
   document.getElementById('q').value = '삼성전자';
   Adapter.init().then(function (idx) {
     var pill = document.getElementById('src-pill');
