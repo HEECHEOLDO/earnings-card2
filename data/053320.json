@@ -1,0 +1,38 @@
+{
+ "name": "제네시스디벨롭먼트홀딩스",
+ "split_adjusted": false,
+ "legal_name": "제네시스디벨롭먼트홀딩스",
+ "code": "053320",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-25",
+ "annual": [
+  {
+   "p": 2020,
+   "rev": 10.4,
+   "op": -9.4,
+   "ni": -17.6,
+   "assets": 323.0,
+   "liab": 39.5,
+   "equity": 283.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 15.6,
+   "op": -11.8,
+   "ni": -6.8,
+   "assets": 333.4,
+   "liab": 26.5,
+   "equity": 306.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

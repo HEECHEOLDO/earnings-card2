@@ -1,0 +1,213 @@
+{
+ "name": "지어소프트",
+ "split_adjusted": false,
+ "legal_name": "지어소프트",
+ "code": "051160",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-08-25",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 795.9,
+   "op": -14.8,
+   "ni": -71.9,
+   "assets": 286.5,
+   "liab": 211.0,
+   "equity": 75.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 1004.7,
+   "op": 9.0,
+   "ni": -14.0,
+   "assets": 269.3,
+   "liab": 194.3,
+   "equity": 75.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 1315.6,
+   "op": 11.7,
+   "ni": 9.7,
+   "assets": 283.9,
+   "liab": 191.4,
+   "equity": 92.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 1595.7,
+   "op": -1.3,
+   "ni": -14.8,
+   "assets": 431.2,
+   "liab": 336.2,
+   "equity": 95.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 2588.9,
+   "op": 99.9,
+   "ni": 97.2,
+   "assets": 1070.1,
+   "liab": 841.7,
+   "equity": 228.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 3786.0,
+   "op": 66.6,
+   "ni": 80.0,
+   "assets": 2289.9,
+   "liab": 1228.3,
+   "equity": 1061.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 4546.3,
+   "op": -30.8,
+   "ni": -43.9,
+   "assets": 2914.8,
+   "liab": 1083.8,
+   "equity": 1831.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 5089.0,
+   "op": 152.1,
+   "ni": 156.9,
+   "assets": 2956.6,
+   "liab": 968.5,
+   "equity": 1988.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 5471.8,
+   "op": 290.9,
+   "ni": 279.7,
+   "assets": 3047.8,
+   "liab": 881.1,
+   "equity": 2166.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 5871.3,
+   "op": 251.3,
+   "ni": 192.1,
+   "assets": 3163.1,
+   "liab": 907.9,
+   "equity": 2255.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 1366.5,
+   "op": 67.6,
+   "ni": 61.8
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 1404.7,
+   "op": 87.3,
+   "ni": 61.6
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 1343.7,
+   "op": 71.6,
+   "ni": 79.1
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 1356.8,
+   "op": 64.5,
+   "ni": 77.2
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 1399.8,
+   "op": 77.9,
+   "ni": 79.3
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 1559.8,
+   "op": 53.4,
+   "ni": 46.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 1508.8,
+   "op": 40.8,
+   "ni": 36.2
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 1403.0,
+   "op": 79.1,
+   "ni": 30.6
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 1457.7,
+   "op": 103.5,
+   "ni": 89.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 1451.0,
+   "op": 99.0,
+   "ni": 76.1
+  }
+ ]
+}

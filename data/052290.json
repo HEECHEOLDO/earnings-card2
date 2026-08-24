@@ -1,0 +1,38 @@
+{
+ "name": "트레이스",
+ "split_adjusted": false,
+ "legal_name": "트레이스",
+ "code": "052290",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-25",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 146.8,
+   "op": -9.6,
+   "ni": -65.7,
+   "assets": 652.8,
+   "liab": 273.7,
+   "equity": 379.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 34.8,
+   "op": -142.6,
+   "ni": -364.2,
+   "assets": 361.9,
+   "liab": 193.7,
+   "equity": 168.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

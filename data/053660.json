@@ -1,0 +1,125 @@
+{
+ "name": "현진소재",
+ "split_adjusted": false,
+ "legal_name": "현진소재",
+ "code": "053660",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-25",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 1728.6,
+   "op": 88.4,
+   "ni": 16.6,
+   "assets": 2037.5,
+   "liab": 1926.2,
+   "equity": 111.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 1377.8,
+   "op": -69.5,
+   "ni": -163.5,
+   "assets": 1808.1,
+   "liab": 1768.8,
+   "equity": 39.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 1212.3,
+   "op": -182.8,
+   "ni": -210.7,
+   "assets": 2143.2,
+   "liab": 1579.2,
+   "equity": 564.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 1041.5,
+   "op": -310.5,
+   "ni": -673.3,
+   "assets": 1340.3,
+   "liab": 1427.6,
+   "equity": -87.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 133.6,
+   "op": -141.1,
+   "ni": -256.4,
+   "assets": 695.6,
+   "liab": 1147.3,
+   "equity": -451.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 132.2,
+   "op": -95.1,
+   "ni": -115.7,
+   "assets": 603.7,
+   "liab": 1165.9,
+   "equity": -562.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 20.8,
+   "op": -54.8,
+   "ni": -56.9,
+   "assets": 542.9,
+   "liab": 1161.9,
+   "equity": -619.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 1,
+   "rev": 0.4,
+   "op": -12.6,
+   "ni": -19.7
+  },
+  {
+   "y": 2023,
+   "q": 2,
+   "rev": 0.1,
+   "op": -7.6,
+   "ni": -7.9
+  },
+  {
+   "y": 2023,
+   "q": 3,
+   "rev": 0.0,
+   "op": -15.9,
+   "ni": -16.5
+  }
+ ]
+}

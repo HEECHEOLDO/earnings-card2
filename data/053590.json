@@ -1,0 +1,145 @@
+{
+ "name": "한국테크놀로지",
+ "split_adjusted": false,
+ "legal_name": "한국테크놀로지",
+ "code": "053590",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-25",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 44.8,
+   "op": -89.8,
+   "ni": -104.9,
+   "assets": 389.6,
+   "liab": 131.4,
+   "equity": 258.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 96.3,
+   "op": -52.3,
+   "ni": -130.9,
+   "assets": 652.3,
+   "liab": 351.6,
+   "equity": 300.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 115.6,
+   "op": 6.5,
+   "ni": -374.9,
+   "assets": 347.6,
+   "liab": 134.1,
+   "equity": 213.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 2162.5,
+   "op": -42.2,
+   "ni": -173.6,
+   "assets": 1671.8,
+   "liab": 1323.6,
+   "equity": 348.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 3231.5,
+   "op": 51.7,
+   "ni": -117.0,
+   "assets": 1924.5,
+   "liab": 1571.8,
+   "equity": 352.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 3530.8,
+   "op": 56.3,
+   "ni": -296.6,
+   "assets": 2161.8,
+   "liab": 1973.2,
+   "equity": 188.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 3059.3,
+   "op": -143.9,
+   "ni": -185.6,
+   "assets": 3254.6,
+   "liab": 2739.2,
+   "equity": 515.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 2535.8,
+   "op": -33.1,
+   "ni": -318.2,
+   "assets": 280.1,
+   "liab": 343.7,
+   "equity": -63.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 1,
+   "rev": 1014.7,
+   "op": -28.4,
+   "ni": -33.9
+  },
+  {
+   "y": 2023,
+   "q": 2,
+   "rev": 811.2,
+   "op": -6.2,
+   "ni": -17.4
+  },
+  {
+   "y": 2023,
+   "q": 3,
+   "rev": 709.8,
+   "op": 4.3,
+   "ni": -1.2
+  },
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 0.0,
+   "op": -2.9,
+   "ni": -265.7
+  }
+ ]
+}
