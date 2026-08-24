@@ -57,19 +57,35 @@
     gap: 12px; padding-bottom: 14px; border-bottom: 1px solid var(--border);
     flex-wrap: wrap;
   }
-  .brand { display: flex; align-items: baseline; gap: 8px; }
+  .brand { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
   .brand h1 { font-size: 17px; font-weight: 800; margin: 0; letter-spacing: -0.01em; }
-  .navlink {
-    display: inline-flex; align-items: center; gap: 6px;
-    font-size: 13px; font-weight: 700; text-decoration: none; white-space: nowrap;
-    height: 34px; padding: 0 14px; border-radius: 999px;
-    background: var(--accent); color: #fff;
-    box-shadow: 0 2px 8px -2px rgba(30,78,140,.5);
-    transition: opacity .12s, transform .1s;
+  /* ---------- 공통 메뉴 ---------- */
+  .nav {
+    display: flex; gap: 4px; margin: 14px 0 4px; padding: 4px;
+    background: var(--surface-2); border-radius: 999px;
   }
-  .navlink:hover { opacity: .9; }
-  .navlink:active { transform: translateY(1px); }
-  [data-mode="dark"] .navlink { color: #0E141B; box-shadow: none; }
+  .nav-i {
+    flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+    height: 40px; padding: 0 14px; border-radius: 999px;
+    font-size: 13.5px; font-weight: 700; text-decoration: none;
+    color: var(--text-soft); white-space: nowrap;
+    transition: background .12s, color .12s;
+  }
+  .nav-i svg { width: 16px; height: 16px; fill: none; stroke: currentColor;
+    stroke-width: 2.1; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+  .nav-i:hover { color: var(--accent-text); }
+  .nav-i.on { background: var(--accent); color: #fff; box-shadow: 0 2px 8px -3px rgba(30,78,140,.55); }
+  [data-mode="dark"] .nav-i.on { color: #0E141B; box-shadow: none; }
+  @media (max-width: 560px) {
+    .nav { margin: 10px 0 2px; gap: 2px; padding: 3px; }
+    .nav-i { height: 38px; padding: 0 8px; font-size: 12px; gap: 5px; }
+    .nav-i svg { width: 15px; height: 15px; }
+  }
+  @media (max-width: 400px) {
+    /* 아주 좁은 화면에서는 아이콘을 빼고 글자만 남긴다 */
+    .nav-i svg { display: none; }
+    .nav-i { padding: 0 4px; gap: 0; font-size: 12px; }
+  }
   .brand span { font-size: 12px; color: var(--text-mute); }
   .topbar-right { display: flex; align-items: center; gap: 8px; }
 
@@ -187,7 +203,6 @@
       flex: 1; min-width: 0; white-space: normal; line-height: 1.5;
       font-size: 11.5px; padding: 6px 11px; border-radius: 12px;
     }
-    .navlink { height: 32px; padding: 0 12px; font-size: 12.5px; }
 
     /* iOS 는 16px 미만 입력창에 포커스하면 화면을 확대한다 */
     input[type="text"], select { font-size: 16px; }
@@ -272,19 +287,27 @@
   <div class="topbar">
     <div class="brand">
       <h1>실적·배당 카드뉴스</h1>
-      <a href="./screen.html" class="navlink">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-             stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path>
-        </svg>
-        종목 스크리닝
-      </a>
     </div>
     <div class="topbar-right">
       <span class="pill" id="src-pill">샘플 데이터</span>
       <button class="icon-btn" id="btn-mode" aria-label="다크 모드 전환">◐</button>
     </div>
   </div>
+
+  <nav class="nav" aria-label="메뉴">
+    <a href="./index.html" class="nav-i on">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7 16v-4M12 16V8M17 16v-6"/></svg>
+      <span>카드 만들기</span>
+    </a>
+    <a href="./screen.html" class="nav-i">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <span>종목 스크리닝</span>
+    </a>
+    <a href="./guru.html" class="nav-i">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3v9l6.4 6.4"/></svg>
+      <span>포트폴리오</span>
+    </a>
+  </nav>
 
   <div class="searchrow">
     <div class="search-wrap">

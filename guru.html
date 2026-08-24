@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>포트폴리오 · 실적·배당 카드뉴스</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#F4F6F8; --surface:#FFFFFF; --surface-2:#EDF1F5;
+    --border:#E2E6EB; --border-strong:#D3DBE3;
+    --text:#16202B; --text-soft:#5A6673; --text-mute:#8894A2;
+    --accent:#1E4E8C; --accent-soft:#E8F0FA; --accent-text:#1E4E8C;
+    --pos:#1D6E4E; --pos-soft:#E4F2EB;
+    --radius:8px;
+  }
+  [data-mode="dark"] {
+    --bg:#0E141B; --surface:#161F29; --surface-2:#1D2833;
+    --border:#26313D; --border-strong:#35424F;
+    --text:#E6EBF0; --text-soft:#93A1B0; --text-mute:#6C7A89;
+    --accent:#5B9BE8; --accent-soft:#17293D; --accent-text:#8FBDF0;
+    --pos:#59C79A; --pos-soft:#14312A;
+  }
+  html { -webkit-text-size-adjust:100%; }
+  * { box-sizing:border-box; }
+  html, body {
+    margin:0; background:var(--bg); color:var(--text);
+    font-family:'Noto Sans KR',-apple-system,'Malgun Gothic',sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  body { padding:20px 16px 80px; }
+  .shell { max-width:1080px; margin:0 auto; }
+
+  .topbar { display:flex; align-items:center; justify-content:space-between; gap:12px;
+    padding-bottom:14px; border-bottom:1px solid var(--border); flex-wrap:wrap; }
+  .brand { display:flex; align-items:center; gap:10px; }
+  .brand h1 { font-size:17px; font-weight:800; margin:0; letter-spacing:-.01em; }
+  /* ---------- 공통 메뉴 ---------- */
+  .nav{display:flex;gap:4px;margin:14px 0 4px;padding:4px;background:var(--surface-2);border-radius:999px}
+  .nav-i{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:7px;
+    height:40px;padding:0 14px;border-radius:999px;font-size:13.5px;font-weight:700;
+    text-decoration:none;color:var(--text-soft);white-space:nowrap;transition:background .12s,color .12s}
+  .nav-i svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.1;
+    stroke-linecap:round;stroke-linejoin:round;flex:none}
+  .nav-i:hover{color:var(--accent-text)}
+  .nav-i.on{background:var(--accent);color:#fff;box-shadow:0 2px 8px -3px rgba(30,78,140,.55)}
+  [data-mode="dark"] .nav-i.on{color:#0E141B;box-shadow:none}
+  @media (max-width:560px){
+    .nav{margin:10px 0 2px;gap:2px;padding:3px}
+    .nav-i{height:38px;padding:0 8px;font-size:12px;gap:5px}
+    .nav-i svg{width:15px;height:15px}
+  }
+  @media (max-width: 400px) {
+    /* 아주 좁은 화면에서는 아이콘을 빼고 글자만 남긴다 */
+    .nav-i svg { display: none; }
+    .nav-i { padding: 0 4px; gap: 0; font-size: 12px; }
+  }
+  .icon-btn { width:36px; height:36px; border-radius:var(--radius);
+    border:1px solid var(--border-strong); background:transparent; color:var(--text-soft);
+    cursor:pointer; font-size:15px; }
+
+  .studio { display:grid; grid-template-columns:1fr 420px; gap:18px; align-items:start; margin-top:20px; }
+  @media (max-width:860px) { .studio { grid-template-columns:1fr; } }
+
+  .panel { background:var(--surface); border-radius:12px; padding:18px; }
+  h3.sec { font-size:13px; font-weight:700; margin:0 0 8px; }
+  .hint { font-size:12px; color:var(--text-mute); line-height:1.65; margin:0; }
+  .divider { height:1px; background:var(--border); margin:16px 0; }
+
+  label.fld { display:block; font-size:12.5px; font-weight:600; color:var(--text-soft); margin-bottom:5px; }
+  input[type="text"], textarea {
+    width:100%; font-family:inherit; color:var(--text); background:var(--bg);
+    border:1px solid var(--border-strong); border-radius:var(--radius); padding:10px 12px;
+  }
+  input[type="text"] { height:42px; font-size:14px; padding:0 12px; }
+  textarea { font-size:13.5px; line-height:1.7; height:230px; resize:vertical; }
+  input:focus, textarea:focus { outline:none; border-color:var(--accent); }
+  .two { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+
+  .btn { font-family:inherit; font-size:14px; font-weight:700; cursor:pointer;
+    border-radius:var(--radius); padding:0 16px; height:42px; border:1px solid var(--border-strong);
+    background:transparent; color:var(--text); white-space:nowrap; }
+  .btn:hover { border-color:var(--accent); color:var(--accent); }
+  .btn-primary { background:var(--accent); border-color:var(--accent); color:#fff; }
+  .btn-primary:hover { opacity:.9; color:#fff; }
+  .btn-sm { height:34px; padding:0 12px; font-size:12.5px; }
+  .btn-danger { color:#B32B22; border-color:#E1B7B2; }
+  .ctl-row { display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-top:12px; }
+  .ctl-row label { font-size:13px; color:var(--text-soft); font-weight:600; }
+  .check { display:inline-flex; align-items:center; gap:7px; font-size:13px; color:var(--text-soft); cursor:pointer; }
+  .check input { width:17px; height:17px; accent-color:var(--accent); }
+  input[type="color"] { width:42px; height:42px; padding:0; border-radius:var(--radius);
+    border:1px solid var(--border-strong); background:none; cursor:pointer; }
+  input[type="range"] { accent-color:var(--accent); }
+  input[type="file"] { font-size:12px; max-width:190px; color:var(--text-soft); }
+  .err { color:#B32B22; font-size:13px; margin-top:10px; display:none; white-space:pre-wrap; }
+
+  .card-frame { background:var(--surface); border-radius:12px; padding:18px;
+    display:flex; flex-direction:column; align-items:center; gap:14px; }
+  #card-canvas { display:block; width:100%; max-width:384px; height:auto; margin:0 auto;
+    border-radius:2px; touch-action:none; cursor:default;
+    box-shadow:0 18px 40px -18px rgba(0,0,0,.4), 0 0 0 1px rgba(0,0,0,.07); }
+
+  #overlay-edit { display:none; width:100%; max-width:384px; flex-direction:column; gap:9px;
+    padding:11px 13px; border-radius:9px; background:var(--surface-2); border:1px solid var(--border); }
+  .ov-row { display:flex; align-items:center; gap:10px; }
+  .ov-lbl { font-size:12.5px; color:var(--text-soft); width:46px; flex:none; }
+  #overlay-edit input[type="range"] { flex:1; width:auto; min-width:0; margin:0; }
+  .range-val { width:46px; text-align:right; flex:none; font-size:12px; color:var(--text-soft); }
+  .ov-btns { display:flex; gap:6px; }
+  .ov-btns .btn { flex:1; height:34px; padding:0; font-size:12.5px; }
+
+  .tbl { width:100%; border-collapse:collapse; font-size:12.5px; margin-top:10px; }
+  .tbl td { padding:5px 4px; border-bottom:1px solid var(--border); }
+  .tbl td:last-child { text-align:right; font-variant-numeric:tabular-nums; }
+  .sw { display:inline-block; width:10px; height:10px; border-radius:2px; margin-right:7px; }
+
+  @media (max-width:560px) {
+    body { padding:14px 12px 56px; }
+    .brand h1 { font-size:15px; }
+    .topbar { flex-direction:column; align-items:stretch; gap:10px; }
+    .brand { width:100%; justify-content:space-between; align-items:center; }
+    input[type="text"], textarea { font-size:16px; }
+    .two { grid-template-columns:1fr; gap:8px; }
+    textarea { height:170px; }
+    .ctl-row .btn { flex:1; }
+    input[type="file"] { max-width:100%; }
+    .panel { padding:14px 13px; }
+    #overlay-edit { padding:10px 11px; gap:8px; }
+    .ov-lbl { width:42px; font-size:12px; }
+    .range-val { width:42px; }
+  }
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <div class="topbar">
+    <div class="brand">
+      <h1>포트폴리오</h1>
+    </div>
+    <div class="topbar-right" style="display:flex;gap:8px;align-items:center">
+      <button class="icon-btn" id="btn-mode" aria-label="다크 모드">◐</button>
+    </div>
+  </div>
+
+  <nav class="nav" aria-label="메뉴">
+    <a href="./index.html" class="nav-i">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7 16v-4M12 16V8M17 16v-6"/></svg>
+      <span>카드 만들기</span>
+    </a>
+    <a href="./screen.html" class="nav-i">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <span>종목 스크리닝</span>
+    </a>
+    <a href="./guru.html" class="nav-i on">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3v9l6.4 6.4"/></svg>
+      <span>포트폴리오</span>
+    </a>
+  </nav>
+
+  <div class="studio">
+
+    <div class="panel">
+      <h3 class="sec">내용 입력</h3>
+      <div class="two" style="margin-bottom:10px">
+        <div>
+          <label class="fld" for="f-name">투자자 이름</label>
+          <input type="text" id="f-name" value="워런 버핏">
+        </div>
+        <div>
+          <label class="fld" for="f-sub">아래 줄</label>
+          <input type="text" id="f-sub" value="주식 포트폴리오 · 26년 2분기">
+        </div>
+      </div>
+
+      <label class="fld" for="f-data">보유 내역 — 한 줄에 하나씩</label>
+      <textarea id="f-data" spellcheck="false"></textarea>
+      <p class="hint" style="margin-top:8px">
+        표를 그대로 붙여넣어도 됩니다. <b>%</b>가 붙은 숫자를 비중으로 읽고,
+        없으면 마지막 숫자를 금액으로 봅니다. 머리글 줄은 자동으로 무시되고,
+        합이 100이 아니어도 알아서 맞춥니다.
+      </p>
+      <div class="err" id="err"></div>
+
+      <div class="divider"></div>
+      <div class="ctl-row" style="margin-top:0">
+        <label for="f-label">라벨</label>
+        <select id="f-label" style="height:34px;font-family:inherit;font-size:13px;color:var(--text);background:var(--bg);border:1px solid var(--border-strong);border-radius:6px;padding:0 8px">
+          <option value="ticker" selected>티커</option>
+          <option value="company">회사명</option>
+        </select>
+        <span class="hint">표를 붙여넣으면 티커만 골라 씁니다</span>
+      </div>
+
+      <div class="ctl-row">
+        <label>표시 개수</label>
+        <input type="range" id="f-top" min="5" max="10" step="1" value="8" style="width:150px">
+        <span class="range-val" id="f-top-val">8개</span>
+      </div>
+
+      <div class="ctl-row">
+        <label>최소 비중</label>
+        <input type="range" id="f-min" min="0" max="5" step="0.5" value="2.5" style="width:150px">
+        <span class="range-val" id="f-min-val">2.5%</span>
+        <span class="hint">이보다 작은 조각은 기타로 묶습니다</span>
+      </div>
+
+      <div id="preview-list"></div>
+    </div>
+
+    <div>
+      <div class="card-frame">
+        <canvas id="card-canvas" width="1080" height="1350"></canvas>
+
+        <div id="overlay-edit">
+          <div class="ov-row">
+            <span class="ov-lbl">크기</span>
+            <input type="range" id="ov-size" min="60" max="1080" step="4">
+            <span class="range-val" id="ov-size-val">–</span>
+          </div>
+          <div class="ov-row">
+            <span class="ov-lbl">회전</span>
+            <input type="range" id="ov-rot" min="-180" max="180" step="1">
+            <span class="range-val" id="ov-rot-val">–</span>
+          </div>
+          <div class="ov-row">
+            <span class="ov-lbl">투명도</span>
+            <input type="range" id="ov-opacity" min="10" max="100" step="1">
+            <span class="range-val" id="ov-opacity-val">–</span>
+          </div>
+          <div class="ov-btns">
+            <button class="btn btn-sm" id="ov-rot-reset" type="button">0°</button>
+            <button class="btn btn-sm" id="ov-front" type="button">앞으로</button>
+            <button class="btn btn-sm" id="ov-back" type="button">뒤로</button>
+            <button class="btn btn-sm btn-danger" id="ov-delete" type="button">삭제</button>
+          </div>
+        </div>
+
+        <p class="hint" id="card-caption"></p>
+      </div>
+
+      <div class="panel" style="margin-top:18px">
+        <h3 class="sec">카드 설정</h3>
+
+        <div class="ctl-row" style="margin-top:8px">
+          <label for="color-base">포인트 색상</label>
+          <input type="color" id="color-base" value="#2E6FD9">
+          <span class="hint">이 색 하나에서 조각 색이 밝기순으로 만들어집니다.</span>
+        </div>
+
+        <div class="divider"></div>
+        <h3 class="sec">가운데 사진</h3>
+        <div class="ctl-row" style="margin-top:8px">
+          <input type="file" id="ov-input" accept="image/*" multiple>
+          <button class="btn btn-sm btn-danger" id="ov-clear" type="button">전체 삭제</button>
+        </div>
+        <p class="hint">도넛 가운데 빈 자리에 얹으세요. 미리보기에서 <b>끌어서 위치</b>를 잡고 위에서 크기를 맞추면 됩니다.</p>
+
+        <div class="divider"></div>
+        <div class="ctl-row" style="margin-top:0">
+          <label class="check"><input type="checkbox" id="chk-guide"> 안전영역 표시</label>
+        </div>
+        <div class="ctl-row">
+          <label for="handle">서명</label>
+          <input type="text" id="handle" value="@돈굴돈굴" style="max-width:180px;flex:1">
+        </div>
+
+        <div class="divider"></div>
+        <div class="ctl-row" style="margin-top:0">
+          <button class="btn btn-primary" id="btn-png" style="flex:1">PNG 내려받기</button>
+        </div>
+        <p class="hint" style="margin-top:8px">3배 스케일(3240 × 4050)로 저장됩니다.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ============================================================
+     TOKENS — 다른 카드와 같은 값
+     ============================================================ */
+  var TOKENS = {
+    card: {
+      paper:'#fafaf8', ink:'#101216', inkSoft:'#6B7078', rule:'#E6E4DD',
+      axis:'#C9C6BC', tick:'#9AA0A8', footer:'#3A3E46',
+      guide:'rgba(214,54,44,0.45)', etc:'#C9C6BC',
+      safe:{ top:135, right:100, bottom:135, left:100 },
+      grain:{ base:[250,250,248], amount:14, speckle:0.08, spike:2.5 },
+      type:{
+        nameMax:92, nameMin:52, nameTrack:'-0.02em',
+        subMax:60, subMin:32, nameToSub:0.22,
+        label:36, labelPct:32, footer:27
+      },
+      gap:{ headToChart:30, chartToRule:40, ruleToText:18 },
+      donut:{ holeRatio:0.58, gapDeg:0.9, minLabelPct:3,
+              labelGap:26, lineGap:8, labelPad:8, labelMin:16,
+              vertZone:0.26, pushMax:170, pullMax:220, swingMax:20, swingFrac:0.6, maxShrink:18,
+              fullSizeAt:8, smallSize:26,
+              boundInset:36,     // 라벨은 안전영역보다 살짝 바깥까지 쓴다
+              minTextRoom:164,   // 라벨 글자에 확보할 최소 가로 폭
+              lightFrom:76, lightTo:24 }
+    }
+  };
+
+  var CW = 1080, CH = 1350;
+  var canvas = document.getElementById('card-canvas');
+
+  var SAMPLE = [
+    '티커명\t종목\t보유종목 ($ 백만)\t포트폴리오 비중 %',
+    'AAPL\tApple Inc.\t65,950.3\t22.0%',
+    'AXP\tAmerican Express Company\t51,282.3\t17.1%',
+    'KO\tThe Coca-Cola Company\t32,508.0\t10.9%',
+    'GOOGL\tAlphabet Inc.\t28,157.6\t9.4%',
+    'BAC\tBank of America Corporation\t27,543.8\t9.2%',
+    'CVX\tChevron Corporation\t13,986.1\t4.7%',
+    'OXY\tOccidental Petroleum Corporation\t12,868.2\t4.3%',
+    'CB\tChubb Limited\t11,670.1\t3.9%',
+    'MCO\tMoody\'s Corporation\t11,173.4\t3.7%',
+    'GOOG\tAlphabet Inc.\t9,606.5\t3.2%',
+    'KHC\tThe Kraft Heinz Company\t7,691.5\t2.6%'
+  ].join('\n');
+
+  /* ============================================================
+     파서 — 관대하게
+     ============================================================ */
+  // 숫자로 볼 토큰인가? ($699억, 26%, 1,000, 12.3 등)
+  var NUMTOKEN = /^[$₩¥€£]?[\d,]+(?:\.\d+)?\s*(?:%|퍼센트|억|만|천|조|원|억원|조원|달러|억달러|USD|usd|주)?$/;
+  // 티커: 대문자로 시작하는 짧은 영문·숫자 조합 (AAPL, M, LLYV.K, BRK.B 등)
+  var TICKER = /^[A-Z][A-Z0-9.\-]{0,7}$/;
+
+  function parseHoldings(text) {
+    var out = [];
+    String(text || '').split(/\r?\n/).forEach(function (raw) {
+      var line = raw.trim();
+      if (!line || line.charAt(0) === '#') return;
+
+      // 쉼표는 구분자이자 천단위 기호다. 숫자 안의 쉼표를 먼저 없앤다.
+      var norm = line;
+      while (/\d,\d{3}(?!\d)/.test(norm)) norm = norm.replace(/(\d),(\d{3})(?!\d)/g, '$1$2');
+
+      var tokens = norm.split(/[\s,\t|]+/).filter(Boolean);
+      var nameParts = [], nums = [], pct = null;
+
+      tokens.forEach(function (tk) {
+        if (NUMTOKEN.test(tk)) {
+          var v = parseFloat(tk.replace(/[^\d.\-]/g, ''));
+          if (!isNaN(v)) {
+            nums.push(v);
+            if (tk.indexOf('%') >= 0 || tk.indexOf('퍼센트') >= 0) pct = v;
+          }
+        } else {
+          nameParts.push(tk);
+        }
+      });
+
+      if (!nums.length) return;
+      var weight = pct !== null ? pct : nums[nums.length - 1];
+      if (isNaN(weight) || weight <= 0) return;
+
+      var joined = nameParts.join(' ').replace(/^[^\w가-힣(]+|[^\w가-힣).]+$/g, '').trim();
+
+      // 첫 토큰이 티커처럼 생겼고 뒤에 회사명이 더 있으면 둘을 나눈다
+      // 예) "AAPL Apple Inc." -> 티커 AAPL / 회사명 Apple Inc.
+      var ticker = null, company = joined;
+      if (nameParts.length > 1 && TICKER.test(nameParts[0])) {
+        ticker = nameParts[0];
+        company = nameParts.slice(1).join(' ').replace(/,+$/, '').trim();
+      } else if (nameParts.length === 1) {
+        ticker = nameParts[0];
+      }
+      if (!joined) { ticker = null; company = ''; }
+
+      out.push({ ticker: ticker, company: company, w: weight });
+    });
+    return out;
+  }
+
+  function normalize(items, topN, labelMode, minPct) {
+    var total = items.reduce(function (s, x) { return s + x.w; }, 0);
+    if (!total) return [];
+    var rows = items.map(function (x) {
+      var label = labelMode === 'company'
+        ? (x.company || x.ticker || '(이름 없음)')
+        : (x.ticker || x.company || '(이름 없음)');
+      return { name: label, pct: x.w / total * 100 };
+    }).sort(function (a, b) { return b.pct - a.pct; });
+
+    // 상위 N개를 고르되, 최소 비중에 못 미치는 조각은 기타로 묶는다.
+    // 1%짜리 조각은 도넛에선 실선 한 줄인데 라벨만 커서 카드가 지저분해진다.
+    var head = [], rest = 0;
+    rows.forEach(function (r, i) {
+      if (i < topN && r.pct >= minPct) head.push(r);
+      else rest += r.pct;
+    });
+    if (rest > 0.05) head.push({ name: '기타', pct: rest, etc: true });
+    return head;
+  }
+
+  /* ============================================================
+     색 — 포인트 색 하나에서 밝기 계조
+     ============================================================ */
+  function hexToHsl(hex) {
+    var r = parseInt(hex.slice(1,3),16)/255, g = parseInt(hex.slice(3,5),16)/255,
+        b = parseInt(hex.slice(5,7),16)/255;
+    var mx = Math.max(r,g,b), mn = Math.min(r,g,b), h, s, l = (mx+mn)/2;
+    if (mx === mn) { h = s = 0; }
+    else {
+      var d = mx-mn;
+      s = l > 0.5 ? d/(2-mx-mn) : d/(mx+mn);
+      if (mx === r) h = (g-b)/d + (g<b?6:0);
+      else if (mx === g) h = (b-r)/d + 2;
+      else h = (r-g)/d + 4;
+      h *= 60;
+    }
+    return { h:h, s:s*100, l:l*100 };
+  }
+  function hslToHex(h, s, l) {
+    s /= 100; l /= 100;
+    var c = (1-Math.abs(2*l-1))*s, x = c*(1-Math.abs((h/60)%2-1)), m = l-c/2,
+        r = 0, g = 0, b = 0;
+    if (h < 60) { r=c; g=x; } else if (h < 120) { r=x; g=c; }
+    else if (h < 180) { g=c; b=x; } else if (h < 240) { g=x; b=c; }
+    else if (h < 300) { r=x; b=c; } else { r=c; b=x; }
+    function q(v){ return Math.round((v+m)*255).toString(16).padStart(2,'0'); }
+    return '#'+q(r)+q(g)+q(b);
+  }
+  function ramp(base, n, rows) {
+    var c = hexToHsl(base);
+    var sat = Math.min(Math.max(c.s, 22), 95);
+    var D = TOKENS.card.donut;
+    var out = [];
+    for (var i = 0; i < n; i++) {
+      var t = n === 1 ? 0 : i/(n-1);
+      out.push(hslToHex(c.h, sat, D.lightFrom - (D.lightFrom - D.lightTo)*t));
+    }
+    // '기타'는 계열에서 빼서 무채색으로
+    rows.forEach(function (r, i) { if (r.etc) out[i] = TOKENS.card.etc; });
+    return out;
+  }
+
+  /* ============================================================
+     캔버스 기본
+     ============================================================ */
+  function font(w, s) { return w + ' ' + s + 'px "Noto Sans KR"'; }
+  function fitFont(ctx, text, weight, start, min, maxW) {
+    var size = start;
+    ctx.font = font(weight, size);
+    while (ctx.measureText(text).width > maxW && size > min) {
+      size -= 2; ctx.font = font(weight, size);
+    }
+    return size;
+  }
+  var _tile = null;
+  function grainTile() {
+    if (_tile) return _tile;
+    var G = TOKENS.card.grain, S = 512;
+    var t = document.createElement('canvas');
+    t.width = S; t.height = S;
+    var tc = t.getContext('2d');
+    var img = tc.createImageData(S, S), d = img.data;
+    for (var i = 0; i < d.length; i += 4) {
+      var n = (Math.random()-0.5)*2*G.amount;
+      if (Math.random() < G.speckle) n += (Math.random()-0.5)*G.spike*G.amount;
+      n = Math.round(n);
+      d[i]=G.base[0]+n; d[i+1]=G.base[1]+n; d[i+2]=G.base[2]+n; d[i+3]=255;
+    }
+    tc.putImageData(img, 0, 0);
+    _tile = t; return t;
+  }
+  function paintGrain(ctx) {
+    var pat = ctx.createPattern(grainTile(), 'repeat');
+    if (!pat) return;
+    ctx.save(); ctx.setTransform(1,0,0,1,0,0);
+    ctx.fillStyle = pat; ctx.fillRect(0,0,ctx.canvas.width,ctx.canvas.height);
+    ctx.restore();
+  }
+
+  /* ============================================================
+     도넛
+     ============================================================ */
+  function drawDonut(ctx, cx, cy, R, rows, colors, bounds) {
+    var T = TOKENS.card, D = T.donut;
+    var r0 = R * D.holeRatio;
+    var gap = D.gapDeg * Math.PI / 180;
+    var ang = -Math.PI/2;
+
+    rows.forEach(function (r, i) {
+      var sweep = r.pct/100 * Math.PI*2;
+      var a1 = ang + gap/2, a2 = ang + sweep - gap/2;
+      if (a2 > a1) {
+        ctx.beginPath();
+        ctx.arc(cx, cy, R, a1, a2, false);
+        ctx.arc(cx, cy, r0, a2, a1, true);
+        ctx.closePath();
+        ctx.fillStyle = colors[i];
+        ctx.fill();
+      }
+      ang += sweep;
+    });
+
+    /* ---- 라벨 배치 ----
+       연결선 없이 각 라벨을 자기 조각 옆에 붙인다.
+       겹치면 바깥쪽 + 좌우로 조금씩 비켜가며 가장 가까운 자리를 찾는다. */
+
+    // 비중이 클수록 글자도 크게. 작은 조각은 자리를 덜 차지하도록 줄인다.
+    function sizeFor(pct) {
+      var full = D.fullSizeAt;
+      if (pct >= full) return T.type.label;
+      var t = Math.max(0, pct) / full;
+      return Math.round(D.smallSize + (T.type.label - D.smallSize) * t);
+    }
+
+    var items = [];
+    ang = -Math.PI/2;
+    rows.forEach(function (r) {
+      var sweep = r.pct/100 * Math.PI*2;
+      var mid = ang + sweep/2;
+      ang += sweep;
+      // 화면에 그려지는 조각은 모두 라벨을 시도한다
+      items.push({ r: r, mid: mid, sweep: sweep, size: sizeFor(r.pct) });
+    });
+
+    function boxAt(it, mid, rad, size) {
+      var c = Math.cos(mid), sn = Math.sin(mid);
+      var anchor = Math.abs(c) < D.vertZone ? 'center' : (c >= 0 ? 'left' : 'right');
+      var ps = Math.round(size * T.type.labelPct / T.type.label);
+      ctx.font = font(800, size);
+      var w = ctx.measureText(it.r.name).width;
+      ctx.font = font(700, ps);
+      w = Math.max(w, ctx.measureText(it.r.pct.toFixed(1) + '%').width);
+      var h = size * 0.74 + D.lineGap + ps * 0.74;
+      var x = cx + c * rad, y = cy + sn * rad;
+
+      var x1 = anchor === 'left' ? x : (anchor === 'right' ? x - w : x - w/2);
+      return { x1:x1, x2:x1+w, y1:y-h/2, y2:y+h/2, x:x, y:y, w:w, h:h,
+               anchor:anchor, size:size, ps:ps };
+    }
+    // 글상자의 '도넛에 가장 가까운 모서리'가 목표 거리에 오도록 반지름을 맞춘다.
+    // 앵커점을 기준으로 하면 12시·6시 라벨이 더 가까워 보여 원이 깨진다.
+    function boxOnRing(it, mid, gapTarget, size) {
+      var rad = R + gapTarget, box = null;
+      for (var k = 0; k < 4; k++) {
+        box = boxAt(it, mid, rad, size);
+        var nx = Math.max(box.x1, Math.min(cx, box.x2));
+        var ny = Math.max(box.y1, Math.min(cy, box.y2));
+        var d = Math.sqrt((nx-cx)*(nx-cx) + (ny-cy)*(ny-cy)) - R;
+        if (Math.abs(d - gapTarget) < 0.5) break;
+        rad += gapTarget - d;
+      }
+      return box;
+    }
+
+    function hits(a, b) {
+      var p = D.labelPad;
+      return !(a.x2+p < b.x1 || b.x2+p < a.x1 || a.y2+p < b.y1 || b.y2+p < a.y1);
+    }
+    function onDonut(b) {
+      var nx = Math.max(b.x1, Math.min(cx, b.x2));
+      var ny = Math.max(b.y1, Math.min(cy, b.y2));
+      return Math.sqrt((nx-cx)*(nx-cx) + (ny-cy)*(ny-cy)) < R + D.labelGap;
+    }
+    function outside(b) {
+      return b.x1 < bounds.left || b.x2 > bounds.right ||
+             b.y1 < bounds.top  || b.y2 > bounds.bottom;
+    }
+
+    // 모든 라벨을 같은 반지름에 둔다. 하나가 밀리면 전부 같이 밀려
+    // 도넛을 중심으로 동그란 배열이 유지된다.
+    var swings = [0];
+    for (var aa = 3; aa <= D.swingMax; aa += 3) { swings.push(aa); swings.push(-aa); }
+
+    function tryRing(off, shrink, allowSwing) {
+      var out = [];
+      for (var i = 0; i < items.length; i++) {
+        var it = items[i];
+        // 회전은 자기 조각 안쪽으로만. 기본은 0(조각 정중앙).
+        var halfDeg = it.sweep * 90 / Math.PI;
+        var limit = allowSwing ? Math.min(D.swingMax, halfDeg * D.swingFrac) : 0;
+        var sizes = [];
+        for (var d = 0; d <= shrink; d += 3) {
+          if (it.size - d >= D.labelMin) sizes.push(it.size - d);
+        }
+        if (!sizes.length) sizes.push(D.labelMin);
+
+        var got = null;
+        for (var si = 0; si < sizes.length && !got; si++) {
+          for (var sw = 0; sw < swings.length; sw++) {
+            if (Math.abs(swings[sw]) > limit) continue;
+            var mid = it.mid + swings[sw] * Math.PI/180;
+            var box = boxOnRing(it, mid, D.labelGap + off, sizes[si]);
+            if (onDonut(box) || outside(box)) continue;
+            var clash = false;
+            for (var q = 0; q < out.length; q++) {
+              if (hits(box, out[q].box)) { clash = true; break; }
+            }
+            if (!clash) { got = box; break; }
+          }
+        }
+        if (!got) return null;          // 이 반지름으로는 전부 못 놓는다
+        out.push({ r: it.r, box: got });
+      }
+      return out;
+    }
+
+    // 라벨은 조각 정중앙이 기본이다.
+    // 먼저 회전 없이 원을 키우고 글자를 줄여 본 뒤,
+    // 그래도 안 될 때만 조각 안쪽에서 최소한으로 돌린다.
+    var placed = null;
+    var swingModes = [false, true];
+    for (var sm = 0; sm < swingModes.length && !placed; sm++) {
+      for (var sh = 0; sh <= D.maxShrink && !placed; sh += 3) {
+        for (var off = 0; off <= D.pushMax && !placed; off += 6) {
+          placed = tryRing(off, sh, swingModes[sm]);
+        }
+      }
+    }
+
+    // 그래도 안 되면 개별 배치로 물러선다 (넣을 수 있는 만큼만)
+    if (!placed) {
+      placed = [];
+      items.forEach(function (it) {
+        var halfDeg = it.sweep * 90 / Math.PI;
+        var limit = Math.min(D.swingMax, halfDeg * D.swingFrac);
+        var best = null;
+        for (var o = 0; o <= D.pushMax && !best; o += 6) {
+          for (var sz = it.size; sz >= D.labelMin && !best; sz -= 3) {
+            for (var sw = 0; sw < swings.length && !best; sw++) {
+              if (Math.abs(swings[sw]) > limit) continue;
+              var mid = it.mid + swings[sw] * Math.PI/180;
+              var box = boxOnRing(it, mid, D.labelGap + o, sz);
+              if (onDonut(box) || outside(box)) continue;
+              var clash = false;
+              for (var q = 0; q < placed.length; q++) {
+                if (hits(box, placed[q].box)) { clash = true; break; }
+              }
+              if (!clash) best = box;
+            }
+          }
+        }
+        if (best) placed.push({ r: it.r, box: best });
+      });
+    }
+
+    ctx.textBaseline = 'alphabetic';
+    placed.forEach(function (it) {
+      var b = it.box;
+      if (!b) return;
+      ctx.textAlign = b.anchor;
+      ctx.font = font(800, b.size);
+      ctx.fillStyle = T.ink;
+      ctx.fillText(it.r.name, b.x, b.y - D.lineGap/2);
+      ctx.font = font(700, b.ps);
+      ctx.fillStyle = T.inkSoft;
+      ctx.fillText(it.r.pct.toFixed(1) + '%', b.x, b.y + D.lineGap/2 + b.ps*0.74);
+    });
+    ctx.textAlign = 'left';
+    return r0;
+  }
+
+  /* ============================================================
+     오버레이
+     ============================================================ */
+  var overlays = [], selected = -1;
+  function paintOverlay(ctx, ov) {
+    if (!ov.img) return;
+    ctx.save();
+    ctx.globalAlpha = ov.opacity == null ? 1 : ov.opacity;
+    ctx.translate(ov.cx, ov.cy); ctx.rotate(ov.rot || 0);
+    ctx.drawImage(ov.img, -ov.w/2, -ov.h/2, ov.w, ov.h);
+    ctx.restore();
+  }
+
+  /* ============================================================
+     카드
+     ============================================================ */
+  var state = { rows: [], colors: [], guide:false, hole:true, handle:'@돈굴돈굴',
+                name:'워런 버핏', sub:'' };
+
+  function drawCard(ctx) {
+    var T = TOKENS.card, S = T.safe;
+    var CX = S.left, CWID = CW - S.left - S.right;
+
+    ctx.clearRect(0,0,CW,CH);
+    ctx.fillStyle = T.paper; ctx.fillRect(0,0,CW,CH);
+    paintGrain(ctx);
+
+    overlays.forEach(function (ov) { if (ov.layer === 'back') paintOverlay(ctx, ov); });
+
+    /* 헤드라인 */
+    var canTrack = 'letterSpacing' in ctx;
+    ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
+    if (canTrack) ctx.letterSpacing = T.type.nameTrack;
+    var ns = fitFont(ctx, state.name || ' ', 900, T.type.nameMax, T.type.nameMin, CWID);
+    if (canTrack) ctx.letterSpacing = '0px';
+    var ss = state.sub ? fitFont(ctx, state.sub, 900, T.type.subMax, T.type.subMin, CWID) : 0;
+
+    var y = S.top + ns*0.86;
+    ctx.fillStyle = T.ink;
+    ctx.font = font(900, ns);
+    if (canTrack) ctx.letterSpacing = T.type.nameTrack;
+    ctx.fillText(state.name || '', CX, y);
+    if (canTrack) ctx.letterSpacing = '0px';
+    if (ss) {
+      y += ns*T.type.nameToSub + ss*0.86;
+      ctx.font = font(900, ss);
+      ctx.fillText(state.sub, CX, y);
+    }
+
+    /* 푸터부터 역산 */
+    var footBase = CH - S.bottom - 4;
+    var ruleY = footBase - T.type.footer*0.85 - T.gap.ruleToText;
+    var chartTop = y + T.gap.headToChart;
+    var chartBottom = ruleY - T.gap.chartToRule;
+
+    /* 도넛 */
+    if (state.rows.length) {
+      var availH = chartBottom - chartTop;
+      var D = T.donut;
+      var cx = CW/2, cy = chartTop + availH/2;
+
+      // 가로: 캔버스 가장자리에서 boundInset 만큼 들어온 지점까지 쓰되,
+      //       라벨 글자용으로 minTextRoom 을 남긴다
+      var maxByW = (CW/2 - D.boundInset) - D.labelGap - D.minTextRoom;
+      // 세로: 라벨 한 블록이 위아래로 삐져나가지 않을 만큼
+      var blockH = T.type.label*0.74 + D.lineGap + T.type.labelPct*0.74;
+      var maxByH = availH/2 - blockH*0.8;
+      var R = Math.max(120, Math.min(maxByW, maxByH));
+
+      drawDonut(ctx, cx, cy, R, state.rows, state.colors,
+                         { left: D.boundInset, right: CW - D.boundInset,
+                           top: chartTop, bottom: chartBottom });
+
+    } else {
+      ctx.textAlign = 'center';
+      ctx.font = font(700, 34);
+      ctx.fillStyle = T.tick;
+      ctx.fillText('보유 내역을 입력하세요', CX + CWID/2, chartTop + (chartBottom-chartTop)/2);
+      ctx.textAlign = 'left';
+    }
+
+    /* 푸터 */
+    ctx.beginPath();
+    ctx.strokeStyle = T.rule; ctx.lineWidth = 2;
+    ctx.moveTo(CX, ruleY); ctx.lineTo(CX + CWID, ruleY); ctx.stroke();
+    ctx.font = font(700, T.type.footer);
+    ctx.fillStyle = T.footer;
+    ctx.textAlign = 'right';
+    ctx.fillText(state.handle, CX + CWID, footBase);
+    ctx.textAlign = 'left';
+
+    overlays.forEach(function (ov) { if (ov.layer !== 'back') paintOverlay(ctx, ov); });
+
+    if (state.guide) {
+      ctx.save();
+      ctx.strokeStyle = T.guide; ctx.lineWidth = 3;
+      ctx.setLineDash([14,11]);
+      ctx.strokeRect(S.left, S.top, CWID, CH - S.top - S.bottom);
+      ctx.restore();
+    }
+  }
+
+  function drawSelection(ctx) {
+    var ov = overlays[selected];
+    if (!ov) return;
+    ctx.save();
+    ctx.translate(ov.cx, ov.cy); ctx.rotate(ov.rot || 0);
+    ctx.strokeStyle = '#2E6FD9'; ctx.lineWidth = 4;
+    ctx.setLineDash([12,9]);
+    ctx.strokeRect(-ov.w/2, -ov.h/2, ov.w, ov.h);
+    ctx.restore();
+  }
+
+  /* ============================================================
+     오케스트레이션
+     ============================================================ */
+  var fontsReady = false;
+  function ensureFonts() {
+    if (fontsReady || !document.fonts) return Promise.resolve();
+    return Promise.all(['600','700','800','900'].map(function (w) {
+      return document.fonts.load(w + ' 40px "Noto Sans KR"');
+    })).then(function () { return document.fonts.ready; })
+      .then(function () { fontsReady = true; })
+      .catch(function () {});
+  }
+
+  function refresh() {
+    var topN = parseInt(document.getElementById('f-top').value, 10);
+    document.getElementById('f-top-val').textContent = topN + '개';
+    var minPct = parseFloat(document.getElementById('f-min').value);
+    document.getElementById('f-min-val').textContent = minPct.toFixed(1) + '%';
+
+    state.name = document.getElementById('f-name').value.trim();
+    state.sub = document.getElementById('f-sub').value.trim();
+    state.handle = document.getElementById('handle').value;
+
+    var items = parseHoldings(document.getElementById('f-data').value);
+    var err = document.getElementById('err');
+    if (!items.length) {
+      err.textContent = document.getElementById('f-data').value.trim()
+        ? '숫자를 찾지 못했습니다. "종목명 12.3%" 형태인지 확인해주세요.' : '';
+      err.style.display = err.textContent ? 'block' : 'none';
+    } else {
+      err.style.display = 'none';
+    }
+
+    state.rows = normalize(items, topN, document.getElementById('f-label').value,
+                           parseFloat(document.getElementById('f-min').value));
+    state.colors = ramp(document.getElementById('color-base').value,
+                        state.rows.length, state.rows);
+    renderList();
+    ensureFonts().then(drawPreview);
+  }
+
+  function renderList() {
+    var box = document.getElementById('preview-list');
+    if (!state.rows.length) { box.innerHTML = ''; return; }
+    box.innerHTML = '<table class="tbl">' + state.rows.map(function (r, i) {
+      return '<tr><td><span class="sw" style="background:' + state.colors[i] + '"></span>' +
+             r.name + '</td><td>' + r.pct.toFixed(1) + '%</td></tr>';
+    }).join('') + '</table>';
+  }
+
+  function drawPreview() {
+    var ctx = canvas.getContext('2d');
+    drawCard(ctx);
+    drawSelection(ctx);
+    document.getElementById('card-caption').textContent =
+      state.rows.length ? '1080 × 1350 · ' + state.rows.length + '조각' : '1080 × 1350';
+  }
+
+  /* ---------- 오버레이 UI ---------- */
+  var ovEdit = document.getElementById('overlay-edit');
+  function syncOverlayUI() {
+    var ov = overlays[selected];
+    if (!ov) {
+      ovEdit.style.display = 'none';
+      ['ov-size-val','ov-rot-val','ov-opacity-val'].forEach(function (id) {
+        document.getElementById(id).textContent = '–';
+      });
+      return;
+    }
+    ovEdit.style.display = 'flex';
+    document.getElementById('ov-size').value = Math.round(ov.w);
+    document.getElementById('ov-size-val').textContent = Math.round(ov.w/CW*100) + '%';
+    var deg = Math.round((ov.rot||0)*180/Math.PI);
+    document.getElementById('ov-rot').value = deg;
+    document.getElementById('ov-rot-val').textContent = deg + '°';
+    var op = ov.opacity == null ? 1 : ov.opacity;
+    document.getElementById('ov-opacity').value = Math.round(op*100);
+    document.getElementById('ov-opacity-val').textContent = Math.round(op*100) + '%';
+  }
+  function toXY(e) {
+    var r = canvas.getBoundingClientRect();
+    return { x:(e.clientX-r.left)*(CW/r.width), y:(e.clientY-r.top)*(CH/r.height) };
+  }
+  function hitTest(p) {
+    for (var i = overlays.length-1; i >= 0; i--) {
+      var ov = overlays[i];
+      var dx = p.x-ov.cx, dy = p.y-ov.cy, a = -(ov.rot||0);
+      var lx = dx*Math.cos(a)-dy*Math.sin(a), ly = dx*Math.sin(a)+dy*Math.cos(a);
+      if (Math.abs(lx) <= ov.w/2 && Math.abs(ly) <= ov.h/2) return i;
+    }
+    return -1;
+  }
+
+  document.getElementById('ov-input').addEventListener('change', function (e) {
+    var files = e.target.files ? Array.prototype.slice.call(e.target.files) : [];
+    var self = this;
+    files.forEach(function (file, idx) {
+      var reader = new FileReader();
+      reader.onload = function () {
+        var img = new Image();
+        img.onload = function () {
+          var aspect = img.naturalWidth/img.naturalHeight || 1;
+          var w = Math.max(90, Math.min(CW*0.34, img.naturalWidth));
+          overlays.push({ img:img, aspect:aspect, layer:'front', opacity:1, rot:0,
+            w:w, h:w/aspect, cx:CW/2 + idx*30, cy:CH/2 + idx*30 });
+          selected = overlays.length-1;
+          syncOverlayUI(); drawPreview();
+          if (idx === 0) { try { canvas.scrollIntoView({behavior:'smooth',block:'start'}); } catch (x) {} }
+        };
+        img.onerror = function () { alert('이미지를 불러오지 못했습니다.'); };
+        img.src = reader.result;
+      };
+      reader.readAsDataURL(file);
+    });
+    self.value = '';
+  });
+
+  document.getElementById('ov-clear').addEventListener('click', function () {
+    overlays.length = 0; selected = -1; syncOverlayUI(); drawPreview();
+  });
+  document.getElementById('ov-delete').addEventListener('click', function () {
+    if (selected < 0) return;
+    overlays.splice(selected,1); selected = -1; syncOverlayUI(); drawPreview();
+  });
+  document.getElementById('ov-front').addEventListener('click', function () {
+    if (selected < 0) return;
+    var ov = overlays.splice(selected,1)[0]; ov.layer = 'front'; overlays.push(ov);
+    selected = overlays.length-1; syncOverlayUI(); drawPreview();
+  });
+  document.getElementById('ov-back').addEventListener('click', function () {
+    if (selected < 0) return;
+    var ov = overlays.splice(selected,1)[0]; ov.layer = 'back'; overlays.unshift(ov);
+    selected = 0; syncOverlayUI(); drawPreview();
+  });
+  document.getElementById('ov-size').addEventListener('input', function () {
+    var ov = overlays[selected]; if (!ov) return;
+    ov.w = parseFloat(this.value); ov.h = ov.w/ov.aspect;
+    document.getElementById('ov-size-val').textContent = Math.round(ov.w/CW*100)+'%';
+    drawPreview();
+  });
+  document.getElementById('ov-rot').addEventListener('input', function () {
+    var ov = overlays[selected]; if (!ov) return;
+    var deg = parseFloat(this.value); ov.rot = deg*Math.PI/180;
+    document.getElementById('ov-rot-val').textContent = Math.round(deg)+'°';
+    drawPreview();
+  });
+  document.getElementById('ov-rot-reset').addEventListener('click', function () {
+    var ov = overlays[selected]; if (!ov) return;
+    ov.rot = 0; document.getElementById('ov-rot').value = 0;
+    document.getElementById('ov-rot-val').textContent = '0°';
+    drawPreview();
+  });
+  document.getElementById('ov-opacity').addEventListener('input', function () {
+    var ov = overlays[selected]; if (!ov) return;
+    ov.opacity = parseFloat(this.value)/100;
+    document.getElementById('ov-opacity-val').textContent = Math.round(ov.opacity*100)+'%';
+    drawPreview();
+  });
+
+  var dragOffset = null;
+  canvas.addEventListener('pointerdown', function (e) {
+    var hit = hitTest(toXY(e));
+    if (hit >= 0) {
+      selected = hit;
+      var p = toXY(e), ov = overlays[hit];
+      dragOffset = { dx:p.x-ov.cx, dy:p.y-ov.cy };
+      canvas.setPointerCapture(e.pointerId);
+      canvas.style.cursor = 'grabbing';
+      e.preventDefault();
+    } else { selected = -1; }
+    syncOverlayUI(); drawPreview();
+  });
+  canvas.addEventListener('pointermove', function (e) {
+    if (dragOffset && selected >= 0) {
+      var p = toXY(e), ov = overlays[selected];
+      ov.cx = Math.max(0, Math.min(CW, p.x-dragOffset.dx));
+      ov.cy = Math.max(0, Math.min(CH, p.y-dragOffset.dy));
+      drawPreview(); e.preventDefault();
+    } else if (overlays.length) {
+      canvas.style.cursor = hitTest(toXY(e)) >= 0 ? 'grab' : 'default';
+    }
+  });
+  function endDrag(e) {
+    if (!dragOffset) return;
+    dragOffset = null; canvas.style.cursor = 'grab';
+    try { canvas.releasePointerCapture(e.pointerId); } catch (x) {}
+  }
+  canvas.addEventListener('pointerup', endDrag);
+  canvas.addEventListener('pointercancel', endDrag);
+
+  /* ---------- 입력 이벤트 ---------- */
+  ['f-name','f-sub','f-data','handle'].forEach(function (id) {
+    document.getElementById(id).addEventListener('input', refresh);
+  });
+  document.getElementById('f-top').addEventListener('input', refresh);
+  document.getElementById('f-min').addEventListener('input', refresh);
+  document.getElementById('f-label').addEventListener('change', refresh);
+  document.getElementById('color-base').addEventListener('input', refresh);
+  document.getElementById('chk-guide').addEventListener('change', function () {
+    state.guide = this.checked; drawPreview();
+  });
+
+  document.getElementById('btn-mode').addEventListener('click', function () {
+    var r = document.documentElement;
+    r.setAttribute('data-mode', r.getAttribute('data-mode') === 'dark' ? 'light' : 'dark');
+  });
+
+  document.getElementById('btn-png').addEventListener('click', function () {
+    if (!state.rows.length) { alert('보유 내역을 먼저 입력해주세요.'); return; }
+    var SCALE = 3;
+    var off = document.createElement('canvas');
+    off.width = CW*SCALE; off.height = CH*SCALE;
+    var octx = off.getContext('2d');
+    octx.scale(SCALE, SCALE);
+    var g = state.guide;
+    state.guide = false;
+    drawCard(octx);
+    state.guide = g;
+    off.toBlob(function (blob) {
+      if (!blob) { alert('이미지를 만들지 못했습니다.'); return; }
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = (state.name || 'portfolio') + '_' + (CW*SCALE) + 'x' + (CH*SCALE) + '.png';
+      a.click();
+      setTimeout(function () { URL.revokeObjectURL(a.href); }, 5000);
+    }, 'image/png');
+  });
+
+  document.getElementById('f-data').value = SAMPLE;
+  refresh();
+})();
+</script>
+</body>
+</html>
