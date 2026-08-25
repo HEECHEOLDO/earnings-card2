@@ -1,0 +1,125 @@
+{
+ "name": "코원플레이",
+ "split_adjusted": false,
+ "legal_name": "코원플레이",
+ "code": "056000",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-26",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 299.8,
+   "op": -58.9,
+   "ni": -80.0,
+   "assets": 432.3,
+   "liab": 237.8,
+   "equity": 194.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 306.8,
+   "op": 2.7,
+   "ni": 1.8,
+   "assets": 221.3,
+   "liab": 24.1,
+   "equity": 197.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 257.3,
+   "op": -31.0,
+   "ni": -10.0,
+   "assets": 223.4,
+   "liab": 21.2,
+   "equity": 202.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 198.1,
+   "op": -35.7,
+   "ni": -33.7,
+   "assets": 211.6,
+   "liab": 37.9,
+   "equity": 173.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 175.1,
+   "op": 3.5,
+   "ni": 3.0,
+   "assets": 540.6,
+   "liab": 256.7,
+   "equity": 283.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 68.0,
+   "op": -62.0,
+   "ni": -55.4,
+   "assets": 305.8,
+   "liab": 77.3,
+   "equity": 228.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 18.2,
+   "op": -47.1,
+   "ni": -42.5,
+   "assets": 254.3,
+   "liab": 69.0,
+   "equity": 185.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 1,
+   "rev": 3.0,
+   "op": -6.6,
+   "ni": -5.9
+  },
+  {
+   "y": 2023,
+   "q": 2,
+   "rev": 1.2,
+   "op": -7.1,
+   "ni": -6.6
+  },
+  {
+   "y": 2023,
+   "q": 3,
+   "rev": 0.6,
+   "op": -3.1,
+   "ni": -2.2
+  }
+ ]
+}

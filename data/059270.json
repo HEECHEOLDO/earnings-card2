@@ -1,0 +1,148 @@
+{
+ "name": "해성에어로보틱스",
+ "split_adjusted": false,
+ "legal_name": "해성에어로보틱스",
+ "code": "059270",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-08-26",
+ "annual": [
+  {
+   "p": 2021,
+   "rev": 152.3,
+   "op": -10.8,
+   "ni": -11.5,
+   "assets": 499.7,
+   "liab": 90.5,
+   "equity": 409.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 139.1,
+   "op": -12.7,
+   "ni": -10.3,
+   "assets": 443.6,
+   "liab": 36.9,
+   "equity": 406.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 136.8,
+   "op": -15.0,
+   "ni": -7.8,
+   "assets": 436.5,
+   "liab": 37.6,
+   "equity": 398.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 149.4,
+   "op": -7.2,
+   "ni": -5.3,
+   "assets": 422.3,
+   "liab": 27.6,
+   "equity": 394.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 150.8,
+   "op": -6.2,
+   "ni": 1.5,
+   "assets": 430.6,
+   "liab": 34.2,
+   "equity": 396.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 34.2,
+   "op": -3.1,
+   "ni": -2.2
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 45.2,
+   "op": -0.0,
+   "ni": 0.3
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 34.0,
+   "op": -1.8,
+   "ni": -0.9
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 36.0,
+   "op": -2.2,
+   "ni": -2.5
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 30.7,
+   "op": -3.8,
+   "ni": -2.3
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 40.0,
+   "op": 0.1,
+   "ni": 6.8
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 38.0,
+   "op": -0.3,
+   "ni": -0.4
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 42.1,
+   "op": -2.3,
+   "ni": -2.6
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 32.9,
+   "op": -3.0,
+   "ni": -2.8
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 33.2,
+   "op": -7.4,
+   "ni": 12.8
+  }
+ ]
+}

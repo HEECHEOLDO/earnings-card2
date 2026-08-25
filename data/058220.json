@@ -1,0 +1,77 @@
+{
+ "name": "아리온테크놀로지",
+ "split_adjusted": false,
+ "legal_name": "아리온테크놀로지",
+ "code": "058220",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-26",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 460.4,
+   "op": -88.9,
+   "ni": -152.4,
+   "assets": 753.7,
+   "liab": 410.4,
+   "equity": 343.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 517.4,
+   "op": -94.5,
+   "ni": -214.4,
+   "assets": 685.7,
+   "liab": 457.1,
+   "equity": 228.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 458.9,
+   "op": -58.6,
+   "ni": -111.7,
+   "assets": 771.8,
+   "liab": 517.9,
+   "equity": 253.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 330.4,
+   "op": 20.8,
+   "ni": -75.0,
+   "assets": 869.6,
+   "liab": 675.5,
+   "equity": 194.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 82.0,
+   "op": -108.9,
+   "ni": -291.1,
+   "assets": 260.6,
+   "liab": 346.1,
+   "equity": -85.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}
