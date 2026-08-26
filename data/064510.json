@@ -1,0 +1,200 @@
+{
+ "name": "유네코",
+ "split_adjusted": false,
+ "legal_name": "유네코",
+ "code": "064510",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-27",
+ "annual": [
+  {
+   "p": 2017,
+   "rev": 237.1,
+   "op": 24.1,
+   "ni": -24.9,
+   "assets": 1053.2,
+   "liab": 563.3,
+   "equity": 489.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 146.6,
+   "op": -84.7,
+   "ni": -433.8,
+   "assets": 831.2,
+   "liab": 649.9,
+   "equity": 181.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 187.2,
+   "op": -18.2,
+   "ni": -93.1,
+   "assets": 756.1,
+   "liab": 625.3,
+   "equity": 130.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 107.2,
+   "op": -110.8,
+   "ni": -284.7,
+   "assets": 496.7,
+   "liab": 467.2,
+   "equity": 29.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 185.5,
+   "op": -28.6,
+   "ni": -42.1,
+   "assets": 346.1,
+   "liab": 227.5,
+   "equity": 118.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 181.4,
+   "op": -27.3,
+   "ni": 20.5,
+   "assets": 270.6,
+   "liab": 124.1,
+   "equity": 146.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 210.9,
+   "op": 11.6,
+   "ni": 41.0,
+   "assets": 260.0,
+   "liab": 73.9,
+   "equity": 186.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 138.5,
+   "op": 24.8,
+   "ni": 16.9,
+   "assets": 265.0,
+   "liab": 62.4,
+   "equity": 202.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 128.3,
+   "op": -7.1,
+   "ni": -13.5,
+   "assets": 280.0,
+   "liab": 89.9,
+   "equity": 190.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 45.0,
+   "op": -7.2,
+   "ni": 0.9
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 56.0,
+   "op": 5.3,
+   "ni": 13.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 36.4,
+   "op": -7.9,
+   "ni": -9.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 1.1,
+   "op": 34.5,
+   "ni": 12.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 30.7,
+   "op": -0.0,
+   "ni": 0.1
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 33.9,
+   "op": 1.6,
+   "ni": -0.6
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 30.2,
+   "op": -2.3,
+   "ni": 1.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 33.5,
+   "op": -6.3,
+   "ni": -14.1
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 34.0,
+   "op": -1.0,
+   "ni": 4.5
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 42.8,
+   "op": 7.1,
+   "ni": 30.1
+  }
+ ]
+}

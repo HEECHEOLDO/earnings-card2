@@ -1,0 +1,187 @@
+{
+ "name": "엔터미디어",
+ "split_adjusted": false,
+ "legal_name": "엔터미디어",
+ "code": "068420",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-27",
+ "annual": [
+  {
+   "p": 2018,
+   "rev": 133.2,
+   "op": 12.4,
+   "ni": 26.1,
+   "assets": 698.2,
+   "liab": 437.0,
+   "equity": 261.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 96.9,
+   "op": -23.4,
+   "ni": -17.6,
+   "assets": 328.6,
+   "liab": 129.4,
+   "equity": 199.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 55.6,
+   "op": -47.6,
+   "ni": -55.2,
+   "assets": 417.9,
+   "liab": 218.1,
+   "equity": 199.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 58.7,
+   "op": -70.1,
+   "ni": -103.6,
+   "assets": 358.1,
+   "liab": 261.9,
+   "equity": 96.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 46.9,
+   "op": -2.5,
+   "ni": 3.2,
+   "assets": 378.9,
+   "liab": 274.5,
+   "equity": 104.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 39.3,
+   "op": -2.1,
+   "ni": -15.3,
+   "assets": 361.1,
+   "liab": 277.2,
+   "equity": 83.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 37.5,
+   "op": -11.2,
+   "ni": -61.3,
+   "assets": 339.0,
+   "liab": 297.0,
+   "equity": 42.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 19.6,
+   "op": -22.2,
+   "ni": -87.5,
+   "assets": 461.2,
+   "liab": 455.3,
+   "equity": 5.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 10.3,
+   "op": -1.0,
+   "ni": 0.6
+  },
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 5.9,
+   "op": -7.1,
+   "ni": -13.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 8.6,
+   "op": 3.2,
+   "ni": -3.1
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 9.2,
+   "op": -1.9,
+   "ni": -9.7
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 13.8,
+   "op": -5.3,
+   "ni": -35.5
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 3.8,
+   "op": -5.2,
+   "ni": -13.1
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 8.4,
+   "op": -6.6,
+   "ni": -25.3
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 3.4,
+   "op": -3.4,
+   "ni": -17.2
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 4.0,
+   "op": -6.9,
+   "ni": -31.9
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 5.1,
+   "op": -12.7,
+   "ni": -12.0
+  }
+ ]
+}

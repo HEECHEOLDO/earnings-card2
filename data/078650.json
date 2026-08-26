@@ -1,0 +1,138 @@
+{
+ "name": "지나인제약",
+ "split_adjusted": false,
+ "legal_name": "지나인제약",
+ "code": "078650",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-27",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 930.3,
+   "op": -89.4,
+   "ni": null,
+   "assets": 1142.5,
+   "liab": 902.4,
+   "equity": 240.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 820.3,
+   "op": -110.6,
+   "ni": null,
+   "assets": 770.4,
+   "liab": 512.8,
+   "equity": 257.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 778.6,
+   "op": 43.6,
+   "ni": null,
+   "assets": 750.7,
+   "liab": 428.7,
+   "equity": 322.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 677.4,
+   "op": 32.4,
+   "ni": -86.8,
+   "assets": 972.7,
+   "liab": 468.4,
+   "equity": 504.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 415.5,
+   "op": -318.8,
+   "ni": -455.3,
+   "assets": 780.1,
+   "liab": 573.1,
+   "equity": 207.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 238.3,
+   "op": -218.0,
+   "ni": -372.6,
+   "assets": 532.0,
+   "liab": 595.1,
+   "equity": -63.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 6.8,
+   "op": -77.2,
+   "ni": -386.2,
+   "assets": 52.9,
+   "liab": 379.9,
+   "equity": -327.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 0.2,
+   "op": -9.5,
+   "ni": -34.4,
+   "assets": 37.9,
+   "liab": 399.1,
+   "equity": -361.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 2,
+   "rev": 0.0,
+   "op": -0.8,
+   "ni": 1.3
+  },
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 0.2,
+   "op": -0.7,
+   "ni": -3.2
+  },
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 0.0,
+   "op": -2.1,
+   "ni": -14.3
+  }
+ ]
+}

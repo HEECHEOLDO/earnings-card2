@@ -1,0 +1,64 @@
+{
+ "name": "바이오빌",
+ "split_adjusted": false,
+ "legal_name": "바이오빌",
+ "code": "065940",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-27",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 326.7,
+   "op": -16.4,
+   "ni": -105.3,
+   "assets": 1077.6,
+   "liab": 376.0,
+   "equity": 701.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 503.5,
+   "op": -99.4,
+   "ni": -251.8,
+   "assets": 2031.6,
+   "liab": 1258.5,
+   "equity": 773.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 1055.6,
+   "op": -282.0,
+   "ni": -975.4,
+   "assets": 2533.2,
+   "liab": 1998.5,
+   "equity": 534.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 134.8,
+   "op": -46.5,
+   "ni": -303.5,
+   "assets": 1065.1,
+   "liab": 1231.0,
+   "equity": -165.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

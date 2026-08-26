@@ -1,0 +1,77 @@
+{
+ "name": "제낙스",
+ "split_adjusted": false,
+ "legal_name": "제낙스",
+ "code": "065620",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-27",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 60.9,
+   "op": -39.7,
+   "ni": -59.5,
+   "assets": 560.7,
+   "liab": 261.3,
+   "equity": 299.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 62.1,
+   "op": -41.2,
+   "ni": -45.5,
+   "assets": 715.6,
+   "liab": 208.4,
+   "equity": 507.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 51.7,
+   "op": -79.7,
+   "ni": -91.3,
+   "assets": 278.4,
+   "liab": 186.4,
+   "equity": 91.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 36.0,
+   "op": -87.5,
+   "ni": -107.0,
+   "assets": 247.8,
+   "liab": 233.0,
+   "equity": 14.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 20.6,
+   "op": -31.1,
+   "ni": 6.3,
+   "assets": 157.0,
+   "liab": 104.5,
+   "equity": 52.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

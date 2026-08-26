@@ -1,0 +1,213 @@
+{
+ "name": "해성옵틱스",
+ "split_adjusted": false,
+ "legal_name": "해성옵틱스",
+ "code": "076610",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-08-27",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 3671.5,
+   "op": 16.1,
+   "ni": 19.3,
+   "assets": 2230.7,
+   "liab": 1494.6,
+   "equity": 736.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 3425.4,
+   "op": -88.3,
+   "ni": -130.1,
+   "assets": 1972.9,
+   "liab": 1417.9,
+   "equity": 555.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 2040.2,
+   "op": -61.7,
+   "ni": null,
+   "assets": 1959.7,
+   "liab": 1486.9,
+   "equity": 472.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 3491.0,
+   "op": 8.4,
+   "ni": -112.4,
+   "assets": 1868.1,
+   "liab": 1259.2,
+   "equity": 609.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 2122.4,
+   "op": -404.5,
+   "ni": -478.2,
+   "assets": 1177.8,
+   "liab": 1011.0,
+   "equity": 166.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 1408.4,
+   "op": -74.1,
+   "ni": -380.7,
+   "assets": 994.5,
+   "liab": 498.1,
+   "equity": 496.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 1638.1,
+   "op": -51.2,
+   "ni": -173.7,
+   "assets": 777.9,
+   "liab": 412.6,
+   "equity": 365.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 1211.7,
+   "op": 39.9,
+   "ni": -21.4,
+   "assets": 1161.0,
+   "liab": 726.8,
+   "equity": 434.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 1085.3,
+   "op": -133.9,
+   "ni": null,
+   "assets": 1172.5,
+   "liab": 978.4,
+   "equity": 194.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 1603.3,
+   "op": -67.4,
+   "ni": null,
+   "assets": 1457.8,
+   "liab": 1175.2,
+   "equity": 282.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 319.7,
+   "op": 16.0,
+   "ni": 32.8
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 255.9,
+   "op": -9.8,
+   "ni": -45.5
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 251.8,
+   "op": -51.8,
+   "ni": null
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 257.9,
+   "op": -88.2,
+   "ni": null
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 308.8,
+   "op": -32.4,
+   "ni": null
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 322.2,
+   "op": -21.2,
+   "ni": null
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 423.1,
+   "op": -20.5,
+   "ni": null
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 549.3,
+   "op": 6.8,
+   "ni": null
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 695.0,
+   "op": 7.0,
+   "ni": null
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 558.9,
+   "op": 4.1,
+   "ni": null
+  }
+ ]
+}

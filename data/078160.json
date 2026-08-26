@@ -1,0 +1,213 @@
+{
+ "name": "메디포스트",
+ "split_adjusted": false,
+ "legal_name": "메디포스트",
+ "code": "078160",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-08-27",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 286.5,
+   "op": -93.2,
+   "ni": -53.7,
+   "assets": 1792.6,
+   "liab": 359.6,
+   "equity": 1433.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 422.5,
+   "op": -36.4,
+   "ni": -18.5,
+   "assets": 1390.7,
+   "liab": 402.1,
+   "equity": 988.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 443.8,
+   "op": -65.9,
+   "ni": -20.1,
+   "assets": 1757.5,
+   "liab": 489.5,
+   "equity": 1268.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 458.1,
+   "op": -80.6,
+   "ni": -141.2,
+   "assets": 2137.2,
+   "liab": 1017.6,
+   "equity": 1119.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 486.2,
+   "op": -24.1,
+   "ni": -19.0,
+   "assets": 2198.1,
+   "liab": 1029.0,
+   "equity": 1169.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 548.6,
+   "op": -52.1,
+   "ni": -9.7,
+   "assets": 2540.9,
+   "liab": 919.0,
+   "equity": 1621.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 642.0,
+   "op": -174.2,
+   "ni": 21.1,
+   "assets": 3977.9,
+   "liab": 2152.1,
+   "equity": 1825.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 686.4,
+   "op": -251.3,
+   "ni": 49.5,
+   "assets": 4493.9,
+   "liab": 1357.4,
+   "equity": 3136.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 706.6,
+   "op": -485.4,
+   "ni": -633.8,
+   "assets": 4142.9,
+   "liab": 1616.9,
+   "equity": 2526.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 736.6,
+   "op": -679.8,
+   "ni": -859.9,
+   "assets": 4315.5,
+   "liab": 1816.4,
+   "equity": 2499.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 180.3,
+   "op": -59.6,
+   "ni": -71.5
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 175.2,
+   "op": -92.6,
+   "ni": 25.9
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 172.7,
+   "op": -145.7,
+   "ni": -183.4
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 178.4,
+   "op": -187.5,
+   "ni": -404.7
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 192.2,
+   "op": -136.7,
+   "ni": -165.2
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 178.4,
+   "op": -189.9,
+   "ni": -243.1
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 186.9,
+   "op": -140.6,
+   "ni": -171.7
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 179.1,
+   "op": -212.6,
+   "ni": -279.9
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 194.6,
+   "op": -168.5,
+   "ni": -107.2
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 187.8,
+   "op": -243.4,
+   "ni": 321.6
+  }
+ ]
+}

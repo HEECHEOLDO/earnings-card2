@@ -1,0 +1,64 @@
+{
+ "name": "티엔아이",
+ "split_adjusted": false,
+ "legal_name": "티엔아이",
+ "code": "066350",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-27",
+ "annual": [
+  {
+   "p": 2018,
+   "rev": 173.2,
+   "op": -88.5,
+   "ni": -171.0,
+   "assets": 619.9,
+   "liab": 638.1,
+   "equity": -18.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 147.6,
+   "op": -23.8,
+   "ni": -49.5,
+   "assets": 589.3,
+   "liab": 657.9,
+   "equity": -68.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 102.3,
+   "op": -60.1,
+   "ni": -107.0,
+   "assets": 504.2,
+   "liab": 679.7,
+   "equity": -175.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 99.4,
+   "op": -28.9,
+   "ni": -52.4,
+   "assets": 431.3,
+   "liab": 115.0,
+   "equity": 316.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

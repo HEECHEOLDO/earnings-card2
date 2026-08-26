@@ -1,0 +1,51 @@
+{
+ "name": "한컴지엠디",
+ "split_adjusted": false,
+ "legal_name": "한컴지엠디",
+ "code": "077280",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-27",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 150.3,
+   "op": -4.0,
+   "ni": -12.0,
+   "assets": 743.6,
+   "liab": 329.5,
+   "equity": 414.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 95.4,
+   "op": 7.0,
+   "ni": 8.7,
+   "assets": 683.9,
+   "liab": 253.2,
+   "equity": 430.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 109.8,
+   "op": 16.1,
+   "ni": 15.6,
+   "assets": 681.2,
+   "liab": 221.4,
+   "equity": 459.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

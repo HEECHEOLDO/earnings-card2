@@ -1,0 +1,213 @@
+{
+ "name": "에스케이렌터카",
+ "split_adjusted": false,
+ "legal_name": "에스케이렌터카",
+ "code": "068400",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-27",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 6476.4,
+   "op": 327.2,
+   "ni": 68.3,
+   "assets": 11576.5,
+   "liab": 9233.0,
+   "equity": 2343.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 6367.7,
+   "op": 408.9,
+   "ni": 122.7,
+   "assets": 12165.2,
+   "liab": 9702.4,
+   "equity": 2462.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 6525.2,
+   "op": 218.4,
+   "ni": 33.0,
+   "assets": 11732.1,
+   "liab": 9262.5,
+   "equity": 2469.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 6408.8,
+   "op": 415.4,
+   "ni": 163.0,
+   "assets": 16451.7,
+   "liab": 13004.3,
+   "equity": 3447.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 8634.7,
+   "op": 708.0,
+   "ni": 181.9,
+   "assets": 22271.5,
+   "liab": 17641.0,
+   "equity": 4630.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 10368.8,
+   "op": 790.5,
+   "ni": 205.9,
+   "assets": 28602.0,
+   "liab": 23765.5,
+   "equity": 4836.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 12465.1,
+   "op": 950.9,
+   "ni": 207.4,
+   "assets": 33419.7,
+   "liab": 28256.3,
+   "equity": 5163.4,
+   "dps": 150.0,
+   "payout": 32.8,
+   "yield": 2.2,
+   "dps_adj": 150.0
+  },
+  {
+   "p": 2023,
+   "rev": 14028.3,
+   "op": 1219.9,
+   "ni": 243.6,
+   "assets": 35346.9,
+   "liab": 30099.4,
+   "equity": 5247.4,
+   "dps": 150.0,
+   "payout": 28.0,
+   "yield": 1.4,
+   "dps_adj": 150.0
+  },
+  {
+   "p": 2024,
+   "rev": 15565.3,
+   "op": 1725.3,
+   "ni": 347.2,
+   "assets": 39462.1,
+   "liab": 33835.3,
+   "equity": 5626.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 15583.7,
+   "op": 1687.4,
+   "ni": 514.5,
+   "assets": 40278.8,
+   "liab": 34308.7,
+   "equity": 5970.1,
+   "dps": 648.0,
+   "payout": 58.3,
+   "yield": null,
+   "dps_adj": 648.0
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 3739.1,
+   "op": 364.5,
+   "ni": 85.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 3991.4,
+   "op": 401.8,
+   "ni": 101.8
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 3914.2,
+   "op": 340.2,
+   "ni": 44.4
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 3920.5,
+   "op": 618.9,
+   "ni": 116.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 3573.0,
+   "op": 403.0,
+   "ni": 91.7
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 3612.9,
+   "op": 338.4,
+   "ni": 102.6
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 4435.0,
+   "op": 526.4,
+   "ni": 157.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 3962.8,
+   "op": 419.6,
+   "ni": 163.2
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 3996.5,
+   "op": 410.2,
+   "ni": 118.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 3810.8,
+   "op": 509.8,
+   "ni": 131.1
+  }
+ ]
+}

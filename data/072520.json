@@ -1,0 +1,193 @@
+{
+ "name": "제넨바이오",
+ "split_adjusted": false,
+ "legal_name": "제넨바이오",
+ "code": "072520",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-27",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 423.6,
+   "op": -52.1,
+   "ni": -105.7,
+   "assets": 608.0,
+   "liab": 343.8,
+   "equity": 264.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 201.9,
+   "op": 21.6,
+   "ni": -147.5,
+   "assets": 485.9,
+   "liab": 336.1,
+   "equity": 149.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 70.4,
+   "op": -23.8,
+   "ni": -51.0,
+   "assets": 728.4,
+   "liab": 394.9,
+   "equity": 333.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 219.7,
+   "op": -164.8,
+   "ni": -467.4,
+   "assets": 900.3,
+   "liab": 659.1,
+   "equity": 241.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 118.5,
+   "op": -119.1,
+   "ni": -219.9,
+   "assets": 982.1,
+   "liab": 500.7,
+   "equity": 481.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 88.9,
+   "op": -139.0,
+   "ni": -346.5,
+   "assets": 1414.5,
+   "liab": 513.5,
+   "equity": 900.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 93.7,
+   "op": -143.6,
+   "ni": -383.1,
+   "assets": 1369.1,
+   "liab": 749.1,
+   "equity": 620.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 52.9,
+   "op": -165.3,
+   "ni": -161.0,
+   "assets": 1186.1,
+   "liab": 469.8,
+   "equity": 716.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 0.2,
+   "op": -57.4,
+   "ni": -110.6,
+   "assets": 1036.3,
+   "liab": 430.3,
+   "equity": 606.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 1,
+   "rev": 26.2,
+   "op": -39.4,
+   "ni": -27.5
+  },
+  {
+   "y": 2023,
+   "q": 2,
+   "rev": 17.7,
+   "op": -58.1,
+   "ni": -48.6
+  },
+  {
+   "y": 2023,
+   "q": 3,
+   "rev": 5.5,
+   "op": -34.6,
+   "ni": -49.2
+  },
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 3.5,
+   "op": -33.2,
+   "ni": -35.8
+  },
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 0.2,
+   "op": -20.0,
+   "ni": -36.6
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": -0.2,
+   "op": 20.0,
+   "ni": 36.6
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 0.2,
+   "op": -45.4,
+   "ni": -91.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 0.0,
+   "op": -12.0,
+   "ni": -19.6
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 0.0,
+   "op": -23.7,
+   "ni": -46.6
+  }
+ ]
+}

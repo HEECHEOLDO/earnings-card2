@@ -1,0 +1,187 @@
+{
+ "name": "케이씨더블류",
+ "split_adjusted": false,
+ "legal_name": "케이씨더블류",
+ "code": "068060",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-27",
+ "annual": [
+  {
+   "p": 2018,
+   "rev": 365.4,
+   "op": -2.4,
+   "ni": -123.6,
+   "assets": 407.2,
+   "liab": 257.0,
+   "equity": 150.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 288.0,
+   "op": -28.7,
+   "ni": -130.1,
+   "assets": 328.8,
+   "liab": 275.6,
+   "equity": 53.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 177.1,
+   "op": -25.8,
+   "ni": -38.4,
+   "assets": 220.3,
+   "liab": 203.1,
+   "equity": 17.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 97.0,
+   "op": -24.7,
+   "ni": -38.7,
+   "assets": 182.6,
+   "liab": 200.6,
+   "equity": -18.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 68.3,
+   "op": -21.3,
+   "ni": 34.7,
+   "assets": 116.4,
+   "liab": 92.9,
+   "equity": 23.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 59.2,
+   "op": -8.2,
+   "ni": -19.2,
+   "assets": 118.5,
+   "liab": 115.4,
+   "equity": 3.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 52.3,
+   "op": -5.9,
+   "ni": 1.6,
+   "assets": 126.8,
+   "liab": 67.1,
+   "equity": 59.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 48.8,
+   "op": -16.2,
+   "ni": -0.1,
+   "assets": 102.1,
+   "liab": 38.9,
+   "equity": 63.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 8.9,
+   "op": -0.2,
+   "ni": -0.7
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 13.6,
+   "op": -2.2,
+   "ni": -0.5
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 13.6,
+   "op": -1.6,
+   "ni": -0.8
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 16.1,
+   "op": -1.9,
+   "ni": 3.6
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 12.6,
+   "op": -2.1,
+   "ni": 7.6
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 13.1,
+   "op": -10.2,
+   "ni": -9.8
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 11.3,
+   "op": -0.9,
+   "ni": 2.1
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 11.8,
+   "op": -3.1,
+   "ni": 0.1
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 13.6,
+   "op": -0.3,
+   "ni": 2.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 13.6,
+   "op": -1.0,
+   "ni": 3.3
+  }
+ ]
+}

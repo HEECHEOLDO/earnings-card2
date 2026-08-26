@@ -1,0 +1,90 @@
+{
+ "name": "한프",
+ "split_adjusted": false,
+ "legal_name": "한프",
+ "code": "066110",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-27",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 183.7,
+   "op": -37.3,
+   "ni": -34.7,
+   "assets": 858.2,
+   "liab": 410.9,
+   "equity": 447.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 141.5,
+   "op": -61.0,
+   "ni": -129.6,
+   "assets": 895.3,
+   "liab": 434.0,
+   "equity": 461.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 98.2,
+   "op": -156.5,
+   "ni": -294.9,
+   "assets": 672.3,
+   "liab": 358.6,
+   "equity": 313.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 45.0,
+   "op": -93.6,
+   "ni": -188.2,
+   "assets": 946.5,
+   "liab": 660.7,
+   "equity": 285.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 29.5,
+   "op": -54.8,
+   "ni": -94.4,
+   "assets": 486.1,
+   "liab": 337.5,
+   "equity": 148.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 30.5,
+   "op": -77.4,
+   "ni": 82.0,
+   "assets": 1147.8,
+   "liab": 616.8,
+   "equity": 531.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

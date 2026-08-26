@@ -1,0 +1,98 @@
+{
+ "name": "레드로버",
+ "split_adjusted": false,
+ "legal_name": "레드로버",
+ "code": "060300",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-27",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 419.0,
+   "op": 18.6,
+   "ni": 7.1,
+   "assets": 1650.2,
+   "liab": 202.6,
+   "equity": 1447.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 356.5,
+   "op": -40.0,
+   "ni": -106.1,
+   "assets": 1633.5,
+   "liab": 196.2,
+   "equity": 1437.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 122.8,
+   "op": -240.3,
+   "ni": -499.4,
+   "assets": 1138.8,
+   "liab": 125.2,
+   "equity": 1013.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 120.8,
+   "op": -413.4,
+   "ni": -932.5,
+   "assets": 287.8,
+   "liab": 222.5,
+   "equity": 65.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 149.0,
+   "op": 1.0,
+   "ni": 11.2,
+   "assets": 450.4,
+   "liab": 213.5,
+   "equity": 236.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 71.9,
+   "op": -24.1,
+   "ni": -131.2,
+   "assets": 187.7,
+   "liab": 105.4,
+   "equity": 82.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 3,
+   "rev": 3.9,
+   "op": -10.2,
+   "ni": -2.6
+  }
+ ]
+}
