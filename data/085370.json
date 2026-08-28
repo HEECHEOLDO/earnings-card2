@@ -1,0 +1,145 @@
+{
+ "name": "루트로닉",
+ "split_adjusted": false,
+ "legal_name": "루트로닉",
+ "code": "085370",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-28",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 845.0,
+   "op": 66.7,
+   "ni": 53.0,
+   "assets": 1917.1,
+   "liab": 562.8,
+   "equity": 1354.3,
+   "dps": 75.0,
+   "payout": 15.03,
+   "yield": 0.2,
+   "dps_adj": 75.0
+  },
+  {
+   "p": 2017,
+   "rev": 857.7,
+   "op": -28.3,
+   "ni": -70.0,
+   "assets": 1967.2,
+   "liab": 636.2,
+   "equity": 1331.0,
+   "dps": 15.0,
+   "payout": -10.07,
+   "yield": 0.1,
+   "dps_adj": 15.0
+  },
+  {
+   "p": 2018,
+   "rev": 921.4,
+   "op": -123.7,
+   "ni": -153.8,
+   "assets": 2153.6,
+   "liab": 856.9,
+   "equity": 1296.7,
+   "dps": null,
+   "payout": -1.02,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 1152.6,
+   "op": -26.2,
+   "ni": -203.7,
+   "assets": 2056.3,
+   "liab": 903.3,
+   "equity": 1153.0,
+   "dps": null,
+   "payout": -1.0,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 1155.6,
+   "op": 62.1,
+   "ni": -153.7,
+   "assets": 1756.2,
+   "liab": 785.6,
+   "equity": 970.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 1736.4,
+   "op": 297.9,
+   "ni": 276.9,
+   "assets": 1862.8,
+   "liab": 648.4,
+   "equity": 1214.3,
+   "dps": 192.0,
+   "payout": null,
+   "yield": 1.09,
+   "dps_adj": 192.0
+  },
+  {
+   "p": 2022,
+   "rev": 2641.5,
+   "op": 554.0,
+   "ni": 452.1,
+   "assets": 2177.7,
+   "liab": 567.5,
+   "equity": 1610.2,
+   "dps": 322.0,
+   "payout": null,
+   "yield": 1.7,
+   "dps_adj": 322.0
+  },
+  {
+   "p": 2023,
+   "rev": 2705.4,
+   "op": 401.3,
+   "ni": 320.9,
+   "assets": 2382.3,
+   "liab": 653.2,
+   "equity": 1729.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 1,
+   "rev": 626.9,
+   "op": 99.9,
+   "ni": 107.0
+  },
+  {
+   "y": 2023,
+   "q": 2,
+   "rev": 656.2,
+   "op": 67.9,
+   "ni": -20.5
+  },
+  {
+   "y": 2023,
+   "q": 3,
+   "rev": 644.0,
+   "op": 59.2,
+   "ni": 95.8
+  },
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 778.4,
+   "op": 174.4,
+   "ni": 138.7
+  }
+ ]
+}

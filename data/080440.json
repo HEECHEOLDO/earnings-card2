@@ -1,0 +1,77 @@
+{
+ "name": "에스제이케이",
+ "split_adjusted": false,
+ "legal_name": "에스제이케이",
+ "code": "080440",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-28",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 129.1,
+   "op": -60.5,
+   "ni": null,
+   "assets": 480.8,
+   "liab": 331.6,
+   "equity": 149.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 87.7,
+   "op": -48.6,
+   "ni": null,
+   "assets": 455.2,
+   "liab": 322.3,
+   "equity": 132.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 62.8,
+   "op": -81.8,
+   "ni": -108.7,
+   "assets": 596.2,
+   "liab": 465.6,
+   "equity": 130.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 41.2,
+   "op": -54.9,
+   "ni": -109.2,
+   "assets": 553.4,
+   "liab": 420.6,
+   "equity": 132.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 41.2,
+   "op": -54.9,
+   "ni": -109.2,
+   "assets": 553.4,
+   "liab": 420.6,
+   "equity": 132.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

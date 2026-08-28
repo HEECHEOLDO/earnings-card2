@@ -1,0 +1,213 @@
+{
+ "name": "차바이오텍",
+ "split_adjusted": false,
+ "legal_name": "차바이오텍",
+ "code": "085660",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-08-28",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 4492.6,
+   "op": 397.7,
+   "ni": 274.0,
+   "assets": 7689.3,
+   "liab": 3900.7,
+   "equity": 3788.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 4188.8,
+   "op": -67.0,
+   "ni": -459.4,
+   "assets": 7856.0,
+   "liab": 3764.0,
+   "equity": 4092.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 4886.0,
+   "op": 190.1,
+   "ni": 361.0,
+   "assets": 9475.3,
+   "liab": 3972.9,
+   "equity": 5502.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 5346.1,
+   "op": 58.4,
+   "ni": 523.7,
+   "assets": 11629.2,
+   "liab": 4966.3,
+   "equity": 6663.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 6647.2,
+   "op": -24.5,
+   "ni": -341.8,
+   "assets": 13137.1,
+   "liab": 6768.3,
+   "equity": 6368.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 7274.8,
+   "op": 77.1,
+   "ni": -218.4,
+   "assets": 15351.3,
+   "liab": 7420.1,
+   "equity": 7931.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 8445.8,
+   "op": -470.8,
+   "ni": -696.6,
+   "assets": 16070.1,
+   "liab": 9550.7,
+   "equity": 6519.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 9539.5,
+   "op": -95.7,
+   "ni": -55.6,
+   "assets": 17255.7,
+   "liab": 10692.4,
+   "equity": 6563.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 10450.5,
+   "op": -596.8,
+   "ni": -145.5,
+   "assets": 21943.8,
+   "liab": 14755.3,
+   "equity": 7188.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 12682.5,
+   "op": -487.7,
+   "ni": -1467.1,
+   "assets": 25475.8,
+   "liab": 17383.3,
+   "equity": 8092.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 2324.0,
+   "op": -125.6,
+   "ni": -161.9
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 2646.5,
+   "op": -7.8,
+   "ni": 104.8
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 2720.2,
+   "op": -68.2,
+   "ni": 203.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 2759.8,
+   "op": -395.2,
+   "ni": -291.4
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 3041.4,
+   "op": -125.1,
+   "ni": -269.8
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 2989.0,
+   "op": -207.7,
+   "ni": -752.4
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 3186.8,
+   "op": -80.6,
+   "ni": -91.7
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 3465.4,
+   "op": -74.4,
+   "ni": -353.2
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 3297.1,
+   "op": -307.3,
+   "ni": -26.2
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 3164.3,
+   "op": -281.9,
+   "ni": 306.8
+  }
+ ]
+}

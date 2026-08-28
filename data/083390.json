@@ -1,0 +1,25 @@
+{
+ "name": "동북아14호선박투자회사",
+ "split_adjusted": false,
+ "legal_name": "동북아14호선박투자회사",
+ "code": "083390",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-28",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 5.3,
+   "op": 4.8,
+   "ni": 4.8,
+   "assets": 81.0,
+   "liab": 1.7,
+   "equity": 79.3,
+   "dps": 301.0,
+   "payout": 100.0,
+   "yield": 6.8,
+   "dps_adj": 301.0
+  }
+ ],
+ "quarterly": []
+}

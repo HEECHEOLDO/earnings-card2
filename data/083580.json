@@ -1,0 +1,25 @@
+{
+ "name": "아시아퍼시픽11호선박투자회사",
+ "split_adjusted": false,
+ "legal_name": "아시아퍼시픽11호선박투자회사",
+ "code": "083580",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-28",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 8.7,
+   "op": 7.8,
+   "ni": 7.8,
+   "assets": 131.5,
+   "liab": 1.2,
+   "equity": 130.2,
+   "dps": 301.0,
+   "payout": 100.0,
+   "yield": 6.0,
+   "dps_adj": 301.0
+  }
+ ],
+ "quarterly": []
+}

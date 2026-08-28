@@ -1,0 +1,166 @@
+{
+ "name": "에스엔유프리시젼",
+ "split_adjusted": false,
+ "legal_name": "에스엔유프리시젼",
+ "code": "080000",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-28",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 578.6,
+   "op": -158.6,
+   "ni": -181.4,
+   "assets": 1341.5,
+   "liab": 445.0,
+   "equity": 896.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 1162.2,
+   "op": 59.2,
+   "ni": 57.5,
+   "assets": 1497.3,
+   "liab": 545.2,
+   "equity": 952.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 825.7,
+   "op": 109.7,
+   "ni": 98.3,
+   "assets": 1364.8,
+   "liab": 287.4,
+   "equity": 1077.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 643.5,
+   "op": 89.3,
+   "ni": 77.2,
+   "assets": 1519.7,
+   "liab": 365.7,
+   "equity": 1154.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 1018.5,
+   "op": 86.5,
+   "ni": 49.7,
+   "assets": 1504.5,
+   "liab": 300.4,
+   "equity": 1204.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 1140.4,
+   "op": 61.3,
+   "ni": 84.7,
+   "assets": 1695.7,
+   "liab": 406.7,
+   "equity": 1289.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 1244.4,
+   "op": 66.2,
+   "ni": 75.7,
+   "assets": 1848.2,
+   "liab": 483.3,
+   "equity": 1364.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 1291.6,
+   "op": 44.5,
+   "ni": 70.8,
+   "assets": 1911.4,
+   "liab": 474.2,
+   "equity": 1437.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 1,
+   "rev": 275.8,
+   "op": 21.1,
+   "ni": 41.7
+  },
+  {
+   "y": 2023,
+   "q": 2,
+   "rev": 344.4,
+   "op": 14.0,
+   "ni": 0.6
+  },
+  {
+   "y": 2023,
+   "q": 3,
+   "rev": 235.4,
+   "op": 1.6,
+   "ni": 25.5
+  },
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 436.0,
+   "op": 7.9,
+   "ni": 2.9
+  },
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 171.9,
+   "op": 5.7,
+   "ni": 34.4
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 292.7,
+   "op": 20.6,
+   "ni": 24.1
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 267.8,
+   "op": 18.0,
+   "ni": -1.8
+  }
+ ]
+}
