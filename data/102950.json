@@ -1,0 +1,53 @@
+{
+ "name": "아하",
+ "split_adjusted": false,
+ "legal_name": "아하",
+ "code": "102950",
+ "market": "코넥스",
+ "sector": "",
+ "updated": "2026-08-30",
+ "annual": [
+  {
+   "p": 2024,
+   "rev": 562.1,
+   "op": 24.3,
+   "ni": 4.1,
+   "assets": 1092.0,
+   "liab": 703.8,
+   "equity": 388.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 790.0,
+   "op": -3.4,
+   "ni": -22.5,
+   "assets": 1470.7,
+   "liab": 810.4,
+   "equity": 660.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 562.1,
+   "op": 24.3,
+   "ni": 4.1
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 790.0,
+   "op": -3.4,
+   "ni": -22.5
+  }
+ ]
+}

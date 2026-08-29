@@ -1,0 +1,213 @@
+{
+ "name": "그린생명과학",
+ "split_adjusted": false,
+ "legal_name": "그린생명과학",
+ "code": "114450",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-08-30",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 433.0,
+   "op": 50.3,
+   "ni": 45.0,
+   "assets": 770.6,
+   "liab": 153.9,
+   "equity": 616.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 425.8,
+   "op": 24.1,
+   "ni": 22.2,
+   "assets": 729.6,
+   "liab": 108.7,
+   "equity": 620.9,
+   "dps": 234.0,
+   "payout": 157.8,
+   "yield": 5.5,
+   "dps_adj": 234.0
+  },
+  {
+   "p": 2018,
+   "rev": 327.5,
+   "op": -19.5,
+   "ni": -14.5,
+   "assets": 693.7,
+   "liab": 102.6,
+   "equity": 591.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 376.2,
+   "op": 5.9,
+   "ni": 12.0,
+   "assets": 718.9,
+   "liab": 115.4,
+   "equity": 603.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 245.6,
+   "op": -19.1,
+   "ni": -10.6,
+   "assets": 708.5,
+   "liab": 114.8,
+   "equity": 593.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 253.4,
+   "op": -46.5,
+   "ni": -31.4,
+   "assets": 719.8,
+   "liab": 156.8,
+   "equity": 563.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 365.0,
+   "op": -39.6,
+   "ni": -35.3,
+   "assets": 624.3,
+   "liab": 97.9,
+   "equity": 526.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 223.7,
+   "op": -46.4,
+   "ni": -163.6,
+   "assets": 438.3,
+   "liab": 78.7,
+   "equity": 359.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 248.6,
+   "op": 3.8,
+   "ni": 15.6,
+   "assets": 449.7,
+   "liab": 92.2,
+   "equity": 357.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 403.4,
+   "op": 2.0,
+   "ni": 1.1,
+   "assets": 548.6,
+   "liab": 165.8,
+   "equity": 382.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 65.4,
+   "op": 7.2,
+   "ni": 10.6
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 69.1,
+   "op": 7.1,
+   "ni": 13.5
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 44.5,
+   "op": -6.3,
+   "ni": -11.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 69.5,
+   "op": -4.3,
+   "ni": 2.5
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 48.7,
+   "op": -11.4,
+   "ni": -11.5
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 114.8,
+   "op": 0.1,
+   "ni": 0.4
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 113.5,
+   "op": 1.0,
+   "ni": 4.9
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 126.4,
+   "op": 12.2,
+   "ni": 7.3
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 155.5,
+   "op": 5.8,
+   "ni": 17.5
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 190.4,
+   "op": 18.0,
+   "ni": 43.8
+  }
+ ]
+}

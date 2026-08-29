@@ -1,0 +1,51 @@
+{
+ "name": "파인넥스",
+ "split_adjusted": false,
+ "legal_name": "파인넥스",
+ "code": "123260",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-30",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 140.3,
+   "op": -290.1,
+   "ni": -486.6,
+   "assets": 617.9,
+   "liab": 509.4,
+   "equity": 108.5,
+   "dps": null,
+   "payout": 0.0,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 193.0,
+   "op": -78.5,
+   "ni": -141.2,
+   "assets": 606.0,
+   "liab": 383.3,
+   "equity": 222.6,
+   "dps": null,
+   "payout": 0.0,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 117.1,
+   "op": -28.2,
+   "ni": -289.0,
+   "assets": 466.3,
+   "liab": 449.2,
+   "equity": 17.1,
+   "dps": null,
+   "payout": 0.0,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

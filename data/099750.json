@@ -1,0 +1,187 @@
+{
+ "name": "이지케어텍",
+ "split_adjusted": false,
+ "legal_name": "이지케어텍",
+ "code": "099750",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-08-30",
+ "annual": [
+  {
+   "p": 2019,
+   "rev": 557.4,
+   "op": 35.0,
+   "ni": 38.3,
+   "assets": 578.3,
+   "liab": 116.9,
+   "equity": 461.4,
+   "dps": 86.0,
+   "payout": 14.1,
+   "yield": 0.3,
+   "dps_adj": 86.0
+  },
+  {
+   "p": 2020,
+   "rev": 646.7,
+   "op": -21.3,
+   "ni": -9.9,
+   "assets": 584.1,
+   "liab": 169.0,
+   "equity": 415.1,
+   "dps": null,
+   "payout": -54.2,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 769.0,
+   "op": -39.7,
+   "ni": -79.2,
+   "assets": 528.9,
+   "liab": 190.1,
+   "equity": 338.8,
+   "dps": 86.0,
+   "payout": -6.8,
+   "yield": 0.5,
+   "dps_adj": 86.0
+  },
+  {
+   "p": 2022,
+   "rev": 920.7,
+   "op": 5.9,
+   "ni": -31.9,
+   "assets": 554.1,
+   "liab": 237.7,
+   "equity": 316.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 731.9,
+   "op": -41.2,
+   "ni": -95.9,
+   "assets": 592.6,
+   "liab": 251.0,
+   "equity": 341.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 679.4,
+   "op": 2.4,
+   "ni": 12.1,
+   "assets": 468.1,
+   "liab": 120.5,
+   "equity": 347.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 726.4,
+   "op": 22.1,
+   "ni": 22.9,
+   "assets": 487.2,
+   "liab": 120.9,
+   "equity": 366.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2026,
+   "rev": 788.9,
+   "op": 50.2,
+   "ni": 60.9,
+   "assets": 642.2,
+   "liab": 194.3,
+   "equity": 448.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 192.4,
+   "op": 6.0,
+   "ni": 7.1
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 187.0,
+   "op": 12.8,
+   "ni": 9.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 177.5,
+   "op": 10.1,
+   "ni": 14.5
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 122.5,
+   "op": -26.5,
+   "ni": -18.6
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 159.2,
+   "op": 1.1,
+   "ni": -0.9
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 171.1,
+   "op": 21.3,
+   "ni": 23.9
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 197.8,
+   "op": 10.6,
+   "ni": 15.2
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 198.3,
+   "op": -11.0,
+   "ni": -15.3
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 204.5,
+   "op": 2.8,
+   "ni": 7.2
+  },
+  {
+   "y": 2026,
+   "q": 4,
+   "rev": 788.9,
+   "op": 50.2,
+   "ni": 60.9
+  }
+ ]
+}

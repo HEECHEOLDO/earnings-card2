@@ -1,0 +1,38 @@
+{
+ "name": "원익테라세미콘",
+ "split_adjusted": false,
+ "legal_name": "원익테라세미콘",
+ "code": "123100",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-30",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 1723.9,
+   "op": 259.3,
+   "ni": 194.9,
+   "assets": 1909.7,
+   "liab": 726.5,
+   "equity": 1183.2,
+   "dps": 150.0,
+   "payout": 8.6,
+   "yield": 0.6,
+   "dps_adj": 150.0
+  },
+  {
+   "p": 2017,
+   "rev": 3611.4,
+   "op": 629.6,
+   "ni": 431.9,
+   "assets": 2061.6,
+   "liab": 464.4,
+   "equity": 1597.1,
+   "dps": 300.0,
+   "payout": 7.8,
+   "yield": 1.1,
+   "dps_adj": 300.0
+  }
+ ],
+ "quarterly": []
+}

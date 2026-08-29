@@ -1,0 +1,77 @@
+{
+ "name": "신텍",
+ "split_adjusted": false,
+ "legal_name": "신텍",
+ "code": "099660",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-30",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 1607.2,
+   "op": 101.5,
+   "ni": 19.6,
+   "assets": 2325.1,
+   "liab": 1492.7,
+   "equity": 832.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 1276.1,
+   "op": -306.3,
+   "ni": -458.4,
+   "assets": 2057.6,
+   "liab": 1619.0,
+   "equity": 438.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 723.0,
+   "op": -266.8,
+   "ni": -929.5,
+   "assets": 1047.1,
+   "liab": 1545.4,
+   "equity": -498.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 111.3,
+   "op": -67.6,
+   "ni": -302.6,
+   "assets": 514.7,
+   "liab": 487.3,
+   "equity": 27.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 10.9,
+   "op": 6.2,
+   "ni": -28.0,
+   "assets": 75.9,
+   "liab": 22.8,
+   "equity": 53.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

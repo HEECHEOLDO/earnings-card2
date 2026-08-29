@@ -1,0 +1,25 @@
+{
+ "name": "엔에스브이",
+ "split_adjusted": false,
+ "legal_name": "엔에스브이",
+ "code": "095300",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-30",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 169.0,
+   "op": -82.6,
+   "ni": -110.8,
+   "assets": 265.5,
+   "liab": 204.9,
+   "equity": 60.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

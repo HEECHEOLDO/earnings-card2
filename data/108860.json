@@ -1,0 +1,213 @@
+{
+ "name": "셀바스AI",
+ "split_adjusted": false,
+ "legal_name": "셀바스AI",
+ "code": "108860",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-08-30",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 354.4,
+   "op": -84.2,
+   "ni": -192.9,
+   "assets": 1006.5,
+   "liab": 437.6,
+   "equity": 568.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 468.7,
+   "op": 5.6,
+   "ni": -42.8,
+   "assets": 1069.1,
+   "liab": 522.0,
+   "equity": 547.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 355.6,
+   "op": -170.6,
+   "ni": -265.8,
+   "assets": 992.3,
+   "liab": 548.4,
+   "equity": 443.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 354.2,
+   "op": -61.8,
+   "ni": -85.9,
+   "assets": 941.3,
+   "liab": 503.3,
+   "equity": 438.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 347.9,
+   "op": -15.3,
+   "ni": 42.8,
+   "assets": 915.4,
+   "liab": 420.9,
+   "equity": 494.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 485.8,
+   "op": 55.9,
+   "ni": 48.1,
+   "assets": 984.1,
+   "liab": 423.9,
+   "equity": 560.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 508.7,
+   "op": 49.9,
+   "ni": 77.3,
+   "assets": 1065.8,
+   "liab": 350.4,
+   "equity": 715.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 530.1,
+   "op": 40.9,
+   "ni": -1.3,
+   "assets": 1927.9,
+   "liab": 242.7,
+   "equity": 1685.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 1124.5,
+   "op": 8.0,
+   "ni": -10.2,
+   "assets": 3121.4,
+   "liab": 492.2,
+   "equity": 2629.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 1147.8,
+   "op": 14.8,
+   "ni": -43.4,
+   "assets": 3071.0,
+   "liab": 471.9,
+   "equity": 2599.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 272.4,
+   "op": -4.9,
+   "ni": 15.2
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 275.1,
+   "op": 2.4,
+   "ni": 12.9
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 277.0,
+   "op": -6.5,
+   "ni": -11.8
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 300.1,
+   "op": 17.1,
+   "ni": -26.5
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 264.3,
+   "op": -4.1,
+   "ni": 0.2
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 280.0,
+   "op": 0.7,
+   "ni": -43.5
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 258.3,
+   "op": 10.4,
+   "ni": 24.8
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 345.2,
+   "op": 7.8,
+   "ni": -24.9
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 266.3,
+   "op": -3.7,
+   "ni": 37.4
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 333.4,
+   "op": 17.8,
+   "ni": -3.0
+  }
+ ]
+}

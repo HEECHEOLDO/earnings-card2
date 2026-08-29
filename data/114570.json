@@ -1,0 +1,90 @@
+{
+ "name": "지스마트글로벌",
+ "split_adjusted": false,
+ "legal_name": "지스마트글로벌",
+ "code": "114570",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-30",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 901.6,
+   "op": 192.1,
+   "ni": 133.0,
+   "assets": 1150.4,
+   "liab": 277.4,
+   "equity": 873.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 961.6,
+   "op": 213.5,
+   "ni": 139.7,
+   "assets": 1697.4,
+   "liab": 585.6,
+   "equity": 1111.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 315.6,
+   "op": -90.6,
+   "ni": -137.0,
+   "assets": 1535.4,
+   "liab": 431.7,
+   "equity": 1103.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 123.5,
+   "op": -636.1,
+   "ni": -810.4,
+   "assets": 955.6,
+   "liab": 482.0,
+   "equity": 473.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 123.5,
+   "op": -636.1,
+   "ni": -810.4,
+   "assets": 955.6,
+   "liab": 482.0,
+   "equity": 473.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 17.6,
+   "op": -459.1,
+   "ni": -605.9,
+   "assets": 291.8,
+   "liab": 421.8,
+   "equity": -130.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

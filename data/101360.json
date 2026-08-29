@@ -1,0 +1,161 @@
+{
+ "name": "에코앤드림",
+ "split_adjusted": false,
+ "legal_name": "에코앤드림",
+ "code": "101360",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-08-30",
+ "annual": [
+  {
+   "p": 2020,
+   "rev": 923.2,
+   "op": 163.9,
+   "ni": 35.6,
+   "assets": 734.9,
+   "liab": 123.3,
+   "equity": 611.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 774.4,
+   "op": 76.4,
+   "ni": 100.3,
+   "assets": 1202.0,
+   "liab": 485.8,
+   "equity": 716.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 605.2,
+   "op": 22.5,
+   "ni": 1.0,
+   "assets": 1394.5,
+   "liab": 599.3,
+   "equity": 795.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 514.6,
+   "op": -29.7,
+   "ni": -101.5,
+   "assets": 1542.4,
+   "liab": 533.5,
+   "equity": 1008.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 1049.0,
+   "op": 4.9,
+   "ni": 135.2,
+   "assets": 4057.7,
+   "liab": 1841.2,
+   "equity": 2216.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 1419.6,
+   "op": -6.1,
+   "ni": -86.0,
+   "assets": 4647.5,
+   "liab": 2510.6,
+   "equity": 2136.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 191.0,
+   "op": -6.4,
+   "ni": -6.5
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 284.5,
+   "op": 2.8,
+   "ni": -8.4
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 207.9,
+   "op": -3.5,
+   "ni": 2.1
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 365.6,
+   "op": 11.9,
+   "ni": 148.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 300.8,
+   "op": 3.9,
+   "ni": 4.9
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 396.0,
+   "op": -2.8,
+   "ni": -4.8
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 349.8,
+   "op": 3.2,
+   "ni": 3.2
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 372.9,
+   "op": -10.4,
+   "ni": -89.3
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 162.0,
+   "op": -7.6,
+   "ni": -1.4
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 202.1,
+   "op": -52.8,
+   "ni": -53.7
+  }
+ ]
+}

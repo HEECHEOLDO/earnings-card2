@@ -1,0 +1,51 @@
+{
+ "name": "썬테크놀로지스",
+ "split_adjusted": false,
+ "legal_name": "썬테크놀로지스",
+ "code": "122800",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-30",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 250.5,
+   "op": 11.8,
+   "ni": -78.3,
+   "assets": 466.2,
+   "liab": 249.6,
+   "equity": 216.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 152.3,
+   "op": -49.5,
+   "ni": -129.2,
+   "assets": 329.3,
+   "liab": 143.1,
+   "equity": 186.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 131.5,
+   "op": -58.5,
+   "ni": -70.4,
+   "assets": 329.4,
+   "liab": 137.0,
+   "equity": 192.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

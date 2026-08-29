@@ -1,0 +1,77 @@
+{
+ "name": "웅진에너지",
+ "split_adjusted": false,
+ "legal_name": "웅진에너지",
+ "code": "103130",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-30",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 1739.2,
+   "op": -532.6,
+   "ni": -842.9,
+   "assets": 3080.2,
+   "liab": 2197.4,
+   "equity": 882.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 2430.6,
+   "op": 37.7,
+   "ni": 13.6,
+   "assets": 3374.4,
+   "liab": 2280.0,
+   "equity": 1094.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 1658.4,
+   "op": -560.7,
+   "ni": -1117.6,
+   "assets": 2367.4,
+   "liab": 1955.4,
+   "equity": 412.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 417.5,
+   "op": -593.2,
+   "ni": -1557.5,
+   "assets": 1396.7,
+   "liab": 2283.0,
+   "equity": -931.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 340.8,
+   "op": -106.8,
+   "ni": 1102.4,
+   "assets": 1235.1,
+   "liab": 682.0,
+   "equity": 553.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

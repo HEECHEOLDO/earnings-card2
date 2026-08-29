@@ -1,0 +1,64 @@
+{
+ "name": "인터파크",
+ "split_adjusted": false,
+ "legal_name": "인터파크",
+ "code": "108790",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-30",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 4664.9,
+   "op": 93.2,
+   "ni": 25.1,
+   "assets": 4673.5,
+   "liab": 3027.8,
+   "equity": 1645.7,
+   "dps": 100.0,
+   "payout": 141.5,
+   "yield": 1.0,
+   "dps_adj": 100.0
+  },
+  {
+   "p": 2017,
+   "rev": 4825.5,
+   "op": 164.8,
+   "ni": 88.3,
+   "assets": 5268.0,
+   "liab": 3580.6,
+   "equity": 1687.4,
+   "dps": 150.0,
+   "payout": 59.3,
+   "yield": 1.6,
+   "dps_adj": 150.0
+  },
+  {
+   "p": 2018,
+   "rev": 5285.4,
+   "op": 44.2,
+   "ni": -76.4,
+   "assets": 5644.3,
+   "liab": 4075.3,
+   "equity": 1569.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 5093.1,
+   "op": 162.7,
+   "ni": 14.5,
+   "assets": 5357.1,
+   "liab": 3874.2,
+   "equity": 1482.9,
+   "dps": 150.0,
+   "payout": 289.4,
+   "yield": 3.0,
+   "dps_adj": 150.0
+  }
+ ],
+ "quarterly": []
+}

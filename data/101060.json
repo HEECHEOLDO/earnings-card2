@@ -1,0 +1,77 @@
+{
+ "name": "SBS미디어홀딩스",
+ "split_adjusted": false,
+ "legal_name": "SBS미디어홀딩스",
+ "code": "101060",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-30",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 5045.1,
+   "op": 213.9,
+   "ni": 132.8,
+   "assets": 9057.6,
+   "liab": 1389.0,
+   "equity": 7668.6,
+   "dps": 25.0,
+   "payout": 27.7,
+   "yield": 0.9,
+   "dps_adj": 25.0
+  },
+  {
+   "p": 2017,
+   "rev": 4218.5,
+   "op": -43.2,
+   "ni": 5.0,
+   "assets": 8683.8,
+   "liab": 1104.1,
+   "equity": 7579.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 3910.8,
+   "op": 71.2,
+   "ni": 149.7,
+   "assets": 8802.0,
+   "liab": 1054.9,
+   "equity": 7747.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 2398.0,
+   "op": 47.5,
+   "ni": -1048.1,
+   "assets": 6740.8,
+   "liab": 736.4,
+   "equity": 6004.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 1653.6,
+   "op": -59.4,
+   "ni": -666.0,
+   "assets": 7163.0,
+   "liab": 1937.5,
+   "equity": 5225.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

@@ -1,0 +1,51 @@
+{
+ "name": "씨그널엔터테인먼트그룹",
+ "split_adjusted": false,
+ "legal_name": "씨그널엔터테인먼트그룹",
+ "code": "099830",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-30",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 240.0,
+   "op": -45.0,
+   "ni": -338.4,
+   "assets": 508.7,
+   "liab": 199.1,
+   "equity": 309.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 313.3,
+   "op": -30.2,
+   "ni": -98.2,
+   "assets": 489.4,
+   "liab": 193.7,
+   "equity": 295.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 168.3,
+   "op": -26.7,
+   "ni": -82.3,
+   "assets": 393.0,
+   "liab": 250.7,
+   "equity": 142.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

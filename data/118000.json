@@ -1,0 +1,213 @@
+{
+ "name": "메타케어",
+ "split_adjusted": false,
+ "legal_name": "메타케어",
+ "code": "118000",
+ "market": "코스피",
+ "sector": "",
+ "updated": "2026-08-30",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 112.3,
+   "op": -57.5,
+   "ni": -86.2,
+   "assets": 288.4,
+   "liab": 154.1,
+   "equity": 134.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 368.8,
+   "op": -45.9,
+   "ni": -29.0,
+   "assets": 367.4,
+   "liab": 180.3,
+   "equity": 187.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 344.7,
+   "op": -66.3,
+   "ni": -121.1,
+   "assets": 614.4,
+   "liab": 429.3,
+   "equity": 185.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 561.6,
+   "op": -0.8,
+   "ni": -48.1,
+   "assets": 698.0,
+   "liab": 338.7,
+   "equity": 359.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 269.0,
+   "op": -24.4,
+   "ni": 112.2,
+   "assets": 1382.9,
+   "liab": 621.7,
+   "equity": 761.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 186.1,
+   "op": -17.9,
+   "ni": 77.8,
+   "assets": 1763.0,
+   "liab": 569.0,
+   "equity": 1194.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 191.0,
+   "op": -3.0,
+   "ni": -495.5,
+   "assets": 1898.6,
+   "liab": 602.8,
+   "equity": 1295.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 557.5,
+   "op": -89.0,
+   "ni": -260.2,
+   "assets": 1553.0,
+   "liab": 176.0,
+   "equity": 1377.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 202.1,
+   "op": 15.0,
+   "ni": 83.7,
+   "assets": 1567.0,
+   "liab": 410.2,
+   "equity": 1156.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 328.2,
+   "op": 13.2,
+   "ni": -2.1,
+   "assets": 1979.6,
+   "liab": 769.8,
+   "equity": 1209.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 48.9,
+   "op": 3.6,
+   "ni": 126.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 48.7,
+   "op": 1.7,
+   "ni": -16.4
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 48.6,
+   "op": 2.1,
+   "ni": 4.8
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 56.0,
+   "op": 7.8,
+   "ni": -30.6
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 59.9,
+   "op": 5.3,
+   "ni": -0.1
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 57.6,
+   "op": 8.2,
+   "ni": 29.3
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 107.5,
+   "op": 1.2,
+   "ni": 10.5
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 103.1,
+   "op": -1.4,
+   "ni": -41.8
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 101.2,
+   "op": 5.8,
+   "ni": 6.6
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 87.6,
+   "op": 8.0,
+   "ni": 6.4
+  }
+ ]
+}

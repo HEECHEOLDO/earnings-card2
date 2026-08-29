@@ -1,0 +1,38 @@
+{
+ "name": "씨제이이앤엠",
+ "split_adjusted": false,
+ "legal_name": "씨제이이앤엠",
+ "code": "130960",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-30",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 15384.2,
+   "op": 279.7,
+   "ni": 608.6,
+   "assets": 27929.5,
+   "liab": 11774.3,
+   "equity": 16155.3,
+   "dps": null,
+   "payout": 12.4,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 17501.2,
+   "op": 631.6,
+   "ni": 4219.5,
+   "assets": 37589.2,
+   "liab": 15102.2,
+   "equity": 22487.0,
+   "dps": null,
+   "payout": 2.3,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

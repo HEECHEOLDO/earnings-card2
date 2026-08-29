@@ -1,0 +1,152 @@
+{
+ "name": "크루셜텍",
+ "split_adjusted": false,
+ "legal_name": "크루셜텍",
+ "code": "114120",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-30",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 3200.3,
+   "op": 83.1,
+   "ni": 2.9,
+   "assets": 2862.8,
+   "liab": 1812.8,
+   "equity": 1050.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 1727.0,
+   "op": -395.7,
+   "ni": -637.3,
+   "assets": 2489.9,
+   "liab": 1639.0,
+   "equity": 850.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 836.8,
+   "op": -299.6,
+   "ni": -536.3,
+   "assets": 1520.3,
+   "liab": 666.5,
+   "equity": 853.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 650.8,
+   "op": -291.4,
+   "ni": -451.3,
+   "assets": 1070.6,
+   "liab": 634.7,
+   "equity": 435.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 476.4,
+   "op": -209.0,
+   "ni": -161.4,
+   "assets": 599.9,
+   "liab": 191.7,
+   "equity": 408.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 417.4,
+   "op": -155.5,
+   "ni": -140.0,
+   "assets": 489.3,
+   "liab": 283.5,
+   "equity": 205.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 289.9,
+   "op": -62.0,
+   "ni": -73.3,
+   "assets": 234.7,
+   "liab": 210.3,
+   "equity": 24.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 214.3,
+   "op": -70.2,
+   "ni": -69.7,
+   "assets": 89.0,
+   "liab": 102.0,
+   "equity": -13.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 1,
+   "rev": 58.7,
+   "op": -13.3,
+   "ni": 7.5
+  },
+  {
+   "y": 2023,
+   "q": 2,
+   "rev": 25.2,
+   "op": -17.9,
+   "ni": -44.2
+  },
+  {
+   "y": 2023,
+   "q": 3,
+   "rev": 66.5,
+   "op": -12.4,
+   "ni": -10.1
+  },
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 63.9,
+   "op": -26.7,
+   "ni": -22.8
+  },
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 36.0,
+   "op": -14.4,
+   "ni": -16.6
+  }
+ ]
+}
