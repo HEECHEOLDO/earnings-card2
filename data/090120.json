@@ -1,0 +1,187 @@
+{
+ "name": "잘만테크",
+ "split_adjusted": false,
+ "legal_name": "잘만테크",
+ "code": "090120",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-29",
+ "annual": [
+  {
+   "p": 2018,
+   "rev": 246.8,
+   "op": -13.2,
+   "ni": -13.1,
+   "assets": 177.4,
+   "liab": 75.6,
+   "equity": 101.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 230.3,
+   "op": -35.7,
+   "ni": -9.1,
+   "assets": 150.6,
+   "liab": 54.4,
+   "equity": 96.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 385.3,
+   "op": 20.2,
+   "ni": 7.2,
+   "assets": 179.9,
+   "liab": 47.2,
+   "equity": 132.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 358.7,
+   "op": 6.3,
+   "ni": 11.4,
+   "assets": 245.7,
+   "liab": 104.6,
+   "equity": 141.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 363.0,
+   "op": -4.5,
+   "ni": 13.8,
+   "assets": 228.5,
+   "liab": 74.3,
+   "equity": 154.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 487.7,
+   "op": 16.1,
+   "ni": 14.0,
+   "assets": 308.9,
+   "liab": 142.4,
+   "equity": 166.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 477.5,
+   "op": 8.0,
+   "ni": 10.8,
+   "assets": 318.6,
+   "liab": 148.1,
+   "equity": 170.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 479.5,
+   "op": 3.4,
+   "ni": 2.3,
+   "assets": 305.0,
+   "liab": 130.5,
+   "equity": 174.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 117.8,
+   "op": 4.6,
+   "ni": 7.1
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 101.7,
+   "op": -1.1,
+   "ni": -0.6
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 131.8,
+   "op": 2.9,
+   "ni": -0.8
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 126.1,
+   "op": 1.6,
+   "ni": 5.2
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 130.1,
+   "op": 2.4,
+   "ni": 3.5
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 103.4,
+   "op": -1.8,
+   "ni": -4.5
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 120.9,
+   "op": 3.5,
+   "ni": 3.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 125.1,
+   "op": -0.7,
+   "ni": 0.3
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 80.2,
+   "op": -9.2,
+   "ni": -7.9
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 70.7,
+   "op": -5.1,
+   "ni": -5.8
+  }
+ ]
+}

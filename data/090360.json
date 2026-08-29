@@ -1,0 +1,213 @@
+{
+ "name": "로보스타",
+ "split_adjusted": false,
+ "legal_name": "로보스타",
+ "code": "090360",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-08-29",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 1517.3,
+   "op": 67.5,
+   "ni": 67.9,
+   "assets": 1339.7,
+   "liab": 900.9,
+   "equity": 438.8,
+   "dps": 50.0,
+   "payout": 5.74,
+   "yield": 0.3,
+   "dps_adj": 50.0
+  },
+  {
+   "p": 2017,
+   "rev": 2065.2,
+   "op": 104.6,
+   "ni": 74.8,
+   "assets": 1302.3,
+   "liab": 799.7,
+   "equity": 502.6,
+   "dps": null,
+   "payout": 5.21,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 1931.7,
+   "op": 22.4,
+   "ni": -11.9,
+   "assets": 1715.1,
+   "liab": 687.4,
+   "equity": 1027.7,
+   "dps": null,
+   "payout": -40.87,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 1772.2,
+   "op": -68.9,
+   "ni": -45.1,
+   "assets": 1666.4,
+   "liab": 702.2,
+   "equity": 964.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 1338.8,
+   "op": -119.6,
+   "ni": -132.3,
+   "assets": 1430.6,
+   "liab": 592.0,
+   "equity": 838.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 1424.7,
+   "op": 2.2,
+   "ni": 16.3,
+   "assets": 1247.0,
+   "liab": 386.1,
+   "equity": 860.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 1432.4,
+   "op": 17.9,
+   "ni": 32.8,
+   "assets": 1364.5,
+   "liab": 465.4,
+   "equity": 899.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 1026.8,
+   "op": 11.4,
+   "ni": 6.9,
+   "assets": 1159.3,
+   "liab": 259.8,
+   "equity": 899.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 891.4,
+   "op": 1.5,
+   "ni": 22.2,
+   "assets": 1126.0,
+   "liab": 206.1,
+   "equity": 919.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 757.4,
+   "op": -56.6,
+   "ni": -52.0,
+   "assets": 1091.4,
+   "liab": 223.3,
+   "equity": 868.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 209.0,
+   "op": -4.7,
+   "ni": 2.7
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 276.2,
+   "op": 15.9,
+   "ni": 17.9
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 170.4,
+   "op": -20.4,
+   "ni": -22.7
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 235.8,
+   "op": 10.6,
+   "ni": 24.3
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 141.5,
+   "op": -23.8,
+   "ni": -22.1
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 196.5,
+   "op": -8.2,
+   "ni": -13.5
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 173.4,
+   "op": -11.0,
+   "ni": -5.4
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 245.9,
+   "op": -13.6,
+   "ni": -11.1
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 251.5,
+   "op": 0.7,
+   "ni": 9.3
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 263.7,
+   "op": 5.0,
+   "ni": 11.0
+  }
+ ]
+}

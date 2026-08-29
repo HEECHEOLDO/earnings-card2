@@ -1,0 +1,38 @@
+{
+ "name": "심팩메탈",
+ "split_adjusted": false,
+ "legal_name": "심팩메탈",
+ "code": "090730",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-29",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 1375.4,
+   "op": 58.7,
+   "ni": 67.7,
+   "assets": 2533.5,
+   "liab": 735.9,
+   "equity": 1797.6,
+   "dps": 100.0,
+   "payout": 18.11,
+   "yield": 1.76,
+   "dps_adj": 100.0
+  },
+  {
+   "p": 2017,
+   "rev": 2292.5,
+   "op": 201.4,
+   "ni": 165.5,
+   "assets": 2628.5,
+   "liab": 695.6,
+   "equity": 1933.0,
+   "dps": 200.0,
+   "payout": 14.46,
+   "yield": 2.94,
+   "dps_adj": 200.0
+  }
+ ],
+ "quarterly": []
+}

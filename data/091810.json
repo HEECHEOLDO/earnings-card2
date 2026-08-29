@@ -1,0 +1,187 @@
+{
+ "name": "트리니티항공",
+ "split_adjusted": false,
+ "legal_name": "트리니티항공",
+ "code": "091810",
+ "market": "코스피",
+ "sector": "",
+ "updated": "2026-08-29",
+ "annual": [
+  {
+   "p": 2018,
+   "rev": 7317.9,
+   "op": 478.0,
+   "ni": 378.8,
+   "assets": 4308.8,
+   "liab": 2051.7,
+   "equity": 2257.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 8104.5,
+   "op": -192.4,
+   "ni": -432.1,
+   "assets": 8077.6,
+   "liab": 6188.8,
+   "equity": 1888.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 2692.2,
+   "op": -1743.1,
+   "ni": -1378.7,
+   "assets": 7057.9,
+   "liab": 5888.0,
+   "equity": 1169.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 2144.0,
+   "op": -1483.3,
+   "ni": -1562.4,
+   "assets": 7350.5,
+   "liab": 6877.1,
+   "equity": 473.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 5258.2,
+   "op": -1039.3,
+   "ni": -1186.7,
+   "assets": 10425.0,
+   "liab": 9830.9,
+   "equity": 594.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 13487.6,
+   "op": 1394.1,
+   "ni": 991.3,
+   "assets": 12838.7,
+   "liab": 11267.3,
+   "equity": 1571.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 15367.8,
+   "op": -122.7,
+   "ni": -658.8,
+   "assets": 15624.5,
+   "liab": 14801.7,
+   "equity": 822.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 17981.8,
+   "op": -2654.7,
+   "ni": -3382.6,
+   "assets": 18723.1,
+   "liab": 18202.8,
+   "equity": 520.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 4228.9,
+   "op": 761.2,
+   "ni": 479.7
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 3258.6,
+   "op": -215.2,
+   "ni": -247.6
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 3948.9,
+   "op": -59.6,
+   "ni": -21.8
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 3931.4,
+   "op": -609.1,
+   "ni": -869.1
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 4466.1,
+   "op": -354.7,
+   "ni": -447.8
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 3778.7,
+   "op": -783.3,
+   "ni": -780.6
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 4497.7,
+   "op": -955.0,
+   "ni": -1247.2
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 5239.4,
+   "op": -561.7,
+   "ni": -907.1
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 6120.8,
+   "op": 191.9,
+   "ni": -166.8
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 4697.0,
+   "op": -1819.8,
+   "ni": -2113.8
+  }
+ ]
+}

@@ -1,0 +1,187 @@
+{
+ "name": "바이오솔루션",
+ "split_adjusted": false,
+ "legal_name": "바이오솔루션",
+ "code": "086820",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-08-29",
+ "annual": [
+  {
+   "p": 2018,
+   "rev": 105.3,
+   "op": 10.8,
+   "ni": 13.5,
+   "assets": 528.7,
+   "liab": 38.0,
+   "equity": 490.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 88.8,
+   "op": -18.7,
+   "ni": -7.0,
+   "assets": 518.1,
+   "liab": 37.1,
+   "equity": 481.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 77.4,
+   "op": -33.3,
+   "ni": -18.0,
+   "assets": 498.0,
+   "liab": 31.3,
+   "equity": 466.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 118.0,
+   "op": -15.7,
+   "ni": -16.8,
+   "assets": 944.0,
+   "liab": 493.9,
+   "equity": 450.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 101.0,
+   "op": -52.9,
+   "ni": -80.9,
+   "assets": 917.3,
+   "liab": 479.6,
+   "equity": 437.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 124.6,
+   "op": -50.3,
+   "ni": -12.5,
+   "assets": 924.1,
+   "liab": 502.2,
+   "equity": 421.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 128.9,
+   "op": -50.7,
+   "ni": -119.3,
+   "assets": 674.6,
+   "liab": 362.1,
+   "equity": 312.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 152.0,
+   "op": -43.4,
+   "ni": 2.7,
+   "assets": 684.8,
+   "liab": 364.8,
+   "equity": 320.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 25.8,
+   "op": -26.2,
+   "ni": -34.8
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 32.9,
+   "op": -7.1,
+   "ni": -6.9
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 34.3,
+   "op": -12.6,
+   "ni": -25.9
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 35.9,
+   "op": -4.8,
+   "ni": -51.6
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 31.4,
+   "op": -13.8,
+   "ni": -24.2
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 31.3,
+   "op": -13.8,
+   "ni": -9.5
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 45.1,
+   "op": -11.0,
+   "ni": -18.6
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 44.2,
+   "op": -4.8,
+   "ni": 55.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 37.6,
+   "op": -13.0,
+   "ni": -20.4
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 47.0,
+   "op": -4.8,
+   "ni": -7.4
+  }
+ ]
+}

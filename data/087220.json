@@ -1,0 +1,38 @@
+{
+ "name": "스틸플라워",
+ "split_adjusted": false,
+ "legal_name": "스틸플라워",
+ "code": "087220",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-29",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 928.8,
+   "op": -221.7,
+   "ni": -484.2,
+   "assets": 2279.4,
+   "liab": 1655.1,
+   "equity": 624.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 523.1,
+   "op": -391.6,
+   "ni": -465.7,
+   "assets": 1680.9,
+   "liab": 1521.2,
+   "equity": 159.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

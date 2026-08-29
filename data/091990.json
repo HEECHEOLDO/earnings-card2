@@ -1,0 +1,125 @@
+{
+ "name": "셀트리온헬스케어",
+ "split_adjusted": false,
+ "legal_name": "셀트리온헬스케어",
+ "code": "091990",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-29",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 7564.4,
+   "op": 1827.2,
+   "ni": 1235.0,
+   "assets": 19878.2,
+   "liab": 13765.9,
+   "equity": 6112.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 9215.0,
+   "op": 1648.3,
+   "ni": 1656.8,
+   "assets": 28750.0,
+   "liab": 11709.2,
+   "equity": 17040.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 6950.8,
+   "op": -425.8,
+   "ni": 147.8,
+   "assets": 29485.7,
+   "liab": 13130.9,
+   "equity": 16354.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 11008.8,
+   "op": 827.9,
+   "ni": 649.6,
+   "assets": 28489.0,
+   "liab": 11830.1,
+   "equity": 16658.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 16276.0,
+   "op": 3621.1,
+   "ni": 2404.1,
+   "assets": 37397.0,
+   "liab": 18067.7,
+   "equity": 19329.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 18044.9,
+   "op": 1994.4,
+   "ni": 1525.7,
+   "assets": 39146.9,
+   "liab": 18089.3,
+   "equity": 21057.7,
+   "dps": 260.0,
+   "payout": 26.12,
+   "yield": 0.31,
+   "dps_adj": 260.0
+  },
+  {
+   "p": 2022,
+   "rev": 19721.9,
+   "op": 2288.9,
+   "ni": 1471.8,
+   "assets": 44546.0,
+   "liab": 23928.1,
+   "equity": 20617.9,
+   "dps": 130.0,
+   "payout": 13.7,
+   "yield": 0.2,
+   "dps_adj": 130.0
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 1,
+   "rev": 5035.6,
+   "op": 509.6,
+   "ni": 540.5
+  },
+  {
+   "y": 2023,
+   "q": 2,
+   "rev": 5258.0,
+   "op": 340.9,
+   "ni": 174.2
+  },
+  {
+   "y": 2023,
+   "q": 3,
+   "rev": 6475.8,
+   "op": 505.0,
+   "ni": 448.1
+  }
+ ]
+}

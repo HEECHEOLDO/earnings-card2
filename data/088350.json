@@ -1,0 +1,33 @@
+{
+ "name": "한화생명",
+ "split_adjusted": false,
+ "legal_name": "한화생명",
+ "code": "088350",
+ "market": "코스피",
+ "sector": "",
+ "updated": "2026-08-29",
+ "annual": [
+  {
+   "p": 2023,
+   "rev": 0.0,
+   "op": 10570.4,
+   "ni": 8259.8,
+   "assets": 1479018.4,
+   "liab": 1324267.6,
+   "equity": 154750.9,
+   "dps": 150.0,
+   "payout": 14.9,
+   "yield": 4.4,
+   "dps_adj": 150.0
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 0.0,
+   "op": -233.7,
+   "ni": -188.4
+  }
+ ]
+}

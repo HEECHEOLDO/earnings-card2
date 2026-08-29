@@ -1,0 +1,103 @@
+{
+ "name": "이엠네트웍스",
+ "split_adjusted": false,
+ "legal_name": "이엠네트웍스",
+ "code": "087730",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-29",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 183.0,
+   "op": -19.9,
+   "ni": -6.7,
+   "assets": 223.8,
+   "liab": 80.9,
+   "equity": 143.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 163.4,
+   "op": -14.6,
+   "ni": -21.1,
+   "assets": 196.5,
+   "liab": 71.8,
+   "equity": 124.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 133.2,
+   "op": -36.5,
+   "ni": -77.5,
+   "assets": 761.8,
+   "liab": 476.8,
+   "equity": 285.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 129.9,
+   "op": -86.8,
+   "ni": -940.5,
+   "assets": 588.4,
+   "liab": 537.9,
+   "equity": 50.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 177.9,
+   "op": -88.0,
+   "ni": -177.5,
+   "assets": 369.5,
+   "liab": 430.1,
+   "equity": -60.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 156.0,
+   "op": -34.1,
+   "ni": -163.2,
+   "assets": 243.5,
+   "liab": 465.3,
+   "equity": -221.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 109.8,
+   "op": -4.8,
+   "ni": -28.4,
+   "assets": 51.4,
+   "liab": 8.7,
+   "equity": 42.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

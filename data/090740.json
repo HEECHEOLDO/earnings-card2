@@ -1,0 +1,132 @@
+{
+ "name": "와이앤넥스트",
+ "split_adjusted": false,
+ "legal_name": "와이앤넥스트",
+ "code": "090740",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-29",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 3980.2,
+   "op": 75.3,
+   "ni": null,
+   "assets": 1492.9,
+   "liab": 754.7,
+   "equity": 738.2,
+   "dps": 143.0,
+   "payout": 213.2,
+   "yield": 3.9,
+   "dps_adj": 143.0
+  },
+  {
+   "p": 2017,
+   "rev": 2719.6,
+   "op": -131.2,
+   "ni": -183.4,
+   "assets": 1258.2,
+   "liab": 729.4,
+   "equity": 528.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 2873.2,
+   "op": 58.4,
+   "ni": 11.5,
+   "assets": 1338.3,
+   "liab": 754.4,
+   "equity": 583.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 3161.4,
+   "op": 116.0,
+   "ni": 64.5,
+   "assets": 2376.6,
+   "liab": 1350.0,
+   "equity": 1026.5,
+   "dps": 50.0,
+   "payout": null,
+   "yield": 0.81,
+   "dps_adj": 50.0
+  },
+  {
+   "p": 2020,
+   "rev": 2671.7,
+   "op": 14.7,
+   "ni": -923.5,
+   "assets": 1359.8,
+   "liab": 1208.8,
+   "equity": 151.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 1857.5,
+   "op": 28.1,
+   "ni": 250.9,
+   "assets": 943.4,
+   "liab": 447.8,
+   "equity": 495.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 15.9,
+   "op": -36.7,
+   "ni": -68.6,
+   "assets": 270.9,
+   "liab": 52.0,
+   "equity": 218.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 3,
+   "rev": 448.1,
+   "op": -69.2,
+   "ni": -58.8
+  },
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": -432.2,
+   "op": 32.4,
+   "ni": -9.8
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 0.0,
+   "op": -4.3,
+   "ni": 9.5
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 0.0,
+   "op": -3.4,
+   "ni": -22.4
+  }
+ ]
+}
