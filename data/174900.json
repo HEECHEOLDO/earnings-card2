@@ -1,0 +1,200 @@
+{
+ "name": "앱클론",
+ "split_adjusted": false,
+ "legal_name": "앱클론",
+ "code": "174900",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2017,
+   "rev": 35.3,
+   "op": -15.4,
+   "ni": -14.8,
+   "assets": 208.7,
+   "liab": 34.7,
+   "equity": 173.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 39.2,
+   "op": -19.6,
+   "ni": -8.4,
+   "assets": 287.0,
+   "liab": 100.0,
+   "equity": 187.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 143.8,
+   "op": 42.8,
+   "ni": 25.7,
+   "assets": 469.7,
+   "liab": 115.9,
+   "equity": 353.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 27.7,
+   "op": -65.7,
+   "ni": -64.4,
+   "assets": 401.3,
+   "liab": 108.0,
+   "equity": 293.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 30.2,
+   "op": -102.3,
+   "ni": -102.4,
+   "assets": 298.3,
+   "liab": 104.7,
+   "equity": 193.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 34.1,
+   "op": -87.5,
+   "ni": -92.5,
+   "assets": 540.6,
+   "liab": 174.6,
+   "equity": 366.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 28.8,
+   "op": -116.4,
+   "ni": -129.0,
+   "assets": 454.4,
+   "liab": 182.1,
+   "equity": 272.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 23.4,
+   "op": -155.9,
+   "ni": -163.0,
+   "assets": 481.8,
+   "liab": 187.8,
+   "equity": 294.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 47.1,
+   "op": -176.4,
+   "ni": -179.1,
+   "assets": 707.5,
+   "liab": 103.1,
+   "equity": 604.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 4.4,
+   "op": -54.1,
+   "ni": -56.5
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 3.9,
+   "op": -36.8,
+   "ni": -39.6
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 8.0,
+   "op": -32.6,
+   "ni": -34.3
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 7.1,
+   "op": -32.5,
+   "ni": -32.6
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 4.1,
+   "op": -57.6,
+   "ni": -59.8
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 11.1,
+   "op": -33.3,
+   "ni": -33.5
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 15.7,
+   "op": -35.4,
+   "ni": -35.2
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 16.2,
+   "op": -50.1,
+   "ni": -50.6
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 4.3,
+   "op": -30.6,
+   "ni": -27.8
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 16.8,
+   "op": -62.5,
+   "ni": -60.6
+  }
+ ]
+}

@@ -1,0 +1,152 @@
+{
+ "name": "참존글로벌",
+ "split_adjusted": false,
+ "legal_name": "참존글로벌",
+ "code": "158310",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 51.5,
+   "op": -59.7,
+   "ni": -82.9,
+   "assets": 353.7,
+   "liab": 142.0,
+   "equity": 211.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 134.7,
+   "op": -3.1,
+   "ni": -64.1,
+   "assets": 323.6,
+   "liab": 133.2,
+   "equity": 190.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 48.6,
+   "op": -53.9,
+   "ni": -103.0,
+   "assets": 441.8,
+   "liab": 241.6,
+   "equity": 200.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 100.8,
+   "op": -49.3,
+   "ni": -84.0,
+   "assets": 744.1,
+   "liab": 451.3,
+   "equity": 292.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 12.2,
+   "op": -32.7,
+   "ni": -560.2,
+   "assets": 229.8,
+   "liab": 838.3,
+   "equity": -608.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 35.0,
+   "op": -4.1,
+   "ni": 121.8,
+   "assets": 299.6,
+   "liab": 33.3,
+   "equity": 266.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 38.6,
+   "op": 7.3,
+   "ni": -68.3,
+   "assets": 233.3,
+   "liab": 34.4,
+   "equity": 198.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 14.4,
+   "op": -2.3,
+   "ni": -121.0,
+   "assets": 107.2,
+   "liab": 21.5,
+   "equity": 85.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 1,
+   "rev": 4.2,
+   "op": 0.3,
+   "ni": 0.3
+  },
+  {
+   "y": 2023,
+   "q": 2,
+   "rev": 2.2,
+   "op": 0.3,
+   "ni": -34.8
+  },
+  {
+   "y": 2023,
+   "q": 3,
+   "rev": 4.6,
+   "op": -3.4,
+   "ni": -3.4
+  },
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 3.3,
+   "op": 0.4,
+   "ni": -83.1
+  },
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 6.9,
+   "op": 0.4,
+   "ni": 0.4
+  }
+ ]
+}

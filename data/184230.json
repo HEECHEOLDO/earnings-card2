@@ -1,0 +1,213 @@
+{
+ "name": "SGA솔루션즈",
+ "split_adjusted": false,
+ "legal_name": "SGA솔루션즈",
+ "code": "184230",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 495.4,
+   "op": 51.4,
+   "ni": 31.7,
+   "assets": 938.8,
+   "liab": 527.3,
+   "equity": 411.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 553.4,
+   "op": 38.5,
+   "ni": 22.2,
+   "assets": 830.3,
+   "liab": 325.9,
+   "equity": 504.4,
+   "dps": 15.0,
+   "payout": null,
+   "yield": 0.5,
+   "dps_adj": 15.0
+  },
+  {
+   "p": 2018,
+   "rev": 453.8,
+   "op": -92.5,
+   "ni": -134.4,
+   "assets": 780.7,
+   "liab": 392.6,
+   "equity": 388.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 450.9,
+   "op": -84.9,
+   "ni": -285.9,
+   "assets": 479.7,
+   "liab": 314.5,
+   "equity": 165.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 405.7,
+   "op": 38.9,
+   "ni": 52.0,
+   "assets": 464.1,
+   "liab": 220.7,
+   "equity": 243.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 246.7,
+   "op": 37.1,
+   "ni": 16.0,
+   "assets": 639.6,
+   "liab": 274.3,
+   "equity": 365.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 373.2,
+   "op": 38.4,
+   "ni": 48.2,
+   "assets": 949.1,
+   "liab": 378.4,
+   "equity": 570.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 547.3,
+   "op": 12.8,
+   "ni": 0.6,
+   "assets": 918.5,
+   "liab": 347.8,
+   "equity": 570.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 429.2,
+   "op": -41.1,
+   "ni": -99.4,
+   "assets": 1036.1,
+   "liab": 534.3,
+   "equity": 501.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 616.4,
+   "op": 148.2,
+   "ni": 169.9,
+   "assets": 1520.0,
+   "liab": 990.2,
+   "equity": 529.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 86.5,
+   "op": -34.5,
+   "ni": -42.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 93.5,
+   "op": -8.4,
+   "ni": -1.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 90.3,
+   "op": -14.3,
+   "ni": -20.8
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 158.9,
+   "op": 16.2,
+   "ni": -35.6
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 80.4,
+   "op": -22.9,
+   "ni": -29.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 103.1,
+   "op": -5.7,
+   "ni": -23.9
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 200.0,
+   "op": 90.1,
+   "ni": 99.9
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 232.9,
+   "op": 86.7,
+   "ni": 122.9
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 259.6,
+   "op": 7.6,
+   "ni": -4.9
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 491.4,
+   "op": 13.6,
+   "ni": -2.4
+  }
+ ]
+}

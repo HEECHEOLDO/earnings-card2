@@ -1,0 +1,90 @@
+{
+ "name": "퓨전",
+ "split_adjusted": false,
+ "legal_name": "퓨전",
+ "code": "195440",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 282.2,
+   "op": 42.9,
+   "ni": 8.4,
+   "assets": 307.2,
+   "liab": 131.0,
+   "equity": 176.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 247.0,
+   "op": -77.8,
+   "ni": -82.9,
+   "assets": 288.3,
+   "liab": 184.6,
+   "equity": 103.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 173.7,
+   "op": -93.0,
+   "ni": -131.5,
+   "assets": 227.0,
+   "liab": 221.0,
+   "equity": 6.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 162.9,
+   "op": -104.3,
+   "ni": -137.3,
+   "assets": 556.4,
+   "liab": 246.2,
+   "equity": 310.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 139.2,
+   "op": -48.7,
+   "ni": -251.6,
+   "assets": 179.9,
+   "liab": 133.9,
+   "equity": 46.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 39.0,
+   "op": -5.3,
+   "ni": -67.3,
+   "assets": 41.9,
+   "liab": 29.0,
+   "equity": 12.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

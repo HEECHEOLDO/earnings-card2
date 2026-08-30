@@ -1,0 +1,64 @@
+{
+ "name": "코리아오토글라스",
+ "split_adjusted": false,
+ "legal_name": "코리아오토글라스",
+ "code": "152330",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 4402.3,
+   "op": 469.9,
+   "ni": 422.0,
+   "assets": 4838.8,
+   "liab": 2045.9,
+   "equity": 2792.9,
+   "dps": null,
+   "payout": 18.96,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 4721.5,
+   "op": 525.1,
+   "ni": 447.5,
+   "assets": 5238.3,
+   "liab": 2056.3,
+   "equity": 3182.0,
+   "dps": null,
+   "payout": 31.28,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 4387.1,
+   "op": 497.7,
+   "ni": 433.3,
+   "assets": 5643.2,
+   "liab": 2193.3,
+   "equity": 3449.9,
+   "dps": null,
+   "payout": 36.92,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 4560.3,
+   "op": 575.4,
+   "ni": 330.3,
+   "assets": 4978.9,
+   "liab": 1370.2,
+   "equity": 3608.7,
+   "dps": null,
+   "payout": 54.5,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

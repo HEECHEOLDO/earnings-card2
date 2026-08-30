@@ -1,0 +1,38 @@
+{
+ "name": "트러스와이제7호위탁관리부동산투자회사",
+ "split_adjusted": false,
+ "legal_name": "트러스와이제7호위탁관리부동산투자회사",
+ "code": "140890",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 30.4,
+   "op": 12.2,
+   "ni": -1.3,
+   "assets": 1016.9,
+   "liab": 588.4,
+   "equity": 428.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 32.4,
+   "op": 13.8,
+   "ni": 2.5,
+   "assets": 1026.3,
+   "liab": 594.3,
+   "equity": 432.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

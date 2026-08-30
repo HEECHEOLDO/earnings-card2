@@ -1,0 +1,90 @@
+{
+ "name": "코오롱머티리얼",
+ "split_adjusted": false,
+ "legal_name": "코오롱머티리얼",
+ "code": "144620",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 3389.1,
+   "op": -24.5,
+   "ni": 24.6,
+   "assets": 2881.7,
+   "liab": 1026.6,
+   "equity": 1855.2,
+   "dps": 100.0,
+   "payout": 36.6,
+   "yield": 1.0,
+   "dps_adj": 100.0
+  },
+  {
+   "p": 2017,
+   "rev": 3544.6,
+   "op": -447.5,
+   "ni": -571.7,
+   "assets": 2550.9,
+   "liab": 1261.7,
+   "equity": 1289.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 3882.8,
+   "op": -327.0,
+   "ni": -728.7,
+   "assets": 2067.0,
+   "liab": 1544.8,
+   "equity": 522.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 993.0,
+   "op": -67.3,
+   "ni": -448.0,
+   "assets": 1249.6,
+   "liab": 544.0,
+   "equity": 705.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 680.7,
+   "op": -140.0,
+   "ni": -136.9,
+   "assets": 1079.8,
+   "liab": 506.0,
+   "equity": 573.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 35.7,
+   "op": -18.7,
+   "ni": -152.2,
+   "assets": 783.0,
+   "liab": 354.4,
+   "equity": 428.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

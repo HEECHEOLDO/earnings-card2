@@ -1,0 +1,90 @@
+{
+ "name": "하이골드오션3호선박투자회사",
+ "split_adjusted": false,
+ "legal_name": "하이골드오션3호선박투자회사",
+ "code": "153360",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 112.6,
+   "op": 61.7,
+   "ni": -137.9,
+   "assets": 484.0,
+   "liab": 76.2,
+   "equity": 407.8,
+   "dps": -213.0,
+   "payout": -24.94,
+   "yield": -10.54,
+   "dps_adj": -213.0
+  },
+  {
+   "p": 2017,
+   "rev": 87.7,
+   "op": -81.4,
+   "ni": -95.0,
+   "assets": 375.0,
+   "liab": 15.7,
+   "equity": 359.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 68.7,
+   "op": 39.5,
+   "ni": 39.7,
+   "assets": 373.7,
+   "liab": 49.8,
+   "equity": 323.9,
+   "dps": null,
+   "payout": 144.5,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 89.0,
+   "op": 9.0,
+   "ni": 9.1,
+   "assets": 333.0,
+   "liab": 81.9,
+   "equity": 251.2,
+   "dps": null,
+   "payout": 735.61,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 74.5,
+   "op": -70.1,
+   "ni": -70.4,
+   "assets": 280.0,
+   "liab": 65.1,
+   "equity": 214.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 66.2,
+   "op": 232.2,
+   "ni": 232.6,
+   "assets": 460.0,
+   "liab": 53.9,
+   "equity": 406.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

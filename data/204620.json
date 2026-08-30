@@ -1,0 +1,200 @@
+{
+ "name": "글로벌텍스프리",
+ "split_adjusted": false,
+ "legal_name": "글로벌텍스프리",
+ "code": "204620",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2017,
+   "rev": 329.6,
+   "op": 8.1,
+   "ni": -23.7,
+   "assets": 759.5,
+   "liab": 119.1,
+   "equity": 640.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 415.4,
+   "op": 7.0,
+   "ni": 83.7,
+   "assets": 1121.7,
+   "liab": 382.5,
+   "equity": 739.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 597.7,
+   "op": 69.3,
+   "ni": 58.1,
+   "assets": 1265.4,
+   "liab": 536.3,
+   "equity": 729.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 101.8,
+   "op": -114.3,
+   "ni": -54.7,
+   "assets": 1064.7,
+   "liab": 256.7,
+   "equity": 808.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 381.4,
+   "op": -137.7,
+   "ni": -252.2,
+   "assets": 1299.9,
+   "liab": 426.1,
+   "equity": 873.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 493.6,
+   "op": -27.2,
+   "ni": -142.5,
+   "assets": 1453.6,
+   "liab": 397.5,
+   "equity": 1056.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 933.7,
+   "op": 147.8,
+   "ni": -79.9,
+   "assets": 1669.3,
+   "liab": 583.4,
+   "equity": 1086.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 1297.3,
+   "op": 217.7,
+   "ni": 62.5,
+   "assets": 1745.4,
+   "liab": 461.7,
+   "equity": 1283.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 1540.6,
+   "op": 289.9,
+   "ni": 354.5,
+   "assets": 1840.7,
+   "liab": 442.0,
+   "equity": 1398.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 313.4,
+   "op": 24.3,
+   "ni": -9.1
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 274.9,
+   "op": 70.7,
+   "ni": 22.3
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 332.2,
+   "op": 58.4,
+   "ni": 26.3
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 376.8,
+   "op": 64.3,
+   "ni": 23.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 342.9,
+   "op": 50.9,
+   "ni": 56.4
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 449.9,
+   "op": 82.6,
+   "ni": 99.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 450.5,
+   "op": 82.5,
+   "ni": 60.9
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 297.3,
+   "op": 73.9,
+   "ni": 138.2
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 354.9,
+   "op": 58.2,
+   "ni": 50.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 469.0,
+   "op": 90.4,
+   "ni": 119.4
+  }
+ ]
+}

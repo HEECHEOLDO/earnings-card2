@@ -1,0 +1,77 @@
+{
+ "name": "테라셈",
+ "split_adjusted": false,
+ "legal_name": "테라셈",
+ "code": "182690",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2017,
+   "rev": 80.6,
+   "op": -51.8,
+   "ni": null,
+   "assets": 152.6,
+   "liab": 48.6,
+   "equity": 104.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 87.6,
+   "op": -65.2,
+   "ni": -64.7,
+   "assets": 198.7,
+   "liab": 144.3,
+   "equity": 54.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 123.5,
+   "op": -41.8,
+   "ni": -50.2,
+   "assets": 263.3,
+   "liab": 147.2,
+   "equity": 116.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 175.1,
+   "op": -5.1,
+   "ni": -31.6,
+   "assets": 559.0,
+   "liab": 290.9,
+   "equity": 268.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 52.7,
+   "op": -75.7,
+   "ni": -76.9,
+   "assets": 516.1,
+   "liab": 326.1,
+   "equity": 190.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

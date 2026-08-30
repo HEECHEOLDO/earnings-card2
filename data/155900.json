@@ -1,0 +1,125 @@
+{
+ "name": "바다로19호선박투자회사",
+ "split_adjusted": false,
+ "legal_name": "바다로19호선박투자회사",
+ "code": "155900",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 100.3,
+   "op": 35.5,
+   "ni": 189.5,
+   "assets": 525.1,
+   "liab": 16.2,
+   "equity": 508.9,
+   "dps": 1247.0,
+   "payout": 100.0,
+   "yield": 7.0,
+   "dps_adj": 1247.0
+  },
+  {
+   "p": 2017,
+   "rev": 62.5,
+   "op": 25.9,
+   "ni": -45.4,
+   "assets": 474.1,
+   "liab": 25.4,
+   "equity": 448.6,
+   "dps": 350.0,
+   "payout": null,
+   "yield": 7.0,
+   "dps_adj": 350.0
+  },
+  {
+   "p": 2018,
+   "rev": 60.2,
+   "op": 21.7,
+   "ni": 74.0,
+   "assets": 478.3,
+   "liab": 19.7,
+   "equity": 458.6,
+   "dps": 350.0,
+   "payout": null,
+   "yield": 7.0,
+   "dps_adj": 350.0
+  },
+  {
+   "p": 2019,
+   "rev": 64.4,
+   "op": 22.9,
+   "ni": 54.5,
+   "assets": 460.8,
+   "liab": 14.9,
+   "equity": 445.9,
+   "dps": 350.0,
+   "payout": null,
+   "yield": 7.0,
+   "dps_adj": 350.0
+  },
+  {
+   "p": 2020,
+   "rev": 77.4,
+   "op": 32.2,
+   "ni": -27.1,
+   "assets": 400.4,
+   "liab": 14.6,
+   "equity": 385.7,
+   "dps": 350.0,
+   "payout": null,
+   "yield": 7.0,
+   "dps_adj": 350.0
+  },
+  {
+   "p": 2021,
+   "rev": 114.2,
+   "op": 77.2,
+   "ni": 143.9,
+   "assets": 474.3,
+   "liab": 27.7,
+   "equity": 446.6,
+   "dps": 350.0,
+   "payout": null,
+   "yield": 7.0,
+   "dps_adj": 350.0
+  },
+  {
+   "p": 2022,
+   "rev": 116.1,
+   "op": 72.8,
+   "ni": 113.1,
+   "assets": 518.2,
+   "liab": 46.5,
+   "equity": 471.7,
+   "dps": 350.0,
+   "payout": null,
+   "yield": 7.0,
+   "dps_adj": 350.0
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 1,
+   "rev": 15.7,
+   "op": 6.6,
+   "ni": -29.2
+  },
+  {
+   "y": 2023,
+   "q": 2,
+   "rev": 6.9,
+   "op": -5.6,
+   "ni": 63.2
+  },
+  {
+   "y": 2023,
+   "q": 3,
+   "rev": -0.7,
+   "op": 8.0,
+   "ni": -32.9
+  }
+ ]
+}

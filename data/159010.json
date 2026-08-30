@@ -1,0 +1,148 @@
+{
+ "name": "아스플로",
+ "split_adjusted": false,
+ "legal_name": "아스플로",
+ "code": "159010",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2021,
+   "rev": 588.9,
+   "op": 39.6,
+   "ni": 39.8,
+   "assets": 947.8,
+   "liab": 481.5,
+   "equity": 466.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 886.6,
+   "op": 105.0,
+   "ni": 90.5,
+   "assets": 1113.6,
+   "liab": 574.3,
+   "equity": 539.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 868.7,
+   "op": 63.5,
+   "ni": 35.7,
+   "assets": 1301.6,
+   "liab": 726.9,
+   "equity": 574.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 836.1,
+   "op": -18.6,
+   "ni": -23.7,
+   "assets": 1382.5,
+   "liab": 835.8,
+   "equity": 546.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 679.2,
+   "op": -70.1,
+   "ni": -99.4,
+   "assets": 1184.6,
+   "liab": 720.8,
+   "equity": 463.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 260.3,
+   "op": 27.9,
+   "ni": 17.6
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 214.0,
+   "op": -0.2,
+   "ni": -2.2
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 147.6,
+   "op": -33.0,
+   "ni": -43.6
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 214.2,
+   "op": -13.4,
+   "ni": 4.6
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 260.0,
+   "op": -14.5,
+   "ni": -18.4
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 149.2,
+   "op": -19.9,
+   "ni": -53.9
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 134.3,
+   "op": -8.9,
+   "ni": -2.7
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 135.8,
+   "op": -26.8,
+   "ni": -24.3
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 283.1,
+   "op": 13.8,
+   "ni": 12.3
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 317.1,
+   "op": 44.2,
+   "ni": 88.2
+  }
+ ]
+}

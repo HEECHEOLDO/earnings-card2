@@ -1,0 +1,213 @@
+{
+ "name": "텔콘RF제약",
+ "split_adjusted": false,
+ "legal_name": "텔콘RF제약",
+ "code": "200230",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 298.4,
+   "op": -81.0,
+   "ni": -65.7,
+   "assets": 1184.4,
+   "liab": 360.8,
+   "equity": 823.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 417.7,
+   "op": -120.8,
+   "ni": -198.4,
+   "assets": 2096.4,
+   "liab": 745.2,
+   "equity": 1351.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 577.1,
+   "op": -78.7,
+   "ni": -151.7,
+   "assets": 1817.9,
+   "liab": 263.4,
+   "equity": 1554.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 565.9,
+   "op": 30.0,
+   "ni": -549.6,
+   "assets": 1294.9,
+   "liab": 163.6,
+   "equity": 1131.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 331.4,
+   "op": -20.9,
+   "ni": -420.3,
+   "assets": 1850.5,
+   "liab": 935.8,
+   "equity": 914.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 378.4,
+   "op": -27.4,
+   "ni": -232.1,
+   "assets": 1680.3,
+   "liab": 614.2,
+   "equity": 1066.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 278.3,
+   "op": -40.6,
+   "ni": -421.2,
+   "assets": 1192.5,
+   "liab": 351.2,
+   "equity": 841.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 363.1,
+   "op": 9.7,
+   "ni": 139.5,
+   "assets": 1404.1,
+   "liab": 354.7,
+   "equity": 1049.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 378.7,
+   "op": -0.7,
+   "ni": -265.0,
+   "assets": 1535.9,
+   "liab": 704.5,
+   "equity": 831.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 431.6,
+   "op": 7.2,
+   "ni": -114.3,
+   "assets": 1566.7,
+   "liab": 478.5,
+   "equity": 1088.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 80.4,
+   "op": -9.7,
+   "ni": -74.3
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 88.3,
+   "op": -10.0,
+   "ni": -98.9
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 71.6,
+   "op": -12.4,
+   "ni": 30.3
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 138.4,
+   "op": 31.3,
+   "ni": -122.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 99.8,
+   "op": -15.0,
+   "ni": -146.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 100.3,
+   "op": -4.0,
+   "ni": -18.3
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 98.2,
+   "op": -0.1,
+   "ni": -48.5
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 133.2,
+   "op": 26.3,
+   "ni": 98.5
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 97.0,
+   "op": -14.3,
+   "ni": -114.7
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 289.4,
+   "op": -8.1,
+   "ni": -222.6
+  }
+ ]
+}

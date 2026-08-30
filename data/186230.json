@@ -1,0 +1,174 @@
+{
+ "name": "그린플러스",
+ "split_adjusted": false,
+ "legal_name": "그린플러스",
+ "code": "186230",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2019,
+   "rev": 488.3,
+   "op": 50.8,
+   "ni": null,
+   "assets": 723.2,
+   "liab": 349.3,
+   "equity": 373.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 626.8,
+   "op": 59.4,
+   "ni": null,
+   "assets": 891.1,
+   "liab": 550.8,
+   "equity": 340.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 832.4,
+   "op": 51.0,
+   "ni": -47.4,
+   "assets": 1016.6,
+   "liab": 408.5,
+   "equity": 608.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 830.1,
+   "op": 36.0,
+   "ni": -35.2,
+   "assets": 1059.7,
+   "liab": 452.5,
+   "equity": 607.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 588.7,
+   "op": -82.1,
+   "ni": -153.3,
+   "assets": 972.5,
+   "liab": 511.5,
+   "equity": 461.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 876.8,
+   "op": 24.9,
+   "ni": 2.6,
+   "assets": 1013.5,
+   "liab": 551.3,
+   "equity": 462.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 1057.2,
+   "op": -9.5,
+   "ni": -130.3,
+   "assets": 968.2,
+   "liab": 593.8,
+   "equity": 374.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 178.6,
+   "op": 3.4,
+   "ni": 0.3
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 209.8,
+   "op": -6.3,
+   "ni": -15.3
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 203.7,
+   "op": -12.1,
+   "ni": -17.2
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 284.7,
+   "op": 39.8,
+   "ni": 34.7
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 220.8,
+   "op": 3.0,
+   "ni": -7.7
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 258.9,
+   "op": -15.2,
+   "ni": -19.4
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 278.6,
+   "op": 16.4,
+   "ni": 0.5
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 298.9,
+   "op": -13.7,
+   "ni": -103.7
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 315.6,
+   "op": 4.3,
+   "ni": 0.6
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 380.4,
+   "op": 9.5,
+   "ni": 5.8
+  }
+ ]
+}

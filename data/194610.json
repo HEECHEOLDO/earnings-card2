@@ -1,0 +1,51 @@
+{
+ "name": "우성아이비",
+ "split_adjusted": false,
+ "legal_name": "우성아이비",
+ "code": "194610",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 335.6,
+   "op": 11.7,
+   "ni": 2.0,
+   "assets": 694.4,
+   "liab": 495.0,
+   "equity": 199.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 298.6,
+   "op": -181.7,
+   "ni": -222.9,
+   "assets": 526.1,
+   "liab": 444.9,
+   "equity": 81.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 339.5,
+   "op": -211.5,
+   "ni": -258.5,
+   "assets": 239.8,
+   "liab": 399.5,
+   "equity": -159.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

@@ -1,0 +1,90 @@
+{
+ "name": "원익피앤이",
+ "split_adjusted": false,
+ "legal_name": "원익피앤이",
+ "code": "131390",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 468.2,
+   "op": 39.6,
+   "ni": 48.4,
+   "assets": 798.8,
+   "liab": 333.1,
+   "equity": 465.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 736.3,
+   "op": 87.8,
+   "ni": 75.4,
+   "assets": 962.8,
+   "liab": 413.3,
+   "equity": 549.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 1027.5,
+   "op": 117.5,
+   "ni": 110.6,
+   "assets": 1532.8,
+   "liab": 871.5,
+   "equity": 661.3,
+   "dps": 100.0,
+   "payout": 12.91,
+   "yield": 0.85,
+   "dps_adj": 100.0
+  },
+  {
+   "p": 2019,
+   "rev": 1471.6,
+   "op": 177.6,
+   "ni": 159.2,
+   "assets": 1774.9,
+   "liab": 975.5,
+   "equity": 799.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 1276.9,
+   "op": 206.2,
+   "ni": 186.7,
+   "assets": 2071.6,
+   "liab": 1020.2,
+   "equity": 1051.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 1764.2,
+   "op": 149.6,
+   "ni": 194.6,
+   "assets": 3937.7,
+   "liab": 2365.7,
+   "equity": 1572.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

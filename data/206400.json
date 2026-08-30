@@ -1,0 +1,213 @@
+{
+ "name": "베노티앤알",
+ "split_adjusted": false,
+ "legal_name": "베노티앤알",
+ "code": "206400",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 202.7,
+   "op": -40.5,
+   "ni": -67.2,
+   "assets": 202.4,
+   "liab": 32.4,
+   "equity": 170.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 188.9,
+   "op": -100.0,
+   "ni": -122.4,
+   "assets": 177.7,
+   "liab": 43.1,
+   "equity": 134.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 150.9,
+   "op": -109.9,
+   "ni": -143.2,
+   "assets": 247.8,
+   "liab": 178.0,
+   "equity": 69.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 159.5,
+   "op": 27.3,
+   "ni": 18.7,
+   "assets": 442.5,
+   "liab": 104.1,
+   "equity": 338.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 94.0,
+   "op": 8.2,
+   "ni": -129.0,
+   "assets": 738.1,
+   "liab": 232.8,
+   "equity": 505.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 266.7,
+   "op": 15.4,
+   "ni": 86.3,
+   "assets": 1300.6,
+   "liab": 451.2,
+   "equity": 849.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 218.0,
+   "op": -19.1,
+   "ni": -218.6,
+   "assets": 1012.8,
+   "liab": 312.8,
+   "equity": 700.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 99.2,
+   "op": -70.1,
+   "ni": -79.2,
+   "assets": 1229.6,
+   "liab": 427.7,
+   "equity": 801.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 253.0,
+   "op": -97.0,
+   "ni": -35.9,
+   "assets": 1047.5,
+   "liab": 94.8,
+   "equity": 952.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 47.7,
+   "op": -53.6,
+   "ni": -240.3,
+   "assets": 789.4,
+   "liab": 70.9,
+   "equity": 718.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 39.9,
+   "op": -18.6,
+   "ni": -4.4
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 126.5,
+   "op": -11.3,
+   "ni": -84.1
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 56.6,
+   "op": -12.9,
+   "ni": 80.2
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 29.9,
+   "op": -54.2,
+   "ni": -27.6
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 12.0,
+   "op": -22.9,
+   "ni": -160.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 17.2,
+   "op": 1.8,
+   "ni": 6.2
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 8.3,
+   "op": -17.1,
+   "ni": -26.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 10.2,
+   "op": -15.5,
+   "ni": -60.5
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 7.4,
+   "op": -18.8,
+   "ni": -38.5
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 7.0,
+   "op": -9.5,
+   "ni": -24.5
+  }
+ ]
+}

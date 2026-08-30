@@ -1,0 +1,213 @@
+{
+ "name": "모아라이프플러스",
+ "split_adjusted": false,
+ "legal_name": "모아라이프플러스",
+ "code": "142760",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 25.0,
+   "op": -60.0,
+   "ni": -59.0,
+   "assets": 216.1,
+   "liab": 41.5,
+   "equity": 174.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 76.1,
+   "op": -68.3,
+   "ni": -66.5,
+   "assets": 375.8,
+   "liab": 23.8,
+   "equity": 351.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 860.7,
+   "op": -61.8,
+   "ni": -162.9,
+   "assets": null,
+   "liab": 848.8,
+   "equity": 684.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 728.8,
+   "op": -123.9,
+   "ni": -416.6,
+   "assets": 1481.1,
+   "liab": 895.7,
+   "equity": 585.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 804.5,
+   "op": -118.4,
+   "ni": -334.1,
+   "assets": 1906.9,
+   "liab": 974.1,
+   "equity": 932.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 1011.7,
+   "op": -144.8,
+   "ni": -357.7,
+   "assets": 1888.5,
+   "liab": 905.3,
+   "equity": 983.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 1004.1,
+   "op": -146.2,
+   "ni": -337.4,
+   "assets": 1484.2,
+   "liab": 811.0,
+   "equity": 673.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 182.5,
+   "op": -51.6,
+   "ni": 80.7,
+   "assets": 490.7,
+   "liab": 132.8,
+   "equity": 357.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 156.3,
+   "op": -55.4,
+   "ni": -69.7,
+   "assets": 622.5,
+   "liab": 217.4,
+   "equity": 405.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 112.2,
+   "op": -65.3,
+   "ni": -130.5,
+   "assets": 426.1,
+   "liab": 120.4,
+   "equity": 305.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 49.4,
+   "op": -15.9,
+   "ni": -34.3
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 39.5,
+   "op": 3.0,
+   "ni": 9.3
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 35.4,
+   "op": -6.0,
+   "ni": -16.5
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 32.0,
+   "op": -36.5,
+   "ni": -28.2
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 31.0,
+   "op": -10.8,
+   "ni": -13.5
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 23.3,
+   "op": -11.8,
+   "ni": -70.1
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 11.8,
+   "op": -14.7,
+   "ni": -7.1
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 46.1,
+   "op": -28.0,
+   "ni": -39.9
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 23.3,
+   "op": -13.6,
+   "ni": -11.1
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 23.4,
+   "op": -12.3,
+   "ni": -79.1
+  }
+ ]
+}

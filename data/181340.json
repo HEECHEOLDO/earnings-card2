@@ -1,0 +1,139 @@
+{
+ "name": "이즈미디어",
+ "split_adjusted": false,
+ "legal_name": "이즈미디어",
+ "code": "181340",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2017,
+   "rev": 532.3,
+   "op": 24.1,
+   "ni": 3.3,
+   "assets": 689.9,
+   "liab": 343.7,
+   "equity": 346.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 789.2,
+   "op": 41.2,
+   "ni": 35.1,
+   "assets": 812.2,
+   "liab": 431.2,
+   "equity": 381.0,
+   "dps": 50.0,
+   "payout": 9.7,
+   "yield": 0.99,
+   "dps_adj": 50.0
+  },
+  {
+   "p": 2019,
+   "rev": 671.5,
+   "op": -26.4,
+   "ni": -17.7,
+   "assets": 758.4,
+   "liab": 399.8,
+   "equity": 358.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 219.7,
+   "op": -145.6,
+   "ni": -179.2,
+   "assets": 516.8,
+   "liab": 333.3,
+   "equity": 183.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 475.4,
+   "op": -179.2,
+   "ni": -198.6,
+   "assets": 688.0,
+   "liab": 515.6,
+   "equity": 172.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 504.5,
+   "op": -11.3,
+   "ni": -64.6,
+   "assets": 615.1,
+   "liab": 335.3,
+   "equity": 279.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 127.7,
+   "op": -119.4,
+   "ni": -106.8,
+   "assets": 348.5,
+   "liab": 248.5,
+   "equity": 100.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 1,
+   "rev": 8.7,
+   "op": -54.2,
+   "ni": -56.4
+  },
+  {
+   "y": 2023,
+   "q": 2,
+   "rev": 28.5,
+   "op": -19.0,
+   "ni": -22.4
+  },
+  {
+   "y": 2023,
+   "q": 3,
+   "rev": 41.5,
+   "op": -33.4,
+   "ni": -34.2
+  },
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 49.0,
+   "op": -12.8,
+   "ni": 6.2
+  },
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 20.5,
+   "op": 40.9,
+   "ni": 0.4
+  }
+ ]
+}

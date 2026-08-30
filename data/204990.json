@@ -1,0 +1,64 @@
+{
+ "name": "코썬바이오",
+ "split_adjusted": false,
+ "legal_name": "코썬바이오",
+ "code": "204990",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 286.2,
+   "op": 79.0,
+   "ni": 67.5,
+   "assets": 505.3,
+   "liab": 57.7,
+   "equity": 447.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 256.6,
+   "op": 39.6,
+   "ni": 31.2,
+   "assets": 1385.0,
+   "liab": 139.0,
+   "equity": 1246.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 95.4,
+   "op": -234.3,
+   "ni": -703.6,
+   "assets": 652.4,
+   "liab": 112.4,
+   "equity": 540.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 27.0,
+   "op": -284.9,
+   "ni": -501.1,
+   "assets": 147.6,
+   "liab": 98.9,
+   "equity": 48.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

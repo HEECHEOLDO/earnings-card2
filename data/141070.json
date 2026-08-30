@@ -1,0 +1,77 @@
+{
+ "name": "맥스로텍",
+ "split_adjusted": false,
+ "legal_name": "맥스로텍",
+ "code": "141070",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 400.9,
+   "op": -35.1,
+   "ni": -87.6,
+   "assets": 793.6,
+   "liab": 450.2,
+   "equity": 343.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 386.5,
+   "op": 12.6,
+   "ni": -22.7,
+   "assets": 836.0,
+   "liab": 499.0,
+   "equity": 337.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 595.8,
+   "op": 37.3,
+   "ni": 19.5,
+   "assets": 900.6,
+   "liab": 548.8,
+   "equity": 351.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 373.2,
+   "op": -85.2,
+   "ni": -100.9,
+   "assets": 755.7,
+   "liab": 474.0,
+   "equity": 281.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 196.1,
+   "op": -181.8,
+   "ni": -251.3,
+   "assets": 521.5,
+   "liab": 388.3,
+   "equity": 133.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

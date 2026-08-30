@@ -1,0 +1,26 @@
+{
+ "name": "져스텍",
+ "split_adjusted": false,
+ "legal_name": "져스텍",
+ "code": "153890",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-08-31",
+ "annual": [],
+ "quarterly": [
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 34.9,
+   "op": -2.8,
+   "ni": -2.8
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 50.4,
+   "op": 11.0,
+   "ni": 11.6
+  }
+ ]
+}

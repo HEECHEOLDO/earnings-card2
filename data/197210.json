@@ -1,0 +1,77 @@
+{
+ "name": "리드",
+ "split_adjusted": false,
+ "legal_name": "리드",
+ "code": "197210",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 353.8,
+   "op": 6.4,
+   "ni": 3.6,
+   "assets": 516.1,
+   "liab": 378.4,
+   "equity": 137.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 373.6,
+   "op": -103.9,
+   "ni": -225.0,
+   "assets": 427.0,
+   "liab": 349.2,
+   "equity": 77.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 327.8,
+   "op": -9.5,
+   "ni": -144.9,
+   "assets": 1074.0,
+   "liab": 681.8,
+   "equity": 392.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 184.0,
+   "op": -66.1,
+   "ni": -492.4,
+   "assets": 310.5,
+   "liab": 626.1,
+   "equity": -315.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 76.6,
+   "op": -19.3,
+   "ni": -97.4,
+   "assets": 134.8,
+   "liab": 546.7,
+   "equity": -411.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

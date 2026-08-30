@@ -1,0 +1,64 @@
+{
+ "name": "하이골드오션8호국제선박투자회사",
+ "split_adjusted": false,
+ "legal_name": "하이골드오션8호국제선박투자회사",
+ "code": "159650",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 94.3,
+   "op": 69.4,
+   "ni": -99.4,
+   "assets": 544.9,
+   "liab": 76.0,
+   "equity": 468.9,
+   "dps": 625.0,
+   "payout": -93.76,
+   "yield": 46.65,
+   "dps_adj": 625.0
+  },
+  {
+   "p": 2017,
+   "rev": 39.1,
+   "op": -110.3,
+   "ni": -185.2,
+   "assets": 394.9,
+   "liab": 75.4,
+   "equity": 319.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 35.5,
+   "op": 27.9,
+   "ni": 30.2,
+   "assets": 394.2,
+   "liab": 99.5,
+   "equity": 294.8,
+   "dps": 271.0,
+   "payout": 133.43,
+   "yield": 23.77,
+   "dps_adj": 271.0
+  },
+  {
+   "p": 2019,
+   "rev": 39.7,
+   "op": -24.7,
+   "ni": -21.8,
+   "assets": 347.6,
+   "liab": 126.0,
+   "equity": 221.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

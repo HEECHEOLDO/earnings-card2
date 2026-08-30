@@ -1,0 +1,152 @@
+{
+ "name": "엘아이에스",
+ "split_adjusted": false,
+ "legal_name": "엘아이에스",
+ "code": "138690",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 1029.9,
+   "op": -132.2,
+   "ni": -187.3,
+   "assets": 1320.6,
+   "liab": 814.3,
+   "equity": 506.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 919.4,
+   "op": -66.3,
+   "ni": -321.3,
+   "assets": 1674.6,
+   "liab": 1452.4,
+   "equity": 222.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 2113.6,
+   "op": 128.0,
+   "ni": 0.3,
+   "assets": 1414.8,
+   "liab": 1059.6,
+   "equity": 355.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 1451.2,
+   "op": 84.9,
+   "ni": -20.9,
+   "assets": 2178.2,
+   "liab": 1760.0,
+   "equity": 418.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 2023.9,
+   "op": 56.7,
+   "ni": 18.8,
+   "assets": 2032.9,
+   "liab": 1591.4,
+   "equity": 441.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 550.1,
+   "op": -602.0,
+   "ni": -457.4,
+   "assets": 1294.4,
+   "liab": 1092.0,
+   "equity": 202.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 99.8,
+   "op": -206.9,
+   "ni": -297.6,
+   "assets": 939.6,
+   "liab": 932.1,
+   "equity": 7.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 23.9,
+   "op": -1.4,
+   "ni": -67.0,
+   "assets": 823.1,
+   "liab": 119.8,
+   "equity": 703.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 1,
+   "rev": 14.2,
+   "op": -92.0,
+   "ni": -72.3
+  },
+  {
+   "y": 2023,
+   "q": 2,
+   "rev": -11.2,
+   "op": 32.9,
+   "ni": 56.9
+  },
+  {
+   "y": 2023,
+   "q": 3,
+   "rev": 1.9,
+   "op": -39.6,
+   "ni": -18.8
+  },
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 19.1,
+   "op": 97.4,
+   "ni": -32.8
+  },
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 1.9,
+   "op": -10.2,
+   "ni": 38.1
+  }
+ ]
+}

@@ -1,0 +1,77 @@
+{
+ "name": "하이골드오션12호국제선박투자회사",
+ "split_adjusted": false,
+ "legal_name": "하이골드오션12호국제선박투자회사",
+ "code": "172580",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 97.5,
+   "op": 50.3,
+   "ni": 50.5,
+   "assets": 567.8,
+   "liab": 52.7,
+   "equity": 515.0,
+   "dps": 637.0,
+   "payout": 164.38,
+   "yield": 26.26,
+   "dps_adj": 637.0
+  },
+  {
+   "p": 2017,
+   "rev": 81.8,
+   "op": -67.6,
+   "ni": -171.3,
+   "assets": 385.8,
+   "liab": 24.0,
+   "equity": 361.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 80.9,
+   "op": 24.5,
+   "ni": 23.7,
+   "assets": 369.4,
+   "liab": 46.5,
+   "equity": 323.0,
+   "dps": 407.0,
+   "payout": 223.99,
+   "yield": 14.67,
+   "dps_adj": 407.0
+  },
+  {
+   "p": 2019,
+   "rev": 105.3,
+   "op": 53.9,
+   "ni": 53.0,
+   "assets": 363.8,
+   "liab": 70.3,
+   "equity": 293.5,
+   "dps": 567.0,
+   "payout": 139.64,
+   "yield": 20.18,
+   "dps_adj": 567.0
+  },
+  {
+   "p": 2020,
+   "rev": 74.4,
+   "op": -12.7,
+   "ni": -13.1,
+   "assets": 342.8,
+   "liab": 44.3,
+   "equity": 298.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

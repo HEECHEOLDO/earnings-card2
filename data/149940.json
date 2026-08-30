@@ -1,0 +1,64 @@
+{
+ "name": "모다",
+ "split_adjusted": false,
+ "legal_name": "모다",
+ "code": "149940",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 939.5,
+   "op": 48.2,
+   "ni": 27.0,
+   "assets": 2232.1,
+   "liab": 1543.6,
+   "equity": 688.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 1185.2,
+   "op": -42.8,
+   "ni": -433.8,
+   "assets": 3850.1,
+   "liab": 2796.5,
+   "equity": 1053.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 1096.8,
+   "op": -87.3,
+   "ni": -58.2,
+   "assets": 2299.7,
+   "liab": 1690.6,
+   "equity": 609.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 714.1,
+   "op": -34.7,
+   "ni": -202.0,
+   "assets": 1499.7,
+   "liab": 1219.2,
+   "equity": 280.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

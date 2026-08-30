@@ -1,0 +1,135 @@
+{
+ "name": "비큐AI",
+ "split_adjusted": false,
+ "legal_name": "비큐AI",
+ "code": "148780",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2022,
+   "rev": 162.6,
+   "op": -11.3,
+   "ni": -0.5,
+   "assets": 164.0,
+   "liab": 44.9,
+   "equity": 119.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 168.9,
+   "op": 2.4,
+   "ni": 7.3,
+   "assets": 164.4,
+   "liab": 41.3,
+   "equity": 123.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 173.0,
+   "op": -8.1,
+   "ni": -6.0,
+   "assets": 157.5,
+   "liab": 39.2,
+   "equity": 118.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 170.1,
+   "op": -10.7,
+   "ni": -7.6,
+   "assets": 151.5,
+   "liab": 39.3,
+   "equity": 112.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 40.9,
+   "op": -0.9,
+   "ni": 0.3
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 41.5,
+   "op": -2.5,
+   "ni": -1.4
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 45.3,
+   "op": -2.8,
+   "ni": -3.9
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 45.3,
+   "op": -1.9,
+   "ni": -1.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 37.0,
+   "op": -7.5,
+   "ni": -6.5
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 42.1,
+   "op": -1.2,
+   "ni": -0.3
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 44.2,
+   "op": -1.6,
+   "ni": -0.9
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 46.9,
+   "op": -0.3,
+   "ni": 0.1
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 37.2,
+   "op": -2.0,
+   "ni": 0.4
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 42.8,
+   "op": -0.3,
+   "ni": 0.2
+  }
+ ]
+}

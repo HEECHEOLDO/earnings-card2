@@ -1,0 +1,98 @@
+{
+ "name": "피노텍",
+ "split_adjusted": false,
+ "legal_name": "피노텍",
+ "code": "150440",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2018,
+   "rev": 215.7,
+   "op": 20.4,
+   "ni": 7.3,
+   "assets": 131.2,
+   "liab": 94.7,
+   "equity": 36.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 160.9,
+   "op": -11.1,
+   "ni": -17.4,
+   "assets": 159.7,
+   "liab": 140.5,
+   "equity": 19.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 86.4,
+   "op": -10.4,
+   "ni": -9.9,
+   "assets": 158.6,
+   "liab": 148.9,
+   "equity": 9.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 128.6,
+   "op": -15.0,
+   "ni": -25.6,
+   "assets": 150.9,
+   "liab": 166.8,
+   "equity": -15.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 104.3,
+   "op": -27.6,
+   "ni": -100.8,
+   "assets": 69.5,
+   "liab": 186.3,
+   "equity": -116.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 76.3,
+   "op": -13.2,
+   "ni": 11.1,
+   "assets": 46.9,
+   "liab": 152.5,
+   "equity": -105.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 76.3,
+   "op": -13.2,
+   "ni": 11.1
+  }
+ ]
+}

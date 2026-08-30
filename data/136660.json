@@ -1,0 +1,51 @@
+{
+ "name": "큐엠씨",
+ "split_adjusted": false,
+ "legal_name": "큐엠씨",
+ "code": "136660",
+ "market": "코넥스",
+ "sector": "",
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2017,
+   "rev": 545.2,
+   "op": 91.8,
+   "ni": 32.1,
+   "assets": 289.7,
+   "liab": 209.3,
+   "equity": 80.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 375.7,
+   "op": 56.2,
+   "ni": 22.5,
+   "assets": 399.5,
+   "liab": 164.3,
+   "equity": 235.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 52.7,
+   "op": -82.6,
+   "ni": -85.3,
+   "assets": 434.7,
+   "liab": 283.4,
+   "equity": 151.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

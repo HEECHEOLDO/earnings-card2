@@ -1,0 +1,187 @@
+{
+ "name": "툴젠",
+ "split_adjusted": false,
+ "legal_name": "툴젠",
+ "code": "199800",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2018,
+   "rev": 11.6,
+   "op": -83.3,
+   "ni": -80.6,
+   "assets": 387.4,
+   "liab": 17.5,
+   "equity": 369.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 11.3,
+   "op": -165.8,
+   "ni": -162.8,
+   "assets": 298.7,
+   "liab": 31.0,
+   "equity": 267.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 7.1,
+   "op": -147.8,
+   "ni": -147.0,
+   "assets": 300.6,
+   "liab": 30.8,
+   "equity": 269.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 16.0,
+   "op": -207.3,
+   "ni": -206.9,
+   "assets": 876.7,
+   "liab": 30.1,
+   "equity": 846.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 7.4,
+   "op": -193.9,
+   "ni": -181.8,
+   "assets": 754.3,
+   "liab": 49.6,
+   "equity": 704.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 11.0,
+   "op": -170.9,
+   "ni": -423.4,
+   "assets": 934.5,
+   "liab": 633.6,
+   "equity": 300.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 8.9,
+   "op": -218.0,
+   "ni": 62.3,
+   "assets": 754.8,
+   "liab": 170.4,
+   "equity": 584.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 13.1,
+   "op": -232.9,
+   "ni": -367.6,
+   "assets": 616.5,
+   "liab": 58.0,
+   "equity": 558.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 1.2,
+   "op": -50.3,
+   "ni": -49.6
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 1.6,
+   "op": -60.3,
+   "ni": -61.8
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 4.4,
+   "op": -50.7,
+   "ni": -51.6
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 1.7,
+   "op": -56.8,
+   "ni": 225.3
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 1.3,
+   "op": -46.1,
+   "ni": -44.4
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 1.4,
+   "op": -63.3,
+   "ni": -43.9
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 6.3,
+   "op": -54.1,
+   "ni": -54.5
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 4.0,
+   "op": -69.4,
+   "ni": -224.8
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 3.9,
+   "op": -45.9,
+   "ni": -44.1
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 4.9,
+   "op": -68.9,
+   "ni": -67.9
+  }
+ ]
+}

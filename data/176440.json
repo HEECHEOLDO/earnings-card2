@@ -1,0 +1,90 @@
+{
+ "name": "미래오토스",
+ "split_adjusted": false,
+ "legal_name": "미래오토스",
+ "code": "176440",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 2013.7,
+   "op": 94.6,
+   "ni": 70.9,
+   "assets": 972.9,
+   "liab": 420.5,
+   "equity": 552.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 2043.2,
+   "op": 16.9,
+   "ni": -20.3,
+   "assets": 1034.6,
+   "liab": 539.3,
+   "equity": 495.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 2269.1,
+   "op": 80.5,
+   "ni": 2.3,
+   "assets": 1042.6,
+   "liab": 541.4,
+   "equity": 501.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 2419.9,
+   "op": 20.0,
+   "ni": -20.7,
+   "assets": 1191.5,
+   "liab": 597.7,
+   "equity": 593.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 51.2,
+   "op": -97.7,
+   "ni": -198.6,
+   "assets": 450.1,
+   "liab": 175.0,
+   "equity": 275.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 37.6,
+   "op": -64.2,
+   "ni": -59.9,
+   "assets": 223.4,
+   "liab": 85.9,
+   "equity": 137.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

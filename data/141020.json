@@ -1,0 +1,125 @@
+{
+ "name": "디에스앤엘",
+ "split_adjusted": false,
+ "legal_name": "디에스앤엘",
+ "code": "141020",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 500.6,
+   "op": -20.1,
+   "ni": -226.8,
+   "assets": 287.8,
+   "liab": 226.7,
+   "equity": 61.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 464.4,
+   "op": 19.8,
+   "ni": 24.5,
+   "assets": 356.3,
+   "liab": 51.9,
+   "equity": 304.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 251.5,
+   "op": -74.6,
+   "ni": -129.5,
+   "assets": 772.1,
+   "liab": 440.0,
+   "equity": 332.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 8.8,
+   "op": -72.6,
+   "ni": -437.2,
+   "assets": 190.1,
+   "liab": 328.1,
+   "equity": -138.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 0.0,
+   "op": -24.5,
+   "ni": -388.6,
+   "assets": 4.9,
+   "liab": 199.3,
+   "equity": -194.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 30.4,
+   "op": -49.5,
+   "ni": 6.3,
+   "assets": 43.4,
+   "liab": 27.7,
+   "equity": 15.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 397.9,
+   "op": -71.5,
+   "ni": -132.2,
+   "assets": 173.6,
+   "liab": 160.9,
+   "equity": 12.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 1,
+   "rev": 114.5,
+   "op": -14.5,
+   "ni": -17.3
+  },
+  {
+   "y": 2023,
+   "q": 2,
+   "rev": 112.4,
+   "op": -12.4,
+   "ni": -10.5
+  },
+  {
+   "y": 2023,
+   "q": 3,
+   "rev": 120.8,
+   "op": -10.8,
+   "ni": -10.9
+  }
+ ]
+}

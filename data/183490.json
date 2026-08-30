@@ -1,0 +1,200 @@
+{
+ "name": "엔지켐생명과학",
+ "split_adjusted": false,
+ "legal_name": "엔지켐생명과학",
+ "code": "183490",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2017,
+   "rev": 261.3,
+   "op": -53.8,
+   "ni": -56.7,
+   "assets": 368.0,
+   "liab": 122.4,
+   "equity": 245.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 310.3,
+   "op": -143.3,
+   "ni": -144.2,
+   "assets": 670.5,
+   "liab": 82.3,
+   "equity": 588.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 314.7,
+   "op": -164.0,
+   "ni": -168.8,
+   "assets": 849.9,
+   "liab": 109.5,
+   "equity": 740.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 258.2,
+   "op": -191.1,
+   "ni": -175.1,
+   "assets": 1238.0,
+   "liab": 513.2,
+   "equity": 724.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 229.8,
+   "op": -207.5,
+   "ni": -278.6,
+   "assets": 1330.8,
+   "liab": 584.2,
+   "equity": 746.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 266.4,
+   "op": -146.6,
+   "ni": -250.9,
+   "assets": 2475.5,
+   "liab": 458.1,
+   "equity": 2017.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 760.4,
+   "op": -143.6,
+   "ni": -94.0,
+   "assets": 2115.5,
+   "liab": 169.2,
+   "equity": 1946.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 773.8,
+   "op": -131.9,
+   "ni": -220.9,
+   "assets": 1817.4,
+   "liab": 202.6,
+   "equity": 1614.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 677.5,
+   "op": -143.4,
+   "ni": -180.9,
+   "assets": 1485.9,
+   "liab": 98.3,
+   "equity": 1387.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 222.4,
+   "op": -22.0,
+   "ni": -10.8
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 196.0,
+   "op": -36.3,
+   "ni": -33.2
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 170.1,
+   "op": -26.7,
+   "ni": -15.9
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 185.2,
+   "op": -46.9,
+   "ni": -161.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 207.8,
+   "op": -25.6,
+   "ni": -18.3
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 164.0,
+   "op": -36.8,
+   "ni": -30.2
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 164.7,
+   "op": -37.2,
+   "ni": -33.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 141.0,
+   "op": -43.8,
+   "ni": -99.4
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 148.9,
+   "op": -32.4,
+   "ni": -19.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 235.4,
+   "op": -40.7,
+   "ni": -27.6
+  }
+ ]
+}

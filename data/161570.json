@@ -1,0 +1,152 @@
+{
+ "name": "더미동",
+ "split_adjusted": false,
+ "legal_name": "더미동",
+ "code": "161570",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 288.7,
+   "op": -62.5,
+   "ni": -31.0,
+   "assets": 534.6,
+   "liab": 40.7,
+   "equity": 493.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 281.6,
+   "op": -38.5,
+   "ni": -35.8,
+   "assets": 470.6,
+   "liab": 26.4,
+   "equity": 444.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 196.0,
+   "op": -33.9,
+   "ni": -125.4,
+   "assets": 339.7,
+   "liab": 18.4,
+   "equity": 321.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 248.8,
+   "op": -36.3,
+   "ni": -33.4,
+   "assets": 351.1,
+   "liab": 66.6,
+   "equity": 284.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 269.9,
+   "op": -43.0,
+   "ni": -69.2,
+   "assets": 220.8,
+   "liab": 42.0,
+   "equity": 178.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 105.2,
+   "op": -31.3,
+   "ni": -43.7,
+   "assets": 340.7,
+   "liab": 157.1,
+   "equity": 183.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 75.4,
+   "op": -22.6,
+   "ni": -52.3,
+   "assets": 309.0,
+   "liab": 116.5,
+   "equity": 192.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 109.8,
+   "op": -20.4,
+   "ni": -38.7,
+   "assets": 294.2,
+   "liab": 19.8,
+   "equity": 274.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 1,
+   "rev": 34.2,
+   "op": 0.5,
+   "ni": 1.7
+  },
+  {
+   "y": 2023,
+   "q": 2,
+   "rev": 22.7,
+   "op": -12.1,
+   "ni": -36.0
+  },
+  {
+   "y": 2023,
+   "q": 3,
+   "rev": 37.4,
+   "op": 4.6,
+   "ni": 18.0
+  },
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 15.5,
+   "op": -13.5,
+   "ni": -22.5
+  },
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 13.6,
+   "op": -7.1,
+   "ni": -0.7
+  }
+ ]
+}
