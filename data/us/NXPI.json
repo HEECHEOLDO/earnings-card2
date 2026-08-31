@@ -1,6 +1,7 @@
 {
  "name": "NXPI",
  "split_adjusted": false,
+ "restated_from": null,
  "legal_name": "NXP Semiconductors N.V.",
  "code": "NXPI",
  "cik": "0001413447",
@@ -8,7 +9,7 @@
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-08-31",
+ "updated": "2026-09-01",
  "annual": [
   {
    "p": 2016,
@@ -71,7 +72,7 @@
    "liab": 10696.0,
    "equity": 9151.0,
    "dps": 1.5,
-   "payout": null,
+   "payout": 818.7,
    "yield": null,
    "dps_adj": 1.5
   },

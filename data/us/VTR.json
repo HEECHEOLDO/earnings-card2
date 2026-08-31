@@ -1,6 +1,7 @@
 {
  "name": "VTR",
  "split_adjusted": false,
+ "restated_from": null,
  "legal_name": "Ventas, Inc.",
  "code": "VTR",
  "cik": "0000740260",
@@ -8,7 +9,7 @@
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-08-31",
+ "updated": "2026-09-01",
  "annual": [
   {
    "p": 2016,
@@ -84,7 +85,7 @@
    "liab": 13491.7,
    "equity": 10945.8,
    "dps": 1.8,
-   "payout": null,
+   "payout": 1229.4,
    "yield": null,
    "dps_adj": 1.8
   },
@@ -123,7 +124,7 @@
    "liab": 15047.1,
    "equity": 10829.6,
    "dps": 1.8,
-   "payout": null,
+   "payout": 848.3,
    "yield": null,
    "dps_adj": 1.8
   },

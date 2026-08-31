@@ -1,6 +1,7 @@
 {
  "name": "MCK",
  "split_adjusted": false,
+ "restated_from": null,
  "legal_name": "McKESSON CORPORATION",
  "code": "MCK",
  "cik": "0000927653",
@@ -8,7 +9,7 @@
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-08-31",
+ "updated": "2026-09-01",
  "annual": [
   {
    "p": 2017,
@@ -45,7 +46,7 @@
    "liab": null,
    "equity": 8287.0,
    "dps": 1.51,
-   "payout": null,
+   "payout": 876.2,
    "yield": null,
    "dps_adj": 1.51
   },

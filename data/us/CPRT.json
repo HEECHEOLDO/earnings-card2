@@ -1,6 +1,7 @@
 {
  "name": "CPRT",
  "split_adjusted": true,
+ "restated_from": null,
  "legal_name": "COPART, INC.",
  "code": "CPRT",
  "cik": "0000900075",
@@ -8,7 +9,7 @@
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-08-31",
+ "updated": "2026-09-01",
  "annual": [
   {
    "p": 2016,

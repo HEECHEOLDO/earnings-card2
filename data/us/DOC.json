@@ -1,6 +1,7 @@
 {
  "name": "DOC",
  "split_adjusted": false,
+ "restated_from": null,
  "legal_name": "Healthpeak Properties, Inc.",
  "code": "DOC",
  "cik": "0000765880",
@@ -8,7 +9,7 @@
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-08-31",
+ "updated": "2026-09-01",
  "annual": [
   {
    "p": 2016,
@@ -58,7 +59,7 @@
    "liab": 7365.4,
    "equity": 6658.9,
    "dps": 1.48,
-   "payout": null,
+   "payout": 1205.8,
    "yield": null,
    "dps_adj": 1.48
   },
@@ -136,7 +137,7 @@
    "liab": 12033.6,
    "equity": 8142.9,
    "dps": 1.22,
-   "payout": null,
+   "payout": 840.5,
    "yield": null,
    "dps_adj": 1.22
   }

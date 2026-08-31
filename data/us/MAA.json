@@ -1,6 +1,7 @@
 {
  "name": "MAA",
  "split_adjusted": true,
+ "restated_from": null,
  "legal_name": "MID-AMERICA APARTMENT COMMUNITIES, INC.",
  "code": "MAA",
  "cik": "0000912595",
@@ -8,7 +9,7 @@
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-08-31",
+ "updated": "2026-09-01",
  "annual": [
   {
    "p": 2012,

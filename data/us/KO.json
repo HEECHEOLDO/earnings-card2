@@ -1,6 +1,7 @@
 {
  "name": "KO",
  "split_adjusted": false,
+ "restated_from": null,
  "legal_name": "COCA COLA CO",
  "code": "KO",
  "cik": "0000021344",
@@ -8,7 +9,7 @@
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-08-31",
+ "updated": "2026-09-01",
  "annual": [
   {
    "p": 2016,
@@ -32,7 +33,7 @@
    "liab": null,
    "equity": 18977.0,
    "dps": 1.48,
-   "payout": null,
+   "payout": 512.8,
    "yield": null,
    "dps_adj": 1.48
   },

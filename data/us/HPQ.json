@@ -1,6 +1,7 @@
 {
  "name": "HPQ",
  "split_adjusted": false,
+ "restated_from": 2023,
  "legal_name": "HP INC.",
  "code": "HPQ",
  "cik": "0000047217",
@@ -8,7 +9,7 @@
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-08-31",
+ "updated": "2026-09-01",
  "annual": [
   {
    "p": 2016,

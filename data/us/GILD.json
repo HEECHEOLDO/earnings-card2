@@ -1,6 +1,7 @@
 {
  "name": "GILD",
  "split_adjusted": false,
+ "restated_from": null,
  "legal_name": "GILEAD SCIENCES, INC.",
  "code": "GILD",
  "cik": "0000882095",
@@ -8,7 +9,7 @@
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-08-31",
+ "updated": "2026-09-01",
  "annual": [
   {
    "p": 2016,
@@ -123,7 +124,7 @@
    "liab": null,
    "equity": 19246.0,
    "dps": 3.08,
-   "payout": null,
+   "payout": 805.3,
    "yield": null,
    "dps_adj": 3.08
   },

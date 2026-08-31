@@ -1,6 +1,7 @@
 {
  "name": "MCHP",
  "split_adjusted": true,
+ "restated_from": null,
  "legal_name": "MICROCHIP TECHNOLOGY INCORPORATED",
  "code": "MCHP",
  "cik": "0000827054",
@@ -8,7 +9,7 @@
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-08-31",
+ "updated": "2026-09-01",
  "annual": [
   {
    "p": 2017,

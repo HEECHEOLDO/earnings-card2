@@ -1,6 +1,7 @@
 {
  "name": "DXCM",
  "split_adjusted": true,
+ "restated_from": null,
  "legal_name": "DEXCOM, INC.",
  "code": "DXCM",
  "cik": "0001093557",
@@ -8,7 +9,7 @@
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-08-31",
+ "updated": "2026-09-01",
  "annual": [
   {
    "p": 2016,

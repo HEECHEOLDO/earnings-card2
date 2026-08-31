@@ -1,6 +1,7 @@
 {
  "name": "PSX",
  "split_adjusted": false,
+ "restated_from": null,
  "legal_name": "Phillips 66",
  "code": "PSX",
  "cik": "0001534701",
@@ -8,7 +9,7 @@
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-08-31",
+ "updated": "2026-09-01",
  "annual": [
   {
    "p": 2016,

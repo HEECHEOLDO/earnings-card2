@@ -1,6 +1,7 @@
 {
  "name": "GEN",
  "split_adjusted": false,
+ "restated_from": null,
  "legal_name": "Gen Digital Inc.",
  "code": "GEN",
  "cik": "0000849399",
@@ -8,7 +9,7 @@
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-08-31",
+ "updated": "2026-09-01",
  "annual": [
   {
    "p": 2017,
@@ -45,7 +46,7 @@
    "liab": 10200.0,
    "equity": 5738.0,
    "dps": 0.3,
-   "payout": null,
+   "payout": 611.6,
    "yield": null,
    "dps_adj": 0.3
   },

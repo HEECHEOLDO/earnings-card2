@@ -1,6 +1,7 @@
 {
  "name": "KIM",
  "split_adjusted": false,
+ "restated_from": null,
  "legal_name": "KIMCO REALTY CORPORATION",
  "code": "KIM",
  "cik": "0000879101",
@@ -8,7 +9,7 @@
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-08-31",
+ "updated": "2026-09-01",
  "annual": [
   {
    "p": 2016,
@@ -97,7 +98,7 @@
    "liab": 8086.3,
    "equity": 9646.9,
    "dps": 0.84,
-   "payout": null,
+   "payout": 514.9,
    "yield": null,
    "dps_adj": 0.84
   },

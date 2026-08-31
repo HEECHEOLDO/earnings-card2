@@ -1,6 +1,7 @@
 {
  "name": "AEP",
  "split_adjusted": false,
+ "restated_from": null,
  "legal_name": "American Electric Power Company, Inc.",
  "code": "AEP",
  "cik": "0000004904",
@@ -8,7 +9,7 @@
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-08-31",
+ "updated": "2026-09-01",
  "annual": [
   {
    "p": 2016,

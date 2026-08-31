@@ -443,6 +443,30 @@ def normalize_shares(shares):
     return out
 
 
+def find_restatement(annual):
+    """사업 분할 등으로 과거 실적 기준이 바뀐 지점을 찾는다.
+
+    SEC 에는 원본과 재작성본이 모두 있고 우리는 최근 제출본을 쓴다.
+    그런데 재작성이 최근 몇 년만 이뤄지면 그 앞뒤로 기준이 갈려
+    매출이 갑자기 20% 넘게 꺾인 것처럼 보인다.
+    """
+    for i in range(len(annual) - 1, 0, -1):
+        a, b = annual[i - 1].get("rev"), annual[i].get("rev")
+        if not a or not b or a <= 0:
+            continue
+        drop = (a - b) / a
+        if drop >= 0.14:                  # 한 해 만에 14% 넘게 감소
+            # 앞뒤 모두 안정적이어야 '기준이 바뀐 것'이다.
+            # 경기민감주처럼 원래 오르내리는 회사와 구분하기 위함.
+            before = [x.get("rev") for x in annual[:i] if x.get("rev")]
+            after = [x.get("rev") for x in annual[i:] if x.get("rev")]
+            if len(before) < 2 or len(after) < 2:
+                continue
+            if max(before) / min(before) < 1.35 and max(after) / min(after) < 1.20:
+                return annual[i]["p"]
+    return None
+
+
 def payout_of(fy, A):
     """배당성향(%) = 주당배당금 x 주식수 / 순이익.
 
@@ -452,7 +476,10 @@ def payout_of(fy, A):
     if not dps or not ni or not sh or ni <= 0 or sh <= 0:
         return None
     v = dps * sh / ni * 100
-    if v <= 0 or v > 500:                 # 터무니없는 값 방어
+    # 일회성 손실로 순이익이 급감한 해는 배당성향이 수백 %가 되기도 한다.
+    # (코카콜라 2017 세제개편, 알트리아 JUUL 상각 등) 그것도 사실이므로 살린다.
+    # 다만 자릿수가 어긋난 수준(2000% 초과)은 데이터 오류로 보고 버린다.
+    if v <= 0 or v > 2000:
         return None
     return round(v, 1)
 
@@ -579,6 +606,11 @@ def collect_one(ticker, info):
             (f"{po}%" if po is not None else "-")))
     annual = annual[-YEARS:]
 
+    restated = find_restatement(annual)
+    if restated:
+        log("  [주의] FY%d 부터 실적 기준이 바뀐 것으로 보입니다" % restated)
+        log("         (사업 분할 등으로 과거를 다시 쓴 경우. 그 이전 연도와 직접 비교하기 어렵습니다)")
+
     split = adjust_splits(annual, A["shares"])
     if split:
         log("  [분할] 액면분할 감지 — 과거 주당배당금을 현재 주식 수 기준으로 환산")
@@ -620,6 +652,7 @@ def collect_one(ticker, info):
     return {
         "name": ticker,
         "split_adjusted": split,
+        "restated_from": restated,
         "legal_name": info["name"],
         "code": ticker,
         "cik": info["cik"],

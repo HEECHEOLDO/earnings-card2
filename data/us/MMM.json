@@ -1,6 +1,7 @@
 {
  "name": "MMM",
  "split_adjusted": false,
+ "restated_from": 2022,
  "legal_name": "3M COMPANY",
  "code": "MMM",
  "cik": "0000066740",
@@ -8,7 +9,7 @@
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-08-31",
+ "updated": "2026-09-01",
  "annual": [
   {
    "p": 2016,

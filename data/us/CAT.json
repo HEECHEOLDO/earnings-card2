@@ -1,6 +1,7 @@
 {
  "name": "CAT",
  "split_adjusted": false,
+ "restated_from": null,
  "legal_name": "CATERPILLAR INC",
  "code": "CAT",
  "cik": "0000018230",
@@ -8,7 +9,7 @@
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-08-31",
+ "updated": "2026-09-01",
  "annual": [
   {
    "p": 2016,

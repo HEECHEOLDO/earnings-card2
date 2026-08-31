@@ -1,6 +1,7 @@
 {
  "name": "REG",
  "split_adjusted": false,
+ "restated_from": null,
  "legal_name": "REGENCY CENTERS CORPORATION",
  "code": "REG",
  "cik": "0000910606",
@@ -8,7 +9,7 @@
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-08-31",
+ "updated": "2026-09-01",
  "annual": [
   {
    "p": 2017,
@@ -58,7 +59,7 @@
    "liab": 4878.8,
    "equity": 6058.1,
    "dps": 2.38,
-   "payout": null,
+   "payout": 852.4,
    "yield": null,
    "dps_adj": 2.38
   },

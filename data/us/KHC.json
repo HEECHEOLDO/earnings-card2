@@ -1,6 +1,7 @@
 {
  "name": "KHC",
  "split_adjusted": false,
+ "restated_from": null,
  "legal_name": "Kraft Heinz Co",
  "code": "KHC",
  "cik": "0001637459",
@@ -8,7 +9,7 @@
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-08-31",
+ "updated": "2026-09-01",
  "annual": [
   {
    "p": 2016,
@@ -71,7 +72,7 @@
    "liab": 49587.0,
    "equity": 50243.0,
    "dps": 1.6,
-   "payout": null,
+   "payout": 551.9,
    "yield": null,
    "dps_adj": 1.6
   },

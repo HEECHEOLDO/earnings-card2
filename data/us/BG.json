@@ -1,6 +1,7 @@
 {
  "name": "BG",
  "split_adjusted": false,
+ "restated_from": 2023,
  "legal_name": "BUNGE GLOBAL SA",
  "code": "BG",
  "cik": "0001996862",
@@ -8,7 +9,7 @@
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-08-31",
+ "updated": "2026-09-01",
  "annual": [
   {
    "p": 2021,

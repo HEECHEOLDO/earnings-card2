@@ -1,6 +1,7 @@
 {
  "name": "JNJ",
  "split_adjusted": false,
+ "restated_from": null,
  "legal_name": "Johnson & Johnson",
  "code": "JNJ",
  "cik": "0000200406",
@@ -8,7 +9,7 @@
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-08-31",
+ "updated": "2026-09-01",
  "annual": [
   {
    "p": 2016,
@@ -32,7 +33,7 @@
    "liab": 97143.0,
    "equity": 60160.0,
    "dps": 3.32,
-   "payout": null,
+   "payout": 701.1,
    "yield": null,
    "dps_adj": 3.32
   },

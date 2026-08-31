@@ -1,6 +1,7 @@
 {
  "name": "FIS",
  "split_adjusted": false,
+ "restated_from": null,
  "legal_name": "Fidelity National Information Services, Inc.",
  "code": "FIS",
  "cik": "0001136893",
@@ -8,7 +9,7 @@
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-08-31",
+ "updated": "2026-09-01",
  "annual": [
   {
    "p": 2016,
@@ -71,7 +72,7 @@
    "liab": 34355.0,
    "equity": 49313.0,
    "dps": 1.4,
-   "payout": null,
+   "payout": 555.6,
    "yield": null,
    "dps_adj": 1.4
   },

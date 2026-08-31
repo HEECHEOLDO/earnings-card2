@@ -1,6 +1,7 @@
 {
  "name": "AES",
  "split_adjusted": false,
+ "restated_from": null,
  "legal_name": "THE AES CORPORATION",
  "code": "AES",
  "cik": "0000874761",
@@ -8,7 +9,7 @@
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-08-31",
+ "updated": "2026-09-01",
  "annual": [
   {
    "p": 2016,
@@ -71,7 +72,7 @@
    "liab": null,
    "equity": 4720.0,
    "dps": 0.5804,
-   "payout": null,
+   "payout": 842.8,
    "yield": null,
    "dps_adj": 0.5804
   },

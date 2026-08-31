@@ -1,6 +1,7 @@
 {
  "name": "KMI",
  "split_adjusted": false,
+ "restated_from": null,
  "legal_name": "KINDER MORGAN, INC.",
  "code": "KMI",
  "cik": "0001506307",
@@ -8,7 +9,7 @@
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-08-31",
+ "updated": "2026-09-01",
  "annual": [
   {
    "p": 2016,
@@ -32,7 +33,7 @@
    "liab": 43931.0,
    "equity": 35124.0,
    "dps": 0.5,
-   "payout": null,
+   "payout": 609.3,
    "yield": null,
    "dps_adj": 0.5
   },
@@ -71,7 +72,7 @@
    "liab": 39407.0,
    "equity": 31838.0,
    "dps": 1.05,
-   "payout": null,
+   "payout": 1996.8,
    "yield": null,
    "dps_adj": 1.05
   },

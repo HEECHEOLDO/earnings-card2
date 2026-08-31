@@ -1,6 +1,7 @@
 {
  "name": "ERIE",
  "split_adjusted": false,
+ "restated_from": null,
  "legal_name": "ERIE INDEMNITY COMPANY",
  "code": "ERIE",
  "cik": "0000922621",
@@ -8,7 +9,7 @@
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-08-31",
+ "updated": "2026-09-01",
  "annual": [
   {
    "p": 2016,

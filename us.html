@@ -549,6 +549,15 @@
     }
   };
 
+  function pctOrDash(v) {
+    return (v === null || v === undefined || isNaN(v)) ? '-' : v.toFixed(1) + '%';
+  }
+
+  function restateNote() {
+    var y = state.company && state.company.restated_from;
+    return y ? ' · FY' + y + '부터 실적 기준이 바뀌어 그 이전과 직접 비교하기 어렵습니다' : '';
+  }
+
   function cardTitle(period, rows, spec, showLine) {
     // 배당 선을 실제로 그릴 때만 제목에 '·배당' 을 붙인다
     var withDiv = showLine !== false && !!spec && !!spec.line &&
@@ -775,7 +784,9 @@
         // 주당배당금은 환율 환산을 하지 않는다 ($1.05 를 1,451원으로 바꾸면 낯설다).
         // 다만 액면분할 보정값이 있으면 그걸 쓴다.
         dps: num(d.dps_adj != null ? d.dps_adj : d.dps), dpsRaw: num(d.dps),
-        payout: num(d.payout), yield: num(d.yield),
+        // 순손실인 해는 배당성향을 계산할 수 없다. 0 으로 바꾸면 '배당 안 함'처럼 보인다.
+        payout: d.payout == null ? null : num(d.payout),
+        yield: d.yield == null ? null : num(d.yield),
         margin: d.rev ? num(d.op) / d.rev * 100 : 0,
         netMargin: d.rev ? num(d.ni) / d.rev * 100 : 0
       };
@@ -805,7 +816,7 @@
 
   function seriesSpec(period, rows) {
     var won = function (v) { return Math.round(v).toLocaleString('ko-KR'); };
-    var pct = function (v) { return v.toFixed(1) + '%'; };
+    var pct = function (v) { return (v === null || v === undefined || isNaN(v)) ? '-' : v.toFixed(1) + '%'; };
     var yearBasis = function (last) { return "'" + last.label.slice(2) + '년 기준'; };
 
     if (period === 'dividend') {
@@ -1268,6 +1279,8 @@
       ? (adj ? '액면분할 반영' : '')
       : '연결 · ' + unit + (showLine && spec.unitNote ? ' · ' + spec.unitNote : '') +
         (showLine && state.company.split_adjusted ? ' · 액면분할 반영' : '') +
+        (state.company.restated_from
+          ? " · '" + String(state.company.restated_from).slice(2) + '년 기준 변경' : '') +
         (CUR === 'KRW' ? ' · ' + Math.round(FX.usdkrw).toLocaleString('ko-KR') + '원 기준' : '');
     ctx.fillText(unitText, CX + CWID, legendY - 2);
     ctx.textAlign = 'left';
@@ -1379,13 +1392,15 @@
       var a = company.annual, f = a[0], l = a[a.length - 1], n = a.length - 1;
       var rc = n > 0 && f.rev ? (Math.pow(l.rev / f.rev, 1 / n) - 1) * 100 : 0;
       var margin = a.reduce(function (s2, d) { return s2 + (d.rev ? d.op / d.rev * 100 : 0); }, 0) / a.length;
-      var payout = a.reduce(function (s2, d) { return s2 + (d.payout || 0); }, 0) / a.length;
+      var po = a.filter(function (d) { return d.payout != null; });
+      var payout = po.length
+        ? po.reduce(function (s2, d) { return s2 + d.payout; }, 0) / po.length : null;
       var st = 0;
       for (var i = a.length - 1; i >= 0; i--) { if (a[i].dps > 0) st++; else break; }
       items = [
         ['매출 CAGR', rc.toFixed(1) + '%'],
         ['평균 영업이익률', margin.toFixed(1) + '%'],
-        ['평균 배당성향', payout.toFixed(1) + '%'],
+        ['평균 배당성향', pctOrDash(payout)],
         ['연속 배당', st + '년']
       ];
     } else {
@@ -1485,7 +1500,7 @@
       body = rows.map(function (r) {
         return ['<td>' + r.label + '</td>',
           '<td>' + usd(r.dps) + '</td>',
-          '<td>' + r.payout.toFixed(1) + '%</td>',
+          '<td>' + pctOrDash(r.payout) + '</td>',
           '<td>' + Math.round(r.ni).toLocaleString('ko-KR') + '</td>'].join('');
       });
     } else if (period === 'annual') {
@@ -1496,7 +1511,7 @@
           '<td>' + fmtAmount(r.bar2, unit) + '</td>',
           '<td>' + r.margin.toFixed(1) + '%</td>',
           '<td>' + usd(r.dps) + '</td>',
-          '<td>' + r.payout.toFixed(1) + '%</td>'].join('');
+          '<td>' + pctOrDash(r.payout) + '</td>'].join('');
       });
     } else {
       head = ['분기', '매출(' + unit + ')', '영업이익(' + unit + ')', '순이익(' + unit + ')', '영업이익률'];
@@ -1513,7 +1528,7 @@
     document.getElementById('table-note').textContent =
       period === 'dividend'
         ? '배당은 달러 기준' + (state.company.split_adjusted ? ' · 액면분할 반영' : '')
-        : '단위 ' + unit;
+        : '단위 ' + unit + restateNote();
   }
 
   /* ============================================================

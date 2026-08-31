@@ -1,6 +1,7 @@
 {
  "name": "OTIS",
  "split_adjusted": false,
+ "restated_from": null,
  "legal_name": "OTIS WORLDWIDE CORPORATION",
  "code": "OTIS",
  "cik": "0001781335",
@@ -8,7 +9,7 @@
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-08-31",
+ "updated": "2026-09-01",
  "annual": [
   {
    "p": 2018,

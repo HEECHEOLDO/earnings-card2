@@ -1,6 +1,7 @@
 {
  "name": "DG",
  "split_adjusted": false,
+ "restated_from": null,
  "legal_name": "DOLLAR GENERAL CORP",
  "code": "DG",
  "cik": "0000029534",
@@ -8,7 +9,7 @@
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-08-31",
+ "updated": "2026-09-01",
  "annual": [
   {
    "p": 2017,

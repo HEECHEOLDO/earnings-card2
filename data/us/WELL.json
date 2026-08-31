@@ -1,6 +1,7 @@
 {
  "name": "WELL",
  "split_adjusted": false,
+ "restated_from": null,
  "legal_name": "WELLTOWER INC.",
  "code": "WELL",
  "cik": "0000766704",
@@ -8,7 +9,7 @@
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-08-31",
+ "updated": "2026-09-01",
  "annual": [
   {
    "p": 2016,
@@ -97,7 +98,7 @@
    "liab": 16499.2,
    "equity": 21009.6,
    "dps": 2.44,
-   "payout": null,
+   "payout": 706.9,
    "yield": null,
    "dps_adj": 2.44
   },

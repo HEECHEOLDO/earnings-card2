@@ -1,6 +1,7 @@
 {
  "name": "DHI",
  "split_adjusted": false,
+ "restated_from": null,
  "legal_name": "D.R. Horton, Inc.",
  "code": "DHI",
  "cik": "0000882184",
@@ -8,7 +9,7 @@
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-08-31",
+ "updated": "2026-09-01",
  "annual": [
   {
    "p": 2016,

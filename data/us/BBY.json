@@ -1,6 +1,7 @@
 {
  "name": "BBY",
  "split_adjusted": false,
+ "restated_from": null,
  "legal_name": "BEST BUY CO., INC.",
  "code": "BBY",
  "cik": "0000764478",
@@ -8,7 +9,7 @@
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-08-31",
+ "updated": "2026-09-01",
  "annual": [
   {
    "p": 2017,

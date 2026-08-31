@@ -1,6 +1,7 @@
 {
  "name": "GPC",
  "split_adjusted": false,
+ "restated_from": null,
  "legal_name": "GENUINE PARTS CO",
  "code": "GPC",
  "cik": "0000040987",
@@ -8,7 +9,7 @@
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-08-31",
+ "updated": "2026-09-01",
  "annual": [
   {
    "p": 2016,
@@ -136,7 +137,7 @@
    "liab": null,
    "equity": 4440.4,
    "dps": 4.12,
-   "payout": null,
+   "payout": 870.0,
    "yield": null,
    "dps_adj": 4.12
   }

@@ -1,6 +1,7 @@
 {
  "name": "VTRS",
  "split_adjusted": true,
+ "restated_from": null,
  "legal_name": "VIATRIS INC.",
  "code": "VTRS",
  "cik": "0001792044",
@@ -8,7 +9,7 @@
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-08-31",
+ "updated": "2026-09-01",
  "annual": [
   {
    "p": 2018,
@@ -84,7 +85,7 @@
    "liab": 27218.1,
    "equity": 20467.4,
    "dps": 0.48,
-   "payout": null,
+   "payout": 1059.1,
    "yield": null,
    "dps_adj": 0.48
   },

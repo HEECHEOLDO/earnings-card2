@@ -1,6 +1,7 @@
 {
  "name": "TRGP",
  "split_adjusted": false,
+ "restated_from": null,
  "legal_name": "TARGA RESOURCES CORP.",
  "code": "TRGP",
  "cik": "0001389170",
@@ -8,7 +9,7 @@
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-08-31",
+ "updated": "2026-09-01",
  "annual": [
   {
    "p": 2016,
@@ -32,7 +33,7 @@
    "liab": null,
    "equity": 6756.0,
    "dps": 3.64,
-   "payout": null,
+   "payout": 1394.7,
    "yield": null,
    "dps_adj": 3.64
   },

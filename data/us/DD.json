@@ -1,6 +1,7 @@
 {
  "name": "DD",
  "split_adjusted": true,
+ "restated_from": null,
  "legal_name": "DUPONT DE NEMOURS, INC.",
  "code": "DD",
  "cik": "0001666700",
@@ -8,7 +9,7 @@
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-08-31",
+ "updated": "2026-09-01",
  "annual": [
   {
    "p": 2016,
@@ -136,7 +137,7 @@
    "liab": 7472.0,
    "equity": 14103.0,
    "dps": 1.43,
-   "payout": null,
+   "payout": 681.2,
    "yield": null,
    "dps_adj": 1.43
   }
