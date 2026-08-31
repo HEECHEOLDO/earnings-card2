@@ -1,0 +1,216 @@
+{
+ "name": "AFL",
+ "split_adjusted": false,
+ "legal_name": "AFLAC INC",
+ "code": "AFL",
+ "cik": "0000004977",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 22559.0,
+   "op": 4117.0,
+   "ni": 2659.0,
+   "assets": 129819.0,
+   "liab": 109337.0,
+   "equity": 20482.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 21667.0,
+   "op": 4087.0,
+   "ni": 4604.0,
+   "assets": 137217.0,
+   "liab": 112619.0,
+   "equity": 24598.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 21758.0,
+   "op": 4354.0,
+   "ni": 2920.0,
+   "assets": 140406.0,
+   "liab": 116944.0,
+   "equity": 23462.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 22307.0,
+   "op": 4461.0,
+   "ni": 3304.0,
+   "assets": 152768.0,
+   "liab": 123809.0,
+   "equity": 28959.0,
+   "dps": 1.08,
+   "payout": 24.3,
+   "yield": null,
+   "dps_adj": 1.08
+  },
+  {
+   "p": 2020,
+   "rev": 22147.0,
+   "op": 4416.0,
+   "ni": 4778.0,
+   "assets": 165086.0,
+   "liab": 131527.0,
+   "equity": 33559.0,
+   "dps": 1.12,
+   "payout": 16.7,
+   "yield": null,
+   "dps_adj": 1.12
+  },
+  {
+   "p": 2021,
+   "rev": 21554.0,
+   "op": 4934.0,
+   "ni": 4231.0,
+   "assets": 157542.0,
+   "liab": 124289.0,
+   "equity": 17031.0,
+   "dps": 1.32,
+   "payout": 21.0,
+   "yield": null,
+   "dps_adj": 1.32
+  },
+  {
+   "p": 2022,
+   "rev": 19140.0,
+   "op": 4157.0,
+   "ni": 4418.0,
+   "assets": 131738.0,
+   "liab": 111598.0,
+   "equity": 20140.0,
+   "dps": 1.6,
+   "payout": 23.0,
+   "yield": null,
+   "dps_adj": 1.6
+  },
+  {
+   "p": 2023,
+   "rev": 18701.0,
+   "op": null,
+   "ni": 4659.0,
+   "assets": 126724.0,
+   "liab": 104739.0,
+   "equity": 21985.0,
+   "dps": 1.68,
+   "payout": 21.5,
+   "yield": null,
+   "dps_adj": 1.68
+  },
+  {
+   "p": 2024,
+   "rev": 18927.0,
+   "op": null,
+   "ni": 5443.0,
+   "assets": 117566.0,
+   "liab": 91468.0,
+   "equity": 26098.0,
+   "dps": 2,
+   "payout": 20.7,
+   "yield": null,
+   "dps_adj": 2.0
+  },
+  {
+   "p": 2025,
+   "rev": 17164.0,
+   "op": null,
+   "ni": 3646.0,
+   "assets": 116470.0,
+   "liab": 86980.0,
+   "equity": 29490.0,
+   "dps": 2.32,
+   "payout": 33.9,
+   "yield": null,
+   "dps_adj": 2.32
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 5436.0,
+   "op": null,
+   "ni": 1879.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 5138.0,
+   "op": null,
+   "ni": 1755.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 2949.0,
+   "op": null,
+   "ni": -93.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 5404.0,
+   "op": null,
+   "ni": 1902.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 3398.0,
+   "op": null,
+   "ni": 29.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 4160.0,
+   "op": null,
+   "ni": 599.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 4740.0,
+   "op": null,
+   "ni": 1639.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 4866.0,
+   "op": null,
+   "ni": 1379.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 4346.0,
+   "op": null,
+   "ni": 1019.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 4117.0,
+   "op": null,
+   "ni": 825.0
+  }
+ ]
+}

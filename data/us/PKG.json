@@ -1,0 +1,216 @@
+{
+ "name": "PKG",
+ "split_adjusted": false,
+ "legal_name": "PACKAGING CORP OF AMERICA",
+ "code": "PKG",
+ "cik": "0000075677",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 5779.0,
+   "op": 783.3,
+   "ni": 449.6,
+   "assets": 5777.0,
+   "liab": null,
+   "equity": 1759.8,
+   "dps": 2.36,
+   "payout": 49.1,
+   "yield": null,
+   "dps_adj": 2.36
+  },
+  {
+   "p": 2017,
+   "rev": 6444.9,
+   "op": 932.5,
+   "ni": 668.6,
+   "assets": 6197.5,
+   "liab": null,
+   "equity": 2182.6,
+   "dps": 2.52,
+   "payout": 35.2,
+   "yield": null,
+   "dps_adj": 2.52
+  },
+  {
+   "p": 2018,
+   "rev": 7014.6,
+   "op": 1067.7,
+   "ni": 738.0,
+   "assets": 6569.7,
+   "liab": null,
+   "equity": 2672.4,
+   "dps": 3,
+   "payout": 38.1,
+   "yield": null,
+   "dps_adj": 3.0
+  },
+  {
+   "p": 2019,
+   "rev": 6964.3,
+   "op": 1053.7,
+   "ni": 696.4,
+   "assets": 7235.8,
+   "liab": null,
+   "equity": 3071.0,
+   "dps": 3.16,
+   "payout": 42.6,
+   "yield": null,
+   "dps_adj": 3.16
+  },
+  {
+   "p": 2020,
+   "rev": 6658.2,
+   "op": 723.9,
+   "ni": 461.0,
+   "assets": 7433.2,
+   "liab": null,
+   "equity": 3246.3,
+   "dps": 3.37,
+   "payout": 68.8,
+   "yield": null,
+   "dps_adj": 3.37
+  },
+  {
+   "p": 2021,
+   "rev": 7730.3,
+   "op": 1241.4,
+   "ni": 841.1,
+   "assets": 7836.8,
+   "liab": null,
+   "equity": 3607.2,
+   "dps": 4,
+   "payout": 44.8,
+   "yield": null,
+   "dps_adj": 4.0
+  },
+  {
+   "p": 2022,
+   "rev": 8478.0,
+   "op": 1420.7,
+   "ni": 1029.8,
+   "assets": 8003.8,
+   "liab": null,
+   "equity": 3667.1,
+   "dps": 4.75,
+   "payout": 42.6,
+   "yield": null,
+   "dps_adj": 4.75
+  },
+  {
+   "p": 2023,
+   "rev": 7802.4,
+   "op": 1075.1,
+   "ni": 765.2,
+   "assets": 8681.1,
+   "liab": null,
+   "equity": 3997.3,
+   "dps": 5,
+   "payout": 58.2,
+   "yield": null,
+   "dps_adj": 5.0
+  },
+  {
+   "p": 2024,
+   "rev": 8383.3,
+   "op": 1101.3,
+   "ni": 805.1,
+   "assets": 8833.2,
+   "liab": null,
+   "equity": 4404.0,
+   "dps": 5,
+   "payout": 55.3,
+   "yield": null,
+   "dps_adj": 5.0
+  },
+  {
+   "p": 2025,
+   "rev": 8989.3,
+   "op": 1107.0,
+   "ni": 774.1,
+   "assets": 10725.5,
+   "liab": null,
+   "equity": 4598.0,
+   "dps": 5,
+   "payout": 57.7,
+   "yield": null,
+   "dps_adj": 5.0
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 1979.5,
+   "op": 196.0,
+   "ni": 146.9
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 2075.3,
+   "op": 276.0,
+   "ni": 198.9
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 2182.4,
+   "op": 327.1,
+   "ni": 238.1
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 2146.1,
+   "op": 302.2,
+   "ni": 221.2
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 2141.0,
+   "op": 280.3,
+   "ni": 203.8
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 2171.3,
+   "op": 333.7,
+   "ni": 241.5
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 2313.4,
+   "op": 324.5,
+   "ni": 226.9
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 2363.6,
+   "op": 168.5,
+   "ni": 101.9
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 2367.8,
+   "op": 251.3,
+   "ni": 170.9
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 2489.9,
+   "op": 291.2,
+   "ni": 192.1
+  }
+ ]
+}

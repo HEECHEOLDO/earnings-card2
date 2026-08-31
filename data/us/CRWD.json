@@ -1,0 +1,203 @@
+{
+ "name": "CRWD",
+ "split_adjusted": false,
+ "legal_name": "CrowdStrike Holdings, Inc.",
+ "code": "CRWD",
+ "cik": "0001535527",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2018,
+   "rev": 118.8,
+   "op": -131.4,
+   "ni": -135.5,
+   "assets": null,
+   "liab": null,
+   "equity": -369.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 249.8,
+   "op": -136.9,
+   "ni": -140.1,
+   "assets": 433.2,
+   "liab": 363.1,
+   "equity": -487.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 481.4,
+   "op": -146.1,
+   "ni": -141.8,
+   "assets": 1404.9,
+   "liab": 662.3,
+   "equity": 742.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 874.4,
+   "op": -92.5,
+   "ni": -92.6,
+   "assets": 2732.5,
+   "liab": 1860.7,
+   "equity": 871.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 1451.6,
+   "op": -142.5,
+   "ni": -232.4,
+   "assets": 3618.4,
+   "liab": 2580.7,
+   "equity": 1037.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 2241.2,
+   "op": -190.1,
+   "ni": -182.3,
+   "assets": 5026.5,
+   "liab": 3539.1,
+   "equity": 1487.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 3055.6,
+   "op": -19.1,
+   "ni": 73.4,
+   "assets": 6646.5,
+   "liab": 4309.4,
+   "equity": 2337.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 3953.6,
+   "op": -116.4,
+   "ni": -12.6,
+   "assets": 8701.6,
+   "liab": 5382.7,
+   "equity": 3794.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2026,
+   "rev": 4812.0,
+   "op": -293.3,
+   "ni": -161.2,
+   "assets": 12025.0,
+   "liab": 6885.5,
+   "equity": 5139.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 921.0,
+   "op": 6.9,
+   "ni": 46.3
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 963.9,
+   "op": 13.7,
+   "ni": 46.7
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 1010.2,
+   "op": -55.7,
+   "ni": -16.8
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 1058.5,
+   "op": -81.3,
+   "ni": -88.7
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 1103.4,
+   "op": -118.7,
+   "ni": -105.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 1169.0,
+   "op": -105.5,
+   "ni": -70.1
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 1234.2,
+   "op": -69.4,
+   "ni": -34.0
+  },
+  {
+   "y": 2026,
+   "q": 4,
+   "rev": 1305.4,
+   "op": 0.3,
+   "ni": 48.0
+  },
+  {
+   "y": 2027,
+   "q": 1,
+   "rev": 1385.6,
+   "op": -30.6,
+   "ni": 46.0
+  },
+  {
+   "y": 2027,
+   "q": 2,
+   "rev": 1470.9,
+   "op": -33.2,
+   "ni": 5.3
+  }
+ ]
+}

@@ -1,0 +1,216 @@
+{
+ "name": "CSGP",
+ "split_adjusted": true,
+ "legal_name": "COSTAR GROUP, INC.",
+ "code": "CSGP",
+ "cik": "0001057352",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 837.6,
+   "op": 144.9,
+   "ni": 85.1,
+   "assets": 2185.1,
+   "liab": 530.9,
+   "equity": 1654.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 965.2,
+   "op": 173.8,
+   "ni": 122.7,
+   "assets": 2873.4,
+   "liab": 222.2,
+   "equity": 2651.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 1191.8,
+   "op": 273.6,
+   "ni": 238.3,
+   "assets": 3313.0,
+   "liab": 291.0,
+   "equity": 3021.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 1399.7,
+   "op": 363.5,
+   "ni": 315.0,
+   "assets": 3854.0,
+   "liab": 448.4,
+   "equity": 3405.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 1659.0,
+   "op": 289.2,
+   "ni": 227.1,
+   "assets": 6915.4,
+   "liab": 1540.1,
+   "equity": 5375.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 1944.1,
+   "op": 432.3,
+   "ni": 292.6,
+   "assets": 7256.9,
+   "liab": 1545.2,
+   "equity": 5711.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 2182.4,
+   "op": 451.0,
+   "ni": 369.5,
+   "assets": 8402.5,
+   "liab": 1532.5,
+   "equity": 6868.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 2455.0,
+   "op": 282.0,
+   "ni": 374.7,
+   "assets": 8919.7,
+   "liab": 1581.1,
+   "equity": 7338.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 2736.0,
+   "op": 5.0,
+   "ni": 138.7,
+   "assets": 9257.0,
+   "liab": 1704.0,
+   "equity": 7553.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 3247.0,
+   "op": -72.0,
+   "ni": 6.5,
+   "assets": 10538.0,
+   "liab": 2167.0,
+   "equity": 8371.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 656.4,
+   "op": -42.8,
+   "ni": 6.7
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 677.8,
+   "op": -16.1,
+   "ni": 19.2
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 692.6,
+   "op": 23.7,
+   "ni": 53.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 709.2,
+   "op": 40.2,
+   "ni": 59.8
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 732.0,
+   "op": -43.0,
+   "ni": -15.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 781.0,
+   "op": -27.0,
+   "ni": 6.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 833.6,
+   "op": -51.1,
+   "ni": -30.9
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 900.4,
+   "op": 49.1,
+   "ni": 46.4
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 897.0,
+   "op": 3.0,
+   "ni": 3.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 925.0,
+   "op": 76.0,
+   "ni": 55.0
+  }
+ ]
+}

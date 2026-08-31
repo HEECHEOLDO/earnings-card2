@@ -1,0 +1,93 @@
+{
+ "name": "RF",
+ "split_adjusted": false,
+ "legal_name": "REGIONS FINANCIAL CORP",
+ "code": "RF",
+ "cik": "0001281761",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 58.0,
+   "op": null,
+   "ni": 1163.0,
+   "assets": 125968.0,
+   "liab": 109304.0,
+   "equity": 16664.0,
+   "dps": 0.255,
+   "payout": 27.5,
+   "yield": null,
+   "dps_adj": 0.255
+  },
+  {
+   "p": 2017,
+   "rev": 60.0,
+   "op": null,
+   "ni": 1263.0,
+   "assets": 124294.0,
+   "liab": 108102.0,
+   "equity": 16192.0,
+   "dps": 0.315,
+   "payout": 29.6,
+   "yield": null,
+   "dps_adj": 0.315
+  },
+  {
+   "p": 2018,
+   "rev": 71.0,
+   "op": null,
+   "ni": 1759.0,
+   "assets": 125688.0,
+   "liab": 110598.0,
+   "equity": 15090.0,
+   "dps": 0.46,
+   "payout": 28.6,
+   "yield": null,
+   "dps_adj": 0.46
+  },
+  {
+   "p": 2019,
+   "rev": 79.0,
+   "op": null,
+   "ni": 1582.0,
+   "assets": 126240.0,
+   "liab": 109945.0,
+   "equity": 16295.0,
+   "dps": 0.59,
+   "payout": 37.1,
+   "yield": null,
+   "dps_adj": 0.59
+  },
+  {
+   "p": 2020,
+   "rev": 84.0,
+   "op": null,
+   "ni": 1094.0,
+   "assets": 147389.0,
+   "liab": 129278.0,
+   "equity": 18111.0,
+   "dps": 0.62,
+   "payout": 54.3,
+   "yield": null,
+   "dps_adj": 0.62
+  },
+  {
+   "p": 2021,
+   "rev": 104.0,
+   "op": 46.0,
+   "ni": 2521.0,
+   "assets": 162938.0,
+   "liab": 144612.0,
+   "equity": 18326.0,
+   "dps": 0.65,
+   "payout": 24.6,
+   "yield": null,
+   "dps_adj": 0.65
+  }
+ ],
+ "quarterly": []
+}

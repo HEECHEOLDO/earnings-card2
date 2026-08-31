@@ -1,0 +1,216 @@
+{
+ "name": "DAL",
+ "split_adjusted": false,
+ "legal_name": "DELTA AIR LINES, INC.",
+ "code": "DAL",
+ "cik": "0000027904",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 39450.0,
+   "op": 6996.0,
+   "ni": 4195.0,
+   "assets": 51850.0,
+   "liab": null,
+   "equity": 11279.0,
+   "dps": 0.68,
+   "payout": 12.2,
+   "yield": null,
+   "dps_adj": 0.68
+  },
+  {
+   "p": 2017,
+   "rev": 41138.0,
+   "op": 5966.0,
+   "ni": 3205.0,
+   "assets": 53671.0,
+   "liab": null,
+   "equity": 12530.0,
+   "dps": 1.02,
+   "payout": 22.9,
+   "yield": null,
+   "dps_adj": 1.02
+  },
+  {
+   "p": 2018,
+   "rev": 44438.0,
+   "op": 5264.0,
+   "ni": 3935.0,
+   "assets": 60266.0,
+   "liab": null,
+   "equity": 13687.0,
+   "dps": 1.31,
+   "payout": 23.0,
+   "yield": null,
+   "dps_adj": 1.31
+  },
+  {
+   "p": 2019,
+   "rev": 47007.0,
+   "op": 6618.0,
+   "ni": 4767.0,
+   "assets": 64532.0,
+   "liab": null,
+   "equity": 15358.0,
+   "dps": 1.51,
+   "payout": 20.6,
+   "yield": null,
+   "dps_adj": 1.51
+  },
+  {
+   "p": 2020,
+   "rev": 17095.0,
+   "op": -12469.0,
+   "ni": -12385.0,
+   "assets": 71996.0,
+   "liab": null,
+   "equity": 1534.0,
+   "dps": 0.4,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 0.4
+  },
+  {
+   "p": 2021,
+   "rev": 29899.0,
+   "op": 1886.0,
+   "ni": 280.0,
+   "assets": 72459.0,
+   "liab": null,
+   "equity": 3887.0,
+   "dps": 0,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 0
+  },
+  {
+   "p": 2022,
+   "rev": 50582.0,
+   "op": 3661.0,
+   "ni": 1318.0,
+   "assets": 72288.0,
+   "liab": null,
+   "equity": 6582.0,
+   "dps": 0,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 0
+  },
+  {
+   "p": 2023,
+   "rev": 58048.0,
+   "op": 5521.0,
+   "ni": 4609.0,
+   "assets": 73644.0,
+   "liab": null,
+   "equity": 11105.0,
+   "dps": 0.2,
+   "payout": 2.8,
+   "yield": null,
+   "dps_adj": 0.2
+  },
+  {
+   "p": 2024,
+   "rev": 61643.0,
+   "op": 5995.0,
+   "ni": 3457.0,
+   "assets": 75372.0,
+   "liab": null,
+   "equity": 15293.0,
+   "dps": 0.5,
+   "payout": 9.3,
+   "yield": null,
+   "dps_adj": 0.5
+  },
+  {
+   "p": 2025,
+   "rev": 63364.0,
+   "op": 5822.0,
+   "ni": 5005.0,
+   "assets": 81317.0,
+   "liab": null,
+   "equity": 20853.0,
+   "dps": 0.675,
+   "payout": 8.7,
+   "yield": null,
+   "dps_adj": 0.675
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 13748.0,
+   "op": 614.0,
+   "ni": 37.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 16658.0,
+   "op": 2267.0,
+   "ni": 1305.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 15677.0,
+   "op": 1397.0,
+   "ni": 1272.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 15560.0,
+   "op": 1717.0,
+   "ni": 843.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 14040.0,
+   "op": 569.0,
+   "ni": 240.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 16648.0,
+   "op": 2102.0,
+   "ni": 2130.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 16673.0,
+   "op": 1684.0,
+   "ni": 1417.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 16003.0,
+   "op": 1467.0,
+   "ni": 1218.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 15854.0,
+   "op": 501.0,
+   "ni": -289.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 19757.0,
+   "op": 1864.0,
+   "ni": 1604.0
+  }
+ ]
+}

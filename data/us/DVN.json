@@ -1,0 +1,216 @@
+{
+ "name": "DVN",
+ "split_adjusted": false,
+ "legal_name": "DEVON ENERGY CORP/DE",
+ "code": "DVN",
+ "cik": "0001090012",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 6753.0,
+   "op": -2895.0,
+   "ni": -1458.0,
+   "assets": 28675.0,
+   "liab": null,
+   "equity": 12722.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 6501.0,
+   "op": null,
+   "ni": 1078.0,
+   "assets": 30241.0,
+   "liab": null,
+   "equity": 14104.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 8896.0,
+   "op": null,
+   "ni": 3224.0,
+   "assets": 19566.0,
+   "liab": null,
+   "equity": 9186.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 6220.0,
+   "op": null,
+   "ni": -353.0,
+   "assets": 13717.0,
+   "liab": null,
+   "equity": 5920.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 4828.0,
+   "op": null,
+   "ni": -2671.0,
+   "assets": 9912.0,
+   "liab": null,
+   "equity": 3019.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 12206.0,
+   "op": null,
+   "ni": 2808.0,
+   "assets": 21025.0,
+   "liab": null,
+   "equity": 9399.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 19169.0,
+   "op": null,
+   "ni": 6031.0,
+   "assets": 23271.0,
+   "liab": null,
+   "equity": 11296.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 15258.0,
+   "op": null,
+   "ni": 3739.0,
+   "assets": 24490.0,
+   "liab": null,
+   "equity": 12217.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 15940.0,
+   "op": null,
+   "ni": 2893.0,
+   "assets": 30489.0,
+   "liab": null,
+   "equity": 14704.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 17188.0,
+   "op": null,
+   "ni": 2642.0,
+   "assets": 31599.0,
+   "liab": null,
+   "equity": 15528.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 3596.0,
+   "op": null,
+   "ni": 609.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 3917.0,
+   "op": null,
+   "ni": 855.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 4024.0,
+   "op": null,
+   "ni": 825.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 4403.0,
+   "op": null,
+   "ni": 604.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 4452.0,
+   "op": null,
+   "ni": 509.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 4284.0,
+   "op": null,
+   "ni": 917.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 4331.0,
+   "op": null,
+   "ni": 693.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 4121.0,
+   "op": null,
+   "ni": 523.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 3807.0,
+   "op": null,
+   "ni": 120.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 7417.0,
+   "op": null,
+   "ni": 1911.0
+  }
+ ]
+}

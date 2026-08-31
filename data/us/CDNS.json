@@ -1,0 +1,216 @@
+{
+ "name": "CDNS",
+ "split_adjusted": false,
+ "legal_name": "CADENCE DESIGN SYSTEMS INC",
+ "code": "CDNS",
+ "cik": "0000813672",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 1816.1,
+   "op": 244.9,
+   "ni": 203.1,
+   "assets": 2096.9,
+   "liab": null,
+   "equity": 741.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 1943.0,
+   "op": 324.0,
+   "ni": 204.1,
+   "assets": 2418.7,
+   "liab": null,
+   "equity": 989.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 2138.0,
+   "op": 396.2,
+   "ni": 345.8,
+   "assets": 2468.7,
+   "liab": null,
+   "equity": 1288.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 2336.3,
+   "op": 491.8,
+   "ni": 989.0,
+   "assets": 3357.2,
+   "liab": null,
+   "equity": 2102.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 2682.9,
+   "op": 645.6,
+   "ni": 590.6,
+   "assets": 3950.8,
+   "liab": null,
+   "equity": 2493.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 2988.2,
+   "op": 779.1,
+   "ni": 696.0,
+   "assets": 4386.3,
+   "liab": null,
+   "equity": 2740.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 3561.7,
+   "op": 1073.7,
+   "ni": 849.0,
+   "assets": 5137.1,
+   "liab": null,
+   "equity": 2745.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 4090.0,
+   "op": 1251.2,
+   "ni": 1041.1,
+   "assets": 5669.5,
+   "liab": null,
+   "equity": 3404.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 4641.3,
+   "op": 1350.8,
+   "ni": 1055.5,
+   "assets": 8974.5,
+   "liab": null,
+   "equity": 4673.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 5296.8,
+   "op": 1492.0,
+   "ni": 1108.9,
+   "assets": 10153.1,
+   "liab": null,
+   "equity": 5474.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 1068.6,
+   "op": 336.5,
+   "ni": 323.9
+  },
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 1009.1,
+   "op": 250.0,
+   "ni": 247.6
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 1060.7,
+   "op": 293.9,
+   "ni": 229.5
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 1215.5,
+   "op": 350.1,
+   "ni": 238.1
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 1356.0,
+   "op": 456.9,
+   "ni": 340.2
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 1242.4,
+   "op": 361.5,
+   "ni": 273.6
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 1275.4,
+   "op": 241.8,
+   "ni": 160.1
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 1338.8,
+   "op": 425.4,
+   "ni": 287.1
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 1440.1,
+   "op": 463.3,
+   "ni": 388.1
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 1474.2,
+   "op": 431.3,
+   "ni": 335.7
+  }
+ ]
+}

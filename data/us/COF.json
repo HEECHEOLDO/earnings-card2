@@ -1,0 +1,216 @@
+{
+ "name": "COF",
+ "split_adjusted": false,
+ "legal_name": "CAPITAL ONE FINANCIAL CORP",
+ "code": "COF",
+ "cik": "0000927628",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 25501.0,
+   "op": 5484.0,
+   "ni": 3751.0,
+   "assets": 357033.0,
+   "liab": 309519.0,
+   "equity": 47514.0,
+   "dps": 1.6,
+   "payout": 21.5,
+   "yield": null,
+   "dps_adj": 1.6
+  },
+  {
+   "p": 2017,
+   "rev": 27237.0,
+   "op": 5492.0,
+   "ni": 1982.0,
+   "assets": 365693.0,
+   "liab": 316963.0,
+   "equity": 48730.0,
+   "dps": 1.6,
+   "payout": 39.1,
+   "yield": null,
+   "dps_adj": 1.6
+  },
+  {
+   "p": 2018,
+   "rev": 28076.0,
+   "op": 7318.0,
+   "ni": 6015.0,
+   "assets": 372538.0,
+   "liab": 320870.0,
+   "equity": 51668.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 28593.0,
+   "op": 6874.0,
+   "ni": 5546.0,
+   "assets": 390365.0,
+   "liab": 332354.0,
+   "equity": 58011.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 28523.0,
+   "op": 3203.0,
+   "ni": 2714.0,
+   "assets": 421602.0,
+   "liab": 361398.0,
+   "equity": 60204.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 30435.0,
+   "op": 15809.0,
+   "ni": 12390.0,
+   "assets": 432381.0,
+   "liab": 371352.0,
+   "equity": 61029.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 34250.0,
+   "op": 9240.0,
+   "ni": 7360.0,
+   "assets": 455249.0,
+   "liab": 402667.0,
+   "equity": 52582.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 36787.0,
+   "op": 6045.0,
+   "ni": 4887.0,
+   "assets": 478464.0,
+   "liab": 420375.0,
+   "equity": 58089.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 39112.0,
+   "op": 5910.0,
+   "ni": 4750.0,
+   "assets": 490144.0,
+   "liab": 429360.0,
+   "equity": 60784.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 53434.0,
+   "op": 2281.0,
+   "ni": 2453.0,
+   "assets": 669009.0,
+   "liab": 555393.0,
+   "equity": 113616.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 9506.0,
+   "op": 932.0,
+   "ni": 706.0
+  },
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 9402.0,
+   "op": 1582.0,
+   "ni": 1280.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 9506.0,
+   "op": 651.0,
+   "ni": 597.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 10014.0,
+   "op": 2218.0,
+   "ni": 1777.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 10190.0,
+   "op": 1459.0,
+   "ni": 1096.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 10000.0,
+   "op": 1729.0,
+   "ni": 1404.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 12492.0,
+   "op": -5929.0,
+   "ni": -4277.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 15359.0,
+   "op": 4382.0,
+   "ni": 3192.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 15583.0,
+   "op": 2099.0,
+   "ni": 2134.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 15231.0,
+   "op": 2699.0,
+   "ni": 2174.0
+  }
+ ]
+}

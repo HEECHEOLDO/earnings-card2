@@ -12,7 +12,7 @@ concurrency:
 jobs:
   collect:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 180
     permissions:
       contents: write
     steps:
@@ -23,6 +23,10 @@ jobs:
           python-version: '3.11'
 
       - name: 수집
+        env:
+          # SEC 는 이메일 형식 연락처를 요구합니다.
+          # 저장소 Settings > Secrets > Actions 에 SEC_UA 를 넣으면 그 값을 씁니다.
+          SEC_UA: ${{ secrets.SEC_UA }}
         run: python3 collect_us.py
 
       - name: 커밋 · 푸시

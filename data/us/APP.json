@@ -1,0 +1,177 @@
+{
+ "name": "APP",
+ "split_adjusted": false,
+ "legal_name": "AppLovin Corp",
+ "code": "APP",
+ "cik": "0001751008",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2019,
+   "rev": 994.1,
+   "op": 194.4,
+   "ni": 119.0,
+   "assets": null,
+   "liab": null,
+   "equity": -256.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 1451.1,
+   "op": -62.0,
+   "ni": -125.9,
+   "assets": 2154.6,
+   "liab": 2312.8,
+   "equity": -158.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 2793.1,
+   "op": 150.0,
+   "ni": 35.0,
+   "assets": 6163.6,
+   "liab": 4025.3,
+   "equity": 2138.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 2817.1,
+   "op": -47.8,
+   "ni": -193.0,
+   "assets": 5847.8,
+   "liab": 3945.2,
+   "equity": 1902.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 1841.8,
+   "op": 772.4,
+   "ni": 357.0,
+   "assets": 5359.2,
+   "liab": 4102.9,
+   "equity": 1256.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 3224.1,
+   "op": 1911.0,
+   "ni": 1580.0,
+   "assets": 5869.3,
+   "liab": 4779.4,
+   "equity": 1089.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 5480.7,
+   "op": 4151.9,
+   "ni": 3334.0,
+   "assets": 7259.6,
+   "liab": 5124.9,
+   "equity": 2134.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 1058.1,
+   "op": 339.6,
+   "ni": 236.2
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 711.0,
+   "op": 384.4,
+   "ni": 310.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 835.2,
+   "op": 534.3,
+   "ni": 434.4
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 619.7,
+   "op": 652.7,
+   "ni": 599.4
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 1159.0,
+   "op": 840.0,
+   "ni": 576.4
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 1258.8,
+   "op": 957.7,
+   "ni": 819.5
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 1405.0,
+   "op": 1079.0,
+   "ni": 835.5
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 1657.9,
+   "op": 1275.2,
+   "ni": 1102.5
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 1842.4,
+   "op": 1439.9,
+   "ni": 1205.6
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 1923.7,
+   "op": 1494.3,
+   "ni": 1266.5
+  }
+ ]
+}

@@ -1,0 +1,216 @@
+{
+ "name": "WYNN",
+ "split_adjusted": false,
+ "legal_name": "WYNN RESORTS LTD",
+ "code": "WYNN",
+ "cik": "0001174922",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 4345.8,
+   "op": 521.7,
+   "ni": 302.5,
+   "assets": 11953.6,
+   "liab": 11695.7,
+   "equity": 257.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 6070.2,
+   "op": 1055.6,
+   "ni": 889.3,
+   "assets": 12681.7,
+   "liab": 11603.4,
+   "equity": 1078.3,
+   "dps": 2,
+   "payout": 23.0,
+   "yield": null,
+   "dps_adj": 2.0
+  },
+  {
+   "p": 2018,
+   "rev": 6717.7,
+   "op": 735.5,
+   "ni": 803.1,
+   "assets": 13216.3,
+   "liab": 11401.5,
+   "equity": 1814.8,
+   "dps": 2.75,
+   "payout": 36.5,
+   "yield": null,
+   "dps_adj": 2.75
+  },
+  {
+   "p": 2019,
+   "rev": 6611.1,
+   "op": 878.3,
+   "ni": 311.4,
+   "assets": 13871.3,
+   "liab": 12329.8,
+   "equity": 1541.5,
+   "dps": 3.75,
+   "payout": 128.6,
+   "yield": null,
+   "dps_adj": 3.75
+  },
+  {
+   "p": 2020,
+   "rev": 2095.9,
+   "op": -1232.0,
+   "ni": -2326.9,
+   "assets": 13869.5,
+   "liab": 14606.9,
+   "equity": -737.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 3763.7,
+   "op": -394.5,
+   "ni": -1012.0,
+   "assets": 12530.8,
+   "liab": 13367.0,
+   "equity": -836.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 3756.8,
+   "op": -100.7,
+   "ni": -709.4,
+   "assets": 13415.1,
+   "liab": 15055.5,
+   "equity": -1640.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 6531.9,
+   "op": 840.2,
+   "ni": 782.2,
+   "assets": 13996.2,
+   "liab": 15097.2,
+   "equity": -1100.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 7128.0,
+   "op": 1132.7,
+   "ni": 639.7,
+   "assets": 12978.0,
+   "liab": 13946.6,
+   "equity": -968.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 7137.9,
+   "op": 1118.4,
+   "ni": 409.1,
+   "assets": 13108.1,
+   "liab": 14139.4,
+   "equity": -1031.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 1862.9,
+   "op": 362.9,
+   "ni": 176.5
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 1732.9,
+   "op": 269.7,
+   "ni": 146.3
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 1693.3,
+   "op": 133.2,
+   "ni": -5.4
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 1838.8,
+   "op": 366.9,
+   "ni": 322.4
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 1700.4,
+   "op": 268.6,
+   "ni": 81.4
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 1737.8,
+   "op": 264.6,
+   "ni": 77.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 1833.7,
+   "op": 310.5,
+   "ni": 128.4
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 1866.0,
+   "op": 274.7,
+   "ni": 122.3
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 1856.8,
+   "op": 282.6,
+   "ni": 150.5
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 1856.9,
+   "op": 297.6,
+   "ni": 182.6
+  }
+ ]
+}

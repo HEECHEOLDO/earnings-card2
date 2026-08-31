@@ -1,0 +1,216 @@
+{
+ "name": "IR",
+ "split_adjusted": true,
+ "legal_name": "Ingersoll Rand Inc.",
+ "code": "IR",
+ "cik": "0001699150",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 1939.4,
+   "op": 103.5,
+   "ni": -31.3,
+   "assets": 4316.0,
+   "liab": 4044.2,
+   "equity": 271.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 2375.4,
+   "op": 109.1,
+   "ni": 18.5,
+   "assets": 4621.2,
+   "liab": 3144.4,
+   "equity": 1476.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 2689.8,
+   "op": 443.0,
+   "ni": 269.4,
+   "assets": 4487.1,
+   "liab": 2811.1,
+   "equity": 1676.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 2017.5,
+   "op": 194.1,
+   "ni": 159.1,
+   "assets": 4628.4,
+   "liab": 2758.5,
+   "equity": 1869.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 3973.2,
+   "op": 59.6,
+   "ni": -32.4,
+   "assets": 16058.6,
+   "liab": 6869.1,
+   "equity": 9189.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 5152.4,
+   "op": 565.7,
+   "ni": 565.0,
+   "assets": 15154.5,
+   "liab": 6083.3,
+   "equity": 9071.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 5916.3,
+   "op": 817.3,
+   "ni": 609.0,
+   "assets": 14765.9,
+   "liab": 5508.7,
+   "equity": 9257.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 6876.1,
+   "op": 1164.3,
+   "ni": 785.0,
+   "assets": 15563.5,
+   "liab": 5716.8,
+   "equity": 9846.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 7235.0,
+   "op": 1300.1,
+   "ni": 846.0,
+   "assets": 18009.8,
+   "liab": 7764.5,
+   "equity": 10245.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 7650.9,
+   "op": 1144.6,
+   "ni": 589.0,
+   "assets": 18297.2,
+   "liab": 8143.2,
+   "equity": 10154.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 1670.1,
+   "op": 293.2,
+   "ni": 204.5
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 1805.3,
+   "op": 271.8,
+   "ni": 186.5
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 1861.0,
+   "op": 356.3,
+   "ni": 223.4
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 1898.6,
+   "op": 378.8,
+   "ni": 231.6
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 1716.8,
+   "op": 302.5,
+   "ni": 188.4
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 1887.9,
+   "op": 76.4,
+   "ni": -113.8
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 1955.0,
+   "op": 375.5,
+   "ni": 245.8
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 2091.2,
+   "op": 390.2,
+   "ni": 268.6
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 1847.2,
+   "op": 289.7,
+   "ni": 193.8
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 2048.8,
+   "op": 380.3,
+   "ni": 258.0
+  }
+ ]
+}

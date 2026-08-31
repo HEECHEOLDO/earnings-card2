@@ -1,0 +1,216 @@
+{
+ "name": "GNRC",
+ "split_adjusted": false,
+ "legal_name": "GENERAC HOLDINGS INC.",
+ "code": "GNRC",
+ "cik": "0001474735",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 1447.7,
+   "op": 202.8,
+   "ni": 97.2,
+   "assets": 1866.0,
+   "liab": 1427.4,
+   "equity": 397.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 1679.4,
+   "op": 250.6,
+   "ni": 159.6,
+   "assets": 2026.0,
+   "liab": 1427.7,
+   "equity": 554.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 2023.5,
+   "op": 357.2,
+   "ni": 241.2,
+   "assets": 2426.3,
+   "liab": 1604.0,
+   "equity": 761.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 2204.3,
+   "op": 372.2,
+   "ni": 252.3,
+   "assets": 2665.7,
+   "liab": 1571.6,
+   "equity": 1032.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 2485.2,
+   "op": 479.1,
+   "ni": 347.2,
+   "assets": 3235.4,
+   "liab": 1779.0,
+   "equity": 1390.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 3737.2,
+   "op": 721.1,
+   "ni": 556.6,
+   "assets": 4877.8,
+   "liab": 2605.6,
+   "equity": 2214.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 4564.7,
+   "op": 566.3,
+   "ni": 408.9,
+   "assets": 5169.5,
+   "liab": 2799.7,
+   "equity": 2259.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 4022.7,
+   "op": 386.2,
+   "ni": 217.1,
+   "assets": 5093.3,
+   "liab": 2743.7,
+   "equity": 2343.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 4295.8,
+   "op": 536.7,
+   "ni": 316.9,
+   "assets": 5109.3,
+   "liab": 2611.9,
+   "equity": 2497.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 4209.1,
+   "op": 289.2,
+   "ni": 161.4,
+   "assets": 5573.7,
+   "liab": 2934.6,
+   "equity": 2638.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 889.3,
+   "op": 66.9,
+   "ni": 26.5
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 998.2,
+   "op": 103.2,
+   "ni": 59.1
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 1173.6,
+   "op": 168.6,
+   "ni": 113.8
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 1234.8,
+   "op": 198.0,
+   "ni": 117.6
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 942.1,
+   "op": 83.6,
+   "ni": 44.3
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 1061.2,
+   "op": 111.8,
+   "ni": 74.4
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 1114.4,
+   "op": 103.1,
+   "ni": 66.6
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 1091.5,
+   "op": -9.3,
+   "ni": -23.9
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 1059.4,
+   "op": 117.3,
+   "ni": 73.1
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 1173.5,
+   "op": 210.4,
+   "ni": 143.0
+  }
+ ]
+}

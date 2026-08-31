@@ -1,0 +1,216 @@
+{
+ "name": "INVH",
+ "split_adjusted": false,
+ "legal_name": "Invitation Homes Inc.",
+ "code": "INVH",
+ "cik": "0001687229",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 922.6,
+   "op": 190.8,
+   "ni": -78.2,
+   "assets": 9732.4,
+   "liab": 7774.9,
+   "equity": 1957.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 1054.5,
+   "op": 118.2,
+   "ni": -88.9,
+   "assets": 18683.6,
+   "liab": 10033.8,
+   "equity": 8649.9,
+   "dps": 0.22,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 0.22
+  },
+  {
+   "p": 2018,
+   "rev": 1723.0,
+   "op": null,
+   "ni": -5.0,
+   "assets": 18063.4,
+   "liab": 9694.2,
+   "equity": 8369.2,
+   "dps": 0.44,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 0.44
+  },
+  {
+   "p": 2019,
+   "rev": 1764.7,
+   "op": null,
+   "ni": 147.1,
+   "assets": 17392.9,
+   "liab": 9126.8,
+   "equity": 8266.1,
+   "dps": 0.52,
+   "payout": 187.8,
+   "yield": null,
+   "dps_adj": 0.52
+  },
+  {
+   "p": 2020,
+   "rev": 1822.8,
+   "op": null,
+   "ni": 197.4,
+   "assets": 17506.2,
+   "liab": 8950.1,
+   "equity": 8556.1,
+   "dps": 0.6,
+   "payout": 168.3,
+   "yield": null,
+   "dps_adj": 0.6
+  },
+  {
+   "p": 2021,
+   "rev": 1996.6,
+   "op": null,
+   "ni": 262.8,
+   "assets": 18537.8,
+   "liab": 8699.0,
+   "equity": 9838.8,
+   "dps": 0.68,
+   "payout": 149.5,
+   "yield": null,
+   "dps_adj": 0.68
+  },
+  {
+   "p": 2022,
+   "rev": 2238.1,
+   "op": null,
+   "ni": 384.8,
+   "assets": 18536.7,
+   "liab": 8213.1,
+   "equity": 10323.6,
+   "dps": 0.88,
+   "payout": 139.4,
+   "yield": null,
+   "dps_adj": 0.88
+  },
+  {
+   "p": 2023,
+   "rev": 2432.3,
+   "op": null,
+   "ni": 521.0,
+   "assets": 19221.0,
+   "liab": 9030.5,
+   "equity": 10190.4,
+   "dps": 1.04,
+   "payout": 122.1,
+   "yield": null,
+   "dps_adj": 1.04
+  },
+  {
+   "p": 2024,
+   "rev": 2618.9,
+   "op": null,
+   "ni": 455.4,
+   "assets": 18701.0,
+   "liab": 8908.4,
+   "equity": 9792.5,
+   "dps": 1.41,
+   "payout": 189.7,
+   "yield": null,
+   "dps_adj": 1.41
+  },
+  {
+   "p": 2025,
+   "rev": 2729.3,
+   "op": null,
+   "ni": 589.9,
+   "assets": 18680.3,
+   "liab": 9112.4,
+   "equity": 9567.9,
+   "dps": 1.17,
+   "payout": 121.6,
+   "yield": null,
+   "dps_adj": 1.17
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 646.0,
+   "op": null,
+   "ni": 142.8
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 653.5,
+   "op": null,
+   "ni": 73.4
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 660.3,
+   "op": null,
+   "ni": 95.6
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 659.1,
+   "op": null,
+   "ni": 143.6
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 674.5,
+   "op": null,
+   "ni": 166.3
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 681.4,
+   "op": null,
+   "ni": 141.4
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 688.2,
+   "op": null,
+   "ni": 137.2
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 685.2,
+   "op": null,
+   "ni": 145.1
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 734.1,
+   "op": null,
+   "ni": 161.1
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 747.5,
+   "op": null,
+   "ni": 219.7
+  }
+ ]
+}

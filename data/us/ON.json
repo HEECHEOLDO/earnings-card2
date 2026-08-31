@@ -1,0 +1,216 @@
+{
+ "name": "ON",
+ "split_adjusted": false,
+ "legal_name": "ON SEMICONDUCTOR CORP",
+ "code": "ON",
+ "cik": "0001097864",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 3906.9,
+   "op": 246.8,
+   "ni": 184.5,
+   "assets": 6924.4,
+   "liab": 5046.5,
+   "equity": 1845.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 5543.1,
+   "op": 681.6,
+   "ni": 813.0,
+   "assets": 7195.1,
+   "liab": 4394.1,
+   "equity": 2801.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 5878.3,
+   "op": 847.2,
+   "ni": 629.9,
+   "assets": 7587.6,
+   "liab": 4393.5,
+   "equity": 3194.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 5517.9,
+   "op": 432.7,
+   "ni": 213.9,
+   "assets": 8425.5,
+   "liab": 5101.4,
+   "equity": 3324.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 5255.0,
+   "op": 348.7,
+   "ni": 236.4,
+   "assets": 8668.0,
+   "liab": 5109.9,
+   "equity": 3558.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 6739.8,
+   "op": 1287.6,
+   "ni": 1011.2,
+   "assets": 9626.0,
+   "liab": 5021.6,
+   "equity": 4604.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 8326.2,
+   "op": 2360.0,
+   "ni": 1903.8,
+   "assets": 11978.5,
+   "liab": 5771.5,
+   "equity": 6207.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 8253.0,
+   "op": 2538.7,
+   "ni": 2185.6,
+   "assets": 13215.2,
+   "liab": 5414.6,
+   "equity": 7800.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 7082.3,
+   "op": 1767.7,
+   "ni": 1574.6,
+   "assets": 14089.8,
+   "liab": 5275.3,
+   "equity": 8814.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 5995.4,
+   "op": 84.2,
+   "ni": 123.6,
+   "assets": 12524.1,
+   "liab": 4832.2,
+   "equity": 7691.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 1862.7,
+   "op": 525.2,
+   "ni": 453.7
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 1735.2,
+   "op": 388.5,
+   "ni": 338.4
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 1761.9,
+   "op": 445.4,
+   "ni": 402.7
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 1722.5,
+   "op": 408.6,
+   "ni": 379.8
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 1445.7,
+   "op": -573.7,
+   "ni": -485.2
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 1468.7,
+   "op": 193.4,
+   "ni": 171.7
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 1550.9,
+   "op": 264.4,
+   "ni": 255.3
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 1530.1,
+   "op": 200.1,
+   "ni": 181.8
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 1513.3,
+   "op": -53.4,
+   "ni": -32.9
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 1603.5,
+   "op": 258.6,
+   "ni": 227.5
+  }
+ ]
+}

@@ -1,0 +1,216 @@
+{
+ "name": "IFF",
+ "split_adjusted": true,
+ "legal_name": "INTERNATIONAL FLAVORS & FRAGRANCES INC",
+ "code": "IFF",
+ "cik": "0000051253",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 3116.3,
+   "op": 553.0,
+   "ni": 405.2,
+   "assets": 4017.0,
+   "liab": null,
+   "equity": 1631.1,
+   "dps": 2.4,
+   "payout": 47.2,
+   "yield": null,
+   "dps_adj": 1.2
+  },
+  {
+   "p": 2017,
+   "rev": 3398.7,
+   "op": 552.6,
+   "ni": 295.7,
+   "assets": 4598.9,
+   "liab": null,
+   "equity": 1689.3,
+   "dps": 2.66,
+   "payout": 71.1,
+   "yield": null,
+   "dps_adj": 1.33
+  },
+  {
+   "p": 2018,
+   "rev": 3977.5,
+   "op": 583.9,
+   "ni": 339.8,
+   "assets": 12889.4,
+   "liab": null,
+   "equity": 6043.0,
+   "dps": 2.84,
+   "payout": 73.2,
+   "yield": null,
+   "dps_adj": 1.42
+  },
+  {
+   "p": 2019,
+   "rev": 5140.0,
+   "op": 665.0,
+   "ni": 460.0,
+   "assets": 13287.4,
+   "liab": null,
+   "equity": 6229.0,
+   "dps": 2.96,
+   "payout": 72.1,
+   "yield": null,
+   "dps_adj": 1.48
+  },
+  {
+   "p": 2020,
+   "rev": 5084.0,
+   "op": 566.0,
+   "ni": 367.0,
+   "assets": 13555.0,
+   "liab": null,
+   "equity": 6322.0,
+   "dps": 3.04,
+   "payout": 92.8,
+   "yield": null,
+   "dps_adj": 1.52
+  },
+  {
+   "p": 2021,
+   "rev": 11656.0,
+   "op": 585.0,
+   "ni": 279.0,
+   "assets": 39658.0,
+   "liab": null,
+   "equity": 21117.0,
+   "dps": 3.12,
+   "payout": 271.7,
+   "yield": null,
+   "dps_adj": 3.12
+  },
+  {
+   "p": 2022,
+   "rev": 12440.0,
+   "op": -1326.0,
+   "ni": -1864.0,
+   "assets": 35522.0,
+   "liab": null,
+   "equity": 17647.0,
+   "dps": 3.2,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 3.2
+  },
+  {
+   "p": 2023,
+   "rev": 11479.0,
+   "op": -2110.0,
+   "ni": -2587.0,
+   "assets": 30978.0,
+   "liab": null,
+   "equity": 14580.0,
+   "dps": 3.24,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 3.24
+  },
+  {
+   "p": 2024,
+   "rev": 11484.0,
+   "op": 766.0,
+   "ni": 267.0,
+   "assets": 28723.0,
+   "liab": null,
+   "equity": 13869.0,
+   "dps": 1.6,
+   "payout": 153.4,
+   "yield": null,
+   "dps_adj": 1.6
+  },
+  {
+   "p": 2025,
+   "rev": 10890.0,
+   "op": -382.0,
+   "ni": -359.0,
+   "assets": 25539.0,
+   "liab": null,
+   "equity": 14186.0,
+   "dps": 1.6,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 1.6
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 2899.0,
+   "op": 199.0,
+   "ni": 61.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 2889.0,
+   "op": 191.0,
+   "ni": 172.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 2925.0,
+   "op": 249.0,
+   "ni": 59.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 2771.0,
+   "op": null,
+   "ni": null
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 2843.0,
+   "op": -903.0,
+   "ni": -1017.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 1919.0,
+   "op": 142.0,
+   "ni": 599.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 2694.0,
+   "op": 226.0,
+   "ni": 41.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 3434.0,
+   "op": 153.0,
+   "ni": 18.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 2741.0,
+   "op": 273.0,
+   "ni": 170.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 1954.0,
+   "op": 158.0,
+   "ni": 51.0
+  }
+ ]
+}

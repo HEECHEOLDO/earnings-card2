@@ -1,0 +1,216 @@
+{
+ "name": "FFIV",
+ "split_adjusted": false,
+ "legal_name": "F5, INC.",
+ "code": "FFIV",
+ "cik": "0001048695",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 944.5,
+   "op": 547.4,
+   "ni": 365.9,
+   "assets": 2306.3,
+   "liab": null,
+   "equity": 1185.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 2090.0,
+   "op": 564.0,
+   "ni": 420.8,
+   "assets": 2476.5,
+   "liab": null,
+   "equity": 1229.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 2161.4,
+   "op": 590.9,
+   "ni": 453.7,
+   "assets": 2605.5,
+   "liab": null,
+   "equity": 1285.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 2242.4,
+   "op": 518.5,
+   "ni": 427.7,
+   "assets": 3390.3,
+   "liab": 1628.8,
+   "equity": 1761.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 2350.8,
+   "op": 392.3,
+   "ni": 307.4,
+   "assets": 4677.9,
+   "liab": null,
+   "equity": 2232.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 2603.4,
+   "op": 394.0,
+   "ni": 331.2,
+   "assets": 4997.3,
+   "liab": null,
+   "equity": 2360.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 2695.8,
+   "op": 403.8,
+   "ni": 322.2,
+   "assets": 5276.2,
+   "liab": null,
+   "equity": 2469.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 2813.2,
+   "op": 472.6,
+   "ni": 394.9,
+   "assets": 5248.3,
+   "liab": null,
+   "equity": 2800.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 2816.1,
+   "op": 658.6,
+   "ni": 566.8,
+   "assets": 5613.0,
+   "liab": null,
+   "equity": 3129.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 3088.1,
+   "op": 765.9,
+   "ni": 692.4,
+   "assets": 6319.5,
+   "liab": null,
+   "equity": 3592.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 681.4,
+   "op": 140.0,
+   "ni": 119.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 695.5,
+   "op": 163.1,
+   "ni": 144.1
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 746.7,
+   "op": 191.0,
+   "ni": 165.3
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 766.5,
+   "op": 205.1,
+   "ni": 166.4
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 731.1,
+   "op": 158.9,
+   "ni": 145.5
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 780.4,
+   "op": 196.3,
+   "ni": 189.9
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 810.1,
+   "op": 205.7,
+   "ni": 190.5
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 822.5,
+   "op": 214.2,
+   "ni": 180.1
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 811.7,
+   "op": 179.0,
+   "ni": 147.8
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 865.1,
+   "op": 213.3,
+   "ni": 208.2
+  }
+ ]
+}

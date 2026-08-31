@@ -1,120 +1,509 @@
-# 해외(미국) 수집 종목 — 한 줄에 티커 하나. # 뒤는 메모
-# python3 collect_us.py --verify  로 SEC 등록명을 먼저 확인하세요.
+# S&P 500 + 나스닥 100 구성종목 — collect_us.py --build-tickers 로 생성
+# 생성일 2026-08-31
+# 'TICKER 34088' 처럼 뒤에 숫자를 적으면 그 CIK 를 직접 씁니다.
 
-# --- 빅테크 ---
-AAPL      # 애플
-MSFT      # 마이크로소프트
-NVDA      # 엔비디아
-GOOGL     # 알파벳 A
-AMZN      # 아마존
-META      # 메타
-AVGO      # 브로드컴
-TSLA      # 테슬라
-NFLX      # 넷플릭스
-AMD       # AMD
-CRM       # 세일즈포스
-ORCL      # 오라클
-ADBE      # 어도비
-CSCO      # 시스코
-QCOM      # 퀄컴
-TXN       # 텍사스인스트루먼트
-INTC      # 인텔
-MU        # 마이크론
-AMAT      # 어플라이드머티리얼즈
-LRCX      # 램리서치
-KLAC      # KLA
-ARM       # ARM
-PLTR      # 팔란티어
-NOW       # 서비스나우
-INTU      # 인튜이트
-UBER      # 우버
-ABNB      # 에어비앤비
-SHOP      # 쇼피파이
-COIN      # 코인베이스
+# --- S&P 500 (503) ---
 
-# --- 소비재 ---
-KO        # 코카콜라
-PEP       # 펩시코
-PG        # P&G
-COST      # 코스트코
-WMT       # 월마트
-MCD       # 맥도날드
-SBUX      # 스타벅스
-NKE       # 나이키
-HD        # 홈디포
-LOW       # 로우스
-TGT       # 타깃
-MDLZ      # 몬델리즈
-CL        # 콜게이트
-KMB       # 킴벌리클라크
-GIS       # 제너럴밀스
-KHC       # 크래프트하인즈
-MO        # 알트리아
-PM        # 필립모리스
-
-# --- 헬스케어 ---
-LLY       # 일라이릴리
-UNH       # 유나이티드헬스
-JNJ       # 존슨앤드존슨
-ABBV      # 애브비
-MRK       # 머크
-PFE       # 화이자
-TMO       # 서모피셔
-ABT       # 애보트
-AMGN      # 암젠
-DHR       # 다나허
-BMY       # 브리스톨마이어스
-GILD      # 길리어드
-ISRG      # 인튜이티브서지컬
-VRTX      # 버텍스
-REGN      # 리제네론
-
-# --- 금융 ---
-BRK-B     # 버크셔해서웨이 B
-JPM       # JP모건
-BAC       # 뱅크오브아메리카
-WFC       # 웰스파고
-GS        # 골드만삭스
-MS        # 모건스탠리
-BLK       # 블랙록
-SCHW      # 찰스슈왑
-AXP       # 아메리칸익스프레스
-V         # 비자
-MA        # 마스터카드
-PYPL      # 페이팔
-C         # 씨티그룹
-SPGI      # S&P글로벌
-CB        # 처브
-PGR       # 프로그레시브
-
-# --- 산업 · 에너지 · 소재 ---
-CAT       # 캐터필러
-DE        # 디어
-BA        # 보잉
-GE        # GE에어로스페이스
-HON       # 하니웰
-RTX       # RTX
-LMT       # 록히드마틴
-UNP       # 유니온퍼시픽
-UPS       # UPS
-FDX       # 페덱스
-WM        # 웨이스트매니지먼트
-XOM 34088 # 엑슨모빌 — 티커가 신설 지주회사로 잡혀서 옛 법인 CIK 를 지정
-CVX       # 셰브런
-COP       # 코노코필립스
-OXY       # 옥시덴탈
-SLB       # 슐룸베르거
-LIN       # 린데
-ECL       # 에코랩
-SHW       # 셔윈윌리엄스
-NUE       # 뉴코
-
-# --- 통신 · 미디어 · 기타 ---
-DIS       # 디즈니
-CMCSA     # 컴캐스트
-T         # AT&T
-VZ        # 버라이즌
-TMUS      # T모바일
-BKNG      # 부킹홀딩스
-MAR       # 메리어트
-CPNG      # 쿠팡
+MMM
+AOS
+ABT
+ABBV
+ACN
+ADBE
+AMD
+AES
+AFL
+A
+APD
+ABNB
+AKAM
+ALB
+ARE
+ALGN
+ALLE
+LNT
+ALL
+GOOGL
+GOOG
+MO
+AMZN
+AMCR
+AEE
+AEP
+AXP
+AIG
+AMT
+AWK
+AMP
+AME
+AMGN
+APH
+ADI
+AON
+APA
+APO
+AAPL
+AMAT
+APP
+APTV
+ACGL
+ADM
+ARES
+ANET
+AJG
+AIZ
+T
+ATO
+ADSK
+ADP
+AZO
+AVY
+AXON
+BKR
+BALL
+BAC
+BAX
+BDX
+BRK-B
+BBY
+TECH
+BIIB
+BLK
+BX
+XYZ
+BNY
+BA
+BKNG
+BSX
+BMY
+AVGO
+BR
+BRO
+BF-B
+BLDR
+BG
+BXP
+CHRW
+CDNS
+CPT
+COF
+CAH
+CCL
+CARR
+CVNA
+CASY
+CAT
+CBOE
+CBRE
+CDW
+COR
+CNC
+CNP
+CF
+CRL
+SCHW
+CHTR
+CVX
+CMG
+CB
+CHD
+CIEN
+CI
+CINF
+CTAS
+CSCO
+C
+CFG
+CLX
+CME
+CMS
+KO
+CTSH
+COHR
+COIN
+CL
+CMCSA
+FIX
+COP
+ED
+STZ
+CEG
+COO
+CPRT
+GLW
+CPAY
+CTVA
+CSGP
+COST
+CRH
+CRWD
+CCI
+CSX
+CMI
+CVS
+DHR
+DRI
+DDOG
+DVA
+DECK
+DE
+DELL
+DAL
+DVN
+DXCM
+FANG
+DLR
+DG
+DLTR
+D
+DPZ
+DASH
+DOV
+DOW
+DHI
+DTE
+DUK
+DD
+ETN
+EBAY
+ECHO
+ECL
+EIX
+EW
+ELV
+EME
+EMR
+ETR
+EOG
+EQT
+EFX
+EQIX
+ERIE
+ESS
+EL
+EG
+EVRG
+ES
+EXC
+EXE
+EXPE
+EXPD
+EXR
+XOM 34088
+FFIV
+FDS
+FICO
+FAST
+FRT
+FDX
+FDXF
+FERG
+FIS
+FITB
+FSLR
+FE
+FISV
+FLEX
+F
+FTNT
+FTV
+FOXA
+FOX
+BEN
+FCX
+GRMN
+IT
+GE
+GEHC
+GEV
+GEN
+GNRC
+GD
+GIS
+GM
+GPC
+GILD
+GPN
+GL
+GDDY
+GS
+HAL
+HIG
+HAS
+HCA
+DOC
+HSIC
+HSY
+HPE
+HLT
+HD
+HONA
+HON
+HRL
+HST
+HWM
+HPQ
+HUBB
+HUM
+HBAN
+HII
+IBM
+IEX
+IDXX
+ITW
+INCY
+IR
+PODD
+INTC
+IBKR
+ICE
+IFF
+IP
+INTU
+ISRG
+IVZ
+INVH
+IQV
+IRM
+JBHT
+JBL
+JKHY
+J
+JNJ
+JCI
+JPM
+KVUE
+KDP
+KEY
+KEYS
+KMB
+KIM
+KMI
+KKR
+KLAC
+KHC
+KR
+LHX
+LH
+LRCX
+LVS
+LDOS
+LEN
+LII
+LLY
+LIN
+LYV
+LMT
+L
+LOW
+LULU
+LITE
+LYB
+MTB
+MPC
+MAR
+MRSH
+MLM
+MRVL
+MAS
+MA
+MKC
+MCD
+MCK
+MDT
+MRK
+META
+MET
+MTD
+MGM
+MCHP
+MU
+MSFT
+MAA
+MRNA
+TAP
+MDLZ
+MPWR
+MNST
+MCO
+MS
+MOS
+MSI
+MSCI
+NDAQ
+NTAP
+NFLX
+NEM
+NWSA
+NWS
+NEE
+NKE
+NI
+NDSN
+NSC
+NTRS
+NOC
+NCLH
+NRG
+NUE
+NVDA
+NVR
+NXPI
+ORLY
+OXY
+ODFL
+OMC
+ON
+OKE
+ORCL
+OTIS
+PCAR
+PKG
+PLTR
+PANW
+PSKY
+PH
+PAYX
+PYPL
+PNR
+PEP
+PFE
+PCG
+PM
+PSX
+PNW
+PNC
+PPG
+PPL
+PFG
+PG
+PGR
+PLD
+PRU
+PEG
+PTC
+PSA
+PHM
+PWR
+QCOM
+DGX
+Q
+RL
+RJF
+RDDT
+RTX
+O
+REG
+REGN
+RF
+RSG
+RMD
+RVTY
+HOOD
+ROK
+ROL
+ROP
+ROST
+RCL
+SPGI
+CRM
+SNDK
+SBAC
+SLB
+STX
+SRE
+NOW
+SHW
+SPG
+SWKS
+SJM
+SW
+SNA
+SOLV
+SO
+LUV
+SWK
+SBUX
+STT
+STLD
+STE
+SYK
+SMCI
+SYF
+SNPS
+SYY
+TMUS
+TROW
+TTWO
+TPR
+TRGP
+TGT
+TEL
+TDY
+TER
+TSLA
+TXN
+TPL
+TXT
+TMO
+TJX
+TKO
+TTD
+TSCO
+TT
+TDG
+TRV
+TRMB
+TFC
+TYL
+TSN
+USB
+UBER
+UDR
+ULTA
+UNP
+UAL
+UPS
+URI
+UNH
+UHS
+VLO
+VEEV
+VTR
+VLTO
+VRSN
+VRSK
+VZ
+VRTX
+VRT
+VTRS
+VICI
+V
+VST
+VMRK
+VMC
+WRB
+GWW
+WAB
+WMT
+DIS
+WBD
+WM
+WAT
+WEC
+WFC
+WELL
+WST
+WDC
+WY
+WSM
+WMB
+WTW
+WDAY
+WYNN
+XEL
+XYL
+YUM
+ZBRA
+ZBH
+ZTS

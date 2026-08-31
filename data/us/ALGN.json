@@ -1,0 +1,216 @@
+{
+ "name": "ALGN",
+ "split_adjusted": false,
+ "legal_name": "ALIGN TECHNOLOGY INC",
+ "code": "ALGN",
+ "cik": "0001097149",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 1079.9,
+   "op": 248.9,
+   "ni": 189.7,
+   "assets": 1396.2,
+   "liab": 400.8,
+   "equity": 999.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 1473.4,
+   "op": 353.6,
+   "ni": 231.4,
+   "assets": 1784.0,
+   "liab": 629.7,
+   "equity": 1154.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 1966.5,
+   "op": 466.6,
+   "ni": 400.2,
+   "assets": 2052.5,
+   "liab": 799.6,
+   "equity": 1252.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 2406.8,
+   "op": 542.5,
+   "ni": 442.8,
+   "assets": 2500.7,
+   "liab": 1154.5,
+   "equity": 1346.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 2471.9,
+   "op": 387.2,
+   "ni": 1775.9,
+   "assets": 4829.7,
+   "liab": 1595.8,
+   "equity": 3233.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 3952.6,
+   "op": 976.4,
+   "ni": 772.0,
+   "assets": 5942.1,
+   "liab": 2319.4,
+   "equity": 3622.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 3734.6,
+   "op": 642.6,
+   "ni": 362.0,
+   "assets": 5947.9,
+   "liab": 2346.6,
+   "equity": 3601.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 3862.3,
+   "op": 643.3,
+   "ni": 445.0,
+   "assets": 6083.9,
+   "liab": 2453.4,
+   "equity": 3630.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 3999.0,
+   "op": 607.6,
+   "ni": 421.0,
+   "assets": 6214.6,
+   "liab": 2362.6,
+   "equity": 3852.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 4035.0,
+   "op": 545.8,
+   "ni": 410.0,
+   "assets": 6233.7,
+   "liab": 2184.5,
+   "equity": 4049.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 997.4,
+   "op": 154.1,
+   "ni": 105.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 1028.5,
+   "op": 147.0,
+   "ni": 96.6
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 977.9,
+   "op": 162.3,
+   "ni": 116.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 995.2,
+   "op": 144.1,
+   "ni": 103.4
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 979.3,
+   "op": 131.1,
+   "ni": 93.2
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 1012.4,
+   "op": 163.0,
+   "ni": 124.6
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 995.7,
+   "op": 96.3,
+   "ni": 56.8
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 1047.6,
+   "op": 155.3,
+   "ni": 135.4
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 1040.1,
+   "op": 142.0,
+   "ni": 112.8
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 1056.2,
+   "op": 154.0,
+   "ni": 108.3
+  }
+ ]
+}

@@ -1,0 +1,216 @@
+{
+ "name": "JBL",
+ "split_adjusted": false,
+ "legal_name": "JABIL INC",
+ "code": "JBL",
+ "cik": "0000898293",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 18353.1,
+   "op": 522.8,
+   "ni": 254.9,
+   "assets": 10322.7,
+   "liab": 7865.2,
+   "equity": 2457.5,
+   "dps": 0.32,
+   "payout": 23.9,
+   "yield": null,
+   "dps_adj": 0.32
+  },
+  {
+   "p": 2017,
+   "rev": 19063.1,
+   "op": 410.2,
+   "ni": 127.2,
+   "assets": 11096.0,
+   "liab": 8727.7,
+   "equity": 2368.3,
+   "dps": 0.32,
+   "payout": 45.8,
+   "yield": null,
+   "dps_adj": 0.32
+  },
+  {
+   "p": 2018,
+   "rev": 22095.4,
+   "op": 542.2,
+   "ni": 87.5,
+   "assets": 12045.6,
+   "liab": 10082.3,
+   "equity": 1962.0,
+   "dps": 0.32,
+   "payout": 63.0,
+   "yield": null,
+   "dps_adj": 0.32
+  },
+  {
+   "p": 2019,
+   "rev": 25282.0,
+   "op": 701.0,
+   "ni": 289.0,
+   "assets": 12970.5,
+   "liab": 11069.7,
+   "equity": 1900.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 27266.0,
+   "op": 500.0,
+   "ni": 57.0,
+   "assets": 14397.0,
+   "liab": 12572.0,
+   "equity": 1825.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 29285.0,
+   "op": 1055.0,
+   "ni": 698.0,
+   "assets": 16654.0,
+   "liab": 14517.0,
+   "equity": 2137.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 33478.0,
+   "op": 1393.0,
+   "ni": 996.0,
+   "assets": 19717.0,
+   "liab": 17265.0,
+   "equity": 2452.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 34702.0,
+   "op": 1537.0,
+   "ni": 818.0,
+   "assets": 19424.0,
+   "liab": 16557.0,
+   "equity": 2867.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 28883.0,
+   "op": 2013.0,
+   "ni": 1388.0,
+   "assets": 17351.0,
+   "liab": 15614.0,
+   "equity": 1737.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 29802.0,
+   "op": 1182.0,
+   "ni": 657.0,
+   "assets": 18543.0,
+   "liab": 17026.0,
+   "equity": 1517.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 6767.0,
+   "op": 1131.0,
+   "ni": 927.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 6765.0,
+   "op": 261.0,
+   "ni": 129.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 6964.0,
+   "op": 318.0,
+   "ni": 138.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 6994.0,
+   "op": 197.0,
+   "ni": 100.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 6728.0,
+   "op": 245.0,
+   "ni": 117.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 7828.0,
+   "op": 403.0,
+   "ni": 222.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 8252.0,
+   "op": 337.0,
+   "ni": 218.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 8305.0,
+   "op": 283.0,
+   "ni": 146.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 8282.0,
+   "op": 374.0,
+   "ni": 222.0
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 8751.0,
+   "op": 445.0,
+   "ni": 275.0
+  }
+ ]
+}

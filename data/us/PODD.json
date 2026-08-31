@@ -1,0 +1,216 @@
+{
+ "name": "PODD",
+ "split_adjusted": false,
+ "legal_name": "INSULET CORP",
+ "code": "PODD",
+ "cik": "0001145197",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 367.0,
+   "op": -10.7,
+   "ni": -28.9,
+   "assets": 456.6,
+   "liab": 393.5,
+   "equity": 63.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 463.8,
+   "op": -7.4,
+   "ni": -26.8,
+   "assets": 840.0,
+   "liab": 661.1,
+   "equity": 158.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 563.8,
+   "op": 27.4,
+   "ni": 3.3,
+   "assets": 928.7,
+   "liab": 716.6,
+   "equity": 212.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 738.2,
+   "op": 50.0,
+   "ni": 11.6,
+   "assets": 1142.9,
+   "liab": 1067.0,
+   "equity": 75.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 904.4,
+   "op": 51.5,
+   "ni": 6.8,
+   "assets": 1872.9,
+   "liab": 1269.3,
+   "equity": 603.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 1098.8,
+   "op": 126.0,
+   "ni": 16.8,
+   "assets": 2048.8,
+   "liab": 1492.5,
+   "equity": 556.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 1305.3,
+   "op": 37.6,
+   "ni": 4.6,
+   "assets": 2251.1,
+   "liab": 1774.7,
+   "equity": 476.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 1697.1,
+   "op": 220.1,
+   "ni": 206.3,
+   "assets": 2588.2,
+   "liab": 1855.5,
+   "equity": 732.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 2071.6,
+   "op": 308.9,
+   "ni": 418.3,
+   "assets": 3087.7,
+   "liab": 1876.1,
+   "equity": 1211.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 2708.1,
+   "op": 473.8,
+   "ni": 247.1,
+   "assets": 3190.4,
+   "liab": 1675.2,
+   "equity": 1515.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 441.7,
+   "op": 56.9,
+   "ni": 51.5
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 488.5,
+   "op": 54.5,
+   "ni": 188.6
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 543.9,
+   "op": 88.1,
+   "ni": 77.5
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 597.5,
+   "op": 109.4,
+   "ni": 100.7
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 569.0,
+   "op": 88.8,
+   "ni": 35.4
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 649.1,
+   "op": 121.1,
+   "ni": 22.5
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 706.3,
+   "op": 117.7,
+   "ni": 87.6
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 783.7,
+   "op": 146.2,
+   "ni": 101.6
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 761.7,
+   "op": 122.1,
+   "ni": 91.1
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 801.7,
+   "op": 129.7,
+   "ni": 95.0
+  }
+ ]
+}

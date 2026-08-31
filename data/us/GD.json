@@ -1,0 +1,216 @@
+{
+ "name": "GD",
+ "split_adjusted": false,
+ "legal_name": "GENERAL DYNAMICS CORP",
+ "code": "GD",
+ "cik": "0000040533",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 30561.0,
+   "op": 3744.0,
+   "ni": 2572.0,
+   "assets": 33172.0,
+   "liab": null,
+   "equity": 10301.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 30973.0,
+   "op": 4236.0,
+   "ni": 2912.0,
+   "assets": 35046.0,
+   "liab": null,
+   "equity": 11801.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 36193.0,
+   "op": 4394.0,
+   "ni": 3345.0,
+   "assets": 45887.0,
+   "liab": null,
+   "equity": 12110.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 39350.0,
+   "op": 4570.0,
+   "ni": 3484.0,
+   "assets": 49349.0,
+   "liab": null,
+   "equity": 13978.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 37925.0,
+   "op": 4133.0,
+   "ni": 3167.0,
+   "assets": 51308.0,
+   "liab": null,
+   "equity": 15661.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 38469.0,
+   "op": 4163.0,
+   "ni": 3257.0,
+   "assets": 50073.0,
+   "liab": null,
+   "equity": 17641.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 39407.0,
+   "op": 4211.0,
+   "ni": 3390.0,
+   "assets": 51585.0,
+   "liab": null,
+   "equity": 18568.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 42272.0,
+   "op": 4245.0,
+   "ni": 3315.0,
+   "assets": 54810.0,
+   "liab": null,
+   "equity": 21299.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 47716.0,
+   "op": 4796.0,
+   "ni": 3782.0,
+   "assets": 55880.0,
+   "liab": null,
+   "equity": 22063.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 52550.0,
+   "op": 5356.0,
+   "ni": 4210.0,
+   "assets": 57249.0,
+   "liab": null,
+   "equity": 25622.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 11668.0,
+   "op": 1288.0,
+   "ni": 1005.0
+  },
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 10731.0,
+   "op": 1036.0,
+   "ni": 799.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 11976.0,
+   "op": 1156.0,
+   "ni": 905.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 11671.0,
+   "op": 1181.0,
+   "ni": 930.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 13338.0,
+   "op": 1423.0,
+   "ni": 1148.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 12223.0,
+   "op": 1268.0,
+   "ni": 994.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 13041.0,
+   "op": 1305.0,
+   "ni": 1014.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 12907.0,
+   "op": 1331.0,
+   "ni": 1059.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 14379.0,
+   "op": 1452.0,
+   "ni": 1143.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 13481.0,
+   "op": 1420.0,
+   "ni": 1125.0
+  }
+ ]
+}

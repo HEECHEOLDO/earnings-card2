@@ -1,0 +1,77 @@
+{
+ "name": "PSKY",
+ "split_adjusted": false,
+ "legal_name": "Paramount Skydance Corp",
+ "code": "PSKY",
+ "cik": "0002041610",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2023,
+   "rev": 29652.0,
+   "op": -451.0,
+   "ni": -576.0,
+   "assets": null,
+   "liab": null,
+   "equity": 23050.0,
+   "dps": 0.39,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 0.39
+  },
+  {
+   "p": 2024,
+   "rev": 29213.0,
+   "op": -5269.0,
+   "ni": -6149.0,
+   "assets": 46172.0,
+   "liab": null,
+   "equity": 16782.0,
+   "dps": 0.2,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 0.2
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 6731.0,
+   "op": 337.0,
+   "ni": 21.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 7192.0,
+   "op": 550.0,
+   "ni": 161.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 6849.0,
+   "op": 399.0,
+   "ni": 61.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 7347.0,
+   "op": 616.0,
+   "ni": 175.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 6913.0,
+   "op": 475.0,
+   "ni": 41.0
+  }
+ ]
+}

@@ -1,0 +1,216 @@
+{
+ "name": "VRSK",
+ "split_adjusted": false,
+ "legal_name": "Verisk Analytics, Inc.",
+ "code": "VRSK",
+ "cik": "0001442145",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 1995.2,
+   "op": 767.6,
+   "ni": 591.2,
+   "assets": 4631.2,
+   "liab": 3298.8,
+   "equity": 1332.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 2145.2,
+   "op": 801.2,
+   "ni": 555.1,
+   "assets": 6020.3,
+   "liab": 4094.9,
+   "equity": 1925.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 2395.1,
+   "op": 834.1,
+   "ni": 598.7,
+   "assets": 5900.3,
+   "liab": 3829.7,
+   "equity": 2070.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 2607.1,
+   "op": 696.9,
+   "ni": 449.9,
+   "assets": 7055.2,
+   "liab": 4794.4,
+   "equity": 2260.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 2269.4,
+   "op": 956.3,
+   "ni": 712.7,
+   "assets": 7561.8,
+   "liab": 4863.6,
+   "equity": 2698.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 2462.5,
+   "op": 911.4,
+   "ni": 666.3,
+   "assets": 7808.1,
+   "liab": 4965.6,
+   "equity": 2842.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 2497.0,
+   "op": 1406.5,
+   "ni": 954.3,
+   "assets": 6961.1,
+   "liab": 5193.4,
+   "equity": 1767.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 2681.4,
+   "op": 1131.7,
+   "ni": 614.4,
+   "assets": 4366.1,
+   "liab": 4043.9,
+   "equity": 322.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 2881.7,
+   "op": 1253.9,
+   "ni": 957.5,
+   "assets": 4264.7,
+   "liab": 4159.7,
+   "equity": 105.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 3072.7,
+   "op": 1343.9,
+   "ni": 908.3,
+   "assets": 6195.5,
+   "liab": 5885.7,
+   "equity": 309.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 677.2,
+   "op": 250.5,
+   "ni": 173.8
+  },
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 704.0,
+   "op": 307.4,
+   "ni": 219.4
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 716.8,
+   "op": 318.7,
+   "ni": 307.8
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 725.3,
+   "op": 311.5,
+   "ni": 220.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 735.6,
+   "op": 316.3,
+   "ni": 210.3
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 753.0,
+   "op": 330.1,
+   "ni": 232.3
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 772.6,
+   "op": 354.3,
+   "ni": 253.3
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 768.3,
+   "op": 345.9,
+   "ni": 225.5
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 778.8,
+   "op": 313.6,
+   "ni": 197.2
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 782.6,
+   "op": 352.2,
+   "ni": 234.2
+  }
+ ]
+}

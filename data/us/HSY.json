@@ -1,0 +1,216 @@
+{
+ "name": "HSY",
+ "split_adjusted": false,
+ "legal_name": "HERSHEY CO",
+ "code": "HSY",
+ "cik": "0000047111",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 7440.2,
+   "op": 1255.2,
+   "ni": 720.0,
+   "assets": 5524.3,
+   "liab": 4696.6,
+   "equity": 827.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 7515.4,
+   "op": 1313.4,
+   "ni": 756.5,
+   "assets": 5553.7,
+   "liab": 4622.2,
+   "equity": 931.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 7791.1,
+   "op": 1623.7,
+   "ni": 1171.1,
+   "assets": 7703.0,
+   "liab": 6295.8,
+   "equity": 1407.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 7986.3,
+   "op": 1596.0,
+   "ni": 1146.8,
+   "assets": 8140.4,
+   "liab": 6395.4,
+   "equity": 1745.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 8149.7,
+   "op": 1782.7,
+   "ni": 1275.4,
+   "assets": 9131.8,
+   "liab": 6894.0,
+   "equity": 2237.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 8971.3,
+   "op": 2043.7,
+   "ni": 1482.8,
+   "assets": 10412.2,
+   "liab": 7655.0,
+   "equity": 2757.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 10419.3,
+   "op": 2260.8,
+   "ni": 1644.8,
+   "assets": 10948.8,
+   "liab": 7649.3,
+   "equity": 3299.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 11165.0,
+   "op": 2560.9,
+   "ni": 1861.8,
+   "assets": 11902.9,
+   "liab": 7803.9,
+   "equity": 4099.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 11202.3,
+   "op": 2898.2,
+   "ni": 2221.2,
+   "assets": 12946.9,
+   "liab": 8232.2,
+   "equity": 4714.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 11692.6,
+   "op": 1441.5,
+   "ni": 883.3,
+   "assets": 13741.3,
+   "liab": 9104.5,
+   "equity": 4636.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 3252.7,
+   "op": 1058.1,
+   "ni": 797.5
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 2074.5,
+   "op": 287.8,
+   "ni": 180.9
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 2987.5,
+   "op": 613.2,
+   "ni": 446.3
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 2887.5,
+   "op": 939.1,
+   "ni": 796.6
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 2805.4,
+   "op": 369.2,
+   "ni": 224.2
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 2614.7,
+   "op": 192.8,
+   "ni": 62.7
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 3181.4,
+   "op": 434.6,
+   "ni": 276.3
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 3091.0,
+   "op": 444.9,
+   "ni": 320.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 3104.2,
+   "op": 640.7,
+   "ni": 435.1
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 2787.3,
+   "op": 642.6,
+   "ni": 457.7
+  }
+ ]
+}

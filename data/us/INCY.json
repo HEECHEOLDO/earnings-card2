@@ -1,0 +1,216 @@
+{
+ "name": "INCY",
+ "split_adjusted": false,
+ "legal_name": "INCYTE CORP",
+ "code": "INCY",
+ "cik": "0000879169",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 1105.7,
+   "op": 145.0,
+   "ni": 104.2,
+   "assets": 1638.6,
+   "liab": 1219.1,
+   "equity": 419.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 1536.2,
+   "op": -243.4,
+   "ni": -313.1,
+   "assets": 2302.6,
+   "liab": 672.0,
+   "equity": 1630.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 1881.9,
+   "op": 129.2,
+   "ni": 109.5,
+   "assets": 2645.8,
+   "liab": 719.8,
+   "equity": 1926.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 2158.8,
+   "op": 402.0,
+   "ni": 446.9,
+   "assets": 3426.8,
+   "liab": 828.3,
+   "equity": 2598.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 2666.7,
+   "op": -263.7,
+   "ni": -295.7,
+   "assets": 3560.9,
+   "liab": 949.6,
+   "equity": 2611.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 2986.3,
+   "op": 585.8,
+   "ni": 948.6,
+   "assets": 4933.4,
+   "liab": 1163.3,
+   "equity": 3770.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 3394.6,
+   "op": 579.4,
+   "ni": 340.7,
+   "assets": 5841.0,
+   "liab": 1470.9,
+   "equity": 4370.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 3695.6,
+   "op": 620.5,
+   "ni": 597.6,
+   "assets": 6782.1,
+   "liab": 1592.3,
+   "equity": 5189.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 4241.2,
+   "op": 61.4,
+   "ni": 32.6,
+   "assets": 5444.3,
+   "liab": 1996.7,
+   "equity": 3447.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 5141.2,
+   "op": 1514.9,
+   "ni": 1286.7,
+   "assets": 6958.0,
+   "liab": 1790.5,
+   "equity": 5167.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 1013.3,
+   "op": 187.3,
+   "ni": 201.1
+  },
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 880.9,
+   "op": 91.9,
+   "ni": 169.5
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 1043.8,
+   "op": -478.1,
+   "ni": -444.6
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 1137.9,
+   "op": 146.1,
+   "ni": 106.5
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 1178.7,
+   "op": 301.5,
+   "ni": 201.2
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 1052.9,
+   "op": 205.2,
+   "ni": 158.2
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 1215.5,
+   "op": 530.3,
+   "ni": 405.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 1366.0,
+   "op": 443.5,
+   "ni": 424.2
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 1506.8,
+   "op": 335.9,
+   "ni": 299.3
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 1272.7,
+   "op": 301.1,
+   "ni": 303.3
+  }
+ ]
+}

@@ -1,0 +1,216 @@
+{
+ "name": "EBAY",
+ "split_adjusted": false,
+ "legal_name": "EBAY INC",
+ "code": "EBAY",
+ "cik": "0001065088",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 9298.0,
+   "op": 2325.0,
+   "ni": 7266.0,
+   "assets": 23847.0,
+   "liab": 13308.0,
+   "equity": 10526.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 9927.0,
+   "op": 2264.0,
+   "ni": -1017.0,
+   "assets": 25986.0,
+   "liab": 17937.0,
+   "equity": 8049.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 8650.0,
+   "op": 1752.0,
+   "ni": 2530.0,
+   "assets": 22819.0,
+   "liab": 16538.0,
+   "equity": 6281.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 7429.0,
+   "op": 1770.0,
+   "ni": 1786.0,
+   "assets": 18174.0,
+   "liab": 15304.0,
+   "equity": 2870.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 8894.0,
+   "op": 2636.0,
+   "ni": 5667.0,
+   "assets": 19310.0,
+   "liab": 15749.0,
+   "equity": 3561.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 10420.0,
+   "op": 2923.0,
+   "ni": 13608.0,
+   "assets": 26626.0,
+   "liab": 16848.0,
+   "equity": 9778.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 9795.0,
+   "op": 2350.0,
+   "ni": -1269.0,
+   "assets": 20850.0,
+   "liab": 15697.0,
+   "equity": 5153.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 10112.0,
+   "op": 1941.0,
+   "ni": 2767.0,
+   "assets": 21620.0,
+   "liab": 15224.0,
+   "equity": 6396.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 10283.0,
+   "op": 2318.0,
+   "ni": 1975.0,
+   "assets": 19365.0,
+   "liab": 14207.0,
+   "equity": 5158.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 11100.0,
+   "op": 2277.0,
+   "ni": 2031.0,
+   "assets": 17437.0,
+   "liab": 12954.0,
+   "equity": 4483.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 2556.0,
+   "op": 631.0,
+   "ni": 438.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 2572.0,
+   "op": 549.0,
+   "ni": 224.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 2576.0,
+   "op": 595.0,
+   "ni": 634.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 2579.0,
+   "op": 543.0,
+   "ni": 679.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 2585.0,
+   "op": 611.0,
+   "ni": 499.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 2730.0,
+   "op": 479.0,
+   "ni": 364.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 2820.0,
+   "op": 576.0,
+   "ni": 632.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 2965.0,
+   "op": 611.0,
+   "ni": 536.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 3089.0,
+   "op": 611.0,
+   "ni": 512.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 3134.0,
+   "op": 676.0,
+   "ni": 550.0
+  }
+ ]
+}

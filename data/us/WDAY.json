@@ -1,0 +1,216 @@
+{
+ "name": "WDAY",
+ "split_adjusted": false,
+ "legal_name": "Workday, Inc.",
+ "code": "WDAY",
+ "cik": "0001327811",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2017,
+   "rev": 1574.4,
+   "op": -353.1,
+   "ni": -384.7,
+   "assets": 3268.3,
+   "liab": 1991.7,
+   "equity": 1276.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 2143.1,
+   "op": -303.2,
+   "ni": -321.2,
+   "assets": 4947.4,
+   "liab": 3367.1,
+   "equity": 1580.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 2822.2,
+   "op": -463.3,
+   "ni": -418.3,
+   "assets": 5520.7,
+   "liab": 3562.3,
+   "equity": 1958.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 3627.2,
+   "op": -502.2,
+   "ni": -480.7,
+   "assets": 6816.4,
+   "liab": 4329.8,
+   "equity": 2486.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 4318.0,
+   "op": -248.6,
+   "ni": -282.4,
+   "assets": 8718.4,
+   "liab": 5440.6,
+   "equity": 3277.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 5139.0,
+   "op": -116.0,
+   "ni": 29.0,
+   "assets": 10498.5,
+   "liab": 5963.4,
+   "equity": 4535.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 6216.0,
+   "op": -222.0,
+   "ni": -367.0,
+   "assets": 13486.0,
+   "liab": 7901.0,
+   "equity": 5585.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 7259.0,
+   "op": 183.0,
+   "ni": 1381.0,
+   "assets": 16452.0,
+   "liab": 8370.0,
+   "equity": 8082.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 8446.0,
+   "op": 415.0,
+   "ni": 526.0,
+   "assets": 17977.0,
+   "liab": 8943.0,
+   "equity": 9172.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2026,
+   "rev": 9552.0,
+   "op": 721.0,
+   "ni": 693.0,
+   "assets": 15857.0,
+   "liab": 9397.0,
+   "equity": 6460.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 1990.0,
+   "op": 64.0,
+   "ni": 107.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 2085.0,
+   "op": 111.0,
+   "ni": 132.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 2160.0,
+   "op": 165.0,
+   "ni": 193.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 2211.0,
+   "op": 75.0,
+   "ni": 94.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 2240.0,
+   "op": 39.0,
+   "ni": 68.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 2348.0,
+   "op": 248.0,
+   "ni": 228.0
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 2432.0,
+   "op": 259.0,
+   "ni": 252.0
+  },
+  {
+   "y": 2026,
+   "q": 4,
+   "rev": 2532.0,
+   "op": 175.0,
+   "ni": 145.0
+  },
+  {
+   "y": 2027,
+   "q": 1,
+   "rev": 2542.0,
+   "op": 338.0,
+   "ni": 222.0
+  },
+  {
+   "y": 2027,
+   "q": 2,
+   "rev": 2649.0,
+   "op": 313.0,
+   "ni": 632.0
+  }
+ ]
+}

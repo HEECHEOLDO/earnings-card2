@@ -1,0 +1,216 @@
+{
+ "name": "MRNA",
+ "split_adjusted": false,
+ "legal_name": "Moderna, Inc.",
+ "code": "MRNA",
+ "cik": "0001682852",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 108.4,
+   "op": -223.8,
+   "ni": -216.2,
+   "assets": null,
+   "liab": null,
+   "equity": -334.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 205.8,
+   "op": -269.4,
+   "ni": -255.9,
+   "assets": 1084.5,
+   "liab": 459.2,
+   "equity": -551.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 135.1,
+   "op": -413.3,
+   "ni": -384.7,
+   "assets": 2020.0,
+   "liab": 431.9,
+   "equity": 1530.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 60.0,
+   "op": -546.0,
+   "ni": -514.0,
+   "assets": 1589.4,
+   "liab": 414.6,
+   "equity": 1175.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 803.0,
+   "op": -763.0,
+   "ni": -747.0,
+   "assets": 7337.0,
+   "liab": 4776.0,
+   "equity": 2561.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 18471.0,
+   "op": 13296.0,
+   "ni": 12202.0,
+   "assets": 24669.0,
+   "liab": 10524.0,
+   "equity": 14145.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 19263.0,
+   "op": 9420.0,
+   "ni": 8362.0,
+   "assets": 25858.0,
+   "liab": 6735.0,
+   "equity": 19123.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 6848.0,
+   "op": -4239.0,
+   "ni": -4714.0,
+   "assets": 18426.0,
+   "liab": 4572.0,
+   "equity": 13854.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 3236.0,
+   "op": -3945.0,
+   "ni": -3561.0,
+   "assets": 14142.0,
+   "liab": 3241.0,
+   "equity": 10901.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 1944.0,
+   "op": -3074.0,
+   "ni": -2822.0,
+   "assets": 12338.0,
+   "liab": 3688.0,
+   "equity": 8650.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 167.0,
+   "op": -1266.0,
+   "ni": -1175.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 241.0,
+   "op": -1363.0,
+   "ni": -1279.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 1862.0,
+   "op": -70.0,
+   "ni": 13.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 966.0,
+   "op": -1246.0,
+   "ni": -1120.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 108.0,
+   "op": -1050.0,
+   "ni": -971.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 142.0,
+   "op": -907.0,
+   "ni": -825.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 1016.0,
+   "op": -260.0,
+   "ni": -200.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 678.0,
+   "op": -857.0,
+   "ni": -826.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 389.0,
+   "op": -1388.0,
+   "ni": -1343.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 145.0,
+   "op": -815.0,
+   "ni": -782.0
+  }
+ ]
+}

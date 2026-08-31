@@ -1,0 +1,216 @@
+{
+ "name": "CNP",
+ "split_adjusted": false,
+ "legal_name": "CENTERPOINT ENERGY INC",
+ "code": "CNP",
+ "cik": "0001130310",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 7528.0,
+   "op": 1023.0,
+   "ni": 432.0,
+   "assets": 21829.0,
+   "liab": null,
+   "equity": 3460.0,
+   "dps": 1.03,
+   "payout": 102.7,
+   "yield": null,
+   "dps_adj": 1.03
+  },
+  {
+   "p": 2017,
+   "rev": 5699.0,
+   "op": 1003.0,
+   "ni": 1792.0,
+   "assets": 22736.0,
+   "liab": null,
+   "equity": 4688.0,
+   "dps": 1.3475,
+   "payout": 32.4,
+   "yield": null,
+   "dps_adj": 1.3475
+  },
+  {
+   "p": 2018,
+   "rev": 6277.0,
+   "op": 868.0,
+   "ni": 368.0,
+   "assets": 27093.0,
+   "liab": null,
+   "equity": 8058.0,
+   "dps": 1.12,
+   "payout": 136.6,
+   "yield": null,
+   "dps_adj": 1.12
+  },
+  {
+   "p": 2019,
+   "rev": 7564.0,
+   "op": 1071.0,
+   "ni": 791.0,
+   "assets": 35529.0,
+   "liab": null,
+   "equity": 8359.0,
+   "dps": 0.86,
+   "payout": 54.6,
+   "yield": null,
+   "dps_adj": 0.86
+  },
+  {
+   "p": 2020,
+   "rev": 7418.0,
+   "op": 1039.0,
+   "ni": -773.0,
+   "assets": 33471.0,
+   "liab": null,
+   "equity": 8348.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 8352.0,
+   "op": 1363.0,
+   "ni": 1486.0,
+   "assets": 37679.0,
+   "liab": null,
+   "equity": 9415.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 9321.0,
+   "op": 1566.0,
+   "ni": 1057.0,
+   "assets": 38546.0,
+   "liab": null,
+   "equity": 10042.0,
+   "dps": 0.7,
+   "payout": 41.7,
+   "yield": null,
+   "dps_adj": 0.7
+  },
+  {
+   "p": 2023,
+   "rev": 8696.0,
+   "op": 1760.0,
+   "ni": 917.0,
+   "assets": 39715.0,
+   "liab": null,
+   "equity": 9667.0,
+   "dps": 0.77,
+   "payout": 53.0,
+   "yield": null,
+   "dps_adj": 0.77
+  },
+  {
+   "p": 2024,
+   "rev": 8643.0,
+   "op": 1990.0,
+   "ni": 1019.0,
+   "assets": 43768.0,
+   "liab": null,
+   "equity": 10666.0,
+   "dps": 0.81,
+   "payout": 51.1,
+   "yield": null,
+   "dps_adj": 0.81
+  },
+  {
+   "p": 2025,
+   "rev": 9357.0,
+   "op": 2110.0,
+   "ni": 1052.0,
+   "assets": 46534.0,
+   "liab": null,
+   "equity": 11153.0,
+   "dps": 0.88,
+   "payout": 54.6,
+   "yield": null,
+   "dps_adj": 0.88
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 2182.0,
+   "op": 321.0,
+   "ni": 192.0
+  },
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 2620.0,
+   "op": 616.0,
+   "ni": 350.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 1905.0,
+   "op": 467.0,
+   "ni": 228.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 1856.0,
+   "op": 424.0,
+   "ni": 193.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 2262.0,
+   "op": 483.0,
+   "ni": 248.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 2920.0,
+   "op": 649.0,
+   "ni": 297.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 1944.0,
+   "op": 417.0,
+   "ni": 198.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 1988.0,
+   "op": 502.0,
+   "ni": 293.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 2505.0,
+   "op": 542.0,
+   "ni": 264.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 2975.0,
+   "op": 658.0,
+   "ni": 316.0
+  }
+ ]
+}

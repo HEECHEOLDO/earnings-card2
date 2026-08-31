@@ -1,0 +1,216 @@
+{
+ "name": "MNST",
+ "split_adjusted": true,
+ "legal_name": "Monster Beverage Corp",
+ "code": "MNST",
+ "cik": "0000865752",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 3049.4,
+   "op": 1085.3,
+   "ni": 712.7,
+   "assets": 4153.5,
+   "liab": null,
+   "equity": 3329.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 3369.0,
+   "op": 1198.8,
+   "ni": 820.7,
+   "assets": 4791.0,
+   "liab": null,
+   "equity": 3895.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 3807.2,
+   "op": 1283.6,
+   "ni": 993.0,
+   "assets": 4526.9,
+   "liab": null,
+   "equity": 3610.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 4200.8,
+   "op": 1402.9,
+   "ni": 1107.8,
+   "assets": 5150.4,
+   "liab": null,
+   "equity": 4171.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 4598.6,
+   "op": 1633.2,
+   "ni": 1409.6,
+   "assets": 6202.7,
+   "liab": null,
+   "equity": 5160.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 5541.4,
+   "op": 1797.5,
+   "ni": 1377.5,
+   "assets": 7804.8,
+   "liab": null,
+   "equity": 6567.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 6311.1,
+   "op": 1584.7,
+   "ni": 1191.6,
+   "assets": 8293.1,
+   "liab": null,
+   "equity": 7025.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 7140.0,
+   "op": 1953.4,
+   "ni": 1631.0,
+   "assets": 9686.5,
+   "liab": null,
+   "equity": 8228.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 7492.7,
+   "op": 1930.3,
+   "ni": 1509.0,
+   "assets": 7719.1,
+   "liab": null,
+   "equity": 5957.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 8294.3,
+   "op": 2419.4,
+   "ni": 1905.4,
+   "assets": 9988.9,
+   "liab": null,
+   "equity": 8254.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 1899.1,
+   "op": 542.0,
+   "ni": 442.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 1900.6,
+   "op": 527.2,
+   "ni": 425.4
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 1881.0,
+   "op": 479.9,
+   "ni": 370.9
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 1812.0,
+   "op": 381.2,
+   "ni": 270.7
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 1854.6,
+   "op": 569.7,
+   "ni": 443.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 2111.6,
+   "op": 631.6,
+   "ni": 488.8
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 2197.1,
+   "op": 675.4,
+   "ni": 524.5
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 2131.1,
+   "op": 542.6,
+   "ni": 449.2
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 2353.3,
+   "op": 730.0,
+   "ni": 569.5
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 2537.5,
+   "op": 740.4,
+   "ni": 584.5
+  }
+ ]
+}

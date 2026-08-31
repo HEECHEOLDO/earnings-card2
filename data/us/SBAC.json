@@ -1,0 +1,216 @@
+{
+ "name": "SBAC",
+ "split_adjusted": false,
+ "legal_name": "SBA COMMUNICATIONS CORP",
+ "code": "SBAC",
+ "cik": "0001034054",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 1633.1,
+   "op": 387.3,
+   "ni": 76.2,
+   "assets": 7360.9,
+   "liab": null,
+   "equity": -1995.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 1727.7,
+   "op": 458.5,
+   "ni": 103.7,
+   "assets": 7320.2,
+   "liab": null,
+   "equity": -2599.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 1865.7,
+   "op": 544.2,
+   "ni": 47.5,
+   "assets": 7213.7,
+   "liab": null,
+   "equity": -3376.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 2014.6,
+   "op": 583.5,
+   "ni": 147.3,
+   "assets": 9759.9,
+   "liab": null,
+   "equity": -3667.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 2083.1,
+   "op": 633.7,
+   "ni": 24.0,
+   "assets": 9158.0,
+   "liab": null,
+   "equity": -4824.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 2308.8,
+   "op": 782.5,
+   "ni": 237.6,
+   "assets": 9801.7,
+   "liab": null,
+   "equity": -5283.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 2633.5,
+   "op": 925.4,
+   "ni": 461.4,
+   "assets": 10585.0,
+   "liab": null,
+   "equity": -5276.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 2711.6,
+   "op": 923.7,
+   "ni": 501.8,
+   "assets": 10178.4,
+   "liab": null,
+   "equity": -5170.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 2679.6,
+   "op": 1435.8,
+   "ni": 749.5,
+   "assets": 11417.3,
+   "liab": null,
+   "equity": -5109.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 2815.1,
+   "op": 1342.8,
+   "ni": 1053.6,
+   "assets": 11575.0,
+   "liab": null,
+   "equity": -4853.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 657.9,
+   "op": 323.4,
+   "ni": 154.5
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 660.5,
+   "op": 354.5,
+   "ni": 162.8
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 667.6,
+   "op": 375.6,
+   "ni": 258.5
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 693.7,
+   "op": 382.3,
+   "ni": 173.6
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 664.2,
+   "op": 334.9,
+   "ni": 217.9
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 699.0,
+   "op": 334.8,
+   "ni": 225.7
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 732.3,
+   "op": 374.2,
+   "ni": 236.8
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 719.6,
+   "op": 298.9,
+   "ni": 370.3
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 703.4,
+   "op": 342.8,
+   "ni": 184.9
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 715.3,
+   "op": 351.9,
+   "ni": 196.5
+  }
+ ]
+}

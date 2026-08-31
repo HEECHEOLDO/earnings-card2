@@ -1,0 +1,216 @@
+{
+ "name": "SYK",
+ "split_adjusted": false,
+ "legal_name": "STRYKER CORP",
+ "code": "SYK",
+ "cik": "0000310764",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 11325.0,
+   "op": 2175.0,
+   "ni": 1647.0,
+   "assets": 20435.0,
+   "liab": 10885.0,
+   "equity": 9550.0,
+   "dps": 1.565,
+   "payout": 35.5,
+   "yield": null,
+   "dps_adj": 1.565
+  },
+  {
+   "p": 2017,
+   "rev": 12444.0,
+   "op": 2297.0,
+   "ni": 1020.0,
+   "assets": 22197.0,
+   "liab": 12217.0,
+   "equity": 9980.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 13601.0,
+   "op": 2537.0,
+   "ni": 3553.0,
+   "assets": 27229.0,
+   "liab": 15499.0,
+   "equity": 11730.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 14884.0,
+   "op": 2713.0,
+   "ni": 2083.0,
+   "assets": 30167.0,
+   "liab": 17360.0,
+   "equity": 12807.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 14351.0,
+   "op": 2223.0,
+   "ni": 1599.0,
+   "assets": 34330.0,
+   "liab": 21246.0,
+   "equity": 13084.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 17108.0,
+   "op": 2584.0,
+   "ni": 1994.0,
+   "assets": 34631.0,
+   "liab": 19754.0,
+   "equity": 14877.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 18449.0,
+   "op": 2841.0,
+   "ni": 2358.0,
+   "assets": 36884.0,
+   "liab": 20268.0,
+   "equity": 16616.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 20498.0,
+   "op": 3888.0,
+   "ni": 3165.0,
+   "assets": 39912.0,
+   "liab": 21319.0,
+   "equity": 18593.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 22595.0,
+   "op": 3689.0,
+   "ni": 2993.0,
+   "assets": 42971.0,
+   "liab": 22337.0,
+   "equity": 20634.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 25116.0,
+   "op": 4889.0,
+   "ni": 3246.0,
+   "assets": 47844.0,
+   "liab": 25424.0,
+   "equity": 22420.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 5243.0,
+   "op": 972.0,
+   "ni": 788.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 5422.0,
+   "op": 1051.0,
+   "ni": 825.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 5494.0,
+   "op": 1085.0,
+   "ni": 834.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 6436.0,
+   "op": null,
+   "ni": 546.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 5866.0,
+   "op": 837.0,
+   "ni": 654.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 6022.0,
+   "op": 1113.0,
+   "ni": 884.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 6057.0,
+   "op": 1135.0,
+   "ni": 859.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 7171.0,
+   "op": null,
+   "ni": 849.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 6020.0,
+   "op": 936.0,
+   "ni": 745.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 6589.0,
+   "op": 1659.0,
+   "ni": 1276.0
+  }
+ ]
+}

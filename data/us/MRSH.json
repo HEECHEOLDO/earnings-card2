@@ -1,0 +1,216 @@
+{
+ "name": "MRSH",
+ "split_adjusted": false,
+ "legal_name": "MARSH & MCLENNAN COMPANIES, INC.",
+ "code": "MRSH",
+ "cik": "0000062709",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 13211.0,
+   "op": 2431.0,
+   "ni": 1795.0,
+   "assets": 18190.0,
+   "liab": null,
+   "equity": 6272.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 14024.0,
+   "op": 2655.0,
+   "ni": 1512.0,
+   "assets": 20429.0,
+   "liab": null,
+   "equity": 7442.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 14950.0,
+   "op": 2761.0,
+   "ni": 1670.0,
+   "assets": 21578.0,
+   "liab": null,
+   "equity": 7584.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 16652.0,
+   "op": 2677.0,
+   "ni": 1773.0,
+   "assets": 31357.0,
+   "liab": null,
+   "equity": 7943.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 17224.0,
+   "op": 3066.0,
+   "ni": 2046.0,
+   "assets": 33049.0,
+   "liab": null,
+   "equity": 9260.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 19820.0,
+   "op": 4312.0,
+   "ni": 3174.0,
+   "assets": 44010.0,
+   "liab": null,
+   "equity": 11222.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 20720.0,
+   "op": 4280.0,
+   "ni": 3087.0,
+   "assets": 44114.0,
+   "liab": null,
+   "equity": 10749.0,
+   "dps": 2.25,
+   "payout": 36.4,
+   "yield": null,
+   "dps_adj": 2.25
+  },
+  {
+   "p": 2023,
+   "rev": 22736.0,
+   "op": 5282.0,
+   "ni": 3802.0,
+   "assets": 48030.0,
+   "liab": null,
+   "equity": 12370.0,
+   "dps": 2.6,
+   "payout": 33.8,
+   "yield": null,
+   "dps_adj": 2.6
+  },
+  {
+   "p": 2024,
+   "rev": 24458.0,
+   "op": 5817.0,
+   "ni": 4117.0,
+   "assets": 56481.0,
+   "liab": null,
+   "equity": 13535.0,
+   "dps": 3.05,
+   "payout": 36.4,
+   "yield": null,
+   "dps_adj": 3.05
+  },
+  {
+   "p": 2025,
+   "rev": 26981.0,
+   "op": 6223.0,
+   "ni": 4234.0,
+   "assets": 58710.0,
+   "liab": null,
+   "equity": 15315.0,
+   "dps": 3.43,
+   "payout": 39.8,
+   "yield": null,
+   "dps_adj": 3.43
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 6473.0,
+   "op": 1925.0,
+   "ni": 1424.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 6221.0,
+   "op": 1642.0,
+   "ni": 1140.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 5697.0,
+   "op": 1108.0,
+   "ni": 752.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 6067.0,
+   "op": 1142.0,
+   "ni": 801.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 7061.0,
+   "op": 2005.0,
+   "ni": 1412.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 6974.0,
+   "op": 1829.0,
+   "ni": 1231.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 6351.0,
+   "op": 1170.0,
+   "ni": 757.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 6595.0,
+   "op": 1219.0,
+   "ni": 834.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 7597.0,
+   "op": 1754.0,
+   "ni": 1186.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 7404.0,
+   "op": 1899.0,
+   "ni": 1291.0
+  }
+ ]
+}

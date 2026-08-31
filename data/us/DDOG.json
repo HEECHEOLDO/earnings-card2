@@ -1,0 +1,203 @@
+{
+ "name": "DDOG",
+ "split_adjusted": true,
+ "legal_name": "Datadog, Inc.",
+ "code": "DDOG",
+ "cik": "0001561550",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2017,
+   "rev": 100.8,
+   "op": -3.0,
+   "ni": -2.6,
+   "assets": null,
+   "liab": null,
+   "equity": -75.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 198.1,
+   "op": -11.0,
+   "ni": -10.8,
+   "assets": 179.8,
+   "liab": 115.0,
+   "equity": -76.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 362.8,
+   "op": -20.1,
+   "ni": -16.7,
+   "assets": 1038.0,
+   "liab": 255.7,
+   "equity": 782.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 603.5,
+   "op": -13.8,
+   "ni": -24.5,
+   "assets": 1890.3,
+   "liab": 932.9,
+   "equity": 957.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 1028.8,
+   "op": -19.2,
+   "ni": -20.8,
+   "assets": 2380.8,
+   "liab": 1339.6,
+   "equity": 1041.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 1675.1,
+   "op": -58.7,
+   "ni": -50.2,
+   "assets": 3004.9,
+   "liab": 1594.3,
+   "equity": 1410.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 2128.4,
+   "op": -33.5,
+   "ni": 48.6,
+   "assets": 3936.1,
+   "liab": 1910.7,
+   "equity": 2025.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 2684.3,
+   "op": 54.3,
+   "ni": 183.8,
+   "assets": 5785.3,
+   "liab": 3071.0,
+   "equity": 2714.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 3427.2,
+   "op": -44.4,
+   "ni": 107.7,
+   "assets": 6643.8,
+   "liab": 2911.6,
+   "equity": 3732.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 611.3,
+   "op": 12.0,
+   "ni": 42.6
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 645.3,
+   "op": 12.6,
+   "ni": 43.8
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 690.0,
+   "op": 20.3,
+   "ni": 51.7
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 737.7,
+   "op": 9.4,
+   "ni": 45.6
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 761.6,
+   "op": -12.4,
+   "ni": 24.6
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 826.8,
+   "op": -35.5,
+   "ni": 2.6
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 885.7,
+   "op": -5.8,
+   "ni": 33.9
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 953.2,
+   "op": 9.4,
+   "ni": 46.5
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 1006.4,
+   "op": 7.3,
+   "ni": 52.6
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 1121.5,
+   "op": 5.5,
+   "ni": 44.6
+  }
+ ]
+}

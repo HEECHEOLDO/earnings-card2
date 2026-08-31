@@ -1,0 +1,216 @@
+{
+ "name": "LYB",
+ "split_adjusted": false,
+ "legal_name": "LyondellBasell Industries N.V.",
+ "code": "LYB",
+ "cik": "0001489393",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 29183.0,
+   "op": 5060.0,
+   "ni": 3837.0,
+   "assets": 23442.0,
+   "liab": null,
+   "equity": 6073.0,
+   "dps": 3.33,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 3.33
+  },
+  {
+   "p": 2017,
+   "rev": 34484.0,
+   "op": 5460.0,
+   "ni": 4877.0,
+   "assets": 26206.0,
+   "liab": null,
+   "equity": 8950.0,
+   "dps": 3.55,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 3.55
+  },
+  {
+   "p": 2018,
+   "rev": 39004.0,
+   "op": 5231.0,
+   "ni": 4690.0,
+   "assets": 28278.0,
+   "liab": null,
+   "equity": 10280.0,
+   "dps": 4,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 4.0
+  },
+  {
+   "p": 2019,
+   "rev": 34727.0,
+   "op": 4116.0,
+   "ni": 3397.0,
+   "assets": 30435.0,
+   "liab": null,
+   "equity": 8063.0,
+   "dps": 4.15,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 4.15
+  },
+  {
+   "p": 2020,
+   "rev": 27753.0,
+   "op": 1559.0,
+   "ni": 1427.0,
+   "assets": 35403.0,
+   "liab": null,
+   "equity": 7988.0,
+   "dps": 4.2,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 4.2
+  },
+  {
+   "p": 2021,
+   "rev": 46173.0,
+   "op": 6773.0,
+   "ni": 5617.0,
+   "assets": 36742.0,
+   "liab": null,
+   "equity": 11872.0,
+   "dps": 4.44,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 4.44
+  },
+  {
+   "p": 2022,
+   "rev": 50451.0,
+   "op": 5101.0,
+   "ni": 3889.0,
+   "assets": 36365.0,
+   "liab": null,
+   "equity": 12629.0,
+   "dps": 4.7,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 4.7
+  },
+  {
+   "p": 2023,
+   "rev": 33336.0,
+   "op": 2725.0,
+   "ni": 2121.0,
+   "assets": 37000.0,
+   "liab": null,
+   "equity": 12944.0,
+   "dps": 4.94,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 4.94
+  },
+  {
+   "p": 2024,
+   "rev": 33394.0,
+   "op": 1918.0,
+   "ni": 1367.0,
+   "assets": 35746.0,
+   "liab": null,
+   "equity": 12474.0,
+   "dps": 5.27,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 5.27
+  },
+  {
+   "p": 2025,
+   "rev": 30153.0,
+   "op": -420.0,
+   "ni": -738.0,
+   "assets": 34003.0,
+   "liab": null,
+   "equity": 10093.0,
+   "dps": 5.45,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 5.45
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 8304.0,
+   "op": 651.0,
+   "ni": 473.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 8678.0,
+   "op": 999.0,
+   "ni": 924.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 8604.0,
+   "op": 865.0,
+   "ni": 573.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 7808.0,
+   "op": -597.0,
+   "ni": -603.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 7677.0,
+   "op": 114.0,
+   "ni": 177.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 7658.0,
+   "op": 285.0,
+   "ni": 115.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 7727.0,
+   "op": -731.0,
+   "ni": -890.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 7091.0,
+   "op": -88.0,
+   "ni": -140.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 7197.0,
+   "op": 239.0,
+   "ni": 125.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 9177.0,
+   "op": 1543.0,
+   "ni": 559.0
+  }
+ ]
+}

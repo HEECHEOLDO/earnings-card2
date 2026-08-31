@@ -1,0 +1,216 @@
+{
+ "name": "LUV",
+ "split_adjusted": false,
+ "legal_name": "SOUTHWEST AIRLINES CO",
+ "code": "LUV",
+ "cik": "0000092380",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 20289.0,
+   "op": 3522.0,
+   "ni": 2183.0,
+   "assets": 23286.0,
+   "liab": null,
+   "equity": 7784.0,
+   "dps": 0.375,
+   "payout": 10.8,
+   "yield": null,
+   "dps_adj": 0.375
+  },
+  {
+   "p": 2017,
+   "rev": 21146.0,
+   "op": 3407.0,
+   "ni": 3357.0,
+   "assets": 25110.0,
+   "liab": null,
+   "equity": 9641.0,
+   "dps": 0.475,
+   "payout": 8.5,
+   "yield": null,
+   "dps_adj": 0.475
+  },
+  {
+   "p": 2018,
+   "rev": 21965.0,
+   "op": 3206.0,
+   "ni": 2465.0,
+   "assets": 26243.0,
+   "liab": null,
+   "equity": 9853.0,
+   "dps": 0.605,
+   "payout": 14.1,
+   "yield": null,
+   "dps_adj": 0.605
+  },
+  {
+   "p": 2019,
+   "rev": 22428.0,
+   "op": 2957.0,
+   "ni": 2300.0,
+   "assets": 25895.0,
+   "liab": null,
+   "equity": 9832.0,
+   "dps": 0.7,
+   "payout": 16.4,
+   "yield": null,
+   "dps_adj": 0.7
+  },
+  {
+   "p": 2020,
+   "rev": 9048.0,
+   "op": -3816.0,
+   "ni": -3074.0,
+   "assets": 34588.0,
+   "liab": null,
+   "equity": 8876.0,
+   "dps": 0.18,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 0.18
+  },
+  {
+   "p": 2021,
+   "rev": 15790.0,
+   "op": 1721.0,
+   "ni": 977.0,
+   "assets": 36320.0,
+   "liab": null,
+   "equity": 10414.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 23814.0,
+   "op": 1017.0,
+   "ni": 539.0,
+   "assets": 35369.0,
+   "liab": null,
+   "equity": 10687.0,
+   "dps": 0.18,
+   "payout": 19.8,
+   "yield": null,
+   "dps_adj": 0.18
+  },
+  {
+   "p": 2023,
+   "rev": 26091.0,
+   "op": 224.0,
+   "ni": 465.0,
+   "assets": 36487.0,
+   "liab": null,
+   "equity": 10515.0,
+   "dps": 0.72,
+   "payout": 92.1,
+   "yield": null,
+   "dps_adj": 0.72
+  },
+  {
+   "p": 2024,
+   "rev": 27483.0,
+   "op": 321.0,
+   "ni": 465.0,
+   "assets": 33750.0,
+   "liab": null,
+   "equity": 10350.0,
+   "dps": 0.72,
+   "payout": 92.6,
+   "yield": null,
+   "dps_adj": 0.72
+  },
+  {
+   "p": 2025,
+   "rev": 28063.0,
+   "op": 428.0,
+   "ni": 441.0,
+   "assets": 29061.0,
+   "liab": null,
+   "equity": 7981.0,
+   "dps": 0.72,
+   "payout": 88.2,
+   "yield": null,
+   "dps_adj": 0.72
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 6329.0,
+   "op": -393.0,
+   "ni": -231.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 7354.0,
+   "op": 398.0,
+   "ni": 367.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 6870.0,
+   "op": 38.0,
+   "ni": 67.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 6930.0,
+   "op": 278.0,
+   "ni": 262.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 6428.0,
+   "op": -223.0,
+   "ni": -149.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 7244.0,
+   "op": 225.0,
+   "ni": 213.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 6949.0,
+   "op": 35.0,
+   "ni": 54.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 7442.0,
+   "op": 391.0,
+   "ni": 323.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 7249.0,
+   "op": 330.0,
+   "ni": 227.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 8432.0,
+   "op": 285.0,
+   "ni": 233.0
+  }
+ ]
+}

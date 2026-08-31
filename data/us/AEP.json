@@ -1,0 +1,216 @@
+{
+ "name": "AEP",
+ "split_adjusted": false,
+ "legal_name": "AMERICAN ELECTRIC POWER CO INC",
+ "code": "AEP",
+ "cik": "0000004904",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 16380.1,
+   "op": 1163.9,
+   "ni": 618.0,
+   "assets": 63467.7,
+   "liab": 46047.6,
+   "equity": 17420.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 15424.9,
+   "op": 3525.0,
+   "ni": 1928.9,
+   "assets": 64729.1,
+   "liab": 46403.6,
+   "equity": 18313.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 16195.7,
+   "op": 2682.7,
+   "ni": 1931.3,
+   "assets": 68802.8,
+   "liab": 49634.6,
+   "equity": 19059.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 15561.4,
+   "op": 2592.3,
+   "ni": 1919.8,
+   "assets": 75892.3,
+   "liab": 55870.5,
+   "equity": 19913.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 14918.5,
+   "op": 2987.7,
+   "ni": 2196.7,
+   "assets": 80757.2,
+   "liab": 59937.5,
+   "equity": 20774.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 16792.0,
+   "op": 3411.3,
+   "ni": 2488.1,
+   "assets": 87668.7,
+   "liab": 64945.2,
+   "equity": 22680.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 19639.5,
+   "op": 3482.7,
+   "ni": 2305.6,
+   "assets": 93403.3,
+   "liab": 69235.0,
+   "equity": 24123.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 18982.0,
+   "op": 3556.0,
+   "ni": 2213.0,
+   "assets": 96684.0,
+   "liab": 71355.6,
+   "equity": 25286.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 19721.0,
+   "op": 4304.0,
+   "ni": 2976.0,
+   "assets": 103078.0,
+   "liab": 76054.0,
+   "equity": 26986.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 21876.0,
+   "op": 5319.0,
+   "ni": 3696.0,
+   "assets": 114460.0,
+   "liab": 82204.0,
+   "equity": 32218.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 4576.9,
+   "op": 623.2,
+   "ni": 338.2
+  },
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 5025.7,
+   "op": 1172.6,
+   "ni": 1005.7
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 4579.2,
+   "op": 683.9,
+   "ni": 342.5
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 5420.1,
+   "op": 1351.5,
+   "ni": 961.7
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 4696.0,
+   "op": 1096.0,
+   "ni": 666.1
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 5463.0,
+   "op": 1284.0,
+   "ni": 802.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 5086.9,
+   "op": 1399.1,
+   "ni": 1288.3
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 6010.4,
+   "op": 1521.4,
+   "ni": 1000.3
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 5315.7,
+   "op": 1114.5,
+   "ni": 605.4
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 6020.0,
+   "op": 1360.0,
+   "ni": 903.0
+  }
+ ]
+}

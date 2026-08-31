@@ -1,0 +1,216 @@
+{
+ "name": "ACGL",
+ "split_adjusted": false,
+ "legal_name": "ARCH CAPITAL GROUP LTD.",
+ "code": "ACGL",
+ "cik": "0000947484",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 4463.6,
+   "op": 855.6,
+   "ni": 824.2,
+   "assets": 29372.1,
+   "liab": 20061.0,
+   "equity": 9105.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 5627.4,
+   "op": 757.3,
+   "ni": 629.7,
+   "assets": 32051.7,
+   "liab": 21805.7,
+   "equity": 10040.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 5450.6,
+   "op": 841.8,
+   "ni": 727.8,
+   "assets": 32218.3,
+   "liab": 21780.7,
+   "equity": 10231.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 6926.0,
+   "op": 1849.1,
+   "ni": 1693.3,
+   "assets": 37885.4,
+   "liab": 25569.8,
+   "equity": 12260.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 8508.5,
+   "op": 1577.5,
+   "ni": 1465.7,
+   "assets": 43282.3,
+   "liab": 29294.9,
+   "equity": 13928.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 9248.0,
+   "op": 2368.0,
+   "ni": 2239.0,
+   "assets": 45101.0,
+   "liab": 31546.0,
+   "equity": 13546.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 9613.0,
+   "op": 1562.0,
+   "ni": 1482.0,
+   "assets": 47990.0,
+   "liab": 35069.0,
+   "equity": 12910.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 13634.0,
+   "op": 3570.0,
+   "ni": 4442.0,
+   "assets": 58906.0,
+   "liab": 40551.0,
+   "equity": 18353.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 17440.0,
+   "op": 4674.0,
+   "ni": 4312.0,
+   "assets": 70906.0,
+   "liab": 50086.0,
+   "equity": 20820.0,
+   "dps": 5,
+   "payout": 43.2,
+   "yield": null,
+   "dps_adj": 5.0
+  },
+  {
+   "p": 2025,
+   "rev": 19929.0,
+   "op": 5159.0,
+   "ni": 4399.0,
+   "assets": 79241.0,
+   "liab": 55035.0,
+   "equity": 24206.0,
+   "dps": 5,
+   "payout": 41.9,
+   "yield": null,
+   "dps_adj": 5.0
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 3941.0,
+   "op": null,
+   "ni": 1120.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 4229.0,
+   "op": null,
+   "ni": 1269.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 4722.0,
+   "op": null,
+   "ni": 988.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 4548.0,
+   "op": null,
+   "ni": 935.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 4673.0,
+   "op": null,
+   "ni": 574.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 5213.0,
+   "op": null,
+   "ni": 1237.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 5109.0,
+   "op": null,
+   "ni": 1350.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 4934.0,
+   "op": null,
+   "ni": 1238.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 4521.0,
+   "op": null,
+   "ni": 1047.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 4668.0,
+   "op": null,
+   "ni": 1057.0
+  }
+ ]
+}

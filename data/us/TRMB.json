@@ -1,0 +1,216 @@
+{
+ "name": "TRMB",
+ "split_adjusted": false,
+ "legal_name": "TRIMBLE INC.",
+ "code": "TRMB",
+ "cik": "0000864749",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 2362.1,
+   "op": 180.4,
+   "ni": 132.2,
+   "assets": 3673.8,
+   "liab": 1368.1,
+   "equity": 2355.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 2646.5,
+   "op": 235.7,
+   "ni": 118.5,
+   "assets": 4316.3,
+   "liab": 1901.8,
+   "equity": 2414.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 3132.0,
+   "op": 320.7,
+   "ni": 283.3,
+   "assets": 5776.4,
+   "liab": 3101.6,
+   "equity": 2674.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 3271.3,
+   "op": 375.9,
+   "ni": 514.5,
+   "assets": 6640.7,
+   "liab": 3520.3,
+   "equity": 3120.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 3152.0,
+   "op": 419.8,
+   "ni": 390.6,
+   "assets": 6876.9,
+   "liab": 3278.3,
+   "equity": 3598.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 3659.4,
+   "op": 561.0,
+   "ni": 492.7,
+   "assets": 7099.6,
+   "liab": 3154.9,
+   "equity": 3944.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 3676.3,
+   "op": 510.9,
+   "ni": 449.7,
+   "assets": 7269.0,
+   "liab": 3218.8,
+   "equity": 4050.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 3798.7,
+   "op": 448.8,
+   "ni": 311.3,
+   "assets": 9539.3,
+   "liab": 5039.2,
+   "equity": 4500.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 3683.3,
+   "op": 460.7,
+   "ni": 1504.4,
+   "assets": 9488.3,
+   "liab": 3743.0,
+   "equity": 5745.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 3587.3,
+   "op": 592.0,
+   "ni": 424.0,
+   "assets": 9312.0,
+   "liab": 3475.8,
+   "equity": 5836.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 953.3,
+   "op": 109.2,
+   "ni": 57.2
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 870.8,
+   "op": 61.6,
+   "ni": 1316.4
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 875.8,
+   "op": 116.4,
+   "ni": 40.6
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 983.4,
+   "op": 173.5,
+   "ni": 90.2
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 840.6,
+   "op": 97.5,
+   "ni": 66.7
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 875.7,
+   "op": 127.8,
+   "ni": 89.2
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 901.2,
+   "op": 150.5,
+   "ni": 111.5
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 969.8,
+   "op": 216.2,
+   "ni": 156.6
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 939.9,
+   "op": 144.0,
+   "ni": 98.9
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 972.0,
+   "op": 132.0,
+   "ni": -471.7
+  }
+ ]
+}

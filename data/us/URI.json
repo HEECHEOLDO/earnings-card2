@@ -1,0 +1,216 @@
+{
+ "name": "URI",
+ "split_adjusted": false,
+ "legal_name": "UNITED RENTALS, INC.",
+ "code": "URI",
+ "cik": "0001067701",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 5762.0,
+   "op": 1415.0,
+   "ni": 566.0,
+   "assets": 11988.0,
+   "liab": 10340.0,
+   "equity": 1648.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 6641.0,
+   "op": 1507.0,
+   "ni": 1346.0,
+   "assets": 15030.0,
+   "liab": 11924.0,
+   "equity": 3106.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 8047.0,
+   "op": 1951.0,
+   "ni": 1096.0,
+   "assets": 18133.0,
+   "liab": 14730.0,
+   "equity": 3403.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 9351.0,
+   "op": 2152.0,
+   "ni": 1174.0,
+   "assets": 18970.0,
+   "liab": 15140.0,
+   "equity": 3830.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 8530.0,
+   "op": 1800.0,
+   "ni": 890.0,
+   "assets": 17868.0,
+   "liab": 13323.0,
+   "equity": 4545.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 9716.0,
+   "op": 2277.0,
+   "ni": 1386.0,
+   "assets": 20292.0,
+   "liab": 14301.0,
+   "equity": 5991.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 11642.0,
+   "op": 3232.0,
+   "ni": 2105.0,
+   "assets": 24183.0,
+   "liab": 17121.0,
+   "equity": 7062.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 14332.0,
+   "op": 3827.0,
+   "ni": 2424.0,
+   "assets": 25589.0,
+   "liab": 17459.0,
+   "equity": 8130.0,
+   "dps": 5.92,
+   "payout": 16.7,
+   "yield": null,
+   "dps_adj": 5.92
+  },
+  {
+   "p": 2024,
+   "rev": 15345.0,
+   "op": 4065.0,
+   "ni": 2575.0,
+   "assets": 28163.0,
+   "liab": 19541.0,
+   "equity": 8622.0,
+   "dps": 6.52,
+   "payout": 16.8,
+   "yield": null,
+   "dps_adj": 6.52
+  },
+  {
+   "p": 2025,
+   "rev": 16099.0,
+   "op": 3973.0,
+   "ni": 2494.0,
+   "assets": 29866.0,
+   "liab": 20898.0,
+   "equity": 8968.0,
+   "dps": 7.16,
+   "payout": 18.5,
+   "yield": null,
+   "dps_adj": 7.16
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 3728.0,
+   "op": 1063.0,
+   "ni": 679.0
+  },
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 3485.0,
+   "op": 852.0,
+   "ni": 542.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 3773.0,
+   "op": 1004.0,
+   "ni": 636.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 3992.0,
+   "op": 1122.0,
+   "ni": 708.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 4095.0,
+   "op": 1087.0,
+   "ni": 689.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 3719.0,
+   "op": 804.0,
+   "ni": 518.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 3943.0,
+   "op": 1003.0,
+   "ni": 622.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 4229.0,
+   "op": 1114.0,
+   "ni": 701.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 4208.0,
+   "op": 1052.0,
+   "ni": 653.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 3985.0,
+   "op": 869.0,
+   "ni": 531.0
+  }
+ ]
+}

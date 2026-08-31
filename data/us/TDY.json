@@ -1,0 +1,216 @@
+{
+ "name": "TDY",
+ "split_adjusted": false,
+ "legal_name": "TELEDYNE TECHNOLOGIES INC",
+ "code": "TDY",
+ "cik": "0001094285",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 2149.9,
+   "op": 240.5,
+   "ni": 190.9,
+   "assets": 2774.4,
+   "liab": 1220.0,
+   "equity": 1554.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 2603.8,
+   "op": 321.7,
+   "ni": 227.2,
+   "assets": 3846.4,
+   "liab": 1899.1,
+   "equity": 1947.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 2901.8,
+   "op": 416.6,
+   "ni": 333.8,
+   "assets": 3809.3,
+   "liab": 1579.6,
+   "equity": 2229.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 3163.6,
+   "op": 491.7,
+   "ni": 402.3,
+   "assets": 4579.8,
+   "liab": 1865.1,
+   "equity": 2714.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 3086.2,
+   "op": 480.1,
+   "ni": 401.9,
+   "assets": 5084.8,
+   "liab": 1856.2,
+   "equity": 3228.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 4614.3,
+   "op": 624.3,
+   "ni": 445.3,
+   "assets": 14430.3,
+   "liab": 6808.3,
+   "equity": 7622.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 5458.6,
+   "op": 972.0,
+   "ni": 788.9,
+   "assets": 14354.0,
+   "liab": 6181.1,
+   "equity": 8169.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 5635.5,
+   "op": 1034.4,
+   "ni": 886.6,
+   "assets": 14527.9,
+   "liab": 5302.1,
+   "equity": 9221.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 5670.0,
+   "op": 989.1,
+   "ni": 820.7,
+   "assets": 14200.5,
+   "liab": 4645.1,
+   "equity": 9549.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 6115.4,
+   "op": 1149.8,
+   "ni": 895.7,
+   "assets": 15285.3,
+   "liab": 4771.4,
+   "equity": 10513.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 1350.1,
+   "op": 234.3,
+   "ni": 178.5
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 1374.1,
+   "op": 247.0,
+   "ni": 180.2
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 1443.5,
+   "op": 270.7,
+   "ni": 262.2
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 1502.3,
+   "op": 237.1,
+   "ni": 199.8
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 1449.9,
+   "op": 259.3,
+   "ni": 188.6
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 1513.7,
+   "op": 278.2,
+   "ni": 210.4
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 1539.5,
+   "op": 282.8,
+   "ni": 220.9
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 1612.3,
+   "op": 329.5,
+   "ni": 275.8
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 1560.1,
+   "op": 294.2,
+   "ni": 226.8
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 1662.5,
+   "op": 333.2,
+   "ni": 251.7
+  }
+ ]
+}

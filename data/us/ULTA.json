@@ -1,0 +1,216 @@
+{
+ "name": "ULTA",
+ "split_adjusted": false,
+ "legal_name": "Ulta Beauty, Inc.",
+ "code": "ULTA",
+ "cik": "0001403568",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2017,
+   "rev": 4854.7,
+   "op": 654.8,
+   "ni": 409.8,
+   "assets": 2834.9,
+   "liab": 1218.8,
+   "equity": 1550.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 5884.5,
+   "op": 785.3,
+   "ni": 555.2,
+   "assets": 3332.7,
+   "liab": 1497.0,
+   "equity": 1774.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 6716.6,
+   "op": 854.1,
+   "ni": 658.6,
+   "assets": 4928.8,
+   "liab": 3081.7,
+   "equity": 1820.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 7398.1,
+   "op": 901.1,
+   "ni": 705.9,
+   "assets": 4871.0,
+   "liab": 3016.6,
+   "equity": 1902.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 6152.0,
+   "op": 236.8,
+   "ni": 175.8,
+   "assets": 5287.8,
+   "liab": 3301.0,
+   "equity": 1999.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 8630.9,
+   "op": 1297.5,
+   "ni": 986.0,
+   "assets": 5331.5,
+   "liab": 3409.3,
+   "equity": 1535.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 10208.6,
+   "op": 1638.6,
+   "ni": 1242.0,
+   "assets": 5595.0,
+   "liab": 3566.5,
+   "equity": 1959.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 11207.3,
+   "op": 1678.0,
+   "ni": 1291.0,
+   "assets": 5958.5,
+   "liab": 3629.5,
+   "equity": 2279.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 11295.7,
+   "op": 1565.0,
+   "ni": 1201.0,
+   "assets": 6630.6,
+   "liab": 4026.8,
+   "equity": 2603.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2026,
+   "rev": 12392.8,
+   "op": 1533.0,
+   "ni": 1153.0,
+   "assets": 6963.9,
+   "liab": 4320.2,
+   "equity": 2643.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 2725.8,
+   "op": 400.9,
+   "ni": 313.1
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 2552.1,
+   "op": 329.2,
+   "ni": 252.6
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 2530.1,
+   "op": 318.5,
+   "ni": 242.2
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 3487.6,
+   "op": 516.3,
+   "ni": 393.2
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 2848.4,
+   "op": 401.8,
+   "ni": 305.1
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 2788.5,
+   "op": 344.9,
+   "ni": 260.9
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 2857.6,
+   "op": 309.4,
+   "ni": 230.9
+  },
+  {
+   "y": 2026,
+   "q": 4,
+   "rev": 3898.4,
+   "op": 476.9,
+   "ni": 356.2
+  },
+  {
+   "y": 2027,
+   "q": 1,
+   "rev": 3163.9,
+   "op": 448.3,
+   "ni": 340.5
+  },
+  {
+   "y": 2027,
+   "q": 2,
+   "rev": 3035.7,
+   "op": 379.6,
+   "ni": 282.0
+  }
+ ]
+}

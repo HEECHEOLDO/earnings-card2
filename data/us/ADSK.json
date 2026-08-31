@@ -1,0 +1,216 @@
+{
+ "name": "ADSK",
+ "split_adjusted": false,
+ "legal_name": "Autodesk, Inc.",
+ "code": "ADSK",
+ "cik": "0000769397",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2017,
+   "rev": 2031.0,
+   "op": -499.6,
+   "ni": -582.1,
+   "assets": 4798.1,
+   "liab": null,
+   "equity": 733.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 2056.6,
+   "op": -509.1,
+   "ni": -566.9,
+   "assets": 4113.6,
+   "liab": null,
+   "equity": -256.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 2569.8,
+   "op": -25.0,
+   "ni": -80.8,
+   "assets": 4729.2,
+   "liab": null,
+   "equity": -210.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 3274.3,
+   "op": 343.0,
+   "ni": 214.5,
+   "assets": 6179.3,
+   "liab": null,
+   "equity": -139.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 3790.0,
+   "op": 629.0,
+   "ni": 1208.0,
+   "assets": 7279.8,
+   "liab": null,
+   "equity": 965.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 4386.0,
+   "op": 618.0,
+   "ni": 497.0,
+   "assets": 8607.0,
+   "liab": null,
+   "equity": 849.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 5005.0,
+   "op": 989.0,
+   "ni": 823.0,
+   "assets": 9438.0,
+   "liab": null,
+   "equity": 1145.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 5497.0,
+   "op": 1128.0,
+   "ni": 906.0,
+   "assets": 9912.0,
+   "liab": null,
+   "equity": 1855.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 6131.0,
+   "op": 1354.0,
+   "ni": 1112.0,
+   "assets": 10833.0,
+   "liab": null,
+   "equity": 2715.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2026,
+   "rev": 7206.0,
+   "op": 1578.0,
+   "ni": 1124.0,
+   "assets": 12983.0,
+   "liab": null,
+   "equity": 3383.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 1417.0,
+   "op": 299.0,
+   "ni": 252.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 1505.0,
+   "op": 343.0,
+   "ni": 282.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 1570.0,
+   "op": 346.0,
+   "ni": 275.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 1639.0,
+   "op": 366.0,
+   "ni": 303.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 1633.0,
+   "op": 233.0,
+   "ni": 152.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 1763.0,
+   "op": 444.0,
+   "ni": 313.0
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 1853.0,
+   "op": 470.0,
+   "ni": 343.0
+  },
+  {
+   "y": 2026,
+   "q": 4,
+   "rev": 1957.0,
+   "op": 431.0,
+   "ni": 316.0
+  },
+  {
+   "y": 2027,
+   "q": 1,
+   "rev": 1934.0,
+   "op": 541.0,
+   "ni": 491.0
+  },
+  {
+   "y": 2027,
+   "q": 2,
+   "rev": 2046.0,
+   "op": 599.0,
+   "ni": 492.0
+  }
+ ]
+}

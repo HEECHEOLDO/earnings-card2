@@ -1,0 +1,203 @@
+{
+ "name": "VRT",
+ "split_adjusted": true,
+ "legal_name": "Vertiv Holdings Co",
+ "code": "VRT",
+ "cik": "0001674101",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2017,
+   "rev": 0.0,
+   "op": null,
+   "ni": -0.0,
+   "assets": 0.0,
+   "liab": 0.0,
+   "equity": -129.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 4285.6,
+   "op": null,
+   "ni": -314.0,
+   "assets": 697.3,
+   "liab": 25.4,
+   "equity": -540.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 4431.2,
+   "op": 206.1,
+   "ni": -140.8,
+   "assets": 4657.4,
+   "liab": 5362.2,
+   "equity": -704.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 4370.6,
+   "op": 213.5,
+   "ni": -327.3,
+   "assets": 5073.8,
+   "liab": 4561.7,
+   "equity": 512.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 4998.1,
+   "op": 259.9,
+   "ni": 119.6,
+   "assets": 6939.6,
+   "liab": 5521.9,
+   "equity": 1417.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 5691.5,
+   "op": 223.4,
+   "ni": 76.6,
+   "assets": 7095.7,
+   "liab": 5653.8,
+   "equity": 1441.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 6863.2,
+   "op": 872.2,
+   "ni": 460.2,
+   "assets": 7998.5,
+   "liab": 5983.6,
+   "equity": 2014.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 8011.8,
+   "op": 1367.4,
+   "ni": 495.8,
+   "assets": 9132.5,
+   "liab": 6698.2,
+   "equity": 2434.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 10229.9,
+   "op": 1829.7,
+   "ni": 1332.8,
+   "assets": 12212.4,
+   "liab": 8271.1,
+   "equity": 3941.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 1639.1,
+   "op": 202.6,
+   "ni": -5.9
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 1952.8,
+   "op": 336.0,
+   "ni": 178.1
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 2073.5,
+   "op": 371.6,
+   "ni": 176.6
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 2346.4,
+   "op": 457.2,
+   "ni": 147.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 2036.0,
+   "op": 290.7,
+   "ni": 164.5
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 2638.1,
+   "op": 442.4,
+   "ni": 324.2
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 2675.8,
+   "op": 516.7,
+   "ni": 398.5
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 2880.0,
+   "op": 579.9,
+   "ni": 445.6
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 2649.5,
+   "op": 440.1,
+   "ni": 390.1
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 3274.3,
+   "op": 637.9,
+   "ni": 497.8
+  }
+ ]
+}

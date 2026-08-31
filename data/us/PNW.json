@@ -1,0 +1,216 @@
+{
+ "name": "PNW",
+ "split_adjusted": false,
+ "legal_name": "PINNACLE WEST CAPITAL CORP",
+ "code": "PNW",
+ "cik": "0000764622",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 3498.7,
+   "op": 835.6,
+   "ni": 461.5,
+   "assets": 16004.3,
+   "liab": null,
+   "equity": 4935.9,
+   "dps": 2.56,
+   "payout": 61.8,
+   "yield": null,
+   "dps_adj": 2.56
+  },
+  {
+   "p": 2017,
+   "rev": 3565.3,
+   "op": 909.8,
+   "ni": 507.9,
+   "assets": 17019.1,
+   "liab": null,
+   "equity": 5135.7,
+   "dps": 2.7,
+   "payout": 59.4,
+   "yield": null,
+   "dps_adj": 2.7
+  },
+  {
+   "p": 2018,
+   "rev": 3691.2,
+   "op": 773.7,
+   "ni": 530.5,
+   "assets": 17664.2,
+   "liab": null,
+   "equity": 5348.7,
+   "dps": 2.87,
+   "payout": 60.7,
+   "yield": null,
+   "dps_adj": 2.87
+  },
+  {
+   "p": 2019,
+   "rev": 3471.2,
+   "op": 672.0,
+   "ni": 557.8,
+   "assets": 18479.2,
+   "liab": null,
+   "equity": 5553.2,
+   "dps": 3.04,
+   "payout": 61.3,
+   "yield": null,
+   "dps_adj": 3.04
+  },
+  {
+   "p": 2020,
+   "rev": 3587.0,
+   "op": 788.2,
+   "ni": 570.1,
+   "assets": 20020.4,
+   "liab": null,
+   "equity": 5752.8,
+   "dps": 3.23,
+   "payout": 63.8,
+   "yield": null,
+   "dps_adj": 3.23
+  },
+  {
+   "p": 2021,
+   "rev": 3803.8,
+   "op": 805.3,
+   "ni": 635.9,
+   "assets": 22003.2,
+   "liab": null,
+   "equity": 6021.5,
+   "dps": 3.36,
+   "payout": 59.7,
+   "yield": null,
+   "dps_adj": 3.36
+  },
+  {
+   "p": 2022,
+   "rev": 4324.4,
+   "op": 731.9,
+   "ni": 500.8,
+   "assets": 22723.4,
+   "liab": null,
+   "equity": 6159.9,
+   "dps": 3.43,
+   "payout": 77.5,
+   "yield": null,
+   "dps_adj": 3.43
+  },
+  {
+   "p": 2023,
+   "rev": 4696.0,
+   "op": 824.6,
+   "ni": 518.8,
+   "assets": 24661.2,
+   "liab": null,
+   "equity": 6284.9,
+   "dps": 3.49,
+   "payout": 76.3,
+   "yield": null,
+   "dps_adj": 3.49
+  },
+  {
+   "p": 2024,
+   "rev": 5124.9,
+   "op": 1012.1,
+   "ni": 626.0,
+   "assets": 26102.8,
+   "liab": null,
+   "equity": 6857.5,
+   "dps": 3.55,
+   "payout": 64.6,
+   "yield": null,
+   "dps_adj": 3.55
+  },
+  {
+   "p": 2025,
+   "rev": 5339.9,
+   "op": 1067.6,
+   "ni": 631.6,
+   "assets": 30031.6,
+   "liab": null,
+   "equity": 7087.1,
+   "dps": 3.61,
+   "payout": 68.4,
+   "yield": null,
+   "dps_adj": 3.61
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 951.7,
+   "op": 66.8,
+   "ni": 21.2
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 1309.0,
+   "op": 313.7,
+   "ni": 208.1
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 1768.8,
+   "op": 547.0,
+   "ni": 399.3
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 1095.4,
+   "op": 84.5,
+   "ni": -2.5
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 1032.3,
+   "op": 57.2,
+   "ni": -0.3
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 1358.8,
+   "op": 307.6,
+   "ni": 196.9
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 1820.7,
+   "op": 581.8,
+   "ni": 417.5
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 1128.2,
+   "op": 121.0,
+   "ni": 17.6
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 1149.6,
+   "op": 131.2,
+   "ni": 35.1
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 1455.7,
+   "op": 305.7,
+   "ni": 180.8
+  }
+ ]
+}

@@ -1,0 +1,216 @@
+{
+ "name": "CASY",
+ "split_adjusted": false,
+ "legal_name": "CASEYS GENERAL STORES INC",
+ "code": "CASY",
+ "cik": "0000726958",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2017,
+   "rev": 7506.6,
+   "op": 269.7,
+   "ni": 177.5,
+   "assets": 3020.1,
+   "liab": 1829.5,
+   "equity": 1190.6,
+   "dps": 0.96,
+   "payout": 21.2,
+   "yield": null,
+   "dps_adj": 0.96
+  },
+  {
+   "p": 2018,
+   "rev": 8391.1,
+   "op": 1769.4,
+   "ni": 317.9,
+   "assets": 3469.9,
+   "liab": 2198.8,
+   "equity": 1271.1,
+   "dps": 1.04,
+   "payout": 12.4,
+   "yield": null,
+   "dps_adj": 1.04
+  },
+  {
+   "p": 2019,
+   "rev": 9352.9,
+   "op": 1954.7,
+   "ni": 203.9,
+   "assets": 3731.4,
+   "liab": 2322.6,
+   "equity": 1408.8,
+   "dps": 1.16,
+   "payout": 20.9,
+   "yield": null,
+   "dps_adj": 1.16
+  },
+  {
+   "p": 2020,
+   "rev": 9175.3,
+   "op": 2144.7,
+   "ni": 263.8,
+   "assets": 3943.9,
+   "liab": 2300.7,
+   "equity": 1643.2,
+   "dps": 1.28,
+   "payout": 17.9,
+   "yield": null,
+   "dps_adj": 1.28
+  },
+  {
+   "p": 2021,
+   "rev": 8707.2,
+   "op": null,
+   "ni": 312.9,
+   "assets": 4460.3,
+   "liab": 2527.6,
+   "equity": 1932.7,
+   "dps": 1.32,
+   "payout": 15.6,
+   "yield": null,
+   "dps_adj": 1.32
+  },
+  {
+   "p": 2022,
+   "rev": 12952.6,
+   "op": null,
+   "ni": 339.8,
+   "assets": 5505.7,
+   "liab": 3264.9,
+   "equity": 2240.8,
+   "dps": 1.39,
+   "payout": 15.2,
+   "yield": null,
+   "dps_adj": 1.39
+  },
+  {
+   "p": 2023,
+   "rev": 15094.5,
+   "op": null,
+   "ni": 446.7,
+   "assets": 5943.3,
+   "liab": 3282.6,
+   "equity": 2660.7,
+   "dps": 1.52,
+   "payout": 12.7,
+   "yield": null,
+   "dps_adj": 1.52
+  },
+  {
+   "p": 2024,
+   "rev": 14862.9,
+   "op": null,
+   "ni": 502.0,
+   "assets": 6347.4,
+   "liab": 3332.1,
+   "equity": 3015.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 15940.9,
+   "op": null,
+   "ni": 546.5,
+   "assets": 8208.1,
+   "liab": 4699.4,
+   "equity": 3508.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2026,
+   "rev": 17561.1,
+   "op": null,
+   "ni": 714.4,
+   "assets": 8936.1,
+   "liab": 4984.3,
+   "equity": 3951.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 3329.2,
+   "op": null,
+   "ni": 86.9
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 3600.0,
+   "op": null,
+   "ni": 87.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 4097.7,
+   "op": null,
+   "ni": 180.2
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 3946.8,
+   "op": null,
+   "ni": 180.9
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 3903.6,
+   "op": null,
+   "ni": 87.1
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 3992.8,
+   "op": null,
+   "ni": 98.3
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 4567.1,
+   "op": null,
+   "ni": 215.4
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 4506.1,
+   "op": null,
+   "ni": 206.3
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 3916.1,
+   "op": null,
+   "ni": 130.1
+  },
+  {
+   "y": 2026,
+   "q": 4,
+   "rev": 4571.8,
+   "op": null,
+   "ni": 162.7
+  }
+ ]
+}

@@ -1,0 +1,216 @@
+{
+ "name": "TTD",
+ "split_adjusted": true,
+ "legal_name": "Trade Desk, Inc.",
+ "code": "TTD",
+ "cik": "0001671933",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 202.9,
+   "op": 57.5,
+   "ni": 20.5,
+   "assets": 537.6,
+   "liab": 373.2,
+   "equity": 164.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 308.2,
+   "op": 69.4,
+   "ni": 50.8,
+   "assets": 797.2,
+   "liab": 551.6,
+   "equity": 245.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 477.3,
+   "op": 107.3,
+   "ni": 88.1,
+   "assets": 1117.9,
+   "liab": 723.3,
+   "equity": 394.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 661.1,
+   "op": 112.2,
+   "ni": 108.3,
+   "assets": 1728.8,
+   "liab": 1116.2,
+   "equity": 612.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 836.0,
+   "op": 144.2,
+   "ni": 242.3,
+   "assets": 2753.6,
+   "liab": 1740.5,
+   "equity": 1013.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 1196.5,
+   "op": 124.8,
+   "ni": 137.8,
+   "assets": 3577.3,
+   "liab": 2050.0,
+   "equity": 1527.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 1577.8,
+   "op": 113.7,
+   "ni": 53.4,
+   "assets": 4380.7,
+   "liab": 2265.3,
+   "equity": 2115.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 1946.1,
+   "op": 200.5,
+   "ni": 178.9,
+   "assets": 4888.7,
+   "liab": 2724.5,
+   "equity": 2164.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 2444.8,
+   "op": 427.2,
+   "ni": 393.1,
+   "assets": 6112.0,
+   "liab": 3162.8,
+   "equity": 2949.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 2896.3,
+   "op": 589.3,
+   "ni": 443.3,
+   "assets": 6153.2,
+   "liab": 3668.8,
+   "equity": 2484.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 491.3,
+   "op": 28.7,
+   "ni": 31.7
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 584.5,
+   "op": 94.7,
+   "ni": 85.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 628.0,
+   "op": 108.5,
+   "ni": 94.2
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 741.0,
+   "op": 195.3,
+   "ni": 182.2
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 616.0,
+   "op": 54.5,
+   "ni": 50.7
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 694.0,
+   "op": 116.8,
+   "ni": 90.1
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 739.4,
+   "op": 161.2,
+   "ni": 115.5
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 846.8,
+   "op": 256.9,
+   "ni": 186.9
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 688.9,
+   "op": 66.6,
+   "ni": 40.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 715.1,
+   "op": 101.6,
+   "ni": 64.4
+  }
+ ]
+}

@@ -1,0 +1,216 @@
+{
+ "name": "AVY",
+ "split_adjusted": false,
+ "legal_name": "Avery Dennison Corp",
+ "code": "AVY",
+ "cik": "0000008818",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 6086.5,
+   "op": 1699.7,
+   "ni": 320.7,
+   "assets": 4396.4,
+   "liab": null,
+   "equity": 925.5,
+   "dps": 1.6,
+   "payout": 44.5,
+   "yield": null,
+   "dps_adj": 1.6
+  },
+  {
+   "p": 2017,
+   "rev": 6613.8,
+   "op": 1812.2,
+   "ni": 281.8,
+   "assets": 5136.9,
+   "liab": null,
+   "equity": 1032.4,
+   "dps": 1.76,
+   "payout": 55.1,
+   "yield": null,
+   "dps_adj": 1.76
+  },
+  {
+   "p": 2018,
+   "rev": 7159.0,
+   "op": 1915.5,
+   "ni": 467.4,
+   "assets": 5177.5,
+   "liab": null,
+   "equity": 955.1,
+   "dps": 2.01,
+   "payout": 37.5,
+   "yield": null,
+   "dps_adj": 2.01
+  },
+  {
+   "p": 2019,
+   "rev": 7070.1,
+   "op": 1904.1,
+   "ni": 303.6,
+   "assets": 5488.8,
+   "liab": null,
+   "equity": 1204.0,
+   "dps": 2.26,
+   "payout": 62.5,
+   "yield": null,
+   "dps_adj": 2.26
+  },
+  {
+   "p": 2020,
+   "rev": 6971.5,
+   "op": 1923.3,
+   "ni": 555.9,
+   "assets": 6083.9,
+   "liab": null,
+   "equity": 1484.9,
+   "dps": 2.36,
+   "payout": 35.4,
+   "yield": null,
+   "dps_adj": 2.36
+  },
+  {
+   "p": 2021,
+   "rev": 8408.3,
+   "op": 2312.8,
+   "ni": 740.1,
+   "assets": 7971.6,
+   "liab": null,
+   "equity": 1924.4,
+   "dps": 2.66,
+   "payout": 29.8,
+   "yield": null,
+   "dps_adj": 2.66
+  },
+  {
+   "p": 2022,
+   "rev": 9039.3,
+   "op": 2404.2,
+   "ni": 757.1,
+   "assets": 7950.5,
+   "liab": null,
+   "equity": 2032.2,
+   "dps": 2.93,
+   "payout": 31.6,
+   "yield": null,
+   "dps_adj": 2.93
+  },
+  {
+   "p": 2023,
+   "rev": 8364.3,
+   "op": 2277.5,
+   "ni": 503.0,
+   "assets": 8209.8,
+   "liab": null,
+   "equity": 2127.9,
+   "dps": 3.18,
+   "payout": 51.0,
+   "yield": null,
+   "dps_adj": 3.18
+  },
+  {
+   "p": 2024,
+   "rev": 8755.7,
+   "op": 2530.7,
+   "ni": 704.9,
+   "assets": 8404.2,
+   "liab": null,
+   "equity": 2312.3,
+   "dps": 3.45,
+   "payout": 39.4,
+   "yield": null,
+   "dps_adj": 3.45
+  },
+  {
+   "p": 2025,
+   "rev": 8855.5,
+   "op": 2546.3,
+   "ni": 688.0,
+   "assets": 8801.7,
+   "liab": null,
+   "equity": 2242.1,
+   "dps": 3.7,
+   "payout": 42.0,
+   "yield": null,
+   "dps_adj": 3.7
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 2151.3,
+   "op": 632.2,
+   "ni": 172.4
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 2235.3,
+   "op": 662.7,
+   "ni": 176.8
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 2183.4,
+   "op": 626.6,
+   "ni": 181.7
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 2185.7,
+   "op": 609.2,
+   "ni": 174.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 2148.3,
+   "op": 621.5,
+   "ni": 166.3
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 2220.5,
+   "op": 639.1,
+   "ni": 189.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 2215.5,
+   "op": 635.0,
+   "ni": 166.3
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 2271.2,
+   "op": 650.7,
+   "ni": 166.4
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 2298.5,
+   "op": 664.8,
+   "ni": 168.1
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 2462.9,
+   "op": 729.4,
+   "ni": 204.1
+  }
+ ]
+}

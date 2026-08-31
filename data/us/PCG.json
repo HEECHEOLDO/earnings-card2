@@ -1,0 +1,216 @@
+{
+ "name": "PCG",
+ "split_adjusted": true,
+ "legal_name": "PG&E Corp",
+ "code": "PCG",
+ "cik": "0001004980",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 17666.0,
+   "op": 2080.0,
+   "ni": 1407.0,
+   "assets": 68598.0,
+   "liab": null,
+   "equity": 18192.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 17135.0,
+   "op": 2905.0,
+   "ni": 1660.0,
+   "assets": 68012.0,
+   "liab": null,
+   "equity": 19472.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 16759.0,
+   "op": -9700.0,
+   "ni": -6837.0,
+   "assets": 76995.0,
+   "liab": null,
+   "equity": 12903.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 17129.0,
+   "op": -10094.0,
+   "ni": -7642.0,
+   "assets": 85196.0,
+   "liab": null,
+   "equity": 5388.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 18469.0,
+   "op": 1755.0,
+   "ni": -1304.0,
+   "assets": 97856.0,
+   "liab": null,
+   "equity": 21253.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 20642.0,
+   "op": 1883.0,
+   "ni": -0.0,
+   "assets": 103327.0,
+   "liab": null,
+   "equity": 21223.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 21680.0,
+   "op": 1837.0,
+   "ni": 0.0,
+   "assets": 118644.0,
+   "liab": null,
+   "equity": 23075.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 24428.0,
+   "op": 2671.0,
+   "ni": 0.0,
+   "assets": 125698.0,
+   "liab": null,
+   "equity": 25292.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 24419.0,
+   "op": 4459.0,
+   "ni": 0.0,
+   "assets": 133660.0,
+   "liab": null,
+   "equity": 30401.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 24935.0,
+   "op": 4749.0,
+   "ni": 0.0,
+   "assets": 141611.0,
+   "liab": null,
+   "equity": 32792.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 5861.0,
+   "op": 1276.0,
+   "ni": 735.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 5986.0,
+   "op": 1134.0,
+   "ni": 524.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 5941.0,
+   "op": 1029.0,
+   "ni": 579.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 6631.0,
+   "op": 1020.0,
+   "ni": -1838.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 5983.0,
+   "op": 1220.0,
+   "ni": 634.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 5898.0,
+   "op": 1096.0,
+   "ni": 549.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 6250.0,
+   "op": 1209.0,
+   "ni": 850.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 6804.0,
+   "op": 1224.0,
+   "ni": -2033.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 6881.0,
+   "op": 1470.0,
+   "ni": 885.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 5902.0,
+   "op": 1263.0,
+   "ni": 761.0
+  }
+ ]
+}

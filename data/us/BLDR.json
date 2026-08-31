@@ -1,0 +1,216 @@
+{
+ "name": "BLDR",
+ "split_adjusted": false,
+ "legal_name": "Builders FirstSource, Inc.",
+ "code": "BLDR",
+ "cik": "0001316835",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 6367.3,
+   "op": 236.3,
+   "ni": 144.3,
+   "assets": 2909.9,
+   "liab": 2600.3,
+   "equity": 309.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 7034.2,
+   "op": 285.1,
+   "ni": 38.8,
+   "assets": 3006.1,
+   "liab": 2629.9,
+   "equity": 376.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 7724.8,
+   "op": 369.0,
+   "ni": 205.2,
+   "assets": 2932.3,
+   "liab": 2336.0,
+   "equity": 596.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 7280.4,
+   "op": 392.3,
+   "ni": 221.8,
+   "assets": 3249.5,
+   "liab": 2424.5,
+   "equity": 825.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 8558.9,
+   "op": 543.9,
+   "ni": 313.5,
+   "assets": 4173.7,
+   "liab": 3020.9,
+   "equity": 1152.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 19893.9,
+   "op": 2387.4,
+   "ni": 1725.4,
+   "assets": 10714.3,
+   "liab": 5911.9,
+   "equity": 4802.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 22726.4,
+   "op": 3770.2,
+   "ni": 2749.4,
+   "assets": 10595.2,
+   "liab": 5632.6,
+   "equity": 4962.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 17097.3,
+   "op": 2176.3,
+   "ni": 1540.6,
+   "assets": 10499.5,
+   "liab": 5767.1,
+   "equity": 4732.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 16400.5,
+   "op": 1595.2,
+   "ni": 1077.9,
+   "assets": 10583.1,
+   "liab": 6286.6,
+   "equity": 4296.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 15190.6,
+   "op": 786.3,
+   "ni": 435.2,
+   "assets": 11237.5,
+   "liab": 6885.3,
+   "equity": 4352.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 3891.4,
+   "op": 373.6,
+   "ni": 258.8
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 4456.3,
+   "op": 489.5,
+   "ni": 344.1
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 4232.5,
+   "op": 428.0,
+   "ni": 284.8
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 3820.3,
+   "op": 304.1,
+   "ni": 190.2
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 3657.5,
+   "op": 184.4,
+   "ni": 96.3
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 4234.1,
+   "op": 311.3,
+   "ni": 185.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 3941.2,
+   "op": 228.8,
+   "ni": 122.4
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 3357.9,
+   "op": 61.8,
+   "ni": 31.5
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 3287.1,
+   "op": 16.5,
+   "ni": -47.4
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 3862.5,
+   "op": 128.5,
+   "ni": -3.9
+  }
+ ]
+}

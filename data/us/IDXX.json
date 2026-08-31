@@ -1,0 +1,216 @@
+{
+ "name": "IDXX",
+ "split_adjusted": false,
+ "legal_name": "IDEXX LABORATORIES INC /DE",
+ "code": "IDXX",
+ "cik": "0000874716",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 1775.4,
+   "op": 350.2,
+   "ni": 222.1,
+   "assets": 1530.7,
+   "liab": 1638.9,
+   "equity": -108.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 1969.1,
+   "op": 413.0,
+   "ni": 263.3,
+   "assets": 1741.7,
+   "liab": 1800.5,
+   "equity": -53.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 2213.2,
+   "op": 491.3,
+   "ni": 377.0,
+   "assets": 1620.1,
+   "liab": 1629.3,
+   "equity": -9.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 2406.9,
+   "op": 552.8,
+   "ni": 427.8,
+   "assets": 1832.5,
+   "liab": 1654.7,
+   "equity": 177.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 2706.7,
+   "op": 694.5,
+   "ni": 582.1,
+   "assets": 2294.6,
+   "liab": 1661.8,
+   "equity": 632.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 3215.4,
+   "op": 932.0,
+   "ni": 744.8,
+   "assets": 2437.2,
+   "liab": 1747.2,
+   "equity": 690.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 3367.3,
+   "op": 898.8,
+   "ni": 679.1,
+   "assets": 2746.8,
+   "liab": 2138.0,
+   "equity": 608.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 3661.0,
+   "op": 1097.1,
+   "ni": 845.0,
+   "assets": 3259.9,
+   "liab": 1775.4,
+   "equity": 1484.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 3897.5,
+   "op": 1128.3,
+   "ni": 887.9,
+   "assets": 3293.4,
+   "liab": 1698.1,
+   "equity": 1595.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 4303.7,
+   "op": 1360.0,
+   "ni": 1059.5,
+   "assets": 3350.8,
+   "liab": 1745.4,
+   "equity": 1605.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 964.1,
+   "op": 299.0,
+   "ni": 235.6
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 1003.6,
+   "op": 263.8,
+   "ni": 203.3
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 975.5,
+   "op": 303.9,
+   "ni": 232.8
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 954.3,
+   "op": 261.7,
+   "ni": 216.1
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 998.4,
+   "op": 316.5,
+   "ni": 242.7
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 1109.5,
+   "op": 373.0,
+   "ni": 294.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 1105.2,
+   "op": 354.8,
+   "ni": 274.6
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 1090.6,
+   "op": 315.6,
+   "ni": 248.2
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 1140.8,
+   "op": 362.6,
+   "ni": 278.4
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 1216.6,
+   "op": 425.6,
+   "ni": 338.4
+  }
+ ]
+}

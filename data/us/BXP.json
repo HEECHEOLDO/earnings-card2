@@ -1,0 +1,216 @@
+{
+ "name": "BXP",
+ "split_adjusted": false,
+ "legal_name": "BXP, Inc.",
+ "code": "BXP",
+ "cik": "0001037540",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 2550.8,
+   "op": 825.8,
+   "ni": 570.0,
+   "assets": 18851.6,
+   "liab": 10919.7,
+   "equity": 7931.9,
+   "dps": 2.7,
+   "payout": 72.8,
+   "yield": null,
+   "dps_adj": 2.7
+  },
+  {
+   "p": 2017,
+   "rev": 2602.1,
+   "op": 908.1,
+   "ni": 562.5,
+   "assets": 19372.2,
+   "liab": 11269.8,
+   "equity": 8102.5,
+   "dps": 3.05,
+   "payout": 83.6,
+   "yield": null,
+   "dps_adj": 3.05
+  },
+  {
+   "p": 2018,
+   "rev": 2717.1,
+   "op": null,
+   "ni": 712.6,
+   "assets": 20256.5,
+   "liab": 12042.5,
+   "equity": 8214.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 2960.6,
+   "op": null,
+   "ni": 652.0,
+   "assets": 21284.9,
+   "liab": 13262.3,
+   "equity": 8014.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 2765.7,
+   "op": null,
+   "ni": 1018.7,
+   "assets": 22858.2,
+   "liab": 14511.7,
+   "equity": 8339.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 2888.6,
+   "op": null,
+   "ni": 496.2,
+   "assets": 22365.3,
+   "liab": 14322.5,
+   "equity": 8033.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 3108.6,
+   "op": null,
+   "ni": 848.9,
+   "assets": 24207.7,
+   "liab": 15837.2,
+   "equity": 8363.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 3273.6,
+   "op": null,
+   "ni": 190.2,
+   "assets": 26026.1,
+   "liab": 17833.8,
+   "equity": 8184.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 3407.7,
+   "op": null,
+   "ni": 14.3,
+   "assets": 26085.0,
+   "liab": 18137.3,
+   "equity": 7938.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 3482.3,
+   "op": null,
+   "ni": 276.8,
+   "assets": 26166.2,
+   "liab": 18473.9,
+   "equity": 7684.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 839.4,
+   "op": null,
+   "ni": 106.6
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 850.5,
+   "op": null,
+   "ni": 106.9
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 859.2,
+   "op": null,
+   "ni": 108.5
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 858.6,
+   "op": null,
+   "ni": -307.7
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 865.2,
+   "op": null,
+   "ni": 86.9
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 868.5,
+   "op": null,
+   "ni": 119.1
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 871.5,
+   "op": null,
+   "ni": -116.8
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 877.1,
+   "op": null,
+   "ni": 187.6
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 872.1,
+   "op": null,
+   "ni": 133.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 895.7,
+   "op": null,
+   "ni": 102.5
+  }
+ ]
+}

@@ -1,0 +1,216 @@
+{
+ "name": "EXE",
+ "split_adjusted": true,
+ "legal_name": "EXPAND ENERGY Corp",
+ "code": "EXE",
+ "cik": "0000895126",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2015,
+   "rev": 12764.0,
+   "op": -18919.0,
+   "ni": -14635.0,
+   "assets": 17314.0,
+   "liab": null,
+   "equity": 2397.0,
+   "dps": 0.0875,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 0.5734
+  },
+  {
+   "p": 2016,
+   "rev": 8705.0,
+   "op": -3256.0,
+   "ni": -3490.0,
+   "assets": 13028.0,
+   "liab": null,
+   "equity": 2567.0,
+   "dps": 0,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 0
+  },
+  {
+   "p": 2017,
+   "rev": 10039.0,
+   "op": -138.0,
+   "ni": -502.0,
+   "assets": 14925.0,
+   "liab": null,
+   "equity": 1943.0,
+   "dps": 0,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 0
+  },
+  {
+   "p": 2018,
+   "rev": 10030.0,
+   "op": 382.0,
+   "ni": 228.0,
+   "assets": 12735.0,
+   "liab": null,
+   "equity": 2133.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 8532.0,
+   "op": -31.0,
+   "ni": -308.0,
+   "assets": 16193.0,
+   "liab": 11792.0,
+   "equity": 4401.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 5240.0,
+   "op": -8703.0,
+   "ni": -9750.0,
+   "assets": 6584.0,
+   "liab": 11925.0,
+   "equity": -5341.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 11743.0,
+   "op": 3780.0,
+   "ni": 4936.0,
+   "assets": 15468.0,
+   "liab": 6344.0,
+   "equity": 9124.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 8721.0,
+   "op": 3142.0,
+   "ni": 2419.0,
+   "assets": 14376.0,
+   "liab": 3647.0,
+   "equity": 10729.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 4235.0,
+   "op": -803.0,
+   "ni": -714.0,
+   "assets": 27894.0,
+   "liab": 10329.0,
+   "equity": 17565.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 12124.0,
+   "op": 2471.0,
+   "ni": 1819.0,
+   "assets": 28287.0,
+   "liab": 9709.0,
+   "equity": 18578.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 1948.0,
+   "op": 726.0,
+   "ni": 569.0
+  },
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 1081.0,
+   "op": 32.0,
+   "ni": 26.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 505.0,
+   "op": -294.0,
+   "ni": -227.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 648.0,
+   "op": -155.0,
+   "ni": -114.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 2001.0,
+   "op": -386.0,
+   "ni": -399.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 2196.0,
+   "op": -268.0,
+   "ni": -249.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 3690.0,
+   "op": 1269.0,
+   "ni": 968.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 2966.0,
+   "op": 725.0,
+   "ni": 547.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 3272.0,
+   "op": 745.0,
+   "ni": 553.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 4397.0,
+   "op": 1531.0,
+   "ni": 1159.0
+  }
+ ]
+}

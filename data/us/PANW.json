@@ -1,0 +1,216 @@
+{
+ "name": "PANW",
+ "split_adjusted": true,
+ "legal_name": "Palo Alto Networks Inc",
+ "code": "PANW",
+ "cik": "0001327567",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 670.8,
+   "op": -157.3,
+   "ni": -192.7,
+   "assets": 2858.2,
+   "liab": null,
+   "equity": 1049.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 1755.1,
+   "op": -165.8,
+   "ni": -203.0,
+   "assets": 3438.3,
+   "liab": null,
+   "equity": 927.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 2273.6,
+   "op": -104.2,
+   "ni": -122.2,
+   "assets": 5948.9,
+   "liab": null,
+   "equity": 1160.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 2899.6,
+   "op": -54.1,
+   "ni": -81.9,
+   "assets": 6592.2,
+   "liab": null,
+   "equity": 1586.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 3408.4,
+   "op": -179.0,
+   "ni": -267.0,
+   "assets": 9065.4,
+   "liab": null,
+   "equity": 1101.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 4256.1,
+   "op": -304.1,
+   "ni": -498.9,
+   "assets": 10241.6,
+   "liab": 9478.0,
+   "equity": 634.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 5501.5,
+   "op": -188.8,
+   "ni": -267.0,
+   "assets": 12253.6,
+   "liab": 12043.6,
+   "equity": 210.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 6892.7,
+   "op": 387.3,
+   "ni": 439.7,
+   "assets": 14501.1,
+   "liab": 12752.7,
+   "equity": 1748.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 8027.5,
+   "op": 683.9,
+   "ni": 2577.6,
+   "assets": 19990.9,
+   "liab": 14821.2,
+   "equity": 5169.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 9221.5,
+   "op": 1242.9,
+   "ni": 1133.9,
+   "assets": 23576.0,
+   "liab": 15752.0,
+   "equity": 7824.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 1975.1,
+   "op": 53.6,
+   "ni": 1746.9
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 1984.8,
+   "op": 176.7,
+   "ni": 278.8
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 2189.5,
+   "op": 238.4,
+   "ni": 357.7
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 2139.0,
+   "op": 286.0,
+   "ni": 351.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 2257.0,
+   "op": 241.0,
+   "ni": 267.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 2289.0,
+   "op": 219.0,
+   "ni": 262.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 2536.5,
+   "op": 496.9,
+   "ni": 253.9
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 2474.0,
+   "op": 309.0,
+   "ni": 334.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 2594.0,
+   "op": 397.0,
+   "ni": 432.0
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 3002.0,
+   "op": -183.0,
+   "ni": -177.0
+  }
+ ]
+}

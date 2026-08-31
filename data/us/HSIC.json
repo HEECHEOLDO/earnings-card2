@@ -1,0 +1,216 @@
+{
+ "name": "HSIC",
+ "split_adjusted": false,
+ "legal_name": "HENRY SCHEIN INC",
+ "code": "HSIC",
+ "cik": "0001000228",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 11571.7,
+   "op": 771.6,
+   "ni": 556.4,
+   "assets": 6811.8,
+   "liab": 3352.0,
+   "equity": 2800.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 8883.4,
+   "op": 669.8,
+   "ni": 459.3,
+   "assets": 7864.0,
+   "liab": 4207.4,
+   "equity": 2824.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 9417.6,
+   "op": 600.6,
+   "ni": 562.1,
+   "assets": 8500.5,
+   "liab": 4646.6,
+   "equity": 3541.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 9985.8,
+   "op": 718.3,
+   "ni": 719.1,
+   "assets": 7151.1,
+   "liab": 3233.7,
+   "equity": 3630.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 10119.0,
+   "op": 535.0,
+   "ni": 420.0,
+   "assets": 7773.0,
+   "liab": 3460.4,
+   "equity": 3984.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 12401.0,
+   "op": 852.0,
+   "ni": 660.0,
+   "assets": 8481.0,
+   "liab": 3805.0,
+   "equity": 4063.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 12647.0,
+   "op": 747.0,
+   "ni": 566.0,
+   "assets": 8607.0,
+   "liab": 3936.0,
+   "equity": 4095.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 12339.0,
+   "op": 615.0,
+   "ni": 436.0,
+   "assets": 10573.0,
+   "liab": 5420.0,
+   "equity": 4289.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 12673.0,
+   "op": 621.0,
+   "ni": 398.0,
+   "assets": 10218.0,
+   "liab": 5381.0,
+   "equity": 4031.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 13184.0,
+   "op": 653.0,
+   "ni": 419.0,
+   "assets": 11215.0,
+   "liab": 6421.0,
+   "equity": 3899.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 3172.0,
+   "op": 150.0,
+   "ni": 98.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 3136.0,
+   "op": 159.0,
+   "ni": 105.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 3174.0,
+   "op": 157.0,
+   "ni": 99.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 3191.0,
+   "op": 155.0,
+   "ni": 96.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 3168.0,
+   "op": 175.0,
+   "ni": 113.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 3240.0,
+   "op": 151.0,
+   "ni": 94.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 3339.0,
+   "op": 164.0,
+   "ni": 109.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 3437.0,
+   "op": 163.0,
+   "ni": 103.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 3368.0,
+   "op": 182.0,
+   "ni": 112.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 3458.0,
+   "op": 171.0,
+   "ni": 102.0
+  }
+ ]
+}

@@ -1,0 +1,216 @@
+{
+ "name": "SNPS",
+ "split_adjusted": false,
+ "legal_name": "SYNOPSYS INC",
+ "code": "SNPS",
+ "cik": "0000883241",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 2422.5,
+   "op": 317.4,
+   "ni": 266.8,
+   "assets": 5240.4,
+   "liab": 2045.2,
+   "equity": 3195.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 2724.9,
+   "op": 347.6,
+   "ni": 136.6,
+   "assets": 5396.4,
+   "liab": 2116.7,
+   "equity": 3279.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 3121.1,
+   "op": 360.2,
+   "ni": 432.5,
+   "assets": 6146.0,
+   "liab": 2661.0,
+   "equity": 3485.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 3360.7,
+   "op": 520.2,
+   "ni": 532.4,
+   "assets": 6405.2,
+   "liab": 2316.3,
+   "equity": 4088.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 3685.3,
+   "op": 620.1,
+   "ni": 663.4,
+   "assets": 8030.1,
+   "liab": 3117.7,
+   "equity": 4912.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 4204.2,
+   "op": 734.8,
+   "ni": 756.4,
+   "assets": 8752.3,
+   "liab": 3453.3,
+   "equity": 5298.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 4615.7,
+   "op": 1148.7,
+   "ni": 978.4,
+   "assets": 9418.1,
+   "liab": 3858.9,
+   "equity": 5520.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 5318.0,
+   "op": 1273.2,
+   "ni": 1218.1,
+   "assets": 10333.1,
+   "liab": 4148.8,
+   "equity": 6153.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 6127.4,
+   "op": 1355.7,
+   "ni": 2235.8,
+   "assets": 13073.6,
+   "liab": 4050.4,
+   "equity": 8993.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 7054.2,
+   "op": 914.9,
+   "ni": 1333.3,
+   "assets": 48224.5,
+   "liab": 19897.4,
+   "equity": 28327.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 1454.7,
+   "op": 332.1,
+   "ni": 289.1
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 1525.7,
+   "op": 360.2,
+   "ni": 404.9
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 1636.0,
+   "op": 310.8,
+   "ni": 1095.6
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 1455.3,
+   "op": 251.8,
+   "ni": 297.4
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 1604.3,
+   "op": 376.4,
+   "ni": 345.1
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 1739.7,
+   "op": 165.3,
+   "ni": 242.3
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 2254.9,
+   "op": 121.4,
+   "ni": 448.5
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 2408.8,
+   "op": 203.0,
+   "ni": 64.7
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 2276.0,
+   "op": 120.4,
+   "ni": 16.9
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 2476.8,
+   "op": 357.5,
+   "ni": 545.7
+  }
+ ]
+}

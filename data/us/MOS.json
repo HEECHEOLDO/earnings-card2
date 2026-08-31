@@ -1,0 +1,216 @@
+{
+ "name": "MOS",
+ "split_adjusted": false,
+ "legal_name": "MOSAIC CO",
+ "code": "MOS",
+ "cik": "0001285785",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 7162.8,
+   "op": 319.0,
+   "ni": 301.2,
+   "assets": 16840.7,
+   "liab": null,
+   "equity": 9622.5,
+   "dps": 1.1,
+   "payout": 128.0,
+   "yield": null,
+   "dps_adj": 1.1
+  },
+  {
+   "p": 2017,
+   "rev": 7409.4,
+   "op": 465.7,
+   "ni": -104.2,
+   "assets": 18633.4,
+   "liab": null,
+   "equity": 9639.1,
+   "dps": 0.35,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 0.35
+  },
+  {
+   "p": 2018,
+   "rev": 9587.3,
+   "op": 928.3,
+   "ni": 469.9,
+   "assets": 20119.2,
+   "liab": null,
+   "equity": 10604.7,
+   "dps": 0.1,
+   "payout": 8.2,
+   "yield": null,
+   "dps_adj": 0.1
+  },
+  {
+   "p": 2019,
+   "rev": 8906.3,
+   "op": -1094.9,
+   "ni": -1090.8,
+   "assets": 19298.5,
+   "liab": null,
+   "equity": 9367.6,
+   "dps": 0.1,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 0.1
+  },
+  {
+   "p": 2020,
+   "rev": 8681.7,
+   "op": 412.9,
+   "ni": 665.6,
+   "assets": 19789.8,
+   "liab": null,
+   "equity": 9755.2,
+   "dps": 0.2,
+   "payout": 11.4,
+   "yield": null,
+   "dps_adj": 0.2
+  },
+  {
+   "p": 2021,
+   "rev": 12357.4,
+   "op": 2468.5,
+   "ni": 1631.0,
+   "assets": 22036.4,
+   "liab": null,
+   "equity": 10748.5,
+   "dps": 0.3,
+   "payout": 7.0,
+   "yield": null,
+   "dps_adj": 0.3
+  },
+  {
+   "p": 2022,
+   "rev": 19125.2,
+   "op": 4785.3,
+   "ni": 3583.0,
+   "assets": 23386.0,
+   "liab": null,
+   "equity": 12194.2,
+   "dps": 0.6,
+   "payout": 5.9,
+   "yield": null,
+   "dps_adj": 0.6
+  },
+  {
+   "p": 2023,
+   "rev": 13696.1,
+   "op": 1338.1,
+   "ni": 1165.0,
+   "assets": 23032.8,
+   "liab": null,
+   "equity": 12432.8,
+   "dps": 0.85,
+   "payout": 24.2,
+   "yield": null,
+   "dps_adj": 0.85
+  },
+  {
+   "p": 2024,
+   "rev": 11122.8,
+   "op": 621.5,
+   "ni": 175.0,
+   "assets": 22924.0,
+   "liab": null,
+   "equity": 11614.7,
+   "dps": 0.85,
+   "payout": 155.3,
+   "yield": null,
+   "dps_adj": 0.85
+  },
+  {
+   "p": 2025,
+   "rev": 12052.4,
+   "op": 821.5,
+   "ni": 541.0,
+   "assets": 24480.1,
+   "liab": null,
+   "equity": 12234.2,
+   "dps": 0.88,
+   "payout": 51.6,
+   "yield": null,
+   "dps_adj": 0.88
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 2679.4,
+   "op": 172.9,
+   "ni": 56.5
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 2816.6,
+   "op": 233.3,
+   "ni": -150.9
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 2810.9,
+   "op": 115.4,
+   "ni": 130.7
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 2815.9,
+   "op": 99.9,
+   "ni": 138.7
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 2620.9,
+   "op": 338.5,
+   "ni": 250.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 3005.7,
+   "op": 244.4,
+   "ni": 419.7
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 3452.1,
+   "op": 339.8,
+   "ni": 424.1
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 2973.7,
+   "op": -101.2,
+   "ni": -552.8
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 2998.0,
+   "op": -372.9,
+   "ni": -254.5
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 2824.1,
+   "op": -35.5,
+   "ni": -265.5
+  }
+ ]
+}

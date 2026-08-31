@@ -1,0 +1,216 @@
+{
+ "name": "ANET",
+ "split_adjusted": true,
+ "legal_name": "Arista Networks, Inc.",
+ "code": "ANET",
+ "cik": "0001596532",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 1129.2,
+   "op": 243.4,
+   "ni": 184.2,
+   "assets": 1729.0,
+   "liab": 621.2,
+   "equity": 1107.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 1646.2,
+   "op": 470.3,
+   "ni": 423.2,
+   "assets": 2460.9,
+   "liab": 798.9,
+   "equity": 1661.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 2151.4,
+   "op": 273.3,
+   "ni": 328.1,
+   "assets": 3082.0,
+   "liab": 938.6,
+   "equity": 2143.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 2410.7,
+   "op": 805.8,
+   "ni": 859.9,
+   "assets": 4185.3,
+   "liab": 1290.6,
+   "equity": 2894.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 2317.5,
+   "op": 699.7,
+   "ni": 634.6,
+   "assets": 4738.9,
+   "liab": 1418.6,
+   "equity": 3320.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 2948.0,
+   "op": 924.7,
+   "ni": 0.0,
+   "assets": 5734.4,
+   "liab": 1755.8,
+   "equity": 3978.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 4381.3,
+   "op": 1527.1,
+   "ni": 0.0,
+   "assets": 6775.4,
+   "liab": 1889.6,
+   "equity": 4885.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 5860.2,
+   "op": 2257.3,
+   "ni": 0.0,
+   "assets": 9956.6,
+   "liab": 2737.6,
+   "equity": 7219.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 7003.1,
+   "op": 2944.6,
+   "ni": 0.0,
+   "assets": 14043.9,
+   "liab": 4049.1,
+   "equity": 9994.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 9005.7,
+   "op": 3856.1,
+   "ni": 0.0,
+   "assets": 19448.6,
+   "liab": 7078.1,
+   "equity": 12370.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 1571.4,
+   "op": 660.2,
+   "ni": 637.7
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 1690.4,
+   "op": 699.6,
+   "ni": 665.4
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 1810.9,
+   "op": 785.3,
+   "ni": 748.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 1930.4,
+   "op": 799.5,
+   "ni": -2051.1
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 2004.8,
+   "op": 858.8,
+   "ni": 813.8
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 2204.8,
+   "op": 986.2,
+   "ni": 888.8
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 2308.3,
+   "op": 978.2,
+   "ni": 853.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 2487.8,
+   "op": 1032.9,
+   "ni": -2555.6
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 2709.0,
+   "op": 1157.8,
+   "ni": 1022.9
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 3035.7,
+   "op": 1378.0,
+   "ni": 1212.9
+  }
+ ]
+}

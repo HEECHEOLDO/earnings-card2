@@ -1,0 +1,216 @@
+{
+ "name": "IRM",
+ "split_adjusted": false,
+ "legal_name": "IRON MOUNTAIN INC",
+ "code": "IRM",
+ "cik": "0001020569",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 3511.5,
+   "op": 501.6,
+   "ni": 107.2,
+   "assets": 9486.8,
+   "liab": null,
+   "equity": 1936.7,
+   "dps": 2.0427,
+   "payout": 468.9,
+   "yield": null,
+   "dps_adj": 2.0427
+  },
+  {
+   "p": 2017,
+   "rev": 3845.6,
+   "op": 634.1,
+   "ni": 171.7,
+   "assets": 10975.4,
+   "liab": null,
+   "equity": 2285.1,
+   "dps": 2.27,
+   "payout": 351.5,
+   "yield": null,
+   "dps_adj": 2.27
+  },
+  {
+   "p": 2018,
+   "rev": 4225.8,
+   "op": 808.3,
+   "ni": 355.1,
+   "assets": 11857.2,
+   "liab": null,
+   "equity": 1862.5,
+   "dps": 2.38,
+   "payout": 191.6,
+   "yield": null,
+   "dps_adj": 2.38
+  },
+  {
+   "p": 2019,
+   "rev": 4262.6,
+   "op": 781.3,
+   "ni": 268.3,
+   "assets": 13816.8,
+   "liab": null,
+   "equity": 1464.2,
+   "dps": 2.45,
+   "payout": 262.0,
+   "yield": null,
+   "dps_adj": 2.45
+  },
+  {
+   "p": 2020,
+   "rev": 4147.3,
+   "op": 934.8,
+   "ni": 343.1,
+   "assets": 14149.3,
+   "liab": null,
+   "equity": 1136.7,
+   "dps": 2.47,
+   "payout": 207.5,
+   "yield": null,
+   "dps_adj": 2.47
+  },
+  {
+   "p": 2021,
+   "rev": 4491.5,
+   "op": 854.2,
+   "ni": 452.7,
+   "assets": 14450.0,
+   "liab": null,
+   "equity": 857.1,
+   "dps": 2.47,
+   "payout": 157.9,
+   "yield": null,
+   "dps_adj": 2.47
+  },
+  {
+   "p": 2022,
+   "rev": 5103.6,
+   "op": 1049.9,
+   "ni": 562.1,
+   "assets": 16140.5,
+   "liab": null,
+   "equity": 636.8,
+   "dps": 2.47,
+   "payout": 127.8,
+   "yield": null,
+   "dps_adj": 2.47
+  },
+  {
+   "p": 2023,
+   "rev": 5480.3,
+   "op": 921.8,
+   "ni": 187.3,
+   "assets": 17473.8,
+   "liab": null,
+   "equity": 211.8,
+   "dps": 2.54,
+   "payout": 396.0,
+   "yield": null,
+   "dps_adj": 2.54
+  },
+  {
+   "p": 2024,
+   "rev": 6149.9,
+   "op": 1009.5,
+   "ni": 183.7,
+   "assets": 18717.1,
+   "liab": null,
+   "equity": -304.7,
+   "dps": 2.73,
+   "payout": 436.1,
+   "yield": null,
+   "dps_adj": 2.73
+  },
+  {
+   "p": 2025,
+   "rev": 6901.7,
+   "op": 1163.8,
+   "ni": 152.3,
+   "assets": 21125.0,
+   "liab": null,
+   "equity": -709.3,
+   "dps": 3.22,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 3.22
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 1476.9,
+   "op": 245.6,
+   "ni": 77.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 1534.4,
+   "op": 230.3,
+   "ni": 34.6
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 1557.4,
+   "op": 251.2,
+   "ni": -33.7
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 1581.3,
+   "op": 282.4,
+   "ni": 105.7
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 1592.5,
+   "op": 254.3,
+   "ni": 16.2
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 1711.9,
+   "op": 259.9,
+   "ni": -43.3
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 1754.1,
+   "op": 308.6,
+   "ni": 86.2
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 1843.2,
+   "op": 341.0,
+   "ni": 93.1
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 1936.1,
+   "op": 395.2,
+   "ni": 149.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 2029.1,
+   "op": 373.5,
+   "ni": 106.1
+  }
+ ]
+}

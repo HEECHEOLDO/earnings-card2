@@ -1,0 +1,190 @@
+{
+ "name": "DASH",
+ "split_adjusted": true,
+ "legal_name": "DoorDash, Inc.",
+ "code": "DASH",
+ "cik": "0001792789",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2018,
+   "rev": 291.0,
+   "op": -210.0,
+   "ni": -204.0,
+   "assets": null,
+   "liab": null,
+   "equity": -436.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 885.0,
+   "op": -616.0,
+   "ni": -667.0,
+   "assets": 1732.0,
+   "liab": 550.0,
+   "equity": -1082.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 2886.0,
+   "op": -436.0,
+   "ni": -461.0,
+   "assets": 6353.0,
+   "liab": 1653.0,
+   "equity": 4700.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 4888.0,
+   "op": -452.0,
+   "ni": -468.0,
+   "assets": 6809.0,
+   "liab": 2142.0,
+   "equity": 4667.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 6583.0,
+   "op": -1124.0,
+   "ni": -1365.0,
+   "assets": 9789.0,
+   "liab": 3021.0,
+   "equity": 6754.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 8635.0,
+   "op": -579.0,
+   "ni": -565.0,
+   "assets": 10839.0,
+   "liab": 4026.0,
+   "equity": 6806.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 10722.0,
+   "op": -38.0,
+   "ni": 117.0,
+   "assets": 12845.0,
+   "liab": 5035.0,
+   "equity": 7803.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 13717.0,
+   "op": 723.0,
+   "ni": 932.0,
+   "assets": 19659.0,
+   "liab": 9613.0,
+   "equity": 10033.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 2513.0,
+   "op": -61.0,
+   "ni": -23.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 2630.0,
+   "op": -201.0,
+   "ni": -157.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 2706.0,
+   "op": 107.0,
+   "ni": 161.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 2873.0,
+   "op": 117.0,
+   "ni": 136.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 3032.0,
+   "op": 155.0,
+   "ni": 193.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 3284.0,
+   "op": 163.0,
+   "ni": 284.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 3446.0,
+   "op": 258.0,
+   "ni": 243.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 3955.0,
+   "op": 147.0,
+   "ni": 212.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 4036.0,
+   "op": 151.0,
+   "ni": 184.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 4454.0,
+   "op": 156.0,
+   "ni": 199.0
+  }
+ ]
+}

@@ -1,0 +1,216 @@
+{
+ "name": "FOXA",
+ "split_adjusted": false,
+ "legal_name": "Fox Corp",
+ "code": "FOXA",
+ "cik": "0001754301",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2017,
+   "rev": 9921.0,
+   "op": 2241.0,
+   "ni": 1409.0,
+   "assets": null,
+   "liab": null,
+   "equity": 6093.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 10153.0,
+   "op": 2170.0,
+   "ni": 2228.0,
+   "assets": 13121.0,
+   "liab": null,
+   "equity": 9594.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 11389.0,
+   "op": 2224.0,
+   "ni": 1643.0,
+   "assets": 19509.0,
+   "liab": null,
+   "equity": 9958.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 12303.0,
+   "op": 1464.0,
+   "ni": 1062.0,
+   "assets": 21750.0,
+   "liab": null,
+   "equity": 10111.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 12909.0,
+   "op": 2918.0,
+   "ni": 2201.0,
+   "assets": 22926.0,
+   "liab": null,
+   "equity": 11125.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 13974.0,
+   "op": 1694.0,
+   "ni": 1233.0,
+   "assets": 22185.0,
+   "liab": null,
+   "equity": 11375.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 14913.0,
+   "op": 1736.0,
+   "ni": 1253.0,
+   "assets": 21866.0,
+   "liab": null,
+   "equity": 10445.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 13980.0,
+   "op": 2104.0,
+   "ni": 1554.0,
+   "assets": 21972.0,
+   "liab": null,
+   "equity": 10814.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 16300.0,
+   "op": 3061.0,
+   "ni": 2293.0,
+   "assets": 23195.0,
+   "liab": null,
+   "equity": 12067.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2026,
+   "rev": 17126.0,
+   "op": 2278.0,
+   "ni": 1727.0,
+   "assets": 22482.0,
+   "liab": null,
+   "equity": 11728.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 3447.0,
+   "op": 961.0,
+   "ni": 704.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 3092.0,
+   "op": 451.0,
+   "ni": 320.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 3564.0,
+   "op": 1113.0,
+   "ni": 832.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 5078.0,
+   "op": 515.0,
+   "ni": 388.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 4371.0,
+   "op": 474.0,
+   "ni": 354.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 3287.0,
+   "op": 959.0,
+   "ni": 719.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 3738.0,
+   "op": 799.0,
+   "ni": 609.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 5182.0,
+   "op": 322.0,
+   "ni": 247.0
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 3994.0,
+   "op": 236.0,
+   "ni": 175.0
+  },
+  {
+   "y": 2026,
+   "q": 4,
+   "rev": 4212.0,
+   "op": 921.0,
+   "ni": 696.0
+  }
+ ]
+}

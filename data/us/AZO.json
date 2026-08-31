@@ -1,0 +1,216 @@
+{
+ "name": "AZO",
+ "split_adjusted": false,
+ "legal_name": "AUTOZONE INC",
+ "code": "AZO",
+ "cik": "0000866787",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 10635.7,
+   "op": 2060.4,
+   "ni": 1241.0,
+   "assets": 8599.8,
+   "liab": null,
+   "equity": -1787.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 10888.7,
+   "op": 2080.1,
+   "ni": 1280.9,
+   "assets": 9259.8,
+   "liab": null,
+   "equity": -1428.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 11221.1,
+   "op": 1810.9,
+   "ni": 1337.5,
+   "assets": 9347.0,
+   "liab": null,
+   "equity": -1527.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 11863.7,
+   "op": 2216.1,
+   "ni": 1617.2,
+   "assets": 9895.9,
+   "liab": null,
+   "equity": -1713.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 12632.0,
+   "op": 2417.7,
+   "ni": 1733.0,
+   "assets": 14423.9,
+   "liab": null,
+   "equity": -878.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 14629.6,
+   "op": 2944.5,
+   "ni": 2170.3,
+   "assets": 14516.2,
+   "liab": null,
+   "equity": -1797.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 16252.2,
+   "op": 3270.7,
+   "ni": 2429.6,
+   "assets": 15275.0,
+   "liab": null,
+   "equity": -3538.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 17457.2,
+   "op": 3474.0,
+   "ni": 2528.4,
+   "assets": 15985.9,
+   "liab": null,
+   "equity": -4349.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 18490.3,
+   "op": 3788.7,
+   "ni": 2662.4,
+   "assets": 17176.5,
+   "liab": null,
+   "equity": -4749.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 18938.7,
+   "op": 3610.2,
+   "ni": 2498.2,
+   "assets": 19355.3,
+   "liab": null,
+   "equity": -3414.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 3859.1,
+   "op": 743.2,
+   "ni": 515.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 4235.5,
+   "op": 900.2,
+   "ni": 651.7
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 6205.4,
+   "op": 1296.7,
+   "ni": 902.2
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 4279.6,
+   "op": 841.1,
+   "ni": 564.9
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 3952.0,
+   "op": 706.8,
+   "ni": 487.9
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 4464.3,
+   "op": 866.2,
+   "ni": 608.4
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 6242.7,
+   "op": 1196.1,
+   "ni": 837.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 4628.6,
+   "op": 784.2,
+   "ni": 530.8
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 4274.1,
+   "op": 698.5,
+   "ni": 468.9
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 4840.9,
+   "op": 923.8,
+   "ni": 641.5
+  }
+ ]
+}

@@ -1,0 +1,104 @@
+{
+ "name": "Q",
+ "split_adjusted": false,
+ "legal_name": "Qnity Electronics, Inc.",
+ "code": "Q",
+ "cik": "0002058873",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2023,
+   "rev": 4035.0,
+   "op": 632.0,
+   "ni": 533.0,
+   "assets": null,
+   "liab": null,
+   "equity": 11184.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 4335.0,
+   "op": 901.0,
+   "ni": 724.0,
+   "assets": 12273.0,
+   "liab": 1377.0,
+   "equity": 10896.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 4754.0,
+   "op": 962.0,
+   "ni": 729.0,
+   "assets": 14070.0,
+   "liab": 6704.0,
+   "equity": 7366.0,
+   "dps": 0.14,
+   "payout": 4.0,
+   "yield": null,
+   "dps_adj": 0.14
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 1148.0,
+   "op": 250.0,
+   "ni": 207.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 1118.0,
+   "op": 246.0,
+   "ni": 199.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 1170.0,
+   "op": 255.0,
+   "ni": 198.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 1276.0,
+   "op": 272.0,
+   "ni": 223.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 1190.0,
+   "op": 189.0,
+   "ni": 109.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 1315.0,
+   "op": 218.0,
+   "ni": 162.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 1429.0,
+   "op": 199.0,
+   "ni": 136.0
+  }
+ ]
+}

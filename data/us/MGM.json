@@ -1,0 +1,216 @@
+{
+ "name": "MGM",
+ "split_adjusted": false,
+ "legal_name": "MGM Resorts International",
+ "code": "MGM",
+ "cik": "0000789570",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 9478.3,
+   "op": 2078.2,
+   "ni": 1235.8,
+   "assets": 28174.4,
+   "liab": 18178.3,
+   "equity": 9942.0,
+   "dps": 0,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 0
+  },
+  {
+   "p": 2017,
+   "rev": 10797.5,
+   "op": 1712.5,
+   "ni": 2088.2,
+   "assets": 29160.0,
+   "liab": 17469.1,
+   "equity": 11611.1,
+   "dps": 0.44,
+   "payout": 12.1,
+   "yield": null,
+   "dps_adj": 0.44
+  },
+  {
+   "p": 2018,
+   "rev": 11763.1,
+   "op": 1469.5,
+   "ni": 583.9,
+   "assets": 30210.7,
+   "liab": 19638.7,
+   "equity": 10469.8,
+   "dps": 0.48,
+   "payout": 44.7,
+   "yield": null,
+   "dps_adj": 0.48
+  },
+  {
+   "p": 2019,
+   "rev": 12899.7,
+   "op": 3940.2,
+   "ni": 2214.4,
+   "assets": 33876.4,
+   "liab": 21108.4,
+   "equity": 12662.9,
+   "dps": 0.52,
+   "payout": 12.3,
+   "yield": null,
+   "dps_adj": 0.52
+  },
+  {
+   "p": 2020,
+   "rev": 5162.1,
+   "op": -642.4,
+   "ni": -1319.9,
+   "assets": 36494.9,
+   "liab": null,
+   "equity": 11179.9,
+   "dps": 0.1575,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 0.1575
+  },
+  {
+   "p": 2021,
+   "rev": 9680.1,
+   "op": 2278.7,
+   "ni": 1208.4,
+   "assets": 40899.1,
+   "liab": null,
+   "equity": 10976.8,
+   "dps": 0.01,
+   "payout": 0.4,
+   "yield": null,
+   "dps_adj": 0.01
+  },
+  {
+   "p": 2022,
+   "rev": 13127.5,
+   "op": 1439.4,
+   "ni": 206.7,
+   "assets": 45692.2,
+   "liab": null,
+   "equity": 5210.1,
+   "dps": 0.01,
+   "payout": 2.0,
+   "yield": null,
+   "dps_adj": 0.01
+  },
+  {
+   "p": 2023,
+   "rev": 16164.2,
+   "op": 1891.5,
+   "ni": 1314.9,
+   "assets": 42368.5,
+   "liab": 38001.0,
+   "equity": 4334.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 17240.5,
+   "op": 1490.5,
+   "ni": 1064.6,
+   "assets": 42231.6,
+   "liab": 38511.7,
+   "equity": 3685.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 17537.7,
+   "op": 1001.8,
+   "ni": 520.9,
+   "assets": 41373.8,
+   "liab": 38097.5,
+   "equity": 3254.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 4383.5,
+   "op": 458.4,
+   "ni": 299.7
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 4327.4,
+   "op": 425.7,
+   "ni": 282.8
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 4183.1,
+   "op": 314.9,
+   "ni": 244.2
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 4346.6,
+   "op": 291.6,
+   "ni": 237.9
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 4277.1,
+   "op": 385.1,
+   "ni": 226.7
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 4404.9,
+   "op": 404.6,
+   "ni": 118.1
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 4250.5,
+   "op": -112.9,
+   "ni": -206.7
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 4605.3,
+   "op": 325.0,
+   "ni": 382.8
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 4454.7,
+   "op": 301.2,
+   "ni": 174.8
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 4451.0,
+   "op": 503.6,
+   "ni": 322.8
+  }
+ ]
+}

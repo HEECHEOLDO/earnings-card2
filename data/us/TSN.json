@@ -1,0 +1,216 @@
+{
+ "name": "TSN",
+ "split_adjusted": false,
+ "legal_name": "TYSON FOODS, INC.",
+ "code": "TSN",
+ "cik": "0000100493",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 36881.0,
+   "op": 2833.0,
+   "ni": 1772.0,
+   "assets": 22373.0,
+   "liab": null,
+   "equity": 9624.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 38260.0,
+   "op": 2921.0,
+   "ni": 1778.0,
+   "assets": 28066.0,
+   "liab": null,
+   "equity": 10559.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 40052.0,
+   "op": 2969.0,
+   "ni": 2973.0,
+   "assets": 32185.0,
+   "liab": null,
+   "equity": 13148.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 42405.0,
+   "op": 2770.0,
+   "ni": 1993.0,
+   "assets": 32918.0,
+   "liab": null,
+   "equity": 14094.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 43185.0,
+   "op": 3008.0,
+   "ni": 2071.0,
+   "assets": 34456.0,
+   "liab": null,
+   "equity": 15386.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 47049.0,
+   "op": 4396.0,
+   "ni": 3060.0,
+   "assets": 36309.0,
+   "liab": null,
+   "equity": 17854.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 53282.0,
+   "op": 4410.0,
+   "ni": 3249.0,
+   "assets": 36821.0,
+   "liab": null,
+   "equity": 19811.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 52881.0,
+   "op": -395.0,
+   "ni": -649.0,
+   "assets": 36251.0,
+   "liab": null,
+   "equity": 18255.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 53309.0,
+   "op": 1409.0,
+   "ni": 822.0,
+   "assets": 37310.0,
+   "liab": null,
+   "equity": 18627.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 54441.0,
+   "op": 1098.0,
+   "ni": 507.0,
+   "assets": 36658.0,
+   "liab": null,
+   "equity": 18227.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 13072.0,
+   "op": 312.0,
+   "ni": 148.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 13353.0,
+   "op": 341.0,
+   "ni": 196.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 13565.0,
+   "op": 525.0,
+   "ni": 364.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 13623.0,
+   "op": 580.0,
+   "ni": 366.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 13074.0,
+   "op": 100.0,
+   "ni": 14.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 13884.0,
+   "op": 260.0,
+   "ni": 69.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 13860.0,
+   "op": 158.0,
+   "ni": 58.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 14313.0,
+   "op": 302.0,
+   "ni": 90.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 13653.0,
+   "op": 435.0,
+   "ni": 264.0
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 13868.0,
+   "op": 362.0,
+   "ni": 186.0
+  }
+ ]
+}

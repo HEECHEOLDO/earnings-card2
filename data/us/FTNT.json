@@ -1,0 +1,216 @@
+{
+ "name": "FTNT",
+ "split_adjusted": true,
+ "legal_name": "Fortinet, Inc.",
+ "code": "FTNT",
+ "cik": "0001262039",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 548.1,
+   "op": 42.9,
+   "ni": 32.2,
+   "assets": 2139.9,
+   "liab": 1302.3,
+   "equity": 837.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 1494.9,
+   "op": 109.8,
+   "ni": 31.4,
+   "assets": 2257.9,
+   "liab": 1668.5,
+   "equity": 602.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 1804.6,
+   "op": 234.4,
+   "ni": 334.9,
+   "assets": 3078.0,
+   "liab": 2067.8,
+   "equity": 1025.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 2163.0,
+   "op": 351.0,
+   "ni": 331.7,
+   "assets": 3879.2,
+   "liab": 2536.8,
+   "equity": 1342.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 2594.4,
+   "op": 531.8,
+   "ni": 488.5,
+   "assets": 4044.5,
+   "liab": 3188.5,
+   "equity": 856.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 3342.2,
+   "op": 650.4,
+   "ni": 606.8,
+   "assets": 5919.1,
+   "liab": 5120.7,
+   "equity": 798.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 4417.4,
+   "op": 969.6,
+   "ni": 857.3,
+   "assets": 6228.0,
+   "liab": 6509.6,
+   "equity": -281.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 5304.8,
+   "op": 1241.1,
+   "ni": 1147.8,
+   "assets": 7258.9,
+   "liab": 7722.3,
+   "equity": -463.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 5955.8,
+   "op": 1803.4,
+   "ni": 1745.2,
+   "assets": 9763.1,
+   "liab": 8269.3,
+   "equity": 1493.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 6799.6,
+   "op": 2084.7,
+   "ni": 1853.4,
+   "assets": 10389.2,
+   "liab": 9151.7,
+   "equity": 1237.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 1353.3,
+   "op": 321.2,
+   "ni": 299.3
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 1434.3,
+   "op": 437.2,
+   "ni": 379.8
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 1508.1,
+   "op": 470.9,
+   "ni": 539.9
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 1660.1,
+   "op": 574.1,
+   "ni": 526.2
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 1539.7,
+   "op": 453.8,
+   "ni": 433.4
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 1630.0,
+   "op": 458.0,
+   "ni": 440.1
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 1724.9,
+   "op": 547.3,
+   "ni": 473.9
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 1905.0,
+   "op": 625.6,
+   "ni": 506.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 1849.6,
+   "op": 580.0,
+   "ni": 534.5
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 2047.9,
+   "op": 689.3,
+   "ni": 606.3
+  }
+ ]
+}

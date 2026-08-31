@@ -1,0 +1,216 @@
+{
+ "name": "J",
+ "split_adjusted": false,
+ "legal_name": "JACOBS SOLUTIONS INC.",
+ "code": "J",
+ "cik": "0000052988",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 10964.2,
+   "op": 338.6,
+   "ni": 214.5,
+   "assets": 7360.0,
+   "liab": null,
+   "equity": 4330.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 6330.1,
+   "op": 244.1,
+   "ni": 287.4,
+   "assets": 7380.9,
+   "liab": null,
+   "equity": 4487.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 10579.8,
+   "op": 387.4,
+   "ni": 173.1,
+   "assets": 12645.8,
+   "liab": null,
+   "equity": 5944.4,
+   "dps": 0.19,
+   "payout": 15.1,
+   "yield": null,
+   "dps_adj": 0.19
+  },
+  {
+   "p": 2019,
+   "rev": 12737.9,
+   "op": 404.9,
+   "ni": 873.2,
+   "assets": 11462.7,
+   "liab": null,
+   "equity": 5768.7,
+   "dps": 0.19,
+   "payout": 3.0,
+   "yield": null,
+   "dps_adj": 0.19
+  },
+  {
+   "p": 2020,
+   "rev": 13567.0,
+   "op": 536.0,
+   "ni": 523.9,
+   "assets": 12354.4,
+   "liab": null,
+   "equity": 5855.7,
+   "dps": 0.19,
+   "payout": 4.8,
+   "yield": null,
+   "dps_adj": 0.19
+  },
+  {
+   "p": 2021,
+   "rev": 14092.6,
+   "op": 688.1,
+   "ni": 430.8,
+   "assets": 14632.6,
+   "liab": null,
+   "equity": 5974.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 9783.1,
+   "op": 539.9,
+   "ni": 715.4,
+   "assets": 14660.4,
+   "liab": null,
+   "equity": 6104.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 10851.4,
+   "op": 676.5,
+   "ni": 719.7,
+   "assets": 14617.1,
+   "liab": null,
+   "equity": 6600.1,
+   "dps": 0.26,
+   "payout": 4.6,
+   "yield": null,
+   "dps_adj": 0.26
+  },
+  {
+   "p": 2024,
+   "rev": 11500.9,
+   "op": 692.4,
+   "ni": 852.6,
+   "assets": 11759.0,
+   "liab": null,
+   "equity": 4567.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 12029.8,
+   "op": 863.6,
+   "ni": 304.0,
+   "assets": 11252.5,
+   "liab": null,
+   "equity": 3647.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 2847.2,
+   "op": 183.2,
+   "ni": 173.5
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 2883.4,
+   "op": 171.0,
+   "ni": 158.9
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 2960.2,
+   "op": 196.2,
+   "ni": 325.4
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 2933.0,
+   "op": 208.4,
+   "ni": -5.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 2910.4,
+   "op": 208.6,
+   "ni": -0.3
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 3031.8,
+   "op": 235.0,
+   "ni": 189.7
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 3154.6,
+   "op": 211.6,
+   "ni": 119.5
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 3293.3,
+   "op": 232.6,
+   "ni": 133.7
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 3694.9,
+   "op": -81.2,
+   "ni": -88.4
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 4076.4,
+   "op": 286.7,
+   "ni": 135.8
+  }
+ ]
+}

@@ -1,0 +1,216 @@
+{
+ "name": "MTD",
+ "split_adjusted": false,
+ "legal_name": "METTLER TOLEDO INTERNATIONAL INC/",
+ "code": "MTD",
+ "cik": "0001037646",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 2508.3,
+   "op": 1437.7,
+   "ni": 384.4,
+   "assets": 2166.8,
+   "liab": 1731.8,
+   "equity": 434.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 2725.1,
+   "op": 1575.8,
+   "ni": 376.0,
+   "assets": 2549.8,
+   "liab": 2002.5,
+   "equity": 547.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 2935.6,
+   "op": 1684.4,
+   "ni": 512.6,
+   "assets": 2618.8,
+   "liab": 2028.8,
+   "equity": 590.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 3008.7,
+   "op": 1741.2,
+   "ni": 561.1,
+   "assets": 2789.3,
+   "liab": 2368.5,
+   "equity": 420.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 3085.2,
+   "op": 1801.0,
+   "ni": 602.7,
+   "assets": 2814.5,
+   "liab": 2531.9,
+   "equity": 282.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 3717.9,
+   "op": 2171.6,
+   "ni": 769.0,
+   "assets": 3326.8,
+   "liab": 3155.4,
+   "equity": 171.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 3919.7,
+   "op": 2308.0,
+   "ni": 872.5,
+   "assets": 3492.4,
+   "liab": 3467.6,
+   "equity": 24.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 3788.3,
+   "op": 2241.3,
+   "ni": 788.8,
+   "assets": 3355.6,
+   "liab": 3505.5,
+   "equity": -149.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 3872.4,
+   "op": 2325.6,
+   "ni": 863.1,
+   "assets": 3240.0,
+   "liab": 3366.9,
+   "equity": -126.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 4026.4,
+   "op": 2390.6,
+   "ni": 869.2,
+   "assets": 3712.6,
+   "liab": 3736.3,
+   "equity": -23.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 925.9,
+   "op": 548.1,
+   "ni": 177.5
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 946.8,
+   "op": 565.7,
+   "ni": 221.8
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 954.5,
+   "op": 572.5,
+   "ni": 211.5
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 1045.1,
+   "op": 639.3,
+   "ni": 252.3
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 883.7,
+   "op": 525.9,
+   "ni": 163.6
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 983.2,
+   "op": 579.9,
+   "ni": 202.3
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 1029.7,
+   "op": 609.5,
+   "ni": 217.5
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 1129.7,
+   "op": 675.4,
+   "ni": 285.8
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 947.1,
+   "op": 555.8,
+   "ni": 169.5
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 1027.3,
+   "op": 650.2,
+   "ni": 232.9
+  }
+ ]
+}

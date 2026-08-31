@@ -1,0 +1,190 @@
+{
+ "name": "TPL",
+ "split_adjusted": true,
+ "legal_name": "Texas Pacific Land Corp",
+ "code": "TPL",
+ "cik": "0001811074",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2018,
+   "rev": 300.2,
+   "op": 260.8,
+   "ni": 209.7,
+   "assets": null,
+   "liab": null,
+   "equity": 244.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 490.5,
+   "op": 399.6,
+   "ni": 318.7,
+   "assets": 598.2,
+   "liab": 86.0,
+   "equity": 512.1,
+   "dps": 1.75,
+   "payout": 4.3,
+   "yield": null,
+   "dps_adj": 0.1944
+  },
+  {
+   "p": 2020,
+   "rev": 302.6,
+   "op": 217.3,
+   "ni": 176.0,
+   "assets": 571.6,
+   "liab": 86.5,
+   "equity": 485.2,
+   "dps": 10,
+   "payout": 44.1,
+   "yield": null,
+   "dps_adj": 1.1111
+  },
+  {
+   "p": 2021,
+   "rev": 451.0,
+   "op": 362.4,
+   "ni": 270.0,
+   "assets": 764.1,
+   "liab": 112.4,
+   "equity": 651.7,
+   "dps": 11,
+   "payout": 31.6,
+   "yield": null,
+   "dps_adj": 1.2222
+  },
+  {
+   "p": 2022,
+   "rev": 667.4,
+   "op": 562.3,
+   "ni": 446.4,
+   "assets": 877.4,
+   "liab": 104.5,
+   "equity": 772.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 631.6,
+   "op": 486.1,
+   "ni": 405.6,
+   "assets": 1156.4,
+   "liab": 113.2,
+   "equity": 1043.2,
+   "dps": 1.44,
+   "payout": 24.5,
+   "yield": null,
+   "dps_adj": 1.44
+  },
+  {
+   "p": 2024,
+   "rev": 705.8,
+   "op": 539.1,
+   "ni": 454.0,
+   "assets": 1248.0,
+   "liab": 115.6,
+   "equity": 1132.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 798.2,
+   "op": 592.2,
+   "ni": 481.4,
+   "assets": 1623.3,
+   "liab": 164.4,
+   "equity": 1458.9,
+   "dps": 2.13,
+   "payout": 30.5,
+   "yield": null,
+   "dps_adj": 2.13
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 174.1,
+   "op": 136.0,
+   "ni": 114.4
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 172.3,
+   "op": 133.2,
+   "ni": 114.6
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 173.6,
+   "op": 127.3,
+   "ni": 106.6
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 185.8,
+   "op": 142.5,
+   "ni": 118.4
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 196.0,
+   "op": 150.1,
+   "ni": 120.7
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 187.5,
+   "op": 143.8,
+   "ni": 116.1
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 203.1,
+   "op": 149.1,
+   "ni": 121.2
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 211.6,
+   "op": 149.2,
+   "ni": 123.3
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 236.8,
+   "op": 182.3,
+   "ni": 142.9
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 246.1,
+   "op": 191.8,
+   "ni": 153.9
+  }
+ ]
+}

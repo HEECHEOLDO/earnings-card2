@@ -1,0 +1,216 @@
+{
+ "name": "GOOG",
+ "split_adjusted": false,
+ "legal_name": "Alphabet Inc.",
+ "code": "GOOG",
+ "cik": "0001652044",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 90272.0,
+   "op": 23716.0,
+   "ni": 19478.0,
+   "assets": 167497.0,
+   "liab": 28461.0,
+   "equity": 139036.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 110855.0,
+   "op": 26178.0,
+   "ni": 12662.0,
+   "assets": 197295.0,
+   "liab": 44793.0,
+   "equity": 152502.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 136819.0,
+   "op": 27524.0,
+   "ni": 30736.0,
+   "assets": 232792.0,
+   "liab": 55164.0,
+   "equity": 177628.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 161857.0,
+   "op": 34231.0,
+   "ni": 34343.0,
+   "assets": 275909.0,
+   "liab": 74467.0,
+   "equity": 201442.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 182527.0,
+   "op": 41224.0,
+   "ni": 40269.0,
+   "assets": 319616.0,
+   "liab": 97072.0,
+   "equity": 222544.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 257637.0,
+   "op": 78714.0,
+   "ni": 76033.0,
+   "assets": 359268.0,
+   "liab": 107633.0,
+   "equity": 251635.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 282836.0,
+   "op": 74842.0,
+   "ni": 59972.0,
+   "assets": 365264.0,
+   "liab": 109120.0,
+   "equity": 256144.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 307394.0,
+   "op": 84293.0,
+   "ni": 73795.0,
+   "assets": 402392.0,
+   "liab": 119013.0,
+   "equity": 283379.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 350018.0,
+   "op": 112390.0,
+   "ni": 100118.0,
+   "assets": 450256.0,
+   "liab": 125172.0,
+   "equity": 325084.0,
+   "dps": 0.6,
+   "payout": 7.4,
+   "yield": null,
+   "dps_adj": 0.6
+  },
+  {
+   "p": 2025,
+   "rev": 402836.0,
+   "op": 129039.0,
+   "ni": 132170.0,
+   "assets": 595281.0,
+   "liab": 180016.0,
+   "equity": 415265.0,
+   "dps": 0.83,
+   "payout": 7.6,
+   "yield": null,
+   "dps_adj": 0.83
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 80539.0,
+   "op": 25472.0,
+   "ni": 23662.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 84742.0,
+   "op": 27425.0,
+   "ni": 23619.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 88268.0,
+   "op": 28521.0,
+   "ni": 26301.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 96469.0,
+   "op": 30972.0,
+   "ni": 26536.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 90234.0,
+   "op": 30606.0,
+   "ni": 34540.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 96428.0,
+   "op": 31271.0,
+   "ni": 28196.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 102346.0,
+   "op": 31228.0,
+   "ni": 34979.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 113828.0,
+   "op": 35934.0,
+   "ni": 34455.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 109896.0,
+   "op": 39696.0,
+   "ni": 62578.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 119796.0,
+   "op": 40770.0,
+   "ni": 112193.0
+  }
+ ]
+}

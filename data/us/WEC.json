@@ -1,0 +1,216 @@
+{
+ "name": "WEC",
+ "split_adjusted": false,
+ "legal_name": "WEC ENERGY GROUP, INC.",
+ "code": "WEC",
+ "cik": "0000783325",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 7472.3,
+   "op": 1696.3,
+   "ni": null,
+   "assets": 30123.2,
+   "liab": null,
+   "equity": 8960.2,
+   "dps": 1.98,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 1.98
+  },
+  {
+   "p": 2017,
+   "rev": 7648.5,
+   "op": 1776.1,
+   "ni": 1204.9,
+   "assets": 31590.5,
+   "liab": null,
+   "equity": 9491.8,
+   "dps": 2.08,
+   "payout": 54.5,
+   "yield": null,
+   "dps_adj": 2.08
+  },
+  {
+   "p": 2018,
+   "rev": 7679.5,
+   "op": 1468.4,
+   "ni": 1060.5,
+   "assets": 33475.8,
+   "liab": null,
+   "equity": 9842.7,
+   "dps": 2.21,
+   "payout": 65.7,
+   "yield": null,
+   "dps_adj": 2.21
+  },
+  {
+   "p": 2019,
+   "rev": 7523.1,
+   "op": 1531.4,
+   "ni": 1134.7,
+   "assets": 34951.8,
+   "liab": null,
+   "equity": 10254.6,
+   "dps": 2.36,
+   "payout": 65.6,
+   "yield": null,
+   "dps_adj": 2.36
+  },
+  {
+   "p": 2020,
+   "rev": 7241.7,
+   "op": 1706.1,
+   "ni": 1201.4,
+   "assets": 37028.1,
+   "liab": null,
+   "equity": 10662.5,
+   "dps": 2.53,
+   "payout": 66.4,
+   "yield": null,
+   "dps_adj": 2.53
+  },
+  {
+   "p": 2021,
+   "rev": 8316.0,
+   "op": 1714.9,
+   "ni": 1298.5,
+   "assets": 38988.5,
+   "liab": null,
+   "equity": 11113.3,
+   "dps": 2.71,
+   "payout": 65.8,
+   "yield": null,
+   "dps_adj": 2.71
+  },
+  {
+   "p": 2022,
+   "rev": 9597.4,
+   "op": 1924.2,
+   "ni": 1409.7,
+   "assets": 41872.1,
+   "liab": null,
+   "equity": 11616.6,
+   "dps": 2.91,
+   "payout": 65.1,
+   "yield": null,
+   "dps_adj": 2.91
+  },
+  {
+   "p": 2023,
+   "rev": 8893.0,
+   "op": 1908.0,
+   "ni": 1331.7,
+   "assets": 43939.7,
+   "liab": null,
+   "equity": 12071.5,
+   "dps": 3.12,
+   "payout": 73.9,
+   "yield": null,
+   "dps_adj": 3.12
+  },
+  {
+   "p": 2024,
+   "rev": 8599.9,
+   "op": 2152.8,
+   "ni": 1524.3,
+   "assets": 47363.2,
+   "liab": null,
+   "equity": 12801.9,
+   "dps": 3.34,
+   "payout": 69.3,
+   "yield": null,
+   "dps_adj": 3.34
+  },
+  {
+   "p": 2025,
+   "rev": 9800.1,
+   "op": 2244.9,
+   "ni": 1555.5,
+   "assets": 51518.3,
+   "liab": null,
+   "equity": 14052.8,
+   "dps": 3.57,
+   "payout": 73.9,
+   "yield": null,
+   "dps_adj": 3.57
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 2680.2,
+   "op": 813.4,
+   "ni": 622.6
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 1772.0,
+   "op": 364.8,
+   "ni": 210.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 1863.5,
+   "op": 383.7,
+   "ni": 238.6
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 2284.2,
+   "op": 590.9,
+   "ni": 453.1
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 3149.5,
+   "op": 937.5,
+   "ni": 725.5
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 2009.5,
+   "op": 404.9,
+   "ni": 243.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 2104.0,
+   "op": 449.6,
+   "ni": 270.2
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 2537.1,
+   "op": 452.9,
+   "ni": 316.8
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 3434.2,
+   "op": 980.0,
+   "ni": 806.1
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 2062.1,
+   "op": 432.8,
+   "ni": 301.0
+  }
+ ]
+}

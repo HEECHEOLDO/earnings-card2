@@ -1,0 +1,216 @@
+{
+ "name": "LITE",
+ "split_adjusted": false,
+ "legal_name": "Lumentum Holdings Inc.",
+ "code": "LITE",
+ "cik": "0001633978",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2017,
+   "rev": 1001.6,
+   "op": 47.6,
+   "ni": -102.5,
+   "assets": 1232.9,
+   "liab": 578.3,
+   "equity": 618.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 1247.7,
+   "op": 139.9,
+   "ni": 248.1,
+   "assets": 1581.5,
+   "liab": 619.6,
+   "equity": 926.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 1565.3,
+   "op": -21.6,
+   "ni": -36.4,
+   "assets": 2716.6,
+   "liab": 1219.5,
+   "equity": 1497.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 1678.6,
+   "op": 204.1,
+   "ni": 135.5,
+   "assets": 3292.6,
+   "liab": 1543.4,
+   "equity": 1749.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 1742.8,
+   "op": 527.0,
+   "ni": 397.3,
+   "assets": 3551.6,
+   "liab": 1578.8,
+   "equity": 1972.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 1712.6,
+   "op": 303.3,
+   "ni": 198.9,
+   "assets": 4162.2,
+   "liab": 2287.2,
+   "equity": 1875.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 1767.0,
+   "op": -115.7,
+   "ni": -131.6,
+   "assets": 4632.1,
+   "liab": 3276.3,
+   "equity": 1355.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 1359.2,
+   "op": -434.0,
+   "ni": -546.5,
+   "assets": 3931.9,
+   "liab": 2974.6,
+   "equity": 957.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 1645.0,
+   "op": -180.1,
+   "ni": 25.9,
+   "assets": 4218.7,
+   "liab": 3084.0,
+   "equity": 1134.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2026,
+   "rev": 3014.0,
+   "op": 524.8,
+   "ni": -6935.1,
+   "assets": 7307.5,
+   "liab": 2663.6,
+   "equity": 4643.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 366.5,
+   "op": -114.6,
+   "ni": -127.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 308.3,
+   "op": -133.4,
+   "ni": -252.5
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 336.9,
+   "op": -82.4,
+   "ni": -82.4
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 402.2,
+   "op": -51.6,
+   "ni": -60.9
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 425.2,
+   "op": -37.7,
+   "ni": -44.1
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 480.7,
+   "op": -8.4,
+   "ni": 213.3
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 533.8,
+   "op": 6.7,
+   "ni": 4.2
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 665.5,
+   "op": 64.3,
+   "ni": 78.2
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 808.4,
+   "op": 174.5,
+   "ni": 144.2
+  },
+  {
+   "y": 2026,
+   "q": 4,
+   "rev": 1006.3,
+   "op": 279.3,
+   "ni": -7161.7
+  }
+ ]
+}

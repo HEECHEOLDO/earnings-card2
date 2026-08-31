@@ -1,0 +1,216 @@
+{
+ "name": "CRL",
+ "split_adjusted": false,
+ "legal_name": "CHARLES RIVER LABORATORIES INTERNATIONAL, INC.",
+ "code": "CRL",
+ "cik": "0001100682",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 1681.4,
+   "op": 237.6,
+   "ni": 156.4,
+   "assets": 2711.8,
+   "liab": 1858.0,
+   "equity": 839.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 1857.6,
+   "op": 288.3,
+   "ni": 125.4,
+   "assets": 2929.9,
+   "liab": 1865.9,
+   "equity": 1047.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 2266.1,
+   "op": 331.4,
+   "ni": 228.7,
+   "assets": 3855.9,
+   "liab": 2517.6,
+   "equity": 1319.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 2621.2,
+   "op": 351.2,
+   "ni": 254.1,
+   "assets": 4692.8,
+   "liab": 3026.3,
+   "equity": 1637.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 2923.9,
+   "op": 432.7,
+   "ni": 365.3,
+   "assets": 5490.8,
+   "liab": 3347.2,
+   "equity": 2118.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 3540.2,
+   "op": 589.9,
+   "ni": 398.8,
+   "assets": 7024.3,
+   "liab": 4432.3,
+   "equity": 2539.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 3976.1,
+   "op": 651.0,
+   "ni": 492.6,
+   "assets": 7602.8,
+   "liab": 4579.3,
+   "equity": 2981.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 4129.4,
+   "op": 617.3,
+   "ni": 480.4,
+   "assets": 8195.0,
+   "liab": 4536.0,
+   "equity": 3602.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 4050.0,
+   "op": 227.3,
+   "ni": 25.3,
+   "assets": 7528.3,
+   "liab": 4020.3,
+   "equity": 3467.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 4015.4,
+   "op": 25.2,
+   "ni": -142.2,
+   "assets": 7135.4,
+   "liab": 3924.2,
+   "equity": 3169.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 1011.6,
+   "op": 126.0,
+   "ni": 74.5
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 1026.1,
+   "op": 151.7,
+   "ni": 94.3
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 1009.8,
+   "op": 117.4,
+   "ni": 70.3
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 1002.5,
+   "op": -167.7,
+   "ni": -213.7
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 984.2,
+   "op": 74.7,
+   "ni": 25.9
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 1032.1,
+   "op": 100.1,
+   "ni": 52.7
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 1004.9,
+   "op": 133.8,
+   "ni": 55.6
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 994.2,
+   "op": -283.4,
+   "ni": -276.3
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 995.8,
+   "op": 119.9,
+   "ni": -14.8
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 1004.1,
+   "op": 119.9,
+   "ni": -0.8
+  }
+ ]
+}

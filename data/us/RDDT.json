@@ -1,0 +1,138 @@
+{
+ "name": "RDDT",
+ "split_adjusted": true,
+ "legal_name": "Reddit, Inc.",
+ "code": "RDDT",
+ "cik": "0001713445",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2022,
+   "rev": 666.7,
+   "op": -172.2,
+   "ni": -158.6,
+   "assets": null,
+   "liab": null,
+   "equity": -379.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 804.0,
+   "op": -140.2,
+   "ni": -90.8,
+   "assets": 1596.5,
+   "liab": 155.9,
+   "equity": -412.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 1300.2,
+   "op": -560.6,
+   "ni": -484.0,
+   "assets": 2336.6,
+   "liab": 205.8,
+   "equity": 2130.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 2202.5,
+   "op": 442.0,
+   "ni": 530.0,
+   "assets": 3239.2,
+   "liab": 310.1,
+   "equity": 2929.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 243.0,
+   "op": -589.3,
+   "ni": -575.1
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 281.2,
+   "op": -31.0,
+   "ni": -10.1
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 348.4,
+   "op": 6.9,
+   "ni": 29.9
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 427.7,
+   "op": 52.9,
+   "ni": 71.3
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 392.4,
+   "op": 3.9,
+   "ni": 26.2
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 499.6,
+   "op": 67.7,
+   "ni": 89.3
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 584.9,
+   "op": 138.5,
+   "ni": 162.7
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 725.6,
+   "op": 231.8,
+   "ni": 251.9
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 663.4,
+   "op": 182.9,
+   "ni": 204.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 804.9,
+   "op": 231.7,
+   "ni": 252.8
+  }
+ ]
+}

@@ -1,0 +1,216 @@
+{
+ "name": "TRV",
+ "split_adjusted": false,
+ "legal_name": "TRAVELERS COMPANIES, INC.",
+ "code": "TRV",
+ "cik": "0000086312",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 27625.0,
+   "op": null,
+   "ni": 3014.0,
+   "assets": 100245.0,
+   "liab": 77024.0,
+   "equity": 23221.0,
+   "dps": 2.62,
+   "payout": 25.0,
+   "yield": null,
+   "dps_adj": 2.62
+  },
+  {
+   "p": 2017,
+   "rev": 28902.0,
+   "op": null,
+   "ni": 2056.0,
+   "assets": 103483.0,
+   "liab": 79752.0,
+   "equity": 23731.0,
+   "dps": 2.83,
+   "payout": 38.0,
+   "yield": null,
+   "dps_adj": 2.83
+  },
+  {
+   "p": 2018,
+   "rev": 30282.0,
+   "op": null,
+   "ni": 2523.0,
+   "assets": 104233.0,
+   "liab": 81339.0,
+   "equity": 22894.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 31581.0,
+   "op": null,
+   "ni": 2622.0,
+   "assets": 110122.0,
+   "liab": 84179.0,
+   "equity": 25943.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 31981.0,
+   "op": null,
+   "ni": 2697.0,
+   "assets": 116764.0,
+   "liab": 87563.0,
+   "equity": 29201.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 34816.0,
+   "op": null,
+   "ni": 3662.0,
+   "assets": 120466.0,
+   "liab": 91579.0,
+   "equity": 28887.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 36884.0,
+   "op": null,
+   "ni": 2842.0,
+   "assets": 115717.0,
+   "liab": 94157.0,
+   "equity": 21560.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 41364.0,
+   "op": null,
+   "ni": 2991.0,
+   "assets": 125978.0,
+   "liab": 101057.0,
+   "equity": 24921.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 46423.0,
+   "op": null,
+   "ni": 4999.0,
+   "assets": 133189.0,
+   "liab": 105325.0,
+   "equity": 27864.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 48828.0,
+   "op": null,
+   "ni": 6288.0,
+   "assets": 143708.0,
+   "liab": 110814.0,
+   "equity": 32894.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 11228.0,
+   "op": null,
+   "ni": 1123.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 11283.0,
+   "op": null,
+   "ni": 534.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 11904.0,
+   "op": null,
+   "ni": 1260.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 12008.0,
+   "op": null,
+   "ni": 2082.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 11810.0,
+   "op": null,
+   "ni": 395.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 12116.0,
+   "op": null,
+   "ni": 1509.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 12470.0,
+   "op": null,
+   "ni": 1888.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 12432.0,
+   "op": null,
+   "ni": 2496.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 11924.0,
+   "op": null,
+   "ni": 1711.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 12153.0,
+   "op": null,
+   "ni": 2208.0
+  }
+ ]
+}

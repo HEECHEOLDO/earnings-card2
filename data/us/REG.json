@@ -1,0 +1,203 @@
+{
+ "name": "REG",
+ "split_adjusted": false,
+ "legal_name": "REGENCY CENTERS CORP",
+ "code": "REG",
+ "cik": "0000910606",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2017,
+   "rev": 984.3,
+   "op": null,
+   "ni": 179.0,
+   "assets": 11136.0,
+   "liab": 4371.5,
+   "equity": 6733.1,
+   "dps": 2.1,
+   "payout": 187.2,
+   "yield": null,
+   "dps_adj": 2.1
+  },
+  {
+   "p": 2018,
+   "rev": 1121.0,
+   "op": null,
+   "ni": 252.3,
+   "assets": 10944.7,
+   "liab": 4494.5,
+   "equity": 6450.2,
+   "dps": 2.22,
+   "payout": 149.3,
+   "yield": null,
+   "dps_adj": 2.22
+  },
+  {
+   "p": 2019,
+   "rev": 1133.1,
+   "op": null,
+   "ni": 243.3,
+   "assets": 11132.3,
+   "liab": 4842.3,
+   "equity": 6290.0,
+   "dps": 2.34,
+   "payout": 161.2,
+   "yield": null,
+   "dps_adj": 2.34
+  },
+  {
+   "p": 2020,
+   "rev": 1016.2,
+   "op": null,
+   "ni": 47.3,
+   "assets": 10936.9,
+   "liab": 4878.8,
+   "equity": 6058.1,
+   "dps": 2.38,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 2.38
+  },
+  {
+   "p": 2021,
+   "rev": 1166.2,
+   "op": null,
+   "ni": 366.3,
+   "assets": 10792.6,
+   "liab": 4682.6,
+   "equity": 6109.9,
+   "dps": 2.41,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 2.41
+  },
+  {
+   "p": 2022,
+   "rev": 1224.0,
+   "op": 896.8,
+   "ni": 488.0,
+   "assets": 10860.2,
+   "liab": 4682.2,
+   "equity": 6178.0,
+   "dps": 2.525,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 2.525
+  },
+  {
+   "p": 2023,
+   "rev": 1322.5,
+   "op": 951.3,
+   "ni": 370.9,
+   "assets": 12426.9,
+   "liab": 5235.0,
+   "equity": 7191.9,
+   "dps": 2.62,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 2.62
+  },
+  {
+   "p": 2024,
+   "rev": 1453.9,
+   "op": 1047.4,
+   "ni": 409.8,
+   "assets": 12392.0,
+   "liab": 5491.7,
+   "equity": 6900.3,
+   "dps": 2.715,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 2.715
+  },
+  {
+   "p": 2025,
+   "rev": 1553.5,
+   "op": 1123.4,
+   "ni": 541.0,
+   "assets": 13001.3,
+   "liab": 5819.7,
+   "equity": 7181.6,
+   "dps": 2.87,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 2.87
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 359.6,
+   "op": null,
+   "ni": 92.0
+  },
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 363.9,
+   "op": 262.9,
+   "ni": 112.7
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 357.2,
+   "op": 258.4,
+   "ni": 104.9
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 360.3,
+   "op": 261.2,
+   "ni": 103.6
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 372.5,
+   "op": 264.9,
+   "ni": 88.7
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 380.9,
+   "op": 273.5,
+   "ni": 111.9
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 380.8,
+   "op": 280.9,
+   "ni": 108.3
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 387.6,
+   "op": 281.9,
+   "ni": 112.6
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 404.2,
+   "op": 287.1,
+   "ni": 208.1
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 412.5,
+   "op": 296.4,
+   "ni": 132.8
+  }
+ ]
+}

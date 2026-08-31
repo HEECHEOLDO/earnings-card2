@@ -1,0 +1,216 @@
+{
+ "name": "IT",
+ "split_adjusted": false,
+ "legal_name": "GARTNER INC",
+ "code": "IT",
+ "cik": "0000749251",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 2444.5,
+   "op": 305.1,
+   "ni": 193.6,
+   "assets": 2367.3,
+   "liab": 2306.5,
+   "equity": 60.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 3311.5,
+   "op": -6.3,
+   "ni": 3.3,
+   "assets": 7283.2,
+   "liab": 6299.7,
+   "equity": 983.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 3975.5,
+   "op": 259.7,
+   "ni": 122.5,
+   "assets": 6201.5,
+   "liab": 5350.7,
+   "equity": 850.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 4245.3,
+   "op": 370.1,
+   "ni": 233.3,
+   "assets": 7151.3,
+   "liab": 6212.7,
+   "equity": 938.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 4099.4,
+   "op": 490.1,
+   "ni": 266.7,
+   "assets": 7316.0,
+   "liab": 6225.5,
+   "equity": 1090.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 4734.0,
+   "op": 915.8,
+   "ni": 794.0,
+   "assets": 7416.3,
+   "liab": 7045.3,
+   "equity": 371.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 5475.8,
+   "op": 1100.1,
+   "ni": 808.0,
+   "assets": 7299.7,
+   "liab": 7071.9,
+   "equity": 227.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 5907.0,
+   "op": 1236.9,
+   "ni": 882.0,
+   "assets": 7835.9,
+   "liab": 7155.3,
+   "equity": 680.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 6267.4,
+   "op": 1156.3,
+   "ni": 1254.0,
+   "assets": 8534.7,
+   "liab": 7175.5,
+   "equity": 1359.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 6497.2,
+   "op": 1025.7,
+   "ni": 729.0,
+   "assets": 8085.4,
+   "liab": 7765.5,
+   "equity": 319.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 1472.9,
+   "op": 273.9,
+   "ni": 210.5
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 1595.1,
+   "op": 318.8,
+   "ni": 229.5
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 1484.3,
+   "op": 245.8,
+   "ni": 415.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 1715.1,
+   "op": 317.8,
+   "ni": 398.9
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 1534.1,
+   "op": 278.0,
+   "ni": 210.9
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 1686.5,
+   "op": 327.1,
+   "ni": 240.8
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 1524.1,
+   "op": 86.3,
+   "ni": 35.4
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 1752.6,
+   "op": 334.2,
+   "ni": 241.9
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 1511.0,
+   "op": 316.1,
+   "ni": 222.3
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 1675.9,
+   "op": 378.5,
+   "ni": 275.5
+  }
+ ]
+}

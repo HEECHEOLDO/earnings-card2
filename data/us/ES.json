@@ -1,0 +1,216 @@
+{
+ "name": "ES",
+ "split_adjusted": false,
+ "legal_name": "EVERSOURCE ENERGY",
+ "code": "ES",
+ "cik": "0000072741",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 7639.1,
+   "op": 1841.3,
+   "ni": 949.8,
+   "assets": 32053.2,
+   "liab": null,
+   "equity": 10711.7,
+   "dps": 1.78,
+   "payout": 59.5,
+   "yield": null,
+   "dps_adj": 1.78
+  },
+  {
+   "p": 2017,
+   "rev": 7752.0,
+   "op": 1888.2,
+   "ni": 7.5,
+   "assets": 36220.4,
+   "liab": null,
+   "equity": 11086.2,
+   "dps": 1.9,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 1.9
+  },
+  {
+   "p": 2018,
+   "rev": 8448.2,
+   "op": 1699.9,
+   "ni": 7.5,
+   "assets": 38241.3,
+   "liab": null,
+   "equity": 11486.8,
+   "dps": 2.02,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 2.02
+  },
+  {
+   "p": 2019,
+   "rev": 8526.5,
+   "op": 1590.5,
+   "ni": 7.5,
+   "assets": 41123.9,
+   "liab": null,
+   "equity": 12630.0,
+   "dps": 2.14,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 2.14
+  },
+  {
+   "p": 2020,
+   "rev": 8904.4,
+   "op": 1988.7,
+   "ni": 1212.7,
+   "assets": 46099.6,
+   "liab": null,
+   "equity": 14063.6,
+   "dps": 2.27,
+   "payout": 63.4,
+   "yield": null,
+   "dps_adj": 2.27
+  },
+  {
+   "p": 2021,
+   "rev": 9863.1,
+   "op": 1993.3,
+   "ni": 1228.0,
+   "assets": 48492.1,
+   "liab": null,
+   "equity": 14599.8,
+   "dps": 2.41,
+   "payout": 67.5,
+   "yield": null,
+   "dps_adj": 2.41
+  },
+  {
+   "p": 2022,
+   "rev": 12289.3,
+   "op": 2198.2,
+   "ni": 1412.4,
+   "assets": 53230.9,
+   "liab": null,
+   "equity": 15473.2,
+   "dps": 2.55,
+   "payout": 62.6,
+   "yield": null,
+   "dps_adj": 2.55
+  },
+  {
+   "p": 2023,
+   "rev": 11910.7,
+   "op": 2399.3,
+   "ni": -434.7,
+   "assets": 55612.2,
+   "liab": null,
+   "equity": 14173.9,
+   "dps": 2.7,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 2.7
+  },
+  {
+   "p": 2024,
+   "rev": 11900.8,
+   "op": 2408.7,
+   "ni": 819.2,
+   "assets": 59594.5,
+   "liab": null,
+   "equity": 15039.4,
+   "dps": 2.86,
+   "payout": 124.8,
+   "yield": null,
+   "dps_adj": 2.86
+  },
+  {
+   "p": 2025,
+   "rev": 13547.2,
+   "op": 2988.6,
+   "ni": 1699.9,
+   "assets": 63786.7,
+   "liab": null,
+   "equity": 16197.3,
+   "dps": 3.01,
+   "payout": 65.7,
+   "yield": null,
+   "dps_adj": 3.01
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 3332.6,
+   "op": 846.0,
+   "ni": 523.7
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 2533.5,
+   "op": 602.5,
+   "ni": 337.2
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 3063.2,
+   "op": 612.4,
+   "ni": -116.2
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 2971.5,
+   "op": 347.8,
+   "ni": 74.4
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 4118.4,
+   "op": 926.4,
+   "ni": 552.7
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 2838.1,
+   "op": 663.0,
+   "ni": 354.6
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 3220.6,
+   "op": 688.7,
+   "ni": 369.4
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 3370.2,
+   "op": 710.5,
+   "ni": 423.2
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 4504.4,
+   "op": 1076.1,
+   "ni": 608.7
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 2903.2,
+   "op": 540.9,
+   "ni": 55.6
+  }
+ ]
+}

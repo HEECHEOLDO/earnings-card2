@@ -1,0 +1,216 @@
+{
+ "name": "DLTR",
+ "split_adjusted": false,
+ "legal_name": "DOLLAR TREE, INC.",
+ "code": "DLTR",
+ "cik": "0000935703",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2017,
+   "rev": 20719.2,
+   "op": 1704.8,
+   "ni": 896.2,
+   "assets": 15730.2,
+   "liab": 9613.7,
+   "equity": 5389.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 22245.5,
+   "op": 1999.1,
+   "ni": 1714.3,
+   "assets": 16649.3,
+   "liab": 8706.2,
+   "equity": 7182.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 22823.3,
+   "op": -939.5,
+   "ni": -1590.8,
+   "assets": 19742.1,
+   "liab": 13620.8,
+   "equity": 5642.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 23610.8,
+   "op": 1262.2,
+   "ni": 827.0,
+   "assets": 20652.2,
+   "liab": 13691.1,
+   "equity": 6254.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 25509.3,
+   "op": 1887.9,
+   "ni": 1341.9,
+   "assets": 21390.0,
+   "liab": 14145.6,
+   "equity": 7285.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 26321.2,
+   "op": 1811.4,
+   "ni": 1327.9,
+   "assets": 22909.5,
+   "liab": 14634.2,
+   "equity": 7718.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 15411.5,
+   "op": 2099.3,
+   "ni": 1615.4,
+   "assets": 24031.2,
+   "liab": 15033.0,
+   "equity": 8751.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 16781.1,
+   "op": 1774.5,
+   "ni": -998.4,
+   "assets": 23332.8,
+   "liab": 15696.7,
+   "equity": 7313.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 17578.5,
+   "op": 1462.0,
+   "ni": -3030.1,
+   "assets": 13384.9,
+   "liab": 9779.8,
+   "equity": 3605.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2026,
+   "rev": 19411.8,
+   "op": 1653.1,
+   "ni": 1282.5,
+   "assets": 14029.6,
+   "liab": 10604.3,
+   "equity": 3425.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 4961.4,
+   "op": 381.9,
+   "ni": -1709.8
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 4168.9,
+   "op": 215.8,
+   "ni": 300.1
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 4068.6,
+   "op": 330.7,
+   "ni": 132.4
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 4341.2,
+   "op": null,
+   "ni": 233.3
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 4996.7,
+   "op": 384.1,
+   "ni": -3695.9
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 4639.7,
+   "op": 231.0,
+   "ni": 343.4
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 4570.4,
+   "op": 343.3,
+   "ni": 188.4
+  },
+  {
+   "y": 2026,
+   "q": 4,
+   "rev": 4751.0,
+   "op": null,
+   "ni": 244.6
+  },
+  {
+   "y": 2027,
+   "q": 1,
+   "rev": 4975.8,
+   "op": 473.3,
+   "ni": 347.3
+  },
+  {
+   "y": 2027,
+   "q": 2,
+   "rev": 4891.2,
+   "op": 690.1,
+   "ni": 514.5
+  }
+ ]
+}

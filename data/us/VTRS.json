@@ -1,0 +1,190 @@
+{
+ "name": "VTRS",
+ "split_adjusted": true,
+ "legal_name": "Viatris Inc",
+ "code": "VTRS",
+ "cik": "0001792044",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2018,
+   "rev": 11433.9,
+   "op": 905.6,
+   "ni": 352.5,
+   "assets": null,
+   "liab": null,
+   "equity": 12167.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 11500.5,
+   "op": 715.5,
+   "ni": 16.8,
+   "assets": 31255.5,
+   "liab": 19371.7,
+   "equity": 11883.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 11946.0,
+   "op": -210.8,
+   "ni": -669.9,
+   "assets": 61553.0,
+   "liab": 38598.9,
+   "equity": 22954.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 17886.3,
+   "op": -34.0,
+   "ni": -1269.1,
+   "assets": 54842.8,
+   "liab": 34350.1,
+   "equity": 20492.7,
+   "dps": 0.33,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 0.33
+  },
+  {
+   "p": 2022,
+   "rev": 16262.7,
+   "op": 1614.9,
+   "ni": 2078.6,
+   "assets": 50022.2,
+   "liab": 28949.9,
+   "equity": 21072.3,
+   "dps": 0.48,
+   "payout": 28.0,
+   "yield": null,
+   "dps_adj": 0.48
+  },
+  {
+   "p": 2023,
+   "rev": 15426.9,
+   "op": 766.2,
+   "ni": 54.7,
+   "assets": 47685.5,
+   "liab": 27218.1,
+   "equity": 20467.4,
+   "dps": 0.48,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 0.48
+  },
+  {
+   "p": 2024,
+   "rev": 14739.3,
+   "op": 10.1,
+   "ni": -634.2,
+   "assets": 41500.9,
+   "liab": 22865.4,
+   "equity": 18635.5,
+   "dps": 0.48,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 0.48
+  },
+  {
+   "p": 2025,
+   "rev": 14299.9,
+   "op": -2663.1,
+   "ni": -3514.9,
+   "assets": 37193.1,
+   "liab": 22481.8,
+   "equity": 14711.3,
+   "dps": 0.48,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 0.48
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 3663.4,
+   "op": 203.9,
+   "ni": null
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 3796.6,
+   "op": -239.9,
+   "ni": null
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 3751.2,
+   "op": 225.9,
+   "ni": null
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 3528.1,
+   "op": -179.8,
+   "ni": null
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 3254.3,
+   "op": -2882.2,
+   "ni": null
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 3582.1,
+   "op": 233.0,
+   "ni": null
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 3759.9,
+   "op": 178.8,
+   "ni": null
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 3703.6,
+   "op": -192.7,
+   "ni": null
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 3517.0,
+   "op": -79.7,
+   "ni": null
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 3756.8,
+   "op": 6.3,
+   "ni": null
+  }
+ ]
+}

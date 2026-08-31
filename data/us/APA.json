@@ -1,0 +1,70 @@
+{
+ "name": "APA",
+ "split_adjusted": false,
+ "legal_name": "APA Corp",
+ "code": "APA",
+ "cik": "0001841666",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2023,
+   "rev": 10578.0,
+   "op": 3696.0,
+   "ni": 2855.0,
+   "assets": 15244.0,
+   "liab": null,
+   "equity": 3691.0,
+   "dps": 1,
+   "payout": 10.8,
+   "yield": null,
+   "dps_adj": 1.0
+  },
+  {
+   "p": 2024,
+   "rev": 10300.0,
+   "op": 2444.0,
+   "ni": 804.0,
+   "assets": 19390.0,
+   "liab": null,
+   "equity": 6362.0,
+   "dps": 1,
+   "payout": 43.9,
+   "yield": null,
+   "dps_adj": 1.0
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 1,
+   "rev": 2337.0,
+   "op": 929.0,
+   "ni": 326.0
+  },
+  {
+   "y": 2023,
+   "q": 2,
+   "rev": 2927.0,
+   "op": 691.0,
+   "ni": 462.0
+  },
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 2201.0,
+   "op": 691.0,
+   "ni": 212.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 2531.0,
+   "op": 979.0,
+   "ni": 620.0
+  }
+ ]
+}

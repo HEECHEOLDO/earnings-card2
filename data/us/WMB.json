@@ -1,0 +1,216 @@
+{
+ "name": "WMB",
+ "split_adjusted": false,
+ "legal_name": "WILLIAMS COMPANIES, INC.",
+ "code": "WMB",
+ "cik": "0000107263",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 7499.0,
+   "op": 689.0,
+   "ni": -350.0,
+   "assets": 46835.0,
+   "liab": null,
+   "equity": 14046.0,
+   "dps": 1.68,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 1.68
+  },
+  {
+   "p": 2017,
+   "rev": 8031.0,
+   "op": 927.0,
+   "ni": 2509.0,
+   "assets": 46352.0,
+   "liab": null,
+   "equity": 16175.0,
+   "dps": 1.2,
+   "payout": 39.5,
+   "yield": null,
+   "dps_adj": 1.2
+  },
+  {
+   "p": 2018,
+   "rev": 8686.0,
+   "op": 768.0,
+   "ni": 193.0,
+   "assets": 45302.0,
+   "liab": null,
+   "equity": 15997.0,
+   "dps": 1.36,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 1.36
+  },
+  {
+   "p": 2019,
+   "rev": 8201.0,
+   "op": 1921.0,
+   "ni": 714.0,
+   "assets": 46040.0,
+   "liab": null,
+   "equity": 16364.0,
+   "dps": 1.52,
+   "payout": 258.0,
+   "yield": null,
+   "dps_adj": 1.52
+  },
+  {
+   "p": 2020,
+   "rev": 7719.0,
+   "op": 2202.0,
+   "ni": 198.0,
+   "assets": 44165.0,
+   "liab": null,
+   "equity": 14583.0,
+   "dps": 1.6,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 1.6
+  },
+  {
+   "p": 2021,
+   "rev": 10627.0,
+   "op": 2631.0,
+   "ni": 1562.0,
+   "assets": 47612.0,
+   "liab": null,
+   "equity": 14101.0,
+   "dps": 1.64,
+   "payout": 127.6,
+   "yield": null,
+   "dps_adj": 1.64
+  },
+  {
+   "p": 2022,
+   "rev": 10965.0,
+   "op": 3018.0,
+   "ni": 2117.0,
+   "assets": 48433.0,
+   "liab": null,
+   "equity": 14045.0,
+   "dps": 1.7,
+   "payout": 97.8,
+   "yield": null,
+   "dps_adj": 1.7
+  },
+  {
+   "p": 2023,
+   "rev": 10907.0,
+   "op": 4311.0,
+   "ni": 3303.0,
+   "assets": 52627.0,
+   "liab": null,
+   "equity": 14891.0,
+   "dps": 1.79,
+   "payout": 66.0,
+   "yield": null,
+   "dps_adj": 1.79
+  },
+  {
+   "p": 2024,
+   "rev": 10503.0,
+   "op": 3339.0,
+   "ni": 2346.0,
+   "assets": 54532.0,
+   "liab": null,
+   "equity": 14840.0,
+   "dps": 1.9,
+   "payout": 98.7,
+   "yield": null,
+   "dps_adj": 1.9
+  },
+  {
+   "p": 2025,
+   "rev": 11950.0,
+   "op": 4196.0,
+   "ni": 2768.0,
+   "assets": 58573.0,
+   "liab": null,
+   "equity": 14995.0,
+   "dps": 2,
+   "payout": 88.2,
+   "yield": null,
+   "dps_adj": 2.0
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 2771.0,
+   "op": 1012.0,
+   "ni": 662.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 2336.0,
+   "op": 696.0,
+   "ni": 426.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 2653.0,
+   "op": 838.0,
+   "ni": 741.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 2743.0,
+   "op": 793.0,
+   "ni": 517.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 3048.0,
+   "op": 1094.0,
+   "ni": 729.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 2781.0,
+   "op": 945.0,
+   "ni": 583.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 2923.0,
+   "op": 1109.0,
+   "ni": 683.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 3198.0,
+   "op": 1048.0,
+   "ni": 773.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 3030.0,
+   "op": 1321.0,
+   "ni": 912.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 3053.0,
+   "op": 1182.0,
+   "ni": 876.0
+  }
+ ]
+}

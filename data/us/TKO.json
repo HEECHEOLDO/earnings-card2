@@ -1,0 +1,151 @@
+{
+ "name": "TKO",
+ "split_adjusted": false,
+ "legal_name": "TKO Group Holdings, Inc.",
+ "code": "TKO",
+ "cik": "0001973266",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2021,
+   "rev": 1031.9,
+   "op": 391.1,
+   "ni": 273.6,
+   "assets": null,
+   "liab": null,
+   "equity": 2513.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 2674.0,
+   "op": 532.9,
+   "ni": 359.6,
+   "assets": 5858.7,
+   "liab": 3898.7,
+   "equity": 1950.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 3224.8,
+   "op": 375.8,
+   "ni": 175.7,
+   "assets": 15391.1,
+   "liab": 4939.8,
+   "equity": 10439.7,
+   "dps": 3.86,
+   "payout": 181.9,
+   "yield": null,
+   "dps_adj": 3.86
+  },
+  {
+   "p": 2024,
+   "rev": 4884.2,
+   "op": 30.9,
+   "ni": 6.4,
+   "assets": 15111.8,
+   "liab": 4968.9,
+   "equity": 10121.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 4735.2,
+   "op": 835.0,
+   "ni": 546.3,
+   "assets": 15495.8,
+   "liab": 6245.7,
+   "equity": 9215.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 1222.4,
+   "op": -173.6,
+   "ni": -103.8
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 1193.2,
+   "op": 114.9,
+   "ni": 59.1
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 1540.7,
+   "op": 34.6,
+   "ni": 23.1
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 927.9,
+   "op": 55.0,
+   "ni": 31.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 1268.8,
+   "op": 237.4,
+   "ni": 165.6
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 1308.4,
+   "op": 368.3,
+   "ni": 273.1
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 1119.9,
+   "op": 172.0,
+   "ni": 41.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 1038.0,
+   "op": 57.4,
+   "ni": -2.4
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 1596.9,
+   "op": 338.5,
+   "ni": 249.8
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 1547.1,
+   "op": 429.8,
+   "ni": 303.9
+  }
+ ]
+}

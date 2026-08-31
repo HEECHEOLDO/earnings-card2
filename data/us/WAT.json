@@ -1,0 +1,216 @@
+{
+ "name": "WAT",
+ "split_adjusted": false,
+ "legal_name": "WATERS CORP /DE/",
+ "code": "WAT",
+ "cik": "0001000697",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 2167.4,
+   "op": 625.0,
+   "ni": 521.5,
+   "assets": 4662.1,
+   "liab": 2360.1,
+   "equity": 2301.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 2309.1,
+   "op": 662.2,
+   "ni": 20.3,
+   "assets": 5324.4,
+   "liab": 3090.6,
+   "equity": 2233.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 2419.9,
+   "op": 739.8,
+   "ni": 593.8,
+   "assets": 3727.4,
+   "liab": 2160.2,
+   "equity": 1567.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 2406.6,
+   "op": 708.5,
+   "ni": 592.2,
+   "assets": 2557.1,
+   "liab": 2773.3,
+   "equity": -216.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 2365.4,
+   "op": 645.5,
+   "ni": 521.6,
+   "assets": 2839.9,
+   "liab": 2607.8,
+   "equity": 232.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 2785.9,
+   "op": 821.7,
+   "ni": 692.8,
+   "assets": 3094.9,
+   "liab": 2727.4,
+   "equity": 367.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 2972.0,
+   "op": 873.4,
+   "ni": 707.8,
+   "assets": 3281.5,
+   "liab": 2777.0,
+   "equity": 504.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 2956.4,
+   "op": 817.7,
+   "ni": 642.2,
+   "assets": 4626.9,
+   "liab": 3476.5,
+   "equity": 1150.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 2958.4,
+   "op": 826.4,
+   "ni": 637.8,
+   "assets": 4553.8,
+   "liab": 2725.3,
+   "equity": 1829.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 3165.3,
+   "op": 802.6,
+   "ni": 642.6,
+   "assets": 5077.0,
+   "liab": 2515.0,
+   "equity": 2562.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 636.8,
+   "op": 133.8,
+   "ni": 102.2
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 636.8,
+   "op": 133.8,
+   "ni": 142.7
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 708.5,
+   "op": 189.1,
+   "ni": 161.5
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 708.5,
+   "op": 189.1,
+   "ni": null
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 662.0,
+   "op": 152.0,
+   "ni": 121.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 661.7,
+   "op": 151.7,
+   "ni": 147.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 771.0,
+   "op": 188.0,
+   "ni": 148.9
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 771.3,
+   "op": 188.2,
+   "ni": null
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 1267.0,
+   "op": -47.0,
+   "ni": -72.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 1645.0,
+   "op": -86.0,
+   "ni": -136.0
+  }
+ ]
+}

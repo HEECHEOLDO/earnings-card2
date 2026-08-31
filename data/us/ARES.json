@@ -1,0 +1,216 @@
+{
+ "name": "ARES",
+ "split_adjusted": false,
+ "legal_name": "Ares Management Corp",
+ "code": "ARES",
+ "cik": "0001176948",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 964.8,
+   "op": 297.9,
+   "ni": 286.9,
+   "assets": 5829.7,
+   "liab": 4452.4,
+   "equity": 1377.3,
+   "dps": 0.83,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 0.83
+  },
+  {
+   "p": 2017,
+   "rev": 1085.0,
+   "op": 149.9,
+   "ni": 172.9,
+   "assets": 8563.5,
+   "liab": 7103.2,
+   "equity": 1437.7,
+   "dps": 1.13,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 1.13
+  },
+  {
+   "p": 2018,
+   "rev": 1218.2,
+   "op": 184.3,
+   "ni": 152.1,
+   "assets": 10154.7,
+   "liab": 8760.4,
+   "equity": 1394.3,
+   "dps": 1.33,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 1.33
+  },
+  {
+   "p": 2019,
+   "rev": 1433.1,
+   "op": 425.2,
+   "ni": 372.8,
+   "assets": 12014.2,
+   "liab": 10155.6,
+   "equity": 1858.6,
+   "dps": 1.28,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 1.28
+  },
+  {
+   "p": 2020,
+   "rev": 1753.7,
+   "op": 379.5,
+   "ni": 324.5,
+   "assets": 15169.0,
+   "liab": 12596.9,
+   "equity": 2471.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 2288.9,
+   "op": 1065.7,
+   "ni": 386.7,
+   "assets": 21605.2,
+   "liab": 16694.7,
+   "equity": 3814.4,
+   "dps": 1.88,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 1.88
+  },
+  {
+   "p": 2022,
+   "rev": 2880.0,
+   "op": 510.8,
+   "ni": 167.5,
+   "assets": 22002.8,
+   "liab": 17097.8,
+   "equity": 3798.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 3236.3,
+   "op": 1333.1,
+   "ni": 474.3,
+   "assets": 24730.5,
+   "liab": 19709.2,
+   "equity": 4474.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 3690.7,
+   "op": 1275.4,
+   "ni": 441.0,
+   "assets": 24884.3,
+   "liab": 17485.9,
+   "equity": 6824.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 4755.6,
+   "op": 1286.9,
+   "ni": 426.1,
+   "assets": 28633.4,
+   "liab": 19932.0,
+   "equity": 8676.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 735.8,
+   "op": 231.0,
+   "ni": 73.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 874.9,
+   "op": 317.3,
+   "ni": 170.8
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 842.0,
+   "op": 327.1,
+   "ni": 216.4
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 1238.0,
+   "op": 399.9,
+   "ni": -19.2
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 1004.5,
+   "op": 141.0,
+   "ni": 47.2
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 1040.8,
+   "op": 286.9,
+   "ni": 222.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 1152.5,
+   "op": 652.3,
+   "ni": 473.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 1557.7,
+   "op": 206.6,
+   "ni": -316.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 1298.9,
+   "op": 312.9,
+   "ni": 223.4
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 1293.7,
+   "op": 385.9,
+   "ni": 241.7
+  }
+ ]
+}

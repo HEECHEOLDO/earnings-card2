@@ -1,0 +1,216 @@
+{
+ "name": "MTB",
+ "split_adjusted": false,
+ "legal_name": "M&T BANK CORP",
+ "code": "MTB",
+ "cik": "0000036270",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 5295.9,
+   "op": 2058.4,
+   "ni": 1315.1,
+   "assets": 123449.2,
+   "liab": 106962.6,
+   "equity": 16486.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 5632.2,
+   "op": 2323.9,
+   "ni": 1408.3,
+   "assets": 118593.5,
+   "liab": 102342.7,
+   "equity": 16250.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 5928.3,
+   "op": 2508.2,
+   "ni": 1918.1,
+   "assets": 120097.4,
+   "liab": 104637.2,
+   "equity": 15460.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 6191.9,
+   "op": 2547.3,
+   "ni": 1929.1,
+   "assets": 119872.8,
+   "liab": 104156.1,
+   "equity": 15716.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 5954.8,
+   "op": 1769.5,
+   "ni": 1353.2,
+   "assets": 142601.1,
+   "liab": 126413.8,
+   "equity": 16187.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 5992.0,
+   "op": 2455.0,
+   "ni": 1859.0,
+   "assets": 155107.2,
+   "liab": 137203.8,
+   "equity": 17903.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 1525.0,
+   "op": 2612.0,
+   "ni": 1992.0,
+   "assets": 200730.0,
+   "liab": 175412.0,
+   "equity": 25318.0,
+   "dps": 4.8,
+   "payout": 39.3,
+   "yield": null,
+   "dps_adj": 4.8
+  },
+  {
+   "p": 2023,
+   "rev": 1484.0,
+   "op": 3619.0,
+   "ni": 2741.0,
+   "assets": 208264.0,
+   "liab": 181307.0,
+   "equity": 26957.0,
+   "dps": 5.2,
+   "payout": 31.6,
+   "yield": null,
+   "dps_adj": 5.2
+  },
+  {
+   "p": 2024,
+   "rev": 1541.0,
+   "op": 3310.0,
+   "ni": 2588.0,
+   "assets": 208105.0,
+   "liab": 179078.0,
+   "equity": 29027.0,
+   "dps": 5.35,
+   "payout": 34.4,
+   "yield": null,
+   "dps_adj": 5.35
+  },
+  {
+   "p": 2025,
+   "rev": 1657.0,
+   "op": 3692.0,
+   "ni": 2851.0,
+   "assets": 213510.0,
+   "liab": 184333.0,
+   "equity": 29177.0,
+   "dps": 5.7,
+   "payout": 31.6,
+   "yield": null,
+   "dps_adj": 5.7
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 367.0,
+   "op": 664.0,
+   "ni": 531.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 388.0,
+   "op": 855.0,
+   "ni": 655.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 394.0,
+   "op": 909.0,
+   "ni": 721.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 392.0,
+   "op": 882.0,
+   "ni": 681.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 397.0,
+   "op": 761.0,
+   "ni": 584.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 417.0,
+   "op": 935.0,
+   "ni": 716.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 423.0,
+   "op": 1025.0,
+   "ni": 792.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 420.0,
+   "op": 971.0,
+   "ni": 759.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 418.0,
+   "op": 863.0,
+   "ni": 664.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 442.0,
+   "op": 1063.0,
+   "ni": 818.0
+  }
+ ]
+}

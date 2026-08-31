@@ -1,0 +1,177 @@
+{
+ "name": "HOOD",
+ "split_adjusted": true,
+ "legal_name": "Robinhood Markets, Inc.",
+ "code": "HOOD",
+ "cik": "0001783879",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2019,
+   "rev": 277.5,
+   "op": -107.6,
+   "ni": -106.6,
+   "assets": null,
+   "liab": null,
+   "equity": -97.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 958.0,
+   "op": 13.0,
+   "ni": 7.0,
+   "assets": 10988.5,
+   "liab": 8864.1,
+   "equity": -55.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 1815.0,
+   "op": -3685.0,
+   "ni": -3687.0,
+   "assets": 19769.0,
+   "liab": 12476.0,
+   "equity": 7293.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 1358.0,
+   "op": -1027.0,
+   "ni": -1028.0,
+   "assets": 23337.0,
+   "liab": 16381.0,
+   "equity": 6956.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 1865.0,
+   "op": -533.0,
+   "ni": -541.0,
+   "assets": 17624.0,
+   "liab": 10928.0,
+   "equity": 6696.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 2951.0,
+   "op": 1064.0,
+   "ni": 1411.0,
+   "assets": 26187.0,
+   "liab": 18215.0,
+   "equity": 7972.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 4473.0,
+   "op": 2108.0,
+   "ni": 1883.0,
+   "assets": 38137.0,
+   "liab": 28986.0,
+   "equity": 9151.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 618.0,
+   "op": 162.0,
+   "ni": 157.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 682.0,
+   "op": 191.0,
+   "ni": 188.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 637.0,
+   "op": 153.0,
+   "ni": 150.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 1014.0,
+   "op": 558.0,
+   "ni": 916.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 927.0,
+   "op": 371.0,
+   "ni": 336.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 989.0,
+   "op": 442.0,
+   "ni": 386.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 1274.0,
+   "op": 634.0,
+   "ni": 556.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 1283.0,
+   "op": 661.0,
+   "ni": 605.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 1067.0,
+   "op": 411.0,
+   "ni": 350.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 1308.0,
+   "op": 709.0,
+   "ni": 561.0
+  }
+ ]
+}

@@ -17,6 +17,7 @@ User-Agent 헤더와 초당 10회 제한만 지키면 됩니다.
 
 import io
 import json
+import re
 import os
 import sys
 import time
@@ -42,6 +43,15 @@ QUARTERS = 10
 SLEEP = 0.15          # 초당 10회 제한 -> 넉넉히 여유
 
 DEFAULT_TICKERS = ["AAPL", "MSFT", "NVDA"]
+
+# 지수 구성종목 목록 (위키백과). 표 구조가 안정적이고 자주 갱신된다.
+INDEX_SOURCES = [
+    ("S&P 500", "https://en.wikipedia.org/wiki/List_of_S%26P_500_companies"),
+    ("나스닥 100", "https://en.wikipedia.org/wiki/Nasdaq-100"),
+]
+
+# 티커가 다른 법인으로 옮겨간 경우 CIK 를 직접 지정한다
+CIK_OVERRIDE = {"XOM": "34088"}
 
 # 회사마다 쓰는 태그가 다르다. 앞에서부터 순서대로 시도한다.
 # 같은 뜻이라 합쳐도 되는 태그들.
@@ -554,6 +564,94 @@ def update_fx():
 
 # ------------------------------------------------- 목록 · 인덱스
 
+TICKER_RE = re.compile(r"^[A-Z][-A-Z.]{0,6}$")
+
+
+def strip_tags(html):
+    out, depth = [], 0
+    for ch in html:
+        if ch == "<":
+            depth += 1
+        elif ch == ">":
+            depth -= 1
+        elif depth == 0:
+            out.append(ch)
+    return "".join(out).strip()
+
+
+def parse_wiki_tickers(html):
+    """위키백과 구성종목 표에서 티커를 뽑는다.
+
+    표의 '첫 칸이 티커인 행'이 충분히 많은 표만 구성종목 표로 본다.
+    """
+    found = []
+    for table in re.findall(r"<table[^>]*>.*?</table>", html, re.S):
+        rows = re.findall(r"<tr[^>]*>(.*?)</tr>", table, re.S)
+        hits = []
+        for row in rows:
+            cells = re.findall(r"<t[dh][^>]*>(.*?)</t[dh]>", row, re.S)
+            if not cells:
+                continue
+            t = strip_tags(cells[0]).replace("\u200b", "").strip()
+            if TICKER_RE.match(t) and t not in ("SYMBOL", "TICKER"):
+                hits.append(t.replace(".", "-"))
+        if len(hits) >= 50:
+            found.extend(hits)
+    seen, out = set(), []
+    for t in found:
+        if t not in seen:
+            seen.add(t)
+            out.append(t)
+    return out
+
+
+def build_tickers():
+    """S&P 500 + 나스닥 100 구성종목으로 us_tickers.txt 를 만든다."""
+    groups = []
+    for name, url in INDEX_SOURCES:
+        b = get(url)
+        if not b:
+            log("! %s 목록을 받지 못했습니다" % name)
+            continue
+        try:
+            html = b.decode("utf-8", "ignore")
+        except Exception:                 # noqa: BLE001
+            continue
+        ts = parse_wiki_tickers(html)
+        log("%s: %d종목" % (name, len(ts)))
+        if ts:
+            groups.append((name, ts))
+
+    if not groups:
+        log("!! 목록을 하나도 받지 못해 파일을 건드리지 않았습니다.")
+        return
+
+    allt, seen = [], set()
+    for name, ts in groups:
+        for t in ts:
+            if t not in seen:
+                seen.add(t)
+                allt.append(t)
+
+    path = "us_tickers.txt"
+    if os.path.exists(path):
+        os.replace(path, path + ".bak")
+        log("기존 파일을 %s.bak 로 옮겼습니다" % path)
+
+    with open(path, "w", encoding="utf-8") as f:
+        f.write("# S&P 500 + 나스닥 100 구성종목 — collect_us.py --build-tickers 로 생성\n")
+        f.write("# 생성일 %s\n" % datetime.now(timezone(timedelta(hours=9))).strftime("%Y-%m-%d"))
+        f.write("# 'TICKER 34088' 처럼 뒤에 숫자를 적으면 그 CIK 를 직접 씁니다.\n\n")
+        for name, ts in groups:
+            f.write("# --- %s (%d) ---\n" % (name, len(ts)))
+        f.write("\n")
+        for t in allt:
+            ov = CIK_OVERRIDE.get(t)
+            f.write("%s %s\n" % (t, ov) if ov else "%s\n" % t)
+    log("\nus_tickers.txt 생성 — 중복 제거 후 %d종목" % len(allt))
+    log("다음: python3 collect_us.py --verify  로 등록명을 확인하세요.")
+
+
 def load_tickers(args):
     """[(티커, CIK지정or None)] 목록.
 
@@ -640,6 +738,10 @@ def main():
 
     if "--fx" in argv:
         update_fx()
+        return
+
+    if "--build-tickers" in argv:
+        build_tickers()
         return
 
     cmap = load_cik_map()

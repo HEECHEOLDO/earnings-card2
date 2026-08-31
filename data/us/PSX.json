@@ -1,0 +1,216 @@
+{
+ "name": "PSX",
+ "split_adjusted": false,
+ "legal_name": "Phillips 66",
+ "code": "PSX",
+ "cik": "0001534701",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 84279.0,
+   "op": 2191.0,
+   "ni": 1644.0,
+   "assets": 51653.0,
+   "liab": 27928.0,
+   "equity": 23725.0,
+   "dps": 2.45,
+   "payout": 78.6,
+   "yield": null,
+   "dps_adj": 2.45
+  },
+  {
+   "p": 2017,
+   "rev": 102354.0,
+   "op": 3555.0,
+   "ni": 5248.0,
+   "assets": 54371.0,
+   "liab": 26943.0,
+   "equity": 27428.0,
+   "dps": 2.73,
+   "payout": 26.8,
+   "yield": null,
+   "dps_adj": 2.73
+  },
+  {
+   "p": 2018,
+   "rev": 111461.0,
+   "op": 7445.0,
+   "ni": 5873.0,
+   "assets": 54302.0,
+   "liab": 27149.0,
+   "equity": 27153.0,
+   "dps": 3.1,
+   "payout": 24.8,
+   "yield": null,
+   "dps_adj": 3.1
+  },
+  {
+   "p": 2019,
+   "rev": 107293.0,
+   "op": 4178.0,
+   "ni": 3377.0,
+   "assets": 58720.0,
+   "liab": 31551.0,
+   "equity": 27169.0,
+   "dps": 3.5,
+   "payout": 46.8,
+   "yield": null,
+   "dps_adj": 3.5
+  },
+  {
+   "p": 2020,
+   "rev": 64129.0,
+   "op": -4964.0,
+   "ni": -3714.0,
+   "assets": 54721.0,
+   "liab": 33198.0,
+   "equity": 21523.0,
+   "dps": 3.6,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 3.6
+  },
+  {
+   "p": 2021,
+   "rev": 111476.0,
+   "op": null,
+   "ni": 1594.0,
+   "assets": 55594.0,
+   "liab": 33957.0,
+   "equity": 21637.0,
+   "dps": 3.62,
+   "payout": 99.9,
+   "yield": null,
+   "dps_adj": 3.62
+  },
+  {
+   "p": 2022,
+   "rev": 169990.0,
+   "op": null,
+   "ni": 11391.0,
+   "assets": 76442.0,
+   "liab": 42336.0,
+   "equity": 34106.0,
+   "dps": 3.83,
+   "payout": 15.9,
+   "yield": null,
+   "dps_adj": 3.83
+  },
+  {
+   "p": 2023,
+   "rev": 147399.0,
+   "op": null,
+   "ni": 7239.0,
+   "assets": 75501.0,
+   "liab": 43851.0,
+   "equity": 31650.0,
+   "dps": 4.2,
+   "payout": 26.1,
+   "yield": null,
+   "dps_adj": 4.2
+  },
+  {
+   "p": 2024,
+   "rev": 143153.0,
+   "op": null,
+   "ni": 2175.0,
+   "assets": 72582.0,
+   "liab": 44119.0,
+   "equity": 28463.0,
+   "dps": 4.5,
+   "payout": 86.9,
+   "yield": null,
+   "dps_adj": 4.5
+  },
+  {
+   "p": 2025,
+   "rev": 132376.0,
+   "op": null,
+   "ni": 4528.0,
+   "assets": 73680.0,
+   "liab": 43439.0,
+   "equity": 30241.0,
+   "dps": 4.75,
+   "payout": 42.6,
+   "yield": null,
+   "dps_adj": 4.75
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 35811.0,
+   "op": null,
+   "ni": 761.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 38129.0,
+   "op": null,
+   "ni": 1020.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 35528.0,
+   "op": null,
+   "ni": 369.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 33685.0,
+   "op": null,
+   "ni": 25.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 30430.0,
+   "op": null,
+   "ni": 526.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 33323.0,
+   "op": null,
+   "ni": 908.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 34515.0,
+   "op": null,
+   "ni": 167.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 34108.0,
+   "op": null,
+   "ni": 2927.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 32540.0,
+   "op": null,
+   "ni": 219.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 51004.0,
+   "op": null,
+   "ni": 3879.0
+  }
+ ]
+}

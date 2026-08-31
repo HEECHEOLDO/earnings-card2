@@ -1,0 +1,216 @@
+{
+ "name": "IP",
+ "split_adjusted": false,
+ "legal_name": "INTERNATIONAL PAPER CO /NEW/",
+ "code": "IP",
+ "cik": "0000051434",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 19495.0,
+   "op": null,
+   "ni": 902.0,
+   "assets": 33093.0,
+   "liab": null,
+   "equity": 4359.0,
+   "dps": 1.7825,
+   "payout": 81.2,
+   "yield": null,
+   "dps_adj": 1.7825
+  },
+  {
+   "p": 2017,
+   "rev": 21743.0,
+   "op": null,
+   "ni": 2144.0,
+   "assets": 33903.0,
+   "liab": null,
+   "equity": 6541.0,
+   "dps": 1.863,
+   "payout": 35.9,
+   "yield": null,
+   "dps_adj": 1.863
+  },
+  {
+   "p": 2018,
+   "rev": 23306.0,
+   "op": null,
+   "ni": 2017.0,
+   "assets": 33576.0,
+   "liab": null,
+   "equity": 7383.0,
+   "dps": 1.925,
+   "payout": 39.0,
+   "yield": null,
+   "dps_adj": 1.925
+  },
+  {
+   "p": 2019,
+   "rev": 18317.0,
+   "op": null,
+   "ni": 1220.0,
+   "assets": 33471.0,
+   "liab": null,
+   "equity": 7718.0,
+   "dps": 2.013,
+   "payout": 65.2,
+   "yield": null,
+   "dps_adj": 2.013
+  },
+  {
+   "p": 2020,
+   "rev": 17565.0,
+   "op": null,
+   "ni": 482.0,
+   "assets": 31718.0,
+   "liab": null,
+   "equity": 7868.0,
+   "dps": 2.05,
+   "payout": 167.1,
+   "yield": null,
+   "dps_adj": 2.05
+  },
+  {
+   "p": 2021,
+   "rev": 19363.0,
+   "op": null,
+   "ni": 1754.0,
+   "assets": 25243.0,
+   "liab": null,
+   "equity": 9082.0,
+   "dps": 2,
+   "payout": 44.4,
+   "yield": null,
+   "dps_adj": 2.0
+  },
+  {
+   "p": 2022,
+   "rev": 21161.0,
+   "op": null,
+   "ni": 1504.0,
+   "assets": 23940.0,
+   "liab": null,
+   "equity": 8497.0,
+   "dps": 1.85,
+   "payout": 44.7,
+   "yield": null,
+   "dps_adj": 1.85
+  },
+  {
+   "p": 2023,
+   "rev": 16033.0,
+   "op": null,
+   "ni": 288.0,
+   "assets": 23261.0,
+   "liab": null,
+   "equity": 8355.0,
+   "dps": 1.85,
+   "payout": 222.8,
+   "yield": null,
+   "dps_adj": 1.85
+  },
+  {
+   "p": 2024,
+   "rev": 15835.0,
+   "op": null,
+   "ni": 557.0,
+   "assets": 22800.0,
+   "liab": null,
+   "equity": 8173.0,
+   "dps": 1.85,
+   "payout": 115.3,
+   "yield": null,
+   "dps_adj": 1.85
+  },
+  {
+   "p": 2025,
+   "rev": 23634.0,
+   "op": null,
+   "ni": -3516.0,
+   "assets": 37964.0,
+   "liab": null,
+   "equity": 14827.0,
+   "dps": 1.85,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 1.85
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 3915.0,
+   "op": 169.0,
+   "ni": 56.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 4019.0,
+   "op": 322.0,
+   "ni": 498.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 3979.0,
+   "op": 237.0,
+   "ni": 150.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 3922.0,
+   "op": null,
+   "ni": -147.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 5264.0,
+   "op": null,
+   "ni": -105.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 6142.0,
+   "op": null,
+   "ni": 75.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 6222.0,
+   "op": null,
+   "ni": -1102.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 6006.0,
+   "op": null,
+   "ni": -2384.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 5971.0,
+   "op": null,
+   "ni": 60.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 6004.0,
+   "op": null,
+   "ni": -12.0
+  }
+ ]
+}

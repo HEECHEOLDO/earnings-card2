@@ -1,0 +1,216 @@
+{
+ "name": "PCAR",
+ "split_adjusted": true,
+ "legal_name": "PACCAR INC",
+ "code": "PCAR",
+ "cik": "0000075362",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 17033.3,
+   "op": 1130.4,
+   "ni": 521.7,
+   "assets": 20638.9,
+   "liab": null,
+   "equity": 6777.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 19456.4,
+   "op": 2173.3,
+   "ni": 1675.2,
+   "assets": 23440.2,
+   "liab": null,
+   "equity": 8050.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 23495.7,
+   "op": 2810.2,
+   "ni": 2195.1,
+   "assets": 25482.4,
+   "liab": null,
+   "equity": 8592.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 25599.7,
+   "op": 3099.2,
+   "ni": 2387.9,
+   "assets": 28361.1,
+   "liab": null,
+   "equity": 9706.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 18728.5,
+   "op": 1661.6,
+   "ni": 1301.2,
+   "assets": 28450.0,
+   "liab": null,
+   "equity": 10533.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 23522.3,
+   "op": 2396.3,
+   "ni": 1865.5,
+   "assets": 29509.4,
+   "liab": null,
+   "equity": 11594.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 28819.7,
+   "op": 3848.7,
+   "ni": 3011.6,
+   "assets": 33275.5,
+   "liab": null,
+   "equity": 13167.1,
+   "dps": 2.8,
+   "payout": 48.6,
+   "yield": null,
+   "dps_adj": 2.8
+  },
+  {
+   "p": 2023,
+   "rev": 35127.4,
+   "op": 5718.2,
+   "ni": 4600.8,
+   "assets": 40823.4,
+   "liab": null,
+   "equity": 15878.8,
+   "dps": 4.24,
+   "payout": 48.3,
+   "yield": null,
+   "dps_adj": 4.24
+  },
+  {
+   "p": 2024,
+   "rev": 33663.8,
+   "op": 5400.9,
+   "ni": 4162.0,
+   "assets": 43418.9,
+   "liab": null,
+   "equity": 17506.9,
+   "dps": 4.17,
+   "payout": 52.6,
+   "yield": null,
+   "dps_adj": 4.17
+  },
+  {
+   "p": 2025,
+   "rev": 28444.8,
+   "op": 3023.5,
+   "ni": 2375.8,
+   "assets": 44336.2,
+   "liab": null,
+   "equity": 19264.0,
+   "dps": 2.72,
+   "payout": 60.2,
+   "yield": null,
+   "dps_adj": 2.72
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 8744.3,
+   "op": 1534.5,
+   "ni": 1195.3
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 8772.1,
+   "op": 1460.8,
+   "ni": 1122.6
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 8239.9,
+   "op": 1256.3,
+   "ni": 972.1
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 7907.5,
+   "op": 1149.3,
+   "ni": 872.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 7441.7,
+   "op": 643.1,
+   "ni": 505.1
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 7510.5,
+   "op": 931.9,
+   "ni": 723.8
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 6671.8,
+   "op": 743.6,
+   "ni": 590.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 6820.8,
+   "op": 704.9,
+   "ni": 556.9
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 6776.5,
+   "op": 776.3,
+   "ni": 605.3
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 7546.7,
+   "op": 981.5,
+   "ni": 752.0
+  }
+ ]
+}

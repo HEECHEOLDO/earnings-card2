@@ -1,0 +1,54 @@
+{
+ "name": "FDXF",
+ "split_adjusted": false,
+ "legal_name": "FedEx Freight Holding Company, Inc.",
+ "code": "FDXF",
+ "cik": "0002082247",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2024,
+   "rev": 9424.0,
+   "op": 1753.0,
+   "ni": 1574.0,
+   "assets": null,
+   "liab": null,
+   "equity": 2124.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 8892.0,
+   "op": 1404.0,
+   "ni": 1346.0,
+   "assets": 5022.0,
+   "liab": null,
+   "equity": 2393.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2026,
+   "rev": 8795.0,
+   "op": 540.0,
+   "ni": 655.0,
+   "assets": 6884.0,
+   "liab": null,
+   "equity": -497.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

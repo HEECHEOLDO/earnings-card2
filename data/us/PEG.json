@@ -1,0 +1,216 @@
+{
+ "name": "PEG",
+ "split_adjusted": false,
+ "legal_name": "PUBLIC SERVICE ENTERPRISE GROUP INC",
+ "code": "PEG",
+ "cik": "0000788784",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 8966.0,
+   "op": 1598.0,
+   "ni": 887.0,
+   "assets": 40070.0,
+   "liab": null,
+   "equity": 13130.0,
+   "dps": 1.64,
+   "payout": 93.4,
+   "yield": null,
+   "dps_adj": 1.64
+  },
+  {
+   "p": 2017,
+   "rev": 9094.0,
+   "op": 1429.0,
+   "ni": 1574.0,
+   "assets": 42716.0,
+   "liab": null,
+   "equity": 13847.0,
+   "dps": 1.72,
+   "payout": 55.2,
+   "yield": null,
+   "dps_adj": 1.72
+  },
+  {
+   "p": 2018,
+   "rev": 9696.0,
+   "op": 2298.0,
+   "ni": 1438.0,
+   "assets": 45326.0,
+   "liab": null,
+   "equity": 14377.0,
+   "dps": 1.8,
+   "payout": 63.1,
+   "yield": null,
+   "dps_adj": 1.8
+  },
+  {
+   "p": 2019,
+   "rev": 10076.0,
+   "op": 1943.0,
+   "ni": 1693.0,
+   "assets": 47730.0,
+   "liab": null,
+   "equity": 15089.0,
+   "dps": 1.88,
+   "payout": 56.0,
+   "yield": null,
+   "dps_adj": 1.88
+  },
+  {
+   "p": 2020,
+   "rev": 9603.0,
+   "op": 2270.0,
+   "ni": 1905.0,
+   "assets": 50050.0,
+   "liab": null,
+   "equity": 15984.0,
+   "dps": 1.96,
+   "payout": 51.9,
+   "yield": null,
+   "dps_adj": 1.96
+  },
+  {
+   "p": 2021,
+   "rev": 9722.0,
+   "op": -856.0,
+   "ni": -648.0,
+   "assets": 48999.0,
+   "liab": null,
+   "equity": 14438.0,
+   "dps": 2.04,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 2.04
+  },
+  {
+   "p": 2022,
+   "rev": 9800.0,
+   "op": 1381.0,
+   "ni": 1031.0,
+   "assets": 48718.0,
+   "liab": null,
+   "equity": 13729.0,
+   "dps": 2.16,
+   "payout": 104.3,
+   "yield": null,
+   "dps_adj": 2.16
+  },
+  {
+   "p": 2023,
+   "rev": 11237.0,
+   "op": 3685.0,
+   "ni": 2563.0,
+   "assets": 50741.0,
+   "liab": null,
+   "equity": 15477.0,
+   "dps": 2.28,
+   "payout": 44.3,
+   "yield": null,
+   "dps_adj": 2.28
+  },
+  {
+   "p": 2024,
+   "rev": 10290.0,
+   "op": 2353.0,
+   "ni": 1772.0,
+   "assets": 54640.0,
+   "liab": null,
+   "equity": 16114.0,
+   "dps": 2.4,
+   "payout": 67.4,
+   "yield": null,
+   "dps_adj": 2.4
+  },
+  {
+   "p": 2025,
+   "rev": 12168.0,
+   "op": 2980.0,
+   "ni": 2111.0,
+   "assets": 57576.0,
+   "liab": null,
+   "equity": 16982.0,
+   "dps": 2.52,
+   "payout": 59.6,
+   "yield": null,
+   "dps_adj": 2.52
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 2760.0,
+   "op": 685.0,
+   "ni": 532.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 2423.0,
+   "op": 582.0,
+   "ni": 434.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 2642.0,
+   "op": 641.0,
+   "ni": 520.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 2465.0,
+   "op": 445.0,
+   "ni": 286.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 3222.0,
+   "op": 797.0,
+   "ni": 589.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 2805.0,
+   "op": 817.0,
+   "ni": 585.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 3226.0,
+   "op": 855.0,
+   "ni": 622.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 2915.0,
+   "op": 511.0,
+   "ni": 315.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 3848.0,
+   "op": 1075.0,
+   "ni": 741.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 2554.0,
+   "op": 461.0,
+   "ni": 334.0
+  }
+ ]
+}

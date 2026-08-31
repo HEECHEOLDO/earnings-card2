@@ -1,0 +1,216 @@
+{
+ "name": "DXCM",
+ "split_adjusted": true,
+ "legal_name": "DEXCOM INC",
+ "code": "DXCM",
+ "cik": "0001093557",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 573.3,
+   "op": -63.9,
+   "ni": -65.6,
+   "assets": 402.8,
+   "liab": 119.0,
+   "equity": 283.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 718.5,
+   "op": -42.5,
+   "ni": -50.2,
+   "assets": 904.1,
+   "liab": 484.7,
+   "equity": 419.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 1031.6,
+   "op": -186.3,
+   "ni": -127.1,
+   "assets": 1916.0,
+   "liab": 1252.7,
+   "equity": 663.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 1476.0,
+   "op": 142.3,
+   "ni": 101.1,
+   "assets": 2395.0,
+   "liab": 1512.4,
+   "equity": 882.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 1926.7,
+   "op": 299.5,
+   "ni": 549.7,
+   "assets": 4290.5,
+   "liab": 2464.0,
+   "equity": 1551.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 2448.5,
+   "op": 265.8,
+   "ni": 216.9,
+   "assets": 4933.3,
+   "liab": 2891.2,
+   "equity": 2042.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 2909.8,
+   "op": 391.2,
+   "ni": 341.2,
+   "assets": 5391.7,
+   "liab": 3259.9,
+   "equity": 2131.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 3622.3,
+   "op": 597.7,
+   "ni": 541.5,
+   "assets": 6264.5,
+   "liab": 4195.9,
+   "equity": 2068.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 4033.0,
+   "op": 600.0,
+   "ni": 576.2,
+   "assets": 6484.5,
+   "liab": 4381.9,
+   "equity": 2102.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 4662.0,
+   "op": 911.8,
+   "ni": 836.3,
+   "assets": 6339.9,
+   "liab": 3593.9,
+   "equity": 2746.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 921.0,
+   "op": 101.1,
+   "ni": 146.4
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 1004.3,
+   "op": 158.0,
+   "ni": 143.5
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 994.2,
+   "op": 152.0,
+   "ni": 134.6
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 1113.5,
+   "op": 188.9,
+   "ni": 151.7
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 1036.0,
+   "op": 133.7,
+   "ni": 105.4
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 1157.1,
+   "op": 212.6,
+   "ni": 179.8
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 1209.3,
+   "op": 242.5,
+   "ni": 283.8
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 1259.6,
+   "op": 323.0,
+   "ni": 267.3
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 1191.9,
+   "op": 255.3,
+   "ni": 199.5
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 1308.4,
+   "op": 318.3,
+   "ni": 249.1
+  }
+ ]
+}

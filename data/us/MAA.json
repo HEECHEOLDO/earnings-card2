@@ -1,0 +1,216 @@
+{
+ "name": "MAA",
+ "split_adjusted": true,
+ "legal_name": "MID AMERICA APARTMENT COMMUNITIES INC.",
+ "code": "MAA",
+ "cik": "0000912595",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2012,
+   "rev": 446.5,
+   "op": 115.9,
+   "ni": 102.3,
+   "assets": 2751.1,
+   "liab": 1801.2,
+   "equity": 945.1,
+   "dps": 2.675,
+   "payout": 107.3,
+   "yield": null,
+   "dps_adj": 0.8917
+  },
+  {
+   "p": 2017,
+   "rev": 1529.0,
+   "op": null,
+   "ni": 340.5,
+   "assets": null,
+   "liab": null,
+   "equity": 6573.9,
+   "dps": 3.5325,
+   "payout": 117.6,
+   "yield": null,
+   "dps_adj": 3.5325
+  },
+  {
+   "p": 2018,
+   "rev": 1571.3,
+   "op": null,
+   "ni": 231.0,
+   "assets": 11323.8,
+   "liab": 4942.2,
+   "equity": 6372.2,
+   "dps": 3.69,
+   "payout": 181.5,
+   "yield": null,
+   "dps_adj": 3.69
+  },
+  {
+   "p": 2019,
+   "rev": 1641.0,
+   "op": null,
+   "ni": 366.6,
+   "assets": 11230.5,
+   "liab": 4926.9,
+   "equity": 6289.5,
+   "dps": 3.84,
+   "payout": 119.3,
+   "yield": null,
+   "dps_adj": 3.84
+  },
+  {
+   "p": 2020,
+   "rev": 1678.0,
+   "op": null,
+   "ni": 264.0,
+   "assets": 11194.8,
+   "liab": 5091.0,
+   "equity": 6088.4,
+   "dps": 4,
+   "payout": 173.0,
+   "yield": null,
+   "dps_adj": 4.0
+  },
+  {
+   "p": 2021,
+   "rev": 1778.1,
+   "op": null,
+   "ni": 550.7,
+   "assets": 11285.2,
+   "liab": 5101.1,
+   "equity": 6153.9,
+   "dps": 4.1,
+   "payout": 85.4,
+   "yield": null,
+   "dps_adj": 4.1
+  },
+  {
+   "p": 2022,
+   "rev": 2019.9,
+   "op": null,
+   "ni": 654.8,
+   "assets": 11241.2,
+   "liab": 5030.7,
+   "equity": 6189.7,
+   "dps": 4.68,
+   "payout": 82.4,
+   "yield": null,
+   "dps_adj": 4.68
+  },
+  {
+   "p": 2023,
+   "rev": 2148.5,
+   "op": null,
+   "ni": 567.8,
+   "assets": 11484.5,
+   "liab": 5185.4,
+   "equity": 6280.0,
+   "dps": 5.6,
+   "payout": 114.9,
+   "yield": null,
+   "dps_adj": 5.6
+  },
+  {
+   "p": 2024,
+   "rev": 2191.0,
+   "op": null,
+   "ni": 541.6,
+   "assets": 11812.4,
+   "liab": 5664.7,
+   "equity": 6125.4,
+   "dps": 5.88,
+   "payout": 126.8,
+   "yield": null,
+   "dps_adj": 5.88
+  },
+  {
+   "p": 2025,
+   "rev": 2209.1,
+   "op": null,
+   "ni": 456.6,
+   "assets": 11975.4,
+   "liab": 6135.7,
+   "equity": 5819.2,
+   "dps": 6.06,
+   "payout": 155.2,
+   "yield": null,
+   "dps_adj": 6.06
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 542.2,
+   "op": null,
+   "ni": 164.9
+  },
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 543.6,
+   "op": null,
+   "ni": 147.6
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 546.4,
+   "op": null,
+   "ni": 104.7
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 551.1,
+   "op": null,
+   "ni": 118.2
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 549.8,
+   "op": null,
+   "ni": 171.1
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 549.3,
+   "op": null,
+   "ni": 186.4
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 549.9,
+   "op": null,
+   "ni": 110.9
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 554.4,
+   "op": null,
+   "ni": 102.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 555.6,
+   "op": null,
+   "ni": 57.2
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 553.7,
+   "op": null,
+   "ni": 126.6
+  }
+ ]
+}

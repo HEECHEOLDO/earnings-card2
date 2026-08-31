@@ -1,0 +1,216 @@
+{
+ "name": "NCLH",
+ "split_adjusted": false,
+ "legal_name": "Norwegian Cruise Line Holdings Ltd.",
+ "code": "NCLH",
+ "cik": "0001513761",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 4874.3,
+   "op": 925.5,
+   "ni": 633.1,
+   "assets": 12973.9,
+   "liab": 8436.2,
+   "equity": 4537.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 5396.2,
+   "op": 1048.8,
+   "ni": 759.9,
+   "assets": 14094.9,
+   "liab": 8345.1,
+   "equity": 5749.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 6055.1,
+   "op": 1219.1,
+   "ni": 954.8,
+   "assets": 15206.0,
+   "liab": 9243.0,
+   "equity": 5963.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 6462.4,
+   "op": 1178.1,
+   "ni": 930.2,
+   "assets": 16684.6,
+   "liab": 10169.0,
+   "equity": 6515.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 1279.9,
+   "op": -3484.1,
+   "ni": -4012.5,
+   "assets": 18399.3,
+   "liab": 14045.2,
+   "equity": 4354.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 648.0,
+   "op": -2552.3,
+   "ni": -4506.6,
+   "assets": 18729.8,
+   "liab": 16297.2,
+   "equity": 2432.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 4843.8,
+   "op": -1551.8,
+   "ni": -2269.9,
+   "assets": 18557.7,
+   "liab": 18489.1,
+   "equity": 68.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 8549.9,
+   "op": 930.9,
+   "ni": 166.2,
+   "assets": 19493.0,
+   "liab": 19192.2,
+   "equity": 300.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 9479.7,
+   "op": 1465.9,
+   "ni": 910.3,
+   "assets": 19969.8,
+   "liab": 18544.4,
+   "equity": 1425.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 9827.6,
+   "op": 1560.9,
+   "ni": 423.2,
+   "assets": 22541.4,
+   "liab": 20331.5,
+   "equity": 2209.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 2191.2,
+   "op": 218.4,
+   "ni": 17.4
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 2372.5,
+   "op": 341.6,
+   "ni": 163.4
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 2806.6,
+   "op": 691.2,
+   "ni": 474.9
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 2109.4,
+   "op": 214.7,
+   "ni": 254.6
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 2127.6,
+   "op": 200.9,
+   "ni": -40.3
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 2517.5,
+   "op": 423.8,
+   "ni": 30.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 2938.1,
+   "op": 749.4,
+   "ni": 419.3
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 2244.4,
+   "op": 186.6,
+   "ni": 14.2
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 2331.2,
+   "op": 232.9,
+   "ni": 104.7
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 2640.5,
+   "op": 363.3,
+   "ni": 222.6
+  }
+ ]
+}

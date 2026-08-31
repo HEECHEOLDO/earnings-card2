@@ -1,0 +1,216 @@
+{
+ "name": "ORLY",
+ "split_adjusted": true,
+ "legal_name": "O REILLY AUTOMOTIVE INC",
+ "code": "ORLY",
+ "cik": "0000898173",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 8593.1,
+   "op": 1699.2,
+   "ni": 1037.7,
+   "assets": 7204.2,
+   "liab": null,
+   "equity": 1627.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 8977.7,
+   "op": 1725.4,
+   "ni": 1133.8,
+   "assets": 7571.9,
+   "liab": null,
+   "equity": 653.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 9536.4,
+   "op": 1815.2,
+   "ni": 1324.5,
+   "assets": 7980.8,
+   "liab": null,
+   "equity": 353.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 10150.0,
+   "op": 1920.7,
+   "ni": 1391.0,
+   "assets": 10717.2,
+   "liab": null,
+   "equity": 397.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 11604.5,
+   "op": 2419.3,
+   "ni": 1752.3,
+   "assets": 11596.6,
+   "liab": null,
+   "equity": 140.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 13327.6,
+   "op": 2917.2,
+   "ni": 2164.7,
+   "assets": 11718.7,
+   "liab": null,
+   "equity": -66.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 14409.9,
+   "op": 2954.5,
+   "ni": 2172.7,
+   "assets": 12628.0,
+   "liab": null,
+   "equity": -1060.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 15812.2,
+   "op": 3186.4,
+   "ni": 2346.6,
+   "assets": 13873.0,
+   "liab": null,
+   "equity": -1739.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 16708.5,
+   "op": 3251.2,
+   "ni": 2386.7,
+   "assets": 14893.7,
+   "liab": null,
+   "equity": -1371.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 17782.0,
+   "op": 3460.6,
+   "ni": 2538.2,
+   "assets": 16538.3,
+   "liab": null,
+   "equity": -763.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 3976.2,
+   "op": 752.5,
+   "ni": 547.2
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 4272.2,
+   "op": 863.3,
+   "ni": 622.8
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 4364.4,
+   "op": 896.7,
+   "ni": 665.5
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 4095.6,
+   "op": 738.6,
+   "ni": 551.1
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 4136.9,
+   "op": 741.5,
+   "ni": 538.5
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 4525.1,
+   "op": 914.5,
+   "ni": 668.6
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 4705.7,
+   "op": 976.1,
+   "ni": 725.9
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 4414.3,
+   "op": 828.6,
+   "ni": 605.2
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 4560.5,
+   "op": 841.6,
+   "ni": 604.2
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 4892.0,
+   "op": 985.7,
+   "ni": 715.1
+  }
+ ]
+}

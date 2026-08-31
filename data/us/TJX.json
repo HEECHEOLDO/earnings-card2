@@ -1,0 +1,216 @@
+{
+ "name": "TJX",
+ "split_adjusted": false,
+ "legal_name": "TJX COMPANIES INC /DE/",
+ "code": "TJX",
+ "cik": "0000109198",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2017,
+   "rev": 33183.7,
+   "op": 4257.8,
+   "ni": 2298.2,
+   "assets": 12883.8,
+   "liab": null,
+   "equity": 4510.6,
+   "dps": 0.52,
+   "payout": 29.7,
+   "yield": null,
+   "dps_adj": 0.52
+  },
+  {
+   "p": 2018,
+   "rev": 35864.7,
+   "op": 4403.2,
+   "ni": 2607.9,
+   "assets": 14058.0,
+   "liab": null,
+   "equity": 5148.3,
+   "dps": 0.63,
+   "payout": 30.8,
+   "yield": null,
+   "dps_adj": 0.63
+  },
+  {
+   "p": 2019,
+   "rev": 38972.9,
+   "op": 4763.2,
+   "ni": 3059.8,
+   "assets": 14326.0,
+   "liab": null,
+   "equity": 5048.6,
+   "dps": 0.78,
+   "payout": 31.6,
+   "yield": null,
+   "dps_adj": 0.78
+  },
+  {
+   "p": 2020,
+   "rev": 41717.0,
+   "op": null,
+   "ni": 3272.2,
+   "assets": 24145.0,
+   "liab": null,
+   "equity": 5948.0,
+   "dps": 0.92,
+   "payout": 34.0,
+   "yield": null,
+   "dps_adj": 0.92
+  },
+  {
+   "p": 2021,
+   "rev": 32137.0,
+   "op": null,
+   "ni": 90.0,
+   "assets": 30814.0,
+   "liab": null,
+   "equity": 5833.0,
+   "dps": 0.26,
+   "payout": 346.7,
+   "yield": null,
+   "dps_adj": 0.26
+  },
+  {
+   "p": 2022,
+   "rev": 48550.0,
+   "op": null,
+   "ni": 3282.8,
+   "assets": 28461.0,
+   "liab": null,
+   "equity": 6003.0,
+   "dps": 1.04,
+   "payout": 38.0,
+   "yield": null,
+   "dps_adj": 1.04
+  },
+  {
+   "p": 2023,
+   "rev": 49936.0,
+   "op": null,
+   "ni": 3498.3,
+   "assets": 28349.0,
+   "liab": null,
+   "equity": 6364.0,
+   "dps": 1.18,
+   "payout": 39.3,
+   "yield": null,
+   "dps_adj": 1.18
+  },
+  {
+   "p": 2024,
+   "rev": 54217.0,
+   "op": null,
+   "ni": 4474.0,
+   "assets": 29747.0,
+   "liab": null,
+   "equity": 7302.0,
+   "dps": 1.33,
+   "payout": 34.1,
+   "yield": null,
+   "dps_adj": 1.33
+  },
+  {
+   "p": 2025,
+   "rev": 56360.0,
+   "op": null,
+   "ni": 4863.7,
+   "assets": 32885.0,
+   "liab": null,
+   "equity": 8866.0,
+   "dps": 1.5,
+   "payout": 34.8,
+   "yield": null,
+   "dps_adj": 1.5
+  },
+  {
+   "p": 2026,
+   "rev": 60372.0,
+   "op": null,
+   "ni": 5493.7,
+   "assets": 37115.0,
+   "liab": null,
+   "equity": 10651.0,
+   "dps": 1.7,
+   "payout": 34.5,
+   "yield": null,
+   "dps_adj": 1.7
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 12479.0,
+   "op": null,
+   "ni": 1070.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 13468.0,
+   "op": null,
+   "ni": 1099.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 14063.0,
+   "op": null,
+   "ni": 1297.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 16350.0,
+   "op": null,
+   "ni": 1397.7
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 13111.0,
+   "op": null,
+   "ni": 1036.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 14401.0,
+   "op": null,
+   "ni": 1243.0
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 15117.0,
+   "op": null,
+   "ni": 1442.0
+  },
+  {
+   "y": 2026,
+   "q": 4,
+   "rev": 17743.0,
+   "op": null,
+   "ni": 1772.7
+  },
+  {
+   "y": 2027,
+   "q": 1,
+   "rev": 14323.0,
+   "op": null,
+   "ni": 1332.0
+  },
+  {
+   "y": 2027,
+   "q": 2,
+   "rev": 15180.0,
+   "op": null,
+   "ni": 1520.0
+  }
+ ]
+}

@@ -1,0 +1,138 @@
+{
+ "name": "SNDK",
+ "split_adjusted": false,
+ "legal_name": "Sandisk Corp",
+ "code": "SNDK",
+ "cik": "0002023554",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2023,
+   "rev": 6086.0,
+   "op": -2035.0,
+   "ni": -2143.0,
+   "assets": null,
+   "liab": null,
+   "equity": 11439.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 6663.0,
+   "op": -468.0,
+   "ni": -672.0,
+   "assets": 13506.0,
+   "liab": 2424.0,
+   "equity": 11082.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 7355.0,
+   "op": -1377.0,
+   "ni": -1641.0,
+   "assets": 12985.0,
+   "liab": 3769.0,
+   "equity": 9216.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2026,
+   "rev": 20248.0,
+   "op": 12389.0,
+   "ni": 11433.0,
+   "assets": 22507.0,
+   "liab": 6771.0,
+   "equity": 15736.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 1665.0,
+   "op": -245.0,
+   "ni": -518.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 1705.0,
+   "op": 65.0,
+   "ni": -301.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 1883.0,
+   "op": 291.0,
+   "ni": 211.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 1876.0,
+   "op": 195.0,
+   "ni": 104.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 1695.0,
+   "op": -1881.0,
+   "ni": -1933.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 1901.0,
+   "op": 18.0,
+   "ni": -23.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 2308.0,
+   "op": 176.0,
+   "ni": 112.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 3025.0,
+   "op": 1065.0,
+   "ni": 803.0
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 5950.0,
+   "op": 4111.0,
+   "ni": 3615.0
+  },
+  {
+   "y": 2026,
+   "q": 4,
+   "rev": 8965.0,
+   "op": 7037.0,
+   "ni": 6903.0
+  }
+ ]
+}

@@ -1,0 +1,216 @@
+{
+ "name": "CIEN",
+ "split_adjusted": false,
+ "legal_name": "CIENA CORP",
+ "code": "CIEN",
+ "cik": "0000936395",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 2600.6,
+   "op": 156.2,
+   "ni": 72.6,
+   "assets": 2873.6,
+   "liab": 2107.2,
+   "equity": 766.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 2801.7,
+   "op": 214.7,
+   "ni": 1262.0,
+   "assets": 3951.7,
+   "liab": 1815.4,
+   "equity": 2136.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 3094.3,
+   "op": 229.9,
+   "ni": -344.7,
+   "assets": 3777.6,
+   "liab": 1827.2,
+   "equity": 1929.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 3572.1,
+   "op": 346.8,
+   "ni": 253.4,
+   "assets": 3946.7,
+   "liab": 1720.6,
+   "equity": 2172.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 3532.2,
+   "op": 487.0,
+   "ni": 361.3,
+   "assets": 4180.9,
+   "liab": 1671.3,
+   "equity": 2509.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 3620.7,
+   "op": 495.4,
+   "ni": 500.2,
+   "assets": 4865.2,
+   "liab": 1845.2,
+   "equity": 3020.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 3632.7,
+   "op": 222.8,
+   "ni": 152.9,
+   "assets": 5069.6,
+   "liab": 2356.8,
+   "equity": 2712.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 4386.5,
+   "op": 357.5,
+   "ni": 254.8,
+   "assets": 5601.5,
+   "liab": 2753.1,
+   "equity": 2848.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 4015.0,
+   "op": 166.6,
+   "ni": 84.0,
+   "assets": 5641.3,
+   "liab": 2825.2,
+   "equity": 2816.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 4769.5,
+   "op": 197.5,
+   "ni": 123.3,
+   "assets": 5864.7,
+   "liab": 3135.3,
+   "equity": 2729.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 1037.7,
+   "op": 84.6,
+   "ni": 49.5
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 910.8,
+   "op": -4.0,
+   "ni": -16.8
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 942.3,
+   "op": 26.7,
+   "ni": 14.2
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 1124.1,
+   "op": 59.2,
+   "ni": 37.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 1072.3,
+   "op": 80.7,
+   "ni": 44.6
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 1125.9,
+   "op": 32.8,
+   "ni": 9.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 1219.4,
+   "op": 73.5,
+   "ni": 50.3
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 1352.0,
+   "op": 10.5,
+   "ni": 19.5
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 1427.0,
+   "op": 189.4,
+   "ni": 150.3
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 1570.7,
+   "op": 237.9,
+   "ni": 218.2
+  }
+ ]
+}

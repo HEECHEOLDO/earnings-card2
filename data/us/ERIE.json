@@ -1,0 +1,216 @@
+{
+ "name": "ERIE",
+ "split_adjusted": false,
+ "legal_name": "ERIE INDEMNITY CO",
+ "code": "ERIE",
+ "cik": "0000922621",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 1596.6,
+   "op": 293.5,
+   "ni": 210.4,
+   "assets": 1549.0,
+   "liab": 732.0,
+   "equity": 816.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 1691.8,
+   "op": 290.3,
+   "ni": 197.0,
+   "assets": 1665.9,
+   "liab": 808.5,
+   "equity": 857.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 2382.2,
+   "op": 344.3,
+   "ni": 288.2,
+   "assets": 1778.3,
+   "liab": 804.7,
+   "equity": 973.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 2477.3,
+   "op": 357.3,
+   "ni": 316.8,
+   "assets": 2016.2,
+   "liab": 883.0,
+   "equity": 1133.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 2536.5,
+   "op": 338.2,
+   "ni": 293.3,
+   "assets": 2117.1,
+   "liab": 929.1,
+   "equity": 1188.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 2634.0,
+   "op": 318.1,
+   "ni": 297.9,
+   "assets": 2242.1,
+   "liab": 899.6,
+   "equity": 1342.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 2840.1,
+   "op": 376.2,
+   "ni": 298.6,
+   "assets": 2239.5,
+   "liab": 791.0,
+   "equity": 1448.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 3268.9,
+   "op": 520.3,
+   "ni": 446.1,
+   "assets": 2472.0,
+   "liab": 809.1,
+   "equity": 1662.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 3795.1,
+   "op": 676.5,
+   "ni": 600.3,
+   "assets": 2888.6,
+   "liab": 901.4,
+   "equity": 1987.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 4067.3,
+   "op": 717.2,
+   "ni": 559.3,
+   "assets": 3355.5,
+   "liab": 1072.1,
+   "equity": 2283.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 880.7,
+   "op": 138.8,
+   "ni": 124.6
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 990.4,
+   "op": 190.2,
+   "ni": 163.9
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 999.9,
+   "op": 180.1,
+   "ni": 159.8
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 924.1,
+   "op": 167.3,
+   "ni": 152.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 989.4,
+   "op": 151.4,
+   "ni": 138.4
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 1060.1,
+   "op": 199.2,
+   "ni": 174.7
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 1066.7,
+   "op": 208.9,
+   "ni": 182.9
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 951.0,
+   "op": 157.7,
+   "ni": 63.4
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 1011.9,
+   "op": 166.8,
+   "ni": 150.5
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 1089.8,
+   "op": 204.1,
+   "ni": 180.3
+  }
+ ]
+}

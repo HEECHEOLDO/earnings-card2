@@ -1,0 +1,216 @@
+{
+ "name": "AWK",
+ "split_adjusted": false,
+ "legal_name": "American Water Works Company, Inc.",
+ "code": "AWK",
+ "cik": "0001410636",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2013,
+   "rev": 2878.9,
+   "op": 948.0,
+   "ni": 369.0,
+   "assets": 15064.0,
+   "liab": null,
+   "equity": 4728.0,
+   "dps": 1.12,
+   "payout": 54.0,
+   "yield": null,
+   "dps_adj": 1.12
+  },
+  {
+   "p": 2014,
+   "rev": 3011.3,
+   "op": 1003.0,
+   "ni": 423.0,
+   "assets": 16038.0,
+   "liab": null,
+   "equity": 4915.0,
+   "dps": 1.24,
+   "payout": 52.5,
+   "yield": null,
+   "dps_adj": 1.24
+  },
+  {
+   "p": 2018,
+   "rev": 3417.0,
+   "op": 1102.0,
+   "ni": 565.0,
+   "assets": 21223.0,
+   "liab": null,
+   "equity": 5864.0,
+   "dps": 1.82,
+   "payout": 58.0,
+   "yield": null,
+   "dps_adj": 1.82
+  },
+  {
+   "p": 2019,
+   "rev": 3587.0,
+   "op": 1214.0,
+   "ni": 621.0,
+   "assets": 22682.0,
+   "liab": null,
+   "equity": 6121.0,
+   "dps": 2,
+   "payout": 58.3,
+   "yield": null,
+   "dps_adj": 2.0
+  },
+  {
+   "p": 2020,
+   "rev": 3743.0,
+   "op": 1248.0,
+   "ni": 709.0,
+   "assets": 24766.0,
+   "liab": null,
+   "equity": 6454.0,
+   "dps": 2.2,
+   "payout": 56.2,
+   "yield": null,
+   "dps_adj": 2.2
+  },
+  {
+   "p": 2021,
+   "rev": 3914.0,
+   "op": 1196.0,
+   "ni": 1263.0,
+   "assets": 26075.0,
+   "liab": null,
+   "equity": 7298.0,
+   "dps": 2.41,
+   "payout": 34.7,
+   "yield": null,
+   "dps_adj": 2.41
+  },
+  {
+   "p": 2022,
+   "rev": 3763.0,
+   "op": 1273.0,
+   "ni": 820.0,
+   "assets": 27787.0,
+   "liab": null,
+   "equity": 7693.0,
+   "dps": 2.62,
+   "payout": 58.2,
+   "yield": null,
+   "dps_adj": 2.62
+  },
+  {
+   "p": 2023,
+   "rev": 4217.0,
+   "op": 1504.0,
+   "ni": 944.0,
+   "assets": 30298.0,
+   "liab": null,
+   "equity": 9797.0,
+   "dps": 2.83,
+   "payout": 57.9,
+   "yield": null,
+   "dps_adj": 2.83
+  },
+  {
+   "p": 2024,
+   "rev": 4653.0,
+   "op": 1718.0,
+   "ni": 1051.0,
+   "assets": 32830.0,
+   "liab": null,
+   "equity": 10332.0,
+   "dps": 3.06,
+   "payout": 56.8,
+   "yield": null,
+   "dps_adj": 3.06
+  },
+  {
+   "p": 2025,
+   "rev": 5121.0,
+   "op": 1879.0,
+   "ni": 1111.0,
+   "assets": 35442.0,
+   "liab": null,
+   "equity": 10837.0,
+   "dps": 3.31,
+   "payout": 58.1,
+   "yield": null,
+   "dps_adj": 3.31
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2015,
+   "q": 1,
+   "rev": 698.1,
+   "op": 204.0,
+   "ni": 80.0
+  },
+  {
+   "y": 2015,
+   "q": 2,
+   "rev": 782.1,
+   "op": 278.0,
+   "ni": 123.0
+  },
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 1140.0,
+   "op": 326.0,
+   "ni": 185.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 1328.0,
+   "op": 449.0,
+   "ni": 277.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 1134.0,
+   "op": 371.0,
+   "ni": 205.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 1272.0,
+   "op": 489.0,
+   "ni": 289.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 1454.0,
+   "op": 614.0,
+   "ni": 379.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 1261.0,
+   "op": 405.0,
+   "ni": 238.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 1203.0,
+   "op": 391.0,
+   "ni": 196.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 1350.0,
+   "op": 542.0,
+   "ni": 315.0
+  }
+ ]
+}

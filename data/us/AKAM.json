@@ -1,0 +1,216 @@
+{
+ "name": "AKAM",
+ "split_adjusted": false,
+ "legal_name": "AKAMAI TECHNOLOGIES INC",
+ "code": "AKAM",
+ "cik": "0001086222",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 2348.0,
+   "op": 466.5,
+   "ni": 320.7,
+   "assets": 4373.1,
+   "liab": 1148.8,
+   "equity": 3270.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 2489.0,
+   "op": 314.3,
+   "ni": 222.8,
+   "assets": 4648.9,
+   "liab": 1286.4,
+   "equity": 3362.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 2714.5,
+   "op": 362.5,
+   "ni": 298.4,
+   "assets": 5461.8,
+   "liab": 2269.9,
+   "equity": 3191.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 2893.6,
+   "op": 548.9,
+   "ni": 478.0,
+   "assets": 7006.9,
+   "liab": 3348.9,
+   "equity": 3658.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 3198.1,
+   "op": 658.5,
+   "ni": 557.1,
+   "assets": 7764.1,
+   "liab": 3512.8,
+   "equity": 4251.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 3461.2,
+   "op": 783.1,
+   "ni": 651.6,
+   "assets": 8138.7,
+   "liab": 3608.7,
+   "equity": 4530.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 3616.7,
+   "op": 676.3,
+   "ni": 523.7,
+   "assets": 8303.4,
+   "liab": 3943.2,
+   "equity": 4360.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 3811.9,
+   "op": 637.3,
+   "ni": 547.6,
+   "assets": 9900.0,
+   "liab": 5302.9,
+   "equity": 4597.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 3991.2,
+   "op": 533.4,
+   "ni": 504.9,
+   "assets": 10368.8,
+   "liab": 5490.4,
+   "equity": 4878.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 4208.2,
+   "op": 566.9,
+   "ni": 452.0,
+   "assets": 11479.6,
+   "liab": 6502.3,
+   "equity": 4977.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 987.0,
+   "op": 166.7,
+   "ni": 175.4
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 979.6,
+   "op": 148.0,
+   "ni": 131.7
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 1004.7,
+   "op": 70.6,
+   "ni": 57.9
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 1019.9,
+   "op": 148.1,
+   "ni": 139.9
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 1015.1,
+   "op": 154.6,
+   "ni": 123.2
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 1043.5,
+   "op": 151.5,
+   "ni": 103.6
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 1054.6,
+   "op": 166.0,
+   "ni": 140.2
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 1094.9,
+   "op": 94.9,
+   "ni": 85.1
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 1073.6,
+   "op": 114.5,
+   "ni": 106.3
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 1099.7,
+   "op": 80.3,
+   "ni": 79.4
+  }
+ ]
+}

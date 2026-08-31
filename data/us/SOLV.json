@@ -1,0 +1,138 @@
+{
+ "name": "SOLV",
+ "split_adjusted": false,
+ "legal_name": "Solventum Corp",
+ "code": "SOLV",
+ "cik": "0001964738",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2022,
+   "rev": 8130.0,
+   "op": 1693.0,
+   "ni": 1343.0,
+   "assets": null,
+   "liab": null,
+   "equity": 11742.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 8197.0,
+   "op": 1692.0,
+   "ni": 1346.0,
+   "assets": 13943.0,
+   "liab": 2277.0,
+   "equity": 11666.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 8254.0,
+   "op": 1036.0,
+   "ni": 479.0,
+   "assets": 14457.0,
+   "liab": 11498.0,
+   "equity": 2959.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 8325.0,
+   "op": 2181.0,
+   "ni": 1556.0,
+   "assets": 14294.0,
+   "liab": 9245.0,
+   "equity": 5049.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 2016.0,
+   "op": 381.0,
+   "ni": 237.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 2081.0,
+   "op": 244.0,
+   "ni": 89.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 2082.0,
+   "op": 275.0,
+   "ni": 122.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 2075.0,
+   "op": 136.0,
+   "ni": 31.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 2070.0,
+   "op": 152.0,
+   "ni": 137.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 2161.0,
+   "op": 214.0,
+   "ni": 90.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 2096.0,
+   "op": 1690.0,
+   "ni": 1266.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 1998.0,
+   "op": 125.0,
+   "ni": 63.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 2007.0,
+   "op": 81.0,
+   "ni": 13.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 2209.0,
+   "op": 181.0,
+   "ni": 92.0
+  }
+ ]
+}

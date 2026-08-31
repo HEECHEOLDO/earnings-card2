@@ -1,0 +1,216 @@
+{
+ "name": "SWK",
+ "split_adjusted": false,
+ "legal_name": "STANLEY BLACK & DECKER, INC.",
+ "code": "SWK",
+ "cik": "0000093556",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 11593.5,
+   "op": 1826.4,
+   "ni": 967.6,
+   "assets": 15655.0,
+   "liab": null,
+   "equity": 6380.2,
+   "dps": 2.26,
+   "payout": 34.1,
+   "yield": null,
+   "dps_adj": 2.26
+  },
+  {
+   "p": 2017,
+   "rev": 12966.6,
+   "op": 1996.5,
+   "ni": 1226.9,
+   "assets": 19097.7,
+   "liab": null,
+   "equity": 8305.0,
+   "dps": 2.42,
+   "payout": 29.5,
+   "yield": null,
+   "dps_adj": 2.42
+  },
+  {
+   "p": 2018,
+   "rev": 13982.4,
+   "op": 1882.2,
+   "ni": 605.8,
+   "assets": 19408.0,
+   "liab": null,
+   "equity": 7839.9,
+   "dps": 2.58,
+   "payout": 63.4,
+   "yield": null,
+   "dps_adj": 2.58
+  },
+  {
+   "p": 2019,
+   "rev": 12912.9,
+   "op": 1994.0,
+   "ni": 958.0,
+   "assets": 20596.6,
+   "liab": null,
+   "equity": 9142.2,
+   "dps": 2.7,
+   "payout": 41.8,
+   "yield": null,
+   "dps_adj": 2.7
+  },
+  {
+   "p": 2020,
+   "rev": 12750.0,
+   "op": 2176.0,
+   "ni": 1234.7,
+   "assets": 23566.3,
+   "liab": null,
+   "equity": 11066.4,
+   "dps": 2.78,
+   "payout": 34.7,
+   "yield": null,
+   "dps_adj": 2.78
+  },
+  {
+   "p": 2021,
+   "rev": 15281.3,
+   "op": null,
+   "ni": 1687.5,
+   "assets": 28180.0,
+   "liab": null,
+   "equity": 11592.4,
+   "dps": 2.98,
+   "payout": 28.0,
+   "yield": null,
+   "dps_adj": 2.98
+  },
+  {
+   "p": 2022,
+   "rev": 16947.4,
+   "op": null,
+   "ni": 1062.7,
+   "assets": 24963.3,
+   "liab": null,
+   "equity": 9714.2,
+   "dps": 3.18,
+   "payout": 44.3,
+   "yield": null,
+   "dps_adj": 3.18
+  },
+  {
+   "p": 2023,
+   "rev": 15781.1,
+   "op": null,
+   "ni": -310.5,
+   "assets": 23663.8,
+   "liab": null,
+   "equity": 9056.1,
+   "dps": 3.22,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 3.22
+  },
+  {
+   "p": 2024,
+   "rev": 15365.7,
+   "op": null,
+   "ni": 294.3,
+   "assets": 21848.9,
+   "liab": null,
+   "equity": 8719.9,
+   "dps": 3.26,
+   "payout": 166.7,
+   "yield": null,
+   "dps_adj": 3.26
+  },
+  {
+   "p": 2025,
+   "rev": 15130.4,
+   "op": null,
+   "ni": 401.9,
+   "assets": 21243.7,
+   "liab": null,
+   "equity": 9054.6,
+   "dps": 3.3,
+   "payout": 124.2,
+   "yield": null,
+   "dps_adj": 3.3
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 3869.5,
+   "op": 320.9,
+   "ni": 19.5
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 4024.4,
+   "op": 382.9,
+   "ni": -11.2
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 3751.3,
+   "op": 397.7,
+   "ni": 91.1
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 3720.5,
+   "op": null,
+   "ni": 194.9
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 3744.6,
+   "op": null,
+   "ni": 90.4
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 3945.2,
+   "op": null,
+   "ni": 101.9
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 3756.0,
+   "op": null,
+   "ni": 51.4
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 3684.6,
+   "op": null,
+   "ni": 158.2
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 3846.4,
+   "op": null,
+   "ni": 59.6
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 3960.7,
+   "op": null,
+   "ni": 351.3
+  }
+ ]
+}

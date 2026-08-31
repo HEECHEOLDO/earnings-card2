@@ -1,0 +1,216 @@
+{
+ "name": "DLR",
+ "split_adjusted": true,
+ "legal_name": "DIGITAL REALTY TRUST, INC.",
+ "code": "DLR",
+ "cik": "0001297996",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 2142.2,
+   "op": 497.3,
+   "ni": 431.9,
+   "assets": 12192.6,
+   "liab": 7060.3,
+   "equity": 5132.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 2457.9,
+   "op": 451.3,
+   "ni": 256.3,
+   "assets": 21404.3,
+   "liab": 10301.0,
+   "equity": 11049.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 3046.5,
+   "op": 549.8,
+   "ni": 341.1,
+   "assets": 23766.7,
+   "liab": 12892.7,
+   "equity": 10858.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 3209.2,
+   "op": 594.2,
+   "ni": 599.2,
+   "assets": 23068.1,
+   "liab": 12418.6,
+   "equity": 10608.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 3903.6,
+   "op": 557.5,
+   "ni": 362.7,
+   "assets": 36076.3,
+   "liab": 17587.9,
+   "equity": 18446.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 4427.9,
+   "op": 694.0,
+   "ni": 1747.4,
+   "assets": 36369.6,
+   "liab": 17845.8,
+   "equity": 18476.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 4691.8,
+   "op": 590.0,
+   "ni": 380.3,
+   "assets": 41485.0,
+   "liab": 21862.9,
+   "equity": 18107.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 5477.1,
+   "op": 524.5,
+   "ni": 950.3,
+   "assets": 44113.3,
+   "liab": 23116.9,
+   "equity": 19601.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 5555.0,
+   "op": 471.9,
+   "ni": 588.3,
+   "assets": 45283.6,
+   "liab": 22107.8,
+   "equity": 21742.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 6112.7,
+   "op": 658.5,
+   "ni": 1313.2,
+   "assets": 49410.5,
+   "liab": 24564.5,
+   "equity": 23347.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 1369.6,
+   "op": 134.0,
+   "ni": 19.9
+  },
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 1331.1,
+   "op": 149.4,
+   "ni": 287.8
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 1356.7,
+   "op": 9.9,
+   "ni": 74.7
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 1431.2,
+   "op": 168.3,
+   "ni": 40.1
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 1435.9,
+   "op": 144.3,
+   "ni": 185.7
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 1407.6,
+   "op": 196.9,
+   "ni": 106.4
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 1493.2,
+   "op": 211.7,
+   "ni": 1046.9
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 1577.2,
+   "op": 138.4,
+   "ni": 63.7
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 1634.7,
+   "op": 111.5,
+   "ni": 96.1
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 1635.2,
+   "op": 267.8,
+   "ni": 174.8
+  }
+ ]
+}

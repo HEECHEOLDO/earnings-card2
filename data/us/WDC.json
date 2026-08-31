@@ -1,0 +1,216 @@
+{
+ "name": "WDC",
+ "split_adjusted": false,
+ "legal_name": "WESTERN DIGITAL CORP",
+ "code": "WDC",
+ "cik": "0000106040",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2017,
+   "rev": 19093.0,
+   "op": 1954.0,
+   "ni": 397.0,
+   "assets": 29860.0,
+   "liab": 18442.0,
+   "equity": 11418.0,
+   "dps": 2,
+   "payout": 145.1,
+   "yield": null,
+   "dps_adj": 2.0
+  },
+  {
+   "p": 2018,
+   "rev": 20647.0,
+   "op": 3617.0,
+   "ni": 675.0,
+   "assets": 29235.0,
+   "liab": 17704.0,
+   "equity": 11531.0,
+   "dps": 2,
+   "payout": 88.0,
+   "yield": null,
+   "dps_adj": 2.0
+  },
+  {
+   "p": 2019,
+   "rev": 16569.0,
+   "op": 87.0,
+   "ni": -754.0,
+   "assets": 26370.0,
+   "liab": 16403.0,
+   "equity": 9967.0,
+   "dps": 2,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 2.0
+  },
+  {
+   "p": 2020,
+   "rev": 16736.0,
+   "op": 335.0,
+   "ni": -250.0,
+   "assets": 25662.0,
+   "liab": 16111.0,
+   "equity": 9551.0,
+   "dps": 1.5,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 1.5
+  },
+  {
+   "p": 2021,
+   "rev": 16922.0,
+   "op": 1220.0,
+   "ni": 821.0,
+   "assets": 26132.0,
+   "liab": 15411.0,
+   "equity": 10800.0,
+   "dps": 0,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 0
+  },
+  {
+   "p": 2022,
+   "rev": 18793.0,
+   "op": 2391.0,
+   "ni": 1546.0,
+   "assets": 26259.0,
+   "liab": 14038.0,
+   "equity": 12323.0,
+   "dps": 0,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 0
+  },
+  {
+   "p": 2023,
+   "rev": 6255.0,
+   "op": -548.0,
+   "ni": -1684.0,
+   "assets": 24546.0,
+   "liab": 12706.0,
+   "equity": 10964.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 6317.0,
+   "op": -403.0,
+   "ni": -798.0,
+   "assets": 24188.0,
+   "liab": 13141.0,
+   "equity": 10818.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 9520.0,
+   "op": 2334.0,
+   "ni": 1889.0,
+   "assets": 14002.0,
+   "liab": 8462.0,
+   "equity": 5311.0,
+   "dps": 0.1,
+   "payout": 1.8,
+   "yield": null,
+   "dps_adj": 0.1
+  },
+  {
+   "p": 2026,
+   "rev": 12919.0,
+   "op": 4453.0,
+   "ni": 9424.0,
+   "assets": 13861.0,
+   "liab": 4997.0,
+   "equity": 8864.0,
+   "dps": 0.5,
+   "payout": 1.8,
+   "yield": null,
+   "dps_adj": 0.5
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 1752.0,
+   "op": 94.0,
+   "ni": 135.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 2004.0,
+   "op": null,
+   "ni": 39.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 2212.0,
+   "op": 334.0,
+   "ni": 493.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 2409.0,
+   "op": 560.0,
+   "ni": 594.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 2294.0,
+   "op": 760.0,
+   "ni": 520.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 2605.0,
+   "op": null,
+   "ni": 282.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 2818.0,
+   "op": 792.0,
+   "ni": 1182.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 3017.0,
+   "op": 908.0,
+   "ni": 1842.0
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 3337.0,
+   "op": 1190.0,
+   "ni": 3205.0
+  },
+  {
+   "y": 2026,
+   "q": 4,
+   "rev": 3747.0,
+   "op": 1563.0,
+   "ni": 3195.0
+  }
+ ]
+}

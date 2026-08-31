@@ -1,0 +1,216 @@
+{
+ "name": "SYY",
+ "split_adjusted": false,
+ "legal_name": "SYSCO CORP",
+ "code": "SYY",
+ "cik": "0000096021",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2017,
+   "rev": 55371.1,
+   "op": 2054.6,
+   "ni": null,
+   "assets": 17756.7,
+   "liab": null,
+   "equity": 2381.5,
+   "dps": 1.3,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 1.3
+  },
+  {
+   "p": 2018,
+   "rev": 58727.3,
+   "op": 2314.1,
+   "ni": null,
+   "assets": 18070.4,
+   "liab": null,
+   "equity": 2507.0,
+   "dps": 1.41,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 1.41
+  },
+  {
+   "p": 2019,
+   "rev": 60113.9,
+   "op": 2330.2,
+   "ni": null,
+   "assets": 17966.5,
+   "liab": null,
+   "equity": 2502.6,
+   "dps": 1.53,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 1.53
+  },
+  {
+   "p": 2020,
+   "rev": 52893.3,
+   "op": 749.5,
+   "ni": 215.5,
+   "assets": 22628.3,
+   "liab": null,
+   "equity": 1158.6,
+   "dps": 1.74,
+   "payout": 411.9,
+   "yield": null,
+   "dps_adj": 1.74
+  },
+  {
+   "p": 2021,
+   "rev": 51297.8,
+   "op": 1447.2,
+   "ni": 524.2,
+   "assets": 21413.5,
+   "liab": null,
+   "equity": 1553.0,
+   "dps": 1.82,
+   "payout": 177.3,
+   "yield": null,
+   "dps_adj": 1.82
+  },
+  {
+   "p": 2022,
+   "rev": 68636.0,
+   "op": 2346.0,
+   "ni": 1359.0,
+   "assets": 22086.0,
+   "liab": null,
+   "equity": 1382.0,
+   "dps": 1.9,
+   "payout": 71.4,
+   "yield": null,
+   "dps_adj": 1.9
+  },
+  {
+   "p": 2023,
+   "rev": 76325.0,
+   "op": 3039.0,
+   "ni": 1770.0,
+   "assets": 22821.0,
+   "liab": null,
+   "equity": 2009.0,
+   "dps": 1.97,
+   "payout": 56.5,
+   "yield": null,
+   "dps_adj": 1.97
+  },
+  {
+   "p": 2024,
+   "rev": 78844.0,
+   "op": 3202.0,
+   "ni": 1955.0,
+   "assets": 24917.0,
+   "liab": null,
+   "equity": 1860.0,
+   "dps": 2.01,
+   "payout": 51.5,
+   "yield": null,
+   "dps_adj": 2.01
+  },
+  {
+   "p": 2025,
+   "rev": 81370.0,
+   "op": 3088.0,
+   "ni": 1828.0,
+   "assets": 26774.0,
+   "liab": null,
+   "equity": 1830.0,
+   "dps": 2.07,
+   "payout": 55.3,
+   "yield": null,
+   "dps_adj": 2.07
+  },
+  {
+   "p": 2026,
+   "rev": 84553.0,
+   "op": 3095.0,
+   "ni": 1757.0,
+   "assets": 28397.0,
+   "liab": null,
+   "equity": 2666.0,
+   "dps": 2.17,
+   "payout": 59.2,
+   "yield": null,
+   "dps_adj": 2.17
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 19288.0,
+   "op": 700.0,
+   "ni": 415.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 19380.0,
+   "op": 722.0,
+   "ni": 425.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 20484.0,
+   "op": 808.0,
+   "ni": 490.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 20151.0,
+   "op": 712.0,
+   "ni": 406.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 19598.0,
+   "op": 681.0,
+   "ni": 401.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 21137.0,
+   "op": 887.0,
+   "ni": 531.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 21148.0,
+   "op": 800.0,
+   "ni": 476.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 20762.0,
+   "op": 692.0,
+   "ni": 389.0
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 20519.0,
+   "op": 619.0,
+   "ni": 340.0
+  },
+  {
+   "y": 2026,
+   "q": 4,
+   "rev": 22124.0,
+   "op": 984.0,
+   "ni": 552.0
+  }
+ ]
+}

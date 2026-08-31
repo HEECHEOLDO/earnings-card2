@@ -1,0 +1,216 @@
+{
+ "name": "TYL",
+ "split_adjusted": false,
+ "legal_name": "TYLER TECHNOLOGIES INC",
+ "code": "TYL",
+ "cik": "0000860731",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 759.9,
+   "op": 137.7,
+   "ni": 113.7,
+   "assets": 1378.5,
+   "liab": null,
+   "equity": 934.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 840.9,
+   "op": 162.8,
+   "ni": 169.6,
+   "assets": 1611.4,
+   "liab": null,
+   "equity": 1191.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 935.3,
+   "op": 152.5,
+   "ni": 147.5,
+   "assets": 1791.0,
+   "liab": null,
+   "equity": 1324.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 1086.4,
+   "op": 156.4,
+   "ni": 146.5,
+   "assets": 2191.6,
+   "liab": null,
+   "equity": 1617.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 1116.7,
+   "op": 172.9,
+   "ni": 194.8,
+   "assets": 2607.3,
+   "liab": 621.2,
+   "equity": 1986.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 1592.3,
+   "op": 180.7,
+   "ni": 161.5,
+   "assets": 4732.2,
+   "liab": 2408.1,
+   "equity": 2324.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 1850.2,
+   "op": 214.2,
+   "ni": 164.2,
+   "assets": 4687.4,
+   "liab": 2063.0,
+   "equity": 2624.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 1951.8,
+   "op": 218.5,
+   "ni": 165.9,
+   "assets": 4676.7,
+   "liab": 1738.7,
+   "equity": 2938.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 2137.8,
+   "op": 299.5,
+   "ni": 263.0,
+   "assets": 5180.0,
+   "liab": 1791.6,
+   "equity": 3388.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 2332.3,
+   "op": 357.7,
+   "ni": 315.6,
+   "assets": 5638.9,
+   "liab": 1936.1,
+   "equity": 3702.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 512.4,
+   "op": 67.0,
+   "ni": 54.2
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 541.0,
+   "op": 78.0,
+   "ni": 67.7
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 543.3,
+   "op": 82.8,
+   "ni": 75.9
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 541.1,
+   "op": 71.7,
+   "ni": 65.2
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 565.2,
+   "op": 89.2,
+   "ni": 81.1
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 596.1,
+   "op": 95.6,
+   "ni": 84.6
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 595.9,
+   "op": 97.9,
+   "ni": 84.4
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 575.2,
+   "op": 75.0,
+   "ni": 65.5
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 613.5,
+   "op": 99.8,
+   "ni": 81.2
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 645.1,
+   "op": 95.1,
+   "ni": 93.5
+  }
+ ]
+}

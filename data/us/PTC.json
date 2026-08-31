@@ -1,0 +1,216 @@
+{
+ "name": "PTC",
+ "split_adjusted": false,
+ "legal_name": "PTC INC.",
+ "code": "PTC",
+ "cik": "0000857005",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 1140.5,
+   "op": -37.0,
+   "ni": -54.5,
+   "assets": 2345.7,
+   "liab": 1503.1,
+   "equity": 842.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 1164.0,
+   "op": 41.8,
+   "ni": 6.2,
+   "assets": 2360.4,
+   "liab": 1474.9,
+   "equity": 885.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 1241.8,
+   "op": 72.6,
+   "ni": 52.0,
+   "assets": 2329.0,
+   "liab": 1454.4,
+   "equity": 874.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 1255.6,
+   "op": 63.0,
+   "ni": -27.5,
+   "assets": 2664.6,
+   "liab": 1462.6,
+   "equity": 1202.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 1458.4,
+   "op": 210.9,
+   "ni": 130.7,
+   "assets": 3382.7,
+   "liab": 1944.5,
+   "equity": 1438.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 1807.2,
+   "op": 380.7,
+   "ni": 476.9,
+   "assets": 4507.6,
+   "liab": 2469.1,
+   "equity": 2038.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 1933.3,
+   "op": 447.4,
+   "ni": 313.1,
+   "assets": 4687.3,
+   "liab": 2391.2,
+   "equity": 2296.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 2097.1,
+   "op": 458.5,
+   "ni": 245.5,
+   "assets": 6288.8,
+   "liab": 3611.6,
+   "equity": 2677.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 2298.5,
+   "op": 588.1,
+   "ni": 376.3,
+   "assets": 6383.5,
+   "liab": 3169.1,
+   "equity": 3214.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 2739.2,
+   "op": 982.4,
+   "ni": 734.0,
+   "assets": 6617.2,
+   "liab": 2790.9,
+   "equity": 3826.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 603.1,
+   "op": 179.6,
+   "ni": 114.4
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 518.6,
+   "op": 95.8,
+   "ni": 69.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 626.5,
+   "op": 194.0,
+   "ni": 126.5
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 565.1,
+   "op": 115.5,
+   "ni": 82.2
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 636.4,
+   "op": 223.5,
+   "ni": 162.6
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 643.9,
+   "op": 209.8,
+   "ni": 141.3
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 893.8,
+   "op": 433.6,
+   "ni": 347.8
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 685.8,
+   "op": 221.1,
+   "ni": 166.5
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 774.3,
+   "op": 295.8,
+   "ni": 590.7
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 600.0,
+   "op": 166.5,
+   "ni": 118.8
+  }
+ ]
+}

@@ -1,0 +1,216 @@
+{
+ "name": "ETN",
+ "split_adjusted": false,
+ "legal_name": "Eaton Corp plc",
+ "code": "ETN",
+ "cik": "0001551182",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 19747.0,
+   "op": 2958.0,
+   "ni": 1919.0,
+   "assets": 30476.0,
+   "liab": null,
+   "equity": 14998.0,
+   "dps": 2.28,
+   "payout": 54.1,
+   "yield": null,
+   "dps_adj": 2.28
+  },
+  {
+   "p": 2017,
+   "rev": 20404.0,
+   "op": 3214.0,
+   "ni": 2986.0,
+   "assets": 32623.0,
+   "liab": null,
+   "equity": 17290.0,
+   "dps": 2.4,
+   "payout": 35.7,
+   "yield": null,
+   "dps_adj": 2.4
+  },
+  {
+   "p": 2018,
+   "rev": 21609.0,
+   "op": 3630.0,
+   "ni": 2146.0,
+   "assets": 31092.0,
+   "liab": null,
+   "equity": 16142.0,
+   "dps": 2.64,
+   "payout": 53.4,
+   "yield": null,
+   "dps_adj": 2.64
+  },
+  {
+   "p": 2019,
+   "rev": 21390.0,
+   "op": 3675.0,
+   "ni": 2213.0,
+   "assets": 32805.0,
+   "liab": null,
+   "equity": 16133.0,
+   "dps": 2.84,
+   "payout": 53.8,
+   "yield": null,
+   "dps_adj": 2.84
+  },
+  {
+   "p": 2020,
+   "rev": 17858.0,
+   "op": null,
+   "ni": 1415.0,
+   "assets": 31824.0,
+   "liab": null,
+   "equity": 14973.0,
+   "dps": 2.92,
+   "payout": 83.0,
+   "yield": null,
+   "dps_adj": 2.92
+  },
+  {
+   "p": 2021,
+   "rev": 19628.0,
+   "op": null,
+   "ni": 2146.0,
+   "assets": 34027.0,
+   "liab": null,
+   "equity": 16451.0,
+   "dps": 3.04,
+   "payout": 56.5,
+   "yield": null,
+   "dps_adj": 3.04
+  },
+  {
+   "p": 2022,
+   "rev": 20752.0,
+   "op": null,
+   "ni": 2465.0,
+   "assets": 35014.0,
+   "liab": null,
+   "equity": 17075.0,
+   "dps": 3.24,
+   "payout": 52.4,
+   "yield": null,
+   "dps_adj": 3.24
+  },
+  {
+   "p": 2023,
+   "rev": 23196.0,
+   "op": null,
+   "ni": 3223.0,
+   "assets": 38432.0,
+   "liab": null,
+   "equity": 19069.0,
+   "dps": 3.44,
+   "payout": 42.6,
+   "yield": null,
+   "dps_adj": 3.44
+  },
+  {
+   "p": 2024,
+   "rev": 24878.0,
+   "op": null,
+   "ni": 3798.0,
+   "assets": 38381.0,
+   "liab": null,
+   "equity": 18531.0,
+   "dps": 3.76,
+   "payout": 39.4,
+   "yield": null,
+   "dps_adj": 3.76
+  },
+  {
+   "p": 2025,
+   "rev": 27448.0,
+   "op": null,
+   "ni": 4090.0,
+   "assets": 41251.0,
+   "liab": null,
+   "equity": 19469.0,
+   "dps": 4.16,
+   "payout": 39.7,
+   "yield": null,
+   "dps_adj": 4.16
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 5943.0,
+   "op": null,
+   "ni": 822.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 6350.0,
+   "op": null,
+   "ni": 994.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 6345.0,
+   "op": null,
+   "ni": 1011.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 6240.0,
+   "op": null,
+   "ni": 971.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 6377.0,
+   "op": null,
+   "ni": 965.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 7028.0,
+   "op": null,
+   "ni": 982.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 6988.0,
+   "op": null,
+   "ni": 1010.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 7055.0,
+   "op": null,
+   "ni": 1133.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 7451.0,
+   "op": null,
+   "ni": 868.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 8531.0,
+   "op": null,
+   "ni": 823.0
+  }
+ ]
+}

@@ -1,0 +1,216 @@
+{
+ "name": "AMP",
+ "split_adjusted": false,
+ "legal_name": "AMERIPRISE FINANCIAL INC",
+ "code": "AMP",
+ "cik": "0000820027",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 11800.0,
+   "op": 1591.0,
+   "ni": 1313.0,
+   "assets": 139821.0,
+   "liab": 133529.0,
+   "equity": 6289.0,
+   "dps": 2.92,
+   "payout": 37.0,
+   "yield": null,
+   "dps_adj": 2.92
+  },
+  {
+   "p": 2017,
+   "rev": 12132.0,
+   "op": 2214.0,
+   "ni": 1480.0,
+   "assets": 147480.0,
+   "liab": 141485.0,
+   "equity": 5995.0,
+   "dps": 3.24,
+   "payout": 33.7,
+   "yield": null,
+   "dps_adj": 3.24
+  },
+  {
+   "p": 2018,
+   "rev": 12835.0,
+   "op": 2484.0,
+   "ni": 2098.0,
+   "assets": 137216.0,
+   "liab": 131628.0,
+   "equity": 5588.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 12967.0,
+   "op": 2232.0,
+   "ni": 1893.0,
+   "assets": 151828.0,
+   "liab": 146099.0,
+   "equity": 5911.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 11899.0,
+   "op": 1831.0,
+   "ni": 1534.0,
+   "assets": 165883.0,
+   "liab": 160016.0,
+   "equity": 6131.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 13377.0,
+   "op": 4185.0,
+   "ni": 3417.0,
+   "assets": 177735.0,
+   "liab": 172898.0,
+   "equity": 4837.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 14258.0,
+   "op": 3931.0,
+   "ni": 3149.0,
+   "assets": 158852.0,
+   "liab": 155049.0,
+   "equity": 3803.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 15535.0,
+   "op": 3234.0,
+   "ni": 2556.0,
+   "assets": 175191.0,
+   "liab": 170462.0,
+   "equity": 4729.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 17264.0,
+   "op": 4267.0,
+   "ni": 3401.0,
+   "assets": 181403.0,
+   "liab": 176175.0,
+   "equity": 5228.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 18480.0,
+   "op": 4504.0,
+   "ni": 3563.0,
+   "assets": 190904.0,
+   "liab": 184355.0,
+   "equity": 6549.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 4146.0,
+   "op": 1219.0,
+   "ni": 990.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 4220.0,
+   "op": 1051.0,
+   "ni": 829.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 4397.0,
+   "op": 645.0,
+   "ni": 511.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 4501.0,
+   "op": 1352.0,
+   "ni": 1071.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 4354.0,
+   "op": 687.0,
+   "ni": 583.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 4375.0,
+   "op": 1351.0,
+   "ni": 1060.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 4791.0,
+   "op": 1174.0,
+   "ni": 912.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 4960.0,
+   "op": 1292.0,
+   "ni": 1008.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 4812.0,
+   "op": 1144.0,
+   "ni": 915.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 4940.0,
+   "op": 1442.0,
+   "ni": 1113.0
+  }
+ ]
+}

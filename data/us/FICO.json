@@ -1,0 +1,216 @@
+{
+ "name": "FICO",
+ "split_adjusted": false,
+ "legal_name": "FAIR ISAAC CORP",
+ "code": "FICO",
+ "cik": "0000814547",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 881.4,
+   "op": 169.6,
+   "ni": 109.4,
+   "assets": 1220.7,
+   "liab": 773.8,
+   "equity": 481.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 935.0,
+   "op": 182.2,
+   "ni": 133.4,
+   "assets": 1255.6,
+   "liab": 829.1,
+   "equity": 466.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 1000.1,
+   "op": 175.4,
+   "ni": 126.5,
+   "assets": 1330.5,
+   "liab": 1043.0,
+   "equity": 287.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 1160.1,
+   "op": 253.5,
+   "ni": 192.1,
+   "assets": 1433.4,
+   "liab": 1143.7,
+   "equity": 289.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 1294.6,
+   "op": 296.0,
+   "ni": 236.4,
+   "assets": 1606.2,
+   "liab": 1275.2,
+   "equity": 331.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 1316.5,
+   "op": 505.5,
+   "ni": 392.1,
+   "assets": 1567.8,
+   "liab": 1678.7,
+   "equity": -110.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 1377.3,
+   "op": 542.4,
+   "ni": 373.5,
+   "assets": 1442.0,
+   "liab": 2244.0,
+   "equity": -801.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 1513.6,
+   "op": 642.8,
+   "ni": 429.4,
+   "assets": 1575.3,
+   "liab": 2263.3,
+   "equity": -688.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 1717.5,
+   "op": 733.6,
+   "ni": 512.8,
+   "assets": 1717.9,
+   "liab": 2680.6,
+   "equity": -962.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 1990.9,
+   "op": 924.9,
+   "ni": 651.9,
+   "assets": 1868.1,
+   "liab": 3613.9,
+   "equity": -1745.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 433.8,
+   "op": 194.8,
+   "ni": 129.8
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 447.8,
+   "op": 190.3,
+   "ni": 126.3
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 453.8,
+   "op": 197.2,
+   "ni": 135.7
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 440.0,
+   "op": 179.5,
+   "ni": 152.5
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 498.7,
+   "op": 245.6,
+   "ni": 162.6
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 536.4,
+   "op": 262.5,
+   "ni": 181.8
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 515.8,
+   "op": 237.2,
+   "ni": 155.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 512.0,
+   "op": 234.0,
+   "ni": 158.4
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 691.7,
+   "op": 402.5,
+   "ni": 264.5
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 674.2,
+   "op": 362.6,
+   "ni": 237.2
+  }
+ ]
+}

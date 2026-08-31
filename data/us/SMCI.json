@@ -1,0 +1,216 @@
+{
+ "name": "SMCI",
+ "split_adjusted": true,
+ "legal_name": "Super Micro Computer, Inc.",
+ "code": "SMCI",
+ "cik": "0001375365",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 2225.0,
+   "op": 107.5,
+   "ni": 72.1,
+   "assets": 1398.1,
+   "liab": 667.5,
+   "equity": 696.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 2484.9,
+   "op": 94.9,
+   "ni": 66.8,
+   "assets": 1515.1,
+   "liab": 741.3,
+   "equity": 773.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 3360.5,
+   "op": 94.7,
+   "ni": 46.2,
+   "assets": 1736.1,
+   "liab": 837.9,
+   "equity": 843.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 3500.4,
+   "op": 97.2,
+   "ni": 71.9,
+   "assets": 1682.6,
+   "liab": 741.4,
+   "equity": 941.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 3339.3,
+   "op": 85.7,
+   "ni": 84.3,
+   "assets": 1918.6,
+   "liab": 852.9,
+   "equity": 1065.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 3557.4,
+   "op": 123.9,
+   "ni": 111.9,
+   "assets": 2242.0,
+   "liab": 1145.6,
+   "equity": 1096.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 5196.1,
+   "op": 335.2,
+   "ni": 285.2,
+   "assets": 3205.1,
+   "liab": 1779.3,
+   "equity": 1425.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 7123.5,
+   "op": 761.1,
+   "ni": 640.0,
+   "assets": 3674.7,
+   "liab": 1702.6,
+   "equity": 1972.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 14989.3,
+   "op": 1210.8,
+   "ni": 1152.7,
+   "assets": 9826.1,
+   "liab": 4408.7,
+   "equity": 6238.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 21972.0,
+   "op": 1253.0,
+   "ni": 1048.9,
+   "assets": 14018.4,
+   "liab": 7716.6,
+   "equity": 6992.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 3664.9,
+   "op": 371.5,
+   "ni": 296.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 3850.1,
+   "op": 378.3,
+   "ni": 402.5
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 5354.6,
+   "op": 288.5,
+   "ni": 297.2
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 5937.3,
+   "op": 509.2,
+   "ni": 424.3
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 5678.0,
+   "op": 368.6,
+   "ni": 320.6
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 4599.9,
+   "op": 146.8,
+   "ni": 108.8
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 5756.9,
+   "op": 228.4,
+   "ni": 195.2
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 5017.8,
+   "op": 182.3,
+   "ni": 168.3
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 12682.5,
+   "op": 474.3,
+   "ni": 400.6
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 10243.0,
+   "op": 625.9,
+   "ni": 483.4
+  }
+ ]
+}

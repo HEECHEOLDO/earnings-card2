@@ -1,0 +1,216 @@
+{
+ "name": "UHS",
+ "split_adjusted": false,
+ "legal_name": "UNIVERSAL HEALTH SERVICES INC",
+ "code": "UHS",
+ "cik": "0000352915",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 9766.2,
+   "op": 1281.4,
+   "ni": 747.2,
+   "assets": 10317.8,
+   "liab": null,
+   "equity": 4597.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 10409.9,
+   "op": 1280.2,
+   "ni": 771.3,
+   "assets": 10761.8,
+   "liab": null,
+   "equity": 5051.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 10772.3,
+   "op": 1175.3,
+   "ni": 797.9,
+   "assets": 11265.5,
+   "liab": null,
+   "equity": 5465.8,
+   "dps": 0.4,
+   "payout": 4.7,
+   "yield": null,
+   "dps_adj": 0.4
+  },
+  {
+   "p": 2019,
+   "rev": 11378.3,
+   "op": 1215.9,
+   "ni": 827.5,
+   "assets": 11668.2,
+   "liab": null,
+   "equity": 5578.9,
+   "dps": 0.6,
+   "payout": 6.4,
+   "yield": null,
+   "dps_adj": 0.6
+  },
+  {
+   "p": 2020,
+   "rev": 11558.9,
+   "op": 1358.4,
+   "ni": 952.8,
+   "assets": 13476.9,
+   "liab": null,
+   "equity": 6402.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 12642.1,
+   "op": 1363.1,
+   "ni": 987.6,
+   "assets": 13093.5,
+   "liab": null,
+   "equity": 6193.1,
+   "dps": 0.8,
+   "payout": 6.7,
+   "yield": null,
+   "dps_adj": 0.8
+  },
+  {
+   "p": 2022,
+   "rev": 13399.4,
+   "op": 1003.6,
+   "ni": 657.0,
+   "assets": 13494.2,
+   "liab": null,
+   "equity": 5965.4,
+   "dps": 0.8,
+   "payout": 8.9,
+   "yield": null,
+   "dps_adj": 0.8
+  },
+  {
+   "p": 2023,
+   "rev": 14282.0,
+   "op": 1175.4,
+   "ni": 719.3,
+   "assets": 13967.6,
+   "liab": null,
+   "equity": 6196.7,
+   "dps": 0.8,
+   "payout": 7.7,
+   "yield": null,
+   "dps_adj": 0.8
+  },
+  {
+   "p": 2024,
+   "rev": 15827.9,
+   "op": 1681.8,
+   "ni": 1163.1,
+   "assets": 14469.7,
+   "liab": null,
+   "equity": 6749.5,
+   "dps": 0.8,
+   "payout": 4.6,
+   "yield": null,
+   "dps_adj": 0.8
+  },
+  {
+   "p": 2025,
+   "rev": 17364.8,
+   "op": 1994.0,
+   "ni": 1511.2,
+   "assets": 15527.6,
+   "liab": null,
+   "equity": 7338.8,
+   "dps": 0.8,
+   "payout": 3.4,
+   "yield": null,
+   "dps_adj": 0.8
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 3843.6,
+   "op": 388.8,
+   "ni": 265.8
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 3907.6,
+   "op": 436.4,
+   "ni": 294.3
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 3963.0,
+   "op": 384.2,
+   "ni": 265.9
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 4113.7,
+   "op": 472.5,
+   "ni": 337.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 4099.7,
+   "op": 454.8,
+   "ni": 321.6
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 4283.8,
+   "op": 500.3,
+   "ni": 362.6
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 4495.2,
+   "op": 521.7,
+   "ni": 379.1
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 4486.0,
+   "op": 517.2,
+   "ni": 447.8
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 4495.2,
+   "op": 502.9,
+   "ni": 358.7
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 4638.0,
+   "op": 516.7,
+   "ni": 364.6
+  }
+ ]
+}

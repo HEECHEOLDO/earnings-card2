@@ -1,0 +1,216 @@
+{
+ "name": "GPC",
+ "split_adjusted": false,
+ "legal_name": "GENUINE PARTS CO",
+ "code": "GPC",
+ "cik": "0000040987",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 15339.7,
+   "op": 1229.3,
+   "ni": 687.2,
+   "assets": 8859.4,
+   "liab": null,
+   "equity": 3207.4,
+   "dps": 2.63,
+   "payout": 57.0,
+   "yield": null,
+   "dps_adj": 2.63
+  },
+  {
+   "p": 2017,
+   "rev": 14396.4,
+   "op": 1259.8,
+   "ni": 616.8,
+   "assets": 12412.4,
+   "liab": null,
+   "equity": 3464.2,
+   "dps": 2.7,
+   "payout": 64.4,
+   "yield": null,
+   "dps_adj": 2.7
+  },
+  {
+   "p": 2018,
+   "rev": 16831.6,
+   "op": 1430.5,
+   "ni": 810.5,
+   "assets": 12683.0,
+   "liab": null,
+   "equity": 3472.0,
+   "dps": 2.88,
+   "payout": 52.1,
+   "yield": null,
+   "dps_adj": 2.88
+  },
+  {
+   "p": 2019,
+   "rev": 17522.2,
+   "op": null,
+   "ni": 621.1,
+   "assets": 14645.6,
+   "liab": null,
+   "equity": 3695.5,
+   "dps": 3.05,
+   "payout": 71.6,
+   "yield": null,
+   "dps_adj": 3.05
+  },
+  {
+   "p": 2020,
+   "rev": 16537.4,
+   "op": null,
+   "ni": -29.1,
+   "assets": 13440.2,
+   "liab": null,
+   "equity": 3218.0,
+   "dps": 3.16,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 3.16
+  },
+  {
+   "p": 2021,
+   "rev": 18870.5,
+   "op": null,
+   "ni": 898.8,
+   "assets": 14352.1,
+   "liab": null,
+   "equity": 3503.3,
+   "dps": 3.26,
+   "payout": 52.0,
+   "yield": null,
+   "dps_adj": 3.26
+  },
+  {
+   "p": 2022,
+   "rev": 22096.0,
+   "op": null,
+   "ni": 1182.7,
+   "assets": 16495.4,
+   "liab": null,
+   "equity": 3804.4,
+   "dps": 3.58,
+   "payout": 42.8,
+   "yield": null,
+   "dps_adj": 3.58
+  },
+  {
+   "p": 2023,
+   "rev": 23090.6,
+   "op": null,
+   "ni": 1316.5,
+   "assets": 17968.5,
+   "liab": null,
+   "equity": 4417.0,
+   "dps": 3.8,
+   "payout": 40.5,
+   "yield": null,
+   "dps_adj": 3.8
+  },
+  {
+   "p": 2024,
+   "rev": 23486.6,
+   "op": null,
+   "ni": 904.1,
+   "assets": 19282.7,
+   "liab": null,
+   "equity": 4351.9,
+   "dps": 4,
+   "payout": 61.6,
+   "yield": null,
+   "dps_adj": 4.0
+  },
+  {
+   "p": 2025,
+   "rev": 24300.1,
+   "op": null,
+   "ni": 65.9,
+   "assets": 20795.5,
+   "liab": null,
+   "equity": 4440.4,
+   "dps": 4.12,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 4.12
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 5783.6,
+   "op": null,
+   "ni": 248.9
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 5962.6,
+   "op": null,
+   "ni": 295.5
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 5970.2,
+   "op": null,
+   "ni": 226.6
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 5770.2,
+   "op": null,
+   "ni": 133.1
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 5866.1,
+   "op": null,
+   "ni": 194.4
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 6164.4,
+   "op": null,
+   "ni": 254.9
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 6260.2,
+   "op": null,
+   "ni": 226.2
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 6009.4,
+   "op": null,
+   "ni": -609.5
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 6264.9,
+   "op": null,
+   "ni": 188.5
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 6537.0,
+   "op": null,
+   "ni": 227.6
+  }
+ ]
+}

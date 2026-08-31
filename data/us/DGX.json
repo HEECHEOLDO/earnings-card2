@@ -1,0 +1,216 @@
+{
+ "name": "DGX",
+ "split_adjusted": false,
+ "legal_name": "QUEST DIAGNOSTICS INC",
+ "code": "DGX",
+ "cik": "0001022079",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 7214.0,
+   "op": 1277.0,
+   "ni": 696.0,
+   "assets": 10100.0,
+   "liab": null,
+   "equity": 4660.0,
+   "dps": 1.65,
+   "payout": 33.2,
+   "yield": null,
+   "dps_adj": 1.65
+  },
+  {
+   "p": 2017,
+   "rev": 7402.0,
+   "op": 1165.0,
+   "ni": 824.0,
+   "assets": 10503.0,
+   "liab": null,
+   "equity": 4955.0,
+   "dps": 1.8,
+   "payout": 29.9,
+   "yield": null,
+   "dps_adj": 1.8
+  },
+  {
+   "p": 2018,
+   "rev": 7531.0,
+   "op": 1101.0,
+   "ni": 788.0,
+   "assets": 11003.0,
+   "liab": null,
+   "equity": 5267.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 7726.0,
+   "op": 1231.0,
+   "ni": 906.0,
+   "assets": 12843.0,
+   "liab": null,
+   "equity": 5687.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 9437.0,
+   "op": 1971.0,
+   "ni": 1499.0,
+   "assets": 14026.0,
+   "liab": null,
+   "equity": 6809.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 10788.0,
+   "op": 2381.0,
+   "ni": 2080.0,
+   "assets": 13611.0,
+   "liab": null,
+   "equity": 6483.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 9883.0,
+   "op": 1428.0,
+   "ni": 1015.0,
+   "assets": 12837.0,
+   "liab": null,
+   "equity": 5930.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 9252.0,
+   "op": 1262.0,
+   "ni": 908.0,
+   "assets": 14022.0,
+   "liab": null,
+   "equity": 6342.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 9872.0,
+   "op": 1346.0,
+   "ni": 921.0,
+   "assets": 16153.0,
+   "liab": null,
+   "equity": 6813.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 11035.0,
+   "op": 1556.0,
+   "ni": 1046.0,
+   "assets": 16225.0,
+   "liab": null,
+   "equity": 7206.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 2366.0,
+   "op": 300.0,
+   "ni": 208.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 2397.0,
+   "op": 355.0,
+   "ni": 240.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 2488.0,
+   "op": 330.0,
+   "ni": 237.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 2621.0,
+   "op": 361.0,
+   "ni": 236.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 2652.0,
+   "op": 346.0,
+   "ni": 235.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 2761.0,
+   "op": 438.0,
+   "ni": 296.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 2816.0,
+   "op": 386.0,
+   "ni": 259.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 2806.0,
+   "op": 386.0,
+   "ni": 256.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 2895.0,
+   "op": 399.0,
+   "ni": 264.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 3043.0,
+   "op": 459.0,
+   "ni": 334.0
+  }
+ ]
+}

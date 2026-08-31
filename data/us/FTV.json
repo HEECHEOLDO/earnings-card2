@@ -1,0 +1,216 @@
+{
+ "name": "FTV",
+ "split_adjusted": false,
+ "legal_name": "Fortive Corp",
+ "code": "FTV",
+ "cik": "0001659166",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 5378.2,
+   "op": 1061.7,
+   "ni": 872.3,
+   "assets": 8189.8,
+   "liab": null,
+   "equity": 2691.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 5756.1,
+   "op": 1143.0,
+   "ni": 1044.5,
+   "assets": 10500.6,
+   "liab": null,
+   "equity": 3808.2,
+   "dps": 0.28,
+   "payout": 9.3,
+   "yield": null,
+   "dps_adj": 0.28
+  },
+  {
+   "p": 2018,
+   "rev": 3800.4,
+   "op": 645.3,
+   "ni": 2913.8,
+   "assets": 12905.6,
+   "liab": null,
+   "equity": 6612.9,
+   "dps": 0.28,
+   "payout": 3.3,
+   "yield": null,
+   "dps_adj": 0.28
+  },
+  {
+   "p": 2019,
+   "rev": 4563.9,
+   "op": 443.9,
+   "ni": 738.9,
+   "assets": 17439.0,
+   "liab": null,
+   "equity": 7400.2,
+   "dps": 0.28,
+   "payout": 12.7,
+   "yield": null,
+   "dps_adj": 0.28
+  },
+  {
+   "p": 2020,
+   "rev": 4634.4,
+   "op": 539.4,
+   "ni": 1613.3,
+   "assets": 16051.5,
+   "liab": null,
+   "equity": 8972.7,
+   "dps": 0.28,
+   "payout": 5.9,
+   "yield": null,
+   "dps_adj": 0.28
+  },
+  {
+   "p": 2021,
+   "rev": 5254.7,
+   "op": 812.8,
+   "ni": 608.4,
+   "assets": 16465.5,
+   "liab": null,
+   "equity": 9517.0,
+   "dps": 0.28,
+   "payout": 16.1,
+   "yield": null,
+   "dps_adj": 0.28
+  },
+  {
+   "p": 2022,
+   "rev": 5825.7,
+   "op": 987.4,
+   "ni": 755.2,
+   "assets": 15890.6,
+   "liab": null,
+   "equity": 9688.6,
+   "dps": 0.28,
+   "payout": 13.2,
+   "yield": null,
+   "dps_adj": 0.28
+  },
+  {
+   "p": 2023,
+   "rev": 3913.9,
+   "op": 574.0,
+   "ni": 865.8,
+   "assets": 16911.8,
+   "liab": null,
+   "equity": 10325.3,
+   "dps": 0.29,
+   "payout": 11.8,
+   "yield": null,
+   "dps_adj": 0.29
+  },
+  {
+   "p": 2024,
+   "rev": 4080.9,
+   "op": 716.3,
+   "ni": 832.9,
+   "assets": 17016.1,
+   "liab": null,
+   "equity": 10195.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 4159.1,
+   "op": 720.2,
+   "ni": 532.7,
+   "assets": 11737.7,
+   "liab": null,
+   "equity": 6461.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": -567.7,
+   "op": -248.8,
+   "ni": 265.2
+  },
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 984.2,
+   "op": 149.8,
+   "ni": 207.4
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 1020.2,
+   "op": 182.3,
+   "ni": 195.1
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 1003.7,
+   "op": 172.0,
+   "ni": 221.6
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 1072.8,
+   "op": 212.2,
+   "ni": 208.8
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 993.1,
+   "op": 165.3,
+   "ni": 171.9
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 1016.4,
+   "op": 169.8,
+   "ni": 166.6
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 1027.1,
+   "op": 159.6,
+   "ni": 55.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 1122.5,
+   "op": 225.5,
+   "ni": 185.7
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 1069.4,
+   "op": 191.7,
+   "ni": 136.4
+  }
+ ]
+}

@@ -1,0 +1,216 @@
+{
+ "name": "CMG",
+ "split_adjusted": true,
+ "legal_name": "CHIPOTLE MEXICAN GRILL INC",
+ "code": "CMG",
+ "cik": "0001058090",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 3904.4,
+   "op": 34.6,
+   "ni": 22.9,
+   "assets": 2026.1,
+   "liab": 623.6,
+   "equity": 1402.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 4476.4,
+   "op": 270.8,
+   "ni": 176.3,
+   "assets": 2045.7,
+   "liab": 681.2,
+   "equity": 1364.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 4865.0,
+   "op": 258.4,
+   "ni": 176.6,
+   "assets": 2265.5,
+   "liab": 824.2,
+   "equity": 1441.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 5586.4,
+   "op": 444.0,
+   "ni": 350.2,
+   "assets": 5104.6,
+   "liab": 3421.6,
+   "equity": 1683.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 5984.6,
+   "op": 290.2,
+   "ni": 355.8,
+   "assets": 5982.9,
+   "liab": 3962.8,
+   "equity": 2020.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 7547.1,
+   "op": 804.9,
+   "ni": 653.0,
+   "assets": 6653.0,
+   "liab": 4355.6,
+   "equity": 2297.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 8634.7,
+   "op": 1160.4,
+   "ni": 899.0,
+   "assets": 6927.5,
+   "liab": 4559.5,
+   "equity": 2368.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 9871.6,
+   "op": 1557.8,
+   "ni": 1229.0,
+   "assets": 8044.4,
+   "liab": 4982.2,
+   "equity": 3062.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 11313.9,
+   "op": 1916.3,
+   "ni": 1534.0,
+   "assets": 9204.4,
+   "liab": 5548.8,
+   "equity": 3655.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 11925.6,
+   "op": 1935.8,
+   "ni": 1536.0,
+   "assets": 8994.5,
+   "liab": 6163.9,
+   "equity": 2830.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 2701.8,
+   "op": 441.3,
+   "ni": 359.3
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 2973.1,
+   "op": 586.1,
+   "ni": 455.7
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 2793.6,
+   "op": 473.3,
+   "ni": 387.4
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 2845.3,
+   "op": 415.7,
+   "ni": 331.7
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 2875.3,
+   "op": 479.2,
+   "ni": 386.6
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 3063.4,
+   "op": 559.1,
+   "ni": 436.1
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 3003.4,
+   "op": 477.2,
+   "ni": 382.1
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 2983.5,
+   "op": 420.3,
+   "ni": 331.2
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 3088.2,
+   "op": 397.1,
+   "ni": 302.8
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 3348.6,
+   "op": 525.6,
+   "ni": 403.5
+  }
+ ]
+}

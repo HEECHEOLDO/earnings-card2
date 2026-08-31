@@ -1,0 +1,216 @@
+{
+ "name": "ROK",
+ "split_adjusted": false,
+ "legal_name": "ROCKWELL AUTOMATION, INC",
+ "code": "ROK",
+ "cik": "0001024478",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 5879.5,
+   "op": null,
+   "ni": 729.7,
+   "assets": 7101.2,
+   "liab": null,
+   "equity": 1990.1,
+   "dps": 2.9,
+   "payout": 51.7,
+   "yield": null,
+   "dps_adj": 2.9
+  },
+  {
+   "p": 2017,
+   "rev": 6311.3,
+   "op": null,
+   "ni": 825.7,
+   "assets": 7161.7,
+   "liab": null,
+   "equity": 2663.6,
+   "dps": 3.04,
+   "payout": 47.3,
+   "yield": null,
+   "dps_adj": 3.04
+  },
+  {
+   "p": 2018,
+   "rev": 6666.0,
+   "op": null,
+   "ni": 535.5,
+   "assets": 6262.0,
+   "liab": null,
+   "equity": 1617.5,
+   "dps": 3.51,
+   "payout": 82.2,
+   "yield": null,
+   "dps_adj": 3.51
+  },
+  {
+   "p": 2019,
+   "rev": 6694.8,
+   "op": null,
+   "ni": 695.8,
+   "assets": 6113.0,
+   "liab": null,
+   "equity": 404.2,
+   "dps": 3.88,
+   "payout": 66.0,
+   "yield": null,
+   "dps_adj": 3.88
+  },
+  {
+   "p": 2020,
+   "rev": 6329.8,
+   "op": null,
+   "ni": 1023.2,
+   "assets": 7264.7,
+   "liab": null,
+   "equity": 1346.8,
+   "dps": 4.08,
+   "payout": 46.2,
+   "yield": null,
+   "dps_adj": 4.08
+  },
+  {
+   "p": 2021,
+   "rev": 6997.4,
+   "op": null,
+   "ni": 1344.3,
+   "assets": 10701.6,
+   "liab": null,
+   "equity": 2694.1,
+   "dps": 4.28,
+   "payout": 36.9,
+   "yield": null,
+   "dps_adj": 4.28
+  },
+  {
+   "p": 2022,
+   "rev": 7760.4,
+   "op": null,
+   "ni": 919.1,
+   "assets": 10758.7,
+   "liab": null,
+   "equity": 3016.0,
+   "dps": 4.48,
+   "payout": 56.5,
+   "yield": null,
+   "dps_adj": 4.48
+  },
+  {
+   "p": 2023,
+   "rev": 9058.0,
+   "op": 1929.0,
+   "ni": 1278.0,
+   "assets": 11304.0,
+   "liab": null,
+   "equity": 3743.0,
+   "dps": 4.72,
+   "payout": 42.4,
+   "yield": null,
+   "dps_adj": 4.72
+  },
+  {
+   "p": 2024,
+   "rev": 8264.0,
+   "op": 1595.0,
+   "ni": 948.0,
+   "assets": 11232.0,
+   "liab": null,
+   "equity": 3675.0,
+   "dps": 5,
+   "payout": 60.1,
+   "yield": null,
+   "dps_adj": 5.0
+  },
+  {
+   "p": 2025,
+   "rev": 8342.0,
+   "op": 1703.0,
+   "ni": 749.0,
+   "assets": 11219.0,
+   "liab": null,
+   "equity": 3711.0,
+   "dps": 5.24,
+   "payout": 78.8,
+   "yield": null,
+   "dps_adj": 5.24
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 2126.0,
+   "op": null,
+   "ni": 265.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 2051.0,
+   "op": null,
+   "ni": 231.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 2035.0,
+   "op": null,
+   "ni": 239.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 1881.0,
+   "op": 321.0,
+   "ni": 178.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 2001.0,
+   "op": 408.0,
+   "ni": 248.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 2144.0,
+   "op": 454.0,
+   "ni": 293.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 2316.0,
+   "op": 520.0,
+   "ni": 30.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 2105.0,
+   "op": 435.0,
+   "ni": 302.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 2239.0,
+   "op": 530.0,
+   "ni": 351.0
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 2313.0,
+   "op": 550.0,
+   "ni": 408.0
+  }
+ ]
+}

@@ -1,0 +1,216 @@
+{
+ "name": "UAL",
+ "split_adjusted": false,
+ "legal_name": "United Airlines Holdings, Inc.",
+ "code": "UAL",
+ "cik": "0000100517",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 36558.0,
+   "op": 4344.0,
+   "ni": 2234.0,
+   "assets": 40140.0,
+   "liab": null,
+   "equity": 8574.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 37784.0,
+   "op": 3618.0,
+   "ni": 2143.0,
+   "assets": 42346.0,
+   "liab": null,
+   "equity": 8788.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 41303.0,
+   "op": 3229.0,
+   "ni": 2122.0,
+   "assets": 49024.0,
+   "liab": null,
+   "equity": 10042.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 43259.0,
+   "op": 4301.0,
+   "ni": 3009.0,
+   "assets": 52611.0,
+   "liab": null,
+   "equity": 11531.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 15355.0,
+   "op": -6359.0,
+   "ni": -7069.0,
+   "assets": 59548.0,
+   "liab": null,
+   "equity": 5960.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 24634.0,
+   "op": -1022.0,
+   "ni": -1964.0,
+   "assets": 68175.0,
+   "liab": null,
+   "equity": 5029.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 44955.0,
+   "op": 2337.0,
+   "ni": 737.0,
+   "assets": 67358.0,
+   "liab": null,
+   "equity": 6896.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 53717.0,
+   "op": 4211.0,
+   "ni": 2618.0,
+   "assets": 71104.0,
+   "liab": null,
+   "equity": 9324.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 57063.0,
+   "op": 5096.0,
+   "ni": 3149.0,
+   "assets": 74083.0,
+   "liab": null,
+   "equity": 12675.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 59070.0,
+   "op": 4713.0,
+   "ni": 3353.0,
+   "assets": 76448.0,
+   "liab": null,
+   "equity": 15282.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 12539.0,
+   "op": 99.0,
+   "ni": -124.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 14986.0,
+   "op": 1929.0,
+   "ni": 1323.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 14843.0,
+   "op": 1565.0,
+   "ni": 965.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 14695.0,
+   "op": 1503.0,
+   "ni": 985.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 13213.0,
+   "op": 607.0,
+   "ni": 387.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 15236.0,
+   "op": 1325.0,
+   "ni": 973.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 15225.0,
+   "op": 1395.0,
+   "ni": 949.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 15396.0,
+   "op": 1386.0,
+   "ni": 1044.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 14608.0,
+   "op": 997.0,
+   "ni": 699.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 17672.0,
+   "op": 1096.0,
+   "ni": 805.0
+  }
+ ]
+}

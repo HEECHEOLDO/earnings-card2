@@ -1,0 +1,216 @@
+{
+ "name": "VRSN",
+ "split_adjusted": false,
+ "legal_name": "VERISIGN INC/CA",
+ "code": "VRSN",
+ "cik": "0001014473",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 1142.2,
+   "op": 686.6,
+   "ni": 440.6,
+   "assets": 2334.6,
+   "liab": 3535.2,
+   "equity": -1200.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 1165.1,
+   "op": 707.7,
+   "ni": 457.2,
+   "assets": 2941.2,
+   "liab": 4201.5,
+   "equity": -1260.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 1215.0,
+   "op": 767.4,
+   "ni": 582.5,
+   "assets": 1914.5,
+   "liab": 3300.0,
+   "equity": -1385.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 1231.7,
+   "op": 806.1,
+   "ni": 612.3,
+   "assets": 1854.0,
+   "liab": 3344.1,
+   "equity": -1490.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 1265.1,
+   "op": 824.2,
+   "ni": 814.9,
+   "assets": 1766.9,
+   "liab": 3157.1,
+   "equity": -1390.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 1327.6,
+   "op": 866.8,
+   "ni": 784.8,
+   "assets": 1983.8,
+   "liab": 3244.3,
+   "equity": -1260.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 1424.9,
+   "op": 943.1,
+   "ni": 673.8,
+   "assets": 1733.4,
+   "liab": 3295.6,
+   "equity": -1562.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 1493.1,
+   "op": 1000.6,
+   "ni": 817.6,
+   "assets": 1749.0,
+   "liab": 3330.0,
+   "equity": -1581.0,
+   "dps": 0,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 0
+  },
+  {
+   "p": 2024,
+   "rev": 1557.4,
+   "op": 1058.2,
+   "ni": 785.7,
+   "assets": 1406.5,
+   "liab": 3364.4,
+   "equity": -1957.9,
+   "dps": 0,
+   "payout": null,
+   "yield": null,
+   "dps_adj": 0
+  },
+  {
+   "p": 2025,
+   "rev": 1656.6,
+   "op": 1121.0,
+   "ni": 825.7,
+   "assets": 1325.9,
+   "liab": 3480.1,
+   "equity": -2154.2,
+   "dps": 2.31,
+   "payout": 26.2,
+   "yield": null,
+   "dps_adj": 2.31
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 384.3,
+   "op": 258.9,
+   "ni": 194.1
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 387.1,
+   "op": 266.2,
+   "ni": 198.8
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 390.6,
+   "op": 269.3,
+   "ni": 201.3
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 395.4,
+   "op": 263.8,
+   "ni": 191.5
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 402.3,
+   "op": 271.2,
+   "ni": 199.3
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 409.9,
+   "op": 280.7,
+   "ni": 207.4
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 419.1,
+   "op": 284.3,
+   "ni": 212.8
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 425.3,
+   "op": 284.8,
+   "ni": 206.2
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 428.9,
+   "op": 293.6,
+   "ni": 214.5
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 434.6,
+   "op": 296.3,
+   "ni": 216.5
+  }
+ ]
+}

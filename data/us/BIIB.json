@@ -1,0 +1,216 @@
+{
+ "name": "BIIB",
+ "split_adjusted": false,
+ "legal_name": "BIOGEN INC.",
+ "code": "BIIB",
+ "cik": "0000875045",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 11448.8,
+   "op": 5151.7,
+   "ni": 3695.7,
+   "assets": 22876.8,
+   "liab": 10748.2,
+   "equity": 12128.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 12273.9,
+   "op": 5345.8,
+   "ni": 2670.1,
+   "assets": 23652.6,
+   "liab": 11054.5,
+   "equity": 12598.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 13452.9,
+   "op": 5888.6,
+   "ni": 4474.0,
+   "assets": 25288.9,
+   "liab": 12257.3,
+   "equity": 13031.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 14377.9,
+   "op": 7042.6,
+   "ni": 5888.5,
+   "assets": 27234.3,
+   "liab": 13895.2,
+   "equity": 13339.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 13444.6,
+   "op": 4550.1,
+   "ni": 4060.5,
+   "assets": 24618.9,
+   "liab": 13932.8,
+   "equity": 10686.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 10981.7,
+   "op": 2840.7,
+   "ni": 1556.0,
+   "assets": 23877.3,
+   "liab": 12917.6,
+   "equity": 10959.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 10173.4,
+   "op": null,
+   "ni": 3047.0,
+   "assets": 24554.1,
+   "liab": 11165.7,
+   "equity": 13388.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 9835.6,
+   "op": null,
+   "ni": 1161.0,
+   "assets": 26844.8,
+   "liab": 12045.4,
+   "equity": 14799.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 9675.9,
+   "op": null,
+   "ni": 1632.0,
+   "assets": 28049.3,
+   "liab": 11333.3,
+   "equity": 16716.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 9890.6,
+   "op": null,
+   "ni": 1293.0,
+   "assets": 29439.5,
+   "liab": 11182.7,
+   "equity": 18256.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 2386.3,
+   "op": null,
+   "ni": 248.4
+  },
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 2290.5,
+   "op": null,
+   "ni": 393.4
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 2464.9,
+   "op": null,
+   "ni": 583.6
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 2465.8,
+   "op": null,
+   "ni": 388.5
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 2454.7,
+   "op": null,
+   "ni": 266.5
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 2431.0,
+   "op": null,
+   "ni": 240.5
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 2645.5,
+   "op": null,
+   "ni": 634.8
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 2534.7,
+   "op": null,
+   "ni": 466.5
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 2279.4,
+   "op": null,
+   "ni": -48.8
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 2477.8,
+   "op": null,
+   "ni": 319.5
+  }
+ ]
+}
