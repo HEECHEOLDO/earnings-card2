@@ -1,6 +1,6 @@
 {
  "name": "MCD",
- "split_adjusted": true,
+ "split_adjusted": false,
  "legal_name": "McDONALD’S CORPORATION",
  "code": "MCD",
  "cik": "0000063908",
@@ -21,7 +21,7 @@
    "dps": 3.61,
    "payout": 66.3,
    "yield": null,
-   "dps_adj": 3601836.9247
+   "dps_adj": 3.61
   },
   {
    "p": 2017,
@@ -34,7 +34,7 @@
    "dps": 3.83,
    "payout": 60.2,
    "yield": null,
-   "dps_adj": 3821339.452
+   "dps_adj": 3.83
   },
   {
    "p": 2018,
@@ -47,7 +47,7 @@
    "dps": 4.19,
    "payout": 55.6,
    "yield": null,
-   "dps_adj": 4180525.4057
+   "dps_adj": 4.19
   },
   {
    "p": 2019,
@@ -60,7 +60,7 @@
    "dps": 4.73,
    "payout": 60.0,
    "yield": null,
-   "dps_adj": 4719304.3363
+   "dps_adj": 4.73
   },
   {
    "p": 2020,
@@ -73,7 +73,7 @@
    "dps": 5.04,
    "payout": 79.9,
    "yield": null,
-   "dps_adj": 5028603.352
+   "dps_adj": 5.04
   },
   {
    "p": 2021,
@@ -84,7 +84,7 @@
    "liab": null,
    "equity": -4601.0,
    "dps": 5.25,
-   "payout": 0.0,
+   "payout": 52.3,
    "yield": null,
    "dps_adj": 5.25
   },
@@ -97,7 +97,7 @@
    "liab": null,
    "equity": -6003.0,
    "dps": 5.66,
-   "payout": 0.0,
+   "payout": 67.9,
    "yield": null,
    "dps_adj": 5.66
   },
@@ -110,7 +110,7 @@
    "liab": null,
    "equity": -4707.0,
    "dps": 6.23,
-   "payout": 0.0,
+   "payout": 53.9,
    "yield": null,
    "dps_adj": 6.23
   },
@@ -123,7 +123,7 @@
    "liab": null,
    "equity": -3797.0,
    "dps": 6.78,
-   "payout": 0.0,
+   "payout": 59.5,
    "yield": null,
    "dps_adj": 6.78
   },
@@ -136,7 +136,7 @@
    "liab": null,
    "equity": -1791.0,
    "dps": 7.17,
-   "payout": 0.0,
+   "payout": 60.0,
    "yield": null,
    "dps_adj": 7.17
   }

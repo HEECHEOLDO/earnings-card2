@@ -1,6 +1,6 @@
 {
  "name": "GE",
- "split_adjusted": true,
+ "split_adjusted": false,
  "legal_name": "GENERAL ELECTRIC CO",
  "code": "GE",
  "cik": "0000040545",
@@ -21,7 +21,7 @@
    "dps": 0.93,
    "payout": 111.9,
    "yield": null,
-   "dps_adj": 7.4085
+   "dps_adj": 0.93
   },
   {
    "p": 2017,
@@ -34,7 +34,7 @@
    "dps": 0.84,
    "payout": null,
    "yield": null,
-   "dps_adj": 6.6915
+   "dps_adj": 0.84
   },
   {
    "p": 2018,
@@ -47,7 +47,7 @@
    "dps": 0.37,
    "payout": null,
    "yield": null,
-   "dps_adj": 2.9475
+   "dps_adj": 0.37
   },
   {
    "p": 2019,

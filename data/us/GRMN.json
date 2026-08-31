@@ -1,6 +1,6 @@
 {
  "name": "GRMN",
- "split_adjusted": true,
+ "split_adjusted": false,
  "legal_name": "GARMIN LTD",
  "code": "GRMN",
  "cik": "0001121788",
@@ -34,7 +34,7 @@
    "dps": 1.53,
    "payout": 40.7,
    "yield": null,
-   "dps_adj": 1.5221
+   "dps_adj": 1.53
   },
   {
    "p": 2018,
@@ -47,7 +47,7 @@
    "dps": 1.06,
    "payout": 29.0,
    "yield": null,
-   "dps_adj": 1.0545
+   "dps_adj": 1.06
   },
   {
    "p": 2019,
@@ -60,7 +60,7 @@
    "dps": 1.14,
    "payout": 22.8,
    "yield": null,
-   "dps_adj": 1.1341
+   "dps_adj": 1.14
   },
   {
    "p": 2020,
@@ -71,9 +71,9 @@
    "liab": null,
    "equity": 5516.1,
    "dps": 1.22,
-   "payout": 0.0,
+   "payout": 23.6,
    "yield": null,
-   "dps_adj": 0.0012
+   "dps_adj": 1.22
   },
   {
    "p": 2021,
@@ -84,9 +84,9 @@
    "liab": null,
    "equity": 6114.2,
    "dps": 1.34,
-   "payout": 0.0,
+   "payout": 23.9,
    "yield": null,
-   "dps_adj": 0.0013
+   "dps_adj": 1.34
   },
   {
    "p": 2022,

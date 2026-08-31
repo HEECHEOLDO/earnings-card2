@@ -731,8 +731,12 @@
       return fetch('./data/us/' + code + '.json', { cache: 'no-cache' })
         .then(function (r) { if (!r.ok) throw new Error('not found'); return r.json(); })
         .then(function (d) {
-          d.annual = (d.annual || []).filter(function (x) { return x.rev != null && x.op != null; });
-          d.quarterly = (d.quarterly || []).filter(function (x) { return x.rev != null && x.op != null; });
+          // 영업이익을 아예 공시하지 않는 회사가 있다 (예: 존슨앤드존슨).
+          // 매출만 있어도 카드를 만들 수 있게 살린다.
+          d.annual = (d.annual || []).filter(function (x) { return x.rev != null; });
+          d.quarterly = (d.quarterly || []).filter(function (x) { return x.rev != null; });
+          d.noOp = d.annual.length > 0 &&
+                   d.annual.every(function (x) { return x.op == null; });
           Adapter.loaded[code] = d;
           return d;
         })
@@ -758,7 +762,8 @@
           label: d.y + '.' + d.q + 'Q', short: d.q + 'Q',
           yearMark: showYear ? d.y + '년' : null,
           bar1: conv(num(d.rev)), bar2: conv(num(d.op)),
-          line: d.rev ? num(d.op) / d.rev * 100 : 0, ni: conv(num(d.ni))
+          line: d.rev ? num(d.op) / d.rev * 100 : 0, ni: conv(num(d.ni)),
+          netMargin: d.rev ? num(d.ni) / d.rev * 100 : 0
         };
       });
     }
@@ -771,7 +776,8 @@
         // 다만 액면분할 보정값이 있으면 그걸 쓴다.
         dps: num(d.dps_adj != null ? d.dps_adj : d.dps), dpsRaw: num(d.dps),
         payout: num(d.payout), yield: num(d.yield),
-        margin: d.rev ? num(d.op) / d.rev * 100 : 0
+        margin: d.rev ? num(d.op) / d.rev * 100 : 0,
+        netMargin: d.rev ? num(d.ni) / d.rev * 100 : 0
       };
     });
 
@@ -846,18 +852,27 @@
 
     // annual — 배당을 한 번도 안 한 회사는 선을 영업이익률로 바꾼다
     var paysDividend = (rows || []).some(function (r) { return r.dps > 0; });
-    var bars = [{ key: 'bar1', label: '매출', color: 'bar1' },
-                { key: 'bar2', label: '영업이익', color: 'bar2' }];
+    var noOp = state.company && state.company.noOp;
+    var bars = noOp
+      ? [{ key: 'bar1', label: '매출', color: 'bar1' }]
+      : [{ key: 'bar1', label: '매출', color: 'bar1' },
+         { key: 'bar2', label: '영업이익', color: 'bar2' }];
     if (!paysDividend) {
       return {
         bars: bars,
-        line: { key: 'margin', label: '영업이익률', fmt: pct, chipFmt: pct },
+        line: noOp
+          ? { key: 'netMargin', label: '순이익률', fmt: pct, chipFmt: pct }
+          : { key: 'margin', label: '영업이익률', fmt: pct, chipFmt: pct },
         barUnit: 'auto', unitNote: null,
         altChip: function (last, unit) {
           return { l: '순이익', v: fmtChip(last.ni, unit), c: 'ink' };
         },
         chips: function (last, unit) {
-          return [
+          return noOp ? [
+            { l: '매출', v: fmtChip(last.bar1, unit), c: 'ink' },
+            { l: '순이익', v: fmtChip(last.ni, unit), c: 'bar2' },
+            { l: '순이익률', v: pct(last.netMargin), c: 'line' }
+          ] : [
             { l: '매출', v: fmtChip(last.bar1, unit), c: 'ink' },
             { l: '영업이익', v: fmtChip(last.bar2, unit), c: 'bar2' },
             { l: '영업이익률', v: pct(last.margin), c: 'line' }
@@ -872,12 +887,15 @@
               chipFmt: function (v) { return usd(v); } },
       barUnit: 'auto', unitNote: '배당 $',
       altChip: function (last) {
-        return { l: '영업이익률', v: pct(last.margin), c: 'bar2' };
+        return noOp
+          ? { l: '순이익률', v: pct(last.netMargin), c: 'bar2' }
+          : { l: '영업이익률', v: pct(last.margin), c: 'bar2' };
       },
       chips: function (last, unit) {
         return [
           { l: '매출', v: fmtChip(last.bar1, unit), c: 'ink' },
-          { l: '영업이익', v: fmtChip(last.bar2, unit), c: 'bar2' },
+          noOp ? { l: '순이익', v: fmtChip(last.ni, unit), c: 'bar2' }
+               : { l: '영업이익', v: fmtChip(last.bar2, unit), c: 'bar2' },
           { l: '주당배당금', v: usd(last.dps), c: 'line' }
         ];
       },

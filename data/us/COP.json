@@ -1,6 +1,6 @@
 {
  "name": "COP",
- "split_adjusted": true,
+ "split_adjusted": false,
  "legal_name": "ConocoPhillips",
  "code": "COP",
  "cik": "0001163165",
@@ -21,7 +21,7 @@
    "dps": 1,
    "payout": null,
    "yield": null,
-   "dps_adj": 0.001
+   "dps_adj": 1.0
   },
   {
    "p": 2017,
@@ -34,7 +34,7 @@
    "dps": 1.06,
    "payout": null,
    "yield": null,
-   "dps_adj": 0.0011
+   "dps_adj": 1.06
   },
   {
    "p": 2018,
@@ -45,9 +45,9 @@
    "liab": 37916.0,
    "equity": 32064.0,
    "dps": 1.16,
-   "payout": 0.0,
+   "payout": null,
    "yield": null,
-   "dps_adj": 0.0012
+   "dps_adj": 1.16
   },
   {
    "p": 2019,
@@ -58,9 +58,9 @@
    "liab": 35464.0,
    "equity": 35050.0,
    "dps": 1.34,
-   "payout": 0.0,
+   "payout": null,
    "yield": null,
-   "dps_adj": 0.0014
+   "dps_adj": 1.34
   },
   {
    "p": 2020,
@@ -84,7 +84,7 @@
    "liab": 45255.0,
    "equity": 45406.0,
    "dps": 1.75,
-   "payout": 28.8,
+   "payout": null,
    "yield": null,
    "dps_adj": 1.75
   },
@@ -97,7 +97,7 @@
    "liab": 45826.0,
    "equity": 48003.0,
    "dps": 1.89,
-   "payout": 12.9,
+   "payout": null,
    "yield": null,
    "dps_adj": 1.89
   },
@@ -110,7 +110,7 @@
    "liab": 46645.0,
    "equity": 49279.0,
    "dps": 2.11,
-   "payout": 23.2,
+   "payout": null,
    "yield": null,
    "dps_adj": 2.11
   },
@@ -123,7 +123,7 @@
    "liab": 57984.0,
    "equity": 64796.0,
    "dps": 2.52,
-   "payout": 32.2,
+   "payout": null,
    "yield": null,
    "dps_adj": 2.52
   },
@@ -136,7 +136,7 @@
    "liab": 57452.0,
    "equity": 64487.0,
    "dps": 3.18,
-   "payout": 49.9,
+   "payout": null,
    "yield": null,
    "dps_adj": 3.18
   }

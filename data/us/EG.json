@@ -1,6 +1,6 @@
 {
  "name": "EG",
- "split_adjusted": true,
+ "split_adjusted": false,
  "legal_name": "EVEREST GROUP, LTD.",
  "code": "EG",
  "cik": "0001095073",
@@ -19,9 +19,9 @@
    "liab": 13246.1,
    "equity": 8075.4,
    "dps": 4.7,
-   "payout": 0.0,
+   "payout": 19.6,
    "yield": null,
-   "dps_adj": 0.0047
+   "dps_adj": 4.7
   },
   {
    "p": 2017,
@@ -32,9 +32,9 @@
    "liab": 15222.6,
    "equity": 8340.7,
    "dps": 5.05,
-   "payout": 0.0,
+   "payout": 42.7,
    "yield": null,
-   "dps_adj": 0.0051
+   "dps_adj": 5.05
   },
   {
    "p": 2018,
@@ -45,9 +45,9 @@
    "liab": 16890.2,
    "equity": 7860.8,
    "dps": 5.3,
-   "payout": 0.2,
+   "payout": 241.6,
    "yield": null,
-   "dps_adj": 0.0054
+   "dps_adj": 5.3
   },
   {
    "p": 2019,
@@ -58,9 +58,9 @@
    "liab": 18191.1,
    "equity": 9132.9,
    "dps": 5.75,
-   "payout": 0.0,
+   "payout": 23.0,
    "yield": null,
-   "dps_adj": 0.0058
+   "dps_adj": 5.75
   },
   {
    "p": 2020,

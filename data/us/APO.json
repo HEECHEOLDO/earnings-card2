@@ -1,6 +1,6 @@
 {
  "name": "APO",
- "split_adjusted": true,
+ "split_adjusted": false,
  "legal_name": "APOLLO GLOBAL MANAGEMENT, INC.",
  "code": "APO",
  "cik": "0001858681",
@@ -21,7 +21,7 @@
    "dps": 2.31,
    "payout": 334.8,
    "yield": null,
-   "dps_adj": 0.9346
+   "dps_adj": 2.31
   },
   {
    "p": 2021,
@@ -34,7 +34,7 @@
    "dps": 2.1,
    "payout": 27.6,
    "yield": null,
-   "dps_adj": 0.8497
+   "dps_adj": 2.1
   },
   {
    "p": 2022,

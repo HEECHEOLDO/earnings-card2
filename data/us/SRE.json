@@ -1,6 +1,6 @@
 {
  "name": "SRE",
- "split_adjusted": true,
+ "split_adjusted": false,
  "legal_name": "SEMPRA",
  "code": "SRE",
  "cik": "0001032208",
@@ -21,7 +21,7 @@
    "dps": 3.02,
    "payout": 49.9,
    "yield": null,
-   "dps_adj": 1.51
+   "dps_adj": 3.02
   },
   {
    "p": 2017,
@@ -34,7 +34,7 @@
    "dps": 3.29,
    "payout": 236.5,
    "yield": null,
-   "dps_adj": 1.645
+   "dps_adj": 3.29
   },
   {
    "p": 2018,
@@ -47,7 +47,7 @@
    "dps": 3.58,
    "payout": 85.8,
    "yield": null,
-   "dps_adj": 1.79
+   "dps_adj": 3.58
   },
   {
    "p": 2019,
@@ -60,7 +60,7 @@
    "dps": 3.87,
    "payout": 46.2,
    "yield": null,
-   "dps_adj": 1.935
+   "dps_adj": 3.87
   },
   {
    "p": 2020,
@@ -73,7 +73,7 @@
    "dps": 4.18,
    "payout": 29.8,
    "yield": null,
-   "dps_adj": 2.09
+   "dps_adj": 4.18
   },
   {
    "p": 2021,

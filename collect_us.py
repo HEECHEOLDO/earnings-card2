@@ -17,6 +17,7 @@ User-Agent 헤더와 초당 10회 제한만 지키면 됩니다.
 
 import io
 import json
+import math
 import re
 import os
 import sys
@@ -86,6 +87,10 @@ TAGS = {
 FALLBACK = {
     "op": ["IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
            "IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments",
+           "IncomeLossFromContinuingOperationsBeforeIncomeTaxesDomestic",
+           "IncomeLossFromContinuingOperationsBeforeIncomeTaxesForeign",
+           "IncomeLossFromContinuingOperationsIncludingPortionAttributableToNoncontrollingInterest",
+           "OperatingIncomeLossBeforeDepreciationDepletionAmortizationAndExplorationExpense",
            "GrossProfit"],
     "ni": ["NetIncomeLossAvailableToCommonStockholdersBasic"],
     # 은행·보험·리츠는 '매출'이라는 항목 자체를 안 쓰는 경우가 많다
@@ -205,7 +210,8 @@ def fy_of(end):
 # 자동 탐색용 — 알려진 태그가 하나도 없을 때 이름으로 찾는다
 DISCOVER = {
     "rev": ("revenue",),
-    "op": ("operatingincome", "incomelossfromcontinuingoperationsbefore"),
+    "op": ("operatingincome", "incomelossfromcontinuingoperationsbefore",
+           "incomebeforeincometax", "incomelossbeforeincometax"),
     "ni": ("netincomeloss",),
 }
 # 매출로 오인하기 쉬운 것들 (부문·이연·미수 등)
@@ -410,6 +416,33 @@ def mil(v):
 
 # ------------------------------------------------- 종목 하나
 
+def normalize_shares(shares):
+    """주식 수 단위를 맞춘다.
+
+    같은 회사가 어떤 해는 '주', 어떤 해는 '백만 주'로 공시하는 경우가 있다.
+    연도별 값이 서로 비슷해지도록 1000의 거듭제곱으로 눈금을 맞춘다.
+    """
+    vals = [v for v in shares.values() if v and v > 0]
+    if len(vals) < 2:
+        return shares
+    # 가장 큰 값을 기준으로 삼는다. 단위가 섞이면 '주' 단위 쪽이 크고,
+    # 그게 실제 주식 수이므로 작은 쪽을 끌어올려야 한다.
+    med = max(vals)
+    out = {}
+    for fy, v in shares.items():
+        if not v or v <= 0:
+            out[fy] = v
+            continue
+        best, bestdiff = v, abs(math.log10(v / med))
+        for e in (-6, -3, 3, 6):
+            cand = v * (10 ** e)
+            diff = abs(math.log10(cand / med))
+            if diff < bestdiff:
+                best, bestdiff = cand, diff
+        out[fy] = best
+    return out
+
+
 def payout_of(fy, A):
     """배당성향(%) = 주당배당금 x 주식수 / 순이익.
 
@@ -443,12 +476,28 @@ def adjust_splits(annual, shares):
             ratio = b / a
             if ratio >= 1.8 or 0 < ratio <= 0.56:
                 target = ratio if ratio >= 1 else 1 / ratio
-                best = min(CLEAN_RATIOS, key=lambda c: abs(c - target))
-                if abs(best - target) / best <= 0.10:
-                    target = best
-                cum *= target if ratio >= 1 else 1 / target
+                # 분할과 자사주 매입이 겹치면 배수가 정확히 안 떨어진다.
+                # 깔끔한 배수의 0.85~1.06 배 안이면 그 배수로 인정한다.
+                best = None
+                for cand in CLEAN_RATIOS:
+                    if 0.85 <= target / cand <= 1.06:
+                        best = cand
+                        break
+                # 어떤 배수에도 안 맞으면 분할이 아니다.
+                # (주식 수를 어떤 해는 '주', 어떤 해는 '백만 주'로 적는 회사가 있는데
+                #  그걸 분할로 착각하면 배당금이 백만 배로 부푼다)
+                if best is None:
+                    continue
+                cum *= best if ratio >= 1 else 1 / best
                 found = True
         factor[i - 1] = cum
+    # 보정 폭이 상식을 벗어나면(100배 이상) 아예 적용하지 않는다
+    if max(factor) > 100:
+        log("  ! 분할 배수가 비정상(%.0f배)이라 보정을 건너뜁니다" % max(factor))
+        for r in annual:
+            r["dps_adj"] = r.get("dps")
+        return False
+
     for i, r in enumerate(annual):
         r["dps_adj"] = round(r["dps"] / factor[i], 4) if r.get("dps") else r.get("dps")
     return found
@@ -505,6 +554,7 @@ def collect_one(ticker, info):
     _used_tag.clear()
     A = {k: annual_series(facts, k) for k in
          ("rev", "op", "ni", "assets", "liab", "equity", "dps", "shares")}
+    A["shares"] = normalize_shares(A["shares"])
     dbg("사용 태그:", _used_tag)
     if not A["rev"]:
         return None, "매출 태그를 못 찾음"

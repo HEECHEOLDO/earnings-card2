@@ -1,6 +1,6 @@
 {
  "name": "HST",
- "split_adjusted": true,
+ "split_adjusted": false,
  "legal_name": "HOST HOTELS & RESORTS, INC.",
  "code": "HST",
  "cik": "0001070750",
@@ -32,9 +32,9 @@
    "liab": 4524.0,
    "equity": 7002.0,
    "dps": 0.85,
-   "payout": 0.0,
+   "payout": 110.0,
    "yield": null,
-   "dps_adj": 0.0
+   "dps_adj": 0.85
   },
   {
    "p": 2018,
@@ -45,9 +45,9 @@
    "liab": 4396.0,
    "equity": 7566.0,
    "dps": 0.85,
-   "payout": 0.0,
+   "payout": 54.7,
    "yield": null,
-   "dps_adj": 0.0
+   "dps_adj": 0.85
   },
   {
    "p": 2019,
@@ -58,9 +58,9 @@
    "liab": 4838.0,
    "equity": 7325.0,
    "dps": 0.85,
-   "payout": 0.0,
+   "payout": 66.7,
    "yield": null,
-   "dps_adj": 0.0
+   "dps_adj": 0.85
   },
   {
    "p": 2020,
@@ -73,7 +73,7 @@
    "dps": 0.2,
    "payout": null,
    "yield": null,
-   "dps_adj": 0.0
+   "dps_adj": 0.2
   },
   {
    "p": 2021,

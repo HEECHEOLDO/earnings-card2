@@ -19,9 +19,9 @@
    "liab": 4048.0,
    "equity": 5762.0,
    "dps": 0.485,
-   "payout": 18.9,
+   "payout": null,
    "yield": null,
-   "dps_adj": 0.0121
+   "dps_adj": 0.0485
   },
   {
    "p": 2018,
@@ -32,9 +32,9 @@
    "liab": 3770.0,
    "equity": 7471.0,
    "dps": 0.57,
-   "payout": 11.8,
+   "payout": null,
    "yield": null,
-   "dps_adj": 0.0142
+   "dps_adj": 0.057
   },
   {
    "p": 2019,
@@ -45,9 +45,9 @@
    "liab": 3950.0,
    "equity": 9342.0,
    "dps": 0.61,
-   "payout": 9.2,
+   "payout": null,
    "yield": null,
-   "dps_adj": 0.0152
+   "dps_adj": 0.61
   },
   {
    "p": 2020,

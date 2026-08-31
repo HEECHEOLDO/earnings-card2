@@ -350,12 +350,16 @@ def adjust_for_splits(rows):
         if a and b and a > 0:
             ratio = b / a
             if ratio >= 1.8 or (0 < ratio <= 0.56):     # 분할 또는 병합
-                # 깔끔한 배수에 가까우면 그 값으로 맞춘다
                 target = ratio if ratio >= 1 else 1 / ratio
-                best = min(CLEAN_RATIOS, key=lambda c: abs(c - target))
-                if abs(best - target) / best <= 0.08:
-                    target = best
-                cum *= target if ratio >= 1 else 1 / target
+                best = None
+                for cand in CLEAN_RATIOS:
+                    if 0.85 <= target / cand <= 1.06:
+                        best = cand
+                        break
+                # 어떤 배수에도 안 맞으면 분할로 보지 않는다
+                if best is None:
+                    continue
+                cum *= best if ratio >= 1 else 1 / best
                 found = True
         factor[i - 1] = cum
 
