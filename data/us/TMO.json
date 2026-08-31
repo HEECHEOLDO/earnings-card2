@@ -1,5 +1,6 @@
 {
  "name": "TMO",
+ "split_adjusted": false,
  "legal_name": "THERMO FISHER SCIENTIFIC INC.",
  "code": "TMO",
  "cik": "0000097745",
@@ -19,7 +20,8 @@
    "equity": 21540.0,
    "dps": 0.6,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.6
   },
   {
    "p": 2017,
@@ -31,7 +33,8 @@
    "equity": 25413.0,
    "dps": 0.6,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.6
   },
   {
    "p": 2018,
@@ -43,7 +46,8 @@
    "equity": 27594.0,
    "dps": 0.68,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.68
   },
   {
    "p": 2019,
@@ -55,7 +59,8 @@
    "equity": 29684.0,
    "dps": 0.76,
    "payout": 8.2,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.76
   },
   {
    "p": 2020,
@@ -67,7 +72,8 @@
    "equity": 34517.0,
    "dps": 0.88,
    "payout": 5.5,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.88
   },
   {
    "p": 2021,
@@ -79,7 +85,8 @@
    "equity": 40855.0,
    "dps": 1.04,
    "payout": 5.3,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.04
   },
   {
    "p": 2022,
@@ -91,7 +98,8 @@
    "equity": 44032.0,
    "dps": 1.2,
    "payout": 6.8,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.2
   },
   {
    "p": 2023,
@@ -103,7 +111,8 @@
    "equity": 46724.0,
    "dps": 1.4,
    "payout": 9.1,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.4
   },
   {
    "p": 2024,
@@ -115,7 +124,8 @@
    "equity": 49551.0,
    "dps": 1.56,
    "payout": 9.4,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.56
   },
   {
    "p": 2025,
@@ -127,7 +137,8 @@
    "equity": 53415.0,
    "dps": 1.72,
    "payout": 9.6,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.72
   }
  ],
  "quarterly": [

@@ -1,5 +1,6 @@
 {
  "name": "SBUX",
+ "split_adjusted": false,
  "legal_name": "STARBUCKS CORP",
  "code": "SBUX",
  "cik": "0000829224",
@@ -19,7 +20,8 @@
    "equity": 5890.7,
    "dps": 0.85,
    "payout": 44.4,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.85
   },
   {
    "p": 2017,
@@ -31,7 +33,8 @@
    "equity": 5457.0,
    "dps": 1.05,
    "payout": 52.8,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.05
   },
   {
    "p": 2018,
@@ -43,7 +46,8 @@
    "equity": 1175.8,
    "dps": 1.32,
    "payout": 40.4,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.32
   },
   {
    "p": 2019,
@@ -55,7 +59,8 @@
    "equity": -6231.0,
    "dps": 1.49,
    "payout": 50.6,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.49
   },
   {
    "p": 2020,
@@ -67,7 +72,8 @@
    "equity": -7799.4,
    "dps": 1.23,
    "payout": 156.0,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.23
   },
   {
    "p": 2021,
@@ -79,7 +85,8 @@
    "equity": -5314.5,
    "dps": 2.29,
    "payout": 64.2,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.29
   },
   {
    "p": 2022,
@@ -91,7 +98,8 @@
    "equity": -8698.7,
    "dps": 2,
    "payout": 70.3,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.0
   },
   {
    "p": 2023,
@@ -103,7 +111,8 @@
    "equity": -7987.8,
    "dps": 2.16,
    "payout": 60.1,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.16
   },
   {
    "p": 2024,
@@ -115,7 +124,8 @@
    "equity": -7441.6,
    "dps": 2.32,
    "payout": 69.9,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.32
   },
   {
    "p": 2025,
@@ -127,7 +137,8 @@
    "equity": -8089.2,
    "dps": 2.45,
    "payout": 149.9,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.45
   }
  ],
  "quarterly": [

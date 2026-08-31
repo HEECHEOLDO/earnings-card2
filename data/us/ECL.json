@@ -1,5 +1,6 @@
 {
  "name": "ECL",
+ "split_adjusted": false,
  "legal_name": "ECOLAB INC.",
  "code": "ECL",
  "cik": "0000031462",
@@ -19,7 +20,8 @@
    "equity": 6941.0,
    "dps": 1.42,
    "payout": 33.3,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.42
   },
   {
    "p": 2017,
@@ -31,7 +33,8 @@
    "equity": 7653.8,
    "dps": 1.52,
    "payout": 29.0,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.52
   },
   {
    "p": 2018,
@@ -43,7 +46,8 @@
    "equity": 8053.6,
    "dps": 1.69,
    "payout": 33.9,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.69
   },
   {
    "p": 2019,
@@ -55,7 +59,8 @@
    "equity": 8725.8,
    "dps": 1.85,
    "payout": 33.8,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.85
   },
   {
    "p": 2020,
@@ -67,7 +72,8 @@
    "equity": 6201.5,
    "dps": 1.89,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.89
   },
   {
    "p": 2021,
@@ -79,7 +85,8 @@
    "equity": 7253.1,
    "dps": 1.95,
    "payout": 48.8,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.95
   },
   {
    "p": 2022,
@@ -91,7 +98,8 @@
    "equity": 7258.6,
    "dps": 2.06,
    "payout": 53.0,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.06
   },
   {
    "p": 2023,
@@ -103,7 +111,8 @@
    "equity": 8072.2,
    "dps": 2.16,
    "payout": 44.2,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.16
   },
   {
    "p": 2024,
@@ -115,7 +124,8 @@
    "equity": 8789.2,
    "dps": 2.36,
    "payout": 31.5,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.36
   },
   {
    "p": 2025,
@@ -127,7 +137,8 @@
    "equity": 9804.5,
    "dps": 2.68,
    "payout": 36.3,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.68
   }
  ],
  "quarterly": [

@@ -1,5 +1,6 @@
 {
  "name": "MRK",
+ "split_adjusted": false,
  "legal_name": "Merck & Co., Inc.",
  "code": "MRK",
  "cik": "0000310158",
@@ -19,7 +20,8 @@
    "equity": 40308.0,
    "dps": 1.85,
    "payout": 129.8,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.85
   },
   {
    "p": 2017,
@@ -31,7 +33,8 @@
    "equity": 34569.0,
    "dps": 1.89,
    "payout": 213.4,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.89
   },
   {
    "p": 2018,
@@ -43,7 +46,8 @@
    "equity": 26882.0,
    "dps": 1.99,
    "payout": 85.6,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.99
   },
   {
    "p": 2019,
@@ -55,7 +59,8 @@
    "equity": 26001.0,
    "dps": 2.26,
    "payout": 58.9,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.26
   },
   {
    "p": 2020,
@@ -67,7 +72,8 @@
    "equity": 25404.0,
    "dps": 2.48,
    "payout": 88.8,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.48
   },
   {
    "p": 2021,
@@ -79,7 +85,8 @@
    "equity": 38257.0,
    "dps": 2.64,
    "payout": 54.1,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.64
   },
   {
    "p": 2022,
@@ -91,7 +98,8 @@
    "equity": 46058.0,
    "dps": 2.8,
    "payout": 48.8,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.8
   },
   {
    "p": 2023,
@@ -103,7 +111,8 @@
    "equity": 37635.0,
    "dps": 2.96,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.96
   },
   {
    "p": 2024,
@@ -115,7 +124,8 @@
    "equity": 46372.0,
    "dps": 3.12,
    "payout": 46.2,
-   "yield": null
+   "yield": null,
+   "dps_adj": 3.12
   },
   {
    "p": 2025,
@@ -127,7 +137,8 @@
    "equity": 52662.0,
    "dps": 3.28,
    "payout": 45.0,
-   "yield": null
+   "yield": null,
+   "dps_adj": 3.28
   }
  ],
  "quarterly": [

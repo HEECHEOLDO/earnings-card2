@@ -1,5 +1,6 @@
 {
  "name": "HON",
+ "split_adjusted": false,
  "legal_name": "HONEYWELL INTERNATIONAL INC",
  "code": "HON",
  "cik": "0000773840",
@@ -19,7 +20,8 @@
    "equity": 18883.0,
    "dps": 2.45,
    "payout": 38.6,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.45
   },
   {
    "p": 2017,
@@ -31,7 +33,8 @@
    "equity": 16665.0,
    "dps": 2.74,
    "payout": 131.5,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.74
   },
   {
    "p": 2018,
@@ -43,7 +46,8 @@
    "equity": 18358.0,
    "dps": 3.055,
    "payout": 33.2,
-   "yield": null
+   "yield": null,
+   "dps_adj": 3.055
   },
   {
    "p": 2019,
@@ -55,7 +59,8 @@
    "equity": 18706.0,
    "dps": 3.36,
    "payout": 38.9,
-   "yield": null
+   "yield": null,
+   "dps_adj": 3.36
   },
   {
    "p": 2020,
@@ -67,7 +72,8 @@
    "equity": 17790.0,
    "dps": 3.63,
    "payout": 52.5,
-   "yield": null
+   "yield": null,
+   "dps_adj": 3.63
   },
   {
    "p": 2021,
@@ -79,7 +85,8 @@
    "equity": 19242.0,
    "dps": 3.77,
    "payout": 46.5,
-   "yield": null
+   "yield": null,
+   "dps_adj": 3.77
   },
   {
    "p": 2022,
@@ -91,7 +98,8 @@
    "equity": 17319.0,
    "dps": 3.97,
    "payout": 54.1,
-   "yield": null
+   "yield": null,
+   "dps_adj": 3.97
   },
   {
    "p": 2023,
@@ -103,7 +111,8 @@
    "equity": 16434.0,
    "dps": 4.17,
    "payout": 48.7,
-   "yield": null
+   "yield": null,
+   "dps_adj": 4.17
   },
   {
    "p": 2024,
@@ -115,7 +124,8 @@
    "equity": 19154.0,
    "dps": 4.37,
    "payout": 49.6,
-   "yield": null
+   "yield": null,
+   "dps_adj": 4.37
   },
   {
    "p": 2025,
@@ -127,7 +137,8 @@
    "equity": 15030.0,
    "dps": 4.58,
    "payout": 61.3,
-   "yield": null
+   "yield": null,
+   "dps_adj": 4.58
   }
  ],
  "quarterly": [

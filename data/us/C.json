@@ -1,5 +1,6 @@
 {
  "name": "C",
+ "split_adjusted": false,
  "legal_name": "CITIGROUP INC",
  "code": "C",
  "cik": "0000831001",
@@ -19,7 +20,8 @@
    "equity": 226143.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2017,
@@ -31,7 +33,8 @@
    "equity": 201672.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2018,
@@ -43,7 +46,8 @@
    "equity": 197074.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2019,
@@ -55,7 +59,8 @@
    "equity": 193946.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2020,
@@ -67,7 +72,8 @@
    "equity": 200200.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2021,
@@ -79,7 +85,8 @@
    "equity": 202672.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2022,
@@ -91,7 +98,8 @@
    "equity": 201838.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2023,
@@ -103,7 +111,8 @@
    "equity": 206251.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2024,
@@ -115,7 +124,8 @@
    "equity": 209366.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2025,
@@ -127,7 +137,8 @@
    "equity": 213822.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   }
  ],
  "quarterly": [

@@ -1,5 +1,6 @@
 {
  "name": "MS",
+ "split_adjusted": false,
  "legal_name": "MORGAN STANLEY",
  "code": "MS",
  "cik": "0000895421",
@@ -19,7 +20,8 @@
    "equity": 77177.0,
    "dps": 0.7,
    "payout": 21.1,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.7
   },
   {
    "p": 2017,
@@ -31,7 +33,8 @@
    "equity": 78466.0,
    "dps": 0.9,
    "payout": 25.8,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.9
   },
   {
    "p": 2018,
@@ -43,7 +46,8 @@
    "equity": 81406.0,
    "dps": 1.1,
    "payout": 21.2,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.1
   },
   {
    "p": 2019,
@@ -55,7 +59,8 @@
    "equity": 82697.0,
    "dps": 1.3,
    "payout": 22.8,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.3
   },
   {
    "p": 2020,
@@ -67,7 +72,8 @@
    "equity": 103149.0,
    "dps": 1.4,
    "payout": 20.1,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.4
   },
   {
    "p": 2021,
@@ -79,7 +85,8 @@
    "equity": 106598.0,
    "dps": 2.1,
    "payout": 24.8,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.1
   },
   {
    "p": 2022,
@@ -91,7 +98,8 @@
    "equity": 101231.0,
    "dps": 2.95,
    "payout": 44.6,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.95
   },
   {
    "p": 2023,
@@ -103,7 +111,8 @@
    "equity": 99982.0,
    "dps": 3.25,
    "payout": 57.3,
-   "yield": null
+   "yield": null,
+   "dps_adj": 3.25
   },
   {
    "p": 2024,
@@ -115,7 +124,8 @@
    "equity": 105428.0,
    "dps": 3.55,
    "payout": 41.7,
-   "yield": null
+   "yield": null,
+   "dps_adj": 3.55
   },
   {
    "p": 2025,
@@ -127,7 +137,8 @@
    "equity": 112652.0,
    "dps": 3.85,
    "payout": 35.6,
-   "yield": null
+   "yield": null,
+   "dps_adj": 3.85
   }
  ],
  "quarterly": [

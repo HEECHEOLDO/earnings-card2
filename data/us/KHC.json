@@ -1,5 +1,6 @@
 {
  "name": "KHC",
+ "split_adjusted": false,
  "legal_name": "Kraft Heinz Co",
  "code": "KHC",
  "cik": "0001637459",
@@ -19,7 +20,8 @@
    "equity": 57460.0,
    "dps": 2.35,
    "payout": 79.3,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.35
   },
   {
    "p": 2017,
@@ -31,7 +33,8 @@
    "equity": 66070.0,
    "dps": 2.45,
    "payout": 27.3,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.45
   },
   {
    "p": 2018,
@@ -43,7 +46,8 @@
    "equity": 51775.0,
    "dps": 2.5,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.5
   },
   {
    "p": 2019,
@@ -55,7 +59,8 @@
    "equity": 51749.0,
    "dps": 1.6,
    "payout": 101.1,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.6
   },
   {
    "p": 2020,
@@ -67,7 +72,8 @@
    "equity": 50243.0,
    "dps": 1.6,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.6
   },
   {
    "p": 2021,
@@ -79,7 +85,8 @@
    "equity": 49448.0,
    "dps": 1.6,
    "payout": 191.2,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.6
   },
   {
    "p": 2022,
@@ -91,7 +98,8 @@
    "equity": 48830.0,
    "dps": 1.6,
    "payout": 82.8,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.6
   },
   {
    "p": 2023,
@@ -103,7 +111,8 @@
    "equity": 49688.0,
    "dps": 1.6,
    "payout": 69.0,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.6
   },
   {
    "p": 2024,
@@ -115,7 +124,8 @@
    "equity": 49319.0,
    "dps": 1.6,
    "payout": 70.5,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.6
   },
   {
    "p": 2025,
@@ -127,7 +137,8 @@
    "equity": 41777.0,
    "dps": 1.6,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.6
   }
  ],
  "quarterly": [

@@ -1,5 +1,6 @@
 {
  "name": "AMAT",
+ "split_adjusted": false,
  "legal_name": "APPLIED MATERIALS INC /DE",
  "code": "AMAT",
  "cik": "0000006951",
@@ -19,7 +20,8 @@
    "equity": 7413.0,
    "dps": 0.1,
    "payout": 6.4,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.1
   },
   {
    "p": 2017,
@@ -31,7 +33,8 @@
    "equity": 9630.0,
    "dps": 0.1,
    "payout": 3.0,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.1
   },
   {
    "p": 2018,
@@ -43,7 +46,8 @@
    "equity": 6845.0,
    "dps": 0.7,
    "payout": 23.3,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.7
   },
   {
    "p": 2019,
@@ -55,7 +59,8 @@
    "equity": 8214.0,
    "dps": 0.83,
    "payout": 28.7,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.83
   },
   {
    "p": 2020,
@@ -67,7 +72,8 @@
    "equity": 10578.0,
    "dps": 0.87,
    "payout": 22.0,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.87
   },
   {
    "p": 2021,
@@ -79,7 +85,8 @@
    "equity": 12247.0,
    "dps": 0.94,
    "payout": 14.5,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.94
   },
   {
    "p": 2022,
@@ -91,7 +98,8 @@
    "equity": 12194.0,
    "dps": 1.02,
    "payout": 13.6,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.02
   },
   {
    "p": 2023,
@@ -103,7 +111,8 @@
    "equity": 16349.0,
    "dps": 1.22,
    "payout": 14.9,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.22
   },
   {
    "p": 2024,
@@ -115,7 +124,8 @@
    "equity": 19001.0,
    "dps": 1.52,
    "payout": 17.5,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.52
   },
   {
    "p": 2025,
@@ -127,7 +137,8 @@
    "equity": 20415.0,
    "dps": 1.78,
    "payout": 20.5,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.78
   }
  ],
  "quarterly": [

@@ -1,5 +1,6 @@
 {
  "name": "KO",
+ "split_adjusted": false,
  "legal_name": "COCA COLA CO",
  "code": "KO",
  "cik": "0000021344",
@@ -19,7 +20,8 @@
    "equity": 23220.0,
    "dps": 1.4,
    "payout": 92.3,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.4
   },
   {
    "p": 2017,
@@ -31,7 +33,8 @@
    "equity": 18977.0,
    "dps": 1.48,
    "payout": 492.8,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.48
   },
   {
    "p": 2018,
@@ -43,7 +46,8 @@
    "equity": 19058.0,
    "dps": 1.56,
    "payout": 102.6,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.56
   },
   {
    "p": 2019,
@@ -55,7 +59,8 @@
    "equity": 21098.0,
    "dps": 1.6,
    "payout": 76.1,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.6
   },
   {
    "p": 2020,
@@ -67,7 +72,8 @@
    "equity": 21284.0,
    "dps": 1.64,
    "payout": 90.7,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.64
   },
   {
    "p": 2021,
@@ -79,7 +85,8 @@
    "equity": 24860.0,
    "dps": 1.68,
    "payout": 73.9,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.68
   },
   {
    "p": 2022,
@@ -91,7 +98,8 @@
    "equity": 25826.0,
    "dps": 1.76,
    "payout": 79.6,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.76
   },
   {
    "p": 2023,
@@ -103,7 +111,8 @@
    "equity": 27480.0,
    "dps": 1.84,
    "payout": 74.3,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.84
   },
   {
    "p": 2024,
@@ -115,7 +124,8 @@
    "equity": 26372.0,
    "dps": 1.94,
    "payout": 78.5,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.94
   },
   {
    "p": 2025,
@@ -127,7 +137,8 @@
    "equity": 34275.0,
    "dps": 2.04,
    "payout": 66.8,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.04
   }
  ],
  "quarterly": [

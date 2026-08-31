@@ -1,5 +1,6 @@
 {
  "name": "BKNG",
+ "split_adjusted": false,
  "legal_name": "Booking Holdings Inc.",
  "code": "BKNG",
  "cik": "0001075531",
@@ -19,7 +20,8 @@
    "equity": 9820.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2017,
@@ -31,7 +33,8 @@
    "equity": 11261.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2018,
@@ -43,7 +46,8 @@
    "equity": 8785.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2019,
@@ -55,7 +59,8 @@
    "equity": 5933.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2020,
@@ -67,7 +72,8 @@
    "equity": 4893.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2021,
@@ -79,7 +85,8 @@
    "equity": 6178.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2022,
@@ -91,7 +98,8 @@
    "equity": 2782.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2023,
@@ -103,7 +111,8 @@
    "equity": -2744.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2024,
@@ -115,7 +124,8 @@
    "equity": -4020.0,
    "dps": 8.75,
    "payout": 5.0,
-   "yield": null
+   "yield": null,
+   "dps_adj": 8.75
   },
   {
    "p": 2025,
@@ -127,7 +137,8 @@
    "equity": -5578.0,
    "dps": 9.6,
    "payout": 5.8,
-   "yield": null
+   "yield": null,
+   "dps_adj": 9.6
   }
  ],
  "quarterly": [

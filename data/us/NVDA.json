@@ -1,5 +1,6 @@
 {
  "name": "NVDA",
+ "split_adjusted": true,
  "legal_name": "NVIDIA CORP",
  "code": "NVDA",
  "cik": "0001045810",
@@ -19,7 +20,8 @@
    "equity": 5762.0,
    "dps": 0.485,
    "payout": 15.7,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.0121
   },
   {
    "p": 2018,
@@ -31,7 +33,8 @@
    "equity": 7471.0,
    "dps": 0.57,
    "payout": 11.2,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.0142
   },
   {
    "p": 2019,
@@ -43,7 +46,8 @@
    "equity": 9342.0,
    "dps": 0.61,
    "payout": 9.0,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.0152
   },
   {
    "p": 2020,
@@ -55,7 +59,8 @@
    "equity": 12204.0,
    "dps": 0.16,
    "payout": 14.0,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.016
   },
   {
    "p": 2021,
@@ -67,7 +72,8 @@
    "equity": 16893.0,
    "dps": 0.16,
    "payout": 9.1,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.016
   },
   {
    "p": 2022,
@@ -79,7 +85,8 @@
    "equity": 26612.0,
    "dps": 0.16,
    "payout": 4.1,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.016
   },
   {
    "p": 2023,
@@ -91,7 +98,8 @@
    "equity": 22101.0,
    "dps": 0.016,
    "payout": 9.1,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.016
   },
   {
    "p": 2024,
@@ -103,7 +111,8 @@
    "equity": 42978.0,
    "dps": 0.016,
    "payout": 1.3,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.016
   },
   {
    "p": 2025,
@@ -115,7 +124,8 @@
    "equity": 100131.0,
    "dps": 0.034,
    "payout": 1.1,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.034
   },
   {
    "p": 2026,
@@ -127,7 +137,8 @@
    "equity": 228984.0,
    "dps": 0.04,
    "payout": 0.8,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.04
   }
  ],
  "quarterly": [

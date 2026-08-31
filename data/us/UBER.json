@@ -1,5 +1,6 @@
 {
  "name": "UBER",
+ "split_adjusted": true,
  "legal_name": "Uber Technologies, Inc",
  "code": "UBER",
  "cik": "0001543151",
@@ -19,7 +20,8 @@
    "equity": -8557.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2018,
@@ -31,7 +33,8 @@
    "equity": -7385.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2019,
@@ -43,7 +46,8 @@
    "equity": 14872.0,
    "dps": 0,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0
   },
   {
    "p": 2020,
@@ -55,7 +59,8 @@
    "equity": 12967.0,
    "dps": 0,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0
   },
   {
    "p": 2021,
@@ -67,7 +72,8 @@
    "equity": 15145.0,
    "dps": 0,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0
   },
   {
    "p": 2022,
@@ -79,7 +85,8 @@
    "equity": 8074.0,
    "dps": 0,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0
   },
   {
    "p": 2023,
@@ -91,7 +98,8 @@
    "equity": 12028.0,
    "dps": 0,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0
   },
   {
    "p": 2024,
@@ -103,7 +111,8 @@
    "equity": 22383.0,
    "dps": 0,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0
   },
   {
    "p": 2025,
@@ -115,7 +124,8 @@
    "equity": 27918.0,
    "dps": 0,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0
   }
  ],
  "quarterly": [

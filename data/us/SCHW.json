@@ -1,5 +1,6 @@
 {
  "name": "SCHW",
+ "split_adjusted": false,
  "legal_name": "SCHWAB CHARLES CORP",
  "code": "SCHW",
  "cik": "0000316709",
@@ -19,7 +20,8 @@
    "equity": 16421.0,
    "dps": 0.27,
    "payout": 18.9,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.27
   },
   {
    "p": 2017,
@@ -31,7 +33,8 @@
    "equity": 18525.0,
    "dps": 0.32,
    "payout": 18.2,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.32
   },
   {
    "p": 2018,
@@ -43,7 +46,8 @@
    "equity": 20670.0,
    "dps": 0.46,
    "payout": 17.7,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.46
   },
   {
    "p": 2019,
@@ -55,7 +59,8 @@
    "equity": 21745.0,
    "dps": 0.68,
    "payout": 24.1,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.68
   },
   {
    "p": 2020,
@@ -67,7 +72,8 @@
    "equity": 56060.0,
    "dps": 0.72,
    "payout": 31.2,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.72
   },
   {
    "p": 2021,
@@ -79,7 +85,8 @@
    "equity": 56261.0,
    "dps": 0.72,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.72
   },
   {
    "p": 2022,
@@ -91,7 +98,8 @@
    "equity": 36608.0,
    "dps": 0.84,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.84
   },
   {
    "p": 2023,
@@ -103,7 +111,8 @@
    "equity": 40958.0,
    "dps": 1,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.0
   },
   {
    "p": 2024,
@@ -115,7 +124,8 @@
    "equity": 48375.0,
    "dps": 1,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.0
   },
   {
    "p": 2025,
@@ -127,7 +137,8 @@
    "equity": 49425.0,
    "dps": 1.08,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.08
   }
  ],
  "quarterly": [

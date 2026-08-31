@@ -1,5 +1,6 @@
 {
  "name": "OXY",
+ "split_adjusted": false,
  "legal_name": "OCCIDENTAL PETROLEUM CORP /DE/",
  "code": "OXY",
  "cik": "0000797468",
@@ -19,7 +20,8 @@
    "equity": 21497.0,
    "dps": 3.02,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": 3.02
   },
   {
    "p": 2017,
@@ -31,7 +33,8 @@
    "equity": 20572.0,
    "dps": 3.06,
    "payout": 178.6,
-   "yield": null
+   "yield": null,
+   "dps_adj": 3.06
   },
   {
    "p": 2018,
@@ -43,7 +46,8 @@
    "equity": 21330.0,
    "dps": 3.1,
    "payout": 57.2,
-   "yield": null
+   "yield": null,
+   "dps_adj": 3.1
   },
   {
    "p": 2019,
@@ -55,7 +59,8 @@
    "equity": 34232.0,
    "dps": 3.14,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": 3.14
   },
   {
    "p": 2020,
@@ -67,7 +72,8 @@
    "equity": 18573.0,
    "dps": 0.82,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.82
   },
   {
    "p": 2021,
@@ -79,7 +85,8 @@
    "equity": 20327.0,
    "dps": 0.04,
    "payout": 1.6,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.04
   },
   {
    "p": 2022,
@@ -91,7 +98,8 @@
    "equity": 30085.0,
    "dps": 0.52,
    "payout": 3.6,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.52
   },
   {
    "p": 2023,
@@ -103,7 +111,8 @@
    "equity": 30349.0,
    "dps": 0.72,
    "payout": 13.6,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.72
   },
   {
    "p": 2024,
@@ -115,7 +124,8 @@
    "equity": 34480.0,
    "dps": 0.88,
    "payout": 26.1,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.88
   },
   {
    "p": 2025,
@@ -127,7 +137,8 @@
    "equity": 36598.0,
    "dps": 0.96,
    "payout": 39.5,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.96
   }
  ],
  "quarterly": [

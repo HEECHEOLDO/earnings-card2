@@ -1,5 +1,6 @@
 {
  "name": "GE",
+ "split_adjusted": true,
  "legal_name": "GENERAL ELECTRIC CO",
  "code": "GE",
  "cik": "0000040545",
@@ -19,7 +20,8 @@
    "equity": 71825.0,
    "dps": 0.93,
    "payout": 116.4,
-   "yield": null
+   "yield": null,
+   "dps_adj": 7.4085
   },
   {
    "p": 2017,
@@ -31,7 +33,8 @@
    "equity": 73499.0,
    "dps": 0.84,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": 6.6915
   },
   {
    "p": 2018,
@@ -43,7 +46,8 @@
    "equity": 51481.0,
    "dps": 0.37,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.9475
   },
   {
    "p": 2019,
@@ -55,7 +59,8 @@
    "equity": 29861.0,
    "dps": 0.32,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.32
   },
   {
    "p": 2020,
@@ -67,7 +72,8 @@
    "equity": 37073.0,
    "dps": 0.32,
    "payout": 6.3,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.32
   },
   {
    "p": 2021,
@@ -79,7 +85,8 @@
    "equity": 33346.0,
    "dps": 0.32,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.32
   },
   {
    "p": 2022,
@@ -91,7 +98,8 @@
    "equity": 34930.0,
    "dps": 0.32,
    "payout": 87.0,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.32
   },
   {
    "p": 2023,
@@ -103,7 +111,8 @@
    "equity": 28605.0,
    "dps": 0.32,
    "payout": 3.7,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.32
   },
   {
    "p": 2024,
@@ -115,7 +124,8 @@
    "equity": 19564.0,
    "dps": 1.12,
    "payout": 18.5,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.12
   },
   {
    "p": 2025,
@@ -127,7 +137,8 @@
    "equity": 18898.0,
    "dps": 1.44,
    "payout": 17.6,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.44
   }
  ],
  "quarterly": [

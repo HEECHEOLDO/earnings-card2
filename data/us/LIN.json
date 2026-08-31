@@ -1,5 +1,6 @@
 {
  "name": "LIN",
+ "split_adjusted": false,
  "legal_name": "LINDE PLC",
  "code": "LIN",
  "cik": "0001707925",
@@ -19,7 +20,8 @@
    "equity": 5441.0,
    "dps": 3,
    "payout": 55.8,
-   "yield": null
+   "yield": null,
+   "dps_adj": 3.0
   },
   {
    "p": 2017,
@@ -31,7 +33,8 @@
    "equity": 6511.0,
    "dps": 3.15,
    "payout": 69.0,
-   "yield": null
+   "yield": null,
+   "dps_adj": 3.15
   },
   {
    "p": 2018,
@@ -43,7 +46,8 @@
    "equity": 57080.0,
    "dps": 3.3,
    "payout": 24.8,
-   "yield": null
+   "yield": null,
+   "dps_adj": 3.3
   },
   {
    "p": 2019,
@@ -55,7 +59,8 @@
    "equity": 51522.0,
    "dps": 3.5,
    "payout": 79.6,
-   "yield": null
+   "yield": null,
+   "dps_adj": 3.5
   },
   {
    "p": 2020,
@@ -67,7 +72,8 @@
    "equity": 49569.0,
    "dps": 3.852,
    "payout": 77.3,
-   "yield": null
+   "yield": null,
+   "dps_adj": 3.852
   },
   {
    "p": 2021,
@@ -79,7 +85,8 @@
    "equity": 45428.0,
    "dps": 4.24,
    "payout": 57.3,
-   "yield": null
+   "yield": null,
+   "dps_adj": 4.24
   },
   {
    "p": 2022,
@@ -91,7 +98,8 @@
    "equity": 41374.0,
    "dps": 4.68,
    "payout": 56.4,
-   "yield": null
+   "yield": null,
+   "dps_adj": 4.68
   },
   {
    "p": 2023,
@@ -103,7 +111,8 @@
    "equity": 41082.0,
    "dps": 5.1,
    "payout": 40.2,
-   "yield": null
+   "yield": null,
+   "dps_adj": 5.1
   },
   {
    "p": 2024,
@@ -115,7 +124,8 @@
    "equity": 39475.0,
    "dps": 5.56,
    "payout": 40.5,
-   "yield": null
+   "yield": null,
+   "dps_adj": 5.56
   },
   {
    "p": 2025,
@@ -127,7 +137,8 @@
    "equity": 39728.0,
    "dps": 6,
    "payout": 40.8,
-   "yield": null
+   "yield": null,
+   "dps_adj": 6.0
   }
  ],
  "quarterly": [

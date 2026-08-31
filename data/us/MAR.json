@@ -1,5 +1,6 @@
 {
  "name": "MAR",
+ "split_adjusted": false,
  "legal_name": "MARRIOTT INTERNATIONAL INC /MD/",
  "code": "MAR",
  "cik": "0001048286",
@@ -19,7 +20,8 @@
    "equity": 5121.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2017,
@@ -31,7 +33,8 @@
    "equity": 3582.0,
    "dps": 1.29,
    "payout": 33.2,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.29
   },
   {
    "p": 2018,
@@ -43,7 +46,8 @@
    "equity": 2225.0,
    "dps": 1.56,
    "payout": 28.6,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.56
   },
   {
    "p": 2019,
@@ -55,7 +59,8 @@
    "equity": 703.0,
    "dps": 1.85,
    "payout": 48.3,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.85
   },
   {
    "p": 2020,
@@ -67,7 +72,8 @@
    "equity": 430.0,
    "dps": 0.48,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.48
   },
   {
    "p": 2021,
@@ -79,7 +85,8 @@
    "equity": 1414.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2022,
@@ -91,7 +98,8 @@
    "equity": 568.0,
    "dps": 1,
    "payout": 13.8,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.0
   },
   {
    "p": 2023,
@@ -103,7 +111,8 @@
    "equity": -682.0,
    "dps": 1.96,
    "payout": 19.2,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.96
   },
   {
    "p": 2024,
@@ -115,7 +124,8 @@
    "equity": -2992.0,
    "dps": 2.41,
    "payout": 28.8,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.41
   },
   {
    "p": 2025,
@@ -127,7 +137,8 @@
    "equity": -3771.0,
    "dps": 2.64,
    "payout": 27.7,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.64
   }
  ],
  "quarterly": [

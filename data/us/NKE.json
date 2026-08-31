@@ -1,5 +1,6 @@
 {
  "name": "NKE",
+ "split_adjusted": false,
  "legal_name": "NIKE, Inc.",
  "code": "NKE",
  "cik": "0000320187",
@@ -19,7 +20,8 @@
    "equity": 12407.0,
    "dps": 0.7,
    "payout": 27.4,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.7
   },
   {
    "p": 2018,
@@ -31,7 +33,8 @@
    "equity": 9812.0,
    "dps": 0.78,
    "payout": 65.5,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.78
   },
   {
    "p": 2019,
@@ -43,7 +46,8 @@
    "equity": 9040.0,
    "dps": 0.86,
    "payout": 33.7,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.86
   },
   {
    "p": 2020,
@@ -55,7 +59,8 @@
    "equity": 8055.0,
    "dps": 0.955,
    "payout": 58.6,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.955
   },
   {
    "p": 2021,
@@ -67,7 +72,8 @@
    "equity": 12767.0,
    "dps": 1.07,
    "payout": 29.4,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.07
   },
   {
    "p": 2022,
@@ -79,7 +85,8 @@
    "equity": 15281.0,
    "dps": 1.19,
    "payout": 31.1,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.19
   },
   {
    "p": 2023,
@@ -91,7 +98,8 @@
    "equity": 14004.0,
    "dps": 1.325,
    "payout": 40.5,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.325
   },
   {
    "p": 2024,
@@ -103,7 +111,8 @@
    "equity": 14430.0,
    "dps": 1.45,
    "payout": 38.6,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.45
   },
   {
    "p": 2025,
@@ -115,7 +124,8 @@
    "equity": 13213.0,
    "dps": 1.57,
    "payout": 72.4,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.57
   },
   {
    "p": 2026,
@@ -127,7 +137,8 @@
    "equity": 14865.0,
    "dps": 1.63,
    "payout": 77.6,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.63
   }
  ],
  "quarterly": [

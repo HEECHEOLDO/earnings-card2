@@ -1,5 +1,6 @@
 {
  "name": "INTU",
+ "split_adjusted": false,
  "legal_name": "INTUIT INC.",
  "code": "INTU",
  "cik": "0000896878",
@@ -19,7 +20,8 @@
    "equity": 1492.0,
    "dps": 1.2,
    "payout": 32.1,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.2
   },
   {
    "p": 2017,
@@ -31,7 +33,8 @@
    "equity": 1699.0,
    "dps": 1.36,
    "payout": 35.5,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.36
   },
   {
    "p": 2018,
@@ -43,7 +46,8 @@
    "equity": 2816.0,
    "dps": 1.56,
    "payout": 30.0,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.56
   },
   {
    "p": 2019,
@@ -55,7 +59,8 @@
    "equity": 3749.0,
    "dps": 1.88,
    "payout": 31.4,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.88
   },
   {
    "p": 2020,
@@ -67,7 +72,8 @@
    "equity": 5106.0,
    "dps": 2.12,
    "payout": 30.3,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.12
   },
   {
    "p": 2021,
@@ -79,7 +85,8 @@
    "equity": 9869.0,
    "dps": 2.36,
    "payout": 30.9,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.36
   },
   {
    "p": 2022,
@@ -91,7 +98,8 @@
    "equity": 16441.0,
    "dps": 2.72,
    "payout": 36.9,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.72
   },
   {
    "p": 2023,
@@ -103,7 +111,8 @@
    "equity": 17269.0,
    "dps": 3.12,
    "payout": 36.8,
-   "yield": null
+   "yield": null,
+   "dps_adj": 3.12
   },
   {
    "p": 2024,
@@ -115,7 +124,8 @@
    "equity": 18436.0,
    "dps": 3.6,
    "payout": 34.0,
-   "yield": null
+   "yield": null,
+   "dps_adj": 3.6
   },
   {
    "p": 2025,
@@ -127,7 +137,8 @@
    "equity": 19710.0,
    "dps": 4.16,
    "payout": 30.1,
-   "yield": null
+   "yield": null,
+   "dps_adj": 4.16
   }
  ],
  "quarterly": [

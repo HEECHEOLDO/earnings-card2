@@ -1,5 +1,6 @@
 {
  "name": "AMGN",
+ "split_adjusted": false,
  "legal_name": "AMGEN INC",
  "code": "AMGN",
  "cik": "0000318154",
@@ -19,7 +20,8 @@
    "equity": 29875.0,
    "dps": 4.15,
    "payout": 40.2,
-   "yield": null
+   "yield": null,
+   "dps_adj": 4.15
   },
   {
    "p": 2017,
@@ -31,7 +33,8 @@
    "equity": 25241.0,
    "dps": 4.77,
    "payout": 176.2,
-   "yield": null
+   "yield": null,
+   "dps_adj": 4.77
   },
   {
    "p": 2018,
@@ -43,7 +46,8 @@
    "equity": 12500.0,
    "dps": 5.41,
    "payout": 42.6,
-   "yield": null
+   "yield": null,
+   "dps_adj": 5.41
   },
   {
    "p": 2019,
@@ -55,7 +59,8 @@
    "equity": 9673.0,
    "dps": 5.95,
    "payout": 45.9,
-   "yield": null
+   "yield": null,
+   "dps_adj": 5.95
   },
   {
    "p": 2020,
@@ -67,7 +72,8 @@
    "equity": 9409.0,
    "dps": 6.56,
    "payout": 52.9,
-   "yield": null
+   "yield": null,
+   "dps_adj": 6.56
   },
   {
    "p": 2021,
@@ -79,7 +85,8 @@
    "equity": 6700.0,
    "dps": 7.22,
    "payout": 69.8,
-   "yield": null
+   "yield": null,
+   "dps_adj": 7.22
   },
   {
    "p": 2022,
@@ -91,7 +98,8 @@
    "equity": 3661.0,
    "dps": 7.95,
    "payout": 65.3,
-   "yield": null
+   "yield": null,
+   "dps_adj": 7.95
   },
   {
    "p": 2023,
@@ -103,7 +111,8 @@
    "equity": 6232.0,
    "dps": 8.64,
    "payout": 68.8,
-   "yield": null
+   "yield": null,
+   "dps_adj": 8.64
   },
   {
    "p": 2024,
@@ -115,7 +124,8 @@
    "equity": 5877.0,
    "dps": 9.13,
    "payout": 119.9,
-   "yield": null
+   "yield": null,
+   "dps_adj": 9.13
   },
   {
    "p": 2025,
@@ -127,7 +137,8 @@
    "equity": 8658.0,
    "dps": 9.66,
    "payout": 67.4,
-   "yield": null
+   "yield": null,
+   "dps_adj": 9.66
   }
  ],
  "quarterly": [

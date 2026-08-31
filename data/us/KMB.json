@@ -1,5 +1,6 @@
 {
  "name": "KMB",
+ "split_adjusted": false,
  "legal_name": "KIMBERLY CLARK CORP",
  "code": "KMB",
  "cik": "0000055785",
@@ -19,7 +20,8 @@
    "equity": 117.0,
    "dps": 3.68,
    "payout": 59.6,
-   "yield": null
+   "yield": null,
+   "dps_adj": 3.68
   },
   {
    "p": 2017,
@@ -31,7 +33,8 @@
    "equity": 882.0,
    "dps": 3.88,
    "payout": 59.2,
-   "yield": null
+   "yield": null,
+   "dps_adj": 3.88
   },
   {
    "p": 2018,
@@ -43,7 +46,8 @@
    "equity": -46.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2019,
@@ -55,7 +59,8 @@
    "equity": 194.0,
    "dps": 4.12,
    "payout": 64.4,
-   "yield": null
+   "yield": null,
+   "dps_adj": 4.12
   },
   {
    "p": 2020,
@@ -67,7 +72,8 @@
    "equity": 869.0,
    "dps": 4.28,
    "payout": 60.9,
-   "yield": null
+   "yield": null,
+   "dps_adj": 4.28
   },
   {
    "p": 2021,
@@ -79,7 +85,8 @@
    "equity": 737.0,
    "dps": 4.56,
    "payout": 83.4,
-   "yield": null
+   "yield": null,
+   "dps_adj": 4.56
   },
   {
    "p": 2022,
@@ -91,7 +98,8 @@
    "equity": 700.0,
    "dps": 4.64,
    "payout": 79.8,
-   "yield": null
+   "yield": null,
+   "dps_adj": 4.64
   },
   {
    "p": 2023,
@@ -103,7 +111,8 @@
    "equity": 1068.0,
    "dps": 4.72,
    "payout": 90.4,
-   "yield": null
+   "yield": null,
+   "dps_adj": 4.72
   },
   {
    "p": 2024,
@@ -115,7 +124,8 @@
    "equity": 975.0,
    "dps": 4.88,
    "payout": 63.5,
-   "yield": null
+   "yield": null,
+   "dps_adj": 4.88
   },
   {
    "p": 2025,
@@ -127,7 +137,8 @@
    "equity": 1630.0,
    "dps": 5.04,
    "payout": 81.6,
-   "yield": null
+   "yield": null,
+   "dps_adj": 5.04
   }
  ],
  "quarterly": [

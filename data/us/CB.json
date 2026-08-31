@@ -1,5 +1,6 @@
 {
  "name": "CB",
+ "split_adjusted": false,
  "legal_name": "Chubb Ltd",
  "code": "CB",
  "cik": "0000896159",
@@ -19,7 +20,8 @@
    "equity": 48275.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2017,
@@ -31,7 +33,8 @@
    "equity": 51172.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2018,
@@ -43,7 +46,8 @@
    "equity": 50312.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2019,
@@ -55,7 +59,8 @@
    "equity": 55331.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2020,
@@ -67,7 +72,8 @@
    "equity": 59441.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2021,
@@ -79,7 +85,8 @@
    "equity": 58328.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2022,
@@ -91,7 +98,8 @@
    "equity": 50519.0,
    "dps": 3.29,
    "payout": 26.3,
-   "yield": null
+   "yield": null,
+   "dps_adj": 3.29
   },
   {
    "p": 2023,
@@ -103,7 +111,8 @@
    "equity": 63691.0,
    "dps": 3.41,
    "payout": 15.5,
-   "yield": null
+   "yield": null,
+   "dps_adj": 3.41
   },
   {
    "p": 2024,
@@ -115,7 +124,8 @@
    "equity": 68394.0,
    "dps": 3.59,
    "payout": 15.1,
-   "yield": null
+   "yield": null,
+   "dps_adj": 3.59
   },
   {
    "p": 2025,
@@ -127,7 +137,8 @@
    "equity": 79779.0,
    "dps": 3.82,
    "payout": 14.3,
-   "yield": null
+   "yield": null,
+   "dps_adj": 3.82
   }
  ],
  "quarterly": [

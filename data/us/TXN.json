@@ -1,5 +1,6 @@
 {
  "name": "TXN",
+ "split_adjusted": false,
  "legal_name": "TEXAS INSTRUMENTS INC",
  "code": "TXN",
  "cik": "0000097476",
@@ -19,7 +20,8 @@
    "equity": 10473.0,
    "dps": 1.64,
    "payout": 45.8,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.64
   },
   {
    "p": 2017,
@@ -31,7 +33,8 @@
    "equity": 10337.0,
    "dps": 2.12,
    "payout": 57.1,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.12
   },
   {
    "p": 2018,
@@ -43,7 +46,8 @@
    "equity": 8994.0,
    "dps": 2.63,
    "payout": 45.7,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.63
   },
   {
    "p": 2019,
@@ -55,7 +59,8 @@
    "equity": 8907.0,
    "dps": 3.21,
    "payout": 59.9,
-   "yield": null
+   "yield": null,
+   "dps_adj": 3.21
   },
   {
    "p": 2020,
@@ -67,7 +72,8 @@
    "equity": 9187.0,
    "dps": 3.72,
    "payout": 61.2,
-   "yield": null
+   "yield": null,
+   "dps_adj": 3.72
   },
   {
    "p": 2021,
@@ -79,7 +85,8 @@
    "equity": 13333.0,
    "dps": 4.21,
    "payout": 50.0,
-   "yield": null
+   "yield": null,
+   "dps_adj": 4.21
   },
   {
    "p": 2022,
@@ -91,7 +98,8 @@
    "equity": 14577.0,
    "dps": 4.69,
    "payout": 49.1,
-   "yield": null
+   "yield": null,
+   "dps_adj": 4.69
   },
   {
    "p": 2023,
@@ -103,7 +111,8 @@
    "equity": 16897.0,
    "dps": 5.02,
    "payout": 70.0,
-   "yield": null
+   "yield": null,
+   "dps_adj": 5.02
   },
   {
    "p": 2024,
@@ -115,7 +124,8 @@
    "equity": 16903.0,
    "dps": 5.26,
    "payout": 100.0,
-   "yield": null
+   "yield": null,
+   "dps_adj": 5.26
   },
   {
    "p": 2025,
@@ -127,7 +137,8 @@
    "equity": 16273.0,
    "dps": 5.5,
    "payout": 100.0,
-   "yield": null
+   "yield": null,
+   "dps_adj": 5.5
   }
  ],
  "quarterly": [

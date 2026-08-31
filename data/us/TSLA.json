@@ -1,5 +1,6 @@
 {
  "name": "TSLA",
+ "split_adjusted": true,
  "legal_name": "Tesla, Inc.",
  "code": "TSLA",
  "cik": "0001318605",
@@ -19,7 +20,8 @@
    "equity": 5538.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2017,
@@ -31,7 +33,8 @@
    "equity": 5234.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2018,
@@ -43,7 +46,8 @@
    "equity": 5757.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2019,
@@ -55,7 +59,8 @@
    "equity": 7467.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2020,
@@ -67,7 +72,8 @@
    "equity": 23075.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2021,
@@ -79,7 +85,8 @@
    "equity": 31015.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2022,
@@ -91,7 +98,8 @@
    "equity": 45489.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2023,
@@ -103,7 +111,8 @@
    "equity": 63367.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2024,
@@ -115,7 +124,8 @@
    "equity": 73617.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2025,
@@ -127,7 +137,8 @@
    "equity": 82807.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   }
  ],
  "quarterly": [

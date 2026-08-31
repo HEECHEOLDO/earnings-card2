@@ -1,5 +1,6 @@
 {
  "name": "CAT",
+ "split_adjusted": false,
  "legal_name": "CATERPILLAR INC",
  "code": "CAT",
  "cik": "0000018230",
@@ -19,7 +20,8 @@
    "equity": 13228.0,
    "dps": 3.08,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": 3.08
   },
   {
    "p": 2017,
@@ -31,7 +33,8 @@
    "equity": 13766.0,
    "dps": 3.11,
    "payout": 242.5,
-   "yield": null
+   "yield": null,
+   "dps_adj": 3.11
   },
   {
    "p": 2018,
@@ -43,7 +46,8 @@
    "equity": 14080.0,
    "dps": 3.36,
    "payout": 32.3,
-   "yield": null
+   "yield": null,
+   "dps_adj": 3.36
   },
   {
    "p": 2019,
@@ -55,7 +59,8 @@
    "equity": 14629.0,
    "dps": 3.95,
    "payout": 36.4,
-   "yield": null
+   "yield": null,
+   "dps_adj": 3.95
   },
   {
    "p": 2020,
@@ -67,7 +72,8 @@
    "equity": 15378.0,
    "dps": 4.12,
    "payout": 74.6,
-   "yield": null
+   "yield": null,
+   "dps_adj": 4.12
   },
   {
    "p": 2021,
@@ -79,7 +85,8 @@
    "equity": 16516.0,
    "dps": 4.36,
    "payout": 36.6,
-   "yield": null
+   "yield": null,
+   "dps_adj": 4.36
   },
   {
    "p": 2022,
@@ -91,7 +98,8 @@
    "equity": 15891.0,
    "dps": 4.71,
    "payout": 37.0,
-   "yield": null
+   "yield": null,
+   "dps_adj": 4.71
   },
   {
    "p": 2023,
@@ -103,7 +111,8 @@
    "equity": 19503.0,
    "dps": 5.1,
    "payout": 25.2,
-   "yield": null
+   "yield": null,
+   "dps_adj": 5.1
   },
   {
    "p": 2024,
@@ -115,7 +124,8 @@
    "equity": 19494.0,
    "dps": 5.53,
    "payout": 24.9,
-   "yield": null
+   "yield": null,
+   "dps_adj": 5.53
   },
   {
    "p": 2025,
@@ -127,7 +137,8 @@
    "equity": 21318.0,
    "dps": 5.94,
    "payout": 31.4,
-   "yield": null
+   "yield": null,
+   "dps_adj": 5.94
   }
  ],
  "quarterly": [

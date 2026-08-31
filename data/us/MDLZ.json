@@ -1,5 +1,6 @@
 {
  "name": "MDLZ",
+ "split_adjusted": false,
  "legal_name": "Mondelez International, Inc.",
  "code": "MDLZ",
  "cik": "0001103982",
@@ -19,7 +20,8 @@
    "equity": 25195.0,
    "dps": 0.72,
    "payout": 68.1,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.72
   },
   {
    "p": 2017,
@@ -31,7 +33,8 @@
    "equity": 26025.0,
    "dps": 0.82,
    "payout": 43.7,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.82
   },
   {
    "p": 2018,
@@ -43,7 +46,8 @@
    "equity": 25602.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2019,
@@ -55,7 +59,8 @@
    "equity": 27317.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2020,
@@ -67,7 +72,8 @@
    "equity": 27654.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2021,
@@ -79,7 +85,8 @@
    "equity": 28323.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2022,
@@ -91,7 +98,8 @@
    "equity": 26920.0,
    "dps": 1.47,
    "payout": 74.3,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.47
   },
   {
    "p": 2023,
@@ -103,7 +111,8 @@
    "equity": 28366.0,
    "dps": 1.62,
    "payout": 44.4,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.62
   },
   {
    "p": 2024,
@@ -115,7 +124,8 @@
    "equity": 26958.0,
    "dps": 1.79,
    "payout": 51.9,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.79
   },
   {
    "p": 2025,
@@ -127,7 +137,8 @@
    "equity": 25891.0,
    "dps": 1.94,
    "payout": 101.8,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.94
   }
  ],
  "quarterly": [

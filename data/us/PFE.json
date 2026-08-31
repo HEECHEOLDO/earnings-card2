@@ -1,5 +1,6 @@
 {
  "name": "PFE",
+ "split_adjusted": false,
  "legal_name": "PFIZER INC",
  "code": "PFE",
  "cik": "0000078003",
@@ -19,7 +20,8 @@
    "equity": 59840.0,
    "dps": 1.22,
    "payout": 102.5,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.22
   },
   {
    "p": 2017,
@@ -31,7 +33,8 @@
    "equity": 71656.0,
    "dps": 1.3,
    "payout": 36.3,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.3
   },
   {
    "p": 2018,
@@ -43,7 +46,8 @@
    "equity": 63758.0,
    "dps": 1.38,
    "payout": 72.4,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.38
   },
   {
    "p": 2019,
@@ -55,7 +59,8 @@
    "equity": 63447.0,
    "dps": 1.46,
    "payout": 50.6,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.46
   },
   {
    "p": 2020,
@@ -67,7 +72,8 @@
    "equity": 63473.0,
    "dps": 1.53,
    "payout": 92.4,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.53
   },
   {
    "p": 2021,
@@ -79,7 +85,8 @@
    "equity": 77462.0,
    "dps": 1.57,
    "payout": 39.9,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.57
   },
   {
    "p": 2022,
@@ -91,7 +98,8 @@
    "equity": 95916.0,
    "dps": 1.61,
    "payout": 28.7,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.61
   },
   {
    "p": 2023,
@@ -103,7 +111,8 @@
    "equity": 89288.0,
    "dps": 1.65,
    "payout": 431.5,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.65
   },
   {
    "p": 2024,
@@ -115,7 +124,8 @@
    "equity": 88497.0,
    "dps": 1.69,
    "payout": 118.7,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.69
   },
   {
    "p": 2025,
@@ -127,7 +137,8 @@
    "equity": 86775.0,
    "dps": 1.72,
    "payout": 125.1,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.72
   }
  ],
  "quarterly": [

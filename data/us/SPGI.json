@@ -1,5 +1,6 @@
 {
  "name": "SPGI",
+ "split_adjusted": false,
  "legal_name": "S&P Global Inc.",
  "code": "SPGI",
  "cik": "0000064040",
@@ -19,7 +20,8 @@
    "equity": 701.0,
    "dps": 1.44,
    "payout": 17.0,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.44
   },
   {
    "p": 2017,
@@ -31,7 +33,8 @@
    "equity": 766.0,
    "dps": 1.64,
    "payout": 25.7,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.64
   },
   {
    "p": 2018,
@@ -43,7 +46,8 @@
    "equity": 684.0,
    "dps": 2,
    "payout": 23.7,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.0
   },
   {
    "p": 2019,
@@ -55,7 +59,8 @@
    "equity": 536.0,
    "dps": 2.28,
    "payout": 24.3,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.28
   },
   {
    "p": 2020,
@@ -67,7 +72,8 @@
    "equity": 571.0,
    "dps": 0.67,
    "payout": 6.4,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.67
   },
   {
    "p": 2021,
@@ -79,7 +85,8 @@
    "equity": 2107.0,
    "dps": 0.77,
    "payout": 5.7,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.77
   },
   {
    "p": 2022,
@@ -91,7 +98,8 @@
    "equity": 36477.0,
    "dps": 3.32,
    "payout": 29.9,
-   "yield": null
+   "yield": null,
+   "dps_adj": 3.32
   },
   {
    "p": 2023,
@@ -103,7 +111,8 @@
    "equity": 34300.0,
    "dps": 3.6,
    "payout": 39.6,
-   "yield": null
+   "yield": null,
+   "dps_adj": 3.6
   },
   {
    "p": 2024,
@@ -115,7 +124,8 @@
    "equity": 33256.0,
    "dps": 3.64,
    "payout": 27.2,
-   "yield": null
+   "yield": null,
+   "dps_adj": 3.64
   },
   {
    "p": 2025,
@@ -127,7 +137,8 @@
    "equity": 31235.0,
    "dps": 3.84,
    "payout": 24.3,
-   "yield": null
+   "yield": null,
+   "dps_adj": 3.84
   }
  ],
  "quarterly": [

@@ -1,5 +1,6 @@
 {
  "name": "ARM",
+ "split_adjusted": false,
  "legal_name": "ARM HOLDINGS PLC /UK",
  "code": "ARM",
  "cik": "0001973239",
@@ -19,7 +20,8 @@
    "equity": 3548.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2023,
@@ -31,7 +33,8 @@
    "equity": 4051.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2024,
@@ -43,7 +46,8 @@
    "equity": 5295.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2025,
@@ -55,7 +59,8 @@
    "equity": 7007.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2026,
@@ -67,7 +72,8 @@
    "equity": 8630.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   }
  ],
  "quarterly": [

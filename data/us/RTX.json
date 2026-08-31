@@ -1,5 +1,6 @@
 {
  "name": "RTX",
+ "split_adjusted": false,
  "legal_name": "RTX Corp",
  "code": "RTX",
  "cik": "0000101829",
@@ -19,7 +20,8 @@
    "equity": 29169.0,
    "dps": 2.62,
    "payout": 39.5,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.62
   },
   {
    "p": 2017,
@@ -31,7 +33,8 @@
    "equity": 31421.0,
    "dps": 2.72,
    "payout": 43.7,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.72
   },
   {
    "p": 2018,
@@ -43,7 +46,8 @@
    "equity": 40610.0,
    "dps": 2.84,
    "payout": 40.2,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.84
   },
   {
    "p": 2019,
@@ -55,7 +59,8 @@
    "equity": 44231.0,
    "dps": 2.94,
    "payout": 42.3,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.94
   },
   {
    "p": 2020,
@@ -67,7 +72,8 @@
    "equity": 73852.0,
    "dps": 2.16,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.16
   },
   {
    "p": 2021,
@@ -79,7 +85,8 @@
    "equity": 74664.0,
    "dps": 2.005,
    "payout": 73.2,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.005
   },
   {
    "p": 2022,
@@ -91,7 +98,8 @@
    "equity": 74178.0,
    "dps": 2.16,
    "payout": 60.0,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.16
   },
   {
    "p": 2023,
@@ -103,7 +111,8 @@
    "equity": 61410.0,
    "dps": 2.32,
    "payout": 97.9,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.32
   },
   {
    "p": 2024,
@@ -115,7 +124,8 @@
    "equity": 61923.0,
    "dps": 2.48,
    "payout": 65.9,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.48
   },
   {
    "p": 2025,
@@ -127,7 +137,8 @@
    "equity": 67102.0,
    "dps": 2.67,
    "payout": 50.7,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.67
   }
  ],
  "quarterly": [

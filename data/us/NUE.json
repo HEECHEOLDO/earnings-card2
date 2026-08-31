@@ -1,5 +1,6 @@
 {
  "name": "NUE",
+ "split_adjusted": false,
  "legal_name": "NUCOR CORP",
  "code": "NUE",
  "cik": "0000073309",
@@ -19,7 +20,8 @@
    "equity": 8254.7,
    "dps": 1.5025,
    "payout": 53.3,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.5025
   },
   {
    "p": 2017,
@@ -31,7 +33,8 @@
    "equity": 9084.8,
    "dps": 1.5125,
    "payout": 35.1,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.5125
   },
   {
    "p": 2018,
@@ -43,7 +46,8 @@
    "equity": 10202.0,
    "dps": 1.54,
    "payout": 19.6,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.54
   },
   {
    "p": 2019,
@@ -55,7 +59,8 @@
    "equity": 10791.2,
    "dps": 1.6025,
    "payout": 35.7,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.6025
   },
   {
    "p": 2020,
@@ -67,7 +72,8 @@
    "equity": 11231.9,
    "dps": 1.6125,
    "payout": 58.5,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.6125
   },
   {
    "p": 2021,
@@ -79,7 +85,8 @@
    "equity": 14604.0,
    "dps": 1.715,
    "payout": 7.0,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.715
   },
   {
    "p": 2022,
@@ -91,7 +98,8 @@
    "equity": 19570.0,
    "dps": 2.01,
    "payout": 6.5,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.01
   },
   {
    "p": 2023,
@@ -103,7 +111,8 @@
    "equity": 22123.0,
    "dps": 2.07,
    "payout": 10.5,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.07
   },
   {
    "p": 2024,
@@ -115,7 +124,8 @@
    "equity": 21417.0,
    "dps": 2.17,
    "payout": 22.3,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.17
   },
   {
    "p": 2025,
@@ -127,7 +137,8 @@
    "equity": 22124.0,
    "dps": 2.21,
    "payout": 25.0,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.21
   }
  ],
  "quarterly": [

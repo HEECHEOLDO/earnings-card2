@@ -1,5 +1,6 @@
 {
  "name": "TGT",
+ "split_adjusted": false,
  "legal_name": "TARGET CORP",
  "code": "TGT",
  "cik": "0000027419",
@@ -19,7 +20,8 @@
    "equity": 10915.0,
    "dps": 2.36,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.36
   },
   {
    "p": 2018,
@@ -31,7 +33,8 @@
    "equity": 11651.0,
    "dps": 2.46,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.46
   },
   {
    "p": 2019,
@@ -43,7 +46,8 @@
    "equity": 11297.0,
    "dps": 2.54,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.54
   },
   {
    "p": 2020,
@@ -55,7 +59,8 @@
    "equity": 11833.0,
    "dps": 2.62,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.62
   },
   {
    "p": 2021,
@@ -67,7 +72,8 @@
    "equity": 14440.0,
    "dps": 2.7,
    "payout": 30.9,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.7
   },
   {
    "p": 2022,
@@ -79,7 +85,8 @@
    "equity": 12827.0,
    "dps": 3.38,
    "payout": 23.8,
-   "yield": null
+   "yield": null,
+   "dps_adj": 3.38
   },
   {
    "p": 2023,
@@ -91,7 +98,8 @@
    "equity": 11232.0,
    "dps": 4.14,
    "payout": 68.8,
-   "yield": null
+   "yield": null,
+   "dps_adj": 4.14
   },
   {
    "p": 2024,
@@ -103,7 +111,8 @@
    "equity": 13432.0,
    "dps": 4.38,
    "payout": 48.8,
-   "yield": null
+   "yield": null,
+   "dps_adj": 4.38
   },
   {
    "p": 2025,
@@ -115,7 +124,8 @@
    "equity": 15501.0,
    "dps": 4.46,
    "payout": 50.2,
-   "yield": null
+   "yield": null,
+   "dps_adj": 4.46
   },
   {
    "p": 2026,
@@ -127,7 +137,8 @@
    "equity": 17843.0,
    "dps": 4.54,
    "payout": 55.6,
-   "yield": null
+   "yield": null,
+   "dps_adj": 4.54
   }
  ],
  "quarterly": [

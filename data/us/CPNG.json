@@ -1,5 +1,6 @@
 {
  "name": "CPNG",
+ "split_adjusted": true,
  "legal_name": "Coupang, Inc.",
  "code": "CPNG",
  "cik": "0001834584",
@@ -19,7 +20,8 @@
    "equity": -3532.9,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2020,
@@ -31,7 +33,8 @@
    "equity": -4069.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2021,
@@ -43,7 +46,8 @@
    "equity": 2176.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2022,
@@ -55,7 +59,8 @@
    "equity": 2414.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2023,
@@ -67,7 +72,8 @@
    "equity": 4089.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2024,
@@ -79,7 +85,8 @@
    "equity": 4102.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2025,
@@ -91,7 +98,8 @@
    "equity": 4623.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   }
  ],
  "quarterly": [

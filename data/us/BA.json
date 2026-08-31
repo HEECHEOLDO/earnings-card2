@@ -1,5 +1,6 @@
 {
  "name": "BA",
+ "split_adjusted": false,
  "legal_name": "BOEING CO",
  "code": "BA",
  "cik": "0000012927",
@@ -19,7 +20,8 @@
    "equity": 1917.0,
    "dps": 4.69,
    "payout": 59.2,
-   "yield": null
+   "yield": null,
+   "dps_adj": 4.69
   },
   {
    "p": 2017,
@@ -31,7 +33,8 @@
    "equity": 1713.0,
    "dps": 5.97,
    "payout": 42.5,
-   "yield": null
+   "yield": null,
+   "dps_adj": 5.97
   },
   {
    "p": 2018,
@@ -43,7 +46,8 @@
    "equity": 410.0,
    "dps": 7.19,
    "payout": 39.8,
-   "yield": null
+   "yield": null,
+   "dps_adj": 7.19
   },
   {
    "p": 2019,
@@ -55,7 +59,8 @@
    "equity": -8462.0,
    "dps": 8.22,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": 8.22
   },
   {
    "p": 2020,
@@ -67,7 +72,8 @@
    "equity": -18075.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2021,
@@ -79,7 +85,8 @@
    "equity": -14846.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2022,
@@ -91,7 +98,8 @@
    "equity": -15848.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2023,
@@ -103,7 +111,8 @@
    "equity": -17228.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2024,
@@ -115,7 +124,8 @@
    "equity": -3914.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2025,
@@ -127,7 +137,8 @@
    "equity": 5457.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   }
  ],
  "quarterly": [

@@ -1,5 +1,6 @@
 {
  "name": "FDX",
+ "split_adjusted": false,
  "legal_name": "FEDEX CORP",
  "code": "FDX",
  "cik": "0001048911",
@@ -19,7 +20,8 @@
    "equity": 16073.0,
    "dps": 1.6,
    "payout": 14.2,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.6
   },
   {
    "p": 2018,
@@ -31,7 +33,8 @@
    "equity": 19416.0,
    "dps": 2,
    "payout": 11.7,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.0
   },
   {
    "p": 2019,
@@ -43,7 +46,8 @@
    "equity": 17757.0,
    "dps": 2.6,
    "payout": 126.1,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.6
   },
   {
    "p": 2020,
@@ -55,7 +59,8 @@
    "equity": 18295.0,
    "dps": 2.6,
    "payout": 52.8,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.6
   },
   {
    "p": 2021,
@@ -67,7 +72,8 @@
    "equity": 24168.0,
    "dps": 2.6,
    "payout": 13.1,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.6
   },
   {
    "p": 2022,
@@ -79,7 +85,8 @@
    "equity": 24939.0,
    "dps": 3,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": 3.0
   },
   {
    "p": 2023,
@@ -91,7 +98,8 @@
    "equity": 26088.0,
    "dps": 5.86,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": 5.86
   },
   {
    "p": 2024,
@@ -103,7 +111,8 @@
    "equity": 27582.0,
    "dps": 3.78,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": 3.78
   },
   {
    "p": 2025,
@@ -115,7 +124,8 @@
    "equity": 28074.0,
    "dps": 5.52,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": 5.52
   },
   {
    "p": 2026,
@@ -127,7 +137,8 @@
    "equity": 31647.0,
    "dps": 5.8,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": 5.8
   }
  ],
  "quarterly": [

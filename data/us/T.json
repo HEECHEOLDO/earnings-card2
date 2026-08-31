@@ -1,5 +1,6 @@
 {
  "name": "T",
+ "split_adjusted": false,
  "legal_name": "AT&T INC.",
  "code": "T",
  "cik": "0000732717",
@@ -19,7 +20,8 @@
    "equity": 124110.0,
    "dps": 1.93,
    "payout": 89.3,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.93
   },
   {
    "p": 2017,
@@ -31,7 +33,8 @@
    "equity": 142007.0,
    "dps": 1.97,
    "payout": 40.7,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.97
   },
   {
    "p": 2018,
@@ -43,7 +46,8 @@
    "equity": 193884.0,
    "dps": 2.01,
    "payout": 68.3,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.01
   },
   {
    "p": 2019,
@@ -55,7 +59,8 @@
    "equity": 201934.0,
    "dps": 2.05,
    "payout": 100.2,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.05
   },
   {
    "p": 2020,
@@ -67,7 +72,8 @@
    "equity": 179240.0,
    "dps": 2.08,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.08
   },
   {
    "p": 2021,
@@ -79,7 +85,8 @@
    "equity": 183855.0,
    "dps": 2.08,
    "payout": 69.4,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.08
   },
   {
    "p": 2022,
@@ -91,7 +98,8 @@
    "equity": 106457.0,
    "dps": 1.11,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.11
   },
   {
    "p": 2023,
@@ -103,7 +111,8 @@
    "equity": 117442.0,
    "dps": 1.11,
    "payout": 51.0,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.11
   },
   {
    "p": 2024,
@@ -115,7 +124,8 @@
    "equity": 118245.0,
    "dps": 1.11,
    "payout": 65.2,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.11
   },
   {
    "p": 2025,
@@ -127,7 +137,8 @@
    "equity": 126491.0,
    "dps": 1.11,
    "payout": 34.0,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.11
   }
  ],
  "quarterly": [

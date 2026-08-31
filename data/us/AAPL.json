@@ -1,5 +1,6 @@
 {
  "name": "AAPL",
+ "split_adjusted": true,
  "legal_name": "Apple Inc.",
  "code": "AAPL",
  "cik": "0000320193",
@@ -19,7 +20,8 @@
    "equity": 128249.0,
    "dps": 2.18,
    "payout": 26.1,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.545
   },
   {
    "p": 2017,
@@ -31,7 +33,8 @@
    "equity": 134047.0,
    "dps": 2.4,
    "payout": 25.9,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.6
   },
   {
    "p": 2018,
@@ -43,7 +46,8 @@
    "equity": 107147.0,
    "dps": 0.68,
    "payout": 22.6,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.68
   },
   {
    "p": 2019,
@@ -55,7 +59,8 @@
    "equity": 90488.0,
    "dps": 0.75,
    "payout": 25.1,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.75
   },
   {
    "p": 2020,
@@ -67,7 +72,8 @@
    "equity": 65339.0,
    "dps": 0.795,
    "payout": 24.0,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.795
   },
   {
    "p": 2021,
@@ -79,7 +85,8 @@
    "equity": 63090.0,
    "dps": 0.85,
    "payout": 15.0,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.85
   },
   {
    "p": 2022,
@@ -91,7 +98,8 @@
    "equity": 50672.0,
    "dps": 0.9,
    "payout": 14.6,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.9
   },
   {
    "p": 2023,
@@ -103,7 +111,8 @@
    "equity": 62146.0,
    "dps": 0.94,
    "payout": 15.3,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.94
   },
   {
    "p": 2024,
@@ -115,7 +124,8 @@
    "equity": 56950.0,
    "dps": 0.98,
    "payout": 16.0,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.98
   },
   {
    "p": 2025,
@@ -127,7 +137,8 @@
    "equity": 73733.0,
    "dps": 1.02,
    "payout": 13.6,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.02
   }
  ],
  "quarterly": [

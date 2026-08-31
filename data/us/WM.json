@@ -1,5 +1,6 @@
 {
  "name": "WM",
+ "split_adjusted": false,
  "legal_name": "WASTE MANAGEMENT INC",
  "code": "WM",
  "cik": "0000823768",
@@ -19,7 +20,8 @@
    "equity": 5320.0,
    "dps": 1.64,
    "payout": 61.6,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.64
   },
   {
    "p": 2017,
@@ -31,7 +33,8 @@
    "equity": 6042.0,
    "dps": 1.7,
    "payout": 38.3,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.7
   },
   {
    "p": 2018,
@@ -43,7 +46,8 @@
    "equity": 6276.0,
    "dps": 1.86,
    "payout": 41.5,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.86
   },
   {
    "p": 2019,
@@ -55,7 +59,8 @@
    "equity": 7070.0,
    "dps": 2.05,
    "payout": 52.1,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.05
   },
   {
    "p": 2020,
@@ -67,7 +72,8 @@
    "equity": 7454.0,
    "dps": 2.18,
    "payout": 61.6,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.18
   },
   {
    "p": 2021,
@@ -79,7 +85,8 @@
    "equity": 7126.0,
    "dps": 2.3,
    "payout": 53.2,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.3
   },
   {
    "p": 2022,
@@ -91,7 +98,8 @@
    "equity": 6864.0,
    "dps": 2.6,
    "payout": 47.9,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.6
   },
   {
    "p": 2023,
@@ -103,7 +111,8 @@
    "equity": 6896.0,
    "dps": 2.8,
    "payout": 49.8,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.8
   },
   {
    "p": 2024,
@@ -115,7 +124,8 @@
    "equity": 8254.0,
    "dps": 3,
    "payout": 43.9,
-   "yield": null
+   "yield": null,
+   "dps_adj": 3.0
   },
   {
    "p": 2025,
@@ -127,7 +137,8 @@
    "equity": 9991.0,
    "dps": 3.3,
    "payout": 49.1,
-   "yield": null
+   "yield": null,
+   "dps_adj": 3.3
   }
  ],
  "quarterly": [

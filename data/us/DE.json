@@ -1,5 +1,6 @@
 {
  "name": "DE",
+ "split_adjusted": false,
  "legal_name": "DEERE & CO",
  "code": "DE",
  "cik": "0000315189",
@@ -19,7 +20,8 @@
    "equity": 6531.0,
    "dps": 2.4,
    "payout": 49.7,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.4
   },
   {
    "p": 2017,
@@ -31,7 +33,8 @@
    "equity": 9560.0,
    "dps": 2.4,
    "payout": 35.5,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.4
   },
   {
    "p": 2018,
@@ -43,7 +46,8 @@
    "equity": 11291.0,
    "dps": 2.58,
    "payout": 35.1,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.58
   },
   {
    "p": 2019,
@@ -55,7 +59,8 @@
    "equity": 11417.0,
    "dps": 3.04,
    "payout": 29.5,
-   "yield": null
+   "yield": null,
+   "dps_adj": 3.04
   },
   {
    "p": 2020,
@@ -67,7 +72,8 @@
    "equity": 12944.0,
    "dps": 3.04,
    "payout": 34.6,
-   "yield": null
+   "yield": null,
+   "dps_adj": 3.04
   },
   {
    "p": 2021,
@@ -79,7 +85,8 @@
    "equity": 18434.0,
    "dps": 3.32,
    "payout": 17.3,
-   "yield": null
+   "yield": null,
+   "dps_adj": 3.32
   },
   {
    "p": 2022,
@@ -91,7 +98,8 @@
    "equity": 20265.0,
    "dps": 4.28,
    "payout": 18.3,
-   "yield": null
+   "yield": null,
+   "dps_adj": 4.28
   },
   {
    "p": 2023,
@@ -103,7 +111,8 @@
    "equity": 21789.0,
    "dps": 4.83,
    "payout": 13.9,
-   "yield": null
+   "yield": null,
+   "dps_adj": 4.83
   },
   {
    "p": 2024,
@@ -115,7 +124,8 @@
    "equity": 22843.0,
    "dps": 5.76,
    "payout": 22.4,
-   "yield": null
+   "yield": null,
+   "dps_adj": 5.76
   },
   {
    "p": 2025,
@@ -127,7 +137,8 @@
    "equity": 25956.0,
    "dps": 6.33,
    "payout": 34.3,
-   "yield": null
+   "yield": null,
+   "dps_adj": 6.33
   }
  ],
  "quarterly": [

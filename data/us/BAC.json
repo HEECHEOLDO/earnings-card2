@@ -1,5 +1,6 @@
 {
  "name": "BAC",
+ "split_adjusted": false,
  "legal_name": "BANK OF AMERICA CORP /DE/",
  "code": "BAC",
  "cik": "0000070858",
@@ -19,7 +20,8 @@
    "equity": 266195.0,
    "dps": 0.25,
    "payout": 14.4,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.25
   },
   {
    "p": 2017,
@@ -31,7 +33,8 @@
    "equity": 267146.0,
    "dps": 0.39,
    "payout": 21.8,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.39
   },
   {
    "p": 2018,
@@ -43,7 +46,8 @@
    "equity": 265325.0,
    "dps": 0.54,
    "payout": 19.4,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.54
   },
   {
    "p": 2019,
@@ -55,7 +59,8 @@
    "equity": 264810.0,
    "dps": 0.66,
    "payout": 22.6,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.66
   },
   {
    "p": 2020,
@@ -67,7 +72,8 @@
    "equity": 272924.0,
    "dps": 0.72,
    "payout": 35.2,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.72
   },
   {
    "p": 2021,
@@ -79,7 +85,8 @@
    "equity": 270066.0,
    "dps": 0.78,
    "payout": 20.7,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.78
   },
   {
    "p": 2022,
@@ -91,7 +98,8 @@
    "equity": 273197.0,
    "dps": 0.86,
    "payout": 25.3,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.86
   },
   {
    "p": 2023,
@@ -103,7 +111,8 @@
    "equity": 290209.0,
    "dps": 0.92,
    "payout": 28.1,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.92
   },
   {
    "p": 2024,
@@ -115,7 +124,8 @@
    "equity": 293963.0,
    "dps": 1,
    "payout": 29.1,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.0
   },
   {
    "p": 2025,
@@ -127,7 +137,8 @@
    "equity": 303243.0,
    "dps": 1.08,
    "payout": 26.6,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.08
   }
  ],
  "quarterly": [

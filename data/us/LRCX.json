@@ -1,5 +1,6 @@
 {
  "name": "LRCX",
+ "split_adjusted": true,
  "legal_name": "LAM RESEARCH CORP",
  "code": "LRCX",
  "cik": "0000707549",
@@ -19,7 +20,8 @@
    "equity": 6817.5,
    "dps": 1.65,
    "payout": 15.8,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.165
   },
   {
    "p": 2018,
@@ -31,7 +33,8 @@
    "equity": 6501.9,
    "dps": 2.55,
    "payout": 17.3,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.255
   },
   {
    "p": 2019,
@@ -43,7 +46,8 @@
    "equity": 4673.9,
    "dps": 4.4,
    "payout": 30.6,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.44
   },
   {
    "p": 2020,
@@ -55,7 +59,8 @@
    "equity": 5172.5,
    "dps": 4.6,
    "payout": 29.6,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.46
   },
   {
    "p": 2021,
@@ -67,7 +72,8 @@
    "equity": 6027.2,
    "dps": 5.2,
    "payout": 19.1,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.52
   },
   {
    "p": 2022,
@@ -79,7 +85,8 @@
    "equity": 6278.4,
    "dps": 6,
    "payout": 18.2,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.6
   },
   {
    "p": 2023,
@@ -91,7 +98,8 @@
    "equity": 8210.2,
    "dps": 0.69,
    "payout": 20.7,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.69
   },
   {
    "p": 2024,
@@ -103,7 +111,8 @@
    "equity": 8539.5,
    "dps": 0.8,
    "payout": 27.5,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.8
   },
   {
    "p": 2025,
@@ -115,7 +124,8 @@
    "equity": 9861.6,
    "dps": 0.92,
    "payout": 22.1,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.92
   },
   {
    "p": 2026,
@@ -127,7 +137,8 @@
    "equity": 12470.9,
    "dps": 1.04,
    "payout": 18.0,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.04
   }
  ],
  "quarterly": [

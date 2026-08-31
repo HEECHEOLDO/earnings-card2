@@ -1,5 +1,6 @@
 {
  "name": "META",
+ "split_adjusted": false,
  "legal_name": "Meta Platforms, Inc.",
  "code": "META",
  "cik": "0001326801",
@@ -19,7 +20,8 @@
    "equity": 59194.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2017,
@@ -31,7 +33,8 @@
    "equity": 74347.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2018,
@@ -43,7 +46,8 @@
    "equity": 84127.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2019,
@@ -55,7 +59,8 @@
    "equity": 101054.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2020,
@@ -67,7 +72,8 @@
    "equity": 128290.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2021,
@@ -79,7 +85,8 @@
    "equity": 124879.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2022,
@@ -91,7 +98,8 @@
    "equity": 125713.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2023,
@@ -103,7 +111,8 @@
    "equity": 153168.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2024,
@@ -115,7 +124,8 @@
    "equity": 182637.0,
    "dps": 2,
    "payout": 8.1,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.0
   },
   {
    "p": 2025,
@@ -127,7 +137,8 @@
    "equity": 217243.0,
    "dps": 2.1,
    "payout": 8.8,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.1
   }
  ],
  "quarterly": [

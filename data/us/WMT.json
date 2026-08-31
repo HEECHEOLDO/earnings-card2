@@ -1,5 +1,6 @@
 {
  "name": "WMT",
+ "split_adjusted": true,
  "legal_name": "Walmart Inc.",
  "code": "WMT",
  "cik": "0000104169",
@@ -19,7 +20,8 @@
    "equity": 80535.0,
    "dps": 2,
    "payout": 43.4,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.6667
   },
   {
    "p": 2018,
@@ -31,7 +33,8 @@
    "equity": 80822.0,
    "dps": 2.04,
    "payout": 58.1,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.68
   },
   {
    "p": 2019,
@@ -43,7 +46,8 @@
    "equity": 79634.0,
    "dps": 2.08,
    "payout": 84.9,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.6933
   },
   {
    "p": 2020,
@@ -55,7 +59,8 @@
    "equity": 81552.0,
    "dps": 2.12,
    "payout": 39.7,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.7067
   },
   {
    "p": 2021,
@@ -67,7 +72,8 @@
    "equity": 87531.0,
    "dps": 2.16,
    "payout": 44.6,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.72
   },
   {
    "p": 2022,
@@ -79,7 +85,8 @@
    "equity": 91891.0,
    "dps": 0.7333,
    "payout": 44.9,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.7333
   },
   {
    "p": 2023,
@@ -91,7 +98,8 @@
    "equity": 83754.0,
    "dps": 0.7467,
    "payout": 52.2,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.7467
   },
   {
    "p": 2024,
@@ -103,7 +111,8 @@
    "equity": 90349.0,
    "dps": 0.76,
    "payout": 39.6,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.76
   },
   {
    "p": 2025,
@@ -115,7 +124,8 @@
    "equity": 96550.0,
    "dps": 0.83,
    "payout": 34.3,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.83
   },
   {
    "p": 2026,
@@ -127,7 +137,8 @@
    "equity": 104506.0,
    "dps": 0.94,
    "payout": 34.3,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.94
   }
  ],
  "quarterly": [

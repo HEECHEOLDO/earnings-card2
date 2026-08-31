@@ -1,5 +1,6 @@
 {
  "name": "GOOGL",
+ "split_adjusted": false,
  "legal_name": "Alphabet Inc.",
  "code": "GOOGL",
  "cik": "0001652044",
@@ -19,7 +20,8 @@
    "equity": 139036.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2017,
@@ -31,7 +33,8 @@
    "equity": 152502.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2018,
@@ -43,7 +46,8 @@
    "equity": 177628.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2019,
@@ -55,7 +59,8 @@
    "equity": 201442.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2020,
@@ -67,7 +72,8 @@
    "equity": 222544.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2021,
@@ -79,7 +85,8 @@
    "equity": 251635.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2022,
@@ -91,7 +98,8 @@
    "equity": 256144.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2023,
@@ -103,7 +111,8 @@
    "equity": 283379.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2024,
@@ -115,7 +124,8 @@
    "equity": 325084.0,
    "dps": 0.6,
    "payout": 7.4,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.6
   },
   {
    "p": 2025,
@@ -127,7 +137,8 @@
    "equity": 415265.0,
    "dps": 0.83,
    "payout": 7.6,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.83
   }
  ],
  "quarterly": [

@@ -1,5 +1,6 @@
 {
  "name": "SHOP",
+ "split_adjusted": true,
  "legal_name": "SHOPIFY INC.",
  "code": "SHOP",
  "cik": "0001594805",
@@ -19,7 +20,8 @@
    "equity": 1001.1,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2018,
@@ -31,7 +33,8 @@
    "equity": 2090.8,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2019,
@@ -43,7 +46,8 @@
    "equity": 3015.7,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2020,
@@ -55,7 +59,8 @@
    "equity": 6400.7,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2021,
@@ -67,7 +72,8 @@
    "equity": 11133.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2022,
@@ -79,7 +85,8 @@
    "equity": 8239.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2023,
@@ -91,7 +98,8 @@
    "equity": 9066.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2024,
@@ -103,7 +111,8 @@
    "equity": 11558.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2025,
@@ -115,7 +124,8 @@
    "equity": 13473.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   }
  ],
  "quarterly": [

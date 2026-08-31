@@ -767,8 +767,9 @@
       return {
         label: String(d.p), short: "'" + String(d.p).slice(2), yearMark: null,
         rev: conv(num(d.rev)), op: conv(num(d.op)), ni: conv(num(d.ni)),
-        // 주당배당금은 환산하지 않고 달러 그대로 둔다 ($1.05 를 1,451원으로 바꾸면 낯설다)
-        dps: num(d.dps), dpsRaw: num(d.dps),
+        // 주당배당금은 환율 환산을 하지 않는다 ($1.05 를 1,451원으로 바꾸면 낯설다).
+        // 다만 액면분할 보정값이 있으면 그걸 쓴다.
+        dps: num(d.dps_adj != null ? d.dps_adj : d.dps), dpsRaw: num(d.dps),
         payout: num(d.payout), yield: num(d.yield),
         margin: d.rev ? num(d.op) / d.rev * 100 : 0
       };
@@ -1246,8 +1247,9 @@
     ctx.textAlign = 'right';
     var adj = state.company.split_adjusted;
     var unitText = state.period === 'dividend'
-      ? ''
+      ? (adj ? '액면분할 반영' : '')
       : '연결 · ' + unit + (showLine && spec.unitNote ? ' · ' + spec.unitNote : '') +
+        (showLine && state.company.split_adjusted ? ' · 액면분할 반영' : '') +
         (CUR === 'KRW' ? ' · ' + Math.round(FX.usdkrw).toLocaleString('ko-KR') + '원 기준' : '');
     ctx.fillText(unitText, CX + CWID, legendY - 2);
     ctx.textAlign = 'left';
@@ -1464,7 +1466,7 @@
       head = ['회계연도', '주당배당금($)', '배당성향', '순이익'];
       body = rows.map(function (r) {
         return ['<td>' + r.label + '</td>',
-          '<td>' + Math.round(r.dps).toLocaleString('ko-KR') + '</td>',
+          '<td>' + usd(r.dps) + '</td>',
           '<td>' + r.payout.toFixed(1) + '%</td>',
           '<td>' + Math.round(r.ni).toLocaleString('ko-KR') + '</td>'].join('');
       });
@@ -1475,7 +1477,7 @@
           '<td>' + fmtAmount(r.bar1, unit) + '</td>',
           '<td>' + fmtAmount(r.bar2, unit) + '</td>',
           '<td>' + r.margin.toFixed(1) + '%</td>',
-          '<td>' + Math.round(r.dps).toLocaleString('ko-KR') + '</td>',
+          '<td>' + usd(r.dps) + '</td>',
           '<td>' + r.payout.toFixed(1) + '%</td>'].join('');
       });
     } else {
@@ -1492,7 +1494,7 @@
       '</tr></thead><tbody>' + body.map(function (b) { return '<tr>' + b + '</tr>'; }).join('') + '</tbody>';
     document.getElementById('table-note').textContent =
       period === 'dividend'
-        ? '배당은 달러 기준'
+        ? '배당은 달러 기준' + (state.company.split_adjusted ? ' · 액면분할 반영' : '')
         : '단위 ' + unit;
   }
 
@@ -1764,7 +1766,7 @@
     document.getElementById('chart1-title').textContent = L.chart1;
     document.getElementById('chart1-note').textContent =
       state.period === 'dividend'
-        ? '배당은 달러 기준'
+        ? '배당은 달러 기준' + (state.company.split_adjusted ? ' · 액면분할 반영' : '')
         : '연결 기준 · 단위 ' + unit;
     document.getElementById('chart2-title').textContent = L.chart2;
     document.getElementById('chart2-note').textContent =

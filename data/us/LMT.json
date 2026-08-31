@@ -1,5 +1,6 @@
 {
  "name": "LMT",
+ "split_adjusted": false,
  "legal_name": "LOCKHEED MARTIN CORP",
  "code": "LMT",
  "cik": "0000936468",
@@ -19,7 +20,8 @@
    "equity": 1477.0,
    "dps": 6.77,
    "payout": 39.2,
-   "yield": null
+   "yield": null,
+   "dps_adj": 6.77
   },
   {
    "p": 2017,
@@ -31,7 +33,8 @@
    "equity": -776.0,
    "dps": 7.46,
    "payout": 109.4,
-   "yield": null
+   "yield": null,
+   "dps_adj": 7.46
   },
   {
    "p": 2018,
@@ -43,7 +46,8 @@
    "equity": 1449.0,
    "dps": 8.2,
    "payout": 46.2,
-   "yield": null
+   "yield": null,
+   "dps_adj": 8.2
   },
   {
    "p": 2019,
@@ -55,7 +59,8 @@
    "equity": 3171.0,
    "dps": 9,
    "payout": 40.7,
-   "yield": null
+   "yield": null,
+   "dps_adj": 9.0
   },
   {
    "p": 2020,
@@ -67,7 +72,8 @@
    "equity": 6038.0,
    "dps": 9.8,
    "payout": 40.2,
-   "yield": null
+   "yield": null,
+   "dps_adj": 9.8
   },
   {
    "p": 2021,
@@ -79,7 +85,8 @@
    "equity": 10959.0,
    "dps": 10.6,
    "payout": 46.4,
-   "yield": null
+   "yield": null,
+   "dps_adj": 10.6
   },
   {
    "p": 2022,
@@ -91,7 +98,8 @@
    "equity": 9266.0,
    "dps": 11.4,
    "payout": 52.4,
-   "yield": null
+   "yield": null,
+   "dps_adj": 11.4
   },
   {
    "p": 2023,
@@ -103,7 +111,8 @@
    "equity": 6835.0,
    "dps": 12.15,
    "payout": 43.9,
-   "yield": null
+   "yield": null,
+   "dps_adj": 12.15
   },
   {
    "p": 2024,
@@ -115,7 +124,8 @@
    "equity": 6333.0,
    "dps": 12.75,
    "payout": 56.9,
-   "yield": null
+   "yield": null,
+   "dps_adj": 12.75
   },
   {
    "p": 2025,
@@ -127,7 +137,8 @@
    "equity": 6721.0,
    "dps": 13.35,
    "payout": 61.9,
-   "yield": null
+   "yield": null,
+   "dps_adj": 13.35
   }
  ],
  "quarterly": [

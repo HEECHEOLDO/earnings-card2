@@ -1,5 +1,6 @@
 {
  "name": "AXP",
+ "split_adjusted": false,
  "legal_name": "AMERICAN EXPRESS CO",
  "code": "AXP",
  "cik": "0000004962",
@@ -19,7 +20,8 @@
    "equity": 20523.0,
    "dps": 1.22,
    "payout": 21.2,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.22
   },
   {
    "p": 2017,
@@ -31,7 +33,8 @@
    "equity": 18261.0,
    "dps": 1.34,
    "payout": 43.1,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.34
   },
   {
    "p": 2018,
@@ -43,7 +46,8 @@
    "equity": 22290.0,
    "dps": 1.48,
    "payout": 18.3,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.48
   },
   {
    "p": 2019,
@@ -55,7 +59,8 @@
    "equity": 23071.0,
    "dps": 1.64,
    "payout": 20.1,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.64
   },
   {
    "p": 2020,
@@ -67,7 +72,8 @@
    "equity": 22984.0,
    "dps": 1.72,
    "payout": 44.2,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.72
   },
   {
    "p": 2021,
@@ -79,7 +85,8 @@
    "equity": 22177.0,
    "dps": 1.72,
    "payout": 16.8,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.72
   },
   {
    "p": 2022,
@@ -91,7 +98,8 @@
    "equity": 24711.0,
    "dps": 2.08,
    "payout": 20.8,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.08
   },
   {
    "p": 2023,
@@ -103,7 +111,8 @@
    "equity": 28057.0,
    "dps": 2.4,
    "payout": 21.1,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.4
   },
   {
    "p": 2024,
@@ -115,7 +124,8 @@
    "equity": 30264.0,
    "dps": 2.8,
    "payout": 19.7,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.8
   },
   {
    "p": 2025,
@@ -127,7 +137,8 @@
    "equity": 33474.0,
    "dps": 3.28,
    "payout": 21.0,
-   "yield": null
+   "yield": null,
+   "dps_adj": 3.28
   }
  ],
  "quarterly": [

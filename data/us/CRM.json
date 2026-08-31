@@ -1,5 +1,6 @@
 {
  "name": "CRM",
+ "split_adjusted": false,
  "legal_name": "Salesforce, Inc.",
  "code": "CRM",
  "cik": "0001108524",
@@ -19,7 +20,8 @@
    "equity": 8230.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2018,
@@ -31,7 +33,8 @@
    "equity": 10376.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2019,
@@ -43,7 +46,8 @@
    "equity": 15605.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2020,
@@ -55,7 +59,8 @@
    "equity": 33885.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2021,
@@ -67,7 +72,8 @@
    "equity": 41493.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2022,
@@ -79,7 +85,8 @@
    "equity": 58131.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2023,
@@ -91,7 +98,8 @@
    "equity": 58359.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2024,
@@ -103,7 +111,8 @@
    "equity": 59646.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2025,
@@ -115,7 +124,8 @@
    "equity": 61328.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2026,
@@ -127,7 +137,8 @@
    "equity": 38378.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   }
  ],
  "quarterly": [

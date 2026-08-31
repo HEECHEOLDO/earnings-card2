@@ -1,5 +1,6 @@
 {
  "name": "AVGO",
+ "split_adjusted": true,
  "legal_name": "Broadcom Inc.",
  "code": "AVGO",
  "cik": "0001730168",
@@ -19,7 +20,8 @@
    "equity": 21876.0,
    "dps": 1.94,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.194
   },
   {
    "p": 2017,
@@ -31,7 +33,8 @@
    "equity": 23186.0,
    "dps": 4.08,
    "payout": 92.6,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.408
   },
   {
    "p": 2018,
@@ -43,7 +46,8 @@
    "equity": 26657.0,
    "dps": 7,
    "payout": 23.2,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.7
   },
   {
    "p": 2019,
@@ -55,7 +59,8 @@
    "equity": 24941.0,
    "dps": 10.6,
    "payout": 154.9,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.06
   },
   {
    "p": 2020,
@@ -67,7 +72,8 @@
    "equity": 23874.0,
    "dps": 13,
    "payout": 176.6,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.3
   },
   {
    "p": 2021,
@@ -79,7 +85,8 @@
    "equity": 24962.0,
    "dps": 14.4,
    "payout": 87.6,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.44
   },
   {
    "p": 2022,
@@ -91,7 +98,8 @@
    "equity": 22709.0,
    "dps": 1.64,
    "payout": 58.3,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.64
   },
   {
    "p": 2023,
@@ -103,7 +111,8 @@
    "equity": 23988.0,
    "dps": 1.84,
    "payout": 54.2,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.84
   },
   {
    "p": 2024,
@@ -115,7 +124,8 @@
    "equity": 67678.0,
    "dps": 2.105,
    "payout": 165.1,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.105
   },
   {
    "p": 2025,
@@ -127,7 +137,8 @@
    "equity": 81292.0,
    "dps": 2.36,
    "payout": 48.1,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.36
   }
  ],
  "quarterly": [

@@ -1,5 +1,6 @@
 {
  "name": "LOW",
+ "split_adjusted": false,
  "legal_name": "LOWES COMPANIES INC",
  "code": "LOW",
  "cik": "0000060667",
@@ -19,7 +20,8 @@
    "equity": 6434.0,
    "dps": 1.33,
    "payout": 37.8,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.33
   },
   {
    "p": 2018,
@@ -31,7 +33,8 @@
    "equity": 5873.0,
    "dps": 1.58,
    "payout": 38.5,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.58
   },
   {
    "p": 2019,
@@ -43,7 +46,8 @@
    "equity": 3644.0,
    "dps": 1.85,
    "payout": 64.8,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.85
   },
   {
    "p": 2020,
@@ -55,7 +59,8 @@
    "equity": 1972.0,
    "dps": 2.13,
    "payout": 38.7,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.13
   },
   {
    "p": 2021,
@@ -67,7 +72,8 @@
    "equity": 1437.0,
    "dps": 2.3,
    "payout": 29.5,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.3
   },
   {
    "p": 2022,
@@ -79,7 +85,8 @@
    "equity": -4816.0,
    "dps": 3,
    "payout": 24.7,
-   "yield": null
+   "yield": null,
+   "dps_adj": 3.0
   },
   {
    "p": 2023,
@@ -91,7 +98,8 @@
    "equity": -14254.0,
    "dps": 3.95,
    "payout": 38.6,
-   "yield": null
+   "yield": null,
+   "dps_adj": 3.95
   },
   {
    "p": 2024,
@@ -103,7 +111,8 @@
    "equity": -15050.0,
    "dps": 4.35,
    "payout": 32.8,
-   "yield": null
+   "yield": null,
+   "dps_adj": 4.35
   },
   {
    "p": 2025,
@@ -115,7 +124,8 @@
    "equity": -11400.0,
    "dps": 4.55,
    "payout": 37.1,
-   "yield": null
+   "yield": null,
+   "dps_adj": 4.55
   },
   {
    "p": 2026,
@@ -127,7 +137,8 @@
    "equity": -7437.0,
    "dps": 4.75,
    "payout": 39.9,
-   "yield": null
+   "yield": null,
+   "dps_adj": 4.75
   }
  ],
  "quarterly": [

@@ -1,5 +1,6 @@
 {
  "name": "SHW",
+ "split_adjusted": true,
  "legal_name": "SHERWIN WILLIAMS CO",
  "code": "SHW",
  "cik": "0000089800",
@@ -19,7 +20,8 @@
    "equity": 1878.4,
    "dps": 3.36,
    "payout": 27.2,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.12
   },
   {
    "p": 2017,
@@ -31,7 +33,8 @@
    "equity": 3647.9,
    "dps": 3.4,
    "payout": 18.3,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.1333
   },
   {
    "p": 2018,
@@ -43,7 +46,8 @@
    "equity": 3730.7,
    "dps": 3.44,
    "payout": 28.9,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.1467
   },
   {
    "p": 2019,
@@ -55,7 +59,8 @@
    "equity": 4123.3,
    "dps": 1.5067,
    "payout": 26.9,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.5067
   },
   {
    "p": 2020,
@@ -67,7 +72,8 @@
    "equity": 3610.8,
    "dps": 1.7867,
    "payout": 23.9,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.7867
   },
   {
    "p": 2021,
@@ -79,7 +85,8 @@
    "equity": 2437.2,
    "dps": 2.2,
    "payout": 31.0,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.2
   },
   {
    "p": 2022,
@@ -91,7 +98,8 @@
    "equity": 3102.1,
    "dps": 2.4,
    "payout": 30.7,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.4
   },
   {
    "p": 2023,
@@ -103,7 +111,8 @@
    "equity": 3715.8,
    "dps": 2.42,
    "payout": 25.9,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.42
   },
   {
    "p": 2024,
@@ -115,7 +124,8 @@
    "equity": 4051.2,
    "dps": 2.86,
    "payout": 26.8,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.86
   },
   {
    "p": 2025,
@@ -127,7 +137,8 @@
    "equity": 4598.3,
    "dps": 3.16,
    "payout": 30.5,
-   "yield": null
+   "yield": null,
+   "dps_adj": 3.16
   }
  ],
  "quarterly": [

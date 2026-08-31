@@ -1,5 +1,6 @@
 {
  "name": "PEP",
+ "split_adjusted": false,
  "legal_name": "PEPSICO INC",
  "code": "PEP",
  "cik": "0000077476",
@@ -19,7 +20,8 @@
    "equity": 11199.0,
    "dps": 2.96,
    "payout": 66.8,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.96
   },
   {
    "p": 2017,
@@ -31,7 +33,8 @@
    "equity": 10981.0,
    "dps": 3.1675,
    "payout": 92.0,
-   "yield": null
+   "yield": null,
+   "dps_adj": 3.1675
   },
   {
    "p": 2018,
@@ -43,7 +46,8 @@
    "equity": 14602.0,
    "dps": 3.5875,
    "payout": 40.4,
-   "yield": null
+   "yield": null,
+   "dps_adj": 3.5875
   },
   {
    "p": 2019,
@@ -55,7 +59,8 @@
    "equity": 14868.0,
    "dps": 3.7925,
    "payout": 72.2,
-   "yield": null
+   "yield": null,
+   "dps_adj": 3.7925
   },
   {
    "p": 2020,
@@ -67,7 +72,8 @@
    "equity": 13552.0,
    "dps": 4.0225,
    "payout": 77.6,
-   "yield": null
+   "yield": null,
+   "dps_adj": 4.0225
   },
   {
    "p": 2021,
@@ -79,7 +85,8 @@
    "equity": 16151.0,
    "dps": 4.2475,
    "payout": 76.4,
-   "yield": null
+   "yield": null,
+   "dps_adj": 4.2475
   },
   {
    "p": 2022,
@@ -91,7 +98,8 @@
    "equity": 17273.0,
    "dps": 4.525,
    "payout": 69.6,
-   "yield": null
+   "yield": null,
+   "dps_adj": 4.525
   },
   {
    "p": 2023,
@@ -103,7 +111,8 @@
    "equity": 18637.0,
    "dps": 4.945,
    "payout": 74.3,
-   "yield": null
+   "yield": null,
+   "dps_adj": 4.945
   },
   {
    "p": 2024,
@@ -115,7 +124,8 @@
    "equity": 18171.0,
    "dps": 5.33,
    "payout": 76.0,
-   "yield": null
+   "yield": null,
+   "dps_adj": 5.33
   },
   {
    "p": 2025,
@@ -127,7 +137,8 @@
    "equity": 20547.0,
    "dps": 5.6225,
    "payout": 92.8,
-   "yield": null
+   "yield": null,
+   "dps_adj": 5.6225
   }
  ],
  "quarterly": [

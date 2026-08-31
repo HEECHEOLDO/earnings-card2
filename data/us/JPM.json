@@ -1,5 +1,6 @@
 {
  "name": "JPM",
+ "split_adjusted": false,
  "legal_name": "JPMORGAN CHASE & CO",
  "code": "JPM",
  "cik": "0000019617",
@@ -19,7 +20,8 @@
    "equity": 254190.0,
    "dps": 1.88,
    "payout": 27.8,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.88
   },
   {
    "p": 2017,
@@ -31,7 +33,8 @@
    "equity": 255693.0,
    "dps": 2.12,
    "payout": 30.8,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.12
   },
   {
    "p": 2018,
@@ -43,7 +46,8 @@
    "equity": 256515.0,
    "dps": 2.72,
    "payout": 28.4,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.72
   },
   {
    "p": 2019,
@@ -55,7 +59,8 @@
    "equity": 261330.0,
    "dps": 3.4,
    "payout": 30.1,
-   "yield": null
+   "yield": null,
+   "dps_adj": 3.4
   },
   {
    "p": 2020,
@@ -67,7 +72,8 @@
    "equity": 279354.0,
    "dps": 3.6,
    "payout": 38.1,
-   "yield": null
+   "yield": null,
+   "dps_adj": 3.6
   },
   {
    "p": 2021,
@@ -79,7 +85,8 @@
    "equity": 294127.0,
    "dps": 3.8,
    "payout": 23.8,
-   "yield": null
+   "yield": null,
+   "dps_adj": 3.8
   },
   {
    "p": 2022,
@@ -91,7 +98,8 @@
    "equity": 292332.0,
    "dps": 4,
    "payout": 31.5,
-   "yield": null
+   "yield": null,
+   "dps_adj": 4.0
   },
   {
    "p": 2023,
@@ -103,7 +111,8 @@
    "equity": 327878.0,
    "dps": 4.1,
    "payout": 24.3,
-   "yield": null
+   "yield": null,
+   "dps_adj": 4.1
   },
   {
    "p": 2024,
@@ -115,7 +124,8 @@
    "equity": 344758.0,
    "dps": 4.8,
    "payout": 23.6,
-   "yield": null
+   "yield": null,
+   "dps_adj": 4.8
   },
   {
    "p": 2025,
@@ -127,7 +137,8 @@
    "equity": 362438.0,
    "dps": 5.8,
    "payout": 28.3,
-   "yield": null
+   "yield": null,
+   "dps_adj": 5.8
   }
  ],
  "quarterly": [

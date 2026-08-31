@@ -1,5 +1,6 @@
 {
  "name": "KLAC",
+ "split_adjusted": true,
  "legal_name": "KLA CORP",
  "code": "KLAC",
  "cik": "0000319201",
@@ -19,7 +20,8 @@
    "equity": 1326.4,
    "dps": 2.14,
    "payout": 36.2,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.214
   },
   {
    "p": 2018,
@@ -31,7 +33,8 @@
    "equity": 1620.5,
    "dps": 2.52,
    "payout": 49.1,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.252
   },
   {
    "p": 2019,
@@ -43,7 +46,8 @@
    "equity": 2677.7,
    "dps": 3,
    "payout": 39.8,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.3
   },
   {
    "p": 2020,
@@ -55,7 +59,8 @@
    "equity": 2681.0,
    "dps": 3.3,
    "payout": 42.6,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.33
   },
   {
    "p": 2021,
@@ -67,7 +72,8 @@
    "equity": 3375.6,
    "dps": 3.6,
    "payout": 26.7,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.36
   },
   {
    "p": 2022,
@@ -79,7 +85,8 @@
    "equity": 1399.1,
    "dps": 4.2,
    "payout": 19.0,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.42
   },
   {
    "p": 2023,
@@ -91,7 +98,8 @@
    "equity": 2919.8,
    "dps": 5.2,
    "payout": 21.4,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.52
   },
   {
    "p": 2024,
@@ -103,7 +111,8 @@
    "equity": 3368.3,
    "dps": 0.565,
    "payout": 27.7,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.565
   },
   {
    "p": 2025,
@@ -115,7 +124,8 @@
    "equity": 4692.5,
    "dps": 0.675,
    "payout": 22.1,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.675
   },
   {
    "p": 2026,
@@ -127,7 +137,8 @@
    "equity": 6349.8,
    "dps": 0.8,
    "payout": 21.7,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.8
   }
  ],
  "quarterly": [

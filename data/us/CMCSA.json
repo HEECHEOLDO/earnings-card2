@@ -1,5 +1,6 @@
 {
  "name": "CMCSA",
+ "split_adjusted": false,
  "legal_name": "COMCAST CORP",
  "code": "CMCSA",
  "cik": "0001166691",
@@ -19,7 +20,8 @@
    "equity": 56163.0,
    "dps": 0.55,
    "payout": 29.4,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.55
   },
   {
    "p": 2017,
@@ -31,7 +33,8 @@
    "equity": 69459.0,
    "dps": 0.63,
    "payout": 12.9,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.63
   },
   {
    "p": 2018,
@@ -43,7 +46,8 @@
    "equity": 72502.0,
    "dps": 0.76,
    "payout": 29.4,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.76
   },
   {
    "p": 2019,
@@ -55,7 +59,8 @@
    "equity": 83874.0,
    "dps": 0.84,
    "payout": 28.7,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.84
   },
   {
    "p": 2020,
@@ -67,7 +72,8 @@
    "equity": 91738.0,
    "dps": 0.92,
    "payout": 39.3,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.92
   },
   {
    "p": 2021,
@@ -79,7 +85,8 @@
    "equity": 97490.0,
    "dps": 1,
    "payout": 33.2,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.0
   },
   {
    "p": 2022,
@@ -91,7 +98,8 @@
    "equity": 81627.0,
    "dps": 1.08,
    "payout": 97.1,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.08
   },
   {
    "p": 2023,
@@ -103,7 +111,8 @@
    "equity": 83226.0,
    "dps": 1.16,
    "payout": 31.7,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.16
   },
   {
    "p": 2024,
@@ -115,7 +124,8 @@
    "equity": 86038.0,
    "dps": 1.24,
    "payout": 30.3,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.24
   },
   {
    "p": 2025,
@@ -127,7 +137,8 @@
    "equity": 97151.0,
    "dps": 1.32,
    "payout": 24.8,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.32
   }
  ],
  "quarterly": [

@@ -392,6 +392,36 @@ def payout_of(fy, A):
     return round(v, 1)
 
 
+CLEAN_RATIOS = [2, 3, 4, 5, 7, 10, 20]
+
+
+def adjust_splits(annual, shares):
+    """액면분할을 감지해 과거 주당배당금을 현재 주식 수 기준으로 환산한다.
+
+    국내와 달리 주식 수를 직접 받아오므로 역산할 필요가 없다.
+    주식 수가 어느 해에 갑자기 몇 배로 뛰면 분할이다.
+    """
+    n = len(annual)
+    factor = [1.0] * n
+    cum, found = 1.0, False
+    for i in range(n - 1, 0, -1):
+        a = shares.get(annual[i - 1]["p"])
+        b = shares.get(annual[i]["p"])
+        if a and b and a > 0:
+            ratio = b / a
+            if ratio >= 1.8 or 0 < ratio <= 0.56:
+                target = ratio if ratio >= 1 else 1 / ratio
+                best = min(CLEAN_RATIOS, key=lambda c: abs(c - target))
+                if abs(best - target) / best <= 0.10:
+                    target = best
+                cum *= target if ratio >= 1 else 1 / target
+                found = True
+        factor[i - 1] = cum
+    for i, r in enumerate(annual):
+        r["dps_adj"] = round(r["dps"] / factor[i], 4) if r.get("dps") else r.get("dps")
+    return found
+
+
 def collect_one(ticker, info):
     log("\n=== %s (%s) ===" % (ticker, info["name"]))
     facts = get_json(SEC_FACTS % info["cik"])
@@ -424,6 +454,13 @@ def collect_one(ticker, info):
             (f"${A['dps'][fy]:.2f}" if fy in A["dps"] else "-"),
             (f"{po}%" if po is not None else "-")))
     annual = annual[-YEARS:]
+
+    split = adjust_splits(annual, A["shares"])
+    if split:
+        log("  [분할] 액면분할 감지 — 과거 주당배당금을 현재 주식 수 기준으로 환산")
+        for r in annual:
+            if r.get("dps") and r["dps"] != r.get("dps_adj"):
+                log("    FY%d  공시 $%.2f -> 환산 $%.2f" % (r["p"], r["dps"], r["dps_adj"]))
 
     fem = fiscal_end_month(facts)
     dbg("결산월: %d월" % fem)
@@ -458,6 +495,7 @@ def collect_one(ticker, info):
 
     return {
         "name": ticker,
+        "split_adjusted": split,
         "legal_name": info["name"],
         "code": ticker,
         "cik": info["cik"],

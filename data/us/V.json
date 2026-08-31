@@ -1,5 +1,6 @@
 {
  "name": "V",
+ "split_adjusted": false,
  "legal_name": "VISA INC.",
  "code": "V",
  "cik": "0001403161",
@@ -19,7 +20,8 @@
    "equity": 32912.0,
    "dps": 0.14,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.14
   },
   {
    "p": 2017,
@@ -31,7 +33,8 @@
    "equity": 32760.0,
    "dps": 0.165,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.165
   },
   {
    "p": 2018,
@@ -43,7 +46,8 @@
    "equity": 34006.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2019,
@@ -55,7 +59,8 @@
    "equity": 34684.0,
    "dps": 0.25,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.25
   },
   {
    "p": 2020,
@@ -67,7 +72,8 @@
    "equity": 36210.0,
    "dps": 0.3,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.3
   },
   {
    "p": 2021,
@@ -79,7 +85,8 @@
    "equity": 37589.0,
    "dps": 0.32,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.32
   },
   {
    "p": 2022,
@@ -91,7 +98,8 @@
    "equity": 35581.0,
    "dps": 0.375,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.375
   },
   {
    "p": 2023,
@@ -103,7 +111,8 @@
    "equity": 38733.0,
    "dps": 0.45,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.45
   },
   {
    "p": 2024,
@@ -115,7 +124,8 @@
    "equity": 38296.0,
    "dps": 0.52,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.52
   },
   {
    "p": 2025,
@@ -127,7 +137,8 @@
    "equity": 38777.0,
    "dps": 0.59,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.59
   }
  ],
  "quarterly": [

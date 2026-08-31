@@ -1,5 +1,6 @@
 {
  "name": "MA",
+ "split_adjusted": false,
  "legal_name": "Mastercard Inc",
  "code": "MA",
  "cik": "0001141391",
@@ -19,7 +20,8 @@
    "equity": 5684.0,
    "dps": 0.79,
    "payout": 21.4,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.79
   },
   {
    "p": 2017,
@@ -31,7 +33,8 @@
    "equity": 5497.0,
    "dps": 0.91,
    "payout": 24.8,
-   "yield": null
+   "yield": null,
+   "dps_adj": 0.91
   },
   {
    "p": 2018,
@@ -43,7 +46,8 @@
    "equity": 5418.0,
    "dps": 1.08,
    "payout": 19.2,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.08
   },
   {
    "p": 2019,
@@ -55,7 +59,8 @@
    "equity": 5917.0,
    "dps": 1.39,
    "payout": 17.4,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.39
   },
   {
    "p": 2020,
@@ -67,7 +72,8 @@
    "equity": 6488.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2021,
@@ -79,7 +85,8 @@
    "equity": 7383.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2022,
@@ -91,7 +98,8 @@
    "equity": 6356.0,
    "dps": 2.04,
    "payout": 19.9,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.04
   },
   {
    "p": 2023,
@@ -103,7 +111,8 @@
    "equity": 6975.0,
    "dps": 2.37,
    "payout": 20.0,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.37
   },
   {
    "p": 2024,
@@ -115,7 +124,8 @@
    "equity": 6515.0,
    "dps": 2.74,
    "payout": 19.7,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.74
   },
   {
    "p": 2025,
@@ -127,7 +137,8 @@
    "equity": 7746.0,
    "dps": 3.15,
    "payout": 19.0,
-   "yield": null
+   "yield": null,
+   "dps_adj": 3.15
   }
  ],
  "quarterly": [

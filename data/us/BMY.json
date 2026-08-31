@@ -1,5 +1,6 @@
 {
  "name": "BMY",
+ "split_adjusted": false,
  "legal_name": "BRISTOL MYERS SQUIBB CO",
  "code": "BMY",
  "cik": "0000014272",
@@ -19,7 +20,8 @@
    "equity": 16347.0,
    "dps": 1.53,
    "payout": 56.7,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.53
   },
   {
    "p": 2017,
@@ -31,7 +33,8 @@
    "equity": 11847.0,
    "dps": 1.57,
    "payout": 264.9,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.57
   },
   {
    "p": 2018,
@@ -43,7 +46,8 @@
    "equity": 14127.0,
    "dps": 1.61,
    "payout": 53.1,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.61
   },
   {
    "p": 2019,
@@ -55,7 +59,8 @@
    "equity": 51698.0,
    "dps": 1.68,
    "payout": 82.8,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.68
   },
   {
    "p": 2020,
@@ -67,7 +72,8 @@
    "equity": 37882.0,
    "dps": 1.84,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": 1.84
   },
   {
    "p": 2021,
@@ -79,7 +85,8 @@
    "equity": 36006.0,
    "dps": 2.01,
    "payout": 63.6,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.01
   },
   {
    "p": 2022,
@@ -91,7 +98,8 @@
    "equity": 31118.0,
    "dps": 2.19,
    "payout": 73.5,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.19
   },
   {
    "p": 2023,
@@ -103,7 +111,8 @@
    "equity": 29485.0,
    "dps": 2.31,
    "payout": 59.4,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.31
   },
   {
    "p": 2024,
@@ -115,7 +124,8 @@
    "equity": 16388.0,
    "dps": 2.42,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.42
   },
   {
    "p": 2025,
@@ -127,7 +137,8 @@
    "equity": 18506.0,
    "dps": 2.49,
    "payout": 71.8,
-   "yield": null
+   "yield": null,
+   "dps_adj": 2.49
   }
  ],
  "quarterly": [
