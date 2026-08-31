@@ -1,7 +1,7 @@
 {
  "name": "AMT",
  "split_adjusted": false,
- "legal_name": "AMERICAN TOWER CORP /MA/",
+ "legal_name": "AMERICAN TOWER CORPORATION",
  "code": "AMT",
  "cik": "0001053507",
  "market": "미국",
@@ -96,10 +96,10 @@
    "assets": 67194.5,
    "liab": 54786.0,
    "equity": 12408.5,
-   "dps": 5.86,
-   "payout": 159.4,
+   "dps": 4.3,
+   "payout": 117.3,
    "yield": null,
-   "dps_adj": 5.86
+   "dps_adj": 4.3
   },
   {
    "p": 2023,
@@ -109,10 +109,10 @@
    "assets": 66027.6,
    "liab": 55162.2,
    "equity": 10865.4,
-   "dps": 6.45,
-   "payout": 219.9,
+   "dps": 6.31,
+   "payout": 215.6,
    "yield": null,
-   "dps_adj": 6.45
+   "dps_adj": 6.31
   },
   {
    "p": 2024,
@@ -122,10 +122,10 @@
    "assets": 61077.4,
    "liab": 51428.7,
    "equity": 9648.7,
-   "dps": 6.48,
-   "payout": 132.7,
+   "dps": 6.56,
+   "payout": 134.7,
    "yield": null,
-   "dps_adj": 6.48
+   "dps_adj": 6.56
   },
   {
    "p": 2025,
@@ -135,10 +135,10 @@
    "assets": 63190.4,
    "liab": 52835.1,
    "equity": 10355.3,
-   "dps": 6.8,
-   "payout": 121.1,
+   "dps": 6.72,
+   "payout": 119.8,
    "yield": null,
-   "dps_adj": 6.8
+   "dps_adj": 6.72
   }
  ],
  "quarterly": [

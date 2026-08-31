@@ -1,7 +1,7 @@
 {
  "name": "TXT",
  "split_adjusted": false,
- "legal_name": "TEXTRON INC",
+ "legal_name": "Textron Inc.",
  "code": "TXT",
  "cik": "0000217346",
  "market": "미국",
@@ -32,7 +32,7 @@
    "liab": 9693.0,
    "equity": 5647.0,
    "dps": 0.08,
-   "payout": 6.9,
+   "payout": 7.0,
    "yield": null,
    "dps_adj": 0.08
   },
@@ -45,7 +45,7 @@
    "liab": 9072.0,
    "equity": 5192.0,
    "dps": 0.08,
-   "payout": 1.6,
+   "payout": 1.7,
    "yield": null,
    "dps_adj": 0.08
   },
@@ -110,7 +110,7 @@
    "liab": 9869.0,
    "equity": 6987.0,
    "dps": 0.08,
-   "payout": 1.7,
+   "payout": 1.8,
    "yield": null,
    "dps_adj": 0.08
   },

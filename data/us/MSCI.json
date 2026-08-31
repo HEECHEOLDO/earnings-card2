@@ -1,7 +1,7 @@
 {
  "name": "MSCI",
  "split_adjusted": false,
- "legal_name": "MSCI Inc.",
+ "legal_name": "MSCI INC.",
  "code": "MSCI",
  "cik": "0001408198",
  "market": "미국",
@@ -19,7 +19,7 @@
    "liab": 2765.0,
    "equity": 317.6,
    "dps": 1,
-   "payout": 36.8,
+   "payout": 37.0,
    "yield": null,
    "dps_adj": 1.0
   },
@@ -32,7 +32,7 @@
    "liab": 2874.7,
    "equity": 401.0,
    "dps": 1.32,
-   "payout": 39.2,
+   "payout": 39.9,
    "yield": null,
    "dps_adj": 1.32
   },
@@ -45,7 +45,7 @@
    "liab": 3554.4,
    "equity": -166.5,
    "dps": 1.92,
-   "payout": 33.0,
+   "payout": 33.9,
    "yield": null,
    "dps_adj": 1.92
   },
@@ -58,7 +58,7 @@
    "liab": 4281.2,
    "equity": -76.7,
    "dps": 2.52,
-   "payout": 37.8,
+   "payout": 38.2,
    "yield": null,
    "dps_adj": 2.52
   },
@@ -71,7 +71,7 @@
    "liab": 4641.9,
    "equity": -443.2,
    "dps": 2.92,
-   "payout": 40.6,
+   "payout": 41.0,
    "yield": null,
    "dps_adj": 2.92
   },
@@ -84,7 +84,7 @@
    "liab": 5670.2,
    "equity": -163.5,
    "dps": 3.64,
-   "payout": 41.4,
+   "payout": 41.9,
    "yield": null,
    "dps_adj": 3.64
   },
@@ -97,7 +97,7 @@
    "liab": 6005.5,
    "equity": -1007.9,
    "dps": 4.58,
-   "payout": 42.5,
+   "payout": 42.7,
    "yield": null,
    "dps_adj": 4.58
   },
@@ -110,7 +110,7 @@
    "liab": 6258.0,
    "equity": -739.8,
    "dps": 5.52,
-   "payout": 38.2,
+   "payout": 38.4,
    "yield": null,
    "dps_adj": 5.52
   },
@@ -123,7 +123,7 @@
    "liab": 6385.4,
    "equity": -940.0,
    "dps": 6.4,
-   "payout": 45.4,
+   "payout": 45.6,
    "yield": null,
    "dps_adj": 6.4
   },
@@ -136,7 +136,7 @@
    "liab": 8357.0,
    "equity": -2654.5,
    "dps": 7.2,
-   "payout": 45.8,
+   "payout": 45.9,
    "yield": null,
    "dps_adj": 7.2
   }

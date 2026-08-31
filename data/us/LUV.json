@@ -1,7 +1,7 @@
 {
  "name": "LUV",
  "split_adjusted": false,
- "legal_name": "SOUTHWEST AIRLINES CO",
+ "legal_name": "SOUTHWEST AIRLINES CO.",
  "code": "LUV",
  "cik": "0000092380",
  "market": "미국",
@@ -12,20 +12,20 @@
  "annual": [
   {
    "p": 2016,
-   "rev": 20289.0,
+   "rev": 20425.0,
    "op": 3522.0,
    "ni": 2183.0,
    "assets": 23286.0,
    "liab": null,
    "equity": 7784.0,
    "dps": 0.375,
-   "payout": 10.8,
+   "payout": 10.9,
    "yield": null,
    "dps_adj": 0.375
   },
   {
    "p": 2017,
-   "rev": 21146.0,
+   "rev": 21171.0,
    "op": 3407.0,
    "ni": 3357.0,
    "assets": 25110.0,
@@ -97,7 +97,7 @@
    "liab": null,
    "equity": 10687.0,
    "dps": 0.18,
-   "payout": 19.8,
+   "payout": 21.4,
    "yield": null,
    "dps_adj": 0.18
   },
@@ -109,10 +109,10 @@
    "assets": 36487.0,
    "liab": null,
    "equity": 10515.0,
-   "dps": 0.72,
-   "payout": 92.1,
+   "dps": 0.18,
+   "payout": 24.8,
    "yield": null,
-   "dps_adj": 0.72
+   "dps_adj": 0.18
   },
   {
    "p": 2024,
@@ -123,7 +123,7 @@
    "liab": null,
    "equity": 10350.0,
    "dps": 0.72,
-   "payout": 92.6,
+   "payout": 99.6,
    "yield": null,
    "dps_adj": 0.72
   },
@@ -136,7 +136,7 @@
    "liab": null,
    "equity": 7981.0,
    "dps": 0.72,
-   "payout": 88.2,
+   "payout": 91.1,
    "yield": null,
    "dps_adj": 0.72
   }

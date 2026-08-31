@@ -1,7 +1,7 @@
 {
  "name": "PHM",
  "split_adjusted": false,
- "legal_name": "PULTEGROUP INC/MI/",
+ "legal_name": "PULTEGROUP, INC.",
  "code": "PHM",
  "cik": "0000822416",
  "market": "미국",
@@ -19,7 +19,7 @@
    "liab": 5518.8,
    "equity": 4659.4,
    "dps": 0.36,
-   "payout": 20.3,
+   "payout": 20.4,
    "yield": null,
    "dps_adj": 0.36
   },
@@ -32,7 +32,7 @@
    "liab": 5532.6,
    "equity": 4154.0,
    "dps": 0.36,
-   "payout": 24.6,
+   "payout": 24.7,
    "yield": null,
    "dps_adj": 0.36
   },
@@ -45,7 +45,7 @@
    "liab": 5355.2,
    "equity": 4817.8,
    "dps": 0.38,
-   "payout": 10.5,
+   "payout": 10.6,
    "yield": null,
    "dps_adj": 0.38
   },
@@ -58,7 +58,7 @@
    "liab": 5257.4,
    "equity": 5458.2,
    "dps": 0.45,
-   "payout": 12.1,
+   "payout": 12.2,
    "yield": null,
    "dps_adj": 0.45
   },
@@ -71,7 +71,7 @@
    "liab": 5635.5,
    "equity": 6570.0,
    "dps": 0.5,
-   "payout": 9.5,
+   "payout": 9.6,
    "yield": null,
    "dps_adj": 0.5
   },
@@ -110,7 +110,7 @@
    "liab": 5703.8,
    "equity": 10383.3,
    "dps": 0.68,
-   "payout": 5.7,
+   "payout": 5.8,
    "yield": null,
    "dps_adj": 0.68
   },
@@ -123,7 +123,7 @@
    "liab": 5241.8,
    "equity": 12122.0,
    "dps": 0.82,
-   "payout": 5.5,
+   "payout": 5.6,
    "yield": null,
    "dps_adj": 0.82
   },
@@ -136,7 +136,7 @@
    "liab": 5063.0,
    "equity": 12985.4,
    "dps": 0.92,
-   "payout": 8.2,
+   "payout": 8.3,
    "yield": null,
    "dps_adj": 0.92
   }

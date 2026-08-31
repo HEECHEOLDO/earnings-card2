@@ -1,7 +1,7 @@
 {
  "name": "FCX",
  "split_adjusted": false,
- "legal_name": "FREEPORT-MCMORAN INC",
+ "legal_name": "Freeport-McMoRan Inc.",
  "code": "FCX",
  "cik": "0000831259",
  "market": "미국",
@@ -45,7 +45,7 @@
    "liab": 24324.0,
    "equity": 17892.0,
    "dps": 0.2,
-   "payout": 10.0,
+   "payout": 10.1,
    "yield": null,
    "dps_adj": 0.2
   },
@@ -79,12 +79,12 @@
    "p": 2021,
    "rev": 22845.0,
    "op": 8366.0,
-   "ni": 4306.0,
+   "ni": 5365.0,
    "assets": 48022.0,
    "liab": 25003.0,
    "equity": 23019.0,
    "dps": 0.375,
-   "payout": 12.8,
+   "payout": 10.4,
    "yield": null,
    "dps_adj": 0.375
   },
@@ -92,12 +92,12 @@
    "p": 2022,
    "rev": 22780.0,
    "op": 7037.0,
-   "ni": 3468.0,
+   "ni": 4479.0,
    "assets": 51093.0,
    "liab": 26222.0,
    "equity": 24871.0,
    "dps": 0.6,
-   "payout": 24.9,
+   "payout": 19.4,
    "yield": null,
    "dps_adj": 0.6
   },
@@ -105,12 +105,12 @@
    "p": 2023,
    "rev": 22855.0,
    "op": 6225.0,
-   "ni": 1848.0,
+   "ni": 3751.0,
    "assets": 52506.0,
    "liab": 25196.0,
    "equity": 27310.0,
    "dps": 0.6,
-   "payout": 46.6,
+   "payout": 23.1,
    "yield": null,
    "dps_adj": 0.6
   },
@@ -118,12 +118,12 @@
    "p": 2024,
    "rev": 25455.0,
    "op": 6864.0,
-   "ni": 1889.0,
+   "ni": 4399.0,
    "assets": 54848.0,
    "liab": 26070.0,
    "equity": 28778.0,
    "dps": 0.6,
-   "payout": 45.7,
+   "payout": 19.7,
    "yield": null,
    "dps_adj": 0.6
   },
@@ -131,12 +131,12 @@
    "p": 2025,
    "rev": 25915.0,
    "op": 6518.0,
-   "ni": 2204.0,
+   "ni": 4152.0,
    "assets": 58167.0,
    "liab": 27401.0,
    "equity": 30766.0,
    "dps": 0.6,
-   "payout": 39.1,
+   "payout": 20.9,
    "yield": null,
    "dps_adj": 0.6
   }
@@ -168,7 +168,7 @@
    "q": 4,
    "rev": 5720.0,
    "op": 1243.0,
-   "ni": -1789.0
+   "ni": 721.0
   },
   {
    "y": 2025,
@@ -196,7 +196,7 @@
    "q": 4,
    "rev": 5633.0,
    "op": 811.0,
-   "ni": -1383.0
+   "ni": 565.0
   },
   {
    "y": 2026,

@@ -1,7 +1,7 @@
 {
  "name": "DHI",
  "split_adjusted": false,
- "legal_name": "HORTON D R INC /DE/",
+ "legal_name": "D.R. Horton, Inc.",
  "code": "DHI",
  "cik": "0000882184",
  "market": "미국",
@@ -19,7 +19,7 @@
    "liab": 4765.9,
    "equity": 6793.0,
    "dps": 0.32,
-   "payout": 13.4,
+   "payout": 13.5,
    "yield": null,
    "dps_adj": 0.32
   },
@@ -32,7 +32,7 @@
    "liab": 4437.0,
    "equity": 7747.6,
    "dps": 0.4,
-   "payout": 14.4,
+   "payout": 14.6,
    "yield": null,
    "dps_adj": 0.4
   },
@@ -45,7 +45,7 @@
    "liab": 4955.7,
    "equity": 9158.9,
    "dps": 0.5,
-   "payout": 12.9,
+   "payout": 13.1,
    "yield": null,
    "dps_adj": 0.5
   },
@@ -58,7 +58,7 @@
    "liab": 5311.5,
    "equity": 10295.1,
    "dps": 0.6,
-   "payout": 13.8,
+   "payout": 14.0,
    "yield": null,
    "dps_adj": 0.6
   },
@@ -71,7 +71,7 @@
    "liab": 6790.8,
    "equity": 12121.5,
    "dps": 0.7,
-   "payout": 10.7,
+   "payout": 10.9,
    "yield": null,
    "dps_adj": 0.7
   },
@@ -84,7 +84,7 @@
    "liab": 8799.7,
    "equity": 15216.2,
    "dps": 0.8,
-   "payout": 6.9,
+   "payout": 7.0,
    "yield": null,
    "dps_adj": 0.8
   },
@@ -110,7 +110,7 @@
    "liab": 9444.5,
    "equity": 23137.9,
    "dps": 1,
-   "payout": 7.1,
+   "payout": 7.2,
    "yield": null,
    "dps_adj": 1.0
   },
@@ -123,7 +123,7 @@
    "liab": 10279.9,
    "equity": 25462.9,
    "dps": 1.2,
-   "payout": 8.2,
+   "payout": 8.3,
    "yield": null,
    "dps_adj": 1.2
   },
@@ -136,7 +136,7 @@
    "liab": 10729.0,
    "equity": 24555.4,
    "dps": 1.6,
-   "payout": 13.6,
+   "payout": 13.7,
    "yield": null,
    "dps_adj": 1.6
   }

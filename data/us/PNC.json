@@ -1,7 +1,7 @@
 {
  "name": "PNC",
  "split_adjusted": false,
- "legal_name": "PNC FINANCIAL SERVICES GROUP, INC.",
+ "legal_name": "PNC Financial Services Group, Inc.",
  "code": "PNC",
  "cik": "0000713676",
  "market": "미국",
@@ -19,20 +19,20 @@
    "liab": 319526.0,
    "equity": 46854.0,
    "dps": 2.12,
-   "payout": 26.3,
+   "payout": 26.6,
    "yield": null,
    "dps_adj": 2.12
   },
   {
    "p": 2017,
-   "rev": 15252.0,
+   "rev": 16329.0,
    "op": 4413.0,
    "ni": 5388.0,
    "assets": 380768.0,
    "liab": 333183.0,
    "equity": 47585.0,
    "dps": 2.6,
-   "payout": 23.2,
+   "payout": 23.5,
    "yield": null,
    "dps_adj": 2.6
   },
@@ -123,7 +123,7 @@
    "liab": 505569.0,
    "equity": 54469.0,
    "dps": 6.3,
-   "payout": 42.2,
+   "payout": 42.3,
    "yield": null,
    "dps_adj": 6.3
   },

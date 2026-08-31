@@ -1,7 +1,7 @@
 {
  "name": "DRI",
  "split_adjusted": false,
- "legal_name": "DARDEN RESTAURANTS INC",
+ "legal_name": "DARDEN RESTAURANTS, INC.",
  "code": "DRI",
  "cik": "0000940944",
  "market": "미국",
@@ -19,7 +19,7 @@
    "liab": 3190.6,
    "equity": 2101.7,
    "dps": 2.24,
-   "payout": 58.1,
+   "payout": 58.9,
    "yield": null,
    "dps_adj": 2.24
   },
@@ -32,7 +32,7 @@
    "liab": 3274.8,
    "equity": 2194.8,
    "dps": 2.52,
-   "payout": 52.4,
+   "payout": 53.3,
    "yield": null,
    "dps_adj": 2.52
   },
@@ -45,7 +45,7 @@
    "liab": 3500.2,
    "equity": 2392.6,
    "dps": 3,
-   "payout": 51.9,
+   "payout": 52.7,
    "yield": null,
    "dps_adj": 3.0
   },
@@ -71,7 +71,7 @@
    "liab": 7843.0,
    "equity": 2813.1,
    "dps": 1.55,
-   "payout": 32.1,
+   "payout": 32.5,
    "yield": null,
    "dps_adj": 1.55
   },
@@ -84,7 +84,7 @@
    "liab": 7937.6,
    "equity": 2198.2,
    "dps": 4.4,
-   "payout": 59.0,
+   "payout": 59.6,
    "yield": null,
    "dps_adj": 4.4
   },
@@ -97,7 +97,7 @@
    "liab": 8040.0,
    "equity": 2201.5,
    "dps": 4.84,
-   "payout": 60.1,
+   "payout": 60.6,
    "yield": null,
    "dps_adj": 4.84
   },
@@ -110,7 +110,7 @@
    "liab": 9080.5,
    "equity": 2242.5,
    "dps": 5.24,
-   "payout": 61.1,
+   "payout": 61.6,
    "yield": null,
    "dps_adj": 5.24
   },
@@ -123,7 +123,7 @@
    "liab": 10275.7,
    "equity": 2311.3,
    "dps": 5.6,
-   "payout": 62.7,
+   "payout": 63.2,
    "yield": null,
    "dps_adj": 5.6
   },
@@ -136,7 +136,7 @@
    "liab": 10654.9,
    "equity": 2207.5,
    "dps": 6,
-   "payout": 57.4,
+   "payout": 57.8,
    "yield": null,
    "dps_adj": 6.0
   }

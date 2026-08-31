@@ -1,7 +1,7 @@
 {
  "name": "AWK",
  "split_adjusted": false,
- "legal_name": "American Water Works Company, Inc.",
+ "legal_name": "AMERICAN WATER WORKS COMPANY, INC.",
  "code": "AWK",
  "cik": "0001410636",
  "market": "미국",
@@ -19,7 +19,7 @@
    "liab": null,
    "equity": 4728.0,
    "dps": 1.12,
-   "payout": 54.0,
+   "payout": 54.3,
    "yield": null,
    "dps_adj": 1.12
   },
@@ -32,7 +32,7 @@
    "liab": null,
    "equity": 4915.0,
    "dps": 1.24,
-   "payout": 52.5,
+   "payout": 52.8,
    "yield": null,
    "dps_adj": 1.24
   },
@@ -40,12 +40,12 @@
    "p": 2018,
    "rev": 3417.0,
    "op": 1102.0,
-   "ni": 565.0,
+   "ni": 567.0,
    "assets": 21223.0,
    "liab": null,
    "equity": 5864.0,
    "dps": 1.82,
-   "payout": 58.0,
+   "payout": 57.8,
    "yield": null,
    "dps_adj": 1.82
   },
@@ -71,7 +71,7 @@
    "liab": null,
    "equity": 6454.0,
    "dps": 2.2,
-   "payout": 56.2,
+   "payout": 56.5,
    "yield": null,
    "dps_adj": 2.2
   },

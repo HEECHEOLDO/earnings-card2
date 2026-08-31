@@ -1,7 +1,7 @@
 {
  "name": "ROP",
  "split_adjusted": false,
- "legal_name": "ROPER TECHNOLOGIES INC",
+ "legal_name": "ROPER TECHNOLOGIES, INC.",
  "code": "ROP",
  "cik": "0000882835",
  "market": "미국",
@@ -19,7 +19,7 @@
    "liab": 8536.1,
    "equity": 5788.9,
    "dps": 1.25,
-   "payout": 19.2,
+   "payout": 19.5,
    "yield": null,
    "dps_adj": 1.25
   },
@@ -32,7 +32,7 @@
    "liab": 7452.8,
    "equity": 6863.6,
    "dps": 1.4625,
-   "payout": 15.4,
+   "payout": 15.6,
    "yield": null,
    "dps_adj": 1.4625
   },
@@ -45,7 +45,7 @@
    "liab": 7511.0,
    "equity": 7738.5,
    "dps": 1.7,
-   "payout": 18.6,
+   "payout": 18.8,
    "yield": null,
    "dps_adj": 1.7
   },
@@ -58,7 +58,7 @@
    "liab": 8617.0,
    "equity": 9491.9,
    "dps": 1.9,
-   "payout": 11.2,
+   "payout": 11.3,
    "yield": null,
    "dps_adj": 1.9
   },
@@ -71,7 +71,7 @@
    "liab": 13545.0,
    "equity": 10479.8,
    "dps": 2.1,
-   "payout": 23.1,
+   "payout": 23.4,
    "yield": null,
    "dps_adj": 2.1
   },
@@ -84,7 +84,7 @@
    "liab": 12150.1,
    "equity": 11563.8,
    "dps": 2.31,
-   "payout": 21.1,
+   "payout": 21.3,
    "yield": null,
    "dps_adj": 2.31
   },
@@ -97,7 +97,7 @@
    "liab": 10943.0,
    "equity": 16037.8,
    "dps": 2.54,
-   "payout": 5.9,
+   "payout": 6.0,
    "yield": null,
    "dps_adj": 2.54
   },
@@ -110,7 +110,7 @@
    "liab": 10722.7,
    "equity": 17444.8,
    "dps": 2.8,
-   "payout": 21.6,
+   "payout": 21.7,
    "yield": null,
    "dps_adj": 2.8
   },
@@ -123,7 +123,7 @@
    "liab": 12467.1,
    "equity": 18867.6,
    "dps": 3.08,
-   "payout": 21.3,
+   "payout": 21.5,
    "yield": null,
    "dps_adj": 3.08
   },
@@ -136,7 +136,7 @@
    "liab": 14695.5,
    "equity": 19881.5,
    "dps": 3.39,
-   "payout": 23.7,
+   "payout": 23.9,
    "yield": null,
    "dps_adj": 3.39
   }

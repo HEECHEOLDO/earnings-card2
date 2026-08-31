@@ -1,7 +1,7 @@
 {
  "name": "NDSN",
  "split_adjusted": false,
- "legal_name": "NORDSON CORP",
+ "legal_name": "NORDSON CORPORATION",
  "code": "NDSN",
  "cik": "0000072331",
  "market": "미국",
@@ -19,7 +19,7 @@
    "liab": null,
    "equity": 851.6,
    "dps": 0.99,
-   "payout": 20.8,
+   "payout": 21.0,
    "yield": null,
    "dps_adj": 0.99
   },
@@ -32,7 +32,7 @@
    "liab": null,
    "equity": 1155.5,
    "dps": 1.11,
-   "payout": 21.6,
+   "payout": 21.8,
    "yield": null,
    "dps_adj": 1.11
   },
@@ -45,7 +45,7 @@
    "liab": null,
    "equity": 1450.7,
    "dps": 1.25,
-   "payout": 19.2,
+   "payout": 19.5,
    "yield": null,
    "dps_adj": 1.25
   },
@@ -58,7 +58,7 @@
    "liab": null,
    "equity": 1581.0,
    "dps": 1.43,
-   "payout": 24.4,
+   "payout": 24.7,
    "yield": null,
    "dps_adj": 1.43
   },
@@ -71,7 +71,7 @@
    "liab": null,
    "equity": 1759.0,
    "dps": 1.53,
-   "payout": 35.4,
+   "payout": 35.9,
    "yield": null,
    "dps_adj": 1.53
   },
@@ -84,7 +84,7 @@
    "liab": null,
    "equity": 2159.1,
    "dps": 1.69,
-   "payout": 21.6,
+   "payout": 21.8,
    "yield": null,
    "dps_adj": 1.69
   },
@@ -97,7 +97,7 @@
    "liab": null,
    "equity": 2294.4,
    "dps": 2.18,
-   "payout": 24.5,
+   "payout": 24.7,
    "yield": null,
    "dps_adj": 2.18
   },
@@ -110,7 +110,7 @@
    "liab": null,
    "equity": 2598.1,
    "dps": 2.63,
-   "payout": 30.8,
+   "payout": 31.1,
    "yield": null,
    "dps_adj": 2.63
   },
@@ -123,7 +123,7 @@
    "liab": null,
    "equity": 2932.2,
    "dps": 2.82,
-   "payout": 34.5,
+   "payout": 34.8,
    "yield": null,
    "dps_adj": 2.82
   },
@@ -136,7 +136,7 @@
    "liab": null,
    "equity": 3043.6,
    "dps": 3.16,
-   "payout": 36.9,
+   "payout": 37.1,
    "yield": null,
    "dps_adj": 3.16
   }

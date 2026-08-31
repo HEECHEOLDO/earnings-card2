@@ -1,7 +1,7 @@
 {
  "name": "EL",
  "split_adjusted": false,
- "legal_name": "ESTEE LAUDER COMPANIES INC",
+ "legal_name": "Estee Lauder Companies Inc",
  "code": "EL",
  "cik": "0001001250",
  "market": "미국",
@@ -19,7 +19,7 @@
    "liab": null,
    "equity": 4402.0,
    "dps": 1.32,
-   "payout": 38.6,
+   "payout": 39.2,
    "yield": null,
    "dps_adj": 1.32
   },
@@ -32,7 +32,7 @@
    "liab": 8343.0,
    "equity": 4710.0,
    "dps": 1.48,
-   "payout": 48.8,
+   "payout": 49.8,
    "yield": null,
    "dps_adj": 1.48
   },
@@ -45,7 +45,7 @@
    "liab": 8745.0,
    "equity": 4411.0,
    "dps": 1.67,
-   "payout": 33.8,
+   "payout": 34.5,
    "yield": null,
    "dps_adj": 1.67
   },
@@ -58,7 +58,7 @@
    "liab": null,
    "equity": 3962.0,
    "dps": 1.39,
-   "payout": 72.0,
+   "payout": 73.3,
    "yield": null,
    "dps_adj": 1.39
   },
@@ -71,7 +71,7 @@
    "liab": null,
    "equity": 6091.0,
    "dps": 2.07,
-   "payout": 26.1,
+   "payout": 26.5,
    "yield": null,
    "dps_adj": 2.07
   },
@@ -84,7 +84,7 @@
    "liab": null,
    "equity": 5590.0,
    "dps": 2.33,
-   "payout": 34.8,
+   "payout": 35.3,
    "yield": null,
    "dps_adj": 2.33
   },
@@ -97,7 +97,7 @@
    "liab": null,
    "equity": 5585.0,
    "dps": 2.58,
-   "payout": 91.4,
+   "payout": 92.2,
    "yield": null,
    "dps_adj": 2.58
   },
@@ -110,7 +110,7 @@
    "liab": null,
    "equity": 5314.0,
    "dps": 2.64,
-   "payout": 231.7,
+   "payout": 232.9,
    "yield": null,
    "dps_adj": 2.64
   },
@@ -136,7 +136,7 @@
    "liab": null,
    "equity": 3806.0,
    "dps": 1.4,
-   "payout": 278.7,
+   "payout": 280.6,
    "yield": null,
    "dps_adj": 1.4
   }

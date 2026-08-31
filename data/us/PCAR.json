@@ -1,7 +1,7 @@
 {
  "name": "PCAR",
  "split_adjusted": true,
- "legal_name": "PACCAR INC",
+ "legal_name": "PACCAR Inc",
  "code": "PCAR",
  "cik": "0000075362",
  "market": "미국",
@@ -97,7 +97,7 @@
    "liab": null,
    "equity": 13167.1,
    "dps": 2.8,
-   "payout": 48.6,
+   "payout": 48.7,
    "yield": null,
    "dps_adj": 2.8
   },
@@ -110,7 +110,7 @@
    "liab": null,
    "equity": 15878.8,
    "dps": 4.24,
-   "payout": 48.3,
+   "payout": 48.4,
    "yield": null,
    "dps_adj": 4.24
   },
@@ -123,7 +123,7 @@
    "liab": null,
    "equity": 17506.9,
    "dps": 4.17,
-   "payout": 52.6,
+   "payout": 52.8,
    "yield": null,
    "dps_adj": 4.17
   },
@@ -136,7 +136,7 @@
    "liab": null,
    "equity": 19264.0,
    "dps": 2.72,
-   "payout": 60.2,
+   "payout": 60.3,
    "yield": null,
    "dps_adj": 2.72
   }

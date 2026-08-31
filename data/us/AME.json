@@ -1,7 +1,7 @@
 {
  "name": "AME",
  "split_adjusted": false,
- "legal_name": "AMETEK INC/",
+ "legal_name": "AMETEK, Inc.",
  "code": "AME",
  "cik": "0001037868",
  "market": "미국",
@@ -19,7 +19,7 @@
    "liab": 3844.2,
    "equity": 3256.5,
    "dps": 0.36,
-   "payout": 16.3,
+   "payout": 16.4,
    "yield": null,
    "dps_adj": 0.36
   },
@@ -45,7 +45,7 @@
    "liab": 4420.4,
    "equity": 4241.9,
    "dps": 0.56,
-   "payout": 16.6,
+   "payout": 16.8,
    "yield": null,
    "dps_adj": 0.56
   },
@@ -58,7 +58,7 @@
    "liab": 4729.1,
    "equity": 5115.5,
    "dps": 0.56,
-   "payout": 14.8,
+   "payout": 14.9,
    "yield": null,
    "dps_adj": 0.56
   },

@@ -1,7 +1,7 @@
 {
  "name": "APA",
  "split_adjusted": false,
- "legal_name": "APA Corp",
+ "legal_name": "APA CORPORATION",
  "code": "APA",
  "cik": "0001841666",
  "market": "미국",
@@ -14,12 +14,12 @@
    "p": 2023,
    "rev": 10578.0,
    "op": 3696.0,
-   "ni": 2855.0,
+   "ni": 3207.0,
    "assets": 15244.0,
    "liab": null,
    "equity": 3691.0,
    "dps": 1,
-   "payout": 10.8,
+   "payout": 9.6,
    "yield": null,
    "dps_adj": 1.0
   },
@@ -27,12 +27,12 @@
    "p": 2024,
    "rev": 10300.0,
    "op": 2444.0,
-   "ni": 804.0,
+   "ni": 1118.0,
    "assets": 19390.0,
    "liab": null,
    "equity": 6362.0,
    "dps": 1,
-   "payout": 43.9,
+   "payout": 31.6,
    "yield": null,
    "dps_adj": 1.0
   }

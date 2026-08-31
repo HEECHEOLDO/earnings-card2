@@ -1,7 +1,7 @@
 {
  "name": "PSKY",
  "split_adjusted": false,
- "legal_name": "Paramount Skydance Corp",
+ "legal_name": "Paramount Skydance Corporation",
  "code": "PSKY",
  "cik": "0002041610",
  "market": "미국",
@@ -14,7 +14,7 @@
    "p": 2023,
    "rev": 29652.0,
    "op": -451.0,
-   "ni": -576.0,
+   "ni": -608.0,
    "assets": null,
    "liab": null,
    "equity": 23050.0,
@@ -27,7 +27,7 @@
    "p": 2024,
    "rev": 29213.0,
    "op": -5269.0,
-   "ni": -6149.0,
+   "ni": -6190.0,
    "assets": 46172.0,
    "liab": null,
    "equity": 16782.0,
@@ -43,28 +43,28 @@
    "q": 1,
    "rev": 6731.0,
    "op": 337.0,
-   "ni": 21.0
+   "ni": 1.0
   },
   {
    "y": 2025,
    "q": 1,
    "rev": 7192.0,
    "op": 550.0,
-   "ni": 161.0
+   "ni": 152.0
   },
   {
    "y": 2025,
    "q": 2,
    "rev": 6849.0,
    "op": 399.0,
-   "ni": 61.0
+   "ni": 57.0
   },
   {
    "y": 2026,
    "q": 1,
    "rev": 7347.0,
    "op": 616.0,
-   "ni": 175.0
+   "ni": 168.0
   },
   {
    "y": 2026,

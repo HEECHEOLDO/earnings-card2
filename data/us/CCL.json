@@ -1,7 +1,7 @@
 {
  "name": "CCL",
  "split_adjusted": false,
- "legal_name": "Carnival Corp Ltd.",
+ "legal_name": "Carnival Corporation Ltd.",
  "code": "CCL",
  "cik": "0000815097",
  "market": "미국",
@@ -19,7 +19,7 @@
    "liab": null,
    "equity": 22597.0,
    "dps": 1.35,
-   "payout": 36.2,
+   "payout": 36.3,
    "yield": null,
    "dps_adj": 1.35
   },
@@ -32,7 +32,7 @@
    "liab": null,
    "equity": 24216.0,
    "dps": 1.6,
-   "payout": 44.3,
+   "payout": 44.5,
    "yield": null,
    "dps_adj": 1.6
   },
@@ -134,7 +134,7 @@
    "ni": 2760.0,
    "assets": 51687.0,
    "liab": null,
-   "equity": 12284.0,
+   "equity": 12270.0,
    "dps": null,
    "payout": null,
    "yield": null,
@@ -175,14 +175,14 @@
    "q": 1,
    "rev": 5810.0,
    "op": 543.0,
-   "ni": -75.0
+   "ni": -78.0
   },
   {
    "y": 2025,
    "q": 2,
    "rev": 6328.0,
    "op": 934.0,
-   "ni": 568.0
+   "ni": 565.0
   },
   {
    "y": 2025,
@@ -196,21 +196,21 @@
    "q": 4,
    "rev": 6331.0,
    "op": 735.0,
-   "ni": 415.0
+   "ni": 421.0
   },
   {
    "y": 2026,
    "q": 1,
    "rev": 6165.0,
    "op": 607.0,
-   "ni": 263.0
+   "ni": 258.0
   },
   {
    "y": 2026,
    "q": 2,
    "rev": 6663.0,
    "op": 851.0,
-   "ni": 539.0
+   "ni": 537.0
   }
  ]
 }

@@ -1,7 +1,7 @@
 {
  "name": "CSX",
  "split_adjusted": true,
- "legal_name": "CSX CORP",
+ "legal_name": "CSX CORPORATION",
  "code": "CSX",
  "cik": "0000277948",
  "market": "미국",
@@ -45,7 +45,7 @@
    "liab": 24149.0,
    "equity": 12580.0,
    "dps": 0.88,
-   "payout": 22.8,
+   "payout": 22.9,
    "yield": null,
    "dps_adj": 0.2933
   },
@@ -58,7 +58,7 @@
    "liab": 26394.0,
    "equity": 11863.0,
    "dps": 0.29,
-   "payout": 20.8,
+   "payout": 20.9,
    "yield": null,
    "dps_adj": 0.29
   },
@@ -71,7 +71,7 @@
    "liab": 26683.0,
    "equity": 13110.0,
    "dps": 0.35,
-   "payout": 29.1,
+   "payout": 29.2,
    "yield": null,
    "dps_adj": 0.35
   },
@@ -84,7 +84,7 @@
    "liab": 27031.0,
    "equity": 13451.0,
    "dps": 0.37,
-   "payout": 22.0,
+   "payout": 22.1,
    "yield": null,
    "dps_adj": 0.37
   },
@@ -123,7 +123,7 @@
    "liab": 30257.0,
    "equity": 12507.0,
    "dps": 0.48,
-   "payout": 26.8,
+   "payout": 26.9,
    "yield": null,
    "dps_adj": 0.48
   },

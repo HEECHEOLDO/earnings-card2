@@ -1,7 +1,7 @@
 {
  "name": "EOG",
  "split_adjusted": false,
- "legal_name": "EOG RESOURCES INC",
+ "legal_name": "EOG RESOURCES, INC.",
  "code": "EOG",
  "cik": "0000821189",
  "market": "미국",
@@ -18,10 +18,10 @@
    "assets": 29299.2,
    "liab": null,
    "equity": 13981.6,
-   "dps": 0.1675,
+   "dps": 0.67,
    "payout": null,
    "yield": null,
-   "dps_adj": 0.1675
+   "dps_adj": 0.67
   },
   {
    "p": 2017,
@@ -32,7 +32,7 @@
    "liab": null,
    "equity": 16283.3,
    "dps": 0.67,
-   "payout": 14.9,
+   "payout": 15.0,
    "yield": null,
    "dps_adj": 0.67
   },
@@ -45,7 +45,7 @@
    "liab": null,
    "equity": 19364.0,
    "dps": 0.81,
-   "payout": 13.7,
+   "payout": 13.8,
    "yield": null,
    "dps_adj": 0.81
   },
@@ -58,7 +58,7 @@
    "liab": null,
    "equity": 21640.0,
    "dps": 1.0825,
-   "payout": 22.9,
+   "payout": 23.0,
    "yield": null,
    "dps_adj": 1.0825
   },
@@ -84,7 +84,7 @@
    "liab": null,
    "equity": 22180.0,
    "dps": 4.9875,
-   "payout": 62.1,
+   "payout": 62.5,
    "yield": null,
    "dps_adj": 4.9875
   },
@@ -95,9 +95,9 @@
    "ni": 7759.0,
    "assets": 41371.0,
    "liab": null,
-   "equity": 24779.0,
+   "equity": 22312.0,
    "dps": 8.875,
-   "payout": 66.7,
+   "payout": 67.1,
    "yield": null,
    "dps_adj": 8.875
   },
@@ -110,7 +110,7 @@
    "liab": null,
    "equity": 28090.0,
    "dps": 5.885,
-   "payout": 45.0,
+   "payout": 45.3,
    "yield": null,
    "dps_adj": 5.885
   },
@@ -123,7 +123,7 @@
    "liab": null,
    "equity": 29351.0,
    "dps": 3.705,
-   "payout": 32.8,
+   "payout": 32.9,
    "yield": null,
    "dps_adj": 3.705
   },
@@ -136,7 +136,7 @@
    "liab": null,
    "equity": 29833.0,
    "dps": 3.99,
-   "payout": 43.5,
+   "payout": 43.7,
    "yield": null,
    "dps_adj": 3.99
   }

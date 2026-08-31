@@ -1,7 +1,7 @@
 {
  "name": "ROK",
  "split_adjusted": false,
- "legal_name": "ROCKWELL AUTOMATION, INC",
+ "legal_name": "Rockwell Automation, Inc.",
  "code": "ROK",
  "cik": "0001024478",
  "market": "미국",
@@ -19,7 +19,7 @@
    "liab": null,
    "equity": 1990.1,
    "dps": 2.9,
-   "payout": 51.7,
+   "payout": 52.1,
    "yield": null,
    "dps_adj": 2.9
   },
@@ -32,7 +32,7 @@
    "liab": null,
    "equity": 2663.6,
    "dps": 3.04,
-   "payout": 47.3,
+   "payout": 47.8,
    "yield": null,
    "dps_adj": 3.04
   },
@@ -45,7 +45,7 @@
    "liab": null,
    "equity": 1617.5,
    "dps": 3.51,
-   "payout": 82.2,
+   "payout": 83.2,
    "yield": null,
    "dps_adj": 3.51
   },
@@ -58,7 +58,7 @@
    "liab": null,
    "equity": 404.2,
    "dps": 3.88,
-   "payout": 66.0,
+   "payout": 66.5,
    "yield": null,
    "dps_adj": 3.88
   },
@@ -66,12 +66,12 @@
    "p": 2020,
    "rev": 6329.8,
    "op": null,
-   "ni": 1023.2,
+   "ni": 1023.4,
    "assets": 7264.7,
    "liab": null,
-   "equity": 1346.8,
+   "equity": 1027.8,
    "dps": 4.08,
-   "payout": 46.2,
+   "payout": 46.5,
    "yield": null,
    "dps_adj": 4.08
   },
@@ -79,10 +79,10 @@
    "p": 2021,
    "rev": 6997.4,
    "op": null,
-   "ni": 1344.3,
+   "ni": 1358.1,
    "assets": 10701.6,
    "liab": null,
-   "equity": 2694.1,
+   "equity": 2389.6,
    "dps": 4.28,
    "payout": 36.9,
    "yield": null,
@@ -92,12 +92,12 @@
    "p": 2022,
    "rev": 7760.4,
    "op": null,
-   "ni": 919.1,
+   "ni": 932.2,
    "assets": 10758.7,
    "liab": null,
-   "equity": 3016.0,
+   "equity": 2725.6,
    "dps": 4.48,
-   "payout": 56.5,
+   "payout": 56.1,
    "yield": null,
    "dps_adj": 4.48
   },
@@ -105,12 +105,12 @@
    "p": 2023,
    "rev": 9058.0,
    "op": 1929.0,
-   "ni": 1278.0,
+   "ni": 1387.0,
    "assets": 11304.0,
    "liab": null,
-   "equity": 3743.0,
+   "equity": 3561.6,
    "dps": 4.72,
-   "payout": 42.4,
+   "payout": 39.3,
    "yield": null,
    "dps_adj": 4.72
   },
@@ -118,10 +118,10 @@
    "p": 2024,
    "rev": 8264.0,
    "op": 1595.0,
-   "ni": 948.0,
+   "ni": 953.0,
    "assets": 11232.0,
    "liab": null,
-   "equity": 3675.0,
+   "equity": 3498.0,
    "dps": 5,
    "payout": 60.1,
    "yield": null,
@@ -131,12 +131,12 @@
    "p": 2025,
    "rev": 8342.0,
    "op": 1703.0,
-   "ni": 749.0,
+   "ni": 869.0,
    "assets": 11219.0,
    "liab": null,
-   "equity": 3711.0,
+   "equity": 3654.0,
    "dps": 5.24,
-   "payout": 78.8,
+   "payout": 68.2,
    "yield": null,
    "dps_adj": 5.24
   }
@@ -147,63 +147,63 @@
    "q": 2,
    "rev": 2126.0,
    "op": null,
-   "ni": 265.0
+   "ni": 266.0
   },
   {
    "y": 2024,
    "q": 3,
    "rev": 2051.0,
    "op": null,
-   "ni": 231.0
+   "ni": 232.0
   },
   {
    "y": 2024,
    "q": 4,
    "rev": 2035.0,
    "op": null,
-   "ni": 239.0
+   "ni": 240.0
   },
   {
    "y": 2025,
    "q": 1,
    "rev": 1881.0,
    "op": 321.0,
-   "ni": 178.0
+   "ni": 184.0
   },
   {
    "y": 2025,
    "q": 2,
    "rev": 2001.0,
    "op": 408.0,
-   "ni": 248.0
+   "ni": 252.0
   },
   {
    "y": 2025,
    "q": 3,
    "rev": 2144.0,
    "op": 454.0,
-   "ni": 293.0
+   "ni": 295.0
   },
   {
    "y": 2025,
    "q": 4,
    "rev": 2316.0,
    "op": 520.0,
-   "ni": 30.0
+   "ni": 138.0
   },
   {
    "y": 2026,
    "q": 1,
    "rev": 2105.0,
    "op": 435.0,
-   "ni": 302.0
+   "ni": 305.0
   },
   {
    "y": 2026,
    "q": 2,
    "rev": 2239.0,
    "op": 530.0,
-   "ni": 351.0
+   "ni": 350.0
   },
   {
    "y": 2026,

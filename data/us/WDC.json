@@ -1,7 +1,7 @@
 {
  "name": "WDC",
  "split_adjusted": false,
- "legal_name": "WESTERN DIGITAL CORP",
+ "legal_name": "WESTERN DIGITAL CORPORATION",
  "code": "WDC",
  "cik": "0000106040",
  "market": "미국",
@@ -19,7 +19,7 @@
    "liab": 18442.0,
    "equity": 11418.0,
    "dps": 2,
-   "payout": 145.1,
+   "payout": 149.1,
    "yield": null,
    "dps_adj": 2.0
   },
@@ -32,7 +32,7 @@
    "liab": 17704.0,
    "equity": 11531.0,
    "dps": 2,
-   "payout": 88.0,
+   "payout": 91.0,
    "yield": null,
    "dps_adj": 2.0
   },
@@ -123,7 +123,7 @@
    "liab": 8462.0,
    "equity": 5311.0,
    "dps": 0.1,
-   "payout": 1.8,
+   "payout": 1.9,
    "yield": null,
    "dps_adj": 0.1
   },
@@ -136,7 +136,7 @@
    "liab": 4997.0,
    "equity": 8864.0,
    "dps": 0.5,
-   "payout": 1.8,
+   "payout": 2.0,
    "yield": null,
    "dps_adj": 0.5
   }

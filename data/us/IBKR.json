@@ -1,7 +1,7 @@
 {
  "name": "IBKR",
  "split_adjusted": true,
- "legal_name": "Interactive Brokers Group, Inc.",
+ "legal_name": "INTERACTIVE BROKERS GROUP, INC.",
  "code": "IBKR",
  "cik": "0001381197",
  "market": "미국",
@@ -12,20 +12,20 @@
  "annual": [
   {
    "p": 2016,
-   "rev": 1396.0,
+   "rev": 1475.0,
    "op": 761.0,
    "ni": 699.0,
    "assets": 54673.0,
    "liab": 48853.0,
    "equity": 5820.0,
    "dps": 0.1,
-   "payout": 0.9,
+   "payout": 1.0,
    "yield": null,
    "dps_adj": 0.025
   },
   {
    "p": 2017,
-   "rev": 1702.0,
+   "rev": 1927.0,
    "op": 1049.0,
    "ni": 793.0,
    "assets": 61162.0,
@@ -38,7 +38,7 @@
   },
   {
    "p": 2018,
-   "rev": 1903.0,
+   "rev": 2366.0,
    "op": 1196.0,
    "ni": 1125.0,
    "assets": 60547.0,
@@ -51,7 +51,7 @@
   },
   {
    "p": 2019,
-   "rev": 1937.0,
+   "rev": 2580.0,
    "op": 1157.0,
    "ni": 1089.0,
    "assets": 71676.0,

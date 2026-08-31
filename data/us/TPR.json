@@ -1,7 +1,7 @@
 {
  "name": "TPR",
  "split_adjusted": false,
- "legal_name": "TAPESTRY, INC.",
+ "legal_name": "Tapestry, Inc.",
  "code": "TPR",
  "cik": "0001116132",
  "market": "미국",
@@ -19,7 +19,7 @@
    "liab": 2829.7,
    "equity": 3001.9,
    "dps": 1.35,
-   "payout": 64.1,
+   "payout": 64.6,
    "yield": null,
    "dps_adj": 1.35
   },
@@ -32,7 +32,7 @@
    "liab": 3433.7,
    "equity": 3244.6,
    "dps": 1.35,
-   "payout": 96.9,
+   "payout": 98.0,
    "yield": null,
    "dps_adj": 1.35
   },
@@ -45,7 +45,7 @@
    "liab": 3363.9,
    "equity": 3513.4,
    "dps": 1.35,
-   "payout": 60.7,
+   "payout": 61.0,
    "yield": null,
    "dps_adj": 1.35
   },
@@ -84,7 +84,7 @@
    "liab": 4979.8,
    "equity": 2285.5,
    "dps": 1,
-   "payout": 30.9,
+   "payout": 31.5,
    "yield": null,
    "dps_adj": 1.0
   },
@@ -97,7 +97,7 @@
    "liab": 4839.0,
    "equity": 2277.8,
    "dps": 1.2,
-   "payout": 30.3,
+   "payout": 30.9,
    "yield": null,
    "dps_adj": 1.2
   },
@@ -110,7 +110,7 @@
    "liab": 10499.4,
    "equity": 2896.9,
    "dps": 1.4,
-   "payout": 39.3,
+   "payout": 40.0,
    "yield": null,
    "dps_adj": 1.4
   },
@@ -123,7 +123,7 @@
    "liab": 5722.7,
    "equity": 857.8,
    "dps": 1.4,
-   "payout": 165.7,
+   "payout": 170.0,
    "yield": null,
    "dps_adj": 1.4
   },
@@ -136,7 +136,7 @@
    "liab": 5999.6,
    "equity": 692.1,
    "dps": 1.6,
-   "payout": 21.4,
+   "payout": 22.0,
    "yield": null,
    "dps_adj": 1.6
   }

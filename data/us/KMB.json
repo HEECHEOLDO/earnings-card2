@@ -1,7 +1,7 @@
 {
  "name": "KMB",
  "split_adjusted": false,
- "legal_name": "KIMBERLY CLARK CORP",
+ "legal_name": "KIMBERLY-CLARK CORPORATION",
  "code": "KMB",
  "cik": "0000055785",
  "market": "미국",
@@ -12,14 +12,14 @@
  "annual": [
   {
    "p": 2016,
-   "rev": 18300.0,
+   "rev": 18287.0,
    "op": 3383.0,
-   "ni": 2219.0,
+   "ni": 2166.0,
    "assets": 14602.0,
    "liab": null,
    "equity": 117.0,
    "dps": 3.68,
-   "payout": 59.6,
+   "payout": 61.5,
    "yield": null,
    "dps_adj": 3.68
   },
@@ -27,12 +27,12 @@
    "p": 2017,
    "rev": 18348.0,
    "op": 3358.0,
-   "ni": 2319.0,
+   "ni": 2278.0,
    "assets": 15151.0,
    "liab": null,
    "equity": 882.0,
    "dps": 3.88,
-   "payout": 59.2,
+   "payout": 60.6,
    "yield": null,
    "dps_adj": 3.88
   },
@@ -40,7 +40,7 @@
    "p": 2018,
    "rev": 18486.0,
    "op": 2229.0,
-   "ni": 1445.0,
+   "ni": 1410.0,
    "assets": 14518.0,
    "liab": null,
    "equity": -46.0,
@@ -53,12 +53,12 @@
    "p": 2019,
    "rev": 18450.0,
    "op": 2991.0,
-   "ni": 2197.0,
+   "ni": 2157.0,
    "assets": 15283.0,
    "liab": null,
    "equity": 194.0,
    "dps": 4.12,
-   "payout": 64.4,
+   "payout": 66.0,
    "yield": null,
    "dps_adj": 4.12
   },
@@ -66,12 +66,12 @@
    "p": 2020,
    "rev": 19140.0,
    "op": 3244.0,
-   "ni": 2396.0,
+   "ni": 2352.0,
    "assets": 17523.0,
    "liab": null,
    "equity": 869.0,
    "dps": 4.28,
-   "payout": 60.9,
+   "payout": 62.3,
    "yield": null,
    "dps_adj": 4.28
   },
@@ -79,12 +79,12 @@
    "p": 2021,
    "rev": 19440.0,
    "op": 2561.0,
-   "ni": 1844.0,
+   "ni": 1814.0,
    "assets": 17837.0,
    "liab": null,
    "equity": 737.0,
    "dps": 4.56,
-   "payout": 83.4,
+   "payout": 85.2,
    "yield": null,
    "dps_adj": 4.56
   },
@@ -92,12 +92,12 @@
    "p": 2022,
    "rev": 16952.0,
    "op": 2309.0,
-   "ni": 1961.0,
+   "ni": 1934.0,
    "assets": 17970.0,
    "liab": null,
    "equity": 700.0,
    "dps": 4.64,
-   "payout": 79.8,
+   "payout": 81.2,
    "yield": null,
    "dps_adj": 4.64
   },
@@ -110,7 +110,7 @@
    "liab": null,
    "equity": 1068.0,
    "dps": 4.72,
-   "payout": 90.4,
+   "payout": 90.7,
    "yield": null,
    "dps_adj": 4.72
   },
@@ -118,12 +118,12 @@
    "p": 2024,
    "rev": 16805.0,
    "op": 2700.0,
-   "ni": 2578.0,
+   "ni": 2545.0,
    "assets": 16546.0,
    "liab": null,
    "equity": 975.0,
    "dps": 4.88,
-   "payout": 63.5,
+   "payout": 64.6,
    "yield": null,
    "dps_adj": 4.88
   },
@@ -131,12 +131,12 @@
    "p": 2025,
    "rev": 16447.0,
    "op": 2351.0,
-   "ni": 2049.0,
+   "ni": 2021.0,
    "assets": 17098.0,
    "liab": null,
    "equity": 1630.0,
    "dps": 5.04,
-   "payout": 81.6,
+   "payout": 83.1,
    "yield": null,
    "dps_adj": 5.04
   }
@@ -175,14 +175,14 @@
    "q": 1,
    "rev": 4054.0,
    "op": 631.0,
-   "ni": 573.0
+   "ni": 567.0
   },
   {
    "y": 2025,
    "q": 2,
    "rev": 4163.0,
    "op": 592.0,
-   "ni": 512.0
+   "ni": 509.0
   },
   {
    "y": 2025,
@@ -203,14 +203,14 @@
    "q": 1,
    "rev": 4163.0,
    "op": 753.0,
-   "ni": 675.0
+   "ni": 665.0
   },
   {
    "y": 2026,
    "q": 2,
    "rev": 4189.0,
    "op": 633.0,
-   "ni": 350.0
+   "ni": 345.0
   }
  ]
 }

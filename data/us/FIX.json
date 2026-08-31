@@ -1,7 +1,7 @@
 {
  "name": "FIX",
  "split_adjusted": false,
- "legal_name": "COMFORT SYSTEMS USA INC",
+ "legal_name": "COMFORT SYSTEMS USA, INC.",
  "code": "FIX",
  "cik": "0001035983",
  "market": "미국",
@@ -19,7 +19,7 @@
    "liab": 332.3,
    "equity": 376.6,
    "dps": 0.275,
-   "payout": 15.8,
+   "payout": 16.0,
    "yield": null,
    "dps_adj": 0.275
   },
@@ -32,7 +32,7 @@
    "liab": 463.2,
    "equity": 417.9,
    "dps": 0.295,
-   "payout": 19.9,
+   "payout": 20.1,
    "yield": null,
    "dps_adj": 0.295
   },
@@ -45,7 +45,7 @@
    "liab": 564.5,
    "equity": 498.0,
    "dps": 0.33,
-   "payout": 10.9,
+   "payout": 11.0,
    "yield": null,
    "dps_adj": 0.33
   },
@@ -58,7 +58,7 @@
    "liab": 919.7,
    "equity": 585.3,
    "dps": 0.395,
-   "payout": 12.7,
+   "payout": 12.8,
    "yield": null,
    "dps_adj": 0.395
   },
@@ -71,7 +71,7 @@
    "liab": 1060.9,
    "equity": 696.4,
    "dps": 0.425,
-   "payout": 10.3,
+   "payout": 10.4,
    "yield": null,
    "dps_adj": 0.425
   },
@@ -136,7 +136,7 @@
    "liab": 3992.4,
    "equity": 2448.8,
    "dps": 1.95,
-   "payout": 6.7,
+   "payout": 6.8,
    "yield": null,
    "dps_adj": 1.95
   }

@@ -1,7 +1,7 @@
 {
  "name": "HWM",
  "split_adjusted": false,
- "legal_name": "Howmet Aerospace Inc.",
+ "legal_name": "HOWMET AEROSPACE INC.",
  "code": "HWM",
  "cik": "0000004281",
  "market": "미국",
@@ -14,14 +14,14 @@
    "p": 2016,
    "rev": 12394.0,
    "op": 954.0,
-   "ni": -878.0,
+   "ni": -941.0,
    "assets": 20038.0,
    "liab": 14897.0,
    "equity": 5141.0,
-   "dps": 0.09,
+   "dps": 0.36,
    "payout": null,
    "yield": null,
-   "dps_adj": 0.09
+   "dps_adj": 0.36
   },
   {
    "p": 2017,
@@ -45,7 +45,7 @@
    "liab": 13108.0,
    "equity": 5569.0,
    "dps": 0.24,
-   "payout": 18.1,
+   "payout": 18.8,
    "yield": null,
    "dps_adj": 0.24
   },
@@ -57,10 +57,10 @@
    "assets": 17562.0,
    "liab": 12957.0,
    "equity": 4605.0,
-   "dps": 0.02,
-   "payout": 1.9,
+   "dps": 0.12,
+   "payout": 11.8,
    "yield": null,
-   "dps_adj": 0.02
+   "dps_adj": 0.12
   },
   {
    "p": 2020,
@@ -71,7 +71,7 @@
    "liab": 7866.0,
    "equity": 3577.0,
    "dps": 0.02,
-   "payout": 3.3,
+   "payout": 3.4,
    "yield": null,
    "dps_adj": 0.02
   },
@@ -97,7 +97,7 @@
    "liab": 6654.0,
    "equity": 3601.0,
    "dps": 0.1,
-   "payout": 8.9,
+   "payout": 9.0,
    "yield": null,
    "dps_adj": 0.1
   },
@@ -108,7 +108,7 @@
    "ni": 765.0,
    "assets": 10428.0,
    "liab": 6391.0,
-   "equity": 4037.0,
+   "equity": 3761.0,
    "dps": 0.17,
    "payout": 9.2,
    "yield": null,

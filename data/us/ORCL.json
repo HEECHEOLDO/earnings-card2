@@ -1,7 +1,7 @@
 {
  "name": "ORCL",
  "split_adjusted": false,
- "legal_name": "ORACLE CORP",
+ "legal_name": "Oracle Corporation",
  "code": "ORCL",
  "cik": "0001341439",
  "market": "미국",
@@ -14,12 +14,12 @@
    "p": 2017,
    "rev": 37792.0,
    "op": 12913.0,
-   "ni": 9570.0,
+   "ni": 9452.0,
    "assets": 134991.0,
    "liab": null,
    "equity": 55130.0,
    "dps": 0.64,
-   "payout": 27.5,
+   "payout": 28.6,
    "yield": null,
    "dps_adj": 0.64
   },
@@ -27,12 +27,12 @@
    "p": 2018,
    "rev": 39383.0,
    "op": 13264.0,
-   "ni": 3722.0,
+   "ni": 3587.0,
    "assets": 137851.0,
    "liab": null,
    "equity": 46873.0,
    "dps": 0.76,
-   "payout": 84.1,
+   "payout": 89.8,
    "yield": null,
    "dps_adj": 0.76
   },
@@ -40,12 +40,12 @@
    "p": 2019,
    "rev": 39506.0,
    "op": 13535.0,
-   "ni": 11235.0,
+   "ni": 11083.0,
    "assets": 108709.0,
    "liab": null,
    "equity": 22363.0,
    "dps": 0.81,
-   "payout": 26.2,
+   "payout": 27.3,
    "yield": null,
    "dps_adj": 0.81
   },
@@ -53,12 +53,12 @@
    "p": 2020,
    "rev": 39068.0,
    "op": 13896.0,
-   "ni": 10299.0,
+   "ni": 10135.0,
    "assets": 115438.0,
    "liab": null,
    "equity": 12717.0,
    "dps": 0.96,
-   "payout": 29.9,
+   "payout": 31.2,
    "yield": null,
    "dps_adj": 0.96
   },
@@ -66,12 +66,12 @@
    "p": 2021,
    "rev": 40479.0,
    "op": 15213.0,
-   "ni": 13926.0,
+   "ni": 13746.0,
    "assets": 131107.0,
    "liab": null,
    "equity": 5952.0,
    "dps": 1.04,
-   "payout": 22.0,
+   "payout": 22.9,
    "yield": null,
    "dps_adj": 1.04
   },
@@ -79,12 +79,12 @@
    "p": 2022,
    "rev": 42440.0,
    "op": 10926.0,
-   "ni": 6901.0,
+   "ni": 6717.0,
    "assets": 109297.0,
    "liab": null,
    "equity": -5768.0,
    "dps": 1.28,
-   "payout": 50.1,
+   "payout": 53.1,
    "yield": null,
    "dps_adj": 1.28
   },
@@ -92,12 +92,12 @@
    "p": 2023,
    "rev": 49954.0,
    "op": 13093.0,
-   "ni": 8668.0,
+   "ni": 8503.0,
    "assets": 134384.0,
    "liab": null,
    "equity": 1556.0,
    "dps": 1.36,
-   "payout": 42.3,
+   "payout": 44.2,
    "yield": null,
    "dps_adj": 1.36
   },
@@ -105,12 +105,12 @@
    "p": 2024,
    "rev": 52961.0,
    "op": 15353.0,
-   "ni": 10653.0,
+   "ni": 10467.0,
    "assets": 140976.0,
    "liab": null,
    "equity": 9239.0,
    "dps": 1.6,
-   "payout": 41.2,
+   "payout": 43.2,
    "yield": null,
    "dps_adj": 1.6
   },
@@ -118,12 +118,12 @@
    "p": 2025,
    "rev": 57399.0,
    "op": 17678.0,
-   "ni": 12627.0,
+   "ni": 12443.0,
    "assets": 168361.0,
    "liab": null,
    "equity": 20969.0,
    "dps": 1.7,
-   "payout": 37.5,
+   "payout": 39.2,
    "yield": null,
    "dps_adj": 1.7
   },
@@ -131,12 +131,12 @@
    "p": 2026,
    "rev": 67357.0,
    "op": 20606.0,
-   "ni": 17309.0,
+   "ni": 17087.0,
    "assets": 261759.0,
    "liab": null,
    "equity": 43056.0,
    "dps": 2,
-   "payout": 33.0,
+   "payout": 34.1,
    "yield": null,
    "dps_adj": 2.0
   }
@@ -154,7 +154,7 @@
    "q": 4,
    "rev": 14287.0,
    "op": 4685.0,
-   "ni": 3329.0
+   "ni": 3143.0
   },
   {
    "y": 2025,
@@ -182,7 +182,7 @@
    "q": 4,
    "rev": 15903.0,
    "op": 5109.0,
-   "ni": 3611.0
+   "ni": 3427.0
   },
   {
    "y": 2026,
@@ -210,7 +210,7 @@
    "q": 4,
    "rev": 19183.0,
    "op": 6134.0,
-   "ni": 4526.0
+   "ni": 4304.0
   }
  ]
 }

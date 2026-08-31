@@ -1,7 +1,7 @@
 {
  "name": "CTAS",
  "split_adjusted": true,
- "legal_name": "CINTAS CORP",
+ "legal_name": "Cintas Corporation",
  "code": "CTAS",
  "cik": "0000723254",
  "market": "미국",
@@ -19,7 +19,7 @@
    "liab": null,
    "equity": 2302.8,
    "dps": 1.33,
-   "payout": 29.0,
+   "payout": 29.8,
    "yield": null,
    "dps_adj": 0.3325
   },
@@ -32,7 +32,7 @@
    "liab": null,
    "equity": 3016.5,
    "dps": 1.62,
-   "payout": 20.5,
+   "payout": 21.1,
    "yield": null,
    "dps_adj": 0.405
   },
@@ -45,7 +45,7 @@
    "liab": null,
    "equity": 3002.7,
    "dps": 2.05,
-   "payout": 24.6,
+   "payout": 25.4,
    "yield": null,
    "dps_adj": 0.5125
   },
@@ -58,7 +58,7 @@
    "liab": null,
    "equity": 3235.2,
    "dps": 2.55,
-   "payout": 30.2,
+   "payout": 31.1,
    "yield": null,
    "dps_adj": 0.6375
   },
@@ -71,7 +71,7 @@
    "liab": null,
    "equity": 3687.8,
    "dps": 5.01,
-   "payout": 47.3,
+   "payout": 48.6,
    "yield": null,
    "dps_adj": 1.2525
   },
@@ -84,7 +84,7 @@
    "liab": null,
    "equity": 3308.2,
    "dps": 3.8,
-   "payout": 31.7,
+   "payout": 32.4,
    "yield": null,
    "dps_adj": 0.95
   },
@@ -97,7 +97,7 @@
    "liab": null,
    "equity": 3864.0,
    "dps": 1.15,
-   "payout": 34.7,
+   "payout": 35.3,
    "yield": null,
    "dps_adj": 1.15
   },
@@ -110,7 +110,7 @@
    "liab": null,
    "equity": 4316.4,
    "dps": 1.35,
-   "payout": 34.9,
+   "payout": 35.5,
    "yield": null,
    "dps_adj": 1.35
   },
@@ -123,7 +123,7 @@
    "liab": null,
    "equity": 4684.5,
    "dps": 1.56,
-   "payout": 34.7,
+   "payout": 35.3,
    "yield": null,
    "dps_adj": 1.56
   },
@@ -136,7 +136,7 @@
    "liab": null,
    "equity": 5139.9,
    "dps": 1.8,
-   "payout": 36.1,
+   "payout": 36.6,
    "yield": null,
    "dps_adj": 1.8
   }

@@ -1,7 +1,7 @@
 {
  "name": "JCI",
  "split_adjusted": false,
- "legal_name": "Johnson Controls International plc",
+ "legal_name": "JOHNSON CONTROLS INTERNATIONAL PLC",
  "code": "JCI",
  "cik": "0000833444",
  "market": "미국",
@@ -14,10 +14,10 @@
    "p": 2016,
    "rev": 18084.0,
    "op": null,
-   "ni": -652.0,
+   "ni": -868.0,
    "assets": 63179.0,
    "liab": 7228.0,
-   "equity": 24118.0,
+   "equity": 25090.0,
    "dps": 1.16,
    "payout": null,
    "yield": null,
@@ -25,27 +25,27 @@
   },
   {
    "p": 2017,
-   "rev": 22835.0,
+   "rev": 24099.0,
    "op": null,
-   "ni": 1819.0,
+   "ni": 1611.0,
    "assets": 51884.0,
    "liab": null,
-   "equity": 20447.0,
+   "equity": 21367.0,
    "dps": 1,
-   "payout": 51.4,
+   "payout": 58.6,
    "yield": null,
    "dps_adj": 1.0
   },
   {
    "p": 2018,
-   "rev": 23400.0,
+   "rev": 25332.0,
    "op": null,
-   "ni": 2383.0,
+   "ni": 2162.0,
    "assets": 48797.0,
    "liab": null,
-   "equity": 21164.0,
+   "equity": 22458.0,
    "dps": 1.04,
-   "payout": 40.4,
+   "payout": 44.8,
    "yield": null,
    "dps_adj": 1.04
   },
@@ -53,12 +53,12 @@
    "p": 2019,
    "rev": 23968.0,
    "op": null,
-   "ni": 5887.0,
+   "ni": 5674.0,
    "assets": 42287.0,
    "liab": null,
-   "equity": 19766.0,
+   "equity": 20829.0,
    "dps": 1.04,
-   "payout": 15.4,
+   "payout": 16.0,
    "yield": null,
    "dps_adj": 1.04
   },
@@ -66,12 +66,12 @@
    "p": 2020,
    "rev": 22317.0,
    "op": null,
-   "ni": 795.0,
+   "ni": 631.0,
    "assets": 40815.0,
    "liab": null,
    "equity": 18533.0,
    "dps": 1.04,
-   "payout": 98.2,
+   "payout": 124.2,
    "yield": null,
    "dps_adj": 1.04
   },
@@ -79,12 +79,12 @@
    "p": 2021,
    "rev": 23668.0,
    "op": null,
-   "ni": 1870.0,
+   "ni": 1637.0,
    "assets": 41890.0,
    "liab": null,
    "equity": 18753.0,
    "dps": 1.07,
-   "payout": 41.0,
+   "payout": 47.1,
    "yield": null,
    "dps_adj": 1.07
   },
@@ -92,12 +92,12 @@
    "p": 2022,
    "rev": 20637.0,
    "op": null,
-   "ni": 1723.0,
+   "ni": 1532.0,
    "assets": 42158.0,
    "liab": null,
    "equity": 17402.0,
    "dps": 1.39,
-   "payout": 56.2,
+   "payout": 63.5,
    "yield": null,
    "dps_adj": 1.39
   },
@@ -105,12 +105,12 @@
    "p": 2023,
    "rev": 22331.0,
    "op": null,
-   "ni": 2033.0,
+   "ni": 1849.0,
    "assets": 42242.0,
    "liab": null,
    "equity": 17694.0,
    "dps": 1.45,
-   "payout": 48.8,
+   "payout": 53.9,
    "yield": null,
    "dps_adj": 1.45
   },
@@ -118,12 +118,12 @@
    "p": 2024,
    "rev": 22952.0,
    "op": null,
-   "ni": 1900.0,
+   "ni": 1705.0,
    "assets": 42695.0,
    "liab": null,
    "equity": 17130.0,
    "dps": 1.48,
-   "payout": 52.5,
+   "payout": 58.7,
    "yield": null,
    "dps_adj": 1.48
   },
@@ -131,12 +131,12 @@
    "p": 2025,
    "rev": 23596.0,
    "op": null,
-   "ni": 3513.0,
+   "ni": 3291.0,
    "assets": 37939.0,
    "liab": null,
    "equity": 12954.0,
    "dps": 1.51,
-   "payout": 28.0,
+   "payout": 30.0,
    "yield": null,
    "dps_adj": 1.51
   }
@@ -147,70 +147,70 @@
    "q": 1,
    "rev": 5209.0,
    "op": null,
-   "ni": 404.0
+   "ni": 374.0
   },
   {
    "y": 2024,
    "q": 2,
    "rev": 5597.0,
    "op": null,
-   "ni": -234.0
+   "ni": -277.0
   },
   {
    "y": 2024,
    "q": 3,
    "rev": 5898.0,
    "op": null,
-   "ni": 1052.0
+   "ni": 975.0
   },
   {
    "y": 2024,
    "q": 4,
    "rev": 6248.0,
    "op": null,
-   "ni": 678.0
+   "ni": 633.0
   },
   {
    "y": 2025,
    "q": 1,
    "rev": 5426.0,
    "op": null,
-   "ni": 451.0
+   "ni": 419.0
   },
   {
    "y": 2025,
    "q": 2,
    "rev": 5676.0,
    "op": null,
-   "ni": 526.0
+   "ni": 478.0
   },
   {
    "y": 2025,
    "q": 3,
    "rev": 6052.0,
    "op": null,
-   "ni": 778.0
+   "ni": 701.0
   },
   {
    "y": 2025,
    "q": 4,
    "rev": 6442.0,
    "op": null,
-   "ni": 1758.0
+   "ni": 1693.0
   },
   {
    "y": 2026,
    "q": 1,
    "rev": 5797.0,
    "op": null,
-   "ni": 525.0
+   "ni": 524.0
   },
   {
    "y": 2026,
    "q": 2,
    "rev": 6142.0,
    "op": null,
-   "ni": 616.0
+   "ni": 613.0
   }
  ]
 }

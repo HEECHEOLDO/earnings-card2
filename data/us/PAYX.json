@@ -1,7 +1,7 @@
 {
  "name": "PAYX",
  "split_adjusted": false,
- "legal_name": "PAYCHEX INC",
+ "legal_name": "Paychex, Inc.",
  "code": "PAYX",
  "cik": "0000723531",
  "market": "미국",
@@ -84,7 +84,7 @@
    "liab": 6550.0,
    "equity": 3085.2,
    "dps": 2.77,
-   "payout": 71.7,
+   "payout": 72.2,
    "yield": null,
    "dps_adj": 2.77
   },
@@ -97,7 +97,7 @@
    "liab": 7053.2,
    "equity": 3493.2,
    "dps": 3.26,
-   "payout": 75.4,
+   "payout": 75.8,
    "yield": null,
    "dps_adj": 3.26
   },
@@ -110,7 +110,7 @@
    "liab": 6582.1,
    "equity": 3801.0,
    "dps": 3.65,
-   "payout": 77.8,
+   "payout": 78.2,
    "yield": null,
    "dps_adj": 3.65
   },
@@ -123,7 +123,7 @@
    "liab": 12436.1,
    "equity": 4128.0,
    "dps": 4.02,
-   "payout": 87.4,
+   "payout": 87.8,
    "yield": null,
    "dps_adj": 4.02
   },
@@ -136,7 +136,7 @@
    "liab": 12439.4,
    "equity": 3735.1,
    "dps": 4.43,
-   "payout": 90.3,
+   "payout": 90.6,
    "yield": null,
    "dps_adj": 4.43
   }

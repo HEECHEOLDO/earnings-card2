@@ -1,7 +1,7 @@
 {
  "name": "WY",
  "split_adjusted": false,
- "legal_name": "WEYERHAEUSER CO",
+ "legal_name": "WEYERHAEUSER COMPANY",
  "code": "WY",
  "cik": "0000106535",
  "market": "미국",
@@ -19,7 +19,7 @@
    "liab": 10063.0,
    "equity": 9180.0,
    "dps": 1.24,
-   "payout": 86.8,
+   "payout": 87.2,
    "yield": null,
    "dps_adj": 1.24
   },
@@ -32,7 +32,7 @@
    "liab": 9160.0,
    "equity": 8899.0,
    "dps": 1.25,
-   "payout": 161.7,
+   "payout": 162.5,
    "yield": null,
    "dps_adj": 1.25
   },
@@ -45,7 +45,7 @@
    "liab": 8203.0,
    "equity": 9046.0,
    "dps": 1.32,
-   "payout": 133.2,
+   "payout": 133.6,
    "yield": null,
    "dps_adj": 1.32
   },
@@ -71,7 +71,7 @@
    "liab": 7580.0,
    "equity": 8731.0,
    "dps": 0.51,
-   "payout": 47.8,
+   "payout": 47.9,
    "yield": null,
    "dps_adj": 0.51
   },
@@ -84,7 +84,7 @@
    "liab": 6885.0,
    "equity": 10767.0,
    "dps": 1.18,
-   "payout": 33.9,
+   "payout": 34.0,
    "yield": null,
    "dps_adj": 1.18
   },
@@ -97,7 +97,7 @@
    "liab": 6591.0,
    "equity": 10749.0,
    "dps": 2.17,
-   "payout": 85.6,
+   "payout": 85.8,
    "yield": null,
    "dps_adj": 2.17
   },
@@ -110,7 +110,7 @@
    "liab": 6747.0,
    "equity": 10236.0,
    "dps": 1.66,
-   "payout": 144.8,
+   "payout": 144.9,
    "yield": null,
    "dps_adj": 1.66
   },
@@ -123,7 +123,7 @@
    "liab": 6815.0,
    "equity": 9721.0,
    "dps": 0.94,
-   "payout": 172.9,
+   "payout": 173.0,
    "yield": null,
    "dps_adj": 0.94
   },
@@ -136,7 +136,7 @@
    "liab": 7187.0,
    "equity": 9426.0,
    "dps": 0.84,
-   "payout": 187.5,
+   "payout": 187.6,
    "yield": null,
    "dps_adj": 0.84
   }

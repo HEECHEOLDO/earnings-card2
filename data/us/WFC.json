@@ -1,7 +1,7 @@
 {
  "name": "WFC",
  "split_adjusted": false,
- "legal_name": "WELLS FARGO & COMPANY/MN",
+ "legal_name": "WELLS        FARGO & COMPANY/MN",
  "code": "WFC",
  "cik": "0000072971",
  "market": "미국",
@@ -19,7 +19,7 @@
    "liab": 1729618.0,
    "equity": 200497.0,
    "dps": 1.515,
-   "payout": 34.9,
+   "payout": 35.3,
    "yield": null,
    "dps_adj": 1.515
   },
@@ -32,7 +32,7 @@
    "liab": 1743678.0,
    "equity": 208079.0,
    "dps": 1.54,
-   "payout": 34.5,
+   "payout": 34.8,
    "yield": null,
    "dps_adj": 1.54
   },
@@ -40,12 +40,12 @@
    "p": 2018,
    "rev": 86408.0,
    "op": 28538.0,
-   "ni": 22876.0,
+   "ni": 22393.0,
    "assets": 1895883.0,
    "liab": 1698817.0,
    "equity": 197066.0,
    "dps": 1.64,
-   "payout": 34.4,
+   "payout": 35.4,
    "yield": null,
    "dps_adj": 1.64
   },
@@ -58,7 +58,7 @@
    "liab": 1739571.0,
    "equity": 187702.0,
    "dps": 1.92,
-   "payout": 42.8,
+   "payout": 43.1,
    "yield": null,
    "dps_adj": 1.92
   },
@@ -66,12 +66,12 @@
    "p": 2020,
    "rev": 74264.0,
    "op": 2505.0,
-   "ni": 3662.0,
+   "ni": 3377.0,
    "assets": 1952911.0,
    "liab": 1767199.0,
    "equity": 184994.0,
    "dps": 1.22,
-   "payout": 137.2,
+   "payout": 149.4,
    "yield": null,
    "dps_adj": 1.22
   },
@@ -79,12 +79,12 @@
    "p": 2021,
    "rev": 79166.0,
    "op": 29563.0,
-   "ni": 23799.0,
+   "ni": 22109.0,
    "assets": 1948068.0,
    "liab": 1757958.0,
    "equity": 189889.0,
    "dps": 0.6,
-   "payout": 10.2,
+   "payout": 11.1,
    "yield": null,
    "dps_adj": 0.6
   },
@@ -97,7 +97,7 @@
    "liab": 1698807.0,
    "equity": 182213.0,
    "dps": 1.1,
-   "payout": 30.6,
+   "payout": 30.9,
    "yield": null,
    "dps_adj": 1.1
   },
@@ -110,7 +110,7 @@
    "liab": 1745025.0,
    "equity": 187443.0,
    "dps": 1.3,
-   "payout": 25.0,
+   "payout": 25.3,
    "yield": null,
    "dps_adj": 1.3
   },
@@ -123,7 +123,7 @@
    "liab": 1748779.0,
    "equity": 181066.0,
    "dps": 1.5,
-   "payout": 26.1,
+   "payout": 26.4,
    "yield": null,
    "dps_adj": 1.5
   },
@@ -136,7 +136,7 @@
    "liab": 1965593.0,
    "equity": 183038.0,
    "dps": 1.7,
-   "payout": 25.5,
+   "payout": 25.8,
    "yield": null,
    "dps_adj": 1.7
   }

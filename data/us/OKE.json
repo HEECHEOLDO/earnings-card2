@@ -12,14 +12,14 @@
  "annual": [
   {
    "p": 2016,
-   "rev": 6858.5,
+   "rev": 8920.9,
    "op": 1295.8,
    "ni": 743.5,
    "assets": 16138.8,
    "liab": null,
    "equity": 3428.9,
    "dps": 2.46,
-   "payout": 69.9,
+   "payout": 70.3,
    "yield": null,
    "dps_adj": 2.46
   },
@@ -32,7 +32,7 @@
    "liab": null,
    "equity": 5685.4,
    "dps": 2.72,
-   "payout": 136.3,
+   "payout": 137.4,
    "yield": null,
    "dps_adj": 2.72
   },
@@ -45,7 +45,7 @@
    "liab": null,
    "equity": 6579.5,
    "dps": 3.245,
-   "payout": 115.6,
+   "payout": 116.4,
    "yield": null,
    "dps_adj": 3.245
   },
@@ -58,7 +58,7 @@
    "liab": null,
    "equity": 6226.0,
    "dps": 3.53,
-   "payout": 114.2,
+   "payout": 114.7,
    "yield": null,
    "dps_adj": 3.53
   },
@@ -69,35 +69,35 @@
    "ni": 612.8,
    "assets": 23078.8,
    "liab": null,
-   "equity": 6043.0,
+   "equity": 6042.4,
    "dps": 3.74,
-   "payout": 263.1,
+   "payout": 263.5,
    "yield": null,
    "dps_adj": 3.74
   },
   {
    "p": 2021,
-   "rev": 16540.0,
+   "rev": 16540.3,
    "op": 2596.0,
    "ni": 1500.0,
    "assets": 23622.0,
    "liab": null,
    "equity": 6016.0,
    "dps": 3.74,
-   "payout": 111.3,
+   "payout": 111.6,
    "yield": null,
    "dps_adj": 3.74
   },
   {
    "p": 2022,
-   "rev": 22387.0,
+   "rev": 22386.9,
    "op": 2807.0,
    "ni": 1722.0,
    "assets": 24379.0,
    "liab": null,
    "equity": 6494.0,
    "dps": 3.74,
-   "payout": 97.2,
+   "payout": 97.4,
    "yield": null,
    "dps_adj": 3.74
   },
@@ -110,7 +110,7 @@
    "liab": null,
    "equity": 16484.0,
    "dps": 3.82,
-   "payout": 69.6,
+   "payout": 69.7,
    "yield": null,
    "dps_adj": 3.82
   },
@@ -123,7 +123,7 @@
    "liab": null,
    "equity": 22133.0,
    "dps": 3.96,
-   "payout": 74.4,
+   "payout": 74.6,
    "yield": null,
    "dps_adj": 3.96
   },
@@ -136,7 +136,7 @@
    "liab": null,
    "equity": 22569.0,
    "dps": 4.12,
-   "payout": 74.4,
+   "payout": 74.5,
    "yield": null,
    "dps_adj": 4.12
   }

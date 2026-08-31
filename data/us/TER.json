@@ -1,7 +1,7 @@
 {
  "name": "TER",
  "split_adjusted": false,
- "legal_name": "TERADYNE, INC",
+ "legal_name": "TERADYNE, INC.",
  "code": "TER",
  "cik": "0000097210",
  "market": "미국",
@@ -32,7 +32,7 @@
    "liab": 1155.9,
    "equity": 1953.6,
    "dps": 0.07,
-   "payout": 5.4,
+   "payout": 5.5,
    "yield": null,
    "dps_adj": 0.07
   },
@@ -45,7 +45,7 @@
    "liab": 1184.3,
    "equity": 1522.4,
    "dps": 0.09,
-   "payout": 3.7,
+   "payout": 3.8,
    "yield": null,
    "dps_adj": 0.09
   },
@@ -58,7 +58,7 @@
    "liab": 1306.9,
    "equity": 1480.2,
    "dps": 0.36,
-   "payout": 13.1,
+   "payout": 13.8,
    "yield": null,
    "dps_adj": 0.36
   },
@@ -71,7 +71,7 @@
    "liab": 1441.5,
    "equity": 2207.0,
    "dps": 0.4,
-   "payout": 8.5,
+   "payout": 9.3,
    "yield": null,
    "dps_adj": 0.4
   },
@@ -84,7 +84,7 @@
    "liab": 1245.5,
    "equity": 2562.4,
    "dps": 0.4,
-   "payout": 6.5,
+   "payout": 7.2,
    "yield": null,
    "dps_adj": 0.4
   },
@@ -97,7 +97,7 @@
    "liab": 1050.0,
    "equity": 2451.3,
    "dps": 0.44,
-   "payout": 9.7,
+   "payout": 10.4,
    "yield": null,
    "dps_adj": 0.44
   },
@@ -110,7 +110,7 @@
    "liab": 960.9,
    "equity": 2525.9,
    "dps": 0.44,
-   "payout": 15.1,
+   "payout": 16.1,
    "yield": null,
    "dps_adj": 0.44
   },
@@ -123,7 +123,7 @@
    "liab": 889.4,
    "equity": 2819.3,
    "dps": 0.48,
-   "payout": 14.1,
+   "payout": 14.5,
    "yield": null,
    "dps_adj": 0.48
   },
@@ -210,7 +210,7 @@
    "q": 2,
    "rev": 1329.0,
    "op": 437.8,
-   "ni": 374.9
+   "ni": 374.5
   }
  ]
 }

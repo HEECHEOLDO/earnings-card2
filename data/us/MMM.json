@@ -1,7 +1,7 @@
 {
  "name": "MMM",
  "split_adjusted": false,
- "legal_name": "3M CO",
+ "legal_name": "3M COMPANY",
  "code": "MMM",
  "cik": "0000066740",
  "market": "미국",
@@ -19,7 +19,7 @@
    "liab": 22563.0,
    "equity": 10343.0,
    "dps": 4.44,
-   "payout": 53.1,
+   "payout": 54.3,
    "yield": null,
    "dps_adj": 4.44
   },
@@ -32,7 +32,7 @@
    "liab": 26365.0,
    "equity": 11622.0,
    "dps": 4.7,
-   "payout": 57.7,
+   "payout": 59.1,
    "yield": null,
    "dps_adj": 4.7
   },
@@ -45,7 +45,7 @@
    "liab": 26652.0,
    "equity": 9848.0,
    "dps": 5.44,
-   "payout": 59.7,
+   "payout": 61.1,
    "yield": null,
    "dps_adj": 5.44
   },
@@ -58,7 +58,7 @@
    "liab": 34533.0,
    "equity": 10126.0,
    "dps": 5.76,
-   "payout": 73.4,
+   "payout": 74.4,
    "yield": null,
    "dps_adj": 5.76
   },
@@ -71,7 +71,7 @@
    "liab": 34413.0,
    "equity": 12931.0,
    "dps": 5.88,
-   "payout": 62.3,
+   "payout": 62.8,
    "yield": null,
    "dps_adj": 5.88
   },
@@ -84,7 +84,7 @@
    "liab": 31955.0,
    "equity": 15117.0,
    "dps": 5.92,
-   "payout": 57.8,
+   "payout": 58.4,
    "yield": null,
    "dps_adj": 5.92
   },
@@ -97,7 +97,7 @@
    "liab": 31685.0,
    "equity": 14770.0,
    "dps": 5.96,
-   "payout": 58.3,
+   "payout": 58.4,
    "yield": null,
    "dps_adj": 5.96
   },
@@ -123,7 +123,7 @@
    "liab": 35974.0,
    "equity": 3894.0,
    "dps": 3.61,
-   "payout": 47.5,
+   "payout": 47.6,
    "yield": null,
    "dps_adj": 3.61
   },
@@ -136,7 +136,7 @@
    "liab": 32986.0,
    "equity": 4747.0,
    "dps": 2.92,
-   "payout": 48.1,
+   "payout": 48.5,
    "yield": null,
    "dps_adj": 2.92
   }

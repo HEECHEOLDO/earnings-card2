@@ -1,7 +1,7 @@
 {
  "name": "LHX",
  "split_adjusted": false,
- "legal_name": "L3HARRIS TECHNOLOGIES, INC. /DE/",
+ "legal_name": "L3HARRIS TECHNOLOGIES, INC.",
  "code": "LHX",
  "cik": "0000202058",
  "market": "미국",
@@ -12,7 +12,7 @@
  "annual": [
   {
    "p": 2015,
-   "rev": 3278.0,
+   "rev": 3885.0,
    "op": null,
    "ni": 334.0,
    "assets": 13127.0,
@@ -84,7 +84,7 @@
    "liab": null,
    "equity": 20841.0,
    "dps": 3.4,
-   "payout": 67.0,
+   "payout": 67.6,
    "yield": null,
    "dps_adj": 3.4
   },
@@ -97,7 +97,7 @@
    "liab": null,
    "equity": 19319.0,
    "dps": 4.08,
-   "payout": 44.6,
+   "payout": 45.0,
    "yield": null,
    "dps_adj": 4.08
   },
@@ -110,7 +110,7 @@
    "liab": 14900.0,
    "equity": 18624.0,
    "dps": 4.48,
-   "payout": 81.0,
+   "payout": 81.7,
    "yield": null,
    "dps_adj": 4.48
   },
@@ -123,7 +123,7 @@
    "liab": 22858.0,
    "equity": 18829.0,
    "dps": 4.56,
-   "payout": 72.2,
+   "payout": 72.5,
    "yield": null,
    "dps_adj": 4.56
   },
@@ -136,7 +136,7 @@
    "liab": 22422.0,
    "equity": 19579.0,
    "dps": 4.64,
-   "payout": 58.2,
+   "payout": 58.5,
    "yield": null,
    "dps_adj": 4.64
   }

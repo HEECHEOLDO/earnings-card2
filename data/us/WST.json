@@ -1,7 +1,7 @@
 {
  "name": "WST",
  "split_adjusted": false,
- "legal_name": "WEST PHARMACEUTICAL SERVICES INC",
+ "legal_name": "WEST PHARMACEUTICAL SERVICES, INC.",
  "code": "WST",
  "cik": "0000105770",
  "market": "미국",
@@ -19,7 +19,7 @@
    "liab": 599.2,
    "equity": 1117.5,
    "dps": 0.5,
-   "payout": 25.5,
+   "payout": 26.1,
    "yield": null,
    "dps_adj": 0.5
   },
@@ -32,7 +32,7 @@
    "liab": 582.9,
    "equity": 1279.9,
    "dps": 0.54,
-   "payout": 26.5,
+   "payout": 27.2,
    "yield": null,
    "dps_adj": 0.54
   },
@@ -45,7 +45,7 @@
    "liab": 582.6,
    "equity": 1396.3,
    "dps": 0.58,
-   "payout": 20.7,
+   "payout": 21.1,
    "yield": null,
    "dps_adj": 0.58
   },
@@ -58,7 +58,7 @@
    "liab": 768.2,
    "equity": 1573.2,
    "dps": 0.62,
-   "payout": 19.0,
+   "payout": 19.3,
    "yield": null,
    "dps_adj": 0.62
   },
@@ -71,7 +71,7 @@
    "liab": 939.3,
    "equity": 1854.5,
    "dps": 0.66,
-   "payout": 14.1,
+   "payout": 14.5,
    "yield": null,
    "dps_adj": 0.66
   },
@@ -84,7 +84,7 @@
    "liab": 978.4,
    "equity": 2335.4,
    "dps": 0.7,
-   "payout": 7.9,
+   "payout": 8.1,
    "yield": null,
    "dps_adj": 0.7
   },
@@ -97,7 +97,7 @@
    "liab": 931.9,
    "equity": 2684.9,
    "dps": 0.74,
-   "payout": 9.4,
+   "payout": 9.6,
    "yield": null,
    "dps_adj": 0.74
   },
@@ -110,7 +110,7 @@
    "liab": 948.5,
    "equity": 2881.0,
    "dps": 0.78,
-   "payout": 9.8,
+   "payout": 9.9,
    "yield": null,
    "dps_adj": 0.78
   },
@@ -123,7 +123,7 @@
    "liab": 961.1,
    "equity": 2682.3,
    "dps": 0.82,
-   "payout": 12.1,
+   "payout": 12.3,
    "yield": null,
    "dps_adj": 0.82
   },
@@ -136,7 +136,7 @@
    "liab": 1094.0,
    "equity": 3176.0,
    "dps": 0.86,
-   "payout": 12.6,
+   "payout": 12.7,
    "yield": null,
    "dps_adj": 0.86
   }

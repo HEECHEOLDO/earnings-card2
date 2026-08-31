@@ -1,7 +1,7 @@
 {
  "name": "RMD",
  "split_adjusted": false,
- "legal_name": "RESMED INC",
+ "legal_name": "ResMed Inc.",
  "code": "RMD",
  "cik": "0000943819",
  "market": "미국",
@@ -19,7 +19,7 @@
    "liab": 1508.2,
    "equity": 1960.3,
    "dps": 1.32,
-   "payout": 54.5,
+   "payout": 54.9,
    "yield": null,
    "dps_adj": 1.32
   },
@@ -32,7 +32,7 @@
    "liab": 1004.9,
    "equity": 2059.0,
    "dps": 1.4,
-   "payout": 63.3,
+   "payout": 63.9,
    "yield": null,
    "dps_adj": 1.4
   },
@@ -45,7 +45,7 @@
    "liab": 2035.5,
    "equity": 2072.2,
    "dps": 1.48,
-   "payout": 52.4,
+   "payout": 52.9,
    "yield": null,
    "dps_adj": 1.48
   },
@@ -58,7 +58,7 @@
    "liab": 2090.3,
    "equity": 2497.0,
    "dps": 1.56,
-   "payout": 36.2,
+   "payout": 36.5,
    "yield": null,
    "dps_adj": 1.56
   },
@@ -71,7 +71,7 @@
    "liab": 1842.4,
    "equity": 2885.7,
    "dps": 1.56,
-   "payout": 47.8,
+   "payout": 48.1,
    "yield": null,
    "dps_adj": 1.56
   },
@@ -84,7 +84,7 @@
    "liab": 1735.1,
    "equity": 3360.8,
    "dps": 1.68,
-   "payout": 31.5,
+   "payout": 31.7,
    "yield": null,
    "dps_adj": 1.68
   },
@@ -97,7 +97,7 @@
    "liab": 2621.8,
    "equity": 4129.9,
    "dps": 1.76,
-   "payout": 28.8,
+   "payout": 28.9,
    "yield": null,
    "dps_adj": 1.76
   },
@@ -110,7 +110,7 @@
    "liab": 2008.4,
    "equity": 4864.0,
    "dps": 1.92,
-   "payout": 27.6,
+   "payout": 27.7,
    "yield": null,
    "dps_adj": 1.92
   },
@@ -123,7 +123,7 @@
    "liab": 2206.5,
    "equity": 5967.9,
    "dps": 2.12,
-   "payout": 22.2,
+   "payout": 22.3,
    "yield": null,
    "dps_adj": 2.12
   },
@@ -136,7 +136,7 @@
    "liab": 2380.6,
    "equity": 6585.4,
    "dps": 2.4,
-   "payout": 22.9,
+   "payout": 23.0,
    "yield": null,
    "dps_adj": 2.4
   }

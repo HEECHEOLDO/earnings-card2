@@ -1,7 +1,7 @@
 {
  "name": "REG",
  "split_adjusted": false,
- "legal_name": "REGENCY CENTERS CORP",
+ "legal_name": "REGENCY CENTERS CORPORATION",
  "code": "REG",
  "cik": "0000910606",
  "market": "미국",
@@ -19,7 +19,7 @@
    "liab": 4371.5,
    "equity": 6733.1,
    "dps": 2.1,
-   "payout": 187.2,
+   "payout": 187.7,
    "yield": null,
    "dps_adj": 2.1
   },
@@ -32,7 +32,7 @@
    "liab": 4494.5,
    "equity": 6450.2,
    "dps": 2.22,
-   "payout": 149.3,
+   "payout": 149.7,
    "yield": null,
    "dps_adj": 2.22
   },
@@ -45,7 +45,7 @@
    "liab": 4842.3,
    "equity": 6290.0,
    "dps": 2.34,
-   "payout": 161.2,
+   "payout": 161.4,
    "yield": null,
    "dps_adj": 2.34
   },

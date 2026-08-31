@@ -1,7 +1,7 @@
 {
  "name": "CMCSA",
  "split_adjusted": false,
- "legal_name": "COMCAST CORP",
+ "legal_name": "COMCAST CORPORATION",
  "code": "CMCSA",
  "cik": "0001166691",
  "market": "미국",
@@ -19,7 +19,7 @@
    "liab": null,
    "equity": 56163.0,
    "dps": 0.55,
-   "payout": 29.4,
+   "payout": 29.7,
    "yield": null,
    "dps_adj": 0.55
   },
@@ -32,7 +32,7 @@
    "liab": null,
    "equity": 69459.0,
    "dps": 0.63,
-   "payout": 12.9,
+   "payout": 13.2,
    "yield": null,
    "dps_adj": 0.63
   },
@@ -45,7 +45,7 @@
    "liab": null,
    "equity": 72502.0,
    "dps": 0.76,
-   "payout": 29.4,
+   "payout": 29.7,
    "yield": null,
    "dps_adj": 0.76
   },
@@ -58,7 +58,7 @@
    "liab": null,
    "equity": 83874.0,
    "dps": 0.84,
-   "payout": 28.7,
+   "payout": 29.1,
    "yield": null,
    "dps_adj": 0.84
   },
@@ -71,7 +71,7 @@
    "liab": null,
    "equity": 91738.0,
    "dps": 0.92,
-   "payout": 39.3,
+   "payout": 39.8,
    "yield": null,
    "dps_adj": 0.92
   },
@@ -84,7 +84,7 @@
    "liab": null,
    "equity": 97490.0,
    "dps": 1,
-   "payout": 33.2,
+   "payout": 33.7,
    "yield": null,
    "dps_adj": 1.0
   },
@@ -97,7 +97,7 @@
    "liab": null,
    "equity": 81627.0,
    "dps": 1.08,
-   "payout": 97.1,
+   "payout": 97.6,
    "yield": null,
    "dps_adj": 1.08
   },
@@ -110,7 +110,7 @@
    "liab": null,
    "equity": 83226.0,
    "dps": 1.16,
-   "payout": 31.7,
+   "payout": 31.9,
    "yield": null,
    "dps_adj": 1.16
   },
@@ -123,7 +123,7 @@
    "liab": null,
    "equity": 86038.0,
    "dps": 1.24,
-   "payout": 30.3,
+   "payout": 30.5,
    "yield": null,
    "dps_adj": 1.24
   },
@@ -136,7 +136,7 @@
    "liab": null,
    "equity": 97151.0,
    "dps": 1.32,
-   "payout": 24.8,
+   "payout": 24.9,
    "yield": null,
    "dps_adj": 1.32
   }

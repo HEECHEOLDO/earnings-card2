@@ -1,7 +1,7 @@
 {
  "name": "PNR",
  "split_adjusted": false,
- "legal_name": "PENTAIR plc",
+ "legal_name": "Pentair plc",
  "code": "PNR",
  "cik": "0000077360",
  "market": "미국",
@@ -12,27 +12,27 @@
  "annual": [
   {
    "p": 2016,
-   "rev": 2780.6,
+   "rev": 4890.0,
    "op": 354.4,
    "ni": 522.2,
    "assets": 11534.8,
    "liab": 7280.4,
    "equity": 4254.4,
    "dps": 1.34,
-   "payout": 46.5,
+   "payout": 47.0,
    "yield": null,
    "dps_adj": 1.34
   },
   {
    "p": 2017,
-   "rev": 2845.7,
+   "rev": 4936.5,
    "op": 378.3,
    "ni": 666.5,
    "assets": 8633.7,
    "liab": 3595.9,
    "equity": 5037.8,
    "dps": 1.38,
-   "payout": 37.6,
+   "payout": 38.0,
    "yield": null,
    "dps_adj": 1.38
   },
@@ -45,7 +45,7 @@
    "liab": 1970.4,
    "equity": 1836.1,
    "dps": 1.05,
-   "payout": 53.1,
+   "payout": 53.6,
    "yield": null,
    "dps_adj": 1.05
   },
@@ -58,7 +58,7 @@
    "liab": 2185.6,
    "equity": 1953.9,
    "dps": 0.72,
-   "payout": 34.3,
+   "payout": 34.5,
    "yield": null,
    "dps_adj": 0.72
   },
@@ -71,7 +71,7 @@
    "liab": 2090.9,
    "equity": 2106.3,
    "dps": 0.76,
-   "payout": 35.3,
+   "payout": 35.5,
    "yield": null,
    "dps_adj": 0.76
   },
@@ -84,7 +84,7 @@
    "liab": 2331.7,
    "equity": 2421.9,
    "dps": 0.8,
-   "payout": 24.0,
+   "payout": 24.2,
    "yield": null,
    "dps_adj": 0.8
   },
@@ -97,7 +97,7 @@
    "liab": 3739.4,
    "equity": 2708.1,
    "dps": 0.84,
-   "payout": 28.8,
+   "payout": 28.9,
    "yield": null,
    "dps_adj": 0.84
   },
@@ -110,7 +110,7 @@
    "liab": 3346.2,
    "equity": 3217.1,
    "dps": 0.88,
-   "payout": 23.3,
+   "payout": 23.5,
    "yield": null,
    "dps_adj": 0.88
   },
@@ -123,7 +123,7 @@
    "liab": 2883.6,
    "equity": 3562.9,
    "dps": 0.92,
-   "payout": 24.4,
+   "payout": 24.6,
    "yield": null,
    "dps_adj": 0.92
   },
@@ -136,7 +136,7 @@
    "liab": 2999.6,
    "equity": 3869.2,
    "dps": 1,
-   "payout": 25.1,
+   "payout": 25.3,
    "yield": null,
    "dps_adj": 1.0
   }

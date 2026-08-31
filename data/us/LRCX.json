@@ -1,7 +1,7 @@
 {
  "name": "LRCX",
  "split_adjusted": true,
- "legal_name": "LAM RESEARCH CORP",
+ "legal_name": "LAM RESEARCH CORPORATION",
  "code": "LRCX",
  "cik": "0000707549",
  "market": "미국",
@@ -19,7 +19,7 @@
    "liab": 5135.5,
    "equity": 6817.5,
    "dps": 1.65,
-   "payout": 15.8,
+   "payout": 17.9,
    "yield": null,
    "dps_adj": 0.165
   },
@@ -32,7 +32,7 @@
    "liab": 5773.0,
    "equity": 6501.9,
    "dps": 2.55,
-   "payout": 17.3,
+   "payout": 19.4,
    "yield": null,
    "dps_adj": 0.255
   },
@@ -45,7 +45,7 @@
    "liab": 7278.0,
    "equity": 4673.9,
    "dps": 4.4,
-   "payout": 30.6,
+   "payout": 32.1,
    "yield": null,
    "dps_adj": 0.44
   },
@@ -58,7 +58,7 @@
    "liab": 9375.6,
    "equity": 5172.5,
    "dps": 4.6,
-   "payout": 29.6,
+   "payout": 30.5,
    "yield": null,
    "dps_adj": 0.46
   },
@@ -71,7 +71,7 @@
    "liab": 9865.0,
    "equity": 6027.2,
    "dps": 5.2,
-   "payout": 19.1,
+   "payout": 19.3,
    "yield": null,
    "dps_adj": 0.52
   },
@@ -84,7 +84,7 @@
    "liab": 10917.3,
    "equity": 6278.4,
    "dps": 6,
-   "payout": 18.2,
+   "payout": 18.3,
    "yield": null,
    "dps_adj": 0.6
   },
@@ -97,7 +97,7 @@
    "liab": 10571.5,
    "equity": 8210.2,
    "dps": 0.69,
-   "payout": 20.7,
+   "payout": 20.8,
    "yield": null,
    "dps_adj": 0.69
   },
@@ -110,7 +110,7 @@
    "liab": 10205.3,
    "equity": 8539.5,
    "dps": 0.8,
-   "payout": 27.5,
+   "payout": 27.6,
    "yield": null,
    "dps_adj": 0.8
   },
@@ -123,7 +123,7 @@
    "liab": 11483.6,
    "equity": 9861.6,
    "dps": 0.92,
-   "payout": 22.1,
+   "payout": 22.2,
    "yield": null,
    "dps_adj": 0.92
   },
@@ -136,7 +136,7 @@
    "liab": 11058.8,
    "equity": 12470.9,
    "dps": 1.04,
-   "payout": 18.0,
+   "payout": 18.1,
    "yield": null,
    "dps_adj": 1.04
   }

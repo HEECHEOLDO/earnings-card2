@@ -1,7 +1,7 @@
 {
  "name": "APH",
  "split_adjusted": true,
- "legal_name": "AMPHENOL CORP /DE/",
+ "legal_name": "AMPHENOL CORPORATION",
  "code": "APH",
  "cik": "0000820313",
  "market": "미국",
@@ -19,7 +19,7 @@
    "liab": null,
    "equity": 3723.1,
    "dps": 0.58,
-   "payout": 21.5,
+   "payout": 22.0,
    "yield": null,
    "dps_adj": 0.145
   },
@@ -32,7 +32,7 @@
    "liab": null,
    "equity": 4043.4,
    "dps": 0.7,
-   "payout": 32.4,
+   "payout": 33.5,
    "yield": null,
    "dps_adj": 0.175
   },
@@ -45,7 +45,7 @@
    "liab": null,
    "equity": 4064.2,
    "dps": 0.88,
-   "payout": 21.8,
+   "payout": 22.6,
    "yield": null,
    "dps_adj": 0.22
   },
@@ -58,7 +58,7 @@
    "liab": null,
    "equity": 4596.2,
    "dps": 0.48,
-   "payout": 24.5,
+   "payout": 25.4,
    "yield": null,
    "dps_adj": 0.24
   },
@@ -71,20 +71,20 @@
    "liab": 6875.4,
    "equity": 5451.9,
    "dps": 0.52,
-   "payout": 25.5,
+   "payout": 26.4,
    "yield": null,
    "dps_adj": 0.26
   },
   {
    "p": 2021,
-   "rev": 10876.0,
+   "rev": 10876.3,
    "op": 2105.1,
-   "ni": 1590.0,
+   "ni": 1601.5,
    "assets": 14678.4,
    "liab": 8299.3,
    "equity": 6360.1,
    "dps": 0.635,
-   "payout": 23.9,
+   "payout": 24.8,
    "yield": null,
    "dps_adj": 0.3175
   },
@@ -92,51 +92,51 @@
    "p": 2022,
    "rev": 12623.0,
    "op": 2585.8,
-   "ni": 1902.0,
+   "ni": 1916.8,
    "assets": 15326.2,
    "liab": 8232.1,
    "equity": 7073.5,
    "dps": 0.405,
-   "payout": 25.4,
+   "payout": 26.2,
    "yield": null,
    "dps_adj": 0.405
   },
   {
    "p": 2023,
-   "rev": 12555.0,
+   "rev": 12554.7,
    "op": 2559.6,
-   "ni": 1928.0,
+   "ni": 1945.5,
    "assets": 16526.4,
    "liab": 8099.9,
    "equity": 8395.8,
    "dps": 0.425,
-   "payout": 26.3,
+   "payout": 27.1,
    "yield": null,
    "dps_adj": 0.425
   },
   {
    "p": 2024,
-   "rev": 15223.0,
+   "rev": 15222.7,
    "op": 3156.9,
-   "ni": 2424.0,
+   "ni": 2441.6,
    "assets": 21440.2,
    "liab": 11584.1,
    "equity": 9847.4,
    "dps": 0.55,
-   "payout": 27.3,
+   "payout": 28.5,
    "yield": null,
    "dps_adj": 0.55
   },
   {
    "p": 2025,
-   "rev": 23095.0,
+   "rev": 23094.7,
    "op": 5868.6,
-   "ni": 4270.0,
+   "ni": 4305.3,
    "assets": 36236.9,
    "liab": 22727.2,
    "equity": 13500.4,
    "dps": 0.745,
-   "payout": 21.3,
+   "payout": 22.1,
    "yield": null,
    "dps_adj": 0.745
   }
@@ -166,9 +166,9 @@
   {
    "y": 2024,
    "q": 4,
-   "rev": 4318.2,
+   "rev": 4317.9,
    "op": 953.8,
-   "ni": 734.4
+   "ni": 752.0
   },
   {
    "y": 2025,
@@ -194,9 +194,9 @@
   {
    "y": 2025,
    "q": 4,
-   "rev": 6439.3,
+   "rev": 6439.0,
    "op": 1722.7,
-   "ni": 1169.9
+   "ni": 1205.2
   },
   {
    "y": 2026,

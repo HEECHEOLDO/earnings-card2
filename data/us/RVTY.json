@@ -1,7 +1,7 @@
 {
  "name": "RVTY",
  "split_adjusted": false,
- "legal_name": "REVVITY, INC.",
+ "legal_name": "REVVITY, INC",
  "code": "RVTY",
  "cik": "0000031791",
  "market": "미국",
@@ -19,7 +19,7 @@
    "liab": 2123.1,
    "equity": 2153.6,
    "dps": 0.28,
-   "payout": 13.1,
+   "payout": 13.2,
    "yield": null,
    "dps_adj": 0.28
   },
@@ -32,7 +32,7 @@
    "liab": 3588.3,
    "equity": 2503.2,
    "dps": 0.28,
-   "payout": 10.5,
+   "payout": 10.6,
    "yield": null,
    "dps_adj": 0.28
   },
@@ -45,7 +45,7 @@
    "liab": 3390.6,
    "equity": 2585.0,
    "dps": 0.28,
-   "payout": 13.0,
+   "payout": 13.1,
    "yield": null,
    "dps_adj": 0.28
   },
@@ -58,7 +58,7 @@
    "liab": 3724.7,
    "equity": 2813.8,
    "dps": 0.28,
-   "payout": 13.6,
+   "payout": 13.7,
    "yield": null,
    "dps_adj": 0.28
   },

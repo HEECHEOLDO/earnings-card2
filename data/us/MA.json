@@ -1,7 +1,7 @@
 {
  "name": "MA",
  "split_adjusted": false,
- "legal_name": "Mastercard Inc",
+ "legal_name": "Mastercard Incorporated",
  "code": "MA",
  "cik": "0001141391",
  "market": "미국",
@@ -32,7 +32,7 @@
    "liab": 15761.0,
    "equity": 5497.0,
    "dps": 0.91,
-   "payout": 24.8,
+   "payout": 24.9,
    "yield": null,
    "dps_adj": 0.91
   },
@@ -45,7 +45,7 @@
    "liab": 19371.0,
    "equity": 5418.0,
    "dps": 1.08,
-   "payout": 19.2,
+   "payout": 19.3,
    "yield": null,
    "dps_adj": 1.08
   },
@@ -58,7 +58,7 @@
    "liab": 23245.0,
    "equity": 5917.0,
    "dps": 1.39,
-   "payout": 17.4,
+   "payout": 17.5,
    "yield": null,
    "dps_adj": 1.39
   },
@@ -136,7 +136,7 @@
    "liab": 46411.0,
    "equity": 7746.0,
    "dps": 3.15,
-   "payout": 19.0,
+   "payout": 19.1,
    "yield": null,
    "dps_adj": 3.15
   }

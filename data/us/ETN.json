@@ -1,7 +1,7 @@
 {
  "name": "ETN",
  "split_adjusted": false,
- "legal_name": "Eaton Corp plc",
+ "legal_name": "EATON CORPORATION plc",
  "code": "ETN",
  "cik": "0001551182",
  "market": "미국",
@@ -19,7 +19,7 @@
    "liab": null,
    "equity": 14998.0,
    "dps": 2.28,
-   "payout": 54.1,
+   "payout": 54.2,
    "yield": null,
    "dps_adj": 2.28
   },
@@ -32,7 +32,7 @@
    "liab": null,
    "equity": 17290.0,
    "dps": 2.4,
-   "payout": 35.7,
+   "payout": 35.9,
    "yield": null,
    "dps_adj": 2.4
   },
@@ -45,7 +45,7 @@
    "liab": null,
    "equity": 16142.0,
    "dps": 2.64,
-   "payout": 53.4,
+   "payout": 53.7,
    "yield": null,
    "dps_adj": 2.64
   },
@@ -58,7 +58,7 @@
    "liab": null,
    "equity": 16133.0,
    "dps": 2.84,
-   "payout": 53.8,
+   "payout": 54.0,
    "yield": null,
    "dps_adj": 2.84
   },
@@ -71,7 +71,7 @@
    "liab": null,
    "equity": 14973.0,
    "dps": 2.92,
-   "payout": 83.0,
+   "payout": 83.4,
    "yield": null,
    "dps_adj": 2.92
   },
@@ -84,7 +84,7 @@
    "liab": null,
    "equity": 16451.0,
    "dps": 3.04,
-   "payout": 56.5,
+   "payout": 56.9,
    "yield": null,
    "dps_adj": 3.04
   },
@@ -97,7 +97,7 @@
    "liab": null,
    "equity": 17075.0,
    "dps": 3.24,
-   "payout": 52.4,
+   "payout": 52.7,
    "yield": null,
    "dps_adj": 3.24
   },
@@ -110,7 +110,7 @@
    "liab": null,
    "equity": 19069.0,
    "dps": 3.44,
-   "payout": 42.6,
+   "payout": 42.8,
    "yield": null,
    "dps_adj": 3.44
   },
@@ -123,7 +123,7 @@
    "liab": null,
    "equity": 18531.0,
    "dps": 3.76,
-   "payout": 39.4,
+   "payout": 39.5,
    "yield": null,
    "dps_adj": 3.76
   },
@@ -136,7 +136,7 @@
    "liab": null,
    "equity": 19469.0,
    "dps": 4.16,
-   "payout": 39.7,
+   "payout": 39.8,
    "yield": null,
    "dps_adj": 4.16
   }

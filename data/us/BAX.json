@@ -1,7 +1,7 @@
 {
  "name": "BAX",
  "split_adjusted": false,
- "legal_name": "BAXTER INTERNATIONAL INC",
+ "legal_name": "BAXTER INTERNATIONAL INC.",
  "code": "BAX",
  "cik": "0000010456",
  "market": "미국",
@@ -19,20 +19,20 @@
    "liab": null,
    "equity": 8221.0,
    "dps": 0.51,
-   "payout": 5.6,
+   "payout": 5.7,
    "yield": null,
    "dps_adj": 0.51
   },
   {
    "p": 2017,
-   "rev": 10584.0,
+   "rev": 10561.0,
    "op": 1288.0,
    "ni": 602.0,
    "assets": 17111.0,
    "liab": 7995.0,
    "equity": -161.0,
    "dps": 0.61,
-   "payout": 55.0,
+   "payout": 56.2,
    "yield": null,
    "dps_adj": 0.61
   },
@@ -45,7 +45,7 @@
    "liab": 7854.0,
    "equity": 7866.0,
    "dps": 0.73,
-   "payout": 25.2,
+   "payout": 25.8,
    "yield": null,
    "dps_adj": 0.73
   },
@@ -53,12 +53,12 @@
    "p": 2019,
    "rev": 11362.0,
    "op": 1772.0,
-   "ni": 1011.0,
+   "ni": 1001.0,
    "assets": 18193.0,
    "liab": 10281.0,
    "equity": 7912.0,
    "dps": 0.85,
-   "payout": 42.8,
+   "payout": 44.1,
    "yield": null,
    "dps_adj": 0.85
   },
@@ -66,12 +66,12 @@
    "p": 2020,
    "rev": 11673.0,
    "op": 1616.0,
-   "ni": 1110.0,
+   "ni": 1102.0,
    "assets": 20019.0,
    "liab": 11293.0,
    "equity": 8726.0,
    "dps": 0.955,
-   "payout": 43.8,
+   "payout": 44.8,
    "yield": null,
    "dps_adj": 0.955
   },
@@ -79,12 +79,12 @@
    "p": 2021,
    "rev": 12146.0,
    "op": 1350.0,
-   "ni": 1295.0,
+   "ni": 1284.0,
    "assets": 33521.0,
    "liab": 24400.0,
    "equity": 9121.0,
    "dps": 1.085,
-   "payout": 42.1,
+   "payout": 42.9,
    "yield": null,
    "dps_adj": 1.085
   },
@@ -92,7 +92,7 @@
    "p": 2022,
    "rev": 10057.0,
    "op": -2845.0,
-   "ni": -2421.0,
+   "ni": -2433.0,
    "assets": 28287.0,
    "liab": 22392.0,
    "equity": 5895.0,
@@ -105,12 +105,12 @@
    "p": 2023,
    "rev": 10360.0,
    "op": 707.0,
-   "ni": 2663.0,
+   "ni": 2656.0,
    "assets": 28276.0,
    "liab": 19808.0,
    "equity": 8468.0,
    "dps": 1.16,
-   "payout": 22.0,
+   "payout": 22.2,
    "yield": null,
    "dps_adj": 1.16
   },
@@ -118,7 +118,7 @@
    "p": 2024,
    "rev": 10636.0,
    "op": 14.0,
-   "ni": -638.0,
+   "ni": -649.0,
    "assets": 25782.0,
    "liab": 18758.0,
    "equity": 7024.0,
@@ -147,28 +147,28 @@
    "q": 1,
    "rev": 2490.0,
    "op": 115.0,
-   "ni": 39.0
+   "ni": 37.0
   },
   {
    "y": 2024,
    "q": 2,
    "rev": 2694.0,
    "op": 179.0,
-   "ni": -311.0
+   "ni": -314.0
   },
   {
    "y": 2024,
    "q": 3,
    "rev": 2699.0,
    "op": 155.0,
-   "ni": 144.0
+   "ni": 140.0
   },
   {
    "y": 2024,
    "q": 4,
    "rev": 2753.0,
    "op": null,
-   "ni": -510.0
+   "ni": -512.0
   },
   {
    "y": 2025,

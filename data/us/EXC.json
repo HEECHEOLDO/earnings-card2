@@ -1,7 +1,7 @@
 {
  "name": "EXC",
  "split_adjusted": false,
- "legal_name": "EXELON CORP",
+ "legal_name": "EXELON CORPORATION",
  "code": "EXC",
  "cik": "0001109357",
  "market": "미국",
@@ -19,7 +19,7 @@
    "liab": 87292.0,
    "equity": 27629.0,
    "dps": 1.26,
-   "payout": 97.3,
+   "payout": 97.7,
    "yield": null,
    "dps_adj": 1.26
   },
@@ -45,7 +45,7 @@
    "liab": 86587.0,
    "equity": 33047.0,
    "dps": 1.38,
-   "payout": 64.2,
+   "payout": 64.3,
    "yield": null,
    "dps_adj": 1.38
   },
@@ -71,7 +71,7 @@
    "liab": 94449.0,
    "equity": 34868.0,
    "dps": 1.53,
-   "payout": 76.4,
+   "payout": 76.5,
    "yield": null,
    "dps_adj": 1.53
   },
@@ -84,7 +84,7 @@
    "liab": 98218.0,
    "equity": 34795.0,
    "dps": 1.53,
-   "payout": 81.9,
+   "payout": 82.0,
    "yield": null,
    "dps_adj": 1.53
   },
@@ -97,7 +97,7 @@
    "liab": 70605.0,
    "equity": 24744.0,
    "dps": 1.35,
-   "payout": 61.3,
+   "payout": 61.4,
    "yield": null,
    "dps_adj": 1.35
   },
@@ -110,7 +110,7 @@
    "liab": 76101.0,
    "equity": 25755.0,
    "dps": 1.44,
-   "payout": 61.6,
+   "payout": 61.7,
    "yield": null,
    "dps_adj": 1.44
   },
@@ -136,7 +136,7 @@
    "liab": 87772.0,
    "equity": 28798.0,
    "dps": 1.6,
-   "payout": 58.4,
+   "payout": 58.5,
    "yield": null,
    "dps_adj": 1.6
   }

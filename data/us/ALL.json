@@ -19,7 +19,7 @@
    "liab": 88037.0,
    "equity": 20569.0,
    "dps": 1.32,
-   "payout": 27.2,
+   "payout": 27.5,
    "yield": null,
    "dps_adj": 1.32
   },
@@ -32,7 +32,7 @@
    "liab": 89871.0,
    "equity": 22551.0,
    "dps": 1.48,
-   "payout": 15.1,
+   "payout": 15.3,
    "yield": null,
    "dps_adj": 1.48
   },
@@ -45,7 +45,7 @@
    "liab": 90937.0,
    "equity": 21312.0,
    "dps": 1.84,
-   "payout": 29.6,
+   "payout": 30.1,
    "yield": null,
    "dps_adj": 1.84
   },
@@ -58,7 +58,7 @@
    "liab": 93952.0,
    "equity": 25998.0,
    "dps": 2,
-   "payout": 13.5,
+   "payout": 13.8,
    "yield": null,
    "dps_adj": 2.0
   },
@@ -69,9 +69,9 @@
    "ni": 5576.0,
    "assets": 125987.0,
    "liab": 95770.0,
-   "equity": -298.0,
+   "equity": 30217.0,
    "dps": 2.16,
-   "payout": 12.1,
+   "payout": 12.2,
    "yield": null,
    "dps_adj": 2.16
   },
@@ -82,9 +82,9 @@
    "ni": 1485.0,
    "assets": 99440.0,
    "liab": 74313.0,
-   "equity": 24892.0,
+   "equity": 24944.0,
    "dps": 3.24,
-   "payout": 64.3,
+   "payout": 65.3,
    "yield": null,
    "dps_adj": 3.24
   },
@@ -95,7 +95,7 @@
    "ni": -1416.0,
    "assets": 97989.0,
    "liab": 80626.0,
-   "equity": 17363.0,
+   "equity": 17488.0,
    "dps": 3.4,
    "payout": null,
    "yield": null,
@@ -108,7 +108,7 @@
    "ni": -316.0,
    "assets": 103362.0,
    "liab": 85732.0,
-   "equity": 17630.0,
+   "equity": 17770.0,
    "dps": 3.56,
    "payout": null,
    "yield": null,
@@ -121,9 +121,9 @@
    "ni": 4550.0,
    "assets": 111617.0,
    "liab": 90250.0,
-   "equity": 21367.0,
+   "equity": 21442.0,
    "dps": 3.68,
-   "payout": 21.4,
+   "payout": 21.7,
    "yield": null,
    "dps_adj": 3.68
   },
@@ -134,9 +134,9 @@
    "ni": 10165.0,
    "assets": 119758.0,
    "liab": 89169.0,
-   "equity": 30589.0,
+   "equity": 30610.0,
    "dps": 4,
-   "payout": 10.4,
+   "payout": 10.5,
    "yield": null,
    "dps_adj": 4.0
   }
@@ -147,21 +147,21 @@
    "q": 1,
    "rev": 15259.0,
    "op": null,
-   "ni": 1198.0
+   "ni": 1218.0
   },
   {
    "y": 2024,
    "q": 2,
    "rev": 15714.0,
    "op": null,
-   "ni": 347.0
+   "ni": 331.0
   },
   {
    "y": 2024,
    "q": 3,
    "rev": 16627.0,
    "op": null,
-   "ni": 1164.0
+   "ni": 1190.0
   },
   {
    "y": 2024,
@@ -175,21 +175,21 @@
    "q": 1,
    "rev": 16452.0,
    "op": null,
-   "ni": 596.0
+   "ni": 595.0
   },
   {
    "y": 2025,
    "q": 2,
    "rev": 16633.0,
    "op": null,
-   "ni": 2099.0
+   "ni": 2109.0
   },
   {
    "y": 2025,
    "q": 3,
    "rev": 17255.0,
    "op": null,
-   "ni": 3744.0
+   "ni": 3746.0
   },
   {
    "y": 2025,
@@ -203,7 +203,7 @@
    "q": 1,
    "rev": 16941.0,
    "op": null,
-   "ni": 2458.0
+   "ni": 2457.0
   },
   {
    "y": 2026,

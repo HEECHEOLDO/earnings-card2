@@ -1,7 +1,7 @@
 {
  "name": "COO",
  "split_adjusted": true,
- "legal_name": "COOPER COMPANIES, INC.",
+ "legal_name": "The Cooper Companies, Inc.",
  "code": "COO",
  "cik": "0000711404",
  "market": "미국",
@@ -14,7 +14,7 @@
    "p": 2016,
    "rev": 1966.8,
    "op": 324.1,
-   "ni": 274.9,
+   "ni": 273.9,
    "assets": 4478.6,
    "liab": 1782.7,
    "equity": 2695.9,
@@ -96,10 +96,10 @@
    "assets": 11492.3,
    "liab": 4317.6,
    "equity": 7174.7,
-   "dps": 0.01,
-   "payout": 0.5,
+   "dps": 0.03,
+   "payout": 1.5,
    "yield": null,
-   "dps_adj": 0.01
+   "dps_adj": 0.03
   },
   {
    "p": 2023,
@@ -109,10 +109,10 @@
    "assets": 11658.9,
    "liab": 4107.9,
    "equity": 7551.0,
-   "dps": 0.01,
-   "payout": 0.7,
+   "dps": 0.03,
+   "payout": 2.0,
    "yield": null,
-   "dps_adj": 0.01
+   "dps_adj": 0.03
   },
   {
    "p": 2024,

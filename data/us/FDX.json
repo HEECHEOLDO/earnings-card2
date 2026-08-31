@@ -1,7 +1,7 @@
 {
  "name": "FDX",
  "split_adjusted": false,
- "legal_name": "FEDEX CORP",
+ "legal_name": "FedEx Corporation",
  "code": "FDX",
  "cik": "0001048911",
  "market": "미국",
@@ -19,7 +19,7 @@
    "liab": null,
    "equity": 16073.0,
    "dps": 1.6,
-   "payout": 14.2,
+   "payout": 14.4,
    "yield": null,
    "dps_adj": 1.6
   },
@@ -32,7 +32,7 @@
    "liab": null,
    "equity": 19416.0,
    "dps": 2,
-   "payout": 11.7,
+   "payout": 11.9,
    "yield": null,
    "dps_adj": 2.0
   },
@@ -45,7 +45,7 @@
    "liab": null,
    "equity": 17757.0,
    "dps": 2.6,
-   "payout": 126.1,
+   "payout": 127.6,
    "yield": null,
    "dps_adj": 2.6
   },
@@ -58,7 +58,7 @@
    "liab": null,
    "equity": 18295.0,
    "dps": 2.6,
-   "payout": 52.8,
+   "payout": 53.0,
    "yield": null,
    "dps_adj": 2.6
   },
@@ -71,7 +71,7 @@
    "liab": null,
    "equity": 24168.0,
    "dps": 2.6,
-   "payout": 13.1,
+   "payout": 13.3,
    "yield": null,
    "dps_adj": 2.6
   },

@@ -1,7 +1,7 @@
 {
  "name": "HON",
  "split_adjusted": false,
- "legal_name": "HONEYWELL INTERNATIONAL INC",
+ "legal_name": "Honeywell International Inc",
  "code": "HON",
  "cik": "0000773840",
  "market": "미국",
@@ -19,7 +19,7 @@
    "liab": null,
    "equity": 18883.0,
    "dps": 2.45,
-   "payout": 38.6,
+   "payout": 39.2,
    "yield": null,
    "dps_adj": 2.45
   },
@@ -32,7 +32,7 @@
    "liab": null,
    "equity": 16665.0,
    "dps": 2.74,
-   "payout": 131.5,
+   "payout": 133.2,
    "yield": null,
    "dps_adj": 2.74
   },
@@ -45,7 +45,7 @@
    "liab": null,
    "equity": 18358.0,
    "dps": 3.055,
-   "payout": 33.2,
+   "payout": 33.7,
    "yield": null,
    "dps_adj": 3.055
   },
@@ -58,7 +58,7 @@
    "liab": null,
    "equity": 18706.0,
    "dps": 3.36,
-   "payout": 38.9,
+   "payout": 39.4,
    "yield": null,
    "dps_adj": 3.36
   },
@@ -71,7 +71,7 @@
    "liab": null,
    "equity": 17790.0,
    "dps": 3.63,
-   "payout": 52.5,
+   "payout": 53.1,
    "yield": null,
    "dps_adj": 3.63
   },
@@ -84,7 +84,7 @@
    "liab": null,
    "equity": 19242.0,
    "dps": 3.77,
-   "payout": 46.5,
+   "payout": 47.1,
    "yield": null,
    "dps_adj": 3.77
   },
@@ -97,7 +97,7 @@
    "liab": null,
    "equity": 17319.0,
    "dps": 3.97,
-   "payout": 54.1,
+   "payout": 54.6,
    "yield": null,
    "dps_adj": 3.97
   },
@@ -110,7 +110,7 @@
    "liab": null,
    "equity": 16434.0,
    "dps": 4.17,
-   "payout": 48.7,
+   "payout": 49.1,
    "yield": null,
    "dps_adj": 4.17
   },
@@ -123,7 +123,7 @@
    "liab": null,
    "equity": 19154.0,
    "dps": 4.37,
-   "payout": 49.6,
+   "payout": 49.9,
    "yield": null,
    "dps_adj": 4.37
   },
@@ -136,7 +136,7 @@
    "liab": null,
    "equity": 15030.0,
    "dps": 4.58,
-   "payout": 61.3,
+   "payout": 61.7,
    "yield": null,
    "dps_adj": 4.58
   }
@@ -147,21 +147,21 @@
    "q": 1,
    "rev": 8157.0,
    "op": 2094.0,
-   "ni": 1462.0
+   "ni": 1475.0
   },
   {
    "y": 2024,
    "q": 2,
    "rev": 8572.0,
    "op": 2199.0,
-   "ni": 1545.0
+   "ni": 1560.0
   },
   {
    "y": 2024,
    "q": 3,
    "rev": 8819.0,
    "op": 2296.0,
-   "ni": 1413.0
+   "ni": 1415.0
   },
   {
    "y": 2024,
@@ -189,7 +189,7 @@
    "q": 3,
    "rev": 9437.0,
    "op": 2407.0,
-   "ni": 1825.0
+   "ni": 1859.0
   },
   {
    "y": 2025,

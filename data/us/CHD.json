@@ -1,7 +1,7 @@
 {
  "name": "CHD",
  "split_adjusted": false,
- "legal_name": "CHURCH & DWIGHT CO INC /DE/",
+ "legal_name": "CHURCH & DWIGHT CO., INC.",
  "code": "CHD",
  "cik": "0000313927",
  "market": "미국",
@@ -19,7 +19,7 @@
    "liab": 2376.2,
    "equity": 1977.9,
    "dps": 0.71,
-   "payout": 39.8,
+   "payout": 40.5,
    "yield": null,
    "dps_adj": 0.71
   },
@@ -32,7 +32,7 @@
    "liab": 3796.8,
    "equity": 2218.0,
    "dps": 0.76,
-   "payout": 25.6,
+   "payout": 26.2,
    "yield": null,
    "dps_adj": 0.76
   },
@@ -45,7 +45,7 @@
    "liab": 3615.4,
    "equity": 2453.8,
    "dps": 0.87,
-   "payout": 37.6,
+   "payout": 38.4,
    "yield": null,
    "dps_adj": 0.87
   },
@@ -58,7 +58,7 @@
    "liab": 3989.6,
    "equity": 2667.8,
    "dps": 0.91,
-   "payout": 36.4,
+   "payout": 37.2,
    "yield": null,
    "dps_adj": 0.91
   },
@@ -71,7 +71,7 @@
    "liab": 4394.1,
    "equity": 3020.4,
    "dps": 0.96,
-   "payout": 30.1,
+   "payout": 30.8,
    "yield": null,
    "dps_adj": 0.96
   },
@@ -84,7 +84,7 @@
    "liab": 4763.3,
    "equity": 3233.2,
    "dps": 1.01,
-   "payout": 29.9,
+   "payout": 30.5,
    "yield": null,
    "dps_adj": 1.01
   },
@@ -97,7 +97,7 @@
    "liab": 4855.7,
    "equity": 3489.9,
    "dps": 1.05,
-   "payout": 61.6,
+   "payout": 62.5,
    "yield": null,
    "dps_adj": 1.05
   },
@@ -110,7 +110,7 @@
    "liab": 4713.8,
    "equity": 3855.4,
    "dps": 1.09,
-   "payout": 35.3,
+   "payout": 35.7,
    "yield": null,
    "dps_adj": 1.09
   },
@@ -123,7 +123,7 @@
    "liab": 4522.3,
    "equity": 4360.8,
    "dps": 1.13,
-   "payout": 47.2,
+   "payout": 47.7,
    "yield": null,
    "dps_adj": 1.13
   },
@@ -136,7 +136,7 @@
    "liab": 4910.2,
    "equity": 4002.2,
    "dps": 1.18,
-   "payout": 38.9,
+   "payout": 39.1,
    "yield": null,
    "dps_adj": 1.18
   }

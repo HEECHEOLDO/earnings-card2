@@ -1,7 +1,7 @@
 {
  "name": "TKO",
- "split_adjusted": false,
- "legal_name": "TKO Group Holdings, Inc.",
+ "split_adjusted": true,
+ "legal_name": "TKO GROUP HOLDINGS, INC.",
  "code": "TKO",
  "cik": "0001973266",
  "market": "미국",
@@ -27,7 +27,7 @@
    "p": 2022,
    "rev": 2674.0,
    "op": 532.9,
-   "ni": 359.6,
+   "ni": 0.0,
    "assets": 5858.7,
    "liab": 3898.7,
    "equity": 1950.0,
@@ -47,7 +47,7 @@
    "dps": 3.86,
    "payout": 181.9,
    "yield": null,
-   "dps_adj": 3.86
+   "dps_adj": 1.93
   },
   {
    "p": 2024,
@@ -110,14 +110,14 @@
    "q": 1,
    "rev": 1268.8,
    "op": 237.4,
-   "ni": 165.6
+   "ni": 58.4
   },
   {
    "y": 2025,
    "q": 2,
    "rev": 1308.4,
    "op": 368.3,
-   "ni": 273.1
+   "ni": 98.4
   },
   {
    "y": 2025,
@@ -138,14 +138,14 @@
    "q": 1,
    "rev": 1596.9,
    "op": 338.5,
-   "ni": 249.8
+   "ni": 89.4
   },
   {
    "y": 2026,
    "q": 2,
    "rev": 1547.1,
    "op": 429.8,
-   "ni": 303.9
+   "ni": 101.6
   }
  ]
 }

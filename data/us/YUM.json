@@ -1,7 +1,7 @@
 {
  "name": "YUM",
  "split_adjusted": false,
- "legal_name": "YUM BRANDS INC",
+ "legal_name": "YUM! BRANDS, INC.",
  "code": "YUM",
  "cik": "0001041061",
  "market": "미국",
@@ -17,9 +17,9 @@
    "ni": 1643.0,
    "assets": 5453.0,
    "liab": 11068.0,
-   "equity": -5615.0,
+   "equity": -5612.0,
    "dps": 1.73,
-   "payout": 41.5,
+   "payout": 42.1,
    "yield": null,
    "dps_adj": 1.73
   },
@@ -32,7 +32,7 @@
    "liab": 11645.0,
    "equity": -6334.0,
    "dps": 0.9,
-   "payout": 23.3,
+   "payout": 23.8,
    "yield": null,
    "dps_adj": 0.9
   },
@@ -45,7 +45,7 @@
    "liab": 12056.0,
    "equity": -7926.0,
    "dps": 1.44,
-   "payout": 30.1,
+   "payout": 30.7,
    "yield": null,
    "dps_adj": 1.44
   },
@@ -58,7 +58,7 @@
    "liab": 13247.0,
    "equity": -8016.0,
    "dps": 1.68,
-   "payout": 39.7,
+   "payout": 40.6,
    "yield": null,
    "dps_adj": 1.68
   },
@@ -71,7 +71,7 @@
    "liab": 13743.0,
    "equity": -7891.0,
    "dps": 1.88,
-   "payout": 62.8,
+   "payout": 63.8,
    "yield": null,
    "dps_adj": 1.88
   },
@@ -84,7 +84,7 @@
    "liab": 14339.0,
    "equity": -8373.0,
    "dps": 2,
-   "payout": 37.7,
+   "payout": 38.3,
    "yield": null,
    "dps_adj": 2.0
   },
@@ -97,7 +97,7 @@
    "liab": 14722.0,
    "equity": -8876.0,
    "dps": 2.28,
-   "payout": 49.2,
+   "payout": 49.9,
    "yield": null,
    "dps_adj": 2.28
   },
@@ -110,7 +110,7 @@
    "liab": 14089.0,
    "equity": -7858.0,
    "dps": 2.42,
-   "payout": 42.6,
+   "payout": 43.2,
    "yield": null,
    "dps_adj": 2.42
   },
@@ -123,7 +123,7 @@
    "liab": 14375.0,
    "equity": -7648.0,
    "dps": 2.68,
-   "payout": 50.9,
+   "payout": 51.4,
    "yield": null,
    "dps_adj": 2.68
   },
@@ -136,7 +136,7 @@
    "liab": 15521.0,
    "equity": -7325.0,
    "dps": 2.84,
-   "payout": 50.8,
+   "payout": 51.2,
    "yield": null,
    "dps_adj": 2.84
   }

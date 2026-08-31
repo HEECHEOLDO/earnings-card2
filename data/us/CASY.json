@@ -1,7 +1,7 @@
 {
  "name": "CASY",
  "split_adjusted": false,
- "legal_name": "CASEYS GENERAL STORES INC",
+ "legal_name": "CASEY'S GENERAL STORES, INC.",
  "code": "CASY",
  "cik": "0000726958",
  "market": "미국",
@@ -19,33 +19,33 @@
    "liab": 1829.5,
    "equity": 1190.6,
    "dps": 0.96,
-   "payout": 21.2,
+   "payout": 21.4,
    "yield": null,
    "dps_adj": 0.96
   },
   {
    "p": 2018,
    "rev": 8391.1,
-   "op": 1769.4,
+   "op": 214.4,
    "ni": 317.9,
    "assets": 3469.9,
    "liab": 2198.8,
    "equity": 1271.1,
    "dps": 1.04,
-   "payout": 12.4,
+   "payout": 12.5,
    "yield": null,
    "dps_adj": 1.04
   },
   {
    "p": 2019,
    "rev": 9352.9,
-   "op": 1954.7,
+   "op": 263.4,
    "ni": 203.9,
    "assets": 3731.4,
    "liab": 2322.6,
    "equity": 1408.8,
    "dps": 1.16,
-   "payout": 20.9,
+   "payout": 21.0,
    "yield": null,
    "dps_adj": 1.16
   },
@@ -58,7 +58,7 @@
    "liab": 2300.7,
    "equity": 1643.2,
    "dps": 1.28,
-   "payout": 17.9,
+   "payout": 18.0,
    "yield": null,
    "dps_adj": 1.28
   },
@@ -71,7 +71,7 @@
    "liab": 2527.6,
    "equity": 1932.7,
    "dps": 1.32,
-   "payout": 15.6,
+   "payout": 15.8,
    "yield": null,
    "dps_adj": 1.32
   },
@@ -84,7 +84,7 @@
    "liab": 3264.9,
    "equity": 2240.8,
    "dps": 1.39,
-   "payout": 15.2,
+   "payout": 15.3,
    "yield": null,
    "dps_adj": 1.39
   },
@@ -97,7 +97,7 @@
    "liab": 3282.6,
    "equity": 2660.7,
    "dps": 1.52,
-   "payout": 12.7,
+   "payout": 12.8,
    "yield": null,
    "dps_adj": 1.52
   },

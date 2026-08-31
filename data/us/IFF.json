@@ -1,7 +1,7 @@
 {
  "name": "IFF",
  "split_adjusted": true,
- "legal_name": "INTERNATIONAL FLAVORS & FRAGRANCES INC",
+ "legal_name": "INTERNATIONAL FLAVORS & FRAGRANCES INC",
  "code": "IFF",
  "cik": "0000051253",
  "market": "미국",
@@ -14,12 +14,12 @@
    "p": 2016,
    "rev": 3116.3,
    "op": 553.0,
-   "ni": 405.2,
+   "ni": 405.0,
    "assets": 4017.0,
    "liab": null,
    "equity": 1631.1,
    "dps": 2.4,
-   "payout": 47.2,
+   "payout": 47.4,
    "yield": null,
    "dps_adj": 1.2
   },
@@ -32,7 +32,7 @@
    "liab": null,
    "equity": 1689.3,
    "dps": 2.66,
-   "payout": 71.1,
+   "payout": 71.4,
    "yield": null,
    "dps_adj": 1.33
   },
@@ -45,7 +45,7 @@
    "liab": null,
    "equity": 6043.0,
    "dps": 2.84,
-   "payout": 73.2,
+   "payout": 73.7,
    "yield": null,
    "dps_adj": 1.42
   },
@@ -58,7 +58,7 @@
    "liab": null,
    "equity": 6229.0,
    "dps": 2.96,
-   "payout": 72.1,
+   "payout": 72.7,
    "yield": null,
    "dps_adj": 1.48
   },
@@ -71,7 +71,7 @@
    "liab": null,
    "equity": 6322.0,
    "dps": 3.04,
-   "payout": 92.8,
+   "payout": 94.4,
    "yield": null,
    "dps_adj": 1.52
   },
@@ -147,21 +147,21 @@
    "q": 1,
    "rev": 2899.0,
    "op": 199.0,
-   "ni": 61.0
+   "ni": 60.0
   },
   {
    "y": 2024,
    "q": 2,
    "rev": 2889.0,
    "op": 191.0,
-   "ni": 172.0
+   "ni": 170.0
   },
   {
    "y": 2024,
    "q": 3,
    "rev": 2925.0,
    "op": 249.0,
-   "ni": 59.0
+   "ni": 58.0
   },
   {
    "y": 2024,
@@ -175,7 +175,7 @@
    "q": 1,
    "rev": 2843.0,
    "op": -903.0,
-   "ni": -1017.0
+   "ni": -1018.0
   },
   {
    "y": 2025,
@@ -189,28 +189,28 @@
    "q": 3,
    "rev": 2694.0,
    "op": 226.0,
-   "ni": 41.0
+   "ni": 40.0
   },
   {
    "y": 2025,
    "q": 4,
    "rev": 3434.0,
    "op": 153.0,
-   "ni": 18.0
+   "ni": 20.0
   },
   {
    "y": 2026,
    "q": 1,
    "rev": 2741.0,
    "op": 273.0,
-   "ni": 170.0
+   "ni": 169.0
   },
   {
    "y": 2026,
    "q": 2,
    "rev": 1954.0,
    "op": 158.0,
-   "ni": 51.0
+   "ni": 50.0
   }
  ]
 }

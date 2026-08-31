@@ -1,7 +1,7 @@
 {
  "name": "TDG",
  "split_adjusted": false,
- "legal_name": "TransDigm Group INC",
+ "legal_name": "TransDigm Group Incorporated",
  "code": "TDG",
  "cik": "0001260221",
  "market": "미국",
@@ -38,12 +38,12 @@
   },
   {
    "p": 2018,
-   "rev": 3811.0,
+   "rev": 3811.1,
    "op": 1655.0,
    "ni": 957.0,
    "assets": 12197.5,
    "liab": 14005.9,
-   "equity": -1808.0,
+   "equity": -1808.5,
    "dps": 0,
    "payout": null,
    "yield": null,
@@ -53,12 +53,12 @@
    "p": 2019,
    "rev": 5223.0,
    "op": 1926.0,
-   "ni": 892.0,
+   "ni": 890.0,
    "assets": 16255.0,
    "liab": 19139.0,
-   "equity": -2884.0,
+   "equity": -2894.0,
    "dps": 30,
-   "payout": 178.6,
+   "payout": 179.0,
    "yield": null,
    "dps_adj": 30.0
   },
@@ -66,12 +66,12 @@
    "p": 2020,
    "rev": 5103.0,
    "op": 1751.0,
-   "ni": 700.0,
+   "ni": 699.0,
    "assets": 18395.0,
    "liab": 22363.0,
-   "equity": -3968.0,
+   "equity": -3972.0,
    "dps": 32.5,
-   "payout": 266.0,
+   "payout": 266.4,
    "yield": null,
    "dps_adj": 32.5
   },
@@ -79,10 +79,10 @@
    "p": 2021,
    "rev": 4798.0,
    "op": 1691.0,
-   "ni": 681.0,
+   "ni": 680.0,
    "assets": 19315.0,
    "liab": 22225.0,
-   "equity": -2910.0,
+   "equity": -2916.0,
    "dps": 0,
    "payout": null,
    "yield": null,
@@ -92,12 +92,12 @@
    "p": 2022,
    "rev": 5429.0,
    "op": 2215.0,
-   "ni": 867.0,
+   "ni": 866.0,
    "assets": 18107.0,
    "liab": 21873.0,
-   "equity": -3766.0,
+   "equity": -3773.0,
    "dps": 18.5,
-   "payout": 124.2,
+   "payout": 124.3,
    "yield": null,
    "dps_adj": 18.5
   },
@@ -105,10 +105,10 @@
    "p": 2023,
    "rev": 6585.0,
    "op": 2923.0,
-   "ni": 1299.0,
+   "ni": 1298.0,
    "assets": 19970.0,
    "liab": 21948.0,
-   "equity": -1978.0,
+   "equity": -1984.0,
    "dps": 0,
    "payout": null,
    "yield": null,
@@ -118,10 +118,10 @@
    "p": 2024,
    "rev": 7940.0,
    "op": 3531.0,
-   "ni": 1715.0,
+   "ni": 1714.0,
    "assets": 25586.0,
    "liab": 31869.0,
-   "equity": -6251.0,
+   "equity": -6290.0,
    "dps": null,
    "payout": null,
    "yield": null,
@@ -134,7 +134,7 @@
    "ni": 2074.0,
    "assets": 22909.0,
    "liab": 32588.0,
-   "equity": -9263.0,
+   "equity": -9686.0,
    "dps": null,
    "payout": null,
    "yield": null,
@@ -161,7 +161,7 @@
    "q": 4,
    "rev": 2186.0,
    "op": 943.0,
-   "ni": 469.0
+   "ni": 468.0
   },
   {
    "y": 2025,
@@ -182,14 +182,14 @@
    "q": 3,
    "rev": 2237.0,
    "op": 1039.0,
-   "ni": 493.0
+   "ni": 492.0
   },
   {
    "y": 2025,
    "q": 4,
    "rev": 2438.0,
    "op": 1161.0,
-   "ni": 609.0
+   "ni": 610.0
   },
   {
    "y": 2026,
@@ -210,7 +210,7 @@
    "q": 3,
    "rev": 2741.0,
    "op": 1227.0,
-   "ni": 540.0
+   "ni": 539.0
   }
  ]
 }

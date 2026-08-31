@@ -1,7 +1,7 @@
 {
  "name": "ROST",
  "split_adjusted": false,
- "legal_name": "ROSS STORES, INC.",
+ "legal_name": "Ross Stores, Inc.",
  "code": "ROST",
  "cik": "0000745732",
  "market": "미국",
@@ -19,7 +19,7 @@
    "liab": null,
    "equity": 2748.0,
    "dps": 0.54,
-   "payout": 18.9,
+   "payout": 19.1,
    "yield": null,
    "dps_adj": 0.54
   },
@@ -32,7 +32,7 @@
    "liab": null,
    "equity": 3049.3,
    "dps": 0.64,
-   "payout": 17.9,
+   "payout": 18.0,
    "yield": null,
    "dps_adj": 0.64
   },
@@ -45,7 +45,7 @@
    "liab": null,
    "equity": 3305.7,
    "dps": 0.9,
-   "payout": 21.0,
+   "payout": 21.1,
    "yield": null,
    "dps_adj": 0.9
   },
@@ -58,7 +58,7 @@
    "liab": null,
    "equity": 3359.2,
    "dps": 1.02,
-   "payout": 22.0,
+   "payout": 22.2,
    "yield": null,
    "dps_adj": 1.02
   },
@@ -71,7 +71,7 @@
    "liab": null,
    "equity": 3290.6,
    "dps": 0.285,
-   "payout": 117.6,
+   "payout": 118.4,
    "yield": null,
    "dps_adj": 0.285
   },
@@ -84,7 +84,7 @@
    "liab": null,
    "equity": 4060.1,
    "dps": 1.14,
-   "payout": 23.3,
+   "payout": 23.4,
    "yield": null,
    "dps_adj": 1.14
   },
@@ -97,7 +97,7 @@
    "liab": null,
    "equity": 4288.6,
    "dps": 1.24,
-   "payout": 28.2,
+   "payout": 28.3,
    "yield": null,
    "dps_adj": 1.24
   },
@@ -110,7 +110,7 @@
    "liab": null,
    "equity": 4871.3,
    "dps": 1.34,
-   "payout": 24.0,
+   "payout": 24.1,
    "yield": null,
    "dps_adj": 1.34
   },
@@ -123,7 +123,7 @@
    "liab": null,
    "equity": 5576.1,
    "dps": 1.47,
-   "payout": 23.1,
+   "payout": 23.3,
    "yield": null,
    "dps_adj": 1.47
   },
@@ -136,7 +136,7 @@
    "liab": null,
    "equity": 6305.0,
    "dps": 1.62,
-   "payout": 24.3,
+   "payout": 24.5,
    "yield": null,
    "dps_adj": 1.62
   }

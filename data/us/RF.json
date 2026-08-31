@@ -1,7 +1,7 @@
 {
  "name": "RF",
  "split_adjusted": false,
- "legal_name": "REGIONS FINANCIAL CORP",
+ "legal_name": "Regions Financial Corporation",
  "code": "RF",
  "cik": "0001281761",
  "market": "미국",
@@ -19,7 +19,7 @@
    "liab": 109304.0,
    "equity": 16664.0,
    "dps": 0.255,
-   "payout": 27.5,
+   "payout": 27.6,
    "yield": null,
    "dps_adj": 0.255
   },
@@ -32,7 +32,7 @@
    "liab": 108102.0,
    "equity": 16192.0,
    "dps": 0.315,
-   "payout": 29.6,
+   "payout": 29.9,
    "yield": null,
    "dps_adj": 0.315
   },
@@ -45,7 +45,7 @@
    "liab": 110598.0,
    "equity": 15090.0,
    "dps": 0.46,
-   "payout": 28.6,
+   "payout": 28.8,
    "yield": null,
    "dps_adj": 0.46
   },
@@ -58,7 +58,7 @@
    "liab": 109945.0,
    "equity": 16295.0,
    "dps": 0.59,
-   "payout": 37.1,
+   "payout": 37.3,
    "yield": null,
    "dps_adj": 0.59
   },
@@ -71,7 +71,7 @@
    "liab": 129278.0,
    "equity": 18111.0,
    "dps": 0.62,
-   "payout": 54.3,
+   "payout": 54.5,
    "yield": null,
    "dps_adj": 0.62
   },
@@ -84,7 +84,7 @@
    "liab": 144612.0,
    "equity": 18326.0,
    "dps": 0.65,
-   "payout": 24.6,
+   "payout": 24.8,
    "yield": null,
    "dps_adj": 0.65
   }

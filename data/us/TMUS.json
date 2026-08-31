@@ -1,7 +1,7 @@
 {
  "name": "TMUS",
  "split_adjusted": false,
- "legal_name": "T-Mobile US, Inc.",
+ "legal_name": "T-MOBILE US, INC.",
  "code": "TMUS",
  "cik": "0001283699",
  "market": "미국",
@@ -12,7 +12,7 @@
  "annual": [
   {
    "p": 2016,
-   "rev": 37490.0,
+   "rev": 8727.0,
    "op": 4050.0,
    "ni": 1460.0,
    "assets": 65891.0,
@@ -25,7 +25,7 @@
   },
   {
    "p": 2017,
-   "rev": 40604.0,
+   "rev": 9375.0,
    "op": 4888.0,
    "ni": 4536.0,
    "assets": 70563.0,
@@ -110,7 +110,7 @@
    "liab": null,
    "equity": 64715.0,
    "dps": 0.65,
-   "payout": 9.3,
+   "payout": 9.4,
    "yield": null,
    "dps_adj": 0.65
   },
@@ -123,7 +123,7 @@
    "liab": null,
    "equity": 61741.0,
    "dps": 3.71,
-   "payout": 38.3,
+   "payout": 38.4,
    "yield": null,
    "dps_adj": 3.71
   },
@@ -136,7 +136,7 @@
    "liab": null,
    "equity": 59203.0,
    "dps": 3.8,
-   "payout": 39.0,
+   "payout": 39.1,
    "yield": null,
    "dps_adj": 3.8
   }

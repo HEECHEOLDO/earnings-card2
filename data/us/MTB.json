@@ -1,7 +1,7 @@
 {
  "name": "MTB",
  "split_adjusted": false,
- "legal_name": "M&T BANK CORP",
+ "legal_name": "M&T BANK CORPORATION",
  "code": "MTB",
  "cik": "0000036270",
  "market": "미국",
@@ -90,27 +90,27 @@
   },
   {
    "p": 2022,
-   "rev": 1525.0,
+   "rev": 8179.0,
    "op": 2612.0,
    "ni": 1992.0,
    "assets": 200730.0,
    "liab": 175412.0,
    "equity": 25318.0,
    "dps": 4.8,
-   "payout": 39.3,
+   "payout": 39.5,
    "yield": null,
    "dps_adj": 4.8
   },
   {
    "p": 2023,
-   "rev": 1484.0,
+   "rev": 9643.0,
    "op": 3619.0,
    "ni": 2741.0,
    "assets": 208264.0,
    "liab": 181307.0,
    "equity": 26957.0,
    "dps": 5.2,
-   "payout": 31.6,
+   "payout": 31.7,
    "yield": null,
    "dps_adj": 5.2
   },
@@ -123,7 +123,7 @@
    "liab": 179078.0,
    "equity": 29027.0,
    "dps": 5.35,
-   "payout": 34.4,
+   "payout": 34.6,
    "yield": null,
    "dps_adj": 5.35
   },
@@ -136,7 +136,7 @@
    "liab": 184333.0,
    "equity": 29177.0,
    "dps": 5.7,
-   "payout": 31.6,
+   "payout": 31.7,
    "yield": null,
    "dps_adj": 5.7
   }

@@ -1,7 +1,7 @@
 {
  "name": "CINF",
  "split_adjusted": false,
- "legal_name": "CINCINNATI FINANCIAL CORP",
+ "legal_name": "CINCINNATI FINANCIAL CORPORATION",
  "code": "CINF",
  "cik": "0000020286",
  "market": "미국",
@@ -19,7 +19,7 @@
    "liab": 13326.0,
    "equity": 7060.0,
    "dps": 1.92,
-   "payout": 53.4,
+   "payout": 54.1,
    "yield": null,
    "dps_adj": 1.92
   },
@@ -32,7 +32,7 @@
    "liab": 13600.0,
    "equity": 8243.0,
    "dps": 2.5,
-   "payout": 39.3,
+   "payout": 39.7,
    "yield": null,
    "dps_adj": 2.5
   },
@@ -45,7 +45,7 @@
    "liab": 14102.0,
    "equity": 7833.0,
    "dps": 2.12,
-   "payout": 120.6,
+   "payout": 121.5,
    "yield": null,
    "dps_adj": 2.12
   },
@@ -58,7 +58,7 @@
    "liab": 15544.0,
    "equity": 9864.0,
    "dps": 2.24,
-   "payout": 18.3,
+   "payout": 18.5,
    "yield": null,
    "dps_adj": 2.24
   },
@@ -71,7 +71,7 @@
    "liab": 16753.0,
    "equity": 10789.0,
    "dps": 2.4,
-   "payout": 31.8,
+   "payout": 32.1,
    "yield": null,
    "dps_adj": 2.4
   },
@@ -84,7 +84,7 @@
    "liab": 18282.0,
    "equity": 12764.0,
    "dps": 2.52,
-   "payout": 13.7,
+   "payout": 13.8,
    "yield": null,
    "dps_adj": 2.52
   },
@@ -110,7 +110,7 @@
    "liab": 20671.0,
    "equity": 12098.0,
    "dps": 3,
-   "payout": 25.6,
+   "payout": 25.7,
    "yield": null,
    "dps_adj": 3.0
   },
@@ -123,7 +123,7 @@
    "liab": 22566.0,
    "equity": 13935.0,
    "dps": 3.24,
-   "payout": 22.1,
+   "payout": 22.3,
    "yield": null,
    "dps_adj": 3.24
   },
@@ -136,7 +136,7 @@
    "liab": 25091.0,
    "equity": 15911.0,
    "dps": 3.48,
-   "payout": 22.7,
+   "payout": 22.9,
    "yield": null,
    "dps_adj": 3.48
   }

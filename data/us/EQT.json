@@ -1,7 +1,7 @@
 {
  "name": "EQT",
  "split_adjusted": false,
- "legal_name": "EQT Corp",
+ "legal_name": "EQT CORPORATION",
  "code": "EQT",
  "cik": "0000033213",
  "market": "미국",
@@ -97,7 +97,7 @@
    "liab": 11456.6,
    "equity": 11213.3,
    "dps": 0.55,
-   "payout": 11.4,
+   "payout": 12.6,
    "yield": null,
    "dps_adj": 0.55
   },
@@ -110,7 +110,7 @@
    "liab": 10504.3,
    "equity": 14780.8,
    "dps": 0.61,
-   "payout": 13.4,
+   "payout": 14.5,
    "yield": null,
    "dps_adj": 0.61
   },
@@ -123,7 +123,7 @@
    "liab": 15552.1,
    "equity": 24278.1,
    "dps": 0.63,
-   "payout": 132.6,
+   "payout": 133.9,
    "yield": null,
    "dps_adj": 0.63
   },
@@ -136,7 +136,7 @@
    "liab": 14432.7,
    "equity": 27360.1,
    "dps": 0.6375,
-   "payout": 16.8,
+   "payout": 16.9,
    "yield": null,
    "dps_adj": 0.6375
   }

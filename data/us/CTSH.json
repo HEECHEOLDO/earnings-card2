@@ -1,7 +1,7 @@
 {
  "name": "CTSH",
  "split_adjusted": false,
- "legal_name": "COGNIZANT TECHNOLOGY SOLUTIONS CORP",
+ "legal_name": "COGNIZANT TECHNOLOGY SOLUTIONS CORPORATION",
  "code": "CTSH",
  "cik": "0001058290",
  "market": "미국",
@@ -32,7 +32,7 @@
    "liab": 4552.0,
    "equity": 10669.0,
    "dps": 0.45,
-   "payout": 17.7,
+   "payout": 17.8,
    "yield": null,
    "dps_adj": 0.45
   },
@@ -71,7 +71,7 @@
    "liab": 6087.0,
    "equity": 10836.0,
    "dps": 0.88,
-   "payout": 34.1,
+   "payout": 34.2,
    "yield": null,
    "dps_adj": 0.88
   },
@@ -97,7 +97,7 @@
    "liab": 5543.0,
    "equity": 12309.0,
    "dps": 1.08,
-   "payout": 24.4,
+   "payout": 24.5,
    "yield": null,
    "dps_adj": 1.08
   },
@@ -136,7 +136,7 @@
    "liab": 5677.0,
    "equity": 15015.0,
    "dps": 1.24,
-   "payout": 27.1,
+   "payout": 27.2,
    "yield": null,
    "dps_adj": 1.24
   }

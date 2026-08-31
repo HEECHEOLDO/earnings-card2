@@ -1,7 +1,7 @@
 {
  "name": "EXPD",
  "split_adjusted": false,
- "legal_name": "EXPEDITORS INTERNATIONAL OF WASHINGTON INC",
+ "legal_name": "EXPEDITORS INTERNATIONAL OF WASHINGTON, INC.",
  "code": "EXPD",
  "cik": "0000746515",
  "market": "미국",
@@ -14,12 +14,12 @@
    "p": 2016,
    "rev": 6098.0,
    "op": 670.2,
-   "ni": 432.5,
+   "ni": 430.8,
    "assets": 2790.9,
    "liab": null,
    "equity": 1847.2,
    "dps": 0.8,
-   "payout": 33.5,
+   "payout": 33.9,
    "yield": null,
    "dps_adj": 0.8
   },
@@ -27,12 +27,12 @@
    "p": 2017,
    "rev": 6920.9,
    "op": 700.3,
-   "ni": 490.4,
+   "ni": 489.3,
    "assets": 3117.0,
    "liab": null,
    "equity": 1994.4,
    "dps": 0.84,
-   "payout": 30.7,
+   "payout": 31.2,
    "yield": null,
    "dps_adj": 0.84
   },
@@ -40,12 +40,12 @@
    "p": 2018,
    "rev": 8138.4,
    "op": 796.6,
-   "ni": 619.8,
+   "ni": 618.2,
    "assets": 3314.6,
    "liab": null,
    "equity": 1987.7,
    "dps": 0.9,
-   "payout": 25.3,
+   "payout": 25.9,
    "yield": null,
    "dps_adj": 0.9
   },
@@ -53,12 +53,12 @@
    "p": 2019,
    "rev": 7942.4,
    "op": 766.7,
-   "ni": 592.0,
+   "ni": 590.4,
    "assets": 3691.9,
    "liab": null,
    "equity": 2197.2,
    "dps": 1,
-   "payout": 28.9,
+   "payout": 29.5,
    "yield": null,
    "dps_adj": 1.0
   },
@@ -66,12 +66,12 @@
    "p": 2020,
    "rev": 9584.4,
    "op": 940.4,
-   "ni": 698.2,
+   "ni": 696.1,
    "assets": 4927.5,
    "liab": null,
    "equity": 2663.2,
    "dps": 1.04,
-   "payout": 25.1,
+   "payout": 25.5,
    "yield": null,
    "dps_adj": 1.04
   },
@@ -79,12 +79,12 @@
    "p": 2021,
    "rev": 16523.5,
    "op": 1909.3,
-   "ni": 1418.8,
+   "ni": 1415.5,
    "assets": 7609.9,
    "liab": null,
    "equity": 3498.0,
    "dps": 1.16,
-   "payout": 13.8,
+   "payout": 14.0,
    "yield": null,
    "dps_adj": 1.16
   },
@@ -92,12 +92,12 @@
    "p": 2022,
    "rev": 17071.3,
    "op": 1824.4,
-   "ni": 1360.6,
+   "ni": 1357.4,
    "assets": 5590.4,
    "liab": null,
    "equity": 3113.5,
    "dps": 1.34,
-   "payout": 16.1,
+   "payout": 16.2,
    "yield": null,
    "dps_adj": 1.34
   },
@@ -105,12 +105,12 @@
    "p": 2023,
    "rev": 9300.1,
    "op": 939.9,
-   "ni": 751.8,
+   "ni": 752.9,
    "assets": 4523.8,
    "liab": null,
    "equity": 2391.4,
    "dps": 1.38,
-   "payout": 27.4,
+   "payout": 27.5,
    "yield": null,
    "dps_adj": 1.38
   },
@@ -118,12 +118,12 @@
    "p": 2024,
    "rev": 10600.5,
    "op": 1041.3,
-   "ni": 811.6,
+   "ni": 810.1,
    "assets": 4754.5,
    "liab": null,
    "equity": 2225.8,
    "dps": 1.46,
-   "payout": 25.4,
+   "payout": 25.5,
    "yield": null,
    "dps_adj": 1.46
   },
@@ -131,12 +131,12 @@
    "p": 2025,
    "rev": 11069.0,
    "op": 1052.5,
-   "ni": 812.0,
+   "ni": 810.3,
    "assets": 4893.6,
    "liab": null,
    "equity": 2358.1,
    "dps": 1.54,
-   "payout": 25.8,
+   "payout": 25.9,
    "yield": null,
    "dps_adj": 1.54
   }
@@ -147,70 +147,70 @@
    "q": 1,
    "rev": 2206.7,
    "op": 214.8,
-   "ni": 170.4
+   "ni": 169.2
   },
   {
    "y": 2024,
    "q": 2,
    "rev": 2439.0,
    "op": 223.9,
-   "ni": 175.2
+   "ni": 175.5
   },
   {
    "y": 2024,
    "q": 3,
    "rev": 3000.1,
    "op": 301.5,
-   "ni": 229.9
+   "ni": 229.6
   },
   {
    "y": 2024,
    "q": 4,
    "rev": 2954.7,
    "op": 301.1,
-   "ni": 236.2
+   "ni": 235.9
   },
   {
    "y": 2025,
    "q": 1,
    "rev": 2666.4,
    "op": 265.9,
-   "ni": 204.1
+   "ni": 203.8
   },
   {
    "y": 2025,
    "q": 2,
    "rev": 2651.9,
    "op": 247.7,
-   "ni": 183.9
+   "ni": 183.6
   },
   {
    "y": 2025,
    "q": 3,
    "rev": 2894.8,
    "op": 288.0,
-   "ni": 223.1
+   "ni": 222.3
   },
   {
    "y": 2025,
    "q": 4,
    "rev": 2856.0,
    "op": 250.9,
-   "ni": 201.0
+   "ni": 200.7
   },
   {
    "y": 2026,
    "q": 1,
    "rev": 2783.0,
    "op": 294.8,
-   "ni": 230.0
+   "ni": 229.6
   },
   {
    "y": 2026,
    "q": 2,
    "rev": 3502.3,
    "op": 349.6,
-   "ni": 267.3
+   "ni": 266.2
   }
  ]
 }

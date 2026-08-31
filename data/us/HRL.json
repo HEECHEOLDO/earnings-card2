@@ -1,7 +1,7 @@
 {
  "name": "HRL",
  "split_adjusted": false,
- "legal_name": "HORMEL FOODS CORP /DE/",
+ "legal_name": "HORMEL FOODS CORPORATION",
  "code": "HRL",
  "cik": "0000048465",
  "market": "미국",
@@ -19,7 +19,7 @@
    "liab": null,
    "equity": 4451.4,
    "dps": 0.58,
-   "payout": 34.5,
+   "payout": 35.3,
    "yield": null,
    "dps_adj": 0.58
   },
@@ -32,7 +32,7 @@
    "liab": null,
    "equity": 4939.7,
    "dps": 0.68,
-   "payout": 42.4,
+   "payout": 43.3,
    "yield": null,
    "dps_adj": 0.68
   },
@@ -45,7 +45,7 @@
    "liab": null,
    "equity": 5604.8,
    "dps": 0.75,
-   "payout": 39.3,
+   "payout": 40.3,
    "yield": null,
    "dps_adj": 0.75
   },
@@ -58,7 +58,7 @@
    "liab": null,
    "equity": 5925.5,
    "dps": 0.84,
-   "payout": 45.9,
+   "payout": 46.8,
    "yield": null,
    "dps_adj": 0.84
   },
@@ -71,7 +71,7 @@
    "liab": null,
    "equity": 6430.3,
    "dps": 0.93,
-   "payout": 55.1,
+   "payout": 56.0,
    "yield": null,
    "dps_adj": 0.93
   },
@@ -84,7 +84,7 @@
    "liab": null,
    "equity": 6978.4,
    "dps": 0.98,
-   "payout": 58.3,
+   "payout": 59.0,
    "yield": null,
    "dps_adj": 0.98
   },
@@ -97,7 +97,7 @@
    "liab": null,
    "equity": 7540.2,
    "dps": 1.04,
-   "payout": 56.7,
+   "payout": 57.1,
    "yield": null,
    "dps_adj": 1.04
   },
@@ -110,7 +110,7 @@
    "liab": null,
    "equity": 7739.0,
    "dps": 1.1,
-   "payout": 75.8,
+   "payout": 76.2,
    "yield": null,
    "dps_adj": 1.1
   },
@@ -123,7 +123,7 @@
    "liab": null,
    "equity": 8004.0,
    "dps": 1.13,
-   "payout": 77.0,
+   "payout": 77.1,
    "yield": null,
    "dps_adj": 1.13
   },
@@ -136,7 +136,7 @@
    "liab": null,
    "equity": 7915.8,
    "dps": 1.16,
-   "payout": 133.6,
+   "payout": 133.7,
    "yield": null,
    "dps_adj": 1.16
   }

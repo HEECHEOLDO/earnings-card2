@@ -19,7 +19,7 @@
    "liab": 4267.0,
    "equity": 2207.0,
    "dps": 0.6196,
-   "payout": 42.7,
+   "payout": 42.9,
    "yield": null,
    "dps_adj": 0.6196
   },
@@ -27,12 +27,12 @@
    "p": 2017,
    "rev": 4707.0,
    "op": 552.0,
-   "ni": 330.0,
+   "ni": 331.0,
    "assets": 6860.0,
    "liab": 4341.0,
    "equity": 2519.0,
    "dps": 0.72,
-   "payout": 39.2,
+   "payout": 39.3,
    "yield": null,
    "dps_adj": 0.72
   },
@@ -45,7 +45,7 @@
    "liab": 4440.0,
    "equity": 2782.0,
    "dps": 0.84,
-   "payout": 27.5,
+   "payout": 27.7,
    "yield": null,
    "dps_adj": 0.84
   },
@@ -58,7 +58,7 @@
    "liab": 4743.0,
    "equity": 2967.0,
    "dps": 0.96,
-   "payout": 43.1,
+   "payout": 43.4,
    "yield": null,
    "dps_adj": 0.96
   },
@@ -71,7 +71,7 @@
    "liab": 5774.0,
    "equity": 2976.0,
    "dps": 1.04,
-   "payout": 73.7,
+   "payout": 74.2,
    "yield": null,
    "dps_adj": 1.04
   },
@@ -84,7 +84,7 @@
    "liab": 5050.0,
    "equity": 3226.0,
    "dps": 1.12,
-   "payout": 47.3,
+   "payout": 47.6,
    "yield": null,
    "dps_adj": 1.12
   },
@@ -97,7 +97,7 @@
    "liab": 4449.0,
    "equity": 3503.0,
    "dps": 1.2,
-   "payout": 60.9,
+   "payout": 61.2,
    "yield": null,
    "dps_adj": 1.2
   },
@@ -110,7 +110,7 @@
    "liab": 5936.0,
    "equity": 10176.0,
    "dps": 1.32,
-   "payout": 47.0,
+   "payout": 47.3,
    "yield": null,
    "dps_adj": 1.32
   },
@@ -123,7 +123,7 @@
    "liab": 5611.0,
    "equity": 10647.0,
    "dps": 1.44,
-   "payout": 39.2,
+   "payout": 39.4,
    "yield": null,
    "dps_adj": 1.44
   },
@@ -131,12 +131,12 @@
    "p": 2025,
    "rev": 9035.0,
    "op": 1223.0,
-   "ni": 950.0,
+   "ni": 957.0,
    "assets": 17634.0,
    "liab": 5885.0,
    "equity": 11491.0,
    "dps": 1.6,
-   "payout": 41.0,
+   "payout": 40.8,
    "yield": null,
    "dps_adj": 1.6
   }
@@ -182,21 +182,21 @@
    "q": 2,
    "rev": 2301.0,
    "op": 305.0,
-   "ni": 224.0
+   "ni": 226.0
   },
   {
    "y": 2025,
    "q": 3,
    "rev": 2268.0,
    "op": 334.0,
-   "ni": 226.0
+   "ni": 227.0
   },
   {
    "y": 2025,
    "q": 4,
    "rev": 2397.0,
    "op": 353.0,
-   "ni": 331.0
+   "ni": 335.0
   },
   {
    "y": 2026,
@@ -210,7 +210,7 @@
    "q": 2,
    "rev": 2336.0,
    "op": 390.0,
-   "ni": 261.0
+   "ni": 263.0
   }
  ]
 }

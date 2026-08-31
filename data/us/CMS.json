@@ -1,7 +1,7 @@
 {
  "name": "CMS",
  "split_adjusted": false,
- "legal_name": "CMS ENERGY CORP",
+ "legal_name": "CMS ENERGY CORPORATION",
  "code": "CMS",
  "cik": "0000811156",
  "market": "미국",
@@ -58,7 +58,7 @@
    "liab": null,
    "equity": 5055.0,
    "dps": 1.53,
-   "payout": 63.5,
+   "payout": 63.8,
    "yield": null,
    "dps_adj": 1.53
   },
@@ -71,7 +71,7 @@
    "liab": null,
    "equity": 6077.0,
    "dps": 1.63,
-   "payout": 61.8,
+   "payout": 62.1,
    "yield": null,
    "dps_adj": 1.63
   },
@@ -84,7 +84,7 @@
    "liab": null,
    "equity": 7188.0,
    "dps": 1.74,
-   "payout": 37.8,
+   "payout": 37.9,
    "yield": null,
    "dps_adj": 1.74
   },
@@ -97,7 +97,7 @@
    "liab": null,
    "equity": 7595.0,
    "dps": 1.84,
-   "payout": 65.5,
+   "payout": 65.6,
    "yield": null,
    "dps_adj": 1.84
   },
@@ -110,7 +110,7 @@
    "liab": null,
    "equity": 8125.0,
    "dps": 1.95,
-   "payout": 70.3,
+   "payout": 70.4,
    "yield": null,
    "dps_adj": 1.95
   },
@@ -123,7 +123,7 @@
    "liab": null,
    "equity": 8748.0,
    "dps": 2.06,
-   "payout": 64.7,
+   "payout": 64.9,
    "yield": null,
    "dps_adj": 2.06
   },
@@ -136,7 +136,7 @@
    "liab": null,
    "equity": 9711.0,
    "dps": 2.17,
-   "payout": 65.1,
+   "payout": 65.2,
    "yield": null,
    "dps_adj": 2.17
   }

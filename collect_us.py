@@ -236,13 +236,12 @@ def _usable(rows, kind):
 
 
 def pick_units(facts, kind):
-    """해당 항목의 값 목록. 같은 뜻의 태그는 모두 합친다.
+    """해당 항목의 값 목록을 태그별로, 실한 순서대로 돌려준다.
 
-    태그가 '있다'고 바로 쓰지 않는다. 이름만 있고 값이 비어 있는 경우가
-    흔하고, 회사가 중간에 태그를 바꾸기도 한다.
+    여러 태그를 뒤섞으면 뜻이 조금씩 다른 값이 섞여 숫자가 틀어진다.
+    주력 태그를 먼저 쓰고 빈 해만 다른 태그로 메운다.
     """
     us = facts.get("facts", {}).get("us-gaap", {})
-
     want = ("shares",) if kind == "shares" else ("USD", "USD/shares", "USD-per-shares")
 
     def units_of(node):
@@ -252,7 +251,7 @@ def pick_units(facts, kind):
         return None, None
 
     def gather(tags):
-        rows, used = [], []
+        out = []
         for tag in tags:
             node = us.get(tag)
             if not node:
@@ -261,21 +260,17 @@ def pick_units(facts, kind):
             if not rs:
                 continue
             n = _usable(rs, kind)
-            if n == 0:
-                continue
-            rows.extend(rs)
-            used.append("%s(%d)" % (tag, n))
-        return rows, used
+            if n:
+                out.append((n, tag, rs))
+        out.sort(key=lambda x: -x[0])
+        return out
 
-    rows, used = gather(TAGS[kind])
+    groups = gather(TAGS[kind]) or gather(FALLBACK.get(kind, []))
 
-    if not rows:
-        rows, used = gather(FALLBACK.get(kind, []))
-
-    if not rows:
+    if not groups:
         keys = DISCOVER.get(kind)
         if keys:
-            best, best_n, best_tag = None, 0, None
+            cands = []
             for tag, node in us.items():
                 low = tag.lower()
                 if not any(k in low for k in keys):
@@ -286,24 +281,33 @@ def pick_units(facts, kind):
                 if not rs:
                     continue
                 n = _usable(rs, kind)
-                if n > best_n:
-                    best, best_n, best_tag = rs, n, tag
-            if best_tag:
-                log("  · %s 태그 자동 탐색 -> %s (%d개)" % (kind, best_tag, best_n))
-                rows, used = best, ["%s(%d) 자동" % (best_tag, best_n)]
+                if n:
+                    cands.append((n, tag, rs))
+            cands.sort(key=lambda x: -x[0])
+            if cands:
+                log("  · %s 태그 자동 탐색 -> %s (%d개)" % (kind, cands[0][1], cands[0][0]))
+                groups = cands[:1]
 
-    if rows:
-        _used_tag[kind] = " + ".join(used)
+    if groups:
+        _used_tag[kind] = " > ".join("%s(%d)" % (t, n) for n, t, _ in groups)
         dbg("%s <- %s" % (kind, _used_tag[kind]))
     else:
         dbg("%s <- 없음" % kind)
-    return rows or None
+    return groups
+
+
+def all_rows(facts, kind):
+    """태그 구분 없이 전부 이어붙인 목록 (기간 판단 등 보조용)."""
+    out = []
+    for _, _, rows in pick_units(facts, kind) or []:
+        out.extend(rows)
+    return out
 
 
 def fiscal_end_month(facts):
     """이 회사의 회계연도가 몇 월에 끝나는지 알아낸다.
     연간(약 1년)에 해당하는 값들의 종료월 중 가장 흔한 달."""
-    rows = pick_units(facts, "rev") or []
+    rows = all_rows(facts, "rev")
     counts = {}
     for r in rows:
         if not r.get("start") or not r.get("end"):
@@ -323,69 +327,75 @@ def fiscal_end_month(facts):
 def annual_series(facts, kind):
     """회계연도별 값. {fy: val}
 
-    form 이나 fp 로 거르지 않는다. 회사마다 이 값이 제각각이라
-    멀쩡한 데이터가 통째로 날아간다. 기간 길이로만 판단한다.
+    앞선 태그가 값을 가진 해는 그대로 두고, 없는 해만 뒤 태그로 채운다.
     """
-    rows = pick_units(facts, kind)
-    if not rows:
+    groups = pick_units(facts, kind)
+    if not groups:
         return {}
-    out, seen = {}, {}
+    out = {}
     kept = dropped = 0
-    for r in rows:
-        if not r.get("end"):
-            continue
-        if kind not in INSTANT:
-            if not r.get("start"):
+    for _, _, rows in groups:
+        one, seen = {}, {}
+        for r in rows:
+            if not r.get("end"):
                 continue
-            d = _days(r["start"], r["end"])
-            if d < 330 or d > 400:        # 1년치가 아닌 값 제외
-                dropped += 1
-                continue
-        fy = fy_of(r["end"])
-        filed = r.get("filed", "")
-        if fy not in seen or filed >= seen[fy]:
-            seen[fy] = filed
-            out[fy] = r["val"]
-        kept += 1
-    dbg("%s 연간: 채택 %d, 기간 불일치 %d -> %d개 연도"
-        % (kind, kept, dropped, len(out)))
+            if kind not in INSTANT:
+                if not r.get("start"):
+                    continue
+                try:
+                    d = _days(r["start"], r["end"])
+                except Exception:         # noqa: BLE001
+                    continue
+                if d < 330 or d > 400:
+                    dropped += 1
+                    continue
+            fy = fy_of(r["end"])
+            filed = r.get("filed", "")
+            if fy not in seen or filed >= seen[fy]:
+                seen[fy] = filed
+                one[fy] = r["val"]
+            kept += 1
+        for fy, v in one.items():
+            out.setdefault(fy, v)         # 앞 태그 우선
+    dbg("%s 연간: 채택 %d, 기간 불일치 %d -> %d개 연도" % (kind, kept, dropped, len(out)))
     return out
 
 
 def quarter_series(facts, kind, fy_end_month=12):
-    """분기별 값. {(fy, q): val}
-
-    9월 결산 회사의 12월 분기는 다음 회계연도의 1분기다.
-    달력 연도로 묶으면 분기 번호가 통째로 밀린다.
-    """
-    rows = pick_units(facts, kind)
-    if not rows:
+    """분기별 값. {(fy, q): val}"""
+    groups = pick_units(facts, kind)
+    if not groups:
         return {}
-    byend, seen = {}, {}
-    for r in rows:
-        if not r.get("start") or not r.get("end"):
-            continue
-        try:
-            d = _days(r["start"], r["end"])
-        except Exception:                 # noqa: BLE001
-            continue
-        if d < 80 or d > 100:             # 3개월치만
-            continue
-        key = r["end"]
-        filed = r.get("filed", "")
-        if key not in seen or filed >= seen[key]:
-            seen[key] = filed
-            byend[key] = r["val"]
+    byend = {}
+    for _, _, rows in groups:
+        seen = {}
+        one = {}
+        for r in rows:
+            if not r.get("start") or not r.get("end"):
+                continue
+            try:
+                d = _days(r["start"], r["end"])
+            except Exception:             # noqa: BLE001
+                continue
+            if d < 80 or d > 100:
+                continue
+            key = r["end"]
+            filed = r.get("filed", "")
+            if key not in seen or filed >= seen[key]:
+                seen[key] = filed
+                one[key] = r["val"]
+        for k, v in one.items():
+            byend.setdefault(k, v)
 
     def q_fy(end):
         y, m = int(end[:4]), int(end[5:7])
         return y + 1 if m > fy_end_month else y
 
-    groups = {}
+    groups2 = {}
     for end, val in byend.items():
-        groups.setdefault(q_fy(end), []).append((end, val))
+        groups2.setdefault(q_fy(end), []).append((end, val))
     out = {}
-    for fy, items in groups.items():
+    for fy, items in groups2.items():
         items.sort()
         for i, (end, val) in enumerate(items[:4]):
             out[(fy, i + 1)] = val
@@ -488,6 +498,9 @@ def collect_one(ticker, info):
     facts = fetch_facts(ciks)
     if not facts:
         return None, "SEC 데이터 없음"
+    ent = facts.get("entityName")
+    if ent:
+        info = dict(info, name=ent)
 
     _used_tag.clear()
     A = {k: annual_series(facts, k) for k in
@@ -714,6 +727,9 @@ def load_tickers(args):
         parts = line.split()
         t = parts[0].upper()
         ciks = ["%010d" % int(x) for x in parts[1:] if x.isdigit()]
+        if not ciks and t in CIK_OVERRIDE:
+            # 목록 파일에 안 적혀 있어도 알려진 법인 전환은 자동 적용
+            ciks = ["%010d" % int(x) for x in CIK_OVERRIDE[t].split()]
         return (t, ciks or None)
 
     if args:

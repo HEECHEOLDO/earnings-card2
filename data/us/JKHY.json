@@ -1,7 +1,7 @@
 {
  "name": "JKHY",
  "split_adjusted": false,
- "legal_name": "JACK HENRY & ASSOCIATES INC",
+ "legal_name": "JACK HENRY & ASSOCIATES, INC.",
  "code": "JKHY",
  "cik": "0000779152",
  "market": "미국",
@@ -12,27 +12,27 @@
  "annual": [
   {
    "p": 2017,
-   "rev": 1388.3,
+   "rev": 1431.1,
    "op": 341.7,
    "ni": 229.6,
    "assets": 1908.9,
    "liab": 876.9,
    "equity": 1099.7,
    "dps": 1.18,
-   "payout": 40.0,
+   "payout": 40.2,
    "yield": null,
    "dps_adj": 1.18
   },
   {
    "p": 2018,
-   "rev": 1470.8,
+   "rev": 1536.6,
    "op": 357.5,
    "ni": 365.0,
    "assets": 2033.1,
    "liab": 710.2,
    "equity": 1322.8,
    "dps": 1.36,
-   "payout": 28.8,
+   "payout": 28.9,
    "yield": null,
    "dps_adj": 1.36
   },
@@ -45,7 +45,7 @@
    "liab": 755.8,
    "equity": 1429.0,
    "dps": 1.54,
-   "payout": 43.7,
+   "payout": 43.8,
    "yield": null,
    "dps_adj": 1.54
   },
@@ -84,7 +84,7 @@
    "liab": 1073.9,
    "equity": 1381.6,
    "dps": 1.9,
-   "payout": 38.4,
+   "payout": 38.5,
    "yield": null,
    "dps_adj": 1.9
   },
@@ -97,7 +97,7 @@
    "liab": 1165.3,
    "equity": 1608.5,
    "dps": 2.02,
-   "payout": 40.2,
+   "payout": 40.3,
    "yield": null,
    "dps_adj": 2.02
   },
@@ -110,7 +110,7 @@
    "liab": 1082.1,
    "equity": 1842.4,
    "dps": 2.14,
-   "payout": 40.8,
+   "payout": 40.9,
    "yield": null,
    "dps_adj": 2.14
   },
@@ -123,7 +123,7 @@
    "liab": 913.1,
    "equity": 2130.8,
    "dps": 2.26,
-   "payout": 36.1,
+   "payout": 36.2,
    "yield": null,
    "dps_adj": 2.26
   },
@@ -136,7 +136,7 @@
    "liab": 1093.8,
    "equity": 2051.9,
    "dps": 2.38,
-   "payout": 34.0,
+   "payout": 34.1,
    "yield": null,
    "dps_adj": 2.38
   }

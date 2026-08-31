@@ -1,7 +1,7 @@
 {
  "name": "SJM",
  "split_adjusted": false,
- "legal_name": "J M SMUCKER Co",
+ "legal_name": "The J. M. Smucker Company",
  "code": "SJM",
  "cik": "0000091419",
  "market": "미국",
@@ -19,7 +19,7 @@
    "liab": 8789.5,
    "equity": 6850.2,
    "dps": 3,
-   "payout": 58.5,
+   "payout": 58.6,
    "yield": null,
    "dps_adj": 3.0
   },
@@ -84,7 +84,7 @@
    "liab": 7914.9,
    "equity": 8140.1,
    "dps": 3.96,
-   "payout": 67.6,
+   "payout": 68.0,
    "yield": null,
    "dps_adj": 3.96
   },

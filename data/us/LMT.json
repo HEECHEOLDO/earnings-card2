@@ -1,7 +1,7 @@
 {
  "name": "LMT",
  "split_adjusted": false,
- "legal_name": "LOCKHEED MARTIN CORP",
+ "legal_name": "LOCKHEED MARTIN CORPORATION",
  "code": "LMT",
  "cik": "0000936468",
  "market": "미국",
@@ -12,27 +12,27 @@
  "annual": [
   {
    "p": 2016,
-   "rev": 47290.0,
+   "rev": 47248.0,
    "op": 5888.0,
    "ni": 5173.0,
    "assets": 47806.0,
    "liab": 46200.0,
-   "equity": 1477.0,
+   "equity": 1511.0,
    "dps": 6.77,
-   "payout": 39.2,
+   "payout": 39.7,
    "yield": null,
    "dps_adj": 6.77
   },
   {
    "p": 2017,
-   "rev": 49960.0,
+   "rev": 51048.0,
    "op": 6744.0,
    "ni": 1963.0,
    "assets": 46620.0,
    "liab": 47396.0,
-   "equity": -776.0,
+   "equity": -850.0,
    "dps": 7.46,
-   "payout": 109.4,
+   "payout": 110.4,
    "yield": null,
    "dps_adj": 7.46
   },
@@ -43,9 +43,9 @@
    "ni": 5046.0,
    "assets": 44876.0,
    "liab": 43427.0,
-   "equity": 1449.0,
+   "equity": 1394.0,
    "dps": 8.2,
-   "payout": 46.2,
+   "payout": 46.6,
    "yield": null,
    "dps_adj": 8.2
   },
@@ -56,9 +56,9 @@
    "ni": 6230.0,
    "assets": 47528.0,
    "liab": 44357.0,
-   "equity": 3171.0,
+   "equity": 3127.0,
    "dps": 9,
-   "payout": 40.7,
+   "payout": 41.0,
    "yield": null,
    "dps_adj": 9.0
   },
@@ -69,9 +69,9 @@
    "ni": 6833.0,
    "assets": 50710.0,
    "liab": 44672.0,
-   "equity": 6038.0,
+   "equity": 6015.0,
    "dps": 9.8,
-   "payout": 40.2,
+   "payout": 40.3,
    "yield": null,
    "dps_adj": 9.8
   },
@@ -84,7 +84,7 @@
    "liab": 39914.0,
    "equity": 10959.0,
    "dps": 10.6,
-   "payout": 46.4,
+   "payout": 46.6,
    "yield": null,
    "dps_adj": 10.6
   },
@@ -97,7 +97,7 @@
    "liab": 43614.0,
    "equity": 9266.0,
    "dps": 11.4,
-   "payout": 52.4,
+   "payout": 52.6,
    "yield": null,
    "dps_adj": 11.4
   },
@@ -110,7 +110,7 @@
    "liab": 45621.0,
    "equity": 6835.0,
    "dps": 12.15,
-   "payout": 43.9,
+   "payout": 44.1,
    "yield": null,
    "dps_adj": 12.15
   },
@@ -123,7 +123,7 @@
    "liab": 49284.0,
    "equity": 6333.0,
    "dps": 12.75,
-   "payout": 56.9,
+   "payout": 57.2,
    "yield": null,
    "dps_adj": 12.75
   },
@@ -136,7 +136,7 @@
    "liab": 53119.0,
    "equity": 6721.0,
    "dps": 13.35,
-   "payout": 61.9,
+   "payout": 62.1,
    "yield": null,
    "dps_adj": 13.35
   }

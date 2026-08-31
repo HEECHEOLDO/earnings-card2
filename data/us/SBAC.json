@@ -1,7 +1,7 @@
 {
  "name": "SBAC",
  "split_adjusted": false,
- "legal_name": "SBA COMMUNICATIONS CORP",
+ "legal_name": "SBA COMMUNICATIONS CORPORATION",
  "code": "SBAC",
  "cik": "0001034054",
  "market": "미국",
@@ -53,7 +53,7 @@
    "p": 2019,
    "rev": 2014.6,
    "op": 583.5,
-   "ni": 147.3,
+   "ni": 147.0,
    "assets": 9759.9,
    "liab": null,
    "equity": -3667.0,
@@ -66,7 +66,7 @@
    "p": 2020,
    "rev": 2083.1,
    "op": 633.7,
-   "ni": 24.0,
+   "ni": 24.1,
    "assets": 9158.0,
    "liab": null,
    "equity": -4824.4,
@@ -175,14 +175,14 @@
    "q": 1,
    "rev": 664.2,
    "op": 334.9,
-   "ni": 217.9
+   "ni": 220.7
   },
   {
    "y": 2025,
    "q": 2,
    "rev": 699.0,
    "op": 334.8,
-   "ni": 225.7
+   "ni": 225.8
   },
   {
    "y": 2025,
@@ -203,14 +203,14 @@
    "q": 1,
    "rev": 703.4,
    "op": 342.8,
-   "ni": 184.9
+   "ni": 184.8
   },
   {
    "y": 2026,
    "q": 2,
    "rev": 715.3,
    "op": 351.9,
-   "ni": 196.5
+   "ni": 198.8
   }
  ]
 }

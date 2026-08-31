@@ -1,7 +1,7 @@
 {
  "name": "TGT",
  "split_adjusted": false,
- "legal_name": "TARGET CORP",
+ "legal_name": "Target Corporation",
  "code": "TGT",
  "cik": "0000027419",
  "market": "미국",
@@ -12,7 +12,7 @@
  "annual": [
   {
    "p": 2017,
-   "rev": 70271.0,
+   "rev": 69495.0,
    "op": 4864.0,
    "ni": null,
    "assets": 42009.0,
@@ -25,7 +25,7 @@
   },
   {
    "p": 2018,
-   "rev": 72714.0,
+   "rev": 71879.0,
    "op": 4224.0,
    "ni": null,
    "assets": 43572.0,
@@ -71,7 +71,7 @@
    "liab": null,
    "equity": 14440.0,
    "dps": 2.7,
-   "payout": 30.9,
+   "payout": 31.2,
    "yield": null,
    "dps_adj": 2.7
   },
@@ -84,7 +84,7 @@
    "liab": null,
    "equity": 12827.0,
    "dps": 3.38,
-   "payout": 23.8,
+   "payout": 24.0,
    "yield": null,
    "dps_adj": 3.38
   },
@@ -97,7 +97,7 @@
    "liab": null,
    "equity": 11232.0,
    "dps": 4.14,
-   "payout": 68.8,
+   "payout": 69.2,
    "yield": null,
    "dps_adj": 4.14
   },
@@ -110,7 +110,7 @@
    "liab": null,
    "equity": 13432.0,
    "dps": 4.38,
-   "payout": 48.8,
+   "payout": 49.0,
    "yield": null,
    "dps_adj": 4.38
   },
@@ -123,7 +123,7 @@
    "liab": null,
    "equity": 15501.0,
    "dps": 4.46,
-   "payout": 50.2,
+   "payout": 50.3,
    "yield": null,
    "dps_adj": 4.46
   },
@@ -136,7 +136,7 @@
    "liab": null,
    "equity": 17843.0,
    "dps": 4.54,
-   "payout": 55.6,
+   "payout": 55.8,
    "yield": null,
    "dps_adj": 4.54
   }

@@ -1,7 +1,7 @@
 {
  "name": "NRG",
  "split_adjusted": false,
- "legal_name": "NRG ENERGY, INC.",
+ "legal_name": "NRG Energy, Inc",
  "code": "NRG",
  "cik": "0001013871",
  "market": "미국",
@@ -14,7 +14,7 @@
    "p": 2016,
    "rev": 8915.0,
    "op": 33.0,
-   "ni": -891.0,
+   "ni": -774.0,
    "assets": 30682.0,
    "liab": 26190.0,
    "equity": 4446.0,
@@ -27,7 +27,7 @@
    "p": 2017,
    "rev": 9074.0,
    "op": -741.0,
-   "ni": -2337.0,
+   "ni": -2153.0,
    "assets": 23355.0,
    "liab": 21309.0,
    "equity": 1968.0,
@@ -45,7 +45,7 @@
    "liab": 11843.0,
    "equity": -1234.0,
    "dps": 0.12,
-   "payout": 13.6,
+   "payout": 13.8,
    "yield": null,
    "dps_adj": 0.12
   },
@@ -53,7 +53,7 @@
    "p": 2019,
    "rev": 9821.0,
    "op": 1290.0,
-   "ni": 4441.0,
+   "ni": 4438.0,
    "assets": 12531.0,
    "liab": 10853.0,
    "equity": 1658.0,
@@ -71,7 +71,7 @@
    "liab": 13222.0,
    "equity": 1680.0,
    "dps": 1.2,
-   "payout": 57.6,
+   "payout": 57.9,
    "yield": null,
    "dps_adj": 1.2
   },
@@ -123,7 +123,7 @@
    "liab": 21544.0,
    "equity": 2478.0,
    "dps": 1.63,
-   "payout": 29.8,
+   "payout": 30.7,
    "yield": null,
    "dps_adj": 1.63
   },
@@ -136,7 +136,7 @@
    "liab": 27459.0,
    "equity": 1681.0,
    "dps": 1.76,
-   "payout": 39.7,
+   "payout": 40.5,
    "yield": null,
    "dps_adj": 1.76
   }

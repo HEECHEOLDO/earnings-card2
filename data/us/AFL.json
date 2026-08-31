@@ -1,7 +1,7 @@
 {
  "name": "AFL",
  "split_adjusted": false,
- "legal_name": "AFLAC INC",
+ "legal_name": "Aflac Incorporated",
  "code": "AFL",
  "cik": "0000004977",
  "market": "미국",
@@ -58,7 +58,7 @@
    "liab": 123809.0,
    "equity": 28959.0,
    "dps": 1.08,
-   "payout": 24.3,
+   "payout": 24.4,
    "yield": null,
    "dps_adj": 1.08
   },
@@ -71,7 +71,7 @@
    "liab": 131527.0,
    "equity": 33559.0,
    "dps": 1.12,
-   "payout": 16.7,
+   "payout": 16.8,
    "yield": null,
    "dps_adj": 1.12
   },
@@ -84,7 +84,7 @@
    "liab": 124289.0,
    "equity": 17031.0,
    "dps": 1.32,
-   "payout": 21.0,
+   "payout": 21.1,
    "yield": null,
    "dps_adj": 1.32
   },
@@ -97,7 +97,7 @@
    "liab": 111598.0,
    "equity": 20140.0,
    "dps": 1.6,
-   "payout": 23.0,
+   "payout": 23.1,
    "yield": null,
    "dps_adj": 1.6
   },
@@ -110,7 +110,7 @@
    "liab": 104739.0,
    "equity": 21985.0,
    "dps": 1.68,
-   "payout": 21.5,
+   "payout": 21.6,
    "yield": null,
    "dps_adj": 1.68
   },
@@ -123,7 +123,7 @@
    "liab": 91468.0,
    "equity": 26098.0,
    "dps": 2,
-   "payout": 20.7,
+   "payout": 20.8,
    "yield": null,
    "dps_adj": 2.0
   },
@@ -136,7 +136,7 @@
    "liab": 86980.0,
    "equity": 29490.0,
    "dps": 2.32,
-   "payout": 33.9,
+   "payout": 34.0,
    "yield": null,
    "dps_adj": 2.32
   }

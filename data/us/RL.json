@@ -1,7 +1,7 @@
 {
  "name": "RL",
  "split_adjusted": false,
- "legal_name": "RALPH LAUREN CORP",
+ "legal_name": "Ralph Lauren Corporation",
  "code": "RL",
  "cik": "0001037038",
  "market": "미국",
@@ -32,7 +32,7 @@
    "liab": 2685.9,
    "equity": 3457.4,
    "dps": 2,
-   "payout": 100.4,
+   "payout": 101.4,
    "yield": null,
    "dps_adj": 2.0
   },
@@ -45,7 +45,7 @@
    "liab": 2655.6,
    "equity": 3287.2,
    "dps": 2.5,
-   "payout": 46.8,
+   "payout": 47.4,
    "yield": null,
    "dps_adj": 2.5
   },
@@ -58,7 +58,7 @@
    "liab": 4586.8,
    "equity": 2693.1,
    "dps": 2.75,
-   "payout": 54.2,
+   "payout": 55.2,
    "yield": null,
    "dps_adj": 2.75
   },
@@ -84,7 +84,7 @@
    "liab": 5188.7,
    "equity": 2536.0,
    "dps": 2.75,
-   "payout": 33.5,
+   "payout": 34.0,
    "yield": null,
    "dps_adj": 2.75
   },
@@ -97,7 +97,7 @@
    "liab": 4359.0,
    "equity": 2430.5,
    "dps": 3,
-   "payout": 38.9,
+   "payout": 39.6,
    "yield": null,
    "dps_adj": 3.0
   },
@@ -110,7 +110,7 @@
    "liab": 4152.3,
    "equity": 2450.3,
    "dps": 3,
-   "payout": 30.3,
+   "payout": 30.9,
    "yield": null,
    "dps_adj": 3.0
   },
@@ -123,7 +123,7 @@
    "liab": 4458.8,
    "equity": 2515.3,
    "dps": 3.3,
-   "payout": 27.8,
+   "payout": 28.4,
    "yield": null,
    "dps_adj": 3.3
   },
@@ -136,7 +136,7 @@
    "liab": 4937.2,
    "equity": 2721.6,
    "dps": 3.65,
-   "payout": 23.7,
+   "payout": 24.2,
    "yield": null,
    "dps_adj": 3.65
   }

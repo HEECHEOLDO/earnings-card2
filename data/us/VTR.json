@@ -1,7 +1,7 @@
 {
  "name": "VTR",
  "split_adjusted": false,
- "legal_name": "Ventas, Inc.",
+ "legal_name": "Ventas, Inc.",
  "code": "VTR",
  "cik": "0000740260",
  "market": "미국",
@@ -19,7 +19,7 @@
    "liab": 12437.1,
    "equity": 10528.8,
    "dps": 2.965,
-   "payout": 156.9,
+   "payout": 158.6,
    "yield": null,
    "dps_adj": 2.965
   },
@@ -32,7 +32,7 @@
    "liab": 12863.9,
    "equity": 10932.2,
    "dps": 3.115,
-   "payout": 81.3,
+   "payout": 82.1,
    "yield": null,
    "dps_adj": 3.115
   },
@@ -45,7 +45,7 @@
    "liab": 12124.8,
    "equity": 10271.6,
    "dps": 3.1625,
-   "payout": 270.9,
+   "payout": 273.2,
    "yield": null,
    "dps_adj": 3.1625
   },
@@ -58,7 +58,7 @@
    "liab": 13873.1,
    "equity": 10545.5,
    "dps": 3.17,
-   "payout": 264.1,
+   "payout": 266.9,
    "yield": null,
    "dps_adj": 3.17
   },
@@ -136,7 +136,7 @@
    "liab": 14631.0,
    "equity": 12585.8,
    "dps": 1.92,
-   "payout": 334.1,
+   "payout": 339.6,
    "yield": null,
    "dps_adj": 1.92
   }

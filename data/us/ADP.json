@@ -1,7 +1,7 @@
 {
  "name": "ADP",
  "split_adjusted": false,
- "legal_name": "AUTOMATIC DATA PROCESSING INC",
+ "legal_name": "AUTOMATIC DATA PROCESSING, INC.",
  "code": "ADP",
  "cik": "0000008670",
  "market": "미국",
@@ -17,9 +17,9 @@
    "ni": 1787.8,
    "assets": 38886.9,
    "liab": 33203.0,
-   "equity": 5160.5,
+   "equity": 3977.0,
    "dps": 2.24,
-   "payout": 56.1,
+   "payout": 56.4,
    "yield": null,
    "dps_adj": 2.24
   },
@@ -30,9 +30,9 @@
    "ni": 1884.9,
    "assets": 38849.1,
    "liab": 34113.2,
-   "equity": -679.8,
+   "equity": 4735.9,
    "dps": 2.52,
-   "payout": 58.9,
+   "payout": 59.3,
    "yield": null,
    "dps_adj": 2.52
   },
@@ -43,9 +43,9 @@
    "ni": 2292.8,
    "assets": 41887.7,
    "liab": 36487.8,
-   "equity": -257.3,
+   "equity": 5364.4,
    "dps": 3.06,
-   "payout": 58.1,
+   "payout": 58.4,
    "yield": null,
    "dps_adj": 3.06
   },
@@ -58,7 +58,7 @@
    "liab": 33413.3,
    "equity": 5900.0,
    "dps": 3.52,
-   "payout": 61.5,
+   "payout": 61.8,
    "yield": null,
    "dps_adj": 3.52
   },
@@ -71,7 +71,7 @@
    "liab": 43102.4,
    "equity": 5049.6,
    "dps": 3.7,
-   "payout": 60.7,
+   "payout": 61.0,
    "yield": null,
    "dps_adj": 3.7
   },
@@ -84,7 +84,7 @@
    "liab": 59842.9,
    "equity": 2986.7,
    "dps": 4.05,
-   "payout": 57.5,
+   "payout": 57.8,
    "yield": null,
    "dps_adj": 4.05
   },
@@ -97,7 +97,7 @@
    "liab": 47461.9,
    "equity": 4319.6,
    "dps": 4.79,
-   "payout": 58.1,
+   "payout": 58.4,
    "yield": null,
    "dps_adj": 4.79
   },
@@ -110,7 +110,7 @@
    "liab": 49815.1,
    "equity": 5078.1,
    "dps": 5.45,
-   "payout": 59.6,
+   "payout": 59.9,
    "yield": null,
    "dps_adj": 5.45
   },
@@ -123,7 +123,7 @@
    "liab": 47181.3,
    "equity": 6188.0,
    "dps": 6.02,
-   "payout": 60.1,
+   "payout": 60.3,
    "yield": null,
    "dps_adj": 6.02
   },
@@ -136,7 +136,7 @@
    "liab": 57162.1,
    "equity": 6031.2,
    "dps": 6.64,
-   "payout": 60.5,
+   "payout": 60.7,
    "yield": null,
    "dps_adj": 6.64
   }

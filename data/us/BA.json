@@ -1,7 +1,7 @@
 {
  "name": "BA",
  "split_adjusted": false,
- "legal_name": "BOEING CO",
+ "legal_name": "THE BOEING COMPANY",
  "code": "BA",
  "cik": "0000012927",
  "market": "미국",
@@ -19,7 +19,7 @@
    "liab": null,
    "equity": 1917.0,
    "dps": 4.69,
-   "payout": 59.2,
+   "payout": 59.9,
    "yield": null,
    "dps_adj": 4.69
   },
@@ -32,7 +32,7 @@
    "liab": null,
    "equity": 1713.0,
    "dps": 5.97,
-   "payout": 42.5,
+   "payout": 43.1,
    "yield": null,
    "dps_adj": 5.97
   },
@@ -45,7 +45,7 @@
    "liab": null,
    "equity": 410.0,
    "dps": 7.19,
-   "payout": 39.8,
+   "payout": 40.2,
    "yield": null,
    "dps_adj": 7.19
   },

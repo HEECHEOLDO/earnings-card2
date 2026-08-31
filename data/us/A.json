@@ -1,7 +1,7 @@
 {
  "name": "A",
  "split_adjusted": false,
- "legal_name": "AGILENT TECHNOLOGIES, INC.",
+ "legal_name": "AGILENT TECHNOLOGIES, INC.",
  "code": "A",
  "cik": "0001090872",
  "market": "미국",
@@ -19,7 +19,7 @@
    "liab": 3548.0,
    "equity": 4246.0,
    "dps": 0.46,
-   "payout": 32.5,
+   "payout": 32.8,
    "yield": null,
    "dps_adj": 0.46
   },
@@ -32,7 +32,7 @@
    "liab": 3591.0,
    "equity": 4835.0,
    "dps": 0.528,
-   "payout": 24.9,
+   "payout": 25.2,
    "yield": null,
    "dps_adj": 0.528
   },
@@ -45,7 +45,7 @@
    "liab": 3961.0,
    "equity": 4571.0,
    "dps": 0.596,
-   "payout": 60.5,
+   "payout": 61.3,
    "yield": null,
    "dps_adj": 0.596
   },
@@ -58,7 +58,7 @@
    "liab": 4704.0,
    "equity": 4748.0,
    "dps": 0.656,
-   "payout": 19.2,
+   "payout": 19.5,
    "yield": null,
    "dps_adj": 0.656
   },
@@ -71,7 +71,7 @@
    "liab": 4754.0,
    "equity": 4873.0,
    "dps": 0.72,
-   "payout": 30.9,
+   "payout": 31.2,
    "yield": null,
    "dps_adj": 0.72
   },
@@ -84,7 +84,7 @@
    "liab": 5316.0,
    "equity": 5389.0,
    "dps": 0.776,
-   "payout": 19.5,
+   "payout": 19.7,
    "yield": null,
    "dps_adj": 0.776
   },
@@ -97,7 +97,7 @@
    "liab": 5227.0,
    "equity": 5305.0,
    "dps": 0.84,
-   "payout": 20.0,
+   "payout": 20.1,
    "yield": null,
    "dps_adj": 0.84
   },
@@ -110,7 +110,7 @@
    "liab": 4918.0,
    "equity": -327.0,
    "dps": 0.9,
-   "payout": 21.3,
+   "payout": 21.5,
    "yield": null,
    "dps_adj": 0.9
   },
@@ -123,7 +123,7 @@
    "liab": 5948.0,
    "equity": -305.0,
    "dps": 0.944,
-   "payout": 21.2,
+   "payout": 21.3,
    "yield": null,
    "dps_adj": 0.944
   },
@@ -136,7 +136,7 @@
    "liab": 5986.0,
    "equity": -226.0,
    "dps": 0.992,
-   "payout": 21.6,
+   "payout": 21.7,
    "yield": null,
    "dps_adj": 0.992
   }

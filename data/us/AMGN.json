@@ -1,7 +1,7 @@
 {
  "name": "AMGN",
  "split_adjusted": false,
- "legal_name": "AMGEN INC",
+ "legal_name": "Amgen Inc.",
  "code": "AMGN",
  "cik": "0000318154",
  "market": "미국",
@@ -19,7 +19,7 @@
    "liab": null,
    "equity": 29875.0,
    "dps": 4.15,
-   "payout": 40.2,
+   "payout": 40.5,
    "yield": null,
    "dps_adj": 4.15
   },
@@ -32,7 +32,7 @@
    "liab": null,
    "equity": 25241.0,
    "dps": 4.77,
-   "payout": 176.2,
+   "payout": 177.2,
    "yield": null,
    "dps_adj": 4.77
   },
@@ -45,7 +45,7 @@
    "liab": null,
    "equity": 12500.0,
    "dps": 5.41,
-   "payout": 42.6,
+   "payout": 42.9,
    "yield": null,
    "dps_adj": 5.41
   },
@@ -58,7 +58,7 @@
    "liab": null,
    "equity": 9673.0,
    "dps": 5.95,
-   "payout": 45.9,
+   "payout": 46.2,
    "yield": null,
    "dps_adj": 5.95
   },
@@ -71,7 +71,7 @@
    "liab": null,
    "equity": 9409.0,
    "dps": 6.56,
-   "payout": 52.9,
+   "payout": 53.3,
    "yield": null,
    "dps_adj": 6.56
   },
@@ -84,7 +84,7 @@
    "liab": null,
    "equity": 6700.0,
    "dps": 7.22,
-   "payout": 69.8,
+   "payout": 70.2,
    "yield": null,
    "dps_adj": 7.22
   },
@@ -97,7 +97,7 @@
    "liab": null,
    "equity": 3661.0,
    "dps": 7.95,
-   "payout": 65.3,
+   "payout": 65.6,
    "yield": null,
    "dps_adj": 7.95
   },
@@ -110,7 +110,7 @@
    "liab": null,
    "equity": 6232.0,
    "dps": 8.64,
-   "payout": 68.8,
+   "payout": 69.2,
    "yield": null,
    "dps_adj": 8.64
   },
@@ -123,7 +123,7 @@
    "liab": null,
    "equity": 5877.0,
    "dps": 9.13,
-   "payout": 119.9,
+   "payout": 120.8,
    "yield": null,
    "dps_adj": 9.13
   },
@@ -136,7 +136,7 @@
    "liab": null,
    "equity": 8658.0,
    "dps": 9.66,
-   "payout": 67.4,
+   "payout": 67.9,
    "yield": null,
    "dps_adj": 9.66
   }

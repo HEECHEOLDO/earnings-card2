@@ -19,7 +19,7 @@
    "liab": null,
    "equity": 15241.0,
    "dps": 3.02,
-   "payout": 49.7,
+   "payout": 49.9,
    "yield": null,
    "dps_adj": 1.51
   },
@@ -32,7 +32,7 @@
    "liab": null,
    "equity": 15140.0,
    "dps": 3.29,
-   "payout": 235.8,
+   "payout": 236.5,
    "yield": null,
    "dps_adj": 1.645
   },
@@ -45,7 +45,7 @@
    "liab": null,
    "equity": 19248.0,
    "dps": 3.58,
-   "payout": 85.2,
+   "payout": 85.8,
    "yield": null,
    "dps_adj": 1.79
   },
@@ -58,7 +58,7 @@
    "liab": null,
    "equity": 21805.0,
    "dps": 3.87,
-   "payout": 45.5,
+   "payout": 46.2,
    "yield": null,
    "dps_adj": 1.935
   },
@@ -71,7 +71,7 @@
    "liab": null,
    "equity": 24934.0,
    "dps": 4.18,
-   "payout": 29.6,
+   "payout": 29.8,
    "yield": null,
    "dps_adj": 2.09
   },
@@ -84,7 +84,7 @@
    "liab": null,
    "equity": 27419.0,
    "dps": 2.2,
-   "payout": 93.8,
+   "payout": 94.1,
    "yield": null,
    "dps_adj": 2.2
   },
@@ -97,7 +97,7 @@
    "liab": null,
    "equity": 29256.0,
    "dps": 2.29,
-   "payout": 63.2,
+   "payout": 63.4,
    "yield": null,
    "dps_adj": 2.29
   },
@@ -110,7 +110,7 @@
    "liab": null,
    "equity": 33654.0,
    "dps": 2.38,
-   "payout": 41.5,
+   "payout": 41.6,
    "yield": null,
    "dps_adj": 2.38
   },
@@ -123,7 +123,7 @@
    "liab": null,
    "equity": 37788.0,
    "dps": 2.48,
-   "payout": 44.9,
+   "payout": 45.2,
    "yield": null,
    "dps_adj": 2.48
   },
@@ -136,7 +136,7 @@
    "liab": null,
    "equity": 38793.0,
    "dps": 2.58,
-   "payout": 81.3,
+   "payout": 81.4,
    "yield": null,
    "dps_adj": 2.58
   }
@@ -152,28 +152,28 @@
   {
    "y": 2024,
    "q": 1,
-   "rev": 3697.0,
+   "rev": 3640.0,
    "op": 705.0,
    "ni": 881.0
   },
   {
    "y": 2024,
    "q": 2,
-   "rev": 2484.0,
+   "rev": 3011.0,
    "op": 308.0,
    "ni": 871.0
   },
   {
    "y": 2024,
    "q": 3,
-   "rev": 2569.0,
+   "rev": 2776.0,
    "op": 200.0,
    "ni": 759.0
   },
   {
    "y": 2024,
    "q": 4,
-   "rev": 4435.0,
+   "rev": 3758.0,
    "op": 897.0,
    "ni": 989.0
   },

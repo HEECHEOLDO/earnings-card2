@@ -1,7 +1,7 @@
 {
  "name": "BBY",
  "split_adjusted": false,
- "legal_name": "BEST BUY CO INC",
+ "legal_name": "BEST BUY CO., INC.",
  "code": "BBY",
  "cik": "0000764478",
  "market": "미국",
@@ -19,7 +19,7 @@
    "liab": null,
    "equity": 4709.0,
    "dps": 1.57,
-   "payout": 40.7,
+   "payout": 41.2,
    "yield": null,
    "dps_adj": 1.57
   },
@@ -32,7 +32,7 @@
    "liab": null,
    "equity": 3612.0,
    "dps": 1.36,
-   "payout": 40.9,
+   "payout": 41.8,
    "yield": null,
    "dps_adj": 1.36
   },
@@ -45,7 +45,7 @@
    "liab": null,
    "equity": 3306.0,
    "dps": 1.8,
-   "payout": 34.0,
+   "payout": 34.6,
    "yield": null,
    "dps_adj": 1.8
   },
@@ -58,7 +58,7 @@
    "liab": null,
    "equity": 3479.0,
    "dps": 2,
-   "payout": 34.4,
+   "payout": 34.8,
    "yield": null,
    "dps_adj": 2.0
   },
@@ -71,7 +71,7 @@
    "liab": null,
    "equity": 4587.0,
    "dps": 2.2,
-   "payout": 31.8,
+   "payout": 32.2,
    "yield": null,
    "dps_adj": 2.2
   },
@@ -84,7 +84,7 @@
    "liab": null,
    "equity": 3020.0,
    "dps": 2.8,
-   "payout": 28.2,
+   "payout": 28.4,
    "yield": null,
    "dps_adj": 2.8
   },
@@ -97,7 +97,7 @@
    "liab": null,
    "equity": 2795.0,
    "dps": 3.52,
-   "payout": 55.8,
+   "payout": 56.0,
    "yield": null,
    "dps_adj": 3.52
   },
@@ -110,7 +110,7 @@
    "liab": null,
    "equity": 3053.0,
    "dps": 3.68,
-   "payout": 64.6,
+   "payout": 64.8,
    "yield": null,
    "dps_adj": 3.68
   },
@@ -123,7 +123,7 @@
    "liab": null,
    "equity": 2763.0,
    "dps": 3.76,
-   "payout": 87.3,
+   "payout": 87.9,
    "yield": null,
    "dps_adj": 3.76
   },
@@ -136,7 +136,7 @@
    "liab": null,
    "equity": 3083.0,
    "dps": 3.8,
-   "payout": 75.0,
+   "payout": 75.4,
    "yield": null,
    "dps_adj": 3.8
   }

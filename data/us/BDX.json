@@ -1,7 +1,7 @@
 {
  "name": "BDX",
  "split_adjusted": false,
- "legal_name": "BECTON DICKINSON & CO",
+ "legal_name": "BECTON, DICKINSON AND COMPANY",
  "code": "BDX",
  "cik": "0000010795",
  "market": "미국",
@@ -19,7 +19,7 @@
    "liab": null,
    "equity": 7633.0,
    "dps": 2.64,
-   "payout": 57.5,
+   "payout": 58.8,
    "yield": null,
    "dps_adj": 2.64
   },
@@ -32,7 +32,7 @@
    "liab": null,
    "equity": 12948.0,
    "dps": 2.92,
-   "payout": 58.1,
+   "payout": 59.4,
    "yield": null,
    "dps_adj": 2.92
   },
@@ -45,7 +45,7 @@
    "liab": null,
    "equity": 20994.0,
    "dps": 3,
-   "payout": 249.2,
+   "payout": 255.3,
    "yield": null,
    "dps_adj": 3.0
   },
@@ -58,7 +58,7 @@
    "liab": null,
    "equity": 21081.0,
    "dps": 3.08,
-   "payout": 67.4,
+   "payout": 68.6,
    "yield": null,
    "dps_adj": 3.08
   },
@@ -71,7 +71,7 @@
    "liab": null,
    "equity": 23765.0,
    "dps": 3.16,
-   "payout": 100.9,
+   "payout": 102.1,
    "yield": null,
    "dps_adj": 3.16
   },
@@ -84,7 +84,7 @@
    "liab": null,
    "equity": 23677.0,
    "dps": 3.32,
-   "payout": 45.9,
+   "payout": 46.4,
    "yield": null,
    "dps_adj": 3.32
   },
@@ -97,7 +97,7 @@
    "liab": null,
    "equity": 25282.0,
    "dps": 3.48,
-   "payout": 55.8,
+   "payout": 56.2,
    "yield": null,
    "dps_adj": 3.48
   },
@@ -110,7 +110,7 @@
    "liab": null,
    "equity": 25796.0,
    "dps": 3.64,
-   "payout": 70.2,
+   "payout": 70.7,
    "yield": null,
    "dps_adj": 3.64
   },
@@ -123,7 +123,7 @@
    "liab": null,
    "equity": 25890.0,
    "dps": 3.8,
-   "payout": 64.6,
+   "payout": 64.9,
    "yield": null,
    "dps_adj": 3.8
   },
@@ -136,7 +136,7 @@
    "liab": null,
    "equity": 25390.0,
    "dps": 4.16,
-   "payout": 71.3,
+   "payout": 71.5,
    "yield": null,
    "dps_adj": 4.16
   }

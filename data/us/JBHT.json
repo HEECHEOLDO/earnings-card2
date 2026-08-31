@@ -1,7 +1,7 @@
 {
  "name": "JBHT",
  "split_adjusted": false,
- "legal_name": "HUNT J B TRANSPORT SERVICES INC",
+ "legal_name": "J.B. HUNT TRANSPORT SERVICES, INC.",
  "code": "JBHT",
  "cik": "0000728535",
  "market": "미국",
@@ -19,7 +19,7 @@
    "liab": 2536.7,
    "equity": 1414.1,
    "dps": 0.88,
-   "payout": 22.9,
+   "payout": 23.1,
    "yield": null,
    "dps_adj": 0.88
   },
@@ -32,7 +32,7 @@
    "liab": 2626.0,
    "equity": 1839.3,
    "dps": 0.92,
-   "payout": 14.7,
+   "payout": 14.9,
    "yield": null,
    "dps_adj": 0.92
   },
@@ -45,7 +45,7 @@
    "liab": 2990.3,
    "equity": 2101.4,
    "dps": 0.96,
-   "payout": 21.4,
+   "payout": 21.7,
    "yield": null,
    "dps_adj": 0.96
   },
@@ -58,7 +58,7 @@
    "liab": 3203.8,
    "equity": 2267.0,
    "dps": 1.04,
-   "payout": 21.6,
+   "payout": 21.8,
    "yield": null,
    "dps_adj": 1.04
   },
@@ -71,7 +71,7 @@
    "liab": 3328.2,
    "equity": 2600.1,
    "dps": 1.08,
-   "payout": 22.6,
+   "payout": 22.8,
    "yield": null,
    "dps_adj": 1.08
   },
@@ -84,7 +84,7 @@
    "liab": 3676.5,
    "equity": 3117.8,
    "dps": 1.18,
-   "payout": 16.3,
+   "payout": 16.5,
    "yield": null,
    "dps_adj": 1.18
   },
@@ -97,7 +97,7 @@
    "liab": 4119.8,
    "equity": 3666.8,
    "dps": 1.6,
-   "payout": 17.2,
+   "payout": 17.4,
    "yield": null,
    "dps_adj": 1.6
   },
@@ -110,7 +110,7 @@
    "liab": 4484.4,
    "equity": 4103.8,
    "dps": 1.68,
-   "payout": 23.9,
+   "payout": 24.1,
    "yield": null,
    "dps_adj": 1.68
   },
@@ -123,7 +123,7 @@
    "liab": 4297.8,
    "equity": 4014.5,
    "dps": 1.72,
-   "payout": 30.7,
+   "payout": 31.0,
    "yield": null,
    "dps_adj": 1.72
   },
@@ -135,10 +135,10 @@
    "assets": 7927.2,
    "liab": 4362.1,
    "equity": 3565.1,
-   "dps": 1.76,
-   "payout": 28.6,
+   "dps": 0.44,
+   "payout": 7.2,
    "yield": null,
-   "dps_adj": 1.76
+   "dps_adj": 0.44
   }
  ],
  "quarterly": [

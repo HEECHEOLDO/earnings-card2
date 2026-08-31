@@ -1,7 +1,7 @@
 {
  "name": "ATO",
  "split_adjusted": false,
- "legal_name": "ATMOS ENERGY CORP",
+ "legal_name": "Atmos Energy Corp",
  "code": "ATO",
  "cik": "0000731802",
  "market": "미국",
@@ -58,7 +58,7 @@
    "liab": null,
    "equity": 5750.2,
    "dps": 2.1,
-   "payout": 48.1,
+   "payout": 48.2,
    "yield": null,
    "dps_adj": 2.1
   },
@@ -84,7 +84,7 @@
    "liab": null,
    "equity": 7906.9,
    "dps": 2.5,
-   "payout": 48.7,
+   "payout": 48.8,
    "yield": null,
    "dps_adj": 2.5
   },
@@ -97,7 +97,7 @@
    "liab": null,
    "equity": 9419.1,
    "dps": 2.72,
-   "payout": 48.4,
+   "payout": 48.5,
    "yield": null,
    "dps_adj": 2.72
   },
@@ -136,7 +136,7 @@
    "liab": null,
    "equity": 14282.9,
    "dps": 3.48,
-   "payout": 46.1,
+   "payout": 46.6,
    "yield": null,
    "dps_adj": 3.48
   }
