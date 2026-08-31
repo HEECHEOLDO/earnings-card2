@@ -51,7 +51,12 @@ INDEX_SOURCES = [
 ]
 
 # 티커가 다른 법인으로 옮겨간 경우 CIK 를 직접 지정한다
-CIK_OVERRIDE = {"XOM": "34088"}
+# 법인이 바뀌어 티커가 새 CIK 로 옮겨간 종목.
+# '새 CIK 옛 CIK' 순서로 적으면 둘을 합쳐 10년을 채운다.
+CIK_OVERRIDE = {
+    "XOM": "34088",
+    "BLK": "2012383 1364742",
+}
 
 # 회사마다 쓰는 태그가 다르다. 앞에서부터 순서대로 시도한다.
 # 같은 뜻이라 합쳐도 되는 태그들.
@@ -83,7 +88,14 @@ FALLBACK = {
            "IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments",
            "GrossProfit"],
     "ni": ["NetIncomeLossAvailableToCommonStockholdersBasic"],
-    "rev": ["InterestAndDividendIncomeOperating", "RevenueMineralSales"],
+    # 은행·보험·리츠는 '매출'이라는 항목 자체를 안 쓰는 경우가 많다
+    "rev": ["InterestAndDividendIncomeOperating",
+            "InterestIncomeExpenseNet",
+            "InterestIncomeExpenseAfterProvisionForLoanLoss",
+            "RevenuesNetOfInterestExpense",
+            "PremiumsEarnedNet",
+            "RealEstateRevenueNet",
+            "RevenueMineralSales"],
 }
 
 INSTANT = {"assets", "liab", "equity"}     # 시점 데이터 (기간이 아님)
@@ -432,9 +444,48 @@ def adjust_splits(annual, shares):
     return found
 
 
+def merge_facts(a, b):
+    """두 CIK 의 companyfacts 를 합친다.
+
+    법인이 바뀌면(스핀오프·지주회사 전환) 과거는 옛 CIK 에,
+    최근은 새 CIK 에 나뉘어 있다. 합쳐야 10년이 이어진다.
+    같은 기간이 겹치면 뒤에서 '가장 최근 제출본'이 이긴다.
+    """
+    if not a:
+        return b
+    if not b:
+        return a
+    A = a.setdefault("facts", {}).setdefault("us-gaap", {})
+    B = b.get("facts", {}).get("us-gaap", {})
+    for tag, node in B.items():
+        if tag not in A:
+            A[tag] = node
+            continue
+        for unit, rows in node.get("units", {}).items():
+            A[tag].setdefault("units", {}).setdefault(unit, []).extend(rows)
+    return a
+
+
+def fetch_facts(ciks):
+    """CIK 여러 개를 받아 합친 companyfacts 를 돌려준다."""
+    merged, names = None, []
+    for cik in ciks:
+        j = get_json(SEC_FACTS % cik)
+        if not j:
+            log("  ! CIK %s 데이터 없음" % cik)
+            continue
+        nm = j.get("entityName") or "?"
+        names.append("%s(%s)" % (nm, cik))
+        merged = merge_facts(merged, j)
+    if names:
+        log("  법인: " + " + ".join(names))
+    return merged
+
+
 def collect_one(ticker, info):
     log("\n=== %s (%s) ===" % (ticker, info["name"]))
-    facts = get_json(SEC_FACTS % info["cik"])
+    ciks = info["cik"] if isinstance(info["cik"], list) else [info["cik"]]
+    facts = fetch_facts(ciks)
     if not facts:
         return None, "SEC 데이터 없음"
 
@@ -662,10 +713,8 @@ def load_tickers(args):
     def parse(line):
         parts = line.split()
         t = parts[0].upper()
-        cik = None
-        if len(parts) > 1 and parts[1].isdigit():
-            cik = "%010d" % int(parts[1])
-        return (t, cik)
+        ciks = ["%010d" % int(x) for x in parts[1:] if x.isdigit()]
+        return (t, ciks or None)
 
     if args:
         return [parse(a) for a in args]
@@ -708,7 +757,7 @@ def verify(tickers, cmap):
     ok, bad = [], []
     for t, cik in tickers:
         if cik:
-            ok.append((t, "CIK 직접 지정 %s" % cik))
+            ok.append((t, "CIK 직접 지정 " + ", ".join(cik)))
         elif t in cmap:
             ok.append((t, cmap[t]["name"]))
         else:
