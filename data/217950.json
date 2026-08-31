@@ -1,0 +1,125 @@
+{
+ "name": "파마리서치바이오",
+ "split_adjusted": false,
+ "legal_name": "파마리서치바이오",
+ "code": "217950",
+ "market": "코넥스",
+ "sector": "",
+ "updated": "2026-09-01",
+ "annual": [
+  {
+   "p": 2019,
+   "rev": 32.5,
+   "op": -3.9,
+   "ni": -8.5,
+   "assets": 166.0,
+   "liab": 48.7,
+   "equity": 117.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 63.1,
+   "op": 3.9,
+   "ni": 0.2,
+   "assets": 172.6,
+   "liab": 55.1,
+   "equity": 117.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 105.8,
+   "op": 26.2,
+   "ni": 23.1,
+   "assets": 495.9,
+   "liab": 355.3,
+   "equity": 140.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 125.1,
+   "op": 25.1,
+   "ni": 74.2,
+   "assets": 589.1,
+   "liab": 369.2,
+   "equity": 219.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 200.3,
+   "op": 62.2,
+   "ni": 23.1,
+   "assets": 639.2,
+   "liab": 295.1,
+   "equity": 344.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 260.9,
+   "op": 86.7,
+   "ni": 101.6,
+   "assets": 865.4,
+   "liab": 436.8,
+   "equity": 428.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 310.9,
+   "op": 137.3,
+   "ni": 123.3,
+   "assets": 1045.5,
+   "liab": 469.3,
+   "equity": 576.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 200.3,
+   "op": 62.2,
+   "ni": 23.1
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 260.9,
+   "op": 86.7,
+   "ni": 101.6
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 310.9,
+   "op": 137.3,
+   "ni": 123.3
+  }
+ ]
+}

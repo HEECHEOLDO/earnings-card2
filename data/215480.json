@@ -1,0 +1,200 @@
+{
+ "name": "토박스코리아",
+ "split_adjusted": false,
+ "legal_name": "토박스코리아",
+ "code": "215480",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-01",
+ "annual": [
+  {
+   "p": 2017,
+   "rev": 305.4,
+   "op": 45.3,
+   "ni": 5.5,
+   "assets": 313.3,
+   "liab": 107.6,
+   "equity": 205.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 243.7,
+   "op": -24.2,
+   "ni": -38.7,
+   "assets": 279.5,
+   "liab": 105.7,
+   "equity": 173.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 283.7,
+   "op": 11.2,
+   "ni": 1.5,
+   "assets": 321.3,
+   "liab": 94.1,
+   "equity": 227.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 253.2,
+   "op": -29.8,
+   "ni": -35.0,
+   "assets": 275.7,
+   "liab": 53.1,
+   "equity": 222.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 361.3,
+   "op": 29.1,
+   "ni": 36.3,
+   "assets": 383.6,
+   "liab": 99.7,
+   "equity": 284.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 512.3,
+   "op": 49.9,
+   "ni": 41.5,
+   "assets": 415.8,
+   "liab": 89.9,
+   "equity": 325.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 486.5,
+   "op": 29.5,
+   "ni": 24.8,
+   "assets": 415.3,
+   "liab": 81.6,
+   "equity": 333.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 446.8,
+   "op": 11.7,
+   "ni": -5.8,
+   "assets": 426.7,
+   "liab": 98.3,
+   "equity": 328.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 397.0,
+   "op": 0.0,
+   "ni": -12.5,
+   "assets": 375.4,
+   "liab": 57.3,
+   "equity": 318.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 102.1,
+   "op": 3.5,
+   "ni": 2.5
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 131.2,
+   "op": 6.5,
+   "ni": 4.8
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 95.2,
+   "op": -1.6,
+   "ni": -3.9
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 118.3,
+   "op": 3.3,
+   "ni": -9.2
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 92.7,
+   "op": -2.2,
+   "ni": -4.6
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 126.4,
+   "op": 8.5,
+   "ni": 7.4
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 75.0,
+   "op": -5.4,
+   "ni": -7.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 102.9,
+   "op": -0.8,
+   "ni": -8.2
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 99.0,
+   "op": 8.3,
+   "ni": 5.9
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 132.2,
+   "op": 11.7,
+   "ni": 9.6
+  }
+ ]
+}

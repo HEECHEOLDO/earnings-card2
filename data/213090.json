@@ -1,0 +1,77 @@
+{
+ "name": "미래테크놀로지",
+ "split_adjusted": false,
+ "legal_name": "미래테크놀로지",
+ "code": "213090",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-09-01",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 219.5,
+   "op": 42.7,
+   "ni": 40.5,
+   "assets": 476.1,
+   "liab": 16.4,
+   "equity": 459.6,
+   "dps": null,
+   "payout": 13.56,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 223.6,
+   "op": 46.1,
+   "ni": 49.0,
+   "assets": 1003.4,
+   "liab": 255.5,
+   "equity": 747.9,
+   "dps": null,
+   "payout": 14.72,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 324.2,
+   "op": 42.3,
+   "ni": -7.0,
+   "assets": 933.2,
+   "liab": 205.0,
+   "equity": 728.2,
+   "dps": null,
+   "payout": -1.02,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 358.6,
+   "op": 36.8,
+   "ni": 36.8,
+   "assets": 1087.7,
+   "liab": 341.6,
+   "equity": 746.1,
+   "dps": null,
+   "payout": 18.89,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 305.8,
+   "op": 10.4,
+   "ni": -9.3,
+   "assets": 1267.2,
+   "liab": 351.2,
+   "equity": 916.0,
+   "dps": 100.0,
+   "payout": 22.47,
+   "yield": 1.25,
+   "dps_adj": 100.0
+  }
+ ],
+ "quarterly": []
+}

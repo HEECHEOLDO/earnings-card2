@@ -1,0 +1,200 @@
+{
+ "name": "링크제니시스",
+ "split_adjusted": false,
+ "legal_name": "링크제니시스",
+ "code": "219420",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-01",
+ "annual": [
+  {
+   "p": 2017,
+   "rev": 117.9,
+   "op": 35.2,
+   "ni": 27.1,
+   "assets": 152.9,
+   "liab": 19.5,
+   "equity": 133.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 116.3,
+   "op": 23.5,
+   "ni": 22.0,
+   "assets": 361.0,
+   "liab": 47.2,
+   "equity": 313.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 114.0,
+   "op": 10.3,
+   "ni": 5.7,
+   "assets": 376.3,
+   "liab": 32.7,
+   "equity": 343.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 128.8,
+   "op": 28.1,
+   "ni": 5.1,
+   "assets": 419.6,
+   "liab": 84.3,
+   "equity": 335.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 160.3,
+   "op": 39.5,
+   "ni": 43.0,
+   "assets": 478.0,
+   "liab": 72.2,
+   "equity": 405.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 172.7,
+   "op": 36.4,
+   "ni": 19.0,
+   "assets": 474.5,
+   "liab": 37.5,
+   "equity": 437.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 141.9,
+   "op": 14.0,
+   "ni": 14.0,
+   "assets": 478.8,
+   "liab": 29.0,
+   "equity": 449.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 131.0,
+   "op": -0.8,
+   "ni": -6.7,
+   "assets": 490.4,
+   "liab": 40.3,
+   "equity": 450.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 169.8,
+   "op": 12.2,
+   "ni": 28.4,
+   "assets": 526.8,
+   "liab": 47.2,
+   "equity": 479.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 40.5,
+   "op": -4.9,
+   "ni": 0.1
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 34.0,
+   "op": 4.3,
+   "ni": 6.4
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 23.9,
+   "op": -2.6,
+   "ni": 2.5
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 32.6,
+   "op": 2.5,
+   "ni": -15.7
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 30.5,
+   "op": -3.1,
+   "ni": 0.9
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 34.5,
+   "op": 2.7,
+   "ni": 5.5
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 39.3,
+   "op": 6.1,
+   "ni": 12.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 65.4,
+   "op": 6.5,
+   "ni": 10.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 39.2,
+   "op": 11.6,
+   "ni": 19.7
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 52.9,
+   "op": 10.8,
+   "ni": 7.1
+  }
+ ]
+}

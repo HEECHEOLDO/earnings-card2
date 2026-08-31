@@ -1,0 +1,200 @@
+{
+ "name": "캔버스엔",
+ "split_adjusted": false,
+ "legal_name": "캔버스엔",
+ "code": "210120",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-01",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 373.9,
+   "op": 33.3,
+   "ni": 26.9,
+   "assets": 190.9,
+   "liab": 32.5,
+   "equity": 158.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 30.0,
+   "op": -95.6,
+   "ni": -107.4,
+   "assets": 172.9,
+   "liab": 112.7,
+   "equity": 60.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 138.1,
+   "op": -53.7,
+   "ni": -33.1,
+   "assets": 216.3,
+   "liab": 189.1,
+   "equity": 27.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 283.6,
+   "op": 10.7,
+   "ni": 6.0,
+   "assets": 264.5,
+   "liab": 231.3,
+   "equity": 33.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 212.0,
+   "op": -19.1,
+   "ni": -11.7,
+   "assets": 190.6,
+   "liab": 169.2,
+   "equity": 21.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 322.3,
+   "op": 17.3,
+   "ni": 13.3,
+   "assets": 260.2,
+   "liab": 134.6,
+   "equity": 125.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 175.4,
+   "op": -5.5,
+   "ni": -2.5,
+   "assets": 287.3,
+   "liab": 57.4,
+   "equity": 230.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 96.2,
+   "op": -51.2,
+   "ni": -70.2,
+   "assets": 400.4,
+   "liab": 228.7,
+   "equity": 171.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 40.0,
+   "op": -14.8,
+   "ni": -86.6,
+   "assets": 341.4,
+   "liab": 257.7,
+   "equity": 83.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 3.1,
+   "op": -1.0,
+   "ni": 1.4
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 5.9,
+   "op": -3.2,
+   "ni": -8.3
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 82.7,
+   "op": -42.6,
+   "ni": -47.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 4.5,
+   "op": -4.4,
+   "ni": -16.3
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 5.2,
+   "op": -4.6,
+   "ni": -9.9
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 3.4,
+   "op": -8.5,
+   "ni": -9.7
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 3.7,
+   "op": -3.9,
+   "ni": -9.6
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 27.7,
+   "op": 2.2,
+   "ni": -57.3
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 5.3,
+   "op": -0.8,
+   "ni": -10.6
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 6.6,
+   "op": -8.3,
+   "ni": -13.1
+  }
+ ]
+}

@@ -1,0 +1,33 @@
+{
+ "name": "틸론",
+ "split_adjusted": false,
+ "legal_name": "틸론",
+ "code": "217880",
+ "market": "코넥스",
+ "sector": "",
+ "updated": "2026-09-01",
+ "annual": [
+  {
+   "p": 2024,
+   "rev": 76.6,
+   "op": -3.1,
+   "ni": -28.9,
+   "assets": 321.9,
+   "liab": 310.6,
+   "equity": 11.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 76.6,
+   "op": -3.1,
+   "ni": -28.9
+  }
+ ]
+}

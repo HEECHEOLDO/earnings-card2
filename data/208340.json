@@ -1,0 +1,161 @@
+{
+ "name": "파멥신",
+ "split_adjusted": false,
+ "legal_name": "파멥신",
+ "code": "208340",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-09-01",
+ "annual": [
+  {
+   "p": 2020,
+   "rev": 0.6,
+   "op": -255.1,
+   "ni": -306.8,
+   "assets": 1335.5,
+   "liab": 878.4,
+   "equity": 457.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 0.7,
+   "op": -382.2,
+   "ni": -440.3,
+   "assets": 685.3,
+   "liab": 176.2,
+   "equity": 509.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 2.1,
+   "op": -232.9,
+   "ni": -305.5,
+   "assets": 403.6,
+   "liab": 155.7,
+   "equity": 247.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 0.7,
+   "op": -121.0,
+   "ni": -142.5,
+   "assets": 267.0,
+   "liab": 101.1,
+   "equity": 165.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 38.9,
+   "op": -77.1,
+   "ni": -66.9,
+   "assets": 542.9,
+   "liab": 83.6,
+   "equity": 459.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 92.1,
+   "op": -100.2,
+   "ni": -51.1,
+   "assets": 726.8,
+   "liab": 311.2,
+   "equity": 415.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 3,
+   "rev": 0.1,
+   "op": -33.3,
+   "ni": -38.8
+  },
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 0.6,
+   "op": -17.2,
+   "ni": -10.5
+  },
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 0.4,
+   "op": -14.7,
+   "ni": -10.7
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 0.0,
+   "op": -25.8,
+   "ni": -23.7
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 6.4,
+   "op": -23.9,
+   "ni": -17.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 32.0,
+   "op": -12.7,
+   "ni": -15.4
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 19.0,
+   "op": -11.1,
+   "ni": -4.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 21.4,
+   "op": -32.8,
+   "ni": -19.3
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 73.1,
+   "op": 44.1,
+   "ni": 49.4
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": -21.4,
+   "op": -100.3,
+   "ni": -77.2
+  }
+ ]
+}

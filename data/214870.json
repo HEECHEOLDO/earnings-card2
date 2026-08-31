@@ -1,0 +1,186 @@
+{
+ "name": "한울비앤씨",
+ "split_adjusted": false,
+ "legal_name": "한울비앤씨",
+ "code": "214870",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-09-01",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 328.8,
+   "op": -27.0,
+   "ni": -10.9,
+   "assets": 445.4,
+   "liab": 107.3,
+   "equity": 338.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 306.0,
+   "op": -60.0,
+   "ni": -91.2,
+   "assets": 733.5,
+   "liab": 355.1,
+   "equity": 378.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 186.4,
+   "op": -55.5,
+   "ni": -73.6,
+   "assets": 587.4,
+   "liab": 269.5,
+   "equity": 317.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 958.2,
+   "op": -1.0,
+   "ni": -26.9,
+   "assets": 1184.7,
+   "liab": 513.2,
+   "equity": 671.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 544.2,
+   "op": -174.3,
+   "ni": -226.1,
+   "assets": 1270.3,
+   "liab": 637.2,
+   "equity": 633.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 293.5,
+   "op": -280.5,
+   "ni": -519.2,
+   "assets": 1137.8,
+   "liab": 849.8,
+   "equity": 287.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 217.1,
+   "op": -291.1,
+   "ni": -719.6,
+   "assets": 299.5,
+   "liab": 516.7,
+   "equity": -217.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 126.2,
+   "op": -137.2,
+   "ni": 9.0,
+   "assets": 302.4,
+   "liab": 510.6,
+   "equity": -208.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 62.9,
+   "op": -63.1,
+   "ni": -45.3,
+   "assets": 125.3,
+   "liab": 310.5,
+   "equity": -185.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 1,
+   "rev": 29.7,
+   "op": -28.2,
+   "ni": -98.8
+  },
+  {
+   "y": 2023,
+   "q": 2,
+   "rev": 53.0,
+   "op": -34.9,
+   "ni": -60.2
+  },
+  {
+   "y": 2023,
+   "q": 3,
+   "rev": 28.1,
+   "op": -7.0,
+   "ni": 102.1
+  },
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 15.4,
+   "op": -67.0,
+   "ni": 66.0
+  },
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 13.1,
+   "op": -19.3,
+   "ni": -26.6
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 14.5,
+   "op": -16.3,
+   "ni": -28.5
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 18.1,
+   "op": -15.7,
+   "ni": -18.2
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 17.3,
+   "op": -11.8,
+   "ni": 27.9
+  }
+ ]
+}

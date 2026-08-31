@@ -1,0 +1,103 @@
+{
+ "name": "맘스터치앤컴퍼니",
+ "split_adjusted": false,
+ "legal_name": "맘스터치앤컴퍼니",
+ "code": "220630",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-09-01",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 2019.3,
+   "op": 169.0,
+   "ni": 89.5,
+   "assets": 748.7,
+   "liab": 317.2,
+   "equity": 431.5,
+   "dps": 25.0,
+   "payout": 25.5,
+   "yield": 1.4,
+   "dps_adj": 25.0
+  },
+  {
+   "p": 2017,
+   "rev": 2395.7,
+   "op": 154.6,
+   "ni": 112.6,
+   "assets": 1047.8,
+   "liab": 478.5,
+   "equity": 569.4,
+   "dps": null,
+   "payout": 25.5,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 2845.0,
+   "op": 230.8,
+   "ni": 168.1,
+   "assets": 1273.7,
+   "liab": 548.7,
+   "equity": 725.0,
+   "dps": null,
+   "payout": 16.6,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 2888.5,
+   "op": 189.7,
+   "ni": 129.3,
+   "assets": 1399.4,
+   "liab": 589.2,
+   "equity": 810.2,
+   "dps": 50.0,
+   "payout": 34.0,
+   "yield": 1.7,
+   "dps_adj": 50.0
+  },
+  {
+   "p": 2020,
+   "rev": 2860.4,
+   "op": 262.7,
+   "ni": 233.9,
+   "assets": 1167.7,
+   "liab": 386.4,
+   "equity": 781.3,
+   "dps": 30.0,
+   "payout": 12.8,
+   "yield": 1.1,
+   "dps_adj": 30.0
+  },
+  {
+   "p": 2021,
+   "rev": 3010.0,
+   "op": 394.6,
+   "ni": 233.0,
+   "assets": 1229.4,
+   "liab": 414.9,
+   "equity": 814.5,
+   "dps": null,
+   "payout": 0.0,
+   "yield": 0.0,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 3325.0,
+   "op": 524.4,
+   "ni": 320.6,
+   "assets": 1377.2,
+   "liab": 461.1,
+   "equity": 916.2,
+   "dps": null,
+   "payout": 0.0,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

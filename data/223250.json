@@ -1,0 +1,161 @@
+{
+ "name": "드림씨아이에스",
+ "split_adjusted": false,
+ "legal_name": "드림씨아이에스",
+ "code": "223250",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-01",
+ "annual": [
+  {
+   "p": 2020,
+   "rev": 234.9,
+   "op": 47.9,
+   "ni": 48.5,
+   "assets": 485.9,
+   "liab": 121.3,
+   "equity": 364.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 261.5,
+   "op": 36.2,
+   "ni": 32.3,
+   "assets": 567.1,
+   "liab": 187.3,
+   "equity": 379.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 388.7,
+   "op": 58.2,
+   "ni": 45.2,
+   "assets": 779.7,
+   "liab": 275.2,
+   "equity": 504.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 478.4,
+   "op": 15.9,
+   "ni": 38.6,
+   "assets": 886.3,
+   "liab": 317.0,
+   "equity": 569.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 586.5,
+   "op": 50.6,
+   "ni": 54.1,
+   "assets": 1185.4,
+   "liab": 419.8,
+   "equity": 765.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 666.3,
+   "op": 52.4,
+   "ni": 75.1,
+   "assets": 1618.4,
+   "liab": 760.4,
+   "equity": 858.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 119.3,
+   "op": 3.2,
+   "ni": 4.7
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 137.5,
+   "op": 5.7,
+   "ni": 7.5
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 181.9,
+   "op": 14.6,
+   "ni": 12.1
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 147.8,
+   "op": 27.1,
+   "ni": 29.8
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 141.7,
+   "op": 13.3,
+   "ni": 9.7
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 166.0,
+   "op": 15.1,
+   "ni": 12.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 165.2,
+   "op": 27.9,
+   "ni": 137.2
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 193.4,
+   "op": -3.9,
+   "ni": -83.8
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 174.1,
+   "op": 5.4,
+   "ni": -2.6
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 200.1,
+   "op": 22.7,
+   "ni": -44.5
+  }
+ ]
+}

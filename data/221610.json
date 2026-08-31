@@ -1,0 +1,77 @@
+{
+ "name": "자안바이오",
+ "split_adjusted": false,
+ "legal_name": "자안바이오",
+ "code": "221610",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-09-01",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 553.8,
+   "op": 61.7,
+   "ni": 53.8,
+   "assets": 573.3,
+   "liab": 184.1,
+   "equity": 389.2,
+   "dps": 500.0,
+   "payout": 37.0,
+   "yield": 3.4,
+   "dps_adj": 500.0
+  },
+  {
+   "p": 2017,
+   "rev": 458.0,
+   "op": 8.1,
+   "ni": -3.5,
+   "assets": 505.9,
+   "liab": 148.4,
+   "equity": 357.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 351.7,
+   "op": -80.3,
+   "ni": -109.8,
+   "assets": 368.5,
+   "liab": 120.8,
+   "equity": 247.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 438.9,
+   "op": 4.2,
+   "ni": 6.7,
+   "assets": 346.8,
+   "liab": 92.5,
+   "equity": 254.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 163.1,
+   "op": -88.5,
+   "ni": -133.3,
+   "assets": 1187.8,
+   "liab": 550.2,
+   "equity": 637.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

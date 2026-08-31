@@ -1,0 +1,161 @@
+{
+ "name": "롤링스톤",
+ "split_adjusted": false,
+ "legal_name": "롤링스톤",
+ "code": "214610",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-01",
+ "annual": [
+  {
+   "p": 2020,
+   "rev": 456.7,
+   "op": 34.8,
+   "ni": -57.8,
+   "assets": 709.6,
+   "liab": 150.2,
+   "equity": 559.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 303.0,
+   "op": -109.0,
+   "ni": -105.9,
+   "assets": 886.8,
+   "liab": 364.4,
+   "equity": 522.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 161.1,
+   "op": -259.0,
+   "ni": -389.2,
+   "assets": 575.1,
+   "liab": 398.7,
+   "equity": 176.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 53.7,
+   "op": -193.8,
+   "ni": -257.9,
+   "assets": 613.2,
+   "liab": 249.9,
+   "equity": 363.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 46.4,
+   "op": -192.3,
+   "ni": null,
+   "assets": 544.7,
+   "liab": 285.8,
+   "equity": 258.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 108.8,
+   "op": -99.4,
+   "ni": -241.0,
+   "assets": 253.6,
+   "liab": 94.2,
+   "equity": 159.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 24.7,
+   "op": -65.5,
+   "ni": -58.2
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 22.6,
+   "op": -59.0,
+   "ni": -72.4
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 24.8,
+   "op": -57.6,
+   "ni": -61.5
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": -25.8,
+   "op": -10.3,
+   "ni": null
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 24.3,
+   "op": -21.9,
+   "ni": null
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": -6.2,
+   "op": -23.7,
+   "ni": null
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 16.6,
+   "op": -17.6,
+   "ni": null
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 74.2,
+   "op": -36.1,
+   "ni": -241.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 278.8,
+   "op": -25.5,
+   "ni": -27.1
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 336.7,
+   "op": -16.8,
+   "ni": -19.0
+  }
+ ]
+}

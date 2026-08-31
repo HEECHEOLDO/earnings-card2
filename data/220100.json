@@ -1,0 +1,213 @@
+{
+ "name": "퓨쳐켐",
+ "split_adjusted": false,
+ "legal_name": "퓨쳐켐",
+ "code": "220100",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-01",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 16.3,
+   "op": -38.8,
+   "ni": -272.9,
+   "assets": 331.1,
+   "liab": 15.8,
+   "equity": 315.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 30.0,
+   "op": -45.3,
+   "ni": -44.9,
+   "assets": 360.0,
+   "liab": 88.0,
+   "equity": 272.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 56.4,
+   "op": -72.9,
+   "ni": -120.8,
+   "assets": 640.5,
+   "liab": 471.7,
+   "equity": 168.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 81.7,
+   "op": -53.7,
+   "ni": -54.9,
+   "assets": 632.1,
+   "liab": 517.4,
+   "equity": 114.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 110.1,
+   "op": -48.7,
+   "ni": -231.9,
+   "assets": 824.6,
+   "liab": 388.4,
+   "equity": 436.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 118.2,
+   "op": -78.9,
+   "ni": -34.6,
+   "assets": 771.4,
+   "liab": 242.2,
+   "equity": 529.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 125.7,
+   "op": -129.3,
+   "ni": -140.1,
+   "assets": 887.2,
+   "liab": 184.3,
+   "equity": 702.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 139.7,
+   "op": -84.1,
+   "ni": -67.1,
+   "assets": 728.3,
+   "liab": 89.2,
+   "equity": 639.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 172.9,
+   "op": -94.7,
+   "ni": -94.3,
+   "assets": 744.2,
+   "liab": 199.0,
+   "equity": 545.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 186.7,
+   "op": -77.5,
+   "ni": null,
+   "assets": 745.3,
+   "liab": 197.0,
+   "equity": 548.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 34.4,
+   "op": -20.7,
+   "ni": -18.7
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 34.3,
+   "op": -26.9,
+   "ni": -34.7
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 41.8,
+   "op": -23.4,
+   "ni": -35.3
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 62.4,
+   "op": -23.6,
+   "ni": -5.5
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 50.8,
+   "op": -19.0,
+   "ni": -24.4
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 36.4,
+   "op": -19.2,
+   "ni": null
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 37.9,
+   "op": -25.3,
+   "ni": null
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 61.6,
+   "op": -14.1,
+   "ni": null
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 63.6,
+   "op": -22.1,
+   "ni": -20.4
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 42.7,
+   "op": -32.2,
+   "ni": null
+  }
+ ]
+}

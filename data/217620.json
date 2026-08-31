@@ -1,0 +1,187 @@
+{
+ "name": "선샤인푸드",
+ "split_adjusted": false,
+ "legal_name": "선샤인푸드",
+ "code": "217620",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-09-01",
+ "annual": [
+  {
+   "p": 2017,
+   "rev": 688.1,
+   "op": 15.3,
+   "ni": 23.2,
+   "assets": 541.4,
+   "liab": 228.1,
+   "equity": 313.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 970.1,
+   "op": 44.5,
+   "ni": 26.1,
+   "assets": 696.8,
+   "liab": 361.8,
+   "equity": 334.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 1252.7,
+   "op": 34.9,
+   "ni": 13.6,
+   "assets": 1170.3,
+   "liab": 842.7,
+   "equity": 327.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 809.3,
+   "op": -132.6,
+   "ni": -280.7,
+   "assets": 896.2,
+   "liab": 844.2,
+   "equity": 52.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 666.3,
+   "op": -63.5,
+   "ni": -59.4,
+   "assets": 639.5,
+   "liab": 543.8,
+   "equity": 95.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 608.6,
+   "op": -53.0,
+   "ni": -87.8,
+   "assets": 718.9,
+   "liab": 614.4,
+   "equity": 104.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 523.3,
+   "op": -59.8,
+   "ni": -182.3,
+   "assets": 507.4,
+   "liab": 499.7,
+   "equity": 7.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 351.6,
+   "op": -67.5,
+   "ni": -73.5,
+   "assets": 286.4,
+   "liab": 345.5,
+   "equity": -59.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 1,
+   "rev": 146.6,
+   "op": -9.6,
+   "ni": -18.8
+  },
+  {
+   "y": 2023,
+   "q": 2,
+   "rev": 140.0,
+   "op": -7.4,
+   "ni": -14.7
+  },
+  {
+   "y": 2023,
+   "q": 3,
+   "rev": 121.9,
+   "op": -15.9,
+   "ni": -20.5
+  },
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 114.8,
+   "op": -26.8,
+   "ni": -128.2
+  },
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 116.9,
+   "op": -2.3,
+   "ni": -6.5
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 108.7,
+   "op": -18.3,
+   "ni": -20.4
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 94.4,
+   "op": -12.3,
+   "ni": -15.5
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 31.6,
+   "op": -34.6,
+   "ni": -31.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 10.8,
+   "op": -7.2,
+   "ni": -7.4
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 7.4,
+   "op": -0.7,
+   "ni": 6.2
+  }
+ ]
+}

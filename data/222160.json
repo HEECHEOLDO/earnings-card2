@@ -1,0 +1,135 @@
+{
+ "name": "엔피엑스",
+ "split_adjusted": false,
+ "legal_name": "엔피엑스",
+ "code": "222160",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-09-01",
+ "annual": [
+  {
+   "p": 2022,
+   "rev": 223.0,
+   "op": 48.1,
+   "ni": 4.2,
+   "assets": 288.5,
+   "liab": 51.8,
+   "equity": 236.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 124.6,
+   "op": -5.4,
+   "ni": 1.2,
+   "assets": 259.6,
+   "liab": 21.1,
+   "equity": 238.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 82.9,
+   "op": -32.1,
+   "ni": -30.3,
+   "assets": 223.5,
+   "liab": 17.5,
+   "equity": 205.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 36.5,
+   "op": -146.4,
+   "ni": -157.2,
+   "assets": 62.1,
+   "liab": 17.2,
+   "equity": 44.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 96.3,
+   "op": 18.9,
+   "ni": 33.8
+  },
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 33.2,
+   "op": -9.0,
+   "ni": null
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 41.8,
+   "op": -0.4,
+   "ni": null
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 82.9,
+   "op": -32.1,
+   "ni": -30.3
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 9.5,
+   "op": -11.6,
+   "ni": null
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 16.3,
+   "op": -39.0,
+   "ni": null
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 4.4,
+   "op": -10.7,
+   "ni": null
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 6.3,
+   "op": -85.1,
+   "ni": -157.2
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 5.7,
+   "op": -5.0,
+   "ni": null
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 15.4,
+   "op": 7.7,
+   "ni": null
+  }
+ ]
+}

@@ -1,0 +1,77 @@
+{
+ "name": "켐온",
+ "split_adjusted": false,
+ "legal_name": "켐온",
+ "code": "217600",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-09-01",
+ "annual": [
+  {
+   "p": 2017,
+   "rev": 155.5,
+   "op": -5.1,
+   "ni": -15.6,
+   "assets": 394.6,
+   "liab": 63.2,
+   "equity": 331.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 194.5,
+   "op": 6.2,
+   "ni": 8.4,
+   "assets": 424.7,
+   "liab": 84.2,
+   "equity": 340.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 209.1,
+   "op": 18.9,
+   "ni": 19.3,
+   "assets": 446.2,
+   "liab": 75.0,
+   "equity": 371.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 247.7,
+   "op": 24.3,
+   "ni": 19.2,
+   "assets": 726.8,
+   "liab": 180.0,
+   "equity": 546.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 291.4,
+   "op": 40.8,
+   "ni": 43.7,
+   "assets": 803.2,
+   "liab": 213.7,
+   "equity": 589.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

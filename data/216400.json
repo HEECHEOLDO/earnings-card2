@@ -1,0 +1,53 @@
+{
+ "name": "인바이츠바이오코아",
+ "split_adjusted": false,
+ "legal_name": "인바이츠바이오코아",
+ "code": "216400",
+ "market": "코넥스",
+ "sector": "",
+ "updated": "2026-09-01",
+ "annual": [
+  {
+   "p": 2024,
+   "rev": 216.5,
+   "op": 3.3,
+   "ni": -107.5,
+   "assets": 980.1,
+   "liab": 841.4,
+   "equity": 138.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 166.4,
+   "op": 2.2,
+   "ni": -83.0,
+   "assets": 827.8,
+   "liab": 801.2,
+   "equity": 26.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 216.5,
+   "op": 3.3,
+   "ni": -107.5
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 166.4,
+   "op": 2.2,
+   "ni": -83.0
+  }
+ ]
+}
