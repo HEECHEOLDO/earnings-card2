@@ -553,6 +553,15 @@
     return (v === null || v === undefined || isNaN(v)) ? '-' : v.toFixed(1) + '%';
   }
 
+  // 배당성향은 순손실인 해에 계산할 수 없다.
+  // 그냥 '-' 로 두면 데이터가 없는 것과 구분이 안 되므로 '적자'라고 밝힌다.
+  function payoutText(r) {
+    if (r.payout !== null && r.payout !== undefined && !isNaN(r.payout)) {
+      return r.payout.toFixed(1) + '%';
+    }
+    return (r.ni < 0) ? '적자' : '-';
+  }
+
   function restateNote() {
     var y = state.company && state.company.restated_from;
     return y ? ' · FY' + y + '부터 실적 기준이 바뀌어 그 이전과 직접 비교하기 어렵습니다' : '';
@@ -833,7 +842,7 @@
           return [
             { l: '주당배당금', v: usd(last.dps), c: 'bar2' },
             { l: '전년 대비', v: yoy === null ? '-' : (yoy >= 0 ? '+' : '') + yoy.toFixed(1) + '%', c: 'ink' },
-            { l: '배당성향', v: pct(last.payout), c: 'line' }
+            { l: '배당성향', v: payoutText(last), c: 'line' }
           ];
         },
         basisFmt: yearBasis
@@ -1168,16 +1177,28 @@
     }
 
     if (showLine) {
+      // 값이 없는 구간(예: 순손실로 배당성향을 못 구한 해)은 선을 끊는다.
+      // 0 으로 이으면 '그해 0%' 라는 거짓말이 된다.
+      var has = function (r) {
+        var v = r[lineKey];
+        return v !== null && v !== undefined && !isNaN(v);
+      };
       ctx.save();
       ctx.strokeStyle = colors.line; ctx.lineWidth = 5;
       ctx.lineJoin = 'round'; ctx.lineCap = 'round';
-      ctx.beginPath();
+      var open = false;
       rows.forEach(function (r, i) {
         var cx = plotL + slot * i + slot / 2;
-        if (i === 0) ctx.moveTo(cx, yB(r[lineKey])); else ctx.lineTo(cx, yB(r[lineKey]));
+        if (!has(r)) {
+          if (open) { ctx.stroke(); open = false; }
+          return;
+        }
+        if (!open) { ctx.beginPath(); ctx.moveTo(cx, yB(r[lineKey])); open = true; }
+        else ctx.lineTo(cx, yB(r[lineKey]));
       });
-      ctx.stroke();
+      if (open) ctx.stroke();
       rows.forEach(function (r, i) {
+        if (!has(r)) return;
         var cx = plotL + slot * i + slot / 2;
         ctx.fillStyle = colors.line;
         ctx.beginPath();
@@ -1503,7 +1524,7 @@
       body = rows.map(function (r) {
         return ['<td>' + r.label + '</td>',
           '<td>' + usd(r.dps) + '</td>',
-          '<td>' + pctOrDash(r.payout) + '</td>',
+          '<td>' + payoutText(r) + '</td>',
           '<td>' + fmtAmount(r.ni, niUnit) + '</td>'].join('');
       });
     } else if (period === 'annual') {
@@ -1514,7 +1535,7 @@
           '<td>' + fmtAmount(r.bar2, unit) + '</td>',
           '<td>' + r.margin.toFixed(1) + '%</td>',
           '<td>' + usd(r.dps) + '</td>',
-          '<td>' + pctOrDash(r.payout) + '</td>'].join('');
+          '<td>' + payoutText(r) + '</td>'].join('');
       });
     } else {
       head = ['분기', '매출(' + unit + ')', '영업이익(' + unit + ')', '순이익(' + unit + ')', '영업이익률'];
