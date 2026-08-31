@@ -1,0 +1,205 @@
+{
+ "name": "UPS",
+ "legal_name": "UNITED PARCEL SERVICE INC",
+ "code": "UPS",
+ "cik": "0001090727",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 61610.0,
+   "op": 7688.0,
+   "ni": 3422.0,
+   "assets": 40545.0,
+   "liab": null,
+   "equity": 429.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2017,
+   "rev": 66585.0,
+   "op": 7529.0,
+   "ni": 4905.0,
+   "assets": 45574.0,
+   "liab": null,
+   "equity": 1024.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2018,
+   "rev": 71861.0,
+   "op": 7024.0,
+   "ni": 4791.0,
+   "assets": 50016.0,
+   "liab": null,
+   "equity": 3037.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2019,
+   "rev": 74094.0,
+   "op": 7798.0,
+   "ni": 4440.0,
+   "assets": 57857.0,
+   "liab": null,
+   "equity": 3283.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2020,
+   "rev": 84628.0,
+   "op": 7684.0,
+   "ni": 1343.0,
+   "assets": 62408.0,
+   "liab": null,
+   "equity": 669.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2021,
+   "rev": 97287.0,
+   "op": 12810.0,
+   "ni": 12890.0,
+   "assets": 69405.0,
+   "liab": null,
+   "equity": 14269.0,
+   "dps": 4.08,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2022,
+   "rev": 100338.0,
+   "op": 13094.0,
+   "ni": 11548.0,
+   "assets": 71124.0,
+   "liab": null,
+   "equity": 19803.0,
+   "dps": 6.08,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2023,
+   "rev": 90958.0,
+   "op": 9141.0,
+   "ni": 6708.0,
+   "assets": 70857.0,
+   "liab": null,
+   "equity": 17314.0,
+   "dps": 6.48,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2024,
+   "rev": 91070.0,
+   "op": 8468.0,
+   "ni": 5782.0,
+   "assets": 70070.0,
+   "liab": null,
+   "equity": 16743.0,
+   "dps": 6.52,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2025,
+   "rev": 88661.0,
+   "op": 7867.0,
+   "ni": 5572.0,
+   "assets": 73090.0,
+   "liab": null,
+   "equity": 16255.0,
+   "dps": 6.56,
+   "payout": null,
+   "yield": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 21706.0,
+   "op": 1613.0,
+   "ni": 1113.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 21818.0,
+   "op": 1944.0,
+   "ni": 1409.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 22245.0,
+   "op": 1985.0,
+   "ni": 1539.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 25301.0,
+   "op": 2926.0,
+   "ni": 1721.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 21546.0,
+   "op": 1666.0,
+   "ni": 1187.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 21221.0,
+   "op": 1822.0,
+   "ni": 1283.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 21415.0,
+   "op": 1804.0,
+   "ni": null
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 24479.0,
+   "op": 2575.0,
+   "ni": null
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 21202.0,
+   "op": 1267.0,
+   "ni": 864.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 22834.0,
+   "op": 930.0,
+   "ni": 604.0
+  }
+ ]
+}

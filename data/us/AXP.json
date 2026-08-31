@@ -1,0 +1,205 @@
+{
+ "name": "AXP",
+ "legal_name": "AMERICAN EXPRESS CO",
+ "code": "AXP",
+ "cik": "0000004962",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 35438.0,
+   "op": null,
+   "ni": 5375.0,
+   "assets": 159000.0,
+   "liab": 138392.0,
+   "equity": 20523.0,
+   "dps": 1.22,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2017,
+   "rev": 36878.0,
+   "op": null,
+   "ni": 2748.0,
+   "assets": 181000.0,
+   "liab": 162935.0,
+   "equity": 18261.0,
+   "dps": 1.34,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2018,
+   "rev": 40338.0,
+   "op": null,
+   "ni": 6921.0,
+   "assets": 189000.0,
+   "liab": 166312.0,
+   "equity": 22290.0,
+   "dps": 1.48,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2019,
+   "rev": 43556.0,
+   "op": null,
+   "ni": 6759.0,
+   "assets": 198000.0,
+   "liab": 175250.0,
+   "equity": 23071.0,
+   "dps": 1.64,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2020,
+   "rev": 36087.0,
+   "op": null,
+   "ni": 3135.0,
+   "assets": 191000.0,
+   "liab": 168383.0,
+   "equity": 22984.0,
+   "dps": 1.72,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2021,
+   "rev": 42380.0,
+   "op": null,
+   "ni": 8060.0,
+   "assets": 189000.0,
+   "liab": 166371.0,
+   "equity": 22177.0,
+   "dps": 1.72,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2022,
+   "rev": 52862.0,
+   "op": null,
+   "ni": 7514.0,
+   "assets": 228354.0,
+   "liab": 203643.0,
+   "equity": 24711.0,
+   "dps": 2.08,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2023,
+   "rev": 60515.0,
+   "op": null,
+   "ni": 8374.0,
+   "assets": 261108.0,
+   "liab": 233051.0,
+   "equity": 28057.0,
+   "dps": 2.4,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2024,
+   "rev": 65949.0,
+   "op": null,
+   "ni": 10129.0,
+   "assets": 271461.0,
+   "liab": 241197.0,
+   "equity": 30264.0,
+   "dps": 2.8,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2025,
+   "rev": 72229.0,
+   "op": null,
+   "ni": 10833.0,
+   "assets": 300052.0,
+   "liab": 266578.0,
+   "equity": 33474.0,
+   "dps": 3.28,
+   "payout": null,
+   "yield": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 15801.0,
+   "op": null,
+   "ni": 2437.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 16333.0,
+   "op": null,
+   "ni": 3015.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 16636.0,
+   "op": null,
+   "ni": 2507.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 17179.0,
+   "op": null,
+   "ni": 2170.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 16967.0,
+   "op": null,
+   "ni": 2584.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 17856.0,
+   "op": null,
+   "ni": 2885.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 18426.0,
+   "op": null,
+   "ni": 2902.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 18980.0,
+   "op": null,
+   "ni": 2462.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 18907.0,
+   "op": null,
+   "ni": 2971.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 19637.0,
+   "op": null,
+   "ni": 3110.0
+  }
+ ]
+}

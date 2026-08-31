@@ -1,0 +1,205 @@
+{
+ "name": "TMO",
+ "legal_name": "THERMO FISHER SCIENTIFIC INC.",
+ "code": "TMO",
+ "cik": "0000097745",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 18274.0,
+   "op": 2458.0,
+   "ni": null,
+   "assets": 45908.0,
+   "liab": null,
+   "equity": 21540.0,
+   "dps": 0.6,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2017,
+   "rev": 20918.0,
+   "op": 2960.0,
+   "ni": null,
+   "assets": 56669.0,
+   "liab": null,
+   "equity": 25413.0,
+   "dps": 0.6,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2018,
+   "rev": 24358.0,
+   "op": 3783.0,
+   "ni": null,
+   "assets": 56232.0,
+   "liab": null,
+   "equity": 27594.0,
+   "dps": 0.68,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2019,
+   "rev": 25542.0,
+   "op": 4594.0,
+   "ni": 3698.0,
+   "assets": 58381.0,
+   "liab": null,
+   "equity": 29684.0,
+   "dps": 0.76,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2020,
+   "rev": 32218.0,
+   "op": 7794.0,
+   "ni": 6377.0,
+   "assets": 69052.0,
+   "liab": null,
+   "equity": 34517.0,
+   "dps": 0.88,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2021,
+   "rev": 39211.0,
+   "op": 10028.0,
+   "ni": 7728.0,
+   "assets": 95123.0,
+   "liab": null,
+   "equity": 40855.0,
+   "dps": 1.04,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2022,
+   "rev": 44915.0,
+   "op": 8393.0,
+   "ni": 6960.0,
+   "assets": 97154.0,
+   "liab": null,
+   "equity": 44032.0,
+   "dps": 1.2,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2023,
+   "rev": 42857.0,
+   "op": 6859.0,
+   "ni": 5955.0,
+   "assets": 98726.0,
+   "liab": null,
+   "equity": 46724.0,
+   "dps": 1.4,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2024,
+   "rev": 42879.0,
+   "op": 7337.0,
+   "ni": 6338.0,
+   "assets": 97321.0,
+   "liab": null,
+   "equity": 49551.0,
+   "dps": 1.56,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2025,
+   "rev": 44556.0,
+   "op": 7746.0,
+   "ni": 6721.0,
+   "assets": 110343.0,
+   "liab": null,
+   "equity": 53415.0,
+   "dps": 1.72,
+   "payout": null,
+   "yield": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 10345.0,
+   "op": 1663.0,
+   "ni": 1331.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 10541.0,
+   "op": 1820.0,
+   "ni": 1553.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 10598.0,
+   "op": 1838.0,
+   "ni": 1629.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 11395.0,
+   "op": 2016.0,
+   "ni": 1825.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 10364.0,
+   "op": 1716.0,
+   "ni": 1511.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 10855.0,
+   "op": 1834.0,
+   "ni": 1618.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 11122.0,
+   "op": 1941.0,
+   "ni": 1621.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 12215.0,
+   "op": 2255.0,
+   "ni": 1971.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 11005.0,
+   "op": 1863.0,
+   "ni": 1656.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 11994.0,
+   "op": 2087.0,
+   "ni": 1741.0
+  }
+ ]
+}

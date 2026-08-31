@@ -1,0 +1,205 @@
+{
+ "name": "ABT",
+ "legal_name": "ABBOTT LABORATORIES",
+ "code": "ABT",
+ "cik": "0000001800",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 20853.0,
+   "op": 3026.0,
+   "ni": 1400.0,
+   "assets": 52666.0,
+   "liab": null,
+   "equity": 20717.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2017,
+   "rev": 27390.0,
+   "op": 1564.0,
+   "ni": 477.0,
+   "assets": 76250.0,
+   "liab": null,
+   "equity": 31098.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2018,
+   "rev": 30578.0,
+   "op": 3650.0,
+   "ni": 2368.0,
+   "assets": 67173.0,
+   "liab": null,
+   "equity": 30722.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2019,
+   "rev": 31904.0,
+   "op": 4532.0,
+   "ni": 3687.0,
+   "assets": 67887.0,
+   "liab": null,
+   "equity": 31301.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2020,
+   "rev": 34608.0,
+   "op": 5357.0,
+   "ni": 4495.0,
+   "assets": 72548.0,
+   "liab": null,
+   "equity": 33003.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2021,
+   "rev": 43075.0,
+   "op": 8425.0,
+   "ni": 7071.0,
+   "assets": 75196.0,
+   "liab": null,
+   "equity": 36024.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2022,
+   "rev": 43653.0,
+   "op": 8362.0,
+   "ni": 6933.0,
+   "assets": 74438.0,
+   "liab": null,
+   "equity": 36905.0,
+   "dps": 1.92,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2023,
+   "rev": 40109.0,
+   "op": 6478.0,
+   "ni": 5723.0,
+   "assets": 73214.0,
+   "liab": null,
+   "equity": 38827.0,
+   "dps": 2.08,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2024,
+   "rev": 41950.0,
+   "op": 6825.0,
+   "ni": 13402.0,
+   "assets": 81414.0,
+   "liab": null,
+   "equity": 47901.0,
+   "dps": 2.24,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2025,
+   "rev": 44328.0,
+   "op": 8053.0,
+   "ni": 6524.0,
+   "assets": 86713.0,
+   "liab": null,
+   "equity": 52771.0,
+   "dps": 2.4,
+   "payout": null,
+   "yield": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 10241.0,
+   "op": 1780.0,
+   "ni": 1594.0
+  },
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 9964.0,
+   "op": 1386.0,
+   "ni": 1225.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 10377.0,
+   "op": 1669.0,
+   "ni": 1302.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 10635.0,
+   "op": 1859.0,
+   "ni": 1646.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 10974.0,
+   "op": 1911.0,
+   "ni": 9229.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 10358.0,
+   "op": 1693.0,
+   "ni": 1325.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 11142.0,
+   "op": 2052.0,
+   "ni": 1779.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 11369.0,
+   "op": 2057.0,
+   "ni": 1644.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 11459.0,
+   "op": 2251.0,
+   "ni": 1776.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 11164.0,
+   "op": 1345.0,
+   "ni": 1077.0
+  }
+ ]
+}

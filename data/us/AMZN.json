@@ -1,0 +1,205 @@
+{
+ "name": "AMZN",
+ "legal_name": "AMAZON COM INC",
+ "code": "AMZN",
+ "cik": "0001018724",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 135987.0,
+   "op": 4186.0,
+   "ni": 2371.0,
+   "assets": 83402.0,
+   "liab": null,
+   "equity": 19285.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2017,
+   "rev": 177866.0,
+   "op": 4106.0,
+   "ni": 3033.0,
+   "assets": 131310.0,
+   "liab": null,
+   "equity": 27709.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2018,
+   "rev": 232887.0,
+   "op": 12421.0,
+   "ni": 10073.0,
+   "assets": 162648.0,
+   "liab": null,
+   "equity": 43549.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2019,
+   "rev": 280522.0,
+   "op": 14541.0,
+   "ni": 11588.0,
+   "assets": 225248.0,
+   "liab": null,
+   "equity": 62060.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2020,
+   "rev": 386064.0,
+   "op": 22899.0,
+   "ni": 21331.0,
+   "assets": 321195.0,
+   "liab": null,
+   "equity": 93404.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2021,
+   "rev": 469822.0,
+   "op": 24879.0,
+   "ni": 33364.0,
+   "assets": 420549.0,
+   "liab": null,
+   "equity": 138245.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2022,
+   "rev": 513983.0,
+   "op": 12248.0,
+   "ni": -2722.0,
+   "assets": 462675.0,
+   "liab": null,
+   "equity": 146043.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2023,
+   "rev": 574785.0,
+   "op": 36852.0,
+   "ni": 30425.0,
+   "assets": 527854.0,
+   "liab": null,
+   "equity": 201875.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2024,
+   "rev": 637959.0,
+   "op": 68593.0,
+   "ni": 59248.0,
+   "assets": 624894.0,
+   "liab": null,
+   "equity": 285970.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2025,
+   "rev": 716924.0,
+   "op": 79975.0,
+   "ni": 70623.0,
+   "assets": 818042.0,
+   "liab": null,
+   "equity": 411065.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 143313.0,
+   "op": 15307.0,
+   "ni": 10431.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 147977.0,
+   "op": 14672.0,
+   "ni": 13485.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 158877.0,
+   "op": 17411.0,
+   "ni": 15328.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 187792.0,
+   "op": 21203.0,
+   "ni": 20004.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 155667.0,
+   "op": 18405.0,
+   "ni": 17127.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 167702.0,
+   "op": 19171.0,
+   "ni": 18164.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 180169.0,
+   "op": 17422.0,
+   "ni": 21187.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 213386.0,
+   "op": 24977.0,
+   "ni": 14145.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 181519.0,
+   "op": 23852.0,
+   "ni": 30255.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 200606.0,
+   "op": 27461.0,
+   "ni": 62647.0
+  }
+ ]
+}

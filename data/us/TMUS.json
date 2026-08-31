@@ -1,0 +1,205 @@
+{
+ "name": "TMUS",
+ "legal_name": "T-Mobile US, Inc.",
+ "code": "TMUS",
+ "cik": "0001283699",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 37490.0,
+   "op": 4050.0,
+   "ni": 1460.0,
+   "assets": 65891.0,
+   "liab": null,
+   "equity": 18236.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2017,
+   "rev": 40604.0,
+   "op": 4888.0,
+   "ni": 4536.0,
+   "assets": 70563.0,
+   "liab": null,
+   "equity": 22559.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2018,
+   "rev": 43310.0,
+   "op": 5309.0,
+   "ni": 2888.0,
+   "assets": 72468.0,
+   "liab": null,
+   "equity": 24718.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2019,
+   "rev": 44998.0,
+   "op": 5722.0,
+   "ni": 3468.0,
+   "assets": 86921.0,
+   "liab": null,
+   "equity": 28789.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2020,
+   "rev": 68397.0,
+   "op": 6636.0,
+   "ni": 3064.0,
+   "assets": 200162.0,
+   "liab": null,
+   "equity": 65344.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2021,
+   "rev": 80118.0,
+   "op": 6892.0,
+   "ni": 3024.0,
+   "assets": 206563.0,
+   "liab": null,
+   "equity": 69102.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2022,
+   "rev": 79571.0,
+   "op": 6543.0,
+   "ni": 2590.0,
+   "assets": 211338.0,
+   "liab": null,
+   "equity": 69656.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2023,
+   "rev": 78558.0,
+   "op": 14266.0,
+   "ni": 8317.0,
+   "assets": 207682.0,
+   "liab": null,
+   "equity": 64715.0,
+   "dps": 0.65,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2024,
+   "rev": 81400.0,
+   "op": 18010.0,
+   "ni": 11339.0,
+   "assets": 208035.0,
+   "liab": null,
+   "equity": 61741.0,
+   "dps": 3.71,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2025,
+   "rev": 88309.0,
+   "op": 18279.0,
+   "ni": 10992.0,
+   "assets": 219237.0,
+   "liab": null,
+   "equity": 59203.0,
+   "dps": 3.8,
+   "payout": null,
+   "yield": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 19594.0,
+   "op": 3998.0,
+   "ni": 2374.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 19772.0,
+   "op": 4630.0,
+   "ni": 2925.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 20162.0,
+   "op": 4796.0,
+   "ni": 3059.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 21872.0,
+   "op": 4586.0,
+   "ni": 2981.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 20886.0,
+   "op": 4800.0,
+   "ni": 2953.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 21132.0,
+   "op": 5213.0,
+   "ni": 3222.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 21957.0,
+   "op": 4530.0,
+   "ni": 2714.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 24334.0,
+   "op": 3736.0,
+   "ni": 2103.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 23107.0,
+   "op": 4497.0,
+   "ni": 2504.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 22791.0,
+   "op": 5490.0,
+   "ni": 3239.0
+  }
+ ]
+}

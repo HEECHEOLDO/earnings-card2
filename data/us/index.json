@@ -1,0 +1,748 @@
+{
+ "updated": "2026-08-31",
+ "count": 106,
+ "companies": [
+  {
+   "name": "AAPL",
+   "code": "AAPL",
+   "legal_name": "Apple Inc.",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "ABBV",
+   "code": "ABBV",
+   "legal_name": "AbbVie Inc.",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "ABNB",
+   "code": "ABNB",
+   "legal_name": "Airbnb, Inc.",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "ABT",
+   "code": "ABT",
+   "legal_name": "ABBOTT LABORATORIES",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "ADBE",
+   "code": "ADBE",
+   "legal_name": "ADOBE INC.",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "AMAT",
+   "code": "AMAT",
+   "legal_name": "APPLIED MATERIALS INC /DE",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "AMD",
+   "code": "AMD",
+   "legal_name": "ADVANCED MICRO DEVICES INC",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "AMGN",
+   "code": "AMGN",
+   "legal_name": "AMGEN INC",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "AMZN",
+   "code": "AMZN",
+   "legal_name": "AMAZON COM INC",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "ARM",
+   "code": "ARM",
+   "legal_name": "ARM HOLDINGS PLC /UK",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "AVGO",
+   "code": "AVGO",
+   "legal_name": "Broadcom Inc.",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "AXP",
+   "code": "AXP",
+   "legal_name": "AMERICAN EXPRESS CO",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "BA",
+   "code": "BA",
+   "legal_name": "BOEING CO",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "BAC",
+   "code": "BAC",
+   "legal_name": "BANK OF AMERICA CORP /DE/",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "BKNG",
+   "code": "BKNG",
+   "legal_name": "Booking Holdings Inc.",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "BLK",
+   "code": "BLK",
+   "legal_name": "BlackRock, Inc.",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "BMY",
+   "code": "BMY",
+   "legal_name": "BRISTOL MYERS SQUIBB CO",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "BRK-B",
+   "code": "BRK-B",
+   "legal_name": "BERKSHIRE HATHAWAY INC",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "C",
+   "code": "C",
+   "legal_name": "CITIGROUP INC",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "CAT",
+   "code": "CAT",
+   "legal_name": "CATERPILLAR INC",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "CB",
+   "code": "CB",
+   "legal_name": "Chubb Ltd",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "CL",
+   "code": "CL",
+   "legal_name": "COLGATE PALMOLIVE CO",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "CMCSA",
+   "code": "CMCSA",
+   "legal_name": "COMCAST CORP",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "COIN",
+   "code": "COIN",
+   "legal_name": "Coinbase Global, Inc.",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "COP",
+   "code": "COP",
+   "legal_name": "CONOCOPHILLIPS",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "COST",
+   "code": "COST",
+   "legal_name": "COSTCO WHOLESALE CORP /NEW",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "CPNG",
+   "code": "CPNG",
+   "legal_name": "Coupang, Inc.",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "CRM",
+   "code": "CRM",
+   "legal_name": "Salesforce, Inc.",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "CSCO",
+   "code": "CSCO",
+   "legal_name": "CISCO SYSTEMS, INC.",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "CVX",
+   "code": "CVX",
+   "legal_name": "CHEVRON CORP",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "DE",
+   "code": "DE",
+   "legal_name": "DEERE & CO",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "DHR",
+   "code": "DHR",
+   "legal_name": "DANAHER CORP /DE/",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "DIS",
+   "code": "DIS",
+   "legal_name": "Walt Disney Co",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "ECL",
+   "code": "ECL",
+   "legal_name": "ECOLAB INC.",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "FDX",
+   "code": "FDX",
+   "legal_name": "FEDEX CORP",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "GE",
+   "code": "GE",
+   "legal_name": "GENERAL ELECTRIC CO",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "GILD",
+   "code": "GILD",
+   "legal_name": "GILEAD SCIENCES, INC.",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "GIS",
+   "code": "GIS",
+   "legal_name": "GENERAL MILLS INC",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "GOOGL",
+   "code": "GOOGL",
+   "legal_name": "Alphabet Inc.",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "GS",
+   "code": "GS",
+   "legal_name": "GOLDMAN SACHS GROUP INC",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "HD",
+   "code": "HD",
+   "legal_name": "HOME DEPOT, INC.",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "HON",
+   "code": "HON",
+   "legal_name": "HONEYWELL INTERNATIONAL INC",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "INTC",
+   "code": "INTC",
+   "legal_name": "INTEL CORP",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "INTU",
+   "code": "INTU",
+   "legal_name": "INTUIT INC.",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "ISRG",
+   "code": "ISRG",
+   "legal_name": "INTUITIVE SURGICAL INC",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "JNJ",
+   "code": "JNJ",
+   "legal_name": "JOHNSON & JOHNSON",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "JPM",
+   "code": "JPM",
+   "legal_name": "JPMORGAN CHASE & CO",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "KHC",
+   "code": "KHC",
+   "legal_name": "Kraft Heinz Co",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "KLAC",
+   "code": "KLAC",
+   "legal_name": "KLA CORP",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "KMB",
+   "code": "KMB",
+   "legal_name": "KIMBERLY CLARK CORP",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "KO",
+   "code": "KO",
+   "legal_name": "COCA COLA CO",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "LIN",
+   "code": "LIN",
+   "legal_name": "LINDE PLC",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "LLY",
+   "code": "LLY",
+   "legal_name": "ELI LILLY & Co",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "LMT",
+   "code": "LMT",
+   "legal_name": "LOCKHEED MARTIN CORP",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "LOW",
+   "code": "LOW",
+   "legal_name": "LOWES COMPANIES INC",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "LRCX",
+   "code": "LRCX",
+   "legal_name": "LAM RESEARCH CORP",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "MA",
+   "code": "MA",
+   "legal_name": "Mastercard Inc",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "MAR",
+   "code": "MAR",
+   "legal_name": "MARRIOTT INTERNATIONAL INC /MD/",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "MCD",
+   "code": "MCD",
+   "legal_name": "MCDONALDS CORP",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "MDLZ",
+   "code": "MDLZ",
+   "legal_name": "Mondelez International, Inc.",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "META",
+   "code": "META",
+   "legal_name": "Meta Platforms, Inc.",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "MO",
+   "code": "MO",
+   "legal_name": "ALTRIA GROUP, INC.",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "MRK",
+   "code": "MRK",
+   "legal_name": "Merck & Co., Inc.",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "MS",
+   "code": "MS",
+   "legal_name": "MORGAN STANLEY",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "MSFT",
+   "code": "MSFT",
+   "legal_name": "MICROSOFT CORP",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "MU",
+   "code": "MU",
+   "legal_name": "MICRON TECHNOLOGY INC",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "NFLX",
+   "code": "NFLX",
+   "legal_name": "NETFLIX INC",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "NKE",
+   "code": "NKE",
+   "legal_name": "NIKE, Inc.",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "NOW",
+   "code": "NOW",
+   "legal_name": "ServiceNow, Inc.",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "NUE",
+   "code": "NUE",
+   "legal_name": "NUCOR CORP",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "NVDA",
+   "code": "NVDA",
+   "legal_name": "NVIDIA CORP",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "ORCL",
+   "code": "ORCL",
+   "legal_name": "ORACLE CORP",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "OXY",
+   "code": "OXY",
+   "legal_name": "OCCIDENTAL PETROLEUM CORP /DE/",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "PEP",
+   "code": "PEP",
+   "legal_name": "PEPSICO INC",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "PFE",
+   "code": "PFE",
+   "legal_name": "PFIZER INC",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "PG",
+   "code": "PG",
+   "legal_name": "PROCTER & GAMBLE Co",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "PGR",
+   "code": "PGR",
+   "legal_name": "PROGRESSIVE CORP/OH/",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "PLTR",
+   "code": "PLTR",
+   "legal_name": "Palantir Technologies Inc.",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "PM",
+   "code": "PM",
+   "legal_name": "Philip Morris International Inc.",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "PYPL",
+   "code": "PYPL",
+   "legal_name": "PayPal Holdings, Inc.",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "QCOM",
+   "code": "QCOM",
+   "legal_name": "QUALCOMM INC/DE",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "REGN",
+   "code": "REGN",
+   "legal_name": "REGENERON PHARMACEUTICALS, INC.",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "RTX",
+   "code": "RTX",
+   "legal_name": "RTX Corp",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "SBUX",
+   "code": "SBUX",
+   "legal_name": "STARBUCKS CORP",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "SCHW",
+   "code": "SCHW",
+   "legal_name": "SCHWAB CHARLES CORP",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "SHOP",
+   "code": "SHOP",
+   "legal_name": "SHOPIFY INC.",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "SHW",
+   "code": "SHW",
+   "legal_name": "SHERWIN WILLIAMS CO",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "SLB",
+   "code": "SLB",
+   "legal_name": "SLB LIMITED/NV",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "SPGI",
+   "code": "SPGI",
+   "legal_name": "S&P Global Inc.",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "T",
+   "code": "T",
+   "legal_name": "AT&T INC.",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "TGT",
+   "code": "TGT",
+   "legal_name": "TARGET CORP",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "TMO",
+   "code": "TMO",
+   "legal_name": "THERMO FISHER SCIENTIFIC INC.",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "TMUS",
+   "code": "TMUS",
+   "legal_name": "T-Mobile US, Inc.",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "TSLA",
+   "code": "TSLA",
+   "legal_name": "Tesla, Inc.",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "TXN",
+   "code": "TXN",
+   "legal_name": "TEXAS INSTRUMENTS INC",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "UBER",
+   "code": "UBER",
+   "legal_name": "Uber Technologies, Inc",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "UNH",
+   "code": "UNH",
+   "legal_name": "UNITEDHEALTH GROUP INC",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "UNP",
+   "code": "UNP",
+   "legal_name": "UNION PACIFIC CORP",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "UPS",
+   "code": "UPS",
+   "legal_name": "UNITED PARCEL SERVICE INC",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "V",
+   "code": "V",
+   "legal_name": "VISA INC.",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "VRTX",
+   "code": "VRTX",
+   "legal_name": "VERTEX PHARMACEUTICALS INC / MA",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "VZ",
+   "code": "VZ",
+   "legal_name": "VERIZON COMMUNICATIONS INC",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "WFC",
+   "code": "WFC",
+   "legal_name": "WELLS FARGO & COMPANY/MN",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "WM",
+   "code": "WM",
+   "legal_name": "WASTE MANAGEMENT INC",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "WMT",
+   "code": "WMT",
+   "legal_name": "Walmart Inc.",
+   "market": "미국",
+   "updated": "2026-08-31"
+  },
+  {
+   "name": "XOM",
+   "code": "XOM",
+   "legal_name": "XOM",
+   "market": "미국",
+   "updated": "2026-08-31"
+  }
+ ]
+}

@@ -1,0 +1,205 @@
+{
+ "name": "OXY",
+ "legal_name": "OCCIDENTAL PETROLEUM CORP /DE/",
+ "code": "OXY",
+ "cik": "0000797468",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 10090.0,
+   "op": -1845.0,
+   "ni": -574.0,
+   "assets": 43109.0,
+   "liab": null,
+   "equity": 21497.0,
+   "dps": 3.02,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2017,
+   "rev": 12508.0,
+   "op": 971.0,
+   "ni": 1311.0,
+   "assets": 42026.0,
+   "liab": null,
+   "equity": 20572.0,
+   "dps": 3.06,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2018,
+   "rev": 17824.0,
+   "op": 5277.0,
+   "ni": 4131.0,
+   "assets": 42159.0,
+   "liab": null,
+   "equity": 21330.0,
+   "dps": 3.1,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2019,
+   "rev": 20911.0,
+   "op": -252.0,
+   "ni": -522.0,
+   "assets": 107190.0,
+   "liab": null,
+   "equity": 34232.0,
+   "dps": 3.14,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2020,
+   "rev": 17809.0,
+   "op": -15705.0,
+   "ni": -14831.0,
+   "assets": 80064.0,
+   "liab": null,
+   "equity": 18573.0,
+   "dps": 0.82,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2021,
+   "rev": 25956.0,
+   "op": 3705.0,
+   "ni": 2322.0,
+   "assets": 75036.0,
+   "liab": null,
+   "equity": 20327.0,
+   "dps": 0.04,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2022,
+   "rev": 36634.0,
+   "op": 14117.0,
+   "ni": 13304.0,
+   "assets": 72609.0,
+   "liab": null,
+   "equity": 30085.0,
+   "dps": 0.52,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2023,
+   "rev": 23156.0,
+   "op": 4662.0,
+   "ni": 4696.0,
+   "assets": 74008.0,
+   "liab": null,
+   "equity": 30349.0,
+   "dps": 0.72,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2024,
+   "rev": 22019.0,
+   "op": 4024.0,
+   "ni": 3078.0,
+   "assets": 85445.0,
+   "liab": null,
+   "equity": 34480.0,
+   "dps": 0.88,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2025,
+   "rev": 21593.0,
+   "op": 3128.0,
+   "ni": 2369.0,
+   "assets": 84186.0,
+   "liab": null,
+   "equity": 36598.0,
+   "dps": 0.96,
+   "payout": null,
+   "yield": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 5975.0,
+   "op": 1010.0,
+   "ni": 888.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 6817.0,
+   "op": 1635.0,
+   "ni": 1170.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 7173.0,
+   "op": 1594.0,
+   "ni": 1140.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 2054.0,
+   "op": -215.0,
+   "ni": -120.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 5704.0,
+   "op": 1177.0,
+   "ni": 945.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 5258.0,
+   "op": 560.0,
+   "ni": 468.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 6624.0,
+   "op": 1166.0,
+   "ni": 842.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 4007.0,
+   "op": 225.0,
+   "ni": 114.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 5230.0,
+   "op": 390.0,
+   "ni": 3359.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 8065.0,
+   "op": 3915.0,
+   "ni": 2996.0
+  }
+ ]
+}

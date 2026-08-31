@@ -1,0 +1,205 @@
+{
+ "name": "FDX",
+ "legal_name": "FEDEX CORP",
+ "code": "FDX",
+ "cik": "0001048911",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2017,
+   "rev": 60319.0,
+   "op": 4566.0,
+   "ni": 2997.0,
+   "assets": 48552.0,
+   "liab": null,
+   "equity": 16073.0,
+   "dps": 1.6,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2018,
+   "rev": 65450.0,
+   "op": 4272.0,
+   "ni": 4572.0,
+   "assets": 52330.0,
+   "liab": null,
+   "equity": 19416.0,
+   "dps": 2,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2019,
+   "rev": 69693.0,
+   "op": 4466.0,
+   "ni": 540.0,
+   "assets": 54403.0,
+   "liab": null,
+   "equity": 17757.0,
+   "dps": 2.6,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2020,
+   "rev": 69217.0,
+   "op": 2417.0,
+   "ni": 1286.0,
+   "assets": 73537.0,
+   "liab": null,
+   "equity": 18295.0,
+   "dps": 2.6,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2021,
+   "rev": 83959.0,
+   "op": 5857.0,
+   "ni": 5231.0,
+   "assets": 82777.0,
+   "liab": null,
+   "equity": 24168.0,
+   "dps": 2.6,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2022,
+   "rev": 93512.0,
+   "op": 6245.0,
+   "ni": 0.0,
+   "assets": 85994.0,
+   "liab": null,
+   "equity": 24939.0,
+   "dps": 3,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2023,
+   "rev": 90155.0,
+   "op": 4912.0,
+   "ni": 0.0,
+   "assets": 87143.0,
+   "liab": null,
+   "equity": 26088.0,
+   "dps": 5.86,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2024,
+   "rev": 87693.0,
+   "op": 5559.0,
+   "ni": 0.0,
+   "assets": 87007.0,
+   "liab": null,
+   "equity": 27582.0,
+   "dps": 3.78,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2025,
+   "rev": 87926.0,
+   "op": 5217.0,
+   "ni": 0.0,
+   "assets": 87627.0,
+   "liab": null,
+   "equity": 28074.0,
+   "dps": 5.52,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2026,
+   "rev": 94720.0,
+   "op": 5463.0,
+   "ni": 0.0,
+   "assets": 98937.0,
+   "liab": null,
+   "equity": 31647.0,
+   "dps": 5.8,
+   "payout": null,
+   "yield": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 21738.0,
+   "op": 1243.0,
+   "ni": 879.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 22109.0,
+   "op": 1555.0,
+   "ni": -2857.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 21579.0,
+   "op": 1080.0,
+   "ni": 794.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 21967.0,
+   "op": 1052.0,
+   "ni": 741.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 22160.0,
+   "op": 1292.0,
+   "ni": 909.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 22220.0,
+   "op": 1793.0,
+   "ni": -2444.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 22244.0,
+   "op": 1186.0,
+   "ni": 824.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 23469.0,
+   "op": 1378.0,
+   "ni": 956.0
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 24000.0,
+   "op": 1348.0,
+   "ni": 1056.0
+  },
+  {
+   "y": 2026,
+   "q": 4,
+   "rev": 25007.0,
+   "op": 1551.0,
+   "ni": -2836.0
+  }
+ ]
+}

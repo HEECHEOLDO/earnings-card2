@@ -1,0 +1,205 @@
+{
+ "name": "SLB",
+ "legal_name": "SLB LIMITED/NV",
+ "code": "SLB",
+ "cik": "0000087347",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 27810.0,
+   "op": 3273.0,
+   "ni": -1627.0,
+   "assets": 77956.0,
+   "liab": 36427.0,
+   "equity": 41529.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2017,
+   "rev": 30440.0,
+   "op": 3921.0,
+   "ni": -1513.0,
+   "assets": 71987.0,
+   "liab": 34726.0,
+   "equity": 37261.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2018,
+   "rev": 32815.0,
+   "op": 4187.0,
+   "ni": 2177.0,
+   "assets": 70507.0,
+   "liab": 33921.0,
+   "equity": 36586.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2019,
+   "rev": 32917.0,
+   "op": 3978.0,
+   "ni": -10107.0,
+   "assets": 56312.0,
+   "liab": 32136.0,
+   "equity": 24176.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2020,
+   "rev": 23601.0,
+   "op": 2401.0,
+   "ni": -10486.0,
+   "assets": 42434.0,
+   "liab": 29945.0,
+   "equity": 12489.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2021,
+   "rev": 22929.0,
+   "op": 3365.0,
+   "ni": 1928.0,
+   "assets": 41511.0,
+   "liab": 26225.0,
+   "equity": 15286.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2022,
+   "rev": 28091.0,
+   "op": 5011.0,
+   "ni": 3492.0,
+   "assets": 43135.0,
+   "liab": 25146.0,
+   "equity": 17989.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2023,
+   "rev": 33135.0,
+   "op": 6523.0,
+   "ni": 4275.0,
+   "assets": 47957.0,
+   "liab": 26598.0,
+   "equity": 21359.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2024,
+   "rev": 36289.0,
+   "op": null,
+   "ni": 4579.0,
+   "assets": 48935.0,
+   "liab": 26585.0,
+   "equity": 22350.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2025,
+   "rev": 35708.0,
+   "op": null,
+   "ni": 3451.0,
+   "assets": 54868.0,
+   "liab": 27577.0,
+   "equity": 27291.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 8707.0,
+   "op": 1649.0,
+   "ni": 1098.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 9139.0,
+   "op": null,
+   "ni": 1145.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 9159.0,
+   "op": null,
+   "ni": 1218.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 9284.0,
+   "op": null,
+   "ni": 1118.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 8490.0,
+   "op": null,
+   "ni": 829.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 8546.0,
+   "op": null,
+   "ni": 1048.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 8928.0,
+   "op": null,
+   "ni": 774.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 9744.0,
+   "op": null,
+   "ni": 800.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 8721.0,
+   "op": null,
+   "ni": 761.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 8972.0,
+   "op": null,
+   "ni": 815.0
+  }
+ ]
+}

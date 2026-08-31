@@ -1,0 +1,205 @@
+{
+ "name": "MAR",
+ "legal_name": "MARRIOTT INTERNATIONAL INC /MD/",
+ "code": "MAR",
+ "cik": "0001048286",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 15407.0,
+   "op": 1424.0,
+   "ni": 808.0,
+   "assets": 24140.0,
+   "liab": null,
+   "equity": 5121.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2017,
+   "rev": 20452.0,
+   "op": 2504.0,
+   "ni": 1459.0,
+   "assets": 23846.0,
+   "liab": null,
+   "equity": 3582.0,
+   "dps": 1.29,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2018,
+   "rev": 20758.0,
+   "op": 2366.0,
+   "ni": 1907.0,
+   "assets": 23696.0,
+   "liab": null,
+   "equity": 2225.0,
+   "dps": 1.56,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2019,
+   "rev": 20972.0,
+   "op": 1800.0,
+   "ni": 1273.0,
+   "assets": 25051.0,
+   "liab": null,
+   "equity": 703.0,
+   "dps": 1.85,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2020,
+   "rev": 10571.0,
+   "op": 84.0,
+   "ni": -267.0,
+   "assets": 24701.0,
+   "liab": null,
+   "equity": 430.0,
+   "dps": 0.48,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2021,
+   "rev": 13857.0,
+   "op": 1750.0,
+   "ni": 1099.0,
+   "assets": 25553.0,
+   "liab": null,
+   "equity": 1414.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2022,
+   "rev": 20773.0,
+   "op": 3462.0,
+   "ni": 2358.0,
+   "assets": 24815.0,
+   "liab": null,
+   "equity": 568.0,
+   "dps": 1,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2023,
+   "rev": 23713.0,
+   "op": 3864.0,
+   "ni": 3083.0,
+   "assets": 25674.0,
+   "liab": null,
+   "equity": -682.0,
+   "dps": 1.96,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2024,
+   "rev": 25100.0,
+   "op": 3767.0,
+   "ni": 2375.0,
+   "assets": 26182.0,
+   "liab": null,
+   "equity": -2992.0,
+   "dps": 2.41,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2025,
+   "rev": 26186.0,
+   "op": 4141.0,
+   "ni": 2601.0,
+   "assets": 27540.0,
+   "liab": null,
+   "equity": -3771.0,
+   "dps": 2.64,
+   "payout": null,
+   "yield": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 5977.0,
+   "op": 876.0,
+   "ni": 564.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 6439.0,
+   "op": 1195.0,
+   "ni": 772.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 6255.0,
+   "op": 944.0,
+   "ni": 584.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 6429.0,
+   "op": 752.0,
+   "ni": 455.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 6263.0,
+   "op": 948.0,
+   "ni": 665.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 6744.0,
+   "op": 1236.0,
+   "ni": 763.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 6489.0,
+   "op": 1180.0,
+   "ni": 728.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 6690.0,
+   "op": 777.0,
+   "ni": 445.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 6654.0,
+   "op": 1064.0,
+   "ni": 648.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 7071.0,
+   "op": 1229.0,
+   "ni": 766.0
+  }
+ ]
+}

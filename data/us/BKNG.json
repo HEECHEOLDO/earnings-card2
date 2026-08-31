@@ -1,0 +1,205 @@
+{
+ "name": "BKNG",
+ "legal_name": "Booking Holdings Inc.",
+ "code": "BKNG",
+ "cik": "0001075531",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 10743.0,
+   "op": 2906.0,
+   "ni": null,
+   "assets": 19839.0,
+   "liab": 9990.3,
+   "equity": 9820.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2017,
+   "rev": 12681.0,
+   "op": 4538.0,
+   "ni": null,
+   "assets": 25451.0,
+   "liab": 14187.0,
+   "equity": 11261.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2018,
+   "rev": 14527.0,
+   "op": 5341.0,
+   "ni": null,
+   "assets": 22687.0,
+   "liab": 13902.0,
+   "equity": 8785.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2019,
+   "rev": 15066.0,
+   "op": 5345.0,
+   "ni": null,
+   "assets": 21402.0,
+   "liab": 15469.0,
+   "equity": 5933.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2020,
+   "rev": 6796.0,
+   "op": -631.0,
+   "ni": null,
+   "assets": 21874.0,
+   "liab": 16981.0,
+   "equity": 4893.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2021,
+   "rev": 10958.0,
+   "op": 2496.0,
+   "ni": 1165.0,
+   "assets": 23641.0,
+   "liab": 17463.0,
+   "equity": 6178.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2022,
+   "rev": 17090.0,
+   "op": 5102.0,
+   "ni": 3058.0,
+   "assets": 25361.0,
+   "liab": 22579.0,
+   "equity": 2782.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2023,
+   "rev": 21365.0,
+   "op": 5835.0,
+   "ni": 4289.0,
+   "assets": 24342.0,
+   "liab": 27086.0,
+   "equity": -2744.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2024,
+   "rev": 23739.0,
+   "op": 7555.0,
+   "ni": 5882.0,
+   "assets": 27708.0,
+   "liab": 31728.0,
+   "equity": -4020.0,
+   "dps": 8.75,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2025,
+   "rev": 26917.0,
+   "op": 8825.0,
+   "ni": 5404.0,
+   "assets": 29264.0,
+   "liab": 34842.0,
+   "equity": -5578.0,
+   "dps": 9.6,
+   "payout": null,
+   "yield": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 4415.0,
+   "op": 791.0,
+   "ni": null
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 5859.0,
+   "op": 1856.0,
+   "ni": null
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 7994.0,
+   "op": 3179.0,
+   "ni": null
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 5471.0,
+   "op": 1729.0,
+   "ni": null
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 4762.0,
+   "op": 1062.0,
+   "ni": null
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 6798.0,
+   "op": 2250.0,
+   "ni": null
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 9008.0,
+   "op": 3483.0,
+   "ni": null
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 6349.0,
+   "op": 2030.0,
+   "ni": null
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 5532.0,
+   "op": 1271.0,
+   "ni": null
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 7352.0,
+   "op": 2500.0,
+   "ni": null
+  }
+ ]
+}

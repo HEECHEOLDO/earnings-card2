@@ -1,0 +1,205 @@
+{
+ "name": "GE",
+ "legal_name": "GENERAL ELECTRIC CO",
+ "code": "GE",
+ "cik": "0000040545",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 119469.0,
+   "op": null,
+   "ni": 7211.0,
+   "assets": 359122.0,
+   "liab": 284668.0,
+   "equity": 71825.0,
+   "dps": 0.93,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2017,
+   "rev": 99279.0,
+   "op": null,
+   "ni": -8849.0,
+   "assets": 369245.0,
+   "liab": 292355.0,
+   "equity": 73499.0,
+   "dps": 0.84,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2018,
+   "rev": 97012.0,
+   "op": null,
+   "ni": -22443.0,
+   "assets": 311072.0,
+   "liab": 259591.0,
+   "equity": 51481.0,
+   "dps": 0.37,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2019,
+   "rev": 90221.0,
+   "op": null,
+   "ni": -4912.0,
+   "assets": 265177.0,
+   "liab": 235316.0,
+   "equity": 29861.0,
+   "dps": 0.32,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2020,
+   "rev": 58025.0,
+   "op": null,
+   "ni": 5546.0,
+   "assets": 256211.0,
+   "liab": 219138.0,
+   "equity": 37073.0,
+   "dps": 0.32,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2021,
+   "rev": 56469.0,
+   "op": null,
+   "ni": -6408.0,
+   "assets": 205378.0,
+   "liab": 172032.0,
+   "equity": 33346.0,
+   "dps": 0.32,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2022,
+   "rev": 29139.0,
+   "op": null,
+   "ni": 403.0,
+   "assets": 188851.0,
+   "liab": 153938.0,
+   "equity": 34930.0,
+   "dps": 0.32,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2023,
+   "rev": 35348.0,
+   "op": null,
+   "ni": 9445.0,
+   "assets": 173300.0,
+   "liab": 144695.0,
+   "equity": 28605.0,
+   "dps": 0.32,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2024,
+   "rev": 38702.0,
+   "op": null,
+   "ni": 6566.0,
+   "assets": 123140.0,
+   "liab": 103576.0,
+   "equity": 19564.0,
+   "dps": 1.12,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2025,
+   "rev": 45855.0,
+   "op": null,
+   "ni": 8698.0,
+   "assets": 130169.0,
+   "liab": 111271.0,
+   "equity": 18898.0,
+   "dps": 1.44,
+   "payout": null,
+   "yield": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 8955.0,
+   "op": null,
+   "ni": 1565.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 9094.0,
+   "op": null,
+   "ni": 1268.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 9842.0,
+   "op": null,
+   "ni": 1842.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 10812.0,
+   "op": null,
+   "ni": 1891.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 9935.0,
+   "op": null,
+   "ni": 1972.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 11023.0,
+   "op": null,
+   "ni": 2021.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 12181.0,
+   "op": null,
+   "ni": 2154.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 12716.0,
+   "op": null,
+   "ni": 2551.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 12392.0,
+   "op": null,
+   "ni": 1920.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 13349.0,
+   "op": null,
+   "ni": 2357.0
+  }
+ ]
+}

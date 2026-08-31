@@ -1,0 +1,205 @@
+{
+ "name": "SHW",
+ "legal_name": "SHERWIN WILLIAMS CO",
+ "code": "SHW",
+ "cik": "0000089800",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 11855.6,
+   "op": 2164.0,
+   "ni": 1132.7,
+   "assets": 6752.5,
+   "liab": null,
+   "equity": 1878.4,
+   "dps": 3.36,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2017,
+   "rev": 14983.8,
+   "op": 2235.1,
+   "ni": 1727.9,
+   "assets": 19899.5,
+   "liab": null,
+   "equity": 3647.9,
+   "dps": 3.4,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2018,
+   "rev": 17534.5,
+   "op": 2611.6,
+   "ni": 1108.7,
+   "assets": 19134.3,
+   "liab": null,
+   "equity": 3730.7,
+   "dps": 3.44,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2019,
+   "rev": 17900.8,
+   "op": 2808.8,
+   "ni": 1541.3,
+   "assets": 20496.2,
+   "liab": null,
+   "equity": 4123.3,
+   "dps": 1.5067,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2020,
+   "rev": 18361.7,
+   "op": 3373.8,
+   "ni": 2030.4,
+   "assets": 20401.6,
+   "liab": null,
+   "equity": 3610.8,
+   "dps": 1.7867,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2021,
+   "rev": 19944.6,
+   "op": 3083.7,
+   "ni": 1864.4,
+   "assets": 20666.7,
+   "liab": null,
+   "equity": 2437.2,
+   "dps": 2.2,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2022,
+   "rev": 22148.9,
+   "op": 3397.2,
+   "ni": 2020.1,
+   "assets": 22594.0,
+   "liab": null,
+   "equity": 3102.1,
+   "dps": 2.4,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2023,
+   "rev": 23051.9,
+   "op": 4161.7,
+   "ni": 2388.8,
+   "assets": 22954.4,
+   "liab": null,
+   "equity": 3715.8,
+   "dps": 2.42,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2024,
+   "rev": 23098.5,
+   "op": null,
+   "ni": 2681.4,
+   "assets": 23632.6,
+   "liab": null,
+   "equity": 4051.2,
+   "dps": 2.86,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2025,
+   "rev": 23574.3,
+   "op": null,
+   "ni": 2568.5,
+   "assets": 25901.7,
+   "liab": null,
+   "equity": 4598.3,
+   "dps": 3.16,
+   "payout": null,
+   "yield": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 5367.3,
+   "op": 884.3,
+   "ni": 505.2
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 6271.5,
+   "op": 1413.0,
+   "ni": 889.9
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 6162.5,
+   "op": 1321.1,
+   "ni": 806.2
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 5297.2,
+   "op": null,
+   "ni": 480.1
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 5305.7,
+   "op": null,
+   "ni": 503.9
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 6314.5,
+   "op": null,
+   "ni": 754.7
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 6358.2,
+   "op": null,
+   "ni": 833.1
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 5595.9,
+   "op": null,
+   "ni": 476.8
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 5666.9,
+   "op": null,
+   "ni": 534.7
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 6789.3,
+   "op": null,
+   "ni": 843.6
+  }
+ ]
+}

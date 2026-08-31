@@ -1,0 +1,205 @@
+{
+ "name": "VRTX",
+ "legal_name": "VERTEX PHARMACEUTICALS INC / MA",
+ "code": "VRTX",
+ "cik": "0000875320",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 1702.2,
+   "op": 9.9,
+   "ni": -84.0,
+   "assets": 2896.8,
+   "liab": 1558.6,
+   "equity": 1338.2,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2017,
+   "rev": 2488.7,
+   "op": 123.2,
+   "ni": 91.6,
+   "assets": 3558.6,
+   "liab": 1503.7,
+   "equity": 2042.3,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2018,
+   "rev": 3047.6,
+   "op": 635.1,
+   "ni": 2087.1,
+   "assets": 6262.0,
+   "liab": 1810.7,
+   "equity": 4435.2,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2019,
+   "rev": 4162.8,
+   "op": 1197.5,
+   "ni": 1176.8,
+   "assets": 8318.5,
+   "liab": 2233.2,
+   "equity": 6085.2,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2020,
+   "rev": 6205.7,
+   "op": 2856.3,
+   "ni": 2711.7,
+   "assets": 11751.8,
+   "liab": 3065.0,
+   "equity": 8686.8,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2021,
+   "rev": 7574.4,
+   "op": 2782.1,
+   "ni": 2342.1,
+   "assets": 13432.5,
+   "liab": 3332.5,
+   "equity": 10100.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2022,
+   "rev": 8930.7,
+   "op": 4307.4,
+   "ni": 3322.0,
+   "assets": 18150.9,
+   "liab": 4238.2,
+   "equity": 13912.7,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2023,
+   "rev": 9869.2,
+   "op": 3832.0,
+   "ni": 3619.6,
+   "assets": 22730.2,
+   "liab": 5149.8,
+   "equity": 17580.4,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2024,
+   "rev": 11020.1,
+   "op": -232.9,
+   "ni": -535.6,
+   "assets": 22533.2,
+   "liab": 6123.6,
+   "equity": 16409.6,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2025,
+   "rev": 12001.3,
+   "op": 4173.3,
+   "ni": 3953.2,
+   "assets": 25643.0,
+   "liab": 6977.2,
+   "equity": 18665.8,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 2690.6,
+   "op": 1139.5,
+   "ni": 1099.6
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 2645.6,
+   "op": -3514.7,
+   "ni": -3593.6
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 2771.9,
+   "op": 1116.3,
+   "ni": 1045.4
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 2912.0,
+   "op": 1026.0,
+   "ni": 913.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 2770.2,
+   "op": 630.1,
+   "ni": 646.3
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 2964.7,
+   "op": 1151.1,
+   "ni": 1032.9
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 3076.4,
+   "op": 1186.2,
+   "ni": 1082.9
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 3190.0,
+   "op": 1205.9,
+   "ni": 1191.1
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 2986.9,
+   "op": 1138.1,
+   "ni": 1031.4
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 3333.9,
+   "op": 1246.9,
+   "ni": 1099.8
+  }
+ ]
+}

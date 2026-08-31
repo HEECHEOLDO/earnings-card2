@@ -1,0 +1,205 @@
+{
+ "name": "ABBV",
+ "legal_name": "AbbVie Inc.",
+ "code": "ABBV",
+ "cik": "0001551152",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 25638.0,
+   "op": 9340.0,
+   "ni": 5953.0,
+   "assets": 66099.0,
+   "liab": null,
+   "equity": 4636.0,
+   "dps": 2.35,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2017,
+   "rev": 28216.0,
+   "op": 9545.0,
+   "ni": 5309.0,
+   "assets": 70786.0,
+   "liab": null,
+   "equity": 5097.0,
+   "dps": 2.63,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2018,
+   "rev": 32753.0,
+   "op": 6383.0,
+   "ni": 5687.0,
+   "assets": 59352.0,
+   "liab": null,
+   "equity": -8446.0,
+   "dps": 3.95,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2019,
+   "rev": 33266.0,
+   "op": 12983.0,
+   "ni": 7882.0,
+   "assets": 89115.0,
+   "liab": null,
+   "equity": -8172.0,
+   "dps": 4.39,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2020,
+   "rev": 45804.0,
+   "op": 11363.0,
+   "ni": 4622.0,
+   "assets": 150565.0,
+   "liab": null,
+   "equity": 13097.0,
+   "dps": 4.84,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2021,
+   "rev": 56197.0,
+   "op": 17924.0,
+   "ni": 11549.0,
+   "assets": 146529.0,
+   "liab": null,
+   "equity": 15436.0,
+   "dps": 5.31,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2022,
+   "rev": 58054.0,
+   "op": 18117.0,
+   "ni": 11845.0,
+   "assets": 138805.0,
+   "liab": null,
+   "equity": 17287.0,
+   "dps": 5.71,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2023,
+   "rev": 54318.0,
+   "op": 12757.0,
+   "ni": 4873.0,
+   "assets": 134711.0,
+   "liab": null,
+   "equity": 10397.0,
+   "dps": 5.99,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2024,
+   "rev": 56334.0,
+   "op": 9137.0,
+   "ni": 4286.0,
+   "assets": 135161.0,
+   "liab": null,
+   "equity": 3364.0,
+   "dps": 6.29,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2025,
+   "rev": 61160.0,
+   "op": 15075.0,
+   "ni": 4233.0,
+   "assets": 133960.0,
+   "liab": null,
+   "equity": -3228.0,
+   "dps": 6.65,
+   "payout": null,
+   "yield": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 12310.0,
+   "op": 2798.0,
+   "ni": 1372.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 14462.0,
+   "op": 3998.0,
+   "ni": 1373.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 14460.0,
+   "op": 3831.0,
+   "ni": 1564.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 15102.0,
+   "op": null,
+   "ni": -22.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 13343.0,
+   "op": 3733.0,
+   "ni": 1289.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 15423.0,
+   "op": 4894.0,
+   "ni": 941.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 15776.0,
+   "op": 1904.0,
+   "ni": 188.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 16618.0,
+   "op": null,
+   "ni": 1816.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 15002.0,
+   "op": 3990.0,
+   "ni": 697.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 16990.0,
+   "op": 6432.0,
+   "ni": 3616.0
+  }
+ ]
+}

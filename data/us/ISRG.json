@@ -1,0 +1,205 @@
+{
+ "name": "ISRG",
+ "legal_name": "INTUITIVE SURGICAL INC",
+ "code": "ISRG",
+ "cik": "0001035267",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 2706.5,
+   "op": 949.7,
+   "ni": 738.3,
+   "assets": 6486.9,
+   "liab": 709.1,
+   "equity": 5820.5,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2017,
+   "rev": 3138.2,
+   "op": 1062.9,
+   "ni": 670.9,
+   "assets": 5776.8,
+   "liab": 996.4,
+   "equity": 4780.4,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2018,
+   "rev": 3724.2,
+   "op": 1199.4,
+   "ni": 1125.0,
+   "assets": 7846.7,
+   "liab": 1159.2,
+   "equity": 6687.5,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2019,
+   "rev": 4478.5,
+   "op": 1374.5,
+   "ni": 1381.8,
+   "assets": 9733.2,
+   "liab": 1448.5,
+   "equity": 8284.7,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2020,
+   "rev": 4358.4,
+   "op": 1049.8,
+   "ni": 1066.8,
+   "assets": 11168.9,
+   "liab": 1409.8,
+   "equity": 9759.1,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2021,
+   "rev": 5710.1,
+   "op": 1821.0,
+   "ni": 1728.1,
+   "assets": 13555.0,
+   "liab": 1603.5,
+   "equity": 11951.5,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2022,
+   "rev": 6222.2,
+   "op": 1577.1,
+   "ni": 1344.4,
+   "assets": 12974.0,
+   "liab": 1861.4,
+   "equity": 11112.6,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2023,
+   "rev": 7124.1,
+   "op": 1766.8,
+   "ni": 1817.3,
+   "assets": 15441.5,
+   "liab": 2044.2,
+   "equity": 13397.3,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2024,
+   "rev": 8352.1,
+   "op": 2348.9,
+   "ni": 2337.5,
+   "assets": 18743.2,
+   "liab": 2213.6,
+   "equity": 16529.6,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2025,
+   "rev": 10064.7,
+   "op": 2945.5,
+   "ni": 2876.6,
+   "assets": 20458.7,
+   "liab": 2517.0,
+   "equity": 17941.7,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 1890.6,
+   "op": 469.4,
+   "ni": 547.4
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 2009.9,
+   "op": 567.3,
+   "ni": 531.5
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 2038.1,
+   "op": 577.3,
+   "ni": 570.6
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 2413.5,
+   "op": 734.9,
+   "ni": 688.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 2253.4,
+   "op": 578.1,
+   "ni": 703.7
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 2440.0,
+   "op": 743.4,
+   "ni": 664.2
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 2505.1,
+   "op": 759.7,
+   "ni": 709.2
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 2866.2,
+   "op": 864.3,
+   "ni": 799.5
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 2770.8,
+   "op": 855.3,
+   "ni": 826.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 2892.3,
+   "op": 971.9,
+   "ni": 823.2
+  }
+ ]
+}

@@ -1,0 +1,205 @@
+{
+ "name": "HON",
+ "legal_name": "HONEYWELL INTERNATIONAL INC",
+ "code": "HON",
+ "cik": "0000773840",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 39302.0,
+   "op": null,
+   "ni": 4849.0,
+   "assets": 54566.0,
+   "liab": null,
+   "equity": 18883.0,
+   "dps": 2.45,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2017,
+   "rev": 40534.0,
+   "op": null,
+   "ni": 1588.0,
+   "assets": 59470.0,
+   "liab": null,
+   "equity": 16665.0,
+   "dps": 2.74,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2018,
+   "rev": 41802.0,
+   "op": null,
+   "ni": 6828.0,
+   "assets": 57773.0,
+   "liab": null,
+   "equity": 18358.0,
+   "dps": 3.055,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2019,
+   "rev": 36709.0,
+   "op": null,
+   "ni": 6230.0,
+   "assets": 58679.0,
+   "liab": null,
+   "equity": 18706.0,
+   "dps": 3.36,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2020,
+   "rev": 32637.0,
+   "op": null,
+   "ni": 4865.0,
+   "assets": 64586.0,
+   "liab": null,
+   "equity": 17790.0,
+   "dps": 3.63,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2021,
+   "rev": 34392.0,
+   "op": null,
+   "ni": 5610.0,
+   "assets": 64470.0,
+   "liab": null,
+   "equity": 19242.0,
+   "dps": 3.77,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2022,
+   "rev": 35466.0,
+   "op": 8022.0,
+   "ni": 4967.0,
+   "assets": 62275.0,
+   "liab": null,
+   "equity": 17319.0,
+   "dps": 3.97,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2023,
+   "rev": 33009.0,
+   "op": 7563.0,
+   "ni": 5672.0,
+   "assets": 61525.0,
+   "liab": null,
+   "equity": 16434.0,
+   "dps": 4.17,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2024,
+   "rev": 34717.0,
+   "op": 7667.0,
+   "ni": 5740.0,
+   "assets": 75196.0,
+   "liab": null,
+   "equity": 19154.0,
+   "dps": 4.37,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2025,
+   "rev": 37442.0,
+   "op": 8127.0,
+   "ni": 4772.0,
+   "assets": 73681.0,
+   "liab": null,
+   "equity": 15030.0,
+   "dps": 4.58,
+   "payout": null,
+   "yield": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 8157.0,
+   "op": 2094.0,
+   "ni": 1462.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 8572.0,
+   "op": 2199.0,
+   "ni": 1545.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 8819.0,
+   "op": 2296.0,
+   "ni": 1413.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 9169.0,
+   "op": null,
+   "ni": 1285.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 8925.0,
+   "op": 2002.0,
+   "ni": 1467.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 9322.0,
+   "op": 2128.0,
+   "ni": 1569.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 9437.0,
+   "op": 2407.0,
+   "ni": 1825.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 9758.0,
+   "op": null,
+   "ni": -115.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 9143.0,
+   "op": 2129.0,
+   "ni": 795.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 9719.0,
+   "op": 2240.0,
+   "ni": 5686.0
+  }
+ ]
+}

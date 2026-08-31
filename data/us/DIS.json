@@ -1,0 +1,205 @@
+{
+ "name": "DIS",
+ "legal_name": "Walt Disney Co",
+ "code": "DIS",
+ "cik": "0001744489",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 55632.0,
+   "op": 15721.0,
+   "ni": 9790.0,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": 1.42,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2017,
+   "rev": 55137.0,
+   "op": 14775.0,
+   "ni": 9366.0,
+   "assets": 95789.0,
+   "liab": null,
+   "equity": 45004.0,
+   "dps": 1.56,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2018,
+   "rev": 59434.0,
+   "op": 15689.0,
+   "ni": 13066.0,
+   "assets": 98598.0,
+   "liab": null,
+   "equity": 52716.0,
+   "dps": 1.68,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2019,
+   "rev": 69607.0,
+   "op": 14847.0,
+   "ni": 11584.0,
+   "assets": 193984.0,
+   "liab": null,
+   "equity": 93889.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2020,
+   "rev": 65388.0,
+   "op": 8108.0,
+   "ni": -2474.0,
+   "assets": 201549.0,
+   "liab": null,
+   "equity": 88263.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2021,
+   "rev": 67418.0,
+   "op": 7766.0,
+   "ni": 1995.0,
+   "assets": 203609.0,
+   "liab": null,
+   "equity": 93011.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2022,
+   "rev": 82722.0,
+   "op": 12121.0,
+   "ni": 3505.0,
+   "assets": 203631.0,
+   "liab": null,
+   "equity": 98879.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2023,
+   "rev": 88898.0,
+   "op": 12863.0,
+   "ni": 3390.0,
+   "assets": 205579.0,
+   "liab": null,
+   "equity": 103957.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2024,
+   "rev": 91361.0,
+   "op": 15601.0,
+   "ni": 5773.0,
+   "assets": 196219.0,
+   "liab": null,
+   "equity": 105522.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2025,
+   "rev": 94425.0,
+   "op": 17551.0,
+   "ni": 13431.0,
+   "assets": 197514.0,
+   "liab": null,
+   "equity": 114612.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 22083.0,
+   "op": 3845.0,
+   "ni": 216.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 23155.0,
+   "op": 4225.0,
+   "ni": 2842.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 22574.0,
+   "op": 3655.0,
+   "ni": 564.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 24690.0,
+   "op": 5060.0,
+   "ni": 2644.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 23621.0,
+   "op": 4436.0,
+   "ni": 3401.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 23650.0,
+   "op": 4575.0,
+   "ni": 5943.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 22464.0,
+   "op": 3480.0,
+   "ni": 1443.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 25981.0,
+   "op": 4600.0,
+   "ni": 2484.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 25168.0,
+   "op": 4603.0,
+   "ni": 2465.0
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 25248.0,
+   "op": 5555.0,
+   "ni": 2844.0
+  }
+ ]
+}

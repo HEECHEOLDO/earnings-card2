@@ -1,0 +1,205 @@
+{
+ "name": "REGN",
+ "legal_name": "REGENERON PHARMACEUTICALS, INC.",
+ "code": "REGN",
+ "cik": "0000872589",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 4860.4,
+   "op": 1330.7,
+   "ni": 895.5,
+   "assets": 6973.5,
+   "liab": 2524.2,
+   "equity": 4449.3,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2017,
+   "rev": 5872.2,
+   "op": 2079.6,
+   "ni": 1198.5,
+   "assets": 8764.3,
+   "liab": 2620.2,
+   "equity": 6144.1,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2018,
+   "rev": 5145.6,
+   "op": 2534.4,
+   "ni": 2444.4,
+   "assets": 11734.5,
+   "liab": 2977.2,
+   "equity": 8757.3,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2019,
+   "rev": 6557.6,
+   "op": 2209.8,
+   "ni": 2115.8,
+   "assets": 14805.2,
+   "liab": 3715.5,
+   "equity": 11089.7,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2020,
+   "rev": 8497.1,
+   "op": 3576.6,
+   "ni": 3513.2,
+   "assets": 17163.3,
+   "liab": 6138.0,
+   "equity": 11025.3,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2021,
+   "rev": 16071.7,
+   "op": 8946.8,
+   "ni": 8075.3,
+   "assets": 25434.8,
+   "liab": 6666.0,
+   "equity": 18768.8,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2022,
+   "rev": 12172.9,
+   "op": 4738.9,
+   "ni": 4338.4,
+   "assets": 29214.5,
+   "liab": 6550.5,
+   "equity": 22664.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2023,
+   "rev": 13117.2,
+   "op": 4047.1,
+   "ni": 3953.6,
+   "assets": 33080.2,
+   "liab": 7107.1,
+   "equity": 25973.1,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2024,
+   "rev": 14202.0,
+   "op": 3990.7,
+   "ni": 4412.6,
+   "assets": 37759.4,
+   "liab": 8405.8,
+   "equity": 29353.6,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2025,
+   "rev": 14342.9,
+   "op": 3577.9,
+   "ni": 4504.9,
+   "assets": 40558.7,
+   "liab": 9301.8,
+   "equity": 31256.9,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 3145.0,
+   "op": 751.4,
+   "ni": 722.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 3547.1,
+   "op": 1069.6,
+   "ni": 1432.3
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 3720.7,
+   "op": 1179.5,
+   "ni": 1340.6
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 3789.2,
+   "op": 990.2,
+   "ni": 917.7
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 3028.7,
+   "op": 591.7,
+   "ni": 808.7
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 3675.6,
+   "op": 1079.5,
+   "ni": 1391.6
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 3754.3,
+   "op": 1026.8,
+   "ni": 1460.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 3884.3,
+   "op": 879.9,
+   "ni": 844.6
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 3605.4,
+   "op": 642.9,
+   "ni": 727.2
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 4290.7,
+   "op": 1293.5,
+   "ni": 1296.9
+  }
+ ]
+}

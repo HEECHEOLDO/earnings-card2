@@ -1,0 +1,181 @@
+{
+ "name": "PLTR",
+ "legal_name": "Palantir Technologies Inc.",
+ "code": "PLTR",
+ "cik": "0001321655",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2018,
+   "rev": 595.4,
+   "op": -623.4,
+   "ni": -580.0,
+   "assets": null,
+   "liab": null,
+   "equity": -1751.4,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2019,
+   "rev": 742.6,
+   "op": -576.4,
+   "ni": -579.6,
+   "assets": 1594.0,
+   "liab": 1447.4,
+   "equity": -1980.6,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2020,
+   "rev": 1092.7,
+   "op": -1173.7,
+   "ni": -1166.4,
+   "assets": 2690.5,
+   "liab": 1168.0,
+   "equity": 1522.5,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2021,
+   "rev": 1541.9,
+   "op": -411.0,
+   "ni": -520.4,
+   "assets": 3247.4,
+   "liab": 956.4,
+   "equity": 2291.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2022,
+   "rev": 1905.9,
+   "op": -161.2,
+   "ni": -373.7,
+   "assets": 3461.2,
+   "liab": 818.8,
+   "equity": 2642.4,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2023,
+   "rev": 2225.0,
+   "op": 120.0,
+   "ni": 209.8,
+   "assets": 4522.4,
+   "liab": 961.5,
+   "equity": 3561.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2024,
+   "rev": 2865.5,
+   "op": 310.4,
+   "ni": 462.2,
+   "assets": 6340.9,
+   "liab": 1246.5,
+   "equity": 5094.4,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2025,
+   "rev": 4475.4,
+   "op": 1414.0,
+   "ni": 1625.0,
+   "assets": 8900.4,
+   "liab": 1412.4,
+   "equity": 7488.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 634.3,
+   "op": 80.9,
+   "ni": 106.1
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 678.1,
+   "op": 105.3,
+   "ni": 135.6
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 725.5,
+   "op": 113.1,
+   "ni": 149.3
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 827.5,
+   "op": 11.0,
+   "ni": 71.2
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 883.9,
+   "op": 176.0,
+   "ni": 217.7
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 1003.7,
+   "op": 269.3,
+   "ni": 328.6
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 1181.1,
+   "op": 393.3,
+   "ni": 476.7
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 1406.8,
+   "op": 575.4,
+   "ni": 602.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 1632.6,
+   "op": 754.0,
+   "ni": 876.4
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 1935.5,
+   "op": 912.0,
+   "ni": 1066.0
+  }
+ ]
+}

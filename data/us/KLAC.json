@@ -1,0 +1,205 @@
+{
+ "name": "KLAC",
+ "legal_name": "KLA CORP",
+ "code": "KLAC",
+ "cik": "0000319201",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2017,
+   "rev": 3480.0,
+   "op": null,
+   "ni": 926.1,
+   "assets": 5532.2,
+   "liab": 4205.8,
+   "equity": 1326.4,
+   "dps": 2.14,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2018,
+   "rev": 4036.7,
+   "op": null,
+   "ni": 802.3,
+   "assets": 5638.6,
+   "liab": 4018.1,
+   "equity": 1620.5,
+   "dps": 2.52,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2019,
+   "rev": 4568.9,
+   "op": null,
+   "ni": 1175.0,
+   "assets": 9008.5,
+   "liab": 6330.8,
+   "equity": 2677.7,
+   "dps": 3,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2020,
+   "rev": 5806.4,
+   "op": null,
+   "ni": 1215.0,
+   "assets": 9280.0,
+   "liab": 6598.9,
+   "equity": 2681.0,
+   "dps": 3.3,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2021,
+   "rev": 6918.7,
+   "op": null,
+   "ni": 2077.4,
+   "assets": 10271.1,
+   "liab": 6895.5,
+   "equity": 3375.6,
+   "dps": 3.6,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2022,
+   "rev": 9211.9,
+   "op": null,
+   "ni": 3322.1,
+   "assets": 12597.1,
+   "liab": 11198.0,
+   "equity": 1399.1,
+   "dps": 4.2,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2023,
+   "rev": 10496.1,
+   "op": null,
+   "ni": 3387.4,
+   "assets": 14072.4,
+   "liab": 11152.6,
+   "equity": 2919.8,
+   "dps": 5.2,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2024,
+   "rev": 9812.2,
+   "op": null,
+   "ni": 2761.9,
+   "assets": 15433.6,
+   "liab": 12065.2,
+   "equity": 3368.3,
+   "dps": 0.565,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2025,
+   "rev": 12156.2,
+   "op": null,
+   "ni": 4061.6,
+   "assets": 16067.9,
+   "liab": 11375.5,
+   "equity": 4692.5,
+   "dps": 0.675,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2026,
+   "rev": 13579.5,
+   "op": null,
+   "ni": 4830.8,
+   "assets": 17951.5,
+   "liab": 11601.7,
+   "equity": 6349.8,
+   "dps": 0.8,
+   "payout": null,
+   "yield": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 2359.8,
+   "op": null,
+   "ni": 601.5
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 2568.7,
+   "op": null,
+   "ni": 836.4
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 2841.5,
+   "op": null,
+   "ni": 945.9
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 3076.9,
+   "op": null,
+   "ni": 824.5
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 3063.0,
+   "op": null,
+   "ni": 1088.4
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 3174.7,
+   "op": null,
+   "ni": 1202.8
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 3209.7,
+   "op": null,
+   "ni": 1121.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 3297.1,
+   "op": null,
+   "ni": 1145.7
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 3415.1,
+   "op": null,
+   "ni": 1201.0
+  },
+  {
+   "y": 2026,
+   "q": 4,
+   "rev": 3657.6,
+   "op": null,
+   "ni": 1363.1
+  }
+ ]
+}

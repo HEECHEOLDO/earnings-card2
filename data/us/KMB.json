@@ -1,0 +1,205 @@
+{
+ "name": "KMB",
+ "legal_name": "KIMBERLY CLARK CORP",
+ "code": "KMB",
+ "cik": "0000055785",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 18300.0,
+   "op": 3383.0,
+   "ni": 2219.0,
+   "assets": 14602.0,
+   "liab": null,
+   "equity": 117.0,
+   "dps": 3.68,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2017,
+   "rev": 18348.0,
+   "op": 3358.0,
+   "ni": 2319.0,
+   "assets": 15151.0,
+   "liab": null,
+   "equity": 882.0,
+   "dps": 3.88,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2018,
+   "rev": 18486.0,
+   "op": 2229.0,
+   "ni": 1445.0,
+   "assets": 14518.0,
+   "liab": null,
+   "equity": -46.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2019,
+   "rev": 18450.0,
+   "op": 2991.0,
+   "ni": 2197.0,
+   "assets": 15283.0,
+   "liab": null,
+   "equity": 194.0,
+   "dps": 4.12,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2020,
+   "rev": 19140.0,
+   "op": 3244.0,
+   "ni": 2396.0,
+   "assets": 17523.0,
+   "liab": null,
+   "equity": 869.0,
+   "dps": 4.28,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2021,
+   "rev": 19440.0,
+   "op": 2561.0,
+   "ni": 1844.0,
+   "assets": 17837.0,
+   "liab": null,
+   "equity": 737.0,
+   "dps": 4.56,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2022,
+   "rev": 16952.0,
+   "op": 2309.0,
+   "ni": 1961.0,
+   "assets": 17970.0,
+   "liab": null,
+   "equity": 700.0,
+   "dps": 4.64,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2023,
+   "rev": 17146.0,
+   "op": 1928.0,
+   "ni": 1764.0,
+   "assets": 17344.0,
+   "liab": null,
+   "equity": 1068.0,
+   "dps": 4.72,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2024,
+   "rev": 16805.0,
+   "op": 2700.0,
+   "ni": 2578.0,
+   "assets": 16546.0,
+   "liab": null,
+   "equity": 975.0,
+   "dps": 4.88,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2025,
+   "rev": 16447.0,
+   "op": 2351.0,
+   "ni": 2049.0,
+   "assets": 17098.0,
+   "liab": null,
+   "equity": 1630.0,
+   "dps": 5.04,
+   "payout": null,
+   "yield": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 4326.0,
+   "op": 853.0,
+   "ni": 647.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 4231.0,
+   "op": 539.0,
+   "ni": 544.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 4144.0,
+   "op": 1026.0,
+   "ni": 907.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 4104.0,
+   "op": null,
+   "ni": 447.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 4054.0,
+   "op": 631.0,
+   "ni": 573.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 4163.0,
+   "op": 592.0,
+   "ni": 512.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 4150.0,
+   "op": 621.0,
+   "ni": 446.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 4080.0,
+   "op": null,
+   "ni": 499.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 4163.0,
+   "op": 753.0,
+   "ni": 675.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 4189.0,
+   "op": 633.0,
+   "ni": 350.0
+  }
+ ]
+}

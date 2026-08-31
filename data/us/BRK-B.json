@@ -1,0 +1,205 @@
+{
+ "name": "BRK-B",
+ "legal_name": "BERKSHIRE HATHAWAY INC",
+ "code": "BRK-B",
+ "cik": "0001067983",
+ "market": "미국",
+ "currency": "USD",
+ "unit": "백만달러",
+ "fiscal": true,
+ "updated": "2026-08-31",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 215114.0,
+   "op": null,
+   "ni": 24427.0,
+   "assets": 620854.0,
+   "liab": 335426.0,
+   "equity": 285428.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2017,
+   "rev": 239933.0,
+   "op": null,
+   "ni": 45353.0,
+   "assets": 702095.0,
+   "liab": 350141.0,
+   "equity": 351954.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2018,
+   "rev": 247837.0,
+   "op": null,
+   "ni": 4322.0,
+   "assets": 707794.0,
+   "liab": 355294.0,
+   "equity": 352500.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2019,
+   "rev": 254616.0,
+   "op": null,
+   "ni": 81792.0,
+   "assets": 817729.0,
+   "liab": 389166.0,
+   "equity": 428563.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2020,
+   "rev": 245579.0,
+   "op": null,
+   "ni": 43253.0,
+   "assets": 873729.0,
+   "liab": 422393.0,
+   "equity": 444908.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2021,
+   "rev": 276185.0,
+   "op": null,
+   "ni": 90949.0,
+   "assets": 959388.0,
+   "liab": 439683.0,
+   "equity": 510299.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2022,
+   "rev": 302020.0,
+   "op": null,
+   "ni": -21998.0,
+   "assets": 948465.0,
+   "liab": 466784.0,
+   "equity": 481681.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2023,
+   "rev": 364482.0,
+   "op": null,
+   "ni": 97147.0,
+   "assets": 1069978.0,
+   "liab": 499208.0,
+   "equity": 567509.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2024,
+   "rev": 371433.0,
+   "op": null,
+   "ni": 89561.0,
+   "assets": 1153881.0,
+   "liab": 502226.0,
+   "equity": 651655.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  },
+  {
+   "p": 2025,
+   "rev": 371444.0,
+   "op": null,
+   "ni": 67260.0,
+   "assets": 1222176.0,
+   "liab": 502473.0,
+   "equity": 719703.0,
+   "dps": null,
+   "payout": null,
+   "yield": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 89869.0,
+   "op": null,
+   "ni": 12832.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 93653.0,
+   "op": null,
+   "ni": 30498.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 92995.0,
+   "op": null,
+   "ni": 26480.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 94916.0,
+   "op": null,
+   "ni": 19751.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 89725.0,
+   "op": null,
+   "ni": 4672.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 92515.0,
+   "op": null,
+   "ni": 12457.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 94972.0,
+   "op": null,
+   "ni": 30864.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 94232.0,
+   "op": null,
+   "ni": 19267.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 93675.0,
+   "op": null,
+   "ni": 10179.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 101808.0,
+   "op": null,
+   "ni": 25772.0
+  }
+ ]
+}
