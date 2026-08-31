@@ -61,6 +61,10 @@ TAGS = {
                "StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest"],
     "dps": ["CommonStockDividendsPerShareDeclared",
             "CommonStockDividendsPerShareCashPaid"],
+    # 배당성향 계산용 — 미국 공시에는 배당총액이 없어서 주식 수로 역산한다
+    "shares": ["WeightedAverageNumberOfDilutedSharesOutstanding",
+               "WeightedAverageNumberOfSharesOutstandingBasic",
+               "WeightedAverageNumberOfDilutedSharesOutstandingBasicAndDiluted"],
 }
 
 # 뜻이 달라서 합치면 안 되는 대체 태그. 위쪽이 아예 없을 때만 쓴다.
@@ -217,8 +221,10 @@ def pick_units(facts, kind):
     """
     us = facts.get("facts", {}).get("us-gaap", {})
 
+    want = ("shares",) if kind == "shares" else ("USD", "USD/shares", "USD-per-shares")
+
     def units_of(node):
-        for unit in ("USD", "USD/shares", "USD-per-shares"):
+        for unit in want:
             if unit in node.get("units", {}):
                 return unit, node["units"][unit]
         return None, None
@@ -372,6 +378,20 @@ def mil(v):
 
 # ------------------------------------------------- 종목 하나
 
+def payout_of(fy, A):
+    """배당성향(%) = 주당배당금 x 주식수 / 순이익.
+
+    미국 공시에는 배당총액 항목이 없어서 주식 수로 역산한다.
+    """
+    dps, ni, sh = A["dps"].get(fy), A["ni"].get(fy), A["shares"].get(fy)
+    if not dps or not ni or not sh or ni <= 0 or sh <= 0:
+        return None
+    v = dps * sh / ni * 100
+    if v <= 0 or v > 500:                 # 터무니없는 값 방어
+        return None
+    return round(v, 1)
+
+
 def collect_one(ticker, info):
     log("\n=== %s (%s) ===" % (ticker, info["name"]))
     facts = get_json(SEC_FACTS % info["cik"])
@@ -380,7 +400,7 @@ def collect_one(ticker, info):
 
     _used_tag.clear()
     A = {k: annual_series(facts, k) for k in
-         ("rev", "op", "ni", "assets", "liab", "equity", "dps")}
+         ("rev", "op", "ni", "assets", "liab", "equity", "dps", "shares")}
     dbg("사용 태그:", _used_tag)
     if not A["rev"]:
         return None, "매출 태그를 못 찾음"
@@ -395,17 +415,15 @@ def collect_one(ticker, info):
             "p": fy, "rev": mil(rev), "op": mil(op), "ni": mil(A["ni"].get(fy)),
             "assets": mil(A["assets"].get(fy)), "liab": mil(A["liab"].get(fy)),
             "equity": mil(A["equity"].get(fy)),
-            "dps": A["dps"].get(fy), "payout": None, "yield": None,
+            "dps": A["dps"].get(fy), "payout": payout_of(fy, A), "yield": None,
         })
-        log("  FY%d  매출 %s M$  영업이익 %s M$  DPS %s" % (
+        po = payout_of(fy, A)
+        log("  FY%d  매출 %s M$  영업이익 %s M$  DPS %s  배당성향 %s" % (
             fy, f"{mil(rev):,.0f}",
             (f"{mil(op):,.0f}" if op is not None else "-"),
-            (f"${A['dps'][fy]:.2f}" if fy in A["dps"] else "-")))
+            (f"${A['dps'][fy]:.2f}" if fy in A["dps"] else "-"),
+            (f"{po}%" if po is not None else "-")))
     annual = annual[-YEARS:]
-
-    # 배당성향 = DPS x 주식수 / 순이익 은 주식수가 필요하므로,
-    # 여기서는 순이익 대비 배당총액을 알 수 없어 비워 둔다.
-    # (카드에서 배당성향을 쓰지 않으면 문제 없음)
 
     fem = fiscal_end_month(facts)
     dbg("결산월: %d월" % fem)

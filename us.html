@@ -1246,9 +1246,9 @@
     ctx.textAlign = 'right';
     var adj = state.company.split_adjusted;
     var unitText = state.period === 'dividend'
-      ? '보통주 · 원' + (adj ? ' · 액면분할 반영' : '')
+      ? ''
       : '연결 · ' + unit + (showLine && spec.unitNote ? ' · ' + spec.unitNote : '') +
-        (CUR === 'KRW' ? ' · ' + Number(FX.usdkrw).toLocaleString('ko-KR') + '원 기준' : '');
+        (CUR === 'KRW' ? ' · ' + Math.round(FX.usdkrw).toLocaleString('ko-KR') + '원 기준' : '');
     ctx.fillText(unitText, CX + CWID, legendY - 2);
     ctx.textAlign = 'left';
 
@@ -1492,7 +1492,7 @@
       '</tr></thead><tbody>' + body.map(function (b) { return '<tr>' + b + '</tr>'; }).join('') + '</tbody>';
     document.getElementById('table-note').textContent =
       period === 'dividend'
-        ? '보통주 기준' + (state.company.split_adjusted ? ' · 액면분할 반영' : '')
+        ? '배당은 달러 기준'
         : '단위 ' + unit;
   }
 
@@ -1722,7 +1722,7 @@
     var el = document.getElementById('fx-note');
     if (!el) return;
     el.textContent = CUR === 'KRW'
-      ? '1달러 = ' + Number(FX.usdkrw).toLocaleString('ko-KR') + '원 기준' +
+      ? '1달러 = ' + Math.round(FX.usdkrw).toLocaleString('ko-KR') + '원 기준' +
         (FX.updated ? ' (' + FX.updated + ')' : '')
       : 'SEC 공시 원본 그대로';
   }
@@ -1764,7 +1764,7 @@
     document.getElementById('chart1-title').textContent = L.chart1;
     document.getElementById('chart1-note').textContent =
       state.period === 'dividend'
-        ? '보통주 · 단위 원' + (state.company.split_adjusted ? ' · 액면분할 반영' : '')
+        ? '배당은 달러 기준'
         : '연결 기준 · 단위 ' + unit;
     document.getElementById('chart2-title').textContent = L.chart2;
     document.getElementById('chart2-note').textContent =
