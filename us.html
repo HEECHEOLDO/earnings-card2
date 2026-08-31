@@ -1496,12 +1496,15 @@
     var t = document.getElementById('tbl');
     var head, body;
     if (period === 'dividend') {
-      head = ['회계연도', '주당배당금($)', '배당성향', '순이익'];
+      // 배당 탭의 막대는 달러(주당)라 unit 이 '달러'다.
+      // 순이익은 금액이므로 금액용 단위를 따로 정한다.
+      var niUnit = pickUnit(rows.map(function (r) { return { bar1: r.ni }; }), null);
+      head = ['회계연도', '주당배당금($)', '배당성향', '순이익(' + niUnit + ')'];
       body = rows.map(function (r) {
         return ['<td>' + r.label + '</td>',
           '<td>' + usd(r.dps) + '</td>',
           '<td>' + pctOrDash(r.payout) + '</td>',
-          '<td>' + Math.round(r.ni).toLocaleString('ko-KR') + '</td>'].join('');
+          '<td>' + fmtAmount(r.ni, niUnit) + '</td>'].join('');
       });
     } else if (period === 'annual') {
       head = ['회계연도', '매출(' + unit + ')', '영업이익(' + unit + ')', '영업이익률', 'DPS($)', '배당성향'];
