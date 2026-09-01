@@ -1,0 +1,25 @@
+{
+ "name": "메디젠휴먼케어",
+ "split_adjusted": false,
+ "legal_name": "메디젠휴먼케어",
+ "code": "236340",
+ "market": "코넥스",
+ "sector": "",
+ "updated": "2026-09-02",
+ "annual": [
+  {
+   "p": 2020,
+   "rev": 25.1,
+   "op": -30.6,
+   "ni": null,
+   "assets": 37.3,
+   "liab": 156.9,
+   "equity": -119.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

@@ -1,0 +1,64 @@
+{
+ "name": "쿠첸",
+ "split_adjusted": false,
+ "legal_name": "쿠첸",
+ "code": "225650",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-09-02",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 2726.2,
+   "op": 97.9,
+   "ni": 64.9,
+   "assets": 1064.4,
+   "liab": 401.7,
+   "equity": 662.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 2372.6,
+   "op": -83.8,
+   "ni": -65.3,
+   "assets": 1057.6,
+   "liab": 456.7,
+   "equity": 601.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 2233.5,
+   "op": 19.9,
+   "ni": 6.8,
+   "assets": 966.0,
+   "liab": 358.2,
+   "equity": 607.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 2091.1,
+   "op": -49.7,
+   "ni": -35.0,
+   "assets": 1038.3,
+   "liab": 464.1,
+   "equity": 574.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

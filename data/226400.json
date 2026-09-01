@@ -1,0 +1,200 @@
+{
+ "name": "오스테오닉",
+ "split_adjusted": false,
+ "legal_name": "오스테오닉",
+ "code": "226400",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-02",
+ "annual": [
+  {
+   "p": 2017,
+   "rev": 85.4,
+   "op": 22.2,
+   "ni": -42.4,
+   "assets": 296.6,
+   "liab": 222.3,
+   "equity": 74.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 90.8,
+   "op": 1.4,
+   "ni": -66.4,
+   "assets": 440.0,
+   "liab": 155.0,
+   "equity": 285.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 111.6,
+   "op": 4.8,
+   "ni": 5.0,
+   "assets": 523.2,
+   "liab": 233.6,
+   "equity": 289.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 126.1,
+   "op": 2.3,
+   "ni": -53.8,
+   "assets": 633.3,
+   "liab": 390.5,
+   "equity": 242.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 156.0,
+   "op": 5.8,
+   "ni": -28.5,
+   "assets": 641.7,
+   "liab": 286.4,
+   "equity": 355.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 198.4,
+   "op": 25.3,
+   "ni": 8.4,
+   "assets": 615.3,
+   "liab": 250.2,
+   "equity": 365.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 278.0,
+   "op": 48.4,
+   "ni": null,
+   "assets": 717.4,
+   "liab": 198.6,
+   "equity": 518.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 342.3,
+   "op": 68.9,
+   "ni": 56.5,
+   "assets": 899.2,
+   "liab": 306.0,
+   "equity": 593.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 453.9,
+   "op": 88.6,
+   "ni": 75.0,
+   "assets": 1004.3,
+   "liab": 328.5,
+   "equity": 675.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 76.9,
+   "op": 11.6,
+   "ni": 0.4
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 86.5,
+   "op": 17.6,
+   "ni": 16.2
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 81.6,
+   "op": 16.4,
+   "ni": 12.4
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 97.3,
+   "op": 23.3,
+   "ni": 27.4
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 95.3,
+   "op": 15.0,
+   "ni": 7.6
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 109.8,
+   "op": 27.5,
+   "ni": 10.1
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 118.8,
+   "op": 22.3,
+   "ni": 19.9
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 130.1,
+   "op": 23.9,
+   "ni": 37.4
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 129.0,
+   "op": 23.3,
+   "ni": 26.6
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 131.8,
+   "op": 24.2,
+   "ni": 18.2
+  }
+ ]
+}

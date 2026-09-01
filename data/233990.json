@@ -1,0 +1,77 @@
+{
+ "name": "질경이",
+ "split_adjusted": false,
+ "legal_name": "질경이",
+ "code": "233990",
+ "market": "코넥스",
+ "sector": "",
+ "updated": "2026-09-02",
+ "annual": [
+  {
+   "p": 2017,
+   "rev": 205.6,
+   "op": -19.1,
+   "ni": -17.4,
+   "assets": 123.5,
+   "liab": 63.1,
+   "equity": 60.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 215.3,
+   "op": -27.4,
+   "ni": -30.4,
+   "assets": 132.4,
+   "liab": 88.2,
+   "equity": 44.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 229.1,
+   "op": -4.1,
+   "ni": -13.0,
+   "assets": 98.5,
+   "liab": 57.7,
+   "equity": 40.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 122.8,
+   "op": -13.4,
+   "ni": -11.5,
+   "assets": 84.5,
+   "liab": 55.9,
+   "equity": 28.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 103.4,
+   "op": -19.0,
+   "ni": -22.2,
+   "assets": 64.6,
+   "liab": 58.1,
+   "equity": 6.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

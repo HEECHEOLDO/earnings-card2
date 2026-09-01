@@ -1,0 +1,90 @@
+{
+ "name": "씨엠에스에듀",
+ "split_adjusted": true,
+ "legal_name": "씨엠에스에듀",
+ "code": "225330",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-09-02",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 560.3,
+   "op": 73.4,
+   "ni": 41.1,
+   "assets": 642.5,
+   "liab": 274.9,
+   "equity": 367.6,
+   "dps": 1200.0,
+   "payout": 123.1,
+   "yield": 4.5,
+   "dps_adj": 480.0
+  },
+  {
+   "p": 2017,
+   "rev": 640.0,
+   "op": 72.3,
+   "ni": 59.8,
+   "assets": 706.5,
+   "liab": 274.7,
+   "equity": 431.8,
+   "dps": 750.0,
+   "payout": 92.0,
+   "yield": 3.4,
+   "dps_adj": 300.0
+  },
+  {
+   "p": 2018,
+   "rev": 701.5,
+   "op": 71.0,
+   "ni": 52.2,
+   "assets": 915.7,
+   "liab": 499.5,
+   "equity": 416.1,
+   "dps": 260.0,
+   "payout": 92.0,
+   "yield": 3.8,
+   "dps_adj": 260.0
+  },
+  {
+   "p": 2019,
+   "rev": 821.2,
+   "op": 95.5,
+   "ni": 61.4,
+   "assets": 1023.0,
+   "liab": 635.6,
+   "equity": 387.4,
+   "dps": 425.0,
+   "payout": 128.9,
+   "yield": 8.0,
+   "dps_adj": 425.0
+  },
+  {
+   "p": 2020,
+   "rev": 843.3,
+   "op": 71.1,
+   "ni": 62.0,
+   "assets": 1008.4,
+   "liab": 582.2,
+   "equity": 426.2,
+   "dps": 260.0,
+   "payout": 78.1,
+   "yield": 4.7,
+   "dps_adj": 260.0
+  },
+  {
+   "p": 2021,
+   "rev": 960.3,
+   "op": 115.0,
+   "ni": 73.2,
+   "assets": 1084.2,
+   "liab": 652.8,
+   "equity": 431.4,
+   "dps": 400.0,
+   "payout": 101.8,
+   "yield": 5.8,
+   "dps_adj": 400.0
+  }
+ ],
+ "quarterly": []
+}

@@ -1,0 +1,161 @@
+{
+ "name": "라온로보틱스",
+ "split_adjusted": false,
+ "legal_name": "라온로보틱스",
+ "code": "232680",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-02",
+ "annual": [
+  {
+   "p": 2020,
+   "rev": 184.0,
+   "op": 10.5,
+   "ni": 8.4,
+   "assets": 247.9,
+   "liab": 202.9,
+   "equity": 45.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 368.6,
+   "op": 52.5,
+   "ni": 58.7,
+   "assets": 388.6,
+   "liab": 193.6,
+   "equity": 195.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 594.3,
+   "op": 89.4,
+   "ni": 74.8,
+   "assets": 463.1,
+   "liab": 182.0,
+   "equity": 281.0,
+   "dps": 50.0,
+   "payout": null,
+   "yield": 0.6,
+   "dps_adj": 50.0
+  },
+  {
+   "p": 2023,
+   "rev": 345.4,
+   "op": 19.8,
+   "ni": 23.2,
+   "assets": 463.6,
+   "liab": 181.8,
+   "equity": 281.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 492.4,
+   "op": 24.9,
+   "ni": 52.3,
+   "assets": 614.0,
+   "liab": 290.7,
+   "equity": 323.3,
+   "dps": null,
+   "payout": 11.0,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 538.4,
+   "op": 39.5,
+   "ni": 36.9,
+   "assets": 669.2,
+   "liab": 311.7,
+   "equity": 357.4,
+   "dps": null,
+   "payout": 65.0,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 84.9,
+   "op": 0.6,
+   "ni": 2.7
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 104.6,
+   "op": 8.3,
+   "ni": 21.3
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 150.5,
+   "op": 11.5,
+   "ni": 10.7
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 152.4,
+   "op": 4.4,
+   "ni": 17.6
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 121.8,
+   "op": 0.1,
+   "ni": -0.8
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 136.4,
+   "op": 17.3,
+   "ni": 9.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 129.8,
+   "op": 10.3,
+   "ni": 9.9
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 150.4,
+   "op": 11.8,
+   "ni": 18.8
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 141.8,
+   "op": 8.7,
+   "ni": 13.4
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 182.2,
+   "op": 4.5,
+   "ni": 3.2
+  }
+ ]
+}

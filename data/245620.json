@@ -1,0 +1,187 @@
+{
+ "name": "EDGC",
+ "split_adjusted": false,
+ "legal_name": "EDGC",
+ "code": "245620",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-02",
+ "annual": [
+  {
+   "p": 2018,
+   "rev": 215.0,
+   "op": -68.2,
+   "ni": -72.5,
+   "assets": 751.0,
+   "liab": 236.0,
+   "equity": 515.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 567.2,
+   "op": -85.5,
+   "ni": -86.1,
+   "assets": 964.0,
+   "liab": 485.9,
+   "equity": 478.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 925.4,
+   "op": -51.1,
+   "ni": -94.3,
+   "assets": 1603.0,
+   "liab": 902.9,
+   "equity": 700.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 892.8,
+   "op": -156.0,
+   "ni": -206.7,
+   "assets": 1869.4,
+   "liab": 1279.4,
+   "equity": 590.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 942.4,
+   "op": -95.2,
+   "ni": -298.6,
+   "assets": 1920.1,
+   "liab": 1591.8,
+   "equity": 328.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 884.6,
+   "op": -93.6,
+   "ni": -330.3,
+   "assets": 1735.2,
+   "liab": 1344.1,
+   "equity": 391.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 309.4,
+   "op": -126.3,
+   "ni": -952.4,
+   "assets": 860.8,
+   "liab": 1303.5,
+   "equity": -442.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 78.9,
+   "op": -16.0,
+   "ni": 282.4,
+   "assets": 440.1,
+   "liab": 665.4,
+   "equity": -225.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 97.1,
+   "op": -38.6,
+   "ni": -66.7
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 76.8,
+   "op": -26.4,
+   "ni": -22.8
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 78.4,
+   "op": -19.3,
+   "ni": -34.6
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 57.1,
+   "op": -41.9,
+   "ni": -828.3
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 49.1,
+   "op": -15.2,
+   "ni": -5.2
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": -5.1,
+   "op": 7.0,
+   "ni": 89.8
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 17.9,
+   "op": -4.2,
+   "ni": -4.4
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 17.0,
+   "op": -3.6,
+   "ni": 202.3
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 16.0,
+   "op": -13.0,
+   "ni": 246.9
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 12.2,
+   "op": -7.2,
+   "ni": -7.3
+  }
+ ]
+}

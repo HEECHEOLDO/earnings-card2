@@ -1,0 +1,46 @@
+{
+ "name": "솔루믹스",
+ "split_adjusted": false,
+ "legal_name": "솔루믹스",
+ "code": "238500",
+ "market": "코넥스",
+ "sector": "",
+ "updated": "2026-09-02",
+ "annual": [
+  {
+   "p": 2022,
+   "rev": 13.7,
+   "op": -25.8,
+   "ni": -42.5,
+   "assets": 54.6,
+   "liab": 14.3,
+   "equity": 40.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 8.2,
+   "op": -19.9,
+   "ni": -32.2,
+   "assets": 48.2,
+   "liab": 18.4,
+   "equity": 29.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 8.2,
+   "op": -19.9,
+   "ni": -32.2
+  }
+ ]
+}

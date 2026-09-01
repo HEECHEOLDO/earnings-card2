@@ -1,0 +1,51 @@
+{
+ "name": "에스지에이클라우드서비스",
+ "split_adjusted": false,
+ "legal_name": "에스지에이클라우드서비스",
+ "code": "224880",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-09-02",
+ "annual": [
+  {
+   "p": 2018,
+   "rev": 255.5,
+   "op": -23.3,
+   "ni": -43.1,
+   "assets": 191.4,
+   "liab": 183.7,
+   "equity": 7.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 194.7,
+   "op": -52.4,
+   "ni": -124.8,
+   "assets": 63.6,
+   "liab": 130.2,
+   "equity": -66.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 137.1,
+   "op": -3.9,
+   "ni": -10.2,
+   "assets": 37.9,
+   "liab": 114.7,
+   "equity": -76.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

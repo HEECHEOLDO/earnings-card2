@@ -1,0 +1,159 @@
+{
+ "name": "아이엠텍",
+ "split_adjusted": false,
+ "legal_name": "아이엠텍",
+ "code": "226350",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-09-02",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 810.9,
+   "op": 2.8,
+   "ni": -169.3,
+   "assets": 614.1,
+   "liab": 222.1,
+   "equity": 392.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 690.1,
+   "op": -66.4,
+   "ni": -209.6,
+   "assets": 476.1,
+   "liab": 250.0,
+   "equity": 226.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 117.6,
+   "op": -47.9,
+   "ni": -270.0,
+   "assets": 330.8,
+   "liab": 323.4,
+   "equity": 7.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 138.4,
+   "op": -29.1,
+   "ni": -12.5,
+   "assets": 542.7,
+   "liab": 369.6,
+   "equity": 173.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 154.6,
+   "op": -30.9,
+   "ni": -332.1,
+   "assets": 280.7,
+   "liab": 386.5,
+   "equity": -105.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 184.3,
+   "op": 23.8,
+   "ni": 44.5,
+   "assets": 186.5,
+   "liab": 169.3,
+   "equity": 17.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 122.5,
+   "op": -27.8,
+   "ni": -26.4,
+   "assets": 160.7,
+   "liab": 162.4,
+   "equity": -1.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 80.0,
+   "op": -23.5,
+   "ni": -29.2,
+   "assets": 141.6,
+   "liab": 172.4,
+   "equity": -30.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 1,
+   "rev": 17.0,
+   "op": -8.1,
+   "ni": -10.5
+  },
+  {
+   "y": 2023,
+   "q": 2,
+   "rev": 21.1,
+   "op": -2.8,
+   "ni": -5.5
+  },
+  {
+   "y": 2023,
+   "q": 3,
+   "rev": 21.5,
+   "op": -11.9,
+   "ni": -10.1
+  },
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 20.4,
+   "op": -0.7,
+   "ni": -3.0
+  },
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 31.9,
+   "op": -1.6,
+   "ni": -4.6
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 15.5,
+   "op": -19.0,
+   "ni": -21.6
+  }
+ ]
+}

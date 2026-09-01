@@ -1,0 +1,174 @@
+{
+ "name": "에스엘에스바이오",
+ "split_adjusted": false,
+ "legal_name": "에스엘에스바이오",
+ "code": "246250",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-02",
+ "annual": [
+  {
+   "p": 2019,
+   "rev": 74.2,
+   "op": 10.8,
+   "ni": 6.3,
+   "assets": 110.8,
+   "liab": 69.4,
+   "equity": 41.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 87.2,
+   "op": -7.2,
+   "ni": -6.8,
+   "assets": 101.3,
+   "liab": 66.0,
+   "equity": 35.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 82.4,
+   "op": 4.3,
+   "ni": 0.6,
+   "assets": 105.1,
+   "liab": 67.8,
+   "equity": 37.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 107.5,
+   "op": 24.2,
+   "ni": 28.3,
+   "assets": 117.5,
+   "liab": 50.5,
+   "equity": 67.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 90.2,
+   "op": 10.3,
+   "ni": 14.3,
+   "assets": 178.4,
+   "liab": 43.7,
+   "equity": 134.7,
+   "dps": null,
+   "payout": 26.78,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 83.7,
+   "op": 2.9,
+   "ni": 3.4,
+   "assets": 163.6,
+   "liab": 38.5,
+   "equity": 125.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 39.8,
+   "op": -41.1,
+   "ni": -49.0,
+   "assets": 112.3,
+   "liab": 35.9,
+   "equity": 76.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 20.5,
+   "op": 0.8,
+   "ni": 1.3
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 23.8,
+   "op": 3.0,
+   "ni": 3.5
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 21.2,
+   "op": 1.1,
+   "ni": 1.6
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 18.3,
+   "op": -2.0,
+   "ni": -3.1
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 17.5,
+   "op": -2.2,
+   "ni": -2.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 15.9,
+   "op": -6.7,
+   "ni": -11.9
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 3.0,
+   "op": -18.0,
+   "ni": -18.7
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 3.4,
+   "op": -14.1,
+   "ni": -16.5
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 9.6,
+   "op": -9.5,
+   "ni": -9.4
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 12.9,
+   "op": -9.0,
+   "ni": -9.7
+  }
+ ]
+}

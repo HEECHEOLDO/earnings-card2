@@ -1,0 +1,167 @@
+{
+ "name": "프로브잇",
+ "split_adjusted": false,
+ "legal_name": "프로브잇",
+ "code": "227100",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-09-02",
+ "annual": [
+  {
+   "p": 2018,
+   "rev": 314.4,
+   "op": 4.7,
+   "ni": 3.8,
+   "assets": 199.1,
+   "liab": 45.1,
+   "equity": 154.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 217.9,
+   "op": -41.2,
+   "ni": -33.6,
+   "assets": 247.1,
+   "liab": 124.8,
+   "equity": 122.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 394.3,
+   "op": -57.0,
+   "ni": -154.2,
+   "assets": 222.5,
+   "liab": 187.4,
+   "equity": 35.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 132.3,
+   "op": -92.5,
+   "ni": -195.0,
+   "assets": 650.0,
+   "liab": 182.8,
+   "equity": 467.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 128.6,
+   "op": -76.9,
+   "ni": -77.2,
+   "assets": 882.3,
+   "liab": 479.5,
+   "equity": 402.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 1823.2,
+   "op": -67.2,
+   "ni": -329.7,
+   "assets": 1352.0,
+   "liab": 1206.9,
+   "equity": 145.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 669.3,
+   "op": -345.1,
+   "ni": -322.0,
+   "assets": 489.3,
+   "liab": 443.7,
+   "equity": 45.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 1,
+   "rev": 502.4,
+   "op": -2.8,
+   "ni": -12.4
+  },
+  {
+   "y": 2023,
+   "q": 2,
+   "rev": 563.8,
+   "op": -27.2,
+   "ni": -137.7
+  },
+  {
+   "y": 2023,
+   "q": 3,
+   "rev": 390.6,
+   "op": 52.5,
+   "ni": 5.7
+  },
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 366.4,
+   "op": -89.6,
+   "ni": -185.3
+  },
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 311.7,
+   "op": -13.1,
+   "ni": -43.1
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 86.9,
+   "op": -156.9,
+   "ni": -604.3
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 70.3,
+   "op": -74.0,
+   "ni": -79.8
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 200.4,
+   "op": -101.1,
+   "ni": 405.2
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 31.0,
+   "op": -47.5,
+   "ni": -56.5
+  }
+ ]
+}

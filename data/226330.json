@@ -1,0 +1,174 @@
+{
+ "name": "신테카바이오",
+ "split_adjusted": false,
+ "legal_name": "신테카바이오",
+ "code": "226330",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-02",
+ "annual": [
+  {
+   "p": 2019,
+   "rev": 4.6,
+   "op": -51.9,
+   "ni": -229.7,
+   "assets": 479.5,
+   "liab": 18.4,
+   "equity": 461.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 6.1,
+   "op": -71.0,
+   "ni": -64.9,
+   "assets": 447.8,
+   "liab": 32.4,
+   "equity": 415.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 3.2,
+   "op": -88.9,
+   "ni": -148.0,
+   "assets": 678.8,
+   "liab": 402.5,
+   "equity": 276.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 2.4,
+   "op": -117.9,
+   "ni": -45.1,
+   "assets": 556.9,
+   "liab": 242.3,
+   "equity": 314.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 1.2,
+   "op": -122.8,
+   "ni": -114.0,
+   "assets": 529.2,
+   "liab": 216.9,
+   "equity": 312.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 1.2,
+   "op": -142.7,
+   "ni": -72.1,
+   "assets": 437.1,
+   "liab": 187.7,
+   "equity": 249.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 34.3,
+   "op": -107.6,
+   "ni": -173.8,
+   "assets": 465.3,
+   "liab": 147.6,
+   "equity": 317.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 0.1,
+   "op": -32.1,
+   "ni": -9.7
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 0.0,
+   "op": -35.6,
+   "ni": 6.8
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 0.0,
+   "op": -39.3,
+   "ni": -26.6
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 1.1,
+   "op": -35.7,
+   "ni": -42.6
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 8.7,
+   "op": -29.6,
+   "ni": -72.9
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 3.5,
+   "op": -30.0,
+   "ni": -37.7
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 4.6,
+   "op": -23.1,
+   "ni": -23.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 17.6,
+   "op": -24.9,
+   "ni": -40.1
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 4.2,
+   "op": -35.1,
+   "ni": -34.9
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 4.5,
+   "op": -22.2,
+   "ni": -22.0
+  }
+ ]
+}

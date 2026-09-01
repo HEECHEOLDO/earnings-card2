@@ -1,0 +1,213 @@
+{
+ "name": "얼라인드",
+ "split_adjusted": false,
+ "legal_name": "얼라인드",
+ "code": "238120",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-02",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 47.1,
+   "op": -16.0,
+   "ni": -15.6,
+   "assets": 258.6,
+   "liab": 16.8,
+   "equity": 241.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 56.4,
+   "op": -15.4,
+   "ni": -17.5,
+   "assets": 243.1,
+   "liab": 16.7,
+   "equity": 226.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 56.8,
+   "op": -19.2,
+   "ni": -15.9,
+   "assets": 230.0,
+   "liab": 21.1,
+   "equity": 208.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 77.9,
+   "op": -4.0,
+   "ni": 1.2,
+   "assets": 246.2,
+   "liab": 36.5,
+   "equity": 209.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 79.6,
+   "op": -2.5,
+   "ni": 4.7,
+   "assets": 254.8,
+   "liab": 40.2,
+   "equity": 214.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 117.6,
+   "op": 21.8,
+   "ni": 55.4,
+   "assets": 344.7,
+   "liab": 74.8,
+   "equity": 269.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 137.5,
+   "op": 28.5,
+   "ni": 23.3,
+   "assets": 369.0,
+   "liab": 80.5,
+   "equity": 288.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 152.1,
+   "op": 33.4,
+   "ni": 32.4,
+   "assets": 409.3,
+   "liab": 96.2,
+   "equity": 313.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 157.8,
+   "op": 27.8,
+   "ni": 41.3,
+   "assets": 442.8,
+   "liab": 87.8,
+   "equity": 354.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 160.2,
+   "op": 24.4,
+   "ni": 29.1,
+   "assets": 577.9,
+   "liab": 206.3,
+   "equity": 371.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 31.9,
+   "op": 2.0,
+   "ni": 6.3
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 32.6,
+   "op": 2.6,
+   "ni": 6.2
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 37.1,
+   "op": 7.6,
+   "ni": 5.1
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 56.1,
+   "op": 15.6,
+   "ni": 23.7
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 39.2,
+   "op": 5.3,
+   "ni": 5.5
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 39.2,
+   "op": 2.6,
+   "ni": -1.2
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 38.9,
+   "op": 5.4,
+   "ni": 9.3
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 42.8,
+   "op": 11.1,
+   "ni": 15.4
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 36.4,
+   "op": 2.3,
+   "ni": 4.2
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 43.5,
+   "op": 6.4,
+   "ni": 17.5
+  }
+ ]
+}

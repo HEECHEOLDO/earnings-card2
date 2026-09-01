@@ -1,0 +1,187 @@
+{
+ "name": "케이엠제약",
+ "split_adjusted": false,
+ "legal_name": "케이엠제약",
+ "code": "225430",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-02",
+ "annual": [
+  {
+   "p": 2018,
+   "rev": 173.0,
+   "op": 15.7,
+   "ni": -123.3,
+   "assets": 327.4,
+   "liab": 89.0,
+   "equity": 238.3,
+   "dps": null,
+   "payout": 5.6,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 203.4,
+   "op": -15.3,
+   "ni": -9.0,
+   "assets": 431.4,
+   "liab": 189.5,
+   "equity": 241.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 229.3,
+   "op": 7.1,
+   "ni": 4.7,
+   "assets": 502.4,
+   "liab": 94.7,
+   "equity": 407.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 227.1,
+   "op": 8.7,
+   "ni": -6.1,
+   "assets": 526.8,
+   "liab": 127.7,
+   "equity": 399.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 156.3,
+   "op": -12.5,
+   "ni": -39.2,
+   "assets": 512.8,
+   "liab": 149.5,
+   "equity": 363.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 177.7,
+   "op": -10.9,
+   "ni": -13.2,
+   "assets": 505.6,
+   "liab": 150.8,
+   "equity": 354.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 144.7,
+   "op": -25.7,
+   "ni": -45.7,
+   "assets": 489.7,
+   "liab": 163.6,
+   "equity": 326.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 159.9,
+   "op": -29.2,
+   "ni": -39.7,
+   "assets": 463.9,
+   "liab": 181.3,
+   "equity": 282.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 44.7,
+   "op": -2.3,
+   "ni": -5.2
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 33.1,
+   "op": -11.1,
+   "ni": -12.3
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 33.0,
+   "op": -7.5,
+   "ni": -9.5
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 34.0,
+   "op": -4.7,
+   "ni": -18.7
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 40.8,
+   "op": -5.4,
+   "ni": -8.2
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 32.4,
+   "op": -7.2,
+   "ni": -9.6
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 43.8,
+   "op": -8.1,
+   "ni": -10.2
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 42.9,
+   "op": -8.5,
+   "ni": -11.6
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 44.7,
+   "op": -6.6,
+   "ni": -8.3
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 38.4,
+   "op": -5.9,
+   "ni": -7.6
+  }
+ ]
+}
