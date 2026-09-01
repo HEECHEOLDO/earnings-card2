@@ -20,7 +20,7 @@
    "liab": 12106.0,
    "equity": -243.0,
    "dps": null,
-   "payout": null,
+   "payout": 61.8,
    "yield": null,
    "dps_adj": null
   },
@@ -33,7 +33,7 @@
    "liab": 12433.0,
    "equity": -60.0,
    "dps": 1.59,
-   "payout": 69.7,
+   "payout": 75.5,
    "yield": null,
    "dps_adj": 1.59
   },
@@ -46,7 +46,7 @@
    "liab": 11964.0,
    "equity": -102.0,
    "dps": 1.66,
-   "payout": 60.4,
+   "payout": 66.3,
    "yield": null,
    "dps_adj": 1.66
   },
@@ -59,7 +59,7 @@
    "liab": 14476.0,
    "equity": 117.0,
    "dps": 1.71,
-   "payout": 62.2,
+   "payout": 68.2,
    "yield": null,
    "dps_adj": 1.71
   },
@@ -72,7 +72,7 @@
    "liab": 14819.0,
    "equity": 743.0,
    "dps": 1.75,
-   "payout": 55.8,
+   "payout": 61.4,
    "yield": null,
    "dps_adj": 1.75
   },
@@ -85,7 +85,7 @@
    "liab": 14069.0,
    "equity": 609.0,
    "dps": 1.79,
-   "payout": 70.1,
+   "payout": 77.5,
    "yield": null,
    "dps_adj": 1.79
   },
@@ -98,7 +98,7 @@
    "liab": 14925.0,
    "equity": 401.0,
    "dps": 1.86,
-   "payout": 87.4,
+   "payout": 94.7,
    "yield": null,
    "dps_adj": 1.86
   },
@@ -111,7 +111,7 @@
    "liab": 15436.0,
    "equity": 609.0,
    "dps": 1.91,
-   "payout": 68.9,
+   "payout": 76.0,
    "yield": null,
    "dps_adj": 1.91
   },
@@ -124,7 +124,7 @@
    "liab": 15502.0,
    "equity": 212.0,
    "dps": 2.48,
-   "payout": 70.7,
+   "payout": 61.9,
    "yield": null,
    "dps_adj": 2.48
   },
@@ -137,7 +137,7 @@
    "liab": 15965.0,
    "equity": 54.0,
    "dps": 2.08,
-   "payout": 79.1,
+   "payout": 85.5,
    "yield": null,
    "dps_adj": 2.08
   }

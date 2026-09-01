@@ -77,6 +77,11 @@ TAGS = {
                "StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest"],
     "dps": ["CommonStockDividendsPerShareDeclared",
             "CommonStockDividendsPerShareCashPaid"],
+    # 배당 지급액(현금흐름표). 달러 금액이라 액면분할과 무관해
+    # 주당배당금·주식수가 서로 어긋나도 영향을 받지 않는다.
+    "divpaid": ["PaymentsOfDividendsCommonStock",
+                "PaymentsOfDividends",
+                "PaymentsOfOrdinaryDividends"],
     # 배당성향 계산용 — 미국 공시에는 배당총액이 없어서 주식 수로 역산한다
     "shares": ["WeightedAverageNumberOfDilutedSharesOutstanding",
                "WeightedAverageNumberOfSharesOutstandingBasic",
@@ -472,10 +477,18 @@ def payout_of(fy, A):
 
     미국 공시에는 배당총액 항목이 없어서 주식 수로 역산한다.
     """
-    dps, ni, sh = A["dps"].get(fy), A["ni"].get(fy), A["shares"].get(fy)
-    if not dps or not ni or not sh or ni <= 0 or sh <= 0:
+    ni = A["ni"].get(fy)
+    if not ni or ni <= 0:
         return None
-    v = dps * sh / ni * 100
+
+    paid = A.get("divpaid", {}).get(fy)
+    if paid:
+        v = abs(paid) / ni * 100          # 현금흐름표는 음수로 적히기도 한다
+    else:
+        dps, sh = A["dps"].get(fy), A["shares"].get(fy)
+        if not dps or not sh or sh <= 0:
+            return None
+        v = dps * sh / ni * 100
     # 일회성 손실로 순이익이 급감한 해는 배당성향이 수백 %가 되기도 한다.
     # (코카콜라 2017 세제개편, 알트리아 JUUL 상각 등) 그것도 사실이므로 살린다.
     # 다만 자릿수가 어긋난 수준(2000% 초과)은 데이터 오류로 보고 버린다.
@@ -485,6 +498,55 @@ def payout_of(fy, A):
 
 
 CLEAN_RATIOS = [2, 3, 4, 5, 7, 10, 20]
+
+
+def fix_dps_scale(annual, A):
+    """주당배당금이 연간 값이 아닌 해를 찾아 바로잡는다.
+
+    분기 배당금이 연간 자리에 들어가는 일이 잦다.
+    같은 해의 '배당 지급액 ÷ 주식 수' 와 대조하면 몇 배 어긋났는지 알 수 있다.
+    깔끔한 배수(2·4·10 등)로 어긋날 때만 고친다.
+    """
+    paid, sh = A.get("divpaid", {}), A.get("shares", {})
+
+    # 먼저 연도별로 '지급액 ÷ 주식수' 가 주당배당금의 몇 배인지 잰다
+    ratios = {}
+    for r in annual:
+        y = r["p"]
+        dv, pv, s2 = r.get("dps"), paid.get(y), sh.get(y)
+        if dv and pv and s2 and s2 > 0 and dv > 0:
+            ratios[y] = abs(pv) / s2 / dv
+
+    if len(ratios) < 3:
+        return False
+
+    # 대부분의 해가 1 근처면 정상. 그 기준에서 벗어난 해만 고친다.
+    ok_years = [y for y, v in ratios.items() if 0.8 <= v <= 1.25]
+    if len(ok_years) < len(ratios) * 0.6:
+        # 전체가 어긋나면 우선주 배당 등 구조적 차이다. 손대지 않는다.
+        return False
+
+    fixed = []
+    for r in annual:
+        y = r["p"]
+        v = ratios.get(y)
+        if v is None or 0.8 <= v <= 1.25:
+            continue
+        for cand in (2, 4, 10, 12, 40):
+            for mult in (cand, 1.0 / cand):
+                if abs(v / mult - 1) <= 0.06:
+                    before = r["dps"]
+                    r["dps"] = round(before * mult, 4)
+                    fixed.append((y, before, r["dps"], cand, 1))
+                    break
+            else:
+                continue
+            break
+
+    for y, before, after, cand, _ in fixed:
+        log("  [보정] FY%d 주당배당금 $%.4f -> $%.4f (연간 값이 아니었음, %d배)"
+            % (y, before, after, cand))
+    return bool(fixed)
 
 
 def adjust_splits(annual, shares):
@@ -527,6 +589,7 @@ def adjust_splits(annual, shares):
 
     for i, r in enumerate(annual):
         r["dps_adj"] = round(r["dps"] / factor[i], 4) if r.get("dps") else r.get("dps")
+
     return found
 
 
@@ -580,7 +643,7 @@ def collect_one(ticker, info):
 
     _used_tag.clear()
     A = {k: annual_series(facts, k) for k in
-         ("rev", "op", "ni", "assets", "liab", "equity", "dps", "shares")}
+         ("rev", "op", "ni", "assets", "liab", "equity", "dps", "shares", "divpaid")}
     A["shares"] = normalize_shares(A["shares"])
     dbg("사용 태그:", _used_tag)
     if not A["rev"]:
@@ -606,12 +669,15 @@ def collect_one(ticker, info):
             (f"{po}%" if po is not None else "-")))
     annual = annual[-YEARS:]
 
+    fix_dps_scale(annual, A)
+
     restated = find_restatement(annual)
     if restated:
         log("  [주의] FY%d 부터 실적 기준이 바뀐 것으로 보입니다" % restated)
         log("         (사업 분할 등으로 과거를 다시 쓴 경우. 그 이전 연도와 직접 비교하기 어렵습니다)")
 
     split = adjust_splits(annual, A["shares"])
+
     if split:
         log("  [분할] 액면분할 감지 — 과거 주당배당금을 현재 주식 수 기준으로 환산")
         for r in annual:

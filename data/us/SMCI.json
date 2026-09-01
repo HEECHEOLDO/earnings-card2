@@ -2,7 +2,7 @@
  "name": "SMCI",
  "split_adjusted": true,
  "restated_from": null,
- "legal_name": "SUPER MICRO COMPUTER, INC.",
+ "legal_name": "Super Micro Computer, Inc.",
  "code": "SMCI",
  "cik": "0001375365",
  "market": "미국",
@@ -11,19 +11,6 @@
  "fiscal": true,
  "updated": "2026-09-01",
  "annual": [
-  {
-   "p": 2016,
-   "rev": 2215.6,
-   "op": 107.5,
-   "ni": 72.1,
-   "assets": 1398.1,
-   "liab": 667.5,
-   "equity": 696.7,
-   "dps": null,
-   "payout": null,
-   "yield": null,
-   "dps_adj": null
-  },
   {
    "p": 2017,
    "rev": 2484.9,
@@ -122,7 +109,7 @@
    "ni": 1152.7,
    "assets": 9826.1,
    "liab": 4408.7,
-   "equity": 6238.5,
+   "equity": 5417.4,
    "dps": null,
    "payout": null,
    "yield": null,
@@ -135,7 +122,20 @@
    "ni": 1048.9,
    "assets": 14018.4,
    "liab": 7716.6,
-   "equity": 6992.2,
+   "equity": 6301.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2026,
+   "rev": 39063.1,
+   "op": 2770.5,
+   "ni": 2230.5,
+   "assets": 29945.5,
+   "liab": 15465.9,
+   "equity": 14479.6,
    "dps": null,
    "payout": null,
    "yield": null,
@@ -143,13 +143,6 @@
   }
  ],
  "quarterly": [
-  {
-   "y": 2024,
-   "q": 2,
-   "rev": 3664.9,
-   "op": 371.5,
-   "ni": 296.0
-  },
   {
    "y": 2024,
    "q": 3,
@@ -212,6 +205,13 @@
    "rev": 10243.0,
    "op": 625.9,
    "ni": 483.4
+  },
+  {
+   "y": 2026,
+   "q": 4,
+   "rev": 11119.8,
+   "op": 1488.1,
+   "ni": 1178.2
   }
  ]
 }
