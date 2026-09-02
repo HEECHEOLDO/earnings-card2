@@ -1,0 +1,174 @@
+{
+ "name": "켄코아에어로스페이스",
+ "split_adjusted": false,
+ "legal_name": "켄코아에어로스페이스",
+ "code": "274090",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-03",
+ "annual": [
+  {
+   "p": 2019,
+   "rev": 463.0,
+   "op": 10.2,
+   "ni": -75.9,
+   "assets": 743.2,
+   "liab": 406.4,
+   "equity": 336.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 316.5,
+   "op": -74.3,
+   "ni": -93.4,
+   "assets": 895.7,
+   "liab": 523.3,
+   "equity": 372.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 546.8,
+   "op": -137.7,
+   "ni": -196.5,
+   "assets": 1066.1,
+   "liab": 810.5,
+   "equity": 255.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 758.6,
+   "op": 79.9,
+   "ni": 32.4,
+   "assets": 1297.5,
+   "liab": 916.0,
+   "equity": 381.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 911.4,
+   "op": 8.8,
+   "ni": -18.5,
+   "assets": 1499.1,
+   "liab": 915.0,
+   "equity": 584.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 861.5,
+   "op": -53.5,
+   "ni": -77.1,
+   "assets": 2530.6,
+   "liab": 697.4,
+   "equity": 1833.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 763.9,
+   "op": -92.3,
+   "ni": -154.7,
+   "assets": 2328.0,
+   "liab": 724.5,
+   "equity": 1603.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 204.5,
+   "op": -12.0,
+   "ni": -19.1
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 231.4,
+   "op": -2.4,
+   "ni": 4.1
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 233.7,
+   "op": 2.7,
+   "ni": -2.7
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 191.9,
+   "op": -41.7,
+   "ni": -59.4
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 168.8,
+   "op": 1.1,
+   "ni": -3.8
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 215.9,
+   "op": -18.0,
+   "ni": -25.6
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 177.6,
+   "op": -43.1,
+   "ni": -28.2
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 201.6,
+   "op": -32.3,
+   "ni": -97.1
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 292.2,
+   "op": 2.2,
+   "ni": 9.4
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 284.7,
+   "op": 11.8,
+   "ni": 3.3
+  }
+ ]
+}

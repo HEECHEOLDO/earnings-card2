@@ -1,0 +1,174 @@
+{
+ "name": "나노실리칸첨단소재",
+ "split_adjusted": false,
+ "legal_name": "나노실리칸첨단소재",
+ "code": "286750",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-03",
+ "annual": [
+  {
+   "p": 2019,
+   "rev": 77.8,
+   "op": -15.1,
+   "ni": -7.8,
+   "assets": 245.5,
+   "liab": 104.0,
+   "equity": 141.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 86.5,
+   "op": 0.7,
+   "ni": -0.9,
+   "assets": 221.2,
+   "liab": 79.9,
+   "equity": 141.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 70.0,
+   "op": -16.4,
+   "ni": -28.2,
+   "assets": 329.9,
+   "liab": 205.8,
+   "equity": 124.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 71.4,
+   "op": -35.9,
+   "ni": -24.0,
+   "assets": 281.4,
+   "liab": 179.9,
+   "equity": 101.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 64.6,
+   "op": -24.8,
+   "ni": -62.8,
+   "assets": 287.7,
+   "liab": 190.6,
+   "equity": 97.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 52.8,
+   "op": -34.4,
+   "ni": 2.4,
+   "assets": 280.8,
+   "liab": 117.4,
+   "equity": 163.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 59.8,
+   "op": -65.8,
+   "ni": -55.6,
+   "assets": 449.7,
+   "liab": 175.5,
+   "equity": 274.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 37.8,
+   "op": 3.3,
+   "ni": 27.8
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 3.9,
+   "op": -15.7,
+   "ni": -9.2
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 3.6,
+   "op": -9.7,
+   "ni": -4.8
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 7.5,
+   "op": -12.2,
+   "ni": -11.4
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 10.2,
+   "op": -8.0,
+   "ni": -13.1
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 4.0,
+   "op": -13.2,
+   "ni": -14.9
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 24.5,
+   "op": -20.0,
+   "ni": -23.7
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 21.1,
+   "op": -24.6,
+   "ni": -4.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 19.8,
+   "op": -13.5,
+   "ni": -14.1
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 23.1,
+   "op": -10.4,
+   "ni": -35.0
+  }
+ ]
+}

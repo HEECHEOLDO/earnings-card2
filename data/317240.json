@@ -1,0 +1,161 @@
+{
+ "name": "TS트릴리온",
+ "split_adjusted": false,
+ "legal_name": "TS트릴리온",
+ "code": "317240",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-03",
+ "annual": [
+  {
+   "p": 2020,
+   "rev": 616.5,
+   "op": 36.6,
+   "ni": -22.6,
+   "assets": 412.3,
+   "liab": 206.1,
+   "equity": 50.5,
+   "dps": 10.0,
+   "payout": -20.0,
+   "yield": 0.35,
+   "dps_adj": 10.0
+  },
+  {
+   "p": 2021,
+   "rev": 498.7,
+   "op": -76.4,
+   "ni": -68.3,
+   "assets": 654.4,
+   "liab": 505.7,
+   "equity": 148.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 629.3,
+   "op": -58.1,
+   "ni": -101.8,
+   "assets": 683.2,
+   "liab": 508.8,
+   "equity": 174.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 399.8,
+   "op": 12.3,
+   "ni": -15.9,
+   "assets": 768.7,
+   "liab": 502.7,
+   "equity": 266.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 307.6,
+   "op": 3.8,
+   "ni": -49.9,
+   "assets": 589.4,
+   "liab": 334.1,
+   "equity": 255.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 260.3,
+   "op": 0.3,
+   "ni": -20.1,
+   "assets": 558.3,
+   "liab": 268.0,
+   "equity": 290.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 77.7,
+   "op": 3.8,
+   "ni": -1.8
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 73.6,
+   "op": -1.1,
+   "ni": -8.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 76.6,
+   "op": 2.1,
+   "ni": -2.7
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 79.7,
+   "op": -1.1,
+   "ni": -37.4
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 71.6,
+   "op": 3.9,
+   "ni": -1.2
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 55.1,
+   "op": -6.8,
+   "ni": -11.8
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 73.0,
+   "op": 1.8,
+   "ni": -2.5
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 60.6,
+   "op": 1.2,
+   "ni": -4.7
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 100.7,
+   "op": 11.1,
+   "ni": 9.2
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 79.0,
+   "op": 2.9,
+   "ni": -1.3
+  }
+ ]
+}

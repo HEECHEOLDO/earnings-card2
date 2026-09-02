@@ -1,0 +1,200 @@
+{
+ "name": "와이엠티",
+ "split_adjusted": false,
+ "legal_name": "와이엠티",
+ "code": "251370",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-03",
+ "annual": [
+  {
+   "p": 2017,
+   "rev": 691.9,
+   "op": 160.8,
+   "ni": 90.1,
+   "assets": 1139.7,
+   "liab": 474.7,
+   "equity": 665.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 727.4,
+   "op": 143.9,
+   "ni": 97.9,
+   "assets": 1270.8,
+   "liab": 526.7,
+   "equity": 744.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 954.9,
+   "op": 221.1,
+   "ni": 173.8,
+   "assets": 1639.3,
+   "liab": 735.0,
+   "equity": 904.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 1135.5,
+   "op": 234.8,
+   "ni": 197.7,
+   "assets": 1984.6,
+   "liab": 804.1,
+   "equity": 1180.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 1255.7,
+   "op": 172.3,
+   "ni": 140.4,
+   "assets": 2462.6,
+   "liab": 1069.0,
+   "equity": 1393.6,
+   "dps": 75.0,
+   "payout": 11.57,
+   "yield": 0.35,
+   "dps_adj": 75.0
+  },
+  {
+   "p": 2022,
+   "rev": 1305.7,
+   "op": 33.4,
+   "ni": 26.0,
+   "assets": 2479.1,
+   "liab": 965.5,
+   "equity": 1513.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 1274.1,
+   "op": -31.7,
+   "ni": -0.8,
+   "assets": 2499.1,
+   "liab": 1017.1,
+   "equity": 1481.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 1372.3,
+   "op": 35.9,
+   "ni": -23.3,
+   "assets": 3505.7,
+   "liab": 1539.8,
+   "equity": 1965.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 1446.0,
+   "op": 129.2,
+   "ni": 14.7,
+   "assets": 3736.4,
+   "liab": 1553.9,
+   "equity": 2182.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 295.1,
+   "op": 0.3,
+   "ni": -5.5
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 348.1,
+   "op": 9.2,
+   "ni": -44.4
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 363.7,
+   "op": 21.6,
+   "ni": 24.4
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 365.3,
+   "op": 4.8,
+   "ni": 2.1
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 349.6,
+   "op": 15.4,
+   "ni": 12.7
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 351.0,
+   "op": 40.2,
+   "ni": 20.6
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 361.4,
+   "op": 32.1,
+   "ni": 16.9
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 384.0,
+   "op": 41.5,
+   "ni": -35.5
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 349.8,
+   "op": 25.8,
+   "ni": 27.9
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 412.1,
+   "op": 15.8,
+   "ni": -21.2
+  }
+ ]
+}

@@ -1,0 +1,47 @@
+{
+ "name": "이지스",
+ "split_adjusted": false,
+ "legal_name": "이지스",
+ "code": "261520",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-03",
+ "annual": [
+  {
+   "p": 2025,
+   "rev": 212.5,
+   "op": -68.0,
+   "ni": -48.1,
+   "assets": 674.6,
+   "liab": 185.3,
+   "equity": 489.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 212.5,
+   "op": -68.0,
+   "ni": -48.1
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 58.0,
+   "op": -22.2,
+   "ni": -17.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 55.9,
+   "op": -24.2,
+   "ni": -29.3
+  }
+ ]
+}

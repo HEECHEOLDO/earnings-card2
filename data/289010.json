@@ -1,0 +1,174 @@
+{
+ "name": "아이스크림에듀",
+ "split_adjusted": false,
+ "legal_name": "아이스크림에듀",
+ "code": "289010",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-03",
+ "annual": [
+  {
+   "p": 2019,
+   "rev": 1064.4,
+   "op": 53.8,
+   "ni": 49.8,
+   "assets": 956.7,
+   "liab": 211.4,
+   "equity": 745.2,
+   "dps": 100.0,
+   "payout": 25.45,
+   "yield": 1.28,
+   "dps_adj": 100.0
+  },
+  {
+   "p": 2020,
+   "rev": 1155.2,
+   "op": -15.6,
+   "ni": 7.5,
+   "assets": 998.1,
+   "liab": 265.0,
+   "equity": 733.1,
+   "dps": null,
+   "payout": 83.54,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 1285.7,
+   "op": -69.0,
+   "ni": -73.0,
+   "assets": 897.4,
+   "liab": 231.9,
+   "equity": 665.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 1338.4,
+   "op": 20.9,
+   "ni": 8.2,
+   "assets": 926.9,
+   "liab": 254.5,
+   "equity": 672.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 1176.1,
+   "op": -167.0,
+   "ni": -234.7,
+   "assets": 918.6,
+   "liab": 473.0,
+   "equity": 445.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 1076.3,
+   "op": -19.4,
+   "ni": -62.1,
+   "assets": 773.3,
+   "liab": 386.0,
+   "equity": 387.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 915.9,
+   "op": 14.0,
+   "ni": -10.6,
+   "assets": 669.7,
+   "liab": 244.0,
+   "equity": 425.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 275.3,
+   "op": -27.1,
+   "ni": -31.9
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 253.4,
+   "op": -12.8,
+   "ni": -24.8
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 278.9,
+   "op": 14.8,
+   "ni": 14.6
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 268.8,
+   "op": 5.7,
+   "ni": -20.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 243.9,
+   "op": -35.7,
+   "ni": -38.9
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 229.3,
+   "op": 7.2,
+   "ni": 27.8
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 209.6,
+   "op": 10.0,
+   "ni": -15.2
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 233.1,
+   "op": 32.5,
+   "ni": 15.7
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 203.0,
+   "op": 8.5,
+   "ni": 6.8
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 192.9,
+   "op": 16.5,
+   "ni": 17.9
+  }
+ ]
+}

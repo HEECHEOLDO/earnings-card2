@@ -1,0 +1,38 @@
+{
+ "name": "인터로이드",
+ "split_adjusted": false,
+ "legal_name": "인터로이드",
+ "code": "311960",
+ "market": "코넥스",
+ "sector": "",
+ "updated": "2026-09-03",
+ "annual": [
+  {
+   "p": 2021,
+   "rev": 84.2,
+   "op": 11.1,
+   "ni": 8.9,
+   "assets": 268.0,
+   "liab": 95.5,
+   "equity": 172.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 72.8,
+   "op": -13.4,
+   "ni": -9.8,
+   "assets": 269.2,
+   "liab": 107.8,
+   "equity": 161.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

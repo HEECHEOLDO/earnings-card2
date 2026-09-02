@@ -1,0 +1,174 @@
+{
+ "name": "파라택시스코리아",
+ "split_adjusted": false,
+ "legal_name": "파라택시스코리아",
+ "code": "288330",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-03",
+ "annual": [
+  {
+   "p": 2019,
+   "rev": 582.8,
+   "op": 6.2,
+   "ni": 13.2,
+   "assets": 797.4,
+   "liab": 47.2,
+   "equity": 750.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 63.4,
+   "op": -195.8,
+   "ni": -192.3,
+   "assets": 635.1,
+   "liab": 42.8,
+   "equity": 592.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 19.2,
+   "op": -263.9,
+   "ni": -262.8,
+   "assets": 466.6,
+   "liab": 36.1,
+   "equity": 430.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 30.2,
+   "op": -435.0,
+   "ni": -417.0,
+   "assets": 614.6,
+   "liab": 95.9,
+   "equity": 518.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 1.0,
+   "op": -403.5,
+   "ni": -424.6,
+   "assets": 326.8,
+   "liab": 129.6,
+   "equity": 197.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 0.0,
+   "op": -190.1,
+   "ni": -199.3,
+   "assets": 334.9,
+   "liab": 59.3,
+   "equity": 275.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 0.1,
+   "op": -151.5,
+   "ni": -322.4,
+   "assets": 708.3,
+   "liab": 270.4,
+   "equity": 437.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 3,
+   "rev": 0.0,
+   "op": -81.8,
+   "ni": -80.1
+  },
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 0.0,
+   "op": -113.1,
+   "ni": -141.9
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 0.0,
+   "op": -46.5,
+   "ni": -45.3
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 0.0,
+   "op": -33.9,
+   "ni": -41.8
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 0.1,
+   "op": -49.8,
+   "ni": -49.3
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 0.0,
+   "op": -46.5,
+   "ni": -45.9
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 0.0,
+   "op": -34.4,
+   "ni": -35.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 0.0,
+   "op": -20.8,
+   "ni": -192.3
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 3.2,
+   "op": -20.5,
+   "ni": -25.7
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 12.7,
+   "op": -22.8,
+   "ni": -56.2
+  }
+ ]
+}

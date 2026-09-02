@@ -1,0 +1,125 @@
+{
+ "name": "나우코스",
+ "split_adjusted": false,
+ "legal_name": "나우코스",
+ "code": "257990",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-09-03",
+ "annual": [
+  {
+   "p": 2019,
+   "rev": 356.4,
+   "op": 15.0,
+   "ni": 11.3,
+   "assets": 290.5,
+   "liab": 237.5,
+   "equity": 53.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 479.6,
+   "op": 36.9,
+   "ni": 18.5,
+   "assets": 351.9,
+   "liab": 298.6,
+   "equity": 53.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 453.6,
+   "op": 2.4,
+   "ni": 3.5,
+   "assets": 314.1,
+   "liab": 255.1,
+   "equity": 59.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 423.5,
+   "op": -14.7,
+   "ni": -12.4,
+   "assets": 393.9,
+   "liab": 232.9,
+   "equity": 161.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 527.4,
+   "op": 13.8,
+   "ni": 16.6,
+   "assets": 400.7,
+   "liab": 219.6,
+   "equity": 181.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 620.3,
+   "op": 12.7,
+   "ni": -4.1,
+   "assets": 383.3,
+   "liab": 201.5,
+   "equity": 181.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 695.4,
+   "op": 31.0,
+   "ni": 39.9,
+   "assets": 409.6,
+   "liab": 188.2,
+   "equity": 221.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 527.4,
+   "op": 13.8,
+   "ni": 16.6
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 620.3,
+   "op": 12.7,
+   "ni": -4.1
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 695.4,
+   "op": 31.0,
+   "ni": 39.9
+  }
+ ]
+}

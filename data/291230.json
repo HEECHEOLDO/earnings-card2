@@ -1,0 +1,161 @@
+{
+ "name": "컴투스엔",
+ "split_adjusted": false,
+ "legal_name": "컴투스엔",
+ "code": "291230",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-03",
+ "annual": [
+  {
+   "p": 2018,
+   "rev": 0.0,
+   "op": -0.3,
+   "ni": 0.4,
+   "assets": 148.6,
+   "liab": 8.9,
+   "equity": 139.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 248.7,
+   "op": 9.1,
+   "ni": -108.1,
+   "assets": 602.4,
+   "liab": 239.0,
+   "equity": 363.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 398.4,
+   "op": -9.6,
+   "ni": -13.2,
+   "assets": 546.0,
+   "liab": 201.9,
+   "equity": 344.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 353.3,
+   "op": -37.0,
+   "ni": -29.8,
+   "assets": 545.3,
+   "liab": 209.9,
+   "equity": 335.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 295.6,
+   "op": -41.5,
+   "ni": -8.5,
+   "assets": 522.3,
+   "liab": 195.3,
+   "equity": 327.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 272.3,
+   "op": -30.5,
+   "ni": -38.4,
+   "assets": 474.0,
+   "liab": 185.4,
+   "equity": 288.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 60.0,
+   "op": -15.1,
+   "ni": -16.6
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 49.6,
+   "op": -13.2,
+   "ni": 27.5
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 98.4,
+   "op": -10.3,
+   "ni": -11.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 87.7,
+   "op": -3.0,
+   "ni": -8.3
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 52.4,
+   "op": -16.5,
+   "ni": -17.1
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 82.9,
+   "op": -4.1,
+   "ni": -5.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 58.0,
+   "op": -17.6,
+   "ni": -18.4
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 79.0,
+   "op": 7.7,
+   "ni": 2.1
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 47.4,
+   "op": -19.7,
+   "ni": -20.6
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 82.7,
+   "op": -19.0,
+   "ni": -22.9
+  }
+ ]
+}

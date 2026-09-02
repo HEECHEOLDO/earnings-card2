@@ -1,0 +1,148 @@
+{
+ "name": "바이젠셀",
+ "split_adjusted": false,
+ "legal_name": "바이젠셀",
+ "code": "308080",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-03",
+ "annual": [
+  {
+   "p": 2021,
+   "rev": 0.0,
+   "op": -131.4,
+   "ni": -111.1,
+   "assets": 1169.8,
+   "liab": 120.9,
+   "equity": 1048.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 0.0,
+   "op": -182.1,
+   "ni": -173.9,
+   "assets": 993.7,
+   "liab": 97.3,
+   "equity": 896.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 0.0,
+   "op": -200.8,
+   "ni": -178.8,
+   "assets": 810.5,
+   "liab": 95.6,
+   "equity": 714.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 2.8,
+   "op": -153.3,
+   "ni": -140.6,
+   "assets": 673.5,
+   "liab": 93.2,
+   "equity": 580.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 0.2,
+   "op": -171.1,
+   "ni": -163.2,
+   "assets": 542.8,
+   "liab": 105.5,
+   "equity": 437.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 0.0,
+   "op": -44.6,
+   "ni": -40.7
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 0.6,
+   "op": -35.9,
+   "ni": -30.9
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 0.0,
+   "op": -36.3,
+   "ni": -32.2
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 2.2,
+   "op": -36.5,
+   "ni": -36.7
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 0.0,
+   "op": -26.9,
+   "ni": -25.7
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 0.0,
+   "op": -56.6,
+   "ni": -54.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 0.1,
+   "op": -24.3,
+   "ni": -22.4
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 0.1,
+   "op": -63.3,
+   "ni": -61.1
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 3.3,
+   "op": -28.4,
+   "ni": -25.9
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 5.7,
+   "op": -25.4,
+   "ni": -23.4
+  }
+ ]
+}

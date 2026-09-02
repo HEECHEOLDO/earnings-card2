@@ -1,0 +1,161 @@
+{
+ "name": "피플바이오",
+ "split_adjusted": false,
+ "legal_name": "피플바이오",
+ "code": "304840",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-03",
+ "annual": [
+  {
+   "p": 2020,
+   "rev": 5.1,
+   "op": -45.5,
+   "ni": -43.8,
+   "assets": 106.5,
+   "liab": 18.3,
+   "equity": 88.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 5.8,
+   "op": -72.4,
+   "ni": -49.4,
+   "assets": 513.5,
+   "liab": 323.3,
+   "equity": 190.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 44.4,
+   "op": -117.0,
+   "ni": null,
+   "assets": 423.2,
+   "liab": 363.9,
+   "equity": 59.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 44.5,
+   "op": -152.5,
+   "ni": null,
+   "assets": 275.8,
+   "liab": 79.2,
+   "equity": 196.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 37.3,
+   "op": -115.0,
+   "ni": null,
+   "assets": 270.7,
+   "liab": 194.5,
+   "equity": 76.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 28.5,
+   "op": -83.8,
+   "ni": -169.4,
+   "assets": 445.7,
+   "liab": 159.5,
+   "equity": 286.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 7.4,
+   "op": -32.6,
+   "ni": null
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 13.7,
+   "op": -30.4,
+   "ni": null
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 9.6,
+   "op": -33.5,
+   "ni": null
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 6.6,
+   "op": -18.6,
+   "ni": null
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 7.8,
+   "op": -25.9,
+   "ni": null
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 7.3,
+   "op": -19.8,
+   "ni": null
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 11.8,
+   "op": -20.7,
+   "ni": null
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 1.5,
+   "op": -17.4,
+   "ni": -169.4
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 6.4,
+   "op": -14.8,
+   "ni": null
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 16.7,
+   "op": -7.5,
+   "ni": -40.0
+  }
+ ]
+}

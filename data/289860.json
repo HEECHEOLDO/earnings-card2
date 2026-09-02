@@ -1,0 +1,25 @@
+{
+ "name": "지슨",
+ "split_adjusted": false,
+ "legal_name": "지슨",
+ "code": "289860",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-09-03",
+ "annual": [
+  {
+   "p": 2022,
+   "rev": 93.9,
+   "op": -23.7,
+   "ni": -30.7,
+   "assets": 125.2,
+   "liab": 87.3,
+   "equity": 37.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

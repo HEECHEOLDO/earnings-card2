@@ -1,0 +1,187 @@
+{
+ "name": "디케이티",
+ "split_adjusted": false,
+ "legal_name": "디케이티",
+ "code": "290550",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-03",
+ "annual": [
+  {
+   "p": 2018,
+   "rev": 2401.7,
+   "op": 86.8,
+   "ni": -16.8,
+   "assets": 718.1,
+   "liab": 434.1,
+   "equity": 284.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 3377.2,
+   "op": 128.9,
+   "ni": 79.4,
+   "assets": 1145.0,
+   "liab": 561.8,
+   "equity": 583.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 3461.5,
+   "op": 144.7,
+   "ni": 108.2,
+   "assets": 1031.0,
+   "liab": 358.1,
+   "equity": 672.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 3152.4,
+   "op": 181.3,
+   "ni": 87.4,
+   "assets": 2054.5,
+   "liab": 1266.8,
+   "equity": 787.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 3635.4,
+   "op": 211.9,
+   "ni": 196.4,
+   "assets": 2000.5,
+   "liab": 992.5,
+   "equity": 1008.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 2802.2,
+   "op": 146.9,
+   "ni": 43.7,
+   "assets": 2394.3,
+   "liab": 1070.0,
+   "equity": 1324.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 4033.5,
+   "op": 230.9,
+   "ni": 268.7,
+   "assets": 2857.6,
+   "liab": 1040.0,
+   "equity": 1817.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 4257.8,
+   "op": 215.7,
+   "ni": 231.7,
+   "assets": 3196.8,
+   "liab": 1168.6,
+   "equity": 2028.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 1157.6,
+   "op": 76.8,
+   "ni": 104.9
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 1077.1,
+   "op": 76.0,
+   "ni": 67.9
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 817.0,
+   "op": 50.2,
+   "ni": 39.7
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 981.8,
+   "op": 27.9,
+   "ni": 56.2
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 864.2,
+   "op": 24.6,
+   "ni": 41.7
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 1187.7,
+   "op": 82.4,
+   "ni": 59.6
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 1057.7,
+   "op": 48.1,
+   "ni": 50.6
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 1148.1,
+   "op": 60.7,
+   "ni": 79.9
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 1156.5,
+   "op": 88.5,
+   "ni": 138.7
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 1479.8,
+   "op": 100.5,
+   "ni": 104.9
+  }
+ ]
+}

@@ -1,0 +1,174 @@
+{
+ "name": "HLB바이오스텝",
+ "split_adjusted": false,
+ "legal_name": "HLB바이오스텝",
+ "code": "278650",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-03",
+ "annual": [
+  {
+   "p": 2019,
+   "rev": 460.4,
+   "op": 67.3,
+   "ni": 45.5,
+   "assets": 615.3,
+   "liab": 185.1,
+   "equity": 430.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 585.2,
+   "op": 88.4,
+   "ni": 85.9,
+   "assets": 742.2,
+   "liab": 191.9,
+   "equity": 550.2,
+   "dps": 150.0,
+   "payout": 13.18,
+   "yield": null,
+   "dps_adj": 150.0
+  },
+  {
+   "p": 2021,
+   "rev": 644.0,
+   "op": 98.2,
+   "ni": 115.3,
+   "assets": 946.3,
+   "liab": 282.6,
+   "equity": 663.6,
+   "dps": 200.0,
+   "payout": 13.27,
+   "yield": 0.6,
+   "dps_adj": 200.0
+  },
+  {
+   "p": 2022,
+   "rev": 862.8,
+   "op": 64.1,
+   "ni": -28.7,
+   "assets": 1702.0,
+   "liab": 999.8,
+   "equity": 702.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 528.1,
+   "op": -12.8,
+   "ni": -0.5,
+   "assets": 1717.1,
+   "liab": 681.4,
+   "equity": 1035.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 581.7,
+   "op": -129.7,
+   "ni": -96.9,
+   "assets": 1683.3,
+   "liab": 515.2,
+   "equity": 1168.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 740.5,
+   "op": -86.2,
+   "ni": -202.6,
+   "assets": 1555.8,
+   "liab": 546.4,
+   "equity": 1009.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 115.7,
+   "op": -23.6,
+   "ni": -21.3
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 119.2,
+   "op": -32.6,
+   "ni": -33.4
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 185.4,
+   "op": -26.6,
+   "ni": -8.3
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 161.4,
+   "op": -46.8,
+   "ni": -34.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 135.8,
+   "op": -25.5,
+   "ni": -18.3
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 177.7,
+   "op": -43.1,
+   "ni": -46.5
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 239.7,
+   "op": 4.5,
+   "ni": 7.7
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 187.3,
+   "op": -22.2,
+   "ni": -145.4
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 134.9,
+   "op": -26.1,
+   "ni": -21.2
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 159.7,
+   "op": -18.9,
+   "ni": -35.2
+  }
+ ]
+}

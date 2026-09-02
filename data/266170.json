@@ -1,0 +1,66 @@
+{
+ "name": "레드우즈",
+ "split_adjusted": false,
+ "legal_name": "레드우즈",
+ "code": "266170",
+ "market": "코넥스",
+ "sector": "",
+ "updated": "2026-09-03",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 109.0,
+   "op": 2.1,
+   "ni": 2.8,
+   "assets": 52.8,
+   "liab": 35.3,
+   "equity": 17.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 8.4,
+   "op": -19.4,
+   "ni": -30.6,
+   "assets": 77.9,
+   "liab": 189.5,
+   "equity": -111.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 0.0,
+   "op": -7.6,
+   "ni": -26.6,
+   "assets": 270.7,
+   "liab": 271.6,
+   "equity": -0.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 8.4,
+   "op": -19.4,
+   "ni": -30.6
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 0.0,
+   "op": -7.6,
+   "ni": -26.6
+  }
+ ]
+}

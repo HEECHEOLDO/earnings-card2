@@ -1,0 +1,200 @@
+{
+ "name": "배럴",
+ "split_adjusted": false,
+ "legal_name": "배럴",
+ "code": "267790",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-03",
+ "annual": [
+  {
+   "p": 2017,
+   "rev": 352.9,
+   "op": 56.6,
+   "ni": 40.0,
+   "assets": 180.4,
+   "liab": 54.0,
+   "equity": 126.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 500.7,
+   "op": 66.7,
+   "ni": 43.9,
+   "assets": 413.8,
+   "liab": 29.2,
+   "equity": 384.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 599.5,
+   "op": 84.5,
+   "ni": 68.8,
+   "assets": 583.5,
+   "liab": 125.7,
+   "equity": 457.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 267.0,
+   "op": -74.7,
+   "ni": -62.0,
+   "assets": 494.0,
+   "liab": 92.9,
+   "equity": 401.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 215.3,
+   "op": -77.2,
+   "ni": -69.9,
+   "assets": 515.5,
+   "liab": 151.9,
+   "equity": 363.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 380.3,
+   "op": -43.3,
+   "ni": -59.1,
+   "assets": 476.6,
+   "liab": 171.8,
+   "equity": 304.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 581.6,
+   "op": 85.0,
+   "ni": 68.3,
+   "assets": 674.2,
+   "liab": 277.7,
+   "equity": 396.5,
+   "dps": 50.0,
+   "payout": 7.98,
+   "yield": 0.7,
+   "dps_adj": 50.0
+  },
+  {
+   "p": 2024,
+   "rev": 644.5,
+   "op": 90.8,
+   "ni": 49.9,
+   "assets": 752.7,
+   "liab": 313.0,
+   "equity": 439.6,
+   "dps": 50.0,
+   "payout": 10.85,
+   "yield": 1.0,
+   "dps_adj": 50.0
+  },
+  {
+   "p": 2025,
+   "rev": 591.9,
+   "op": 66.5,
+   "ni": 43.1,
+   "assets": 809.9,
+   "liab": 340.4,
+   "equity": 469.6,
+   "dps": 75.0,
+   "payout": 16.87,
+   "yield": 2.0,
+   "dps_adj": 75.0
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 116.3,
+   "op": 11.8,
+   "ni": 5.6
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 172.6,
+   "op": 26.6,
+   "ni": 14.2
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 253.1,
+   "op": 53.2,
+   "ni": 38.1
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 102.5,
+   "op": -0.8,
+   "ni": -7.9
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 113.4,
+   "op": 12.1,
+   "ni": 3.8
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 155.2,
+   "op": 14.0,
+   "ni": 9.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 237.9,
+   "op": 45.5,
+   "ni": 39.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 85.4,
+   "op": -5.2,
+   "ni": -8.7
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 100.9,
+   "op": 4.2,
+   "ni": -0.3
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 151.2,
+   "op": 15.0,
+   "ni": 63.1
+  }
+ ]
+}

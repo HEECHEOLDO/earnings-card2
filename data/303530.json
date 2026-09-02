@@ -1,0 +1,148 @@
+{
+ "name": "이노뎁",
+ "split_adjusted": false,
+ "legal_name": "이노뎁",
+ "code": "303530",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-03",
+ "annual": [
+  {
+   "p": 2021,
+   "rev": 600.4,
+   "op": -15.1,
+   "ni": -8.8,
+   "assets": 553.1,
+   "liab": 148.1,
+   "equity": 405.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 764.2,
+   "op": 4.1,
+   "ni": 5.6,
+   "assets": 555.6,
+   "liab": 163.0,
+   "equity": 392.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 840.3,
+   "op": 6.4,
+   "ni": 10.3,
+   "assets": 541.3,
+   "liab": 149.4,
+   "equity": 391.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 867.8,
+   "op": -19.3,
+   "ni": -15.4,
+   "assets": 633.8,
+   "liab": 261.2,
+   "equity": 372.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 707.4,
+   "op": -29.0,
+   "ni": -30.2,
+   "assets": 695.4,
+   "liab": 349.8,
+   "equity": 345.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 101.7,
+   "op": -60.7,
+   "ni": -59.8
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 259.9,
+   "op": 6.6,
+   "ni": 7.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 140.6,
+   "op": -23.3,
+   "ni": -21.8
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 365.5,
+   "op": 58.0,
+   "ni": 59.2
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 93.9,
+   "op": -36.3,
+   "ni": -35.6
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 196.5,
+   "op": 3.6,
+   "ni": 3.6
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 135.3,
+   "op": -21.6,
+   "ni": -21.2
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 281.7,
+   "op": 25.4,
+   "ni": 23.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 85.2,
+   "op": -36.5,
+   "ni": -30.6
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 191.8,
+   "op": -6.0,
+   "ni": -3.8
+  }
+ ]
+}

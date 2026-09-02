@@ -1,0 +1,174 @@
+{
+ "name": "셀리드",
+ "split_adjusted": false,
+ "legal_name": "셀리드",
+ "code": "299660",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-03",
+ "annual": [
+  {
+   "p": 2018,
+   "rev": 0.0,
+   "op": -23.7,
+   "ni": -112.9,
+   "assets": 142.2,
+   "liab": 7.2,
+   "equity": 135.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 0.0,
+   "op": -35.3,
+   "ni": -24.9,
+   "assets": 525.2,
+   "liab": 11.9,
+   "equity": 513.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 0.0,
+   "op": -52.9,
+   "ni": -41.3,
+   "assets": 494.0,
+   "liab": 21.0,
+   "equity": 473.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 9.1,
+   "op": -130.1,
+   "ni": -130.7,
+   "assets": 582.6,
+   "liab": 195.0,
+   "equity": 387.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 4.8,
+   "op": -149.1,
+   "ni": -228.6,
+   "assets": 458.6,
+   "liab": 234.2,
+   "equity": 224.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 41.7,
+   "op": -119.8,
+   "ni": -122.6,
+   "assets": 760.9,
+   "liab": 248.8,
+   "equity": 512.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 88.4,
+   "op": -113.4,
+   "ni": -120.7,
+   "assets": 1108.7,
+   "liab": 366.6,
+   "equity": 742.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 3.1,
+   "op": -24.2,
+   "ni": -32.9
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 6.0,
+   "op": -32.4,
+   "ni": -26.1
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 13.7,
+   "op": -27.1,
+   "ni": -27.7
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 18.8,
+   "op": -36.1,
+   "ni": -35.9
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 15.7,
+   "op": -27.1,
+   "ni": -26.8
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 21.3,
+   "op": -24.1,
+   "ni": -25.1
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 23.3,
+   "op": -25.5,
+   "ni": -23.7
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 28.1,
+   "op": -36.8,
+   "ni": -45.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 32.1,
+   "op": -16.2,
+   "ni": -14.8
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 20.7,
+   "op": -25.0,
+   "ni": -190.2
+  }
+ ]
+}

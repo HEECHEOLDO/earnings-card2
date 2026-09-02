@@ -1,0 +1,174 @@
+{
+ "name": "덕산테코피아",
+ "split_adjusted": false,
+ "legal_name": "덕산테코피아",
+ "code": "317330",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-03",
+ "annual": [
+  {
+   "p": 2019,
+   "rev": 618.4,
+   "op": 134.3,
+   "ni": 111.3,
+   "assets": 1588.6,
+   "liab": 136.7,
+   "equity": 1451.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 783.8,
+   "op": 140.5,
+   "ni": 126.3,
+   "assets": 1704.5,
+   "liab": 124.3,
+   "equity": 1580.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 1123.8,
+   "op": 219.8,
+   "ni": 173.8,
+   "assets": 2443.4,
+   "liab": 713.5,
+   "equity": 1729.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 1110.1,
+   "op": 92.6,
+   "ni": 150.5,
+   "assets": 2985.3,
+   "liab": 952.4,
+   "equity": 2032.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 940.8,
+   "op": -62.3,
+   "ni": -192.7,
+   "assets": 5143.7,
+   "liab": 3300.6,
+   "equity": 1843.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 996.9,
+   "op": -302.2,
+   "ni": -725.8,
+   "assets": 6629.9,
+   "liab": 4572.5,
+   "equity": 2057.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 1120.8,
+   "op": -430.3,
+   "ni": -1055.5,
+   "assets": 6467.1,
+   "liab": 5402.3,
+   "equity": 1064.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 297.7,
+   "op": -49.1,
+   "ni": -68.9
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 235.3,
+   "op": -58.8,
+   "ni": -445.4
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 261.4,
+   "op": -60.9,
+   "ni": -45.4
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 202.6,
+   "op": -133.4,
+   "ni": -166.1
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 242.5,
+   "op": -97.3,
+   "ni": -149.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 289.7,
+   "op": -87.1,
+   "ni": -78.1
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 300.5,
+   "op": -148.6,
+   "ni": -208.9
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 288.1,
+   "op": -97.2,
+   "ni": -619.5
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 391.4,
+   "op": -103.8,
+   "ni": -151.1
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 421.8,
+   "op": -105.6,
+   "ni": -181.3
+  }
+ ]
+}

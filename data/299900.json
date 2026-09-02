@@ -1,0 +1,187 @@
+{
+ "name": "위지윅스튜디오",
+ "split_adjusted": false,
+ "legal_name": "위지윅스튜디오",
+ "code": "299900",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-09-03",
+ "annual": [
+  {
+   "p": 2018,
+   "rev": 236.5,
+   "op": 50.2,
+   "ni": 46.7,
+   "assets": 592.7,
+   "liab": 151.5,
+   "equity": 441.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 464.0,
+   "op": 66.3,
+   "ni": 65.1,
+   "assets": 1092.0,
+   "liab": 387.4,
+   "equity": 704.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 1101.9,
+   "op": 18.5,
+   "ni": 31.9,
+   "assets": 1789.4,
+   "liab": 844.7,
+   "equity": 944.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 1202.8,
+   "op": -39.5,
+   "ni": -182.7,
+   "assets": 3704.7,
+   "liab": 1064.6,
+   "equity": 2640.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 1863.4,
+   "op": -249.1,
+   "ni": -271.9,
+   "assets": 3865.5,
+   "liab": 1409.5,
+   "equity": 2456.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 1473.4,
+   "op": -202.8,
+   "ni": 466.7,
+   "assets": 3371.6,
+   "liab": 1032.5,
+   "equity": 2339.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 804.3,
+   "op": -118.2,
+   "ni": -603.0,
+   "assets": 2935.0,
+   "liab": 1199.1,
+   "equity": 1735.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 1020.0,
+   "op": -95.6,
+   "ni": -417.8,
+   "assets": 2425.6,
+   "liab": 1103.3,
+   "equity": 1322.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": -47.3,
+   "op": -53.0,
+   "ni": 368.2
+  },
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 170.4,
+   "op": -36.6,
+   "ni": -89.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 68.6,
+   "op": -48.3,
+   "ni": -75.9
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 253.2,
+   "op": -16.0,
+   "ni": 13.2
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 312.2,
+   "op": -17.2,
+   "ni": -451.3
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 207.9,
+   "op": -34.5,
+   "ni": -65.4
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 245.1,
+   "op": -33.0,
+   "ni": -66.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 296.2,
+   "op": -16.7,
+   "ni": -36.1
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 270.8,
+   "op": -11.3,
+   "ni": -250.3
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 136.9,
+   "op": -18.3,
+   "ni": 59.4
+  }
+ ]
+}

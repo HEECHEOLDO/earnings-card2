@@ -1,0 +1,140 @@
+{
+ "name": "애닉",
+ "split_adjusted": false,
+ "legal_name": "애닉",
+ "code": "299910",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-09-03",
+ "annual": [
+  {
+   "p": 2018,
+   "rev": 1244.9,
+   "op": 282.3,
+   "ni": -1064.7,
+   "assets": 1120.7,
+   "liab": 214.4,
+   "equity": 906.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 1005.7,
+   "op": -87.0,
+   "ni": -81.3,
+   "assets": 1062.1,
+   "liab": 217.9,
+   "equity": 844.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 683.0,
+   "op": -339.1,
+   "ni": -464.3,
+   "assets": 621.3,
+   "liab": 292.9,
+   "equity": 328.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 454.4,
+   "op": -441.2,
+   "ni": -392.7,
+   "assets": 118.3,
+   "liab": 171.5,
+   "equity": -53.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 54.8,
+   "op": -75.2,
+   "ni": -47.0,
+   "assets": 14.7,
+   "liab": 108.6,
+   "equity": -93.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 6.4,
+   "op": -21.1,
+   "ni": -9.8,
+   "assets": 113.2,
+   "liab": 96.7,
+   "equity": 16.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 1,
+   "rev": 4.8,
+   "op": -2.2,
+   "ni": -2.4
+  },
+  {
+   "y": 2023,
+   "q": 2,
+   "rev": -0.6,
+   "op": -4.1,
+   "ni": -4.5
+  },
+  {
+   "y": 2023,
+   "q": 3,
+   "rev": 1.1,
+   "op": -1.5,
+   "ni": -3.2
+  },
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 1.1,
+   "op": -13.3,
+   "ni": 0.4
+  },
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 3.8,
+   "op": -9.0,
+   "ni": -10.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 16.7,
+   "op": -18.2,
+   "ni": -19.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 98.3,
+   "op": -1.6,
+   "ni": -2.2
+  }
+ ]
+}

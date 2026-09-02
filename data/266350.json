@@ -1,0 +1,87 @@
+{
+ "name": "팡스카이",
+ "split_adjusted": false,
+ "legal_name": "팡스카이",
+ "code": "266350",
+ "market": "코넥스",
+ "sector": "",
+ "updated": "2026-09-03",
+ "annual": [
+  {
+   "p": 2023,
+   "rev": 208.7,
+   "op": 11.7,
+   "ni": 2.3,
+   "assets": 132.1,
+   "liab": 130.8,
+   "equity": 1.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 88.4,
+   "op": -61.6,
+   "ni": -117.4,
+   "assets": 29.9,
+   "liab": 142.6,
+   "equity": -112.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 20.3,
+   "op": 2.2,
+   "ni": -11.6,
+   "assets": null,
+   "liab": 120.3,
+   "equity": -104.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 3,
+   "rev": 168.5,
+   "op": 13.6,
+   "ni": 8.8
+  },
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 40.1,
+   "op": -1.9,
+   "ni": -6.5
+  },
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 29.2,
+   "op": 1.1,
+   "ni": -0.8
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 88.4,
+   "op": -61.6,
+   "ni": -117.4
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 20.3,
+   "op": 2.2,
+   "ni": -11.6
+  }
+ ]
+}

@@ -1,0 +1,38 @@
+{
+ "name": "엔케이맥스",
+ "split_adjusted": false,
+ "legal_name": "엔케이맥스",
+ "code": "262760",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-09-03",
+ "annual": [
+  {
+   "p": 2017,
+   "rev": 1.1,
+   "op": -45.4,
+   "ni": -45.2,
+   "assets": 212.5,
+   "liab": 5.9,
+   "equity": 206.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 3.4,
+   "op": -91.8,
+   "ni": -77.4,
+   "assets": 484.9,
+   "liab": 82.1,
+   "equity": 402.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

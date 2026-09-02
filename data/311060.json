@@ -1,0 +1,151 @@
+{
+ "name": "엘에이티",
+ "split_adjusted": false,
+ "legal_name": "엘에이티",
+ "code": "311060",
+ "market": "코넥스",
+ "sector": "",
+ "updated": "2026-09-03",
+ "annual": [
+  {
+   "p": 2017,
+   "rev": 68923935.4,
+   "op": 1782191.9,
+   "ni": 1481904.9,
+   "assets": 27994281.2,
+   "liab": 23202403.9,
+   "equity": 4791877.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 101.5,
+   "op": 5.6,
+   "ni": 4.6,
+   "assets": 99.7,
+   "liab": 68.0,
+   "equity": 31.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 107.9,
+   "op": -0.8,
+   "ni": -1.4,
+   "assets": 104.2,
+   "liab": 67.5,
+   "equity": 36.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 110.6,
+   "op": 6.5,
+   "ni": 4.4,
+   "assets": 119.9,
+   "liab": 77.6,
+   "equity": 42.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 93.9,
+   "op": -9.8,
+   "ni": -9.8,
+   "assets": 128.7,
+   "liab": 95.6,
+   "equity": 33.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 168.9,
+   "op": 17.0,
+   "ni": 11.3,
+   "assets": 153.7,
+   "liab": 99.5,
+   "equity": 54.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 93.3,
+   "op": -22.5,
+   "ni": -18.1,
+   "assets": 332.6,
+   "liab": 282.3,
+   "equity": 50.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 408.1,
+   "op": 5.9,
+   "ni": 0.8,
+   "assets": 323.6,
+   "liab": 214.6,
+   "equity": 108.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 294.1,
+   "op": 7.4,
+   "ni": 4.8,
+   "assets": 337.8,
+   "liab": 219.2,
+   "equity": 118.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 93.3,
+   "op": -22.5,
+   "ni": -18.1
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 408.1,
+   "op": 5.9,
+   "ni": 0.8
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 294.1,
+   "op": 7.4,
+   "ni": 4.8
+  }
+ ]
+}

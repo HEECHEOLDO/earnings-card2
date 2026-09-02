@@ -1,0 +1,174 @@
+{
+ "name": "씨에스베어링",
+ "split_adjusted": false,
+ "legal_name": "씨에스베어링",
+ "code": "297090",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-03",
+ "annual": [
+  {
+   "p": 2019,
+   "rev": 1025.7,
+   "op": 102.7,
+   "ni": 61.0,
+   "assets": 1079.9,
+   "liab": 627.6,
+   "equity": 452.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 1035.2,
+   "op": 95.1,
+   "ni": 57.1,
+   "assets": 1275.1,
+   "liab": 760.5,
+   "equity": 514.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 955.6,
+   "op": 5.0,
+   "ni": -11.3,
+   "assets": 1362.0,
+   "liab": 803.8,
+   "equity": 558.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 490.1,
+   "op": -88.3,
+   "ni": -173.8,
+   "assets": 1558.9,
+   "liab": 687.7,
+   "equity": 871.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 766.1,
+   "op": 0.6,
+   "ni": -16.1,
+   "assets": 1497.9,
+   "liab": 641.2,
+   "equity": 856.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 1054.1,
+   "op": 21.1,
+   "ni": 25.1,
+   "assets": 1480.4,
+   "liab": 541.9,
+   "equity": 938.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 1261.5,
+   "op": 110.9,
+   "ni": 112.3,
+   "assets": 1545.6,
+   "liab": 535.9,
+   "equity": 1009.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 156.4,
+   "op": -21.1,
+   "ni": -22.5
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 247.5,
+   "op": 8.4,
+   "ni": 30.2
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 285.3,
+   "op": 16.3,
+   "ni": 13.6
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 364.9,
+   "op": 17.5,
+   "ni": 3.8
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 283.5,
+   "op": 12.4,
+   "ni": 10.2
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 319.8,
+   "op": 27.7,
+   "ni": 17.1
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 321.6,
+   "op": 33.5,
+   "ni": 43.8
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 336.6,
+   "op": 37.3,
+   "ni": 41.3
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 288.4,
+   "op": 18.3,
+   "ni": 20.9
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 378.0,
+   "op": 34.2,
+   "ni": 31.7
+  }
+ ]
+}

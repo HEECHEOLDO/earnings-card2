@@ -1,0 +1,187 @@
+{
+ "name": "티앤알바이오팹",
+ "split_adjusted": false,
+ "legal_name": "티앤알바이오팹",
+ "code": "246710",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-03",
+ "annual": [
+  {
+   "p": 2018,
+   "rev": 9.7,
+   "op": -49.3,
+   "ni": -46.9,
+   "assets": 311.0,
+   "liab": 8.4,
+   "equity": 302.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 12.9,
+   "op": -68.6,
+   "ni": -62.5,
+   "assets": 270.9,
+   "liab": 23.3,
+   "equity": 247.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 68.1,
+   "op": -55.1,
+   "ni": -56.0,
+   "assets": 485.1,
+   "liab": 24.5,
+   "equity": 460.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 32.3,
+   "op": -102.5,
+   "ni": -110.8,
+   "assets": 822.3,
+   "liab": 405.4,
+   "equity": 416.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 57.5,
+   "op": -129.0,
+   "ni": -103.4,
+   "assets": 759.4,
+   "liab": 366.7,
+   "equity": 392.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 52.0,
+   "op": -127.2,
+   "ni": -134.2,
+   "assets": 998.2,
+   "liab": 686.2,
+   "equity": 312.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 48.7,
+   "op": -133.0,
+   "ni": -76.8,
+   "assets": 984.5,
+   "liab": 742.4,
+   "equity": 242.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 269.7,
+   "op": -90.5,
+   "ni": -319.5,
+   "assets": 927.1,
+   "liab": 666.4,
+   "equity": 260.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 11.9,
+   "op": -34.3,
+   "ni": -77.5
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 13.6,
+   "op": -41.9,
+   "ni": -9.6
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 11.0,
+   "op": -30.6,
+   "ni": -47.7
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 12.3,
+   "op": -26.1,
+   "ni": 57.9
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 59.6,
+   "op": -35.8,
+   "ni": -53.9
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 65.4,
+   "op": -19.2,
+   "ni": -42.9
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 69.5,
+   "op": -12.6,
+   "ni": -57.1
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 75.2,
+   "op": -22.9,
+   "ni": -165.6
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 87.2,
+   "op": -9.3,
+   "ni": -16.6
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 95.4,
+   "op": -9.3,
+   "ni": -37.8
+  }
+ ]
+}

@@ -1,0 +1,148 @@
+{
+ "name": "한울앤제주",
+ "split_adjusted": false,
+ "legal_name": "한울앤제주",
+ "code": "276730",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-03",
+ "annual": [
+  {
+   "p": 2021,
+   "rev": 288.4,
+   "op": -72.5,
+   "ni": -81.9,
+   "assets": 927.8,
+   "liab": 347.6,
+   "equity": 580.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 239.7,
+   "op": -116.1,
+   "ni": -247.6,
+   "assets": 619.5,
+   "liab": 276.0,
+   "equity": 343.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 224.5,
+   "op": -110.1,
+   "ni": -123.9,
+   "assets": 497.7,
+   "liab": 269.6,
+   "equity": 228.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 182.8,
+   "op": -48.3,
+   "ni": -209.5,
+   "assets": 330.9,
+   "liab": 247.9,
+   "equity": 83.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 138.9,
+   "op": -49.0,
+   "ni": -115.1,
+   "assets": 604.2,
+   "liab": 444.4,
+   "equity": 159.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 50.3,
+   "op": -10.6,
+   "ni": -10.2
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 50.2,
+   "op": -14.4,
+   "ni": -19.2
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 44.8,
+   "op": -5.0,
+   "ni": -7.2
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 37.5,
+   "op": -18.3,
+   "ni": -172.9
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 34.0,
+   "op": -5.3,
+   "ni": -9.7
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 33.0,
+   "op": -14.6,
+   "ni": -4.2
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 33.7,
+   "op": -9.6,
+   "ni": -22.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 38.2,
+   "op": -19.5,
+   "ni": -79.3
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 33.3,
+   "op": -19.1,
+   "ni": -31.1
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 38.0,
+   "op": -17.9,
+   "ni": -31.8
+  }
+ ]
+}

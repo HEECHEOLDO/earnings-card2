@@ -1,0 +1,148 @@
+{
+ "name": "아리바이오LAB",
+ "split_adjusted": false,
+ "legal_name": "아리바이오LAB",
+ "code": "261780",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-03",
+ "annual": [
+  {
+   "p": 2021,
+   "rev": 5.0,
+   "op": -60.8,
+   "ni": -184.2,
+   "assets": 653.1,
+   "liab": 257.0,
+   "equity": 396.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 1.8,
+   "op": -64.7,
+   "ni": -67.2,
+   "assets": 610.7,
+   "liab": 277.0,
+   "equity": 333.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 2.9,
+   "op": -64.2,
+   "ni": -17.5,
+   "assets": 451.2,
+   "liab": 97.0,
+   "equity": 354.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 3.7,
+   "op": -77.0,
+   "ni": -101.4,
+   "assets": 472.5,
+   "liab": 195.3,
+   "equity": 277.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 1.6,
+   "op": -142.7,
+   "ni": -160.4,
+   "assets": 297.8,
+   "liab": 179.2,
+   "equity": 118.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 0.0,
+   "op": -16.3,
+   "ni": 17.4
+  },
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 3.7,
+   "op": -15.5,
+   "ni": -14.2
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 0.0,
+   "op": -20.6,
+   "ni": -27.1
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 0.0,
+   "op": -19.1,
+   "ni": -18.7
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 0.0,
+   "op": -21.8,
+   "ni": -41.3
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 1.6,
+   "op": -30.6,
+   "ni": -37.9
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 0.0,
+   "op": -34.2,
+   "ni": -37.6
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 0.0,
+   "op": -53.9,
+   "ni": -59.3
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 1.7,
+   "op": -17.1,
+   "ni": -20.7
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 0.0,
+   "op": -24.6,
+   "ni": -26.6
+  }
+ ]
+}

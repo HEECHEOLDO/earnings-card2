@@ -1,0 +1,38 @@
+{
+ "name": "하나머스트제6호기업인수목적",
+ "split_adjusted": false,
+ "legal_name": "하나머스트제6호기업인수목적",
+ "code": "307160",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-09-03",
+ "annual": [
+  {
+   "p": 2018,
+   "rev": 0.0,
+   "op": -0.2,
+   "ni": -0.1,
+   "assets": 89.3,
+   "liab": 7.2,
+   "equity": 82.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 0.0,
+   "op": -0.2,
+   "ni": 0.9,
+   "assets": 90.4,
+   "liab": 7.3,
+   "equity": 83.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

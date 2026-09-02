@@ -1,0 +1,25 @@
+{
+ "name": "이십일스토어",
+ "split_adjusted": false,
+ "legal_name": "이십일스토어",
+ "code": "270020",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-09-03",
+ "annual": [
+  {
+   "p": 2019,
+   "rev": 195.5,
+   "op": 8.1,
+   "ni": 10.9,
+   "assets": 220.8,
+   "liab": 152.9,
+   "equity": 67.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

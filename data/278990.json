@@ -1,0 +1,112 @@
+{
+ "name": "EMB",
+ "split_adjusted": false,
+ "legal_name": "EMB",
+ "code": "278990",
+ "market": "코넥스",
+ "sector": "",
+ "updated": "2026-09-03",
+ "annual": [
+  {
+   "p": 2020,
+   "rev": 291.6,
+   "op": 17.9,
+   "ni": 8.6,
+   "assets": 364.2,
+   "liab": 249.0,
+   "equity": 115.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 260.3,
+   "op": 9.2,
+   "ni": 15.3,
+   "assets": 336.4,
+   "liab": 202.1,
+   "equity": 134.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 242.8,
+   "op": 18.2,
+   "ni": -4.8,
+   "assets": 337.4,
+   "liab": 206.5,
+   "equity": 130.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 243.5,
+   "op": 8.1,
+   "ni": 29.5,
+   "assets": 497.1,
+   "liab": 193.8,
+   "equity": 303.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 276.8,
+   "op": 6.1,
+   "ni": 25.2,
+   "assets": 561.7,
+   "liab": 263.7,
+   "equity": 298.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 237.8,
+   "op": -51.6,
+   "ni": -128.2,
+   "assets": 678.2,
+   "liab": 353.1,
+   "equity": 325.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 243.5,
+   "op": 8.1,
+   "ni": 29.5
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 276.8,
+   "op": 6.1,
+   "ni": 25.2
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 237.8,
+   "op": -51.6,
+   "ni": -128.2
+  }
+ ]
+}

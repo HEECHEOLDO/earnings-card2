@@ -1,0 +1,174 @@
+{
+ "name": "CJ 바이오사이언스",
+ "split_adjusted": false,
+ "legal_name": "CJ 바이오사이언스",
+ "code": "311690",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-03",
+ "annual": [
+  {
+   "p": 2019,
+   "rev": 47.8,
+   "op": -45.2,
+   "ni": -43.5,
+   "assets": 337.4,
+   "liab": 28.9,
+   "equity": 308.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 53.1,
+   "op": -85.1,
+   "ni": -87.6,
+   "assets": 733.6,
+   "liab": 388.8,
+   "equity": 344.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 43.6,
+   "op": -101.1,
+   "ni": -192.7,
+   "assets": 1163.6,
+   "liab": 285.0,
+   "equity": 878.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 40.7,
+   "op": -332.3,
+   "ni": -349.1,
+   "assets": 913.9,
+   "liab": 417.3,
+   "equity": 496.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 55.8,
+   "op": -320.6,
+   "ni": -229.1,
+   "assets": 911.3,
+   "liab": 196.3,
+   "equity": 715.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 34.7,
+   "op": -342.4,
+   "ni": -328.4,
+   "assets": 996.1,
+   "liab": 218.5,
+   "equity": 777.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 36.9,
+   "op": -247.9,
+   "ni": -240.0,
+   "assets": 723.4,
+   "liab": 187.0,
+   "equity": 536.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 10.0,
+   "op": -78.1,
+   "ni": -73.7
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 7.8,
+   "op": -80.6,
+   "ni": -77.3
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 7.4,
+   "op": -85.6,
+   "ni": -82.6
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 9.4,
+   "op": -98.1,
+   "ni": -94.7
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 9.1,
+   "op": -66.0,
+   "ni": -61.3
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 7.8,
+   "op": -69.5,
+   "ni": -68.8
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 7.4,
+   "op": -60.8,
+   "ni": -58.3
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 12.6,
+   "op": -51.6,
+   "ni": -51.6
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 7.8,
+   "op": -53.4,
+   "ni": -51.3
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 9.0,
+   "op": -64.0,
+   "ni": -62.1
+  }
+ ]
+}

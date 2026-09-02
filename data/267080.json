@@ -1,0 +1,80 @@
+{
+ "name": "세븐브로이맥주",
+ "split_adjusted": false,
+ "legal_name": "세븐브로이맥주",
+ "code": "267080",
+ "market": "코넥스",
+ "sector": "",
+ "updated": "2026-09-03",
+ "annual": [
+  {
+   "p": 2023,
+   "rev": 124.0,
+   "op": -61.9,
+   "ni": -91.2,
+   "assets": 428.9,
+   "liab": 243.9,
+   "equity": 184.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 84.9,
+   "op": -90.9,
+   "ni": -174.9,
+   "assets": 343.2,
+   "liab": 332.4,
+   "equity": 10.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 68.3,
+   "op": -53.6,
+   "ni": -127.1,
+   "assets": 193.6,
+   "liab": 305.5,
+   "equity": -111.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 3,
+   "rev": 109.4,
+   "op": -39.3,
+   "ni": -54.1
+  },
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 14.6,
+   "op": -22.6,
+   "ni": -37.2
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 84.9,
+   "op": -90.9,
+   "ni": -174.9
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 68.3,
+   "op": -53.6,
+   "ni": -127.1
+  }
+ ]
+}

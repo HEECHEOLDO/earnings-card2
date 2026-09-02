@@ -1,0 +1,174 @@
+{
+ "name": "플리토",
+ "split_adjusted": false,
+ "legal_name": "플리토",
+ "code": "300080",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-03",
+ "annual": [
+  {
+   "p": 2019,
+   "rev": 19.9,
+   "op": -57.4,
+   "ni": -59.7,
+   "assets": 264.1,
+   "liab": 23.1,
+   "equity": 241.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 74.4,
+   "op": -34.1,
+   "ni": -29.6,
+   "assets": 247.8,
+   "liab": 35.7,
+   "equity": 212.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 93.4,
+   "op": -61.4,
+   "ni": -57.8,
+   "assets": 279.1,
+   "liab": 107.3,
+   "equity": 171.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 136.4,
+   "op": -66.0,
+   "ni": -58.7,
+   "assets": 247.7,
+   "liab": 127.8,
+   "equity": 119.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 177.6,
+   "op": -50.9,
+   "ni": -67.9,
+   "assets": 157.7,
+   "liab": 113.9,
+   "equity": 43.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 203.0,
+   "op": -4.0,
+   "ni": 8.1,
+   "assets": 165.4,
+   "liab": 55.2,
+   "equity": 110.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 359.8,
+   "op": 61.5,
+   "ni": 64.5,
+   "assets": 245.8,
+   "liab": 73.6,
+   "equity": 172.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 41.7,
+   "op": -4.4,
+   "ni": 2.2
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 36.6,
+   "op": -14.1,
+   "ni": -10.8
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 68.9,
+   "op": 12.3,
+   "ni": 11.9
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 55.8,
+   "op": 2.4,
+   "ni": 4.7
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 46.1,
+   "op": 1.7,
+   "ni": 2.1
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 93.8,
+   "op": 24.3,
+   "ni": 23.3
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 117.8,
+   "op": 28.3,
+   "ni": 30.1
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 102.1,
+   "op": 7.2,
+   "ni": 9.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 52.1,
+   "op": -0.6,
+   "ni": 1.7
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 81.1,
+   "op": 14.0,
+   "ni": 15.6
+  }
+ ]
+}

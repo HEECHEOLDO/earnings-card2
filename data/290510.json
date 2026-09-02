@@ -1,0 +1,51 @@
+{
+ "name": "코리아센터",
+ "split_adjusted": false,
+ "legal_name": "코리아센터",
+ "code": "290510",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-09-03",
+ "annual": [
+  {
+   "p": 2019,
+   "rev": 2515.0,
+   "op": 107.7,
+   "ni": 70.2,
+   "assets": 3448.7,
+   "liab": 1467.2,
+   "equity": 1981.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 3030.2,
+   "op": 171.7,
+   "ni": 161.5,
+   "assets": 4066.8,
+   "liab": 1719.9,
+   "equity": 2346.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 3394.5,
+   "op": 174.1,
+   "ni": 111.7,
+   "assets": 4883.0,
+   "liab": 1790.2,
+   "equity": 3092.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

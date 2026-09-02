@@ -1,0 +1,121 @@
+{
+ "name": "제이시스메디칼",
+ "split_adjusted": false,
+ "legal_name": "제이시스메디칼",
+ "code": "287410",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-09-03",
+ "annual": [
+  {
+   "p": 2021,
+   "rev": 813.0,
+   "op": 236.0,
+   "ni": 134.9,
+   "assets": 740.6,
+   "liab": 264.1,
+   "equity": 476.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 1165.5,
+   "op": 340.4,
+   "ni": 270.1,
+   "assets": 1181.2,
+   "liab": 381.6,
+   "equity": 799.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 1430.3,
+   "op": 363.1,
+   "ni": 251.1,
+   "assets": 1423.1,
+   "liab": 460.6,
+   "equity": 962.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 1920.8,
+   "op": 399.7,
+   "ni": 217.8,
+   "assets": 2220.7,
+   "liab": 1109.7,
+   "equity": 1111.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 1,
+   "rev": 291.0,
+   "op": 76.1,
+   "ni": 66.8
+  },
+  {
+   "y": 2023,
+   "q": 2,
+   "rev": 351.6,
+   "op": 96.5,
+   "ni": 62.5
+  },
+  {
+   "y": 2023,
+   "q": 3,
+   "rev": 391.1,
+   "op": 102.2,
+   "ni": 80.5
+  },
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 396.6,
+   "op": 88.3,
+   "ni": 41.3
+  },
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 439.6,
+   "op": 88.6,
+   "ni": 70.3
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 451.0,
+   "op": 102.5,
+   "ni": 92.4
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 513.6,
+   "op": 130.1,
+   "ni": 112.1
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 516.6,
+   "op": 78.5,
+   "ni": -57.0
+  }
+ ]
+}

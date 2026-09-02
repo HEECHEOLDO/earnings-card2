@@ -1,0 +1,25 @@
+{
+ "name": "노보믹스",
+ "split_adjusted": false,
+ "legal_name": "노보믹스",
+ "code": "283100",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-09-03",
+ "annual": [
+  {
+   "p": 2022,
+   "rev": 2.1,
+   "op": -53.0,
+   "ni": -34.2,
+   "assets": 49.0,
+   "liab": 63.4,
+   "equity": -14.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

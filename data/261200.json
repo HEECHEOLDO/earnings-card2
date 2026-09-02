@@ -1,0 +1,174 @@
+{
+ "name": "덴티스",
+ "split_adjusted": false,
+ "legal_name": "덴티스",
+ "code": "261200",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-03",
+ "annual": [
+  {
+   "p": 2019,
+   "rev": 0.0,
+   "op": -0.5,
+   "ni": 0.6,
+   "assets": 91.3,
+   "liab": 8.4,
+   "equity": 82.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 467.2,
+   "op": -119.8,
+   "ni": -136.3,
+   "assets": 905.5,
+   "liab": 629.1,
+   "equity": 276.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 657.4,
+   "op": 4.7,
+   "ni": 1.2,
+   "assets": 1159.3,
+   "liab": 835.9,
+   "equity": 323.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 870.9,
+   "op": 55.9,
+   "ni": 3.0,
+   "assets": 1310.7,
+   "liab": 988.2,
+   "equity": 322.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 943.3,
+   "op": 4.3,
+   "ni": 25.5,
+   "assets": 1876.4,
+   "liab": 1302.3,
+   "equity": 574.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 1142.8,
+   "op": -4.5,
+   "ni": 22.7,
+   "assets": 2142.5,
+   "liab": 1563.2,
+   "equity": 579.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 1142.5,
+   "op": -104.1,
+   "ni": -164.7,
+   "assets": 2091.1,
+   "liab": 1633.2,
+   "equity": 457.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 285.7,
+   "op": 14.2,
+   "ni": 28.5
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 303.8,
+   "op": 20.1,
+   "ni": 38.3
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 296.9,
+   "op": 15.0,
+   "ni": -30.3
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 256.4,
+   "op": -53.8,
+   "ni": -13.8
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 324.8,
+   "op": 10.2,
+   "ni": -5.3
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 324.0,
+   "op": -3.1,
+   "ni": -59.1
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 265.9,
+   "op": -15.7,
+   "ni": -13.1
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 227.7,
+   "op": -95.6,
+   "ni": -87.3
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 301.9,
+   "op": 30.6,
+   "ni": 59.3
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 321.4,
+   "op": 26.5,
+   "ni": 38.2
+  }
+ ]
+}

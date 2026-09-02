@@ -1,0 +1,200 @@
+{
+ "name": "앱튼",
+ "split_adjusted": false,
+ "legal_name": "앱튼",
+ "code": "270520",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-03",
+ "annual": [
+  {
+   "p": 2017,
+   "rev": 0.0,
+   "op": -0.2,
+   "ni": 0.0,
+   "assets": 94.5,
+   "liab": 9.6,
+   "equity": 84.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 0.0,
+   "op": -0.5,
+   "ni": 0.5,
+   "assets": 95.2,
+   "liab": 9.8,
+   "equity": 85.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 0.0,
+   "op": -0.4,
+   "ni": 0.6,
+   "assets": 95.9,
+   "liab": 9.9,
+   "equity": 86.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 303.7,
+   "op": 11.3,
+   "ni": -36.1,
+   "assets": 357.8,
+   "liab": 55.7,
+   "equity": 302.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 251.3,
+   "op": -11.2,
+   "ni": -9.3,
+   "assets": 362.6,
+   "liab": 69.3,
+   "equity": 293.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 175.6,
+   "op": -31.3,
+   "ni": -32.5,
+   "assets": 661.4,
+   "liab": 237.8,
+   "equity": 423.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 204.2,
+   "op": -65.5,
+   "ni": -50.0,
+   "assets": 985.6,
+   "liab": 401.4,
+   "equity": 584.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 183.8,
+   "op": -127.5,
+   "ni": -191.7,
+   "assets": 2064.1,
+   "liab": 1254.9,
+   "equity": 809.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 169.0,
+   "op": -111.6,
+   "ni": -234.3,
+   "assets": 1600.6,
+   "liab": 648.7,
+   "equity": 951.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 48.7,
+   "op": -17.8,
+   "ni": -13.4
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 52.7,
+   "op": -17.1,
+   "ni": -27.4
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 44.0,
+   "op": -19.0,
+   "ni": -26.8
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 38.3,
+   "op": -73.6,
+   "ni": -124.1
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 65.7,
+   "op": -24.9,
+   "ni": 93.7
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 28.3,
+   "op": -39.9,
+   "ni": -209.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 51.7,
+   "op": -10.4,
+   "ni": -42.7
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 23.2,
+   "op": -36.3,
+   "ni": -76.3
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 45.4,
+   "op": -17.7,
+   "ni": -132.2
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 33.7,
+   "op": -13.3,
+   "ni": -38.7
+  }
+ ]
+}
