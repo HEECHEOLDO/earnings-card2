@@ -104,6 +104,12 @@
   .nav-i svg { width: 16px; height: 16px; fill: none; stroke: currentColor;
     stroke-width: 2.1; stroke-linecap: round; stroke-linejoin: round; flex: none; }
   .nav-i:hover { color: var(--accent-text); }
+  .nav-short { display: none; }
+  @media (max-width: 480px) {
+    .nav-full { display: none; }
+    .nav-short { display: inline; }
+  }
+
   .nav-i.on { background: var(--accent); color: #fff; box-shadow: 0 2px 8px -3px rgba(30,78,140,.55); }
   [data-mode="dark"] .nav-i.on { color: #0E141B; box-shadow: none; }
   @media (max-width: 560px) {
@@ -333,9 +339,13 @@
       <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 010 18M12 3a15 15 0 000 18"/></svg>
       <span>해외 실적</span>
     </a>
+    <a href="./returns.html" class="nav-i">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg>
+      <span class="nav-full">연간 수익률</span><span class="nav-short">수익률</span>
+    </a>
     <a href="./screen.html" class="nav-i">
       <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-      <span>종목 스크리닝</span>
+      <span class="nav-full">종목 스크리닝</span><span class="nav-short">스크리닝</span>
     </a>
     <a href="./guru.html" class="nav-i">
       <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3v9l6.4 6.4"/></svg>
