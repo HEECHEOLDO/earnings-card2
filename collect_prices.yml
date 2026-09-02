@@ -1,0 +1,43 @@
+name: 연간 수익률 수집
+
+on:
+  schedule:
+    - cron: '30 17 * * *'      # KST 02:30 (국내·해외 실적 수집 뒤)
+  workflow_dispatch:
+
+concurrency:
+  group: prices-collect
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 수집
+        run: python3 collect_prices.py
+
+      - name: 커밋 · 푸시
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/returns.json || true
+          if git diff --cached --quiet; then
+            echo "변경 없음"
+            exit 0
+          fi
+          git commit -m "연간 수익률 자동 수집 $(date -u +'%Y-%m-%d')"
+          for i in 1 2 3 4 5; do
+            git pull --rebase --autostash && git push && exit 0
+            echo "푸시 재시도 $i"
+            sleep 10
+          done
+          echo "푸시 실패"; exit 1
