@@ -99,6 +99,20 @@
   input[type="range"] { accent-color:var(--accent); }
 
 
+  .search-wrap { position:relative; }
+  .suggest { position:absolute; left:0; right:0; top:100%; z-index:40; margin-top:4px;
+    background:var(--surface); border:1px solid var(--border-strong); border-radius:var(--radius);
+    box-shadow:0 12px 28px -12px rgba(0,0,0,.3); max-height:280px; overflow-y:auto; display:none; }
+  .suggest.on { display:block; }
+  .sg-item { padding:9px 12px; font-size:13.5px; cursor:pointer; display:flex;
+    justify-content:space-between; gap:10px; align-items:center; }
+  .sg-item:hover, .sg-item.hl { background:var(--accent-soft); }
+  .sg-code { font-size:12px; color:var(--text-mute); flex:none; }
+  .sg-tag { font-size:11px; color:#fff; background:var(--accent); border-radius:4px;
+    padding:1px 6px; flex:none; }
+  [data-mode="dark"] .sg-tag { color:#0E141B; }
+  .sg-empty { padding:11px 12px; font-size:12.5px; color:var(--text-mute); }
+
   .msg { font-size:13px; margin-top:10px; display:none; line-height:1.6; }
   .msg.ok { color:var(--pos); display:block; }
   .msg.err { color:#B32B22; display:block; }
@@ -190,16 +204,16 @@
               <option value="kr">한국 (공공데이터포털)</option>
             </select>
           </div>
-          <div>
-            <label class="fld" for="f-symbol">티커 / 종목코드</label>
-            <input type="text" id="f-symbol" value="QQQ" spellcheck="false">
+          <div class="search-wrap">
+            <label class="fld" for="f-symbol">종목</label>
+            <input type="text" id="f-symbol" value="QQQ" spellcheck="false"
+                   autocomplete="off" placeholder="이름이나 코드로 찾기">
+            <div class="suggest" id="suggest"></div>
           </div>
         </div>
-        <div class="row3" style="margin-bottom:10px">
+        <div class="row2" style="margin-bottom:10px">
           <div><label class="fld" for="f-from">시작 연도</label><input type="number" id="f-from" value="2009"></div>
           <div><label class="fld" for="f-to">끝 연도</label><input type="number" id="f-to"></div>
-          <div><label class="fld" for="f-preset">자주 쓰는 종목</label>
-            <select id="f-preset"><option value="">선택</option></select></div>
         </div>
         <div id="key-wrap">
           <label class="fld" for="f-key">API 키</label>
@@ -342,18 +356,6 @@
   // 이보다 많으면 원이 최소 크기에 걸려 라벨이 푸터를 침범한다
   var MAX_YEARS = 60;
   var canvas = document.getElementById('card-canvas');
-
-  var PRESETS = [
-    { label:'S&P500 (SPY)', market:'us', symbol:'SPY', title:'S&P500' },
-    { label:'나스닥100 (QQQ)', market:'us', symbol:'QQQ', title:'NASDAQ100' },
-    { label:'다우 (DIA)', market:'us', symbol:'DIA', title:'DOW' },
-    { label:'반도체 (SOXX)', market:'us', symbol:'SOXX', title:'SOXX' },
-    { label:'엔비디아', market:'us', symbol:'NVDA', title:'NVIDIA' },
-    { label:'애플', market:'us', symbol:'AAPL', title:'APPLE' },
-    { label:'코스피200 ETF', market:'kr', symbol:'069500', title:'KODEX 200' },
-    { label:'삼성전자', market:'kr', symbol:'005930', title:'삼성전자' },
-    { label:'SK하이닉스', market:'kr', symbol:'000660', title:'SK하이닉스' }
-  ];
 
   /* ============================================================
      입력 파싱
@@ -741,6 +743,10 @@
     });
   }
 
+  function sleep(ms) {
+    return new Promise(function (r) { setTimeout(r, ms); });
+  }
+
   function fetchKR(key) {
     var code = document.getElementById('f-symbol').value.trim();
     var nowY = new Date().getFullYear();
@@ -749,23 +755,33 @@
     var years = [];
     for (var y = from - 1; y <= to; y++) years.push(y);
 
-    var pts = [], name = code;
-    return years.reduce(function (chain, y) {
+    var pts = [], name = code, missing = [];
+
+    return years.reduce(function (chain, y, idx) {
       return chain.then(function () {
         var isNow = y === nowY;
         var end = isNow ? ymd(new Date()) : (y + '1231');
         var beg = isNow ? ymd(new Date(Date.now() - 20*864e5)) : (y + '1201');
-        return krQuery(key, code, beg, end).then(function (rec) {
-          if (!rec) return;
-          name = rec.itmsNm || name;
-          pts.push({ y: y, close: +rec.clpr, shares: +rec.lstgStCnt || 0, ytd: isNow });
-        });
+        // 연달아 부르면 프록시나 서버가 막을 수 있어 조금씩 쉰다
+        return (idx ? sleep(160) : Promise.resolve())
+          .then(function () { return krQuery(key, code, beg, end); })
+          .catch(function () { return krQuery(key, code, beg, end); })   // 한 번 재시도
+          .then(function (rec) {
+            if (!rec) { missing.push(y); return; }
+            name = rec.itmsNm || name;
+            pts.push({ y: y, close: +rec.clpr, shares: +rec.lstgStCnt || 0, ytd: isNow });
+          })
+          .catch(function () { missing.push(y); });
       });
     }, Promise.resolve()).then(function () {
-      if (pts.length < 2) throw new Error('연말 시세를 찾지 못했습니다. 종목코드와 기간을 확인하세요.');
+      if (pts.length < 2) {
+        throw new Error('연말 시세를 찾지 못했습니다. 종목코드와 기간을 확인하세요.' +
+          (missing.length ? ' (' + missing.length + '개 연도 응답 없음)' : ''));
+      }
       var splits = [], out = [];
       for (var i = 1; i < pts.length; i++) {
         var a = pts[i-1], b = pts[i], f = 1;
+        if (b.y !== a.y + 1) continue;          // 중간이 비면 이어붙이지 않는다
         if (a.shares && b.shares) {
           var ratio = b.shares / a.shares;
           var upN = Math.round(ratio), dnN = Math.round(1/ratio);
@@ -780,9 +796,16 @@
         if (b.y < from) continue;
         out.push({ y: b.y, v: ((b.close * f) / a.close - 1) * 100, ytd: b.ytd });
       }
+
+      var notes = [];
+      if (splits.length) notes.push('액면분할 보정: ' + splits.join(', '));
+      if (missing.length) {
+        notes.push(missing.join(', ') + '년은 시세가 없어 건너뛰었습니다' +
+                   ' (이 API 는 대체로 최근 몇 년치만 제공합니다)');
+      }
       return { data: out, name: name,
                meta: '자료 : 공공데이터포털(금융위원회) · 가격 기준',
-               note: splits.length ? ('액면분할 보정: ' + splits.join(', ')) : '' };
+               note: notes.join(' · ') };
     });
   }
 
@@ -796,12 +819,13 @@
   function rememberKey(market, key) {
     try { localStorage.setItem(keyStoreName(market), key); } catch (e) {}
   }
+
   // 공공데이터포털은 Encoding 키와 Decoding 키를 따로 준다.
-  // Encoding 키(%3D%3D 로 끝남)를 그대로 한 번 더 인코딩하면 인증이 깨진다.
+  // Encoding 키(%3D%3D 로 끝남)를 한 번 더 인코딩하면 인증이 깨진다.
   // 어느 쪽을 넣어도 되도록 원래 형태로 되돌려 둔다.
   function normalizeKey(key) {
     if (!key) return '';
-    key = key.trim();
+    key = String(key).trim();
     if (/%[0-9A-Fa-f]{2}/.test(key)) {
       try { return decodeURIComponent(key); } catch (e) { return key; }
     }
@@ -817,10 +841,7 @@
     var market = document.getElementById('f-market').value;
     var baked = market === 'kr' ? KEYS.dataGoKr : KEYS.alphaVantage;
     var wrap = document.getElementById('key-wrap');
-    if (baked) {
-      wrap.style.display = 'none';
-      return;
-    }
+    if (baked) { wrap.style.display = 'none'; return; }
     wrap.style.display = '';
     document.getElementById('f-key').value = savedKey(market);
   }
@@ -990,28 +1011,126 @@
     state.guide = this.checked; drawPreview();
   });
 
-  document.getElementById('f-preset').addEventListener('change', function () {
-    var p = PRESETS[+this.value];
-    if (!p) return;
-    document.getElementById('f-market').value = p.market;
-    document.getElementById('f-symbol').value = p.symbol;
-    document.getElementById('f-name').value = p.title;
-    refresh();
-  });
+  /* ============================================================
+     종목 목록 — 수집해둔 index.json 을 그대로 쓴다
+     ============================================================ */
+  var UNIVERSE = { us: [], kr: [] };
 
-  var SAMPLE = [
-    ['2009',54.7],['2010',20.1],['2011',3.4],['2012',18.1],['2013',36.6],['2014',19.2],
-    ['2015',9.5],['2016',7.1],['2017',32.7],['2018',-0.1],['2019',39.0],['2020',48.6],
-    ['2021',27.4],['2022',-32.6],['2023',54.9],['2024',25.6],['2025',18.2],['2026',9.4]
+  // 지수 ETF 는 수집 목록에 없으므로 따로 넣는다
+  var ETFS = [
+    { code:'SPY',  name:'SPY',  desc:'S&P500', title:'S&P500' },
+    { code:'QQQ',  name:'QQQ',  desc:'나스닥100', title:'NASDAQ100' },
+    { code:'DIA',  name:'DIA',  desc:'다우존스30', title:'DOW' },
+    { code:'IWM',  name:'IWM',  desc:'러셀2000', title:'RUSSELL2000' },
+    { code:'SOXX', name:'SOXX', desc:'반도체', title:'SOXX' },
+    { code:'VTI',  name:'VTI',  desc:'미국 전체', title:'VTI' },
+    { code:'VOO',  name:'VOO',  desc:'S&P500', title:'VOO' },
+    { code:'SCHD', name:'SCHD', desc:'배당', title:'SCHD' },
+    { code:'TLT',  name:'TLT',  desc:'미국 장기채', title:'TLT' },
+    { code:'GLD',  name:'GLD',  desc:'금', title:'GLD' }
   ];
-  document.getElementById('btn-sample').addEventListener('click', function () {
-    document.getElementById('f-data').value =
-      SAMPLE.map(function (r) { return r[0] + ' ' + r[1]; }).join('\n');
-    document.getElementById('f-name').value = 'NASDAQ100';
-    document.getElementById('f-sub').value = '연간 수익률';
-    document.getElementById('f-source').value = '자료 : Alpha Vantage · 배당 재투자 포함';
+  var KR_ETFS = [
+    { code:'069500', name:'KODEX 200', desc:'코스피200' },
+    { code:'229200', name:'KODEX 코스닥150', desc:'코스닥150' },
+    { code:'360750', name:'TIGER 미국S&P500', desc:'S&P500' },
+    { code:'133690', name:'TIGER 미국나스닥100', desc:'나스닥100' }
+  ];
+
+  function loadUniverse() {
+    ETFS.forEach(function (e) { UNIVERSE.us.push(e); });
+    KR_ETFS.forEach(function (e) { UNIVERSE.kr.push(e); });
+
+    fetch('./data/us/index.json', { cache: 'no-cache' })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (j) {
+        if (!j || !j.companies) return;
+        j.companies.forEach(function (c) {
+          UNIVERSE.us.push({ code: c.code, name: c.code, desc: c.legal_name || '' });
+        });
+      }).catch(function () {});
+
+    fetch('./data/index.json', { cache: 'no-cache' })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (j) {
+        if (!j || !j.companies) return;
+        j.companies.forEach(function (c) {
+          UNIVERSE.kr.push({ code: c.code, name: c.name, desc: c.market || '' });
+        });
+      }).catch(function () {});
+  }
+
+  function searchUniverse(q) {
+    var market = document.getElementById('f-market').value;
+    var list = UNIVERSE[market] || [];
+    q = (q || '').trim().toLowerCase();
+    if (!q) return list.slice(0, 20);
+    var starts = [], has = [];
+    for (var i = 0; i < list.length && starts.length + has.length < 60; i++) {
+      var it = list[i];
+      var hay = (it.name + ' ' + it.code + ' ' + (it.desc || '')).toLowerCase();
+      if (hay.indexOf(q) < 0) continue;
+      if (it.name.toLowerCase().indexOf(q) === 0 || it.code.toLowerCase().indexOf(q) === 0) starts.push(it);
+      else has.push(it);
+    }
+    return starts.concat(has).slice(0, 20);
+  }
+
+  var sugBox = document.getElementById('suggest');
+  var sugItems = [], sugIdx = -1;
+
+  function renderSuggest(q) {
+    sugItems = searchUniverse(q);
+    sugIdx = -1;
+    if (!sugItems.length) {
+      sugBox.innerHTML = '<div class="sg-empty">찾는 종목이 없습니다. 코드를 직접 입력해도 됩니다.</div>';
+      sugBox.classList.add('on');
+      return;
+    }
+    sugBox.innerHTML = sugItems.map(function (it, i) {
+      var right = it.code === it.name ? (it.desc || '') : it.code;
+      return '<div class="sg-item" data-i="' + i + '">' +
+             '<span>' + it.name + (it.desc && it.code !== it.name
+                ? ' <span class="sg-code">' + it.desc + '</span>' : '') + '</span>' +
+             '<span class="sg-code">' + right + '</span></div>';
+    }).join('');
+    sugBox.classList.add('on');
+  }
+  function hideSuggest() { sugBox.classList.remove('on'); }
+
+  function pickSuggest(i) {
+    var it = sugItems[i];
+    if (!it) return;
+    document.getElementById('f-symbol').value = it.code;
+    document.getElementById('f-name').value = it.title || it.name;
+    hideSuggest();
     refresh();
-    say('샘플 데이터를 넣었습니다. 실제 조회는 API 키가 필요합니다.', 'info');
+  }
+
+  var symBox = document.getElementById('f-symbol');
+  symBox.addEventListener('input', function () { renderSuggest(this.value); });
+  symBox.addEventListener('focus', function () { renderSuggest(this.value); });
+  symBox.addEventListener('keydown', function (e) {
+    if (!sugBox.classList.contains('on')) return;
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      sugIdx += (e.key === 'ArrowDown' ? 1 : -1);
+      if (sugIdx < 0) sugIdx = sugItems.length - 1;
+      if (sugIdx >= sugItems.length) sugIdx = 0;
+      Array.prototype.forEach.call(sugBox.querySelectorAll('.sg-item'), function (el, i) {
+        el.classList.toggle('hl', i === sugIdx);
+      });
+    } else if (e.key === 'Enter') {
+      if (sugIdx >= 0) { e.preventDefault(); pickSuggest(sugIdx); }
+      else hideSuggest();
+    } else if (e.key === 'Escape') { hideSuggest(); }
+  });
+  sugBox.addEventListener('mousedown', function (e) {
+    var el = e.target.closest ? e.target.closest('.sg-item') : null;
+    if (el) { e.preventDefault(); pickSuggest(+el.dataset.i); }
+  });
+  symBox.addEventListener('blur', function () { setTimeout(hideSuggest, 120); });
+  document.getElementById('f-market').addEventListener('change', function () {
+    symBox.value = ''; hideSuggest();
   });
 
   document.getElementById('btn-mode').addEventListener('click', function () {
@@ -1041,13 +1160,9 @@
   });
 
   /* ---------- 시작 ---------- */
-  PRESETS.forEach(function (p, i) {
-    var o = document.createElement('option');
-    o.value = i; o.textContent = p.label;
-    document.getElementById('f-preset').appendChild(o);
-  });
   document.getElementById('f-to').value = new Date().getFullYear();
   syncKeyBox();
+  loadUniverse();
   refresh();
 })();
 </script>
