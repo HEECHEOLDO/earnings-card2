@@ -1,0 +1,148 @@
+{
+ "name": "SKAI",
+ "split_adjusted": false,
+ "legal_name": "SKAI",
+ "code": "357880",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-04",
+ "annual": [
+  {
+   "p": 2021,
+   "rev": 164.1,
+   "op": 11.8,
+   "ni": 11.7,
+   "assets": 352.4,
+   "liab": 18.4,
+   "equity": 334.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 191.8,
+   "op": 16.2,
+   "ni": -5.3,
+   "assets": 721.0,
+   "liab": 373.1,
+   "equity": 347.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 278.4,
+   "op": -132.9,
+   "ni": -171.1,
+   "assets": 601.7,
+   "liab": 424.4,
+   "equity": 177.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 198.5,
+   "op": -120.7,
+   "ni": -247.9,
+   "assets": 307.7,
+   "liab": 193.5,
+   "equity": 114.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 156.4,
+   "op": -43.9,
+   "ni": -150.7,
+   "assets": 384.7,
+   "liab": 252.3,
+   "equity": 132.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 76.1,
+   "op": -18.9,
+   "ni": -27.1
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 104.9,
+   "op": -20.0,
+   "ni": -2.4
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 55.7,
+   "op": -4.0,
+   "ni": -13.8
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": -38.2,
+   "op": -77.8,
+   "ni": -204.6
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 20.6,
+   "op": -30.2,
+   "ni": -35.5
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 68.6,
+   "op": 26.4,
+   "ni": 11.9
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 25.2,
+   "op": -26.7,
+   "ni": -38.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 42.0,
+   "op": -13.5,
+   "ni": -89.1
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 32.3,
+   "op": -16.5,
+   "ni": -56.2
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 27.4,
+   "op": -24.2,
+   "ni": -68.8
+  }
+ ]
+}

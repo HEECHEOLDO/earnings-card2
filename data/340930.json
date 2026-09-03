@@ -1,0 +1,161 @@
+{
+ "name": "성원에너텍",
+ "split_adjusted": false,
+ "legal_name": "성원에너텍",
+ "code": "340930",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-04",
+ "annual": [
+  {
+   "p": 2020,
+   "rev": 590.2,
+   "op": 77.2,
+   "ni": 47.6,
+   "assets": 407.7,
+   "liab": 204.9,
+   "equity": 202.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 293.6,
+   "op": -58.2,
+   "ni": -23.6,
+   "assets": 888.5,
+   "liab": 425.8,
+   "equity": 462.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 474.7,
+   "op": -192.8,
+   "ni": 144.8,
+   "assets": 1560.0,
+   "liab": 965.2,
+   "equity": 594.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 385.1,
+   "op": -101.1,
+   "ni": -132.2,
+   "assets": 1745.1,
+   "liab": 1046.7,
+   "equity": 698.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 596.9,
+   "op": -167.2,
+   "ni": -287.1,
+   "assets": 1687.6,
+   "liab": 1273.9,
+   "equity": 413.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 600.1,
+   "op": -27.1,
+   "ni": -248.4,
+   "assets": 1757.4,
+   "liab": 1255.4,
+   "equity": 502.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 78.6,
+   "op": -17.1,
+   "ni": -17.9
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 268.8,
+   "op": -18.7,
+   "ni": -21.4
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 79.5,
+   "op": -60.8,
+   "ni": -94.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 170.0,
+   "op": -70.6,
+   "ni": -153.8
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 92.9,
+   "op": 3.8,
+   "ni": -9.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 169.1,
+   "op": -28.1,
+   "ni": -43.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 12.0,
+   "op": -29.3,
+   "ni": -37.6
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 326.1,
+   "op": 26.4,
+   "ni": -158.9
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 16.4,
+   "op": -20.0,
+   "ni": -46.9
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 4.9,
+   "op": -79.6,
+   "ni": -16.5
+  }
+ ]
+}

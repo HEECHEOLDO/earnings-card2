@@ -1,0 +1,86 @@
+{
+ "name": "미쥬",
+ "split_adjusted": false,
+ "legal_name": "미쥬",
+ "code": "351020",
+ "market": "코넥스",
+ "sector": "",
+ "updated": "2026-09-04",
+ "annual": [
+  {
+   "p": 2022,
+   "rev": 193.2,
+   "op": 10.8,
+   "ni": 8.0,
+   "assets": 137.3,
+   "liab": 107.4,
+   "equity": 29.9,
+   "dps": null,
+   "payout": 5.01,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 231.5,
+   "op": 12.5,
+   "ni": 7.4,
+   "assets": 150.8,
+   "liab": 113.1,
+   "equity": 37.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 308.2,
+   "op": 14.8,
+   "ni": 9.7,
+   "assets": 209.7,
+   "liab": 151.1,
+   "equity": 58.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 351.8,
+   "op": 10.6,
+   "ni": 6.7,
+   "assets": 214.8,
+   "liab": 130.0,
+   "equity": 84.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 231.5,
+   "op": 12.5,
+   "ni": 7.4
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 308.2,
+   "op": 14.8,
+   "ni": 9.7
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 351.8,
+   "op": 10.6,
+   "ni": 6.7
+  }
+ ]
+}

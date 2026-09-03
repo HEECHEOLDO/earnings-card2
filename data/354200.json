@@ -1,0 +1,161 @@
+{
+ "name": "엔젠바이오",
+ "split_adjusted": false,
+ "legal_name": "엔젠바이오",
+ "code": "354200",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-04",
+ "annual": [
+  {
+   "p": 2020,
+   "rev": 24.8,
+   "op": -61.0,
+   "ni": -82.3,
+   "assets": 493.9,
+   "liab": 79.4,
+   "equity": 414.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 71.6,
+   "op": -87.3,
+   "ni": -84.3,
+   "assets": 438.7,
+   "liab": 98.7,
+   "equity": 340.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 110.2,
+   "op": -86.0,
+   "ni": -98.4,
+   "assets": 561.6,
+   "liab": 308.4,
+   "equity": 253.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 43.5,
+   "op": -134.3,
+   "ni": -128.6,
+   "assets": 422.8,
+   "liab": 260.5,
+   "equity": 162.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 56.9,
+   "op": -160.8,
+   "ni": -139.4,
+   "assets": 329.5,
+   "liab": 152.4,
+   "equity": 177.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 212.4,
+   "op": -82.8,
+   "ni": -67.6,
+   "assets": 723.4,
+   "liab": 497.5,
+   "equity": 225.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 8.7,
+   "op": -30.3,
+   "ni": -32.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 20.3,
+   "op": -44.5,
+   "ni": -28.5
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 20.7,
+   "op": -41.1,
+   "ni": -46.3
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 7.2,
+   "op": -44.8,
+   "ni": -32.6
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 20.4,
+   "op": -28.6,
+   "ni": -30.3
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 18.0,
+   "op": -18.7,
+   "ni": -60.9
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 54.3,
+   "op": -16.5,
+   "ni": -19.4
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 119.7,
+   "op": -19.0,
+   "ni": 43.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 119.5,
+   "op": -15.7,
+   "ni": -42.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 124.5,
+   "op": -11.9,
+   "ni": -34.3
+  }
+ ]
+}

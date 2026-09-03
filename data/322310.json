@@ -1,0 +1,161 @@
+{
+ "name": "오로스테크놀로지",
+ "split_adjusted": false,
+ "legal_name": "오로스테크놀로지",
+ "code": "322310",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-04",
+ "annual": [
+  {
+   "p": 2020,
+   "rev": 175.4,
+   "op": 17.7,
+   "ni": 11.3,
+   "assets": 287.5,
+   "liab": 85.8,
+   "equity": 201.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 395.3,
+   "op": 19.4,
+   "ni": 18.0,
+   "assets": 747.3,
+   "liab": 102.7,
+   "equity": 644.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 354.0,
+   "op": -32.9,
+   "ni": -29.8,
+   "assets": 697.0,
+   "liab": 86.3,
+   "equity": 610.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 455.3,
+   "op": 23.7,
+   "ni": 33.8,
+   "assets": 742.1,
+   "liab": 118.5,
+   "equity": 623.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 614.1,
+   "op": 60.8,
+   "ni": 59.1,
+   "assets": 944.1,
+   "liab": 262.3,
+   "equity": 681.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 521.4,
+   "op": -83.7,
+   "ni": -64.2,
+   "assets": 921.7,
+   "liab": 287.0,
+   "equity": 634.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 38.1,
+   "op": -59.9,
+   "ni": -53.5
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 120.3,
+   "op": -5.2,
+   "ni": -3.4
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 166.5,
+   "op": 24.6,
+   "ni": 28.3
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 289.3,
+   "op": 101.3,
+   "ni": 87.6
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 168.8,
+   "op": -3.0,
+   "ni": -3.7
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 138.7,
+   "op": -6.6,
+   "ni": -10.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 75.7,
+   "op": -58.1,
+   "ni": -54.2
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 138.2,
+   "op": -15.9,
+   "ni": 3.7
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 68.1,
+   "op": -68.2,
+   "ni": -51.1
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 113.7,
+   "op": -22.9,
+   "ni": -35.7
+  }
+ ]
+}

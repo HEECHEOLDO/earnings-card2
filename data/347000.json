@@ -1,0 +1,161 @@
+{
+ "name": "센코",
+ "split_adjusted": false,
+ "legal_name": "센코",
+ "code": "347000",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-04",
+ "annual": [
+  {
+   "p": 2020,
+   "rev": 201.3,
+   "op": 11.8,
+   "ni": 11.0,
+   "assets": 388.7,
+   "liab": 78.7,
+   "equity": 310.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 275.9,
+   "op": 26.4,
+   "ni": 28.7,
+   "assets": 733.0,
+   "liab": 311.0,
+   "equity": 422.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 408.0,
+   "op": 27.6,
+   "ni": 8.5,
+   "assets": 767.8,
+   "liab": 332.1,
+   "equity": 435.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 339.5,
+   "op": 22.5,
+   "ni": -11.6,
+   "assets": 696.2,
+   "liab": 276.0,
+   "equity": 420.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 358.6,
+   "op": 27.2,
+   "ni": 25.3,
+   "assets": 670.2,
+   "liab": 244.8,
+   "equity": 425.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 367.3,
+   "op": 25.0,
+   "ni": 47.2,
+   "assets": 713.2,
+   "liab": 135.4,
+   "equity": 577.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 73.5,
+   "op": -2.4,
+   "ni": -0.5
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 79.9,
+   "op": 7.8,
+   "ni": 4.1
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 65.5,
+   "op": -0.2,
+   "ni": -5.8
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 139.7,
+   "op": 21.9,
+   "ni": 27.4
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 64.9,
+   "op": 4.0,
+   "ni": 2.1
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 93.8,
+   "op": 4.4,
+   "ni": -0.7
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 83.2,
+   "op": 7.9,
+   "ni": 35.1
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 125.3,
+   "op": 8.7,
+   "ni": 10.7
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 88.4,
+   "op": -2.0,
+   "ni": 15.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 126.4,
+   "op": 14.1,
+   "ni": 10.3
+  }
+ ]
+}

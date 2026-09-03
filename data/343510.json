@@ -1,0 +1,38 @@
+{
+ "name": "하나금융16호기업인수목적",
+ "split_adjusted": false,
+ "legal_name": "하나금융16호기업인수목적",
+ "code": "343510",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-09-04",
+ "annual": [
+  {
+   "p": 2020,
+   "rev": 0.0,
+   "op": -0.3,
+   "ni": -0.3,
+   "assets": 83.2,
+   "liab": 9.3,
+   "equity": 73.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 0.0,
+   "op": -0.2,
+   "ni": 0.6,
+   "assets": 84.4,
+   "liab": 9.9,
+   "equity": 74.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

@@ -1,0 +1,94 @@
+{
+ "name": "엠에프엠코리아",
+ "split_adjusted": false,
+ "legal_name": "엠에프엠코리아",
+ "code": "323230",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-09-04",
+ "annual": [
+  {
+   "p": 2021,
+   "rev": 1154.3,
+   "op": -155.2,
+   "ni": -174.9,
+   "assets": 1024.5,
+   "liab": 708.7,
+   "equity": 315.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 1456.9,
+   "op": 11.9,
+   "ni": -5.6,
+   "assets": 1329.5,
+   "liab": 1020.5,
+   "equity": 309.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 1136.5,
+   "op": -121.7,
+   "ni": -216.0,
+   "assets": 1023.8,
+   "liab": 803.2,
+   "equity": 220.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 1,
+   "rev": 294.8,
+   "op": -6.6,
+   "ni": -8.4
+  },
+  {
+   "y": 2023,
+   "q": 2,
+   "rev": 385.8,
+   "op": 0.8,
+   "ni": -16.2
+  },
+  {
+   "y": 2023,
+   "q": 3,
+   "rev": 174.9,
+   "op": -35.6,
+   "ni": -45.3
+  },
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 281.0,
+   "op": -80.4,
+   "ni": -146.2
+  },
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 183.9,
+   "op": -66.6,
+   "ni": -56.7
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 79.2,
+   "op": -70.6,
+   "ni": -59.8
+  }
+ ]
+}

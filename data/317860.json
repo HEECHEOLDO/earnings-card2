@@ -1,0 +1,125 @@
+{
+ "name": "노드메이슨",
+ "split_adjusted": false,
+ "legal_name": "노드메이슨",
+ "code": "317860",
+ "market": "코넥스",
+ "sector": "",
+ "updated": "2026-09-04",
+ "annual": [
+  {
+   "p": 2019,
+   "rev": 168.9,
+   "op": -7.3,
+   "ni": -6.4,
+   "assets": 113.5,
+   "liab": 25.7,
+   "equity": 87.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 194.7,
+   "op": 16.5,
+   "ni": 12.6,
+   "assets": 132.1,
+   "liab": 31.7,
+   "equity": 100.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 186.3,
+   "op": 9.6,
+   "ni": 1.4,
+   "assets": 140.9,
+   "liab": 37.8,
+   "equity": 103.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 163.2,
+   "op": -33.0,
+   "ni": -32.4,
+   "assets": 262.8,
+   "liab": 143.8,
+   "equity": 118.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 194.9,
+   "op": -35.9,
+   "ni": -49.2,
+   "assets": 230.6,
+   "liab": 158.5,
+   "equity": 72.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 214.8,
+   "op": -1.9,
+   "ni": -13.1,
+   "assets": 244.0,
+   "liab": 188.9,
+   "equity": 55.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 211.3,
+   "op": -17.1,
+   "ni": -36.9,
+   "assets": 207.9,
+   "liab": 187.7,
+   "equity": 20.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 194.9,
+   "op": -35.9,
+   "ni": -49.2
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 214.8,
+   "op": -1.9,
+   "ni": -13.1
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 211.3,
+   "op": -17.1,
+   "ni": -36.9
+  }
+ ]
+}

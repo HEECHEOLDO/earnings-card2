@@ -1,0 +1,161 @@
+{
+ "name": "PS일렉트로닉스",
+ "split_adjusted": false,
+ "legal_name": "PS일렉트로닉스",
+ "code": "332570",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-04",
+ "annual": [
+  {
+   "p": 2020,
+   "rev": 373.5,
+   "op": -37.0,
+   "ni": 93.0,
+   "assets": 1048.8,
+   "liab": 74.6,
+   "equity": 974.2,
+   "dps": 100.0,
+   "payout": null,
+   "yield": 0.78,
+   "dps_adj": 100.0
+  },
+  {
+   "p": 2021,
+   "rev": 600.0,
+   "op": 1.6,
+   "ni": -76.3,
+   "assets": 1093.1,
+   "liab": 230.7,
+   "equity": 862.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 513.9,
+   "op": 43.3,
+   "ni": -103.9,
+   "assets": 1186.3,
+   "liab": 566.5,
+   "equity": 619.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 681.5,
+   "op": 64.2,
+   "ni": 194.6,
+   "assets": 1428.3,
+   "liab": 598.1,
+   "equity": 830.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 1221.3,
+   "op": 107.7,
+   "ni": -77.2,
+   "assets": 1646.0,
+   "liab": 745.2,
+   "equity": 900.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 1254.8,
+   "op": 39.1,
+   "ni": 163.9,
+   "assets": 2318.8,
+   "liab": 985.6,
+   "equity": 1333.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 314.9,
+   "op": 61.6,
+   "ni": 13.4
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 271.7,
+   "op": 35.6,
+   "ni": -30.4
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 388.4,
+   "op": 27.8,
+   "ni": -54.1
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 246.3,
+   "op": -17.3,
+   "ni": -6.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 360.1,
+   "op": 19.5,
+   "ni": 30.4
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 339.5,
+   "op": 16.9,
+   "ni": -16.5
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 268.7,
+   "op": 14.6,
+   "ni": 102.4
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 286.4,
+   "op": -11.8,
+   "ni": 47.7
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 356.6,
+   "op": 0.6,
+   "ni": 153.3
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 744.2,
+   "op": 41.3,
+   "ni": 57.6
+  }
+ ]
+}

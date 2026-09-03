@@ -1,0 +1,161 @@
+{
+ "name": "아티스트컴퍼니",
+ "split_adjusted": false,
+ "legal_name": "아티스트컴퍼니",
+ "code": "321820",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-04",
+ "annual": [
+  {
+   "p": 2020,
+   "rev": 290.1,
+   "op": -40.3,
+   "ni": -41.2,
+   "assets": 74.6,
+   "liab": 90.6,
+   "equity": -16.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 354.2,
+   "op": -54.8,
+   "ni": -79.5,
+   "assets": 620.9,
+   "liab": 364.8,
+   "equity": 256.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 357.6,
+   "op": -63.1,
+   "ni": -189.5,
+   "assets": 489.8,
+   "liab": 415.5,
+   "equity": 74.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 212.7,
+   "op": -32.8,
+   "ni": -52.9,
+   "assets": 612.3,
+   "liab": 327.2,
+   "equity": 285.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 212.7,
+   "op": -31.5,
+   "ni": -78.1,
+   "assets": 525.9,
+   "liab": 293.0,
+   "equity": 232.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 466.5,
+   "op": -39.6,
+   "ni": 11.2,
+   "assets": 716.4,
+   "liab": 320.2,
+   "equity": 396.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 39.7,
+   "op": -9.7,
+   "ni": -20.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 92.4,
+   "op": -6.0,
+   "ni": 10.4
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 27.9,
+   "op": -6.1,
+   "ni": -39.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 52.6,
+   "op": -9.7,
+   "ni": -29.5
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 65.0,
+   "op": -19.8,
+   "ni": -20.5
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 192.7,
+   "op": -5.2,
+   "ni": 46.1
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 135.2,
+   "op": 5.4,
+   "ni": -3.2
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 73.6,
+   "op": -20.1,
+   "ni": -11.2
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 74.0,
+   "op": -14.4,
+   "ni": -17.2
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 93.3,
+   "op": -10.9,
+   "ni": -7.3
+  }
+ ]
+}

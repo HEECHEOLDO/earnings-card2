@@ -1,0 +1,61 @@
+{
+ "name": "오아",
+ "split_adjusted": false,
+ "legal_name": "오아",
+ "code": "342870",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-04",
+ "annual": [
+  {
+   "p": 2025,
+   "rev": 1032.6,
+   "op": 81.7,
+   "ni": null,
+   "assets": 781.2,
+   "liab": 351.8,
+   "equity": 429.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 493.4,
+   "op": 49.9,
+   "ni": null
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 273.4,
+   "op": 19.3,
+   "ni": null
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 265.9,
+   "op": 12.5,
+   "ni": null
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 254.1,
+   "op": 10.6,
+   "ni": null
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 274.5,
+   "op": -1.3,
+   "ni": null
+  }
+ ]
+}

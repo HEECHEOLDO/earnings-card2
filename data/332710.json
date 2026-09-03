@@ -1,0 +1,51 @@
+{
+ "name": "하나금융14호기업인수목적",
+ "split_adjusted": false,
+ "legal_name": "하나금융14호기업인수목적",
+ "code": "332710",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-09-04",
+ "annual": [
+  {
+   "p": 2019,
+   "rev": 0.0,
+   "op": -0.6,
+   "ni": -0.4,
+   "assets": 93.9,
+   "liab": 11.3,
+   "equity": 82.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 0.0,
+   "op": -0.3,
+   "ni": 0.3,
+   "assets": 94.4,
+   "liab": 11.5,
+   "equity": 82.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 0.0,
+   "op": -0.7,
+   "ni": -0.3,
+   "assets": 94.2,
+   "liab": 11.6,
+   "equity": 82.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

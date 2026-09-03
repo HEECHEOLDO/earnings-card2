@@ -1,0 +1,148 @@
+{
+ "name": "아모센스",
+ "split_adjusted": false,
+ "legal_name": "아모센스",
+ "code": "357580",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-04",
+ "annual": [
+  {
+   "p": 2021,
+   "rev": 567.6,
+   "op": -31.4,
+   "ni": -74.1,
+   "assets": 762.1,
+   "liab": 423.3,
+   "equity": 338.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 630.1,
+   "op": 8.5,
+   "ni": -9.1,
+   "assets": 908.0,
+   "liab": 531.8,
+   "equity": 376.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 874.5,
+   "op": 8.0,
+   "ni": -14.2,
+   "assets": 1111.6,
+   "liab": 747.2,
+   "equity": 364.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 1341.6,
+   "op": 71.6,
+   "ni": 17.4,
+   "assets": 1238.0,
+   "liab": 823.9,
+   "equity": 414.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 1221.4,
+   "op": 53.2,
+   "ni": 5.0,
+   "assets": 1371.3,
+   "liab": 938.8,
+   "equity": 432.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 299.7,
+   "op": 2.1,
+   "ni": -8.6
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 310.6,
+   "op": 6.1,
+   "ni": -10.7
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 338.5,
+   "op": 15.0,
+   "ni": 4.7
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 392.8,
+   "op": 48.4,
+   "ni": 32.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 311.5,
+   "op": 15.3,
+   "ni": 6.5
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 290.7,
+   "op": 12.9,
+   "ni": 4.5
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 283.0,
+   "op": 0.4,
+   "ni": -16.8
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 336.3,
+   "op": 24.6,
+   "ni": 10.8
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 278.2,
+   "op": 5.3,
+   "ni": 1.8
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 271.8,
+   "op": -14.2,
+   "ni": -16.0
+  }
+ ]
+}

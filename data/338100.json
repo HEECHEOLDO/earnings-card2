@@ -1,0 +1,160 @@
+{
+ "name": "NH프라임리츠",
+ "split_adjusted": false,
+ "legal_name": "NH프라임리츠",
+ "code": "338100",
+ "market": "코스피",
+ "sector": "",
+ "updated": "2026-09-04",
+ "annual": [
+  {
+   "p": 2020,
+   "rev": 28.6,
+   "op": 27.3,
+   "ni": 27.3,
+   "assets": 930.0,
+   "liab": 1.0,
+   "equity": 929.1,
+   "dps": 127.0,
+   "payout": 94.8,
+   "yield": 2.5,
+   "dps_adj": 127.0
+  },
+  {
+   "p": 2021,
+   "rev": 41.5,
+   "op": 38.7,
+   "ni": 38.7,
+   "assets": 944.9,
+   "liab": 2.6,
+   "equity": 942.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 76.3,
+   "op": 73.5,
+   "ni": 73.5,
+   "assets": 998.1,
+   "liab": 2.5,
+   "equity": 995.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 146.3,
+   "op": 128.5,
+   "ni": 127.8,
+   "assets": 1105.6,
+   "liab": 2.9,
+   "equity": 1102.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 146.3,
+   "op": 70.2,
+   "ni": 70.5,
+   "assets": 1126.2,
+   "liab": 19.9,
+   "equity": 1106.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 39.8,
+   "op": -2.0,
+   "ni": 1.4,
+   "assets": 1098.3,
+   "liab": 3.0,
+   "equity": 1095.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2026,
+   "rev": 134.0,
+   "op": 102.3,
+   "ni": 105.6,
+   "assets": 1115.4,
+   "liab": 31.1,
+   "equity": 1084.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 2,
+   "rev": 15.9,
+   "op": 11.3,
+   "ni": 11.5
+  },
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 146.3,
+   "op": 128.5,
+   "ni": 127.8
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 104.3,
+   "op": 102.6,
+   "ni": 102.8
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 146.3,
+   "op": 70.2,
+   "ni": 70.5
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 13.5,
+   "op": -19.1,
+   "ni": -16.9
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 39.8,
+   "op": -2.0,
+   "ni": 1.4
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 100.2,
+   "op": 96.3,
+   "ni": 97.1
+  },
+  {
+   "y": 2026,
+   "q": 4,
+   "rev": 134.0,
+   "op": 102.3,
+   "ni": 105.6
+  }
+ ]
+}

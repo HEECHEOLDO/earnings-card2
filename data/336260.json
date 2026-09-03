@@ -1,0 +1,174 @@
+{
+ "name": "두산퓨얼셀",
+ "split_adjusted": false,
+ "legal_name": "두산퓨얼셀",
+ "code": "336260",
+ "market": "코스피",
+ "sector": "",
+ "updated": "2026-09-04",
+ "annual": [
+  {
+   "p": 2019,
+   "rev": 2211.7,
+   "op": 194.9,
+   "ni": 118.7,
+   "assets": 4957.6,
+   "liab": 3289.9,
+   "equity": 1667.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 4618.4,
+   "op": 260.3,
+   "ni": 141.9,
+   "assets": 7901.9,
+   "liab": 2776.4,
+   "equity": 5125.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 3814.1,
+   "op": 179.9,
+   "ni": 87.0,
+   "assets": 6988.5,
+   "liab": 1806.7,
+   "equity": 5181.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 3121.5,
+   "op": 72.2,
+   "ni": 38.6,
+   "assets": 10269.3,
+   "liab": 5038.7,
+   "equity": 5230.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 2608.9,
+   "op": 16.4,
+   "ni": -85.0,
+   "assets": 10708.4,
+   "liab": 5581.9,
+   "equity": 5126.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 4117.8,
+   "op": -17.3,
+   "ni": -104.7,
+   "assets": 11796.5,
+   "liab": 6807.6,
+   "equity": 4989.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 4547.9,
+   "op": -1056.7,
+   "ni": -1328.0,
+   "assets": 11984.2,
+   "liab": 8309.4,
+   "equity": 3674.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 316.9,
+   "op": 16.5,
+   "ni": -2.4
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 864.9,
+   "op": 21.7,
+   "ni": -3.3
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 320.2,
+   "op": -29.9,
+   "ni": -36.7
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 2615.8,
+   "op": -25.6,
+   "ni": -62.3
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 997.5,
+   "op": -115.5,
+   "ni": -101.2
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 1284.7,
+   "op": -19.1,
+   "ni": -25.8
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 908.1,
+   "op": -156.0,
+   "ni": -174.9
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 1357.7,
+   "op": -766.1,
+   "ni": -1026.2
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 1448.5,
+   "op": -12.9,
+   "ni": -131.9
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 442.6,
+   "op": -509.1,
+   "ni": -556.0
+  }
+ ]
+}

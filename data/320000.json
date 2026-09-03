@@ -1,0 +1,174 @@
+{
+ "name": "한울반도체",
+ "split_adjusted": false,
+ "legal_name": "한울반도체",
+ "code": "320000",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-04",
+ "annual": [
+  {
+   "p": 2019,
+   "rev": 0.0,
+   "op": -0.3,
+   "ni": -0.1,
+   "assets": 68.9,
+   "liab": 5.7,
+   "equity": 63.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 112.4,
+   "op": 2.2,
+   "ni": -16.2,
+   "assets": 223.9,
+   "liab": 19.6,
+   "equity": 204.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 154.1,
+   "op": 5.8,
+   "ni": 6.7,
+   "assets": 246.1,
+   "liab": 35.1,
+   "equity": 211.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 202.7,
+   "op": 18.0,
+   "ni": 17.7,
+   "assets": 287.4,
+   "liab": 60.1,
+   "equity": 227.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 159.7,
+   "op": 3.9,
+   "ni": 15.6,
+   "assets": 388.9,
+   "liab": 146.0,
+   "equity": 242.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 94.5,
+   "op": -44.0,
+   "ni": -208.5,
+   "assets": 514.2,
+   "liab": 138.9,
+   "equity": 375.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 114.6,
+   "op": -50.5,
+   "ni": -219.2,
+   "assets": 1301.9,
+   "liab": 845.9,
+   "equity": 456.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 24.3,
+   "op": -10.7,
+   "ni": -12.1
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 37.1,
+   "op": -3.4,
+   "ni": -35.8
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 15.2,
+   "op": -14.0,
+   "ni": -30.6
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 18.0,
+   "op": -15.8,
+   "ni": -130.1
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 22.0,
+   "op": -16.6,
+   "ni": -23.8
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 13.9,
+   "op": -17.5,
+   "ni": -35.2
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 19.1,
+   "op": -14.5,
+   "ni": -21.7
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 59.6,
+   "op": -1.8,
+   "ni": -138.5
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 113.3,
+   "op": -42.4,
+   "ni": -60.6
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 141.1,
+   "op": -33.5,
+   "ni": -113.5
+  }
+ ]
+}

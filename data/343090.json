@@ -1,0 +1,66 @@
+{
+ "name": "에이치엘비사이언스",
+ "split_adjusted": false,
+ "legal_name": "에이치엘비사이언스",
+ "code": "343090",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-09-04",
+ "annual": [
+  {
+   "p": 2019,
+   "rev": 0.0,
+   "op": -26.0,
+   "ni": -25.5,
+   "assets": 67.9,
+   "liab": 5.8,
+   "equity": 62.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 0.0,
+   "op": -26.8,
+   "ni": -28.0,
+   "assets": 39.5,
+   "liab": 23.3,
+   "equity": 16.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 0.0,
+   "op": -21.2,
+   "ni": -23.0,
+   "assets": 49.0,
+   "liab": 23.2,
+   "equity": 25.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 0.0,
+   "op": -26.8,
+   "ni": -28.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 0.0,
+   "op": -21.2,
+   "ni": -23.0
+  }
+ ]
+}

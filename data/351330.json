@@ -1,0 +1,148 @@
+{
+ "name": "이삭엔지니어링",
+ "split_adjusted": false,
+ "legal_name": "이삭엔지니어링",
+ "code": "351330",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-04",
+ "annual": [
+  {
+   "p": 2021,
+   "rev": 430.5,
+   "op": -33.9,
+   "ni": -45.8,
+   "assets": 558.7,
+   "liab": 109.3,
+   "equity": 449.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 596.8,
+   "op": 23.6,
+   "ni": 20.7,
+   "assets": 699.6,
+   "liab": 220.7,
+   "equity": 478.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 1005.2,
+   "op": 1.3,
+   "ni": -4.6,
+   "assets": 752.4,
+   "liab": 272.2,
+   "equity": 480.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 684.5,
+   "op": -45.4,
+   "ni": -70.2,
+   "assets": 681.8,
+   "liab": 273.6,
+   "equity": 408.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 789.9,
+   "op": -71.8,
+   "ni": -89.1,
+   "assets": 775.7,
+   "liab": 429.6,
+   "equity": 346.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 134.0,
+   "op": -10.5,
+   "ni": -10.3
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 119.0,
+   "op": -14.2,
+   "ni": -16.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 187.8,
+   "op": -8.8,
+   "ni": -3.6
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 243.7,
+   "op": -11.9,
+   "ni": -40.4
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 154.7,
+   "op": -23.3,
+   "ni": -32.3
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 190.2,
+   "op": -15.5,
+   "ni": -24.6
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 202.3,
+   "op": 2.7,
+   "ni": -1.8
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 242.6,
+   "op": -35.8,
+   "ni": -30.4
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 140.9,
+   "op": -25.2,
+   "ni": -30.3
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 184.5,
+   "op": -14.7,
+   "ni": -30.9
+  }
+ ]
+}

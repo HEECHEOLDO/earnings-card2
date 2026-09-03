@@ -1,0 +1,161 @@
+{
+ "name": "셀레믹스",
+ "split_adjusted": false,
+ "legal_name": "셀레믹스",
+ "code": "331920",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-04",
+ "annual": [
+  {
+   "p": 2020,
+   "rev": 52.7,
+   "op": -48.9,
+   "ni": -47.1,
+   "assets": 306.0,
+   "liab": 12.4,
+   "equity": 293.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 80.8,
+   "op": -59.8,
+   "ni": -52.4,
+   "assets": 269.0,
+   "liab": 35.1,
+   "equity": 233.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 87.3,
+   "op": -57.3,
+   "ni": -48.0,
+   "assets": 222.1,
+   "liab": 36.2,
+   "equity": 185.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 65.8,
+   "op": -57.7,
+   "ni": -38.8,
+   "assets": 181.2,
+   "liab": 22.4,
+   "equity": 158.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 67.2,
+   "op": -19.0,
+   "ni": 122.7,
+   "assets": 294.1,
+   "liab": 22.3,
+   "equity": 271.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 57.7,
+   "op": -33.2,
+   "ni": -40.4,
+   "assets": 244.1,
+   "liab": 13.9,
+   "equity": 230.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 18.4,
+   "op": -5.2,
+   "ni": -3.8
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 15.0,
+   "op": -7.6,
+   "ni": 124.2
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 13.6,
+   "op": -4.8,
+   "ni": 95.7
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 20.2,
+   "op": -1.4,
+   "ni": -93.4
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 17.2,
+   "op": -4.5,
+   "ni": -22.5
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 11.2,
+   "op": -13.4,
+   "ni": -29.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 12.6,
+   "op": -10.8,
+   "ni": 19.3
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 16.6,
+   "op": -4.6,
+   "ni": -8.1
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 9.2,
+   "op": -14.3,
+   "ni": -60.5
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 13.8,
+   "op": -9.2,
+   "ni": -52.3
+  }
+ ]
+}
