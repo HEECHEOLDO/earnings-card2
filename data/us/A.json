@@ -2,14 +2,14 @@
  "name": "A",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "AGILENT TECHNOLOGIES, INC.",
+ "legal_name": "AGILENT TECHNOLOGIES, INC.",
  "code": "A",
  "cik": "0001090872",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-09-01",
+ "updated": "2026-09-03",
  "annual": [
   {
    "p": 2016,
@@ -145,13 +145,6 @@
  "quarterly": [
   {
    "y": 2024,
-   "q": 1,
-   "rev": 1658.0,
-   "op": 384.0,
-   "ni": 348.0
-  },
-  {
-   "y": 2024,
    "q": 2,
    "rev": 1573.0,
    "op": 363.0,
@@ -212,6 +205,13 @@
    "rev": 1835.0,
    "op": 399.0,
    "ni": 339.0
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 1878.0,
+   "op": 444.0,
+   "ni": 362.0
   }
  ]
 }
