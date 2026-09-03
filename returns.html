@@ -312,7 +312,8 @@
         <div class="divider"></div>
         <div class="ctl-row" style="margin-top:0">
           <label for="f-source">자료 출처</label>
-          <input type="text" id="f-source" style="flex:1;min-width:150px" value="">
+          <input type="text" id="f-source" style="flex:1;min-width:150px" value=""
+                 placeholder="비워두면 카드에 안 나옵니다">
         </div>
         <div class="ctl-row">
           <label for="handle">서명</label>
@@ -740,7 +741,6 @@
 
     document.getElementById('f-data').value = lines.join('\n');
     document.getElementById('f-name').value = it.name || code;
-    document.getElementById('f-source').value = '자료 : ' + (RET.source || '네이버 금융 · Stooq');
     refresh();
 
     var msg = state.rows.length + '개 연도를 불러왔습니다.';
@@ -1076,7 +1076,6 @@
       SAMPLE.map(function (r) { return r[0] + ' ' + r[1]; }).join('\n');
     document.getElementById('f-name').value = 'NASDAQ100';
     document.getElementById('f-sub').value = '연간 수익률';
-    document.getElementById('f-source').value = '자료 : Alpha Vantage · 배당 재투자 포함';
     refresh();
     say('샘플 데이터입니다. 실제 조회는 위에서 종목을 고르고 조회를 누르세요.', 'info');
   });
