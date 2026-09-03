@@ -18,6 +18,9 @@ PATH = "data/returns.json"
 # 액면분할이 반영 안 되면 수익률이 이런 값 근처로 떨어진다
 RECENT_FROM = 2015          # 이 해부터만 이상을 따진다
 
+# 네이버는 수정주가를 주므로 분할은 이미 반영돼 있다.
+# 그래도 혹시 몰라 '정확히 딱 떨어지는' 하락만 본다.
+# -50.8% 같은 값은 그냥 반토막 난 것이지 분할이 아니다.
 SPLIT_HINTS = [(-50.0, "1:2"), (-66.7, "1:3"), (-75.0, "1:4"),
                (-80.0, "1:5"), (-90.0, "1:10"), (-95.0, "1:20")]
 
@@ -128,17 +131,17 @@ def audit(d):
             # 액면분할 흔적 — 최근 연도이고, 평소 얌전하던 종목일 때만 본다
             if int(y) >= RECENT_FROM and swing < 30:
                 for target, ratio in SPLIT_HINTS:
-                    if abs(v - target) <= 1.0:
+                    if abs(v - target) <= 0.06:
                         n_split.append((code, name, y, v, ratio))
                         break
             # 터무니없는 값 — 오래된 해는 실제로 이런 일이 흔했다
-            if int(y) >= RECENT_FROM and (v > 400 or v < -85):
+            if int(y) >= RECENT_FROM and (v > 900 or v < -95):
                 n_wild.append((code, name, y, v))
 
     print("\n" + "=" * 66)
     print("전체 점검  |  %d종목 · 갱신 %s" % (len(items), d.get("updated", "?")))
     print("=" * 66)
-    print("  (%d년 이후만 따집니다. 그 이전은 IMF·닷컴 등으로 실제 급등락이 잦습니다)"
+    print("  (%d년 이후만 · 소형주는 실제로 반토막·급등이 잦아 기준을 높게 잡았습니다)"
           % RECENT_FROM)
     print("  액면분할 의심  %3d건" % len(n_split))
     print("  극단값        %3d건" % len(n_wild))
@@ -159,7 +162,7 @@ def audit(d):
          n_split,
          lambda r: "  %-8s %-14s %s  %+6.1f%%  (%s 분할 크기)"
                    % (r[0], r[1][:14], r[2], r[3], r[4]))
-    dump("극단값 (+400% 초과 또는 -85% 미만)",
+    dump("극단값 (+900% 초과 또는 -95% 미만) — 확인해볼 만한 수준",
          n_wild,
          lambda r: "  %-8s %-14s %s  %+8.1f%%" % (r[0], r[1][:14], r[2], r[3]))
     dump("연도가 끊긴 종목",

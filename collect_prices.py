@@ -39,7 +39,7 @@ STOOQ_PATH = "/q/d/l/?s=%s&i=m"
 AV = ("https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED"
       "&symbol=%s&apikey=%s")
 AV_KEY = os.environ.get("AV_KEY") or "5HNBQW8WQEJNTZWS"
-AV_BUDGET = 24          # 하루 한도 25회 — 한 번은 여유로 남긴다
+AV_BUDGET = 25          # 하루 한도 25회를 그대로 쓴다 (확인용 호출을 없앴다)
 
 # 예비 — 야후 (쿠키·토큰 필요, 자주 막힘)
 CHART = "https://query2.finance.yahoo.com/v8/finance/chart/%s?range=%s&interval=1mo"
@@ -414,19 +414,21 @@ def main():
         if p:
             checks.append(("해외(Stooq)", p, w))
         else:
-            # Stooq 가 막혀 있으면 알파밴티지로 확인한다
-            log("해외(Stooq) 막힘: %s — 알파밴티지로 확인합니다" % w)
+            # Stooq 가 막혀 있으면 알파밴티지를 쓴다.
+            # 확인에 1회를 쓰면 아까우니 첫 종목으로 대신 판단한다.
+            log("해외(Stooq) 막힘: %s — 알파밴티지로 받습니다" % w)
             stooq_blocked[0] = True
-            p2, w2 = from_alpha("AAPL")
-            checks.append(("해외(알파밴티지)", p2, w2))
-            av_used[0] += 1                   # 확인에 쓴 1회도 예산에서 뺀다
+            checks.append(("해외(알파밴티지)", True, ""))
     if only in (None, "KR"):
         p, w = from_naver("005930")
         checks.append(("국내(네이버)", p, w))
 
     okAny = False
     for label, p, w in checks:
-        if p:
+        if p is True:                          # 확인을 건너뛴 경우
+            okAny = True
+            log("%s 사용 (첫 종목에서 한도를 확인합니다)" % label)
+        elif p:
             okAny = True
             log("%s 확인 OK — %d개 연도 (%s~%s)" % (label, len(p), min(p), max(p)))
         else:
@@ -536,7 +538,7 @@ def main():
         if av_dry[0]:
             left = us_all - us_have
             log("  오늘 한도를 다 썼습니다. 하루 %d개씩 채우면 약 %d일 남았습니다."
-                % (AV_BUDGET - 1, -(-left // max(1, AV_BUDGET - 1))))
+                % (AV_BUDGET, -(-left // max(1, AV_BUDGET))))
     fails = [f for f in fails if f[2] not in ("건너뜀",)]
     if fails:
         by = {}
