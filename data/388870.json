@@ -1,0 +1,40 @@
+{
+ "name": "파로스아이바이오",
+ "split_adjusted": false,
+ "legal_name": "파로스아이바이오",
+ "code": "388870",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-05",
+ "annual": [
+  {
+   "p": 2023,
+   "rev": 0.0,
+   "op": -101.2,
+   "ni": -88.6,
+   "assets": 296.9,
+   "liab": 13.4,
+   "equity": 283.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 0.0,
+   "op": -24.6,
+   "ni": -23.3
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 0.0,
+   "op": -31.5,
+   "ni": -30.3
+  }
+ ]
+}

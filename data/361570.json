@@ -1,0 +1,148 @@
+{
+ "name": "알비더블유",
+ "split_adjusted": false,
+ "legal_name": "알비더블유",
+ "code": "361570",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-05",
+ "annual": [
+  {
+   "p": 2021,
+   "rev": 596.2,
+   "op": 95.8,
+   "ni": 76.4,
+   "assets": 1017.5,
+   "liab": 463.0,
+   "equity": 554.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 630.9,
+   "op": 28.2,
+   "ni": 11.1,
+   "assets": 1448.3,
+   "liab": 560.9,
+   "equity": 887.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 914.3,
+   "op": -22.5,
+   "ni": -55.4,
+   "assets": 1820.2,
+   "liab": 961.7,
+   "equity": 858.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 625.2,
+   "op": -122.1,
+   "ni": -114.9,
+   "assets": 1641.4,
+   "liab": 940.4,
+   "equity": 701.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 464.8,
+   "op": 1.7,
+   "ni": -38.2,
+   "assets": 1816.2,
+   "liab": 1140.9,
+   "equity": 675.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 151.7,
+   "op": -32.8,
+   "ni": -43.6
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 195.7,
+   "op": -14.3,
+   "ni": -32.9
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 171.0,
+   "op": -30.7,
+   "ni": 11.3
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 106.7,
+   "op": -44.3,
+   "ni": -49.8
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 106.1,
+   "op": -0.1,
+   "ni": 0.7
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 121.3,
+   "op": -18.2,
+   "ni": -36.3
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 101.1,
+   "op": -3.6,
+   "ni": -6.8
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 136.3,
+   "op": 23.6,
+   "ni": 4.2
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 95.6,
+   "op": -4.5,
+   "ni": 1.2
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 147.1,
+   "op": 24.0,
+   "ni": 44.3
+  }
+ ]
+}

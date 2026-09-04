@@ -1,0 +1,148 @@
+{
+ "name": "세아메카닉스",
+ "split_adjusted": false,
+ "legal_name": "세아메카닉스",
+ "code": "396300",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-05",
+ "annual": [
+  {
+   "p": 2021,
+   "rev": 1048.0,
+   "op": 53.1,
+   "ni": 62.0,
+   "assets": 537.2,
+   "liab": 140.0,
+   "equity": 397.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 876.4,
+   "op": 22.5,
+   "ni": 38.3,
+   "assets": 789.7,
+   "liab": 152.2,
+   "equity": 637.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 867.8,
+   "op": 19.9,
+   "ni": 63.5,
+   "assets": 1019.8,
+   "liab": 316.9,
+   "equity": 702.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 923.4,
+   "op": -26.6,
+   "ni": 25.4,
+   "assets": 1319.5,
+   "liab": 602.7,
+   "equity": 716.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 858.3,
+   "op": -18.5,
+   "ni": 14.2,
+   "assets": 1492.5,
+   "liab": 750.1,
+   "equity": 742.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 235.6,
+   "op": 4.3,
+   "ni": 6.4
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 223.1,
+   "op": 2.3,
+   "ni": 5.1
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 244.7,
+   "op": -4.6,
+   "ni": -5.6
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 220.0,
+   "op": -28.6,
+   "ni": 19.5
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 196.0,
+   "op": -6.1,
+   "ni": -4.3
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 183.0,
+   "op": -13.0,
+   "ni": -10.4
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 233.3,
+   "op": -3.4,
+   "ni": 8.1
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 245.9,
+   "op": 4.0,
+   "ni": 21.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 336.2,
+   "op": 16.5,
+   "ni": 22.1
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 374.5,
+   "op": 20.4,
+   "ni": 31.9
+  }
+ ]
+}

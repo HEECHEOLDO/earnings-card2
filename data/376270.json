@@ -1,0 +1,148 @@
+{
+ "name": "HEM파마",
+ "split_adjusted": false,
+ "legal_name": "HEM파마",
+ "code": "376270",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-05",
+ "annual": [
+  {
+   "p": 2021,
+   "rev": 18.6,
+   "op": -109.5,
+   "ni": -109.2,
+   "assets": 270.1,
+   "liab": 57.3,
+   "equity": 212.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 36.7,
+   "op": -132.4,
+   "ni": -130.1,
+   "assets": 348.3,
+   "liab": 146.0,
+   "equity": 202.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 53.4,
+   "op": -117.6,
+   "ni": -116.7,
+   "assets": 278.2,
+   "liab": 104.5,
+   "equity": 173.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 150.7,
+   "op": -76.8,
+   "ni": -76.5,
+   "assets": 368.6,
+   "liab": 107.4,
+   "equity": 261.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 129.8,
+   "op": -155.8,
+   "ni": -237.2,
+   "assets": 518.3,
+   "liab": 466.2,
+   "equity": 52.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 25.9,
+   "op": -17.4,
+   "ni": -17.3
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 29.3,
+   "op": -17.3,
+   "ni": -17.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 32.2,
+   "op": -22.3,
+   "ni": -21.7
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 63.2,
+   "op": -19.9,
+   "ni": -20.5
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 35.1,
+   "op": -23.6,
+   "ni": -23.3
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 28.4,
+   "op": -29.0,
+   "ni": -32.9
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 29.6,
+   "op": -35.6,
+   "ni": -35.5
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 36.7,
+   "op": -67.6,
+   "ni": -145.6
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 49.4,
+   "op": -38.4,
+   "ni": -40.4
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 45.7,
+   "op": -28.6,
+   "ni": 14.0
+  }
+ ]
+}

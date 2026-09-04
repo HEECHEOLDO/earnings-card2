@@ -1,0 +1,148 @@
+{
+ "name": "지니너스",
+ "split_adjusted": false,
+ "legal_name": "지니너스",
+ "code": "389030",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-05",
+ "annual": [
+  {
+   "p": 2021,
+   "rev": 81.3,
+   "op": -76.2,
+   "ni": -90.2,
+   "assets": 580.6,
+   "liab": 61.6,
+   "equity": 519.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 100.8,
+   "op": -96.8,
+   "ni": -93.8,
+   "assets": 458.3,
+   "liab": 25.6,
+   "equity": 432.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 69.7,
+   "op": -100.8,
+   "ni": -96.8,
+   "assets": 405.3,
+   "liab": 60.4,
+   "equity": 344.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 64.6,
+   "op": -122.6,
+   "ni": -122.7,
+   "assets": 330.9,
+   "liab": 108.5,
+   "equity": 222.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 104.8,
+   "op": -116.7,
+   "ni": -173.7,
+   "assets": 393.5,
+   "liab": 302.5,
+   "equity": 91.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 17.6,
+   "op": -28.5,
+   "ni": -28.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 14.7,
+   "op": -37.5,
+   "ni": -39.1
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 17.7,
+   "op": -20.8,
+   "ni": -20.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 14.6,
+   "op": -35.9,
+   "ni": -35.6
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 26.3,
+   "op": -23.8,
+   "ni": -23.7
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 25.7,
+   "op": -40.0,
+   "ni": -44.2
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 21.5,
+   "op": -23.3,
+   "ni": -24.5
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 31.3,
+   "op": -29.6,
+   "ni": -81.3
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 23.9,
+   "op": -20.5,
+   "ni": -20.3
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 36.1,
+   "op": -45.9,
+   "ni": -77.5
+  }
+ ]
+}

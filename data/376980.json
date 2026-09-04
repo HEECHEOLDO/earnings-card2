@@ -1,0 +1,148 @@
+{
+ "name": "원티드랩",
+ "split_adjusted": false,
+ "legal_name": "원티드랩",
+ "code": "376980",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-05",
+ "annual": [
+  {
+   "p": 2021,
+   "rev": 317.0,
+   "op": 60.7,
+   "ni": 30.1,
+   "assets": 457.1,
+   "liab": 126.1,
+   "equity": 331.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 502.9,
+   "op": 89.5,
+   "ni": 94.0,
+   "assets": 569.0,
+   "liab": 139.2,
+   "equity": 429.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 396.7,
+   "op": 15.7,
+   "ni": 14.0,
+   "assets": 469.9,
+   "liab": 121.6,
+   "equity": 348.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 367.4,
+   "op": -8.2,
+   "ni": -12.3,
+   "assets": 501.9,
+   "liab": 136.9,
+   "equity": 364.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 381.7,
+   "op": 10.2,
+   "ni": 12.8,
+   "assets": 615.1,
+   "liab": 230.1,
+   "equity": 385.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 89.0,
+   "op": -7.7,
+   "ni": -4.5
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 100.6,
+   "op": 4.1,
+   "ni": 2.4
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 97.2,
+   "op": 5.8,
+   "ni": 7.5
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 80.5,
+   "op": -10.3,
+   "ni": -17.7
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 79.4,
+   "op": -12.1,
+   "ni": -11.5
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 96.6,
+   "op": 5.2,
+   "ni": 11.9
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 96.6,
+   "op": 5.4,
+   "ni": 8.8
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 109.1,
+   "op": 11.7,
+   "ni": 3.6
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 89.0,
+   "op": -9.8,
+   "ni": -15.1
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 117.3,
+   "op": 12.2,
+   "ni": 22.6
+  }
+ ]
+}

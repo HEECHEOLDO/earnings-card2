@@ -1,0 +1,101 @@
+{
+ "name": "엘비루셈",
+ "split_adjusted": false,
+ "legal_name": "엘비루셈",
+ "code": "376190",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-09-05",
+ "annual": [
+  {
+   "p": 2021,
+   "rev": 2329.8,
+   "op": 193.9,
+   "ni": 186.9,
+   "assets": 2377.1,
+   "liab": 485.7,
+   "equity": 1891.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 2030.6,
+   "op": 128.7,
+   "ni": 123.5,
+   "assets": 2361.5,
+   "liab": 337.0,
+   "equity": 2024.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 1647.3,
+   "op": -11.1,
+   "ni": 11.9,
+   "assets": 2362.9,
+   "liab": 327.1,
+   "equity": 2035.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 1,
+   "rev": 404.1,
+   "op": -5.1,
+   "ni": 4.4
+  },
+  {
+   "y": 2023,
+   "q": 2,
+   "rev": 433.3,
+   "op": 6.4,
+   "ni": 11.0
+  },
+  {
+   "y": 2023,
+   "q": 3,
+   "rev": 442.9,
+   "op": 7.1,
+   "ni": 13.1
+  },
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 367.0,
+   "op": -19.4,
+   "ni": -16.5
+  },
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 406.9,
+   "op": -17.9,
+   "ni": -9.9
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 495.2,
+   "op": 13.6,
+   "ni": 15.9
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 498.9,
+   "op": 19.9,
+   "ni": 14.6
+  }
+ ]
+}

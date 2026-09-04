@@ -1,0 +1,148 @@
+{
+ "name": "진시스템",
+ "split_adjusted": false,
+ "legal_name": "진시스템",
+ "code": "363250",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-05",
+ "annual": [
+  {
+   "p": 2021,
+   "rev": 132.4,
+   "op": 22.7,
+   "ni": 35.5,
+   "assets": 506.6,
+   "liab": 65.7,
+   "equity": 440.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 36.5,
+   "op": -66.0,
+   "ni": -90.0,
+   "assets": 411.8,
+   "liab": 60.7,
+   "equity": 351.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 9.0,
+   "op": -94.8,
+   "ni": -80.6,
+   "assets": 389.3,
+   "liab": 82.4,
+   "equity": 306.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 12.1,
+   "op": -101.2,
+   "ni": -95.3,
+   "assets": 299.0,
+   "liab": 80.2,
+   "equity": 218.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 3.8,
+   "op": -96.9,
+   "ni": -146.7,
+   "assets": 144.0,
+   "liab": 66.5,
+   "equity": 77.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 1.4,
+   "op": -25.1,
+   "ni": -23.4
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 1.5,
+   "op": -22.4,
+   "ni": -21.1
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 8.0,
+   "op": -21.1,
+   "ni": -20.2
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 1.2,
+   "op": -32.6,
+   "ni": -30.6
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 0.6,
+   "op": -19.8,
+   "ni": -19.4
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 0.7,
+   "op": -24.2,
+   "ni": -23.8
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 0.9,
+   "op": -22.7,
+   "ni": -22.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 1.6,
+   "op": -30.1,
+   "ni": -81.5
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 3.3,
+   "op": -16.1,
+   "ni": -15.6
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 4.3,
+   "op": -9.6,
+   "ni": -8.1
+  }
+ ]
+}

@@ -1,0 +1,148 @@
+{
+ "name": "큐라클",
+ "split_adjusted": false,
+ "legal_name": "큐라클",
+ "code": "365270",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-05",
+ "annual": [
+  {
+   "p": 2021,
+   "rev": 62.5,
+   "op": -68.7,
+   "ni": -66.8,
+   "assets": 655.3,
+   "liab": 105.1,
+   "equity": 550.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 35.8,
+   "op": -119.8,
+   "ni": -114.1,
+   "assets": 556.6,
+   "liab": 94.9,
+   "equity": 461.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 102.9,
+   "op": -105.1,
+   "ni": -115.9,
+   "assets": 697.8,
+   "liab": 279.2,
+   "equity": 418.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 16.3,
+   "op": -126.3,
+   "ni": -148.9,
+   "assets": 592.9,
+   "liab": 293.4,
+   "equity": 299.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 0.1,
+   "op": -165.0,
+   "ni": -181.1,
+   "assets": 532.1,
+   "liab": 161.2,
+   "equity": 370.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 3,
+   "rev": 22.7,
+   "op": -34.4,
+   "ni": -35.1
+  },
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 12.7,
+   "op": -42.9,
+   "ni": -56.7
+  },
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 5.0,
+   "op": -30.6,
+   "ni": -29.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 0.0,
+   "op": -38.9,
+   "ni": -37.5
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 0.0,
+   "op": -32.8,
+   "ni": -41.8
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 11.3,
+   "op": -24.2,
+   "ni": -40.6
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 0.1,
+   "op": -28.5,
+   "ni": -29.9
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 0.0,
+   "op": -46.9,
+   "ni": -46.8
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 10.5,
+   "op": -30.0,
+   "ni": -31.4
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 71.8,
+   "op": 23.6,
+   "ni": 32.3
+  }
+ ]
+}

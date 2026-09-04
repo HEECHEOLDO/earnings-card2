@@ -1,0 +1,148 @@
+{
+ "name": "유일로보틱스",
+ "split_adjusted": false,
+ "legal_name": "유일로보틱스",
+ "code": "388720",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-05",
+ "annual": [
+  {
+   "p": 2021,
+   "rev": 349.9,
+   "op": 32.0,
+   "ni": 38.6,
+   "assets": 380.6,
+   "liab": 171.6,
+   "equity": 208.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 384.5,
+   "op": -30.6,
+   "ni": -23.1,
+   "assets": 546.0,
+   "liab": 147.2,
+   "equity": 398.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 294.5,
+   "op": -70.1,
+   "ni": -65.6,
+   "assets": 858.1,
+   "liab": 509.3,
+   "equity": 348.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 351.7,
+   "op": 4.0,
+   "ni": -90.5,
+   "assets": 1174.1,
+   "liab": 223.8,
+   "equity": 950.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 369.2,
+   "op": -126.2,
+   "ni": -246.7,
+   "assets": 1082.2,
+   "liab": 185.2,
+   "equity": 897.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 79.0,
+   "op": -10.4,
+   "ni": -142.5
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 83.1,
+   "op": 3.1,
+   "ni": 47.5
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 100.9,
+   "op": 1.3,
+   "ni": 0.8
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 88.7,
+   "op": 9.9,
+   "ni": 3.6
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 100.7,
+   "op": 4.4,
+   "ni": -1.9
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 70.9,
+   "op": -41.3,
+   "ni": -178.2
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 93.0,
+   "op": -39.6,
+   "ni": -9.3
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 104.6,
+   "op": -49.6,
+   "ni": -57.3
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 45.6,
+   "op": -41.1,
+   "ni": -79.9
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 99.6,
+   "op": -14.6,
+   "ni": -12.8
+  }
+ ]
+}

@@ -1,0 +1,148 @@
+{
+ "name": "한컴라이프케어",
+ "split_adjusted": false,
+ "legal_name": "한컴라이프케어",
+ "code": "372910",
+ "market": "코스피",
+ "sector": "",
+ "updated": "2026-09-05",
+ "annual": [
+  {
+   "p": 2021,
+   "rev": 1211.4,
+   "op": 47.9,
+   "ni": 48.4,
+   "assets": 2141.3,
+   "liab": 973.1,
+   "equity": 1168.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 1001.2,
+   "op": -13.3,
+   "ni": 92.7,
+   "assets": 2080.3,
+   "liab": 801.0,
+   "equity": 1279.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 1127.8,
+   "op": 18.3,
+   "ni": 8.7,
+   "assets": 1822.1,
+   "liab": 538.8,
+   "equity": 1283.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 1047.8,
+   "op": 74.9,
+   "ni": 73.4,
+   "assets": 1985.1,
+   "liab": 631.3,
+   "equity": 1353.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 920.9,
+   "op": -7.3,
+   "ni": -76.7,
+   "assets": 2036.3,
+   "liab": 758.3,
+   "equity": 1278.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 136.4,
+   "op": -8.5,
+   "ni": -4.3
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 362.8,
+   "op": 68.5,
+   "ni": 51.7
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 235.5,
+   "op": 3.4,
+   "ni": -0.9
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 313.0,
+   "op": 11.4,
+   "ni": 26.9
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 66.4,
+   "op": -34.4,
+   "ni": -28.1
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 270.9,
+   "op": 28.4,
+   "ni": 0.6
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 235.7,
+   "op": 29.9,
+   "ni": 23.3
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 347.8,
+   "op": -31.2,
+   "ni": -72.3
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 59.9,
+   "op": -38.1,
+   "ni": -22.3
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 550.7,
+   "op": 76.1,
+   "ni": 68.2
+  }
+ ]
+}

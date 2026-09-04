@@ -1,0 +1,47 @@
+{
+ "name": "하나머스트7호기업인수목적",
+ "split_adjusted": false,
+ "legal_name": "하나머스트7호기업인수목적",
+ "code": "372290",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-09-05",
+ "annual": [
+  {
+   "p": 2020,
+   "rev": 0.0,
+   "op": -33.5,
+   "ni": -40.5,
+   "assets": 15889.6,
+   "liab": 7351.9,
+   "equity": 8537.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 1,
+   "rev": 0.0,
+   "op": -0.1,
+   "ni": 0.3
+  },
+  {
+   "y": 2023,
+   "q": 2,
+   "rev": 0.0,
+   "op": -0.1,
+   "ni": 0.4
+  },
+  {
+   "y": 2023,
+   "q": 3,
+   "rev": 0.0,
+   "op": -0.0,
+   "ni": 0.4
+  }
+ ]
+}
