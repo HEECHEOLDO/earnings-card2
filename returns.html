@@ -357,7 +357,7 @@
         cellRatio:0.42,        // 원 반지름 = 칸 폭 × 이 값
         rowGap:0.95,           // 줄 간격 = 원 반지름 × (2 + 이 값)
         maxGap:0.55,           // 원 사이 가로 여백 한계 = 반지름 × 이 값
-        minR:30,
+        minR:30, maxR:150,     // 원 반지름 범위 (지름 60~300px)
         valRatio:0.46,         // 값 글자 = 반지름 × 이 값
         yearRatio:0.50,        // 연도 글자
         yearGap:0.42,          // 연도 위치 = 반지름 × (1 + 이 값)
@@ -455,18 +455,25 @@
     var rowSpan = 2 + G.rowGap;           // 줄 간격 = 원 지름 + 여유
 
     var best = null;
-    for (var cols = 3; cols <= 7; cols++) {
+    // 연도가 적으면 열도 줄인다 (원 하나를 3열 격자에 놓으면 한쪽에 치우친다)
+    var minCols = Math.max(1, Math.min(3, n));
+    for (var cols = minCols; cols <= 7; cols++) {
       var rows = Math.ceil(n / cols);
       var cell = availW / cols;
       // (rows-1)줄은 rowSpan, 마지막 줄은 1 + below 만큼 차지한다
       var R = Math.min(cell * G.cellRatio,
-                       availH / ((rows - 1) * rowSpan + 1 + below));
+                       availH / ((rows - 1) * rowSpan + 1 + below),
+                       G.maxR);
       if (R < G.minR) continue;
       // 가로가 너무 헐렁하면 감점한다.
       // 세로가 먼저 한계에 걸리면 열이 적을수록 원 사이가 크게 벌어진다.
       var gapX = cell - R * 2;
-      var airy = Math.max(0, gapX - R * G.maxGap) * 0.5;
-      var score = R - (rows * cols - n) * 2.5 - Math.abs(cols - 5) * 2 - airy;
+      // 열이 2개 이하면 여백이 넓은 게 당연하다 — 감점하지 않는다
+      var airy = cols >= 3 ? Math.max(0, gapX - R * G.maxGap) * 0.5 : 0;
+      // 원 크기가 최우선. 빈칸은 가볍게만 감점한다.
+      // (빈칸 하나 피하려다 원이 줄고 화면이 비는 경우가 있었다)
+      var colPen = n >= 5 ? Math.abs(cols - 5) * 0.8 : 0;
+      var score = R - (rows * cols - n) * 0.6 - colPen - airy;
       if (!best || score > best.score) {
         best = { score: score, cols: cols, rows: rows, cell: cell, R: R };
       }
