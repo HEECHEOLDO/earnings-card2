@@ -343,6 +343,27 @@
           <button class="btn btn-primary" id="btn-png" style="flex:1">PNG 내려받기</button>
         </div>
         <p class="hint" style="margin-top:8px">3배 스케일(3240 × 4050)로 저장됩니다.</p>
+
+        <div class="divider"></div>
+        <h3 class="sec">영상으로 내려받기</h3>
+        <div class="ctl-row" style="margin-top:0">
+          <label>원 간격</label>
+          <input type="range" id="v-gap" min="0.15" max="0.8" step="0.05" value="0.35" style="width:150px">
+          <span class="range-val" id="v-gap-val">0.35초</span>
+        </div>
+        <div class="ctl-row">
+          <label>끝 정지</label>
+          <input type="range" id="v-hold" min="1" max="5" step="0.5" value="2.5" style="width:150px">
+          <span class="range-val" id="v-hold-val">2.5초</span>
+        </div>
+        <div class="ctl-row">
+          <button class="btn" id="btn-preview" type="button">미리보기</button>
+          <button class="btn btn-primary" id="btn-video" style="flex:1">영상 내려받기</button>
+        </div>
+        <p class="hint" style="margin-top:8px" id="v-note">
+          제목 → 기간 → 원 하나씩 → 연평균 순서로 나타납니다. 1080 × 1350 · 30fps · 소리 없음.
+        </p>
+        <div class="msg" id="v-msg"></div>
       </div>
     </div>
 
@@ -490,6 +511,13 @@
   function upColor()   { return state.market === 'kr' ? TOKENS.card.upKR   : TOKENS.card.up; }
   function downColor() { return state.market === 'kr' ? TOKENS.card.downKR : TOKENS.card.down; }
 
+  function easeOut(p) { p = Math.max(0, Math.min(1, p)); return 1 - Math.pow(1 - p, 3); }
+  function popEase(p) {                    // 살짝 넘쳤다 제자리로
+    p = Math.max(0, Math.min(1, p));
+    var s = 1.4; p -= 1;
+    return 1 + p * p * ((s + 1) * p + s);
+  }
+
   function fmtPct(v) {
     return (v > 0 ? '+' : '') + v.toFixed(v <= -100 || v >= 100 ? 0 : 1) + '%';
   }
@@ -559,7 +587,15 @@
   var state = { rows: [], asof:'', market:'us', name:'NASDAQ100', sub:'연간 수익률',
                 source:'', handle:'@돈굴돈굴', mark:true, guide:false };
 
-  function drawCard(ctx) {
+  // anim: 각 요소의 등장 진행도(0~1). 없으면 전부 1(정지 화면).
+  //   { title, sub, period, circles:[...], avg, footer }
+  function drawCard(ctx, anim) {
+    var A = anim || null;
+    var P = function (k, i) {              // 진행도 꺼내기
+      if (!A) return 1;
+      if (k === 'circle') return A.circles ? (A.circles[i] == null ? 1 : A.circles[i]) : 1;
+      return A[k] == null ? 1 : A[k];
+    };
     var T = TOKENS.card, S = T.safe, G = T.grid;
     var CX = S.left, CWID = CW - S.left - S.right;
 
@@ -583,6 +619,11 @@
     // 재는 도중에 자간을 껐다 켜면 폭이 어긋나 형광펜이 짧아진다.
     ctx.font = font(900, ns);
     if (canTrack) ctx.letterSpacing = T.type.nameTrack;
+
+    var pT = easeOut(P('title'));
+    ctx.save();
+    ctx.globalAlpha = pT;
+    ctx.translate(0, (1 - pT) * 28);
 
     if (state.name && state.mark) {
       var m = ctx.measureText(state.name);
@@ -610,10 +651,18 @@
     ctx.fillStyle = T.ink;
     ctx.fillText(state.name || '', CX, y);
     if (canTrack) ctx.letterSpacing = '0px';
+    ctx.restore();
+
     if (ss) {
       y += ns*T.type.nameToSub + ss*0.86;
+      var pS = easeOut(P('sub'));
+      ctx.save();
+      ctx.globalAlpha = pS;
+      ctx.translate(0, (1 - pS) * 22);
       ctx.font = font(900, ss);
+      ctx.fillStyle = T.ink;
       ctx.fillText(state.sub, CX, y);
+      ctx.restore();
     }
 
     /* 기간 표기 + 연평균 */
@@ -625,11 +674,23 @@
       var c = cagr(rows, state.asof);
       // 연평균이 있으면 두 줄이 되므로 기간 줄을 위로 올린다
       var py = c ? y - 34 : y;
+      ctx.save();
+      ctx.globalAlpha = P('period');
       ctx.fillText(rows[0].y + ' ~ ' + rows[rows.length-1].y, CX + CWID, py);
+      ctx.restore();
       if (c) {
-        ctx.font = font(700, 26);
-        ctx.fillStyle = c.v >= 0 ? upColor() : downColor();
-        ctx.fillText('연평균 수익률 ' + fmtPct(c.v), CX + CWID, y);
+        var pA = P('avg');
+        if (pA > 0) {
+          var sA = 0.4 + 0.6 * popEase(pA);   // 작게 시작해 살짝 넘쳤다 제자리로
+          ctx.save();
+          ctx.globalAlpha = Math.min(1, pA * 1.6);
+          ctx.translate(CX + CWID, y);
+          ctx.scale(sA, sA);
+          ctx.font = font(700, 26);
+          ctx.fillStyle = c.v >= 0 ? upColor() : downColor();
+          ctx.fillText('연평균 수익률 ' + fmtPct(c.v), 0, 0);
+          ctx.restore();
+        }
       }
       ctx.textAlign = 'left';
     }
@@ -652,6 +713,15 @@
         // 마지막 줄이 덜 차도 왼쪽부터 채운다
         var cx = CX + g.cell * (col + 0.5);
         var cy = startY + row * g.rowH;
+
+        var pC = P('circle', i);
+        if (pC <= 0) return;                    // 아직 안 나올 차례
+        var sC = popEase(pC);
+        ctx.save();
+        ctx.globalAlpha = Math.min(1, pC * 2);
+        ctx.translate(cx, cy);
+        ctx.scale(sC, sC);
+        ctx.translate(-cx, -cy);
 
         ctx.fillStyle = d.v >= 0 ? upColor() : downColor();
         ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI*2); ctx.fill();
@@ -679,6 +749,7 @@
           ctx.fillStyle = T.gold;
           ctx.fillText('YTD', cx, cy + R * (1 + G.yearGap) + ys*1.28);
         }
+        ctx.restore();
       });
       ctx.textAlign = 'left';
     } else {
@@ -690,6 +761,8 @@
     }
 
     /* 푸터 */
+    ctx.save();
+    ctx.globalAlpha = P('footer');
     ctx.beginPath();
     ctx.strokeStyle = T.rule; ctx.lineWidth = 2;
     ctx.moveTo(CX, ruleY); ctx.lineTo(CX + CWID, ruleY); ctx.stroke();
@@ -699,6 +772,7 @@
     ctx.textAlign = 'right';
     ctx.fillText(state.handle, CX + CWID, footBase);
     ctx.textAlign = 'left';
+    ctx.restore();
 
     overlays.forEach(function (ov) { if (ov.layer !== 'back') paintOverlay(ctx, ov); });
 
@@ -841,6 +915,161 @@
     if (from && +all[0] > from) msg += ' ' + all[0] + '년부터 자료가 있습니다.';
     say(msg, 'ok');
   });
+
+  /* ============================================================
+     영상 — 시간에 따라 등장 진행도를 만든다
+     ============================================================ */
+  var VID = {
+    title:   { at: 0.0,  dur: 0.9 },
+    sub:     { at: 0.7,  dur: 0.8 },
+    footer:  { at: 0.3,  dur: 0.8 },
+    period:  { at: 1.8,  dur: 0.7 },
+    circAt:  2.8,                         // 첫 원이 나오는 시각
+    circDur: 0.55,                        // 원 하나가 튀어나오는 데 걸리는 시간
+    avgGap:  0.5,                         // 마지막 원 뒤 연평균까지 간격
+    avgDur:  0.9
+  };
+
+  function timeline() {
+    var gap  = parseFloat(document.getElementById('v-gap').value);
+    var hold = parseFloat(document.getElementById('v-hold').value);
+    var n = state.rows.length;
+    var avgAt = VID.circAt + Math.max(0, n - 1) * gap + VID.circDur + VID.avgGap;
+    return { gap: gap, hold: hold, avgAt: avgAt, total: avgAt + VID.avgDur + hold };
+  }
+
+  function progress(t, at, dur) {
+    return Math.max(0, Math.min(1, (t - at) / dur));
+  }
+
+  function animAt(t) {
+    var tl = timeline();
+    var circles = state.rows.map(function (_, i) {
+      return progress(t, VID.circAt + i * tl.gap, VID.circDur);
+    });
+    return {
+      title:  progress(t, VID.title.at,  VID.title.dur),
+      sub:    progress(t, VID.sub.at,    VID.sub.dur),
+      footer: progress(t, VID.footer.at, VID.footer.dur),
+      period: progress(t, VID.period.at, VID.period.dur),
+      circles: circles,
+      avg:    progress(t, tl.avgAt, VID.avgDur)
+    };
+  }
+
+  function vsay(t, kind) {
+    var el = document.getElementById('v-msg');
+    el.textContent = t || '';
+    el.className = 'msg' + (t ? ' ' + (kind || 'info') : '');
+  }
+
+  var previewing = false;
+  function playPreview() {
+    if (!state.rows.length) return vsay('먼저 종목을 불러오세요.', 'err');
+    if (previewing) return;
+    previewing = true;
+    var tl = timeline();
+    var ctx = canvas.getContext('2d');
+    var t0 = performance.now();
+    function frame(now) {
+      var t = (now - t0) / 1000;
+      drawCard(ctx, animAt(t));
+      if (t < tl.total) requestAnimationFrame(frame);
+      else { previewing = false; drawPreview(); }
+    }
+    vsay('미리보기 재생 중 (' + tl.total.toFixed(1) + '초)', 'info');
+    requestAnimationFrame(frame);
+  }
+
+  function pickMime() {
+    var cands = [
+      'video/mp4;codecs=avc1.42E01E',
+      'video/mp4;codecs=avc1',
+      'video/mp4',
+      'video/webm;codecs=vp9',
+      'video/webm;codecs=vp8',
+      'video/webm'
+    ];
+    for (var i = 0; i < cands.length; i++) {
+      try { if (MediaRecorder.isTypeSupported(cands[i])) return cands[i]; } catch (e) {}
+    }
+    return '';
+  }
+
+  function exportVideo() {
+    if (!state.rows.length) return vsay('먼저 종목을 불러오세요.', 'err');
+    if (typeof MediaRecorder === 'undefined') {
+      return vsay('이 브라우저는 영상 녹화를 지원하지 않습니다. 크롬을 써보세요.', 'err');
+    }
+    var mime = pickMime();
+    if (!mime) return vsay('지원하는 영상 형식이 없습니다. 크롬을 써보세요.', 'err');
+    var isMp4 = mime.indexOf('mp4') >= 0;
+
+    var off = document.createElement('canvas');
+    off.width = CW; off.height = CH;
+    var octx = off.getContext('2d');
+    var stream = off.captureStream(30);
+    var rec;
+    try {
+      rec = new MediaRecorder(stream, { mimeType: mime, videoBitsPerSecond: 12e6 });
+    } catch (e) {
+      return vsay('녹화를 시작하지 못했습니다: ' + e.message, 'err');
+    }
+    var chunks = [];
+    rec.ondataavailable = function (e) { if (e.data && e.data.size) chunks.push(e.data); };
+    rec.onstop = function () {
+      var blob = new Blob(chunks, { type: mime.split(';')[0] });
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = (state.name || 'returns') + '_' + CW + 'x' + CH + (isMp4 ? '.mp4' : '.webm');
+      a.click();
+      setTimeout(function () { URL.revokeObjectURL(a.href); }, 5000);
+      vsay((isMp4 ? 'MP4' : 'WebM') + ' 파일을 저장했습니다.' +
+           (isMp4 ? '' : ' 인스타그램은 MP4 만 받으니 변환이 필요합니다.'), isMp4 ? 'ok' : 'info');
+      btn.disabled = false;
+    };
+
+    var btn = document.getElementById('btn-video');
+    btn.disabled = true;
+    var tl = timeline();
+    var guide = state.guide; state.guide = false;
+
+    ensureFonts().then(function () {
+      drawCard(octx, animAt(0));
+      rec.start(100);
+      var t0 = performance.now();
+      function frame(now) {
+        var t = (now - t0) / 1000;
+        drawCard(octx, animAt(t));
+        if (t < tl.total) {
+          vsay('녹화 중 ' + Math.min(100, Math.round(t / tl.total * 100)) + '%  (' +
+               (isMp4 ? 'MP4' : 'WebM') + ')', 'info');
+          requestAnimationFrame(frame);
+        } else {
+          drawCard(octx, animAt(tl.total));
+          setTimeout(function () { rec.stop(); state.guide = guide; }, 150);
+        }
+      }
+      requestAnimationFrame(frame);
+    });
+  }
+
+  document.getElementById('v-gap').addEventListener('input', function () {
+    document.getElementById('v-gap-val').textContent = parseFloat(this.value).toFixed(2) + '초';
+    if (state.rows.length) {
+      document.getElementById('v-note').textContent =
+        '총 ' + timeline().total.toFixed(1) + '초 · 1080 × 1350 · 30fps · 소리 없음';
+    }
+  });
+  document.getElementById('v-hold').addEventListener('input', function () {
+    document.getElementById('v-hold-val').textContent = parseFloat(this.value).toFixed(1) + '초';
+    if (state.rows.length) {
+      document.getElementById('v-note').textContent =
+        '총 ' + timeline().total.toFixed(1) + '초 · 1080 × 1350 · 30fps · 소리 없음';
+    }
+  });
+  document.getElementById('btn-preview').addEventListener('click', playPreview);
+  document.getElementById('btn-video').addEventListener('click', exportVideo);
 
   /* ============================================================
      오버레이 UI
