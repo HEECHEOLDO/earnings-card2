@@ -269,16 +269,20 @@ def from_naver(code):
         rows = json.loads(txt.strip().replace("'", '"'))
     except Exception:                         # noqa: BLE001
         return None, "형식 오류"
-    pairs = []
+    pairs, last_dt = [], ""
     for r in rows[1:]:
         try:
             pairs.append((int(str(r[0])[:4]), float(r[4])))
+            last_dt = str(r[0])[:8]
         except Exception:                     # noqa: BLE001
             continue
     if not pairs:
         return None, "값 없음"
     y = yearly_from_pairs(pairs)
-    return (y, None) if y else (None, "기간이 짧음")
+    if not y:
+        return None, "기간이 짧음"
+    y["_asof"] = "%s-%s-%s" % (last_dt[:4], last_dt[4:6], last_dt[6:8])
+    return y, None
 
 
 def from_stooq(code):
@@ -302,19 +306,23 @@ def from_stooq(code):
         return None, "형식 오류(%s)" % head[:36]
     if len(lines) < 3:
         return None, "자료가 너무 적음"
-    pairs = []
+    pairs, last_dt = [], ""
     for ln in lines[1:]:
         c = ln.split(",")
         if len(c) < 5:
             continue
         try:
             pairs.append((int(c[0][:4]), float(c[4])))
+            last_dt = c[0][:10]
         except Exception:                     # noqa: BLE001
             continue
     if not pairs:
         return None, "값 없음"
     y = yearly_from_pairs(pairs)
-    return (y, None) if y else (None, "기간이 짧음")
+    if not y:
+        return None, "기간이 짧음"
+    y["_asof"] = last_dt
+    return y, None
 
 
 def from_alpha(code):
@@ -331,14 +339,18 @@ def from_alpha(code):
     ts = j.get("Monthly Adjusted Time Series")
     if not ts:
         return None, "자료 없음"
-    pairs = []
+    pairs, last_dt = [], ""
     for d in sorted(ts):
         try:
             pairs.append((int(d[:4]), float(ts[d]["5. adjusted close"])))
+            last_dt = d[:10]
         except Exception:                     # noqa: BLE001
             continue
     y = yearly_from_pairs(pairs)
-    return (y, None) if y else (None, "기간이 짧음")
+    if not y:
+        return None, "기간이 짧음"
+    y["_asof"] = last_dt
+    return y, None
 
 
 def yahoo_symbol(code, desc=""):
@@ -568,7 +580,9 @@ def main():
                     log("\n오늘 알파밴티지 한도(하루 25회)를 다 썼습니다.")
                     log("남은 종목은 내일 이어서 받습니다. 이미 받아둔 자료는 그대로 있습니다.\n")
         else:
-            items[code] = {"name": name, "market": mk, "desc": desc, "years": years}
+            asof = years.pop("_asof", "")
+            items[code] = {"name": name, "market": mk, "desc": desc,
+                           "years": years, "asof": asof}
 
         if i % 100 == 0 or i == len(universe):
             log("  %d/%d  (%.1f분)" % (i, len(universe), (time.time()-started)/60))
