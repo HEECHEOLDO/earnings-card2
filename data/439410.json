@@ -1,0 +1,47 @@
+{
+ "name": "엔에이치기업인수목적26호",
+ "split_adjusted": false,
+ "legal_name": "엔에이치기업인수목적26호",
+ "code": "439410",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-09-06",
+ "annual": [
+  {
+   "p": 2024,
+   "rev": 0.0,
+   "op": -0.4,
+   "ni": 4.7,
+   "assets": 189.7,
+   "liab": 15.6,
+   "equity": 174.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 3,
+   "rev": 0.0,
+   "op": -0.4,
+   "ni": 4.8
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 0.0,
+   "op": -0.2,
+   "ni": 1.1
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 0.0,
+   "op": -0.1,
+   "ni": 1.0
+  }
+ ]
+}

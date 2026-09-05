@@ -1,0 +1,74 @@
+{
+ "name": "유안타제10호기업인수목적",
+ "split_adjusted": false,
+ "legal_name": "유안타제10호기업인수목적",
+ "code": "435380",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-09-06",
+ "annual": [
+  {
+   "p": 2023,
+   "rev": 0.0,
+   "op": -0.5,
+   "ni": 3.1,
+   "assets": 132.7,
+   "liab": 15.9,
+   "equity": 116.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 0.0,
+   "op": -0.5,
+   "ni": 3.1,
+   "assets": 136.4,
+   "liab": 16.5,
+   "equity": 119.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 3,
+   "rev": 0.0,
+   "op": -0.4,
+   "ni": 2.1
+  },
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 0.0,
+   "op": -0.1,
+   "ni": 1.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 0.0,
+   "op": -0.1,
+   "ni": 0.8
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 0.0,
+   "op": -0.1,
+   "ni": 0.8
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 0.0,
+   "op": -0.2,
+   "ni": 0.6
+  }
+ ]
+}

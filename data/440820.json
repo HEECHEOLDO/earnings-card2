@@ -1,0 +1,40 @@
+{
+ "name": "엔에이치기업인수목적27호",
+ "split_adjusted": false,
+ "legal_name": "엔에이치기업인수목적27호",
+ "code": "440820",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-09-06",
+ "annual": [
+  {
+   "p": 2024,
+   "rev": 0.0,
+   "op": -0.4,
+   "ni": 4.1,
+   "assets": 157.4,
+   "liab": 6.4,
+   "equity": 151.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 0.0,
+   "op": -0.1,
+   "ni": 0.5
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 0.0,
+   "op": -0.1,
+   "ni": 0.8
+  }
+ ]
+}

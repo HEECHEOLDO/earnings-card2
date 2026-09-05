@@ -1,0 +1,47 @@
+{
+ "name": "한패스",
+ "split_adjusted": false,
+ "legal_name": "한패스",
+ "code": "408470",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-06",
+ "annual": [
+  {
+   "p": 2025,
+   "rev": 664.5,
+   "op": 82.3,
+   "ni": 66.1,
+   "assets": 1218.9,
+   "liab": 798.0,
+   "equity": 420.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 664.5,
+   "op": 82.3,
+   "ni": 66.1
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 170.6,
+   "op": -7.5,
+   "ni": 6.5
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 144.2,
+   "op": -31.2,
+   "ni": -48.8
+  }
+ ]
+}

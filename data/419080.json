@@ -1,0 +1,135 @@
+{
+ "name": "엔젯",
+ "split_adjusted": false,
+ "legal_name": "엔젯",
+ "code": "419080",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-06",
+ "annual": [
+  {
+   "p": 2022,
+   "rev": 216.7,
+   "op": 53.0,
+   "ni": 41.1,
+   "assets": 537.7,
+   "liab": 64.0,
+   "equity": 473.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 120.7,
+   "op": -21.2,
+   "ni": 3.1,
+   "assets": 528.7,
+   "liab": 46.1,
+   "equity": 482.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 62.6,
+   "op": -65.3,
+   "ni": -34.8,
+   "assets": 460.2,
+   "liab": 53.4,
+   "equity": 406.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 54.1,
+   "op": -62.8,
+   "ni": null,
+   "assets": 434.4,
+   "liab": 90.3,
+   "equity": 344.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 20.0,
+   "op": -12.1,
+   "ni": 5.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 18.3,
+   "op": -15.9,
+   "ni": -10.8
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 19.9,
+   "op": -12.1,
+   "ni": -12.5
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 4.3,
+   "op": -25.2,
+   "ni": -16.5
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 20.7,
+   "op": -12.4,
+   "ni": null
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 19.3,
+   "op": -13.4,
+   "ni": null
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 8.8,
+   "op": -19.3,
+   "ni": null
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 5.3,
+   "op": -17.7,
+   "ni": null
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 43.7,
+   "op": -13.6,
+   "ni": -11.2
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 40.7,
+   "op": 1.1,
+   "ni": -12.0
+  }
+ ]
+}

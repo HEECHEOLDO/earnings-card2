@@ -1,0 +1,40 @@
+{
+ "name": "엔에이치기업인수목적24호",
+ "split_adjusted": false,
+ "legal_name": "엔에이치기업인수목적24호",
+ "code": "437780",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-09-06",
+ "annual": [
+  {
+   "p": 2024,
+   "rev": 0.0,
+   "op": -0.4,
+   "ni": 2.4,
+   "assets": 104.3,
+   "liab": 6.2,
+   "equity": 98.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 0.0,
+   "op": -0.1,
+   "ni": 0.6
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 0.0,
+   "op": -0.1,
+   "ni": 0.5
+  }
+ ]
+}

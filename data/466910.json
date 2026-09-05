@@ -1,0 +1,74 @@
+{
+ "name": "엔에이치기업인수목적30호",
+ "split_adjusted": false,
+ "legal_name": "엔에이치기업인수목적30호",
+ "code": "466910",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-09-06",
+ "annual": [
+  {
+   "p": 2024,
+   "rev": 0.0,
+   "op": -0.4,
+   "ni": 4.2,
+   "assets": 203.8,
+   "liab": 25.6,
+   "equity": 178.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 0.0,
+   "op": -1.1,
+   "ni": 3.4,
+   "assets": 208.2,
+   "liab": 26.5,
+   "equity": 181.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 0.0,
+   "op": -0.1,
+   "ni": 1.2
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 0.0,
+   "op": -0.2,
+   "ni": 0.9
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 0.0,
+   "op": -0.1,
+   "ni": 1.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 0.0,
+   "op": -0.4,
+   "ni": 0.9
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 0.0,
+   "op": -0.4,
+   "ni": 0.7
+  }
+ ]
+}

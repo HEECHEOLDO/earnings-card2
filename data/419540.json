@@ -1,0 +1,135 @@
+{
+ "name": "비스토스",
+ "split_adjusted": false,
+ "legal_name": "비스토스",
+ "code": "419540",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-06",
+ "annual": [
+  {
+   "p": 2022,
+   "rev": 239.6,
+   "op": 9.1,
+   "ni": -45.0,
+   "assets": 205.0,
+   "liab": 45.7,
+   "equity": 159.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 213.0,
+   "op": 2.8,
+   "ni": 8.1,
+   "assets": 215.3,
+   "liab": 29.9,
+   "equity": 185.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 202.5,
+   "op": 3.1,
+   "ni": 8.5,
+   "assets": 214.4,
+   "liab": 20.2,
+   "equity": 194.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 171.0,
+   "op": -11.0,
+   "ni": -7.0,
+   "assets": 207.1,
+   "liab": 28.0,
+   "equity": 179.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 58.2,
+   "op": 2.6,
+   "ni": 5.9
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 43.6,
+   "op": -0.1,
+   "ni": 1.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 32.1,
+   "op": -6.2,
+   "ni": -5.8
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 68.7,
+   "op": 6.8,
+   "ni": 7.4
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 37.1,
+   "op": -5.8,
+   "ni": -5.5
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 44.8,
+   "op": 0.1,
+   "ni": 0.2
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 43.1,
+   "op": -4.6,
+   "ni": -4.8
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 46.0,
+   "op": -0.7,
+   "ni": 3.1
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 29.7,
+   "op": -3.9,
+   "ni": -3.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 42.0,
+   "op": -8.6,
+   "ni": -5.4
+  }
+ ]
+}

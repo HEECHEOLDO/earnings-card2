@@ -1,0 +1,47 @@
+{
+ "name": "에스팀",
+ "split_adjusted": false,
+ "legal_name": "에스팀",
+ "code": "458350",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-06",
+ "annual": [
+  {
+   "p": 2025,
+   "rev": 351.5,
+   "op": 24.6,
+   "ni": 20.8,
+   "assets": 250.7,
+   "liab": 96.7,
+   "equity": 154.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 351.5,
+   "op": 24.6,
+   "ni": 20.8
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 59.0,
+   "op": -5.7,
+   "ni": -4.5
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 86.4,
+   "op": -1.0,
+   "ni": -3.7
+  }
+ ]
+}

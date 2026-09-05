@@ -1,0 +1,74 @@
+{
+ "name": "비엔케이제2호기업인수목적",
+ "split_adjusted": false,
+ "legal_name": "비엔케이제2호기업인수목적",
+ "code": "473370",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-09-06",
+ "annual": [
+  {
+   "p": 2023,
+   "rev": 0.0,
+   "op": -0.1,
+   "ni": -0.1,
+   "assets": 17.9,
+   "liab": 13.5,
+   "equity": 4.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 0.0,
+   "op": -0.4,
+   "ni": 1.6,
+   "assets": 98.8,
+   "liab": 14.5,
+   "equity": 84.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 0.0,
+   "op": -0.1,
+   "ni": -0.1
+  },
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 0.0,
+   "op": -0.1,
+   "ni": -0.1
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 0.0,
+   "op": -0.2,
+   "ni": -0.2
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 0.0,
+   "op": -0.1,
+   "ni": 1.5
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 0.0,
+   "op": -0.0,
+   "ni": 0.4
+  }
+ ]
+}

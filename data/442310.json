@@ -1,0 +1,40 @@
+{
+ "name": "대신밸런스제14호기업인수목적",
+ "split_adjusted": false,
+ "legal_name": "대신밸런스제14호기업인수목적",
+ "code": "442310",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-09-06",
+ "annual": [
+  {
+   "p": 2023,
+   "rev": 0.0,
+   "op": -0.9,
+   "ni": 3.7,
+   "assets": 134.4,
+   "liab": 7.9,
+   "equity": 126.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 3,
+   "rev": 0.0,
+   "op": -0.9,
+   "ni": 2.1
+  },
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 0.0,
+   "op": -0.1,
+   "ni": 1.6
+  }
+ ]
+}

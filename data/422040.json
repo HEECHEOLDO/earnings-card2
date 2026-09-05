@@ -1,0 +1,33 @@
+{
+ "name": "엔에이치기업인수목적23호",
+ "split_adjusted": false,
+ "legal_name": "엔에이치기업인수목적23호",
+ "code": "422040",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-09-06",
+ "annual": [
+  {
+   "p": 2024,
+   "rev": 0.0,
+   "op": -0.5,
+   "ni": 4.0,
+   "assets": 157.7,
+   "liab": 16.2,
+   "equity": 141.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 0.0,
+   "op": -0.1,
+   "ni": 1.2
+  }
+ ]
+}

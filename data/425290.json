@@ -1,0 +1,74 @@
+{
+ "name": "삼성기업인수목적6호",
+ "split_adjusted": false,
+ "legal_name": "삼성기업인수목적6호",
+ "code": "425290",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-09-06",
+ "annual": [
+  {
+   "p": 2023,
+   "rev": 0.0,
+   "op": -0.5,
+   "ni": 2.1,
+   "assets": 122.1,
+   "liab": 13.8,
+   "equity": 108.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 0.0,
+   "op": -0.6,
+   "ni": 2.4,
+   "assets": 124.8,
+   "liab": 14.3,
+   "equity": 110.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 3,
+   "rev": 0.0,
+   "op": -0.5,
+   "ni": 1.3
+  },
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 0.0,
+   "op": -0.0,
+   "ni": 0.7
+  },
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 0.0,
+   "op": -0.3,
+   "ni": 0.6
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 0.0,
+   "op": -0.1,
+   "ni": 0.6
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 0.0,
+   "op": -0.0,
+   "ni": 0.8
+  }
+ ]
+}

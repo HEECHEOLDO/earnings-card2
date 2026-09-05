@@ -1,0 +1,47 @@
+{
+ "name": "하나33호스팩",
+ "split_adjusted": false,
+ "legal_name": "하나33호스팩",
+ "code": "475250",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-06",
+ "annual": [
+  {
+   "p": 2024,
+   "rev": 0.0,
+   "op": -0.2,
+   "ni": 1.0,
+   "assets": 84.0,
+   "liab": 11.2,
+   "equity": 72.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 0.0,
+   "op": -0.2,
+   "ni": 0.1
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 0.0,
+   "op": -0.0,
+   "ni": 0.4
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 0.0,
+   "op": -0.0,
+   "ni": 0.4
+  }
+ ]
+}

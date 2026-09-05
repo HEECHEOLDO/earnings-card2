@@ -1,0 +1,54 @@
+{
+ "name": "알트",
+ "split_adjusted": false,
+ "legal_name": "알트",
+ "code": "459550",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-06",
+ "annual": [
+  {
+   "p": 2025,
+   "rev": 1129.5,
+   "op": 89.7,
+   "ni": 50.8,
+   "assets": 624.2,
+   "liab": 141.5,
+   "equity": 482.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 889.8,
+   "op": 73.4,
+   "ni": 46.9
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 239.7,
+   "op": 16.2,
+   "ni": 3.8
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 181.3,
+   "op": -7.9,
+   "ni": -16.9
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 82.9,
+   "op": -7.9,
+   "ni": 8.2
+  }
+ ]
+}

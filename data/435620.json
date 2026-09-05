@@ -1,0 +1,108 @@
+{
+ "name": "하나금융25호기업인수목적",
+ "split_adjusted": false,
+ "legal_name": "하나금융25호기업인수목적",
+ "code": "435620",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-09-06",
+ "annual": [
+  {
+   "p": 2022,
+   "rev": 0.0,
+   "op": -0.2,
+   "ni": 2.4,
+   "assets": 469.6,
+   "liab": 49.8,
+   "equity": 419.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 0.0,
+   "op": -1.3,
+   "ni": 13.4,
+   "assets": 485.3,
+   "liab": 52.1,
+   "equity": 433.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 0.0,
+   "op": -1.8,
+   "ni": 9.6,
+   "assets": 496.2,
+   "liab": 53.3,
+   "equity": 442.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 1,
+   "rev": 0.0,
+   "op": -0.2,
+   "ni": 3.6
+  },
+  {
+   "y": 2023,
+   "q": 2,
+   "rev": 0.0,
+   "op": -0.9,
+   "ni": 3.2
+  },
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 0.0,
+   "op": -0.0,
+   "ni": 2.9
+  },
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 0.0,
+   "op": -0.7,
+   "ni": 2.2
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 0.0,
+   "op": -1.1,
+   "ni": 1.9
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 0.0,
+   "op": -0.0,
+   "ni": 2.9
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 0.0,
+   "op": -0.0,
+   "ni": 2.7
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 0.0,
+   "op": -0.1,
+   "ni": 2.2
+  }
+ ]
+}

@@ -1,0 +1,40 @@
+{
+ "name": "키움히어로제1호스팩",
+ "split_adjusted": false,
+ "legal_name": "키움히어로제1호스팩",
+ "code": "466690",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-06",
+ "annual": [
+  {
+   "p": 2025,
+   "rev": 0.0,
+   "op": -0.3,
+   "ni": -0.3,
+   "assets": 109.4,
+   "liab": 13.0,
+   "equity": 96.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 0.0,
+   "op": -0.3,
+   "ni": -0.3
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 0.0,
+   "op": -0.1,
+   "ni": 0.4
+  }
+ ]
+}

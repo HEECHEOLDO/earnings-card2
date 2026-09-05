@@ -1,0 +1,81 @@
+{
+ "name": "삼성기업인수목적8호",
+ "split_adjusted": false,
+ "legal_name": "삼성기업인수목적8호",
+ "code": "448740",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-09-06",
+ "annual": [
+  {
+   "p": 2023,
+   "rev": 0.0,
+   "op": -0.3,
+   "ni": 7.6,
+   "assets": 485.1,
+   "liab": 41.7,
+   "equity": 443.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 0.0,
+   "op": -0.6,
+   "ni": 10.9,
+   "assets": 498.8,
+   "liab": 44.5,
+   "equity": 454.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 3,
+   "rev": 0.0,
+   "op": -0.3,
+   "ni": 5.2
+  },
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 0.0,
+   "op": 0.0,
+   "ni": 2.4
+  },
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 0.0,
+   "op": -0.4,
+   "ni": 2.5
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 0.0,
+   "op": -0.1,
+   "ni": 2.9
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 0.0,
+   "op": -0.0,
+   "ni": 3.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 0.0,
+   "op": -0.0,
+   "ni": 2.6
+  }
+ ]
+}
