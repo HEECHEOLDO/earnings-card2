@@ -250,6 +250,7 @@
               <label class="fld" for="f-symbol">종목명</label>
               <input type="text" id="f-symbol" spellcheck="false" autocomplete="off"
                      placeholder="눌러서 전체 보기 · 이름이나 코드 입력">
+              <input type="hidden" id="f-code" value="">
               <div class="suggest" id="suggest"></div>
             </div>
           </div>
@@ -784,12 +785,23 @@
      불러오기 — 미리 계산된 값을 골라 쓰기만 한다
      ============================================================ */
   document.getElementById('btn-fetch').addEventListener('click', function () {
-    var code = document.getElementById('f-symbol').value.trim();
+    var typed = document.getElementById('f-symbol').value.trim();
+    var code = document.getElementById('f-code').value || typed;
     if (!code) return say('종목을 먼저 고르세요.', 'err');
+
+    // "삼성전자 (005930)" 처럼 괄호 안 코드가 있으면 그걸 쓴다
+    var paren = code.match(/\(([A-Za-z0-9.\-]+)\)\s*$/);
+    if (paren) code = paren[1];
 
     var it = RET.items && RET.items[code];
     if (!it) {
-      var hit = searchUniverse(code)[0];      // 이름으로 골랐을 수도 있다
+      // 이름이나 코드를 그대로 쳤을 수도 있다 — 정확히 맞는 것 우선
+      var list = searchUniverse(code);
+      var exact = list.filter(function (x) {
+        return x.code.toLowerCase() === code.toLowerCase() ||
+               x.name.toLowerCase() === code.toLowerCase();
+      })[0];
+      var hit = exact || list[0];
       if (hit) { code = hit.code; it = RET.items[code]; }
     }
     if (!it) return say('"' + code + '" 자료가 없습니다. 목록에서 골라주세요.', 'err');
@@ -1114,14 +1126,20 @@
   function pickSuggest(i) {
     var it = sugItems[i];
     if (!it) return;
-    document.getElementById('f-symbol').value = it.code;
+    // 입력창에는 이름을, 코드는 뒤에서 기억한다
+    document.getElementById('f-symbol').value =
+      it.code === it.name ? it.code : it.name + ' (' + it.code + ')';
+    document.getElementById('f-code').value = it.code;
     document.getElementById('f-name').value = it.title || it.name;
     hideSuggest();
     refresh();
   }
 
   var symBox = document.getElementById('f-symbol');
-  symBox.addEventListener('input', function () { renderSuggest(this.value); });
+  symBox.addEventListener('input', function () {
+    document.getElementById('f-code').value = '';
+    renderSuggest(this.value);
+  });
   symBox.addEventListener('focus', function () { renderSuggest(''); });
   symBox.addEventListener('keydown', function (e) {
     if (!sugBox.classList.contains('on')) return;
