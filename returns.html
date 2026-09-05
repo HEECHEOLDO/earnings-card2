@@ -348,20 +348,20 @@
         <h3 class="sec">영상으로 내려받기</h3>
         <div class="ctl-row" style="margin-top:0">
           <label>원 간격</label>
-          <input type="range" id="v-gap" min="0.15" max="0.8" step="0.05" value="0.35" style="width:150px">
-          <span class="range-val" id="v-gap-val">0.35초</span>
+          <input type="range" id="v-gap" min="0.15" max="0.8" step="0.05" value="0.4" style="width:150px">
+          <span class="range-val" id="v-gap-val">0.40초</span>
         </div>
         <div class="ctl-row">
           <label>끝 정지</label>
-          <input type="range" id="v-hold" min="1" max="5" step="0.5" value="2.5" style="width:150px">
-          <span class="range-val" id="v-hold-val">2.5초</span>
+          <input type="range" id="v-hold" min="1" max="5" step="0.5" value="2" style="width:150px">
+          <span class="range-val" id="v-hold-val">2.0초</span>
         </div>
         <div class="ctl-row">
           <button class="btn" id="btn-preview" type="button">미리보기</button>
           <button class="btn btn-primary" id="btn-video" style="flex:1">영상 내려받기</button>
         </div>
         <p class="hint" style="margin-top:8px" id="v-note">
-          제목 → 기간 → 원 하나씩 → 연평균 순서로 나타납니다. 1080 × 1350 · 30fps · 소리 없음.
+          제목 → 기간 → 원 하나씩 → 연평균 순서로 나타납니다. 1080 × 1350 · 60fps · 소리 없음.
         </p>
         <div class="msg" id="v-msg"></div>
       </div>
@@ -996,76 +996,156 @@
     return '';
   }
 
+  // ── 방식 1: 프레임을 하나씩 직접 인코딩 (부드럽고 화질 좋음, 크롬·엣지) ──
+  var VFPS = 60, VBITRATE = 16e6;
+
+  function encodeWithWebCodecs(tl, onProgress) {
+    return import('https://cdn.jsdelivr.net/npm/mp4-muxer@5.2.1/build/mp4-muxer.mjs')
+      .then(function (M) {
+        var off = document.createElement('canvas');
+        off.width = CW; off.height = CH;
+        var octx = off.getContext('2d');
+
+        var cfg = { codec: 'avc1.640033', width: CW, height: CH,
+                    bitrate: VBITRATE, framerate: VFPS };
+        return VideoEncoder.isConfigSupported(cfg).then(function (sup) {
+          if (!sup || !sup.supported) throw new Error('H.264 인코더 미지원');
+
+          var muxer = new M.Muxer({
+            target: new M.ArrayBufferTarget(),
+            video: { codec: 'avc', width: CW, height: CH },
+            fastStart: 'in-memory'
+          });
+          var failed = null;
+          var enc = new VideoEncoder({
+            output: function (chunk, meta) { muxer.addVideoChunk(chunk, meta); },
+            error:  function (e) { failed = e; }
+          });
+          enc.configure(cfg);
+
+          var total = Math.ceil(tl.total * VFPS);
+          var i = 0;
+
+          function step() {
+            return new Promise(function (resolve) {
+              // 인코더가 밀리면 잠깐 기다린다
+              if (enc.encodeQueueSize > 8) return setTimeout(function () { resolve(step()); }, 8);
+              if (failed) throw failed;
+              if (i >= total) return resolve();
+              var t = i / VFPS;
+              drawCard(octx, animAt(Math.min(t, tl.total)));
+              var frame = new VideoFrame(off, { timestamp: Math.round(i * 1e6 / VFPS) });
+              enc.encode(frame, { keyFrame: i % (VFPS * 2) === 0 });
+              frame.close();
+              i++;
+              if (i % 6 === 0) onProgress(i / total);
+              // 화면이 멈추지 않게 가끔 숨을 돌린다
+              if (i % 15 === 0) setTimeout(function () { resolve(step()); }, 0);
+              else resolve(step());
+            });
+          }
+          return step().then(function () {
+            return enc.flush();
+          }).then(function () {
+            enc.close();
+            muxer.finalize();
+            return new Blob([muxer.target.buffer], { type: 'video/mp4' });
+          });
+        });
+      });
+  }
+
+  // ── 방식 2: 실시간 녹화 (예비) ──
+  function recordWithMediaRecorder(tl, onProgress) {
+    return new Promise(function (resolve, reject) {
+      if (typeof MediaRecorder === 'undefined') return reject(new Error('녹화 미지원'));
+      var mime = pickMime();
+      if (!mime) return reject(new Error('지원 형식 없음'));
+      var off = document.createElement('canvas');
+      off.width = CW; off.height = CH;
+      var octx = off.getContext('2d');
+      var stream = off.captureStream(30);
+      var rec = new MediaRecorder(stream, { mimeType: mime, videoBitsPerSecond: 12e6 });
+      var chunks = [];
+      rec.ondataavailable = function (e) { if (e.data && e.data.size) chunks.push(e.data); };
+      rec.onstop = function () {
+        resolve({ blob: new Blob(chunks, { type: mime.split(';')[0] }),
+                  isMp4: mime.indexOf('mp4') >= 0 });
+      };
+      drawCard(octx, animAt(0));
+      rec.start(100);
+      var t0 = performance.now();
+      (function frame(now) {
+        var t = (now - t0) / 1000;
+        drawCard(octx, animAt(t));
+        onProgress(Math.min(1, t / tl.total));
+        if (t < tl.total) requestAnimationFrame(frame);
+        else { drawCard(octx, animAt(tl.total)); setTimeout(function () { rec.stop(); }, 150); }
+      })(t0);
+    });
+  }
+
   function exportVideo() {
     if (!state.rows.length) return vsay('먼저 종목을 불러오세요.', 'err');
-    if (typeof MediaRecorder === 'undefined') {
-      return vsay('이 브라우저는 영상 녹화를 지원하지 않습니다. 크롬을 써보세요.', 'err');
-    }
-    var mime = pickMime();
-    if (!mime) return vsay('지원하는 영상 형식이 없습니다. 크롬을 써보세요.', 'err');
-    var isMp4 = mime.indexOf('mp4') >= 0;
-
-    var off = document.createElement('canvas');
-    off.width = CW; off.height = CH;
-    var octx = off.getContext('2d');
-    var stream = off.captureStream(30);
-    var rec;
-    try {
-      rec = new MediaRecorder(stream, { mimeType: mime, videoBitsPerSecond: 12e6 });
-    } catch (e) {
-      return vsay('녹화를 시작하지 못했습니다: ' + e.message, 'err');
-    }
-    var chunks = [];
-    rec.ondataavailable = function (e) { if (e.data && e.data.size) chunks.push(e.data); };
-    rec.onstop = function () {
-      var blob = new Blob(chunks, { type: mime.split(';')[0] });
-      var a = document.createElement('a');
-      a.href = URL.createObjectURL(blob);
-      a.download = (state.name || 'returns') + '_' + CW + 'x' + CH + (isMp4 ? '.mp4' : '.webm');
-      a.click();
-      setTimeout(function () { URL.revokeObjectURL(a.href); }, 5000);
-      vsay((isMp4 ? 'MP4' : 'WebM') + ' 파일을 저장했습니다.' +
-           (isMp4 ? '' : ' 인스타그램은 MP4 만 받으니 변환이 필요합니다.'), isMp4 ? 'ok' : 'info');
-      btn.disabled = false;
-    };
-
     var btn = document.getElementById('btn-video');
     btn.disabled = true;
     var tl = timeline();
     var guide = state.guide; state.guide = false;
 
+    function save(blob, ext, label) {
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = (state.name || 'returns') + '_' + CW + 'x' + CH + ext;
+      a.click();
+      setTimeout(function () { URL.revokeObjectURL(a.href); }, 5000);
+      vsay(label, ext === '.mp4' ? 'ok' : 'info');
+    }
+    function done() { btn.disabled = false; state.guide = guide; drawPreview(); }
+
     ensureFonts().then(function () {
-      drawCard(octx, animAt(0));
-      rec.start(100);
-      var t0 = performance.now();
-      function frame(now) {
-        var t = (now - t0) / 1000;
-        drawCard(octx, animAt(t));
-        if (t < tl.total) {
-          vsay('녹화 중 ' + Math.min(100, Math.round(t / tl.total * 100)) + '%  (' +
-               (isMp4 ? 'MP4' : 'WebM') + ')', 'info');
-          requestAnimationFrame(frame);
-        } else {
-          drawCard(octx, animAt(tl.total));
-          setTimeout(function () { rec.stop(); state.guide = guide; }, 150);
-        }
+      var canWebCodecs = typeof VideoEncoder !== 'undefined' && typeof VideoFrame !== 'undefined';
+      if (canWebCodecs) {
+        vsay('인코딩 준비 중…', 'info');
+        return encodeWithWebCodecs(tl, function (p) {
+          vsay('인코딩 ' + Math.round(p * 100) + '%  (MP4 · ' + VFPS + 'fps)', 'info');
+        }).then(function (blob) {
+          save(blob, '.mp4', 'MP4 ' + VFPS + 'fps 로 저장했습니다. (' +
+               (blob.size / 1048576).toFixed(1) + 'MB)');
+        }).catch(function (e) {
+          // 안 되면 실시간 녹화로
+          vsay('고화질 인코더를 못 써서 실시간 녹화로 전환합니다 (' + e.message + ')', 'info');
+          return recordWithMediaRecorder(tl, function (p) {
+            vsay('녹화 중 ' + Math.round(p * 100) + '%', 'info');
+          }).then(function (r) {
+            save(r.blob, r.isMp4 ? '.mp4' : '.webm',
+                 (r.isMp4 ? 'MP4' : 'WebM') + ' 로 저장했습니다.' +
+                 (r.isMp4 ? '' : ' 인스타그램은 MP4 만 받으니 변환이 필요합니다.'));
+          });
+        });
       }
-      requestAnimationFrame(frame);
-    });
+      return recordWithMediaRecorder(tl, function (p) {
+        vsay('녹화 중 ' + Math.round(p * 100) + '%', 'info');
+      }).then(function (r) {
+        save(r.blob, r.isMp4 ? '.mp4' : '.webm',
+             (r.isMp4 ? 'MP4' : 'WebM') + ' 로 저장했습니다.');
+      });
+    }).catch(function (e) {
+      vsay('영상을 만들지 못했습니다: ' + (e && e.message || e), 'err');
+    }).then(done);
   }
 
   document.getElementById('v-gap').addEventListener('input', function () {
     document.getElementById('v-gap-val').textContent = parseFloat(this.value).toFixed(2) + '초';
     if (state.rows.length) {
       document.getElementById('v-note').textContent =
-        '총 ' + timeline().total.toFixed(1) + '초 · 1080 × 1350 · 30fps · 소리 없음';
+        '총 ' + timeline().total.toFixed(1) + '초 · 1080 × 1350 · 60fps · 소리 없음';
     }
   });
   document.getElementById('v-hold').addEventListener('input', function () {
     document.getElementById('v-hold-val').textContent = parseFloat(this.value).toFixed(1) + '초';
     if (state.rows.length) {
       document.getElementById('v-note').textContent =
-        '총 ' + timeline().total.toFixed(1) + '초 · 1080 × 1350 · 30fps · 소리 없음';
+        '총 ' + timeline().total.toFixed(1) + '초 · 1080 × 1350 · 60fps · 소리 없음';
     }
   });
   document.getElementById('btn-preview').addEventListener('click', playPreview);
