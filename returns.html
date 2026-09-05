@@ -99,6 +99,14 @@
   input[type="range"] { accent-color:var(--accent); }
 
 
+  .cur-sw { display:inline-flex; gap:3px; padding:3px; background:var(--surface-2); border-radius:999px; }
+  .cur-b { font-family:inherit; font-size:12.5px; font-weight:700; cursor:pointer; border:none;
+    background:transparent; color:var(--text-soft); padding:7px 12px; border-radius:999px;
+    display:inline-flex; align-items:center; gap:5px; }
+  .cur-b.on { background:var(--accent); color:#fff; }
+  [data-mode="dark"] .cur-b.on { color:#0E141B; }
+  .sw-dot { width:10px; height:10px; border-radius:50%; display:inline-block; }
+
   .tabs2 { display:flex; gap:4px; padding:4px; background:var(--surface-2);
     border-radius:999px; margin-bottom:12px; }
   .tab2 { flex:1; font-family:inherit; font-size:13px; font-weight:700; cursor:pointer;
@@ -156,6 +164,7 @@
   .tbl th { color:var(--text-soft); font-weight:600; }
   .tbl td:first-child, .tbl th:first-child { text-align:left; }
   .up { color:var(--pos); } .down { color:#B32B22; }
+  .kr .up { color:#C0392B; } .kr .down { color:#2C5AA0; }
 
   @media (max-width:560px) {
     body { padding:14px 12px 56px; }
@@ -297,6 +306,14 @@
         </div>
 
         <div class="ctl-row" style="margin-top:0">
+          <label for="f-color">색 기준</label>
+          <div class="cur-sw">
+            <button type="button" class="cur-b on" data-v="kr">국내 <span class="sw-dot" style="background:#C0392B"></span><span class="sw-dot" style="background:#2C5AA0"></span></button>
+            <button type="button" class="cur-b" data-v="us">해외 <span class="sw-dot" style="background:#2E7D57"></span><span class="sw-dot" style="background:#B8443A"></span></button>
+          </div>
+          <input type="hidden" id="f-color" value="kr">
+        </div>
+        <div class="ctl-row">
           <label class="check"><input type="checkbox" id="chk-mark" checked> 종목명에 형광펜</label>
           <label class="check"><input type="checkbox" id="chk-guide"> 안전영역 표시</label>
         </div>
@@ -342,7 +359,9 @@
     card: {
       paper:'#fafaf8', ink:'#101216', inkSoft:'#6B7078', rule:'#E6E4DD',
       axis:'#C9C6BC', tick:'#9AA0A8', footer:'#3A3E46', gold:'#B8862E',
-      up:'#2E7D57', down:'#B8443A',           // 상승·하락 (기존 팔레트 명도에 맞춤)
+      // 상승·하락 — 해외는 초록/빨강, 국내는 빨강/파랑 (시장 관행)
+      up:'#2E7D57', down:'#B8443A',
+      upKR:'#C0392B', downKR:'#2C5AA0',
       guide:'rgba(214,54,44,0.45)',
       safe:{ top:135, right:100, bottom:135, left:100 },
       grain:{ base:[250,250,248], amount:14, speckle:0.08, spike:2.5 },
@@ -465,6 +484,10 @@
              hasYtd: rows.some(function (r) { return r.ytd; }) };
   }
 
+  // 시장에 맞는 상승·하락 색
+  function upColor()   { return state.market === 'kr' ? TOKENS.card.upKR   : TOKENS.card.up; }
+  function downColor() { return state.market === 'kr' ? TOKENS.card.downKR : TOKENS.card.down; }
+
   function fmtPct(v) {
     return (v > 0 ? '+' : '') + v.toFixed(v <= -100 || v >= 100 ? 0 : 1) + '%';
   }
@@ -531,7 +554,7 @@
   /* ============================================================
      카드 그리기
      ============================================================ */
-  var state = { rows: [], asof:'', name:'NASDAQ100', sub:'연간 수익률',
+  var state = { rows: [], asof:'', market:'us', name:'NASDAQ100', sub:'연간 수익률',
                 source:'', handle:'@돈굴돈굴', mark:true, guide:false };
 
   function drawCard(ctx) {
@@ -561,14 +584,17 @@
 
     if (state.name && state.mark) {
       var m = ctx.measureText(state.name);
-      // 실제 잉크 폭을 쓸 수 있으면 그걸 쓴다 (자간·글꼴 편차에 안전)
-      var wName = m.width;
-      if (m.actualBoundingBoxRight != null && m.actualBoundingBoxLeft != null) {
-        wName = Math.max(wName, m.actualBoundingBoxLeft + m.actualBoundingBoxRight);
+      // 글자가 실제로 찍히는 범위(잉크)에 맞춘다.
+      // measureText().width 는 글꼴의 좌우 여백까지 포함해서
+      // 한글에서는 형광펜이 글자보다 뒤로 삐져나온다.
+      var x0 = CX, x1 = CX + m.width;
+      if (m.actualBoundingBoxLeft != null && m.actualBoundingBoxRight != null) {
+        x0 = CX - m.actualBoundingBoxLeft;
+        x1 = CX + m.actualBoundingBoxRight;
       }
       var padX = ns * G.markPadX;
       ctx.fillStyle = hexA(T.gold, G.markAlpha);
-      roundRect(ctx, CX - padX, y - ns*0.74, wName + padX*2, ns*0.86, 8);
+      roundRect(ctx, x0 - padX, y - ns*0.74, (x1 - x0) + padX*2, ns*0.86, 8);
       ctx.fill();
     }
 
@@ -593,7 +619,7 @@
       ctx.fillText(rows[0].y + ' ~ ' + rows[rows.length-1].y, CX + CWID, py);
       if (c) {
         ctx.font = font(700, 26);
-        ctx.fillStyle = c.v >= 0 ? T.up : T.down;
+        ctx.fillStyle = c.v >= 0 ? upColor() : downColor();
         ctx.fillText('연평균 수익률 ' + fmtPct(c.v), CX + CWID, y);
       }
       ctx.textAlign = 'left';
@@ -618,7 +644,7 @@
         var cx = CX + g.cell * (col + 0.5);
         var cy = startY + row * g.rowH;
 
-        ctx.fillStyle = d.v >= 0 ? T.up : T.down;
+        ctx.fillStyle = d.v >= 0 ? upColor() : downColor();
         ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI*2); ctx.fill();
 
         if (d.ytd) {
@@ -706,6 +732,7 @@
     state.source = document.getElementById('f-source').value.trim();
     state.handle = document.getElementById('handle').value;
     state.mark = document.getElementById('chk-mark').checked;
+    state.market = document.getElementById('f-color').value;
     var all = parseRows(document.getElementById('f-data').value);
     state.rows = all.slice(-MAX_YEARS);
     state.trimmed = all.length - state.rows.length;
@@ -721,7 +748,8 @@
     }
     var avg = state.rows.reduce(function (s, r) { return s + r.v; }, 0) / state.rows.length;
     var up = state.rows.filter(function (r) { return r.v >= 0; }).length;
-    box.innerHTML = '<table class="tbl"><tr><th>연도</th><th>수익률</th></tr>' +
+    box.innerHTML = '<table class="tbl' + (state.market === 'kr' ? ' kr' : '') +
+      '"><tr><th>연도</th><th>수익률</th></tr>' +
       state.rows.map(function (r) {
         return '<tr><td>' + r.y + (r.ytd ? ' <span style="color:#B8862E">YTD</span>' : '') +
                '</td><td class="' + (r.v >= 0 ? 'up' : 'down') + '">' + fmtPct(r.v) + '</td></tr>';
@@ -935,6 +963,25 @@
     document.getElementById(id).addEventListener('input', refresh);
   });
   document.getElementById('chk-mark').addEventListener('change', refresh);
+  Array.prototype.forEach.call(document.querySelectorAll('.cur-b'), function (b) {
+    b.addEventListener('click', function () {
+      document.getElementById('f-color').value = b.dataset.v;
+      Array.prototype.forEach.call(document.querySelectorAll('.cur-b'), function (x) {
+        x.classList.toggle('on', x === b);
+      });
+      refresh();
+    });
+  });
+  function setColorMarket(v) {
+    document.getElementById('f-color').value = v;
+    Array.prototype.forEach.call(document.querySelectorAll('.cur-b'), function (x) {
+      x.classList.toggle('on', x.dataset.v === v);
+    });
+  }
+  // 조회 시장을 바꾸면 색 기준도 같이 바뀐다 (따로 고를 수도 있다)
+  document.getElementById('f-market').addEventListener('change', function () {
+    setColorMarket(this.value);
+  });
   document.getElementById('chk-guide').addEventListener('change', function () {
     state.guide = this.checked; drawPreview();
   });
