@@ -374,6 +374,7 @@
       grid:{
         markAlpha:0.30,        // 종목명 형광펜 불투명도
         markPadX:0.13,         // 형광펜 좌우 여백 = 글자 크기 × 이 값
+        markPadY:0.07,         // 형광펜 상하 여백
         cellRatio:0.42,        // 원 반지름 = 칸 폭 × 이 값
         rowGap:0.95,           // 줄 간격 = 원 반지름 × (2 + 이 값)
         maxGap:0.55,           // 원 사이 가로 여백 한계 = 반지름 × 이 값
@@ -593,9 +594,16 @@
         x0 = CX - m.actualBoundingBoxLeft;
         x1 = CX + m.actualBoundingBoxRight;
       }
-      var padX = ns * G.markPadX;
+      // 세로도 잉크에 맞춘다. 한글은 영문 대문자보다 위로 더 올라가서
+      // 고정 비율로 잡으면 윗부분이 잘린다.
+      var top = y - ns * 0.80, bottom = y + ns * 0.12;
+      if (m.actualBoundingBoxAscent != null && m.actualBoundingBoxDescent != null) {
+        top = y - m.actualBoundingBoxAscent;
+        bottom = y + m.actualBoundingBoxDescent;
+      }
+      var padX = ns * G.markPadX, padY = ns * G.markPadY;
       ctx.fillStyle = hexA(T.gold, G.markAlpha);
-      roundRect(ctx, x0 - padX, y - ns*0.74, (x1 - x0) + padX*2, ns*0.86, 8);
+      roundRect(ctx, x0 - padX, top - padY, (x1 - x0) + padX*2, (bottom - top) + padY*2, 8);
       ctx.fill();
     }
 
