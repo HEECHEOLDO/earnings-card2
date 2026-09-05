@@ -510,7 +510,9 @@ def main():
     except Exception:                         # noqa: BLE001
         pass
 
-    items, fails = {}, []
+    # 이미 받아둔 종목은 그대로 유지하고, 이번에 받은 것만 덮어쓴다.
+    # (국내만·해외만 돌려도 나머지가 날아가지 않도록)
+    items, fails = dict(prev), []
     av_left = [max(0, AV_BUDGET - av_used[0])]   # 확인에 쓴 만큼 뺀다
     stooq_miss, stooq_dead = [0], [stooq_blocked[0]]
     av_dry, warned = [False], [False]
