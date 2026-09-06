@@ -1,28 +1,37 @@
 {
  "name": "메리츠금융지주",
+ "split_adjusted": false,
  "legal_name": "메리츠금융지주",
  "code": "138040",
- "market": "",
+ "market": "코스피",
  "sector": "",
- "updated": "2026-08-17",
+ "updated": "2026-09-07",
  "annual": [
   {
    "p": 2023,
    "rev": 585583.6,
    "op": 29335.0,
    "ni": 21253.8,
+   "assets": 1022358.4,
+   "liab": 921386.6,
+   "equity": 100971.9,
    "dps": 2360.0,
    "payout": 22.0,
-   "yield": 4.1
+   "yield": 4.1,
+   "dps_adj": 2360.0
   },
   {
    "p": 2024,
    "rev": 465745.1,
    "op": 31888.9,
    "ni": 23334.3,
+   "assets": 1155782.5,
+   "liab": 1046482.1,
+   "equity": 109300.4,
    "dps": null,
    "payout": 10.4,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   }
  ],
  "quarterly": [

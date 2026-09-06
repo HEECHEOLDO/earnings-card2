@@ -1,0 +1,148 @@
+{
+ "name": "프레스티지바이오파마",
+ "split_adjusted": false,
+ "legal_name": "프레스티지바이오파마",
+ "code": "950210",
+ "market": "코스피",
+ "sector": "",
+ "updated": "2026-09-07",
+ "annual": [
+  {
+   "p": 2021,
+   "rev": 0.0,
+   "op": -0.2,
+   "ni": -0.1,
+   "assets": 5.3,
+   "liab": 0.3,
+   "equity": 5.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 0.0,
+   "op": -0.5,
+   "ni": -1.8,
+   "assets": 3.9,
+   "liab": 0.5,
+   "equity": 3.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 0.0,
+   "op": -0.5,
+   "ni": -0.0,
+   "assets": 5.6,
+   "liab": 1.5,
+   "equity": 4.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 0.0,
+   "op": -0.5,
+   "ni": -0.4,
+   "assets": 5.1,
+   "liab": 1.4,
+   "equity": 3.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 0.1,
+   "op": -0.5,
+   "ni": 0.0,
+   "assets": 5.5,
+   "liab": 1.7,
+   "equity": 3.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 0.0,
+   "op": -0.2,
+   "ni": -0.1
+  },
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 0.0,
+   "op": -0.1,
+   "ni": -0.1
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 0.0,
+   "op": -0.2,
+   "ni": -0.2
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": -0.0,
+   "op": -0.1,
+   "ni": -0.1
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": -0.0,
+   "op": -0.1,
+   "ni": -0.1
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 0.0,
+   "op": -0.2,
+   "ni": -0.1
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 0.1,
+   "op": -0.1,
+   "ni": -0.1
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": -0.0,
+   "op": -0.1,
+   "ni": 0.4
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 0.0,
+   "op": -0.1,
+   "ni": -0.1
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 0.1,
+   "op": -0.5,
+   "ni": -0.5
+  }
+ ]
+}

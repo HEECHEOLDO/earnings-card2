@@ -1,55 +1,76 @@
 {
  "name": "크래프톤",
+ "split_adjusted": false,
  "legal_name": "크래프톤",
  "code": "259960",
- "market": "",
+ "market": "코스피",
  "sector": "",
- "updated": "2026-08-17",
+ "updated": "2026-09-07",
  "annual": [
   {
    "p": 2021,
    "rev": 18863.2,
    "op": 6396.4,
    "ni": 5198.8,
+   "assets": 56351.0,
+   "liab": 10268.6,
+   "equity": 46082.4,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2022,
    "rev": 18540.2,
    "op": 7516.1,
    "ni": 5001.5,
+   "assets": 60303.1,
+   "liab": 9174.6,
+   "equity": 51128.5,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2023,
    "rev": 19105.8,
    "op": 7680.5,
    "ni": 5940.6,
+   "assets": 64404.6,
+   "liab": 8816.4,
+   "equity": 55588.2,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2024,
    "rev": 27097.7,
    "op": 11824.9,
    "ni": 13025.9,
+   "assets": 79194.6,
+   "liab": 10903.3,
+   "equity": 68291.3,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2025,
    "rev": 33265.5,
    "op": 10543.8,
    "ni": 7337.0,
+   "assets": 94336.5,
+   "liab": 22495.0,
+   "equity": 71841.4,
    "dps": 2240.0,
    "payout": 13.6,
-   "yield": 0.9
+   "yield": 0.9,
+   "dps_adj": 2240.0
   }
  ],
  "quarterly": [

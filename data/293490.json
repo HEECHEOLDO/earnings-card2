@@ -1,64 +1,89 @@
 {
  "name": "카카오게임즈",
+ "split_adjusted": false,
  "legal_name": "카카오게임즈",
  "code": "293490",
- "market": "",
+ "market": "코스닥",
  "sector": "",
- "updated": "2026-08-17",
+ "updated": "2026-09-07",
  "annual": [
   {
    "p": 2020,
    "rev": 4955.2,
    "op": 665.2,
    "ni": 675.1,
+   "assets": 13099.1,
+   "liab": 2845.3,
+   "equity": 10253.8,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2021,
    "rev": 10124.8,
    "op": 1119.2,
    "ni": 5201.5,
+   "assets": 43050.1,
+   "liab": 18845.3,
+   "equity": 24204.9,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2022,
    "rev": 11476.9,
    "op": 1758.2,
    "ni": -1961.1,
+   "assets": 38739.4,
+   "liab": 18590.5,
+   "equity": 20148.9,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2023,
    "rev": 10250.9,
    "op": 745.2,
    "ni": -3224.1,
+   "assets": 34710.2,
+   "liab": 18454.9,
+   "equity": 16255.3,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2024,
    "rev": 6272.3,
    "op": 191.5,
    "ni": -1280.9,
+   "assets": 31732.4,
+   "liab": 16948.8,
+   "equity": 14783.6,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2025,
    "rev": 4650.2,
    "op": -395.9,
    "ni": -1430.8,
+   "assets": 26767.7,
+   "liab": 14788.0,
+   "equity": 11979.7,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   }
  ],
  "quarterly": [

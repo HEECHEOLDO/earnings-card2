@@ -1,0 +1,64 @@
+{
+ "name": "에스앤케이",
+ "split_adjusted": false,
+ "legal_name": "에스앤케이",
+ "code": "950180",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-09-07",
+ "annual": [
+  {
+   "p": 2019,
+   "rev": 99.2,
+   "op": 45.1,
+   "ni": 30.3,
+   "assets": 295.0,
+   "liab": 16.0,
+   "equity": 279.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 77.5,
+   "op": 21.0,
+   "ni": 20.4,
+   "assets": 312.9,
+   "liab": 20.4,
+   "equity": 292.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 66.1,
+   "op": -7.1,
+   "ni": -10.5,
+   "assets": 255.3,
+   "liab": 26.0,
+   "equity": 229.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 74.7,
+   "op": 3.1,
+   "ni": 5.3,
+   "assets": 267.8,
+   "liab": 28.0,
+   "equity": 239.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

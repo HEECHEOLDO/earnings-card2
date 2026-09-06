@@ -1,0 +1,213 @@
+{
+ "name": "오가닉티코스메틱",
+ "split_adjusted": false,
+ "legal_name": "오가닉티코스메틱",
+ "code": "900300",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-07",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 9.2,
+   "op": 2.5,
+   "ni": null,
+   "assets": 11.9,
+   "liab": 1.6,
+   "equity": 10.3,
+   "dps": 54.0,
+   "payout": 9.3,
+   "yield": 1.15,
+   "dps_adj": 54.0
+  },
+  {
+   "p": 2017,
+   "rev": 11.8,
+   "op": 3.6,
+   "ni": null,
+   "assets": 14.5,
+   "liab": 1.7,
+   "equity": 12.7,
+   "dps": 46.0,
+   "payout": 6.0,
+   "yield": 1.5,
+   "dps_adj": 46.0
+  },
+  {
+   "p": 2018,
+   "rev": 14.4,
+   "op": 3.7,
+   "ni": null,
+   "assets": 16.7,
+   "liab": 1.7,
+   "equity": 15.1,
+   "dps": 79.0,
+   "payout": 10.0,
+   "yield": 3.04,
+   "dps_adj": 79.0
+  },
+  {
+   "p": 2019,
+   "rev": 17.8,
+   "op": 2.7,
+   "ni": 1.9,
+   "assets": 18.2,
+   "liab": 1.5,
+   "equity": 16.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 17.7,
+   "op": 0.8,
+   "ni": 0.5,
+   "assets": 20.8,
+   "liab": 2.3,
+   "equity": 18.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 15.2,
+   "op": 1.0,
+   "ni": 0.4,
+   "assets": 24.0,
+   "liab": 2.5,
+   "equity": 21.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 11.8,
+   "op": -3.3,
+   "ni": -5.0,
+   "assets": 23.4,
+   "liab": 3.7,
+   "equity": 19.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 9.7,
+   "op": -4.0,
+   "ni": -4.3,
+   "assets": 18.8,
+   "liab": 4.5,
+   "equity": 14.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 8.7,
+   "op": -3.4,
+   "ni": -2.5,
+   "assets": 16.6,
+   "liab": 3.3,
+   "equity": 13.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 9.3,
+   "op": -3.1,
+   "ni": -3.9,
+   "assets": 16.0,
+   "liab": 3.0,
+   "equity": 13.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 1.4,
+   "op": -0.4,
+   "ni": -0.4
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 2.1,
+   "op": -1.2,
+   "ni": -1.1
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 2.7,
+   "op": -1.3,
+   "ni": -1.4
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 2.5,
+   "op": -0.5,
+   "ni": 0.4
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 1.6,
+   "op": -0.5,
+   "ni": -0.5
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 2.3,
+   "op": -1.0,
+   "ni": -1.7
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 2.3,
+   "op": -1.4,
+   "ni": -1.3
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 3.0,
+   "op": -0.2,
+   "ni": -0.4
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 2.0,
+   "op": -0.3,
+   "ni": -0.4
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 3.7,
+   "op": 0.7,
+   "ni": 0.6
+  }
+ ]
+}

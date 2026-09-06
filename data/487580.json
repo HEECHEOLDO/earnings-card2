@@ -1,0 +1,26 @@
+{
+ "name": "폴레드",
+ "split_adjusted": false,
+ "legal_name": "폴레드",
+ "code": "487580",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-07",
+ "annual": [],
+ "quarterly": [
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 253.4,
+   "op": 45.0,
+   "ni": 52.1
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 252.7,
+   "op": 20.6,
+   "ni": 16.6
+  }
+ ]
+}

@@ -1,0 +1,47 @@
+{
+ "name": "비츠로넥스텍",
+ "split_adjusted": false,
+ "legal_name": "비츠로넥스텍",
+ "code": "488900",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-07",
+ "annual": [
+  {
+   "p": 2025,
+   "rev": 367.9,
+   "op": -73.6,
+   "ni": -66.0,
+   "assets": 1137.8,
+   "liab": 548.3,
+   "equity": 589.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 367.9,
+   "op": -73.6,
+   "ni": -66.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 71.2,
+   "op": -33.7,
+   "ni": -29.6
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 66.7,
+   "op": -31.2,
+   "ni": -24.4
+  }
+ ]
+}

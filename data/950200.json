@@ -1,0 +1,161 @@
+{
+ "name": "소마젠",
+ "split_adjusted": false,
+ "legal_name": "소마젠",
+ "code": "950200",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-07",
+ "annual": [
+  {
+   "p": 2020,
+   "rev": 0.2,
+   "op": -0.1,
+   "ni": -0.2,
+   "assets": 0.5,
+   "liab": 0.1,
+   "equity": 0.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 0.2,
+   "op": -0.1,
+   "ni": -0.1,
+   "assets": 0.4,
+   "liab": 0.1,
+   "equity": 0.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 0.3,
+   "op": -0.0,
+   "ni": -0.0,
+   "assets": 0.4,
+   "liab": 0.1,
+   "equity": 0.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 0.2,
+   "op": -0.0,
+   "ni": -0.0,
+   "assets": 0.3,
+   "liab": 0.1,
+   "equity": 0.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 0.3,
+   "op": -0.0,
+   "ni": -0.0,
+   "assets": 0.4,
+   "liab": 0.2,
+   "equity": 0.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 0.4,
+   "op": -0.0,
+   "ni": -0.0,
+   "assets": 0.3,
+   "liab": 0.2,
+   "equity": 0.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 0.1,
+   "op": -0.0,
+   "ni": -0.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 0.1,
+   "op": -0.0,
+   "ni": -0.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 0.1,
+   "op": -0.0,
+   "ni": -0.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 0.1,
+   "op": -0.0,
+   "ni": -0.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 0.1,
+   "op": -0.0,
+   "ni": -0.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 0.1,
+   "op": -0.0,
+   "ni": -0.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 0.1,
+   "op": -0.0,
+   "ni": -0.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 0.1,
+   "op": -0.0,
+   "ni": -0.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 0.1,
+   "op": -0.0,
+   "ni": -0.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 0.1,
+   "op": 0.0,
+   "ni": 0.0
+  }
+ ]
+}

@@ -1,73 +1,102 @@
 {
  "name": "한화시스템",
+ "split_adjusted": false,
  "legal_name": "한화시스템",
  "code": "272210",
- "market": "",
+ "market": "코스피",
  "sector": "",
- "updated": "2026-08-17",
+ "updated": "2026-09-07",
  "annual": [
   {
    "p": 2019,
    "rev": 15459.8,
    "op": 857.6,
    "ni": 729.0,
+   "assets": 24092.4,
+   "liab": 14408.0,
+   "equity": 9684.4,
    "dps": 310.0,
    "payout": 46.88,
-   "yield": null
+   "yield": null,
+   "dps_adj": 310.0
   },
   {
    "p": 2020,
    "rev": 16428.5,
    "op": 928.6,
    "ni": 935.8,
+   "assets": 26950.7,
+   "liab": 16623.9,
+   "equity": 10326.8,
    "dps": 230.0,
    "payout": 27.07,
-   "yield": 1.48
+   "yield": 1.48,
+   "dps_adj": 230.0
   },
   {
    "p": 2021,
    "rev": 20895.0,
    "op": 1120.5,
    "ni": 978.8,
+   "assets": 38943.0,
+   "liab": 16545.4,
+   "equity": 22397.6,
    "dps": 160.0,
    "payout": 30.57,
-   "yield": 1.02
+   "yield": 1.02,
+   "dps_adj": 160.0
   },
   {
    "p": 2022,
    "rev": 21880.0,
    "op": 240.2,
    "ni": -807.6,
+   "assets": 39456.3,
+   "liab": 19266.8,
+   "equity": 20189.5,
    "dps": 250.0,
    "payout": -57.89,
-   "yield": 2.26
+   "yield": 2.26,
+   "dps_adj": 250.0
   },
   {
    "p": 2023,
    "rev": 24530.8,
    "op": 928.7,
    "ni": 3430.8,
+   "assets": 44832.1,
+   "liab": 23290.8,
+   "equity": 21541.3,
    "dps": 280.0,
    "payout": 15.26,
-   "yield": 1.68
+   "yield": 1.68,
+   "dps_adj": 280.0
   },
   {
    "p": 2024,
    "rev": 28036.9,
    "op": 2193.5,
    "ni": 4453.8,
+   "assets": 57240.1,
+   "liab": 33075.9,
+   "equity": 24164.2,
    "dps": 350.0,
    "payout": 14.69,
-   "yield": 1.6
+   "yield": 1.6,
+   "dps_adj": 350.0
   },
   {
    "p": 2025,
    "rev": 36641.5,
    "op": 1199.0,
    "ni": 2091.5,
+   "assets": 103272.7,
+   "liab": 53262.7,
+   "equity": 50010.0,
    "dps": 500.0,
    "payout": 44.7,
-   "yield": 0.48
+   "yield": 0.48,
+   "dps_adj": 500.0
   }
  ],
  "quarterly": [

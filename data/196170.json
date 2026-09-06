@@ -1,100 +1,141 @@
 {
  "name": "알테오젠",
+ "split_adjusted": false,
  "legal_name": "알테오젠",
  "code": "196170",
- "market": "",
+ "market": "코스닥",
  "sector": "",
- "updated": "2026-08-17",
+ "updated": "2026-09-07",
  "annual": [
   {
    "p": 2016,
    "rev": 68.4,
    "op": -54.1,
    "ni": -35.9,
+   "assets": 479.5,
+   "liab": 27.2,
+   "equity": 452.3,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2017,
    "rev": 121.0,
    "op": -61.7,
    "ni": -74.5,
+   "assets": 430.1,
+   "liab": 31.7,
+   "equity": 398.5,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2018,
    "rev": 137.0,
    "op": -76.6,
    "ni": -70.7,
+   "assets": 713.8,
+   "liab": 46.8,
+   "equity": 667.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2019,
    "rev": 292.3,
    "op": -22.5,
    "ni": -17.4,
+   "assets": 859.8,
+   "liab": 157.7,
+   "equity": 702.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2020,
    "rev": 424.3,
    "op": 1.0,
    "ni": -34.2,
+   "assets": 1592.1,
+   "liab": 229.4,
+   "equity": 1362.7,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2021,
    "rev": 411.2,
    "op": -128.0,
    "ni": -91.9,
+   "assets": 2603.4,
+   "liab": 1264.1,
+   "equity": 1339.2,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2022,
    "rev": 288.1,
    "op": -293.7,
    "ni": -100.8,
+   "assets": 2454.9,
+   "liab": 1001.1,
+   "equity": 1453.8,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2023,
    "rev": 965.2,
    "op": -97.4,
    "ni": -35.8,
+   "assets": 2561.0,
+   "liab": 1082.6,
+   "equity": 1478.4,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2024,
    "rev": 1028.5,
    "op": 254.0,
    "ni": 606.9,
+   "assets": 4090.1,
+   "liab": 1349.2,
+   "equity": 2740.9,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2025,
    "rev": 2158.6,
    "op": 1069.0,
    "ni": 1451.7,
+   "assets": 6987.4,
+   "liab": 2443.0,
+   "equity": 4544.4,
    "dps": 371.0,
    "payout": 14.1,
-   "yield": 0.1
+   "yield": 0.1,
+   "dps_adj": 371.0
   }
  ],
  "quarterly": [

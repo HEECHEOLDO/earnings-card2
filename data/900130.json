@@ -1,0 +1,25 @@
+{
+ "name": "웨이포트유한공사",
+ "split_adjusted": false,
+ "legal_name": "웨이포트유한공사",
+ "code": "900130",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-09-07",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 10.4,
+   "op": 0.1,
+   "ni": -0.1,
+   "assets": 13.5,
+   "liab": 12.6,
+   "equity": 0.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}

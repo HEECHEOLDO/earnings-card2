@@ -1,64 +1,89 @@
 {
  "name": "하이브",
+ "split_adjusted": false,
  "legal_name": "하이브",
  "code": "352820",
- "market": "",
+ "market": "코스피",
  "sector": "",
- "updated": "2026-08-17",
+ "updated": "2026-09-07",
  "annual": [
   {
    "p": 2020,
    "rev": 7962.8,
    "op": 1455.2,
    "ni": 870.6,
+   "assets": 19244.4,
+   "liab": 7255.0,
+   "equity": 11989.4,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2021,
    "rev": 12559.3,
    "op": 1902.5,
    "ni": 1408.3,
+   "assets": 47289.2,
+   "liab": 18423.3,
+   "equity": 28865.9,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2022,
    "rev": 17761.5,
    "op": 2369.1,
    "ni": 480.3,
+   "assets": 48704.3,
+   "liab": 19417.5,
+   "equity": 29286.8,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2023,
    "rev": 21780.9,
    "op": 2956.4,
    "ni": 1834.5,
+   "assets": 53456.8,
+   "liab": 22357.7,
+   "equity": 31099.1,
    "dps": 700.0,
    "payout": 15.57,
-   "yield": 0.3
+   "yield": 0.3,
+   "dps_adj": 700.0
   },
   {
    "p": 2024,
    "rev": 22556.5,
    "op": 1840.5,
    "ni": -34.3,
+   "assets": 54791.9,
+   "liab": 19654.1,
+   "equity": 35137.8,
    "dps": 200.0,
    "payout": 88.54,
-   "yield": 0.08
+   "yield": 0.08,
+   "dps_adj": 200.0
   },
   {
    "p": 2025,
    "rev": 26498.7,
    "op": 493.2,
    "ni": -2543.9,
+   "assets": 54854.7,
+   "liab": 19340.2,
+   "equity": 35514.6,
    "dps": 500.0,
    "payout": -9.05,
-   "yield": 0.13
+   "yield": 0.13,
+   "dps_adj": 500.0
   }
  ],
  "quarterly": [

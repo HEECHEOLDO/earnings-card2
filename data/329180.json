@@ -1,64 +1,89 @@
 {
  "name": "HD현대중공업",
+ "split_adjusted": false,
  "legal_name": "HD현대중공업",
  "code": "329180",
- "market": "",
+ "market": "코스피",
  "sector": "",
- "updated": "2026-08-17",
+ "updated": "2026-09-07",
  "annual": [
   {
    "p": 2020,
    "rev": 83120.1,
    "op": 325.1,
    "ni": -4314.5,
+   "assets": 137996.6,
+   "liab": 84388.7,
+   "equity": 53607.8,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2021,
    "rev": 83112.8,
    "op": -8002.6,
    "ni": -8142.3,
+   "assets": 150786.7,
+   "liab": 94846.5,
+   "equity": 55940.2,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2022,
    "rev": 90454.8,
    "op": -2891.5,
    "ni": -3520.6,
+   "assets": 162894.0,
+   "liab": 110015.8,
+   "equity": 52878.2,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2023,
    "rev": 119639.3,
    "op": 1786.4,
    "ni": 246.9,
+   "assets": 171336.2,
+   "liab": 119261.8,
+   "equity": 52074.4,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2024,
    "rev": 144864.5,
    "op": 7052.2,
    "ni": 6215.1,
+   "assets": 193909.5,
+   "liab": 136865.0,
+   "equity": 57044.5,
    "dps": 2090.0,
    "payout": 29.9,
-   "yield": 0.7
+   "yield": 0.7,
+   "dps_adj": 2090.0
   },
   {
    "p": 2025,
    "rev": 175806.3,
    "op": 20375.1,
    "ni": 14154.8,
+   "assets": 261630.4,
+   "liab": 168214.2,
+   "equity": 93416.2,
    "dps": 5661.0,
    "payout": 40.0,
-   "yield": 1.08
+   "yield": 1.08,
+   "dps_adj": 5661.0
   }
  ],
  "quarterly": [

@@ -1,91 +1,128 @@
 {
  "name": "오리온",
+ "split_adjusted": false,
  "legal_name": "오리온",
  "code": "271560",
- "market": "",
+ "market": "코스피",
  "sector": "",
- "updated": "2026-08-17",
+ "updated": "2026-09-07",
  "annual": [
   {
    "p": 2017,
    "rev": 11172.2,
    "op": 1074.3,
    "ni": 766.8,
+   "assets": 22580.0,
+   "liab": 9130.9,
+   "equity": 13449.0,
    "dps": 600.0,
    "payout": 31.4,
-   "yield": 0.6
+   "yield": 0.6,
+   "dps_adj": 600.0
   },
   {
    "p": 2018,
    "rev": 19269.5,
    "op": 2821.8,
    "ni": 1430.3,
+   "assets": 23513.5,
+   "liab": 9068.1,
+   "equity": 14445.4,
    "dps": 600.0,
    "payout": 17.0,
-   "yield": 0.5
+   "yield": 0.5,
+   "dps_adj": 600.0
   },
   {
    "p": 2019,
    "rev": 20233.0,
    "op": 3275.9,
    "ni": 2204.7,
+   "assets": 24523.1,
+   "liab": 7847.6,
+   "equity": 16675.4,
    "dps": 600.0,
    "payout": 11.0,
-   "yield": 0.6
+   "yield": 0.6,
+   "dps_adj": 600.0
   },
   {
    "p": 2020,
    "rev": 22298.2,
    "op": 3761.2,
    "ni": 2745.6,
+   "assets": 26654.1,
+   "liab": 7679.0,
+   "equity": 18975.1,
    "dps": 750.0,
    "payout": 11.1,
-   "yield": 0.6
+   "yield": 0.6,
+   "dps_adj": 750.0
   },
   {
    "p": 2021,
    "rev": 23555.0,
    "op": 3729.1,
    "ni": 2636.6,
+   "assets": 31204.3,
+   "liab": 8278.8,
+   "equity": 22925.5,
    "dps": 750.0,
    "payout": 11.5,
-   "yield": 0.7
+   "yield": 0.7,
+   "dps_adj": 750.0
   },
   {
    "p": 2022,
    "rev": 28732.5,
    "op": 4666.5,
    "ni": 3983.1,
+   "assets": 33716.8,
+   "liab": 7324.6,
+   "equity": 26392.3,
    "dps": 950.0,
    "payout": 9.6,
-   "yield": 0.7
+   "yield": 0.7,
+   "dps_adj": 950.0
   },
   {
    "p": 2023,
    "rev": 29123.6,
    "op": 4923.9,
    "ni": 3849.8,
+   "assets": 35213.9,
+   "liab": 5659.1,
+   "equity": 29554.8,
    "dps": 1250.0,
    "payout": 13.1,
-   "yield": 1.1
+   "yield": 1.1,
+   "dps_adj": 1250.0
   },
   {
    "p": 2024,
    "rev": 31043.4,
    "op": 5435.9,
    "ni": 5332.3,
+   "assets": 43084.5,
+   "liab": 7344.0,
+   "equity": 35740.5,
    "dps": 2500.0,
    "payout": 18.8,
-   "yield": 2.4
+   "yield": 2.4,
+   "dps_adj": 2500.0
   },
   {
    "p": 2025,
    "rev": 33324.4,
    "op": 5582.6,
    "ni": 3906.0,
+   "assets": 45986.6,
+   "liab": 6864.6,
+   "equity": 39122.1,
    "dps": 3500.0,
    "payout": 36.2,
-   "yield": 2.8
+   "yield": 2.8,
+   "dps_adj": 3500.0
   }
  ],
  "quarterly": [

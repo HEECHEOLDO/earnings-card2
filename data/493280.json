@@ -1,0 +1,47 @@
+{
+ "name": "아이엠바이오로직스",
+ "split_adjusted": false,
+ "legal_name": "아이엠바이오로직스",
+ "code": "493280",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-07",
+ "annual": [
+  {
+   "p": 2025,
+   "rev": 116.2,
+   "op": 3.0,
+   "ni": 8.8,
+   "assets": 753.0,
+   "liab": 18.1,
+   "equity": 734.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 116.2,
+   "op": 3.0,
+   "ni": 8.8
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 72.3,
+   "op": 27.3,
+   "ni": 38.3
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 0.0,
+   "op": -26.8,
+   "ni": -21.2
+  }
+ ]
+}

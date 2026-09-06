@@ -1,0 +1,47 @@
+{
+ "name": "리브스메드",
+ "split_adjusted": false,
+ "legal_name": "리브스메드",
+ "code": "491000",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-07",
+ "annual": [
+  {
+   "p": 2025,
+   "rev": 511.9,
+   "op": -226.4,
+   "ni": -228.7,
+   "assets": 2019.3,
+   "liab": 210.6,
+   "equity": 1808.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 511.9,
+   "op": -226.4,
+   "ni": -228.7
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 102.6,
+   "op": -83.7,
+   "ni": -58.8
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 125.1,
+   "op": -121.9,
+   "ni": -110.3
+  }
+ ]
+}

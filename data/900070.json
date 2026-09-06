@@ -1,0 +1,213 @@
+{
+ "name": "글로벌에스엠",
+ "split_adjusted": false,
+ "legal_name": "글로벌에스엠",
+ "code": "900070",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-07",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 6.3,
+   "op": 0.3,
+   "ni": 0.3,
+   "assets": 8.4,
+   "liab": 3.1,
+   "equity": 5.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 6.3,
+   "op": 0.2,
+   "ni": 0.0,
+   "assets": 8.2,
+   "liab": 2.6,
+   "equity": 5.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 6.2,
+   "op": 0.0,
+   "ni": 0.0,
+   "assets": 8.0,
+   "liab": 2.5,
+   "equity": 5.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 6.5,
+   "op": 0.3,
+   "ni": 0.2,
+   "assets": 7.9,
+   "liab": 2.3,
+   "equity": 5.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 5.8,
+   "op": 0.3,
+   "ni": 0.2,
+   "assets": 8.4,
+   "liab": 2.6,
+   "equity": 5.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 6.7,
+   "op": 0.5,
+   "ni": 0.2,
+   "assets": 7.9,
+   "liab": 2.1,
+   "equity": 5.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 6.5,
+   "op": 0.4,
+   "ni": 0.4,
+   "assets": 8.4,
+   "liab": 2.1,
+   "equity": 6.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 6.0,
+   "op": 0.2,
+   "ni": 0.2,
+   "assets": 8.3,
+   "liab": 1.8,
+   "equity": 6.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": 0.9,
+   "op": 0.0,
+   "ni": 0.0,
+   "assets": 1.2,
+   "liab": 0.2,
+   "equity": 0.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 0.9,
+   "op": 0.1,
+   "ni": 0.1,
+   "assets": 1.2,
+   "liab": 0.2,
+   "equity": 1.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 0.2,
+   "op": 0.0,
+   "ni": -0.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": 0.2,
+   "op": 0.0,
+   "ni": 0.0
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": 0.2,
+   "op": 0.0,
+   "ni": 0.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 0.2,
+   "op": 0.0,
+   "ni": -0.0
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 0.2,
+   "op": 0.0,
+   "ni": 0.0
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 0.2,
+   "op": 0.0,
+   "ni": 0.0
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 0.2,
+   "op": 0.0,
+   "ni": 0.0
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 0.2,
+   "op": 0.0,
+   "ni": 0.0
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 0.2,
+   "op": 0.0,
+   "ni": 0.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 0.2,
+   "op": 0.0,
+   "ni": 0.0
+  }
+ ]
+}

@@ -1,91 +1,128 @@
 {
  "name": "펄어비스",
+ "split_adjusted": false,
  "legal_name": "펄어비스",
  "code": "263750",
- "market": "",
+ "market": "코스닥",
  "sector": "",
- "updated": "2026-08-17",
+ "updated": "2026-09-07",
  "annual": [
   {
    "p": 2017,
    "rev": 523.8,
    "op": 216.6,
    "ni": 147.3,
+   "assets": 2965.8,
+   "liab": 213.8,
+   "equity": 2752.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2018,
    "rev": 4047.6,
    "op": 1681.1,
    "ni": 1464.5,
+   "assets": 7125.3,
+   "liab": 3045.0,
+   "equity": 4080.3,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2019,
    "rev": 5359.4,
    "op": 1506.0,
    "ni": 1576.5,
+   "assets": 8673.9,
+   "liab": 2783.7,
+   "equity": 5890.2,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2020,
    "rev": 4887.7,
    "op": 1572.9,
    "ni": 1008.5,
+   "assets": 8971.9,
+   "liab": 2602.8,
+   "equity": 6369.1,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2021,
    "rev": 4037.9,
    "op": 429.8,
    "ni": 593.7,
+   "assets": 13566.0,
+   "liab": 6376.0,
+   "equity": 7190.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2022,
    "rev": 3856.8,
    "op": 163.8,
    "ni": -430.0,
+   "assets": 12225.5,
+   "liab": 5232.5,
+   "equity": 6993.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2023,
    "rev": 3334.8,
    "op": -163.5,
    "ni": 152.1,
+   "assets": 12128.8,
+   "liab": 4878.9,
+   "equity": 7249.9,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2024,
    "rev": 3423.8,
    "op": -122.9,
    "ni": 603.4,
+   "assets": 11428.2,
+   "liab": 3368.5,
+   "equity": 8059.7,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2025,
    "rev": 3655.6,
    "op": -148.1,
    "ni": -84.1,
+   "assets": 11491.0,
+   "liab": 3500.0,
+   "equity": 7991.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   }
  ],
  "quarterly": [

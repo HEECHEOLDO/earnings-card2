@@ -1,64 +1,89 @@
 {
  "name": "SK바이오사이언스",
+ "split_adjusted": false,
  "legal_name": "SK바이오사이언스",
  "code": "302440",
- "market": "",
+ "market": "코스피",
  "sector": "",
- "updated": "2026-08-17",
+ "updated": "2026-09-07",
  "annual": [
   {
    "p": 2020,
    "rev": 2256.1,
    "op": 377.1,
    "ni": 328.9,
+   "assets": 5622.3,
+   "liab": 2984.4,
+   "equity": 2637.9,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2021,
    "rev": 9290.0,
    "op": 4742.2,
    "ni": 3551.4,
+   "assets": 21101.2,
+   "liab": 5088.1,
+   "equity": 16013.1,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2022,
    "rev": 4567.3,
    "op": 1150.1,
    "ni": 1224.5,
+   "assets": 21419.3,
+   "liab": 4002.3,
+   "equity": 17417.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2023,
    "rev": 3695.1,
    "op": -119.9,
    "ni": 223.2,
+   "assets": 18524.4,
+   "liab": 1485.8,
+   "equity": 17038.6,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2024,
    "rev": 2675.5,
    "op": -1384.3,
    "ni": -501.2,
+   "assets": 28436.0,
+   "liab": 8211.4,
+   "equity": 20224.5,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2025,
    "rev": 6513.7,
    "op": -1235.0,
    "ni": -561.7,
+   "assets": 29557.4,
+   "liab": 9182.9,
+   "equity": 20374.5,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   }
  ],
  "quarterly": [

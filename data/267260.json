@@ -1,91 +1,128 @@
 {
  "name": "HD현대일렉트릭",
+ "split_adjusted": false,
  "legal_name": "HD현대일렉트릭",
  "code": "267260",
- "market": "",
+ "market": "코스피",
  "sector": "",
- "updated": "2026-08-17",
+ "updated": "2026-09-07",
  "annual": [
   {
    "p": 2017,
    "rev": 14495.7,
    "op": 624.2,
    "ni": 142.8,
+   "assets": 20945.8,
+   "liab": 10544.6,
+   "equity": 10401.1,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2018,
    "rev": 19404.1,
    "op": -1005.8,
    "ni": -1789.3,
+   "assets": 23260.6,
+   "liab": 14747.6,
+   "equity": 8513.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2019,
    "rev": 17711.3,
    "op": -1566.9,
    "ni": -2643.0,
+   "assets": 22564.7,
+   "liab": 15562.6,
+   "equity": 7002.2,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2020,
    "rev": 18113.4,
    "op": 727.0,
    "ni": -402.5,
+   "assets": 22726.2,
+   "liab": 15934.5,
+   "equity": 6791.7,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2021,
    "rev": 18059.9,
    "op": 97.4,
    "ni": -336.9,
+   "assets": 22149.7,
+   "liab": 15687.5,
+   "equity": 6462.2,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2022,
    "rev": 21045.0,
    "op": 1330.4,
    "ni": 1620.2,
+   "assets": 24350.3,
+   "liab": 16038.6,
+   "equity": 8311.7,
    "dps": 500.0,
    "payout": 11.08,
-   "yield": 1.2
+   "yield": 1.2,
+   "dps_adj": 500.0
   },
   {
    "p": 2023,
    "rev": 27028.0,
    "op": 3152.2,
    "ni": 2594.6,
+   "assets": 29101.6,
+   "liab": 18531.3,
+   "equity": 10570.3,
    "dps": 1000.0,
    "payout": 13.89,
-   "yield": 1.21
+   "yield": 1.21,
+   "dps_adj": 1000.0
   },
   {
    "p": 2024,
    "rev": 33223.5,
    "op": 6689.7,
    "ni": 4984.1,
+   "assets": 37955.5,
+   "liab": 22880.3,
+   "equity": 15075.2,
    "dps": 5350.0,
    "payout": 38.39,
-   "yield": 1.54
+   "yield": 1.54,
+   "dps_adj": 5350.0
   },
   {
    "p": 2025,
    "rev": 40795.0,
    "op": 9953.1,
    "ni": 7318.2,
+   "assets": 47698.2,
+   "liab": 27368.8,
+   "equity": 20329.3,
    "dps": null,
    "payout": 34.88,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   }
  ],
  "quarterly": [

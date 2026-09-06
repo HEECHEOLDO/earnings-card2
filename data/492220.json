@@ -1,0 +1,88 @@
+{
+ "name": "KB제31호스팩",
+ "split_adjusted": false,
+ "legal_name": "KB제31호스팩",
+ "code": "492220",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-07",
+ "annual": [
+  {
+   "p": 2024,
+   "rev": 0.0,
+   "op": -0.3,
+   "ni": -0.1,
+   "assets": 143.9,
+   "liab": 21.2,
+   "equity": 122.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": 0.0,
+   "op": -0.9,
+   "ni": 2.3,
+   "assets": 146.8,
+   "liab": 21.9,
+   "equity": 124.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": 0.0,
+   "op": -0.3,
+   "ni": -0.1
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": 0.0,
+   "op": -0.1,
+   "ni": 0.6
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 0.0,
+   "op": -0.7,
+   "ni": 0.1
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": 0.0,
+   "op": -0.0,
+   "ni": 0.7
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 0.0,
+   "op": -0.0,
+   "ni": 0.8
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 0.0,
+   "op": -0.1,
+   "ni": 0.5
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 0.0,
+   "op": -0.1,
+   "ni": 0.5
+  }
+ ]
+}

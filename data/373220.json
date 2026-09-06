@@ -1,64 +1,89 @@
 {
  "name": "LG에너지솔루션",
+ "split_adjusted": false,
  "legal_name": "LG에너지솔루션",
  "code": "373220",
- "market": "",
+ "market": "코스피",
  "sector": "",
- "updated": "2026-08-17",
+ "updated": "2026-09-07",
  "annual": [
   {
    "p": 2020,
    "rev": 14610.7,
    "op": -4752.1,
    "ni": -4517.7,
+   "assets": 199418.0,
+   "liab": 123763.9,
+   "equity": 75654.1,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2021,
    "rev": 178519.1,
    "op": 7684.7,
    "ni": 9298.7,
+   "assets": 237641.4,
+   "liab": 150217.6,
+   "equity": 87423.7,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2022,
    "rev": 255986.1,
    "op": 12137.2,
    "ni": 7798.3,
+   "assets": 382994.5,
+   "liab": 177056.8,
+   "equity": 205937.6,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2023,
    "rev": 337454.7,
    "op": 21632.3,
    "ni": 16379.9,
+   "assets": 454371.4,
+   "liab": 210636.4,
+   "equity": 243735.1,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2024,
    "rev": 256195.9,
    "op": 5753.9,
    "ni": 3386.0,
+   "assets": 603067.9,
+   "liab": 293402.5,
+   "equity": 309665.4,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2025,
    "rev": 236717.6,
    "op": 13461.2,
    "ni": 808.0,
+   "assets": 671479.5,
+   "liab": 378262.8,
+   "equity": 293216.8,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   }
  ],
  "quarterly": [

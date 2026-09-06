@@ -1,0 +1,47 @@
+{
+ "name": "세미파이브",
+ "split_adjusted": false,
+ "legal_name": "세미파이브",
+ "code": "490470",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-09-07",
+ "annual": [
+  {
+   "p": 2025,
+   "rev": 1209.5,
+   "op": -533.9,
+   "ni": -562.2,
+   "assets": 3092.8,
+   "liab": 887.7,
+   "equity": 2205.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 1209.5,
+   "op": -533.9,
+   "ni": -562.2
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 478.7,
+   "op": 1.1,
+   "ni": 13.4
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 468.0,
+   "op": -110.4,
+   "ni": -122.3
+  }
+ ]
+}

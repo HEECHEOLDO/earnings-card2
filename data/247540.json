@@ -1,82 +1,115 @@
 {
  "name": "에코프로비엠",
+ "split_adjusted": true,
  "legal_name": "에코프로비엠",
  "code": "247540",
- "market": "",
+ "market": "코스닥",
  "sector": "",
- "updated": "2026-08-17",
+ "updated": "2026-09-07",
  "annual": [
   {
    "p": 2018,
    "rev": 5891.9,
    "op": 502.8,
    "ni": 368.6,
+   "assets": 4644.5,
+   "liab": 3039.1,
+   "equity": 1605.5,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2019,
    "rev": 6160.9,
    "op": 370.8,
    "ni": 344.8,
+   "assets": 6503.6,
+   "liab": 2801.5,
+   "equity": 3702.1,
    "dps": 150.0,
    "payout": 8.9,
-   "yield": 0.3
+   "yield": 0.3,
+   "dps_adj": 30.0
   },
   {
    "p": 2020,
    "rev": 8547.5,
    "op": 547.7,
    "ni": 466.6,
+   "assets": 7989.9,
+   "liab": 3316.7,
+   "equity": 4673.2,
    "dps": 450.0,
    "payout": 20.1,
-   "yield": 0.28
+   "yield": 0.28,
+   "dps_adj": 90.0
   },
   {
    "p": 2021,
    "rev": 14856.3,
    "op": 1150.3,
    "ni": 977.9,
+   "assets": 14258.6,
+   "liab": 8297.1,
+   "equity": 5961.5,
    "dps": 920.0,
    "payout": 20.8,
-   "yield": 0.18
+   "yield": 0.18,
+   "dps_adj": 184.0
   },
   {
    "p": 2022,
    "rev": 53576.1,
    "op": 3806.8,
    "ni": 2726.5,
+   "assets": 33741.7,
+   "liab": 18859.5,
+   "equity": 14882.2,
    "dps": 450.0,
    "payout": 16.1,
-   "yield": 0.46
+   "yield": 0.46,
+   "dps_adj": 450.0
   },
   {
    "p": 2023,
    "rev": 69008.7,
    "op": 1560.3,
    "ni": 546.9,
+   "assets": 43617.7,
+   "liab": 27623.8,
+   "equity": 15993.9,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2024,
    "rev": 27668.4,
    "op": -341.1,
    "ni": -585.1,
+   "assets": 43236.6,
+   "liab": 23466.4,
+   "equity": 19770.2,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2025,
    "rev": 25315.8,
    "op": 1433.1,
    "ni": 915.9,
+   "assets": 48820.2,
+   "liab": 28660.1,
+   "equity": 20160.1,
    "dps": 100.0,
    "payout": 24.85,
-   "yield": 0.05
+   "yield": 0.05,
+   "dps_adj": 100.0
   }
  ],
  "quarterly": [

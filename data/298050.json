@@ -1,82 +1,115 @@
 {
- "name": "효성첨단소재",
+ "name": "HS효성첨단소재",
+ "split_adjusted": false,
  "legal_name": "HS효성첨단소재",
  "code": "298050",
- "market": "",
+ "market": "코스피",
  "sector": "",
- "updated": "2026-08-17",
+ "updated": "2026-09-07",
  "annual": [
   {
    "p": 2018,
    "rev": 17674.9,
    "op": 641.4,
    "ni": -237.4,
+   "assets": 25347.0,
+   "liab": 20686.8,
+   "equity": 4660.2,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2019,
    "rev": 30536.2,
    "op": 1583.3,
    "ni": -529.1,
+   "assets": 25311.0,
+   "liab": 21257.0,
+   "equity": 4054.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2020,
    "rev": 23946.2,
    "op": 342.1,
    "ni": 68.1,
+   "assets": 23765.9,
+   "liab": 19954.8,
+   "equity": 3811.1,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2021,
    "rev": 35977.8,
    "op": 4373.1,
    "ni": 3300.2,
+   "assets": 29086.8,
+   "liab": 21870.9,
+   "equity": 7215.9,
    "dps": 10000.0,
    "payout": 17.82,
-   "yield": 1.6
+   "yield": 1.6,
+   "dps_adj": 10000.0
   },
   {
    "p": 2022,
    "rev": 38413.7,
    "op": 3150.7,
    "ni": 1602.4,
+   "assets": 29347.1,
+   "liab": 21351.6,
+   "equity": 7995.6,
    "dps": 15000.0,
    "payout": 53.47,
-   "yield": 4.2
+   "yield": 4.2,
+   "dps_adj": 15000.0
   },
   {
    "p": 2023,
    "rev": 32023.3,
    "op": 1723.7,
    "ni": 472.6,
+   "assets": 30344.0,
+   "liab": 22843.1,
+   "equity": 7500.9,
    "dps": null,
    "payout": 81.69,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2024,
    "rev": 33112.3,
    "op": 2197.2,
    "ni": 781.8,
+   "assets": 38207.7,
+   "liab": 26634.3,
+   "equity": 11573.4,
    "dps": null,
    "payout": 58.27,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2025,
    "rev": 32830.4,
    "op": 1574.3,
    "ni": 156.5,
+   "assets": 39034.1,
+   "liab": 30769.1,
+   "equity": 8265.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   }
  ],
  "quarterly": [

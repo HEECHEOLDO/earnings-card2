@@ -1,0 +1,152 @@
+{
+ "name": "케이만금세기차륜집단유한공사",
+ "split_adjusted": false,
+ "legal_name": "케이만금세기차륜집단유한공사",
+ "code": "900280",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-09-07",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 5.2,
+   "op": 1.4,
+   "ni": null,
+   "assets": 6.3,
+   "liab": 0.5,
+   "equity": 5.8,
+   "dps": 82.0,
+   "payout": 3.7,
+   "yield": 1.3,
+   "dps_adj": 82.0
+  },
+  {
+   "p": 2017,
+   "rev": 6.3,
+   "op": 1.6,
+   "ni": null,
+   "assets": 8.5,
+   "liab": 1.6,
+   "equity": 6.9,
+   "dps": null,
+   "payout": 3.2,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 7.3,
+   "op": 1.7,
+   "ni": null,
+   "assets": 11.7,
+   "liab": 1.2,
+   "equity": 10.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 6.7,
+   "op": 1.7,
+   "ni": 1.3,
+   "assets": 14.0,
+   "liab": 0.9,
+   "equity": 13.1,
+   "dps": null,
+   "payout": 2.2,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 7.5,
+   "op": 1.7,
+   "ni": 1.2,
+   "assets": 15.8,
+   "liab": 1.6,
+   "equity": 14.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 6.6,
+   "op": 1.4,
+   "ni": 0.9,
+   "assets": 17.2,
+   "liab": 1.8,
+   "equity": 15.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 3.6,
+   "op": 0.3,
+   "ni": 0.2,
+   "assets": 17.7,
+   "liab": 1.3,
+   "equity": 16.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2023,
+   "rev": 2.2,
+   "op": -8.9,
+   "ni": -9.0,
+   "assets": 9.0,
+   "liab": 1.6,
+   "equity": 7.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2023,
+   "q": 1,
+   "rev": 0.8,
+   "op": -0.0,
+   "ni": -0.0
+  },
+  {
+   "y": 2023,
+   "q": 2,
+   "rev": 0.8,
+   "op": -0.0,
+   "ni": -0.1
+  },
+  {
+   "y": 2023,
+   "q": 3,
+   "rev": 0.4,
+   "op": -6.0,
+   "ni": -6.0
+  },
+  {
+   "y": 2023,
+   "q": 4,
+   "rev": 0.3,
+   "op": -2.9,
+   "ni": -2.9
+  },
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 0.0,
+   "op": 0.0,
+   "ni": 0.0
+  }
+ ]
+}

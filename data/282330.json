@@ -1,91 +1,128 @@
 {
  "name": "BGF리테일",
+ "split_adjusted": false,
  "legal_name": "BGF리테일",
  "code": "282330",
- "market": "",
+ "market": "코스피",
  "sector": "",
- "updated": "2026-08-17",
+ "updated": "2026-09-07",
  "annual": [
   {
    "p": 2017,
    "rev": 9387.4,
    "op": 265.2,
    "ni": 279.8,
+   "assets": 12773.5,
+   "liab": 8887.1,
+   "equity": 3886.4,
    "dps": 1000.0,
    "payout": 61.7,
-   "yield": 0.5
+   "yield": 0.5,
+   "dps_adj": 1000.0
   },
   {
    "p": 2018,
    "rev": 57758.6,
    "op": 1895.2,
    "ni": 1541.9,
+   "assets": 14825.7,
+   "liab": 9609.1,
+   "equity": 5216.6,
    "dps": 2680.0,
    "payout": 30.0,
-   "yield": 1.3
+   "yield": 1.3,
+   "dps_adj": 2680.0
   },
   {
    "p": 2019,
    "rev": 59460.7,
    "op": 1966.2,
    "ni": 1513.8,
+   "assets": 21724.1,
+   "liab": 15498.2,
+   "equity": 6226.0,
    "dps": 2700.0,
    "payout": 30.8,
-   "yield": 1.6
+   "yield": 1.6,
+   "dps_adj": 2700.0
   },
   {
    "p": 2020,
    "rev": 61812.7,
    "op": 1622.0,
    "ni": 1227.1,
+   "assets": 23711.7,
+   "liab": 16743.4,
+   "equity": 6968.3,
    "dps": 2400.0,
    "payout": 33.8,
-   "yield": 1.7
+   "yield": 1.7,
+   "dps_adj": 2400.0
   },
   {
    "p": 2021,
    "rev": 67811.6,
    "op": 1994.4,
    "ni": 1476.4,
+   "assets": 25963.8,
+   "liab": 17870.6,
+   "equity": 8093.2,
    "dps": 3000.0,
    "payout": 35.1,
-   "yield": 2.0
+   "yield": 2.0,
+   "dps_adj": 3000.0
   },
   {
    "p": 2022,
    "rev": 76157.7,
    "op": 2524.1,
    "ni": 1935.4,
+   "assets": 29462.4,
+   "liab": 19836.1,
+   "equity": 9626.3,
    "dps": 4100.0,
    "payout": 35.6,
-   "yield": 2.0
+   "yield": 2.0,
+   "dps_adj": 4100.0
   },
   {
    "p": 2023,
    "rev": 81947.5,
    "op": 2531.9,
    "ni": 1958.4,
+   "assets": 32190.8,
+   "liab": 21446.3,
+   "equity": 10744.5,
    "dps": 4100.0,
    "payout": 36.2,
-   "yield": 3.1
+   "yield": 3.1,
+   "dps_adj": 4100.0
   },
   {
    "p": 2024,
    "rev": 86987.6,
    "op": 2516.4,
    "ni": 1952.2,
+   "assets": 34025.9,
+   "liab": 22184.6,
+   "equity": 11841.3,
    "dps": 4100.0,
    "payout": 36.3,
-   "yield": 4.0
+   "yield": 4.0,
+   "dps_adj": 4100.0
   },
   {
    "p": 2025,
    "rev": 90612.2,
    "op": 2539.5,
    "ni": 1952.6,
+   "assets": 35561.7,
+   "liab": 22431.1,
+   "equity": 13130.6,
    "dps": 4100.0,
    "payout": 36.3,
-   "yield": 3.3
+   "yield": 3.3,
+   "dps_adj": 4100.0
   }
  ],
  "quarterly": [

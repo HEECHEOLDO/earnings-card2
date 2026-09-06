@@ -1,0 +1,51 @@
+{
+ "name": "차이나그레이트스타인터내셔널리미티드",
+ "split_adjusted": false,
+ "legal_name": "차이나그레이트스타인터내셔널리미티드",
+ "code": "900040",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-09-07",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 33.2,
+   "op": 4.2,
+   "ni": 3.1,
+   "assets": 35.5,
+   "liab": 6.7,
+   "equity": 28.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 30.4,
+   "op": -1.1,
+   "ni": -1.0,
+   "assets": 32.5,
+   "liab": 4.7,
+   "equity": 27.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 27.3,
+   "op": 3.1,
+   "ni": 1.9,
+   "assets": 33.4,
+   "liab": 3.6,
+   "equity": 29.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": []
+}
