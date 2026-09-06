@@ -100,6 +100,10 @@
 
 
   .cur-sw { display:inline-flex; gap:3px; padding:3px; background:var(--surface-2); border-radius:999px; }
+  .ratio-b { font-family:inherit; font-size:12.5px; font-weight:700; cursor:pointer; border:none;
+    background:transparent; color:var(--text-soft); padding:7px 12px; border-radius:999px; }
+  .ratio-b.on { background:var(--accent); color:#fff; }
+  [data-mode="dark"] .ratio-b.on { color:#0E141B; }
   .cur-b { font-family:inherit; font-size:12.5px; font-weight:700; cursor:pointer; border:none;
     background:transparent; color:var(--text-soft); padding:7px 12px; border-radius:999px;
     display:inline-flex; align-items:center; gap:5px; }
@@ -347,6 +351,14 @@
         <div class="divider"></div>
         <h3 class="sec">영상으로 내려받기</h3>
         <div class="ctl-row" style="margin-top:0">
+          <label>비율</label>
+          <div class="cur-sw">
+            <button type="button" class="ratio-b on" data-r="916">9:16 릴스</button>
+            <button type="button" class="ratio-b" data-r="45">4:5 피드</button>
+          </div>
+          <input type="hidden" id="v-ratio" value="916">
+        </div>
+        <div class="ctl-row">
           <label>원 간격</label>
           <input type="range" id="v-gap" min="0.15" max="0.8" step="0.05" value="0.4" style="width:150px">
           <span class="range-val" id="v-gap-val">0.40초</span>
@@ -361,7 +373,7 @@
           <button class="btn btn-primary" id="btn-video" style="flex:1">영상 내려받기</button>
         </div>
         <p class="hint" style="margin-top:8px" id="v-note">
-          제목 → 기간 → 원 하나씩 → 연평균 순서로 나타납니다. 1080 × 1350 · 60fps · 소리 없음.
+          제목 → 기간 → 원 하나씩 → 연평균 순서로 나타납니다. 9:16 은 위아래를 종이색으로 늘립니다 · 60fps · 소리 없음.
         </p>
         <div class="msg" id="v-msg"></div>
       </div>
@@ -514,7 +526,7 @@
   function easeOut(p) { p = Math.max(0, Math.min(1, p)); return 1 - Math.pow(1 - p, 3); }
   function popEase(p) {                    // 살짝 넘쳤다 제자리로
     p = Math.max(0, Math.min(1, p));
-    var s = 1.4; p -= 1;
+    var s = 0.9; p -= 1;
     return 1 + p * p * ((s + 1) * p + s);
   }
 
@@ -681,9 +693,9 @@
       if (c) {
         var pA = P('avg');
         if (pA > 0) {
-          var sA = 0.4 + 0.6 * popEase(pA);   // 작게 시작해 살짝 넘쳤다 제자리로
+          var sA = 0.6 + 0.4 * popEase(pA);   // 작게 시작해 살짝 넘쳤다 제자리로
           ctx.save();
-          ctx.globalAlpha = Math.min(1, pA * 1.6);
+          ctx.globalAlpha = easeOut(Math.min(1, pA * 2));
           ctx.translate(CX + CWID, y);
           ctx.scale(sA, sA);
           ctx.font = font(700, 26);
@@ -716,9 +728,11 @@
 
         var pC = P('circle', i);
         if (pC <= 0) return;                    // 아직 안 나올 차례
-        var sC = popEase(pC);
+        // 0 에서 키우면 첫 몇 프레임이 점처럼 안 보여 '멈칫' 하는 느낌이 난다.
+        // 절반 크기에서 시작해 빠르게 채우고 살짝만 넘친다.
+        var sC = 0.5 + 0.5 * popEase(pC);
         ctx.save();
-        ctx.globalAlpha = Math.min(1, pC * 2);
+        ctx.globalAlpha = easeOut(Math.min(1, pC * 2.5));
         ctx.translate(cx, cy);
         ctx.scale(sC, sC);
         ctx.translate(-cx, -cy);
@@ -783,6 +797,24 @@
       ctx.strokeRect(S.left, S.top, CWID, CH - S.top - S.bottom);
       ctx.restore();
     }
+  }
+
+  // 9:16 (1080×1920) 캔버스에 4:5 카드를 세로 가운데 놓는다.
+  // 위아래는 같은 종이색·질감으로 채운다. 잘라내는 것 없이 그대로.
+  var TALL_W = 1080, TALL_H = 1920;
+  var _cardBuf = null;
+  function drawTall(ctx, anim) {
+    var T = TOKENS.card;
+    ctx.clearRect(0, 0, TALL_W, TALL_H);
+    ctx.fillStyle = T.paper; ctx.fillRect(0, 0, TALL_W, TALL_H);
+    paintGrain(ctx);
+    if (!_cardBuf) {
+      _cardBuf = document.createElement('canvas');
+      _cardBuf.width = CW; _cardBuf.height = CH;
+    }
+    var bctx = _cardBuf.getContext('2d');
+    drawCard(bctx, anim);
+    ctx.drawImage(_cardBuf, 0, Math.round((TALL_H - CH) / 2));
   }
 
   function drawSelection(ctx) {
@@ -909,6 +941,13 @@
     document.getElementById('f-data').value = lines.join('\n');
     document.getElementById('f-name').value = it.name || code;
     state.asof = it.asof || '';
+    // 기준을 적어둔다 — 해외는 배당 재투자 포함, 국내는 배당 제외(주가 기준).
+    // 직접 적어둔 문구가 있으면 건드리지 않는다.
+    var AUTO = { US: '배당 재투자 포함', KR: '배당 제외 · 주가 기준' };
+    var src = document.getElementById('f-source');
+    var cur = src.value.trim();
+    var isAuto = !cur || cur === AUTO.US || cur === AUTO.KR;
+    if (isAuto) src.value = AUTO[it.market] || '';
     refresh();
 
     var msg = state.rows.length + '개 연도를 불러왔습니다.';
@@ -999,21 +1038,30 @@
   // ── 방식 1: 프레임을 하나씩 직접 인코딩 (부드럽고 화질 좋음, 크롬·엣지) ──
   var VFPS = 60, VBITRATE = 16e6;
 
+  function videoSize() {
+    var tall = document.getElementById('v-ratio').value === '916';
+    return { w: tall ? TALL_W : CW, h: tall ? TALL_H : CH, tall: tall };
+  }
+  function drawVideoFrame(ctx, anim, tall) {
+    if (tall) drawTall(ctx, anim); else drawCard(ctx, anim);
+  }
+
   function encodeWithWebCodecs(tl, onProgress) {
     return import('https://cdn.jsdelivr.net/npm/mp4-muxer@5.2.1/build/mp4-muxer.mjs')
       .then(function (M) {
+        var vs = videoSize();
         var off = document.createElement('canvas');
-        off.width = CW; off.height = CH;
+        off.width = vs.w; off.height = vs.h;
         var octx = off.getContext('2d');
 
-        var cfg = { codec: 'avc1.640033', width: CW, height: CH,
+        var cfg = { codec: 'avc1.640033', width: vs.w, height: vs.h,
                     bitrate: VBITRATE, framerate: VFPS };
         return VideoEncoder.isConfigSupported(cfg).then(function (sup) {
           if (!sup || !sup.supported) throw new Error('H.264 인코더 미지원');
 
           var muxer = new M.Muxer({
             target: new M.ArrayBufferTarget(),
-            video: { codec: 'avc', width: CW, height: CH },
+            video: { codec: 'avc', width: vs.w, height: vs.h },
             fastStart: 'in-memory'
           });
           var failed = null;
@@ -1033,7 +1081,7 @@
               if (failed) throw failed;
               if (i >= total) return resolve();
               var t = i / VFPS;
-              drawCard(octx, animAt(Math.min(t, tl.total)));
+              drawVideoFrame(octx, animAt(Math.min(t, tl.total)), vs.tall);
               var frame = new VideoFrame(off, { timestamp: Math.round(i * 1e6 / VFPS) });
               enc.encode(frame, { keyFrame: i % (VFPS * 2) === 0 });
               frame.close();
@@ -1061,8 +1109,9 @@
       if (typeof MediaRecorder === 'undefined') return reject(new Error('녹화 미지원'));
       var mime = pickMime();
       if (!mime) return reject(new Error('지원 형식 없음'));
+      var vs = videoSize();
       var off = document.createElement('canvas');
-      off.width = CW; off.height = CH;
+      off.width = vs.w; off.height = vs.h;
       var octx = off.getContext('2d');
       var stream = off.captureStream(30);
       var rec = new MediaRecorder(stream, { mimeType: mime, videoBitsPerSecond: 12e6 });
@@ -1072,15 +1121,15 @@
         resolve({ blob: new Blob(chunks, { type: mime.split(';')[0] }),
                   isMp4: mime.indexOf('mp4') >= 0 });
       };
-      drawCard(octx, animAt(0));
+      drawVideoFrame(octx, animAt(0), vs.tall);
       rec.start(100);
       var t0 = performance.now();
       (function frame(now) {
         var t = (now - t0) / 1000;
-        drawCard(octx, animAt(t));
+        drawVideoFrame(octx, animAt(t), vs.tall);
         onProgress(Math.min(1, t / tl.total));
         if (t < tl.total) requestAnimationFrame(frame);
-        else { drawCard(octx, animAt(tl.total)); setTimeout(function () { rec.stop(); }, 150); }
+        else { drawVideoFrame(octx, animAt(tl.total), vs.tall); setTimeout(function () { rec.stop(); }, 150); }
       })(t0);
     });
   }
@@ -1093,9 +1142,10 @@
     var guide = state.guide; state.guide = false;
 
     function save(blob, ext, label) {
+      var vs = videoSize();
       var a = document.createElement('a');
       a.href = URL.createObjectURL(blob);
-      a.download = (state.name || 'returns') + '_' + CW + 'x' + CH + ext;
+      a.download = (state.name || 'returns') + '_' + vs.w + 'x' + vs.h + ext;
       a.click();
       setTimeout(function () { URL.revokeObjectURL(a.href); }, 5000);
       vsay(label, ext === '.mp4' ? 'ok' : 'info');
@@ -1136,17 +1186,11 @@
 
   document.getElementById('v-gap').addEventListener('input', function () {
     document.getElementById('v-gap-val').textContent = parseFloat(this.value).toFixed(2) + '초';
-    if (state.rows.length) {
-      document.getElementById('v-note').textContent =
-        '총 ' + timeline().total.toFixed(1) + '초 · 1080 × 1350 · 60fps · 소리 없음';
-    }
+    videoNote();
   });
   document.getElementById('v-hold').addEventListener('input', function () {
     document.getElementById('v-hold-val').textContent = parseFloat(this.value).toFixed(1) + '초';
-    if (state.rows.length) {
-      document.getElementById('v-note').textContent =
-        '총 ' + timeline().total.toFixed(1) + '초 · 1080 × 1350 · 60fps · 소리 없음';
-    }
+    videoNote();
   });
   document.getElementById('btn-preview').addEventListener('click', playPreview);
   document.getElementById('btn-video').addEventListener('click', exportVideo);
@@ -1548,6 +1592,23 @@
       a.click();
       setTimeout(function () { URL.revokeObjectURL(a.href); }, 5000);
     }, 'image/png');
+  });
+
+  function videoNote() {
+    if (!state.rows.length) return;
+    var vs = videoSize();
+    document.getElementById('v-note').textContent =
+      '총 ' + timeline().total.toFixed(1) + '초 · ' + (vs.tall ? '9:16' : '4:5') +
+      ' (' + vs.w + ' × ' + vs.h + ') · 60fps · 소리 없음';
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('.ratio-b'), function (b) {
+    b.addEventListener('click', function () {
+      document.getElementById('v-ratio').value = b.dataset.r;
+      Array.prototype.forEach.call(document.querySelectorAll('.ratio-b'), function (x) {
+        x.classList.toggle('on', x === b);
+      });
+      videoNote();
+    });
   });
 
   /* ---------- 시작 ---------- */
