@@ -305,8 +305,8 @@
   .ov-lbl { font-size: 12.5px; color: var(--text-soft); width: 46px; flex: none; }
   #overlay-edit input[type="range"] { flex: 1; width: auto; min-width: 0; margin: 0; }
   #overlay-edit .range-val { width: 46px; text-align: right; flex: none; }
-  .ov-btns { display: flex; gap: 6px; margin-top: 1px; }
-  .ov-btns .btn { flex: 1; height: 34px; padding: 0; font-size: 12.5px; }
+  .ov-btns { display: flex; gap: 6px; margin-top: 1px; flex-wrap: wrap; }
+  .ov-btns .btn { flex: 1 1 30%; height: 34px; padding: 0 6px; font-size: 12.5px; }
   .ctl { display: flex; flex-direction: column; gap: 14px; }
   .ctl-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
   .ctl-row label { font-size: 13px; color: var(--text-soft); font-weight: 600; }
@@ -397,8 +397,11 @@
           <button class="btn btn-sm" id="ov-rot-reset" type="button">0°</button>
           <button class="btn btn-sm" id="ov-front" type="button">앞으로</button>
           <button class="btn btn-sm" id="ov-back" type="button">뒤로</button>
+          <button class="btn btn-sm" id="ov-bg" type="button">배경 지우기</button>
+          <button class="btn btn-sm" id="ov-bg-undo" type="button" style="display:none">원본으로</button>
           <button class="btn btn-sm btn-danger" id="ov-delete" type="button">삭제</button>
         </div>
+        <div class="hint" id="ov-bg-status" style="display:none;margin:0"></div>
       </div>
       <p class="hint" id="card-caption"></p>
     </div>
@@ -1599,6 +1602,7 @@
       return;
     }
     ovEdit.style.display = 'flex';
+    document.getElementById('ov-bg-undo').style.display = ov.orig ? '' : 'none';
     ovSize.value = Math.round(ov.w);
     document.getElementById('ov-size-val').textContent = Math.round(ov.w / CW * 100) + '%';
     var deg = Math.round((ov.rot || 0) * 180 / Math.PI);
@@ -1675,6 +1679,73 @@
   document.getElementById('ov-clear').addEventListener('click', function () {
     overlays.length = 0; selected = -1; syncOverlayUI(); drawPreview();
   });
+
+  /* ============================================================
+     배경 지우기 — 브라우저 안에서 AI 모델로 누끼를 딴다
+     (사진이 밖으로 나가지 않는다. 첫 사용 때 모델 약 40MB 내려받음)
+     ============================================================ */
+  var _bgLib = null;
+  function loadBgLib() {
+    if (_bgLib) return Promise.resolve(_bgLib);
+    return import('https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.5.8/+esm')
+      .then(function (m) { _bgLib = m; return m; });
+  }
+
+  function bgStatus(t) {
+    var el = document.getElementById('ov-bg-status');
+    if (el) { el.textContent = t || ''; el.style.display = t ? '' : 'none'; }
+  }
+
+  function removeBackground() {
+    var ov = overlays[selected];
+    if (!ov || !ov.img) return;
+    var btn = document.getElementById('ov-bg');
+    btn.disabled = true;
+    bgStatus('준비 중… (처음이면 모델을 내려받아 1~2분 걸립니다)');
+
+    // 원본은 남겨둔다 — 잘못 따지면 되돌릴 수 있게
+    if (!ov.orig) ov.orig = ov.img;
+
+    loadBgLib().then(function (lib) {
+      return lib.removeBackground(ov.orig.src, {
+        model: 'isnet_quint8',
+        progress: function (key, cur, total) {
+          if (/fetch/.test(key)) {
+            bgStatus('모델 내려받는 중 ' + (total ? Math.round(cur / total * 100) : 0) + '%');
+          } else {
+            bgStatus('배경 지우는 중…');
+          }
+        }
+      });
+    }).then(function (blob) {
+      return new Promise(function (resolve, reject) {
+        var img = new Image();
+        img.onload = function () { resolve(img); };
+        img.onerror = reject;
+        img.src = URL.createObjectURL(blob);
+      });
+    }).then(function (img) {
+      ov.img = img;
+      ov.cut = true;
+      bgStatus('');
+      syncOverlayUI(); drawPreview();
+    }).catch(function (e) {
+      bgStatus('배경을 지우지 못했습니다: ' + (e && e.message || e));
+      setTimeout(function () { bgStatus(''); }, 4000);
+    }).then(function () { btn.disabled = false; });
+  }
+
+  function restoreBackground() {
+    var ov = overlays[selected];
+    if (!ov || !ov.orig) return;
+    ov.img = ov.orig;
+    ov.cut = false;
+    syncOverlayUI(); drawPreview();
+  }
+
+  document.getElementById('ov-bg').addEventListener('click', removeBackground);
+  document.getElementById('ov-bg-undo').addEventListener('click', restoreBackground);
+
   document.getElementById('ov-delete').addEventListener('click', function () {
     if (selected < 0) return;
     overlays.splice(selected, 1); selected = -1; syncOverlayUI(); drawPreview();
