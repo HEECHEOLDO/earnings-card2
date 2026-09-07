@@ -1,100 +1,141 @@
 {
  "name": "이오테크닉스",
+ "split_adjusted": false,
  "legal_name": "이오테크닉스",
  "code": "039030",
- "market": "",
+ "market": "코스닥",
  "sector": "",
- "updated": "2026-08-17",
+ "updated": "2026-09-08",
  "annual": [
   {
    "p": 2016,
    "rev": 3077.3,
    "op": 212.6,
    "ni": 194.4,
+   "assets": 4086.0,
+   "liab": 864.3,
+   "equity": 3221.7,
    "dps": 100.0,
    "payout": 6.3,
-   "yield": 0.12
+   "yield": 0.12,
+   "dps_adj": 100.0
   },
   {
    "p": 2017,
    "rev": 4041.5,
    "op": 599.8,
    "ni": 429.9,
+   "assets": 4384.8,
+   "liab": 770.6,
+   "equity": 3614.1,
    "dps": 200.0,
    "payout": 5.7,
-   "yield": 0.2
+   "yield": 0.2,
+   "dps_adj": 200.0
   },
   {
    "p": 2018,
    "rev": 2941.0,
    "op": 178.6,
    "ni": 218.8,
+   "assets": 4284.6,
+   "liab": 496.8,
+   "equity": 3787.8,
    "dps": 100.0,
    "payout": 5.6,
-   "yield": 0.24
+   "yield": 0.24,
+   "dps_adj": 100.0
   },
   {
    "p": 2019,
    "rev": 2064.7,
    "op": 71.0,
    "ni": 118.5,
+   "assets": 4463.9,
+   "liab": 526.0,
+   "equity": 3937.9,
    "dps": 150.0,
    "payout": 15.6,
-   "yield": 0.16
+   "yield": 0.16,
+   "dps_adj": 150.0
   },
   {
    "p": 2020,
    "rev": 3251.2,
    "op": 384.9,
    "ni": 215.5,
+   "assets": 4811.6,
+   "liab": 713.4,
+   "equity": 4098.1,
    "dps": 300.0,
    "payout": 17.2,
-   "yield": 0.27
+   "yield": 0.27,
+   "dps_adj": 300.0
   },
   {
    "p": 2021,
    "rev": 3908.6,
    "op": 781.4,
    "ni": 723.5,
+   "assets": 5660.4,
+   "liab": 812.6,
+   "equity": 4847.8,
    "dps": 900.0,
    "payout": 15.3,
-   "yield": 0.77
+   "yield": 0.77,
+   "dps_adj": 900.0
   },
   {
    "p": 2022,
    "rev": 4471.6,
    "op": 928.0,
    "ni": 772.4,
+   "assets": 6158.7,
+   "liab": 767.5,
+   "equity": 5391.1,
    "dps": null,
    "payout": 15.8,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2023,
    "rev": 3163.8,
    "op": 283.3,
    "ni": 363.9,
+   "assets": 6116.8,
+   "liab": 492.2,
+   "equity": 5624.6,
    "dps": 450.0,
    "payout": 14.9,
-   "yield": 0.29
+   "yield": 0.29,
+   "dps_adj": 450.0
   },
   {
    "p": 2024,
    "rev": 3209.5,
    "op": 312.0,
    "ni": 426.7,
+   "assets": 6530.2,
+   "liab": 499.8,
+   "equity": 6030.3,
    "dps": 500.0,
    "payout": 14.1,
-   "yield": 0.23
+   "yield": 0.23,
+   "dps_adj": 500.0
   },
   {
    "p": 2025,
    "rev": 3808.9,
    "op": 807.5,
    "ni": 575.6,
+   "assets": 7777.5,
+   "liab": 898.5,
+   "equity": 6879.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   }
  ],
  "quarterly": [

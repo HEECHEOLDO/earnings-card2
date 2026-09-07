@@ -1,100 +1,141 @@
 {
  "name": "에코프로",
+ "split_adjusted": false,
  "legal_name": "에코프로",
  "code": "086520",
- "market": "",
+ "market": "코스닥",
  "sector": "",
- "updated": "2026-08-17",
+ "updated": "2026-09-08",
  "annual": [
   {
    "p": 2016,
    "rev": 1704.8,
    "op": 101.0,
    "ni": -72.4,
+   "assets": 3463.6,
+   "liab": 1726.8,
+   "equity": 1736.8,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2017,
    "rev": 3290.1,
    "op": 217.8,
    "ni": -32.9,
+   "assets": 4481.5,
+   "liab": 2637.4,
+   "equity": 1844.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2018,
    "rev": 6694.1,
    "op": 623.1,
    "ni": 462.1,
+   "assets": 6675.1,
+   "liab": 4356.5,
+   "equity": 2318.6,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2019,
    "rev": 7022.7,
    "op": 478.1,
    "ni": 373.6,
+   "assets": 9278.3,
+   "liab": 4808.5,
+   "equity": 4469.8,
    "dps": 300.0,
    "payout": 31.1,
-   "yield": 1.5
+   "yield": 1.5,
+   "dps_adj": 300.0
   },
   {
    "p": 2020,
    "rev": 9468.1,
    "op": 823.7,
    "ni": 541.8,
+   "assets": 12831.6,
+   "liab": 6944.5,
+   "equity": 5887.1,
    "dps": 300.0,
    "payout": 12.1,
-   "yield": 0.6
+   "yield": 0.6,
+   "dps_adj": 300.0
   },
   {
    "p": 2021,
    "rev": 15041.1,
    "op": 864.7,
    "ni": 2789.5,
+   "assets": 34009.6,
+   "liab": 17036.6,
+   "equity": 16973.0,
    "dps": 430.0,
    "payout": null,
-   "yield": 0.4
+   "yield": 0.4,
+   "dps_adj": 430.0
   },
   {
    "p": 2022,
    "rev": 56397.4,
    "op": 6132.3,
    "ni": 2205.9,
+   "assets": 53457.8,
+   "liab": 28240.0,
+   "equity": 25217.8,
    "dps": 500.0,
    "payout": 34.68,
-   "yield": 0.4
+   "yield": 0.4,
+   "dps_adj": 500.0
   },
   {
    "p": 2023,
    "rev": 72602.0,
    "op": 2981.7,
    "ni": 1352.7,
+   "assets": 75569.8,
+   "liab": 40708.4,
+   "equity": 34861.4,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2024,
    "rev": 31278.5,
    "op": -2930.4,
    "ni": -2953.7,
+   "assets": 81382.6,
+   "liab": 42998.0,
+   "equity": 38384.6,
    "dps": 100.0,
    "payout": -6.4,
-   "yield": 0.2
+   "yield": 0.2,
+   "dps_adj": 100.0
   },
   {
    "p": 2025,
    "rev": 34130.2,
    "op": 2137.6,
    "ni": -1055.4,
+   "assets": 97787.1,
+   "liab": 52914.0,
+   "equity": 44873.2,
    "dps": 150.0,
    "payout": -13.56,
-   "yield": 0.2
+   "yield": 0.2,
+   "dps_adj": 150.0
   }
  ],
  "quarterly": [

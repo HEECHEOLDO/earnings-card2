@@ -1,100 +1,141 @@
 {
  "name": "CJ ENM",
+ "split_adjusted": false,
  "legal_name": "CJ ENM",
  "code": "035760",
- "market": "",
+ "market": "코스닥",
  "sector": "",
- "updated": "2026-08-17",
+ "updated": "2026-09-08",
  "annual": [
   {
    "p": 2016,
    "rev": 22086.0,
    "op": 1788.8,
    "ni": 325.8,
+   "assets": 27535.9,
+   "liab": 13907.0,
+   "equity": 13628.9,
    "dps": null,
    "payout": 64.3,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2017,
    "rev": 22600.1,
    "op": 2244.8,
    "ni": 1434.4,
+   "assets": 28018.2,
+   "liab": 13177.1,
+   "equity": 14841.0,
    "dps": null,
    "payout": 13.8,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2018,
    "rev": 34268.2,
    "op": 2510.2,
    "ni": 1842.2,
+   "assets": 67549.5,
+   "liab": 33293.0,
+   "equity": 34256.5,
    "dps": null,
    "payout": 14.5,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2019,
    "rev": 37897.2,
    "op": 2693.9,
    "ni": 586.2,
+   "assets": 54349.1,
+   "liab": 22830.1,
+   "equity": 31518.9,
    "dps": null,
    "payout": 26.4,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2020,
    "rev": 33911.8,
    "op": 2720.7,
    "ni": 656.3,
+   "assets": 62799.2,
+   "liab": 24947.4,
+   "equity": 37851.8,
    "dps": null,
    "payout": 58.3,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2021,
    "rev": 35524.0,
    "op": 2968.8,
    "ni": 2275.6,
+   "assets": 79406.2,
+   "liab": 37373.2,
+   "equity": 42033.1,
    "dps": null,
    "payout": 22.5,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2022,
    "rev": 47922.4,
    "op": 1373.8,
    "ni": -1768.2,
+   "assets": 103322.5,
+   "liab": 59879.2,
+   "equity": 43443.3,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2023,
    "rev": 43683.6,
    "op": -146.0,
    "ni": -3967.7,
+   "assets": 99498.6,
+   "liab": 57721.0,
+   "equity": 41777.6,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2024,
    "rev": 52313.6,
    "op": 1044.8,
    "ni": -5808.5,
+   "assets": 93166.4,
+   "liab": 56385.7,
+   "equity": 36780.7,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2025,
    "rev": 51345.1,
    "op": 1328.9,
    "ni": 170.1,
+   "assets": 86667.7,
+   "liab": 52209.2,
+   "equity": 34458.4,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   }
  ],
  "quarterly": [

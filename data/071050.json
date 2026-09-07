@@ -1,28 +1,37 @@
 {
  "name": "한국금융지주",
+ "split_adjusted": false,
  "legal_name": "한국금융지주",
  "code": "071050",
- "market": "",
+ "market": "코스피",
  "sector": "",
- "updated": "2026-08-17",
+ "updated": "2026-09-08",
  "annual": [
   {
    "p": 2023,
    "rev": 208933.7,
    "op": 8204.0,
    "ni": 7080.6,
+   "assets": 959011.9,
+   "liab": 874561.3,
+   "equity": 84450.5,
    "dps": 2650.0,
    "payout": 21.9,
-   "yield": 4.2
+   "yield": 4.2,
+   "dps_adj": 2650.0
   },
   {
    "p": 2024,
    "rev": 211741.3,
    "op": 11997.2,
    "ni": 10458.7,
+   "assets": 1092202.0,
+   "liab": 994856.5,
+   "equity": 97345.5,
    "dps": 3980.0,
    "payout": 22.4,
-   "yield": 5.0
+   "yield": 5.0,
+   "dps_adj": 3980.0
   }
  ],
  "quarterly": [

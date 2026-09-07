@@ -1,37 +1,50 @@
 {
  "name": "키움증권",
+ "split_adjusted": false,
  "legal_name": "키움증권",
  "code": "039490",
- "market": "",
+ "market": "코스피",
  "sector": "",
- "updated": "2026-08-17",
+ "updated": "2026-09-08",
  "annual": [
   {
    "p": 2023,
    "rev": 95448.0,
    "op": 5646.6,
    "ni": 4407.4,
+   "assets": 520464.2,
+   "liab": 471423.2,
+   "equity": 49041.0,
    "dps": 3000.0,
    "payout": 20.19,
-   "yield": 2.98
+   "yield": 2.98,
+   "dps_adj": 3000.0
   },
   {
    "p": 2024,
    "rev": 112803.1,
    "op": 10982.4,
    "ni": 8348.8,
+   "assets": 556884.2,
+   "liab": 500565.5,
+   "equity": 56318.7,
    "dps": 7500.0,
    "payout": 24.63,
-   "yield": 6.22
+   "yield": 6.22,
+   "dps_adj": 7500.0
   },
   {
    "p": 2025,
    "rev": 171217.0,
    "op": 14882.4,
    "ni": 11149.7,
+   "assets": 811737.7,
+   "liab": 744513.6,
+   "equity": 67224.1,
    "dps": 11500.0,
    "payout": 27.05,
-   "yield": 3.9
+   "yield": 3.9,
+   "dps_adj": 11500.0
   }
  ],
  "quarterly": [

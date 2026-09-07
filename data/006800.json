@@ -1,37 +1,50 @@
 {
  "name": "미래에셋증권",
+ "split_adjusted": false,
  "legal_name": "미래에셋증권",
  "code": "006800",
- "market": "",
+ "market": "코스피",
  "sector": "",
- "updated": "2026-08-17",
+ "updated": "2026-09-08",
  "annual": [
   {
    "p": 2023,
    "rev": 203594.6,
    "op": 5210.4,
    "ni": 3378.6,
+   "assets": 1281773.1,
+   "liab": 1169384.5,
+   "equity": 112388.7,
    "dps": 150.0,
    "payout": 27.5,
-   "yield": 1.7
+   "yield": 1.7,
+   "dps_adj": 150.0
   },
   {
    "p": 2024,
    "rev": 222423.3,
    "op": 11880.8,
    "ni": 9254.7,
+   "assets": 1371770.0,
+   "liab": 1249132.9,
+   "equity": 122637.1,
    "dps": 250.0,
    "payout": 15.9,
-   "yield": 2.9
+   "yield": 2.9,
+   "dps_adj": 250.0
   },
   {
    "p": 2025,
    "rev": 292830.3,
    "op": 19151.0,
    "ni": 15829.2,
+   "assets": 1502839.3,
+   "liab": 1368057.3,
+   "equity": 134782.0,
    "dps": 300.0,
    "payout": 11.1,
-   "yield": 0.4
+   "yield": 0.4,
+   "dps_adj": 300.0
   }
  ],
  "quarterly": [

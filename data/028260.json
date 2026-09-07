@@ -1,100 +1,141 @@
 {
  "name": "삼성물산",
+ "split_adjusted": true,
  "legal_name": "삼성물산",
  "code": "028260",
- "market": "",
+ "market": "코스피",
  "sector": "",
- "updated": "2026-08-17",
+ "updated": "2026-09-08",
  "annual": [
   {
    "p": 2016,
    "rev": 281026.8,
    "op": 1395.2,
    "ni": 208.4,
+   "assets": 444585.2,
+   "liab": 233528.0,
+   "equity": 211057.1,
    "dps": 550.0,
    "payout": 84.6,
-   "yield": null
+   "yield": null,
+   "dps_adj": 137.5
   },
   {
    "p": 2017,
    "rev": 292790.5,
    "op": 8812.7,
    "ni": 4811.0,
+   "assets": 490489.0,
+   "liab": 238976.5,
+   "equity": 251512.5,
    "dps": 2000.0,
    "payout": 51.6,
-   "yield": 1.6
+   "yield": 1.6,
+   "dps_adj": 2000.0
   },
   {
    "p": 2018,
    "rev": 311556.4,
    "op": 11038.9,
    "ni": 17482.4,
+   "assets": 424066.5,
+   "liab": 198577.2,
+   "equity": 225489.4,
    "dps": null,
    "payout": 19.3,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2019,
    "rev": 307615.0,
    "op": 8667.7,
    "ni": 10478.9,
+   "assets": 459055.2,
+   "liab": 192134.2,
+   "equity": 266921.0,
    "dps": null,
    "payout": 31.4,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2020,
    "rev": 302161.2,
    "op": 8570.8,
    "ni": 11606.5,
+   "assets": 543317.4,
+   "liab": 213862.6,
+   "equity": 329454.8,
    "dps": 2300.0,
    "payout": 36.6,
-   "yield": 1.7
+   "yield": 1.7,
+   "dps_adj": 2300.0
   },
   {
    "p": 2021,
    "rev": 344551.8,
    "op": 11959.8,
    "ni": 18290.8,
+   "assets": 552454.2,
+   "liab": 220931.8,
+   "equity": 331522.4,
    "dps": 4200.0,
    "payout": 42.4,
-   "yield": 3.6
+   "yield": 3.6,
+   "dps_adj": 4200.0
   },
   {
    "p": 2022,
    "rev": 431616.5,
    "op": 25285.2,
    "ni": 25449.6,
+   "assets": 589814.9,
+   "liab": 270173.7,
+   "equity": 319641.2,
    "dps": 2300.0,
    "payout": 18.4,
-   "yield": 1.9
+   "yield": 1.9,
+   "dps_adj": 2300.0
   },
   {
    "p": 2023,
    "rev": 418956.8,
    "op": 28701.7,
    "ni": 27191.1,
+   "assets": 661270.3,
+   "liab": 262299.2,
+   "equity": 398971.1,
    "dps": 2550.0,
    "payout": 18.8,
-   "yield": 2.0
+   "yield": 2.0,
+   "dps_adj": 2550.0
   },
   {
    "p": 2024,
    "rev": 421032.4,
    "op": 29834.0,
    "ni": 27720.1,
+   "assets": 619904.3,
+   "liab": 247318.9,
+   "equity": 372585.4,
    "dps": 2600.0,
    "payout": 19.1,
-   "yield": 2.2
+   "yield": 2.2,
+   "dps_adj": 2600.0
   },
   {
    "p": 2025,
    "rev": 407422.4,
    "op": 32927.5,
    "ni": 39066.5,
+   "assets": 865327.5,
+   "liab": 290358.0,
+   "equity": 574969.5,
    "dps": 2800.0,
    "payout": 18.8,
-   "yield": 1.2
+   "yield": 1.2,
+   "dps_adj": 2800.0
   }
  ],
  "quarterly": [

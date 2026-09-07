@@ -1,100 +1,141 @@
 {
  "name": "롯데쇼핑",
+ "split_adjusted": false,
  "legal_name": "롯데쇼핑",
  "code": "023530",
- "market": "",
+ "market": "코스피",
  "sector": "",
- "updated": "2026-08-17",
+ "updated": "2026-09-08",
  "annual": [
   {
    "p": 2016,
    "rev": 295264.1,
    "op": 9403.6,
    "ni": 2468.7,
+   "assets": 419159.1,
+   "liab": 246518.6,
+   "equity": 172640.4,
    "dps": 2000.0,
    "payout": 35.1,
-   "yield": 0.91
+   "yield": 0.91,
+   "dps_adj": 2000.0
   },
   {
    "p": 2017,
    "rev": 181798.7,
    "op": 5298.6,
    "ni": -206.4,
+   "assets": 279484.9,
+   "liab": 145971.4,
+   "equity": 133513.5,
    "dps": 5200.0,
    "payout": null,
-   "yield": 2.68
+   "yield": 2.68,
+   "dps_adj": 5200.0
   },
   {
    "p": 2018,
    "rev": 178207.8,
    "op": 5970.0,
    "ni": -4650.0,
+   "assets": 262593.1,
+   "liab": 138319.4,
+   "equity": 124273.7,
    "dps": 5200.0,
    "payout": null,
-   "yield": 2.37
+   "yield": 2.37,
+   "dps_adj": 5200.0
   },
   {
    "p": 2019,
    "rev": 176220.0,
    "op": 4279.1,
    "ni": -8164.8,
+   "assets": 339726.2,
+   "liab": 221816.1,
+   "equity": 117910.1,
    "dps": 3800.0,
    "payout": null,
-   "yield": 2.77
+   "yield": 2.77,
+   "dps_adj": 3800.0
   },
   {
    "p": 2020,
    "rev": 161843.8,
    "op": 3460.8,
    "ni": -6865.7,
+   "assets": 328294.0,
+   "liab": 217406.4,
+   "equity": 110887.6,
    "dps": 2800.0,
    "payout": null,
-   "yield": 2.82
+   "yield": 2.82,
+   "dps_adj": 2800.0
   },
   {
    "p": 2021,
    "rev": 155735.5,
    "op": 2076.0,
    "ni": -2729.6,
+   "assets": 334265.3,
+   "liab": 216295.3,
+   "equity": 117970.1,
    "dps": 2800.0,
    "payout": null,
-   "yield": 3.15
+   "yield": 3.15,
+   "dps_adj": 2800.0
   },
   {
    "p": 2022,
    "rev": 154760.4,
    "op": 3862.3,
    "ni": -3186.9,
+   "assets": 317035.8,
+   "liab": 206684.6,
+   "equity": 110351.2,
    "dps": 3300.0,
    "payout": null,
-   "yield": 3.69
+   "yield": 3.69,
+   "dps_adj": 3300.0
   },
   {
    "p": 2023,
    "rev": 145558.6,
    "op": 5084.0,
    "ni": 1691.8,
+   "assets": 306447.0,
+   "liab": 198082.5,
+   "equity": 108364.5,
    "dps": 3800.0,
    "payout": null,
-   "yield": 4.78
+   "yield": 4.78,
+   "dps_adj": 3800.0
   },
   {
    "p": 2024,
    "rev": 139865.8,
    "op": 4731.1,
    "ni": -9940.8,
+   "assets": 390030.4,
+   "liab": 219694.3,
+   "equity": 170336.2,
    "dps": 3800.0,
    "payout": null,
-   "yield": 7.08
+   "yield": 7.08,
+   "dps_adj": 3800.0
   },
   {
    "p": 2025,
    "rev": 137383.5,
    "op": 5470.4,
    "ni": 735.6,
+   "assets": 379103.0,
+   "liab": 210441.0,
+   "equity": 168662.0,
    "dps": 4000.0,
    "payout": 219.3,
-   "yield": 4.63
+   "yield": 4.63,
+   "dps_adj": 4000.0
   }
  ],
  "quarterly": [

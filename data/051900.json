@@ -1,100 +1,141 @@
 {
  "name": "LG생활건강",
+ "split_adjusted": false,
  "legal_name": "LG생활건강",
  "code": "051900",
- "market": "",
+ "market": "코스피",
  "sector": "",
- "updated": "2026-08-17",
+ "updated": "2026-09-08",
  "annual": [
   {
    "p": 2016,
    "rev": 60940.6,
    "op": 8809.4,
    "ni": 5792.4,
+   "assets": 45021.6,
+   "liab": 18813.2,
+   "equity": 26208.4,
    "dps": 7500.0,
    "payout": 22.1,
-   "yield": 0.9
+   "yield": 0.9,
+   "dps_adj": 7500.0
   },
   {
    "p": 2017,
    "rev": 62704.6,
    "op": 9303.5,
    "ni": 6185.5,
+   "assets": 47779.7,
+   "liab": 16953.5,
+   "equity": 30826.2,
    "dps": 9000.0,
    "payout": 24.9,
-   "yield": 0.8
+   "yield": 0.8,
+   "dps_adj": 9000.0
   },
   {
    "p": 2018,
    "rev": 67475.4,
    "op": 10392.5,
    "ni": 6922.8,
+   "assets": 52758.7,
+   "liab": 16818.5,
+   "equity": 35940.2,
    "dps": 9250.0,
    "payout": 22.7,
-   "yield": 0.8
+   "yield": 0.8,
+   "dps_adj": 9250.0
   },
   {
    "p": 2019,
    "rev": 76854.2,
    "op": 11764.1,
    "ni": 7881.7,
+   "assets": 64936.7,
+   "liab": 22565.8,
+   "equity": 42370.9,
    "dps": 11000.0,
    "payout": 23.7,
-   "yield": null
+   "yield": null,
+   "dps_adj": 11000.0
   },
   {
    "p": 2020,
    "rev": 78445.1,
    "op": 12208.6,
    "ni": 8131.0,
+   "assets": 68014.2,
+   "liab": 19522.2,
+   "equity": 48492.0,
    "dps": 11000.0,
    "payout": 23.1,
-   "yield": 0.7
+   "yield": 0.7,
+   "dps_adj": 11000.0
   },
   {
    "p": 2021,
    "rev": 80915.1,
    "op": 12896.3,
    "ni": 8611.3,
+   "assets": 75552.4,
+   "liab": 20574.1,
+   "equity": 54978.3,
    "dps": 12000.0,
    "payout": 23.8,
-   "yield": 1.1
+   "yield": 1.1,
+   "dps_adj": 12000.0
   },
   {
    "p": 2022,
    "rev": 71857.6,
    "op": 7111.2,
    "ni": 2583.4,
+   "assets": 73029.3,
+   "liab": 18340.9,
+   "equity": 54688.4,
    "dps": 4000.0,
    "payout": 28.4,
-   "yield": 0.6
+   "yield": 0.6,
+   "dps_adj": 4000.0
   },
   {
    "p": 2023,
    "rev": 68048.4,
    "op": 4869.8,
    "ni": 1635.2,
+   "assets": 72202.9,
+   "liab": 16713.6,
+   "equity": 55489.3,
    "dps": 3500.0,
    "payout": 41.2,
-   "yield": 1.0
+   "yield": 1.0,
+   "dps_adj": 3500.0
   },
   {
    "p": 2024,
    "rev": 68119.2,
    "op": 4590.5,
    "ni": 2038.9,
+   "assets": 74057.8,
+   "liab": 17198.6,
+   "equity": 56859.2,
    "dps": 3500.0,
    "payout": 31.1,
-   "yield": 1.2
+   "yield": 1.2,
+   "dps_adj": 3500.0
   },
   {
    "p": 2025,
    "rev": 63554.9,
    "op": 1706.9,
    "ni": -857.8,
+   "assets": 68693.8,
+   "liab": 12990.8,
+   "equity": 55703.0,
    "dps": 2000.0,
    "payout": -33.6,
-   "yield": 0.7
+   "yield": 0.7,
+   "dps_adj": 2000.0
   }
  ],
  "quarterly": [

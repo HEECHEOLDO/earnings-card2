@@ -1,100 +1,141 @@
 {
  "name": "와이지엔터테인먼트",
+ "split_adjusted": true,
  "legal_name": "와이지엔터테인먼트",
  "code": "122870",
- "market": "",
+ "market": "코스닥",
  "sector": "",
- "updated": "2026-08-17",
+ "updated": "2026-09-08",
  "annual": [
   {
    "p": 2016,
    "rev": 3218.4,
    "op": 319.2,
    "ni": 141.0,
+   "assets": 4868.4,
+   "liab": 1364.7,
+   "equity": 3503.7,
    "dps": 200.0,
    "payout": 25.2,
-   "yield": 0.7
+   "yield": 0.7,
+   "dps_adj": 500.0
   },
   {
    "p": 2017,
    "rev": 3498.6,
    "op": 252.0,
    "ni": 119.1,
+   "assets": 5836.0,
+   "liab": 1514.9,
+   "equity": 4321.0,
    "dps": 150.0,
    "payout": 24.4,
-   "yield": 0.5
+   "yield": 0.5,
+   "dps_adj": 375.0
   },
   {
    "p": 2018,
    "rev": 2858.5,
    "op": 94.8,
    "ni": 159.4,
+   "assets": 5943.2,
+   "liab": 1448.8,
+   "equity": 4494.4,
    "dps": null,
    "payout": 18.2,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2019,
    "rev": 2644.6,
    "op": 20.2,
    "ni": -246.4,
+   "assets": 5163.5,
+   "liab": 946.8,
+   "equity": 4216.6,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2020,
    "rev": 2552.6,
    "op": 107.5,
    "ni": 31.5,
+   "assets": 5428.2,
+   "liab": 1202.7,
+   "equity": 4225.5,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2021,
    "rev": 3556.3,
    "op": 505.6,
    "ni": 228.6,
+   "assets": 6214.8,
+   "liab": 1387.2,
+   "equity": 4827.6,
    "dps": 250.0,
    "payout": 68.71,
-   "yield": 0.47
+   "yield": 0.47,
+   "dps_adj": 625.0
   },
   {
    "p": 2022,
    "rev": 3911.7,
    "op": 466.4,
    "ni": 467.7,
+   "assets": 7128.7,
+   "liab": 1865.8,
+   "equity": 5262.9,
    "dps": 250.0,
    "payout": 13.74,
-   "yield": 0.55
+   "yield": 0.55,
+   "dps_adj": 250.0
   },
   {
    "p": 2023,
    "rev": 5692.0,
    "op": 869.3,
    "ni": 769.8,
+   "assets": 7422.0,
+   "liab": 1570.4,
+   "equity": 5851.6,
    "dps": 300.0,
    "payout": 9.07,
-   "yield": 0.59
+   "yield": 0.59,
+   "dps_adj": 300.0
   },
   {
    "p": 2024,
    "rev": 3649.5,
    "op": -205.6,
    "ni": 200.3,
+   "assets": 7343.2,
+   "liab": 1310.7,
+   "equity": 6032.5,
    "dps": 250.0,
    "payout": 25.04,
-   "yield": 0.55
+   "yield": 0.55,
+   "dps_adj": 250.0
   },
   {
    "p": 2025,
    "rev": 5454.0,
    "op": 713.4,
    "ni": 537.4,
+   "assets": 8387.8,
+   "liab": 1879.3,
+   "equity": 6508.5,
    "dps": 300.0,
    "payout": 15.08,
-   "yield": 0.46
+   "yield": 0.46,
+   "dps_adj": 300.0
   }
  ],
  "quarterly": [

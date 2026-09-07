@@ -1,100 +1,141 @@
 {
  "name": "셀트리온제약",
+ "split_adjusted": false,
  "legal_name": "셀트리온제약",
  "code": "068760",
- "market": "",
+ "market": "코스닥",
  "sector": "",
- "updated": "2026-08-17",
+ "updated": "2026-09-08",
  "annual": [
   {
    "p": 2016,
    "rev": 1048.1,
    "op": -150.0,
    "ni": -211.1,
+   "assets": 4420.8,
+   "liab": 1653.7,
+   "equity": 2767.1,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2017,
    "rev": 1358.6,
    "op": 86.7,
    "ni": 157.1,
+   "assets": 4702.7,
+   "liab": 1766.5,
+   "equity": 2936.2,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2018,
    "rev": 1468.8,
    "op": 35.7,
    "ni": -93.9,
+   "assets": 4524.4,
+   "liab": 1824.1,
+   "equity": 2700.3,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2019,
    "rev": 1735.1,
    "op": 147.4,
    "ni": 86.0,
+   "assets": 4709.8,
+   "liab": 1909.5,
+   "equity": 2800.3,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2020,
    "rev": 2335.7,
    "op": 236.3,
    "ni": 209.4,
+   "assets": 5480.7,
+   "liab": 2475.1,
+   "equity": 3005.6,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2021,
    "rev": 3987.4,
    "op": 478.0,
    "ni": 345.8,
+   "assets": 6378.8,
+   "liab": 3059.2,
+   "equity": 3319.7,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2022,
    "rev": 3860.4,
    "op": 381.7,
    "ni": 259.6,
+   "assets": 5997.2,
+   "liab": 2429.4,
+   "equity": 3567.9,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2023,
    "rev": 3887.9,
    "op": 360.7,
    "ni": 212.6,
+   "assets": 6416.4,
+   "liab": 2649.8,
+   "equity": 3766.7,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2024,
    "rev": 4778.4,
    "op": 372.2,
    "ni": 219.7,
+   "assets": 6694.6,
+   "liab": 2725.4,
+   "equity": 3969.2,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2025,
    "rev": 5364.0,
    "op": 560.9,
    "ni": 387.5,
+   "assets": 7594.4,
+   "liab": 3234.8,
+   "equity": 4359.6,
    "dps": 200.0,
    "payout": null,
-   "yield": 0.32
+   "yield": 0.32,
+   "dps_adj": 200.0
   }
  ],
  "quarterly": [

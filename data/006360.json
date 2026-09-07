@@ -1,100 +1,141 @@
 {
  "name": "GS건설",
+ "split_adjusted": false,
  "legal_name": "GS건설",
  "code": "006360",
- "market": "",
+ "market": "코스피",
  "sector": "",
- "updated": "2026-08-17",
+ "updated": "2026-09-08",
  "annual": [
   {
    "p": 2016,
    "rev": 110356.0,
    "op": 1429.8,
    "ni": -204.3,
+   "assets": 133765.9,
+   "liab": 100234.2,
+   "equity": null,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2017,
    "rev": 116794.6,
    "op": 3186.7,
    "ni": -1636.8,
+   "assets": 136966.1,
+   "liab": 104569.0,
+   "equity": 32397.2,
    "dps": 300.0,
    "payout": -12.5,
-   "yield": 1.1
+   "yield": 1.1,
+   "dps_adj": 300.0
   },
   {
    "p": 2018,
    "rev": 131393.7,
    "op": 10644.9,
    "ni": 5874.3,
+   "assets": 120332.8,
+   "liab": 84085.9,
+   "equity": 36246.9,
    "dps": 1000.0,
    "payout": 13.5,
-   "yield": 2.3
+   "yield": 2.3,
+   "dps_adj": 1000.0
   },
   {
    "p": 2019,
    "rev": 104165.9,
    "op": 7672.7,
    "ni": 4474.8,
+   "assets": 131712.1,
+   "liab": 90281.8,
+   "equity": 41430.3,
    "dps": 1000.0,
    "payout": 17.9,
-   "yield": 3.2
+   "yield": 3.2,
+   "dps_adj": 1000.0
   },
   {
    "p": 2020,
    "rev": 101229.3,
    "op": 7504.0,
    "ni": 3296.8,
+   "assets": 137706.8,
+   "liab": 94585.6,
+   "equity": 43121.2,
    "dps": 1200.0,
    "payout": 30.8,
-   "yield": 3.4
+   "yield": 3.4,
+   "dps_adj": 1200.0
   },
   {
    "p": 2021,
    "rev": 90365.8,
    "op": 6464.9,
    "ni": 4288.0,
+   "assets": 151837.3,
+   "liab": 103110.0,
+   "equity": 48727.2,
    "dps": 1300.0,
    "payout": 27.0,
-   "yield": 3.1
+   "yield": 3.1,
+   "dps_adj": 1300.0
   },
   {
    "p": 2022,
    "rev": 122992.0,
    "op": 5548.3,
    "ni": 4412.1,
+   "assets": 169466.2,
+   "liab": 115904.1,
+   "equity": 53562.0,
    "dps": 1300.0,
    "payout": 32.5,
-   "yield": 5.7
+   "yield": 5.7,
+   "dps_adj": 1300.0
   },
   {
    "p": 2023,
    "rev": 134366.8,
    "op": -3879.5,
    "ni": -4195.0,
+   "assets": 177073.0,
+   "liab": 128221.4,
+   "equity": 48851.6,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2024,
    "rev": 128638.1,
    "op": 2859.5,
    "ni": 2639.2,
+   "assets": 178032.9,
+   "liab": 127161.7,
+   "equity": 50871.2,
    "dps": 300.0,
    "payout": 10.4,
-   "yield": 1.7
+   "yield": 1.7,
+   "dps_adj": 300.0
   },
   {
    "p": 2025,
    "rev": 124503.5,
    "op": 4378.1,
    "ni": 934.2,
+   "assets": 184598.4,
+   "liab": 129362.9,
+   "equity": 55235.6,
    "dps": 500.0,
    "payout": 45.4,
-   "yield": 2.2
+   "yield": 2.2,
+   "dps_adj": 500.0
   }
  ],
  "quarterly": [
