@@ -397,6 +397,11 @@
           <button class="btn btn-sm" id="ov-rot-reset" type="button">0°</button>
           <button class="btn btn-sm" id="ov-front" type="button">앞으로</button>
           <button class="btn btn-sm" id="ov-back" type="button">뒤로</button>
+          <select id="ov-bg-q" class="btn btn-sm" style="flex:1 1 30%;padding:0 8px" title="배경 지우기 품질">
+            <option value="isnet_quint8">빠름</option>
+            <option value="isnet_fp16" selected>보통</option>
+            <option value="isnet">최고</option>
+          </select>
           <button class="btn btn-sm" id="ov-bg" type="button">배경 지우기</button>
           <button class="btn btn-sm" id="ov-bg-undo" type="button" style="display:none">원본으로</button>
           <button class="btn btn-sm btn-danger" id="ov-delete" type="button">삭제</button>
@@ -1701,14 +1706,19 @@
     if (!ov || !ov.img) return;
     var btn = document.getElementById('ov-bg');
     btn.disabled = true;
-    bgStatus('준비 중… (처음이면 모델을 내려받아 1~2분 걸립니다)');
+    var qLabel = { isnet_quint8: '빠름 · 약 40MB', isnet_fp16: '보통 · 약 80MB', isnet: '최고 · 약 160MB' }[
+      document.getElementById('ov-bg-q').value] || '';
+    bgStatus('준비 중… (' + qLabel + ' — 처음이면 내려받는 데 시간이 걸립니다)');
 
     // 원본은 남겨둔다 — 잘못 따지면 되돌릴 수 있게
     if (!ov.orig) ov.orig = ov.img;
 
     loadBgLib().then(function (lib) {
+      var q = document.getElementById('ov-bg-q').value;
       return lib.removeBackground(ov.orig.src, {
-        model: 'isnet_quint8',
+        model: q,
+        device: 'gpu',                        // 그래픽카드가 있으면 쓰고, 없으면 알아서 CPU
+        output: { format: 'image/png', quality: 1 },
         progress: function (key, cur, total) {
           if (/fetch/.test(key)) {
             bgStatus('모델 내려받는 중 ' + (total ? Math.round(cur / total * 100) : 0) + '%');
@@ -1742,6 +1752,18 @@
     ov.cut = false;
     syncOverlayUI(); drawPreview();
   }
+
+  // 폰은 메모리·데이터가 빠듯하다 — 빠름을 기본으로 하고 최고는 숨긴다
+  (function () {
+    var sel = document.getElementById('ov-bg-q');
+    var isPhone = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) ||
+                  (navigator.maxTouchPoints > 1 && Math.min(screen.width, screen.height) < 900);
+    if (isPhone && sel) {
+      sel.value = 'isnet_quint8';
+      var best = sel.querySelector('option[value="isnet"]');
+      if (best) best.disabled = true;
+    }
+  })();
 
   document.getElementById('ov-bg').addEventListener('click', removeBackground);
   document.getElementById('ov-bg-undo').addEventListener('click', restoreBackground);
