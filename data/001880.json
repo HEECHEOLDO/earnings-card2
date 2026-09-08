@@ -1,91 +1,128 @@
 {
  "name": "디엘건설",
+ "split_adjusted": true,
  "legal_name": "디엘건설",
  "code": "001880",
- "market": "",
+ "market": "기타",
  "sector": "",
- "updated": "2026-08-17",
+ "updated": "2026-09-09",
  "annual": [
   {
    "p": 2016,
    "rev": 9112.9,
    "op": 921.3,
    "ni": 749.1,
+   "assets": 7394.5,
+   "liab": 4810.8,
+   "equity": 2583.6,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2017,
    "rev": 8586.3,
    "op": 837.8,
    "ni": 646.1,
+   "assets": 7717.9,
+   "liab": 4492.2,
+   "equity": 3225.7,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2018,
    "rev": 9655.7,
    "op": 909.0,
    "ni": 645.3,
+   "assets": 7960.9,
+   "liab": 4284.7,
+   "equity": 3676.2,
    "dps": 250.0,
    "payout": 5.88,
-   "yield": 1.71
+   "yield": 1.71,
+   "dps_adj": 100.0
   },
   {
    "p": 2019,
    "rev": 12799.1,
    "op": 1429.7,
    "ni": 951.0,
+   "assets": 8517.2,
+   "liab": 3938.8,
+   "equity": 4578.4,
    "dps": 400.0,
    "payout": 6.38,
-   "yield": 2.05
+   "yield": 2.05,
+   "dps_adj": 160.0
   },
   {
    "p": 2020,
    "rev": 17346.4,
    "op": 2033.6,
    "ni": 1493.2,
+   "assets": 14983.8,
+   "liab": 6965.3,
+   "equity": 8018.5,
    "dps": 550.0,
    "payout": 12.1,
-   "yield": 1.87
+   "yield": 1.87,
+   "dps_adj": 550.0
   },
   {
    "p": 2021,
    "rev": 20103.4,
    "op": 2296.3,
    "ni": 1755.6,
+   "assets": 16696.0,
+   "liab": 7117.1,
+   "equity": 9578.9,
    "dps": 750.0,
    "payout": 9.42,
-   "yield": 2.76
+   "yield": 2.76,
+   "dps_adj": 750.0
   },
   {
    "p": 2022,
    "rev": 19624.2,
    "op": 810.7,
    "ni": 554.2,
+   "assets": 17468.2,
+   "liab": 7481.2,
+   "equity": 9987.0,
    "dps": 250.0,
    "payout": 9.95,
-   "yield": 1.7
+   "yield": 1.7,
+   "dps_adj": 250.0
   },
   {
    "p": 2023,
    "rev": 24300.3,
    "op": 615.0,
    "ni": 419.5,
+   "assets": 19836.4,
+   "liab": 9549.1,
+   "equity": 10287.3,
    "dps": 190.0,
    "payout": 9.99,
-   "yield": 1.51
+   "yield": 1.51,
+   "dps_adj": 190.0
   },
   {
    "p": 2024,
    "rev": 24691.8,
    "op": 139.2,
    "ni": 4.8,
+   "assets": 21461.9,
+   "liab": 11254.5,
+   "equity": 10207.4,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   }
  ],
  "quarterly": [

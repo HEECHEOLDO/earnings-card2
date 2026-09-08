@@ -1,37 +1,50 @@
 {
  "name": "신영증권",
+ "split_adjusted": false,
  "legal_name": "신영증권",
  "code": "001720",
- "market": "",
+ "market": "코스피",
  "sector": "",
- "updated": "2026-08-17",
+ "updated": "2026-09-09",
  "annual": [
   {
    "p": 2024,
    "rev": 27642.6,
    "op": 1703.8,
    "ni": 1493.9,
+   "assets": 106099.4,
+   "liab": 89214.6,
+   "equity": 16884.7,
    "dps": 4500.0,
    "payout": 25.33,
-   "yield": 6.63
+   "yield": 6.63,
+   "dps_adj": 4500.0
   },
   {
    "p": 2025,
    "rev": 24663.8,
    "op": 1361.5,
    "ni": 1122.8,
+   "assets": 103795.7,
+   "liab": 85468.8,
+   "equity": 18326.9,
    "dps": 5000.0,
    "payout": 36.9,
-   "yield": 6.2
+   "yield": 6.2,
+   "dps_adj": 5000.0
   },
   {
    "p": 2026,
    "rev": 31713.7,
    "op": 1958.4,
    "ni": 1561.3,
+   "assets": 128598.2,
+   "liab": 108095.1,
+   "equity": 20503.1,
    "dps": 7500.0,
    "payout": 40.31,
-   "yield": 3.69
+   "yield": 3.69,
+   "dps_adj": 7500.0
   }
  ],
  "quarterly": [

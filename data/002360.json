@@ -1,100 +1,141 @@
 {
  "name": "SH에너지화학",
+ "split_adjusted": false,
  "legal_name": "SH에너지화학",
  "code": "002360",
- "market": "",
+ "market": "코스피",
  "sector": "",
- "updated": "2026-08-17",
+ "updated": "2026-09-09",
  "annual": [
   {
    "p": 2016,
    "rev": 2184.0,
    "op": 241.0,
    "ni": 180.3,
+   "assets": 1244.9,
+   "liab": 204.0,
+   "equity": 1040.9,
    "dps": 55.0,
    "payout": 34.04,
-   "yield": 3.51
+   "yield": 3.51,
+   "dps_adj": 55.0
   },
   {
    "p": 2017,
    "rev": 1881.1,
    "op": 141.8,
    "ni": 98.8,
+   "assets": 1253.1,
+   "liab": 176.2,
+   "equity": 1076.9,
    "dps": 43.0,
    "payout": 49.85,
-   "yield": 3.05
+   "yield": 3.05,
+   "dps_adj": 43.0
   },
   {
    "p": 2018,
    "rev": 1836.0,
    "op": 21.0,
    "ni": 20.3,
+   "assets": 1224.3,
+   "liab": 170.4,
+   "equity": 1053.9,
    "dps": 23.0,
    "payout": 110.54,
-   "yield": 2.06
+   "yield": 2.06,
+   "dps_adj": 23.0
   },
   {
    "p": 2019,
    "rev": 1408.5,
    "op": -31.3,
    "ni": -30.9,
+   "assets": 1234.2,
+   "liab": 244.2,
+   "equity": 990.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2020,
    "rev": 935.8,
    "op": -78.5,
    "ni": -69.5,
+   "assets": 1173.6,
+   "liab": 273.5,
+   "equity": 900.1,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2021,
    "rev": 1398.0,
    "op": 3.4,
    "ni": 6.1,
+   "assets": 1196.3,
+   "liab": 278.9,
+   "equity": 917.4,
    "dps": 10.0,
    "payout": 176.0,
-   "yield": 1.04
+   "yield": 1.04,
+   "dps_adj": 10.0
   },
   {
    "p": 2022,
    "rev": 1673.6,
    "op": 8.1,
    "ni": 18.3,
+   "assets": 1241.6,
+   "liab": 300.6,
+   "equity": 941.0,
    "dps": 10.0,
    "payout": 60.0,
-   "yield": 1.15
+   "yield": 1.15,
+   "dps_adj": 10.0
   },
   {
    "p": 2023,
    "rev": 1340.4,
    "op": -41.2,
    "ni": -25.8,
+   "assets": 1207.9,
+   "liab": 306.6,
+   "equity": 901.3,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2024,
    "rev": 1260.5,
    "op": -96.9,
    "ni": -104.2,
+   "assets": 1103.8,
+   "liab": 304.2,
+   "equity": 799.6,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2025,
    "rev": 986.3,
    "op": -122.5,
    "ni": -107.8,
+   "assets": 1018.2,
+   "liab": 321.3,
+   "equity": 696.9,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   }
  ],
  "quarterly": [

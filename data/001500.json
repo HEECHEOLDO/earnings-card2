@@ -1,28 +1,37 @@
 {
  "name": "현대차증권",
+ "split_adjusted": false,
  "legal_name": "현대차증권",
  "code": "001500",
- "market": "",
+ "market": "코스피",
  "sector": "",
- "updated": "2026-08-17",
+ "updated": "2026-09-09",
  "annual": [
   {
    "p": 2023,
    "rev": 15822.0,
    "op": 651.7,
    "ni": 535.1,
+   "assets": 115852.6,
+   "liab": 103074.6,
+   "equity": 12778.0,
    "dps": 400.0,
    "payout": 29.2,
-   "yield": 4.6
+   "yield": 4.6,
+   "dps_adj": 400.0
   },
   {
    "p": 2024,
    "rev": 17956.3,
    "op": 546.9,
    "ni": 361.5,
+   "assets": 119920.0,
+   "liab": 106899.0,
+   "equity": 13021.0,
    "dps": 180.0,
    "payout": null,
-   "yield": 2.9
+   "yield": 2.9,
+   "dps_adj": 180.0
   }
  ],
  "quarterly": [

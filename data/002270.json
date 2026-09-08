@@ -1,64 +1,89 @@
 {
  "name": "롯데푸드",
+ "split_adjusted": false,
  "legal_name": "롯데푸드",
  "code": "002270",
- "market": "",
+ "market": "기타",
  "sector": "",
- "updated": "2026-08-17",
+ "updated": "2026-09-09",
  "annual": [
   {
    "p": 2016,
    "rev": 17624.0,
    "op": 798.3,
    "ni": 581.7,
+   "assets": 13361.5,
+   "liab": 3935.2,
+   "equity": 9426.3,
    "dps": 6000.0,
    "payout": 14.12,
-   "yield": 0.9
+   "yield": 0.9,
+   "dps_adj": 6000.0
   },
   {
    "p": 2017,
    "rev": 18185.6,
    "op": 662.3,
    "ni": 950.7,
+   "assets": 12217.8,
+   "liab": 5563.5,
+   "equity": 6654.3,
    "dps": 22000.0,
    "payout": 21.05,
-   "yield": 3.9
+   "yield": 3.9,
+   "dps_adj": 22000.0
   },
   {
    "p": 2018,
    "rev": 18108.1,
    "op": 675.7,
    "ni": 425.4,
+   "assets": 12082.8,
+   "liab": 5258.1,
+   "equity": 6824.7,
    "dps": 15000.0,
    "payout": 32.08,
-   "yield": 2.1
+   "yield": 2.1,
+   "dps_adj": 15000.0
   },
   {
    "p": 2019,
    "rev": 17880.3,
    "op": 494.7,
    "ni": 375.2,
+   "assets": 13211.6,
+   "liab": 6136.3,
+   "equity": 7075.3,
    "dps": 12000.0,
    "payout": 29.1,
-   "yield": 2.9
+   "yield": 2.9,
+   "dps_adj": 12000.0
   },
   {
    "p": 2020,
    "rev": 17188.1,
    "op": 444.0,
    "ni": 702.3,
+   "assets": 12865.4,
+   "liab": 5253.4,
+   "equity": 7612.0,
    "dps": 12000.0,
    "payout": 15.55,
-   "yield": 3.5
+   "yield": 3.5,
+   "dps_adj": 12000.0
   },
   {
    "p": 2021,
    "rev": 16078.1,
    "op": 384.6,
    "ni": -10.5,
+   "assets": 12715.0,
+   "liab": 4854.7,
+   "equity": 7860.3,
    "dps": 10000.0,
    "payout": null,
-   "yield": 2.8
+   "yield": 2.8,
+   "dps_adj": 10000.0
   }
  ],
  "quarterly": []

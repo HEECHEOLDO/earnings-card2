@@ -1,37 +1,50 @@
 {
  "name": "에스지신성건설",
+ "split_adjusted": false,
  "legal_name": "에스지신성건설",
  "code": "001970",
- "market": "",
+ "market": "기타",
  "sector": "",
- "updated": "2026-08-17",
+ "updated": "2026-09-09",
  "annual": [
   {
    "p": 2023,
    "rev": 2131.6,
    "op": -36.8,
    "ni": -92.8,
+   "assets": 1340.1,
+   "liab": 1066.5,
+   "equity": 273.6,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2024,
    "rev": 1394.8,
    "op": -161.2,
    "ni": -223.1,
+   "assets": 1114.2,
+   "liab": 1071.5,
+   "equity": 42.6,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2025,
    "rev": 224.1,
    "op": -206.3,
    "ni": -49.5,
+   "assets": 975.8,
+   "liab": 531.2,
+   "equity": 444.6,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   }
  ],
  "quarterly": [

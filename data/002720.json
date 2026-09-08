@@ -1,100 +1,141 @@
 {
  "name": "국제약품",
+ "split_adjusted": false,
  "legal_name": "국제약품",
  "code": "002720",
- "market": "",
+ "market": "코스피",
  "sector": "",
- "updated": "2026-08-17",
+ "updated": "2026-09-09",
  "annual": [
   {
    "p": 2016,
    "rev": 1206.8,
    "op": 39.7,
    "ni": 8.0,
+   "assets": 1294.6,
+   "liab": 619.4,
+   "equity": 675.2,
    "dps": 10.0,
    "payout": 20.42,
-   "yield": 0.21
+   "yield": 0.21,
+   "dps_adj": 10.0
   },
   {
    "p": 2017,
    "rev": 1233.1,
    "op": 25.6,
    "ni": 10.4,
+   "assets": 1316.5,
+   "liab": 638.7,
+   "equity": 677.8,
    "dps": 10.0,
    "payout": 15.11,
-   "yield": 0.21
+   "yield": 0.21,
+   "dps_adj": 10.0
   },
   {
    "p": 2018,
    "rev": 1076.8,
    "op": 32.9,
    "ni": 21.8,
+   "assets": 1262.3,
+   "liab": 575.4,
+   "equity": 687.0,
    "dps": null,
    "payout": 23.49,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2019,
    "rev": 1111.2,
    "op": 55.7,
    "ni": -47.6,
+   "assets": 1345.9,
+   "liab": 736.4,
+   "equity": 609.5,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2020,
    "rev": 1303.9,
    "op": 60.4,
    "ni": 21.9,
+   "assets": 1456.3,
+   "liab": 751.3,
+   "equity": 705.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2021,
    "rev": 1197.5,
    "op": -16.8,
    "ni": -15.6,
+   "assets": 1397.8,
+   "liab": 712.0,
+   "equity": 685.9,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2022,
    "rev": 1265.8,
    "op": 52.7,
    "ni": 35.4,
+   "assets": 1365.9,
+   "liab": 625.1,
+   "equity": 740.8,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2023,
    "rev": 1353.7,
    "op": -19.9,
    "ni": -84.1,
+   "assets": 1632.6,
+   "liab": 783.1,
+   "equity": 849.5,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2024,
    "rev": 1564.6,
    "op": 67.0,
    "ni": 52.1,
+   "assets": 1655.5,
+   "liab": 760.0,
+   "equity": 895.5,
    "dps": 30.0,
    "payout": 11.74,
-   "yield": 0.6
+   "yield": 0.6,
+   "dps_adj": 30.0
   },
   {
    "p": 2025,
    "rev": 1755.0,
    "op": 61.8,
    "ni": 57.0,
+   "assets": 1822.8,
+   "liab": 845.7,
+   "equity": 977.0,
    "dps": 30.0,
    "payout": 11.14,
-   "yield": 0.64
+   "yield": 0.64,
+   "dps_adj": 30.0
   }
  ],
  "quarterly": [

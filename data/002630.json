@@ -1,100 +1,141 @@
 {
  "name": "오리엔트바이오",
+ "split_adjusted": false,
  "legal_name": "오리엔트바이오",
  "code": "002630",
- "market": "",
+ "market": "코스피",
  "sector": "",
- "updated": "2026-08-17",
+ "updated": "2026-09-09",
  "annual": [
   {
    "p": 2017,
    "rev": 1090.2,
    "op": -92.9,
    "ni": -248.4,
+   "assets": 1726.3,
+   "liab": 746.8,
+   "equity": 979.4,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2018,
    "rev": 1212.1,
    "op": -65.6,
    "ni": -162.1,
+   "assets": 1900.3,
+   "liab": 1101.1,
+   "equity": 799.2,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2019,
    "rev": 315.8,
    "op": -82.8,
    "ni": -283.3,
+   "assets": 866.6,
+   "liab": 221.7,
+   "equity": 644.9,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2020,
    "rev": 377.0,
    "op": -112.5,
    "ni": -116.4,
+   "assets": 721.1,
+   "liab": 201.4,
+   "equity": 519.6,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2021,
    "rev": 520.2,
    "op": 18.6,
    "ni": -156.3,
+   "assets": 715.2,
+   "liab": 229.7,
+   "equity": 485.5,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2022,
    "rev": 262.8,
    "op": -37.8,
    "ni": 342.0,
+   "assets": 1049.5,
+   "liab": 217.6,
+   "equity": 831.9,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2023,
    "rev": 288.2,
    "op": 14.5,
    "ni": -124.2,
+   "assets": 810.5,
+   "liab": 96.6,
+   "equity": 713.9,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2024,
    "rev": 280.1,
    "op": -6.5,
    "ni": 128.7,
+   "assets": 969.9,
+   "liab": 118.9,
+   "equity": 851.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2025,
    "rev": 294.0,
    "op": -30.8,
    "ni": -131.9,
+   "assets": 847.8,
+   "liab": 129.4,
+   "equity": 718.5,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2026,
    "rev": 297.5,
    "op": -41.3,
    "ni": -45.7,
+   "assets": 816.2,
+   "liab": 130.7,
+   "equity": 685.4,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   }
  ],
  "quarterly": [

@@ -1,37 +1,50 @@
 {
  "name": "아이파크영창",
+ "split_adjusted": false,
  "legal_name": "아이파크영창",
  "code": "001890",
- "market": "",
+ "market": "기타",
  "sector": "",
- "updated": "2026-08-17",
+ "updated": "2026-09-09",
  "annual": [
   {
    "p": 2023,
    "rev": 641.8,
    "op": -93.7,
    "ni": -92.6,
+   "assets": 317.2,
+   "liab": 423.4,
+   "equity": -106.1,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2024,
    "rev": 411.1,
    "op": -46.6,
    "ni": -86.7,
+   "assets": 192.4,
+   "liab": 405.9,
+   "equity": -213.6,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2025,
    "rev": 311.1,
    "op": -51.6,
    "ni": -51.0,
+   "assets": 166.7,
+   "liab": 434.8,
+   "equity": -268.1,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   }
  ],
  "quarterly": [

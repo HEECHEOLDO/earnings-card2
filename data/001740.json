@@ -1,100 +1,141 @@
 {
  "name": "SK네트웍스",
+ "split_adjusted": false,
  "legal_name": "SK네트웍스",
  "code": "001740",
- "market": "",
+ "market": "코스피",
  "sector": "",
- "updated": "2026-08-17",
+ "updated": "2026-09-09",
  "annual": [
   {
    "p": 2016,
    "rev": 184573.8,
    "op": 1673.4,
    "ni": -815.7,
+   "assets": 86203.2,
+   "liab": 62147.8,
+   "equity": 24055.4,
    "dps": 100.0,
    "payout": null,
-   "yield": 1.5
+   "yield": 1.5,
+   "dps_adj": 100.0
   },
   {
    "p": 2017,
    "rev": 152023.5,
    "op": 1428.0,
    "ni": 346.1,
+   "assets": 72273.7,
+   "liab": 48788.7,
+   "equity": 23485.0,
    "dps": 120.0,
    "payout": 87.0,
-   "yield": 1.8
+   "yield": 1.8,
+   "dps_adj": 120.0
   },
   {
    "p": 2018,
    "rev": 139864.8,
    "op": 1378.7,
    "ni": 76.7,
+   "assets": 77690.4,
+   "liab": 54571.7,
+   "equity": 23118.7,
    "dps": 120.0,
    "payout": 398.0,
-   "yield": 2.4
+   "yield": 2.4,
+   "dps_adj": 120.0
   },
   {
    "p": 2019,
    "rev": 130542.4,
    "op": 1093.7,
    "ni": -1226.1,
+   "assets": 101387.7,
+   "liab": 78335.2,
+   "equity": 23052.5,
    "dps": 120.0,
    "payout": null,
-   "yield": 2.0
+   "yield": 2.0,
+   "dps_adj": 120.0
   },
   {
    "p": 2020,
    "rev": 106259.1,
    "op": 1239.5,
    "ni": 420.5,
+   "assets": 87734.8,
+   "liab": 65282.3,
+   "equity": 22452.5,
    "dps": 120.0,
    "payout": 76.0,
-   "yield": 2.5
+   "yield": 2.5,
+   "dps_adj": 120.0
   },
   {
    "p": 2021,
    "rev": 110181.4,
    "op": 1219.8,
    "ni": 1035.4,
+   "assets": 94109.2,
+   "liab": 70219.2,
+   "equity": 23890.0,
    "dps": 120.0,
    "payout": 27.0,
-   "yield": 2.4
+   "yield": 2.4,
+   "dps_adj": 120.0
   },
   {
    "p": 2022,
    "rev": 96664.5,
    "op": 1542.1,
    "ni": 907.6,
+   "assets": 94992.6,
+   "liab": 70485.5,
+   "equity": 24507.1,
    "dps": 120.0,
    "payout": 30.0,
-   "yield": 3.0
+   "yield": 3.0,
+   "dps_adj": 120.0
   },
   {
    "p": 2023,
    "rev": 91338.7,
    "op": 2372.8,
    "ni": 54.6,
+   "assets": 91103.6,
+   "liab": 69545.2,
+   "equity": 21558.4,
    "dps": 200.0,
    "payout": null,
-   "yield": 2.5
+   "yield": 2.5,
+   "dps_adj": 200.0
   },
   {
    "p": 2024,
    "rev": 76572.8,
    "op": 1139.2,
    "ni": 462.9,
+   "assets": 51571.3,
+   "liab": 31038.2,
+   "equity": 20533.1,
    "dps": 200.0,
    "payout": 122.0,
-   "yield": 4.8
+   "yield": 4.8,
+   "dps_adj": 200.0
   },
   {
    "p": 2025,
    "rev": 67451.3,
    "op": 862.9,
    "ni": 499.8,
+   "assets": 50407.9,
+   "liab": 30151.6,
+   "equity": 20256.3,
    "dps": 250.0,
    "payout": 97.0,
-   "yield": 3.9
+   "yield": 3.9,
+   "dps_adj": 250.0
   }
  ],
  "quarterly": [

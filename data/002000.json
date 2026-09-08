@@ -1,37 +1,50 @@
 {
  "name": "생고뱅코리아홀딩스",
+ "split_adjusted": false,
  "legal_name": "생고뱅코리아홀딩스",
  "code": "002000",
- "market": "",
+ "market": "기타",
  "sector": "",
- "updated": "2026-08-17",
+ "updated": "2026-09-09",
  "annual": [
   {
    "p": 2016,
    "rev": 3306.4,
    "op": 88.5,
    "ni": 264.9,
+   "assets": 7107.1,
+   "liab": 1341.7,
+   "equity": 5765.5,
    "dps": 775.0,
    "payout": 32.2,
-   "yield": 2.84
+   "yield": 2.84,
+   "dps_adj": 775.0
   },
   {
    "p": 2017,
    "rev": 3454.3,
    "op": 173.5,
    "ni": 1394.4,
+   "assets": 8528.7,
+   "liab": 1426.7,
+   "equity": 7102.0,
    "dps": 1000.0,
    "payout": 7.7,
-   "yield": 2.93
+   "yield": 2.93,
+   "dps_adj": 1000.0
   },
   {
    "p": 2018,
    "rev": 4720.5,
    "op": 274.7,
    "ni": 336.3,
+   "assets": 7484.1,
+   "liab": 1699.5,
+   "equity": 5784.5,
    "dps": null,
    "payout": 0.0,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   }
  ],
  "quarterly": []

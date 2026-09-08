@@ -1,100 +1,141 @@
 {
  "name": "세기상사",
+ "split_adjusted": false,
  "legal_name": "세기상사",
  "code": "002420",
- "market": "",
+ "market": "코스피",
  "sector": "",
- "updated": "2026-08-17",
+ "updated": "2026-09-09",
  "annual": [
   {
    "p": 2016,
    "rev": 54.7,
    "op": -7.3,
    "ni": -11.4,
+   "assets": 439.0,
+   "liab": 197.9,
+   "equity": 241.1,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2017,
    "rev": 56.3,
    "op": -3.7,
    "ni": 0.9,
+   "assets": 430.4,
+   "liab": 193.6,
+   "equity": 236.8,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2018,
    "rev": 51.8,
    "op": -3.9,
    "ni": -3.5,
+   "assets": 426.6,
+   "liab": 193.2,
+   "equity": 233.5,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2019,
    "rev": 51.5,
    "op": -4.6,
    "ni": -9.4,
+   "assets": 415.5,
+   "liab": 191.2,
+   "equity": 224.4,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2020,
    "rev": 22.3,
    "op": -12.0,
    "ni": -15.4,
+   "assets": 405.2,
+   "liab": 198.7,
+   "equity": 206.5,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2021,
    "rev": 178.8,
    "op": -15.5,
    "ni": -19.4,
+   "assets": 463.9,
+   "liab": 278.0,
+   "equity": 185.9,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2022,
    "rev": 337.1,
    "op": -7.9,
    "ni": -12.7,
+   "assets": 516.4,
+   "liab": 250.6,
+   "equity": 265.8,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2023,
    "rev": 313.3,
    "op": -8.2,
    "ni": -15.6,
+   "assets": 510.0,
+   "liab": 239.4,
+   "equity": 270.6,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2024,
    "rev": 320.3,
    "op": -19.8,
    "ni": -28.2,
+   "assets": 501.0,
+   "liab": 257.8,
+   "equity": 243.2,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2025,
    "rev": 292.5,
    "op": -5.7,
    "ni": -16.0,
+   "assets": 493.0,
+   "liab": 247.5,
+   "equity": 245.5,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   }
  ],
  "quarterly": [

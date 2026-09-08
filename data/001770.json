@@ -1,100 +1,141 @@
 {
  "name": "SHD",
+ "split_adjusted": true,
  "legal_name": "SHD",
  "code": "001770",
- "market": "",
+ "market": "코스피",
  "sector": "",
- "updated": "2026-08-17",
+ "updated": "2026-09-09",
  "annual": [
   {
    "p": 2016,
    "rev": 701.6,
    "op": 6.1,
    "ni": 5.8,
+   "assets": 701.4,
+   "liab": 308.0,
+   "equity": 393.5,
    "dps": 250.0,
    "payout": 52.7,
-   "yield": 0.9
+   "yield": 0.9,
+   "dps_adj": 1000.0
   },
   {
    "p": 2017,
    "rev": 612.8,
    "op": -18.1,
    "ni": -20.8,
+   "assets": 702.4,
+   "liab": 334.0,
+   "equity": 368.4,
    "dps": 100.0,
    "payout": -195.68,
-   "yield": 0.6
+   "yield": 0.6,
+   "dps_adj": 400.0
   },
   {
    "p": 2018,
    "rev": 716.4,
    "op": 31.8,
    "ni": 22.3,
+   "assets": 645.8,
+   "liab": 305.4,
+   "equity": 340.3,
    "dps": 100.0,
    "payout": 18.68,
-   "yield": 0.4
+   "yield": 0.4,
+   "dps_adj": 400.0
   },
   {
    "p": 2019,
    "rev": 741.1,
    "op": 10.1,
    "ni": 9.6,
+   "assets": 653.1,
+   "liab": 311.5,
+   "equity": 341.6,
    "dps": 100.0,
    "payout": 12.61,
-   "yield": 0.4
+   "yield": 0.4,
+   "dps_adj": 100.0
   },
   {
    "p": 2020,
    "rev": 773.3,
    "op": 1.9,
    "ni": 4.9,
+   "assets": 642.0,
+   "liab": 296.0,
+   "equity": 346.0,
    "dps": null,
    "payout": 24.84,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2021,
    "rev": 1047.7,
    "op": 57.1,
    "ni": 57.9,
+   "assets": 710.4,
+   "liab": 304.4,
+   "equity": 406.0,
    "dps": 100.0,
    "payout": 1.93,
-   "yield": 0.3
+   "yield": 0.3,
+   "dps_adj": 100.0
   },
   {
    "p": 2022,
    "rev": 1252.6,
    "op": 141.8,
    "ni": 108.2,
+   "assets": 882.9,
+   "liab": 368.4,
+   "equity": 514.6,
    "dps": 100.0,
    "payout": 1.12,
-   "yield": 0.3
+   "yield": 0.3,
+   "dps_adj": 100.0
   },
   {
    "p": 2023,
    "rev": 1062.9,
    "op": 6.7,
    "ni": 1.1,
+   "assets": 847.7,
+   "liab": 335.0,
+   "equity": 512.7,
    "dps": 100.0,
    "payout": 110.14,
-   "yield": 0.5
+   "yield": 0.5,
+   "dps_adj": 100.0
   },
   {
    "p": 2024,
    "rev": 1066.0,
    "op": -40.3,
    "ni": 29.3,
+   "assets": 819.7,
+   "liab": 283.6,
+   "equity": 536.2,
    "dps": 100.0,
    "payout": 4.15,
-   "yield": 0.7
+   "yield": 0.7,
+   "dps_adj": 100.0
   },
   {
    "p": 2025,
    "rev": 1004.0,
    "op": 27.4,
    "ni": 19.7,
+   "assets": 805.9,
+   "liab": 251.9,
+   "equity": 554.0,
    "dps": 200.0,
    "payout": 12.34,
-   "yield": 1.1
+   "yield": 1.1,
+   "dps_adj": 200.0
   }
  ],
  "quarterly": [

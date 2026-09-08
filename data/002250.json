@@ -1,46 +1,63 @@
 {
  "name": "알보젠코리아",
+ "split_adjusted": false,
  "legal_name": "알보젠코리아",
  "code": "002250",
- "market": "",
+ "market": "기타",
  "sector": "",
- "updated": "2026-08-17",
+ "updated": "2026-09-09",
  "annual": [
   {
    "p": 2016,
    "rev": 1811.8,
    "op": 307.4,
    "ni": 86.8,
+   "assets": 3324.3,
+   "liab": 1341.3,
+   "equity": 1983.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2017,
    "rev": 1900.6,
    "op": 258.4,
    "ni": 110.0,
+   "assets": 3064.5,
+   "liab": 1329.8,
+   "equity": 1734.7,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2018,
    "rev": 1937.3,
    "op": 235.2,
    "ni": 106.1,
+   "assets": 2768.9,
+   "liab": 599.8,
+   "equity": 2169.1,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2019,
    "rev": 1897.4,
    "op": 145.4,
    "ni": 68.7,
+   "assets": 3004.0,
+   "liab": 790.5,
+   "equity": 2213.5,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   }
  ],
  "quarterly": []

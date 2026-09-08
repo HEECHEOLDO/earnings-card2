@@ -1,37 +1,50 @@
 {
  "name": "한양증권",
+ "split_adjusted": false,
  "legal_name": "한양증권",
  "code": "001750",
- "market": "",
+ "market": "코스피",
  "sector": "",
- "updated": "2026-08-17",
+ "updated": "2026-09-09",
  "annual": [
   {
    "p": 2023,
    "rev": 9990.3,
    "op": 462.9,
    "ni": 351.0,
+   "assets": 17478.2,
+   "liab": 12580.3,
+   "equity": 4897.9,
    "dps": 800.0,
    "payout": 28.6,
-   "yield": 8.2
+   "yield": 8.2,
+   "dps_adj": 800.0
   },
   {
    "p": 2024,
    "rev": 8333.1,
    "op": 544.5,
    "ni": 388.0,
+   "assets": 17313.4,
+   "liab": 12171.8,
+   "equity": 5141.6,
    "dps": 950.0,
    "payout": 32.4,
-   "yield": 7.4
+   "yield": 7.4,
+   "dps_adj": 950.0
   },
   {
    "p": 2025,
    "rev": 9090.2,
    "op": 753.1,
    "ni": 565.7,
+   "assets": 18337.0,
+   "liab": 12518.9,
+   "equity": 5818.1,
    "dps": 1600.0,
    "payout": 37.4,
-   "yield": 6.9
+   "yield": 6.9,
+   "dps_adj": 1600.0
   }
  ],
  "quarterly": [

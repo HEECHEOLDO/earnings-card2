@@ -1,100 +1,141 @@
 {
  "name": "TCC스틸",
+ "split_adjusted": false,
  "legal_name": "TCC스틸",
  "code": "002710",
- "market": "",
+ "market": "코스피",
  "sector": "",
- "updated": "2026-08-17",
+ "updated": "2026-09-09",
  "annual": [
   {
    "p": 2016,
    "rev": 4444.5,
    "op": 153.5,
    "ni": 169.5,
+   "assets": 2829.1,
+   "liab": 1795.8,
+   "equity": 1033.4,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2017,
    "rev": 3913.7,
    "op": 81.1,
    "ni": 15.0,
+   "assets": 2786.9,
+   "liab": 1777.8,
+   "equity": 1009.2,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2018,
    "rev": 4131.8,
    "op": 170.8,
    "ni": 97.6,
+   "assets": 3047.8,
+   "liab": 1925.4,
+   "equity": 1122.5,
    "dps": 80.0,
    "payout": 17.5,
-   "yield": 4.1
+   "yield": 4.1,
+   "dps_adj": 80.0
   },
   {
    "p": 2019,
    "rev": 4371.7,
    "op": 128.6,
    "ni": 50.4,
+   "assets": 3142.1,
+   "liab": 1973.7,
+   "equity": 1168.4,
    "dps": 30.0,
    "payout": 12.7,
-   "yield": 1.0
+   "yield": 1.0,
+   "dps_adj": 30.0
   },
   {
    "p": 2020,
    "rev": 4318.0,
    "op": 9.7,
    "ni": -16.9,
+   "assets": 3067.6,
+   "liab": 1856.3,
+   "equity": 1211.3,
    "dps": 15.0,
    "payout": null,
-   "yield": 0.2
+   "yield": 0.2,
+   "dps_adj": 15.0
   },
   {
    "p": 2021,
    "rev": 5366.5,
    "op": 256.0,
    "ni": 287.2,
+   "assets": 3670.0,
+   "liab": 2117.7,
+   "equity": 1552.3,
    "dps": 150.0,
    "payout": 12.08,
-   "yield": 1.79
+   "yield": 1.79,
+   "dps_adj": 150.0
   },
   {
    "p": 2022,
    "rev": 6844.1,
    "op": 439.8,
    "ni": 295.7,
+   "assets": 5074.8,
+   "liab": 2986.8,
+   "equity": 2088.0,
    "dps": 120.0,
    "payout": 10.26,
-   "yield": 1.26
+   "yield": 1.26,
+   "dps_adj": 120.0
   },
   {
    "p": 2023,
    "rev": 6244.2,
    "op": 112.5,
    "ni": -82.9,
+   "assets": 5597.4,
+   "liab": 3246.9,
+   "equity": 2350.5,
    "dps": 80.0,
    "payout": -27.05,
-   "yield": 0.14
+   "yield": 0.14,
+   "dps_adj": 80.0
   },
   {
    "p": 2024,
    "rev": 5820.7,
    "op": 122.7,
    "ni": 202.2,
+   "assets": 5739.5,
+   "liab": 3149.3,
+   "equity": 2590.2,
    "dps": 100.0,
    "payout": 13.0,
-   "yield": 0.35
+   "yield": 0.35,
+   "dps_adj": 100.0
   },
   {
    "p": 2025,
    "rev": 6115.1,
    "op": -109.1,
    "ni": -76.0,
+   "assets": 5741.0,
+   "liab": 3252.1,
+   "equity": 2488.9,
    "dps": 70.0,
    "payout": -24.63,
-   "yield": 0.47
+   "yield": 0.47,
+   "dps_adj": 70.0
   }
  ],
  "quarterly": [
