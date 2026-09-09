@@ -482,12 +482,23 @@
     tc.putImageData(img, 0, 0);
     _tile = t; return t;
   }
-  function paintGrain(ctx) {
-    var pat = ctx.createPattern(grainTile(), 'repeat');
-    if (!pat) return;
-    ctx.save(); ctx.setTransform(1,0,0,1,0,0);
-    ctx.fillStyle = pat; ctx.fillRect(0,0,ctx.canvas.width,ctx.canvas.height);
-    ctx.restore();
+  // 질감 배경은 크기별로 한 번만 만들어 둔다.
+  // 영상은 프레임마다 그리므로 매번 패턴을 칠하면 그게 제일 느리다.
+  var _grainBg = {};
+  function paintGrain(ctx, lw, lh) {
+    // lw/lh 는 논리 크기. 안 주면 캔버스 실제 크기를 쓴다.
+    var w = lw || ctx.canvas.width, h = lh || ctx.canvas.height, key = w + 'x' + h;
+    var bg = _grainBg[key];
+    if (!bg) {
+      bg = document.createElement('canvas');
+      bg.width = w; bg.height = h;
+      var bctx = bg.getContext('2d');
+      var pat = bctx.createPattern(grainTile(), 'repeat');
+      if (pat) { bctx.fillStyle = pat; bctx.fillRect(0, 0, w, h); }
+      _grainBg[key] = bg;
+    }
+    // 현재 변환(스케일)을 유지한 채 논리 좌표로 그린다
+    ctx.drawImage(bg, 0, 0, w, h);
   }
   function roundRect(ctx, x, y, w, h, r) {
     ctx.beginPath();
@@ -621,7 +632,7 @@
 
     ctx.clearRect(0,0,CW,CH);
     ctx.fillStyle = T.paper; ctx.fillRect(0,0,CW,CH);
-    paintGrain(ctx);
+    paintGrain(ctx, CW, CH);
 
     overlays.forEach(function (ov) { if (ov.layer === 'back') paintOverlay(ctx, ov); });
 
@@ -815,7 +826,7 @@
     var T = TOKENS.card;
     ctx.clearRect(0, 0, TALL_W, TALL_H);
     ctx.fillStyle = T.paper; ctx.fillRect(0, 0, TALL_W, TALL_H);
-    paintGrain(ctx);
+    paintGrain(ctx, TALL_W, TALL_H);
     if (!_cardBuf) {
       _cardBuf = document.createElement('canvas');
       _cardBuf.width = CW; _cardBuf.height = CH;
@@ -1044,14 +1055,25 @@
   }
 
   // ── 방식 1: 프레임을 하나씩 직접 인코딩 (부드럽고 화질 좋음, 크롬·엣지) ──
-  var VFPS = 60, VBITRATE = 16e6;
+  // 폰은 인코더가 약해 30fps 로 낮춘다 (컴퓨터는 60fps)
+  var IS_PHONE = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) ||
+                 (navigator.maxTouchPoints > 1 && Math.min(screen.width, screen.height) < 900);
+  var VFPS = IS_PHONE ? 30 : 60, VBITRATE = IS_PHONE ? 10e6 : 16e6;
 
+  // 폰은 720p 로 만든다. 인스타는 어차피 다시 압축하니 화질 차이가 거의 없고
+  // 픽셀 수가 절반 이하라 인코딩이 훨씬 가볍다.
+  var VSCALE = IS_PHONE ? 2 / 3 : 1;
   function videoSize() {
     var tall = document.getElementById('v-ratio').value === '916';
-    return { w: tall ? TALL_W : CW, h: tall ? TALL_H : CH, tall: tall };
+    var w = tall ? TALL_W : CW, h = tall ? TALL_H : CH;
+    // 짝수로 맞춘다 (H.264 요구)
+    return { w: Math.round(w * VSCALE / 2) * 2, h: Math.round(h * VSCALE / 2) * 2, tall: tall };
   }
   function drawVideoFrame(ctx, anim, tall) {
+    ctx.save();
+    ctx.setTransform(VSCALE, 0, 0, VSCALE, 0, 0);
     if (tall) drawTall(ctx, anim); else drawCard(ctx, anim);
+    ctx.restore();
   }
 
   function encodeWithWebCodecs(tl, onProgress) {
@@ -1062,10 +1084,18 @@
         off.width = vs.w; off.height = vs.h;
         var octx = off.getContext('2d');
 
-        var cfg = { codec: 'avc1.640033', width: vs.w, height: vs.h,
+        var codecs = ['avc1.640033', 'avc1.64002A', 'avc1.4D4028', 'avc1.42E028', 'avc1.42E01E'];
+        var cfg = null;
+        function tryCodec(k) {
+          if (k >= codecs.length) throw new Error('H.264 인코더 미지원');
+          var c = { codec: codecs[k], width: vs.w, height: vs.h,
                     bitrate: VBITRATE, framerate: VFPS };
-        return VideoEncoder.isConfigSupported(cfg).then(function (sup) {
-          if (!sup || !sup.supported) throw new Error('H.264 인코더 미지원');
+          return VideoEncoder.isConfigSupported(c).then(function (sup) {
+            if (sup && sup.supported) { cfg = c; return; }
+            return tryCodec(k + 1);
+          });
+        }
+        return tryCodec(0).then(function () {
 
           var muxer = new M.Muxer({
             target: new M.ArrayBufferTarget(),
@@ -1085,7 +1115,7 @@
           function step() {
             return new Promise(function (resolve) {
               // 인코더가 밀리면 잠깐 기다린다
-              if (enc.encodeQueueSize > 8) return setTimeout(function () { resolve(step()); }, 8);
+              if (enc.encodeQueueSize > 4) return setTimeout(function () { resolve(step()); }, 10);
               if (failed) throw failed;
               if (i >= total) return resolve();
               var t = i / VFPS;
@@ -1094,10 +1124,9 @@
               enc.encode(frame, { keyFrame: i % (VFPS * 2) === 0 });
               frame.close();
               i++;
-              if (i % 6 === 0) onProgress(i / total);
-              // 화면이 멈추지 않게 가끔 숨을 돌린다
-              if (i % 15 === 0) setTimeout(function () { resolve(step()); }, 0);
-              else resolve(step());
+              if (i % 3 === 0) onProgress(i / total);
+              // 매 프레임 화면에 숨을 돌려준다 — 안 그러면 브라우저가 멈춘 것처럼 보인다
+              setTimeout(function () { resolve(step()); }, 0);
             });
           }
           return step().then(function () {
@@ -1111,34 +1140,81 @@
       });
   }
 
-  // ── 방식 2: 실시간 녹화 (예비) ──
+  // ── 방식 2: 녹화 (예비) ──
+  // 실시간으로 그리면서 녹화하면 폰이 못 따라가 프레임이 빠진다.
+  // 그래서 프레임을 먼저 전부 만들어 두고(느려도 됨), 그 다음
+  // 그림만 순서대로 보여주며 녹화한다(가벼워서 빠지지 않음).
   function recordWithMediaRecorder(tl, onProgress) {
     return new Promise(function (resolve, reject) {
       if (typeof MediaRecorder === 'undefined') return reject(new Error('녹화 미지원'));
       var mime = pickMime();
       if (!mime) return reject(new Error('지원 형식 없음'));
       var vs = videoSize();
-      var off = document.createElement('canvas');
-      off.width = vs.w; off.height = vs.h;
-      var octx = off.getContext('2d');
-      var stream = off.captureStream(30);
-      var rec = new MediaRecorder(stream, { mimeType: mime, videoBitsPerSecond: 12e6 });
-      var chunks = [];
-      rec.ondataavailable = function (e) { if (e.data && e.data.size) chunks.push(e.data); };
-      rec.onstop = function () {
-        resolve({ blob: new Blob(chunks, { type: mime.split(';')[0] }),
-                  isMp4: mime.indexOf('mp4') >= 0 });
-      };
-      drawVideoFrame(octx, animAt(0), vs.tall);
-      rec.start(100);
-      var t0 = performance.now();
-      (function frame(now) {
-        var t = (now - t0) / 1000;
-        drawVideoFrame(octx, animAt(t), vs.tall);
-        onProgress(Math.min(1, t / tl.total));
-        if (t < tl.total) requestAnimationFrame(frame);
-        else { drawVideoFrame(octx, animAt(tl.total), vs.tall); setTimeout(function () { rec.stop(); }, 150); }
-      })(t0);
+      var fps = 30;
+      var total = Math.ceil(tl.total * fps);
+
+      var work = document.createElement('canvas');
+      work.width = vs.w; work.height = vs.h;
+      var wctx = work.getContext('2d');
+
+      // 1단계: 프레임을 압축 이미지로 미리 만든다
+      var frames = new Array(total);
+      var i = 0;
+      function renderNext() {
+        if (i >= total) return Promise.resolve();
+        drawVideoFrame(wctx, animAt(Math.min(i / fps, tl.total)), vs.tall);
+        return new Promise(function (res) {
+          work.toBlob(function (blob) {
+            frames[i] = blob; i++;
+            if (i % 5 === 0) onProgress(0.6 * i / total, '프레임 만드는 중');
+            setTimeout(function () { res(renderNext()); }, 0);
+          }, 'image/jpeg', 0.92);
+        });
+      }
+
+      // 2단계: 만들어둔 프레임을 일정하게 보여주며 녹화한다
+      function play() {
+        var out = document.createElement('canvas');
+        out.width = vs.w; out.height = vs.h;
+        var octx = out.getContext('2d');
+        var stream = out.captureStream(fps);
+        var track = stream.getVideoTracks()[0];
+        var rec = new MediaRecorder(stream, { mimeType: mime, videoBitsPerSecond: VBITRATE });
+        var chunks = [];
+        rec.ondataavailable = function (e) { if (e.data && e.data.size) chunks.push(e.data); };
+        rec.onstop = function () {
+          resolve({ blob: new Blob(chunks, { type: mime.split(';')[0] }),
+                    isMp4: mime.indexOf('mp4') >= 0 });
+        };
+
+        var k = 0;
+        function showFrame(idx) {
+          return createImageBitmap(frames[idx]).then(function (bmp) {
+            octx.drawImage(bmp, 0, 0);
+            if (bmp.close) bmp.close();
+            if (track && track.requestFrame) track.requestFrame();
+          });
+        }
+        // 첫 프레임을 올린 뒤 녹화 시작
+        showFrame(0).then(function () {
+          rec.start(100);
+          var t0 = performance.now();
+          function tick() {
+            var due = Math.floor((performance.now() - t0) / 1000 * fps);
+            var next = Math.min(total - 1, due);
+            var p = Promise.resolve();
+            if (next > k) { k = next; p = showFrame(k); }
+            p.then(function () {
+              if (k % 5 === 0) onProgress(0.6 + 0.4 * k / (total - 1), '녹화 중');
+              if (k < total - 1) requestAnimationFrame(tick);
+              else setTimeout(function () { rec.stop(); }, 200);
+            });
+          }
+          requestAnimationFrame(tick);
+        });
+      }
+
+      renderNext().then(play).catch(reject);
     });
   }
 
@@ -1172,8 +1248,8 @@
         }).catch(function (e) {
           // 안 되면 실시간 녹화로
           vsay('고화질 인코더를 못 써서 실시간 녹화로 전환합니다 (' + e.message + ')', 'info');
-          return recordWithMediaRecorder(tl, function (p) {
-            vsay('녹화 중 ' + Math.round(p * 100) + '%', 'info');
+          return recordWithMediaRecorder(tl, function (p, label) {
+            vsay((label || '녹화 중') + ' ' + Math.round(p * 100) + '%', 'info');
           }).then(function (r) {
             save(r.blob, r.isMp4 ? '.mp4' : '.webm',
                  (r.isMp4 ? 'MP4' : 'WebM') + ' 로 저장했습니다.' +
@@ -1181,8 +1257,8 @@
           });
         });
       }
-      return recordWithMediaRecorder(tl, function (p) {
-        vsay('녹화 중 ' + Math.round(p * 100) + '%', 'info');
+      return recordWithMediaRecorder(tl, function (p, label) {
+        vsay((label || '녹화 중') + ' ' + Math.round(p * 100) + '%', 'info');
       }).then(function (r) {
         save(r.blob, r.isMp4 ? '.mp4' : '.webm',
              (r.isMp4 ? 'MP4' : 'WebM') + ' 로 저장했습니다.');
