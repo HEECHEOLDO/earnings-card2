@@ -2,14 +2,14 @@
  "name": "CASY",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "CASEY'S GENERAL STORES, INC.",
+ "legal_name": "CASEY’S GENERAL STORES, INC.",
  "code": "CASY",
  "cik": "0000726958",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-09-09",
+ "updated": "2026-09-10",
  "annual": [
   {
    "p": 2017,
@@ -122,7 +122,7 @@
    "ni": 546.5,
    "assets": 8208.1,
    "liab": 4699.4,
-   "equity": 3508.7,
+   "equity": 3640.7,
    "dps": null,
    "payout": 13.2,
    "yield": null,
@@ -133,9 +133,9 @@
    "rev": 17561.1,
    "op": null,
    "ni": 714.4,
-   "assets": 8936.1,
-   "liab": 4984.3,
-   "equity": 3951.7,
+   "assets": 9121.3,
+   "liab": 5027.4,
+   "equity": 4093.9,
    "dps": null,
    "payout": 11.6,
    "yield": null,
@@ -143,13 +143,6 @@
   }
  ],
  "quarterly": [
-  {
-   "y": 2024,
-   "q": 3,
-   "rev": 3329.2,
-   "op": null,
-   "ni": 86.9
-  },
   {
    "y": 2024,
    "q": 4,
@@ -212,6 +205,13 @@
    "rev": 4571.8,
    "op": null,
    "ni": 162.7
+  },
+  {
+   "y": 2027,
+   "q": 1,
+   "rev": 5678.3,
+   "op": null,
+   "ni": 273.7
   }
  ]
 }
