@@ -1,100 +1,141 @@
 {
  "name": "LS네트웍스",
+ "split_adjusted": false,
  "legal_name": "LS네트웍스",
  "code": "000680",
- "market": "",
+ "market": "코스피",
  "sector": "",
- "updated": "2026-08-17",
+ "updated": "2026-09-10",
  "annual": [
   {
    "p": 2016,
    "rev": 4870.4,
    "op": -582.3,
    "ni": -871.4,
+   "assets": 12613.2,
+   "liab": 6583.9,
+   "equity": 6029.3,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2017,
    "rev": 4433.5,
    "op": 27.7,
    "ni": 206.0,
+   "assets": 12734.9,
+   "liab": 6506.4,
+   "equity": 6228.5,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2018,
    "rev": 4458.9,
    "op": 38.4,
    "ni": 163.0,
+   "assets": 12736.4,
+   "liab": 6354.9,
+   "equity": 6381.5,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2019,
    "rev": 4028.1,
    "op": -215.5,
    "ni": -690.8,
+   "assets": 11680.9,
+   "liab": 6486.8,
+   "equity": 5194.1,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2020,
    "rev": 3348.6,
    "op": -322.7,
    "ni": -246.7,
+   "assets": 12284.0,
+   "liab": 7351.9,
+   "equity": 4932.1,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2021,
    "rev": 3904.7,
    "op": 43.1,
    "ni": 600.9,
+   "assets": 13093.7,
+   "liab": 7557.4,
+   "equity": 5536.3,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2022,
    "rev": 3629.1,
    "op": 80.2,
    "ni": -24.0,
+   "assets": 13004.4,
+   "liab": 7485.7,
+   "equity": 5518.8,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2023,
    "rev": 3796.3,
    "op": 116.2,
    "ni": 107.0,
+   "assets": 13092.2,
+   "liab": 7452.1,
+   "equity": 5640.1,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2024,
    "rev": 19338.1,
    "op": 256.2,
    "ni": -318.9,
+   "assets": 96015.1,
+   "liab": 86706.7,
+   "equity": 9308.3,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2025,
    "rev": 26152.5,
    "op": 222.9,
    "ni": -191.0,
+   "assets": 116853.6,
+   "liab": 104074.0,
+   "equity": 12779.6,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   }
  ],
  "quarterly": [

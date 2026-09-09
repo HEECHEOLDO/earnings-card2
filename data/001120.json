@@ -1,100 +1,141 @@
 {
  "name": "LX인터내셔널",
+ "split_adjusted": false,
  "legal_name": "LX인터내셔널",
  "code": "001120",
- "market": "",
+ "market": "코스피",
  "sector": "",
- "updated": "2026-08-17",
+ "updated": "2026-09-10",
  "annual": [
   {
    "p": 2016,
    "rev": 119667.2,
    "op": 1740.7,
    "ni": 847.5,
+   "assets": 51772.7,
+   "liab": 35319.1,
+   "equity": 16453.6,
    "dps": 250.0,
    "payout": 16.62,
-   "yield": 0.8
+   "yield": 0.8,
+   "dps_adj": 250.0
   },
   {
    "p": 2017,
    "rev": 128272.4,
    "op": 2122.5,
    "ni": 881.8,
+   "assets": 49676.0,
+   "liab": 33821.4,
+   "equity": 15854.6,
    "dps": 250.0,
    "payout": 16.05,
-   "yield": 0.9
+   "yield": 0.9,
+   "dps_adj": 250.0
   },
   {
    "p": 2018,
    "rev": 99882.2,
    "op": 1656.6,
    "ni": -359.9,
+   "assets": 50380.7,
+   "liab": 34885.3,
+   "equity": 15495.4,
    "dps": 250.0,
    "payout": null,
-   "yield": 1.6
+   "yield": 1.6,
+   "dps_adj": 250.0
   },
   {
    "p": 2019,
    "rev": 105308.6,
    "op": 1347.8,
    "ni": -148.6,
+   "assets": 48759.8,
+   "liab": 33273.7,
+   "equity": 15486.2,
    "dps": 300.0,
    "payout": 40.59,
-   "yield": 2.0
+   "yield": 2.0,
+   "dps_adj": 300.0
   },
   {
    "p": 2020,
    "rev": 112826.3,
    "op": 1598.4,
    "ni": 3616.1,
+   "assets": 53959.4,
+   "liab": 36376.1,
+   "equity": 17583.3,
    "dps": 400.0,
    "payout": 4.83,
-   "yield": 1.6
+   "yield": 1.6,
+   "dps_adj": 400.0
   },
   {
    "p": 2021,
    "rev": 166865.3,
    "op": 6562.2,
    "ni": 5403.3,
+   "assets": 67468.9,
+   "liab": 43626.4,
+   "equity": 23842.4,
    "dps": 2300.0,
    "payout": 23.6,
-   "yield": 8.6
+   "yield": 8.6,
+   "dps_adj": 2300.0
   },
   {
    "p": 2022,
    "rev": 187595.5,
    "op": 9655.4,
    "ni": 7793.1,
+   "assets": 77190.1,
+   "liab": 46825.3,
+   "equity": 30364.8,
    "dps": 3000.0,
    "payout": 20.9,
-   "yield": 7.3
+   "yield": 7.3,
+   "dps_adj": 3000.0
   },
   {
    "p": 2023,
    "rev": 145143.5,
    "op": 4331.1,
    "ni": 1933.6,
+   "assets": 79953.4,
+   "liab": 49203.9,
+   "equity": 30749.5,
    "dps": 1200.0,
    "payout": 36.9,
-   "yield": 3.8
+   "yield": 3.8,
+   "dps_adj": 1200.0
   },
   {
    "p": 2024,
    "rev": 166375.7,
    "op": 4891.9,
    "ni": 2694.9,
+   "assets": 89308.7,
+   "liab": 56112.5,
+   "equity": 33196.1,
    "dps": 2000.0,
    "payout": 40.9,
-   "yield": 8.1
+   "yield": 8.1,
+   "dps_adj": 2000.0
   },
   {
    "p": 2025,
    "rev": 167063.1,
    "op": 2921.9,
    "ni": 1582.6,
+   "assets": 93283.0,
+   "liab": 57926.0,
+   "equity": 35357.1,
    "dps": 2000.0,
    "payout": 50.7,
-   "yield": 5.5
+   "yield": 5.5,
+   "dps_adj": 2000.0
   }
  ],
  "quarterly": [

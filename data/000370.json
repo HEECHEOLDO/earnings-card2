@@ -1,19 +1,24 @@
 {
  "name": "한화손해보험",
+ "split_adjusted": false,
  "legal_name": "한화손해보험",
  "code": "000370",
- "market": "",
+ "market": "코스피",
  "sector": "",
- "updated": "2026-08-17",
+ "updated": "2026-09-10",
  "annual": [
   {
    "p": 2023,
    "rev": 0.0,
    "op": 3065.2,
    "ni": 2127.6,
+   "assets": 181152.6,
+   "liab": 147694.8,
+   "equity": 33457.8,
    "dps": 200.0,
    "payout": 14.8,
-   "yield": 3.8
+   "yield": 3.8,
+   "dps_adj": 200.0
   }
  ],
  "quarterly": [

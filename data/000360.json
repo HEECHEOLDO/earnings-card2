@@ -1,19 +1,24 @@
 {
  "name": "삼환기업",
+ "split_adjusted": false,
  "legal_name": "삼환기업",
  "code": "000360",
- "market": "",
+ "market": "기타",
  "sector": "",
- "updated": "2026-08-17",
+ "updated": "2026-09-10",
  "annual": [
   {
    "p": 2018,
    "rev": 1678.8,
    "op": -167.7,
    "ni": -66.2,
+   "assets": 1330.0,
+   "liab": 641.8,
+   "equity": 688.2,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   }
  ],
  "quarterly": []

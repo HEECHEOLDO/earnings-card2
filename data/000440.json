@@ -1,100 +1,141 @@
 {
  "name": "중앙에너비스",
+ "split_adjusted": true,
  "legal_name": "중앙에너비스",
  "code": "000440",
- "market": "",
+ "market": "코스닥",
  "sector": "",
- "updated": "2026-08-17",
+ "updated": "2026-09-10",
  "annual": [
   {
    "p": 2016,
    "rev": 916.3,
    "op": 21.1,
    "ni": 13.6,
+   "assets": 775.4,
+   "liab": 267.5,
+   "equity": 507.8,
    "dps": 800.0,
    "payout": 70.3,
-   "yield": 2.61
+   "yield": 2.61,
+   "dps_adj": 160.0
   },
   {
    "p": 2017,
    "rev": 708.2,
    "op": 6.4,
    "ni": 16.0,
+   "assets": 604.9,
+   "liab": 153.0,
+   "equity": 451.9,
    "dps": 880.0,
    "payout": 51.2,
-   "yield": 2.96
+   "yield": 2.96,
+   "dps_adj": 176.0
   },
   {
    "p": 2018,
    "rev": 761.3,
    "op": 14.2,
    "ni": 8.9,
+   "assets": 587.4,
+   "liab": 134.8,
+   "equity": 452.6,
    "dps": 160.0,
    "payout": 83.4,
-   "yield": 2.37
+   "yield": 2.37,
+   "dps_adj": 160.0
   },
   {
    "p": 2019,
    "rev": 657.0,
    "op": 6.4,
    "ni": 6.2,
+   "assets": 615.8,
+   "liab": 164.5,
+   "equity": 451.2,
    "dps": 160.0,
    "payout": 120.7,
-   "yield": 1.98
+   "yield": 1.98,
+   "dps_adj": 160.0
   },
   {
    "p": 2020,
    "rev": 535.6,
    "op": 1.3,
    "ni": 192.0,
+   "assets": 713.3,
+   "liab": 97.2,
+   "equity": 616.1,
    "dps": null,
    "payout": 11.1,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2021,
    "rev": 607.1,
    "op": 0.4,
    "ni": 2.5,
+   "assets": 644.6,
+   "liab": 48.1,
+   "equity": 596.6,
    "dps": 320.0,
    "payout": 565.3,
-   "yield": 1.85
+   "yield": 1.85,
+   "dps_adj": 320.0
   },
   {
    "p": 2022,
    "rev": 716.2,
    "op": 8.1,
    "ni": 5.0,
+   "assets": 634.2,
+   "liab": 46.0,
+   "equity": 588.2,
    "dps": 320.0,
    "payout": 283.8,
-   "yield": 1.64
+   "yield": 1.64,
+   "dps_adj": 320.0
   },
   {
    "p": 2023,
    "rev": 554.7,
    "op": -7.4,
    "ni": -2.5,
+   "assets": 615.3,
+   "liab": 45.0,
+   "equity": 570.3,
    "dps": 320.0,
    "payout": -565.3,
-   "yield": 1.82
+   "yield": 1.82,
+   "dps_adj": 320.0
   },
   {
    "p": 2024,
    "rev": 498.1,
    "op": -17.5,
    "ni": -9.4,
+   "assets": 584.8,
+   "liab": 39.2,
+   "equity": 545.6,
    "dps": 320.0,
    "payout": -150.5,
-   "yield": 1.97
+   "yield": 1.97,
+   "dps_adj": 320.0
   },
   {
    "p": 2025,
    "rev": 495.9,
    "op": -17.4,
    "ni": -11.2,
+   "assets": 549.9,
+   "liab": 29.9,
+   "equity": 520.1,
    "dps": 353.0,
    "payout": -140.4,
-   "yield": 2.22
+   "yield": 2.22,
+   "dps_adj": 353.0
   }
  ],
  "quarterly": [

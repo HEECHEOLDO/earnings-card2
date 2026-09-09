@@ -1,100 +1,141 @@
 {
  "name": "천일고속",
+ "split_adjusted": false,
  "legal_name": "천일고속",
  "code": "000650",
- "market": "",
+ "market": "코스피",
  "sector": "",
- "updated": "2026-08-17",
+ "updated": "2026-09-10",
  "annual": [
   {
    "p": 2016,
    "rev": 584.1,
    "op": 10.8,
    "ni": 25.0,
+   "assets": 525.4,
+   "liab": 136.9,
+   "equity": 388.6,
    "dps": 8000.0,
    "payout": 456.81,
-   "yield": 8.7
+   "yield": 8.7,
+   "dps_adj": 8000.0
   },
   {
    "p": 2017,
    "rev": 552.5,
    "op": -20.1,
    "ni": 271.0,
+   "assets": 678.4,
+   "liab": 207.0,
+   "equity": 471.4,
    "dps": 15300.0,
    "payout": 80.55,
-   "yield": 15.3
+   "yield": 15.3,
+   "dps_adj": 15300.0
   },
   {
    "p": 2018,
    "rev": 555.6,
    "op": -31.5,
    "ni": null,
+   "assets": 804.1,
+   "liab": 185.3,
+   "equity": 618.8,
    "dps": 6000.0,
    "payout": null,
-   "yield": 6.9
+   "yield": 6.9,
+   "dps_adj": 6000.0
   },
   {
    "p": 2019,
    "rev": 596.3,
    "op": 5.6,
    "ni": 7.2,
+   "assets": 800.4,
+   "liab": 290.4,
+   "equity": 510.0,
    "dps": 5000.0,
    "payout": 648.34,
-   "yield": 6.9
+   "yield": 6.9,
+   "dps_adj": 5000.0
   },
   {
    "p": 2020,
    "rev": 311.6,
    "op": -100.0,
    "ni": -67.6,
+   "assets": 670.2,
+   "liab": 290.8,
+   "equity": 379.4,
    "dps": 3000.0,
    "payout": -63.3,
-   "yield": 4.1
+   "yield": 4.1,
+   "dps_adj": 3000.0
   },
   {
    "p": 2021,
    "rev": 293.4,
    "op": -98.4,
    "ni": -5.7,
+   "assets": 627.1,
+   "liab": 267.8,
+   "equity": 359.3,
    "dps": 2500.0,
    "payout": -628.1,
-   "yield": 3.6
+   "yield": 3.6,
+   "dps_adj": 2500.0
   },
   {
    "p": 2022,
    "rev": 377.0,
    "op": -74.1,
    "ni": -60.1,
+   "assets": 548.5,
+   "liab": 282.3,
+   "equity": 266.2,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2023,
    "rev": 440.0,
    "op": -51.5,
    "ni": -48.1,
+   "assets": 547.4,
+   "liab": 356.8,
+   "equity": 190.6,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2024,
    "rev": 447.2,
    "op": -52.7,
    "ni": -42.0,
+   "assets": 535.0,
+   "liab": 394.2,
+   "equity": 140.9,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2025,
    "rev": 455.5,
    "op": -59.4,
    "ni": -56.2,
+   "assets": 535.3,
+   "liab": 439.5,
+   "equity": 95.8,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   }
  ],
  "quarterly": [

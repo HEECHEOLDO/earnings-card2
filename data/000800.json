@@ -1,82 +1,115 @@
 {
  "name": "경남기업",
+ "split_adjusted": false,
  "legal_name": "경남기업",
  "code": "000800",
- "market": "",
+ "market": "기타",
  "sector": "",
- "updated": "2026-08-17",
+ "updated": "2026-09-10",
  "annual": [
   {
    "p": 2018,
    "rev": 2404.6,
    "op": 62.8,
    "ni": 422.1,
+   "assets": 2721.4,
+   "liab": 2097.2,
+   "equity": 624.3,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2019,
    "rev": 2763.2,
    "op": 154.7,
    "ni": 185.3,
+   "assets": 3344.3,
+   "liab": 2575.4,
+   "equity": 769.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2020,
    "rev": 3044.3,
    "op": 132.0,
    "ni": 203.4,
+   "assets": 4104.0,
+   "liab": 3140.0,
+   "equity": 964.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2021,
    "rev": 4156.5,
    "op": 221.0,
    "ni": 343.0,
+   "assets": 4961.2,
+   "liab": 3645.2,
+   "equity": 1316.1,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2022,
    "rev": 3554.6,
    "op": 127.8,
    "ni": 436.5,
+   "assets": 5085.4,
+   "liab": 3343.4,
+   "equity": 1742.1,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2023,
    "rev": 4879.8,
    "op": 193.4,
    "ni": 131.8,
+   "assets": 5301.9,
+   "liab": 3467.7,
+   "equity": 1834.2,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2024,
    "rev": 5403.6,
    "op": 286.1,
    "ni": 255.9,
+   "assets": 5868.1,
+   "liab": 3784.8,
+   "equity": 2083.3,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2025,
    "rev": 3945.2,
    "op": 625.8,
    "ni": 705.8,
+   "assets": 6814.0,
+   "liab": 3961.6,
+   "equity": 2852.4,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   }
  ],
  "quarterly": [

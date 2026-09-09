@@ -1,100 +1,141 @@
 {
  "name": "KR모터스",
+ "split_adjusted": false,
  "legal_name": "KR모터스",
  "code": "000040",
- "market": "",
+ "market": "코스피",
  "sector": "",
- "updated": "2026-08-17",
+ "updated": "2026-09-10",
  "annual": [
   {
    "p": 2016,
    "rev": 847.8,
    "op": -81.4,
    "ni": -99.8,
+   "assets": 1488.7,
+   "liab": 861.3,
+   "equity": 627.4,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2017,
    "rev": 416.6,
    "op": -260.3,
    "ni": -315.0,
+   "assets": 1084.4,
+   "liab": 632.2,
+   "equity": 452.2,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2018,
    "rev": 365.6,
    "op": -162.6,
    "ni": -244.4,
+   "assets": 1549.0,
+   "liab": 850.1,
+   "equity": 698.9,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2019,
    "rev": 1325.8,
    "op": -246.5,
    "ni": -410.4,
+   "assets": 1440.8,
+   "liab": 1088.7,
+   "equity": 352.1,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2020,
    "rev": 1178.3,
    "op": 12.2,
    "ni": -114.9,
+   "assets": 1558.7,
+   "liab": 1060.3,
+   "equity": 498.5,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2021,
    "rev": 1335.1,
    "op": -27.0,
    "ni": -119.2,
+   "assets": 1684.4,
+   "liab": 1182.1,
+   "equity": 502.3,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2022,
    "rev": 1170.6,
    "op": -62.3,
    "ni": -130.0,
+   "assets": 1491.9,
+   "liab": 1091.6,
+   "equity": 400.2,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2023,
    "rev": 784.1,
    "op": -178.6,
    "ni": -210.3,
+   "assets": 1385.7,
+   "liab": 1161.7,
+   "equity": 224.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2024,
    "rev": 160.2,
    "op": -49.4,
    "ni": -142.2,
+   "assets": 852.7,
+   "liab": 526.3,
+   "equity": 326.4,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2025,
    "rev": 138.2,
    "op": -28.9,
    "ni": -19.0,
+   "assets": 942.0,
+   "liab": 505.2,
+   "equity": 436.7,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   }
  ],
  "quarterly": [

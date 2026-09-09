@@ -1,37 +1,50 @@
 {
  "name": "유진증권",
+ "split_adjusted": false,
  "legal_name": "유진증권",
  "code": "001200",
- "market": "",
+ "market": "코스피",
  "sector": "",
- "updated": "2026-08-17",
+ "updated": "2026-09-10",
  "annual": [
   {
    "p": 2023,
    "rev": 16476.6,
    "op": 270.4,
    "ni": 307.0,
+   "assets": 86993.3,
+   "liab": 76874.3,
+   "equity": 10119.0,
    "dps": 60.0,
    "payout": 18.0,
-   "yield": 1.7
+   "yield": 1.7,
+   "dps_adj": 60.0
   },
   {
    "p": 2024,
    "rev": 16526.0,
    "op": 583.4,
    "ni": 496.2,
+   "assets": 96467.1,
+   "liab": 85953.3,
+   "equity": 10513.8,
    "dps": 100.0,
    "payout": 18.5,
-   "yield": 3.8
+   "yield": 3.8,
+   "dps_adj": 100.0
   },
   {
    "p": 2025,
    "rev": 16940.8,
    "op": 844.4,
    "ni": 645.4,
+   "assets": 110490.3,
+   "liab": 99165.6,
+   "equity": 11324.7,
    "dps": 180.0,
    "payout": 25.6,
-   "yield": 3.6
+   "yield": 3.6,
+   "dps_adj": 180.0
   }
  ],
  "quarterly": [

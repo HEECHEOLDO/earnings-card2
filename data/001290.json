@@ -1,37 +1,50 @@
 {
  "name": "상상인증권",
+ "split_adjusted": false,
  "legal_name": "상상인증권",
  "code": "001290",
- "market": "",
+ "market": "코스피",
  "sector": "",
- "updated": "2026-08-17",
+ "updated": "2026-09-10",
  "annual": [
   {
    "p": 2023,
    "rev": 1821.9,
    "op": 9.6,
    "ni": 4.9,
+   "assets": 21737.6,
+   "liab": 19396.1,
+   "equity": 2341.5,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2024,
    "rev": 3226.7,
    "op": -497.1,
    "ni": -473.5,
+   "assets": 12309.2,
+   "liab": 10498.3,
+   "equity": 1810.9,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   },
   {
    "p": 2025,
    "rev": 1817.3,
    "op": -90.9,
    "ni": -58.6,
+   "assets": 12446.7,
+   "liab": 10492.8,
+   "equity": 1954.0,
    "dps": null,
    "payout": null,
-   "yield": null
+   "yield": null,
+   "dps_adj": null
   }
  ],
  "quarterly": [

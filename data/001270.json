@@ -1,37 +1,50 @@
 {
  "name": "부국증권",
+ "split_adjusted": false,
  "legal_name": "부국증권",
  "code": "001270",
- "market": "",
+ "market": "코스피",
  "sector": "",
- "updated": "2026-08-17",
+ "updated": "2026-09-10",
  "annual": [
   {
    "p": 2023,
    "rev": 8150.4,
    "op": 691.1,
    "ni": 573.1,
+   "assets": 17704.9,
+   "liab": 10126.1,
+   "equity": 7578.8,
    "dps": 1500.0,
    "payout": 23.56,
-   "yield": 5.63
+   "yield": 5.63,
+   "dps_adj": 1500.0
   },
   {
    "p": 2024,
    "rev": 7791.7,
    "op": 366.7,
    "ni": 309.5,
+   "assets": 16513.7,
+   "liab": 8811.0,
+   "equity": 7702.7,
    "dps": 1500.0,
    "payout": 43.62,
-   "yield": 5.59
+   "yield": 5.59,
+   "dps_adj": 1500.0
   },
   {
    "p": 2025,
    "rev": 9654.6,
    "op": 567.8,
    "ni": 456.4,
+   "assets": 18119.2,
+   "liab": 9786.6,
+   "equity": 8332.6,
    "dps": 2400.0,
    "payout": 47.14,
-   "yield": 3.2
+   "yield": 3.2,
+   "dps_adj": 2400.0
   }
  ],
  "quarterly": [
