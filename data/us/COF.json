@@ -2,14 +2,14 @@
  "name": "COF",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "CAPITAL ONE FINANCIAL CORP",
+ "legal_name": "CAPITAL ONE FINANCIAL CORP",
  "code": "COF",
  "cik": "0000927628",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-09-11",
+ "updated": "2026-09-12",
  "annual": [
   {
    "p": 2016,
@@ -144,13 +144,6 @@
  ],
  "quarterly": [
   {
-   "y": 2023,
-   "q": 4,
-   "rev": 9506.0,
-   "op": -4883.0,
-   "ni": 706.0
-  },
-  {
    "y": 2024,
    "q": 1,
    "rev": 9402.0,
@@ -212,6 +205,13 @@
    "rev": 15231.0,
    "op": 2699.0,
    "ni": 2174.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 15850.0,
+   "op": 3818.0,
+   "ni": 3020.0
   }
  ]
 }

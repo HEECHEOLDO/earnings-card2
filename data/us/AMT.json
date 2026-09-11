@@ -2,14 +2,14 @@
  "name": "AMT",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "AMERICAN TOWER CORPORATION",
+ "legal_name": "AMERICAN TOWER CORP /MA/",
  "code": "AMT",
  "cik": "0001053507",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-09-11",
+ "updated": "2026-09-12",
  "annual": [
   {
    "p": 2016,
@@ -144,13 +144,6 @@
  ],
  "quarterly": [
   {
-   "y": 2023,
-   "q": 4,
-   "rev": 2456.1,
-   "op": 612.8,
-   "ni": null
-  },
-  {
    "y": 2024,
    "q": 1,
    "rev": 2512.6,
@@ -212,6 +205,13 @@
    "rev": 2737.5,
    "op": 1239.2,
    "ni": 878.5
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 2749.1,
+   "op": 1268.8,
+   "ni": 887.5
   }
  ]
 }

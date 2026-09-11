@@ -2,28 +2,15 @@
  "name": "PANW",
  "split_adjusted": true,
  "restated_from": null,
- "legal_name": "PALO ALTO NETWORKS, INC",
+ "legal_name": "Palo Alto Networks, Inc",
  "code": "PANW",
  "cik": "0001327567",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-09-11",
+ "updated": "2026-09-12",
  "annual": [
-  {
-   "p": 2016,
-   "rev": 1378.5,
-   "op": -157.3,
-   "ni": -192.7,
-   "assets": 2858.2,
-   "liab": null,
-   "equity": 894.9,
-   "dps": null,
-   "payout": null,
-   "yield": null,
-   "dps_adj": null
-  },
   {
    "p": 2017,
    "rev": 1755.1,
@@ -109,7 +96,7 @@
    "ni": 439.7,
    "assets": 14501.1,
    "liab": 12752.7,
-   "equity": 1748.4,
+   "equity": 1748.0,
    "dps": null,
    "payout": null,
    "yield": null,
@@ -117,9 +104,9 @@
   },
   {
    "p": 2024,
-   "rev": 8027.5,
-   "op": 683.9,
-   "ni": 2577.6,
+   "rev": 8027.0,
+   "op": 684.0,
+   "ni": 2578.0,
    "assets": 19990.9,
    "liab": 14821.2,
    "equity": 5169.0,
@@ -130,9 +117,9 @@
   },
   {
    "p": 2025,
-   "rev": 9221.5,
-   "op": 1242.9,
-   "ni": 1133.9,
+   "rev": 9221.0,
+   "op": 1243.0,
+   "ni": 1134.0,
    "assets": 23576.0,
    "liab": 15752.0,
    "equity": 7824.0,
@@ -140,16 +127,22 @@
    "payout": null,
    "yield": null,
    "dps_adj": null
+  },
+  {
+   "p": 2026,
+   "rev": 11480.0,
+   "op": 695.0,
+   "ni": 307.0,
+   "assets": 48460.0,
+   "liab": 20968.0,
+   "equity": 27492.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
   }
  ],
  "quarterly": [
-  {
-   "y": 2024,
-   "q": 2,
-   "rev": 1975.1,
-   "op": 53.6,
-   "ni": 1746.9
-  },
   {
    "y": 2024,
    "q": 3,
@@ -160,9 +153,9 @@
   {
    "y": 2024,
    "q": 4,
-   "rev": 2189.5,
-   "op": 238.4,
-   "ni": 357.7
+   "rev": 2189.0,
+   "op": 238.5,
+   "ni": 358.1
   },
   {
    "y": 2025,
@@ -188,9 +181,9 @@
   {
    "y": 2025,
    "q": 4,
-   "rev": 2536.5,
-   "op": 496.9,
-   "ni": 253.9
+   "rev": 2536.0,
+   "op": 497.0,
+   "ni": 254.0
   },
   {
    "y": 2026,
@@ -212,6 +205,13 @@
    "rev": 3002.0,
    "op": -183.0,
    "ni": -177.0
+  },
+  {
+   "y": 2026,
+   "q": 4,
+   "rev": 3410.0,
+   "op": 172.0,
+   "ni": -282.0
   }
  ]
 }
