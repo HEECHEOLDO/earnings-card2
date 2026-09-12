@@ -1,11 +1,11 @@
 {
  "name": "삼진",
- "split_adjusted": true,
+ "split_adjusted": false,
  "legal_name": "삼진",
  "code": "032750",
  "market": "코스닥",
  "sector": "",
- "updated": "2026-08-22",
+ "updated": "2026-09-13",
  "annual": [
   {
    "p": 2016,
@@ -18,7 +18,7 @@
    "dps": 120.0,
    "payout": 12.4,
    "yield": 1.5,
-   "dps_adj": 110.7
+   "dps_adj": 120.0
   },
   {
    "p": 2017,
@@ -31,7 +31,7 @@
    "dps": 150.0,
    "payout": 32.5,
    "yield": 1.5,
-   "dps_adj": 138.4
+   "dps_adj": 150.0
   },
   {
    "p": 2018,
@@ -44,7 +44,7 @@
    "dps": 100.0,
    "payout": 37.5,
    "yield": 1.3,
-   "dps_adj": 92.3
+   "dps_adj": 100.0
   },
   {
    "p": 2019,
@@ -57,7 +57,7 @@
    "dps": 200.0,
    "payout": 9.9,
    "yield": 1.7,
-   "dps_adj": 184.5
+   "dps_adj": 200.0
   },
   {
    "p": 2020,
@@ -70,7 +70,7 @@
    "dps": 200.0,
    "payout": 18.2,
    "yield": 1.7,
-   "dps_adj": 184.5
+   "dps_adj": 200.0
   },
   {
    "p": 2021,
@@ -83,7 +83,7 @@
    "dps": 100.0,
    "payout": 6.2,
    "yield": 0.9,
-   "dps_adj": 92.3
+   "dps_adj": 100.0
   },
   {
    "p": 2022,
@@ -96,7 +96,7 @@
    "dps": 80.0,
    "payout": 30.5,
    "yield": 1.3,
-   "dps_adj": 73.8
+   "dps_adj": 80.0
   },
   {
    "p": 2023,
@@ -109,7 +109,7 @@
    "dps": 70.0,
    "payout": 486.2,
    "yield": 1.2,
-   "dps_adj": 64.6
+   "dps_adj": 70.0
   },
   {
    "p": 2024,
@@ -122,7 +122,7 @@
    "dps": 80.0,
    "payout": 486.2,
    "yield": 1.9,
-   "dps_adj": 4870.9
+   "dps_adj": 80.0
   },
   {
    "p": 2025,

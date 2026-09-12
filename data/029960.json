@@ -1,11 +1,11 @@
 {
  "name": "코엔텍",
- "split_adjusted": true,
+ "split_adjusted": false,
  "legal_name": "코엔텍",
  "code": "029960",
  "market": "기타",
  "sector": "",
- "updated": "2026-08-22",
+ "updated": "2026-09-13",
  "annual": [
   {
    "p": 2016,
@@ -18,7 +18,7 @@
    "dps": 25.0,
    "payout": 8.5,
    "yield": 0.87,
-   "dps_adj": 25.2
+   "dps_adj": 25.0
   },
   {
    "p": 2017,
@@ -31,7 +31,7 @@
    "dps": 25.0,
    "payout": 7.8,
    "yield": 0.48,
-   "dps_adj": 25.2
+   "dps_adj": 25.0
   },
   {
    "p": 2018,
@@ -44,7 +44,7 @@
    "dps": 400.0,
    "payout": 1.23,
    "yield": 5.4,
-   "dps_adj": 6.1
+   "dps_adj": 400.0
   },
   {
    "p": 2019,

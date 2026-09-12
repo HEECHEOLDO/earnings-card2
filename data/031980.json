@@ -1,11 +1,11 @@
 {
  "name": "피에스케이홀딩스",
- "split_adjusted": true,
+ "split_adjusted": false,
  "legal_name": "피에스케이홀딩스",
  "code": "031980",
  "market": "코스닥",
  "sector": "",
- "updated": "2026-08-22",
+ "updated": "2026-09-13",
  "annual": [
   {
    "p": 2016,
@@ -18,7 +18,7 @@
    "dps": 250.0,
    "payout": 25.88,
    "yield": 1.8,
-   "dps_adj": 1413.0
+   "dps_adj": 250.0
   },
   {
    "p": 2017,
@@ -31,7 +31,7 @@
    "dps": 400.0,
    "payout": 20.61,
    "yield": 1.6,
-   "dps_adj": 2260.8
+   "dps_adj": 400.0
   },
   {
    "p": 2018,
@@ -44,7 +44,7 @@
    "dps": 400.0,
    "payout": 14.98,
    "yield": 3.34,
-   "dps_adj": 2260.8
+   "dps_adj": 400.0
   },
   {
    "p": 2019,

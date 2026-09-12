@@ -1,11 +1,11 @@
 {
  "name": "위즈코프",
- "split_adjusted": true,
+ "split_adjusted": false,
  "legal_name": "위즈코프",
  "code": "038620",
  "market": "코스닥",
  "sector": "",
- "updated": "2026-08-23",
+ "updated": "2026-09-13",
  "annual": [
   {
    "p": 2016,
@@ -31,7 +31,7 @@
    "dps": 20.0,
    "payout": 43.4,
    "yield": 1.3,
-   "dps_adj": 65.5
+   "dps_adj": 20.0
   },
   {
    "p": 2018,
