@@ -1,11 +1,11 @@
 {
  "name": "서산",
- "split_adjusted": true,
+ "split_adjusted": false,
  "legal_name": "서산",
  "code": "079650",
  "market": "코스닥",
  "sector": "",
- "updated": "2026-08-28",
+ "updated": "2026-09-15",
  "annual": [
   {
    "p": 2016,
@@ -18,7 +18,7 @@
    "dps": 1250.0,
    "payout": 5.7,
    "yield": 0.6,
-   "dps_adj": 30.8
+   "dps_adj": 1250.0
   },
   {
    "p": 2017,

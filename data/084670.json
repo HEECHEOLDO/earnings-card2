@@ -1,11 +1,11 @@
 {
  "name": "동양고속",
- "split_adjusted": true,
+ "split_adjusted": false,
  "legal_name": "동양고속",
  "code": "084670",
  "market": "코스피",
  "sector": "",
- "updated": "2026-08-28",
+ "updated": "2026-09-15",
  "annual": [
   {
    "p": 2016,
@@ -18,7 +18,7 @@
    "dps": 200.0,
    "payout": 7.18,
    "yield": 0.5,
-   "dps_adj": 7.1
+   "dps_adj": 200.0
   },
   {
    "p": 2017,
@@ -31,7 +31,7 @@
    "dps": 800.0,
    "payout": null,
    "yield": 1.43,
-   "dps_adj": 28.5
+   "dps_adj": 800.0
   },
   {
    "p": 2018,
@@ -44,7 +44,7 @@
    "dps": 1000.0,
    "payout": 47.42,
    "yield": 3.44,
-   "dps_adj": 35.6
+   "dps_adj": 1000.0
   },
   {
    "p": 2019,
