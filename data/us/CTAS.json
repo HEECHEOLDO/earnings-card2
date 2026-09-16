@@ -9,7 +9,7 @@
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-09-16",
+ "updated": "2026-09-17",
  "annual": [
   {
    "p": 2017,
@@ -93,7 +93,7 @@
    "p": 2023,
    "rev": 8815.8,
    "op": 1802.7,
-   "ni": 1348.1,
+   "ni": 1348.0,
    "assets": 8546.4,
    "liab": null,
    "equity": 3864.0,
