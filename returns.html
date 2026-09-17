@@ -789,13 +789,8 @@
           ctx.font = font(600, ys * 0.72);
           ctx.fillStyle = T.gold;
           ctx.fillText('YTD', cx, cy + R * (1 + G.yearGap) + ys*1.28);
-        } else if (d.partial) {
-          // 상장 첫해 — 그해 몇 월부터인지
-          ctx.font = font(600, ys * 0.72);
-          ctx.fillStyle = T.gold;
-          ctx.fillText(parseInt(d.partial.slice(5, 7), 10) + '월~', cx,
-                       cy + R * (1 + G.yearGap) + ys*1.28);
         }
+        // 상장 첫해는 카드에 따로 표시하지 않는다 (연평균 계산에만 반영)
         ctx.restore();
       });
       ctx.textAlign = 'left';
