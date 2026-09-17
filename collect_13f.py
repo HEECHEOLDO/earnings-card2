@@ -60,37 +60,90 @@ FUNDS = [
 
 # 카드에 한글로 보이게 — 없는 회사는 영문 이름을 정리해서 쓴다
 KO = {
+    # 빅테크
     "APPLE": "애플", "MICROSOFT": "마이크로소프트", "AMAZON": "아마존", "ALPHABET": "알파벳",
-    "NVIDIA": "엔비디아", "META PLATFORMS": "메타", "TESLA": "테슬라", "BERKSHIRE HATHAWAY": "버크셔",
-    "COCA COLA": "코카콜라", "AMERICAN EXPRESS": "아메리칸 익스프레스", "BANK OF AMERICA": "뱅크오브아메리카",
-    "CHEVRON": "셰브론", "BANK AMER": "뱅크오브아메리카", "AMERICAN EXPRESS": "아메리칸 익스프레스",
-    "NU HLDGS": "누뱅크", "NU HOLDINGS": "누뱅크", "ALLY FINL": "앨리 파이낸셜", "AON": "에이온",
-    "LENNAR": "레나", "DR HORTON": "DR호튼", "HEICO": "헤이코", "LOUISIANA PAC": "루이지애나퍼시픽", "OCCIDENTAL PETROLEUM": "옥시덴탈", "KRAFT HEINZ": "크래프트하인즈",
-    "MOODYS": "무디스", "CHUBB": "처브", "VISA": "비자", "MASTERCARD": "마스터카드",
-    "DAVITA": "다비타", "KROGER": "크로거", "CITIGROUP": "씨티그룹", "CAPITAL ONE": "캐피털원",
-    "VERISIGN": "베리사인", "ALLY FINANCIAL": "앨리 파이낸셜", "SIRIUS XM": "시리우스XM",
-    "DOMINOS PIZZA": "도미노피자", "POOL": "풀", "CONSTELLATION BRANDS": "컨스텔레이션",
-    "UNITEDHEALTH": "유나이티드헬스", "JOHNSON & JOHNSON": "존슨앤드존슨", "PFIZER": "화이자",
-    "ELI LILLY": "일라이릴리", "MERCK": "머크", "ABBVIE": "애브비", "BROADCOM": "브로드컴",
-    "ADVANCED MICRO DEVICES": "AMD", "INTEL": "인텔", "QUALCOMM": "퀄컴", "TAIWAN SEMICONDUCTOR": "TSMC",
-    "NETFLIX": "넷플릭스", "WALT DISNEY": "디즈니", "ORACLE": "오라클", "SALESFORCE": "세일즈포스",
-    "ADOBE": "어도비", "PALANTIR": "팔란티어", "COINBASE": "코인베이스", "ROBINHOOD": "로빈후드",
-    "ROBLOX": "로블록스", "ROKU": "로쿠", "SHOPIFY": "쇼피파이", "UBER": "우버", "AIRBNB": "에어비앤비",
-    "BLOCK": "블록", "PAYPAL": "페이팔", "ZOOM": "줌", "CRISPR THERAPEUTICS": "크리스퍼",
-    "WASTE MANAGEMENT": "웨이스트 매니지먼트", "CATERPILLAR": "캐터필러", "DEERE": "디어",
-    "CANADIAN NATIONAL RAILWAY": "캐나다 내셔널 철도", "ECOLAB": "에코랩", "FEDEX": "페덱스",
-    "WALMART": "월마트", "COSTCO": "코스트코", "HOME DEPOT": "홈디포", "MCDONALDS": "맥도날드",
-    "STARBUCKS": "스타벅스", "NIKE": "나이키", "PROCTER & GAMBLE": "P&G", "PEPSICO": "펩시코",
-    "EXXON MOBIL": "엑슨모빌", "JPMORGAN CHASE": "JP모건", "GOLDMAN SACHS": "골드만삭스",
-    "MORGAN STANLEY": "모건스탠리", "WELLS FARGO": "웰스파고", "BLACKROCK": "블랙록",
-    "ALIBABA": "알리바바", "PINDUODUO": "핀둬둬", "PDD": "핀둬둬", "JD COM": "징둥",
-    "BAIDU": "바이두", "SPDR S&P 500": "S&P500 ETF", "SPDR GOLD": "금 ETF",
-    "ISHARES CORE S&P 500": "S&P500 ETF", "VANGUARD S&P 500": "S&P500 ETF",
-    "INVESCO QQQ": "나스닥100 ETF", "BOEING": "보잉", "GENERAL ELECTRIC": "GE",
-    "LOCKHEED MARTIN": "록히드마틴", "RAYTHEON": "레이시온", "HONEYWELL": "허니웰",
-    "3M": "3M", "AT&T": "AT&T", "VERIZON": "버라이즌", "T MOBILE": "T모바일",
-    "COMCAST": "컴캐스트", "CHARTER COMMUNICATIONS": "차터", "LIBERTY MEDIA": "리버티 미디어",
-    "FORMULA ONE": "포뮬러원", "ATLANTA BRAVES": "애틀랜타 브레이브스",
+    "NVIDIA": "엔비디아", "META PLATFORMS": "메타", "TESLA": "테슬라", "NETFLIX": "넷플릭스",
+    "ORACLE": "오라클", "SALESFORCE": "세일즈포스", "ADOBE": "어도비", "BROADCOM": "브로드컴",
+    "ADVANCED MICRO DEVICES": "AMD", "INTEL": "인텔", "QUALCOMM": "퀄컴", "MICRON": "마이크론",
+    "TAIWAN SEMICONDUCTOR": "TSMC", "ARM HOLDINGS": "ARM", "ASML": "ASML", "APPLIED MATERIALS": "AMAT",
+    "LAM RESEARCH": "램리서치", "KLA": "KLA", "TEXAS INSTRUMENTS": "TI", "ANALOG DEVICES": "ADI",
+    "PALANTIR": "팔란티어", "SERVICENOW": "서비스나우", "SNOWFLAKE": "스노우플레이크", "DATADOG": "데이터독",
+    "CROWDSTRIKE": "크라우드스트라이크", "PALO ALTO": "팔로알토", "FORTINET": "포티넷", "WORKDAY": "워크데이",
+    "INTUIT": "인튜이트", "AUTODESK": "오토데스크", "SYNOPSYS": "시놉시스", "CADENCE": "케이던스",
+    "SHOPIFY": "쇼피파이", "UBER": "우버", "AIRBNB": "에어비앤비", "DOORDASH": "도어대시",
+    "BLOCK": "블록", "PAYPAL": "페이팔", "COINBASE": "코인베이스", "ROBINHOOD": "로빈후드",
+    "ROBLOX": "로블록스", "ROKU": "로쿠", "ZOOM": "줌", "SPOTIFY": "스포티파이", "PINTEREST": "핀터레스트",
+    "SNAP": "스냅", "REDDIT": "레딧", "DUOLINGO": "듀오링고", "UNITY": "유니티", "TWILIO": "트윌리오",
+    "MONGODB": "몽고DB", "CLOUDFLARE": "클라우드플레어", "OKTA": "옥타", "ZSCALER": "지스케일러",
+    "DELL": "델", "HEWLETT PACKARD": "HPE", "HP INC": "HP", "IBM": "IBM", "INTERNATIONAL BUSINESS": "IBM",
+    "CISCO": "시스코", "ARISTA": "아리스타", "SUPER MICRO": "슈퍼마이크로", "VERTIV": "버티브",
+    # 금융
+    "BERKSHIRE HATHAWAY": "버크셔", "JPMORGAN": "JP모건", "BANK AMER": "뱅크오브아메리카",
+    "BANK OF AMERICA": "뱅크오브아메리카", "WELLS FARGO": "웰스파고", "CITIGROUP": "씨티",
+    "GOLDMAN SACHS": "골드만삭스", "MORGAN STANLEY": "모건스탠리", "AMERICAN EXPRESS": "아멕스",
+    "VISA": "비자", "MASTERCARD": "마스터카드", "CAPITAL ONE": "캐피털원", "BLACKROCK": "블랙록",
+    "BLACKSTONE": "블랙스톤", "KKR": "KKR", "APOLLO": "아폴로", "SCHWAB": "슈왑", "CHARLES SCHWAB": "슈왑",
+    "S&P GLOBAL": "S&P글로벌", "MOODYS": "무디스", "MSCI": "MSCI", "CME": "CME", "ICE": "ICE",
+    "INTERCONTINENTAL EXCH": "ICE", "CHUBB": "처브", "PROGRESSIVE": "프로그레시브", "AON": "에이온",
+    "MARSH": "마시", "ALLY FINL": "앨리", "ALLY FINANCIAL": "앨리", "NU HLDGS": "누뱅크", "NU HOLDINGS": "누뱅크",
+    "AMERICAN INTL": "AIG", "METLIFE": "메트라이프", "PRUDENTIAL": "푸르덴셜", "US BANCORP": "US뱅코프",
+    "PNC": "PNC", "TRUIST": "트루이스트", "FISERV": "파이서브", "SOFI": "소파이",
+    # 소비
+    "COCA COLA": "코카콜라", "PEPSICO": "펩시코", "PROCTER & GAMBLE": "P&G", "PROCTER GAMBLE": "P&G",
+    "WALMART": "월마트", "COSTCO": "코스트코", "TARGET": "타겟", "HOME DEPOT": "홈디포", "LOWES": "로우스",
+    "MCDONALDS": "맥도날드", "STARBUCKS": "스타벅스", "CHIPOTLE": "치폴레", "DOMINOS": "도미노",
+    "NIKE": "나이키", "LULULEMON": "룰루레몬", "KRAFT HEINZ": "크래프트하인즈", "MONDELEZ": "몬델리즈",
+    "CONSTELLATION BRANDS": "컨스텔레이션", "PHILIP MORRIS": "필립모리스", "ALTRIA": "알트리아",
+    "COLGATE": "콜게이트", "KIMBERLY": "킴벌리", "ESTEE LAUDER": "에스티로더", "KROGER": "크로거",
+    "DOLLAR GENERAL": "달러제너럴", "DOLLAR TREE": "달러트리", "TJX": "TJX", "ROSS STORES": "로스",
+    "BOOKING": "부킹", "MARRIOTT": "메리어트", "HILTON": "힐튼", "LAS VEGAS SANDS": "샌즈",
+    "WALT DISNEY": "디즈니", "DISNEY": "디즈니", "WARNER BROS": "워너브라더스", "COMCAST": "컴캐스트",
+    "CHARTER": "차터", "LIVE NATION": "라이브네이션", "SIRIUS XM": "시리우스XM", "LIBERTY MEDIA": "리버티",
+    "LIBERTY BROADBAND": "리버티", "FORMULA ONE": "포뮬러원", "ATLANTA BRAVES": "브레이브스",
+    "TAKE TWO": "테이크투", "ELECTRONIC ARTS": "EA", "FORD": "포드", "GENERAL MOTORS": "GM",
+    "RIVIAN": "리비안", "LUCID": "루시드", "CARVANA": "카바나", "AUTOZONE": "오토존", "OREILLY": "오라일리",
+    # 헬스케어
+    "UNITEDHEALTH": "유나이티드헬스", "JOHNSON & JOHNSON": "J&J", "JOHNSON JOHNSON": "J&J",
+    "PFIZER": "화이자", "ELI LILLY": "일라이릴리", "LILLY ELI": "일라이릴리", "MERCK": "머크",
+    "ABBVIE": "애브비", "AMGEN": "암젠", "GILEAD": "길리어드", "BRISTOL MYERS": "BMS", "MODERNA": "모더나",
+    "REGENERON": "리제네론", "VERTEX": "버텍스", "THERMO FISHER": "써모피셔", "DANAHER": "다나허",
+    "ABBOTT": "애보트", "MEDTRONIC": "메드트로닉", "INTUITIVE SURGICAL": "인튜이티브", "STRYKER": "스트라이커",
+    "BOSTON SCIENTIFIC": "보스턴사이언티픽", "CVS": "CVS", "CIGNA": "시그나", "HUMANA": "휴매나",
+    "ELEVANCE": "엘리번스", "HCA": "HCA", "DAVITA": "다비타", "ZOETIS": "조에티스",
+    "CRISPR": "크리스퍼", "NOVO NORDISK": "노보노디스크", "ASTRAZENECA": "아스트라제네카",
+    # 산업·에너지·소재
+    "EXXON MOBIL": "엑슨모빌", "CHEVRON": "셰브론", "OCCIDENTAL": "옥시덴탈", "CONOCOPHILLIPS": "코노코",
+    "SCHLUMBERGER": "슐룸베르거", "HALLIBURTON": "할리버튼", "EOG": "EOG", "DEVON": "데번",
+    "BOEING": "보잉", "LOCKHEED": "록히드마틴", "RTX": "RTX", "RAYTHEON": "RTX", "NORTHROP": "노스롭",
+    "GENERAL DYNAMICS": "제너럴다이내믹스", "GENERAL ELECTRIC": "GE", "GE AEROSPACE": "GE",
+    "HONEYWELL": "허니웰", "CATERPILLAR": "캐터필러", "DEERE": "디어", "3M": "3M", "UNION PACIFIC": "유니언퍼시픽",
+    "CSX": "CSX", "NORFOLK": "노퍽서던", "CANADIAN NATL": "CN철도", "CANADIAN NATIONAL": "CN철도",
+    "CANADIAN PACIFIC": "CP철도", "FEDEX": "페덱스", "UNITED PARCEL": "UPS", "UPS": "UPS",
+    "DELTA AIR": "델타항공", "UNITED AIRLINES": "유나이티드항공", "SOUTHWEST": "사우스웨스트",
+    "WASTE MANAGEMENT": "WM", "REPUBLIC SERVICES": "리퍼블릭", "ECOLAB": "에코랩", "SHERWIN": "셔윈",
+    "LINDE": "린데", "AIR PRODUCTS": "에어프로덕츠", "FREEPORT": "프리포트", "NEWMONT": "뉴몬트",
+    "NUCOR": "뉴코어", "DOW": "다우", "DUPONT": "듀폰", "CRH": "CRH", "VULCAN": "벌컨", "MARTIN MARIETTA": "마틴마리에타",
+    "LENNAR": "레나", "DR HORTON": "DR호튼", "NVR": "NVR", "PULTE": "풀티", "HEICO": "헤이코",
+    "LOUISIANA PAC": "LP", "POOL": "풀", "TRANSDIGM": "트랜스다임", "PARKER HANNIFIN": "파커",
+    "EATON": "이튼", "EMERSON": "에머슨", "ILLINOIS TOOL": "ITW", "CINTAS": "신타스", "FASTENAL": "패스널",
+    # 통신·유틸리티·부동산
+    "AT&T": "AT&T", "VERIZON": "버라이즌", "T MOBILE": "T모바일", "TELEPHONE & DATA": "TDS", "TELEPHONE DATA": "TDS",
+    "NEXTERA": "넥스트에라", "DUKE ENERGY": "듀크", "SOUTHERN CO": "서던", "DOMINION": "도미니언",
+    "CONSTELLATION ENERGY": "컨스텔레이션E", "VISTRA": "비스트라", "AMERICAN TOWER": "아메리칸타워",
+    "PROLOGIS": "프로로지스", "EQUINIX": "에퀴닉스", "CROWN CASTLE": "크라운캐슬", "REALTY INCOME": "리얼티인컴",
+    "SIMON PROPERTY": "사이먼", "PUBLIC STORAGE": "퍼블릭스토리지", "WELLTOWER": "웰타워",
+    # 중국·기타 해외
+    "ALIBABA": "알리바바", "PINDUODUO": "핀둬둬", "PDD": "핀둬둬", "JD COM": "징둥", "BAIDU": "바이두",
+    "TENCENT": "텐센트", "NIO": "니오", "XPENG": "샤오펑", "LI AUTO": "리오토", "BILIBILI": "빌리빌리",
+    "SEA LTD": "씨", "MERCADOLIBRE": "메르카도리브레", "GRAB": "그랩", "SPOTIFY": "스포티파이",
+    "SHELL": "셸", "BP": "BP", "TOYOTA": "도요타", "SONY": "소니", "MITSUBISHI": "미쓰비시", "MITSUI": "미쓰이",
+    "ITOCHU": "이토추", "SUMITOMO": "스미토모", "MARUBENI": "마루베니", "UNILEVER": "유니레버",
+    "NESTLE": "네슬레", "NOVARTIS": "노바티스", "ROCHE": "로슈", "SAP": "SAP", "LVMH": "LVMH",
+    # ETF
+    "SPDR S&P 500": "S&P500 ETF", "ISHARES CORE S&P 500": "S&P500 ETF", "VANGUARD S&P 500": "S&P500 ETF",
+    "INVESCO QQQ": "나스닥100 ETF", "SPDR GOLD": "금 ETF", "ISHARES RUSSELL 2000": "러셀2000 ETF",
+    "ISHARES MSCI": "MSCI ETF", "VANGUARD TOTAL": "VTI", "ARK INNOVATION": "ARKK",
+    "ISHARES 20": "TLT", "ISHARES BITCOIN": "비트코인 ETF", "GRAYSCALE BITCOIN": "비트코인 ETF",
 }
 
 _calls = 0
@@ -134,6 +187,7 @@ def clean_name(raw):
     for k in KO:
         if s.startswith(k):
             return KO[k]
+    s = " ".join(ABBR.get(w, w) for w in s.split())
     # 회사 형태·주식 종류 꼬리표 제거
     s = re.sub(r"\b(INC|CORP|CORPORATION|CO|COMPANY|LTD|LIMITED|PLC|HOLDINGS?|GROUP|"
                r"TRUST|LP|LLC|SA|NV|AG|ADR|ADS|COM|NEW|DEL|CL [ABC]|CLASS [ABC]|"
@@ -142,6 +196,90 @@ def clean_name(raw):
     s = re.sub(r"\s+", " ", s).strip()
     # 첫 글자만 대문자
     return " ".join(w if len(w) <= 3 else w.capitalize() for w in s.split())[:22] or raw[:22]
+
+
+_tickers = None      # [(정규화된 이름, 티커)]
+
+# 13F 에 흔한 줄임말 — 티커 목록의 정식 이름과 맞추려고 푼다
+ABBR = {
+    "MGMT": "MANAGEMENT", "FINL": "FINANCIAL", "MFG": "MANUFACTURING", "SVCS": "SERVICES",
+    "SVC": "SERVICE", "SYS": "SYSTEMS", "INTL": "INTERNATIONAL", "TECH": "TECHNOLOGY",
+    "TECHS": "TECHNOLOGIES", "PHARMA": "PHARMACEUTICALS", "HLTH": "HEALTH", "HLTHCARE": "HEALTHCARE",
+    "ENTMT": "ENTERTAINMENT", "PWR": "POWER", "RES": "RESOURCES", "PPTYS": "PROPERTIES",
+    "PPTY": "PROPERTY", "INDS": "INDUSTRIES", "IND": "INDUSTRIES", "AMER": "AMERICAN",
+    "NATL": "NATIONAL", "GENL": "GENERAL", "ELEC": "ELECTRIC", "MTRS": "MOTORS", "MTR": "MOTOR",
+    "PETE": "PETROLEUM", "PETROL": "PETROLEUM", "RLTY": "REALTY", "INVT": "INVESTMENT",
+    "INVS": "INVESTORS", "CAP": "CAPITAL", "COMMUNICATIONS": "COMMUNICATIONS", "COMM": "COMMUNICATIONS",
+    "ENERGY": "ENERGY", "ENRGY": "ENERGY", "PRODS": "PRODUCTS", "PROD": "PRODUCTS",
+    "LABS": "LABORATORIES", "BANCORP": "BANCORP", "BK": "BANK", "TR": "TRUST", "SEMICONDUCTOR": "SEMICONDUCTOR",
+    "MEDIA": "MEDIA", "ASSOC": "ASSOCIATES", "GRP": "GROUP", "HLDG": "HOLDING",
+    "AIRLS": "AIRLINES", "AIRL": "AIRLINES", "RR": "RAILROAD", "RY": "RAILWAY", "STL": "STEEL",
+    "CHEM": "CHEMICAL", "CHEMS": "CHEMICALS", "MED": "MEDICAL", "DEV": "DEVELOPMENT", "EQUIP": "EQUIPMENT",
+    "SOLTNS": "SOLUTIONS", "SOLUTNS": "SOLUTIONS", "BRDCSTG": "BROADCASTING", "PLATFRMS": "PLATFORMS",
+}
+
+def norm_name(raw):
+    t = re.sub(r"[^A-Z0-9& ]", " ", str(raw).upper())
+    t = " ".join(ABBR.get(w, w) for w in t.split())
+    t = re.sub(r"\b(INC|CORP|CORPORATION|CO|COMPANY|LTD|LIMITED|PLC|HOLDINGS?|HLDGS?|GROUP|"
+               r"TRUST|LP|LLC|SA|NV|AG|ADR|ADS|COM|NEW|DEL|CL [ABC]|CLASS [ABC]|SER [ABC]|"
+               r"SHS|SHARES|ORD|ORDINARY|SPONSORED|COMMON|STOCK|THE|OF|&|AND)\b", " ", t)
+    return re.sub(r"\s+", " ", t).strip()
+
+def load_tickers():
+    """SEC 회사·티커 목록 (약 1만 개). 하루 한 번 받아 캐시한다."""
+    global _tickers
+    if _tickers is not None:
+        return _tickers
+    cache = "data/sec_tickers.json"
+    j = None
+    try:
+        st = os.stat(cache)
+        if time.time() - st.st_mtime < 7 * 86400:
+            with open(cache, encoding="utf-8") as f:
+                j = json.load(f)
+    except Exception:                         # noqa: BLE001
+        j = None
+    if j is None:
+        j, _ = get("https://www.sec.gov/files/company_tickers.json")
+        if j:
+            os.makedirs("data", exist_ok=True)
+            with open(cache, "w", encoding="utf-8") as f:
+                json.dump(j, f)
+    _tickers = []
+    for v in (j or {}).values():
+        try:
+            _tickers.append((norm_name(v["title"]), v["ticker"].replace("-", ".")))
+        except Exception:                     # noqa: BLE001
+            continue
+    return _tickers
+
+def find_ticker(raw):
+    """13F 발행사 이름으로 티커를 찾는다. 앞부분이 같은 것 중 가장 긴 일치."""
+    n = norm_name(raw)
+    if len(n) < 4:
+        return None
+    best, best_len = None, 0
+    nw = n.split()
+    for name, tk in load_tickers():
+        if not name:
+            continue
+        if name == n:
+            return tk
+        # 한쪽이 다른 쪽의 앞부분이고, 겹치는 길이가 충분할 때
+        if n.startswith(name + " ") or name.startswith(n + " ") or name.startswith(n):
+            k = min(len(name), len(n))
+            if k >= 6 and k > best_len:
+                best, best_len = tk, k
+    if best:
+        return best
+    # 그래도 없으면 앞 두 단어가 정확히 같은 것 (두 단어면 대개 회사가 특정된다)
+    if len(nw) >= 2 and len(nw[0]) + len(nw[1]) >= 8:
+        head = nw[0] + " " + nw[1]
+        cands = [tk for name, tk in load_tickers() if name == head or name.startswith(head + " ")]
+        if len(cands) == 1:
+            return cands[0]
+    return None
 
 
 def local(tag):
@@ -236,9 +374,17 @@ def build(rows):
     items = sorted(by.values(), key=lambda b: -b["value"])
     out = []
     for b in items[:TOP_N]:
+        name = clean_name(b["raw"])
+        ticker = None
+        # 한글 이름이 아니고 길면 티커로 바꾼다 (카드에서 글자가 작아진다)
+        if not re.search(r"[가-힣]", name) and len(name) > 9:
+            ticker = find_ticker(b["raw"])
+            if ticker and len(ticker) <= 6:
+                name = ticker
         out.append({
-            "name": clean_name(b["raw"]),
+            "name": name,
             "raw": b["raw"],
+            "ticker": ticker,
             "weight": round(b["value"] / total * 100, 2),
             "value": round(b["value"]),
         })
