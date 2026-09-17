@@ -36,8 +36,8 @@ SLEEP = 0.15
 FUNDS = [
     ("berkshire",  "워런 버핏",        "Berkshire Hathaway",                  1067983),
     ("ark",        "캐시 우드",        "ARK Investment Management",           1697748),
-    ("gates",      "빌 게이츠",        "Bill & Melinda Gates Foundation Trust", 1166559),
-    ("harvard",    "하버드 대학",      "Harvard Management Co",               1032008),
+    ("gates",      "빌 게이츠",        "Gates Foundation Trust",              1166559),
+    ("harvard",    "하버드 대학",      "Harvard Management Co",               1082621),
     ("scion",      "마이클 버리",      "Scion Asset Management",              1649339),
     ("duquesne",   "드러켄밀러",       "Duquesne Family Office",              1536411),
     ("pershing",   "빌 애크먼",        "Pershing Square Capital",             1336528),
@@ -54,7 +54,7 @@ FUNDS = [
     ("icahn",      "칼 아이칸",        "Icahn Carl C",                        921669),
     ("lonepine",   "론파인",           "Lone Pine Capital",                   1061165),
     ("coatue",     "코튜",             "Coatue Management",                   1135730),
-    ("norges",     "노르웨이 국부펀드", "Norges Bank",                        1403752),
+    ("norges",     "노르웨이 국부펀드", "Norges Bank",                        1374170),
     ("nps",        "국민연금",         "National Pension Service",            1608046),
 ]
 
@@ -261,11 +261,17 @@ def find(q):
     txt, why = get(url, is_json=False)
     if not txt:
         return log("검색 실패: " + why)
-    hits = re.findall(r"<title>(.*?)</title>.*?CIK=(\d+)", txt, re.S)
-    if not hits:
+    # 회사명은 <conformed-name>, 번호는 <cik> 에 들어 있다
+    names = re.findall(r"<conformed-name>(.*?)</conformed-name>", txt, re.S)
+    ciks = re.findall(r"<cik>(\d+)</cik>", txt, re.S)
+    if not ciks:
+        # 회사가 하나뿐이면 다른 형식이라 CIK 만 뽑는다
+        ciks = list(dict.fromkeys(re.findall(r"CIK=(\d+)", txt)))
+        names = [""] * len(ciks)
+    if not ciks:
         return log("결과 없음. 영문 이름으로 찾아보세요 (예: harvard)")
-    for name, cik in hits[:15]:
-        log("  %-10s %s" % (cik, name.strip()))
+    for cik, name in list(zip(ciks, names))[:15]:
+        log("  %-10s %s" % (int(cik), name.strip()))
 
 
 def main():
