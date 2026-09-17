@@ -209,6 +209,13 @@
 
     <div class="panel">
       <h3 class="sec">내용 입력</h3>
+      <div class="ctl-row" style="margin:0 0 12px">
+        <label for="f-fund">유명 포트폴리오</label>
+        <select id="f-fund" style="flex:1;height:38px;font-family:inherit;font-size:13.5px;color:var(--text);background:var(--bg);border:1px solid var(--border-strong);border-radius:6px;padding:0 10px">
+          <option value="">직접 입력</option>
+        </select>
+      </div>
+      <p class="hint" id="fund-note" style="margin:-6px 0 12px;display:none"></p>
       <div class="two" style="margin-bottom:10px">
         <div>
           <label class="fld" for="f-name">투자자 이름</label>
@@ -401,6 +408,59 @@
   var NUMTOKEN = /^[$₩¥€£]?[\d,]+(?:\.\d+)?\s*(?:%|퍼센트|억|만|천|조|원|억원|조원|달러|억달러|USD|usd|주)?$/;
   // 티커: 대문자로 시작하는 짧은 영문·숫자 조합 (AAPL, M, LLYV.K, BRK.B 등)
   var TICKER = /^[A-Z][A-Z0-9.\-]{0,7}$/;
+
+  /* ============================================================
+     유명 포트폴리오 — SEC 13F 를 미리 받아둔 data/13f.json 에서
+     ============================================================ */
+  var F13 = { funds: {} };
+
+  function quarterLabel(period) {            // '2026-06-30' -> '26년 2분기'
+    var m = /^(\d{4})-(\d{2})/.exec(period || '');
+    if (!m) return '';
+    var q = Math.ceil(parseInt(m[2], 10) / 3);
+    return m[1].slice(2) + '년 ' + q + '분기';
+  }
+
+  function loadFunds() {
+    return fetch('./data/13f.json', { cache: 'no-cache' })
+      .then(function (r) { if (!r.ok) throw new Error('no file'); return r.json(); })
+      .then(function (j) {
+        F13 = j;
+        var sel = document.getElementById('f-fund');
+        Object.keys(j.funds || {}).forEach(function (k) {
+          var f = j.funds[k];
+          var o = document.createElement('option');
+          o.value = k;
+          o.textContent = f.title + '  (' + quarterLabel(f.period) + ')';
+          sel.appendChild(o);
+        });
+      })
+      .catch(function () {
+        var sel = document.getElementById('f-fund');
+        sel.disabled = true;
+        sel.options[0].textContent = '포트폴리오 자료 없음 (collect_13f.py 실행 필요)';
+      });
+  }
+
+  function applyFund(key) {
+    var f = F13.funds && F13.funds[key];
+    var note = document.getElementById('fund-note');
+    if (!f) { note.style.display = 'none'; return; }
+    document.getElementById('f-name').value = f.title;
+    document.getElementById('f-sub').value = '주식 포트폴리오 · ' + quarterLabel(f.period);
+    document.getElementById('f-data').value = f.holdings.map(function (h) {
+      return h.name + ' ' + h.weight + '%';
+    }).join('\n');
+    note.style.display = '';
+    note.innerHTML = '<b>' + f.entity + '</b> 13F · ' + f.period + ' 보유분 · ' +
+      f.filed + ' 공시 · 전체 ' + f.count.toLocaleString('ko-KR') + '종목 중 상위 ' +
+      f.holdings.length + '개. 미국 상장 주식만 포함되고 옵션·채권·비상장은 빠집니다.';
+    refresh();
+  }
+
+  document.getElementById('f-fund').addEventListener('change', function () {
+    applyFund(this.value);
+  });
 
   function parseHoldings(text) {
     var out = [];
@@ -1278,6 +1338,7 @@
 
   setupColorPicker(refresh);
   document.getElementById('f-data').value = SAMPLE;
+  loadFunds();
   refresh();
 })();
 </script>

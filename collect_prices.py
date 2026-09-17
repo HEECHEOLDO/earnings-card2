@@ -38,6 +38,8 @@ STOOQ_PATH = "/q/d/l/?s=%s&i=m"
 # 해외 — 알파밴티지 (키 필요, 하루 25회 제한)
 AV = ("https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY_ADJUSTED"
       "&symbol=%s&apikey=%s")
+AV_WEEK = ("https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY_ADJUSTED"
+           "&symbol=%s&apikey=%s")
 AV_KEY = os.environ.get("AV_KEY") or "5HNBQW8WQEJNTZWS"
 AV_BUDGET = 25          # 하루 한도 25회를 그대로 쓴다 (확인용 호출을 없앴다)
 
@@ -237,6 +239,80 @@ def get_text(url, tries=3, use_session=False):
     return None, last or "실패"
 
 
+def refine_first_year(years, listed, fetch_fine):
+    """첫해를 더 촘촘한 자료로 다시 계산한다.
+
+    월별로는 상장 달이 빠지거나 그 달 말일부터 잡히므로,
+    첫해에 한해 일별(국내)·주별(해외) 자료로 시작 종가를 바꾼다.
+    fetch_fine(year) -> [(YYYYMMDD, 종가)] 또는 None
+    """
+    if not years or not listed:
+        return years, listed
+    y0 = listed[:4]
+    if y0 not in years:
+        return years, listed
+    fine = None
+    try:
+        fine = fetch_fine(int(y0))
+    except Exception:                         # noqa: BLE001
+        fine = None
+    if not fine:
+        return years, listed
+    fine = [(d, v) for d, v in fine if str(d)[:4] == y0 and v]
+    if len(fine) < 2:
+        return years, listed
+    fine.sort()
+    d_first, v_first = fine[0]
+    v_last = fine[-1][1]
+    if not v_first:
+        return years, listed
+    years[y0] = round((v_last / v_first - 1) * 100, 2)
+    d = str(d_first)[:8]
+    return years, "%s-%s-%s" % (d[:4], d[4:6], d[6:8])
+
+
+def naver_daily(code, year):
+    """국내 — 그해 일별 종가."""
+    url = NAVER.replace("timeframe=month", "timeframe=day") % (code, "%d0101" % year, "%d1231" % year)
+    txt, _ = get_text(url)
+    if not txt:
+        return None
+    try:
+        rows = json.loads(txt.strip().replace("'", '"'))
+    except Exception:                         # noqa: BLE001
+        return None
+    out = []
+    for r in rows[1:]:
+        try:
+            out.append((str(r[0])[:8], float(r[4])))
+        except Exception:                     # noqa: BLE001
+            continue
+    return out
+
+
+def alpha_weekly(code):
+    """해외 — 주별 조정종가 전체 (첫해 정밀화용)."""
+    txt, _ = get_text(AV_WEEK % (code.replace(".", "-"), AV_KEY))
+    if not txt:
+        return None
+    try:
+        j = json.loads(txt)
+    except Exception:                         # noqa: BLE001
+        return None
+    if j.get("Note") or j.get("Information"):
+        return "LIMIT"
+    ts = j.get("Weekly Adjusted Time Series")
+    if not ts:
+        return None
+    out = []
+    for d in sorted(ts):
+        try:
+            out.append((d[:10].replace("-", ""), float(ts[d]["5. adjusted close"])))
+        except Exception:                     # noqa: BLE001
+            continue
+    return out
+
+
 def yearly_from_pairs(pairs):
     """[(YYYYMMDD, 종가)] -> (연도별 수익률(%), 첫해 시작일)
 
@@ -305,6 +381,9 @@ def from_naver(code):
     y, listed = yearly_from_pairs(pairs)
     if not y:
         return None, "기간이 짧음"
+    # 첫해는 일별 자료로 첫 거래일 종가부터 다시 계산한다 (네이버는 한도 없음)
+    if listed:
+        y, listed = refine_first_year(y, listed, lambda yr: naver_daily(code, yr))
     y["_asof"] = "%s-%s-%s" % (last_dt[:4], last_dt[4:6], last_dt[6:8])
     y["_listed"] = listed
     return y, None
@@ -375,9 +454,21 @@ def from_alpha(code):
     y, listed = yearly_from_pairs(pairs)
     if not y:
         return None, "기간이 짧음"
+    # 첫해가 1월이 아니면(상장 가능성) 주별 자료로 시작을 바로잡는다.
+    # 호출 1회가 더 들어가므로 예산이 남아 있을 때만.
+    if listed and listed[5:7] != "01" and _av_extra[0] > 0:
+        _av_extra[0] -= 1
+        wk = alpha_weekly(code)
+        if wk == "LIMIT":
+            _av_extra[0] = 0
+        elif wk:
+            y, listed = refine_first_year(y, listed, lambda yr: wk)
     y["_asof"] = last_dt
     y["_listed"] = listed
     return y, None
+
+
+_av_extra = [0]           # 남은 알파밴티지 호출 수 (수집 루프와 같은 리스트를 가리킨다)
 
 
 def yahoo_symbol(code, desc=""):
@@ -552,7 +643,8 @@ def main():
     # 이미 받아둔 종목은 그대로 유지하고, 이번에 받은 것만 덮어쓴다.
     # (국내만·해외만 돌려도 나머지가 날아가지 않도록)
     items, fails = dict(prev), []
-    av_left = [max(0, AV_BUDGET - av_used[0])]   # 확인에 쓴 만큼 뺀다
+    av_left = _av_extra                          # 같은 리스트 — 정밀화 호출도 여기서 뺀다
+    av_left[0] = max(0, AV_BUDGET - av_used[0])
     stooq_miss, stooq_dead = [0], [stooq_blocked[0]]
     av_dry, warned = [False], [False]
     started = time.time()
