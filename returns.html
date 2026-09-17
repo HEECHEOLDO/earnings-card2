@@ -526,10 +526,18 @@
       var f = 1 + rows[i].v / 100;
       if (f <= 0) return null;                 // -100% 가 있으면 계산 불가
       g *= f;
-      years += rows[i].ytd ? Math.max(0.05, Math.min(1, elapsed)) : 1;
+      var frac = 1;
+      if (rows[i].ytd) frac = Math.max(0.05, Math.min(1, elapsed));
+      else if (rows[i].partial) {
+        // 상장 첫해 — 시작일부터 연말까지
+        var ps = new Date(rows[i].partial);
+        var pe = new Date(rows[i].y, 11, 31);
+        if (!isNaN(ps)) frac = Math.max(0.05, Math.min(1, (pe - ps) / (365.25 * 864e5)));
+      }
+      years += frac;
     }
     if (years < 0.5) return null;
-    var startDate = (rows[0].y - 1) + '-12-31';
+    var startDate = rows[0].partial ? rows[0].partial : (rows[0].y - 1) + '-12-31';
     var endDate = rows[rows.length - 1].ytd
       ? end.toISOString().slice(0, 10)
       : rows[rows.length - 1].y + '-12-31';
@@ -615,7 +623,7 @@
   /* ============================================================
      카드 그리기
      ============================================================ */
-  var state = { rows: [], asof:'', market:'us', name:'NASDAQ100', sub:'연간 수익률',
+  var state = { rows: [], asof:'', listed:'', market:'us', name:'NASDAQ100', sub:'연간 수익률',
                 source:'', handle:'@돈굴돈굴', mark:true, guide:false };
 
   // anim: 각 요소의 등장 진행도(0~1). 없으면 전부 1(정지 화면).
@@ -781,6 +789,12 @@
           ctx.font = font(600, ys * 0.72);
           ctx.fillStyle = T.gold;
           ctx.fillText('YTD', cx, cy + R * (1 + G.yearGap) + ys*1.28);
+        } else if (d.partial) {
+          // 상장 첫해 — 그해 몇 월부터인지
+          ctx.font = font(600, ys * 0.72);
+          ctx.fillStyle = T.gold;
+          ctx.fillText(parseInt(d.partial.slice(5, 7), 10) + '월~', cx,
+                       cy + R * (1 + G.yearGap) + ys*1.28);
         }
         ctx.restore();
       });
@@ -870,6 +884,12 @@
     var all = parseRows(document.getElementById('f-data').value);
     state.rows = all.slice(-MAX_YEARS);
     state.trimmed = all.length - state.rows.length;
+    // 상장 첫해면 '몇 월부터' 인지 달아둔다
+    state.rows.forEach(function (r) { r.partial = null; });
+    if (state.listed && state.rows.length &&
+        state.rows[0].y === parseInt(state.listed.slice(0, 4), 10)) {
+      state.rows[0].partial = state.listed;
+    }
     renderList();
     ensureFonts().then(drawPreview);
   }
@@ -885,7 +905,9 @@
     box.innerHTML = '<table class="tbl' + (state.market === 'kr' ? ' kr' : '') +
       '"><tr><th>연도</th><th>수익률</th></tr>' +
       state.rows.map(function (r) {
-        return '<tr><td>' + r.y + (r.ytd ? ' <span style="color:#B8862E">YTD</span>' : '') +
+        return '<tr><td>' + r.y +
+               (r.ytd ? ' <span style="color:#B8862E">YTD</span>' : '') +
+               (r.partial ? ' <span style="color:#B8862E">' + parseInt(r.partial.slice(5,7),10) + '월~</span>' : '') +
                '</td><td class="' + (r.v >= 0 ? 'up' : 'down') + '">' + fmtPct(r.v) + '</td></tr>';
       }).join('') +
       '<tr><td><b>연평균 수익률 (복리)</b></td><td><b>' +
@@ -960,6 +982,7 @@
     document.getElementById('f-data').value = lines.join('\n');
     document.getElementById('f-name').value = it.name || code;
     state.asof = it.asof || '';
+    state.listed = it.listed || '';           // 첫해가 상장 후 일부일 때 그 시작일
     // 기준을 적어둔다 — 해외는 배당 재투자 포함, 국내는 배당 제외(주가 기준).
     // 직접 적어둔 문구가 있으면 건드리지 않는다.
     var AUTO = { US: '배당 재투자 포함', KR: '배당 제외' };
@@ -1734,7 +1757,7 @@
     document.getElementById('pane-manual').style.display = '';
   });
   document.getElementById('f-data').addEventListener('input', function () {
-    state.asof = ''; refresh();
+    state.asof = ''; state.listed = ''; refresh();
   });
 
   document.getElementById('btn-mode').addEventListener('click', function () {

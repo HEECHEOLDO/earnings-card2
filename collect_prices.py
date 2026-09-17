@@ -238,24 +238,48 @@ def get_text(url, tries=3, use_session=False):
 
 
 def yearly_from_pairs(pairs):
-    """[(연도, 종가)] -> 연도별 수익률(%)"""
-    last = {}
-    for y, v in pairs:
-        if v:
-            last[y] = v
-    years = sorted(last)
-    if len(years) < 2:
-        return None
-    out = {}
-    for i in range(1, len(years)):
-        a, b = years[i-1], years[i]
-        if b != a + 1 or not last[a]:
+    """[(YYYYMMDD, 종가)] -> (연도별 수익률(%), 첫해 시작일)
+
+    보통 해: 전년도 말 종가 대비.
+    첫해(전년도가 없음): 그해 첫 거래월 종가 → 연말 종가.
+      상장이든 자료 시작이든 '몇 월부터' 인지 같이 돌려주므로
+      화면에서 그만큼만 햇수로 센다.
+    """
+    first, last = {}, {}
+    for d, v in pairs:
+        if not v:
             continue
+        y = int(str(d)[:4])
+        if y not in first:
+            first[y] = (str(d)[:8], v)
+        last[y] = v
+    years = sorted(last)
+    if not years:
+        return None, None
+
+    out, listed = {}, None
+    y0 = years[0]
+    d0 = first[y0][0]
+    if first[y0][1] and last[y0] != first[y0][1]:
+        out[str(y0)] = round((last[y0] / first[y0][1] - 1) * 100, 2)
+        listed = "%s-%s-%s" % (d0[:4], d0[4:6], d0[6:8])
+    elif first[y0][1]:
+        # 그해 자료가 한 달치뿐이면 수익률이 0 이라 의미가 없다 — 건너뛴다
+        pass
+
+    for i in range(1, len(years)):
+        a, b = years[i - 1], years[i]
+        if b != a + 1 or not last[a]:
+            continue                          # 중간이 비면 잇지 않는다
         out[str(b)] = round((last[b] / last[a] - 1) * 100, 2)
     if not out:
-        return None
+        return None, None
+
     keep = sorted(out)[-YEARS_KEEP:]
-    return {k: out[k] for k in keep}
+    out = {k: out[k] for k in keep}
+    if listed and str(y0) not in out:
+        listed = None
+    return out, listed
 
 
 def from_naver(code):
@@ -272,16 +296,17 @@ def from_naver(code):
     pairs, last_dt = [], ""
     for r in rows[1:]:
         try:
-            pairs.append((int(str(r[0])[:4]), float(r[4])))
+            pairs.append((str(r[0])[:8], float(r[4])))
             last_dt = str(r[0])[:8]
         except Exception:                     # noqa: BLE001
             continue
     if not pairs:
         return None, "값 없음"
-    y = yearly_from_pairs(pairs)
+    y, listed = yearly_from_pairs(pairs)
     if not y:
         return None, "기간이 짧음"
     y["_asof"] = "%s-%s-%s" % (last_dt[:4], last_dt[4:6], last_dt[6:8])
+    y["_listed"] = listed
     return y, None
 
 
@@ -312,16 +337,17 @@ def from_stooq(code):
         if len(c) < 5:
             continue
         try:
-            pairs.append((int(c[0][:4]), float(c[4])))
+            pairs.append((c[0][:10].replace("-", ""), float(c[4])))
             last_dt = c[0][:10]
         except Exception:                     # noqa: BLE001
             continue
     if not pairs:
         return None, "값 없음"
-    y = yearly_from_pairs(pairs)
+    y, listed = yearly_from_pairs(pairs)
     if not y:
         return None, "기간이 짧음"
     y["_asof"] = last_dt
+    y["_listed"] = listed
     return y, None
 
 
@@ -342,14 +368,15 @@ def from_alpha(code):
     pairs, last_dt = [], ""
     for d in sorted(ts):
         try:
-            pairs.append((int(d[:4]), float(ts[d]["5. adjusted close"])))
+            pairs.append((d[:10].replace("-", ""), float(ts[d]["5. adjusted close"])))
             last_dt = d[:10]
         except Exception:                     # noqa: BLE001
             continue
-    y = yearly_from_pairs(pairs)
+    y, listed = yearly_from_pairs(pairs)
     if not y:
         return None, "기간이 짧음"
     y["_asof"] = last_dt
+    y["_listed"] = listed
     return y, None
 
 
@@ -581,8 +608,11 @@ def main():
                     log("남은 종목은 내일 이어서 받습니다. 이미 받아둔 자료는 그대로 있습니다.\n")
         else:
             asof = years.pop("_asof", "")
+            listed = years.pop("_listed", None)
             items[code] = {"name": name, "market": mk, "desc": desc,
                            "years": years, "asof": asof}
+            if listed:
+                items[code]["listed"] = listed
 
         if i % 100 == 0 or i == len(universe):
             log("  %d/%d  (%.1f분)" % (i, len(universe), (time.time()-started)/60))
