@@ -29,6 +29,7 @@ from datetime import datetime, timezone, timedelta
 UA = "fincard personal project heecheoldo@gmail.com"
 OUT = "data/13f.json"
 TOP_N = 40                 # 종목이 수천 개인 기관도 있어 상위만 저장
+NAME_VER = 3               # 종목명 규칙 판. 올리면 공시가 그대로여도 다시 만든다
 SLEEP = 0.15
 
 # (키, 카드 제목, 공시 주체, CIK)
@@ -75,7 +76,7 @@ KO = {
     "ROBLOX": "로블록스", "ROKU": "로쿠", "ZOOM": "줌비디오",  "PINTEREST": "핀터레스트",
     "SNAP": "스냅", "REDDIT": "레딧", "DUOLINGO": "듀오링고", "UNITY": "유니티", "TWILIO": "트윌리오",
     "MONGODB": "몽고DB", "CLOUDFLARE": "클플레어", "OKTA": "옥타", "ZSCALER": "지스케일러",
-    "DELL": "델(Dell)", "HEWLETT PACKARD": "HPE", "HP INC": "HP", "IBM": "IBM", "INTERNATIONAL BUSINESS": "IBM",
+    "DELL": "DELL", "HEWLETT PACKARD": "HPE", "HP INC": "HP", "IBM": "IBM", "INTERNATIONAL BUSINESS": "IBM",
     "CISCO": "시스코", "ARISTA": "아리스타", "SUPER MICRO": "슈퍼마이크로", "VERTIV": "버티브",
     # 금융
     "BERKSHIRE HATHAWAY": "버크셔", "JPMORGAN": "JP모건", "BANK AMER": "BoA", "BANK AMERICAN": "BoA", "BANK OF AMER": "BoA",
@@ -316,6 +317,71 @@ KO = {
     "AMERICAN AIRLINES": "아메리칸항공", "SPIRIT AIRLINES": "스피릿항공", "JETBLUE": "제트블루", "ALASKA AIR": "알래스카항공", "SPDR GOLD": "금(GLD)", "ISHARES RUSSELL 2000": "IWM",
     "ISHARES MSCI": "MSCI", "VANGUARD TOTAL": "VTI", "ARK INNOVATION": "ARKK",
     "ISHARES 20": "TLT", "ISHARES BITCOIN": "비트코인", "GRAYSCALE BITCOIN": "비트코인",
+
+    # ETF 운용사 — 공시에는 "…TR", "…FDS" 같은 신탁 이름으로 올라온다
+    "SELECT SECTOR SPDR": "SPDR섹터", "SPDR SERIES": "SPDR", "SPDR SER": "SPDR",
+    "SPDR INDEX SHS": "SPDR", "SPDR PORTFOLIO": "SPDR",
+    "VANGUARD WORLD": "뱅가드", "VANGUARD SCOTTSDALE": "뱅가드",
+    "VANGUARD BD INDEX": "뱅가드채권", "VANGUARD BOND INDEX": "뱅가드채권",
+    "VANGUARD ADMIRAL": "뱅가드", "VANGUARD STAR": "뱅가드", "VANGUARD TAX": "뱅가드",
+    "VANGUARD SPECIALIZED": "뱅가드", "VANGUARD INTL": "뱅가드",
+    "ISHARES INC": "아이셰어즈", "ISHARES SILVER": "은(SLV)", "ISHARES GOLD": "금(IAU)",
+    "INVESCO EXCH TRADED": "인베스코", "INVESCO EXCHANGE TRADED": "인베스코",
+    "FIRST TR EXCHANGE TRADED": "퍼스트TR", "FIRST TRUST EXCHANGE": "퍼스트TR",
+    "DIREXION SHARES": "디렉시온", "DIREXION": "디렉시온",
+    "PROSHARES": "프로셰어즈", "GLOBAL X": "글로벌X", "WISDOMTREE": "위즈덤트리",
+    "VANECK": "반에크", "SCHWAB STRATEGIC": "슈왑ETF", "SCHWAB US": "슈왑ETF",
+    "JPMORGAN EXCHANGE TRADED": "JP모건", "GOLDMAN SACHS ETF": "골드만ETF",
+    "FIDELITY COVINGTON": "피델리티", "FIDELITY MERRIMACK": "피델리티",
+    "DIMENSIONAL ETF": "DFA", "DIMENSIONAL FD": "DFA",
+    "AMERICAN CENTURY ETF": "센추리",
+    "JANUS DETROIT STREET": "야누스", "JANUS HENDERSON": "야누스",
+    "PACER FDS": "페이서", "AMPLIFY ETF": "앰플리파이", "ROUNDHILL": "라운드힐",
+    "YIELDMAX": "일드맥스", "DEFIANCE ETFS": "디파이언스", "TIDAL": "타이달",
+    "GRAYSCALE": "그레이스케일", "BITWISE": "비트와이즈", "VALKYRIE": "발키리",
+    "FRANKLIN TEMPLETON ETF": "프랭클린", "NEUBERGER BERMAN ETF": "뉴버거",
+    "KRANESHARES": "크레인셰어즈", "MATTHEWS INTL FDS": "매튜스",
+    "XTRACKERS": "X트래커스", "DBX ETF": "X트래커스",
+
+    # 영문으로 남던 중견 기업 — 한글로 읽기 쉽게
+    "ENERGIZER": "에너자이저", "CHEESECAKE FACTORY": "치즈케이크",
+    "TEXAS ROADHOUSE": "텍사스로드", "BOSTON BEER": "보스턴비어",
+    "ELF BEAUTY": "엘프뷰티", "TEMPUR SEALY": "템퍼실리", "SLEEP NUMBER": "슬립넘버",
+    "NEWELL BRANDS": "뉴웰브랜즈", "FLOWERS FOODS": "플라워푸드",
+    "HENRY SCHEIN": "헨리샤인", "CENTENE": "센틴", "ENCOMPASS HEALTH": "엔컴패스",
+    "GLOBUS MEDICAL": "글로버스", "LEGGETT": "레깃플랫", "MASIMO": "마시모",
+    "GRACO": "그라코", "POST HOLDINGS": "포스트", "COTY": "코티", "KENVUE": "켄뷰",
+    "PENUMBRA": "페넘브라", "TOPBUILD": "탑빌드", "NORDSON": "노드슨",
+    "BUILDERS FIRSTSOURCE": "빌더스", "FLOOR & DECOR": "플로어앤데코",
+    "INSTALLED BLDG": "IBP", "ADVANCED DRAINAGE": "ADS",
+    "WATTS WATER": "와츠워터", "LINCOLN ELECTRIC": "링컨일렉트릭",
+    "INSPIRE MEDICAL": "인스파이어", "WEST PHARMACEUTICAL": "웨스트팜",
+    "LABORATORY AMERICAN": "랩콥", "LABCORP": "랩콥", "LABORATORY CORP": "랩콥", "LABORATORY": "랩콥",
+    "BIOMARIN": "바이오마린", "JAZZ PHARMACEUTICALS": "재즈파마",
+    "SPECTRUM BRANDS": "스펙트럼", "REYNOLDS CONSUMER": "레이놀즈",
+    "PURPLE INNOVATION": "퍼플", "SPIRIT AEROSYSTEMS": "스피릿에어로",
+
+    # 미국 지방은행 — 큰 기관 13F 에 잔뜩 들어 있어 영문으로 남기 쉽다
+    "EAST WEST BANCORP": "이스트웨스트", "EAST WEST BANCORP DEL": "이스트웨스트",
+    "ZIONS": "자이온스", "COMERICA": "코메리카", "WEBSTER FINANCIAL": "웹스터",
+    "CULLEN FROST": "컬렌프로스트", "PINNACLE FINANCIAL": "피너클",
+    "WESTERN ALLIANCE": "웨스턴은행", "FIRST HORIZON": "FHN", "SYNOVUS": "시노버스",
+    "VALLEY NATIONAL": "밸리은행", "OLD NATIONAL": "올드내셔널",
+    "GLACIER BANCORP": "글레이셔", "UMB FINANCIAL": "UMB",
+    "COMMERCE BANCSHARES": "커머스은행", "BOK FINANCIAL": "BOK",
+    "WINTRUST": "윈트러스트", "CATHAY GENERAL": "캐세이은행",
+    "PROSPERITY BANCSHARES": "프로스페리티", "BANKUNITED": "BKU",
+    "SOUTH STATE": "SSB", "UNITED BANKSHARES": "UBSI", "FULTON FINANCIAL": "풀턴",
+    "HANCOCK WHITNEY": "핸콕휘트니", "ASSOCIATED BANC": "ASB",
+    "FIRST INTERSTATE": "퍼스트인터", "INDEPENDENT BK": "인디펜던트",
+    "COLUMBIA BKG": "컬럼비아", "EAGLE BANCORP": "이글", "AXOS FINANCIAL": "액소스",
+    "CUSTOMERS BANCORP": "커스터머스", "SEACOAST BKG": "시코스트",
+
+    # 아시아·유럽 기업
+    "ZEEKR": "지커", "LUFAX": "루팍스", "SOFTBANK": "소프트뱅크", "NIDEC": "니덱",
+    "KEYENCE": "키엔스", "FAST RETAILING": "유니클로", "SHISEIDO": "시세이도",
+    "TOTALENERGIES": "토탈에너지", "TOTAL SA": "토탈에너지",
+    "FLOWSERVE": "플로우서브", "BEYOND MEAT": "비욘드미트", "OATLY": "오트리",
 }
 KO_KEYS = sorted(KO, key=len, reverse=True)
 
@@ -595,10 +661,68 @@ def find(q):
         log("  %-10s %s" % (int(cik), name.strip()))
 
 
+def names(only_bad=False):
+    """저장된 data/13f.json 의 모든 종목을 '공시 원문 → 지금 → 바뀜' 으로 찍는다."""
+    try:
+        with open(OUT, encoding="utf-8") as f:
+            funds = json.load(f).get("funds", {})
+    except Exception as e:                                  # noqa: BLE001
+        return log("%s 를 못 읽었습니다 (%s). 먼저 수집을 돌려주세요." % (OUT, e))
+
+    seen = {}
+    for key, fd in funds.items():
+        for h in fd.get("holdings", []):
+            raw = h.get("raw") or h.get("name")
+            rec = seen.setdefault(raw, {"old": h.get("name", ""), "funds": set()})
+            rec["funds"].add(key)
+
+    rows = []
+    for raw, rec in seen.items():
+        new = clean_name(raw)
+        han = bool(re.search(r"[가-힣]", new))
+        rows.append((raw, rec["old"], new, han, len(rec["funds"])))
+
+    han_n = sum(1 for r in rows if r[3])
+    log("=" * 78)
+    log("13F 종목명 점검  |  %d개 기관 · 종목 %d개" % (len(funds), len(rows)))
+    log("  한글 이름 %d개 (%.0f%%) · 영문 남음 %d개"
+        % (han_n, han_n * 100.0 / (len(rows) or 1), len(rows) - han_n))
+    log("=" * 78)
+
+    def pad(s, w):                       # 한글은 두 칸을 차지한다
+        s = str(s)
+        cut = ""
+        used = 0
+        for ch in s:
+            cw = 2 if ord(ch) > 0x1100 and not ch.isascii() else 1
+            if used + cw > w:
+                break
+            cut += ch
+            used += cw
+        return cut + " " * (w - used)
+
+    show = [r for r in rows if not r[3]] if only_bad else rows
+    show.sort(key=lambda r: (r[3], -r[4], r[2].lower()))
+    log("  %s %s %s %s" % (pad("공시 원문", 34), pad("지금", 22), pad("바뀜", 16), "기관"))
+    log("-" * 82)
+    for raw, old, new, han, nf in show:
+        mark = "→ " if old != new else "  "
+        log("%s%s %s %s %d" % (mark, pad(raw, 34), pad(old, 22), pad(new, 16), nf))
+    log("-" * 78)
+    log("바뀌는 이름 %d개 · 영문 그대로 %d개"
+        % (sum(1 for r in rows if r[1] != r[2]), len(rows) - han_n))
+    log("\n영문만 보려면:  python3 collect_13f.py --names-bad")
+    log("반영하려면:    python3 collect_13f.py        (NAME_VER=%d 이므로 다시 만듭니다)" % NAME_VER)
+
+
 def main():
     argv = sys.argv[1:]
     if "--verify" in argv:
         return verify()
+    if "--names" in argv:
+        return names(False)
+    if "--names-bad" in argv:
+        return names(True)
     if "--find" in argv:
         i = argv.index("--find")
         return find(argv[i + 1] if i + 1 < len(argv) else "")
@@ -618,7 +742,10 @@ def main():
         meta, sec_name, why = latest_13f(cik)
         if not meta:
             fails.append((key, why)); continue
-        if prev.get(key, {}).get("acc") == meta["acc"]:
+        old = prev.get(key, {})
+        if (old.get("acc") == meta["acc"]
+                and old.get("namever") == NAME_VER
+                and "--force" not in sys.argv):
             log("  %-12s 변화 없음 (%s 보유분)" % (key, meta["period"]))
             continue
         rows, why = fetch_holdings(cik, meta["acc"])
@@ -628,7 +755,7 @@ def main():
         result[key] = {
             "title": title, "entity": sec_name or expect, "cik": cik,
             "period": meta["period"], "filed": meta["filed"], "acc": meta["acc"],
-            "count": n_all, "total_value": round(total),
+            "count": n_all, "total_value": round(total), "namever": NAME_VER,
             "holdings": holdings,
         }
         log("  %-12s %s 보유분 · %d종목 · 1위 %s %.1f%%"
