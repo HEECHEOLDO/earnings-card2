@@ -2,14 +2,14 @@
  "name": "KR",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "KROGER CO",
+ "legal_name": "Kroger Co.",
  "code": "KR",
  "cik": "0000056873",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-09-19",
+ "updated": "2026-09-20",
  "annual": [
   {
    "p": 2017,
@@ -133,9 +133,9 @@
    "rev": 147642.0,
    "op": 1890.0,
    "ni": 1016.0,
-   "assets": 50292.0,
-   "liab": 43814.0,
-   "equity": 6478.0,
+   "assets": 49491.0,
+   "liab": 43645.0,
+   "equity": 5846.0,
    "dps": 1.37,
    "payout": 87.1,
    "yield": null,
@@ -143,20 +143,6 @@
   }
  ],
  "quarterly": [
-  {
-   "y": 2022,
-   "q": 1,
-   "rev": 31682.0,
-   "op": 839.0,
-   "ni": 467.0
-  },
-  {
-   "y": 2022,
-   "q": 2,
-   "rev": 31860.0,
-   "op": 868.0,
-   "ni": 483.0
-  },
   {
    "y": 2023,
    "q": 1,
@@ -212,6 +198,13 @@
    "rev": 33859.0,
    "op": -1541.0,
    "ni": 609.0
+  },
+  {
+   "y": 2027,
+   "q": 1,
+   "rev": 34621.0,
+   "op": 971.0,
+   "ni": 641.0
   }
  ]
 }
