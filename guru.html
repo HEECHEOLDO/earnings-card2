@@ -802,6 +802,24 @@
       });
     }
 
+    /* 비중이 큰 라벨이 작은 라벨보다 작아 보이면 안 된다.
+       배치는 앞에서부터 자리 되는 대로 잡혀서, 붐비는 구간 가운데에 낀
+       라벨만 유독 줄어드는 일이 생긴다 (브로드컴·메타 < 마이크론).
+       비중 내림차순으로 크기 상한을 물려 내려 정리한다. 줄이기만 하므로
+       이미 잡아 둔 자리를 건드리지 않는다. '기타'는 회사가 아니라 제외. */
+    var cap = Infinity;
+    placed.slice()
+      .filter(function (it) { return it.box && !it.r.etc; })
+      .sort(function (a, b) { return b.r.pct - a.r.pct; })
+      .forEach(function (it) {
+        if (it.box.size > cap) {
+          it.box.size = cap;
+          it.box.ps = Math.round(cap * T.type.labelPct / T.type.label);
+        } else {
+          cap = it.box.size;
+        }
+      });
+
     ctx.textBaseline = 'alphabetic';
     placed.forEach(function (it) {
       var b = it.box;
