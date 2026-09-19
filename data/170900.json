@@ -1,11 +1,11 @@
 {
  "name": "동아에스티",
- "split_adjusted": true,
+ "split_adjusted": false,
  "legal_name": "동아에스티",
  "code": "170900",
  "market": "코스피",
  "sector": "",
- "updated": "2026-08-31",
+ "updated": "2026-09-18",
  "annual": [
   {
    "p": 2016,
@@ -18,7 +18,7 @@
    "dps": 500.0,
    "payout": 39.7,
    "yield": 0.56,
-   "dps_adj": 2744.2
+   "dps_adj": 500.0
   },
   {
    "p": 2017,
@@ -31,7 +31,7 @@
    "dps": 500.0,
    "payout": null,
    "yield": 0.52,
-   "dps_adj": 2744.2
+   "dps_adj": 500.0
   },
   {
    "p": 2018,
@@ -44,7 +44,7 @@
    "dps": 1000.0,
    "payout": 105.36,
    "yield": 0.9,
-   "dps_adj": 5488.4
+   "dps_adj": 1000.0
   },
   {
    "p": 2019,
@@ -57,7 +57,7 @@
    "dps": 1000.0,
    "payout": 11.9,
    "yield": 0.9,
-   "dps_adj": 5488.4
+   "dps_adj": 1000.0
   },
   {
    "p": 2020,
@@ -70,7 +70,7 @@
    "dps": 1000.0,
    "payout": 31.13,
    "yield": 1.2,
-   "dps_adj": 5488.4
+   "dps_adj": 1000.0
   },
   {
    "p": 2021,
@@ -83,7 +83,7 @@
    "dps": 1000.0,
    "payout": 65.8,
    "yield": 1.4,
-   "dps_adj": 5488.4
+   "dps_adj": 1000.0
   },
   {
    "p": 2022,
@@ -96,7 +96,7 @@
    "dps": 700.0,
    "payout": 46.1,
    "yield": 1.1,
-   "dps_adj": 3841.9
+   "dps_adj": 700.0
   },
   {
    "p": 2023,

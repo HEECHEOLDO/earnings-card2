@@ -2,14 +2,14 @@
  "name": "EXE",
  "split_adjusted": true,
  "restated_from": null,
- "legal_name": "EXPAND ENERGY CORPORATION",
+ "legal_name": "EXPAND ENERGY Corp",
  "code": "EXE",
  "cik": "0000895126",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-09-17",
+ "updated": "2026-09-19",
  "annual": [
   {
    "p": 2015,
@@ -144,13 +144,6 @@
  ],
  "quarterly": [
   {
-   "y": 2023,
-   "q": 4,
-   "rev": 1948.0,
-   "op": 726.0,
-   "ni": 569.0
-  },
-  {
    "y": 2024,
    "q": 1,
    "rev": 1081.0,
@@ -212,6 +205,13 @@
    "rev": 4397.0,
    "op": 1531.0,
    "ni": 1159.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 2960.0,
+   "op": 661.0,
+   "ni": 522.0
   }
  ]
 }
