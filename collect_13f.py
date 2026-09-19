@@ -29,7 +29,7 @@ from datetime import datetime, timezone, timedelta
 UA = "fincard personal project heecheoldo@gmail.com"
 OUT = "data/13f.json"
 TOP_N = 40                 # 종목이 수천 개인 기관도 있어 상위만 저장
-NAME_VER = 3               # 종목명 규칙 판. 올리면 공시가 그대로여도 다시 만든다
+NAME_VER = 4               # 종목명 규칙 판. 올리면 공시가 그대로여도 다시 만든다
 SLEEP = 0.15
 
 # (키, 카드 제목, 공시 주체, CIK)
@@ -86,7 +86,7 @@ KO = {
     "BLACKSTONE": "블랙스톤", "KKR": "KKR", "APOLLO": "아폴로", "SCHWAB": "슈왑", "CHARLES SCHWAB": "슈왑",
     "S&P GLOBAL": "S&P글로벌", "MOODYS": "무디스", "MSCI": "MSCI", "CME": "CME", "ICE": "ICE",
     "INTERCONTINENTAL EXCH": "ICE", "CHUBB": "처브", "PROGRESSIVE": "프로그레시브", "AON": "에이온",
-    "MARSH": "마시맥레넌", "ALLY FINL": "앨리파이낸셜", "ALLY FINANCIAL": "앨리파이낸셜", "NU HLDGS": "누뱅크", "NU HOLDINGS": "누뱅크",
+    "MARSH": "마시맥레넌", "ALLY FINL": "앨리파이낸셜", "ALLY FINANCIAL": "앨리파이낸셜", "NU HOLDINGS": "누뱅크", "NU HOLDINGS": "누뱅크",
     "AMERICAN INTL": "AIG", "METLIFE": "메트라이프", "PRUDENTIAL": "푸르덴셜", "US BANCORP": "US뱅코프",
     "PNC": "PNC", "TRUIST": "트루이스트", "FISERV": "파이서브", "SOFI": "소파이",
     # 소비
@@ -126,7 +126,7 @@ KO = {
     "LINDE": "린데", "AIR PRODUCTS": "에어프로덕츠", "FREEPORT": "프리포트", "NEWMONT": "뉴몬트",
     "NUCOR": "뉴코어", "DOW": "다우케미칼", "DUPONT": "듀폰", "CRH": "CRH", "VULCAN": "벌컨", "MARTIN MARIETTA": "마틴마리에타",
     "LENNAR": "레나", "DR HORTON": "DR호튼", "NVR": "NVR", "PULTE": "풀티", "HEICO": "헤이코",
-    "LOUISIANA PAC": "LP", "TRANSDIGM": "트랜스다임", "PARKER HANNIFIN": "파커",
+    "LOUISIANA PACIFIC": "LP", "TRANSDIGM": "트랜스다임", "PARKER HANNIFIN": "파커",
     "EMERSON": "에머슨", "ILLINOIS TOOL": "ITW", "CINTAS": "신타스", "FASTENAL": "패스널",
     # 통신·유틸리티·부동산
     "AT&T": "AT&T", "VERIZON": "버라이즌", "T MOBILE": "T모바일", "TELEPHONE & DATA": "TDS", "TELEPHONE DATA": "TDS",
@@ -170,7 +170,7 @@ KO = {
     "ARES": "아레스", "ARTHUR J GALLAGHER": "갤러거", "BANK NEW YORK": "BNY멜론", "BANK OF NEW YORK": "BNY멜론",
     "BROWN & BROWN": "브라운", "CBOE": "CBOE", "CINCINNATI FINL": "신시내티", "CITIZENS FINL": "시티즌스",
     "COINBASE": "코인베이스", "DISCOVER": "디스커버", "EQUIFAX": "에퀴팩스", "EVEREST": "에베레스트",
-    "FIFTH THIRD": "피프스서드", "FRANKLIN RES": "프랭클린", "GLOBAL PAYMENTS": "글로벌PM",
+    "FIFTH THIRD": "피프스서드", "FRANKLIN RES": "프랭클린", "GLOBAL PAYMENTS": "글로벌페이",
     "HARTFORD": "하트포드", "HUNTINGTON": "헌팅턴", "INTERACTIVE BROKERS": "IBKR", "INVESCO": "인베스코",
     "KEYCORP": "키코프", "LPL": "LPL", "M&T BANK": "M&T", "MARKETAXESS": "마켓액세스",
     "NASDAQ": "나스닥", "NORTHERN TRUST": "노던트러스트", "PRINCIPAL": "프린시펄", "RAYMOND JAMES": "레이먼드",
@@ -382,6 +382,67 @@ KO = {
     "KEYENCE": "키엔스", "FAST RETAILING": "유니클로", "SHISEIDO": "시세이도",
     "TOTALENERGIES": "토탈에너지", "TOTAL SA": "토탈에너지",
     "FLOWSERVE": "플로우서브", "BEYOND MEAT": "비욘드미트", "OATLY": "오트리",
+
+    # ---- 실제 13F 점검(--names-bad)에서 영문으로 남은 것들 ----
+    # 줄임말 때문에 안 맞던 것
+    "BANK OF AMERICAN": "BoA", "UNION PACIFIC": "유니언퍼시픽",
+    "AMAZONCOM": "아마존", "AMAZON COM": "아마존", "JD COM": "JD닷컴", "JDCOM": "JD닷컴",
+    "PETROLEO BRASILEIRO": "페트로브라스", "FIRST CITIZENS": "퍼스트시티즌",
+    "NEW YORK COMMUNITY": "뉴욕커뮤니티", "STATE STREET SPDR": "S&P500",
+    "VANGUARD INTERNATIONAL": "뱅가드", "SPROUTS FARMERS": "스프라우츠",
+    "EAGLE MATERIALS": "이글자재", "FRANCO NEVADA": "프랑코네바다",
+    "GOODYEAR": "굿이어", "BAUSCH PLUS LOMB": "바슈롬", "COCA COLA FEMSA": "KOF",
+    "D R HORTON": "DR호튼", "DR HORTON": "DR호튼",
+
+    # 한국인이 아는 기업
+    "SIRIUSXM": "시리우스XM", "MACYS": "메이시스", "GOPRO": "고프로",
+    "HERBALIFE": "허벌라이프", "WOLFSPEED": "울프스피드", "TERAWULF": "테라울프",
+    "WEBULL": "위불", "FLEX": "플렉스", "FLUOR": "플루어", "CELESTICA": "셀레스티카",
+    "GALAPAGOS": "갈라파고스", "EXELIXIS": "엑셀리시스", "LIVANOVA": "리바노바",
+    "RAMBUS": "램버스", "WOODWARD": "우드워드", "VERACYTE": "베라사이트",
+    "ITRON": "아이트론", "IDACORP": "아이다코프", "ECHOSTAR": "에코스타",
+    "BRUKER": "브루커", "BLACKLINE": "블랙라인", "ALKERMES": "알케르메스",
+    "AERCAP": "에어캡", "ALIGHT": "얼라이트", "KATAPULT": "카타펄트",
+    "MONRO": "먼로", "MASTEC": "마스텍", "MEDLINE": "메드라인",
+    "CONSOL ENERGY": "콘솔에너지", "CLEVELAND CLIFFS": "클리블랜드",
+    "TAKE TWO": "테이크투", "TENET HEALTHCARE": "테넷헬스",
+    "TEVA PHARMACEUTICAL": "테바", "STMICROELECTRONICS": "ST마이크로",
+    "GENEDX": "지네DX", "ABSCI": "앱사이", "ATRENEW": "아트리뉴", "ARGAN": "아르간",
+    "BULLISH": "불리시", "CENTURI": "센투리", "EVERPURE": "에버퓨어",
+    "SHARONAI": "샤론AI", "TALIS BIOMEDICAL": "탈리스", "DANIMER": "다니머",
+    "NEUBASE": "뉴베이스", "APOGEE THERAPEUTICS": "아포지", "PERSONALIS": "퍼스널리스",
+    "NUVATION": "누베이션", "VERACYTE INC": "베라사이트", "WEALTHFRONT": "웰스프론트",
+    "HOWARD HUGHES": "하워드휴즈", "US FOODS": "US푸드", "BBB FOODS": "BBB푸드",
+    "BILL": "BILL", "DNOW": "DNOW", "MPLX": "MPLX", "EROCK": "이록",
+    "HUT 8": "HUT8", "NET POWER": "넷파워", "GDS": "GDS",
+    "SEADRILL": "시드릴", "SANDRIDGE": "샌드리지", "HERC": "허크",
+    "EQUIPMENTSHARE": "이큅먼트쉐어", "FERGUSON": "퍼거슨", "FERVO ENERGY": "퍼보",
+    "KYNDRYL": "킨드릴", "JEFFERIES": "제프리스", "WESCO": "웨스코",
+    "WEATHERFORD": "웨더포드", "KODIAK GAS": "코디악", "SOTERA HEALTH": "소테라",
+    "SOMNIGROUP": "솜니그룹", "PURECYCLE": "퓨어사이클", "LIBERTY GLOBAL": "리버티글로벌",
+    "LIBERTY LIVE": "리버티라이브", "LITHIUM ARGENTINA": "리튬아르헨",
+    "GRAPHIC PACKAGING": "그래픽패키징", "GREEN BRICK": "그린브릭",
+    "GRUPO AEROMEXICO": "아에로멕시코", "GULFPORT ENERGY": "걸프포트",
+    "H2O AMERICA": "H2O", "YPF": "YPF", "ICAHN ENTERPRISES": "IEP",
+    "BOOZ ALLEN HAMILTON": "부즈앨런", "AXALTA": "악살타",
+    "COMFORT SYSTEMS": "컴포트", "CARPENTER TECHNOLOGY": "카펜터",
+    "BRIGHTHOUSE": "브라이트하우", "HERTZ": "허츠", "LUMENTUM": "루멘텀",
+    "PERFORMANCE FOOD": "퍼포먼스푸드", "STERLING INFRASTRUCTURE": "스털링",
+    "TTM TECHNOLOGIES": "TTM", "APPLIED DIGITAL": "어플라이드D",
+    "CEREBRAS": "세레브라스", "SPACE EXPLORATION": "스페이스X",
+    "CIPHER": "사이퍼", "CHIME": "차임", "CHAMPION HOMES": "챔피언홈즈",
+    "CAVCO": "캐브코", "CARIS LIFE": "캐리스", "CORCEPT": "코셉트",
+    "COYA": "코야", "CVR ENERGY": "CVR에너지", "CVR PARTNERS": "CVR파트너",
+    "DAKTRONICS": "닥트로닉스", "DIGITALBRIDGE": "디지털브릿지",
+    "ENERGY TRANSFER": "에너지트랜스", "FLYEXCLUSIVE": "플라이X",
+    "FORGENT": "포전트", "GAIN THERAPEUTICS": "게인", "GENERATE BIOMEDICINES": "제너레이트",
+    "HYPERLIQUID": "하이퍼리퀴드", "NEWAMSTERDAM": "뉴암스테르담",
+    "PROTAGONIST": "프로타고니스", "REVOLUTION MEDICINES": "레볼루션",
+    "RHYTHM PHARMACEUTICALS": "리듬", "SEAPORT": "시포트",
+    "STRATA CRITICAL": "스트라타", "ADMA BIOLOGICS": "ADMA",
+    "ARS PHARMACEUTICALS": "ARS", "AURORA INNOVATION": "오로라",
+    "BITDEER": "비트디어", "BITMINE": "비트마인", "ARK 21SHARES": "ARKB",
+    "HYPERSCALE": "하이퍼스케일",
 }
 KO_KEYS = sorted(KO, key=len, reverse=True)
 
@@ -421,7 +482,8 @@ def get(url, is_json=True, tries=3):
 
 def clean_name(raw):
     """SEC 발행사 이름을 카드에 쓸 만하게 다듬는다."""
-    s = raw.upper().replace(".", "").replace(",", "")
+    # 마침표·하이픈은 공백으로 (AMAZON.COM -> AMAZON COM, EXCHANGE-TRADED -> EXCHANGE TRADED)
+    s = raw.upper().replace(".", " ").replace(",", " ").replace("-", " ").replace("/", " ")
     s = re.sub(r"\s+", " ", s).strip()
     # 줄임말을 먼저 푼다 (AIRLS -> AIRLINES) 그래야 한글 목록과 맞는다
     s = " ".join(ABBR.get(w, w) for w in s.split())
@@ -431,9 +493,12 @@ def clean_name(raw):
             return KO[k]
     # 회사 형태·주식 종류 꼬리표 제거
     s = re.sub(r"\b(INC|CORP|CORPORATION|CO|COMPANY|LTD|LIMITED|PLC|HOLDINGS?|GROUP|"
-               r"TRUST|LP|LLC|SA|NV|AG|ADR|ADS|COM|NEW|DEL|CL [ABC]|CLASS [ABC]|"
+               r"TRUST|LP|LLC|SA|NV|AG|ADR|ADS|COM|DEL|CL [ABC]|CLASS [ABC]|"
                r"SHS|SHARES|ORD|ORDINARY|DEP RECPT|SPONSORED|COMMON|STOCK|"
                r"THE|OF|&)\b", " ", s)
+    # NEW 는 꼬리표지만 NEW YORK 처럼 앞머리면 살려야 한다
+    w = s.split()
+    s = " ".join([t for i, t in enumerate(w) if t != "NEW" or i == 0])
     s = re.sub(r"\s+", " ", s).strip()
     # 첫 글자만 대문자
     return " ".join(w if len(w) <= 3 else w.capitalize() for w in s.split())[:22] or raw[:22]
@@ -457,6 +522,12 @@ ABBR = {
     "AIRLS": "AIRLINES", "AIRL": "AIRLINES", "RR": "RAILROAD", "RY": "RAILWAY", "STL": "STEEL",
     "CHEM": "CHEMICAL", "CHEMS": "CHEMICALS", "MED": "MEDICAL", "DEV": "DEVELOPMENT", "EQUIP": "EQUIPMENT",
     "SOLTNS": "SOLUTIONS", "SOLUTNS": "SOLUTIONS", "BRDCSTG": "BROADCASTING", "PLATFRMS": "PLATFORMS",
+    # 점검에서 영문으로 남은 것들 (Applied Matls, Texas Instrs, Hertz Global Hldgs …)
+    "MATLS": "MATERIALS", "MATL": "MATERIAL", "INSTRS": "INSTRUMENTS", "INSTR": "INSTRUMENT",
+    "HLDGS": "HOLDINGS", "PAC": "PACIFIC", "STR": "STREET", "CTZNS": "CITIZENS",
+    "CMNTY": "COMMUNITY", "FMRS": "FARMERS", "MKT": "MARKET", "MKTS": "MARKETS",
+    "NEV": "NEVADA", "RUBR": "RUBBER", "PMTS": "PAYMENTS", "PMT": "PAYMENT",
+    "WHSL": "WHOLESALE", "GRDN": "GARDEN", "SPRT": "SPORTS", "CDA": "CANADA",
 }
 
 def norm_name(raw):
@@ -601,6 +672,16 @@ def fetch_holdings(cik, acc):
     return None, "정보표를 못 찾음"
 
 
+def final_name(raw):
+    """카드에 실제로 찍히는 이름. 한글이 아니고 길면 티커로 바꾼다."""
+    name = clean_name(raw)
+    if not re.search(r"[가-힣]", name) and len(name) > 9:
+        t = find_ticker(raw)
+        if t and len(t) <= 6:
+            return t
+    return name
+
+
 def build(rows):
     """종목별로 합쳐 비중을 낸다."""
     by = {}
@@ -615,13 +696,8 @@ def build(rows):
     items = sorted(by.values(), key=lambda b: -b["value"])
     out = []
     for b in items[:TOP_N]:
-        name = clean_name(b["raw"])
-        ticker = None
-        # 한글 이름이 아니고 길면 티커로 바꾼다 (카드에서 글자가 작아진다)
-        if not re.search(r"[가-힣]", name) and len(name) > 9:
-            ticker = find_ticker(b["raw"])
-            if ticker and len(ticker) <= 6:
-                name = ticker
+        name = final_name(b["raw"])
+        ticker = name if name != clean_name(b["raw"]) else None
         out.append({
             "name": name,
             "raw": b["raw"],
@@ -676,17 +752,26 @@ def names(only_bad=False):
             rec = seen.setdefault(raw, {"old": h.get("name", ""), "funds": set()})
             rec["funds"].add(key)
 
+    def kind(n):
+        """ko 한글 · abbr 일부러 쓴 티커·약칭 · eng 손봐야 할 영문"""
+        if re.search(r"[가-힣]", n):
+            return "ko"
+        if len(n) <= 4 or (len(n) <= 6 and not re.search(r"[a-z]", n)):
+            return "abbr"
+        return "eng"
+
     rows = []
     for raw, rec in seen.items():
-        new = clean_name(raw)
-        han = bool(re.search(r"[가-힣]", new))
-        rows.append((raw, rec["old"], new, han, len(rec["funds"])))
+        new = final_name(raw)               # build() 과 같은 규칙 (티커 대체 포함)
+        rows.append((raw, rec["old"], new, kind(new), len(rec["funds"])))
 
-    han_n = sum(1 for r in rows if r[3])
+    n_ko = sum(1 for r in rows if r[3] == "ko")
+    n_ab = sum(1 for r in rows if r[3] == "abbr")
+    n_en = sum(1 for r in rows if r[3] == "eng")
     log("=" * 78)
     log("13F 종목명 점검  |  %d개 기관 · 종목 %d개" % (len(funds), len(rows)))
-    log("  한글 이름 %d개 (%.0f%%) · 영문 남음 %d개"
-        % (han_n, han_n * 100.0 / (len(rows) or 1), len(rows) - han_n))
+    log("  한글 %d개 (%.0f%%) · 티커·약칭 %d개 · 손볼 영문 %d개"
+        % (n_ko, n_ko * 100.0 / (len(rows) or 1), n_ab, n_en))
     log("=" * 78)
 
     def pad(s, w):                       # 한글은 두 칸을 차지한다
@@ -701,17 +786,18 @@ def names(only_bad=False):
             used += cw
         return cut + " " * (w - used)
 
-    show = [r for r in rows if not r[3]] if only_bad else rows
-    show.sort(key=lambda r: (r[3], -r[4], r[2].lower()))
+    order = {"eng": 0, "abbr": 1, "ko": 2}
+    show = [r for r in rows if r[3] == "eng"] if only_bad else rows
+    show.sort(key=lambda r: (order[r[3]], -r[4], r[2].lower()))
     log("  %s %s %s %s" % (pad("공시 원문", 34), pad("지금", 22), pad("바뀜", 16), "기관"))
     log("-" * 82)
-    for raw, old, new, han, nf in show:
+    for raw, old, new, kd, nf in show:
         mark = "→ " if old != new else "  "
         log("%s%s %s %s %d" % (mark, pad(raw, 34), pad(old, 22), pad(new, 16), nf))
-    log("-" * 78)
-    log("바뀌는 이름 %d개 · 영문 그대로 %d개"
-        % (sum(1 for r in rows if r[1] != r[2]), len(rows) - han_n))
-    log("\n영문만 보려면:  python3 collect_13f.py --names-bad")
+    log("-" * 82)
+    log("바뀌는 이름 %d개 · 손볼 영문 %d개"
+        % (sum(1 for r in rows if r[1] != r[2]), n_en))
+    log("\n손볼 영문만:  python3 collect_13f.py --names-bad")
     log("반영하려면:    python3 collect_13f.py        (NAME_VER=%d 이므로 다시 만듭니다)" % NAME_VER)
 
 
