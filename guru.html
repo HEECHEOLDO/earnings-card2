@@ -374,9 +374,10 @@
       },
       gap:{ headToChart:30, chartToRule:40, ruleToText:18 },
       donut:{ holeRatio:0.58, sepWidth:5, minLabelPct:3,
-              labelGap:26, lineGap:8, labelPad:8, labelMin:16,
-              vertZone:0.26, pushMax:170, pullMax:220, swingMax:20, swingFrac:0.6, maxShrink:18,
-              fullSizeAt:8, smallSize:26,
+              labelGap:26, lineGap:8, labelPad:8, labelMin:24,
+              vertZone:0.26, pushMax:170, pullMax:220, swingMax:20, swingFrac:0.6, maxShrink:10,
+              fullSizeAt:6, smallSize:31,
+              labelMaxW:210, labelMinSize:20,   // 라벨 폭 한계·최소 글자
               boundInset:36,     // 라벨은 안전영역보다 살짝 바깥까지 쓴다
               minTextRoom:164,   // 라벨 글자에 확보할 최소 가로 폭
               lightLift:21, lightMin:6, lightMaxStart:46, lightSpan:42, lightCap:90 }
@@ -677,6 +678,12 @@
     function boxAt(it, mid, rad, size) {
       var c = Math.cos(mid), sn = Math.sin(mid);
       var anchor = Math.abs(c) < D.vertZone ? 'center' : (c >= 0 ? 'left' : 'right');
+      // 이름이 길면 글자를 줄여 카드 밖으로 나가지 않게 한다
+      ctx.font = font(800, size);
+      var raw = ctx.measureText(it.r.name).width;
+      if (raw > D.labelMaxW) {
+        size = Math.max(D.labelMinSize, Math.round(size * D.labelMaxW / raw));
+      }
       var ps = Math.round(size * T.type.labelPct / T.type.label);
       ctx.font = font(800, size);
       var w = ctx.measureText(it.r.name).width;
