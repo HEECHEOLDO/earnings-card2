@@ -1647,36 +1647,52 @@
     return -1;
   }
 
+  /* 카드는 가로 1080이라 원본 해상도를 그대로 들고 있을 이유가 없다.
+     폰 사진(1200만~5000만 화소)을 그대로 두면 배경 지우기에서 메모리가
+     터져 브라우저가 탭을 죽이고 새로고침한다. 미리 줄여 둔다. */
+  var OV_MAX = 1600;
+  function fitOverlay(file, done, fail) {
+    var url = URL.createObjectURL(file);
+    var img = new Image();
+    img.onload = function () {
+      var w = img.naturalWidth, h = img.naturalHeight;
+      var s = Math.min(1, OV_MAX / Math.max(w, h));
+      if (s === 1) { done(img, file); return; }          // 이미 작으면 그대로
+      var c = document.createElement('canvas');
+      c.width = Math.round(w*s); c.height = Math.round(h*s);
+      c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+      c.toBlob(function (blob) {
+        if (!blob) { done(img, file); return; }
+        var small = new Image();
+        small.onload = function () { URL.revokeObjectURL(url); done(small, blob); };
+        small.onerror = function () { done(img, file); };
+        small.src = URL.createObjectURL(blob);
+      }, 'image/png');
+    };
+    img.onerror = function () { URL.revokeObjectURL(url); fail(); };
+    img.src = url;
+  }
+
   document.getElementById('ov-input').addEventListener('change', function (e) {
     var files = e.target.files ? Array.prototype.slice.call(e.target.files) : [];
     var self = this;
     files.forEach(function (file, idx) {
-      var reader = new FileReader();
-      reader.onload = function () {
-        var img = new Image();
-        img.onload = function () {
-          var aspect = img.naturalWidth / img.naturalHeight || 1;
-          var w = Math.max(90, Math.min(CW * 0.25, img.naturalWidth));
-          overlays.push({
-            img: img, aspect: aspect, layer: 'front', opacity: 1, rot: 0,
-            w: w, h: w / aspect,
-            cx: CW / 2 + idx * 30, cy: CH / 2 + idx * 30
-          });
-          selected = overlays.length - 1;
-          syncOverlayUI();
-          drawPreview();
-          if (idx === 0) {
-            try {
-              canvas.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            } catch (e) {
-              canvas.scrollIntoView(true);
-            }
-          }
-        };
-        img.onerror = function () { alert('이미지를 불러오지 못했습니다.'); };
-        img.src = reader.result;
-      };
-      reader.readAsDataURL(file);
+      fitOverlay(file, function (img, blob) {
+        var aspect = img.naturalWidth / img.naturalHeight || 1;
+        var w = Math.max(90, Math.min(CW * 0.25, img.naturalWidth));
+        overlays.push({
+          img: img, src: blob, aspect: aspect, layer: 'front', opacity: 1, rot: 0,
+          w: w, h: w / aspect,
+          cx: CW / 2 + idx * 30, cy: CH / 2 + idx * 30
+        });
+        selected = overlays.length - 1;
+        syncOverlayUI();
+        drawPreview();
+        if (idx === 0) {
+          try { canvas.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+          catch (x) { canvas.scrollIntoView(true); }
+        }
+      }, function () { alert('이미지를 불러오지 못했습니다.'); });
     });
     self.value = '';
   });
@@ -1711,11 +1727,12 @@
     bgStatus('준비 중… (' + qLabel + ' — 처음이면 내려받는 데 시간이 걸립니다)');
 
     // 원본은 남겨둔다 — 잘못 따지면 되돌릴 수 있게
-    if (!ov.orig) ov.orig = ov.img;
+    if (!ov.orig) { ov.orig = ov.img; ov.origSrc = ov.src; }
 
     loadBgLib().then(function (lib) {
       var q = document.getElementById('ov-bg-q').value;
-      return lib.removeBackground(ov.orig.src, {
+      // 줄여 둔 사진(Blob)을 넘긴다. 원본 크기를 넘기면 메모리가 터진다.
+      return lib.removeBackground(ov.origSrc || ov.orig.src, {
         model: q,
         device: 'gpu',                        // 그래픽카드가 있으면 쓰고, 없으면 알아서 CPU
         output: { format: 'image/png', quality: 1 },
@@ -1749,6 +1766,7 @@
     var ov = overlays[selected];
     if (!ov || !ov.orig) return;
     ov.img = ov.orig;
+    ov.src = ov.origSrc;
     ov.cut = false;
     syncOverlayUI(); drawPreview();
   }
