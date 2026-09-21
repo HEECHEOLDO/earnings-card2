@@ -1,11 +1,11 @@
 {
  "name": "이지스레지던스리츠",
- "split_adjusted": false,
+ "split_adjusted": true,
  "legal_name": "이지스레지던스리츠",
  "code": "350520",
  "market": "코스피",
  "sector": "",
- "updated": "2026-09-04",
+ "updated": "2026-09-21",
  "annual": [
   {
    "p": 2020,
@@ -18,7 +18,7 @@
    "dps": 130.0,
    "payout": null,
    "yield": 2.58,
-   "dps_adj": 130.0
+   "dps_adj": 520.0
   },
   {
    "p": 2021,
@@ -31,7 +31,7 @@
    "dps": 130.0,
    "payout": null,
    "yield": 2.51,
-   "dps_adj": 130.0
+   "dps_adj": 520.0
   },
   {
    "p": 2022,
@@ -44,7 +44,7 @@
    "dps": 133.0,
    "payout": null,
    "yield": 2.56,
-   "dps_adj": 133.0
+   "dps_adj": 532.0
   },
   {
    "p": 2023,
@@ -57,7 +57,7 @@
    "dps": 133.0,
    "payout": null,
    "yield": 3.38,
-   "dps_adj": 133.0
+   "dps_adj": 532.0
   },
   {
    "p": 2024,
@@ -70,7 +70,7 @@
    "dps": 150.0,
    "payout": null,
    "yield": 3.46,
-   "dps_adj": 150.0
+   "dps_adj": 600.0
   },
   {
    "p": 2025,
@@ -83,6 +83,19 @@
    "dps": 150.0,
    "payout": 159.0,
    "yield": 3.6,
+   "dps_adj": 600.0
+  },
+  {
+   "p": 2026,
+   "rev": 235.9,
+   "op": 225.2,
+   "ni": 196.5,
+   "assets": 4729.8,
+   "liab": 1402.4,
+   "equity": 3327.4,
+   "dps": 150.0,
+   "payout": 28.0,
+   "yield": 4.4,
    "dps_adj": 150.0
   }
  ],
@@ -135,6 +148,13 @@
    "rev": 43.8,
    "op": 41.0,
    "ni": 29.8
+  },
+  {
+   "y": 2026,
+   "q": 4,
+   "rev": 235.9,
+   "op": 225.2,
+   "ni": 196.5
   }
  ]
 }
