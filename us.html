@@ -1598,6 +1598,7 @@
   var ovOpacity = document.getElementById('ov-opacity');
 
   function syncOverlayUI() {
+    saveOverlays();
     var ov = overlays[selected];
     if (!ov) {
       ovEdit.style.display = 'none';
@@ -1650,6 +1651,89 @@
   /* 카드는 가로 1080이라 원본 해상도를 그대로 들고 있을 이유가 없다.
      폰 사진(1200만~5000만 화소)을 그대로 두면 배경 지우기에서 메모리가
      터져 브라우저가 탭을 죽이고 새로고침한다. 미리 줄여 둔다. */
+  /* ---- 새로고침에 대비한 보관 ----
+     배경 지우기는 모델과 런타임만으로 200MB 넘게 쓴다. 폰 브라우저는
+     한도를 넘으면 탭을 통째로 버리고 다시 연다. 이건 페이지가 막을 수
+     없는 동작이라, 대신 사진이 날아가지 않게 해 둔다.
+     넣은 사진을 세션 저장소에 담아두고, 다시 열리면 되살린다. */
+  var BUILD = '0921';            // 폰에 뜬 게 어느 판인지 확인용
+  var OV_KEY  = 'fincard.ov.' + location.pathname;
+  var BG_FLAG = 'fincard.bg.' + location.pathname;
+  var SAVE_MAX = 800;                     // 보관용은 작게 (저장소가 5MB쯤이다)
+
+  function thumbUrl(img, cut) {
+    try {
+      var w = img.naturalWidth || img.width, h = img.naturalHeight || img.height;
+      var s = Math.min(1, SAVE_MAX / Math.max(w, h));
+      var c = document.createElement('canvas');
+      c.width = Math.max(1, Math.round(w*s)); c.height = Math.max(1, Math.round(h*s));
+      c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+      return cut ? c.toDataURL('image/png') : c.toDataURL('image/jpeg', 0.85);
+    } catch (e) { return null; }          // 다른 출처 이미지 등
+  }
+
+  var _saveT = null, _restoring = false;
+  function saveOverlays() {
+    if (_restoring) return;          // 복구가 끝나기 전에 보관본을 지우면 안 된다
+    if (_saveT) clearTimeout(_saveT);
+    _saveT = setTimeout(function () {
+      try {
+        var out = [];
+        for (var i = 0; i < overlays.length; i++) {
+          var ov = overlays[i];
+          if (!ov.keep) ov.keep = thumbUrl(ov.img, ov.cut);
+          if (!ov.keep) continue;
+          out.push({ d:ov.keep, aspect:ov.aspect, layer:ov.layer, opacity:ov.opacity,
+                     rot:ov.rot, w:ov.w, h:ov.h, cx:ov.cx, cy:ov.cy, cut:!!ov.cut });
+        }
+        if (out.length) sessionStorage.setItem(OV_KEY, JSON.stringify(out));
+        else sessionStorage.removeItem(OV_KEY);
+      } catch (e) { /* 용량 초과면 보관을 포기한다 */ }
+    }, 400);
+  }
+
+  function restoreOverlays() {
+    var raw = null, arr = null, died = null;
+    try {
+      raw = sessionStorage.getItem(OV_KEY);
+      died = sessionStorage.getItem(BG_FLAG);
+      sessionStorage.removeItem(BG_FLAG);
+    } catch (e) { return; }
+    if (!raw) { if (died) bgDiedNotice(died); return; }
+    try { arr = JSON.parse(raw); } catch (e) { return; }
+    if (!arr || !arr.length) { if (died) bgDiedNotice(died); return; }
+
+    var box = new Array(arr.length), left = arr.length;
+    _restoring = true;
+    arr.forEach(function (o, i) {
+      var img = new Image();
+      function fin() {
+        if (--left) return;
+        for (var k = 0; k < box.length; k++) if (box[k]) overlays.push(box[k]);
+        if (overlays.length) selected = 0;
+        _restoring = false;
+        syncOverlayUI();
+        if (died) bgDiedNotice(died);     // 그림 그리다 실패해도 안내는 뜨게
+        drawPreview();
+      }
+      img.onload = function () {
+        box[i] = { img:img, keep:o.d, src:null, aspect:o.aspect, layer:o.layer,
+                   opacity:o.opacity, rot:o.rot, w:o.w, h:o.h, cx:o.cx, cy:o.cy, cut:o.cut };
+        fin();
+      };
+      img.onerror = fin;
+      img.src = o.d;
+    });
+  }
+
+  function bgDiedNotice(info) {
+    var q = '';
+    try { q = (JSON.parse(info) || {}).q || ''; } catch (e) {}
+    var tip = q && q !== 'isnet_quint8' ? " '빠름'으로 바꿔 다시 해보세요."
+                                        : ' 사진을 더 작게 잘라 넣으면 나아집니다.';
+    bgStatus('배경을 지우다 메모리가 모자라 페이지가 다시 열렸습니다.' + tip);
+  }
+
   var OV_MAX = 1600;
   function fitOverlay(file, done, fail) {
     var url = URL.createObjectURL(file);
@@ -1724,10 +1808,18 @@
     btn.disabled = true;
     var qLabel = { isnet_quint8: '빠름 · 약 40MB', isnet_fp16: '보통 · 약 80MB', isnet: '최고 · 약 160MB' }[
       document.getElementById('ov-bg-q').value] || '';
-    bgStatus('준비 중… (' + qLabel + ' — 처음이면 내려받는 데 시간이 걸립니다)');
+    bgStatus('준비 중… (' + qLabel + ' — 처음이면 내려받는 데 시간이 걸립니다) [' + BUILD + ']');
 
     // 원본은 남겨둔다 — 잘못 따지면 되돌릴 수 있게
-    if (!ov.orig) { ov.orig = ov.img; ov.origSrc = ov.src; }
+    if (!ov.orig) { ov.orig = ov.img; ov.origSrc = ov.src; ov.origKeep = ov.keep; }
+
+    // 여기서 탭이 죽으면 다음에 열릴 때 이유를 알려준다
+    try {
+      sessionStorage.setItem(BG_FLAG, JSON.stringify({
+        t: Date.now(), q: document.getElementById('ov-bg-q').value,
+        w: ov.orig.naturalWidth, h: ov.orig.naturalHeight }));
+    } catch (e) {}
+    saveOverlays();
 
     loadBgLib().then(function (lib) {
       var q = document.getElementById('ov-bg-q').value;
@@ -1754,12 +1846,16 @@
     }).then(function (img) {
       ov.img = img;
       ov.cut = true;
+      ov.keep = null;                    // 보관본을 새로 뜬다 (투명 PNG)
       bgStatus('');
       syncOverlayUI(); drawPreview();
     }).catch(function (e) {
       bgStatus('배경을 지우지 못했습니다: ' + (e && e.message || e));
       setTimeout(function () { bgStatus(''); }, 4000);
-    }).then(function () { btn.disabled = false; });
+    }).then(function () {
+      btn.disabled = false;
+      try { sessionStorage.removeItem(BG_FLAG); } catch (e) {}
+    });
   }
 
   function restoreBackground() {
@@ -1767,6 +1863,7 @@
     if (!ov || !ov.orig) return;
     ov.img = ov.orig;
     ov.src = ov.origSrc;
+    ov.keep = ov.origKeep;
     ov.cut = false;
     syncOverlayUI(); drawPreview();
   }
@@ -1785,6 +1882,9 @@
 
   document.getElementById('ov-bg').addEventListener('click', removeBackground);
   document.getElementById('ov-bg-undo').addEventListener('click', restoreBackground);
+
+  // 탭이 다시 열렸다면 넣어 둔 사진을 되살린다
+  restoreOverlays();
 
   document.getElementById('ov-delete').addEventListener('click', function () {
     if (selected < 0) return;
