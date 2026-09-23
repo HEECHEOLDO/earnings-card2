@@ -2,14 +2,14 @@
  "name": "GIS",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "General Mills, Inc.",
+ "legal_name": "GENERAL MILLS, INC.",
  "code": "GIS",
  "cik": "0000040704",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-09-23",
+ "updated": "2026-09-24",
  "annual": [
   {
    "p": 2017,
@@ -122,7 +122,7 @@
    "ni": 2319.0,
    "assets": 33071.1,
    "liab": 23859.9,
-   "equity": 9211.2,
+   "equity": 9518.9,
    "dps": 2.4,
    "payout": 57.7,
    "yield": null,
@@ -133,9 +133,9 @@
    "rev": 18424.6,
    "op": 885.8,
    "ni": -85.0,
-   "assets": 30016.7,
-   "liab": 22636.1,
-   "equity": 7380.6,
+   "assets": 30273.4,
+   "liab": 22809.6,
+   "equity": 7463.8,
    "dps": 2.44,
    "payout": null,
    "yield": null,
@@ -143,13 +143,6 @@
   }
  ],
  "quarterly": [
-  {
-   "y": 2024,
-   "q": 3,
-   "rev": 5099.2,
-   "op": 910.7,
-   "ni": 670.1
-  },
   {
    "y": 2024,
    "q": 4,
@@ -212,6 +205,13 @@
    "rev": 4609.6,
    "op": null,
    "ni": -2007.9
+  },
+  {
+   "y": 2027,
+   "q": 1,
+   "rev": 4389.5,
+   "op": 633.6,
+   "ni": 397.0
   }
  ]
 }
