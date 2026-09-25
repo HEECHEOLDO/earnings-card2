@@ -5,7 +5,7 @@
  "code": "001470",
  "market": "코스피",
  "sector": "",
- "updated": "2026-09-09",
+ "updated": "2026-09-26",
  "annual": [
   {
    "p": 2016,
@@ -50,10 +50,10 @@
    "p": 2019,
    "rev": 2262.9,
    "op": 49.6,
-   "ni": 74.2,
+   "ni": 379.4,
    "assets": 3903.9,
-   "liab": 2125.2,
-   "equity": 1778.6,
+   "liab": 1820.0,
+   "equity": 2083.8,
    "dps": null,
    "payout": null,
    "yield": null,
