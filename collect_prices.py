@@ -292,14 +292,16 @@ def naver_daily(code, year):
 
 def alpha_weekly(code):
     """해외 — 주별 조정종가 전체 (첫해 정밀화용)."""
-    txt, _ = get_text(AV_WEEK % (code.replace(".", "-"), AV_KEY))
+    txt, _ = get_text(AV_WEEK % (code.replace(".", "-"), AV_KEY), tries=2)
     if not txt:
         return None
     try:
         j = json.loads(txt)
     except Exception:                         # noqa: BLE001
         return None
-    if j.get("Note") or j.get("Information"):
+    kind, msg = av_trouble(j)
+    if kind:
+        log("  !! 주별(WEEKLY_ADJUSTED) %s — %s" % (kind, str(msg)[:140]))
         return "LIMIT"
     ts = j.get("Weekly Adjusted Time Series")
     if not ts:
@@ -430,17 +432,39 @@ def from_stooq(code):
     return y, None
 
 
+def av_trouble(j):
+    """알파밴티지가 자료 대신 보낸 안내문을 종류별로 가른다.
+       예전에는 전부 '한도 초과'로 뭉뚱그려서, 키가 막힌 건지 한도인지
+       구분이 안 됐다. 그래서 며칠째 안 받아져도 이유를 알 수 없었다."""
+    msg = j.get("Note") or j.get("Information") or j.get("Error Message")
+    if not msg:
+        return None, None
+    low = str(msg).lower()
+    # 한도 안내문에도 'premium plans' 링크가 들어 있다. 한도를 먼저 본다.
+    if ("rate limit" in low or "per day" in low or "per minute" in low
+            or "call frequency" in low or "requests per" in low):
+        return "한도 초과", msg
+    if "premium endpoint" in low or "is a premium" in low:
+        return "유료 전용", msg
+    if "apikey" in low or "invalid" in low:
+        return "키 문제", msg
+    return "거절됨", msg
+
+
 def from_alpha(code):
     """해외 — 알파밴티지 월별 조정종가. 배당 재투자가 포함된 총수익률."""
-    txt, why = get_text(AV % (code.replace(".", "-"), AV_KEY))
+    txt, why = get_text(AV % (code.replace(".", "-"), AV_KEY), tries=2)
     if not txt:
         return None, why
     try:
         j = json.loads(txt)
     except Exception:                         # noqa: BLE001
         return None, "형식 오류"
-    if j.get("Note") or j.get("Information"):
-        return None, "한도 초과"
+    kind, msg = av_trouble(j)
+    if kind:
+        if kind != "한도 초과":
+            log("  !! 알파밴티지 %s — %s" % (kind, str(msg)[:160]))
+        return None, kind
     ts = j.get("Monthly Adjusted Time Series")
     if not ts:
         return None, "자료 없음"
@@ -456,11 +480,16 @@ def from_alpha(code):
         return None, "기간이 짧음"
     # 첫해가 1월이 아니면(상장 가능성) 주별 자료로 시작을 바로잡는다.
     # 호출 1회가 더 들어가므로 예산이 남아 있을 때만.
-    if listed and listed[5:7] != "01" and _av_extra[0] > 0:
+    # 주별 자료는 '있으면 좋은' 보정이다. 이것 때문에 월별 수집까지
+    # 멈추면 안 된다. 예전에는 여기서 예산을 0으로 밀어버려서
+    # 하루에 딱 한 종목만 받아지고 있었다.
+    if (listed and listed[5:7] != "01"
+            and not _refine_off[0] and _av_extra[0] > 2):
         _av_extra[0] -= 1
         wk = alpha_weekly(code)
         if wk == "LIMIT":
-            _av_extra[0] = 0
+            _refine_off[0] = True             # 정밀화만 끈다
+            log("  첫해 정밀화를 끕니다 — 월별 수집은 계속합니다")
         elif wk:
             y, listed = refine_first_year(y, listed, lambda yr: wk)
     y["_asof"] = last_dt
@@ -469,6 +498,7 @@ def from_alpha(code):
 
 
 _av_extra = [0]           # 남은 알파밴티지 호출 수 (수집 루프와 같은 리스트를 가리킨다)
+_refine_off = [False]     # 주별 자료가 막히면 첫해 정밀화만 끈다
 
 
 def yahoo_symbol(code, desc=""):
@@ -565,10 +595,100 @@ def load_universe(args, only):
     return items
 
 
+def check():
+    """알파밴티지가 실제로 무슨 답을 주는지 한 번만 불러 그대로 보여준다.
+       한도인지, 유료 전용으로 바뀐 건지, 키가 막힌 건지 여기서 갈린다."""
+    log("키 %s…%s 로 AAPL 월별 조정종가를 한 번 부릅니다\n"
+        % (AV_KEY[:4], AV_KEY[-4:]))
+    txt, why = get_text(AV % ("AAPL", AV_KEY))
+    if not txt:
+        log("연결 실패: %s" % why); return
+    try:
+        j = json.loads(txt)
+    except Exception:                         # noqa: BLE001
+        log("JSON 이 아닙니다. 앞부분:\n%s" % txt[:400]); return
+
+    kind, msg = av_trouble(j)
+    if kind:
+        log("판정: %s\n" % kind)
+        log("원문: %s\n" % msg)
+        if kind == "한도 초과":
+            log("→ 오늘 25회를 다 썼습니다. 정상입니다. 내일 이어서 받습니다.")
+        elif kind == "유료 전용":
+            log("→ 이 엔드포인트가 유료로 바뀌었습니다. 무료로는 더 못 받습니다.")
+            log("   무료 대안(Stooq 등)으로 갈아타거나 유료 요금제가 필요합니다.")
+        elif kind == "키 문제":
+            log("→ 키가 막혔거나 잘못됐습니다. 새 키를 받아 AV_KEY 를 바꾸세요.")
+        return
+
+    ts = j.get("Monthly Adjusted Time Series") or {}
+    if not ts:
+        log("알 수 없는 응답입니다. 키 목록: %s" % list(j)[:6]); return
+    d = sorted(ts)
+    log("월별(MONTHLY_ADJUSTED)  정상 · %d개월치 · %s ~ %s" % (len(d), d[0][:10], d[-1][:10]))
+
+    # 주별도 쓴다. 이게 막히면 첫해 정밀화가 안 되고,
+    # 예전에는 그것 때문에 수집 전체가 하루 한 종목으로 줄었다.
+    log("")
+    txt2, why2 = get_text(AV_WEEK % ("AAPL", AV_KEY), tries=2)
+    if not txt2:
+        log("주별(WEEKLY_ADJUSTED)   연결 실패: %s" % why2); return
+    try:
+        j2 = json.loads(txt2)
+    except Exception:                         # noqa: BLE001
+        log("주별(WEEKLY_ADJUSTED)   JSON 아님: %s" % txt2[:200]); return
+    k2, m2 = av_trouble(j2)
+    if k2:
+        log("주별(WEEKLY_ADJUSTED)   %s" % k2)
+        log("  원문: %s" % m2)
+        if k2 == "유료 전용":
+            log("  → 주별은 유료입니다. 첫해 정밀화는 포기하고 월별만 씁니다.")
+            log("     (새 판에서는 이래도 월별 수집이 계속됩니다)")
+        elif k2 == "한도 초과":
+            log("  → 방금 월별로 1회를 썼으니 한도에 걸렸을 수 있습니다.")
+        return
+    w = j2.get("Weekly Adjusted Time Series") or {}
+    log("주별(WEEKLY_ADJUSTED)   정상 · %d주치" % len(w))
+    log("\n→ 둘 다 정상이면 알파밴티지 문제는 아닙니다.")
+
+
+def status():
+    """저장된 자료가 언제 받아진 건지 본다."""
+    try:
+        with open(OUT, encoding="utf-8") as f:
+            j = json.load(f)
+    except Exception as e:                    # noqa: BLE001
+        log("%s 를 못 읽었습니다 (%s)" % (OUT, e)); return
+    items = j.get("items", {})
+    us = {c: v for c, v in items.items() if not c.isdigit()}
+    kr = len(items) - len(us)
+    log("파일 기록 %s · 전체 %d종목 (국내 %d · 해외 %d)"
+        % (j.get("updated", "?"), len(items), kr, len(us)))
+
+    known = [(c, v) for c, v in us.items() if not c.isdigit()]
+    todo = [c for c, n, m, d in load_universe([], "US") if c not in items]
+    by = {}
+    for c, v in known:
+        by[v.get("fetched") or "(기록 없음)"] = by.get(v.get("fetched") or "(기록 없음)", 0) + 1
+    log("\n해외 종목을 받아온 날")
+    for k in sorted(by, reverse=True)[:14]:
+        log("  %-12s %4d종목" % (k, by[k]))
+    if todo:
+        log("\n아직 한 번도 못 받은 해외 종목 %d개" % len(todo))
+        log("  %s%s" % (" ".join(todo[:20]), " …" if len(todo) > 20 else ""))
+        log("  하루 %d개씩이면 약 %d일" % (AV_BUDGET, -(-len(todo) // AV_BUDGET)))
+    else:
+        log("\n해외 종목은 모두 한 번씩은 받았습니다.")
+
+
 def main():
     global DEBUG
     argv = sys.argv[1:]
     global USE_YAHOO
+    if "--check" in argv:
+        return check()
+    if "--status" in argv:
+        return status()
     DEBUG = "--debug" in argv
     USE_YAHOO = "--yahoo" in argv
     only = "KR" if "--kr" in argv else ("US" if "--us" in argv else None)
@@ -646,10 +766,23 @@ def main():
     av_left = _av_extra                          # 같은 리스트 — 정밀화 호출도 여기서 뺀다
     av_left[0] = max(0, AV_BUDGET - av_used[0])
     stooq_miss, stooq_dead = [0], [stooq_blocked[0]]
-    av_dry, warned = [False], [False]
+    av_dry, warned, av_stop = [False], [False], [""]
     started = time.time()
-    # 해외는 하루 한도가 있어, 아직 없는 종목부터 채운다
-    universe.sort(key=lambda x: (0 if x[0].isdigit() else (0 if x[0] not in prev else 1)))
+    # 해외는 하루 25개만 받을 수 있다. 아직 없는 종목을 먼저 채우고,
+    # 다 채운 뒤에는 '가장 오래된 것부터' 돌아가며 새로 받는다.
+    # (예전에는 순서가 고정이라 늘 같은 25종목만 새로 받고 나머지는
+    #  영영 그대로였다)
+    TODAY = datetime.now(timezone(timedelta(hours=9))).strftime("%Y-%m-%d")
+
+    def order(x):
+        code = x[0]
+        if code.isdigit():
+            return (0, "")                      # 국내는 한도가 없다
+        if code not in prev:
+            return (1, "")                      # 처음 받는 해외 종목이 먼저
+        return (2, prev[code].get("fetched") or "")   # 그다음은 오래된 것부터
+
+    universe.sort(key=order)
 
     for i, (code, name, market, desc) in enumerate(universe, 1):
         # 해외만 남았는데 한도가 없으면 더 돌 이유가 없다
@@ -674,10 +807,11 @@ def main():
                 y2, w2 = from_alpha(code)
                 if y2:
                     years, why = y2, None
-                elif w2 == "한도 초과":
+                elif w2 in ("한도 초과", "유료 전용", "키 문제", "거절됨"):
                     av_left[0] = 0
                     av_dry[0] = True
-                    why = "알파밴티지 한도 소진"
+                    av_stop[0] = w2
+                    why = "알파밴티지 " + w2
                 else:
                     why = w2
 
@@ -696,13 +830,17 @@ def main():
                 fails.append((code, name, why))
                 if av_dry[0] and not warned[0]:
                     warned[0] = True
-                    log("\n오늘 알파밴티지 한도(하루 25회)를 다 썼습니다.")
-                    log("남은 종목은 내일 이어서 받습니다. 이미 받아둔 자료는 그대로 있습니다.\n")
+                    if av_stop[0] == "한도 초과":
+                        log("\n오늘 알파밴티지 한도(하루 25회)를 다 썼습니다.")
+                        log("남은 종목은 내일 이어서 받습니다. 이미 받아둔 자료는 그대로 있습니다.\n")
+                    else:
+                        log("\n!! 알파밴티지가 '%s' 로 거절했습니다. 내일도 같을 겁니다." % av_stop[0])
+                        log("   python3 collect_prices.py --check 로 원문을 확인하세요.\n")
         else:
             asof = years.pop("_asof", "")
             listed = years.pop("_listed", None)
             items[code] = {"name": name, "market": mk, "desc": desc,
-                           "years": years, "asof": asof}
+                           "years": years, "asof": asof, "fetched": TODAY}
             if listed:
                 items[code]["listed"] = listed
 
