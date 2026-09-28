@@ -2259,6 +2259,7 @@
   });
   document.getElementById('chk-line').addEventListener('change', function () {
     state.showLine[state.period] = this.checked;
+    syncTitleHints();          // 배당 선을 끄고 켜면 자동 문구도 달라진다
     drawPreview();
   });
   document.getElementById('chk-guide').addEventListener('change', function () {
