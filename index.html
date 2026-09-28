@@ -419,13 +419,18 @@
       <div class="ctl-row">
         <label for="f-title">제목</label>
         <input type="text" id="f-title" spellcheck="false" autocomplete="off">
+        <button type="button" class="btn" id="f-title-auto"
+                style="flex:0 0 auto;min-width:56px" title="자동 문구로 되돌리기">자동</button>
       </div>
       <div class="ctl-row" style="margin-top:8px">
         <label for="f-sub">아래 줄</label>
         <input type="text" id="f-sub" spellcheck="false" autocomplete="off">
+        <button type="button" class="btn" id="f-sub-auto"
+                style="flex:0 0 auto;min-width:56px" title="자동 문구로 되돌리기">자동</button>
       </div>
       <p class="hint" style="margin-top:8px">
-        비워두면 고른 종목과 구간에 맞춰 자동으로 씁니다. 회색 글씨가 그 자동 문구입니다.
+        종목·구간에 맞는 문구가 미리 들어 있습니다. 고쳐 쓰면 그대로 유지되고,
+        <b>자동</b>을 누르면 원래 문구로 돌아갑니다.
       </p>
       <div class="divider"></div>
 
@@ -1971,18 +1976,36 @@
   }
 
   /* ---- 카드 제목 ----
-     사용자가 적으면 그 문구를, 비워두면 종목·구간에 맞는 자동 문구를 쓴다.
-     자동 문구는 회색 안내글(placeholder)로 보여줘서, 비워뒀을 때 무엇이
-     찍힐지 미리 알 수 있게 한다. */
+     종목·구간에 맞는 문구를 입력칸에 미리 넣어두고, 거기서 고쳐 쓰게 한다.
+     종목이나 구간을 바꾸면 자동 문구도 바뀌는데, 이때 사용자가 손대지 않은
+     칸만 새 문구로 갈아끼운다. 고쳐 쓴 칸은 건드리지 않는다.
+     '자동' 버튼을 누르면 다시 자동 문구로 돌아온다. */
+  var _auto = { title: '', sub: '' };     // 마지막으로 넣어 둔 자동 문구
+
+  function autoTitleText() {
+    return state.company ? state.company.name : '';
+  }
+  function autoSubText() {
+    try {
+      var showLine = state.showLine[state.period] !== false;
+      return cardTitle(state.period, state.rows, state.spec, showLine) || '';
+    } catch (e) { return ''; }
+  }
+
   function syncTitleHints() {
     var t = document.getElementById('f-title');
     var u = document.getElementById('f-sub');
     if (!t || !u) return;
-    t.placeholder = state.company ? state.company.name : '';
-    try {
-      var showLine = state.showLine[state.period] !== false;
-      u.placeholder = cardTitle(state.period, state.rows, state.spec, showLine);
-    } catch (e) { u.placeholder = ''; }
+    var at = autoTitleText(), as = autoSubText();
+
+    // 손대지 않은 칸(= 지난 자동 문구 그대로거나 빈 칸)만 갈아끼운다
+    if (!t.value || t.value === _auto.title) t.value = at;
+    if (!u.value || u.value === _auto.sub)   u.value = as;
+    _auto.title = at;
+    _auto.sub = as;
+
+    state.title = t.value.trim();
+    state.sub = u.value.trim();
   }
 
   (function () {
@@ -1996,6 +2019,15 @@
     }
     t.addEventListener('input', onEdit);
     u.addEventListener('input', onEdit);
+
+    var bt = document.getElementById('f-title-auto');
+    var bu = document.getElementById('f-sub-auto');
+    if (bt) bt.addEventListener('click', function () {
+      t.value = _auto.title = autoTitleText(); onEdit();
+    });
+    if (bu) bu.addEventListener('click', function () {
+      u.value = _auto.sub = autoSubText(); onEdit();
+    });
   })();
 
   function renderEmpty() {
