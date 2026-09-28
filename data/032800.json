@@ -5,21 +5,8 @@
  "code": "032800",
  "market": "코스닥",
  "sector": "",
- "updated": "2026-08-22",
+ "updated": "2026-09-28",
  "annual": [
-  {
-   "p": 2016,
-   "rev": 217.0,
-   "op": -36.5,
-   "ni": -37.6,
-   "assets": 356.1,
-   "liab": 136.6,
-   "equity": 219.5,
-   "dps": null,
-   "payout": null,
-   "yield": null,
-   "dps_adj": null
-  },
   {
    "p": 2017,
    "rev": 133.0,
@@ -136,16 +123,22 @@
    "payout": null,
    "yield": null,
    "dps_adj": null
+  },
+  {
+   "p": 2026,
+   "rev": 372.3,
+   "op": -75.2,
+   "ni": -118.4,
+   "assets": 784.4,
+   "liab": 369.5,
+   "equity": 414.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
   }
  ],
  "quarterly": [
-  {
-   "y": 2023,
-   "q": 4,
-   "rev": 60.8,
-   "op": -19.2,
-   "ni": -111.9
-  },
   {
    "y": 2024,
    "q": 1,
@@ -208,6 +201,13 @@
    "rev": 256.5,
    "op": -47.1,
    "ni": -52.8
+  },
+  {
+   "y": 2026,
+   "q": 4,
+   "rev": 115.8,
+   "op": -28.1,
+   "ni": -65.6
   }
  ]
 }
