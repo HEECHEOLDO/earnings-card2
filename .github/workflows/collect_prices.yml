@@ -2,7 +2,7 @@ name: 연간 수익률 수집
 
 on:
   schedule:
-    - cron: '30 17 * * *'      # KST 02:30 (국내·해외 실적 수집 뒤)
+    - cron: '0 18 * * *'       # KST 03:00
   workflow_dispatch:
 
 concurrency:
@@ -22,7 +22,13 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: 상태 확인
+        run: python3 collect_prices.py --status || true
+
       - name: 수집
+        env:
+          # Secrets 에 AV_KEY 가 있으면 그 값을, 없으면 코드에 박힌 키를 씁니다.
+          AV_KEY: ${{ secrets.AV_KEY }}
         run: python3 collect_prices.py
 
       - name: 커밋 · 푸시

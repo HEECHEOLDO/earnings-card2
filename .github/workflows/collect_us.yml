@@ -2,7 +2,7 @@ name: 해외 실적 수집
 
 on:
   schedule:
-    - cron: '30 16 * * *'      # KST 01:30 (국내 수집 1시간 뒤)
+    - cron: '30 17 * * *'      # KST 02:30
   workflow_dispatch:
 
 concurrency:
@@ -29,11 +29,14 @@ jobs:
           SEC_UA: ${{ secrets.SEC_UA }}
         run: python3 collect_us.py
 
+      - name: 13F 보유 현황
+        run: python3 collect_13f.py || true     # 13F 가 막혀도 실적은 올린다
+
       - name: 커밋 · 푸시
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/us data/fx.json || true
+          git add data/us data/fx.json data/13f.json || true
           if git diff --cached --quiet; then
             echo "변경 없음"
             exit 0
