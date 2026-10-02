@@ -2,14 +2,14 @@
  "name": "CCL",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "Carnival Corporation Ltd.",
+ "legal_name": "Carnival Corp Ltd.",
  "code": "CCL",
  "cik": "0000815097",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-09-28",
+ "updated": "2026-10-02",
  "annual": [
   {
    "p": 2016,
@@ -145,13 +145,6 @@
  "quarterly": [
   {
    "y": 2024,
-   "q": 1,
-   "rev": 5406.0,
-   "op": 276.0,
-   "ni": -214.0
-  },
-  {
-   "y": 2024,
    "q": 2,
    "rev": 5781.0,
    "op": 560.0,
@@ -212,6 +205,13 @@
    "rev": 6663.0,
    "op": 851.0,
    "ni": 537.0
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 8435.0,
+   "op": 2220.0,
+   "ni": 1920.0
   }
  ]
 }
