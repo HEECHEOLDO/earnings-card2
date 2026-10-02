@@ -3,7 +3,7 @@ name: DART 데이터 수집
 on:
   schedule:
     # 매일 00:30 KST (UTC 15:30) — DART 한도가 자정에 초기화된 직후
-    - cron: '30 15 * * *'
+    - cron: '0 17 * * *'
   workflow_dispatch:
     inputs:
       budget:
