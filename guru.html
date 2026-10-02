@@ -1052,10 +1052,10 @@
      한도를 넘으면 탭을 통째로 버리고 다시 연다. 이건 페이지가 막을 수
      없는 동작이라, 대신 사진이 날아가지 않게 해 둔다.
      넣은 사진을 세션 저장소에 담아두고, 다시 열리면 되살린다. */
-  var BUILD = '0921';            // 폰에 뜬 게 어느 판인지 확인용
+  var BUILD = '1002';            // 폰에 뜬 게 어느 판인지 확인용
   var OV_KEY  = 'fincard.ov.' + location.pathname;
   var BG_FLAG = 'fincard.bg.' + location.pathname;
-  var SAVE_MAX = 800;                     // 보관용은 작게 (저장소가 5MB쯤이다)
+  var SAVE_MAX = 560;                     // 보관용은 작게 (저장소가 5MB쯤이다)
 
   function thumbUrl(img, cut) {
     try {
@@ -1069,7 +1069,7 @@
   }
 
   var _saveT = null, _restoring = false;
-  function saveOverlays() {
+  function saveOverlays(delay) {
     if (_restoring) return;          // 복구가 끝나기 전에 보관본을 지우면 안 된다
     if (_saveT) clearTimeout(_saveT);
     _saveT = setTimeout(function () {
@@ -1085,7 +1085,7 @@
         if (out.length) sessionStorage.setItem(OV_KEY, JSON.stringify(out));
         else sessionStorage.removeItem(OV_KEY);
       } catch (e) { /* 용량 초과면 보관을 포기한다 */ }
-    }, 400);
+    }, delay || 400);
   }
 
   function restoreOverlays() {
@@ -1185,11 +1185,70 @@
      배경 지우기 — 브라우저 안에서 AI 모델로 누끼를 딴다
      (사진이 밖으로 나가지 않는다. 첫 사용 때 모델 약 40MB 내려받음)
      ============================================================ */
+  var BG_CDN = 'https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.5.8/+esm';
   var _bgLib = null;
+  var _workerBroken = false;
+
   function loadBgLib() {
     if (_bgLib) return Promise.resolve(_bgLib);
-    return import('https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.5.8/+esm')
-      .then(function (m) { _bgLib = m; return m; });
+    return import(BG_CDN).then(function (m) { _bgLib = m; return m; });
+  }
+
+  /* 모델은 한 번 올리면 200MB 넘게 잡고, 그 메모리는 페이지가 살아 있는 한
+     돌아오지 않는다. 폰에서는 그 상태로 한도 근처에 머물다가 다음 작업
+     하나에 탭이 통째로 버려진다. 그래서 워커에서 돌리고 끝나면 워커를
+     없앤다. 워커를 없애면 그 안의 메모리가 전부 반환된다.
+     워커가 안 되는 환경이면 예전처럼 페이지 안에서 돌린다. */
+  function removeInWorker(src, model, onProgress) {
+    return new Promise(function (resolve, reject) {
+      if (_workerBroken || typeof Worker === 'undefined') {
+        reject(new Error('worker-unavailable')); return;
+      }
+      var code =
+        "let lib=null;\n" +
+        "self.onmessage = async (e) => {\n" +
+        "  try {\n" +
+        "    if (!lib) lib = await import(e.data.cdn);\n" +
+        "    const out = await lib.removeBackground(e.data.src, {\n" +
+        "      model: e.data.model, device: 'gpu',\n" +
+        "      output: { format: 'image/png', quality: 1 },\n" +
+        "      progress: (k, c, t) => self.postMessage({ p: 1, k: k, c: c, t: t })\n" +
+        "    });\n" +
+        "    self.postMessage({ ok: 1, blob: out });\n" +
+        "  } catch (err) {\n" +
+        "    self.postMessage({ err: String((err && err.message) || err) });\n" +
+        "  }\n" +
+        "};\n";
+
+      var wUrl = null, w = null, done = false;
+      function finish(fn, arg) {
+        if (done) return;
+        done = true;
+        try { if (w) w.terminate(); } catch (e) {}      // ← 여기서 메모리가 돌아온다
+        try { if (wUrl) URL.revokeObjectURL(wUrl); } catch (e) {}
+        w = null;
+        fn(arg);
+      }
+      try {
+        wUrl = URL.createObjectURL(new Blob([code], { type: 'text/javascript' }));
+        w = new Worker(wUrl, { type: 'module' });
+      } catch (e) {
+        _workerBroken = true;
+        finish(reject, new Error('worker-create-failed')); return;
+      }
+      // 모듈 워커를 못 쓰는 브라우저는 곧바로 error 가 온다
+      w.onerror = function () {
+        _workerBroken = true;
+        finish(reject, new Error('worker-error'));
+      };
+      w.onmessage = function (ev) {
+        var d = ev.data || {};
+        if (d.p) { onProgress(d.k, d.c, d.t); return; }
+        if (d.err) { finish(reject, new Error(d.err)); return; }
+        if (d.ok) { finish(resolve, d.blob); return; }
+      };
+      w.postMessage({ src: src, model: model, cdn: BG_CDN });
+    });
   }
 
   function bgStatus(t) {
@@ -1217,20 +1276,28 @@
     } catch (e) {}
     saveOverlays();
 
-    loadBgLib().then(function (lib) {
-      var q = document.getElementById('ov-bg-q').value;
-      // 줄여 둔 사진(Blob)을 넘긴다. 원본 크기를 넘기면 메모리가 터진다.
-      return lib.removeBackground(ov.origSrc || ov.orig.src, {
-        model: q,
-        device: 'gpu',                        // 그래픽카드가 있으면 쓰고, 없으면 알아서 CPU
-        output: { format: 'image/png', quality: 1 },
-        progress: function (key, cur, total) {
-          if (/fetch/.test(key)) {
-            bgStatus('모델 내려받는 중 ' + (total ? Math.round(cur / total * 100) : 0) + '%');
-          } else {
-            bgStatus('배경 지우는 중…');
-          }
-        }
+    var q = document.getElementById('ov-bg-q').value;
+    var src = ov.origSrc || ov.orig.src;
+    function onProgress(key, cur, total) {
+      if (/fetch/.test(key)) {
+        bgStatus('모델 내려받는 중 ' + (total ? Math.round(cur / total * 100) : 0) + '%');
+      } else {
+        bgStatus('배경 지우는 중…');
+      }
+    }
+
+    // 먼저 워커에서 시도한다. 끝나면 워커를 없애 메모리를 되돌려준다.
+    // 워커가 안 되는 환경이면 예전처럼 페이지 안에서 돌린다.
+    removeInWorker(src, q, onProgress).catch(function (e) {
+      if (!/worker-/.test(e && e.message || '')) throw e;   // 모델 자체의 실패는 그대로
+      bgStatus('배경 지우는 중…');
+      return loadBgLib().then(function (lib) {
+        return lib.removeBackground(src, {
+          model: q,
+          device: 'gpu',
+          output: { format: 'image/png', quality: 1 },
+          progress: onProgress
+        });
       });
     }).then(function (blob) {
       return new Promise(function (resolve, reject) {
@@ -1240,11 +1307,20 @@
         img.src = URL.createObjectURL(blob);
       });
     }).then(function (img) {
+      var oldSrc = ov.img && ov.img.src;
       ov.img = img;
       ov.cut = true;
       ov.keep = null;                    // 보관본을 새로 뜬다 (투명 PNG)
+      // 바로 전에 쓰던 blob 은 돌려준다. 안 그러면 할 때마다 쌓인다.
+      if (oldSrc && oldSrc !== (ov.orig && ov.orig.src) && /^blob:/.test(oldSrc)) {
+        try { URL.revokeObjectURL(oldSrc); } catch (e) {}
+      }
       bgStatus('');
-      syncOverlayUI(); drawPreview();
+      syncOverlayUI();
+      // 배경 지우기 직후가 메모리상 가장 아슬아슬하다.
+      // 보관본 만들기는 한숨 돌린 뒤로 미룬다. (업로드 직후는 그대로 빠르게)
+      saveOverlays(1500);
+      drawPreview();
     }).catch(function (e) {
       bgStatus('배경을 지우지 못했습니다: ' + (e && e.message || e));
       setTimeout(function () { bgStatus(''); }, 4000);
