@@ -5,21 +5,8 @@
  "code": "093240",
  "market": "코스피",
  "sector": "",
- "updated": "2026-08-30",
+ "updated": "2026-10-04",
  "annual": [
-  {
-   "p": 2016,
-   "rev": 1560.5,
-   "op": -60.9,
-   "ni": -239.7,
-   "assets": 2076.1,
-   "liab": 1383.8,
-   "equity": 692.3,
-   "dps": null,
-   "payout": null,
-   "yield": null,
-   "dps_adj": null
-  },
   {
    "p": 2017,
    "rev": 1741.5,
@@ -136,16 +123,22 @@
    "payout": null,
    "yield": null,
    "dps_adj": null
+  },
+  {
+   "p": 2026,
+   "rev": 1778.0,
+   "op": 84.2,
+   "ni": 74.3,
+   "assets": 2015.5,
+   "liab": 842.8,
+   "equity": 1172.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
   }
  ],
  "quarterly": [
-  {
-   "y": 2023,
-   "q": 4,
-   "rev": 372.7,
-   "op": 6.9,
-   "ni": 5.9
-  },
   {
    "y": 2024,
    "q": 1,
@@ -208,6 +201,13 @@
    "rev": 1294.8,
    "op": 88.1,
    "ni": 79.8
+  },
+  {
+   "y": 2026,
+   "q": 4,
+   "rev": 483.2,
+   "op": -4.0,
+   "ni": -5.6
   }
  ]
 }
