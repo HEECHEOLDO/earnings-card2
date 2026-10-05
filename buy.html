@@ -194,12 +194,16 @@
   .span-b:disabled { opacity:.35; cursor:not-allowed; }
 
   .picked { display:flex; flex-direction:column; gap:6px; margin-top:12px; }
-  .pk { display:flex; align-items:center; gap:9px; padding:7px 9px; border-radius:var(--radius);
+  .pk { display:flex; align-items:center; gap:9px; padding:8px 9px; border-radius:var(--radius);
     background:var(--surface-2); font-size:13px; }
   .pk img, .pk .pk-ph { width:24px; height:24px; border-radius:50%; flex:none; }
   .pk .pk-ph { background:var(--text-mute); color:#fff; font-size:11px; font-weight:800;
     display:flex; align-items:center; justify-content:center; }
-  .pk-nm { flex:1; font-weight:600; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .pk-mid { flex:1; min-width:0; display:block; }
+  .pk-nm { display:block; font-weight:600; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .pk-sub { display:block; font-size:11px; line-height:1.45; color:var(--text-mute); margin-top:1px;
+    font-variant-numeric:tabular-nums; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .pk-sub b { font-weight:700; color:var(--text-soft); }
   .pk-v { font-weight:800; font-variant-numeric:tabular-nums; }
   .pk-v.up { color:var(--neg); } .pk-v.down { color:var(--accent-text); }
   .pk-x { border:0; background:transparent; color:var(--text-mute); cursor:pointer;
@@ -457,8 +461,9 @@ function rowsNow(){
   var out = [];
   state.picked.forEach(function(code){
     var a = amount(code, state.span); if (a === null) return;
+    var an = DB.items[code].y[String(state.span)];
     out.push({ code:code, name:DB.items[code].disp, full:DB.items[code].name, amt:a,
-               back:DB.items[code].y[String(state.span)].d });
+               back:an.d, p0:an.v, p1:DB.items[code].now.v });
   });
   out.sort(function(a,b){ return b.amt - a.amt; });
   return out;
@@ -467,6 +472,11 @@ function rowsNow(){
 // 되어 버려 두 자리가 필요하다. 0.1억 미만만 예외로 두 자리를 쓴다 —
 // 한 자리면 '0.0억원'이 되어 숫자가 사라진다. 이것 때문에 카드 전체를
 // 두 자리로 올리면 43.2 가 '43.20'이 되어 자릿수가 의미 없이 늘어난다.
+// 연평균 수익률. 배수에서 역산하므로 따로 받아올 자료가 없다.
+function cagr(mult, span){ return (Math.pow(mult, 1/span) - 1) * 100; }
+function comma(v){ return v.toLocaleString('ko-KR',
+  {minimumFractionDigits:0, maximumFractionDigits: v < 1000 ? 1 : 0}); }
+
 function decOf(span, a){ var base = span <= 3 ? 2 : 1; return a < 0.1 ? Math.max(base,2) : base; }
 function vtxt(span, a){ return a.toFixed(decOf(span, a)); }
 
@@ -778,8 +788,19 @@ function renderPicked(){
       im.replaceWith(ph);
     };
     el.appendChild(im);
+    var mid = document.createElement('span'); mid.className = 'pk-mid';
     var nm = document.createElement('span');
-    nm.className = 'pk-nm'; nm.textContent = r.name; el.appendChild(nm);
+    nm.className = 'pk-nm'; nm.textContent = r.full;   // 여기선 정식 이름
+    mid.appendChild(nm);
+    // 카드에는 금액만 싣고, 근거가 되는 주가는 여기서 볼 수 있게 한다
+    var sub = document.createElement('span');
+    sub.className = 'pk-sub';
+    var c = cagr(r.amt / SEED, state.span);
+    sub.innerHTML = comma(r.p0) + ' → <b>' + comma(r.p1) + '원</b> · 연 ' +
+                    (c >= 0 ? '+' : '') + c.toFixed(1) + '%';
+    sub.title = r.back + ' ' + comma(r.p0) + '원  →  ' + DB.asof + ' ' + comma(r.p1) + '원';
+    mid.appendChild(sub);
+    el.appendChild(mid);
     var v = document.createElement('span');
     v.className = 'pk-v ' + (r.amt >= SEED ? 'up' : 'down');
     v.textContent = vtxt(state.span, r.amt) + '억원'; el.appendChild(v);
