@@ -49,6 +49,8 @@ COOKIE_URL = "https://fc.yahoo.com/"
 CRUMB_URL = "https://query2.finance.yahoo.com/v1/test/getcrumb"
 RANGE = "25y"
 OUT = "data/returns.json"
+OUT_M = "data/monthly_us.json"   # 해외 월말 종가 — 기준점 계산용
+MONTH_KEEP = 21 * 12             # 21년치 보관 (20년 카드까지 커버)
 UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/124.0 Safari/537.36")
 
@@ -315,6 +317,32 @@ def alpha_weekly(code):
     return out
 
 
+def month_end_series(pairs):
+    """[(YYYYMMDD, 종가)] -> {"s":"YYYY-MM", "v":[...]}  (달이 비면 null)
+
+    달마다 마지막 값만 남기고 연속된 달 배열로 눕힌다. 키를 달마다 적지 않아
+    파일이 3분의 1로 줄고, 카드 쪽에서는 첨자 계산만으로 N년 전을 집는다.
+    """
+    by = {}
+    for d, v in pairs:
+        if not v:
+            continue
+        by[str(d)[:6]] = float(v)
+    if not by:
+        return None
+    keys = sorted(by)[-MONTH_KEEP:]
+    y0, m0 = int(keys[0][:4]), int(keys[0][4:6])
+    y1, m1 = int(keys[-1][:4]), int(keys[-1][4:6])
+    n = (y1 - y0) * 12 + (m1 - m0) + 1
+    out = [None] * n
+    for k in keys:
+        i = (int(k[:4]) - y0) * 12 + int(k[4:6]) - m0
+        v = by[k]
+        # 유효숫자 6자리면 충분하다 — 파일 크기를 반으로 줄인다
+        out[i] = round(v, max(0, 6 - len("%d" % abs(int(v) or 1))))
+    return {"s": "%04d-%02d" % (y0, m0), "v": out}
+
+
 def yearly_from_pairs(pairs):
     """[(YYYYMMDD, 종가)] -> (연도별 수익률(%), 첫해 시작일)
 
@@ -429,6 +457,7 @@ def from_stooq(code):
         return None, "기간이 짧음"
     y["_asof"] = last_dt
     y["_listed"] = listed
+    y["_pairs"] = pairs
     return y, None
 
 
@@ -483,6 +512,7 @@ def from_alpha(code):
     # 주별 자료는 '있으면 좋은' 보정이다. 이것 때문에 월별 수집까지
     # 멈추면 안 된다. 예전에는 여기서 예산을 0으로 밀어버려서
     # 하루에 딱 한 종목만 받아지고 있었다.
+    y["_pairs"] = pairs
     if (listed and listed[5:7] != "01"
             and not _refine_off[0] and _av_extra[0] > 2):
         _av_extra[0] -= 1
@@ -760,6 +790,15 @@ def main():
     except Exception:                         # noqa: BLE001
         pass
 
+    # 월말 종가도 같은 방식으로 이어 붙인다 (못 받은 종목은 옛 값 유지)
+    prevm = {}
+    try:
+        with open(OUT_M, encoding="utf-8") as f:
+            prevm = json.load(f).get("items", {})
+    except Exception:                         # noqa: BLE001
+        pass
+    series = dict(prevm)
+
     # 이미 받아둔 종목은 그대로 유지하고, 이번에 받은 것만 덮어쓴다.
     # (국내만·해외만 돌려도 나머지가 날아가지 않도록)
     items, fails = dict(prev), []
@@ -839,6 +878,12 @@ def main():
         else:
             asof = years.pop("_asof", "")
             listed = years.pop("_listed", None)
+            pr = years.pop("_pairs", None)
+            if pr and mk == "US":
+                ms = month_end_series(pr)
+                if ms:
+                    ms["asof"] = asof
+                    series[code] = ms
             items[code] = {"name": name, "market": mk, "desc": desc,
                            "years": years, "asof": asof, "fetched": TODAY}
             if listed:
@@ -855,6 +900,17 @@ def main():
             "count": len(items),
             "items": items,
         }, f, ensure_ascii=False, separators=(",", ":"))
+
+    if series:
+        with open(OUT_M, "w", encoding="utf-8") as f:
+            json.dump({
+                "updated": TODAY,
+                "note": "해외 월말 조정종가 · 배당 재투자 포함 · 21년치",
+                "count": len(series),
+                "items": series,
+            }, f, ensure_ascii=False, separators=(",", ":"))
+        log("월말 종가 %d종목 · %.1fMB -> %s"
+            % (len(series), os.path.getsize(OUT_M) / 1024 / 1024, OUT_M))
 
     size = os.path.getsize(OUT) / 1024 / 1024
     log("\n" + "=" * 52)
