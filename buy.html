@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>그때 샀다면 · 실적·배당 카드뉴스</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#F4F6F8; --surface:#FFFFFF; --surface-2:#EDF1F5;
+    --border:#E2E6EB; --border-strong:#D3DBE3;
+    --text:#16202B; --text-soft:#5A6673; --text-mute:#8894A2;
+    --accent:#1E4E8C; --accent-soft:#E8F0FA; --accent-text:#1E4E8C;
+    --pos:#1D6E4E; --pos-soft:#E4F2EB; --neg:#B32B22;
+    --radius:8px;
+  }
+  [data-mode="dark"] {
+    --bg:#0E141B; --surface:#161F29; --surface-2:#1D2833;
+    --border:#26313D; --border-strong:#35424F;
+    --text:#E6EBF0; --text-soft:#93A1B0; --text-mute:#6C7A89;
+    --accent:#5B9BE8; --accent-soft:#17293D; --accent-text:#8FBDF0;
+    --pos:#59C79A; --pos-soft:#14312A; --neg:#E8776D;
+  }
+  html { -webkit-text-size-adjust:100%; }
+  * { box-sizing:border-box; }
+  html, body { margin:0; background:var(--bg); color:var(--text);
+    font-family:'Noto Sans KR',-apple-system,'Malgun Gothic',sans-serif;
+    -webkit-font-smoothing:antialiased; }
+  body { padding:20px 16px 80px; }
+  .shell { max-width:1080px; margin:0 auto; }
+
+  .topbar { display:flex; align-items:center; justify-content:space-between; gap:12px;
+    padding-bottom:14px; border-bottom:1px solid var(--border); flex-wrap:wrap; }
+  .brand { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+  .brand h1 { font-size:17px; font-weight:800; margin:0; letter-spacing:-.01em; }
+  .icon-btn { width:36px; height:36px; border-radius:var(--radius);
+    border:1px solid var(--border-strong); background:transparent; color:var(--text-soft);
+    cursor:pointer; font-size:15px; }
+
+  /* ---------- 공통 메뉴 ---------- */
+  .nav { display:flex; gap:4px; margin:14px 0 4px; padding:4px;
+    background:var(--surface-2); border-radius:999px; overflow-x:auto; }
+  .nav-i { flex:1; display:inline-flex; align-items:center; justify-content:center; gap:7px;
+    height:40px; padding:0 12px; border-radius:999px; font-size:13.5px; font-weight:700;
+    text-decoration:none; color:var(--text-soft); white-space:nowrap;
+    transition:background .12s, color .12s; }
+  .nav-i svg { width:16px; height:16px; fill:none; stroke:currentColor;
+    stroke-width:2.1; stroke-linecap:round; stroke-linejoin:round; flex:none; }
+  .nav-i:hover { color:var(--accent-text); }
+  .nav-short { display: none; }
+  @media (max-width: 480px) {
+    .nav-full { display: none; }
+    .nav-short { display: inline; }
+  }
+  .nav-i.on { background:var(--accent); color:#fff; box-shadow:0 2px 8px -3px rgba(30,78,140,.55); }
+  [data-mode="dark"] .nav-i.on { color:#0E141B; box-shadow:none; }
+  @media (max-width:560px) {
+    .nav { margin:10px 0 2px; gap:2px; padding:3px; }
+    .nav-i { height:38px; padding:0 8px; font-size:12px; gap:5px; }
+    .nav-i svg { width:15px; height:15px; }
+  }
+  @media (max-width:400px) {
+    .nav-i svg { display:none; }
+    .nav-i { padding:0 4px; gap:0; font-size:12px; }
+  }
+
+  .studio { display:grid; grid-template-columns:1fr 420px; gap:18px; align-items:start; margin-top:20px; }
+  @media (max-width:860px) { .studio { grid-template-columns:1fr; } }
+
+  .panel { background:var(--surface); border-radius:12px; padding:18px; margin-bottom:16px; }
+  h3.sec { font-size:13px; font-weight:700; margin:0 0 10px; }
+  .hint { font-size:12px; color:var(--text-mute); line-height:1.65; margin:0; }
+  .divider { height:1px; background:var(--border); margin:16px 0; }
+
+  label.fld { display:block; font-size:12.5px; font-weight:600; color:var(--text-soft); margin-bottom:5px; }
+  input[type="text"], input[type="number"], select, textarea {
+    width:100%; font-family:inherit; color:var(--text); background:var(--bg);
+    border:1px solid var(--border-strong); border-radius:var(--radius); padding:0 12px; height:42px; font-size:14px; }
+  textarea { height:150px; padding:10px 12px; font-size:13.5px; line-height:1.7; resize:vertical; }
+  input:focus, select:focus, textarea:focus { outline:none; border-color:var(--accent); }
+  .row2 { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .row3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; }
+
+  .btn { font-family:inherit; font-size:14px; font-weight:700; cursor:pointer;
+    border-radius:var(--radius); padding:0 16px; height:42px; border:1px solid var(--border-strong);
+    background:transparent; color:var(--text); white-space:nowrap; }
+  .btn:hover { border-color:var(--accent); color:var(--accent); }
+  .btn-primary { background:var(--accent); border-color:var(--accent); color:#fff; }
+  .btn-primary:hover { opacity:.9; color:#fff; }
+  .btn-sm { height:34px; padding:0 12px; font-size:12.5px; }
+  .btn-danger { color:#B32B22; border-color:#E1B7B2; }
+  .ctl-row { display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-top:12px; }
+  .ctl-row label { font-size:13px; color:var(--text-soft); font-weight:600; }
+  .check { display:inline-flex; align-items:center; gap:7px; font-size:13px; color:var(--text-soft); cursor:pointer; }
+  .check input { width:17px; height:17px; accent-color:var(--accent); }
+  input[type="file"] { font-size:12px; max-width:190px; color:var(--text-soft); }
+  input[type="range"] { accent-color:var(--accent); }
+
+
+  .cur-sw { display:inline-flex; gap:3px; padding:3px; background:var(--surface-2); border-radius:999px; }
+  .ratio-b { font-family:inherit; font-size:12.5px; font-weight:700; cursor:pointer; border:none;
+    background:transparent; color:var(--text-soft); padding:7px 12px; border-radius:999px; }
+  .ratio-b.on { background:var(--accent); color:#fff; }
+  [data-mode="dark"] .ratio-b.on { color:#0E141B; }
+  .cur-b { font-family:inherit; font-size:12.5px; font-weight:700; cursor:pointer; border:none;
+    background:transparent; color:var(--text-soft); padding:7px 12px; border-radius:999px;
+    display:inline-flex; align-items:center; gap:5px; }
+  .cur-b.on { background:var(--accent); color:#fff; }
+  [data-mode="dark"] .cur-b.on { color:#0E141B; }
+  .sw-dot { width:10px; height:10px; border-radius:50%; display:inline-block; }
+
+  .tabs2 { display:flex; gap:4px; padding:4px; background:var(--surface-2);
+    border-radius:999px; margin-bottom:12px; }
+  .tab2 { flex:1; font-family:inherit; font-size:13px; font-weight:700; cursor:pointer;
+    border:none; background:transparent; color:var(--text-soft); height:34px; border-radius:999px; }
+  .tab2.on { background:var(--accent); color:#fff; }
+  [data-mode="dark"] .tab2.on { color:#0E141B; }
+
+  .search-wrap { position:relative; }
+  .suggest { position:absolute; left:0; right:0; top:100%; z-index:40; margin-top:4px;
+    background:var(--surface); border:1px solid var(--border-strong); border-radius:var(--radius);
+    box-shadow:0 12px 28px -12px rgba(0,0,0,.3); display:none; overflow:hidden; }
+  .suggest.on { display:block; }
+  .sg-item { padding:9px 12px; font-size:13.5px; cursor:pointer; display:flex;
+    justify-content:space-between; gap:10px; align-items:center; }
+  .sg-item:hover, .sg-item.hl { background:var(--accent-soft); }
+  .sg-code { font-size:12px; color:var(--text-mute); flex:none; }
+  .sg-tag { font-size:11px; color:#fff; background:var(--accent); border-radius:4px;
+    padding:1px 6px; flex:none; }
+  [data-mode="dark"] .sg-tag { color:#0E141B; }
+  .sg-empty { padding:11px 12px; font-size:12.5px; color:var(--text-mute); }
+  .sg-head { position:sticky; top:0; background:var(--surface-2); color:var(--text-soft);
+    font-size:11.5px; font-weight:700; padding:5px 12px; border-bottom:1px solid var(--border); }
+  .sg-jump { display:flex; flex-wrap:wrap; gap:2px; padding:7px 8px;
+    background:var(--surface-2); border-bottom:1px solid var(--border);
+    position:sticky; top:0; z-index:2; }
+  .sg-jump button { font-family:inherit; font-size:11px; font-weight:700; cursor:pointer;
+    border:none; background:transparent; color:var(--text-soft);
+    padding:3px 5px; border-radius:4px; min-width:20px; }
+  .sg-jump button:hover { background:var(--accent); color:#fff; }
+  [data-mode="dark"] .sg-jump button:hover { color:#0E141B; }
+  .sg-list { max-height:230px; overflow-y:auto; }
+
+  .msg { font-size:13px; margin-top:10px; display:none; line-height:1.6; }
+  .msg.ok { color:var(--pos); display:block; }
+  .msg.err { color:#B32B22; display:block; }
+  .msg.info { color:var(--text-soft); display:block; }
+
+  .card-frame { background:var(--surface); border-radius:12px; padding:18px;
+    display:flex; flex-direction:column; align-items:center; gap:14px; }
+  #card-canvas { display:block; width:100%; max-width:384px; height:auto; margin:0 auto;
+    border-radius:2px; touch-action:none;
+    box-shadow:0 18px 40px -18px rgba(0,0,0,.4), 0 0 0 1px rgba(0,0,0,.07); }
+
+  #overlay-edit { display:none; width:100%; max-width:384px; flex-direction:column; gap:9px;
+    padding:11px 13px; border-radius:9px; background:var(--surface-2); border:1px solid var(--border); }
+  .ov-row { display:flex; align-items:center; gap:10px; }
+  .ov-lbl { font-size:12.5px; color:var(--text-soft); width:46px; flex:none; }
+  #overlay-edit input[type="range"] { flex:1; width:auto; min-width:0; margin:0; }
+  .range-val { width:46px; text-align:right; flex:none; font-size:12px; color:var(--text-soft); }
+  .ov-btns { display:flex; gap:6px; flex-wrap:wrap; }
+  .ov-btns .btn { flex:1 1 30%; height:34px; padding:0 6px; font-size:12.5px; }
+
+  .tbl { width:100%; border-collapse:collapse; font-size:12.5px; margin-top:10px; }
+  .tbl td, .tbl th { padding:6px 4px; border-bottom:1px solid var(--border); text-align:right; }
+  .tbl th { color:var(--text-soft); font-weight:600; }
+  .tbl td:first-child, .tbl th:first-child { text-align:left; }
+  .up { color:var(--pos); } .down { color:#B32B22; }
+  .kr .up { color:#C0392B; } .kr .down { color:#2C5AA0; }
+
+  @media (max-width:560px) {
+    body { padding:14px 12px 56px; }
+    .brand h1 { font-size:15px; }
+    .topbar { flex-direction:column; align-items:stretch; gap:10px; }
+    .brand { width:100%; justify-content:space-between; align-items:center; }
+    input[type="text"], input[type="number"], select, textarea { font-size:16px; }
+    .panel { padding:14px 13px; }
+    .row2, .row3 { grid-template-columns:1fr; gap:8px; }
+    #overlay-edit { padding:10px 11px; gap:8px; }
+    .ov-lbl { width:42px; font-size:12px; }
+    .range-val { width:42px; }
+    .ctl-row .btn { flex:1; }
+  }
+
+  /* ---------- 그때 샀다면 전용 ---------- */
+  .spans { display:flex; gap:6px; flex-wrap:wrap; }
+  .span-b { flex:1 0 auto; min-width:58px; height:38px; border-radius:var(--radius);
+    border:1px solid var(--border-strong); background:transparent; color:var(--text-soft);
+    font-size:13px; font-weight:700; cursor:pointer; font-family:inherit; }
+  .span-b.on { background:var(--accent); border-color:var(--accent); color:#fff; }
+  [data-mode="dark"] .span-b.on { color:#0E141B; }
+  .span-b:disabled { opacity:.35; cursor:not-allowed; }
+
+  .picked { display:flex; flex-direction:column; gap:6px; margin-top:12px; }
+  .pk { display:flex; align-items:center; gap:9px; padding:7px 9px; border-radius:var(--radius);
+    background:var(--surface-2); font-size:13px; }
+  .pk img, .pk .pk-ph { width:24px; height:24px; border-radius:50%; flex:none; }
+  .pk .pk-ph { background:var(--text-mute); color:#fff; font-size:11px; font-weight:800;
+    display:flex; align-items:center; justify-content:center; }
+  .pk-nm { flex:1; font-weight:600; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .pk-v { font-weight:800; font-variant-numeric:tabular-nums; }
+  .pk-v.up { color:var(--neg); } .pk-v.down { color:var(--accent-text); }
+  .pk-x { border:0; background:transparent; color:var(--text-mute); cursor:pointer;
+    font-size:16px; line-height:1; padding:0 2px; }
+  .pk-warn { font-size:11px; color:var(--neg); flex:none; }
+  .sg-item.off { opacity:.45; cursor:not-allowed; }
+  .sg-why { font-size:11px; color:var(--text-mute); flex:none; }
+  .note { font-size:12.5px; line-height:1.6; margin:10px 0 0; padding:9px 11px;
+    border-radius:var(--radius); background:var(--accent-soft); color:var(--accent-text);
+    display:none; }
+  .note.on { display:block; }
+</style>
+<body>
+<div class="shell">
+
+  <div class="topbar">
+    <div class="brand"><h1>그때 샀다면</h1></div>
+    <div class="topbar-right" style="display:flex;gap:8px;align-items:center">
+      <button class="icon-btn" id="btn-mode" aria-label="다크 모드">◐</button>
+    </div>
+  </div>
+
+  <nav class="nav" aria-label="메뉴">
+      <a href="./index.html" class="nav-i">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7 16v-4M12 16V8M17 16v-6"/></svg>
+        <span class="nav-full">국내 실적</span><span class="nav-short">국내</span>
+      </a>
+      <a href="./us.html" class="nav-i">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 010 18M12 3a15 15 0 000 18"/></svg>
+        <span class="nav-full">해외 실적</span><span class="nav-short">해외</span>
+      </a>
+      <a href="./returns.html" class="nav-i">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg>
+        <span class="nav-full">연간 수익률</span><span class="nav-short">수익률</span>
+      </a>
+      <a href="./buy.html" class="nav-i on">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 103-6.7"/><path d="M3 4v5h5"/><path d="M12 8v4.5l3 1.8"/></svg>
+        <span class="nav-full">그때 샀다면</span><span class="nav-short">그때</span>
+      </a>
+      <a href="./screen.html" class="nav-i">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <span class="nav-full">종목 스크리닝</span><span class="nav-short">스크리닝</span>
+      </a>
+      <a href="./guru.html" class="nav-i">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3v9l6.4 6.4"/></svg>
+        <span class="nav-full">포트폴리오</span><span class="nav-short">포폴</span>
+      </a>
+    </nav>
+
+  <div class="studio">
+
+    <div>
+      <div class="panel">
+        <h3 class="sec">기간</h3>
+        <div class="spans" id="spans"></div>
+        <p class="hint" style="margin-top:9px">
+          오늘로부터 몇 년 전에 샀는지 고릅니다. 기준일은 매일 수집할 때 정해집니다.
+        </p>
+
+        <div class="divider"></div>
+        <h3 class="sec">종목 고르기 <span class="hint" style="font-weight:400">· 2~9개</span></h3>
+        <div class="search-wrap">
+          <input type="text" id="q" placeholder="종목명 또는 코드" autocomplete="off" spellcheck="false"
+                 style="width:100%">
+          <div class="suggest" id="sg"><div class="sg-list" id="sg-list"></div></div>
+        </div>
+        <div class="picked" id="picked"></div>
+        <p class="note" id="note"></p>
+        <p class="hint" style="margin-top:10px">
+          국내 종목만 담습니다. 해외는 배당·환율 기준이 달라 한 카드에 섞지 않습니다.
+        </p>
+
+        <div class="divider"></div>
+        <div class="ctl-row" style="margin-top:0">
+          <label for="f-title">제목</label>
+          <input type="text" id="f-title" spellcheck="false" autocomplete="off" style="flex:1;min-width:150px">
+          <button type="button" class="btn" id="f-title-auto" style="flex:0 0 auto;min-width:56px">자동</button>
+        </div>
+        <div class="ctl-row">
+          <label for="handle">서명</label>
+          <input type="text" id="handle" value="@돈굴돈굴" style="max-width:180px;flex:1">
+        </div>
+
+        <div class="divider"></div>
+        <div class="ctl-row" style="margin-top:0">
+          <button class="btn btn-primary" id="btn-png" style="flex:1">PNG 내려받기</button>
+        </div>
+        <p class="hint" style="margin-top:8px">3배 스케일(3240 × 4050)로 저장됩니다.</p>
+      </div>
+    </div>
+
+    <div class="card-frame">
+      <canvas id="card-canvas" width="1080" height="1350"></canvas>
+      <p class="hint" id="cap" style="text-align:center"></p>
+    </div>
+
+  </div>
+</div>
+<script>
+/* ======================================================================
+   그때 샀다면 — data/anchor.json 하나로 돌아간다.
+   금액 = 1억원 × (현재 종가 ÷ N년 전 종가)
+   국내는 네이버 일별 수정주가라 배당이 빠져 있다. 그래서 푸터에 적는다.
+   ====================================================================== */
+
+var CW = 1080, CH = 1350, SEED = 1;
+
+var T = {
+  paper:'#fafaf8', ink:'#101216', inkSoft:'#6B7078', rule:'#E6E4DD',
+  footer:'#3A3E46', upKR:'#C0392B', downKR:'#2C5AA0',
+  chipBg:'#F4F0E4', chipInk:'#8C6E14',
+  safe:{top:135,right:100,bottom:135,left:100},
+  grain:{base:[250,250,248],amount:14,speckle:0.08,spike:2.5},
+  type:{nameMax:92,nameMin:52,nameTrack:'-0.02em',footer:27}
+};
+var FAM = "'Noto Sans KR',-apple-system,'Malgun Gothic',sans-serif";
+var CX = T.safe.left, CWID = CW - T.safe.left - T.safe.right;
+
+var state = { span:10, picked:[], title:'', handle:'@돈굴돈굴' };
+var DB = { spans:[], items:{}, order:[], asof:'', basis:'' };
+
+/* ---------- 카드에 쓸 짧은 이름 ----------
+   '한국타이어앤테크놀로지' 같은 이름이 하나 끼면 격자의 모든 이름이
+   같이 줄어든다(줄을 맞추려고 최솟값으로 통일하기 때문). 검색은 정식
+   이름으로 그대로 하고, 카드와 목록에만 짧은 이름을 쓴다.           */
+var SHORT = {
+  '현대자동차':'현대차', 'POSCO홀딩스':'POSCO', 'LG에너지솔루션':'LG엔솔',
+  '삼성바이오로직스':'삼성바이오', '한국타이어앤테크놀로지':'한국타이어',
+  '한국항공우주':'KAI', '삼성에스디에스':'삼성SDS', 'SK바이오사이언스':'SK바사',
+  'SK아이이테크놀로지':'SKIET', '에코프로비엠':'에코프로BM', '두산에너빌리티':'두산에너빌',
+  'HD한국조선해양':'HD조선해양', 'HD현대중공업':'HD중공업', 'HD현대일렉트릭':'HD현대일렉',
+  'SK이노베이션':'SK이노', '케이티앤지':'KT&G', '한국전력공사':'한국전력', '케이티':'KT',
+  '아모레퍼시픽홀딩스':'아모레홀딩스', 'IPARK현대산업개발':'HDC현산',
+  'CJ 바이오사이언스':'CJ바이오', 'LIG디펜스앤에어로스페이스':'LIG디펜스',
+  '피엔케이피부임상연구센타':'피엔케이피부임상'
+};
+// 회사 이름이 2,548개라 표로 다 적을 수 없다. 흔한 접미사만 줄인다.
+var TRIM = [
+  [/에어로스페이스$/,'에어로'], [/엔터테인먼트$/,'엔터'],
+  [/테크놀러지스$|테크놀로지$/,'테크'], [/바이오로직스$/,'바이오'],
+  [/머티리얼즈$/,'머티'], [/코퍼레이션/,'코퍼'], [/인터내셔널$/,'인터'],
+  [/솔루션즈$/,'솔루션'], [/커뮤니케이션즈$/,'컴즈']
+];
+function shorten(n){
+  if (SHORT[n]) return SHORT[n];
+  var s = n;
+  for (var i = 0; i < TRIM.length; i++) s = s.replace(TRIM[i][0], TRIM[i][1]);
+  return s;
+}
+
+/* ---------- 캔버스 공용 ---------- */
+function F(w,s){ return w + ' ' + s + 'px ' + FAM; }
+function LS(c,v){ if ('letterSpacing' in c) c.letterSpacing = v; }
+function fit(c,t,w,start,min,maxW,track){
+  var s = start; LS(c, track||'0px'); c.font = F(w,s);
+  while (c.measureText(t).width > maxW && s > min) { s -= 1; c.font = F(w,s); }
+  LS(c,'0px'); return s;
+}
+var _grain = null;
+function grain(c){
+  if (!_grain) {
+    var G = T.grain, S = 512, t = document.createElement('canvas');
+    t.width = t.height = S;
+    var tc = t.getContext('2d'), im = tc.createImageData(S,S), d = im.data;
+    for (var i = 0; i < d.length; i += 4) {
+      var n = (Math.random()-.5)*2*G.amount;
+      if (Math.random() < G.speckle) n += (Math.random()-.5)*G.spike*G.amount;
+      n = Math.round(n);
+      d[i] = G.base[0]+n; d[i+1] = G.base[1]+n; d[i+2] = G.base[2]+n; d[i+3] = 255;
+    }
+    tc.putImageData(im,0,0); _grain = t;
+  }
+  var p = c.createPattern(_grain,'repeat');
+  c.save(); c.setTransform(1,0,0,1,0,0); c.fillStyle = p; c.fillRect(0,0,CW,CH); c.restore();
+}
+
+/* ---------- 로고 ----------
+   logo/kr/{코드}.png 는 원이 꽉 찬 투명 PNG 라 줄이지 않고 칸 크기 그대로
+   그린다. 없으면 inkSoft 원 + 흰 글자. 한 번 실패한 코드는 다시 안 부른다. */
+var LOGO = {};
+function logoImg(code){
+  if (LOGO[code] !== undefined) return LOGO[code];
+  var im = new Image();
+  LOGO[code] = im;
+  im.onload  = function(){ draw(); };
+  im.onerror = function(){ LOGO[code] = null; draw(); };
+  im.src = './logo/kr/' + code + '.png';
+  return im;
+}
+function logo(c, code, name, cx, cy, r){
+  var im = logoImg(code);
+  if (im && im.complete && im.naturalWidth) {
+    c.drawImage(im, cx-r, cy-r, r*2, r*2);
+  } else {
+    c.beginPath(); c.arc(cx,cy,r,0,7); c.fillStyle = T.inkSoft; c.fill();
+    c.fillStyle = '#ffffff'; c.textAlign = 'center'; c.textBaseline = 'middle';
+    c.font = F(900, r*0.86); c.fillText((name||'?')[0], cx, cy + r*0.02);
+    c.textBaseline = 'alphabetic'; c.textAlign = 'left';
+  }
+  c.beginPath(); c.arc(cx,cy,r,0,7);
+  c.lineWidth = 1; c.strokeStyle = T.rule; c.stroke();
+}
+
+/* ---------- 금액 ----------
+   단위는 숫자의 36% · 800 · 같은 색 · 불투명. 흐리게 하면 '억원'이 안 읽혀
+   금액을 잘못 본다. */
+var SUF = '억원';
+function vp(c, num, size){
+  var ps = Math.round(size*0.36);
+  c.font = F(900,size); LS(c,'-0.025em');
+  var wn = c.measureText(num).width; LS(c,'0px');
+  c.font = F(800,ps);
+  return { num:num, ps:ps, wn:wn, wp:c.measureText(SUF).width,
+           gap:size*0.05, w:wn + size*0.05 + c.measureText(SUF).width };
+}
+function fitVal(c, num, start, min, maxW){
+  var s = start; while (s > min && vp(c,num,s).w > maxW) s -= 1; return s;
+}
+function val(c, cx, by, num, size, col){
+  var p = vp(c,num,size), x = cx - p.w/2;
+  c.textAlign = 'left'; c.fillStyle = col;
+  c.font = F(900,size); LS(c,'-0.025em'); c.fillText(p.num, x, by); LS(c,'0px');
+  c.font = F(800,p.ps); c.fillText(SUF, x + p.wn + p.gap, by);
+  c.textAlign = 'center';
+}
+
+/* ---------- 카드 ---------- */
+function amount(code, span){
+  var it = DB.items[code]; if (!it) return null;
+  var a = it.y[String(span)]; if (!a || !it.now) return null;
+  return SEED * it.now.v / a.v;
+}
+function rowsNow(){
+  var out = [];
+  state.picked.forEach(function(code){
+    var a = amount(code, state.span); if (a === null) return;
+    out.push({ code:code, name:DB.items[code].disp, full:DB.items[code].name, amt:a,
+               back:DB.items[code].y[String(state.span)].d });
+  });
+  out.sort(function(a,b){ return b.amt - a.amt; });
+  return out;
+}
+// 카드 기본 자릿수는 기간이 정한다. 1~3년은 1.05 와 1.14 가 둘 다 '1.1'이
+// 되어 버려 두 자리가 필요하다. 0.1억 미만만 예외로 두 자리를 쓴다 —
+// 한 자리면 '0.0억원'이 되어 숫자가 사라진다. 이것 때문에 카드 전체를
+// 두 자리로 올리면 43.2 가 '43.20'이 되어 자릿수가 의미 없이 늘어난다.
+function decOf(span, a){ var base = span <= 3 ? 2 : 1; return a < 0.1 ? Math.max(base,2) : base; }
+function vtxt(span, a){ return a.toFixed(decOf(span, a)); }
+
+// 거래정지 등으로 종목마다 기준일이 다를 수 있다. 가장 많이 나온 날짜를 쓴다.
+function modeDate(rows){
+  var cnt = {}, best = '', n = 0;
+  rows.forEach(function(r){ cnt[r.back] = (cnt[r.back]||0)+1;
+    if (cnt[r.back] > n) { n = cnt[r.back]; best = r.back; } });
+  return best;
+}
+function dot(d){ return (d||'').replace(/-/g,'.'); }
+function days(a,b){ return Math.abs(new Date(a) - new Date(b)) / 864e5; }
+
+function drawCard(c){
+  c.fillStyle = T.paper; c.fillRect(0,0,CW,CH); grain(c);
+  c.textBaseline = 'alphabetic'; c.textAlign = 'left';
+
+  var rows = rowsNow(), n = rows.length;
+  var back = modeDate(rows) || '', now = DB.asof || '';
+  var L1 = state.title || (state.span + '년 전'), L2 = '1억원 투자했다면?';
+  var CHIP = back && now ? (back.slice(0,4) + ' ~ ' + now.slice(0,4) + '년') : '';
+
+  /* 머리글 — 제목 두 줄 + 기간 칩 */
+  var ns = fit(c, L2, 900, T.type.nameMax, T.type.nameMin, CWID, T.type.nameTrack);
+  for (;;) {
+    var cf0 = Math.round(ns*0.35);
+    c.font = F(700,cf0);
+    var cw0 = CHIP ? c.measureText(CHIP).width + cf0*0.65*2 + ns*0.29 : 0;
+    LS(c, T.type.nameTrack); c.font = F(900,ns);
+    var w1 = c.measureText(L1).width; LS(c,'0px');
+    if (w1 + cw0 <= CWID || ns <= T.type.nameMin) break;
+    ns -= 1;
+  }
+  var y1 = T.safe.top + ns*0.86, y2 = y1 + ns;
+  c.fillStyle = T.ink; c.font = F(900,ns); LS(c, T.type.nameTrack);
+  c.fillText(L1, CX, y1); c.fillText(L2, CX, y2);
+  var w1 = c.measureText(L1).width; LS(c,'0px');
+
+  if (CHIP) {                       // 금색은 이 칩에만 쓴다
+    var cf = Math.round(ns*0.35), cpad = cf*0.65, chh = ns*0.67;
+    c.font = F(700,cf);
+    var cww = c.measureText(CHIP).width + cpad*2;
+    var cx0 = CX + w1 + ns*0.29, ccy = y1 - ns*0.35, rr = chh/2;
+    c.beginPath();
+    if (c.roundRect) c.roundRect(cx0, ccy-chh/2, cww, chh, rr);
+    else {
+      var x = cx0, y = ccy-chh/2, w = cww, hh = chh;
+      c.moveTo(x+rr,y); c.arcTo(x+w,y,x+w,y+hh,rr); c.arcTo(x+w,y+hh,x,y+hh,rr);
+      c.arcTo(x,y+hh,x,y,rr); c.arcTo(x,y,x+w,y,rr);
+    }
+    c.fillStyle = T.chipBg; c.fill();
+    c.fillStyle = T.chipInk; c.textAlign = 'center'; c.textBaseline = 'middle';
+    c.fillText(CHIP, cx0 + cww/2, ccy + cf*0.04);
+    c.textAlign = 'left'; c.textBaseline = 'alphabetic';
+  }
+
+  var hr = Math.round(y2 + ns*0.22 + 30);
+  c.strokeStyle = T.rule; c.lineWidth = 1;
+  c.beginPath(); c.moveTo(CX, hr+0.5); c.lineTo(CW-T.safe.right, hr+0.5); c.stroke();
+
+  var fb = CH - T.safe.bottom - 4, ry = fb - T.type.footer*0.85 - 18;
+  var top = hr + 50, bot = ry - 42;
+
+  if (!n) {
+    c.fillStyle = T.inkSoft; c.textAlign = 'center'; c.font = F(700, 34);
+    c.fillText('종목을 2개 이상 고르면 카드가 나옵니다', CW/2, (top+bot)/2);
+    c.textAlign = 'left';
+    footer(c, ry, fb, back && now ? dot(back)+' ~ '+dot(now)+' · 배당·세금 제외' : '');
+    return;
+  }
+
+  var FOOT = dot(back) + ' ~ ' + dot(now) + ' · 배당·세금 제외';
+
+  /* 2~3종목 — 줄형. 격자로 깔면 한 줄이 허공에 뜬다. */
+  if (n <= 3) {
+    var rh = (bot-top)/n;
+    var rad = Math.min(104, rh*0.34), tx = CX + rad*2 + rad*0.52;
+    var vf = Math.min(150, rh*0.46);
+    rows.forEach(function(r){ vf = Math.min(vf, fitVal(c, vtxt(state.span,r.amt), vf, 44, CWID*0.46)); });
+    var vw = 0;
+    rows.forEach(function(r){ vw = Math.max(vw, vp(c, vtxt(state.span,r.amt), vf).w); });
+    var nw = CW - T.safe.right - vw - 40 - tx, nf = Math.min(42, rh*0.16);
+    rows.forEach(function(r){ nf = Math.min(nf, fit(c, r.name, 800, nf, 22, nw, '0.01em')); });
+
+    rows.forEach(function(r,i){
+      var cy = top + rh*i + rh/2, by = cy + vf*0.34;   // 이름과 금액은 같은 기준선
+      logo(c, r.code, r.name, CX+rad, cy, rad);
+      c.textAlign = 'left'; c.fillStyle = T.footer; c.font = F(800,nf); LS(c,'0.01em');
+      c.fillText(r.name, tx, by); LS(c,'0px');
+      var t = vtxt(state.span, r.amt);
+      val(c, CW - T.safe.right - vp(c,t,vf).w/2, by, t, vf, r.amt >= SEED ? T.upKR : T.downKR);
+      if (i < n-1) {
+        var ly = Math.round(top + rh*(i+1)) + 0.5;
+        c.strokeStyle = T.rule; c.lineWidth = 1;
+        c.beginPath(); c.moveTo(CX,ly); c.lineTo(CW-T.safe.right,ly); c.stroke();
+      }
+    });
+    footer(c, ry, fb, FOOT); return;
+  }
+
+  /* 4종목 2열 · 5~9종목 3열 */
+  var cols = (n === 4) ? 2 : 3, nrow = Math.ceil(n/cols);
+  var cw = CWID/cols, ch = (bot-top)/nrow;
+  var rad2 = ch * (nrow === 3 ? 0.19 : 0.20);
+  var g1 = ch*0.06, g2 = ch*0.03, pad = cw*0.05;
+  // 글자 크기는 칸마다 재지 않고 가장 작은 값으로 통일한다.
+  // 그래야 로고 줄·이름 줄·금액 줄이 가로로 맞는다.
+  var nf2 = Math.min(32, ch*0.093), vf2 = ch * (nrow === 3 ? 0.285 : 0.29);
+  rows.forEach(function(r){
+    nf2 = Math.min(nf2, fit(c, r.name, 800, nf2, 15, cw-pad*2, '0.01em'));
+    vf2 = Math.min(vf2, fitVal(c, vtxt(state.span,r.amt), vf2, 26, cw-pad*2));
+  });
+  var block = rad2*2 + g1 + nf2 + g2 + vf2, off = (ch-block)*0.40;
+
+  rows.forEach(function(r,i){
+    var col = i % cols, rw = Math.floor(i/cols);
+    var inRow = Math.min(cols, n - rw*cols);          // 마지막 줄이 덜 차면 가운데로
+    var mx = CX + cw*col + (cols-inRow)*cw/2 + cw/2, y0 = top + ch*rw + off;
+    logo(c, r.code, r.name, mx, y0+rad2, rad2);
+    c.textAlign = 'center'; c.fillStyle = T.footer; c.font = F(800,nf2); LS(c,'0.01em');
+    c.fillText(r.name, mx, y0 + rad2*2 + g1 + nf2*0.80); LS(c,'0px');
+    val(c, mx, y0 + rad2*2 + g1 + nf2 + g2 + vf2*0.80,
+        vtxt(state.span, r.amt), vf2, r.amt >= SEED ? T.upKR : T.downKR);
+  });
+  footer(c, ry, fb, FOOT);
+}
+
+function footer(c, ry, fb, txt){
+  c.textAlign = 'left';
+  c.strokeStyle = T.rule; c.lineWidth = 1;
+  c.beginPath(); c.moveTo(CX, ry+0.5); c.lineTo(CW-T.safe.right, ry+0.5); c.stroke();
+  var sign = state.handle || '';
+  c.font = F(700, T.type.footer);
+  var hw = sign ? c.measureText(sign).width + 48 : 0;
+  var fs = fit(c, txt, 700, T.type.footer, 19, CWID - hw);
+  c.fillStyle = T.footer; c.font = F(700,fs); c.fillText(txt, CX, fb);
+  if (sign) {
+    c.font = F(700, T.type.footer);
+    c.textAlign = 'right'; c.fillText(sign, CW-T.safe.right, fb);
+    c.textAlign = 'left';
+  }
+}
+
+var cv = document.getElementById('card-canvas');
+function draw(){ drawCard(cv.getContext('2d')); }
+
+/* ======================================================================
+   데이터 — anchor.json 의 모양이 조금씩 달라도 받아들인다.
+   ====================================================================== */
+function adopt(j){
+  var kr = j.kr || j.KR || {};
+  var raw = kr.items || kr.item || {};
+  // 제외 종목은 목록에서 아예 뺀다. 배열이든 {코드:사유} 든 받아준다.
+  var ex = kr.excluded || j.excluded || {};
+  var exSet = {};
+  if (Array.isArray(ex)) ex.forEach(function(k){ exSet[typeof k === 'string' ? k : k.code] = 1; });
+  else Object.keys(ex).forEach(function(k){ exSet[k] = 1; });
+
+  DB.spans = (j.spans || [1,2,3,5,10,15,20]).slice().sort(function(a,b){ return a-b; });
+  DB.asof = kr.asof || j.updated || '';
+  DB.basis = kr.basis || '';
+  DB.items = {}; DB.order = [];
+
+  Object.keys(raw).forEach(function(code){
+    if (exSet[code]) return;
+    var v = raw[code] || {};
+    if (!v.now || typeof v.now.v !== 'number') return;
+    var y = {};
+    DB.spans.forEach(function(s){
+      var a = v[String(s)] || (v.y && v.y[String(s)]);
+      if (a && typeof a.v === 'number' && a.v > 0) y[String(s)] = a;
+    });
+    if (!Object.keys(y).length) return;
+    DB.items[code] = { name: v.name || code, disp: shorten(v.name || code), now: v.now, y: y };
+    DB.order.push(code);
+  });
+  DB.order.sort();
+  // 서로 다른 회사가 같은 짧은 이름이 되면 카드가 거짓말을 한다.
+  // (유진테크 / 유진테크놀로지) 겹치면 둘 다 정식 이름으로 되돌린다.
+  var seen = {};
+  DB.order.forEach(function(c){ (seen[DB.items[c].disp] = seen[DB.items[c].disp] || []).push(c); });
+  Object.keys(seen).forEach(function(d){
+    if (seen[d].length > 1) seen[d].forEach(function(c){ DB.items[c].disp = DB.items[c].name; });
+  });
+  // 종목마다 현재 기준일이 다르면 가장 많이 나온 날짜를 카드 기준으로 쓴다
+  var cnt = {}, best = DB.asof, bn = 0;
+  DB.order.forEach(function(c){
+    var d = DB.items[c].now.d; cnt[d] = (cnt[d]||0)+1;
+    if (cnt[d] > bn) { bn = cnt[d]; best = d; }
+  });
+  if (best) DB.asof = best;
+}
+
+/* ---------- 기간 버튼 ---------- */
+function buildSpans(){
+  var box = document.getElementById('spans');
+  box.innerHTML = '';
+  DB.spans.forEach(function(s){
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'span-b' + (s === state.span ? ' on' : '');
+    b.textContent = s + '년';
+    b.addEventListener('click', function(){ setSpan(s); });
+    box.appendChild(b);
+  });
+}
+function setSpan(s){
+  state.span = s;
+  // 기간을 늘리면 상장이 늦은 종목은 기준점이 없다. 조용히 빼지 말고 알려준다.
+  var drop = state.picked.filter(function(c){ return amount(c, s) === null; });
+  if (drop.length) {
+    state.picked = state.picked.filter(function(c){ return amount(c, s) !== null; });
+    note(drop.map(function(c){ return DB.items[c].disp; }).join(', ') +
+         ' — 상장 ' + s + '년 미만이라 뺐습니다.');
+  } else note('');
+  buildSpans(); renderPicked(); draw();
+}
+
+/* ---------- 검색 ---------- */
+function search(q){
+  q = (q||'').trim().toLowerCase();
+  if (!q) return [];
+  var hit = [];
+  for (var i = 0; i < DB.order.length && hit.length < 40; i++) {
+    var c = DB.order[i], v = DB.items[c];
+    if (c.indexOf(q) === 0 || v.name.toLowerCase().indexOf(q) >= 0
+        || v.disp.toLowerCase().indexOf(q) >= 0) hit.push(c);
+  }
+  return hit;
+}
+function renderSuggest(){
+  var q = document.getElementById('q').value;
+  var list = document.getElementById('sg-list'), box = document.getElementById('sg');
+  var hit = search(q);
+  list.innerHTML = '';
+  if (!q) { box.classList.remove('on'); return; }
+  if (!hit.length) {
+    list.innerHTML = '<div class="sg-empty">찾는 종목이 없습니다.</div>';
+    box.classList.add('on'); return;
+  }
+  hit.forEach(function(code){
+    var it = DB.items[code], ok = amount(code, state.span) !== null;
+    var picked = state.picked.indexOf(code) >= 0;
+    var d = document.createElement('div');
+    d.className = 'sg-item' + (ok && !picked ? '' : ' off');
+    d.innerHTML = '<span>' + it.name + '</span>' +
+      (picked ? '<span class="sg-why">이미 담음</span>'
+              : ok ? '<span class="sg-code">' + code + '</span>'
+                   : '<span class="sg-why">상장 ' + state.span + '년 미만</span>');
+    if (ok && !picked) d.addEventListener('click', function(){ add(code); });
+    list.appendChild(d);
+  });
+  box.classList.add('on');
+}
+function add(code){
+  if (state.picked.length >= 9) { note('한 카드에 9종목까지 담깁니다.'); return; }
+  if (state.picked.indexOf(code) >= 0) return;
+  state.picked.push(code);
+  document.getElementById('q').value = '';
+  document.getElementById('sg').classList.remove('on');
+  // 기준일이 일주일 넘게 다르면 기간이 종목마다 어긋난다 — 짚어준다
+  var base = modeDate(rowsNow());
+  var odd = rowsNow().filter(function(r){ return base && days(r.back, base) > 7; });
+  note(odd.length ? odd.map(function(r){ return r.name; }).join(', ') +
+       ' — 기준일이 ' + dot(base) + ' 와 일주일 넘게 다릅니다 (거래정지 가능성).' : '');
+  renderPicked(); draw();
+}
+function remove(code){
+  state.picked = state.picked.filter(function(c){ return c !== code; });
+  note(''); renderPicked(); draw();
+}
+function note(t){
+  var el = document.getElementById('note');
+  el.textContent = t; el.className = 'note' + (t ? ' on' : '');
+}
+function renderPicked(){
+  var box = document.getElementById('picked');
+  box.innerHTML = '';
+  var rows = rowsNow();
+  rows.forEach(function(r){
+    var el = document.createElement('div'); el.className = 'pk';
+    var im = document.createElement('img');
+    im.src = './logo/kr/' + r.code + '.png'; im.alt = '';
+    im.onerror = function(){
+      var ph = document.createElement('span');
+      ph.className = 'pk-ph'; ph.textContent = r.name[0];
+      im.replaceWith(ph);
+    };
+    el.appendChild(im);
+    var nm = document.createElement('span');
+    nm.className = 'pk-nm'; nm.textContent = r.name; el.appendChild(nm);
+    var v = document.createElement('span');
+    v.className = 'pk-v ' + (r.amt >= SEED ? 'up' : 'down');
+    v.textContent = vtxt(state.span, r.amt) + '억원'; el.appendChild(v);
+    var x = document.createElement('button');
+    x.className = 'pk-x'; x.type = 'button'; x.textContent = '×';
+    x.setAttribute('aria-label', r.name + ' 빼기');
+    x.addEventListener('click', function(){ remove(r.code); });
+    el.appendChild(x);
+    box.appendChild(el);
+  });
+  var cap = document.getElementById('cap');
+  cap.textContent = rows.length
+    ? rows.length + '종목 · ' + dot(modeDate(rows)) + ' ~ ' + dot(DB.asof)
+    : '종목을 2개 이상 고르세요';
+}
+
+/* ---------- 묶기 ---------- */
+document.getElementById('q').addEventListener('input', renderSuggest);
+document.getElementById('q').addEventListener('focus', renderSuggest);
+document.addEventListener('click', function(e){
+  if (!e.target.closest('.search-wrap')) document.getElementById('sg').classList.remove('on');
+});
+document.getElementById('f-title').addEventListener('input', function(){
+  state.title = this.value; draw();
+});
+document.getElementById('f-title-auto').addEventListener('click', function(){
+  state.title = ''; document.getElementById('f-title').value = state.span + '년 전'; draw();
+});
+document.getElementById('handle').addEventListener('input', function(){
+  state.handle = this.value; draw();
+});
+document.getElementById('btn-mode').addEventListener('click', function(){
+  var r = document.documentElement;
+  r.setAttribute('data-mode', r.getAttribute('data-mode') === 'dark' ? 'light' : 'dark');
+});
+document.getElementById('btn-png').addEventListener('click', function(){
+  if (state.picked.length < 2) { alert('종목을 2개 이상 골라주세요.'); return; }
+  var S = 3, off = document.createElement('canvas');
+  off.width = CW*S; off.height = CH*S;
+  var oc = off.getContext('2d'); oc.scale(S,S);
+  drawCard(oc);
+  off.toBlob(function(b){
+    if (!b) { alert('이미지를 만들지 못했습니다.'); return; }
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(b);
+    a.download = '그때샀다면_' + state.span + '년_' + (CW*S) + 'x' + (CH*S) + '.png';
+    a.click();
+    setTimeout(function(){ URL.revokeObjectURL(a.href); }, 5000);
+  }, 'image/png');
+});
+
+/* ---------- 시작 ---------- */
+fetch('./data/anchor.json', { cache:'no-cache' })
+  .then(function(r){ if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+  .then(function(j){
+    adopt(j);
+    if (!DB.order.length) throw new Error('국내 종목이 비어 있습니다 (키: ' + Object.keys(j).join(', ') + ')');
+    if (DB.spans.indexOf(10) < 0) state.span = DB.spans[DB.spans.length-1];
+    buildSpans();
+    document.getElementById('f-title').value = state.span + '년 전';
+    ['005930','000660','035420'].forEach(function(c){ if (DB.items[c]) state.picked.push(c); });
+    renderPicked(); draw();
+  })
+  .catch(function(e){
+    note('data/anchor.json 을 읽지 못했습니다 — ' + e.message +
+         '. collect_anchor.py 를 돌리고 푸시했는지 확인하세요.');
+    draw();
+  });
+</script>
+</body>
+</html>
