@@ -1,0 +1,46 @@
+# 해외 기준점(anchor.json 의 us 부분)을 매일 자동 갱신한다.
+# collect_prices.yml(06:30 KST)이 monthly_us.json 을 쌓은 뒤 07:30 KST 에 돈다.
+# 네트워크 호출 없이 monthly_us.json 만 읽으므로 몇 초면 끝나고 키도 필요 없다.
+# 국내(kr) 부분은 건드리지 않는다.
+name: collect_anchor_us
+
+on:
+  schedule:
+    - cron: "30 22 * * *"      # UTC 22:30 = KST 07:30
+  workflow_dispatch: {}        # Actions 탭에서 수동 실행 버튼
+
+permissions:
+  contents: write
+
+concurrency:
+  group: data-commit           # 다른 수집과 동시에 커밋하다 충돌하지 않게
+  cancel-in-progress: false
+
+jobs:
+  anchor-us:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: 해외 기준점 계산
+        run: python3 collect_anchor.py --us
+
+      - name: 바뀌었으면 커밋
+        run: |
+          if git diff --quiet -- data/anchor.json; then
+            echo "변경 없음"; exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git add data/anchor.json
+          git commit -m "anchor: 해외 기준점 자동 갱신 $(TZ=Asia/Seoul date +%F)"
+          for i in 1 2 3; do
+            git pull --rebase && git push && exit 0
+            sleep 5
+          done
+          exit 1
