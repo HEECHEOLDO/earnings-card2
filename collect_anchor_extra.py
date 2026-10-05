@@ -52,13 +52,16 @@ EXTRA = [
     # 보험
     ("032830", "삼성생명"),     ("000810", "삼성화재"),
     ("005830", "DB손해보험"),   ("001450", "현대해상"),
-    ("082640", "동양생명"),     ("085620", "미래에셋생명"),
+    ("085620", "미래에셋생명"),
     ("003690", "코리안리"),
     # 증권
     ("016360", "삼성증권"),     ("005940", "NH투자증권"),
-    # 금융은 아니지만 같은 이유로 빠져 있었다
-    ("010620", "HD현대미포"),
 ]
+
+# 한때 넣었다가 뺀 것들. 왜 뺐는지 남겨 두지 않으면 나중에 또 넣게 된다.
+#   082640 동양생명    — 우리금융지주 인수로 상장폐지, 최근 시세 없음
+#   010620 HD현대미포  — HD현대중공업에 흡수합병, 최근 시세 없음
+# 다시 상장되거나 착오였다면 위 EXTRA 로 옮기면 된다.
 
 SPLIT_TOL = 0.02          # 일별과 월말이 이보다 벌어지면 수정주가가 아니다
 PAUSE = 0.15
@@ -144,7 +147,12 @@ def fmt(ymd):
 
 
 def one(code, base, spans):
-    """한 종목의 기준점. (결과, 경고목록) 또는 (None, 이유)."""
+    """한 종목의 기준점.
+
+    돌려주는 값: (결과, 분할경고, 실패사유)
+    분할경고와 실패사유를 꼭 나눠야 한다. 섞으면 상장폐지 종목 하나 때문에
+    멀쩡한 종목들까지 저장이 막힌다 — 실제로 그랬다.
+    """
     # 월봉 한 번 — 액면분할 검사에 쓴다
     s = years_back(base, max(spans) + 1).strftime("%Y%m%d")
     mrows, _ = naver_rows(code, s, base.strftime("%Y%m%d"), "month")
@@ -171,14 +179,14 @@ def one(code, base, spans):
         out[str(n)] = {"d": fmt(hit[0]), "v": hit[1]}
 
     if not out:
-        return None, ["%s: 기준점 없음" % code]
+        return None, warn, "기준점 없음 (상장 1년 미만 또는 시세 없음)"
 
     st = (base - timedelta(days=14)).strftime("%Y%m%d")
     rows, _ = naver_rows(code, st, base.strftime("%Y%m%d"), "day")
     if not rows:
-        return None, ["%s: 최근 종가 없음" % code]
+        return None, warn, "최근 종가 없음 (상장폐지·합병 추정)"
     out["now"] = {"d": fmt(rows[-1][0]), "v": rows[-1][1]}
-    return out, warn
+    return out, warn, None
 
 
 def main():
@@ -213,7 +221,7 @@ def main():
 
     got, warns, fail = {}, [], []
     for i, (code, name) in enumerate(todo, 1):
-        r, w = one(code, base, spans)
+        r, w, why = one(code, base, spans)
         if w:
             warns.extend(w)
         if r:
@@ -224,8 +232,8 @@ def main():
                 % (code, name, ",".join(map(str, have)), r["now"]["d"],
                    "{:,.0f}".format(r["now"]["v"])))
         else:
-            fail.append((code, name))
-            log("  %-8s %-14s 실패" % (code, name))
+            fail.append((code, name, why))
+            log("  %-8s %-14s 건너뜀 — %s" % (code, name, why))
 
     if warns:
         log("\n" + "!" * 52)
@@ -255,7 +263,9 @@ def main():
     log("\n보탬 %d종목 → 국내 %d종목 · %.2fMB · 호출 %d회"
         % (len(got), len(items), os.path.getsize(ANCHOR) / 1024 / 1024, _calls[0]))
     if fail:
-        log("실패 %d종목: %s" % (len(fail), ", ".join("%s(%s)" % (n, c) for c, n in fail)))
+        log("건너뛴 %d종목:" % len(fail))
+        for c, n, why in fail:
+            log("  %-8s %-14s %s" % (c, n, why))
 
 
 if __name__ == "__main__":

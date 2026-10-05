@@ -43,14 +43,21 @@ def patch(path, dry):
         print("  그대로  %-32s 이미 들어 있습니다" % path)
         return False
 
-    # collect_anchor.py 를 실행하는 줄
+    # collect_anchor.py 를 '실행'하는 줄.
+    # 주석에도 파일 이름이 적혀 있다(설명이나 안전장치 메모). 주석을 집으면
+    # 그 위에 단계가 없어 그대로 건너뛰므로, 주석과 run 줄을 가려낸다.
     hit = None
     for i, ln in enumerate(lines):
+        t = ln.strip()
+        if t.startswith("#"):
+            continue
+        if "#" in ln:                          # 줄 끝 주석은 떼고 본다
+            ln = ln.split("#", 1)[0]
         if "collect_anchor.py" in ln and "collect_anchor_extra" not in ln:
             hit = i
             break
     if hit is None:
-        print("  !! %-32s collect_anchor.py 실행 줄을 못 찾았습니다" % path)
+        print("  !! %-32s collect_anchor.py 를 실행하는 줄이 없습니다 (주석만 있음)" % path)
         return False
 
     # 그 줄이 속한 단계의 시작('- name:' 또는 '- run:')을 거슬러 찾는다
