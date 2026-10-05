@@ -311,11 +311,17 @@ var T = {
   paper:'#fafaf8', ink:'#101216', inkSoft:'#6B7078', rule:'#E6E4DD',
   footer:'#3A3E46', upKR:'#C0392B', downKR:'#2C5AA0',
   chipBg:'#F4F0E4', chipInk:'#8C6E14',
+  // 흰 바탕 로고(삼양식품·페이퍼코리아)가 종이색에 묻힌다. rule 보다
+  // 한 단계 진한 선으로 원의 경계를 잡아 준다.
+  logoEdge:'#DCD7CB',
   safe:{top:135,right:100,bottom:135,left:100},
   grain:{base:[250,250,248],amount:14,speckle:0.08,spike:2.5},
   type:{nameMax:92,nameMin:52,nameTrack:'-0.02em',footer:27}
 };
-var FAM = "'Noto Sans KR',-apple-system,'Malgun Gothic',sans-serif";
+// 다른 탭(returns·guru·index)과 똑같이 'Noto Sans KR' 만 적는다.
+// -apple-system 같은 대체를 뒤에 붙이면, 그 굵기가 아직 안 받아졌을 때
+// 맥에서는 애플 SD 산돌고딕으로 조용히 빠져 카드만 서체가 달라진다.
+var FAM = '"Noto Sans KR"';
 var CX = T.safe.left, CWID = CW - T.safe.left - T.safe.right;
 
 var state = { span:10, picked:[], title:'', handle:'@돈굴돈굴' };
@@ -400,7 +406,7 @@ function logo(c, code, name, cx, cy, r){
     c.textBaseline = 'alphabetic'; c.textAlign = 'left';
   }
   c.beginPath(); c.arc(cx,cy,r,0,7);
-  c.lineWidth = 1; c.strokeStyle = T.rule; c.stroke();
+  c.lineWidth = 1; c.strokeStyle = T.logoEdge; c.stroke();
 }
 
 /* ---------- 금액 ----------
@@ -522,7 +528,7 @@ function drawCard(c){
   c.beginPath(); c.moveTo(CX, hr+0.5); c.lineTo(CW-T.safe.right, hr+0.5); c.stroke();
 
   var fb = CH - T.safe.bottom - 4, ry = fb - T.type.footer*0.85 - 18;
-  var top = hr + 50, bot = ry - 42;
+  var top = hr + 38, bot = ry - 32;
 
   if (!n) {
     c.fillStyle = T.inkSoft; c.textAlign = 'center'; c.font = F(700, 34);
@@ -537,7 +543,7 @@ function drawCard(c){
   /* 2~3종목 — 줄형. 격자로 깔면 한 줄이 허공에 뜬다. */
   if (n <= 3) {
     var rh = (bot-top)/n;
-    var rad = Math.min(104, rh*0.34), tx = CX + rad*2 + rad*0.52;
+    var rad = Math.min(120, rh*0.40), tx = CX + rad*2 + rad*0.52;
     var vf = Math.min(150, rh*0.46);
     rows.forEach(function(r){ vf = Math.min(vf, fitVal(c, vtxt(state.span,r.amt), vf, 44, CWID*0.46)); });
     var vw = 0;
@@ -564,11 +570,14 @@ function drawCard(c){
   /* 4종목 2열 · 5~9종목 3열 */
   var cols = (n === 4) ? 2 : 3, nrow = Math.ceil(n/cols);
   var cw = CWID/cols, ch = (bot-top)/nrow;
-  var rad2 = ch * (nrow === 3 ? 0.19 : 0.20);
-  var g1 = ch*0.06, g2 = ch*0.03, pad = cw*0.05;
+  // 로고가 먼저 눈에 들어와야 어느 회사인지 알아본다. 숫자는 그다음이다.
+  // 예전 비율(로고 0.20 / 금액 0.29)은 숫자 폭이 칸을 꽉 채워 로고를
+  // 눌러버렸다. 세로로 37~54px 이 놀고 있었으므로 그만큼 로고로 돌린다.
+  var rad2 = ch * (nrow === 3 ? 0.235 : 0.25);
+  var g1 = ch*0.055, g2 = ch*0.03, pad = cw*0.05;
   // 글자 크기는 칸마다 재지 않고 가장 작은 값으로 통일한다.
   // 그래야 로고 줄·이름 줄·금액 줄이 가로로 맞는다.
-  var nf2 = Math.min(32, ch*0.093), vf2 = ch * (nrow === 3 ? 0.285 : 0.29);
+  var nf2 = Math.min(32, ch*0.105), vf2 = ch*0.25;
   rows.forEach(function(r){
     nf2 = Math.min(nf2, fit(c, r.name, 800, nf2, 15, cw-pad*2, '0.01em'));
     vf2 = Math.min(vf2, fitVal(c, vtxt(state.span,r.amt), vf2, 26, cw-pad*2));
@@ -605,7 +614,22 @@ function footer(c, ry, fb, txt){
 }
 
 var cv = document.getElementById('card-canvas');
-function draw(){ drawCard(cv.getContext('2d')); }
+
+// 글꼴이 오기 전에 그리면 첫 장이 대체 서체로 나온다. 다시 그릴 일이
+// 없으면 그대로 굳는다. 다른 탭과 같은 방식으로 미리 받아 둔다.
+var fontsReady = false;
+function ensureFonts(){
+  if (fontsReady || !document.fonts) return Promise.resolve();
+  return Promise.all(['700','800','900'].map(function (w) {
+    return document.fonts.load(w + ' 40px "Noto Sans KR"');
+  })).then(function () { return document.fonts.ready; })
+    .then(function () { fontsReady = true; })
+    .catch(function () {});
+}
+function draw(){
+  if (!fontsReady) { ensureFonts().then(function(){ drawCard(cv.getContext('2d')); }); return; }
+  drawCard(cv.getContext('2d'));
+}
 
 /* ======================================================================
    데이터 — anchor.json 의 모양이 조금씩 달라도 받아들인다.
@@ -796,6 +820,7 @@ document.getElementById('btn-png').addEventListener('click', function(){
   var S = 3, off = document.createElement('canvas');
   off.width = CW*S; off.height = CH*S;
   var oc = off.getContext('2d'); oc.scale(S,S);
+  ensureFonts().then(function(){
   drawCard(oc);
   off.toBlob(function(b){
     if (!b) { alert('이미지를 만들지 못했습니다.'); return; }
@@ -805,6 +830,7 @@ document.getElementById('btn-png').addEventListener('click', function(){
     a.click();
     setTimeout(function(){ URL.revokeObjectURL(a.href); }, 5000);
   }, 'image/png');
+  });
 });
 
 /* ---------- 시작 ---------- */
