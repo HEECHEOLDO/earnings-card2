@@ -209,6 +209,9 @@
   .pk-x { border:0; background:transparent; color:var(--text-mute); cursor:pointer;
     font-size:16px; line-height:1; padding:0 2px; }
   .pk-warn { font-size:11px; color:var(--neg); flex:none; }
+  .pk.off { opacity:.5; }
+  .pk-na { font-size:11.5px; font-weight:700; color:var(--text-mute); flex:none;
+    white-space:nowrap; }
   .sg-item.off { opacity:.45; cursor:not-allowed; }
   .sg-why { font-size:11px; color:var(--text-mute); flex:none; }
   .note { font-size:12.5px; line-height:1.6; margin:10px 0 0; padding:9px 11px;
@@ -448,13 +451,11 @@ function maxSpan(code){
   DB.spans.forEach(function(s){ if (it.y[String(s)]) best = Math.max(best, s); });
   return best;
 }
-// 고른 종목 중 지금 기간에 자료가 없는 것을 떨궈 낸다.
-// 화면에는 안 보이면서 9종목 한도만 까먹는 유령이 생기지 않게.
-function prune(){
-  var keep = state.picked.filter(function(c){ return amount(c, state.span) !== null; });
-  var cut = state.picked.filter(function(c){ return keep.indexOf(c) < 0; });
-  state.picked = keep;
-  return cut;
+// 지금 기간에 자료가 없는 종목. 지우지는 않는다 — 기간을 되돌리면
+// 되살아나야 한다. 10년·15년·20년을 번갈아 보는 게 이 탭의 주된 쓰임인데,
+// 한 번 넘어갔다 오면 선택이 날아가면 매번 다시 담아야 한다.
+function resting(){
+  return state.picked.filter(function(c){ return amount(c, state.span) === null; });
 }
 function rowsNow(){
   var out = [];
@@ -711,13 +712,13 @@ function buildSpans(){
 }
 function setSpan(s){
   state.span = s;
-  // 기간을 늘리면 상장이 늦은 종목은 기준점이 없다. 조용히 빼지 말고,
-  // 그 종목으로는 몇 년까지 되는지 같이 알려준다.
-  var drop = prune();
-  if (drop.length) {
-    note(drop.map(function(c){
+  // 상장이 늦은 종목은 그 기간에 자료가 없다. 목록에는 남겨 두고 카드에서만
+  // 빼며, 어느 기간으로 내리면 다시 들어오는지 알려준다.
+  var rest = resting();
+  if (rest.length) {
+    note(rest.map(function(c){
       return DB.items[c].disp + '(최대 ' + maxSpan(c) + '년)'; }).join(', ') +
-      ' — ' + s + '년 자료가 없어 뺐습니다.');
+      ' — ' + s + '년 자료가 없어 카드에서 뺐습니다. 기간을 줄이면 다시 들어옵니다.');
   } else note('');
   buildSpans(); renderPicked(); draw();
 }
@@ -783,12 +784,14 @@ function note(t){
   el.textContent = t; el.className = 'note' + (t ? ' on' : '');
 }
 function renderPicked(){
-  prune();
   var box = document.getElementById('picked');
   box.innerHTML = '';
+  // 카드에 들어가는 순서(금액 큰 순) 뒤에, 쉬고 있는 종목을 붙인다
   var rows = rowsNow();
-  rows.forEach(function(r){
-    var el = document.createElement('div'); el.className = 'pk';
+  var rest = resting().map(function(c){
+    return { code:c, name:DB.items[c].disp, full:DB.items[c].name, off:true }; });
+  rows.concat(rest).forEach(function(r){
+    var el = document.createElement('div'); el.className = 'pk' + (r.off ? ' off' : '');
     var im = document.createElement('img');
     im.src = './logo/kr/' + r.code + '.png'; im.alt = '';
     im.onerror = function(){
@@ -804,15 +807,23 @@ function renderPicked(){
     // 카드에는 금액만 싣고, 근거가 되는 주가는 여기서 볼 수 있게 한다
     var sub = document.createElement('span');
     sub.className = 'pk-sub';
-    var c = cagr(r.amt / SEED, state.span);
-    sub.innerHTML = comma(r.p0) + ' → <b>' + comma(r.p1) + '원</b> · 연 ' +
-                    (c >= 0 ? '+' : '') + c.toFixed(1) + '%';
-    sub.title = r.back + ' ' + comma(r.p0) + '원  →  ' + DB.asof + ' ' + comma(r.p1) + '원';
+    if (r.off) {
+      sub.textContent = '최대 ' + maxSpan(r.code) + '년까지 — 기간을 줄이면 들어옵니다';
+    } else {
+      var c = cagr(r.amt / SEED, state.span);
+      sub.innerHTML = comma(r.p0) + ' → <b>' + comma(r.p1) + '원</b> · 연 ' +
+                      (c >= 0 ? '+' : '') + c.toFixed(1) + '%';
+      sub.title = r.back + ' ' + comma(r.p0) + '원  →  ' + DB.asof + ' ' + comma(r.p1) + '원';
+    }
     mid.appendChild(sub);
     el.appendChild(mid);
     var v = document.createElement('span');
-    v.className = 'pk-v ' + (r.amt >= SEED ? 'up' : 'down');
-    v.textContent = vtxt(state.span, r.amt) + unit(r.amt); el.appendChild(v);
+    if (r.off) { v.className = 'pk-na'; v.textContent = state.span + '년 자료 없음'; }
+    else {
+      v.className = 'pk-v ' + (r.amt >= SEED ? 'up' : 'down');
+      v.textContent = vtxt(state.span, r.amt) + unit(r.amt);
+    }
+    el.appendChild(v);
     var x = document.createElement('button');
     x.className = 'pk-x'; x.type = 'button'; x.textContent = '×';
     x.setAttribute('aria-label', r.name + ' 빼기');
@@ -822,7 +833,8 @@ function renderPicked(){
   });
   var cap = document.getElementById('cap');
   cap.textContent = rows.length
-    ? rows.length + '종목 · ' + dot(modeDate(rows)) + ' ~ ' + dot(DB.asof)
+    ? rows.length + '종목 · ' + dot(modeDate(rows)) + ' ~ ' + dot(DB.asof) +
+      (rest.length ? ' · ' + rest.length + '종목 쉬는 중' : '')
     : '종목을 2개 이상 고르세요';
 }
 
