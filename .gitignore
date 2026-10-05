@@ -7,3 +7,13 @@ key.txt
 *.pyc
 __pycache__/
 .env
+
+# 로고 원본 (정리본만 logo/ 에 올립니다)
+kr/
+us/
+us_etf/
+
+# 로고 원본 (정리본만 logo/ 에 올립니다)
+kr/
+us/
+us_etf/
