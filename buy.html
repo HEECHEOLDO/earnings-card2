@@ -416,23 +416,22 @@ function logo(c, code, name, cx, cy, r){
 /* ---------- 금액 ----------
    단위는 숫자의 36% · 800 · 같은 색 · 불투명. 흐리게 하면 '억원'이 안 읽혀
    금액을 잘못 본다. */
-var SUF = '억원';
-function vp(c, num, size){
+function vp(c, num, size, suf){
   var ps = Math.round(size*0.36);
   c.font = F(900,size); LS(c,'-0.025em');
   var wn = c.measureText(num).width; LS(c,'0px');
   c.font = F(800,ps);
-  return { num:num, ps:ps, wn:wn, wp:c.measureText(SUF).width,
-           gap:size*0.05, w:wn + size*0.05 + c.measureText(SUF).width };
+  return { num:num, ps:ps, wn:wn, wp:c.measureText(suf).width,
+           gap:size*0.05, w:wn + size*0.05 + c.measureText(suf).width };
 }
-function fitVal(c, num, start, min, maxW){
-  var s = start; while (s > min && vp(c,num,s).w > maxW) s -= 1; return s;
+function fitVal(c, num, start, min, maxW, suf){
+  var s = start; while (s > min && vp(c,num,s,suf).w > maxW) s -= 1; return s;
 }
-function val(c, cx, by, num, size, col){
-  var p = vp(c,num,size), x = cx - p.w/2;
+function val(c, cx, by, num, size, col, suf){
+  var p = vp(c,num,size,suf), x = cx - p.w/2;
   c.textAlign = 'left'; c.fillStyle = col;
   c.font = F(900,size); LS(c,'-0.025em'); c.fillText(p.num, x, by); LS(c,'0px');
-  c.font = F(800,p.ps); c.fillText(SUF, x + p.wn + p.gap, by);
+  c.font = F(800,p.ps); c.fillText(suf, x + p.wn + p.gap, by);
   c.textAlign = 'center';
 }
 
@@ -478,7 +477,15 @@ function comma(v){ return v.toLocaleString('ko-KR',
   {minimumFractionDigits:0, maximumFractionDigits: v < 1000 ? 1 : 0}); }
 
 function decOf(span, a){ var base = span <= 3 ? 2 : 1; return a < 0.1 ? Math.max(base,2) : base; }
-function vtxt(span, a){ return a.toFixed(decOf(span, a)); }
+// 감자·액면병합을 겪은 종목은 1억이 몇천 원이 되기도 한다. 억으로 적으면
+// '0.00억원' 이라 아무 뜻이 없다. 억으로 못 적는 구간에서만 단위를 내린다.
+//   100만원 이상 -> 억원   /   1만원 이상 -> 만원   /   그 아래 -> 원
+function unit(a){ return a >= 0.01 ? '억원' : (a >= 0.0001 ? '만원' : '원'); }
+function vtxt(span, a){
+  if (a >= 0.01) return a.toFixed(decOf(span, a));
+  if (a >= 0.0001) return String(Math.round(a * 10000));
+  return Math.round(a * 1e8).toLocaleString('ko-KR');
+}
 
 // 거래정지 등으로 종목마다 기준일이 다를 수 있다. 가장 많이 나온 날짜를 쓴다.
 function modeDate(rows){
@@ -555,9 +562,10 @@ function drawCard(c){
     var rh = (bot-top)/n;
     var rad = Math.min(120, rh*0.40), tx = CX + rad*2 + rad*0.52;
     var vf = Math.min(150, rh*0.46);
-    rows.forEach(function(r){ vf = Math.min(vf, fitVal(c, vtxt(state.span,r.amt), vf, 44, CWID*0.46)); });
+    rows.forEach(function(r){ vf = Math.min(vf,
+      fitVal(c, vtxt(state.span,r.amt), vf, 44, CWID*0.46, unit(r.amt))); });
     var vw = 0;
-    rows.forEach(function(r){ vw = Math.max(vw, vp(c, vtxt(state.span,r.amt), vf).w); });
+    rows.forEach(function(r){ vw = Math.max(vw, vp(c, vtxt(state.span,r.amt), vf, unit(r.amt)).w); });
     var nw = CW - T.safe.right - vw - 40 - tx, nf = Math.min(42, rh*0.16);
     rows.forEach(function(r){ nf = Math.min(nf, fit(c, r.name, 800, nf, 22, nw, '0.01em')); });
 
@@ -566,8 +574,9 @@ function drawCard(c){
       logo(c, r.code, r.name, CX+rad, cy, rad);
       c.textAlign = 'left'; c.fillStyle = T.footer; c.font = F(800,nf); LS(c,'0.01em');
       c.fillText(r.name, tx, by); LS(c,'0px');
-      var t = vtxt(state.span, r.amt);
-      val(c, CW - T.safe.right - vp(c,t,vf).w/2, by, t, vf, r.amt >= SEED ? T.upKR : T.downKR);
+      var t = vtxt(state.span, r.amt), u = unit(r.amt);
+      val(c, CW - T.safe.right - vp(c,t,vf,u).w/2, by, t, vf,
+          r.amt >= SEED ? T.upKR : T.downKR, u);
       if (i < n-1) {
         var ly = Math.round(top + rh*(i+1)) + 0.5;
         c.strokeStyle = T.rule; c.lineWidth = 1;
@@ -590,7 +599,7 @@ function drawCard(c){
   var nf2 = Math.min(32, ch*0.105), vf2 = ch*0.25;
   rows.forEach(function(r){
     nf2 = Math.min(nf2, fit(c, r.name, 800, nf2, 15, cw-pad*2, '0.01em'));
-    vf2 = Math.min(vf2, fitVal(c, vtxt(state.span,r.amt), vf2, 26, cw-pad*2));
+    vf2 = Math.min(vf2, fitVal(c, vtxt(state.span,r.amt), vf2, 26, cw-pad*2, unit(r.amt)));
   });
   var block = rad2*2 + g1 + nf2 + g2 + vf2, off = (ch-block)*0.40;
 
@@ -602,7 +611,7 @@ function drawCard(c){
     c.textAlign = 'center'; c.fillStyle = T.footer; c.font = F(800,nf2); LS(c,'0.01em');
     c.fillText(r.name, mx, y0 + rad2*2 + g1 + nf2*0.80); LS(c,'0px');
     val(c, mx, y0 + rad2*2 + g1 + nf2 + g2 + vf2*0.80,
-        vtxt(state.span, r.amt), vf2, r.amt >= SEED ? T.upKR : T.downKR);
+        vtxt(state.span, r.amt), vf2, r.amt >= SEED ? T.upKR : T.downKR, unit(r.amt));
   });
   footer(c, ry, fb, FOOT);
 }
@@ -803,7 +812,7 @@ function renderPicked(){
     el.appendChild(mid);
     var v = document.createElement('span');
     v.className = 'pk-v ' + (r.amt >= SEED ? 'up' : 'down');
-    v.textContent = vtxt(state.span, r.amt) + '억원'; el.appendChild(v);
+    v.textContent = vtxt(state.span, r.amt) + unit(r.amt); el.appendChild(v);
     var x = document.createElement('button');
     x.className = 'pk-x'; x.type = 'button'; x.textContent = '×';
     x.setAttribute('aria-label', r.name + ' 빼기');
