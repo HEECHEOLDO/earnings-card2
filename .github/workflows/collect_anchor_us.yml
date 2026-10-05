@@ -30,6 +30,9 @@ jobs:
       - name: 해외 기준점 계산
         run: python3 collect_anchor.py --us
 
+      - name: 금융주 보충 (은행·보험 — 실적 수집에서 빠진 종목)
+        run: python3 collect_anchor_extra.py || true
+
       - name: 바뀌었으면 커밋
         run: |
           if git diff --quiet -- data/anchor.json; then
