@@ -432,6 +432,21 @@ function amount(code, span){
   var a = it.y[String(span)]; if (!a || !it.now) return null;
   return SEED * it.now.v / a.v;
 }
+// 그 종목으로 갈 수 있는 가장 긴 기간. 상장이 늦으면 짧아진다.
+function maxSpan(code){
+  var it = DB.items[code]; if (!it) return 0;
+  var best = 0;
+  DB.spans.forEach(function(s){ if (it.y[String(s)]) best = Math.max(best, s); });
+  return best;
+}
+// 고른 종목 중 지금 기간에 자료가 없는 것을 떨궈 낸다.
+// 화면에는 안 보이면서 9종목 한도만 까먹는 유령이 생기지 않게.
+function prune(){
+  var keep = state.picked.filter(function(c){ return amount(c, state.span) !== null; });
+  var cut = state.picked.filter(function(c){ return keep.indexOf(c) < 0; });
+  state.picked = keep;
+  return cut;
+}
 function rowsNow(){
   var out = [];
   state.picked.forEach(function(code){
@@ -653,12 +668,13 @@ function buildSpans(){
 }
 function setSpan(s){
   state.span = s;
-  // 기간을 늘리면 상장이 늦은 종목은 기준점이 없다. 조용히 빼지 말고 알려준다.
-  var drop = state.picked.filter(function(c){ return amount(c, s) === null; });
+  // 기간을 늘리면 상장이 늦은 종목은 기준점이 없다. 조용히 빼지 말고,
+  // 그 종목으로는 몇 년까지 되는지 같이 알려준다.
+  var drop = prune();
   if (drop.length) {
-    state.picked = state.picked.filter(function(c){ return amount(c, s) !== null; });
-    note(drop.map(function(c){ return DB.items[c].disp; }).join(', ') +
-         ' — 상장 ' + s + '년 미만이라 뺐습니다.');
+    note(drop.map(function(c){
+      return DB.items[c].disp + '(최대 ' + maxSpan(c) + '년)'; }).join(', ') +
+      ' — ' + s + '년 자료가 없어 뺐습니다.');
   } else note('');
   buildSpans(); renderPicked(); draw();
 }
@@ -685,6 +701,9 @@ function renderSuggest(){
     list.innerHTML = '<div class="sg-empty">찾는 종목이 없습니다.</div>';
     box.classList.add('on'); return;
   }
+  // 고를 수 있는 것부터 보여준다. 꺼진 줄이 위에 쌓이면 찾기 나쁘다.
+  hit.sort(function(a,b){
+    return (amount(b, state.span) !== null) - (amount(a, state.span) !== null); });
   hit.forEach(function(code){
     var it = DB.items[code], ok = amount(code, state.span) !== null;
     var picked = state.picked.indexOf(code) >= 0;
@@ -693,7 +712,7 @@ function renderSuggest(){
     d.innerHTML = '<span>' + it.name + '</span>' +
       (picked ? '<span class="sg-why">이미 담음</span>'
               : ok ? '<span class="sg-code">' + code + '</span>'
-                   : '<span class="sg-why">상장 ' + state.span + '년 미만</span>');
+                   : '<span class="sg-why">최대 ' + maxSpan(code) + '년</span>');
     if (ok && !picked) d.addEventListener('click', function(){ add(code); });
     list.appendChild(d);
   });
@@ -721,6 +740,7 @@ function note(t){
   el.textContent = t; el.className = 'note' + (t ? ' on' : '');
 }
 function renderPicked(){
+  prune();
   var box = document.getElementById('picked');
   box.innerHTML = '';
   var rows = rowsNow();
