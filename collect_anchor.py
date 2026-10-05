@@ -73,6 +73,10 @@ SPLIT_TOL = 0.02
 # 분할 배수로 어긋난 종목이 이만큼(또는 검사 종목의 1%) 넘으면 전체 중단.
 SPLIT_HALT_MIN = 10
 
+# 새로 받은 국내 종목 수가 기존 파일의 이 비율 밑이면 덮어쓰지 않는다.
+# 자동 실행 중 네이버가 응답을 끊어 반쪽짜리 자료로 좋은 자료를 덮는 걸 막는다.
+KEEP_RATIO = 0.90
+
 PAUSE = 0.15              # 네이버에 들이대지 않는다
 _calls = [0]
 
@@ -518,10 +522,11 @@ def main():
     # ---- 액면분할 검사 ----
     if halt:
         if "--force" not in argv:
-            return
+            sys.exit(2)                       # 자동 실행에서 실패(빨간 X)로 보이게
         log("\n--force 가 있어 그대로 저장합니다 (불일치 종목은 이미 제외됨).")
 
     # --kr / --us 하나만 돌렸을 때 다른 시장 자료를 지우지 않는다
+    prev = {}
     try:
         with open(OUT, encoding="utf-8") as f:
             prev = json.load(f)
@@ -531,6 +536,19 @@ def main():
     except Exception:                         # noqa: BLE001
         pass
 
+    # 국내가 갑자기 크게 줄었으면 덮어쓰지 않는다 (시험용 --limit 은 예외 없이 막는다)
+    shrunk = False
+    if "kr" in out and (prev.get("kr") or {}).get("items") and "--force" not in argv:
+        old_n = len(prev["kr"]["items"])
+        new_n = len(out["kr"]["items"])
+        if new_n < old_n * KEEP_RATIO:
+            log("\n!! 국내 %d종목 → %d종목으로 %.0f%% 줄었습니다. 네트워크 문제로 보고"
+                % (old_n, new_n, (1 - new_n / old_n) * 100))
+            log("   기존 국내 자료(%s 기준)를 그대로 둡니다. 의도한 거면 --force."
+                % prev["kr"].get("asof"))
+            out["kr"] = prev["kr"]
+            shrunk = True
+
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     tmp = OUT + ".tmp"
     with open(tmp, "w", encoding="utf-8") as f:
@@ -538,6 +556,8 @@ def main():
     os.replace(tmp, OUT)
     log("\n저장 %s · %.2fMB · 호출 %d회"
         % (OUT, os.path.getsize(OUT) / 1024 / 1024, _calls[0]))
+    if shrunk:
+        sys.exit(3)
 
 
 if __name__ == "__main__":

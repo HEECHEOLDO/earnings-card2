@@ -1,0 +1,50 @@
+# 국내 기준점(anchor.json 의 kr 부분)을 평일마다 자동 갱신한다.
+# 장 마감(15:30) 뒤 16:40 KST 에 시작해 2시간쯤 걸린다 (네이버 약 2만 6천 회).
+# 키는 필요 없다. 해외(us) 부분은 건드리지 않는다.
+#
+# 안전장치 (collect_anchor.py 안에 있다)
+#   - 분할 배수 불일치가 많으면 저장하지 않고 실패로 끝난다 (빨간 X)
+#   - 국내 종목 수가 기존보다 10% 넘게 줄면 기존 자료를 그대로 두고 실패로 끝난다
+#     (네이버가 중간에 막았을 때 반쪽짜리 자료로 덮어쓰지 않게)
+name: collect_anchor_kr
+
+on:
+  schedule:
+    - cron: "40 7 * * 1-5"     # UTC 07:40 = KST 16:40, 월~금
+  workflow_dispatch: {}        # Actions 탭에서 수동 실행 버튼
+
+permissions:
+  contents: write
+
+concurrency:
+  group: data-commit
+  cancel-in-progress: false
+
+jobs:
+  anchor-kr:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: 국내 기준점 수집
+        run: python3 collect_anchor.py --kr
+
+      - name: 바뀌었으면 커밋      # 앞 단계가 실패하면 건너뛴다
+        run: |
+          if git diff --quiet -- data/anchor.json; then
+            echo "변경 없음"; exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git add data/anchor.json
+          git commit -m "anchor: 국내 기준점 자동 갱신 $(TZ=Asia/Seoul date +%F)"
+          for i in 1 2 3; do
+            git pull --rebase && git push && exit 0
+            sleep 5
+          done
+          exit 1
