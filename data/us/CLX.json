@@ -2,14 +2,14 @@
  "name": "CLX",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "CLOROX CO /DE/",
+ "legal_name": "The Clorox Company",
  "code": "CLX",
  "cik": "0000021076",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-10-07",
+ "updated": "2026-10-08",
  "annual": [
   {
    "p": 2016,
@@ -93,12 +93,12 @@
    "p": 2022,
    "rev": 7107.0,
    "op": 2545.0,
-   "ni": 462.0,
+   "ni": 471.0,
    "assets": 6158.0,
    "liab": 5429.0,
    "equity": 556.0,
    "dps": 3.48,
-   "payout": 123.6,
+   "payout": 121.2,
    "yield": null,
    "dps_adj": 3.48
   },
@@ -106,12 +106,12 @@
    "p": 2023,
    "rev": 7389.0,
    "op": 2908.0,
-   "ni": 149.0,
+   "ni": 161.0,
    "assets": 5945.0,
    "liab": 5557.0,
    "equity": 220.0,
    "dps": 4.72,
-   "payout": 391.3,
+   "payout": 362.1,
    "yield": null,
    "dps_adj": 4.72
   },
@@ -119,12 +119,12 @@
    "p": 2024,
    "rev": 7093.0,
    "op": 3048.0,
-   "ni": 280.0,
+   "ni": 292.0,
    "assets": 5751.0,
    "liab": 5259.0,
    "equity": 328.0,
    "dps": 4.8,
-   "payout": 212.5,
+   "payout": 203.8,
    "yield": null,
    "dps_adj": 4.8
   },
@@ -132,12 +132,12 @@
    "p": 2025,
    "rev": 7104.0,
    "op": 3213.0,
-   "ni": 810.0,
+   "ni": 824.0,
    "assets": 5561.0,
    "liab": 5079.0,
    "equity": 321.0,
    "dps": 4.88,
-   "payout": 74.3,
+   "payout": 73.1,
    "yield": null,
    "dps_adj": 4.88
   }
@@ -162,7 +162,7 @@
    "q": 4,
    "rev": 1903.0,
    "op": 884.0,
-   "ni": 216.0
+   "ni": 228.0
   },
   {
    "y": 2025,
@@ -190,7 +190,7 @@
    "q": 4,
    "rev": 1988.0,
    "op": 924.0,
-   "ni": 332.0
+   "ni": 346.0
   },
   {
    "y": 2026,
