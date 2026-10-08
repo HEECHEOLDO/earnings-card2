@@ -43,6 +43,13 @@ AV_WEEK = ("https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY_ADJUST
            "&symbol=%s&apikey=%s")
 AV_KEY = os.environ.get("AV_KEY") or "5HNBQW8WQEJNTZWS"
 AV_BUDGET = 25          # 하루 한도 25회를 그대로 쓴다 (확인용 호출을 없앴다)
+# 알파밴티지는 하루 한도와 별개로 '초당 1회'를 지켜야 한다. 안 지키면
+#   "Please consider spreading out your free API requests more sparingly
+#    (1 request per second)"
+# 가 돌아오고 그날 수집이 거기서 멈춘다. 국내(네이버)는 SLEEP 0.12 로
+# 충분하므로 전체를 늦추지 않고 알파밴티지 호출에만 간격을 둔다.
+# 25회를 다 써도 33초면 끝난다.
+AV_SLEEP = 1.3
 
 # 예비 — 야후 (쿠키·토큰 필요, 자주 막힘)
 CHART = "https://query2.finance.yahoo.com/v8/finance/chart/%s?range=%s&interval=1mo"
@@ -256,6 +263,27 @@ def get_text(url, tries=3, use_session=False):
     return None, last or "실패"
 
 
+_av_last = [0.0]
+
+
+def av_get(url, tries=2):
+    """알파밴티지 전용 — 초당 1회를 지켜 부른다.
+
+    get_text 를 그대로 쓰면 SLEEP(0.12초) 간격으로 날아가 바로 거절당한다.
+    여기서 직전 호출 시각을 기억해 모자란 만큼만 더 쉰다.
+    """
+    why = "실패"
+    for _ in range(tries):
+        gap = time.time() - _av_last[0]
+        if gap < AV_SLEEP:
+            time.sleep(AV_SLEEP - gap)
+        _av_last[0] = time.time()
+        txt, why = get_text(url, tries=1)
+        if txt:
+            return txt, why
+    return None, why
+
+
 def refine_first_year(years, listed, fetch_fine):
     """첫해를 더 촘촘한 자료로 다시 계산한다.
 
@@ -309,7 +337,7 @@ def naver_daily(code, year):
 
 def alpha_weekly(code):
     """해외 — 주별 조정종가 전체 (첫해 정밀화용)."""
-    txt, _ = get_text(AV_WEEK % (code.replace(".", "-"), AV_KEY), tries=2)
+    txt, _ = av_get(AV_WEEK % (code.replace(".", "-"), AV_KEY))
     if not txt:
         return None
     try:
@@ -497,7 +525,7 @@ def av_trouble(j):
 
 def from_alpha(code):
     """해외 — 알파밴티지 월별 조정종가. 배당 재투자가 포함된 총수익률."""
-    txt, why = get_text(AV % (code.replace(".", "-"), AV_KEY), tries=2)
+    txt, why = av_get(AV % (code.replace(".", "-"), AV_KEY))
     if not txt:
         return None, why
     try:
@@ -645,7 +673,7 @@ def check():
        한도인지, 유료 전용으로 바뀐 건지, 키가 막힌 건지 여기서 갈린다."""
     log("키 %s…%s 로 AAPL 월별 조정종가를 한 번 부릅니다\n"
         % (AV_KEY[:4], AV_KEY[-4:]))
-    txt, why = get_text(AV % ("AAPL", AV_KEY))
+    txt, why = av_get(AV % ("AAPL", AV_KEY))
     if not txt:
         log("연결 실패: %s" % why); return
     try:
@@ -675,7 +703,7 @@ def check():
     # 주별도 쓴다. 이게 막히면 첫해 정밀화가 안 되고,
     # 예전에는 그것 때문에 수집 전체가 하루 한 종목으로 줄었다.
     log("")
-    txt2, why2 = get_text(AV_WEEK % ("AAPL", AV_KEY), tries=2)
+    txt2, why2 = av_get(AV_WEEK % ("AAPL", AV_KEY))
     if not txt2:
         log("주별(WEEKLY_ADJUSTED)   연결 실패: %s" % why2); return
     try:
@@ -923,12 +951,15 @@ def main():
     log("\n" + "=" * 52)
     log("저장 %d종목 · %.1fMB · 소요 %.1f분 · 호출 %d회"
         % (len(items), size, (time.time()-started)/60, _calls))
-    us_have = sum(1 for c in items if not c.isdigit())
-    us_all = sum(1 for x in universe if not x[0].isdigit())
+    # 이번에 돈 범위 안에서만 센다. 예전에는 --limit 을 걸면 전체 보유
+    # 종목수(42)를 좁은 범위(30)와 견줘 '0일 남았다' 고 잘못 말했다.
+    us_all_codes = [x[0] for x in universe if not x[0].isdigit()]
+    us_have = sum(1 for c in us_all_codes if c in items)
+    us_all = len(us_all_codes)
     if us_all:
         log("해외 %d/%d종목 확보" % (us_have, us_all))
         if av_dry[0]:
-            left = us_all - us_have
+            left = max(0, us_all - us_have)
             log("  오늘 한도를 다 썼습니다. 하루 %d개씩 채우면 약 %d일 남았습니다."
                 % (AV_BUDGET, -(-left // max(1, AV_BUDGET))))
     fails = [f for f in fails if f[2] not in ("건너뜀",)]
