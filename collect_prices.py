@@ -32,7 +32,8 @@ from datetime import datetime, timezone, timedelta
 # 국내 — 네이버 (수정주가, 인증 없음)
 NAVER = ("https://api.finance.naver.com/siseJson.naver"
          "?symbol=%s&requestType=1&startTime=%s&endTime=%s&timeframe=month")
-# 해외 — Stooq (월별 CSV, 인증 없음)
+# 해외 — Stooq. 2026-10 부터 자바스크립트 검증이 걸려 스크립트로는 못 받는다.
+# from_stooq() 와 아래 두 줄은 되살릴 때를 대비해 남겨 두지만 부르지 않는다.
 STOOQ_HOSTS = ["https://stooq.com", "https://stooq.pl"]
 STOOQ_PATH = "/q/d/l/?s=%s&i=m"
 # 해외 — 알파밴티지 (키 필요, 하루 25회 제한)
@@ -131,6 +132,20 @@ EXTRA = [
     ("305720", "KODEX 2차전지산업", "KR", "2차전지"),
     ("132030", "KODEX 골드선물", "KR", "금"),
 ]
+
+# 카드에 쓸 만한 해외 종목. 하루 25회뿐이라 순서가 전부다.
+# 이 목록을 먼저 채우면 6일이면 '그때 샀다면' 해외 탭을 열 수 있고,
+# 나머지 400종목은 그 뒤로 계속 채워진다.
+# (연간 수익률 탭은 지금처럼 전체를 쓴다 — 목록을 쪼개지 않는다)
+CARD_US = set("""
+AAPL MSFT NVDA GOOGL GOOG AMZN META TSLA AVGO BRK-B LLY JPM V XOM UNH MA JNJ PG
+COST HD ABBV WMT NFLX BAC KO CRM CVX AMD PEP TMO ADBE LIN MRK ACN MCD CSCO ABT
+ORCL WFC DIS QCOM INTC TXN IBM GE CAT NOW VZ AMGN INTU ISRG CMCSA PFE AXP SPGI
+UNP GS NEU MS RTX T PGR LOW HON BKNG ELV BLK SYK VRTX TJX C MDT SCHW LMT ADI
+DE BSX PLD MMC CB ADP MDLZ REGN ETN AMT CI SBUX BA MO SO ZTS DUK PANW SHW ICE
+CME EQIX ITW KLAC SNPS CDNS MU APH MSI PYPL ANET CRWD ABNB UBER PLTR COIN MRNA
+SMCI DELL MAR CMG F GM NKE SQ SHOP ARM
+""".split())
 
 _calls = 0
 _session = None
@@ -743,15 +758,10 @@ def main():
     # 본격 수집 전에 출처별로 한 종목씩 확인한다
     checks = []
     if only in (None, "US"):
-        p, w = from_stooq("AAPL")
-        if p:
-            checks.append(("해외(Stooq)", p, w))
-        else:
-            # Stooq 가 막혀 있으면 알파밴티지를 쓴다.
-            # 확인에 1회를 쓰면 아까우니 첫 종목으로 대신 판단한다.
-            log("해외(Stooq) 막힘: %s — 알파밴티지로 받습니다" % w)
-            stooq_blocked[0] = True
-            checks.append(("해외(알파밴티지)", True, ""))
+        # Stooq 는 2026-10 부터 자바스크립트 검증을 걸어 스크립트로는
+        # 뚫을 수 없다(probe_sources.py 에 근거). 부르지 않는다.
+        stooq_blocked[0] = True
+        checks.append(("해외(알파밴티지)", True, ""))
     if only in (None, "KR"):
         p, w = from_naver("005930")
         checks.append(("국내(네이버)", p, w))
@@ -815,11 +825,14 @@ def main():
 
     def order(x):
         code = x[0]
-        if code.isdigit():
-            return (0, "")                      # 국내는 한도가 없다
-        if code not in prev:
-            return (1, "")                      # 처음 받는 해외 종목이 먼저
-        return (2, prev[code].get("fetched") or "")   # 그다음은 오래된 것부터
+        # 해외를 먼저 돈다. 하루 25회뿐이라 1~2분이면 끝나고, 그 뒤에
+        # 한도 없는 국내가 몇 시간 돈다. 예전에는 국내가 앞에 있어서
+        # 작업이 중간에 끊기면 해외는 한두 종목 만에 잘렸다.
+        if not code.isdigit():
+            if code not in prev:
+                return (0 if code in CARD_US else 1, "")   # 카드용부터
+            return (2, prev[code].get("fetched") or "")    # 오래된 것부터
+        return (3, "")                          # 국내는 한도가 없으니 맨 뒤
 
     universe.sort(key=order)
 
@@ -833,15 +846,9 @@ def main():
         if mk == "KR":
             years, why = from_naver(code)
         else:
-            years, why = (None, "건너뜀") if stooq_dead[0] else from_stooq(code)
-            # Stooq 는 봇을 막는 날이 있다. 두 번 막히면 그날은 더 안 부른다.
-            if years is None and not stooq_dead[0]:
-                stooq_miss[0] += 1
-                if stooq_miss[0] >= 2:
-                    stooq_dead[0] = True
-                    log("  Stooq 가 막혀 있어 알파밴티지만 씁니다")
+            years, why = None, "건너뜀"       # Stooq 폐기 — 알파밴티지만 쓴다
             # 하루 한도가 있어 아껴 쓴다
-            if years is None and av_left[0] > 0:
+            if av_left[0] > 0:
                 av_left[0] -= 1
                 y2, w2 = from_alpha(code)
                 if y2:
@@ -896,7 +903,7 @@ def main():
     with open(OUT, "w", encoding="utf-8") as f:
         json.dump({
             "updated": datetime.now(timezone(timedelta(hours=9))).strftime("%Y-%m-%d"),
-            "source": "네이버 금융 · Stooq · 수정주가 기준",
+            "source": "네이버 금융(국내 수정주가) · 알파밴티지(해외 조정종가)",
             "count": len(items),
             "items": items,
         }, f, ensure_ascii=False, separators=(",", ":"))
