@@ -116,6 +116,7 @@
   .tab2 { flex:1; font-family:inherit; font-size:13px; font-weight:700; cursor:pointer;
     border:none; background:transparent; color:var(--text-soft); height:34px; border-radius:999px; }
   .tab2.on { background:var(--accent); color:#fff; }
+  .tab2:disabled { opacity:.45; cursor:not-allowed; }
   [data-mode="dark"] .tab2.on { color:#0E141B; }
 
   .search-wrap { position:relative; }
@@ -206,6 +207,7 @@
   .pk-sub b { font-weight:700; color:var(--text-soft); }
   .pk-v { font-weight:800; font-variant-numeric:tabular-nums; }
   .pk-v.up { color:var(--neg); } .pk-v.down { color:var(--accent-text); }
+  .pk-sub.wrap { white-space:normal; }
   .pk-x { border:0; background:transparent; color:var(--text-mute); cursor:pointer;
     font-size:16px; line-height:1; padding:0 2px; }
   .pk-warn { font-size:11px; color:var(--neg); flex:none; }
@@ -260,6 +262,10 @@
 
     <div>
       <div class="panel">
+        <div class="tabs2" role="tablist" aria-label="시장">
+          <button type="button" class="tab2 on" id="mkt-kr">국내</button>
+          <button type="button" class="tab2" id="mkt-us">해외</button>
+        </div>
         <h3 class="sec">기간</h3>
         <div class="spans" id="spans"></div>
         <p class="hint" style="margin-top:9px">
@@ -275,9 +281,10 @@
         </div>
         <div class="picked" id="picked"></div>
         <p class="note" id="note"></p>
-        <p class="hint" style="margin-top:10px">
-          국내 종목만 담습니다. 해외는 배당·환율 기준이 달라 한 카드에 섞지 않습니다.
+        <p class="hint" style="margin-top:10px" id="mkt-hint">
+          국내는 일별 종가로 그 날짜를 그대로 집습니다. 네이버 수정주가라 배당은 빠져 있습니다.
         </p>
+        <p class="hint" style="margin-top:4px">국내와 해외는 배당·환율 기준이 달라 한 카드에 섞지 않습니다.</p>
 
         <div class="divider"></div>
         <div class="ctl-row" style="margin-top:0">
@@ -331,8 +338,72 @@ var T = {
 var FAM = '"Noto Sans KR"';
 var CX = T.safe.left, CWID = CW - T.safe.left - T.safe.right;
 
-var state = { span:10, picked:[], title:'', handle:'@돈굴돈굴' };
-var DB = { spans:[], items:{}, order:[], asof:'', basis:'' };
+/* ---------- 두 시장 ----------
+   국내와 해외는 기준이 다르다. 날짜(일별/월말), 배당(제외/재투자), 환율(없음/있음).
+   그래서 한 카드에 섞지 않고, 창고를 따로 두고 통째로 바꿔 끼운다.
+   state.picked 과 state.span 은 시장마다 따로 기억한다 — 국내를 보다가
+   해외를 보고 돌아오면 담아둔 종목이 그대로 있어야 한다.                 */
+var MK = {
+  kr: { nm:'국내', dir:'./logo/kr/', up:T.upKR, down:T.downKR,
+        foot:'배당·세금 제외',
+        hint:'국내는 일별 종가로 그 날짜를 그대로 집습니다. 네이버 수정주가라 배당은 빠져 있습니다.' },
+  // 금액 색은 국내와 같다 (오름 빨강 · 내림 파랑). 보는 사람이 한국 독자라
+  // 시리즈 안에서 색의 뜻이 바뀌지 않게 한다.
+  us: { nm:'해외', dir:'./logo/us/', up:T.upKR, down:T.downKR,
+        foot:'원화 환산 · 배당 재투자 · 세금 제외',
+        hint:'해외는 월말 종가 기준입니다. 배당을 재투자한 조정종가이고, 그 달 말 환율로 원화로 바꿉니다.' }
+};
+function M(){ return MK[state.mkt]; }
+
+var state = { mkt:'kr', span:10, picked:[], title:'', handle:'@돈굴돈굴' };
+function store(){ return { spans:[], items:{}, order:[], asof:'', basis:'',
+                           picked:[], span:10, why:'' }; }
+var ST = { kr: store(), us: store() };
+var DB = ST.kr;                       // 지금 보고 있는 시장의 창고
+
+/* ---------- 해외 종목 이름 ----------
+   monthly_us.json 에는 이름이 없다(기호만 있다). 널리 쓰이는 한글 이름만
+   적고, 없으면 기호를 그대로 쓴다. ETF 는 'SPY' 가 가장 알아보기 쉬워
+   굳이 번역하지 않는다. 적은 순서가 검색 목록의 순서가 된다.          */
+var USN = {
+  AAPL:'애플', MSFT:'마이크로소프트', NVDA:'엔비디아', GOOGL:'알파벳', GOOG:'알파벳 C',
+  AMZN:'아마존', META:'메타', TSLA:'테슬라', 'BRK-B':'버크셔', AVGO:'브로드컴',
+  LLY:'일라이릴리', JPM:'JP모건', V:'비자', MA:'마스터카드', XOM:'엑슨모빌',
+  UNH:'유나이티드헬스', JNJ:'존슨앤존슨', PG:'P&G', HD:'홈디포', COST:'코스트코',
+  WMT:'월마트', KO:'코카콜라', PEP:'펩시코', MCD:'맥도날드', NKE:'나이키',
+  SBUX:'스타벅스', DIS:'디즈니', NFLX:'넷플릭스', AMD:'AMD', INTC:'인텔',
+  QCOM:'퀄컴', TXN:'텍사스인스트루먼트', MU:'마이크론', ADBE:'어도비', CRM:'세일즈포스',
+  ORCL:'오라클', CSCO:'시스코', IBM:'IBM', NOW:'서비스나우', AMAT:'어플라이드머티',
+  LRCX:'램리서치', KLAC:'KLA', ASML:'ASML', ARM:'ARM', PLTR:'팔란티어',
+  UBER:'우버', ABNB:'에어비앤비', SHOP:'쇼피파이', PYPL:'페이팔', SQ:'블록',
+  COIN:'코인베이스', MSTR:'마이크로스트래티지', BAC:'뱅크오브아메리카', WFC:'웰스파고',
+  GS:'골드만삭스', MS:'모건스탠리', C:'씨티그룹', BLK:'블랙록', AXP:'아멕스',
+  ABBV:'애브비', MRK:'머크', PFE:'화이자', TMO:'서모피셔', ABT:'애보트',
+  AMGN:'암젠', BMY:'BMS', GILD:'길리어드', NVO:'노보노디스크', ISRG:'인튜이티브',
+  CVX:'셰브론', COP:'코노코필립스', CAT:'캐터필러', DE:'디어', BA:'보잉',
+  GE:'GE', HON:'허니웰', LMT:'록히드마틴', RTX:'RTX', UNP:'유니온퍼시픽',
+  T:'AT&T', VZ:'버라이즌', TMUS:'T모빌', CMCSA:'컴캐스트', LIN:'린데',
+  TSM:'TSMC', BABA:'알리바바', NIO:'니오', RIVN:'리비안', LCID:'루시드',
+  F:'포드', GM:'GM', LULU:'룰루레몬', TGT:'타깃', LOW:'로우스',
+  SPGI:'S&P글로벌', CME:'CME', ICE:'ICE', SCHW:'찰스슈왑', PGR:'프로그레시브',
+  CB:'처브', MMC:'마쉬', ETN:'이튼', PH:'파커하니핀', ANET:'아리스타',
+  PANW:'팔로알토', CRWD:'크라우드스트라이크', SNOW:'스노우플레이크', DDOG:'데이터독',
+  MDB:'몽고DB', ZS:'지스케일러', NET:'클라우드플레어', TTD:'트레이드데스크',
+  SMCI:'슈퍼마이크로', DELL:'델', HPQ:'HP', MRVL:'마벨', ON:'온세미',
+  ADI:'아나로그디바이스', NXPI:'NXP', SNPS:'시놉시스', CDNS:'케이던스', APH:'앰페놀',
+  MO:'알트리아', PM:'필립모리스', CL:'콜게이트', KMB:'킴벌리클라크', GIS:'제너럴밀스',
+  MDLZ:'몬델리즈', KHC:'크래프트하인즈', SYK:'스트라이커', BSX:'보스턴사이언티픽',
+  MDT:'메드트로닉', CI:'시그나', ELV:'엘리번스', HCA:'HCA', VRTX:'버텍스',
+  REGN:'리제네론', BIIB:'바이오젠', MRNA:'모더나', ZTS:'조에티스', DHR:'다나허',
+  BKNG:'부킹홀딩스', MAR:'메리어트', HLT:'힐튼', RCL:'로얄캐리비안', DAL:'델타항공',
+  AMT:'아메리칸타워', PLD:'프로로지스', SPG:'사이먼프로퍼티', O:'리얼티인컴',
+  NEE:'넥스트에라', DUK:'듀크에너지', SO:'서던컴퍼니', ACN:'액센츄어', ADP:'ADP',
+  INTU:'인튜이트', MMM:'3M', UPS:'UPS', FDX:'페덱스', ADM:'ADM'
+};
+var USRANK = {};
+(function(){ var k = Object.keys(USN); for (var i = 0; i < k.length; i++) USRANK[k[i]] = i; })();
+var USFULL = {};                      // data/us/index.json 이 있으면 영문 정식 이름
+var FX = {};                          // 날짜 -> 달러당 원 (영업일만)
 
 /* ---------- 카드에 쓸 짧은 이름 ----------
    '한국타이어앤테크놀로지' 같은 이름이 하나 끼면 격자의 모든 이름이
@@ -393,15 +464,20 @@ function grain(c){
    logo/kr/{코드}.png 는 원이 꽉 찬 투명 PNG 라 줄이지 않고 칸 크기 그대로
    그린다. 없으면 inkSoft 원 + 흰 글자. 한 번 실패한 코드는 다시 안 부른다. */
 var LOGO = {};
+function logoSrc(code){ return M().dir + code + '.png'; }
 function logoImg(code){
-  if (LOGO[code] !== undefined) return LOGO[code];
+  var key = state.mkt + ':' + code;   // 시장마다 폴더가 다르다
+  if (LOGO[key] !== undefined) return LOGO[key];
   var im = new Image();
-  LOGO[code] = im;
+  LOGO[key] = im;
   im.onload  = function(){ draw(); };
-  im.onerror = function(){ LOGO[code] = null; draw(); };
-  im.src = './logo/kr/' + code + '.png';
+  im.onerror = function(){ LOGO[key] = null; draw(); };
+  im.src = logoSrc(code);
   return im;
 }
+// 로고가 없을 때 원 안에 넣을 글자. 해외는 기호 첫 글자가 알아보기 쉽다
+// ('애플' 의 '애' 보다 'AAPL' 의 'A').
+function initial(code, name){ return state.mkt === 'us' ? code[0] : (name||'?')[0]; }
 function logo(c, code, name, cx, cy, r){
   var im = logoImg(code);
   if (im && im.complete && im.naturalWidth) {
@@ -409,7 +485,7 @@ function logo(c, code, name, cx, cy, r){
   } else {
     c.beginPath(); c.arc(cx,cy,r,0,7); c.fillStyle = T.inkSoft; c.fill();
     c.fillStyle = '#ffffff'; c.textAlign = 'center'; c.textBaseline = 'middle';
-    c.font = F(900, r*0.86); c.fillText((name||'?')[0], cx, cy + r*0.02);
+    c.font = F(900, r*0.86); c.fillText(initial(code, name), cx, cy + r*0.02);
     c.textBaseline = 'alphabetic'; c.textAlign = 'left';
   }
   c.beginPath(); c.arc(cx,cy,r,0,7);
@@ -439,10 +515,18 @@ function val(c, cx, by, num, size, col, suf){
 }
 
 /* ---------- 카드 ---------- */
+// 국내   1억 × (지금 종가 ÷ 그때 종가)
+// 해외   1억 × (지금 종가 ÷ 그때 종가) × (지금 환율 ÷ 그때 환율)
+//        — 그때 원화 1억을 달러로 바꿔 사고, 지금 팔아 원화로 되돌린 금액
 function amount(code, span){
   var it = DB.items[code]; if (!it) return null;
   var a = it.y[String(span)]; if (!a || !it.now) return null;
-  return SEED * it.now.v / a.v;
+  var m = SEED * it.now.v / a.v;
+  if (state.mkt === 'us') {
+    if (!a.fx || !it.now.fx) return null;
+    m *= it.now.fx / a.fx;
+  }
+  return m;
 }
 // 그 종목으로 갈 수 있는 가장 긴 기간. 상장이 늦으면 짧아진다.
 function maxSpan(code){
@@ -463,7 +547,8 @@ function rowsNow(){
     var a = amount(code, state.span); if (a === null) return;
     var an = DB.items[code].y[String(state.span)];
     out.push({ code:code, name:DB.items[code].disp, full:DB.items[code].name, amt:a,
-               back:an.d, p0:an.v, p1:DB.items[code].now.v });
+               back:an.d, p0:an.v, p1:DB.items[code].now.v,
+               f0:an.fx || 0, f1:DB.items[code].now.fx || 0 });
   });
   out.sort(function(a,b){ return b.amt - a.amt; });
   return out;
@@ -476,6 +561,10 @@ function rowsNow(){
 function cagr(mult, span){ return (Math.pow(mult, 1/span) - 1) * 100; }
 function comma(v){ return v.toLocaleString('ko-KR',
   {minimumFractionDigits:0, maximumFractionDigits: v < 1000 ? 1 : 0}); }
+// 달러 주가. 1달러 아래 종목도 있어 자릿수를 값에 맞춘다.
+function usd(v){ return '$' + v.toLocaleString('en-US',
+  {minimumFractionDigits:2, maximumFractionDigits: v < 1 ? 4 : 2}); }
+function won(v){ return Math.round(v).toLocaleString('ko-KR'); }
 
 function decOf(span, a){ var base = span <= 3 ? 2 : 1; return a < 0.1 ? Math.max(base,2) : base; }
 // 감자·액면병합을 겪은 종목은 1억이 몇천 원이 되기도 한다. 억으로 적으면
@@ -552,11 +641,11 @@ function drawCard(c){
     c.fillStyle = T.inkSoft; c.textAlign = 'center'; c.font = F(700, 34);
     c.fillText('종목을 2개 이상 고르면 카드가 나옵니다', CW/2, (top+bot)/2);
     c.textAlign = 'left';
-    footer(c, ry, fb, back && now ? dot(back)+' ~ '+dot(now)+' · 배당·세금 제외' : '');
+    footer(c, ry, fb, back && now ? dot(back)+' ~ '+dot(now)+' · '+M().foot : '');
     return;
   }
 
-  var FOOT = dot(back) + ' ~ ' + dot(now) + ' · 배당·세금 제외';
+  var FOOT = dot(back) + ' ~ ' + dot(now) + ' · ' + M().foot;
 
   /* 2~3종목 — 줄형. 격자로 깔면 한 줄이 허공에 뜬다. */
   if (n <= 3) {
@@ -577,7 +666,7 @@ function drawCard(c){
       c.fillText(r.name, tx, by); LS(c,'0px');
       var t = vtxt(state.span, r.amt), u = unit(r.amt);
       val(c, CW - T.safe.right - vp(c,t,vf,u).w/2, by, t, vf,
-          r.amt >= SEED ? T.upKR : T.downKR, u);
+          r.amt >= SEED ? M().up : M().down, u);
       if (i < n-1) {
         var ly = Math.round(top + rh*(i+1)) + 0.5;
         c.strokeStyle = T.rule; c.lineWidth = 1;
@@ -612,7 +701,7 @@ function drawCard(c){
     c.textAlign = 'center'; c.fillStyle = T.footer; c.font = F(800,nf2); LS(c,'0.01em');
     c.fillText(r.name, mx, y0 + rad2*2 + g1 + nf2*0.80); LS(c,'0px');
     val(c, mx, y0 + rad2*2 + g1 + nf2 + g2 + vf2*0.80,
-        vtxt(state.span, r.amt), vf2, r.amt >= SEED ? T.upKR : T.downKR, unit(r.amt));
+        vtxt(state.span, r.amt), vf2, r.amt >= SEED ? M().up : M().down, unit(r.amt));
   });
   footer(c, ry, fb, FOOT);
 }
@@ -655,6 +744,7 @@ function draw(){
    데이터 — anchor.json 의 모양이 조금씩 달라도 받아들인다.
    ====================================================================== */
 function adopt(j){
+  var DB = ST.kr;                     // 이 함수는 늘 국내 창고에만 쓴다
   var kr = j.kr || j.KR || {};
   var raw = kr.items || kr.item || {};
   // 제외 종목은 목록에서 아예 뺀다. 배열이든 {코드:사유} 든 받아준다.
@@ -698,6 +788,130 @@ function adopt(j){
   if (best) DB.asof = best;
 }
 
+/* ======================================================================
+   해외 — data/monthly_us.json (월말 조정종가) + data/fx_usdkrw.json (일별 환율)
+   anchor.json 에 해외 칸을 따로 만들지 않고, 받아둔 월말 종가에서 바로
+   'N년 전 같은 달' 을 집는다. 그래서 수집기는 손대지 않아도 된다.
+
+   monthly_us.json  items[기호] = { s:'2005-10', v:[종가, null, ...] }
+                    s 가 첫 달, v 는 그 뒤로 한 달씩. 빈 달은 null.
+   ====================================================================== */
+function mkey(s){                     // 'YYYY-MM' -> 절대 달 번호
+  s = String(s || '');
+  if (!/^\d{4}-\d{2}$/.test(s)) return -1;
+  return (+s.slice(0,4)) * 12 + (+s.slice(5,7)) - 1;
+}
+function mstr(k){ var m = k % 12 + 1; return Math.floor(k/12) + '-' + (m < 10 ? '0' : '') + m; }
+function mend(k){                     // 그 달 마지막 날 'YYYY-MM-DD'
+  return new Date(Date.UTC(Math.floor(k/12), k % 12 + 1, 0)).toISOString().slice(0,10);
+}
+function at(o, k){                    // 그 달 종가 (없으면 null)
+  var b = mkey(o && o.s); if (b < 0) return null;
+  var v = o.v || [], i = k - b;
+  if (i < 0 || i >= v.length) return null;
+  return (typeof v[i] === 'number' && v[i] > 0) ? v[i] : null;
+}
+// 그날 환율. 주말·공휴일이면 앞으로 물러선다 (collect_fx.py 의 on_or_before 와 같다)
+function fxOn(ymd){
+  var t = new Date(ymd + 'T00:00:00Z');
+  for (var i = 0; i <= 10; i++) {
+    var k = t.toISOString().slice(0,10);
+    if (FX[k]) return FX[k];
+    t.setUTCDate(t.getUTCDate() - 1);
+  }
+  return 0;
+}
+
+function adoptUS(mj, fj, ij){
+  var S = ST.us;
+  S.spans = ST.kr.spans.length ? ST.kr.spans.slice() : [1,2,3,5,10,15,20];
+  S.items = {}; S.order = []; S.why = '';
+
+  var raw = (mj && (mj.items || mj.item)) || {};
+  if (!Object.keys(raw).length) { S.why = '해외 월말 종가(data/monthly_us.json)가 아직 없습니다.'; return; }
+  FX = (fj && fj.rates) || {};
+  if (!Object.keys(FX).length) { S.why = '환율 자료(data/fx_usdkrw.json)가 없습니다. collect_fx.py 를 돌리고 푸시하세요.'; return; }
+
+  // 영문 정식 이름 (있으면) — 목록과 검색에만 쓴다
+  ((ij && ij.companies) || []).forEach(function(c){
+    if (c && c.code) USFULL[String(c.code).toUpperCase()] = c.name || c.legal_name || '';
+  });
+
+  // 기준 달을 하나로 정한다.
+  // 하루 25종목씩 돌아가며 받으므로, 월초에는 아직 지난달 말 값이 없는
+  // 종목이 섞인다. 종목마다 자기 마지막 달을 쓰면 한 카드 안에서 기간이
+  // 한 달씩 어긋난다. 그래서 '70% 이상이 가진 가장 최근 달' 하나로 맞추고,
+  // 그 달이 없는 종목은 다음 수집 때까지 쉬게 한다.
+  var codes = Object.keys(raw), hi = -1;
+  codes.forEach(function(c){
+    var o = raw[c], b = mkey(o && o.s), v = (o && o.v) || [];
+    for (var e = v.length - 1; e >= 0; e--) if (typeof v[e] === 'number') { hi = Math.max(hi, b + e); break; }
+  });
+  if (hi < 0) { S.why = '해외 월말 종가에 값이 없습니다.'; return; }
+  var need = Math.max(1, Math.ceil(codes.length * 0.7)), REF = hi;
+  for (var k = hi; k > hi - 6; k--) {
+    var cov = 0;
+    codes.forEach(function(c){ if (at(raw[c], k) !== null) cov++; });
+    if (cov >= need) { REF = k; break; }
+  }
+
+  var fxNow = fxOn(mend(REF));
+  if (!fxNow) { S.why = mstr(REF) + ' 말 환율이 없습니다. collect_fx.py 를 다시 돌려 주세요.'; return; }
+
+  codes.forEach(function(c){
+    var o = raw[c], pNow = at(o, REF);
+    if (pNow === null) return;                       // 이번 달 값이 아직 안 온 종목
+    var y = {};
+    S.spans.forEach(function(s){
+      var k0 = REF - s * 12, p0 = at(o, k0); if (p0 === null) return;
+      var f0 = fxOn(mend(k0)); if (!f0) return;
+      y[String(s)] = { d: mstr(k0), v: p0, fx: f0 };
+    });
+    if (!Object.keys(y).length) return;
+    var up = c.toUpperCase();
+    S.items[c] = { name: USN[up] || up, disp: USN[up] || up, en: USFULL[up] || '',
+                   now: { d: mstr(REF), v: pNow, fx: fxNow }, y: y };
+    S.order.push(c);
+  });
+  // 많이 찾는 순서(USN 에 적은 순서) → 나머지는 기호 순
+  S.order.sort(function(a,b){
+    var ra = USRANK[a] === undefined ? 1e4 : USRANK[a], rb = USRANK[b] === undefined ? 1e4 : USRANK[b];
+    return ra - rb || (a < b ? -1 : a > b ? 1 : 0);
+  });
+  S.asof = mstr(REF);
+  S.basis = '월말 조정종가 · 배당 재투자 · 원화 환산';
+  if (!S.order.length) S.why = '해외 종목이 아직 비어 있습니다.';
+}
+
+/* ---------- 시장 바꾸기 ---------- */
+function setMkt(m){
+  if (m === state.mkt) return;
+  if (!ST[m].order.length) { note(ST[m].why || (MK[m].nm + ' 자료가 없습니다.')); return; }
+  ST[state.mkt].picked = state.picked.slice();     // 떠나는 쪽을 기억해 둔다
+  ST[state.mkt].span = state.span;
+  state.mkt = m; DB = ST[m];
+  state.picked = DB.picked.slice();
+  state.span = DB.spans.indexOf(DB.span) >= 0 ? DB.span : (DB.spans.indexOf(10) >= 0 ? 10 : DB.spans[DB.spans.length-1]);
+  document.getElementById('q').value = '';
+  document.getElementById('q').placeholder = m === 'us' ? '기호 또는 이름 (AAPL, 애플, SPY)' : '종목명 또는 코드';
+  document.getElementById('mkt-hint').textContent = MK[m].hint;
+  document.getElementById('sg').classList.remove('on');
+  if (!state.title || /^\d+년 전$/.test(state.title)) {
+    document.getElementById('f-title').value = state.span + '년 전'; state.title = '';
+  }
+  buildMkt(); note(''); setSpan(state.span);
+}
+function buildMkt(){
+  ['kr','us'].forEach(function(m){
+    var b = document.getElementById('mkt-' + m);
+    b.className = 'tab2' + (state.mkt === m ? ' on' : '');
+    var dead = !ST[m].order.length;
+    b.disabled = dead;
+    b.title = dead ? (ST[m].why || '') : (ST[m].order.length + '종목 · ' + dot(ST[m].asof) + ' 기준');
+    b.textContent = MK[m].nm + (dead ? ' (준비 중)' : '');
+  });
+}
+
 /* ---------- 기간 버튼 ---------- */
 function buildSpans(){
   var box = document.getElementById('spans');
@@ -726,12 +940,15 @@ function setSpan(s){
 /* ---------- 검색 ---------- */
 function search(q){
   q = (q||'').trim().toLowerCase();
-  if (!q) return [];
+  // 해외는 165종목 남짓이라 빈 칸이면 많이 찾는 순서로 그냥 보여준다.
+  // 국내 2,500여 종목은 코드순으로 늘어놓아 봐야 쓸모가 없다.
+  if (!q) return state.mkt === 'us' ? DB.order.slice(0, 40) : [];
   var hit = [];
   for (var i = 0; i < DB.order.length && hit.length < 40; i++) {
     var c = DB.order[i], v = DB.items[c];
-    if (c.indexOf(q) === 0 || v.name.toLowerCase().indexOf(q) >= 0
-        || v.disp.toLowerCase().indexOf(q) >= 0) hit.push(c);
+    if (c.toLowerCase().indexOf(q) === 0 || v.name.toLowerCase().indexOf(q) >= 0
+        || v.disp.toLowerCase().indexOf(q) >= 0
+        || (v.en && v.en.toLowerCase().indexOf(q) >= 0)) hit.push(c);
   }
   return hit;
 }
@@ -740,7 +957,7 @@ function renderSuggest(){
   var list = document.getElementById('sg-list'), box = document.getElementById('sg');
   var hit = search(q);
   list.innerHTML = '';
-  if (!q) { box.classList.remove('on'); return; }
+  if (!q && !hit.length) { box.classList.remove('on'); return; }
   if (!hit.length) {
     list.innerHTML = '<div class="sg-empty">찾는 종목이 없습니다.</div>';
     box.classList.add('on'); return;
@@ -755,7 +972,8 @@ function renderSuggest(){
     d.className = 'sg-item' + (ok && !picked ? '' : ' off');
     d.innerHTML = '<span>' + it.name + '</span>' +
       (picked ? '<span class="sg-why">이미 담음</span>'
-              : ok ? '<span class="sg-code">' + code + '</span>'
+              : ok ? '<span class="sg-code">' + (state.mkt === 'us' && it.name === code
+                       ? (it.en || '') : code) + '</span>'
                    : '<span class="sg-why">최대 ' + maxSpan(code) + '년</span>');
     if (ok && !picked) d.addEventListener('click', function(){ add(code); });
     list.appendChild(d);
@@ -769,8 +987,10 @@ function add(code){
   document.getElementById('q').value = '';
   document.getElementById('sg').classList.remove('on');
   // 기준일이 일주일 넘게 다르면 기간이 종목마다 어긋난다 — 짚어준다
+  // (해외는 기준 달을 하나로 맞춰 두었으므로 어긋날 일이 없다)
   var base = modeDate(rowsNow());
-  var odd = rowsNow().filter(function(r){ return base && days(r.back, base) > 7; });
+  var odd = state.mkt === 'us' ? [] :
+    rowsNow().filter(function(r){ return base && days(r.back, base) > 7; });
   note(odd.length ? odd.map(function(r){ return r.name; }).join(', ') +
        ' — 기준일이 ' + dot(base) + ' 와 일주일 넘게 다릅니다 (거래정지 가능성).' : '');
   renderPicked(); draw();
@@ -793,10 +1013,10 @@ function renderPicked(){
   rows.concat(rest).forEach(function(r){
     var el = document.createElement('div'); el.className = 'pk' + (r.off ? ' off' : '');
     var im = document.createElement('img');
-    im.src = './logo/kr/' + r.code + '.png'; im.alt = '';
+    im.src = logoSrc(r.code); im.alt = '';
     im.onerror = function(){
       var ph = document.createElement('span');
-      ph.className = 'pk-ph'; ph.textContent = r.name[0];
+      ph.className = 'pk-ph'; ph.textContent = initial(r.code, r.name);
       im.replaceWith(ph);
     };
     el.appendChild(im);
@@ -810,10 +1030,21 @@ function renderPicked(){
     if (r.off) {
       sub.textContent = '최대 ' + maxSpan(r.code) + '년까지 — 기간을 줄이면 들어옵니다';
     } else {
-      var c = cagr(r.amt / SEED, state.span);
-      sub.innerHTML = comma(r.p0) + ' → <b>' + comma(r.p1) + '원</b> · 연 ' +
-                      (c >= 0 ? '+' : '') + c.toFixed(1) + '%';
-      sub.title = r.back + ' ' + comma(r.p0) + '원  →  ' + DB.asof + ' ' + comma(r.p1) + '원';
+      var c = cagr(r.amt / SEED, state.span), cs = (c >= 0 ? '+' : '') + c.toFixed(1) + '%';
+      if (state.mkt === 'us') {
+        // 주가와 환율을 둘 다 보여야 '왜 이 금액인지' 를 따라갈 수 있다
+        sub.className = 'pk-sub wrap';
+        sub.innerHTML = usd(r.p0) + ' → <b>' + usd(r.p1) + '</b> · 환율 ' +
+                        won(r.f0) + ' → <b>' + won(r.f1) + '원</b> · 연 ' + cs;
+        sub.title = (DB.items[r.code].en ? DB.items[r.code].en + '\n' : '') +
+          r.back + ' 말  ' + usd(r.p0) + ' × ' + comma(r.f0) + '원\n' +
+          DB.asof + ' 말  ' + usd(r.p1) + ' × ' + comma(r.f1) + '원\n' +
+          '주가 ' + (r.p1 / r.p0).toFixed(3) + '배 × 환율 ' + (r.f1 / r.f0).toFixed(3) + '배' +
+          ' = ' + (r.amt / SEED).toFixed(3) + '배';
+      } else {
+        sub.innerHTML = comma(r.p0) + ' → <b>' + comma(r.p1) + '원</b> · 연 ' + cs;
+        sub.title = r.back + ' ' + comma(r.p0) + '원  →  ' + DB.asof + ' ' + comma(r.p1) + '원';
+      }
     }
     mid.appendChild(sub);
     el.appendChild(mid);
@@ -868,30 +1099,56 @@ document.getElementById('btn-png').addEventListener('click', function(){
     if (!b) { alert('이미지를 만들지 못했습니다.'); return; }
     var a = document.createElement('a');
     a.href = URL.createObjectURL(b);
-    a.download = '그때샀다면_' + state.span + '년_' + (CW*S) + 'x' + (CH*S) + '.png';
+    a.download = '그때샀다면_' + MK[state.mkt].nm + '_' + state.span + '년_' + (CW*S) + 'x' + (CH*S) + '.png';
     a.click();
     setTimeout(function(){ URL.revokeObjectURL(a.href); }, 5000);
   }, 'image/png');
   });
 });
 
-/* ---------- 시작 ---------- */
-fetch('./data/anchor.json', { cache:'no-cache' })
-  .then(function(r){ if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
-  .then(function(j){
-    adopt(j);
-    if (!DB.order.length) throw new Error('국내 종목이 비어 있습니다 (키: ' + Object.keys(j).join(', ') + ')');
-    if (DB.spans.indexOf(10) < 0) state.span = DB.spans[DB.spans.length-1];
-    buildSpans();
-    document.getElementById('f-title').value = state.span + '년 전';
-    ['005930','000660','035420'].forEach(function(c){ if (DB.items[c]) state.picked.push(c); });
-    renderPicked(); draw();
-  })
-  .catch(function(e){
-    note('data/anchor.json 을 읽지 못했습니다 — ' + e.message +
-         '. collect_anchor.py 를 돌리고 푸시했는지 확인하세요.');
-    draw();
+/* ---------- 시작 ----------
+   국내(anchor.json)가 기본이다. 해외 자료 셋은 없어도 국내는 돈다. */
+function getJ(u){
+  return fetch(u, { cache:'no-cache' })
+    .then(function(r){ if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); });
+}
+function soft(p){ return p.catch(function(){ return null; }); }
+document.getElementById('mkt-kr').addEventListener('click', function(){ setMkt('kr'); });
+document.getElementById('mkt-us').addEventListener('click', function(){ setMkt('us'); });
+
+Promise.all([
+  getJ('./data/anchor.json').then(function(j){ return { j:j }; }, function(e){ return { e:e }; }),
+  soft(getJ('./data/monthly_us.json')),
+  soft(getJ('./data/fx_usdkrw.json')),
+  soft(getJ('./data/us/index.json'))
+]).then(function(r){
+  var a = r[0], why = '';
+  if (a.j) {
+    adopt(a.j);
+    if (!ST.kr.order.length) why = '국내 종목이 비어 있습니다 (키: ' + Object.keys(a.j).join(', ') + ')';
+  } else why = 'data/anchor.json 을 읽지 못했습니다 — ' + a.e.message + '. collect_anchor.py 를 돌리고 푸시했는지 확인하세요.';
+  ST.kr.why = why;
+  adoptUS(r[1], r[2], r[3]);
+
+  ['kr','us'].forEach(function(m){
+    var S = ST[m];
+    S.span = S.spans.indexOf(10) >= 0 ? 10 : S.spans[S.spans.length-1];
   });
+  ['005930','000660','035420'].forEach(function(c){ if (ST.kr.items[c]) ST.kr.picked.push(c); });
+  ['AAPL','MSFT','NVDA','SPY','QQQ','GLD','SCHD','TQQQ'].forEach(function(c){
+    if (ST.us.items[c] && ST.us.picked.length < 3) ST.us.picked.push(c); });
+
+  // 국내가 비고 해외만 있으면 해외로 연다
+  var start = ST.kr.order.length ? 'kr' : (ST.us.order.length ? 'us' : 'kr');
+  state.mkt = start; DB = ST[start];
+  state.span = DB.span || 10; state.picked = DB.picked.slice();
+  document.getElementById('mkt-hint').textContent = MK[start].hint;
+  if (start === 'us') document.getElementById('q').placeholder = '기호 또는 이름 (AAPL, 애플, SPY)';
+  document.getElementById('f-title').value = state.span + '년 전';
+  buildMkt(); buildSpans(); renderPicked();
+  if (why) note(why);
+  draw();
+});
 </script>
 </body>
 </html>
