@@ -842,16 +842,30 @@ function adoptUS(mj, fj, ij){
   // 종목이 섞인다. 종목마다 자기 마지막 달을 쓰면 한 카드 안에서 기간이
   // 한 달씩 어긋난다. 그래서 '70% 이상이 가진 가장 최근 달' 하나로 맞추고,
   // 그 달이 없는 종목은 다음 수집 때까지 쉬게 한다.
-  var codes = Object.keys(raw), hi = -1;
+  // 아직 안 끝난 달은 버린다.
+  // 알파밴티지는 진행 중인 달도 한 칸 주는데, 그 값은 월말 종가가 아니라
+  // '받아온 날의 종가' 다(10월 9일에 받으면 10월 칸 = 10월 8일 종가).
+  // 종목마다 받아온 날이 다르므로 그대로 쓰면 '지금' 이 종목마다 달라지고,
+  // 그 달 말 환율은 아직 없어서 해외 전체가 막힌다.
+  // 종목마다 받아온 날(asof)이 속한 달부터는 쓰지 않는다. asof 가 없으면
+  // 마지막 달을 미완성으로 본다. 파일 갱신일이 속한 달도 넘지 않는다.
+  var codes = Object.keys(raw), hi = -1, LIM = {};
+  var capAll = mkey(String((mj && mj.updated) || '').slice(0,7));
   codes.forEach(function(c){
-    var o = raw[c], b = mkey(o && o.s), v = (o && o.v) || [];
-    for (var e = v.length - 1; e >= 0; e--) if (typeof v[e] === 'number') { hi = Math.max(hi, b + e); break; }
+    var o = raw[c], b = mkey(o && o.s), v = (o && o.v) || [], last = -1;
+    for (var e = v.length - 1; e >= 0; e--) if (typeof v[e] === 'number') { last = b + e; break; }
+    var a = mkey(String((o && o.asof) || '').slice(0,7));
+    var lim = (a >= 0 ? a : last) - 1;
+    if (capAll >= 0) lim = Math.min(lim, capAll - 1);
+    LIM[c] = lim;
+    if (last >= 0) hi = Math.max(hi, Math.min(last, lim));
   });
+  function ok(c, k){ return k > LIM[c] ? null : at(raw[c], k); }
   if (hi < 0) { S.why = '해외 월말 종가에 값이 없습니다.'; return; }
   var need = Math.max(1, Math.ceil(codes.length * 0.7)), REF = hi;
   for (var k = hi; k > hi - 6; k--) {
     var cov = 0;
-    codes.forEach(function(c){ if (at(raw[c], k) !== null) cov++; });
+    codes.forEach(function(c){ if (ok(c, k) !== null) cov++; });
     if (cov >= need) { REF = k; break; }
   }
 
@@ -859,7 +873,7 @@ function adoptUS(mj, fj, ij){
   if (!fxNow) { S.why = mstr(REF) + ' 말 환율이 없습니다. collect_fx.py 를 다시 돌려 주세요.'; return; }
 
   codes.forEach(function(c){
-    var o = raw[c], pNow = at(o, REF);
+    var o = raw[c], pNow = ok(c, REF);
     if (pNow === null) return;                       // 이번 달 값이 아직 안 온 종목
     var y = {};
     S.spans.forEach(function(s){
