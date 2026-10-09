@@ -152,6 +152,9 @@ UNP GS NEU MS RTX T PGR LOW HON BKNG ELV BLK SYK VRTX TJX C MDT SCHW LMT ADI
 DE BSX PLD MMC CB ADP MDLZ REGN ETN AMT CI SBUX BA MO SO ZTS DUK PANW SHW ICE
 CME EQIX ITW KLAC SNPS CDNS MU APH MSI PYPL ANET CRWD ABNB UBER PLTR COIN MRNA
 SMCI DELL MAR CMG F GM NKE SQ SHOP ARM
+SPY VOO IVV QQQ QQQM DIA IWM VTI VUG VTV TQQQ QLD SQQQ SSO UPRO SOXL SOXS TMF
+SCHD JEPI JEPQ VYM VIG DVY O SOXX SMH XLK XLF XLE XLV XLU ARKK VNQ
+TLT IEF BND AGG GLD SLV VEA VWO VXUS
 """.split())
 
 _calls = 0
@@ -816,9 +819,9 @@ def main():
         return
     log("")
 
-    if limit:
-        universe = universe[:limit]
-    log("대상 %d종목" % len(universe))
+    # --limit 은 정렬한 뒤에 자른다 (아래). 먼저 자르면 원래 목록 앞머리
+    # (지수 ETF)만 남아, 카드용 우선 순서가 아무 소용이 없다.
+    log("대상 %d종목%s" % (len(universe), (" 중 앞 %d개" % limit) if limit else ""))
 
     # 기존 결과를 불러와 실패한 종목은 옛 값을 유지한다
     prev = {}
@@ -857,12 +860,18 @@ def main():
         # 한도 없는 국내가 몇 시간 돈다. 예전에는 국내가 앞에 있어서
         # 작업이 중간에 끊기면 해외는 한두 종목 만에 잘렸다.
         if not code.isdigit():
-            if code not in prev:
+            # 카드가 쓰는 건 월말 종가(monthly_us.json)다. returns.json 에
+            # 있어도 월말 종가가 없으면 아직 못 받은 것으로 친다. 예전에는
+            # returns.json 만 보고 '이미 받음' 으로 뒤로 밀어, 월말 종가를
+            # 저장하기 전에 받아둔 종목(AAPL 등)이 영영 안 들어왔다.
+            if code not in prevm:
                 return (0 if code in CARD_US else 1, "")   # 카드용부터
-            return (2, prev[code].get("fetched") or "")    # 오래된 것부터
+            return (2, prev.get(code, {}).get("fetched") or "")  # 오래된 것부터
         return (3, "")                          # 국내는 한도가 없으니 맨 뒤
 
     universe.sort(key=order)
+    if limit:
+        universe = universe[:limit]
 
     for i, (code, name, market, desc) in enumerate(universe, 1):
         # 해외만 남았는데 한도가 없으면 더 돌 이유가 없다
