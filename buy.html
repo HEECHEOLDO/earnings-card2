@@ -200,6 +200,7 @@
   .pk img, .pk .pk-ph { width:24px; height:24px; border-radius:50%; flex:none; }
   .pk .pk-ph { background:var(--text-mute); color:#fff; font-size:11px; font-weight:800;
     display:flex; align-items:center; justify-content:center; }
+  .pk .pk-ph.us { font-size:6.5px; letter-spacing:-.02em; }
   .pk-mid { flex:1; min-width:0; display:block; }
   .pk-nm { display:block; font-weight:600; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
   .pk-sub { display:block; font-size:11px; line-height:1.45; color:var(--text-mute); margin-top:1px;
@@ -328,6 +329,10 @@ var T = {
   // 흰 바탕 로고(삼양식품·페이퍼코리아)가 종이색에 묻힌다. rule 보다
   // 한 단계 진한 선으로 원의 경계를 잡아 준다.
   logoEdge:'#DCD7CB',
+  // 로고 없는 해외 종목 — 기호를 담는 원의 색.
+  // 금액(빨강 C0392B·파랑 2C5AA0)·칩(금색)과 겹치지 않는 차분한 색만 고른다.
+  tick:['#22262E','#2E6F73','#3D6B45','#6B4C8A','#7A5C3E','#4A4F7A','#8E4B6B','#66702F'],
+
   safe:{top:135,right:100,bottom:135,left:100},
   grain:{base:[250,250,248],amount:14,speckle:0.08,spike:2.5},
   type:{nameMax:92,nameMin:52,nameTrack:'-0.02em',footer:27}
@@ -464,24 +469,87 @@ function grain(c){
    logo/kr/{코드}.png 는 원이 꽉 찬 투명 PNG 라 줄이지 않고 칸 크기 그대로
    그린다. 없으면 inkSoft 원 + 흰 글자. 한 번 실패한 코드는 다시 안 부른다. */
 var LOGO = {};
+
+/* ETF 는 자기 로고가 없으면 운용사 로고를 쓴다.
+   받아둔 원본(us_etf)에는 작은 ETF 311개뿐이라 QQQ·SCHD 같은 대표 ETF가
+   빠져 있다. SPY 가 SPDR 로고로 나오듯, 운용사 로고가 가장 자연스럽다.
+     SPDR(스테이트스트리트) -> SPY.png (SPDR 로고 그 자체)
+     인베스코 -> IVZ.png · 블랙록(iShares) -> BLK.png · 슈왑 -> SCHW.png
+     JP모건 -> JPM.png
+   뱅가드·디렉시온·프로셰어즈·반에크는 상장사가 아니라 원본에 로고가 없다.
+   logo/us/_vanguard.png 처럼 밑줄 이름으로 한 장만 넣으면 그 운용사 ETF 가
+   모두 그 로고를 쓴다. 넣지 않으면 지금처럼 회색 원 + 첫 글자다.          */
+var ISSUER = {};
+(function(){
+  var g = {
+    SPY:  'SPLG DIA GLD XLK XLF XLE XLV XLU XLI XLP XLY XLB XLRE XLC MDY SDY KRE XBI XOP GLDM SPYG SPYV SPYD',
+    IVZ:  'QQQ QQQM RSP SPLV PGX PBW',
+    BLK:  'IVV IWM IWF IWD IJH IJR ITOT TLT IEF SHY AGG LQD HYG EFA EEM SLV IAU SOXX USMV DVY IBIT EWY',
+    SCHW: 'SCHD SCHX SCHG SCHB SCHF SCHA SCHH SCHP SCHZ SCHV',
+    JPM:  'JEPI JEPQ',
+    _vanguard:  'VOO VTI VUG VTV VYM VIG BND VEA VWO VXUS VNQ VGT VB VO VT BNDX',
+    _direxion:  'SOXL SOXS TMF TNA TZA FAS LABU',
+    _proshares: 'TQQQ SQQQ QLD SSO UPRO SPXU SDS',
+    _vaneck:    'SMH GDX'
+  };
+  Object.keys(g).forEach(function(k){ g[k].split(' ').forEach(function(t){ ISSUER[t] = k; }); });
+})();
 function logoSrc(code){ return M().dir + code + '.png'; }
+// 시도할 파일 순서: 자기 로고 -> 운용사 로고
+function logoList(code){
+  var out = [logoSrc(code)];
+  if (state.mkt === 'us' && ISSUER[code]) out.push(M().dir + ISSUER[code] + '.png');
+  return out;
+}
+// 목록을 앞에서부터 불러 보고, 다 실패하면 fail()
+function loadFirst(im, list, fail){
+  var i = 0;
+  im.onerror = function(){ i++; if (i < list.length) im.src = list[i]; else fail(); };
+  im.src = list[0];
+}
 function logoImg(code){
   var key = state.mkt + ':' + code;   // 시장마다 폴더가 다르다
   if (LOGO[key] !== undefined) return LOGO[key];
   var im = new Image();
   LOGO[key] = im;
   im.onload  = function(){ draw(); };
-  im.onerror = function(){ LOGO[key] = null; draw(); };
-  im.src = logoSrc(code);
+  loadFirst(im, logoList(code), function(){ LOGO[key] = null; draw(); });
   return im;
 }
 // 로고가 없을 때 원 안에 넣을 글자. 해외는 기호 첫 글자가 알아보기 쉽다
 // ('애플' 의 '애' 보다 'AAPL' 의 'A').
 function initial(code, name){ return state.mkt === 'us' ? code[0] : (name||'?')[0]; }
+/* 기호 원의 색. 같은 기호는 어느 카드에서든 같은 색(기호로 정한 자리)이고,
+   한 카드 안에서 겹치면 다음 빈 색으로 비킨다. 카드와 목록이 같은 표를 쓴다. */
+var TICK = {};
+function tickHome(code){
+  var h = 0;
+  for (var i = 0; i < code.length; i++) h = (h * 31 + code.charCodeAt(i)) >>> 0;
+  return h % T.tick.length;
+}
+function paintTicks(codes){
+  TICK = {};
+  var used = {};
+  codes.forEach(function(code){
+    var k = tickHome(code), n = 0;
+    while (used[k] && n < T.tick.length) { k = (k + 1) % T.tick.length; n++; }
+    used[k] = 1; TICK[code] = T.tick[k];
+  });
+}
+function tickColor(code){ return TICK[code] || T.tick[tickHome(code)]; }
 function logo(c, code, name, cx, cy, r){
   var im = logoImg(code);
   if (im && im.complete && im.naturalWidth) {
     c.drawImage(im, cx-r, cy-r, r*2, r*2);
+  } else if (state.mkt === 'us') {
+    // 해외는 첫 글자 하나로는 SOXL·SCHD·SPY 가 모두 'S' 가 되어 구별이 안 된다.
+    // 기호 전체를 원 안에 맞춰 넣고, 종목마다 다른 색 원에 담는다.
+    c.beginPath(); c.arc(cx,cy,r,0,7); c.fillStyle = tickColor(code); c.fill();
+    c.fillStyle = '#ffffff'; c.textAlign = 'center'; c.textBaseline = 'middle';
+    var ts = fit(c, code, 900, Math.round(r*0.62), Math.round(r*0.28), r*1.42, '-0.01em');
+    c.font = F(900, ts); LS(c,'-0.01em');
+    c.fillText(code, cx, cy + ts*0.04); LS(c,'0px');
+    c.textBaseline = 'alphabetic'; c.textAlign = 'left';
   } else {
     c.beginPath(); c.arc(cx,cy,r,0,7); c.fillStyle = T.inkSoft; c.fill();
     c.fillStyle = '#ffffff'; c.textAlign = 'center'; c.textBaseline = 'middle';
@@ -592,6 +660,7 @@ function drawCard(c){
   c.textBaseline = 'alphabetic'; c.textAlign = 'left';
 
   var rows = rowsNow(), n = rows.length;
+  paintTicks(rows.map(function(r){ return r.code; }));
   var back = modeDate(rows) || '', now = DB.asof || '';
   var L1 = state.title || (state.span + '년 전'), L2 = '1억원 투자했다면?';
   var CHIP = back && now ? (back.slice(0,4) + ' ~ ' + now.slice(0,4) + '년') : '';
@@ -1022,17 +1091,21 @@ function renderPicked(){
   box.innerHTML = '';
   // 카드에 들어가는 순서(금액 큰 순) 뒤에, 쉬고 있는 종목을 붙인다
   var rows = rowsNow();
+  paintTicks(rows.map(function(r){ return r.code; }));   // 카드와 같은 색
   var rest = resting().map(function(c){
     return { code:c, name:DB.items[c].disp, full:DB.items[c].name, off:true }; });
   rows.concat(rest).forEach(function(r){
     var el = document.createElement('div'); el.className = 'pk' + (r.off ? ' off' : '');
     var im = document.createElement('img');
-    im.src = logoSrc(r.code); im.alt = '';
-    im.onerror = function(){
+    im.alt = '';
+    loadFirst(im, logoList(r.code), function(){
       var ph = document.createElement('span');
-      ph.className = 'pk-ph'; ph.textContent = initial(r.code, r.name);
+      var us = state.mkt === 'us';
+      ph.className = 'pk-ph' + (us ? ' us' : '');
+      if (us) ph.style.background = tickColor(r.code);
+      ph.textContent = us ? r.code : initial(r.code, r.name);
       im.replaceWith(ph);
-    };
+    });
     el.appendChild(im);
     var mid = document.createElement('span'); mid.className = 'pk-mid';
     var nm = document.createElement('span');
