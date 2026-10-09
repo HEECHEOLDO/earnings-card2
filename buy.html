@@ -350,12 +350,12 @@ var CX = T.safe.left, CWID = CW - T.safe.left - T.safe.right;
    해외를 보고 돌아오면 담아둔 종목이 그대로 있어야 한다.                 */
 var MK = {
   kr: { nm:'국내', dir:'./logo/kr/', up:T.upKR, down:T.downKR,
-        foot:'배당·세금 제외',
+        foot:'배당 제외',
         hint:'국내는 일별 종가로 그 날짜를 그대로 집습니다. 네이버 수정주가라 배당은 빠져 있습니다.' },
   // 금액 색은 국내와 같다 (오름 빨강 · 내림 파랑). 보는 사람이 한국 독자라
   // 시리즈 안에서 색의 뜻이 바뀌지 않게 한다.
   us: { nm:'해외', dir:'./logo/us/', up:T.upKR, down:T.downKR,
-        foot:'원화 환산 · 배당 재투자 · 세금 제외',
+        foot:'배당 재투자',
         hint:'해외는 월말 종가 기준입니다. 배당을 재투자한 조정종가이고, 그 달 말 환율로 원화로 바꿉니다.' }
 };
 function M(){ return MK[state.mkt]; }
