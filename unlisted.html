@@ -1380,6 +1380,12 @@
         ['평균 배당성향', payout.toFixed(1) + '%'],
         ['연속 배당', st + '년']
       ];
+      if (!a.some(function (d) { return d.dps > 0; })) {
+        var nim = a.reduce(function (s2, d) { return s2 + (d.rev ? (d.ni || 0) / d.rev * 100 : 0); }, 0) / a.length;
+        var black = a.filter(function (d) { return d.op > 0; }).length;
+        items[2] = ['평균 순이익률', nim.toFixed(1) + '%'];
+        items[3] = ['영업흑자', black + ' / ' + a.length + '년'];
+      }
     } else {
       var q = company.quarterly, lq = q[q.length - 1], yoy = q[Math.max(0, q.length - 5)];
       var rg = yoy.rev ? (lq.rev / yoy.rev - 1) * 100 : 0;
@@ -2011,6 +2017,7 @@
   }
 
   function refresh() {
+    syncTabs();
     fillRangeOptions();
     state.rows = buildSeries(state.company, state.period, state.counts[state.period]);
 
@@ -2323,6 +2330,26 @@
     if (!hit) { alert('찾을 수 없는 기업입니다.'); return; }
     pickCompany(hit);
   });
+
+  // 감사보고서만 내는 회사는 분기가 없고, 배당이 없는 회사도 많다.
+  // 그런 탭은 숨기고, 숨긴 탭을 보고 있었다면 연간으로 옮긴다 (알림 없이).
+  function syncTabs() {
+    var c = state.company || {};
+    var has = {
+      annual: true,
+      quarterly: (c.quarterly || []).length > 0,
+      dividend: (c.annual || []).some(function (r) { return r.dps > 0; })
+    };
+    Array.prototype.forEach.call(document.querySelectorAll('.tab'), function (b) {
+      b.style.display = has[b.dataset.period] ? '' : 'none';
+    });
+    if (!has[state.period]) {
+      state.period = 'annual';
+      Array.prototype.forEach.call(document.querySelectorAll('.tab'), function (b) {
+        b.setAttribute('aria-selected', String(b.dataset.period === 'annual'));
+      });
+    }
+  }
 
   function setPeriod(p) {
     state.period = p;

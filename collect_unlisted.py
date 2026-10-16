@@ -32,6 +32,7 @@ LIST = "unlisted_list.txt"
 OUT = os.path.join("data", "unlisted")
 CHECKED = os.path.join(OUT, "_checked.json")
 FAILED = os.path.join(OUT, "_failed.json")
+CALLS = os.path.join(OUT, "_calls.json")       # 오늘 쓴 호출 수 (collect_audit.py 와 나눠 쓴다)
 PER_COMPANY = 70          # 한 곳에 드는 호출 수 상한(연결이 없으면 별도까지 두 번 부른다)
 KST = timezone(timedelta(hours=9))
 
@@ -280,6 +281,7 @@ def rebuild_index():
         items.append({"name": d.get("name", fn[:-5]), "code": d.get("code", fn[:-5]),
                       "market": "비상장", "sector": d.get("sector", ""),
                       "brand": d.get("brand", ""),
+                      "annual_only": not d.get("quarterly"),
                       "updated": d.get("updated", "")})
     items.sort(key=lambda x: x["name"])
     payload = {"updated": today(), "count": len(items),
@@ -343,6 +345,8 @@ def main():
     fresh, stale = [], []
     for x in lst:
         has = os.path.exists(os.path.join(OUT, x["code"] + ".json"))
+        if has and jload(os.path.join(OUT, x["code"] + ".json"), {}).get("source") == "audit":
+            continue                          # 감사보고서 수집기(collect_audit.py)가 맡은 회사
         if (not force and not has
                 and failed.get(x["code"], {}).get("reason") == "재무 데이터 없음"):
             continue                          # 숫자가 없던 회사는 매일 다시 부르지 않는다
@@ -389,6 +393,10 @@ def main():
 
     jsave(CHECKED, checked, sort_keys=True, separators=(",", ":"))
     jsave(FAILED, failed, indent=1)
+    # 오늘 쓴 호출 수를 남긴다 — collect_audit.py 가 남은 만큼만 쓴다
+    prev = jload(CALLS, {})
+    calls = C._call_count + (prev.get("calls", 0) if prev.get("date") == today() else 0)
+    jsave(CALLS, {"date": today(), "calls": calls})
     sync_meta(load_list())
     n = rebuild_index()
     log("\n" + "=" * 50)
