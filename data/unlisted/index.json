@@ -1,8 +1,8 @@
 {
  "updated": "2026-10-17",
- "count": 33,
+ "count": 34,
  "markets": {
-  "비상장": 33
+  "비상장": 34
  },
  "companies": [
   {
@@ -255,6 +255,15 @@
    "sector": "호텔",
    "brand": "그랜드 인터컨티넨탈 서울 파르나스, 나인트리",
    "annual_only": false,
+   "updated": "2026-10-17"
+  },
+  {
+   "name": "파리크라상",
+   "code": "01995325",
+   "market": "비상장",
+   "sector": "카페·외식",
+   "brand": "파리바게뜨",
+   "annual_only": true,
    "updated": "2026-10-17"
   },
   {

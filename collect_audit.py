@@ -20,6 +20,9 @@
 결과는 비상장 실적 탭(data/unlisted/)에 같이 들어간다. 정기보고서를 내는
 32곳(collect_unlisted.py)이 이미 받은 회사는 건너뛴다.
 
+목록 다섯째 칸에 '별도' 를 적으면 연결이 있어도 별도로 받는다. 지주회사처럼
+연결에 그룹 전체가 잡히는 회사용 (파리크라상: 연결은 SPC 그룹 5조, 별도가 파리바게뜨).
+
 목록 한 줄에 회사코드를 + 로 여럿 적으면 합친다. 법인을 나눠 코드가 바뀐 회사용.
   01995325+00123456 | 파리크라상 | ...     (앞이 새 코드, 뒤가 옛 코드)
 
@@ -71,7 +74,8 @@ def load_list():
         brand = ", ".join(x.strip() for x in (p[3] if len(p) > 3 else "").split(",") if x.strip())
         out.append({"code": codes[0], "codes": codes,
                     "name": p[1] if len(p) > 1 and p[1] else codes[0],
-                    "sector": p[2] if len(p) > 2 else "", "brand": brand})
+                    "sector": p[2] if len(p) > 2 else "", "brand": brand,
+                    "basis": p[4] if len(p) > 4 and p[4] in ("연결", "별도") else ""})
     return out
 
 
@@ -218,6 +222,8 @@ def collect_one(item, old):
     pers = sorted(by, reverse=True)
     # 기준: 최근 보고서에 연결이 있으면 연결로 맞춘다
     want_cfs = any("연결" in r["report_nm"] or r["_kind"] == "A" for r in by[pers[0]])
+    if item.get("basis"):                     # 목록 다섯째 칸에 '별도' 라고 적은 회사
+        want_cfs = item["basis"] == "연결"
     fy_month = pers[0][1]
     pers = [p for p in pers if p[1] == fy_month][:YEARS]   # 결산월을 바꾼 해는 뺀다
 
