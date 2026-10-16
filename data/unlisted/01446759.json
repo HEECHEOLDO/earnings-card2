@@ -1,0 +1,48 @@
+{
+ "name": "뱅크샐러드",
+ "split_adjusted": false,
+ "legal_name": "뱅크샐러드",
+ "code": "01446759",
+ "market": "비상장",
+ "sector": "플랫폼",
+ "basis": "연결",
+ "updated": "2026-10-17",
+ "annual": [
+  {
+   "p": 2025,
+   "rev": 259.9,
+   "op": -77.8,
+   "ni": -599.3,
+   "assets": 367.8,
+   "liab": 85.9,
+   "equity": 281.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": 259.9,
+   "op": -77.8,
+   "ni": -599.3
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 65.4,
+   "op": -29.4,
+   "ni": -28.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 73.7,
+   "op": -19.9,
+   "ni": -18.3
+  }
+ ]
+}

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""기존 5개 페이지 메뉴에 '그때 샀다면' 을 끼워 넣는다.
+"""모든 페이지의 메뉴를 같은 7칸으로 맞춘다 ('비상장 실적' 추가).
 
   python3 add_tab.py            바꾸기
   python3 add_tab.py --dry      뭐가 바뀌는지만 보기
@@ -22,6 +22,7 @@ PAGES = {
     "screen.html":  "screen",
     "guru.html":    "guru",
     "buy.html":     "buy",
+    "unlisted.html": "unlisted",
 }
 
 ITEMS = [
@@ -31,6 +32,9 @@ ITEMS = [
     ("us",      "./us.html",
      '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 010 18M12 3a15 15 0 000 18"/>',
      "해외 실적", "해외"),
+    ("unlisted", "./unlisted.html",
+     '<path d="M4 21V6l8-3 8 3v15"/><path d="M9 21v-5h6v5"/><path d="M9 9h.01M15 9h.01M9 13h.01M15 13h.01"/>',
+     "비상장 실적", "비상장"),
     ("returns", "./returns.html",
      '<path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/>',
      "연간 수익률", "수익률"),
