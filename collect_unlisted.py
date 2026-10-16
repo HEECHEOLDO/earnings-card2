@@ -5,11 +5,15 @@
   python3 collect_unlisted.py                 목록(unlisted_list.txt) 수집
   python3 collect_unlisted.py 01212921        회사코드 직접 지정
   python3 collect_unlisted.py --status        무엇이 얼마나 받아졌는지만 (호출 0회)
+  python3 collect_unlisted.py --index         목록의 이름·분류·대표 서비스만 반영 (호출 0회)
+  python3 collect_unlisted.py --check         분기 숫자 검사 (호출 0회)
+  python3 collect_unlisted.py --check --fix   잘못 들어간 분기를 지운다 (호출 0회)
 
 상장사 수집기(collect.py)의 함수를 그대로 쓴다 — 계정 매칭, 분기 차감, 검산,
-배당, 액면분할 보정이 모두 같다. 다른 점은 둘뿐이다.
+배당, 액면분할 보정이 모두 같다. 다른 점은 셋이다.
   · 비상장사는 종목코드가 없어 DART 회사코드(8자리)로 받는다
   · 결과를 data/ 가 아니라 data/unlisted/ 에 둔다 (국내 실적·스크리닝과 섞이지 않게)
+  · 분기는 앞 보고서가 있을 때만 만든다 (아래 collect_quarterly 참고)
 
 DART 하루 한도는 2만 회이고, 상장사 수집(collect.yml)이 매일 1만 8천 회를 쓴다.
 그래서 여기서는 하루 1,500회만 쓰고(--budget), 받은 지 7일이 넘은 회사만
@@ -51,7 +55,7 @@ def opt(name, default):
 
 
 def load_list():
-    """회사코드 | 카드에 쓸 이름 | 분류   (# 뒤는 주석)"""
+    """회사코드 | 카드에 쓸 이름 | 분류 | 대표 서비스 (# 뒤는 주석)"""
     out = []
     if not os.path.exists(LIST):
         log("!! %s 가 없습니다." % LIST)
@@ -65,8 +69,9 @@ def load_list():
         if not (code.isdigit() and len(code) == 8):
             log("  ? 무시된 줄: %s" % line)
             continue
+        brand = ", ".join(x.strip() for x in (p[3] if len(p) > 3 else "").split(",") if x.strip())
         out.append({"code": code, "name": p[1] if len(p) > 1 and p[1] else code,
-                    "sector": p[2] if len(p) > 2 else ""})
+                    "sector": p[2] if len(p) > 2 else "", "brand": brand})
     return out
 
 
@@ -128,13 +133,104 @@ def basis_of(code):
     return "연결·별도" if b else ""
 
 
+def collect_quarterly(corp_code, latest_year):
+    """collect.collect_quarterly 와 같되, 빼야 할 앞 보고서가 없으면 그 분기를 만들지 않는다.
+
+    DART 에는 2Q·4Q 단독 보고서가 없어 누적에서 앞 분기를 뺀다.
+        2Q = 반기 - 1Q    3Q = 3분기누적 - 반기    4Q = 연간 - 3분기누적
+    collect.py 는 앞 보고서가 없으면 빼지 않고 누적값을 그대로 쓴다. 상장사는
+    분기보고서를 빠짐없이 내서 문제가 없지만, 비상장사는 빠진 보고서가 있어
+    상반기 6개월치가 '2Q' 로, 1년치가 '4Q' 로 들어갈 수 있다. 틀린 숫자보다
+    빈칸이 낫다.
+    """
+    out = []
+    order = (("Q1", C.REPRT["Q1"]), ("HALF", C.REPRT["HALF"]),
+             ("Q3", C.REPRT["Q3"]), ("YEAR", C.REPRT["YEAR"]))
+    for y in range(latest_year - 3, latest_year + 1):
+        cum = {}
+        for tag, code in order:
+            fs = C.fetch_fs(corp_code, y, code)
+            if not fs:
+                continue
+            use_cum = tag != "YEAR"
+            cum[tag] = {k: C.pick_account(fs, k, cumulative=use_cum) for k in ("rev", "op", "ni")}
+
+        def g(tag, k):
+            return cum.get(tag, {}).get(k)
+
+        def sub(a, b):
+            return None if (a is None or b is None) else a - b
+
+        steps = [(1, lambda k: g("Q1", k)),
+                 (2, lambda k: sub(g("HALF", k), g("Q1", k))),
+                 (3, lambda k: sub(g("Q3", k), g("HALF", k))),
+                 (4, lambda k: sub(g("YEAR", k), g("Q3", k)))]
+        for q, fn in steps:
+            rev, op, ni = fn("rev"), fn("op"), fn("ni")
+            if rev is None or op is None:
+                continue
+            out.append({"y": y, "q": q, "rev": C.eok(rev), "op": C.eok(op),
+                        "ni": C.eok(ni) if ni is not None else None})
+            log("  %d.%dQ  매출 %s억  영업이익 %s억" % (y, q, f"{C.eok(rev):,.0f}", f"{C.eok(op):,.0f}"))
+    return out[-C.QUARTERS:]
+
+
+def check(lst, fix):
+    """받아둔 파일만 읽어 분기를 검사한다. API 를 쓰지 않는다.
+
+    · 같은 해에 앞 분기 없이 뒷 분기만 있으면, 그 분기는 누적값이 들어간 것이다
+      (예전 방식으로 받은 파일). --fix 면 지운다.
+    · 4개 분기 합이 연간과 2% 넘게 다르면 알려준다 (연결/별도가 섞였거나
+      결산월이 12월이 아닌 회사).
+    """
+    bad_n = fixed = 0
+    for x in lst:
+        path = os.path.join(OUT, x["code"] + ".json")
+        d = jload(path, None)
+        if not d:
+            continue
+        qs = d.get("quarterly") or []
+        have = {(q["y"], q["q"]) for q in qs}
+        # 새 방식으로 받았거나 이미 고친 파일은 분기가 원래 맞다. 그런 파일에서
+        # 앞 분기가 비어 있는 건 앞 보고서가 없어 빈칸으로 둔 것이라 검사하지 않는다.
+        # 맨 앞 분기는 앞 분기가 10분기 창 밖에 있을 뿐이므로 검사하지 않는다.
+        strict = d.get("q_method") == "strict"
+        wrong = [] if strict else [q for q in qs[1:]
+                                   if q["q"] > 1 and (q["y"], q["q"] - 1) not in have]
+        notes = []
+        if wrong:
+            notes.append("누적값이 들어간 분기 " + ", ".join("%d.%dQ" % (q["y"], q["q"]) for q in wrong))
+        by = {}
+        for q in qs:
+            if q not in wrong:
+                by.setdefault(q["y"], []).append(q)
+        for a in d.get("annual") or []:
+            ys = by.get(a["p"], [])
+            if len(ys) == 4 and a.get("rev"):
+                gap = abs(sum(q["rev"] for q in ys) - a["rev"]) / abs(a["rev"]) * 100
+                if gap > 2:
+                    notes.append("%d년 분기합이 연간과 %.1f%% 다름" % (a["p"], gap))
+        if notes:
+            bad_n += 1
+            log("  %-14s %s" % (x["name"], " / ".join(notes)))
+        if fix and not strict:
+            d["quarterly"] = [q for q in qs if q not in wrong]
+            d["q_method"] = "strict"
+            jsave(path, d, indent=1)
+            fixed += bool(wrong)
+    log("\n검사 %d곳 · 확인 필요 %d곳%s"
+        % (len(lst), bad_n, (" · 고친 파일 %d개" % fixed) if fix else ""))
+    if bad_n and not fix:
+        log("누적값이 들어간 분기는  python3 collect_unlisted.py --check --fix  로 지웁니다.")
+
+
 def collect_one(item, latest_year):
     code = item["code"]
     log("\n=== %s (%s) ===" % (item["name"], code))
     log(" [연간]")
     annual = C.collect_annual(code, latest_year)
     log(" [분기]")
-    quarterly = C.collect_quarterly(code, latest_year)
+    quarterly = collect_quarterly(code, latest_year)
     if not annual and not quarterly:
         return None, "재무 데이터 없음"
     worst = C.check_quarters_vs_annual(annual, quarterly)
@@ -148,11 +244,29 @@ def collect_one(item, latest_year):
         "code": code,
         "market": "비상장",
         "sector": item["sector"],
+        "brand": item.get("brand", ""),
         "basis": basis_of(code),
+        "q_method": "strict",        # 앞 보고서가 있을 때만 분기를 만든 파일
         "updated": today(),
         "annual": annual,
         "quarterly": quarterly,
     }, worst
+
+
+def sync_meta(lst):
+    """목록에서 고친 이름·분류·대표 서비스를 받아둔 파일에 반영한다. API 를 쓰지 않는다.
+    목록에서 이름을 바꾸면 카드 기본 제목도 그 이름이 된다."""
+    n = 0
+    for x in lst:
+        path = os.path.join(OUT, x["code"] + ".json")
+        d = jload(path, None)
+        if not d:
+            continue
+        new = dict(d, name=x["name"], sector=x["sector"], brand=x.get("brand", ""))
+        if new != d:
+            jsave(path, new, indent=1)
+            n += 1
+    return n
 
 
 def rebuild_index():
@@ -165,6 +279,7 @@ def rebuild_index():
             continue
         items.append({"name": d.get("name", fn[:-5]), "code": d.get("code", fn[:-5]),
                       "market": "비상장", "sector": d.get("sector", ""),
+                      "brand": d.get("brand", ""),
                       "updated": d.get("updated", "")})
     items.sort(key=lambda x: x["name"])
     payload = {"updated": today(), "count": len(items),
@@ -202,6 +317,16 @@ def main():
         lst = [named.get(a, {"code": a, "name": a, "sector": ""}) for a in args]
     if "--status" in sys.argv:
         status(lst)
+        return
+    if "--check" in sys.argv:
+        check(lst, "--fix" in sys.argv)
+        if "--fix" in sys.argv:
+            rebuild_index()
+        return
+    if "--index" in sys.argv:
+        n = sync_meta(load_list())
+        total = rebuild_index()
+        log("이름·분류·대표 서비스 반영 %d곳 · 목록 총 %d곳 (API 0회)" % (n, total))
         return
     if not lst:
         return
@@ -264,6 +389,7 @@ def main():
 
     jsave(CHECKED, checked, sort_keys=True, separators=(",", ":"))
     jsave(FAILED, failed, indent=1)
+    sync_meta(load_list())
     n = rebuild_index()
     log("\n" + "=" * 50)
     for nm, st, note in done:
