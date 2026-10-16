@@ -2,14 +2,14 @@
  "name": "TRV",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "TRAVELERS COMPANIES, INC.",
+ "legal_name": "Travelers Companies, Inc.",
  "code": "TRV",
  "cik": "0000086312",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-10-16",
+ "updated": "2026-10-17",
  "annual": [
   {
    "p": 2016,
@@ -145,13 +145,6 @@
  "quarterly": [
   {
    "y": 2024,
-   "q": 1,
-   "rev": 11228.0,
-   "op": null,
-   "ni": 1123.0
-  },
-  {
-   "y": 2024,
    "q": 2,
    "rev": 11283.0,
    "op": null,
@@ -212,6 +205,13 @@
    "rev": 12153.0,
    "op": null,
    "ni": 2208.0
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 12412.0,
+   "op": null,
+   "ni": 1917.0
   }
  ]
 }
