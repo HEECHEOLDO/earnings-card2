@@ -335,7 +335,7 @@
           <input type="hidden" id="f-color" value="kr">
         </div>
         <div class="ctl-row">
-          <label class="check"><input type="checkbox" id="chk-mark" checked> 종목명에 형광펜</label>
+          <label class="check"><input type="checkbox" id="chk-logo" checked> 회사 로고 표시</label>
           <label class="check"><input type="checkbox" id="chk-guide"> 안전영역 표시</label>
         </div>
 
@@ -632,10 +632,70 @@
      카드 그리기
      ============================================================ */
   var state = { rows: [], asof:'', listed:'', market:'us', name:'NASDAQ100', sub:'연간 수익률',
-                source:'', handle:'@돈굴돈굴', mark:true, guide:false };
+                source:'', handle:'@돈굴돈굴', guide:false, showLogo:true, code:'' };
 
   // anim: 각 요소의 등장 진행도(0~1). 없으면 전부 1(정지 화면).
   //   { title, sub, period, circles:[...], avg, footer }
+
+  /* ---- 제목 왼쪽 회사 로고 ----
+     logo/ 폴더의 원형 투명 PNG 를 회사명 글자 높이에 맞춰 그린다.
+     파일이 없으면 그리지 않는다. 한 번 실패한 파일은 다시 부르지 않는다.
+     d: 지름(글자 크기 대비) · gap: 로고와 글자 사이 · mid: 글자 중심 높이 */
+  var LOGO_K = { d: 0.84, gap: 0.22, mid: 0.37 };
+  var LOGO_CACHE = {};
+  function titleLogo(list, redraw) {
+    if (!list || !list.length) return null;
+    var key = list.join('|');
+    var im = LOGO_CACHE[key];
+    if (im === undefined) {
+      im = new Image();
+      LOGO_CACHE[key] = im;
+      var i = 0;
+      im.onload = function () { redraw(); };
+      im.onerror = function () {
+        i++;
+        if (i < list.length) im.src = list[i];
+        else { LOGO_CACHE[key] = null; redraw(); }
+      };
+      im.src = list[0];
+    }
+    return (im && im.complete && im.naturalWidth) ? im : null;
+  }
+  function drawTitleLogo(ctx, im, x, cy, d) {
+    ctx.save();
+    ctx.letterSpacing = '0px';
+    ctx.drawImage(im, x, cy - d / 2, d, d);
+    ctx.beginPath(); ctx.arc(x + d / 2, cy, d / 2, 0, 7);
+    ctx.lineWidth = 1.5; ctx.strokeStyle = 'rgba(0,0,0,0.08)'; ctx.stroke();
+    ctx.restore();
+  }
+
+  // 국내는 logo/kr/{코드}, 해외는 logo/us/{기호}. 해외 ETF 는 자기 로고가 없으면
+  // 운용사 로고 (그때 샀다면과 같은 표). 지수(KOSPI·NASDAQ100 등)는 로고 없음.
+  var ISSUER = {};
+  (function () {
+    var g = {
+      SPY:  'SPLG DIA GLD XLK XLF XLE XLV XLU XLI XLP XLY XLB XLRE XLC MDY SDY KRE XBI XOP GLDM SPYG SPYV SPYD',
+      IVZ:  'QQQ QQQM RSP SPLV PGX PBW',
+      BLK:  'IVV IWM IWF IWD IJH IJR ITOT TLT IEF SHY AGG LQD HYG EFA EEM SLV IAU SOXX USMV DVY IBIT EWY',
+      SCHW: 'SCHD SCHX SCHG SCHB SCHF SCHA SCHH SCHP SCHZ SCHV',
+      JPM:  'JEPI JEPQ',
+      _vanguard:  'VOO VTI VUG VTV VYM VIG BND VEA VWO VXUS VNQ VGT VB VO VT BNDX',
+      _direxion:  'SOXL SOXS TMF TNA TZA FAS LABU',
+      _proshares: 'TQQQ SQQQ QLD SSO UPRO SPXU SDS',
+      _vaneck:    'SMH GDX'
+    };
+    Object.keys(g).forEach(function (k) { g[k].split(' ').forEach(function (t) { ISSUER[t] = k; }); });
+  })();
+  function logoListFor(state) {
+    var code = state.code, it = code && RET.items && RET.items[code];
+    if (!it) return null;
+    if (it.market === 'KR') return /^\d{6}$/.test(code) ? ['./logo/kr/' + code + '.png'] : null;
+    var out = ['./logo/us/' + code + '.png'];
+    if (ISSUER[code]) out.push('./logo/us/' + ISSUER[code] + '.png');
+    return out;
+  }
+
   function drawCard(ctx, anim) {
     var A = anim || null;
     var P = function (k, i) {              // 진행도 꺼내기
@@ -657,13 +717,19 @@
     ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
     if (canTrack) ctx.letterSpacing = T.type.nameTrack;
     var ns = fitFont(ctx, state.name || ' ', 900, T.type.nameMax, T.type.nameMin, CWID);
+    var lgIm = state.showLogo ? titleLogo(logoListFor(state), drawPreview) : null;
+    var lgD = 0, lgGap = 0;
+    if (lgIm) {
+      ns = fitFont(ctx, state.name || ' ', 900, T.type.nameMax, T.type.nameMin,
+                   CWID - ns * (LOGO_K.d + LOGO_K.gap));
+      lgD = ns * LOGO_K.d; lgGap = ns * LOGO_K.gap;
+    }
+    var NX = CX + lgD + lgGap;               // 회사명이 시작하는 자리
     if (canTrack) ctx.letterSpacing = '0px';
     var ss = state.sub ? fitFont(ctx, state.sub, 900, T.type.subMax, T.type.subMin, CWID) : 0;
 
     var y = S.top + ns*0.86;
 
-    // 형광펜과 글자를 같은 상태에서 처리한다.
-    // 재는 도중에 자간을 껐다 켜면 폭이 어긋나 형광펜이 짧아진다.
     ctx.font = font(900, ns);
     if (canTrack) ctx.letterSpacing = T.type.nameTrack;
 
@@ -672,31 +738,9 @@
     ctx.globalAlpha = pT;
     ctx.translate(0, (1 - pT) * 28);
 
-    if (state.name && state.mark) {
-      var m = ctx.measureText(state.name);
-      // 글자가 실제로 찍히는 범위(잉크)에 맞춘다.
-      // measureText().width 는 글꼴의 좌우 여백까지 포함해서
-      // 한글에서는 형광펜이 글자보다 뒤로 삐져나온다.
-      var x0 = CX, x1 = CX + m.width;
-      if (m.actualBoundingBoxLeft != null && m.actualBoundingBoxRight != null) {
-        x0 = CX - m.actualBoundingBoxLeft;
-        x1 = CX + m.actualBoundingBoxRight;
-      }
-      // 세로도 잉크에 맞춘다. 한글은 영문 대문자보다 위로 더 올라가서
-      // 고정 비율로 잡으면 윗부분이 잘린다.
-      var top = y - ns * 0.80, bottom = y + ns * 0.12;
-      if (m.actualBoundingBoxAscent != null && m.actualBoundingBoxDescent != null) {
-        top = y - m.actualBoundingBoxAscent;
-        bottom = y + m.actualBoundingBoxDescent;
-      }
-      var padX = ns * G.markPadX, padY = ns * G.markPadY;
-      ctx.fillStyle = hexA(T.gold, G.markAlpha);
-      roundRect(ctx, x0 - padX, top - padY, (x1 - x0) + padX*2, (bottom - top) + padY*2, 8);
-      ctx.fill();
-    }
-
+    if (lgIm) drawTitleLogo(ctx, lgIm, CX, y - ns * LOGO_K.mid, lgD);
     ctx.fillStyle = T.ink;
-    ctx.fillText(state.name || '', CX, y);
+    ctx.fillText(state.name || '', NX, y);
     if (canTrack) ctx.letterSpacing = '0px';
     ctx.restore();
 
@@ -882,7 +926,8 @@
     state.sub = document.getElementById('f-sub').value.trim();
     state.source = document.getElementById('f-source').value.trim();
     state.handle = document.getElementById('handle').value;
-    state.mark = document.getElementById('chk-mark').checked;
+    state.showLogo = document.getElementById('chk-logo').checked;
+    state.code = document.getElementById('f-code').value;
     state.market = document.getElementById('f-color').value;
     var all = parseRows(document.getElementById('f-data').value);
     state.rows = all.slice(-MAX_YEARS);
@@ -983,6 +1028,7 @@
     }
 
     document.getElementById('f-data').value = lines.join('\n');
+    document.getElementById('f-code').value = code;
     document.getElementById('f-name').value = it.name || code;
     state.asof = it.asof || '';
     state.listed = it.listed || '';           // 첫해가 상장 후 일부일 때 그 시작일
@@ -1530,7 +1576,7 @@
   ['f-name','f-sub','f-source','handle'].forEach(function (id) {
     document.getElementById(id).addEventListener('input', refresh);
   });
-  document.getElementById('chk-mark').addEventListener('change', refresh);
+  document.getElementById('chk-logo').addEventListener('change', refresh);
   Array.prototype.forEach.call(document.querySelectorAll('.cur-b'), function (b) {
     b.addEventListener('click', function () {
       document.getElementById('f-color').value = b.dataset.v;

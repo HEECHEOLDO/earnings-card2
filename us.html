@@ -488,6 +488,7 @@
 
       <div class="ctl-row">
         <label class="check"><input type="checkbox" id="chk-guide"> 안전영역 표시</label>
+        <label class="check"><input type="checkbox" id="chk-logo" checked> 회사 로고 표시</label>
         <label class="check"><input type="checkbox" id="chk-source" checked> SEC 출처 표기</label>
       </div>
 
@@ -1281,6 +1282,45 @@
     ctx.restore();
   }
 
+
+  /* ---- 제목 왼쪽 회사 로고 ----
+     logo/ 폴더의 원형 투명 PNG 를 회사명 글자 높이에 맞춰 그린다.
+     파일이 없으면 그리지 않는다. 한 번 실패한 파일은 다시 부르지 않는다.
+     d: 지름(글자 크기 대비) · gap: 로고와 글자 사이 · mid: 글자 중심 높이 */
+  var LOGO_K = { d: 0.84, gap: 0.22, mid: 0.37 };
+  var LOGO_CACHE = {};
+  function titleLogo(list, redraw) {
+    if (!list || !list.length) return null;
+    var key = list.join('|');
+    var im = LOGO_CACHE[key];
+    if (im === undefined) {
+      im = new Image();
+      LOGO_CACHE[key] = im;
+      var i = 0;
+      im.onload = function () { redraw(); };
+      im.onerror = function () {
+        i++;
+        if (i < list.length) im.src = list[i];
+        else { LOGO_CACHE[key] = null; redraw(); }
+      };
+      im.src = list[0];
+    }
+    return (im && im.complete && im.naturalWidth) ? im : null;
+  }
+  function drawTitleLogo(ctx, im, x, cy, d) {
+    ctx.save();
+    ctx.letterSpacing = '0px';
+    ctx.drawImage(im, x, cy - d / 2, d, d);
+    ctx.beginPath(); ctx.arc(x + d / 2, cy, d / 2, 0, 7);
+    ctx.lineWidth = 1.5; ctx.strokeStyle = 'rgba(0,0,0,0.08)'; ctx.stroke();
+    ctx.restore();
+  }
+
+  function logoListFor(state) {
+    var code = state.company && state.company.code;
+    return code ? ['./logo/us/' + code + '.png'] : null;
+  }
+
   function drawCard(ctx, state) {
     var T = TOKENS.card, S = T.safe;
     var CX = S.left, CWID = CW - S.left - S.right;
@@ -1309,6 +1349,13 @@
     var canTrack = 'letterSpacing' in ctx;
     if (canTrack) ctx.letterSpacing = T.type.nameTrack;
     var nameSize = fitFont(ctx, line1, 900, T.type.nameMax, T.type.nameMin, CWID);
+    var lgIm = state.showLogo ? titleLogo(logoListFor(state), drawPreview) : null;
+    var lgD = 0, lgGap = 0;
+    if (lgIm) {
+      nameSize = fitFont(ctx, line1, 900, T.type.nameMax, T.type.nameMin,
+                         CWID - nameSize * (LOGO_K.d + LOGO_K.gap));
+      lgD = nameSize * LOGO_K.d; lgGap = nameSize * LOGO_K.gap;
+    }
     if (canTrack) ctx.letterSpacing = '0px';
     var subSize = fitFont(ctx, line2, 900, T.type.subMax, T.type.subMin, CWID);
 
@@ -1316,7 +1363,8 @@
     ctx.fillStyle = T.ink;
     ctx.font = font(900, nameSize);
     if (canTrack) ctx.letterSpacing = T.type.nameTrack;
-    ctx.fillText(line1, CX, y);
+    if (lgIm) drawTitleLogo(ctx, lgIm, CX, y - nameSize * LOGO_K.mid, lgD);
+    ctx.fillText(line1, CX + lgD + lgGap, y);
     if (canTrack) ctx.letterSpacing = '0px';
 
     y += nameSize * T.type.nameToSub + subSize * 0.86;
@@ -1611,7 +1659,7 @@
     counts: { annual: 10, quarterly: 10, dividend: 10 },
     showLine: { annual: true, quarterly: true, dividend: true },
     rows: null, spec: null, colors: null,
-    guide: false, showSource: true,
+    guide: false, showSource: true, showLogo: true,
     title: '', sub: '',            // 비워두면 자동 문구
     handle: '@돈굴돈굴'
   };
@@ -2471,6 +2519,10 @@
   document.getElementById('chk-guide').addEventListener('change', function () {
     state.guide = this.checked; drawPreview();
   });
+  document.getElementById('chk-logo').addEventListener('change', function () {
+    state.showLogo = this.checked; drawPreview();
+  });
+
   document.getElementById('chk-source').addEventListener('change', function () {
     state.showSource = this.checked; drawPreview();
   });
