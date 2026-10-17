@@ -5,21 +5,8 @@
  "code": "005390",
  "market": "기타",
  "sector": "",
- "updated": "2026-09-11",
+ "updated": "2026-10-18",
  "annual": [
-  {
-   "p": 2016,
-   "rev": 9338.7,
-   "op": 268.2,
-   "ni": 13.6,
-   "assets": 6927.0,
-   "liab": 4810.5,
-   "equity": 2116.5,
-   "dps": null,
-   "payout": null,
-   "yield": null,
-   "dps_adj": null
-  },
   {
    "p": 2017,
    "rev": 8819.7,
@@ -136,16 +123,22 @@
    "payout": null,
    "yield": null,
    "dps_adj": null
+  },
+  {
+   "p": 2026,
+   "rev": 13833.2,
+   "op": 911.9,
+   "ni": 426.0,
+   "assets": 12641.4,
+   "liab": 6713.0,
+   "equity": 5928.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
   }
  ],
  "quarterly": [
-  {
-   "y": 2023,
-   "q": 4,
-   "rev": 4008.4,
-   "op": 521.6,
-   "ni": 260.7
-  },
   {
    "y": 2024,
    "q": 1,
@@ -208,6 +201,13 @@
    "rev": 9895.8,
    "op": 407.7,
    "ni": 161.3
+  },
+  {
+   "y": 2026,
+   "q": 4,
+   "rev": 3937.4,
+   "op": 504.2,
+   "ni": 264.7
   }
  ]
 }

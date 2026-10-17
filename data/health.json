@@ -1,15 +1,15 @@
 {
- "checked": "2026-10-18 02:41",
+ "checked": "2026-10-18 02:46",
  "status": "warn",
  "sources": [
   {
    "key": "kr",
    "name": "국내 실적",
    "page": "index.html",
-   "last": "2026-10-17",
-   "days": 1,
+   "last": "2026-10-18",
+   "days": 0,
    "status": "warn",
-   "msg": "새 공시 2건 반영 안 됨",
+   "msg": "새 공시 1건 반영 안 됨",
    "note": "2,953곳"
   },
   {
@@ -87,15 +87,6 @@
   "filings": 208,
   "partial": false,
   "late": [
-   {
-    "tab": "국내 실적",
-    "name": "신성통상",
-    "code": "005390",
-    "report": "사업보고서 (2026.06)",
-    "filed": "2026-09-28",
-    "days": 20,
-    "last": "2026-09-26"
-   },
    {
     "tab": "국내 실적",
     "name": "본느",
