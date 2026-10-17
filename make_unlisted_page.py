@@ -127,6 +127,13 @@ REPL = [
         items[2] = ['평균 순이익률', nim.toFixed(1) + '%'];
         items[3] = ['영업흑자', black + ' / ' + a.length + '년'];
       }"""),
+    ("구간 기본값 — 회사·탭을 바꿀 때마다 가장 긴 구간",
+     """    var cur = Math.min(state.counts[state.period] || max, max);""",
+     """    // 회사나 탭이 바뀌면 그 회사의 가장 긴 구간으로 연다. 앞 회사가 3년뿐이었다고
+    // 다음 회사도 3년으로 열리지 않게. 사용자가 고른 구간은 같은 회사·탭 안에서만 유지.
+    var rkey = (state.company && state.company.code) + '|' + state.period;
+    if (state.rangeKey !== rkey) { state.rangeKey = rkey; state.counts[state.period] = max; }
+    var cur = Math.min(state.counts[state.period] || max, max);"""),
     ("자료가 없을 때 배지",
      "pill.textContent = '샘플 데이터';",
      "pill.textContent = '비상장 자료를 아직 받지 않았습니다';"),
