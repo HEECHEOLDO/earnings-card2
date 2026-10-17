@@ -2083,6 +2083,11 @@
     var sel = document.getElementById('range-n');
     var max = maxCount(state.company, state.period);
     var unitTxt = state.period === 'quarterly' ? '분기' : '년';
+    // 회사나 탭이 바뀌면 그 회사의 가장 긴 구간으로 연다. 앞 회사가 3년뿐이었다고
+    // 다음 회사도 3년으로 열리지 않게. 사용자가 고른 구간은 같은 회사·탭 안에서만 유지.
+    var c0 = state.company || {};
+    var rkey = (c0.code || c0.ticker || c0.name) + '|' + state.period;
+    if (state.rangeKey !== rkey) { state.rangeKey = rkey; state.counts[state.period] = max; }
     var cur = Math.min(state.counts[state.period] || max, max);
     if (cur < 2) cur = Math.min(2, max);
     state.counts[state.period] = cur;
