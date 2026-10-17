@@ -5,7 +5,7 @@
   python3 make_unlisted_page.py
 
 화면·카드 디자인은 국내 실적과 똑같이 두고, 아래만 바꾼다.
-  · 데이터를 data/unlisted/ 에서 읽는다
+  · 데이터를 data/unlisted/ 에서 읽는다 (제목은 add_tab.py 가 맞춘다)
   · 자료가 없을 때 삼성전자 샘플(MOCK)로 대신하지 않는다
   · 8자리 회사코드 대신 대표 서비스를 보여주고, 서비스 이름으로도 찾게 한다
   · 처음 열 때 고르는 회사, 주소(?code=) 8자리 허용
@@ -20,9 +20,6 @@ import sys
 SRC, DST = "index.html", "unlisted.html"
 
 REPL = [
-    ("제목",
-     "<title>실적·배당 카드뉴스</title>",
-     "<title>비상장 실적 · 실적·배당 카드뉴스</title>"),
     ("목록 경로",
      "fetch('./data/index.json', { cache: 'no-cache' })",
      "fetch('./data/unlisted/index.json', { cache: 'no-cache' })"),

@@ -8,6 +8,7 @@
 메뉴가 6칸이 되면서 폭이 빠듯해져, 좁은 화면용 짧은 이름(nav-short)을
 모든 칸에 넣는다. 지금은 '연간 수익률'과 '종목 스크리닝'에만 있다.
 
+맨 위 사이트 제목(h1)은 어느 화면이든 '돈굴돈굴', 브라우저 탭 제목은 '화면 이름 · 돈굴돈굴'.
 메뉴 아래 '데이터 상태' 한 줄(health.js)도 모든 화면에 넣는다.
 
 몇 번을 돌려도 결과가 같다 — 매번 <nav> 를 통째로 다시 쓴다.
@@ -27,6 +28,11 @@ PAGES = {
     "unlisted.html": "unlisted",
     "status.html":  "status",     # 데이터 상태 — 메뉴 칸은 없고 메뉴 아래 한 줄로 들어간다
 }
+
+# 맨 위 사이트 제목 — 어느 화면이든 같다. 브라우저 탭 제목은 '화면 이름 · 사이트 제목'.
+SITE = "돈굴돈굴"
+H1_RE = re.compile(r"<h1>[^<]*</h1>")
+TITLE_RE = re.compile(r"<title>[^<]*</title>")
 
 # 모든 화면 메뉴 아래에 '데이터 정상 · 10.18 점검' 한 줄을 붙이는 스크립트
 HEALTH_TAG = '<script src="./health.js" defer></script>'
@@ -86,6 +92,10 @@ def main():
             miss += 1
             continue
         new = NAV_RE.sub(lambda m: nav_html(here), s, count=1)
+        names = {k: full for k, _, _, full, _ in ITEMS}
+        names["status"] = "데이터 상태"
+        new = H1_RE.sub("<h1>%s</h1>" % SITE, new, count=1)
+        new = TITLE_RE.sub("<title>%s · %s</title>" % (names.get(here, SITE), SITE), new, count=1)
         if HEALTH_TAG not in new and "</body>" in new:
             new = new.replace("</body>", HEALTH_TAG + "\n</body>", 1)
         if new == s:
