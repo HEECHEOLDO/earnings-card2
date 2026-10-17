@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>데이터 상태 · 실적·배당 카드뉴스</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#F4F6F8; --surface:#FFFFFF; --surface-2:#EDF1F5;
+    --border:#E2E6EB; --border-strong:#D3DBE3;
+    --text:#16202B; --text-soft:#5A6673; --text-mute:#8894A2;
+    --accent:#1E4E8C; --accent-soft:#E8F0FA; --accent-text:#1E4E8C;
+    --pos:#1D6E4E; --pos-soft:#E4F2EB; --neg:#B32B22;
+    --radius:8px;
+  }
+  [data-mode="dark"] {
+    --bg:#0E141B; --surface:#161F29; --surface-2:#1D2833;
+    --border:#26313D; --border-strong:#35424F;
+    --text:#E6EBF0; --text-soft:#93A1B0; --text-mute:#6C7A89;
+    --accent:#5B9BE8; --accent-soft:#17293D; --accent-text:#8FBDF0;
+    --pos:#59C79A; --pos-soft:#14312A; --neg:#E8776D;
+  }
+  html { -webkit-text-size-adjust:100%; }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--text);
+    font-family:'Noto Sans KR',-apple-system,'Malgun Gothic',sans-serif;-webkit-font-smoothing:antialiased}
+  body{padding:20px 16px 80px}
+  .shell{max-width:1180px;margin:0 auto}
+
+  .topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;
+    padding-bottom:14px;border-bottom:1px solid var(--border);flex-wrap:wrap}
+  .brand{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .brand h1{font-size:17px;font-weight:800;margin:0;letter-spacing:-.01em}
+  /* ---------- 공통 메뉴 ---------- */
+  .nav{display:flex;gap:4px;margin:14px 0 4px;padding:4px;background:var(--surface-2);border-radius:999px}
+  .nav-i{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:7px;
+    height:40px;padding:0 14px;border-radius:999px;font-size:13.5px;font-weight:700;
+    text-decoration:none;color:var(--text-soft);white-space:nowrap;transition:background .12s,color .12s}
+  .nav-i svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.1;
+    stroke-linecap:round;stroke-linejoin:round;flex:none}
+  .nav-i:hover{color:var(--accent-text)}
+  .nav-short { display: none; }
+  @media (max-width: 480px) {
+    .nav-full { display: none; }
+    .nav-short { display: inline; }
+  }
+
+  .nav-i.on{background:var(--accent);color:#fff;box-shadow:0 2px 8px -3px rgba(30,78,140,.55)}
+  [data-mode="dark"] .nav-i.on{color:#0E141B;box-shadow:none}
+  @media (max-width:560px){
+    .nav{margin:10px 0 2px;gap:2px;padding:3px}
+    .nav-i{height:38px;padding:0 8px;font-size:12px;gap:5px}
+    .nav-i svg{width:15px;height:15px}
+  }
+  @media (max-width: 400px) {
+    /* 아주 좁은 화면에서는 아이콘을 빼고 글자만 남긴다 */
+    .nav-i svg { display: none; }
+    .nav-i { padding: 0 4px; gap: 0; font-size: 12px; }
+  }
+  :root { --warn:#9A6A00; --warn-soft:#FBF1DA; --neg-soft:#FBE7E5; }
+  [data-mode="dark"] { --warn:#E2B54A; --warn-soft:#332810; --neg-soft:#3A1C19; }
+  .topbar-right{display:flex;align-items:center;gap:8px}
+  .pill{font-size:12px;font-weight:600;padding:5px 11px;border-radius:999px;
+    background:var(--surface-2);color:var(--text-soft)}
+  .icon-btn{width:36px;height:36px;border-radius:var(--radius);border:1px solid var(--border-strong);
+    background:transparent;color:var(--text-soft);cursor:pointer;font-size:15px}
+
+  .hero{display:flex;align-items:center;gap:14px;background:var(--surface);border-radius:12px;
+    padding:18px 20px;margin-top:18px}
+  .hero .big{width:14px;height:14px;border-radius:50%;flex:none}
+  .hero h2{font-size:18px;font-weight:800;margin:0}
+  .hero p{margin:3px 0 0;font-size:13px;color:var(--text-soft)}
+
+  h3.sec{font-size:13px;font-weight:700;margin:26px 0 10px;color:var(--text-soft)}
+  .list{background:var(--surface);border-radius:12px;overflow:hidden}
+  .row{display:grid;grid-template-columns:20px minmax(0,1.4fr) 110px minmax(0,1.6fr);
+    gap:12px;align-items:center;padding:13px 16px;border-bottom:1px solid var(--border);font-size:13.5px}
+  .row:last-child{border-bottom:0}
+  .row .dot{width:9px;height:9px;border-radius:50%}
+  .row .nm{font-weight:700;min-width:0}
+  .row .nm a{color:var(--text);text-decoration:none}
+  .row .nm a:hover{color:var(--accent-text)}
+  .row .nm small{display:block;font-weight:500;font-size:12px;color:var(--text-mute);margin-top:2px}
+  .row .when{color:var(--text-soft);font-variant-numeric:tabular-nums;font-size:12.5px}
+  .row .msg{color:var(--text-soft);font-size:12.5px}
+  .row .msg.warn{color:var(--warn);font-weight:600}
+  .row .msg.bad{color:var(--neg);font-weight:600}
+
+  table{width:100%;border-collapse:collapse;font-size:12.5px}
+  th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--border)}
+  th{color:var(--text-mute);font-weight:600;font-size:12px}
+  tr:last-child td{border-bottom:0}
+  td.num{text-align:right;font-variant-numeric:tabular-nums}
+  .tag{display:inline-block;font-size:11px;font-weight:700;padding:2px 7px;border-radius:999px}
+  .tag.late{background:var(--warn-soft);color:var(--warn)}
+  .tag.miss{background:var(--neg-soft);color:var(--neg)}
+  .empty{padding:22px 16px;color:var(--text-mute);font-size:13px;text-align:center}
+  .note{font-size:12px;color:var(--text-mute);margin-top:22px;line-height:1.8}
+  .note b{color:var(--text-soft);font-weight:600}
+
+  @media (max-width:560px){
+    body{padding:14px 12px 56px}
+    .brand h1{font-size:15px}
+    .row{grid-template-columns:14px minmax(0,1fr);gap:4px 10px;padding:12px 14px}
+    .row .when,.row .msg{grid-column:2}
+    .tablewrap{overflow-x:auto}
+    table{white-space:nowrap}
+  }
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <div class="topbar">
+    <div class="brand"><h1>데이터 상태</h1></div>
+    <div class="topbar-right">
+      <span class="pill" id="src-pill">불러오는 중…</span>
+      <button class="icon-btn" id="btn-mode" aria-label="다크 모드">◐</button>
+    </div>
+  </div>
+
+  <nav class="nav" aria-label="메뉴">
+      <a href="./index.html" class="nav-i">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7 16v-4M12 16V8M17 16v-6"/></svg>
+        <span class="nav-full">국내 실적</span><span class="nav-short">국내</span>
+      </a>
+      <a href="./us.html" class="nav-i">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 010 18M12 3a15 15 0 000 18"/></svg>
+        <span class="nav-full">해외 실적</span><span class="nav-short">해외</span>
+      </a>
+      <a href="./unlisted.html" class="nav-i">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V6l8-3 8 3v15"/><path d="M9 21v-5h6v5"/><path d="M9 9h.01M15 9h.01M9 13h.01M15 13h.01"/></svg>
+        <span class="nav-full">비상장 실적</span><span class="nav-short">비상장</span>
+      </a>
+      <a href="./returns.html" class="nav-i">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg>
+        <span class="nav-full">연간 수익률</span><span class="nav-short">수익률</span>
+      </a>
+      <a href="./buy.html" class="nav-i">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 103-6.7"/><path d="M3 4v5h5"/><path d="M12 8v4.5l3 1.8"/></svg>
+        <span class="nav-full">그때 샀다면</span><span class="nav-short">그때</span>
+      </a>
+      <a href="./screen.html" class="nav-i">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <span class="nav-full">종목 스크리닝</span><span class="nav-short">스크리닝</span>
+      </a>
+      <a href="./guru.html" class="nav-i">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3v9l6.4 6.4"/></svg>
+        <span class="nav-full">포트폴리오</span><span class="nav-short">포폴</span>
+      </a>
+    </nav>
+
+  <div class="hero" id="hero">
+    <span class="big" id="hero-dot" style="background:var(--text-mute)"></span>
+    <div><h2 id="hero-t">불러오는 중…</h2><p id="hero-p"></p></div>
+  </div>
+
+  <h3 class="sec">화면별 수집</h3>
+  <div class="list" id="sources"></div>
+
+  <h3 class="sec" id="fil-h">새 공시 반영</h3>
+  <div class="list tablewrap" id="filings"></div>
+
+  <p class="note">
+    <b>어떻게 점검하나</b><br>
+    매일 아침 한 번, 화면마다 마지막으로 수집한 날을 봅니다. 평소 주기보다 오래 비면 <b>주의</b>, 훨씬 오래 비면 <b>문제</b>입니다.<br>
+    DART 의 최근 3주 정기공시(사업·반기·분기보고서)를 우리가 가진 회사와 맞춰 봅니다.
+    공시 뒤로 다시 받지 않았으면 <b>늦음</b>, 다시 받았는데 그 분기가 비어 있으면 <b>숫자 없음</b>입니다.
+    평소 수집 주기(9일)가 지나도 안 들어온 것만 적습니다.<br>
+    감사보고서 회사·해외 실적·주가·환율은 수집 날짜로만 봅니다.
+  </p>
+</div>
+
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var COLOR = { ok: 'var(--pos)', warn: '#C8900A', bad: 'var(--neg)' };
+  var WORD = { ok: '정상', warn: '주의', bad: '문제' };
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) {
+    return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function ago(n) { return n == null ? '-' : n === 0 ? '오늘' : n === 1 ? '어제' : n + '일 전'; }
+
+  $('btn-mode').addEventListener('click', function () {
+    var r = document.documentElement;
+    r.setAttribute('data-mode', r.getAttribute('data-mode') === 'dark' ? 'light' : 'dark');
+  });
+
+  fetch('./data/health.json', { cache: 'no-cache' })
+    .then(function (r) { if (!r.ok) throw 0; return r.json(); })
+    .then(render)
+    .catch(function () {
+      $('hero-t').textContent = '아직 점검 기록이 없습니다';
+      $('hero-p').textContent = '매일 아침 점검이 한 번 돌면 여기에 나옵니다.';
+      $('src-pill').textContent = '기록 없음';
+      $('sources').innerHTML = '<div class="empty">점검 기록 없음</div>';
+      $('filings').innerHTML = '<div class="empty">점검 기록 없음</div>';
+    });
+
+  function render(h) {
+    var ck = new Date((h.checked || '').replace(' ', 'T') + ':00+09:00');
+    var stale = isNaN(ck) || (Date.now() - ck.getTime()) > 2 * 864e5;
+    var st = stale ? 'warn' : h.status;
+    var srcs = h.sources || [];
+    var bad = srcs.filter(function (s) { return s.status !== 'ok'; });
+    $('src-pill').textContent = (h.checked || '').replace(/^\d{4}-/, '').replace('-', '.') + ' 점검';
+    $('hero-dot').style.background = COLOR[st];
+    $('hero-t').textContent = stale ? '점검이 멈춰 있습니다'
+      : st === 'ok' ? '모든 데이터가 정상입니다' : '확인할 것이 ' + bad.length + '건 있습니다';
+    $('hero-p').textContent = stale
+      ? '마지막 점검 ' + h.checked + ' · 점검 작업이 이틀 넘게 돌지 않았습니다.'
+      : '마지막 점검 ' + h.checked + (st === 'ok' ? ' · 수집과 새 공시 반영 모두 평소대로입니다.'
+          : ' · ' + bad.map(function (s) { return s.name; }).join(', '));
+
+    $('sources').innerHTML = srcs.map(function (s) {
+      return '<div class="row"><span class="dot" style="background:' + COLOR[s.status] + '"></span>' +
+        '<div class="nm"><a href="./' + esc(s.page) + '">' + esc(s.name) + '</a>' +
+        (s.note ? '<small>' + esc(s.note) + '</small>' : '') + '</div>' +
+        '<div class="when">' + (s.last ? esc(s.last.slice(5).replace('-', '.')) + ' · ' + ago(s.days) : '-') + '</div>' +
+        '<div class="msg' + (s.status === 'ok' ? '' : ' ' + s.status) + '">' + esc(s.msg) + '</div></div>';
+    }).join('');
+
+    var f = h.filings;
+    if (!f) {
+      $('filings').innerHTML = '<div class="empty">이번 점검에서는 공시를 보지 않았습니다</div>';
+      return;
+    }
+    if (f.error) {
+      $('filings').innerHTML = '<div class="empty">공시 점검 실패 — ' + esc(f.error) + '</div>';
+      return;
+    }
+    $('fil-h').textContent = '새 공시 반영 · 최근 3주 정기공시 ' + (f.filings || 0).toLocaleString('ko-KR') + '건 확인' +
+      (f.partial ? ' (일부)' : '');
+    var rows = (f.late || []).map(function (x) { x.k = 'late'; return x; })
+      .concat((f.missing || []).map(function (x) { x.k = 'miss'; return x; }));
+    if (!rows.length) {
+      $('filings').innerHTML = '<div class="empty">반영이 늦은 공시가 없습니다</div>';
+      return;
+    }
+    $('filings').innerHTML = '<table><thead><tr><th>상태</th><th>회사</th><th>화면</th><th>공시</th>' +
+      '<th>공시일</th><th class="num">지난 날</th><th>마지막 수집</th></tr></thead><tbody>' +
+      rows.map(function (x) {
+        return '<tr><td><span class="tag ' + x.k + '">' + (x.k === 'late' ? '늦음' : '숫자 없음') + '</span></td>' +
+          '<td><b>' + esc(x.name) + '</b></td><td>' + esc(x.tab) + '</td><td>' + esc(x.report) + '</td>' +
+          '<td>' + esc(x.filed) + '</td><td class="num">' + x.days + '일</td><td>' + esc(x.last || '-') + '</td></tr>';
+      }).join('') + '</tbody></table>';
+  }
+})();
+</script>
+<script src="./health.js" defer></script>
+</body>
+</html>
