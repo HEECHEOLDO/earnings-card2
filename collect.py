@@ -405,6 +405,11 @@ def collect_quarterly(corp_code, latest_year):
         3Q = 3분기보고서(누적) - 반기
         4Q = 사업보고서(연간) - 3Q누적
 
+    빼야 할 앞 보고서가 없으면 그 분기는 만들지 않는다 (빈칸). 예전에는 빼지 않고
+    누적값을 그대로 썼는데, 결산월이 12월이 아니거나 보고서가 빠진 회사에서
+    9개월치가 '3Q' 로, 1년치가 '4Q' 로 들어갔다 (신성통상 2026.3Q 9,896억).
+    틀린 숫자보다 빈칸이 낫다. 이미 받은 파일은 fix_quarters.py 로 정리한다.
+
     올해 분기보고서는 이미 나와 있으므로 현재 연도까지 훑는다.
     (분기보고서 마감은 분기 종료 후 45일, 반기는 60일)
     아직 안 나온 보고서는 자연스럽게 None이 되어 건너뛴다.
@@ -425,10 +430,8 @@ def collect_quarterly(corp_code, latest_year):
             }
 
         def diff(a, b):
-            if a is None:
-                return None
-            if b is None:
-                return a
+            if a is None or b is None:
+                return None              # 앞 보고서가 없으면 이 분기를 만들 수 없다
             return a - b
 
         def grab(tag, k):
@@ -494,6 +497,7 @@ def collect_company(code, corp_map, latest_year, alias=None):
         "updated": datetime.now(timezone(timedelta(hours=9))).strftime("%Y-%m-%d"),
         "annual": annual,
         "quarterly": quarterly,
+        "q_method": "strict",          # 앞 보고서가 있을 때만 분기를 만든 파일 (fix_quarters.py 가 건너뛴다)
         "_worst_gap": worst,
     }, None
 
