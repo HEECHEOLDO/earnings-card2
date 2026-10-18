@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>시총 버블 (테스트) · 돈굴돈굴</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#F4F6F8; --surface:#fff; --border:#E2E6EB; --text:#16202B; --soft:#5A6673; --mute:#8894A2; --accent:#1E4E8C; }
+  * { box-sizing:border-box }
+  body { margin:0; background:var(--bg); color:var(--text); font-family:'Noto Sans KR',sans-serif; padding:20px 16px 60px }
+  .shell { max-width:1180px; margin:0 auto }
+  h1 { font-size:17px; font-weight:800; margin:0 0 4px }
+  .lead { font-size:13px; color:var(--soft); margin:0 0 16px }
+  .grid { display:grid; grid-template-columns:minmax(0,1fr) 380px; gap:18px; align-items:start }
+  .card { background:var(--surface); border-radius:12px; padding:16px }
+  canvas { width:100%; height:auto; display:block; border-radius:6px; box-shadow:0 4px 18px -8px rgba(0,0,0,.25) }
+  label.f { display:block; font-size:12px; font-weight:700; color:var(--soft); margin:12px 0 6px }
+  textarea { width:100%; height:330px; font:12.5px/1.6 ui-monospace,Menlo,monospace; border:1px solid var(--border); border-radius:8px; padding:10px }
+  select, input[type=text] { width:100%; height:38px; border:1px solid var(--border); border-radius:8px; padding:0 10px; font:inherit; font-size:14px; background:#fff }
+  .row { display:flex; gap:10px }
+  .row > * { flex:1 }
+  .chk { display:flex; align-items:center; gap:8px; font-size:14px; margin-top:10px }
+  button { height:42px; border:0; border-radius:8px; background:var(--accent); color:#fff; font:inherit; font-weight:700; font-size:14px; padding:0 18px; cursor:pointer; margin-top:14px; width:100% }
+  .note { font-size:12px; color:var(--mute); line-height:1.7; margin-top:10px }
+  @media (max-width:860px) { .grid { grid-template-columns:1fr } }
+</style>
+</head>
+<body>
+<div class="shell">
+  <h1>시총 버블 카드 (테스트)</h1>
+  <p class="lead">원의 <b>넓이</b>가 시가총액에 비례합니다. 로고는 logo/kr/{코드}.png 를 씁니다.</p>
+  <div class="grid">
+    <div class="card"><canvas id="cv" width="1080" height="1350"></canvas></div>
+    <div class="card">
+      <div class="row">
+        <div><label class="f" for="n">순위</label>
+          <select id="n"><option value="10">TOP 10</option><option value="20" selected>TOP 20</option><option value="30">TOP 30</option><option value="50">TOP 50</option></select></div>
+        <div><label class="f" for="style">모양</label>
+          <select id="style"><option value="label" selected>로고 + 이름 + 시총</option><option value="logo">로고만 크게</option></select></div>
+      </div>
+      <label class="f" for="title">제목</label>
+      <input type="text" id="title" value="시가총액 TOP 20">
+      <label class="f" for="sub">아래 줄</label>
+      <input type="text" id="sub" value="코스피 · 원 크기 = 시가총액">
+      <label class="f" for="data">종목 (코드 이름 시가총액·조원) — 한 줄에 하나</label>
+      <textarea id="data" spellcheck="false"></textarea>
+      <label class="chk"><input type="checkbox" id="ring" checked> 테두리를 올해 등락률 색으로 (네 번째 값, 없으면 회색)</label>
+      <button id="dl">PNG 내려받기</button>
+      <p class="note">지금 숫자는 모양을 보기 위한 <b>대략값(샘플)</b>입니다. 실제 카드는 공공데이터포털 주식시세의 시가총액을 매일 받아 채우게 됩니다.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  var T = { paper:'#fafaf8', ink:'#101216', inkSoft:'#6B7078', rule:'#E6E4DD', footer:'#3A3E46',
+            up:'#C0392B', down:'#2C5AA0', flat:'#C9C6BC',
+            safe:{ top:135, right:100, bottom:135, left:100 },
+            grain:{ base:[250,250,248], amount:14, speckle:0.08, spike:2.5 } };
+  var CW = 1080, CH = 1350;
+  var cv = document.getElementById('cv'), ctx = cv.getContext('2d');
+
+  // 모양을 보기 위한 샘플 — 실제 값 아님 (코드 이름 시총조원 올해등락%)
+  var SAMPLE = [
+    '005930 삼성전자 600 +45', '000660 SK하이닉스 320 +80', '373220 LG에너지솔루션 90 -8',
+    '207940 삼성바이오로직스 75 +12', '005380 현대차 52 +6', '034020 두산에너빌리티 50 +140',
+    '012450 한화에어로스페이스 45 +60', '105560 KB금융 42 +30', '000270 기아 40 +3',
+    '068270 셀트리온 38 -5', '329180 HD현대중공업 35 +55', '055550 신한지주 33 +25',
+    '402340 SK스퀘어 30 +90', '035420 NAVER 30 +10', '042660 한화오션 30 +70',
+    '028260 삼성물산 30 +35', '009540 HD한국조선해양 25 +40', '005490 POSCO홀딩스 25 -12',
+    '032830 삼성생명 25 +20', '015760 한국전력 25 +45', '012330 현대모비스 25 +8',
+    '086790 하나금융지주 22 +28', '138040 메리츠금융지주 22 +15', '035720 카카오 20 +18',
+    '006400 삼성SDI 20 -20', '010130 고려아연 20 -10', '000810 삼성화재 20 +12',
+    '011200 HMM 18 -3', '064350 현대로템 18 +95', '051910 LG화학 18 -15',
+    '003550 LG 17 +5', '017670 SK텔레콤 16 +10', '316140 우리금융지주 16 +30',
+    '018260 삼성에스디에스 15 +2', '010140 삼성중공업 15 +60', '267260 HD현대일렉트릭 15 +50',
+    '030200 KT 14 +15', '003670 포스코퓨처엠 14 -25', '096770 SK이노베이션 13 -8',
+    '034730 SK 13 +20', '047810 한국항공우주 13 +35', '033780 KT&G 12 +12',
+    '066570 LG전자 12 -6', '259960 크래프톤 12 +4', '024110 기업은행 11 +18',
+    '323410 카카오뱅크 11 -2', '009150 삼성전기 11 +25', '010950 S-Oil 10 -4',
+    '000100 유한양행 10 +7', '352820 하이브 10 -9'
+  ];
+  document.getElementById('data').value = SAMPLE.join('\n');
+
+  function font(w, s) { return w + ' ' + s + 'px "Noto Sans KR"'; }
+  function fit(text, weight, start, min, maxW) {
+    var s = start; ctx.font = font(weight, s);
+    while (ctx.measureText(text).width > maxW && s > min) { s -= 1; ctx.font = font(weight, s); }
+    return s;
+  }
+  var _bg = null;
+  function grain() {
+    if (_bg) return _bg;
+    var G = T.grain, S = 512, t = document.createElement('canvas'); t.width = t.height = S;
+    var tc = t.getContext('2d'), img = tc.createImageData(S, S), d = img.data;
+    for (var i = 0; i < d.length; i += 4) {
+      var n = (Math.random() - 0.5) * 2 * G.amount;
+      if (Math.random() < G.speckle) n += (Math.random() - 0.5) * G.spike * G.amount;
+      n = Math.round(n); d[i] = G.base[0] + n; d[i + 1] = G.base[1] + n; d[i + 2] = G.base[2] + n; d[i + 3] = 255;
+    }
+    tc.putImageData(img, 0, 0);
+    _bg = document.createElement('canvas'); _bg.width = CW; _bg.height = CH;
+    var b = _bg.getContext('2d'); b.fillStyle = b.createPattern(t, 'repeat'); b.fillRect(0, 0, CW, CH);
+    return _bg;
+  }
+
+  function parse() {
+    var out = [];
+    document.getElementById('data').value.split(/\n/).forEach(function (l) {
+      var p = l.trim().split(/\s+/);
+      if (p.length < 3) return;
+      var v = parseFloat(p[2].replace(/,/g, ''));
+      if (!(v > 0)) return;
+      out.push({ code: p[0], name: p[1], v: v, chg: p[3] != null ? parseFloat(p[3]) : null });
+    });
+    out.sort(function (a, b) { return b.v - a.v; });
+    return out;
+  }
+
+  /* ---- 원 쌓기 ----
+     큰 것부터 하나씩, 이미 놓인 두 원에 동시에 닿는 자리 중 가운데에 가장 가까운
+     곳에 놓는다. 가운데까지 거리는 그릴 칸의 가로세로 비율로 잰다 (칸을 고르게 채우게). */
+  function pack(rs, aspect) {
+    var P = [];
+    function ok(x, y, r) {
+      for (var k = 0; k < P.length; k++) {
+        var dx = P[k].x - x, dy = P[k].y - y;
+        if (dx * dx + dy * dy < (P[k].r + r) * (P[k].r + r) - 1e-6) return false;
+      }
+      return true;
+    }
+    function cost(x, y) { return (x * x) / (aspect * aspect) + y * y; }
+    rs.forEach(function (r, i) {
+      if (i === 0) { P.push({ x: 0, y: 0, r: r }); return; }
+      if (i === 1) { P.push({ x: P[0].r + r, y: 0, r: r }); return; }
+      var best = null, bc = Infinity;
+      for (var a = 0; a < P.length; a++) for (var b = a + 1; b < P.length; b++) {
+        var A = P[a], B = P[b], ra = A.r + r, rb = B.r + r;
+        var dx = B.x - A.x, dy = B.y - A.y, d = Math.sqrt(dx * dx + dy * dy);
+        if (d > ra + rb || d < Math.abs(ra - rb) || d === 0) continue;
+        var l = (ra * ra - rb * rb + d * d) / (2 * d), h = Math.sqrt(Math.max(0, ra * ra - l * l));
+        var mx = A.x + l * dx / d, my = A.y + l * dy / d;
+        [[mx - h * dy / d, my + h * dx / d], [mx + h * dy / d, my - h * dx / d]].forEach(function (c) {
+          var cc = cost(c[0], c[1]);
+          if (cc < bc && ok(c[0], c[1], r)) { bc = cc; best = c; }
+        });
+      }
+      if (!best) best = [P[0].r * 4 + r, 0];
+      P.push({ x: best[0], y: best[1], r: r });
+    });
+    return P;
+  }
+
+  var LOGO = {};
+  function logo(code) {
+    if (LOGO[code] !== undefined) return LOGO[code];
+    var im = new Image(); LOGO[code] = im;
+    im.onload = draw; im.onerror = function () { LOGO[code] = null; draw(); };
+    im.src = './logo/kr/' + code + '.png';
+    return im;
+  }
+  function ready(im) { return im && im.complete && im.naturalWidth; }
+  function money(v) { return (v >= 100 ? Math.round(v).toLocaleString('ko-KR') : v.toFixed(1).replace(/\.0$/, '')) + '조'; }
+
+  function draw() {
+    var all = parse(), n = +document.getElementById('n').value;
+    var rows = all.slice(0, n), style = document.getElementById('style').value;
+    var ringOn = document.getElementById('ring').checked;
+    var S = T.safe, X0 = S.left, W = CW - S.left - S.right;
+
+    ctx.clearRect(0, 0, CW, CH);
+    ctx.drawImage(grain(), 0, 0);
+
+    // 헤드라인 (다른 카드와 같은 자리·굵기)
+    ctx.fillStyle = T.ink; ctx.textBaseline = 'alphabetic'; ctx.textAlign = 'left';
+    var title = document.getElementById('title').value, sub = document.getElementById('sub').value;
+    var ns = fit(title, 900, 92, 52, W), y = S.top + ns * 0.86;
+    ctx.font = font(900, ns); ctx.fillText(title, X0, y);
+    var ss = fit(sub, 700, 40, 26, W); y += ns * 0.22 + ss * 0.86;
+    ctx.fillStyle = T.inkSoft; ctx.font = font(700, ss); ctx.fillText(sub, X0, y);
+
+    // 버블 영역
+    var top = y + 50, footY = CH - S.bottom - 4, bottom = footY - 27 * 0.85 - 18 - 40;
+    var AW = W, AH = bottom - top;
+    if (!rows.length) return foot(footY);
+    var gap = 0.035;
+    var rs = rows.map(function (r) { return Math.sqrt(r.v); });
+    // 칸을 가장 크게 채우는 배치를 고른다 — 쌓는 비율을 몇 가지로 바꿔 보고,
+    // 다 쌓은 뒤 돌려 보며(원 모양은 그대로) 원이 가장 커지는 것을 쓴다.
+    var best = null;
+    [0.6, 0.8, 1, 1.25, 1.6].forEach(function (f) {
+      var Q = pack(rs.map(function (r) { return r * (1 + gap); }), AW / AH * f);
+      for (var t = 0; t < 180; t += 6) {
+        var c = Math.cos(t * Math.PI / 180), s2 = Math.sin(t * Math.PI / 180);
+        var R2 = Q.map(function (p) { return { x: p.x * c - p.y * s2, y: p.x * s2 + p.y * c, r: p.r }; });
+        var a0 = Infinity, a1 = -Infinity, b0 = Infinity, b1 = -Infinity;
+        R2.forEach(function (p) { a0 = Math.min(a0, p.x - p.r); a1 = Math.max(a1, p.x + p.r);
+                                  b0 = Math.min(b0, p.y - p.r); b1 = Math.max(b1, p.y + p.r); });
+        var kk = Math.min(AW / (a1 - a0), AH / (b1 - b0));
+        if (!best || kk > best.k) best = { P: R2, k: kk, minX: a0, maxX: a1, minY: b0, maxY: b1 };
+      }
+    });
+    var P = best.P, k = best.k, minX = best.minX, maxX = best.maxX, minY = best.minY, maxY = best.maxY;
+    var ox = X0 + (AW - (maxX - minX) * k) / 2 - minX * k, oy = top + (AH - (maxY - minY) * k) / 2 - minY * k;
+
+    rows.forEach(function (r, i) {
+      var cx = ox + P[i].x * k, cy = oy + P[i].y * k, R = rs[i] * k;
+      var im = logo(r.code), has = ready(im);
+      var ring = !ringOn || r.chg == null || isNaN(r.chg) ? T.flat : r.chg > 0 ? T.up : r.chg < 0 ? T.down : T.flat;
+      ctx.save();
+      if (style === 'logo') {
+        if (has) {
+          ctx.beginPath(); ctx.arc(cx, cy, R, 0, 7); ctx.clip();
+          ctx.drawImage(im, cx - R, cy - R, R * 2, R * 2);
+        } else {
+          ctx.beginPath(); ctx.arc(cx, cy, R, 0, 7); ctx.fillStyle = T.inkSoft; ctx.fill();
+          ctx.fillStyle = '#fff'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+          var fs = fit(r.name, 900, Math.round(R * 0.42), 10, R * 1.6);
+          ctx.fillText(r.name, cx, cy);
+        }
+        ctx.restore();
+        if (ringOn) { ctx.beginPath(); ctx.arc(cx, cy, R - Math.max(2, R * 0.03), 0, 7);
+          ctx.lineWidth = Math.max(4, R * 0.06); ctx.strokeStyle = ring; ctx.stroke(); }
+        return;
+      }
+      // 로고 + 이름 + 시총
+      ctx.beginPath(); ctx.arc(cx, cy, R, 0, 7);
+      ctx.fillStyle = '#ffffff'; ctx.fill();
+      ctx.lineWidth = ringOn ? Math.max(3, R * 0.045) : 1.5; ctx.strokeStyle = ringOn ? ring : T.rule; ctx.stroke();
+      ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic'; ctx.fillStyle = T.ink;
+      if (R >= 62) {
+        var ld = R * 0.78, ly = cy - R * 0.2;
+        if (has) ctx.drawImage(im, cx - ld / 2, ly - ld / 2, ld, ld);
+        else { ctx.beginPath(); ctx.arc(cx, ly, ld / 2, 0, 7); ctx.fillStyle = T.inkSoft; ctx.fill();
+          ctx.fillStyle = '#fff'; ctx.font = font(900, ld * 0.46); ctx.textBaseline = 'middle';
+          ctx.fillText(r.name[0], cx, ly + ld * 0.02); ctx.textBaseline = 'alphabetic'; ctx.fillStyle = T.ink; }
+        var nf = fit(r.name, 800, Math.round(R * 0.2), 12, R * 1.5);
+        ctx.font = font(800, nf); ctx.fillText(r.name, cx, cy + R * 0.42);
+        ctx.font = font(700, Math.round(nf * 0.86)); ctx.fillStyle = T.inkSoft;
+        ctx.fillText(money(r.v), cx, cy + R * 0.42 + nf * 1.05);
+      } else {
+        var d2 = R * 1.5;
+        if (has) ctx.drawImage(im, cx - d2 / 2, cy - d2 / 2, d2, d2);
+        else { var f2 = fit(r.name, 800, Math.round(R * 0.42), 9, R * 1.7);
+          ctx.font = font(800, f2); ctx.textBaseline = 'middle'; ctx.fillText(r.name, cx, cy); }
+      }
+      ctx.restore();
+    });
+    foot(footY);
+  }
+
+  function foot(footY) {
+    var S = T.safe;
+    ctx.strokeStyle = T.rule; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(S.left, footY - 27 * 0.85 - 18); ctx.lineTo(CW - S.right, footY - 27 * 0.85 - 18); ctx.stroke();
+    ctx.fillStyle = T.footer; ctx.font = font(700, 27);
+    ctx.textAlign = 'right'; ctx.fillText('@돈굴돈굴', CW - S.right, footY); ctx.textAlign = 'left';
+  }
+
+  ['n', 'style', 'title', 'sub', 'data', 'ring'].forEach(function (id) {
+    document.getElementById(id).addEventListener('input', draw);
+    document.getElementById(id).addEventListener('change', function () {
+      if (id === 'n') document.getElementById('title').value = '시가총액 TOP ' + this.value;
+      draw();
+    });
+  });
+  document.getElementById('dl').addEventListener('click', function () {
+    var a = document.createElement('a'); a.download = 'bubble.png'; a.href = cv.toDataURL('image/png'); a.click();
+  });
+  (document.fonts ? document.fonts.ready : Promise.resolve()).then(draw);
+  draw();
+})();
+</script>
+</body>
+</html>

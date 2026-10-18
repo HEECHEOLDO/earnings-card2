@@ -41,6 +41,7 @@ SOURCES = [
     ("audit",    "비상장 실적 (감사보고서)", "unlisted.html", ["data/unlisted/_audit_checked.json"], 4, 8),
     ("returns",  "연간 수익률", "returns.html",  ["data/returns.json"], 2, 4),
     ("buy_us",   "그때 샀다면 (해외 주가)", "buy.html", ["data/monthly_us.json"], 3, 6),
+    ("mcap",     "시가총액",    "mcap.html",     ["data/mcap.json"], 4, 7),   # 평일 장 마감 뒤에만 받는다
     ("fx",       "환율",       "buy.html",      ["data/fx_usdkrw.json"], 3, 6),
     ("guru",     "포트폴리오 (13F)", "guru.html", ["data/13f.json"], 7, 14),
 ]
@@ -96,6 +97,9 @@ def extra_note(key):
                             if re.match(r"\s*\d{8}", ln))
             return "%d곳" % n + (" / 목록 %d곳" % total if total else "")
         return "%d곳" % n
+    if key == "mcap":
+        j = jload("data/mcap.json", {})
+        return "코스피 %d · 코스닥 %d종목" % (len(j.get("kospi", [])), len(j.get("kosdaq", [])))
     if key == "returns":
         j = jload("data/returns.json", {})
         it = j.get("items", {})

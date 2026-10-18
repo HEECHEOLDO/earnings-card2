@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""모든 페이지의 메뉴를 같은 7칸으로 맞춘다 ('비상장 실적' 추가).
+"""모든 페이지의 메뉴를 같은 8칸으로 맞춘다 ('비상장 실적' · '시가총액' 추가).
 
   python3 add_tab.py            바꾸기
   python3 add_tab.py --dry      뭐가 바뀌는지만 보기
@@ -26,6 +26,7 @@ PAGES = {
     "guru.html":    "guru",
     "buy.html":     "buy",
     "unlisted.html": "unlisted",
+    "mcap.html":    "mcap",
     "status.html":  "status",     # 데이터 상태 — 메뉴 칸은 없고 메뉴 아래 한 줄로 들어간다
 }
 
@@ -53,6 +54,9 @@ ITEMS = [
     ("buy",     "./buy.html",
      '<path d="M3 12a9 9 0 103-6.7"/><path d="M3 4v5h5"/><path d="M12 8v4.5l3 1.8"/>',
      "그때 샀다면", "그때"),
+    ("mcap",    "./mcap.html",
+     '<circle cx="9" cy="10" r="6"/><circle cx="17.5" cy="15.5" r="4"/><circle cx="16" cy="5" r="2.2"/>',
+     "시가총액", "시총"),
     ("screen",  "./screen.html",
      '<circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/>',
      "종목 스크리닝", "스크리닝"),
