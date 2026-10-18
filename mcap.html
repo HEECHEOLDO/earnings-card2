@@ -371,22 +371,22 @@
       }
       // 큰 원에는 아래쪽에 이름·시총 — 바탕 없이 글자만. 글자 자리의 로고 밝기를 재서
       // 어두우면 흰 글자 + 어두운 그림자, 밝으면 검은 글자 + 흰 그림자 (어느 로고에서도 읽히게)
-      if (showNames && has && R >= 55) {
+      if (showNames && has && R >= 72) {     // 이보다 작으면 글자가 로고를 가린다
         var nf = Math.max(14, Math.min(44, Math.round(R * 0.18)));
         var vf = Math.round(nf * 0.8);
         var base = cy + R * 0.62;                       // 이름 글자 바닥선
         var light = brightness(im, 0.5 - 0.45, 0.62 - 0.12, 0.9, 0.3) > 0.62;
         var fg = light ? T.ink : '#ffffff';
-        var halo = light ? 'rgba(255,255,255,0.95)' : 'rgba(0,0,0,0.55)';
+        var halo = light ? 'rgba(255,255,255,0.9)' : 'rgba(0,0,0,0.22)';   // 그림자는 옅게 — 글자가 탁해 보이지 않게
         ctx.save();
         ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
         ctx.lineJoin = 'round';
-        ctx.shadowColor = halo; ctx.shadowBlur = nf * 0.45;
+        ctx.shadowColor = halo; ctx.shadowBlur = nf * 0.3;
         fit(r.name, 900, nf, 11, R * 1.55);
-        ctx.lineWidth = Math.max(2, nf * 0.16); ctx.strokeStyle = halo;
+        ctx.lineWidth = Math.max(1.5, nf * (light ? 0.14 : 0.06)); ctx.strokeStyle = halo;
         ctx.strokeText(r.name, cx, base); ctx.fillStyle = fg; ctx.fillText(r.name, cx, base);
         ctx.font = font(800, vf);
-        ctx.lineWidth = Math.max(2, vf * 0.16);
+        ctx.lineWidth = Math.max(1.5, vf * (light ? 0.14 : 0.06));
         ctx.strokeText(money(r.v), cx, base + vf * 1.12);
         ctx.globalAlpha = 0.92; ctx.fillText(money(r.v), cx, base + vf * 1.12);
         ctx.restore();
