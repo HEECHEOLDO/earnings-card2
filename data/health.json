@@ -1,5 +1,5 @@
 {
- "checked": "2026-10-18 02:47",
+ "checked": "2026-10-18 13:18",
  "status": "ok",
  "sources": [
   {
@@ -16,8 +16,8 @@
    "key": "us",
    "name": "해외 실적",
    "page": "us.html",
-   "last": "2026-10-17",
-   "days": 1,
+   "last": "2026-10-18",
+   "days": 0,
    "status": "ok",
    "msg": "정상",
    "note": "505종목"
@@ -46,18 +46,18 @@
    "key": "returns",
    "name": "연간 수익률",
    "page": "returns.html",
-   "last": "2026-10-17",
-   "days": 1,
+   "last": "2026-10-18",
+   "days": 0,
    "status": "ok",
    "msg": "정상",
-   "note": "국내 2,962 · 해외 67종목"
+   "note": "국내 2,962 · 해외 88종목"
   },
   {
    "key": "buy_us",
    "name": "그때 샀다면 (해외 주가)",
    "page": "buy.html",
-   "last": "2026-10-17",
-   "days": 1,
+   "last": "2026-10-18",
+   "days": 0,
    "status": "ok",
    "msg": "정상",
    "note": ""
@@ -66,8 +66,8 @@
    "key": "fx",
    "name": "환율",
    "page": "buy.html",
-   "last": "2026-10-17",
-   "days": 1,
+   "last": "2026-10-18",
+   "days": 0,
    "status": "ok",
    "msg": "정상",
    "note": ""
@@ -76,8 +76,8 @@
    "key": "guru",
    "name": "포트폴리오 (13F)",
    "page": "guru.html",
-   "last": "2026-10-17",
-   "days": 1,
+   "last": "2026-10-18",
+   "days": 0,
    "status": "ok",
    "msg": "정상",
    "note": ""
