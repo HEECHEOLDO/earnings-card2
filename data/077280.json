@@ -5,7 +5,7 @@
  "code": "077280",
  "market": "기타",
  "sector": "",
- "updated": "2026-08-27",
+ "updated": "2026-10-19",
  "annual": [
   {
    "p": 2016,
@@ -47,5 +47,6 @@
    "dps_adj": null
   }
  ],
- "quarterly": []
+ "quarterly": [],
+ "q_method": "strict"
 }

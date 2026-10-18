@@ -3,9 +3,9 @@
  "split_adjusted": false,
  "legal_name": "수성웹툰",
  "code": "084180",
- "market": "코스닥",
+ "market": "기타",
  "sector": "",
- "updated": "2026-08-28",
+ "updated": "2026-10-19",
  "annual": [
   {
    "p": 2016,
@@ -207,7 +207,8 @@
    "q": 2,
    "rev": 246.6,
    "op": 18.3,
-   "ni": 1.5
+   "ni": null
   }
- ]
+ ],
+ "q_method": "strict"
 }
