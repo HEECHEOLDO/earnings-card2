@@ -765,6 +765,9 @@
       for (i = 0; i < list.length; i++) {
         if (list[i].name.toLowerCase().indexOf(low) >= 0) return list[i];
       }
+      for (i = 0; i < list.length; i++) {
+        if ((list[i].legal_name || '').toLowerCase().indexOf(low) >= 0) return list[i];
+      }
       return null;
     },
 
@@ -780,6 +783,8 @@
         else if (name.indexOf(s) === 0) rank = 2;
         else if (c.code.indexOf(s) === 0) rank = 3;
         else if (name.indexOf(s) >= 0) rank = 4;
+        else if ((c.legal_name || '').toLowerCase().indexOf(s) === 0) rank = 5;
+        else if ((c.legal_name || '').toLowerCase().indexOf(s) >= 0) rank = 6;
         if (rank >= 0) out.push({ c: c, r: rank });
       }
       out.sort(function (a, b) { return a.r - b.r || a.c.name.localeCompare(b.c.name); });
@@ -2432,7 +2437,7 @@
     } else {
       html += sugItems.map(function (c, i) {
         return '<li role="option" data-i="' + i + '"><span>' + c.name +
-               '</span><span class="code">' + c.code + '</span></li>';
+               '</span><span class="code">' + (c.legal_name && c.legal_name !== c.name ? c.legal_name : c.code) + '</span></li>';
       }).join('');
     }
     sugBox.innerHTML = html;
