@@ -141,19 +141,18 @@
         <div><label class="f" for="n">순위</label>
           <select id="n"><option value="10">TOP 10</option><option value="20" selected>TOP 20</option><option value="30">TOP 30</option><option value="50">TOP 50</option></select></div>
       </div>
-      <label class="f" for="style">모양</label>
-      <select id="style"><option value="label" selected>로고 + 이름 + 시총</option><option value="logo">로고만 크게</option></select>
       <label class="f" for="title">제목</label>
       <input type="text" id="title" value="시가총액 TOP 20">
       <label class="f" for="sub">아래 줄</label>
       <input type="text" id="sub" value="코스피">
-      <label class="chk"><input type="checkbox" id="ring" checked> 테두리를 올해 등락률 색으로 (오름 빨강 · 내림 파랑)</label>
+      <label class="chk"><input type="checkbox" id="names" checked> 큰 원에 이름·시총 표시</label>
+      <label class="chk"><input type="checkbox" id="ring"> 테두리를 올해 등락률 색으로 (오름 빨강 · 내림 파랑)</label>
       <details><summary>종목 직접 고치기</summary>
         <p class="note">한 줄에 <b>코드 이름 시가총액(조원) 올해등락%</b>. 고치면 카드가 바로 바뀝니다. 시장이나 순위를 다시 고르면 받아둔 값으로 돌아갑니다.</p>
         <textarea id="data" spellcheck="false"></textarea>
       </details>
       <button class="btn" id="dl">PNG 내려받기</button>
-      <p class="note">원의 <b>넓이</b>가 시가총액에 비례합니다. ETF·우선주는 빼고 보통주만 셉니다. 작은 원에는 로고만 들어갑니다.</p>
+      <p class="note">로고 원의 <b>넓이</b>가 시가총액에 비례합니다. ETF·우선주는 빼고 보통주만 셉니다. 작은 원에는 로고만 들어갑니다.</p>
     </div>
   </div>
 </div>
@@ -204,8 +203,9 @@
   function autoText() {
     var mk = document.getElementById('mk').value, n = document.getElementById('n').value;
     document.getElementById('title').value = '시가총액 TOP ' + n;
-    var d = DATA && DATA.asof ? DATA.asof.slice(5).replace('-', '.') + ' 기준' : '샘플';
-    document.getElementById('sub').value = (mk === 'kosdaq' ? '코스닥' : '코스피') + ' · ' + d;
+    var a = DATA && DATA.asof ? DATA.asof.split('-') : null;
+    var d = a ? " ('" + a[0].slice(2) + '년 ' + (+a[1]) + '월 ' + (+a[2]) + '일 기준)' : ' (샘플)';
+    document.getElementById('sub').value = (mk === 'kosdaq' ? '코스닥' : '코스피') + d;
   }
 
   function font(w, s) { return w + ' ' + s + 'px "Noto Sans KR"'; }
@@ -290,7 +290,7 @@
 
   function draw() {
     var all = parse(), n = +document.getElementById('n').value;
-    var rows = all.slice(0, n), style = document.getElementById('style').value;
+    var rows = all.slice(0, n), showNames = document.getElementById('names').checked;
     var ringOn = document.getElementById('ring').checked;
     var S = T.safe, X0 = S.left, W = CW - S.left - S.right;
 
@@ -334,43 +334,42 @@
       var im = logo(r.code), has = ready(im);
       var ring = !ringOn || r.chg == null || isNaN(r.chg) ? T.flat : r.chg > 0 ? T.up : r.chg < 0 ? T.down : T.flat;
       ctx.save();
-      if (style === 'logo') {
-        if (has) {
-          ctx.beginPath(); ctx.arc(cx, cy, R, 0, 7); ctx.clip();
-          ctx.drawImage(im, cx - R, cy - R, R * 2, R * 2);
-        } else {
-          ctx.beginPath(); ctx.arc(cx, cy, R, 0, 7); ctx.fillStyle = T.inkSoft; ctx.fill();
-          ctx.fillStyle = '#fff'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-          var fs = fit(r.name, 900, Math.round(R * 0.42), 10, R * 1.6);
-          ctx.fillText(r.name, cx, cy);
-        }
-        ctx.restore();
-        if (ringOn) { ctx.beginPath(); ctx.arc(cx, cy, R - Math.max(2, R * 0.03), 0, 7);
-          ctx.lineWidth = Math.max(4, R * 0.06); ctx.strokeStyle = ring; ctx.stroke(); }
-        return;
-      }
-      // 로고 + 이름 + 시총
-      ctx.beginPath(); ctx.arc(cx, cy, R, 0, 7);
-      ctx.fillStyle = '#ffffff'; ctx.fill();
-      ctx.lineWidth = ringOn ? Math.max(3, R * 0.045) : 1.5; ctx.strokeStyle = ringOn ? ring : T.rule; ctx.stroke();
-      ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic'; ctx.fillStyle = T.ink;
-      if (R >= 62) {
-        var ld = R * 0.78, ly = cy - R * 0.2;
-        if (has) ctx.drawImage(im, cx - ld / 2, ly - ld / 2, ld, ld);
-        else { ctx.beginPath(); ctx.arc(cx, ly, ld / 2, 0, 7); ctx.fillStyle = T.inkSoft; ctx.fill();
-          ctx.fillStyle = '#fff'; ctx.font = font(900, ld * 0.46); ctx.textBaseline = 'middle';
-          ctx.fillText(r.name[0], cx, ly + ld * 0.02); ctx.textBaseline = 'alphabetic'; ctx.fillStyle = T.ink; }
-        var nf = fit(r.name, 800, Math.round(R * 0.2), 12, R * 1.5);
-        ctx.font = font(800, nf); ctx.fillText(r.name, cx, cy + R * 0.42);
-        ctx.font = font(700, Math.round(nf * 0.86)); ctx.fillStyle = T.inkSoft;
-        ctx.fillText(money(r.v), cx, cy + R * 0.42 + nf * 1.05);
-      } else {
-        var d2 = R * 1.5;
-        if (has) ctx.drawImage(im, cx - d2 / 2, cy - d2 / 2, d2, d2);
-        else { var f2 = fit(r.name, 800, Math.round(R * 0.42), 9, R * 1.7);
-          ctx.font = font(800, f2); ctx.textBaseline = 'middle'; ctx.fillText(r.name, cx, cy); }
+      // 로고가 원을 꽉 채운다 — 원의 넓이 = 시가총액. 흰 바탕·바깥 테두리 없음.
+      ctx.beginPath(); ctx.arc(cx, cy, R, 0, 7); ctx.clip();
+      if (has) {
+        ctx.drawImage(im, cx - R, cy - R, R * 2, R * 2);
+      } else {                                // 로고 파일이 없으면 회색 원에 이름
+        ctx.fillStyle = T.inkSoft; ctx.fillRect(cx - R, cy - R, R * 2, R * 2);
+        ctx.fillStyle = '#fff'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+        fit(r.name, 900, Math.round(R * 0.42), 9, R * 1.6);
+        ctx.fillText(r.name, cx, cy);
       }
       ctx.restore();
+      if (ringOn) {                           // 크기는 그대로, 원 안쪽 가장자리에만 색
+        var lw = Math.max(3, R * 0.05);
+        ctx.beginPath(); ctx.arc(cx, cy, R - lw / 2, 0, 7);
+        ctx.lineWidth = lw; ctx.strokeStyle = ring; ctx.stroke();
+      }
+      // 큰 원에는 아래쪽에 이름·시총 이름표 (삼성 계열처럼 로고가 같은 회사를 구별)
+      if (showNames && has && R >= 55) {
+        var nf = Math.max(13, Math.min(40, Math.round(R * 0.17)));
+        var vf = Math.round(nf * 0.82);
+        ctx.font = font(800, nf);
+        var t1 = r.name, t2 = money(r.v);
+        var w1 = ctx.measureText(t1).width; ctx.font = font(700, vf);
+        var w2 = ctx.measureText(t2).width;
+        var pw = Math.min(Math.max(w1, w2) + nf * 1.2, R * 1.7), ph = nf + vf + nf * 0.75;
+        var py = cy + R * 0.86 - ph;          // 원 아래쪽 안
+        ctx.fillStyle = 'rgba(255,255,255,0.94)';
+        ctx.beginPath();
+        if (ctx.roundRect) ctx.roundRect(cx - pw / 2, py, pw, ph, ph * 0.3); else ctx.rect(cx - pw / 2, py, pw, ph);
+        ctx.fill();
+        ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
+        ctx.fillStyle = T.ink; fit(t1, 800, nf, 10, pw - nf * 0.6);
+        ctx.fillText(t1, cx, py + nf * 0.38 + nf * 0.86);
+        ctx.fillStyle = T.inkSoft; ctx.font = font(700, vf);
+        ctx.fillText(t2, cx, py + nf * 0.38 + nf + vf * 0.95);
+      }
     });
     foot(footY);
   }
@@ -383,7 +382,7 @@
     ctx.textAlign = 'right'; ctx.fillText('@돈굴돈굴', CW - S.right, footY); ctx.textAlign = 'left';
   }
 
-  ['style', 'title', 'sub', 'data', 'ring'].forEach(function (id) {
+  ['names', 'title', 'sub', 'data', 'ring'].forEach(function (id) {
     document.getElementById(id).addEventListener('input', draw);
     document.getElementById(id).addEventListener('change', draw);
   });
