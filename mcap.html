@@ -137,7 +137,7 @@
       <h3>카드 만들기</h3>
       <div class="row">
         <div><label class="f" for="mk">시장</label>
-          <select id="mk"><option value="kospi" selected>코스피</option><option value="kosdaq">코스닥</option></select></div>
+          <select id="mk"><option value="kospi" selected>코스피</option><option value="kosdaq">코스닥</option><option value="all">국내 전체 (코스피+코스닥)</option></select></div>
         <div><label class="f" for="n">순위</label>
           <select id="n"><option value="10">TOP 10</option><option value="20" selected>TOP 20</option><option value="30">TOP 30</option><option value="50">TOP 50</option></select></div>
       </div>
@@ -191,8 +191,11 @@
   var DATA = null;
   function fill() {
     var mk = document.getElementById('mk').value, lines;
-    if (DATA && DATA[mk] && DATA[mk].length) {
-      lines = DATA[mk].map(function (r) {
+    var src = mk === 'all' && DATA
+      ? (DATA.kospi || []).concat(DATA.kosdaq || []).sort(function (a, b) { return b.cap - a.cap; })
+      : DATA && DATA[mk];
+    if (src && src.length) {
+      lines = src.map(function (r) {
         return r.code + ' ' + r.name.replace(/\s+/g, '') + ' ' + (r.cap / 10000).toFixed(2) +
           (r.ytd != null ? ' ' + (r.ytd > 0 ? '+' : '') + r.ytd : '');
       });
@@ -205,7 +208,7 @@
     document.getElementById('title').value = '시가총액 TOP ' + n;
     var a = DATA && DATA.asof ? DATA.asof.split('-') : null;
     var d = a ? " ('" + a[0].slice(2) + '년 ' + (+a[1]) + '월 ' + (+a[2]) + '일 기준)' : ' (샘플)';
-    document.getElementById('sub').value = (mk === 'kosdaq' ? '코스닥' : '코스피') + d;
+    document.getElementById('sub').value = { kospi: '코스피', kosdaq: '코스닥', all: '국내 주식' }[mk] + d;
   }
 
   function font(w, s) { return w + ' ' + s + 'px "Noto Sans KR"'; }
