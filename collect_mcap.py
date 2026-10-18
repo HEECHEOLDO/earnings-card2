@@ -85,10 +85,22 @@ def from_html(sosok):
     return out
 
 
+def last_close():
+    """값이 어느 날 종가인지. 주말에 받으면 금요일, 평일 장 마감(15:30) 전에 받으면 전 영업일.
+    공휴일은 모른다 — 공휴일에 받으면 그 전날 값인데 날짜만 공휴일로 찍힌다."""
+    now = datetime.now(KST)
+    d = now.date()
+    if d.weekday() < 5 and (now.hour, now.minute) < (15, 30):
+        d -= timedelta(days=1)
+    while d.weekday() >= 5:
+        d -= timedelta(days=1)
+    return d.isoformat()
+
+
 def main():
     if "--show" in sys.argv:
         j = json.load(open(OUT, encoding="utf-8"))
-        log("%s 기준" % j.get("asof"))
+        log("%s 종가 기준 (받은 날 %s)" % (j.get("asof"), j.get("updated")))
         for k, _, _ in MARKETS:
             log("\n[%s]" % k)
             for i, r in enumerate(j.get(k, [])[:50], 1):
@@ -137,7 +149,7 @@ def main():
         out["source"] = src
         log("%s %d종목 (%s) · 1위 %s %s억" % (mk, len(out[key]), src, keep[0]["name"], format(round(keep[0]["cap"]), ",")))
 
-    out["asof"] = out["updated"]              # 장중에 돌면 그 시각 값, 장 마감 뒤면 그날 종가
+    out["asof"] = last_close()
     os.makedirs("data", exist_ok=True)
     with open(OUT, "w", encoding="utf-8") as f:
         json.dump(out, f, ensure_ascii=False, indent=1)
