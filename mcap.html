@@ -234,8 +234,9 @@
     document.getElementById('title').value = gpart[0] + '시가총액 TOP ' + Math.min(+n, cnt || +n);
     var a = DATA && DATA.asof ? DATA.asof.split('-') : null;
     var d = a ? " ('" + a[0].slice(2) + '년 ' + (+a[1]) + '월 ' + (+a[2]) + '일 기준)' : ' (샘플)';
-    document.getElementById('sub').value = { kospi: '코스피', kosdaq: '코스닥', all: '국내 주식', industry: '업종', theme: '테마' }[mk] +
-      (gpart && gpart[1] ? ' · ' + gpart[1] : '') + d;
+    var lab = { kospi: '코스피', kosdaq: '코스닥', all: '국내 주식' }[mk] || '';   // 업종·테마는 이름표 없이
+    var extra = gpart && gpart[1] ? gpart[1] : '';
+    document.getElementById('sub').value = ([lab, extra].filter(Boolean).join(' · ') + d).trim();
   }
 
   function font(w, s) { return w + ' ' + s + 'px "Noto Sans KR"'; }
