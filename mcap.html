@@ -352,7 +352,7 @@
     var tm = title.match(/^(.*\S)( 시가총액)$/);
     if (tm) { ctx.font = font(900, ns); ctx.fillText(tm[1], X0, y);
       var tw = ctx.measureText(tm[1]).width;
-      ctx.font = font(900, ns); ctx.fillStyle = '#9AA0A8'; ctx.fillText(tm[2], X0 + tw, y); ctx.fillStyle = T.ink; }
+      ctx.font = font(400, ns); ctx.fillStyle = T.inkSoft; ctx.fillText(tm[2], X0 + tw, y); ctx.fillStyle = T.ink; }
     else { ctx.font = font(900, ns); ctx.fillText(title, X0, y); }
     if (sub) { var ss = fit(sub, 700, 40, 26, W); y += ns * 0.22 + ss * 0.86;
     ctx.fillStyle = T.inkSoft; ctx.font = font(700, ss); ctx.fillText(sub, X0, y); }
