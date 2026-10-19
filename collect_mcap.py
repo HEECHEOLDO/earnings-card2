@@ -5,6 +5,7 @@
   python3 collect_mcap.py            받기 (네이버 금융, 키 필요 없음 · 호출 약 400회 · 3~5분)
   python3 collect_mcap.py --show     받아둔 파일만 보기
   python3 collect_mcap.py --probe    네이버 페이지 모양만 확인 (호출 6회) → mcap_probe.txt
+  python3 collect_mcap.py --rename   받아둔 파일의 업종 이름만 띄어 쓴 이름으로 (호출 0회)
 
 받는 것
   1. 코스피·코스닥 전 종목 시가총액 (네이버 시가총액 순위표, 시장마다 약 40쪽)
@@ -189,6 +190,34 @@ def group_members(kind, no):
     return list(dict.fromkeys(re.findall(r"/item/main\.naver\?code=(\d{6})", t)))
 
 
+# 네이버 업종 이름은 띄어쓰기가 없다 (반도체와반도체장비). 화면·카드에는 띄어 쓴 이름을 쓴다.
+# 붙여 쓴 이름이 열쇠라서, 네이버가 새 업종을 만들면 그 업종만 네이버 이름 그대로 나온다.
+UPJONG_NAME = {re.sub(r"[\s]", "", n): n for n in [
+    "전기제품", "화학", "에너지 장비 및 서비스", "비철금속", "IT 서비스",
+    "백화점과 일반 상점", "자동차", "철강", "기계", "통신 장비",
+    "전자 장비와 기기", "건강관리 기술", "방송과 엔터테인먼트", "제약", "생물공학",
+    "전기 장비", "판매 업체", "반도체와 반도체 장비", "자동차 부품", "항공사",
+    "석유와 가스", "우주항공과 국방", "출판", "전기 유틸리티", "건설",
+    "핸드셋", "창업투자", "생명보험", "건강관리 장비와 용품", "복합 유틸리티",
+    "복합기업", "손해보험", "도로와 철도 운송", "건강관리 업체 및 서비스", "무역회사와 판매 업체",
+    "게임 엔터테인먼트", "생명과학 도구 및 서비스", "가스 유틸리티", "증권", "디스플레이 장비 및 부품",
+    "포장재", "해운사", "전자제품", "양방향 미디어와 서비스", "건축자재",
+    "광고", "건축제품", "항공화물 운송과 물류", "교육 서비스", "호텔, 레스토랑, 레저",
+    "전문 소매", "다각화된 소비자 서비스", "상업 서비스와 공급품", "음료", "무선 통신 서비스",
+    "인터넷과 카탈로그 소매", "식품", "디스플레이 패널", "기타", "소프트웨어",
+    "다각화된 통신 서비스", "부동산", "종이와 목재", "가구", "문구류",
+    "섬유, 의류, 신발, 호화품", "운송 인프라", "레저용 장비와 제품", "담배", "조선",
+    "은행", "화장품", "가정용 기기와 용품", "카드", "컴퓨터와 주변기기",
+    "식품과 기본 식료품 소매", "사무용 전자제품", "가정용품", "기타 금융",
+]}
+
+
+def nice_name(kind, name):
+    if kind in ("upjong", "industry"):
+        return UPJONG_NAME.get(re.sub(r"\s", "", name), name)
+    return name
+
+
 # ---- 네이버 증권 모바일 JSON (새 네이버 증권 화면이 쓰는 데이터) ----
 MKIND = {"upjong": "industry", "theme": "theme"}
 
@@ -301,7 +330,7 @@ def groups(kind, keep, caps):
             continue
         codes.sort(key=lambda c: -caps[c]["c"])
         if codes:
-            out.append({"no": no, "name": name, "n": len(codes),
+            out.append({"no": no, "name": nice_name(kind, name), "n": len(codes),
                         "sum": round(sum(caps[c]["c"] for c in codes)), "codes": codes[:TOP_GROUP]})
         time.sleep(0.12)
     out.sort(key=lambda g: -g["sum"])
@@ -372,6 +401,16 @@ def probe():
 def main():
     if "--probe" in sys.argv:
         return probe()
+    if "--rename" in sys.argv:                 # 받아둔 파일의 업종 이름만 띄어 쓴 이름으로 (호출 0회)
+        j = json.load(open(OUT, encoding="utf-8"))
+        n = 0
+        for g in (j.get("groups") or {}).get("industry", []):
+            new = nice_name("industry", g["name"])
+            n += new != g["name"]
+            g["name"] = new
+        with open(OUT, "w", encoding="utf-8") as f:
+            json.dump(j, f, ensure_ascii=False, separators=(",", ":"))
+        return log("업종 이름 %d개를 고쳤습니다 (호출 0회)" % n)
     if "--show" in sys.argv:
         j = json.load(open(OUT, encoding="utf-8"))
         log("%s 종가 기준 (받은 날 %s)" % (j.get("asof"), j.get("updated")))
