@@ -231,12 +231,13 @@
       if (inner) gname += '\u0000' + inner + '\u0000';   // 아래 줄로 넘길 표시
     }
     var gpart = gname.split('\u0000');      // [이름, 괄호 안, '']
-    document.getElementById('title').value = gpart[0] + '시가총액 TOP ' + Math.min(+n, cnt || +n);
+    document.getElementById('title').value = gpart[0] + '시가총액';
     var a = DATA && DATA.asof ? DATA.asof.split('-') : null;
     var d = a ? " ('" + a[0].slice(2) + '년 ' + (+a[1]) + '월 ' + (+a[2]) + '일 기준)' : ' (샘플)';
     var lab = '';                              // 시장·업종·테마 이름은 제목에, 아래 줄은 날짜만
     var extra = gpart && gpart[1] ? gpart[1] : '';
-    document.getElementById('sub').value = ([lab, extra].filter(Boolean).join(' · ') + d).trim();
+    document.getElementById('sub').value = extra;
+    window.MCAP_FOOT = a ? a[0] + '년 ' + (+a[1]) + '월 ' + (+a[2]) + '일 기준' : '';
   }
 
   function font(w, s) { return w + ' ' + s + 'px "Noto Sans KR"'; }
@@ -348,9 +349,13 @@
     ctx.fillStyle = T.ink; ctx.textBaseline = 'alphabetic'; ctx.textAlign = 'left';
     var title = document.getElementById('title').value, sub = document.getElementById('sub').value;
     var ns = fit(title, 900, 92, 36, W), y = S.top + ns * 0.86;
-    ctx.font = font(900, ns); ctx.fillText(title, X0, y);
-    var ss = fit(sub, 700, 40, 26, W); y += ns * 0.22 + ss * 0.86;
-    ctx.fillStyle = T.inkSoft; ctx.font = font(700, ss); ctx.fillText(sub, X0, y);
+    var tm = title.match(/^(.*\S)( 시가총액)$/);
+    if (tm) { ctx.font = font(900, ns); ctx.fillText(tm[1], X0, y);
+      var tw = ctx.measureText(tm[1]).width;
+      ctx.font = font(400, ns); ctx.fillStyle = T.inkSoft; ctx.fillText(tm[2], X0 + tw, y); ctx.fillStyle = T.ink; }
+    else { ctx.font = font(900, ns); ctx.fillText(title, X0, y); }
+    if (sub) { var ss = fit(sub, 700, 40, 26, W); y += ns * 0.22 + ss * 0.86;
+    ctx.fillStyle = T.inkSoft; ctx.font = font(700, ss); ctx.fillText(sub, X0, y); }
 
     // 버블 영역
     var top = y + 50, footY = CH - S.bottom - 4, bottom = footY - 27 * 0.85 - 18 - 40;
@@ -428,6 +433,7 @@
     ctx.strokeStyle = T.rule; ctx.lineWidth = 2;
     ctx.beginPath(); ctx.moveTo(S.left, footY - 27 * 0.85 - 18); ctx.lineTo(CW - S.right, footY - 27 * 0.85 - 18); ctx.stroke();
     ctx.fillStyle = T.footer; ctx.font = font(700, 27);
+    ctx.textAlign = 'left'; ctx.fillText(window.MCAP_FOOT || '', S.left, footY);
     ctx.textAlign = 'right'; ctx.fillText('@돈굴돈굴', CW - S.right, footY); ctx.textAlign = 'left';
   }
 
