@@ -12,7 +12,8 @@
   3. 테마 목록과 테마별 종목 (네이버 테마별 시세, 약 260개 테마)
 업종·테마 안의 종목은 1번의 시가총액으로 줄 세운다.
 
-국내 실적 목록(data/index.json)에 있는 보통주만 남긴다 — ETF·우선주·스팩은 빠진다.
+국내 실적 목록(data/index.json)과 실적 수집에서 빠진 금융사(data/_failed.json)의 보통주만 남긴다
+— ETF·우선주·스팩은 빠진다.
 올해 등락률(원 테두리 색)은 연간 수익률 자료(data/returns.json)의 올해 값을 쓴다.
 시가총액 순위표를 못 받으면 아무것도 바꾸지 않고 끝낸다 (전날 파일이 그대로 남는다).
 업종·테마만 실패하면 전날 받은 업종·테마를 그대로 둔다.
@@ -407,7 +408,15 @@ def main():
         log("!! 시가총액을 받지 못했습니다 (%s). 파일을 바꾸지 않습니다." % e)
         sys.exit(1)
     bad = re.compile(r"(우|우B|\d우[BC]?|스팩\d*호?)$|^(KODEX|TIGER|ACE|SOL|RISE|HANARO|PLUS|KIWOOM|KBSTAR|ARIRANG)")
-    keep = {c for c, v in caps.items() if (c in listed if listed else not bad.search(v["n"]))}
+    # 국내 실적 목록(data/index.json)만 쓰면 은행·보험·증권처럼 DART 재무 API 에 숫자가 없어
+    # 실적 수집에 실패한 회사(data/_failed.json)까지 빠진다 — KB금융·신한지주 등. 그래서 둘 다 넣는다.
+    # ETF·ETN 은 두 목록 어디에도 없어 자연히 빠지고, 우선주·스팩은 이름으로 한 번 더 거른다.
+    try:
+        tried = set(json.load(open("data/_failed.json", encoding="utf-8")))
+    except Exception:                         # noqa: BLE001
+        tried = set()
+    base = listed | tried
+    keep = {c for c, v in caps.items() if (c in base if base else True) and not bad.search(v["n"])}
     for c in keep:
         yv = (ret.get(c, {}).get("years") or {}).get(year)
         caps[c]["y"] = round(float(yv), 1) if yv is not None else None
