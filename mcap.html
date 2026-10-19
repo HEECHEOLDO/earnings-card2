@@ -137,10 +137,12 @@
       <h3>카드 만들기</h3>
       <div class="row">
         <div><label class="f" for="mk">시장</label>
-          <select id="mk"><option value="kospi" selected>코스피</option><option value="kosdaq">코스닥</option><option value="all">국내 전체 (코스피+코스닥)</option></select></div>
+          <select id="mk"><option value="kospi" selected>코스피</option><option value="kosdaq">코스닥</option><option value="all">국내 전체 (코스피+코스닥)</option><option value="industry">업종별…</option><option value="theme">테마별…</option></select></div>
         <div><label class="f" for="n">순위</label>
           <select id="n"><option value="10">TOP 10</option><option value="20" selected>TOP 20</option><option value="30">TOP 30</option><option value="50">TOP 50</option></select></div>
       </div>
+      <div id="grp-wrap" style="display:none"><label class="f" for="grp" id="grp-label">업종</label>
+        <select id="grp"></select></div>
       <label class="f" for="title">제목</label>
       <input type="text" id="title" value="시가총액 TOP 20">
       <label class="f" for="sub">아래 줄</label>
@@ -194,6 +196,21 @@
     var src = mk === 'all' && DATA
       ? (DATA.kospi || []).concat(DATA.kosdaq || []).sort(function (a, b) { return b.cap - a.cap; })
       : DATA && DATA[mk];
+    var wrap = document.getElementById('grp-wrap'), gsel = document.getElementById('grp');
+    var isGrp = mk === 'industry' || mk === 'theme';
+    wrap.style.display = isGrp ? '' : 'none';
+    if (isGrp) {
+      var gs = (DATA && DATA.groups && DATA.groups[mk]) || [];
+      document.getElementById('grp-label').textContent = mk === 'industry' ? '업종' : '테마';
+      if (gsel.dataset.kind !== mk) {          // 목록은 종류가 바뀔 때만 다시 채운다
+        gsel.innerHTML = gs.map(function (g, i) {
+          return '<option value="' + i + '">' + g.name + ' · ' + g.n + '</option>'; }).join('');
+        gsel.dataset.kind = mk;
+      }
+      var g = gs[+gsel.value || 0];
+      src = g ? g.codes.map(function (c) { var s = DATA.stocks[c] || {};
+        return { code: c, name: s.n || c, cap: s.c || 0, ytd: s.y }; }) : [];
+    }
     if (src && src.length) {
       lines = src.map(function (r) {
         return r.code + ' ' + r.name.replace(/\s+/g, '') + ' ' + (r.cap / 10000).toFixed(2) +
@@ -205,10 +222,16 @@
   }
   function autoText() {
     var mk = document.getElementById('mk').value, n = document.getElementById('n').value;
-    document.getElementById('title').value = '시가총액 TOP ' + n;
+    var cnt = document.getElementById('data').value.split('\n').filter(function (l) { return l.trim(); }).length;
+    var gname = '';
+    if (mk === 'industry' || mk === 'theme') {
+      var gg = ((DATA && DATA.groups && DATA.groups[mk]) || [])[+document.getElementById('grp').value || 0];
+      gname = gg ? gg.name + ' ' : '';
+    }
+    document.getElementById('title').value = gname + '시가총액 TOP ' + Math.min(+n, cnt || +n);
     var a = DATA && DATA.asof ? DATA.asof.split('-') : null;
     var d = a ? " ('" + a[0].slice(2) + '년 ' + (+a[1]) + '월 ' + (+a[2]) + '일 기준)' : ' (샘플)';
-    document.getElementById('sub').value = { kospi: '코스피', kosdaq: '코스닥', all: '국내 주식' }[mk] + d;
+    document.getElementById('sub').value = { kospi: '코스피', kosdaq: '코스닥', all: '국내 주식', industry: '업종', theme: '테마' }[mk] + d;
   }
 
   function font(w, s) { return w + ' ' + s + 'px "Noto Sans KR"'; }
@@ -409,6 +432,7 @@
   });
   document.getElementById('n').addEventListener('change', function () { autoText(); draw(); });
   document.getElementById('mk').addEventListener('change', function () { fill(); draw(); });
+  document.getElementById('grp').addEventListener('change', function () { fill(); draw(); });
   document.getElementById('btn-mode').addEventListener('click', function () {
     var r = document.documentElement;
     r.setAttribute('data-mode', r.getAttribute('data-mode') === 'dark' ? 'light' : 'dark');
