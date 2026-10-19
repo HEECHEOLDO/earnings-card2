@@ -223,7 +223,7 @@
   function autoText() {
     var mk = document.getElementById('mk').value, n = document.getElementById('n').value;
     var cnt = document.getElementById('data').value.split('\n').filter(function (l) { return l.trim(); }).length;
-    var gname = '';
+    var gname = { kospi: '코스피 ', kosdaq: '코스닥 ', all: '국내주식 ' }[mk] || '';
     if (mk === 'industry' || mk === 'theme') {
       var gg = ((DATA && DATA.groups && DATA.groups[mk]) || [])[+document.getElementById('grp').value || 0];
       gname = gg ? (gg.short || gg.name).replace(/\s*\([^)]*\)\s*/g, ' ').trim() + ' ' : '';
@@ -234,7 +234,7 @@
     document.getElementById('title').value = gpart[0] + '시가총액 TOP ' + Math.min(+n, cnt || +n);
     var a = DATA && DATA.asof ? DATA.asof.split('-') : null;
     var d = a ? " ('" + a[0].slice(2) + '년 ' + (+a[1]) + '월 ' + (+a[2]) + '일 기준)' : ' (샘플)';
-    var lab = { kospi: '코스피', kosdaq: '코스닥', all: '국내 주식' }[mk] || '';   // 업종·테마는 이름표 없이
+    var lab = '';                              // 시장·업종·테마 이름은 제목에, 아래 줄은 날짜만
     var extra = gpart && gpart[1] ? gpart[1] : '';
     document.getElementById('sub').value = ([lab, extra].filter(Boolean).join(' · ') + d).trim();
   }
