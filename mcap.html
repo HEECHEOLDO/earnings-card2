@@ -226,7 +226,7 @@
     var gname = '';
     if (mk === 'industry' || mk === 'theme') {
       var gg = ((DATA && DATA.groups && DATA.groups[mk]) || [])[+document.getElementById('grp').value || 0];
-      gname = gg ? gg.name.replace(/\s*\([^)]*\)\s*/g, ' ').trim() + ' ' : '';
+      gname = gg ? (gg.short || gg.name).replace(/\s*\([^)]*\)\s*/g, ' ').trim() + ' ' : '';
       var inner = gg ? (gg.name.match(/\(([^)]*)\)/) || [])[1] : '';
       if (inner) gname += '\u0000' + inner + '\u0000';   // 아래 줄로 넘길 표시
     }

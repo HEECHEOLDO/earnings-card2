@@ -212,6 +212,44 @@ UPJONG_NAME = {re.sub(r"[\s]", "", n): n for n in [
 ]}
 
 
+# 카드 제목용 짧은 이름 — 고르는 목록에는 위의 전체 이름, 카드 제목에는 이 이름을 쓴다.
+# 여기 없는 업종은 전체 이름 그대로. 바꾸고 싶으면 오른쪽만 고치면 된다.
+UPJONG_SHORT = {
+    "반도체와 반도체 장비": "반도체",
+    "전자 장비와 기기": "전자 장비",
+    "우주항공과 국방": "방산·우주항공",
+    "석유와 가스": "석유·가스",
+    "에너지 장비 및 서비스": "에너지 장비",
+    "디스플레이 장비 및 부품": "디스플레이 장비",
+    "건강관리 장비와 용품": "의료기기",
+    "건강관리 업체 및 서비스": "헬스케어 서비스",
+    "생명과학 도구 및 서비스": "바이오 도구",
+    "방송과 엔터테인먼트": "방송·엔터",
+    "게임 엔터테인먼트": "게임",
+    "양방향 미디어와 서비스": "인터넷 플랫폼",
+    "섬유, 의류, 신발, 호화품": "패션·의류",
+    "호텔, 레스토랑, 레저": "호텔·레저",
+    "백화점과 일반 상점": "백화점·유통",
+    "식품과 기본 식료품 소매": "식료품 소매",
+    "인터넷과 카탈로그 소매": "온라인 쇼핑",
+    "다각화된 통신 서비스": "통신 서비스",
+    "다각화된 소비자 서비스": "소비자 서비스",
+    "무선 통신 서비스": "무선 통신",
+    "항공화물 운송과 물류": "물류",
+    "도로와 철도 운송": "육상 운송",
+    "무역회사와 판매 업체": "종합상사",
+    "상업 서비스와 공급품": "상업 서비스",
+    "컴퓨터와 주변기기": "컴퓨터",
+    "가정용 기기와 용품": "생활가전",
+    "레저용 장비와 제품": "레저용품",
+    "건강관리 기술": "헬스케어 IT",
+}
+
+
+def short_name(name):
+    return UPJONG_SHORT.get(name, "")
+
+
 def nice_name(kind, name):
     if kind in ("upjong", "industry"):
         return UPJONG_NAME.get(re.sub(r"\s", "", name), name)
@@ -330,7 +368,8 @@ def groups(kind, keep, caps):
             continue
         codes.sort(key=lambda c: -caps[c]["c"])
         if codes:
-            out.append({"no": no, "name": nice_name(kind, name), "n": len(codes),
+            out.append({"no": no, "name": nice_name(kind, name), "short": short_name(nice_name(kind, name)),
+                        "n": len(codes),
                         "sum": round(sum(caps[c]["c"] for c in codes)), "codes": codes[:TOP_GROUP]})
         time.sleep(0.12)
     out.sort(key=lambda g: -g["sum"])
@@ -406,11 +445,13 @@ def main():
         n = 0
         for g in (j.get("groups") or {}).get("industry", []):
             new = nice_name("industry", g["name"])
-            n += new != g["name"]
+            n += new != g["name"] or g.get("short") != short_name(new)
             g["name"] = new
+            g["short"] = short_name(new)
         with open(OUT, "w", encoding="utf-8") as f:
             json.dump(j, f, ensure_ascii=False, separators=(",", ":"))
-        return log("업종 이름 %d개를 고쳤습니다 (호출 0회)" % n)
+        return log("업종 이름 %d개를 고쳤습니다 (짧은 이름 %d개 · 호출 0회)"
+                   % (n, sum(1 for g in (j.get("groups") or {}).get("industry", []) if g.get("short"))))
     if "--show" in sys.argv:
         j = json.load(open(OUT, encoding="utf-8"))
         log("%s 종가 기준 (받은 날 %s)" % (j.get("asof"), j.get("updated")))
