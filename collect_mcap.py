@@ -272,9 +272,10 @@ def m_group_members(kind, no):
         for lst in _lists(j):
             for s in lst:
                 c = _pick(s, "itemCode", "code", "stockCode")
-                if c and re.fullmatch(r"\d{6}", str(c)) and c not in codes:
+                # 종목코드는 6자리 — 2024년부터 새로 상장한 곳은 영문이 섞인다 (예: 0088M0)
+                if c and re.fullmatch(r"[0-9A-Z]{6}", str(c)) and c not in codes:
                     codes.append(c); got += 1
-        if got < 100:
+        if not got:                            # 새 종목이 더 안 나오면 끝 (100개 넘는 업종은 2쪽 이상)
             break
         time.sleep(0.12)
     return codes
