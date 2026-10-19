@@ -414,7 +414,23 @@
     r.setAttribute('data-mode', r.getAttribute('data-mode') === 'dark' ? 'light' : 'dark');
   });
   document.getElementById('dl').addEventListener('click', function () {
-    var a = document.createElement('a'); a.download = document.getElementById('title').value.replace(/\s+/g, '_') + '_' + document.getElementById('mk').value + '.png'; a.href = cv.toDataURL('image/png'); a.click();
+    // 다른 카드와 같이 3배(3240×4050)로 다시 그려 파일로 저장한다.
+    // data: 주소로 넘기면 사파리·파이어폭스에서 큰 그림이 안 받아져 Blob 으로 넘긴다.
+    var SCALE = 3, big = document.createElement('canvas');
+    big.width = CW * SCALE; big.height = CH * SCALE;
+    var keep = ctx;
+    ctx = big.getContext('2d'); ctx.scale(SCALE, SCALE);
+    try { draw(); } finally { ctx = keep; }
+    var mkEl = document.getElementById('mk');
+    var name = (document.getElementById('title').value || '시가총액').replace(/[\s\/\\:*?"<>|]+/g, '_') +
+               (mkEl ? '_' + mkEl.value : '') + '_' + big.width + 'x' + big.height + '.png';
+    big.toBlob(function (blob) {
+      if (!blob) { alert('그림을 만들지 못했습니다. 새로고침 후 다시 눌러 주세요.'); return; }
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(blob); a.download = name;
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(function () { URL.revokeObjectURL(a.href); }, 10000);
+    }, 'image/png');
   });
   fetch('./data/mcap.json', { cache: 'no-cache' })
     .then(function (r) { if (!r.ok) throw 0; return r.json(); })
