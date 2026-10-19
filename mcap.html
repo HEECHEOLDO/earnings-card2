@@ -214,7 +214,7 @@
     }
     if (src && src.length) {
       lines = src.map(function (r) {
-        return r.code + ' ' + r.name.replace(/\s+/g, '') + ' ' + (r.cap / 10000).toFixed(2) +
+        return r.code + ' ' + r.name.replace(/\s+/g, '') + ' ' + (r.cap / 10000).toFixed(4) +
           (r.ytd != null ? ' ' + (r.ytd > 0 ? '+' : '') + r.ytd : '');
       });
     } else lines = SAMPLE;
@@ -336,7 +336,11 @@
     }
     return (BRIGHT[key] = n ? sum / n : 1);
   }
-  function money(v) { return (v >= 100 ? Math.round(v).toLocaleString('ko-KR') : v.toFixed(1).replace(/\.0$/, '')) + '조'; }
+  function money(v) { // MCAP_UNIT
+    if (v >= 100) return Math.round(v).toLocaleString('ko-KR') + '조';
+    if (v >= 1) return v.toFixed(1).replace(/\.0$/, '') + '조';
+    return Math.max(1, Math.round(v * 10000)).toLocaleString('ko-KR') + '억';
+  }
 
   function draw() {
     var all = parse(), n = +document.getElementById('n').value;
