@@ -246,7 +246,39 @@ UPJONG_SHORT = {
 }
 
 
-def short_name(name):
+# 테마는 카드 제목에서 괄호 안을 빼고(아래 줄로 옮기고) 쓴다. 그런데 괄호를 빼면
+# 서로 같아지는 테마(2차전지(전고체)·2차전지(생산)… / 코로나19(…) / 보안주(물리·정보) /
+# 밸류업(24년·25년))와 괄호를 빼도 긴 테마는 여기서 짧은 이름을 정한다.
+# 열쇠는 띄어쓰기를 뺀 네이버 이름. 짧은 이름이 있으면 괄호 안은 아래 줄에 붙이지 않는다.
+THEME_SHORT = {re.sub(r"\s", "", k): v for k, v in {
+    "2차전지(나트륨이온)": "나트륨이온 배터리",
+    "2차전지(생산)": "2차전지 생산",
+    "2차전지(전고체)": "전고체 배터리",
+    "2차전지(소재/부품)": "2차전지 소재·부품",
+    "2차전지(LFP/리튬인산철)": "LFP 배터리",
+    "2차전지(장비)": "2차전지 장비",
+    "보안주(물리)": "물리 보안",
+    "보안주(정보)": "정보 보안",
+    "전기차(충전소/충전기)": "전기차 충전",
+    "코로나19(음압병실/음압구급차)": "음압병실",
+    "코로나19(진단키트)": "코로나 진단키트",
+    "코로나19(진단/치료제/백신 개발 등)": "코로나19 진단·치료",
+    "코로나19(치료제/백신 개발 등)": "코로나19 치료제·백신",
+    "밸류업(24년 기업가치 제고계획 발표)": "2024 밸류업 공시",
+    "밸류업(25년 기업가치 제고계획 발표)": "2025 밸류업 공시",
+    "코리아 밸류업 지수(Korea Value-up Index)": "코리아 밸류업 지수",
+    "피지컬 AI/휴머노이드 로봇": "휴머노이드 로봇",
+    "서울고속버스터미널 재개발 수혜": "고속터미널 재개발",
+    "방위산업/전쟁 및 테러": "방위산업",
+    "온실가스(탄소배출권)/탄소 포집·활용·저장(CCUS)": "탄소배출권·CCUS",
+    "S7(삼성전자/SK하이닉스 등)": "S7 대형주",
+    "우주항공산업(누리호/인공위성 등)": "우주항공",
+}.items()}
+
+
+def short_name(name, kind="industry"):
+    if kind in ("theme",):
+        return THEME_SHORT.get(re.sub(r"\s", "", name), "")
     return UPJONG_SHORT.get(name, "")
 
 
@@ -368,7 +400,8 @@ def groups(kind, keep, caps):
             continue
         codes.sort(key=lambda c: -caps[c]["c"])
         if codes:
-            out.append({"no": no, "name": nice_name(kind, name), "short": short_name(nice_name(kind, name)),
+            out.append({"no": no, "name": nice_name(kind, name),
+                        "short": short_name(nice_name(kind, name), "theme" if kind == "theme" else "industry"),
                         "n": len(codes),
                         "sum": round(sum(caps[c]["c"] for c in codes)), "codes": codes[:TOP_GROUP]})
         time.sleep(0.12)
@@ -448,10 +481,14 @@ def main():
             n += new != g["name"] or g.get("short") != short_name(new)
             g["name"] = new
             g["short"] = short_name(new)
+        for g in (j.get("groups") or {}).get("theme", []):
+            g["short"] = short_name(g["name"], "theme")
         with open(OUT, "w", encoding="utf-8") as f:
             json.dump(j, f, ensure_ascii=False, separators=(",", ":"))
-        return log("업종 이름 %d개를 고쳤습니다 (짧은 이름 %d개 · 호출 0회)"
-                   % (n, sum(1 for g in (j.get("groups") or {}).get("industry", []) if g.get("short"))))
+        gs = j.get("groups") or {}
+        return log("업종 이름 %d개를 고쳤습니다 (짧은 이름 업종 %d개 · 테마 %d개 · 호출 0회)"
+                   % (n, sum(1 for g in gs.get("industry", []) if g.get("short")),
+                      sum(1 for g in gs.get("theme", []) if g.get("short"))))
     if "--show" in sys.argv:
         j = json.load(open(OUT, encoding="utf-8"))
         log("%s 종가 기준 (받은 날 %s)" % (j.get("asof"), j.get("updated")))
