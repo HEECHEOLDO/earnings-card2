@@ -226,12 +226,16 @@
     var gname = '';
     if (mk === 'industry' || mk === 'theme') {
       var gg = ((DATA && DATA.groups && DATA.groups[mk]) || [])[+document.getElementById('grp').value || 0];
-      gname = gg ? gg.name + ' ' : '';
+      gname = gg ? gg.name.replace(/\s*\([^)]*\)\s*/g, ' ').trim() + ' ' : '';
+      var inner = gg ? (gg.name.match(/\(([^)]*)\)/) || [])[1] : '';
+      if (inner) gname += '\u0000' + inner + '\u0000';   // 아래 줄로 넘길 표시
     }
-    document.getElementById('title').value = gname + '시가총액 TOP ' + Math.min(+n, cnt || +n);
+    var gpart = gname.split('\u0000');      // [이름, 괄호 안, '']
+    document.getElementById('title').value = gpart[0] + '시가총액 TOP ' + Math.min(+n, cnt || +n);
     var a = DATA && DATA.asof ? DATA.asof.split('-') : null;
     var d = a ? " ('" + a[0].slice(2) + '년 ' + (+a[1]) + '월 ' + (+a[2]) + '일 기준)' : ' (샘플)';
-    document.getElementById('sub').value = { kospi: '코스피', kosdaq: '코스닥', all: '국내 주식', industry: '업종', theme: '테마' }[mk] + d;
+    document.getElementById('sub').value = { kospi: '코스피', kosdaq: '코스닥', all: '국내 주식', industry: '업종', theme: '테마' }[mk] +
+      (gpart && gpart[1] ? ' · ' + gpart[1] : '') + d;
   }
 
   function font(w, s) { return w + ' ' + s + 'px "Noto Sans KR"'; }
@@ -342,7 +346,7 @@
     // 헤드라인 (다른 카드와 같은 자리·굵기)
     ctx.fillStyle = T.ink; ctx.textBaseline = 'alphabetic'; ctx.textAlign = 'left';
     var title = document.getElementById('title').value, sub = document.getElementById('sub').value;
-    var ns = fit(title, 900, 92, 52, W), y = S.top + ns * 0.86;
+    var ns = fit(title, 900, 92, 36, W), y = S.top + ns * 0.86;
     ctx.font = font(900, ns); ctx.fillText(title, X0, y);
     var ss = fit(sub, 700, 40, 26, W); y += ns * 0.22 + ss * 0.86;
     ctx.fillStyle = T.inkSoft; ctx.font = font(700, ss); ctx.fillText(sub, X0, y);
