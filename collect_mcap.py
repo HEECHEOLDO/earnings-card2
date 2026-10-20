@@ -380,6 +380,19 @@ def m_group_members(kind, no):
     return codes
 
 
+# 업종·테마에서 일부러 빼는 종목 — 열쇠는 업종·테마 이름(띄어쓰기 무시), 값은 종목명 목록.
+# 네이버가 넓게 묶어 둔 것 중 카드에 어울리지 않는 것을 뺀다.
+EXCLUDE = {
+    "화장품": ["코웨이"],
+}
+
+
+def excluded(name, caps):
+    """이 업종·테마에서 뺄 종목코드들"""
+    bad = set(EXCLUDE.get(re.sub(r"\s", "", name), []))
+    return {c for c, v in caps.items() if v.get("n") in bad} if bad else set()
+
+
 def groups(kind, keep, caps):
     out = []
     lst, members = None, group_members
@@ -394,7 +407,8 @@ def groups(kind, keep, caps):
         lst = group_list(kind)
     for no, name in lst:
         try:
-            codes = [c for c in members(kind, no) if c in keep]
+            drop = excluded(name, caps)
+            codes = [c for c in members(kind, no) if c in keep and c not in drop]
         except Exception as e:                # noqa: BLE001
             log("    ! %s %s: %s" % (name, no, e))
             continue
