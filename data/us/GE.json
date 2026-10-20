@@ -2,14 +2,14 @@
  "name": "GE",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "GENERAL ELECTRIC CO",
+ "legal_name": "GENERAL ELECTRIC COMPANY",
  "code": "GE",
  "cik": "0000040545",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-10-20",
+ "updated": "2026-10-21",
  "annual": [
   {
    "p": 2016,
@@ -145,13 +145,6 @@
  "quarterly": [
   {
    "y": 2024,
-   "q": 1,
-   "rev": 8955.0,
-   "op": null,
-   "ni": 1539.0
-  },
-  {
-   "y": 2024,
    "q": 2,
    "rev": 9094.0,
    "op": null,
@@ -212,6 +205,13 @@
    "rev": 13349.0,
    "op": null,
    "ni": 2370.0
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 14118.0,
+   "op": null,
+   "ni": 2288.0
   }
  ]
 }

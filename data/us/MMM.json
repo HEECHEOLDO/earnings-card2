@@ -2,14 +2,14 @@
  "name": "MMM",
  "split_adjusted": false,
  "restated_from": 2022,
- "legal_name": "3M CO",
+ "legal_name": "3M COMPANY",
  "code": "MMM",
  "cik": "0000066740",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-10-20",
+ "updated": "2026-10-21",
  "annual": [
   {
    "p": 2016,
@@ -145,13 +145,6 @@
  "quarterly": [
   {
    "y": 2024,
-   "q": 1,
-   "rev": 6016.0,
-   "op": 1149.0,
-   "ni": 933.0
-  },
-  {
-   "y": 2024,
    "q": 2,
    "rev": 6255.0,
    "op": 1272.0,
@@ -212,6 +205,13 @@
    "rev": 6500.0,
    "op": 984.0,
    "ni": 938.0
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 6584.0,
+   "op": 1558.0,
+   "ni": 1410.0
   }
  ]
 }
