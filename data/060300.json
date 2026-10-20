@@ -5,7 +5,7 @@
  "code": "060300",
  "market": "기타",
  "sector": "",
- "updated": "2026-08-27",
+ "updated": "2026-10-20",
  "annual": [
   {
    "p": 2016,
@@ -86,13 +86,6 @@
    "dps_adj": null
   }
  ],
- "quarterly": [
-  {
-   "y": 2023,
-   "q": 3,
-   "rev": 3.9,
-   "op": -10.2,
-   "ni": -2.6
-  }
- ]
+ "quarterly": [],
+ "q_method": "strict"
 }
