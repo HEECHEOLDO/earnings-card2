@@ -237,7 +237,17 @@
     var d = a ? " ('" + a[0].slice(2) + '년 ' + (+a[1]) + '월 ' + (+a[2]) + '일 기준)' : ' (샘플)';
     var lab = '';                              // 시장·업종·테마 이름은 제목에, 아래 줄은 날짜만
     var extra = gpart && gpart[1] ? gpart[1] : '';
-    document.getElementById('sub').value = extra;
+    // 합계 (MCAP_SUM) — 원으로 그려지는 것과 같은 줄·같은 순서로 더한다
+    var vals = document.getElementById('data').value.split('\n').map(function (l) {
+      var p = l.trim().split(/\s+/); return p.length < 3 ? 0 : parseFloat(p[2].replace(/,/g, ''));
+    }).filter(function (v) { return v > 0; }).sort(function (a, b) { return b - a; });
+    var k = Math.min(+n, vals.length), tot = 0;
+    for (var i = 0; i < k; i++) tot += vals[i];
+    var won = tot >= 100 ? Math.round(tot).toLocaleString('ko-KR') + '조'
+            : tot >= 1 ? tot.toFixed(1).replace(/\.0$/, '') + '조'
+            : Math.max(1, Math.round(tot * 10000)).toLocaleString('ko-KR') + '억';
+    var sumTxt = k ? (k < +n ? k + '개' : '상위 ' + k + '개') + ' 합계 ' + won : '';
+    document.getElementById('sub').value = [extra, sumTxt].filter(Boolean).join(' · ');
     window.MCAP_FOOT = a ? a[0] + '년 ' + (+a[1]) + '월 ' + (+a[2]) + '일 기준' : '';
     window.MCAP_ICON = mcapIcon(mk, (mk === 'industry' || mk === 'theme') ? gg : null);
   }
