@@ -1,12 +1,12 @@
 {
- "checked": "2026-10-19 13:28",
- "status": "ok",
+ "checked": "2026-10-20 13:39",
+ "status": "warn",
  "sources": [
   {
    "key": "kr",
    "name": "국내 실적",
    "page": "index.html",
-   "last": "2026-10-19",
+   "last": "2026-10-20",
    "days": 0,
    "status": "ok",
    "msg": "정상",
@@ -16,7 +16,7 @@
    "key": "us",
    "name": "해외 실적",
    "page": "us.html",
-   "last": "2026-10-19",
+   "last": "2026-10-20",
    "days": 0,
    "status": "ok",
    "msg": "정상",
@@ -27,9 +27,9 @@
    "name": "비상장 실적 (정기보고서)",
    "page": "unlisted.html",
    "last": "2026-10-17",
-   "days": 2,
-   "status": "ok",
-   "msg": "정상",
+   "days": 3,
+   "status": "warn",
+   "msg": "3일째 수집 기록 없음",
    "note": "28곳"
   },
   {
@@ -37,7 +37,7 @@
    "name": "비상장 실적 (감사보고서)",
    "page": "unlisted.html",
    "last": "2026-10-17",
-   "days": 2,
+   "days": 3,
    "status": "ok",
    "msg": "정상",
    "note": "6곳 / 목록 302곳"
@@ -46,17 +46,17 @@
    "key": "returns",
    "name": "연간 수익률",
    "page": "returns.html",
-   "last": "2026-10-19",
+   "last": "2026-10-20",
    "days": 0,
    "status": "ok",
    "msg": "정상",
-   "note": "국내 2,962 · 해외 109종목"
+   "note": "국내 2,962 · 해외 115종목"
   },
   {
    "key": "buy_us",
    "name": "그때 샀다면 (해외 주가)",
    "page": "buy.html",
-   "last": "2026-10-19",
+   "last": "2026-10-20",
    "days": 0,
    "status": "ok",
    "msg": "정상",
@@ -66,7 +66,7 @@
    "key": "mcap",
    "name": "시가총액",
    "page": "mcap.html",
-   "last": "2026-10-18",
+   "last": "2026-10-19",
    "days": 1,
    "status": "ok",
    "msg": "정상",
@@ -76,7 +76,7 @@
    "key": "fx",
    "name": "환율",
    "page": "buy.html",
-   "last": "2026-10-19",
+   "last": "2026-10-20",
    "days": 0,
    "status": "ok",
    "msg": "정상",
@@ -86,7 +86,7 @@
    "key": "guru",
    "name": "포트폴리오 (13F)",
    "page": "guru.html",
-   "last": "2026-10-19",
+   "last": "2026-10-20",
    "days": 0,
    "status": "ok",
    "msg": "정상",
@@ -94,10 +94,10 @@
   }
  ],
  "filings": {
-  "filings": 209,
+  "filings": 199,
   "partial": false,
   "late": [],
   "missing": [],
-  "calls": 3
+  "calls": 2
  }
 }
