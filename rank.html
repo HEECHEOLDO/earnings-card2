@@ -131,10 +131,6 @@
         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="10" r="6"/><circle cx="17.5" cy="15.5" r="4"/><circle cx="16" cy="5" r="2.2"/></svg>
         <span class="nav-full">시가총액</span><span class="nav-short">시총</span>
       </a>
-      <a href="./rank.html" class="nav-i on">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20v-8h5v8M9 20V5h6v15M15 20v-11h5v11"/></svg>
-        <span class="nav-full">시총 순위</span><span class="nav-short">순위</span>
-      </a>
       <a href="./screen.html" class="nav-i">
         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
         <span class="nav-full">종목 스크리닝</span><span class="nav-short">스크리닝</span>
@@ -158,7 +154,8 @@
       <label class="f">연도 <span style="font-weight:500">(눌러서 켜고 끄기 · 10개까지)</span></label>
       <div class="chips" id="years"></div>
       <div class="mini">
-        <button type="button" data-p="all">전부 (최근 10개)</button>
+        <button type="button" data-p="five">5년 간격</button>
+        <button type="button" data-p="all">최근 10개</button>
         <button type="button" data-p="r5">최근 5년</button>
         <button type="button" data-p="step">격년</button>
         <button type="button" data-p="none">모두 끄기</button>
@@ -259,6 +256,7 @@
   function preset(p) {
     var ks = keys(); ON = {};
     var pick = p === 'none' ? [] : p === 'r5' ? ks.slice(-5)
+             : p === 'five' ? ks.filter(function (k) { return k === 'now' || +k % 5 === 0; }).slice(-MAXCOL)
              : p === 'step' ? ks.filter(function (k, i) { return k === 'now' || (ks.length - 1 - i) % 2 === 1; }).slice(-MAXCOL)
              : ks.slice(-MAXCOL);
     pick.forEach(function (k) { ON[k] = true; });
@@ -428,7 +426,7 @@
   fetch('./data/rank.json', { cache: 'no-cache' })
     .then(function (r) { if (!r.ok) throw 0; return r.json(); })
     .then(function (j) {
-      DATA = j; preset('all');
+      DATA = j; preset(keys().length > 12 ? 'five' : 'all');
       var ks = keys(), first = ks[0], last = ks.filter(function (k) { return k !== 'now'; }).pop();
       $('src-pill').textContent = '연말 시가총액 ' + first + '~' + (last || '') + (j.cols.now ? ' · 현재 ' + j.cols.now.date : '');
     })
