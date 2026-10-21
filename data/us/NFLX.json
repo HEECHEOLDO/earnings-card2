@@ -2,14 +2,14 @@
  "name": "NFLX",
  "split_adjusted": true,
  "restated_from": null,
- "legal_name": "NETFLIX INC",
+ "legal_name": "Netflix, Inc.",
  "code": "NFLX",
  "cik": "0001065280",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-10-21",
+ "updated": "2026-10-22",
  "annual": [
   {
    "p": 2016,
@@ -145,13 +145,6 @@
  "quarterly": [
   {
    "y": 2024,
-   "q": 1,
-   "rev": 9370.4,
-   "op": 2632.5,
-   "ni": 2332.2
-  },
-  {
-   "y": 2024,
    "q": 2,
    "rev": 9559.3,
    "op": 2602.8,
@@ -212,6 +205,13 @@
    "rev": 12559.9,
    "op": 4192.6,
    "ni": 3401.4
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 12874.2,
+   "op": 4458.6,
+   "ni": 3663.9
   }
  ]
 }

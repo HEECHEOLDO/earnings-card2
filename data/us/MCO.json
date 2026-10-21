@@ -2,14 +2,14 @@
  "name": "MCO",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "MOODY'S CORPORATION",
+ "legal_name": "Moody’s Corporation",
  "code": "MCO",
  "cik": "0001059556",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-10-21",
+ "updated": "2026-10-22",
  "annual": [
   {
    "p": 2016,
@@ -145,13 +145,6 @@
  "quarterly": [
   {
    "y": 2024,
-   "q": 1,
-   "rev": 1786.0,
-   "op": 801.0,
-   "ni": 577.0
-  },
-  {
-   "y": 2024,
    "q": 2,
    "rev": 1817.0,
    "op": 775.0,
@@ -212,6 +205,13 @@
    "rev": 2185.0,
    "op": 1046.0,
    "ni": 878.0
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 2023.0,
+   "op": 906.0,
+   "ni": 734.0
   }
  ]
 }
