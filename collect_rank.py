@@ -30,7 +30,18 @@ START = 2020            # 공공데이터포털 자료가 있는 첫 해
 TOP = 30                # 칸마다 몇 위까지 적을지 (화면은 TOP 10·15)
 URL = "https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService/getStockPriceInfo"
 # 시가총액 탭과 같은 기준 — 우선주·스팩은 뺀다
-BAD = re.compile(r"(우|우B|\d우[BC]?|우\(전환\)|스팩\d*호?)$|기업인수목적")
+BAD = re.compile(r"(우|우B|\d우[BC]?|우\(전환\)|스팩\d*호?|MF)$|기업인수목적|우선$|\(\d?우[A-C]?\)|\d신$|뮤추얼")
+
+
+def ordinary(code):
+    """보통주만 — 우선주·신주는 코드 끝자리가 0이 아니다 (005935 삼성전자우, 005931 삼성전자1신)"""
+    return code[-1:] == "0"
+
+
+def tidy(name):
+    """'데 이 콤' · '유    공' 처럼 글자마다 띄운 옛 이름을 붙인다"""
+    t = name.split()
+    return "".join(t) if len(t) > 1 and all(len(x) == 1 for x in t) else " ".join(t)
 CALLS = [0]
 
 
@@ -89,7 +100,8 @@ def last_trading(key, d, back=10):
 
 
 def column(d, rows):
-    keep = [(c, n, m, cap) for c, n, m, cap in rows if m in ("KOSPI", "KOSDAQ") and cap > 0 and not BAD.search(n)]
+    keep = [(c, tidy(n), m, cap) for c, n, m, cap in rows
+            if m in ("KOSPI", "KOSDAQ") and cap > 0 and ordinary(c) and not BAD.search(n)]
 
     def top(ms):
         rs = sorted((r for r in keep if r[2] in ms), key=lambda r: -r[3])[:TOP]
