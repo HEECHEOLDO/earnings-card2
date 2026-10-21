@@ -131,6 +131,10 @@
         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="10" r="6"/><circle cx="17.5" cy="15.5" r="4"/><circle cx="16" cy="5" r="2.2"/></svg>
         <span class="nav-full">시가총액</span><span class="nav-short">시총</span>
       </a>
+      <a href="./rank.html" class="nav-i on">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20v-8h5v8M9 20V5h6v15M15 20v-11h5v11"/></svg>
+        <span class="nav-full">시총 순위</span><span class="nav-short">순위</span>
+      </a>
       <a href="./screen.html" class="nav-i">
         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
         <span class="nav-full">종목 스크리닝</span><span class="nav-short">스크리닝</span>
@@ -167,7 +171,7 @@
       <label class="f" for="title">제목</label>
       <input type="text" id="title" value="코스피 시총 순위">
       <label class="f" for="sub">아래 줄</label>
-      <input type="text" id="sub" value="매년 말 기준 · TOP 10">
+      <input type="text" id="sub" value="" placeholder="비워 두면 안 나옵니다">
       <button class="btn" id="dl">PNG 내려받기</button>
       <p class="note">해마다 <b>마지막 거래일</b>의 시가총액 순위입니다. 우선주·스팩은 빼고 셉니다. '현재'는 가장 최근 거래일 기준이고 매일 바뀝니다. 로고가 없는 회사는 이름으로 표시합니다.</p>
     </div>
@@ -291,7 +295,7 @@
   function autoText() {
     var mk = $('mk').value, hi = $('hi').value;
     $('title').value = MK_NAME[mk] + ' 시총 순위';
-    $('sub').value = '매년 말 기준 · ' + (hi ? nameOf(hi) + '의 자리' : 'TOP ' + $('n').value);
+    $('sub').value = '';                       // 아래 줄은 비워 둔다 (직접 적으면 나온다)
   }
 
   function draw() {
@@ -380,7 +384,7 @@
     var foot = '';
     if (DATA && ON.now && DATA.cols.now) {
       var a = DATA.cols.now.date.split('-');
-      foot = '현재는 ' + a[0] + '년 ' + (+a[1]) + '월 ' + (+a[2]) + '일 기준';
+      foot = a[0] + '년 ' + (+a[1]) + '월 ' + (+a[2]) + '일 기준';
     }
     ctx.fillText(foot, S.left, footY);
     ctx.textAlign = 'right'; ctx.fillText('@돈굴돈굴', CW - S.right, footY); ctx.textAlign = 'left';
