@@ -393,6 +393,9 @@ def main():
 
     jsave(CHECKED, checked, sort_keys=True, separators=(",", ":"))
     jsave(FAILED, failed, indent=1)
+    if not C.ABORT:                           # 끝까지 돈 날을 남긴다 (받을 회사가 없던 날도)
+        jsave(os.path.join(OUT, "_run.json"),
+              {"updated": today(), "done": len(done), "calls": C._call_count}, indent=1)
     # 오늘 쓴 호출 수를 남긴다 — collect_audit.py 가 남은 만큼만 쓴다
     prev = jload(CALLS, {})
     calls = C._call_count + (prev.get("calls", 0) if prev.get("date") == today() else 0)
