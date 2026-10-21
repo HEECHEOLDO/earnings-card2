@@ -27,6 +27,7 @@ PAGES = {
     "buy.html":     "buy",
     "unlisted.html": "unlisted",
     "mcap.html":    "mcap",
+    "rank.html":    "rank",
     "status.html":  "status",     # 데이터 상태 — 메뉴 칸은 없고 메뉴 아래 한 줄로 들어간다
 }
 
@@ -57,6 +58,9 @@ ITEMS = [
     ("mcap",    "./mcap.html",
      '<circle cx="9" cy="10" r="6"/><circle cx="17.5" cy="15.5" r="4"/><circle cx="16" cy="5" r="2.2"/>',
      "시가총액", "시총"),
+    ("rank",    "./rank.html",
+     '<path d="M4 20v-8h5v8M9 20V5h6v15M15 20v-11h5v11"/>',
+     "시총 순위", "순위"),
     ("screen",  "./screen.html",
      '<circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/>',
      "종목 스크리닝", "스크리닝"),

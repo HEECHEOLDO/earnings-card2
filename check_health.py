@@ -42,6 +42,7 @@ SOURCES = [
     ("returns",  "연간 수익률", "returns.html",  ["data/returns.json"], 2, 4),
     ("buy_us",   "그때 샀다면 (해외 주가)", "buy.html", ["data/monthly_us.json"], 3, 6),
     ("mcap",     "시가총액",    "mcap.html",     ["data/mcap.json"], 4, 7),   # 평일 장 마감 뒤에만 받는다
+    ("rank",     "시총 순위", "rank.html", ["data/rank.json"], 4, 7),
     ("fx",       "환율",       "buy.html",      ["data/fx_usdkrw.json"], 3, 6),
     ("guru",     "포트폴리오 (13F)", "guru.html", ["data/13f.json"], 7, 14),
 ]

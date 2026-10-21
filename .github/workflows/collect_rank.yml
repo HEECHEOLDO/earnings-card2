@@ -1,0 +1,41 @@
+name: 시총 순위 수집
+
+on:
+  schedule:
+    # 매일 14:10 KST (UTC 05:10). 공공데이터포털 주식시세는 다음 영업일 오후 1시쯤 올라온다.
+    # 연말 자료는 한 번 받으면 다시 받지 않고, 매일 '현재' 한 칸만 받는다 (호출 몇 번).
+    - cron: '10 5 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: rank-collect
+  cancel-in-progress: true
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: 수집
+        env:
+          DATA_GO_KEY: ${{ secrets.DATA_GO_KEY }}
+        run: python3 collect_rank.py
+      - name: 커밋
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/rank.json || true
+          if git diff --staged --quiet; then echo "변경 없음"; exit 0; fi
+          git commit -m "시총 순위 자동 수집 $(date -u +'%Y-%m-%d')"
+          for i in 1 2 3 4 5; do
+            git pull --rebase --autostash origin main && git push && exit 0
+            echo "푸시 재시도 $i"; sleep 10
+          done
+          echo "푸시 실패"; exit 1

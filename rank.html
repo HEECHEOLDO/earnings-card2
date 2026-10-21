@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>시총 순위 · 돈굴돈굴</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#F4F6F8; --surface:#FFFFFF; --surface-2:#EDF1F5;
+    --border:#E2E6EB; --border-strong:#D3DBE3;
+    --text:#16202B; --text-soft:#5A6673; --text-mute:#8894A2;
+    --accent:#1E4E8C; --accent-soft:#E8F0FA; --accent-text:#1E4E8C;
+    --pos:#1D6E4E; --pos-soft:#E4F2EB; --neg:#B32B22;
+    --radius:8px;
+  }
+  [data-mode="dark"] {
+    --bg:#0E141B; --surface:#161F29; --surface-2:#1D2833;
+    --border:#26313D; --border-strong:#35424F;
+    --text:#E6EBF0; --text-soft:#93A1B0; --text-mute:#6C7A89;
+    --accent:#5B9BE8; --accent-soft:#17293D; --accent-text:#8FBDF0;
+    --pos:#59C79A; --pos-soft:#14312A; --neg:#E8776D;
+  }
+  html { -webkit-text-size-adjust:100%; }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--text);
+    font-family:'Noto Sans KR',-apple-system,'Malgun Gothic',sans-serif;-webkit-font-smoothing:antialiased}
+  body{padding:20px 16px 80px}
+  .shell{max-width:1180px;margin:0 auto}
+
+  .topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;
+    padding-bottom:14px;border-bottom:1px solid var(--border);flex-wrap:wrap}
+  .brand{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .brand h1{font-size:17px;font-weight:800;margin:0;letter-spacing:-.01em}
+  /* ---------- 공통 메뉴 ---------- */
+  .nav{display:flex;gap:4px;margin:14px 0 4px;padding:4px;background:var(--surface-2);border-radius:999px}
+  .nav-i{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:7px;
+    height:40px;padding:0 14px;border-radius:999px;font-size:13.5px;font-weight:700;
+    text-decoration:none;color:var(--text-soft);white-space:nowrap;transition:background .12s,color .12s}
+  .nav-i svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.1;
+    stroke-linecap:round;stroke-linejoin:round;flex:none}
+  .nav-i:hover{color:var(--accent-text)}
+  .nav-short { display: none; }
+  @media (max-width: 480px) {
+    .nav-full { display: none; }
+    .nav-short { display: inline; }
+  }
+
+  .nav-i.on{background:var(--accent);color:#fff;box-shadow:0 2px 8px -3px rgba(30,78,140,.55)}
+  [data-mode="dark"] .nav-i.on{color:#0E141B;box-shadow:none}
+  @media (max-width:560px){
+    .nav{margin:10px 0 2px;gap:2px;padding:3px}
+    .nav-i{height:38px;padding:0 8px;font-size:12px;gap:5px}
+    .nav-i svg{width:15px;height:15px}
+  }
+  @media (max-width: 400px) {
+    /* 아주 좁은 화면에서는 아이콘을 빼고 글자만 남긴다 */
+    .nav-i svg { display: none; }
+    .nav-i { padding: 0 4px; gap: 0; font-size: 12px; }
+  }
+  .topbar-right{display:flex;align-items:center;gap:8px}
+  .pill{font-size:12px;font-weight:600;padding:5px 11px;border-radius:999px;background:var(--pos-soft);color:var(--pos)}
+  .icon-btn{width:36px;height:36px;border-radius:var(--radius);border:1px solid var(--border-strong);
+    background:transparent;color:var(--text-soft);cursor:pointer;font-size:15px}
+  .grid{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:18px;align-items:start;margin-top:18px}
+  .panel{background:var(--surface);border-radius:12px;padding:16px}
+  canvas{width:100%;height:auto;display:block;border-radius:6px;box-shadow:0 4px 18px -8px rgba(0,0,0,.25)}
+  .panel h3{font-size:13px;font-weight:700;margin:0 0 4px;color:var(--text)}
+  label.f{display:block;font-size:12px;font-weight:700;color:var(--text-soft);margin:12px 0 6px}
+  select,input[type=text]{width:100%;height:40px;border:1px solid var(--border-strong);border-radius:8px;padding:0 10px;
+    font:inherit;font-size:14px;background:var(--bg);color:var(--text)}
+  textarea{width:100%;height:300px;font:12.5px/1.6 ui-monospace,Menlo,monospace;border:1px solid var(--border-strong);
+    border-radius:8px;padding:10px;background:var(--bg);color:var(--text)}
+  .row{display:flex;gap:10px}.row>*{flex:1;min-width:0}
+  .chk{display:flex;align-items:center;gap:8px;font-size:13.5px;margin-top:12px;color:var(--text)}
+  .chk input{width:17px;height:17px;accent-color:var(--accent)}
+  details{margin-top:14px;font-size:13px;color:var(--text-soft)}
+  summary{cursor:pointer;font-weight:700}
+  .btn{height:44px;border:0;border-radius:8px;background:var(--accent);color:#fff;font:inherit;font-weight:700;
+    font-size:14px;cursor:pointer;margin-top:16px;width:100%}
+  .note{font-size:12px;color:var(--text-mute);line-height:1.7;margin-top:10px}
+  @media (max-width:860px){.grid{grid-template-columns:1fr}}
+  @media (max-width:560px){body{padding:14px 12px 56px}.brand h1{font-size:15px}
+    select,input[type=text]{font-size:16px}}
+  .chips{display:flex;flex-wrap:wrap;gap:6px}
+  .chip{height:32px;padding:0 11px;border-radius:999px;border:1px solid var(--border-strong);background:var(--bg);
+    font:inherit;font-size:13px;font-weight:700;color:var(--text-soft);cursor:pointer}
+  .chip.on{background:var(--accent);border-color:var(--accent);color:#fff}
+  [data-mode="dark"] .chip.on{color:#0E141B}
+  .chip.now{border-style:dashed}
+  .mini{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+  .mini button{height:28px;padding:0 10px;border-radius:6px;border:0;background:var(--surface-2);color:var(--text-soft);
+    font:inherit;font-size:12px;font-weight:700;cursor:pointer}
+  .warn{font-size:12px;color:var(--neg);min-height:16px;margin-top:6px}
+</style>
+</head>
+<body>
+<div class="shell">
+  <div class="topbar">
+    <div class="brand"><h1>돈굴돈굴</h1></div>
+    <div class="topbar-right">
+      <span class="pill" id="src-pill">불러오는 중…</span>
+      <button class="icon-btn" id="btn-mode" aria-label="다크 모드">◐</button>
+    </div>
+  </div>
+
+  <nav class="nav" aria-label="메뉴">
+      <a href="./index.html" class="nav-i">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7 16v-4M12 16V8M17 16v-6"/></svg>
+        <span class="nav-full">국내 실적</span><span class="nav-short">국내</span>
+      </a>
+      <a href="./us.html" class="nav-i">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 010 18M12 3a15 15 0 000 18"/></svg>
+        <span class="nav-full">해외 실적</span><span class="nav-short">해외</span>
+      </a>
+      <a href="./unlisted.html" class="nav-i">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V6l8-3 8 3v15"/><path d="M9 21v-5h6v5"/><path d="M9 9h.01M15 9h.01M9 13h.01M15 13h.01"/></svg>
+        <span class="nav-full">비상장 실적</span><span class="nav-short">비상장</span>
+      </a>
+      <a href="./returns.html" class="nav-i">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg>
+        <span class="nav-full">연간 수익률</span><span class="nav-short">수익률</span>
+      </a>
+      <a href="./buy.html" class="nav-i">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 103-6.7"/><path d="M3 4v5h5"/><path d="M12 8v4.5l3 1.8"/></svg>
+        <span class="nav-full">그때 샀다면</span><span class="nav-short">그때</span>
+      </a>
+      <a href="./mcap.html" class="nav-i">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="10" r="6"/><circle cx="17.5" cy="15.5" r="4"/><circle cx="16" cy="5" r="2.2"/></svg>
+        <span class="nav-full">시가총액</span><span class="nav-short">시총</span>
+      </a>
+      <a href="./rank.html" class="nav-i on">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20v-8h5v8M9 20V5h6v15M15 20v-11h5v11"/></svg>
+        <span class="nav-full">시총 순위</span><span class="nav-short">순위</span>
+      </a>
+      <a href="./screen.html" class="nav-i">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <span class="nav-full">종목 스크리닝</span><span class="nav-short">스크리닝</span>
+      </a>
+      <a href="./guru.html" class="nav-i">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3v9l6.4 6.4"/></svg>
+        <span class="nav-full">포트폴리오</span><span class="nav-short">포폴</span>
+      </a>
+    </nav>
+
+    <div class="grid">
+    <div class="panel"><canvas id="cv" width="1080" height="1350"></canvas></div>
+    <div class="panel">
+      <h3>카드 만들기</h3>
+      <div class="row">
+        <div><label class="f" for="mk">시장</label>
+          <select id="mk"><option value="kospi" selected>코스피</option><option value="kosdaq">코스닥</option><option value="all">국내 전체 (코스피+코스닥)</option></select></div>
+        <div><label class="f" for="n">순위</label>
+          <select id="n"><option value="10" selected>TOP 10</option><option value="15">TOP 15</option></select></div>
+      </div>
+      <label class="f">연도 <span style="font-weight:500">(눌러서 켜고 끄기 · 10개까지)</span></label>
+      <div class="chips" id="years"></div>
+      <div class="mini">
+        <button type="button" data-p="all">전부 (최근 10개)</button>
+        <button type="button" data-p="r5">최근 5년</button>
+        <button type="button" data-p="step">격년</button>
+        <button type="button" data-p="none">모두 끄기</button>
+      </div>
+      <div class="warn" id="warn"></div>
+      <label class="f" for="hi">강조할 회사</label>
+      <select id="hi"><option value="">없음</option></select>
+      <label class="chk"><input type="checkbox" id="chk-icon" checked> 제목 왼쪽 태극기</label>
+      <label class="f" for="title">제목</label>
+      <input type="text" id="title" value="코스피 시총 순위">
+      <label class="f" for="sub">아래 줄</label>
+      <input type="text" id="sub" value="매년 말 기준 · TOP 10">
+      <button class="btn" id="dl">PNG 내려받기</button>
+      <p class="note">해마다 <b>마지막 거래일</b>의 시가총액 순위입니다. 우선주·스팩은 빼고 셉니다. '현재'는 가장 최근 거래일 기준이고 매일 바뀝니다. 로고가 없는 회사는 이름으로 표시합니다.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  var T = { paper:'#fafaf8', ink:'#101216', inkSoft:'#6B7078', rule:'#E6E4DD', footer:'#3A3E46',
+            gold:'#B8892F', safe:{ top:135, right:100, bottom:135, left:100 },
+            grain:{ base:[250,250,248], amount:14, speckle:0.08, spike:2.5 } };
+  var CW = 1080, CH = 1350, MAXCOL = 10;
+  var cv = document.getElementById('cv'), ctx = cv.getContext('2d');
+  var DATA = null, ON = {};                  // ON[칸 키] = true
+  var MK_NAME = { kospi: '코스피', kosdaq: '코스닥', all: '국내주식' };
+
+  function $(id) { return document.getElementById(id); }
+  function font(w, s) { return w + ' ' + s + 'px "Noto Sans KR"'; }
+  function fit(text, weight, start, min, maxW) {
+    var s = start; ctx.font = font(weight, s);
+    while (ctx.measureText(text).width > maxW && s > min) { s -= 1; ctx.font = font(weight, s); }
+    return s;
+  }
+  var _bg = null;
+  function grain() {
+    if (_bg) return _bg;
+    var G = T.grain, S = 512, t = document.createElement('canvas'); t.width = t.height = S;
+    var tc = t.getContext('2d'), img = tc.createImageData(S, S), d = img.data;
+    for (var i = 0; i < d.length; i += 4) {
+      var n = (Math.random() - 0.5) * 2 * G.amount;
+      if (Math.random() < G.speckle) n += (Math.random() - 0.5) * G.spike * G.amount;
+      n = Math.round(n); d[i] = G.base[0] + n; d[i + 1] = G.base[1] + n; d[i + 2] = G.base[2] + n; d[i + 3] = 255;
+    }
+    tc.putImageData(img, 0, 0);
+    _bg = document.createElement('canvas'); _bg.width = CW; _bg.height = CH;
+    var b = _bg.getContext('2d'); b.fillStyle = b.createPattern(t, 'repeat'); b.fillRect(0, 0, CW, CH);
+    return _bg;
+  }
+  var LOGO = {};
+  function logo(code) {
+    if (LOGO[code] !== undefined) return LOGO[code];
+    var im = new Image(); LOGO[code] = im;
+    im.onload = draw; im.onerror = function () { LOGO[code] = null; draw(); };
+    im.src = './logo/kr/' + code + '.png';
+    return im;
+  }
+  function ready(im) { return im && im.complete && im.naturalWidth; }
+
+  // 태극기 (시가총액 탭과 같은 그림)
+  function drawTaegeuk(c, x, y, h) {
+    var w = h * 1.5, cx = x + w / 2, cy = y + h / 2, r = h / 4, a = Math.atan2(2, 3);
+    c.save();
+    c.beginPath(); if (c.roundRect) c.roundRect(x, y, w, h, h * 0.08); else c.rect(x, y, w, h);
+    c.fillStyle = '#ffffff'; c.fill(); c.lineWidth = Math.max(1, h * 0.025); c.strokeStyle = '#D9D6CE'; c.stroke();
+    c.translate(cx, cy); c.rotate(a);
+    c.beginPath(); c.arc(0, 0, r, 0, Math.PI * 2); c.fillStyle = '#0047A0'; c.fill();
+    c.beginPath(); c.arc(0, 0, r, Math.PI, Math.PI * 2); c.fillStyle = '#CD2E3A'; c.fill();
+    c.beginPath(); c.arc(-r / 2, 0, r / 2, 0, Math.PI * 2); c.fillStyle = '#CD2E3A'; c.fill();
+    c.beginPath(); c.arc(r / 2, 0, r / 2, 0, Math.PI * 2); c.fillStyle = '#0047A0'; c.fill();
+    c.rotate(-a);
+    var t = h / 24, g = h / 48, L = h / 4, d = r + h / 8 + (3 * t + 2 * g) / 2;
+    [[-3, -2, [1, 1, 1]], [3, -2, [0, 1, 0]], [-3, 2, [1, 0, 1]], [3, 2, [0, 0, 0]]].forEach(function (k) {
+      c.save(); c.rotate(Math.atan2(k[1], k[0])); c.translate(d, 0); c.fillStyle = '#000000';
+      k[2].forEach(function (solid, i) {
+        var bx = -(3 * t + 2 * g) / 2 + i * (t + g);
+        if (solid) c.fillRect(bx, -L / 2, t, L);
+        else { c.fillRect(bx, -L / 2, t, (L - g) / 2); c.fillRect(bx, g / 2, t, (L - g) / 2); }
+      });
+      c.restore();
+    });
+    c.restore();
+    return w;
+  }
+
+  // ---- 칸(연도) ----
+  function keys() {                           // 오래된 해부터, '현재'는 맨 끝
+    var ks = Object.keys((DATA && DATA.cols) || {});
+    return ks.filter(function (k) { return k !== 'now'; }).sort().concat(ks.indexOf('now') >= 0 ? ['now'] : []);
+  }
+  function label(k) {
+    if (k !== 'now') return k;
+    var d = DATA.cols.now.date.split('-'); return d[0] + '.' + d[1];
+  }
+  function chosen() { return keys().filter(function (k) { return ON[k]; }); }
+  function preset(p) {
+    var ks = keys(); ON = {};
+    var pick = p === 'none' ? [] : p === 'r5' ? ks.slice(-5)
+             : p === 'step' ? ks.filter(function (k, i) { return k === 'now' || (ks.length - 1 - i) % 2 === 1; }).slice(-MAXCOL)
+             : ks.slice(-MAXCOL);
+    pick.forEach(function (k) { ON[k] = true; });
+  }
+  function chips() {
+    $('years').innerHTML = keys().map(function (k) {
+      return '<button type="button" class="chip' + (ON[k] ? ' on' : '') + (k === 'now' ? ' now' : '') +
+             '" data-k="' + k + '">' + (k === 'now' ? '현재' : k) + '</button>';
+    }).join('');
+  }
+
+  // ---- 강조할 회사 목록: 고른 칸들에 한 번이라도 나온 회사 ----
+  function fillHi() {
+    var mk = $('mk').value, n = +$('n').value, keep = $('hi').value, seen = {}, list = [];
+    chosen().slice().reverse().forEach(function (k) {
+      (DATA.cols[k][mk] || []).slice(0, n).forEach(function (r) {
+        if (!seen[r[0]]) { seen[r[0]] = 1; list.push(r); }
+      });
+    });
+    $('hi').innerHTML = '<option value="">없음</option>' + list.map(function (r) {
+      return '<option value="' + r[0] + '">' + r[1] + '</option>'; }).join('');
+    $('hi').value = seen[keep] ? keep : '';
+  }
+  function nameOf(code) {
+    var ks = chosen().slice().reverse(), mk = $('mk').value;
+    for (var i = 0; i < ks.length; i++) {
+      var r = (DATA.cols[ks[i]][mk] || []).filter(function (x) { return x[0] === code; })[0];
+      if (r) return r[1];
+    }
+    return code;
+  }
+  function autoText() {
+    var mk = $('mk').value, hi = $('hi').value;
+    $('title').value = MK_NAME[mk] + ' 시총 순위';
+    $('sub').value = '매년 말 기준 · ' + (hi ? nameOf(hi) + '의 자리' : 'TOP ' + $('n').value);
+  }
+
+  function draw() {
+    var S = T.safe, X0 = S.left, W = CW - S.left - S.right;
+    ctx.clearRect(0, 0, CW, CH);
+    ctx.drawImage(grain(), 0, 0);
+    ctx.textBaseline = 'alphabetic'; ctx.textAlign = 'left';
+
+    // 제목 — 시가총액 탭과 같은 모양: 태극기 + 굵은 시장 이름 + 회색 '시총 순위'
+    var title = $('title').value, sub = $('sub').value, flag = $('chk-icon').checked;
+    var ns = 92, fw = function (s) { return flag ? s * 0.66 * 1.5 + s * 0.24 : 0; };
+    ctx.font = font(900, ns);
+    while (ns > 36 && ctx.measureText(title).width + fw(ns) > W) { ns -= 1; ctx.font = font(900, ns); }
+    var y = S.top + ns * 0.86, XT = X0 + fw(ns);
+    if (flag) drawTaegeuk(ctx, X0, y - ns * 0.37 - ns * 0.33, ns * 0.66);
+    var tm = title.match(/^(.*\S)( 시총 순위)$/);
+    ctx.fillStyle = T.ink;
+    if (tm) { ctx.font = font(900, ns); ctx.fillText(tm[1], XT, y);
+      var tw = ctx.measureText(tm[1]).width;
+      ctx.font = font(400, ns); ctx.fillStyle = T.inkSoft; ctx.fillText(tm[2], XT + tw, y); }
+    else { ctx.font = font(900, ns); ctx.fillText(title, XT, y); }
+    if (sub) { var ss = fit(sub, 700, 40, 26, W); y += ns * 0.22 + ss * 0.86;
+      ctx.fillStyle = T.inkSoft; ctx.font = font(700, ss); ctx.fillText(sub, X0, y); }
+
+    var footY = CH - S.bottom - 4, ruleY = footY - 27 * 0.85 - 18;
+    var ks = chosen(), mk = $('mk').value, n = +$('n').value, hi = $('hi').value;
+    if (DATA && ks.length) {
+      var top = y + 56, hdr = 52, rk = 58, cw = (W - rk) / ks.length;
+      var rh = (ruleY - 30 - top - hdr) / n, d = Math.min(cw * 0.8, rh * 0.84, 130);
+      // 머리줄: 연도
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ks.forEach(function (k, j) {
+        var cx = X0 + rk + cw * (j + 0.5), now = k === 'now';
+        ctx.fillStyle = now ? T.gold : T.ink;
+        ctx.font = font(900, Math.min(30, Math.round(cw * (now ? 0.24 : 0.3))));
+        ctx.fillText(label(k), cx, top + hdr / 2);
+      });
+      ctx.strokeStyle = T.rule; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(X0, top + hdr); ctx.lineTo(CW - S.right, top + hdr); ctx.stroke();
+      // 순위 숫자
+      ctx.textAlign = 'left'; ctx.fillStyle = T.inkSoft;
+      for (var i = 0; i < n; i++) {
+        ctx.font = font(900, Math.min(30, Math.round(rh * 0.42)));
+        ctx.fillText(String(i + 1), X0 + 2, top + hdr + rh * (i + 0.5) + 1);
+      }
+      // 강조 회사 — 순위를 선으로 잇는다 (순위 밖인 해는 끊김)
+      if (hi) {
+        ctx.save(); ctx.strokeStyle = T.gold; ctx.lineWidth = Math.max(4, d * 0.07);
+        ctx.lineJoin = 'round'; ctx.lineCap = 'round'; ctx.beginPath();
+        var on = false;
+        ks.forEach(function (k, j) {
+          var idx = (DATA.cols[k][mk] || []).slice(0, n).map(function (r) { return r[0]; }).indexOf(hi);
+          if (idx < 0) { on = false; return; }
+          var px = X0 + rk + cw * (j + 0.5), py = top + hdr + rh * (idx + 0.5);
+          if (on) ctx.lineTo(px, py); else { ctx.moveTo(px, py); on = true; }
+        });
+        ctx.stroke(); ctx.restore();
+      }
+      // 로고
+      ks.forEach(function (k, j) {
+        (DATA.cols[k][mk] || []).slice(0, n).forEach(function (r, i) {
+          var cx = X0 + rk + cw * (j + 0.5), cy = top + hdr + rh * (i + 0.5), R = d / 2;
+          var im = logo(r[0]), has = ready(im);
+          ctx.save();
+          ctx.globalAlpha = hi && r[0] !== hi ? 0.2 : 1;
+          ctx.beginPath(); ctx.arc(cx, cy, R, 0, 7); ctx.clip();
+          if (has) ctx.drawImage(im, cx - R, cy - R, R * 2, R * 2);
+          else {                                  // 로고가 없으면 회색 원에 이름
+            ctx.fillStyle = T.inkSoft; ctx.fillRect(cx - R, cy - R, R * 2, R * 2);
+            ctx.fillStyle = '#fff'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+            fit(r[1], 800, Math.round(R * 0.5), 8, R * 1.7); ctx.fillText(r[1], cx, cy + 1);
+          }
+          ctx.restore();
+          if (hi && r[0] === hi) {
+            ctx.beginPath(); ctx.arc(cx, cy, R + Math.max(3, d * 0.06), 0, 7);
+            ctx.lineWidth = Math.max(3, d * 0.05); ctx.strokeStyle = T.gold; ctx.stroke();
+          }
+        });
+      });
+    }
+    // 하단
+    ctx.textBaseline = 'alphabetic';
+    ctx.strokeStyle = T.rule; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(S.left, ruleY); ctx.lineTo(CW - S.right, ruleY); ctx.stroke();
+    ctx.fillStyle = T.footer; ctx.font = font(700, 27); ctx.textAlign = 'left';
+    var foot = '';
+    if (DATA && ON.now && DATA.cols.now) {
+      var a = DATA.cols.now.date.split('-');
+      foot = '현재는 ' + a[0] + '년 ' + (+a[1]) + '월 ' + (+a[2]) + '일 기준';
+    }
+    ctx.fillText(foot, S.left, footY);
+    ctx.textAlign = 'right'; ctx.fillText('@돈굴돈굴', CW - S.right, footY); ctx.textAlign = 'left';
+  }
+
+  function refresh() { chips(); fillHi(); autoText(); draw(); }
+
+  $('years').addEventListener('click', function (e) {
+    var b = e.target.closest('.chip'); if (!b) return;
+    var k = b.dataset.k;
+    if (!ON[k] && chosen().length >= MAXCOL) { $('warn').textContent = '연도는 ' + MAXCOL + '개까지 고를 수 있어요.'; return; }
+    $('warn').textContent = ''; ON[k] = !ON[k]; refresh();
+  });
+  document.querySelector('.mini').addEventListener('click', function (e) {
+    var b = e.target.closest('button'); if (!b) return;
+    $('warn').textContent = ''; preset(b.dataset.p); refresh();
+  });
+  ['mk', 'n'].forEach(function (id) { $(id).addEventListener('change', refresh); });
+  $('hi').addEventListener('change', function () { autoText(); draw(); });
+  $('chk-icon').addEventListener('change', draw);
+  ['title', 'sub'].forEach(function (id) { $(id).addEventListener('input', draw); });
+  $('btn-mode').addEventListener('click', function () {
+    var r = document.documentElement;
+    r.setAttribute('data-mode', r.getAttribute('data-mode') === 'dark' ? 'light' : 'dark');
+  });
+  $('dl').addEventListener('click', function () {
+    var SCALE = 3, big = document.createElement('canvas');
+    big.width = CW * SCALE; big.height = CH * SCALE;
+    var keep = ctx;
+    ctx = big.getContext('2d'); ctx.scale(SCALE, SCALE);
+    try { draw(); } finally { ctx = keep; }
+    var name = ($('title').value || '시총 순위').replace(/[\s\/\\:*?"<>|]+/g, '_') + '_' +
+               chosen().join('-') + '_' + big.width + 'x' + big.height + '.png';
+    big.toBlob(function (blob) {
+      if (!blob) { alert('그림을 만들지 못했습니다. 새로고침 후 다시 눌러 주세요.'); return; }
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(blob); a.download = name;
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(function () { URL.revokeObjectURL(a.href); }, 10000);
+    }, 'image/png');
+  });
+
+  fetch('./data/rank.json', { cache: 'no-cache' })
+    .then(function (r) { if (!r.ok) throw 0; return r.json(); })
+    .then(function (j) {
+      DATA = j; preset('all');
+      var ks = keys(), first = ks[0], last = ks.filter(function (k) { return k !== 'now'; }).pop();
+      $('src-pill').textContent = '연말 시가총액 ' + first + '~' + (last || '') + (j.cols.now ? ' · 현재 ' + j.cols.now.date : '');
+    })
+    .catch(function () { $('src-pill').textContent = '데이터 없음'; $('warn').textContent = 'data/rank.json 이 아직 없습니다. collect_rank.py 를 먼저 돌려 주세요.'; })
+    .then(function () { if (DATA) { chips(); fillHi(); autoText(); } return document.fonts ? document.fonts.ready : null; })
+    .then(draw);
+})();
+</script>
+<script src="./health.js" defer></script>
+</body>
+</html>
