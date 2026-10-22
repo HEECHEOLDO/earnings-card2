@@ -185,6 +185,8 @@
       <div class="warn" id="warn"></div>
       <label class="f" for="hi">강조할 회사</label>
       <select id="hi"><option value="">없음</option></select>
+      <label class="chk"><input type="checkbox" id="chk-lines"> 회사별로 선 잇기 (순위 흐름)</label>
+      <label class="chk"><input type="checkbox" id="chk-cap"> 로고 아래 시가총액</label>
       <label class="chk"><input type="checkbox" id="chk-icon" checked> 제목 왼쪽 태극기</label>
       <label class="f" for="title">제목</label>
       <input type="text" id="title" value="코스피 시총 순위">
@@ -265,6 +267,39 @@
     return w;
   }
 
+  // 시총(억) → '333조' · '8,500억'
+  function won(v) {
+    var t = v / 10000;
+    return t >= 100 ? Math.round(t).toLocaleString('ko-KR') + '조' : t >= 1 ? t.toFixed(1).replace(/\.0$/, '') + '조'
+         : Math.round(v).toLocaleString('ko-KR') + '억';
+  }
+  // 선 색 = 로고의 대표색 (흰색·투명 빼고 평균). 로고가 없으면 정해 둔 색 중 하나.
+  var LCOL = {}, PAL = ['#C0392B', '#2C5AA0', '#1D6E4E', '#B8892F', '#6B4C9A', '#D35400', '#16808A', '#7F8C8D'];
+  function lineColor(code) {
+    if (LCOL[code]) return LCOL[code];
+    var im = logo(code);
+    if (!ready(im)) {
+      if (im === null || (im && im.complete)) {
+        var h = 0; for (var i = 0; i < code.length; i++) h = (h * 31 + code.charCodeAt(i)) >>> 0;
+        return (LCOL[code] = PAL[h % PAL.length]);
+      }
+      return '#C9C6BC';                         // 아직 불러오는 중
+    }
+    var c = document.createElement('canvas'); c.width = c.height = 24;
+    var g = c.getContext('2d'), r = 0, gg = 0, b = 0, n = 0, d;
+    g.drawImage(im, 0, 0, 24, 24);
+    try { d = g.getImageData(0, 0, 24, 24).data; } catch (e) { return (LCOL[code] = '#7F8C8D'); }
+    for (var k = 0; k < d.length; k += 4) {
+      if (d[k + 3] < 120) continue;
+      var mx = Math.max(d[k], d[k + 1], d[k + 2]), mn = Math.min(d[k], d[k + 1], d[k + 2]);
+      if (mn > 225) continue;                     // 거의 흰색
+      var w = 1 + (mx - mn) / 40;                 // 색이 진한 점을 더 쳐 준다
+      r += d[k] * w; gg += d[k + 1] * w; b += d[k + 2] * w; n += w;
+    }
+    if (!n) return (LCOL[code] = '#7F8C8D');
+    return (LCOL[code] = 'rgb(' + Math.round(r / n) + ',' + Math.round(gg / n) + ',' + Math.round(b / n) + ')');
+  }
+
   // ---- 칸(연도) ----
   function keys() {                           // 오래된 해부터, '현재'는 맨 끝
     var ks = Object.keys((DATA && DATA.cols) || {});
@@ -342,7 +377,10 @@
     var ks = chosen(), mk = $('mk').value, n = +$('n').value, hi = $('hi').value;
     if (DATA && ks.length) {
       var top = y + 56, hdr = 52, rk = 58, cw = (W - rk) / ks.length;
-      var rh = (ruleY - 30 - top - hdr) / n, d = Math.min(cw * 0.8, rh * 0.84, 130);
+      var showCap = $('chk-cap').checked, lines = $('chk-lines').checked;
+      var rh = (ruleY - 30 - top - hdr) / n, d = Math.min(cw * 0.8, rh * (showCap ? 0.66 : 0.84), 130);
+      var capF = Math.max(11, Math.min(20, Math.round(rh * 0.19)));
+      var lift = showCap ? capF * 0.62 : 0;      // 시총 글자 자리만큼 로고를 위로
       // 머리줄: 연도
       ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
       ks.forEach(function (k, j) {
@@ -359,8 +397,35 @@
         ctx.font = font(900, Math.min(30, Math.round(rh * 0.42)));
         ctx.fillText(String(i + 1), X0 + 2, top + hdr + rh * (i + 0.5) + 1);
       }
+      // 회사별 선 — 해마다 같은 회사를 곡선으로 잇는다. 순위 밖으로 나가면 아래로 빠진다.
+      if (lines) {
+        var gy0 = top + hdr, gy1 = top + hdr + rh * n, outY = gy1 + rh * 0.9;
+        var pos = ks.map(function (k) {
+          var m = {}; (DATA.cols[k][mk] || []).slice(0, n).forEach(function (r, i) { m[r[0]] = i; }); return m;
+        });
+        var codes = {}; pos.forEach(function (m) { Object.keys(m).forEach(function (c) { codes[c] = 1; }); });
+        ctx.save();
+        ctx.beginPath(); ctx.rect(X0, gy0 + 2, W, gy1 - gy0 + rh * 0.25); ctx.clip();
+        ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+        Object.keys(codes).sort(function (a, b) { return a === hi ? 1 : b === hi ? -1 : 0; }).forEach(function (c) {
+          ctx.strokeStyle = lineColor(c);
+          ctx.lineWidth = Math.max(3, d * (c === hi ? 0.16 : 0.11));
+          ctx.globalAlpha = hi && c !== hi ? 0.12 : 0.95;
+          ctx.beginPath();
+          for (var j = 0; j < ks.length - 1; j++) {
+            var a = pos[j][c], b = pos[j + 1][c];
+            if (a == null && b == null) continue;
+            var x0 = X0 + rk + cw * (j + 0.5), x1 = x0 + cw;
+            var y0 = a == null ? outY : gy0 + rh * (a + 0.5) - lift;
+            var y1 = b == null ? outY : gy0 + rh * (b + 0.5) - lift;
+            ctx.moveTo(x0, y0); ctx.bezierCurveTo(x0 + cw * 0.5, y0, x1 - cw * 0.5, y1, x1, y1);
+          }
+          ctx.stroke();
+        });
+        ctx.restore();
+      }
       // 강조 회사 — 순위를 선으로 잇는다 (순위 밖인 해는 끊김)
-      if (hi) {
+      if (hi && !lines) {
         ctx.save(); ctx.strokeStyle = T.gold; ctx.lineWidth = Math.max(4, d * 0.07);
         ctx.lineJoin = 'round'; ctx.lineCap = 'round'; ctx.beginPath();
         var on = false;
@@ -375,7 +440,7 @@
       // 로고
       ks.forEach(function (k, j) {
         (DATA.cols[k][mk] || []).slice(0, n).forEach(function (r, i) {
-          var cx = X0 + rk + cw * (j + 0.5), cy = top + hdr + rh * (i + 0.5), R = d / 2;
+          var cx = X0 + rk + cw * (j + 0.5), cy = top + hdr + rh * (i + 0.5) - lift, R = d / 2;
           var im = logo(r[0]), has = ready(im);
           ctx.save();
           ctx.globalAlpha = hi && r[0] !== hi ? 0.2 : 1;
@@ -387,6 +452,11 @@
             fit(r[1], 800, Math.round(R * 0.5), 8, R * 1.7); ctx.fillText(r[1], cx, cy + 1);
           }
           ctx.restore();
+          if (showCap) {
+            ctx.save(); ctx.globalAlpha = hi && r[0] !== hi ? 0.25 : 1;
+            ctx.fillStyle = T.inkSoft; ctx.font = font(700, capF); ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+            ctx.fillText(won(r[2]), cx, cy + R + capF * 0.25); ctx.restore();
+          }
           if (hi && r[0] === hi) {
             ctx.beginPath(); ctx.arc(cx, cy, R + Math.max(3, d * 0.06), 0, 7);
             ctx.lineWidth = Math.max(3, d * 0.05); ctx.strokeStyle = T.gold; ctx.stroke();
@@ -423,6 +493,8 @@
   ['mk', 'n'].forEach(function (id) { $(id).addEventListener('change', refresh); });
   $('hi').addEventListener('change', function () { autoText(); draw(); });
   $('chk-icon').addEventListener('change', draw);
+  $('chk-lines').addEventListener('change', draw);
+  $('chk-cap').addEventListener('change', draw);
   ['title', 'sub'].forEach(function (id) { $(id).addEventListener('input', draw); });
   $('btn-mode').addEventListener('click', function () {
     var r = document.documentElement;
