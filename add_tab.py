@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""모든 페이지의 메뉴를 같은 8칸으로 맞춘다 ('비상장 실적' · '시가총액' 추가).
+"""모든 페이지의 메뉴를 같은 9칸으로 맞춘다 (좁은 화면에서는 두 줄) ('비상장 실적' · '시가총액' 추가).
 
   python3 add_tab.py            바꾸기
   python3 add_tab.py --dry      뭐가 바뀌는지만 보기
@@ -85,6 +85,29 @@ def nav_html(here):
 
 NAV_RE = re.compile(r'<nav class="nav"[^>]*>.*?</nav>', re.S)
 
+# 메뉴 줄바꿈 — 넓은 화면은 한 줄, 좁은 화면(태블릿·휴대폰)은 두 줄(5칸 + 4칸).
+# 화면마다 따로 적힌 메뉴 모양 뒤에 덧붙여 덮어쓴다. 몇 번 돌려도 한 덩어리만 남는다.
+NAV_CSS_RE = re.compile(r'\s*<style id="nav-wrap">.*?</style>', re.S)
+NAV_CSS = """
+<style id="nav-wrap">
+  @media (max-width: 1100px) {
+    .nav { flex-wrap: wrap; border-radius: 18px; gap: 4px; padding: 4px; }
+    .nav-i { flex: 1 0 calc(20% - 4px); min-width: 0; border-radius: 12px; }
+  }
+  @media (max-width: 560px) {
+    .nav { gap: 3px; padding: 3px; border-radius: 14px; }
+    .nav-i { flex-basis: calc(20% - 3px); height: 38px; padding: 0 4px; gap: 4px; border-radius: 10px; }
+  }
+  @media (max-width: 480px) {
+    .nav-i { flex-direction: column; height: 50px; gap: 3px; font-size: 11.5px; line-height: 1.1; }
+    .nav-i svg { display: block; width: 16px; height: 16px; }
+  }
+  @media (max-width: 340px) {
+    .nav-i svg { display: none; }
+    .nav-i { height: 38px; }
+  }
+</style>"""
+
 
 def main():
     dry = "--dry" in sys.argv
@@ -104,6 +127,9 @@ def main():
         names["status"] = "데이터 상태"
         new = H1_RE.sub("<h1>%s</h1>" % SITE, new, count=1)
         new = TITLE_RE.sub("<title>%s · %s</title>" % (names.get(here, SITE), SITE), new, count=1)
+        new = NAV_CSS_RE.sub("", new)
+        if "</head>" in new:
+            new = new.replace("</head>", NAV_CSS.lstrip("\n") + "\n</head>", 1)
         if HEALTH_TAG not in new and "</body>" in new:
             new = new.replace("</body>", HEALTH_TAG + "\n</body>", 1)
         if new == s:
