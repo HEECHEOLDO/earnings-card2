@@ -31,6 +31,11 @@ jobs:
           DART_API_KEY: ${{ secrets.DART_API_KEY }}
         run: python3 collect_unlisted.py --budget 1500 --refresh-days 7
 
+      - name: 감사보고서 회사 수집 (남은 예산으로)
+        env:
+          DART_API_KEY: ${{ secrets.DART_API_KEY }}
+        run: python3 collect_audit.py --total 1500
+
       - name: 변경분 커밋
         run: |
           git config user.name  "github-actions[bot]"

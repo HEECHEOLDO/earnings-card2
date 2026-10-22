@@ -434,6 +434,9 @@ def main():
 
     U.jsave(CHECKED, checked, sort_keys=True, separators=(",", ":"))
     U.jsave(FAILED, failed, indent=1)
+    if not C.ABORT:                           # 끝까지 돈 날을 남긴다 (받을 회사가 없던 날도)
+        U.jsave(os.path.join(OUT, "_audit_run.json"),
+                {"updated": U.today(), "done": len(done), "calls": C._call_count}, indent=1)
     sync_meta(load_list())
     n = U.rebuild_index()
     log("\n" + "=" * 50)

@@ -38,7 +38,7 @@ SOURCES = [
     ("kr",       "국내 실적",   "index.html",    ["data/_checked.json", "data/index.json"], 2, 4),
     ("us",       "해외 실적",   "us.html",       ["data/us/_checked.json", "data/us/index.json"], 2, 4),
     ("unlisted", "비상장 실적 (정기보고서)", "unlisted.html", ["data/unlisted/_run.json", "data/unlisted/_checked.json"], 2, 4),
-    ("audit",    "비상장 실적 (감사보고서)", "unlisted.html", ["data/unlisted/_audit_checked.json"], 4, 8),
+    ("audit",    "비상장 실적 (감사보고서)", "unlisted.html", ["data/unlisted/_audit_run.json", "data/unlisted/_audit_checked.json"], 4, 8),
     ("returns",  "연간 수익률", "returns.html",  ["data/returns.json"], 2, 4),
     ("buy_us",   "그때 샀다면 (해외 주가)", "buy.html", ["data/monthly_us.json"], 3, 6),
     ("mcap",     "시가총액",    "mcap.html",     ["data/mcap.json"], 4, 7),   # 평일 장 마감 뒤에만 받는다
