@@ -1,0 +1,45 @@
+{
+ "name": "에픽게임즈코리아",
+ "legal_name": "에픽게임즈코리아",
+ "code": "01814552",
+ "market": "비상장",
+ "sector": "게임",
+ "brand": "포트나이트, 언리얼",
+ "basis": "별도",
+ "source": "audit",
+ "fy_end": 12,
+ "updated": "2026-10-23",
+ "annual": [
+  {
+   "p": 2023,
+   "rev": 100.7,
+   "op": 6.6,
+   "ni": 5.0,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2024,
+   "rev": 96.6,
+   "op": 4.3,
+   "ni": 3.2,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  }
+ ],
+ "quarterly": [],
+ "reports": {
+  "2023": "전기:20250331001594",
+  "2024": "20250331001594"
+ }
+}

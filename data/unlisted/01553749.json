@@ -1,0 +1,101 @@
+{
+ "name": "블루보틀커피코리아",
+ "legal_name": "블루보틀커피코리아",
+ "code": "01553749",
+ "market": "비상장",
+ "sector": "카페·외식",
+ "brand": "블루보틀",
+ "basis": "별도",
+ "source": "audit",
+ "fy_end": 12,
+ "updated": "2026-10-23",
+ "annual": [
+  {
+   "p": 2020,
+   "rev": 119.6,
+   "op": -3.4,
+   "ni": -1.9,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2021,
+   "rev": 201.6,
+   "op": 26.7,
+   "ni": 19.9,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2022,
+   "rev": 223.5,
+   "op": 23.3,
+   "ni": 13.5,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2023,
+   "rev": 265.0,
+   "op": 19.5,
+   "ni": 7.7,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2024,
+   "rev": 311.9,
+   "op": 2.5,
+   "ni": -11.3,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2025,
+   "rev": 386.2,
+   "op": 4.1,
+   "ni": 5.2,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  }
+ ],
+ "quarterly": [],
+ "reports": {
+  "2020": "전기:20220411001860",
+  "2021": "20220411001860",
+  "2022": "20230412002325",
+  "2023": "20240401001946",
+  "2024": "20250331002515",
+  "2025": "20260331003058"
+ }
+}

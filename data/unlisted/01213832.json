@@ -1,0 +1,73 @@
+{
+ "name": "스노우",
+ "legal_name": "스노우",
+ "code": "01213832",
+ "market": "비상장",
+ "sector": "플랫폼·앱",
+ "brand": "SNOW, 에픽",
+ "basis": "별도",
+ "source": "audit",
+ "fy_end": 12,
+ "updated": "2026-10-23",
+ "annual": [
+  {
+   "p": 2022,
+   "rev": 192.9,
+   "op": -619.3,
+   "ni": -853.5,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2023,
+   "rev": 685.4,
+   "op": -414.5,
+   "ni": -666.9,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2024,
+   "rev": 733.5,
+   "op": -372.9,
+   "ni": 425.7,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2025,
+   "rev": 965.8,
+   "op": -191.6,
+   "ni": -327.9,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  }
+ ],
+ "quarterly": [],
+ "reports": {
+  "2022": "전기:20240404001294",
+  "2023": "20240404001294",
+  "2024": "20250407000271",
+  "2025": "20260403003349"
+ }
+}

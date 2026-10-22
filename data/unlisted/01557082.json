@@ -1,0 +1,87 @@
+{
+ "name": "머스트잇",
+ "legal_name": "머스트잇",
+ "code": "01557082",
+ "market": "비상장",
+ "sector": "배달·커머스",
+ "brand": "머스트잇",
+ "basis": "별도",
+ "source": "audit",
+ "fy_end": 12,
+ "updated": "2026-10-23",
+ "annual": [
+  {
+   "p": 2020,
+   "rev": 120.2,
+   "op": 14.1,
+   "ni": 14.8,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2021,
+   "rev": 199.5,
+   "op": -100.5,
+   "ni": -102.3,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2022,
+   "rev": 330.8,
+   "op": -168.2,
+   "ni": -177.2,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2023,
+   "rev": 249.8,
+   "op": -78.6,
+   "ni": 5.6,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2024,
+   "rev": 119.5,
+   "op": -79.0,
+   "ni": -84.1,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  }
+ ],
+ "quarterly": [],
+ "reports": {
+  "2020": "전기:20220414002005",
+  "2021": "20220414002005",
+  "2022": "20230413002813",
+  "2023": "20240412000160",
+  "2024": "20250411000508"
+ }
+}

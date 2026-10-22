@@ -1,0 +1,101 @@
+{
+ "name": "한국퀄컴",
+ "legal_name": "한국퀄컴",
+ "code": "01053911",
+ "market": "비상장",
+ "sector": "해외 IT·전자",
+ "brand": "퀄컴",
+ "basis": "별도 · 9월 결산",
+ "source": "audit",
+ "fy_end": 9,
+ "updated": "2026-10-23",
+ "annual": [
+  {
+   "p": 2020,
+   "rev": 469.1,
+   "op": 67.1,
+   "ni": 52.1,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2021,
+   "rev": 465.8,
+   "op": 63.5,
+   "ni": 67.3,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2022,
+   "rev": 604.3,
+   "op": 80.2,
+   "ni": 72.7,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2023,
+   "rev": 751.3,
+   "op": 101.3,
+   "ni": 79.6,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2024,
+   "rev": 783.0,
+   "op": 103.7,
+   "ni": 98.2,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2025,
+   "rev": 793.4,
+   "op": 108.2,
+   "ni": 103.4,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  }
+ ],
+ "quarterly": [],
+ "reports": {
+  "2020": "전기:20220111000422",
+  "2021": "20220111000422",
+  "2022": "20221226000423",
+  "2023": "20231226000363",
+  "2024": "20241220000677",
+  "2025": "20251230000448"
+ }
+}

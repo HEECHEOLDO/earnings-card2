@@ -1,0 +1,45 @@
+{
+ "name": "스마일게이트알피지",
+ "legal_name": "스마일게이트알피지",
+ "code": "00961756",
+ "market": "비상장",
+ "sector": "게임",
+ "brand": "로스트아크",
+ "basis": "별도 · 2월 결산",
+ "source": "audit",
+ "fy_end": 2,
+ "updated": "2026-10-23",
+ "annual": [
+  {
+   "p": 2024,
+   "rev": 4758.5,
+   "op": 2233.2,
+   "ni": 3026.3,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2025,
+   "rev": 857.6,
+   "op": 83.2,
+   "ni": 56.2,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  }
+ ],
+ "quarterly": [],
+ "reports": {
+  "2024": "전기:20250602001354",
+  "2025": "20250602001354"
+ }
+}

@@ -1,0 +1,101 @@
+{
+ "name": "티파니코리아",
+ "legal_name": "티파니코리아",
+ "code": "00314912",
+ "market": "비상장",
+ "sector": "패션·명품·뷰티",
+ "brand": "티파니",
+ "basis": "별도",
+ "source": "audit",
+ "fy_end": 12,
+ "updated": "2026-10-23",
+ "annual": [
+  {
+   "p": 2020,
+   "rev": 2353.8,
+   "op": 94.1,
+   "ni": 63.6,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2021,
+   "rev": 2881.2,
+   "op": 172.8,
+   "ni": 128.9,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2022,
+   "rev": 3590.0,
+   "op": 215.7,
+   "ni": 162.1,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2023,
+   "rev": 3509.1,
+   "op": 212.0,
+   "ni": 184.2,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2024,
+   "rev": 3779.5,
+   "op": 215.6,
+   "ni": -309.7,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2025,
+   "rev": 4504.2,
+   "op": 260.2,
+   "ni": 616.0,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  }
+ ],
+ "quarterly": [],
+ "reports": {
+  "2020": "전기:20220411002700",
+  "2021": "20220411002700",
+  "2022": "20230405002475",
+  "2023": "20240408001892",
+  "2024": "20250403003132",
+  "2025": "20260408002974"
+ }
+}

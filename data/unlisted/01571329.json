@@ -1,0 +1,87 @@
+{
+ "name": "쿠팡이츠서비스",
+ "legal_name": "쿠팡이츠서비스",
+ "code": "01571329",
+ "market": "비상장",
+ "sector": "배달·커머스",
+ "brand": "쿠팡이츠",
+ "basis": "별도",
+ "source": "audit",
+ "fy_end": 12,
+ "updated": "2026-10-23",
+ "annual": [
+  {
+   "p": 2021,
+   "rev": 5958.8,
+   "op": -34.9,
+   "ni": -35.4,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2022,
+   "rev": 7232.8,
+   "op": 14.2,
+   "ni": 12.3,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2023,
+   "rev": 7925.4,
+   "op": 77.0,
+   "ni": 94.0,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2024,
+   "rev": 18819.2,
+   "op": 216.6,
+   "ni": 228.1,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2025,
+   "rev": 29005.9,
+   "op": 817.7,
+   "ni": 614.3,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  }
+ ],
+ "quarterly": [],
+ "reports": {
+  "2021": "전기:20230413002671",
+  "2022": "20230413002671",
+  "2023": "20240409003661",
+  "2024": "20250404003800",
+  "2025": "20260410003547"
+ }
+}

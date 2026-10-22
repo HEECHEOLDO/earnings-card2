@@ -1,0 +1,73 @@
+{
+ "name": "디아지오코리아",
+ "legal_name": "디아지오코리아",
+ "code": "01697256",
+ "market": "비상장",
+ "sector": "식품·음료·주류",
+ "brand": "조니워커",
+ "basis": "별도 · 6월 결산",
+ "source": "audit",
+ "fy_end": 6,
+ "updated": "2026-10-23",
+ "annual": [
+  {
+   "p": 2023,
+   "rev": 1533.7,
+   "op": 232.9,
+   "ni": 177.5,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2024,
+   "rev": 1624.9,
+   "op": 181.7,
+   "ni": 151.3,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2025,
+   "rev": 1606.1,
+   "op": 93.8,
+   "ni": -111.7,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2026,
+   "rev": 1536.5,
+   "op": 107.4,
+   "ni": 89.5,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  }
+ ],
+ "quarterly": [],
+ "reports": {
+  "2023": "20231005000082",
+  "2024": "20241007000134",
+  "2025": "20251001000345",
+  "2026": "20260923000110"
+ }
+}

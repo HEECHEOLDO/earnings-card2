@@ -1,0 +1,45 @@
+{
+ "name": "지마켓",
+ "legal_name": "지마켓",
+ "code": "00310280",
+ "market": "비상장",
+ "sector": "배달·커머스",
+ "brand": "G마켓, 옥션",
+ "basis": "연결 · 3월 결산",
+ "source": "audit",
+ "fy_end": 3,
+ "updated": "2026-10-23",
+ "annual": [
+  {
+   "p": 2025,
+   "rev": 7404.5,
+   "op": -1224.4,
+   "ni": -1142.9,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": true
+  },
+  {
+   "p": 2026,
+   "rev": 1697.5,
+   "op": -697.8,
+   "ni": -681.0,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": true
+  }
+ ],
+ "quarterly": [],
+ "reports": {
+  "2025": "전기:20260710000486",
+  "2026": "20260710000486"
+ }
+}

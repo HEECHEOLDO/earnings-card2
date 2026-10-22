@@ -1,0 +1,73 @@
+{
+ "name": "위대한상상",
+ "legal_name": "위대한상상",
+ "code": "01695300",
+ "market": "비상장",
+ "sector": "배달·커머스",
+ "brand": "요기요",
+ "basis": "연결",
+ "source": "audit",
+ "fy_end": 12,
+ "updated": "2026-10-23",
+ "annual": [
+  {
+   "p": 2022,
+   "rev": 2639.9,
+   "op": -1115.7,
+   "ni": -864.7,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": true
+  },
+  {
+   "p": 2023,
+   "rev": 2857.3,
+   "op": -654.9,
+   "ni": -4841.0,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": true
+  },
+  {
+   "p": 2024,
+   "rev": 2751.9,
+   "op": -431.1,
+   "ni": -2747.2,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": true
+  },
+  {
+   "p": 2025,
+   "rev": 2011.2,
+   "op": -152.8,
+   "ni": -840.6,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": true
+  }
+ ],
+ "quarterly": [],
+ "reports": {
+  "2022": "전기:20240327000962",
+  "2023": "20240327000962",
+  "2024": "20250328000967",
+  "2025": "20260331002400"
+ }
+}

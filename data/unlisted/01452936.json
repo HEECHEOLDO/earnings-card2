@@ -1,0 +1,101 @@
+{
+ "name": "해태아이스크림",
+ "legal_name": "해태아이스크림",
+ "code": "01452936",
+ "market": "비상장",
+ "sector": "식품·음료·주류",
+ "brand": "부라보콘, 누가바",
+ "basis": "별도",
+ "source": "audit",
+ "fy_end": 12,
+ "updated": "2026-10-23",
+ "annual": [
+  {
+   "p": 2020,
+   "rev": 1564.3,
+   "op": 11.2,
+   "ni": 1.2,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2021,
+   "rev": 1601.1,
+   "op": -19.7,
+   "ni": -21.8,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2022,
+   "rev": 1748.5,
+   "op": 55.6,
+   "ni": 35.8,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2023,
+   "rev": 1991.0,
+   "op": 153.6,
+   "ni": 147.8,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2024,
+   "rev": 1997.8,
+   "op": 122.1,
+   "ni": 87.6,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2025,
+   "rev": 1876.0,
+   "op": 79.3,
+   "ni": 132.2,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  }
+ ],
+ "quarterly": [],
+ "reports": {
+  "2020": "20210329000438",
+  "2021": "20220330000626",
+  "2022": "20230320000451",
+  "2023": "20240321000467",
+  "2024": "20250321000851",
+  "2025": "20260320000450"
+ }
+}

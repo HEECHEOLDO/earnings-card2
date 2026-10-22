@@ -1,0 +1,101 @@
+{
+ "name": "쿠팡페이",
+ "legal_name": "쿠팡페이",
+ "code": "01561252",
+ "market": "비상장",
+ "sector": "배달·커머스",
+ "brand": "쿠팡페이",
+ "basis": "별도",
+ "source": "audit",
+ "fy_end": 12,
+ "updated": "2026-10-23",
+ "annual": [
+  {
+   "p": 2020,
+   "rev": 1794.5,
+   "op": 34.8,
+   "ni": 71.5,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2021,
+   "rev": 5688.9,
+   "op": 183.6,
+   "ni": 358.1,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2022,
+   "rev": 6918.8,
+   "op": 290.4,
+   "ni": 594.0,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2023,
+   "rev": 8509.8,
+   "op": 356.4,
+   "ni": 1290.8,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2024,
+   "rev": 11248.0,
+   "op": 560.8,
+   "ni": 1271.4,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2025,
+   "rev": 14169.6,
+   "op": 853.2,
+   "ni": 1287.2,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  }
+ ],
+ "quarterly": [],
+ "reports": {
+  "2020": "전기:20220413002456",
+  "2021": "20220413002456",
+  "2022": "20230413002605",
+  "2023": "20240409003662",
+  "2024": "20250404003794",
+  "2025": "20260410003556"
+ }
+}
