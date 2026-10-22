@@ -2,14 +2,14 @@
  "name": "IBM",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "INTERNATIONAL BUSINESS MACHINES CORP",
+ "legal_name": "INTERNATIONAL BUSINESS MACHINES CORPORATION",
  "code": "IBM",
  "cik": "0000051143",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-10-22",
+ "updated": "2026-10-23",
  "annual": [
   {
    "p": 2016,
@@ -145,13 +145,6 @@
  "quarterly": [
   {
    "y": 2024,
-   "q": 1,
-   "rev": 14462.0,
-   "op": 7742.0,
-   "ni": 1605.0
-  },
-  {
-   "y": 2024,
    "q": 2,
    "rev": 15770.0,
    "op": 8950.0,
@@ -212,6 +205,13 @@
    "rev": 17162.0,
    "op": 9907.0,
    "ni": 2165.0
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 17103.0,
+   "op": 9714.0,
+   "ni": 2190.0
   }
  ]
 }

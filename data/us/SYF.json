@@ -2,14 +2,14 @@
  "name": "SYF",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "Synchrony Financial",
+ "legal_name": "SYNCHRONY FINANCIAL",
  "code": "SYF",
  "cik": "0001601712",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-10-22",
+ "updated": "2026-10-23",
  "annual": [
   {
    "p": 2016,
@@ -145,13 +145,6 @@
  "quarterly": [
   {
    "y": 2024,
-   "q": 1,
-   "rev": 4405.0,
-   "op": 1708.0,
-   "ni": 1293.0
-  },
-  {
-   "y": 2024,
    "q": 2,
    "rev": 4405.0,
    "op": 844.0,
@@ -212,6 +205,13 @@
    "rev": 4608.0,
    "op": 1186.0,
    "ni": 885.0
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 4809.0,
+   "op": 1181.0,
+   "ni": 892.0
   }
  ]
 }

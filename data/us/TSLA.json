@@ -2,14 +2,14 @@
  "name": "TSLA",
  "split_adjusted": true,
  "restated_from": null,
- "legal_name": "TESLA, INC.",
+ "legal_name": "Tesla, Inc.",
  "code": "TSLA",
  "cik": "0001318605",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-10-22",
+ "updated": "2026-10-23",
  "annual": [
   {
    "p": 2016,
@@ -145,13 +145,6 @@
  "quarterly": [
   {
    "y": 2024,
-   "q": 1,
-   "rev": 21301.0,
-   "op": 1171.0,
-   "ni": 1390.0
-  },
-  {
-   "y": 2024,
    "q": 2,
    "rev": 25500.0,
    "op": 1605.0,
@@ -212,6 +205,13 @@
    "rev": 28236.0,
    "op": 398.0,
    "ni": 1114.0
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 28046.0,
+   "op": 718.0,
+   "ni": 787.0
   }
  ]
 }
