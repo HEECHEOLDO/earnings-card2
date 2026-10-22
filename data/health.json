@@ -1,12 +1,12 @@
 {
- "checked": "2026-10-21 13:31",
+ "checked": "2026-10-22 13:30",
  "status": "warn",
  "sources": [
   {
    "key": "kr",
    "name": "국내 실적",
    "page": "index.html",
-   "last": "2026-10-21",
+   "last": "2026-10-22",
    "days": 0,
    "status": "ok",
    "msg": "정상",
@@ -16,7 +16,7 @@
    "key": "us",
    "name": "해외 실적",
    "page": "us.html",
-   "last": "2026-10-21",
+   "last": "2026-10-22",
    "days": 0,
    "status": "ok",
    "msg": "정상",
@@ -26,10 +26,10 @@
    "key": "unlisted",
    "name": "비상장 실적 (정기보고서)",
    "page": "unlisted.html",
-   "last": "2026-10-17",
-   "days": 4,
-   "status": "warn",
-   "msg": "4일째 수집 기록 없음",
+   "last": "2026-10-22",
+   "days": 0,
+   "status": "ok",
+   "msg": "정상",
    "note": "28곳"
   },
   {
@@ -37,26 +37,26 @@
    "name": "비상장 실적 (감사보고서)",
    "page": "unlisted.html",
    "last": "2026-10-17",
-   "days": 4,
-   "status": "ok",
-   "msg": "정상",
+   "days": 5,
+   "status": "warn",
+   "msg": "5일째 수집 기록 없음",
    "note": "6곳 / 목록 302곳"
   },
   {
    "key": "returns",
    "name": "연간 수익률",
    "page": "returns.html",
-   "last": "2026-10-21",
+   "last": "2026-10-22",
    "days": 0,
    "status": "ok",
    "msg": "정상",
-   "note": "국내 2,962 · 해외 136종목"
+   "note": "국내 2,962 · 해외 151종목"
   },
   {
    "key": "buy_us",
    "name": "그때 샀다면 (해외 주가)",
    "page": "buy.html",
-   "last": "2026-10-21",
+   "last": "2026-10-22",
    "days": 0,
    "status": "ok",
    "msg": "정상",
@@ -67,16 +67,26 @@
    "name": "시가총액",
    "page": "mcap.html",
    "last": "2026-10-20",
-   "days": 1,
+   "days": 2,
    "status": "ok",
    "msg": "정상",
    "note": "코스피 60 · 코스닥 60종목"
   },
   {
+   "key": "rank",
+   "name": "시총 순위",
+   "page": "rank.html",
+   "last": "2026-10-22",
+   "days": 0,
+   "status": "ok",
+   "msg": "정상",
+   "note": ""
+  },
+  {
    "key": "fx",
    "name": "환율",
    "page": "buy.html",
-   "last": "2026-10-21",
+   "last": "2026-10-22",
    "days": 0,
    "status": "ok",
    "msg": "정상",
@@ -86,7 +96,7 @@
    "key": "guru",
    "name": "포트폴리오 (13F)",
    "page": "guru.html",
-   "last": "2026-10-21",
+   "last": "2026-10-22",
    "days": 0,
    "status": "ok",
    "msg": "정상",
@@ -94,7 +104,7 @@
   }
  ],
  "filings": {
-  "filings": 176,
+  "filings": 124,
   "partial": false,
   "late": [],
   "missing": [],
