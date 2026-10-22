@@ -5,7 +5,7 @@
  "code": "238170",
  "market": "기타",
  "sector": "",
- "updated": "2026-09-02",
+ "updated": "2026-10-23",
  "annual": [
   {
    "p": 2018,
@@ -99,14 +99,6 @@
    "dps_adj": null
   }
  ],
- "quarterly": [
-  {
-   "y": 2023,
-   "q": 4,
-   "rev": 242.7,
-   "op": -18.5,
-   "ni": -4.6
-  }
- ],
+ "quarterly": [],
  "q_method": "strict"
 }

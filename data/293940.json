@@ -5,7 +5,7 @@
  "code": "293940",
  "market": "코스피",
  "sector": "",
- "updated": "2026-09-03",
+ "updated": "2026-10-23",
  "annual": [
   {
    "p": 2018,
@@ -125,14 +125,6 @@
    "dps_adj": 182.0
   }
  ],
- "quarterly": [
-  {
-   "y": 2023,
-   "q": 2,
-   "rev": 261.1,
-   "op": 168.1,
-   "ni": 65.1
-  }
- ],
+ "quarterly": [],
  "q_method": "strict"
 }
