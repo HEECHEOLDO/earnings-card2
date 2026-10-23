@@ -1429,6 +1429,8 @@
         (state.company.restated_from
           ? " · '" + String(state.company.restated_from).slice(2) + '년 기준 변경' : '') +
         (CUR === 'KRW' ? ' · ' + Math.round(FX.usdkrw).toLocaleString('ko-KR') + '원 기준' : '');
+    var fxm = String(unitText).match(/([\d,]+원)\s*기준/);   // US_UNIT_FX — 환율만 남긴다
+    unitText = fxm ? '환율 ' + fxm[1] + ' 기준' : '';
     ctx.fillText(unitText, CX + CWID, legendY - 2);
     ctx.textAlign = 'left';
 
