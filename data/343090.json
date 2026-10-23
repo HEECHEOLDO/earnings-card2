@@ -5,7 +5,7 @@
  "code": "343090",
  "market": "기타",
  "sector": "",
- "updated": "2026-09-04",
+ "updated": "2026-10-24",
  "annual": [
   {
    "p": 2019,
@@ -47,14 +47,6 @@
    "dps_adj": null
   }
  ],
- "quarterly": [
-  {
-   "y": 2023,
-   "q": 4,
-   "rev": 0.0,
-   "op": -26.8,
-   "ni": -28.0
-  }
- ],
+ "quarterly": [],
  "q_method": "strict"
 }

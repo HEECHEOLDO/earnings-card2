@@ -5,7 +5,7 @@
  "code": "150440",
  "market": "기타",
  "sector": "",
- "updated": "2026-08-31",
+ "updated": "2026-10-24",
  "annual": [
   {
    "p": 2018,
@@ -86,13 +86,6 @@
    "dps_adj": null
   }
  ],
- "quarterly": [
-  {
-   "y": 2023,
-   "q": 4,
-   "rev": 76.3,
-   "op": -13.2,
-   "ni": 11.1
-  }
- ]
+ "quarterly": [],
+ "q_method": "strict"
 }

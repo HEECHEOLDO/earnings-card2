@@ -5,7 +5,7 @@
  "code": "357120",
  "market": "코스피",
  "sector": "",
- "updated": "2026-09-04",
+ "updated": "2026-10-24",
  "annual": [
   {
    "p": 2020,
@@ -99,14 +99,6 @@
    "dps_adj": 163.0
   }
  ],
- "quarterly": [
-  {
-   "y": 2023,
-   "q": 2,
-   "rev": 149.2,
-   "op": 89.1,
-   "ni": 32.8
-  }
- ],
+ "quarterly": [],
  "q_method": "strict"
 }

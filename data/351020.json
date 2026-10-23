@@ -5,7 +5,7 @@
  "code": "351020",
  "market": "코넥스",
  "sector": "",
- "updated": "2026-09-04",
+ "updated": "2026-10-24",
  "annual": [
   {
    "p": 2022,
@@ -60,14 +60,6 @@
    "dps_adj": null
   }
  ],
- "quarterly": [
-  {
-   "y": 2023,
-   "q": 4,
-   "rev": 231.5,
-   "op": 12.5,
-   "ni": 7.4
-  }
- ],
+ "quarterly": [],
  "q_method": "strict"
 }
