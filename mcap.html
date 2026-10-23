@@ -302,6 +302,7 @@
     for (var i = 0; i < k; i++) tot += vals[i];
     var won = money(tot);
     if (isUSmk(mk) && FX && tot > 0) won += ' (' + krw(tot * FX) + ')';   // 미국: 달러 옆에 그날 환율로 원화
+    else if (!isUSmk(mk)) won += ' 원';                                      // 국내: 3,091조 원
     var sumTxt = k ? (k < +n ? k + '개' : '상위 ' + k + '개') + ' 합계 ' + won : '';
     document.getElementById('sub').value = [extra, sumTxt].filter(Boolean).join(' · ');
     window.MCAP_FOOT = a ? a[0] + '년 ' + (+a[1]) + '월 ' + (+a[2]) + '일 기준' : '';
