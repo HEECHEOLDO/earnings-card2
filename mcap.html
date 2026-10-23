@@ -213,7 +213,16 @@
     '000100 유한양행 10 +7', '352820 하이브 10 -9'
   ];
   // data/mcap.json (collect_mcap.py 가 매일 만든다)을 읽는다. 없으면 샘플.
-  var DATA = null, DATA_US = null;
+  var DATA = null, DATA_US = null, FX = null;   // FX = 1달러 몇 원 (data/fx.json, 해외 실적 수집기가 매일 받음)
+  // 조 원 → '약 3경 9,900조 원' · '약 6,770조 원' · '약 850억 원'
+  function krw(jo) {
+    if (jo >= 10000) { var g = Math.floor(jo / 10000), r = Math.round((jo - g * 10000) / 100) * 100;
+      if (r >= 10000) { g += 1; r = 0; }
+      return '약 ' + g + '경' + (r ? ' ' + r.toLocaleString('ko-KR') + '조' : '') + ' 원'; }
+    if (jo >= 100) return '약 ' + (Math.round(jo / 10) * 10).toLocaleString('ko-KR') + '조 원';
+    if (jo >= 1) return '약 ' + jo.toFixed(1).replace(/\.0$/, '') + '조 원';
+    return '약 ' + Math.max(1, Math.round(jo * 10000)).toLocaleString('ko-KR') + '억 원';
+  }
   // 미국 섹터 이름 (나스닥 분류) → 한국어
   var US_SECTOR = { 'Technology': '기술', 'Health Care': '헬스케어', 'Finance': '금융', 'Consumer Discretionary': '경기소비재',
     'Industrials': '산업재', 'Telecommunications': '통신', 'Energy': '에너지', 'Real Estate': '부동산',
@@ -292,6 +301,7 @@
     var k = Math.min(+n, vals.length), tot = 0;
     for (var i = 0; i < k; i++) tot += vals[i];
     var won = money(tot);
+    if (isUSmk(mk) && FX && tot > 0) won += ' (' + krw(tot * FX) + ')';   // 미국: 달러 옆에 그날 환율로 원화
     var sumTxt = k ? (k < +n ? k + '개' : '상위 ' + k + '개') + ' 합계 ' + won : '';
     document.getElementById('sub').value = [extra, sumTxt].filter(Boolean).join(' · ');
     window.MCAP_FOOT = a ? a[0] + '년 ' + (+a[1]) + '월 ' + (+a[2]) + '일 기준' : '';
@@ -626,6 +636,10 @@
       setTimeout(function () { URL.revokeObjectURL(a.href); }, 10000);
     }, 'image/png');
   });
+  fetch('./data/fx.json', { cache: 'no-cache' })
+    .then(function (r) { if (!r.ok) throw 0; return r.json(); })
+    .then(function (j) { FX = +j.usdkrw || null; if (isUSmk()) { autoText(); draw(); } })
+    .catch(function () { });
   fetch('./data/mcap_us.json', { cache: 'no-cache' })
     .then(function (r) { if (!r.ok) throw 0; return r.json(); })
     .then(function (j) { DATA_US = j; if (isUSmk()) { fill(); draw(); } })
