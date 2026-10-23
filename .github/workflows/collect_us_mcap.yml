@@ -1,0 +1,39 @@
+name: 미국 시가총액 수집
+
+on:
+  schedule:
+    # 화~토 07:30 KST (UTC 22:30, 월~금) — 미국 장 마감(새벽 5~6시 KST) 뒤.
+    # 나스닥 종목 검색표 한 번 → data/mcap_us.json + 시총 순위 '현재' 칸의 미국. 키 필요 없음.
+    - cron: '30 22 * * 1-5'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: us-mcap-collect
+  cancel-in-progress: true
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: 수집
+        run: python3 collect_us_mcap.py
+      - name: 커밋
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/mcap_us.json data/rank.json || true
+          if git diff --staged --quiet; then echo "변경 없음"; exit 0; fi
+          git commit -m "미국 시가총액 자동 수집 $(date -u +'%Y-%m-%d')"
+          for i in 1 2 3 4 5; do
+            git pull --rebase --autostash origin main && git push && exit 0
+            echo "푸시 재시도 $i"; sleep 10
+          done
+          echo "푸시 실패"; exit 1

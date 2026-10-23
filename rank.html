@@ -169,7 +169,7 @@
       <h3>카드 만들기</h3>
       <div class="row">
         <div><label class="f" for="mk">시장</label>
-          <select id="mk"><option value="kospi" selected>코스피</option><option value="kosdaq">코스닥</option><option value="all">국내 전체 (코스피+코스닥)</option></select></div>
+          <select id="mk"><option value="kospi" selected>코스피</option><option value="kosdaq">코스닥</option><option value="all">국내 전체 (코스피+코스닥)</option><option value="us">미국 (상장 전체)</option><option value="us_only">미국 (미국 회사만)</option></select></div>
         <div><label class="f" for="n">순위</label>
           <select id="n"><option value="10" selected>TOP 10</option><option value="15">TOP 15</option></select></div>
       </div>
@@ -187,7 +187,7 @@
       <select id="hi"><option value="">없음</option></select>
       <label class="chk"><input type="checkbox" id="chk-lines"> 회사별로 선 잇기 (순위 흐름)</label>
       <label class="chk"><input type="checkbox" id="chk-cap"> 로고 아래 시가총액</label>
-      <label class="chk"><input type="checkbox" id="chk-icon" checked> 제목 왼쪽 태극기</label>
+      <label class="chk"><input type="checkbox" id="chk-icon" checked> 제목 왼쪽 국기</label>
       <label class="f" for="title">제목</label>
       <input type="text" id="title" value="코스피 시총 순위">
       <label class="f" for="sub">아래 줄</label>
@@ -207,7 +207,26 @@
   var CW = 1080, CH = 1350, MAXCOL = 10;
   var cv = document.getElementById('cv'), ctx = cv.getContext('2d');
   var DATA = null, ON = {};                  // ON[칸 키] = true
-  var MK_NAME = { kospi: '코스피', kosdaq: '코스닥', all: '국내주식' };
+  var MK_NAME = { kospi: '코스피', kosdaq: '코스닥', all: '국내주식', us: '미국', us_only: '미국' };
+  function isUS() { return /^us/.test($('mk').value); }
+  // 미국 국기 — 높이 h, 왼쪽 위 (x, y). 폭은 1.9h
+  function drawUSFlag(c, x, y, h) {
+    var w = h * 1.9, sh = h / 13, cw = w * 0.4, ch = sh * 7;
+    c.save();
+    c.beginPath(); if (c.roundRect) c.roundRect(x, y, w, h, h * 0.08); else c.rect(x, y, w, h); c.clip();
+    c.fillStyle = '#ffffff'; c.fillRect(x, y, w, h);
+    c.fillStyle = '#B22234';
+    for (var i = 0; i < 13; i += 2) c.fillRect(x, y + i * sh, w, sh);
+    c.fillStyle = '#3C3B6E'; c.fillRect(x, y, cw, ch);
+    c.fillStyle = '#ffffff';
+    for (var r = 0; r < 9; r++) for (var k = 0; k < (r % 2 ? 5 : 6); k++) {
+      c.beginPath(); c.arc(x + cw * ((k * 2 + (r % 2 ? 2 : 1)) / 12), y + ch * ((r + 1) / 10), h * 0.022, 0, 7); c.fill();
+    }
+    c.restore();
+    c.save(); c.beginPath(); if (c.roundRect) c.roundRect(x, y, w, h, h * 0.08); else c.rect(x, y, w, h);
+    c.lineWidth = Math.max(1, h * 0.025); c.strokeStyle = '#D9D6CE'; c.stroke(); c.restore();
+    return w;
+  }
 
   function $(id) { return document.getElementById(id); }
   function font(w, s) { return w + ' ' + s + 'px "Noto Sans KR"'; }
@@ -232,11 +251,12 @@
     return _bg;
   }
   var LOGO = {};
-  function logo(code) {
-    if (LOGO[code] !== undefined) return LOGO[code];
-    var im = new Image(); LOGO[code] = im;
-    im.onload = draw; im.onerror = function () { LOGO[code] = null; draw(); };
-    im.src = './logo/kr/' + code + '.png';
+  function logo(code) {                      // 국내는 logo/kr/코드, 미국은 logo/us/티커
+    var dir = /^\d/.test(code) ? 'kr' : 'us', key = dir + '/' + code;
+    if (LOGO[key] !== undefined) return LOGO[key];
+    var im = new Image(); LOGO[key] = im;
+    im.onload = draw; im.onerror = function () { LOGO[key] = null; draw(); };
+    im.src = './logo/' + key + '.png';
     return im;
   }
   function ready(im) { return im && im.complete && im.naturalWidth; }
@@ -269,6 +289,8 @@
 
   // 시총(억) → '333조' · '8,500억'
   function won(v) {
+    if (isUS()) { var u = v / 10000;            // 미국은 억 달러 → $5.1T · $850B
+      return u >= 1 ? '$' + u.toFixed(1).replace(/\.0$/, '') + 'T' : '$' + Math.round(v / 10).toLocaleString('en-US') + 'B'; }
     var t = v / 10000;
     return t >= 100 ? Math.round(t).toLocaleString('ko-KR') + '조' : t >= 1 ? t.toFixed(1).replace(/\.0$/, '') + '조'
          : Math.round(v).toLocaleString('ko-KR') + '억';
@@ -301,15 +323,17 @@
   }
 
   // ---- 칸(연도) ----
-  function keys() {                           // 오래된 해부터, '현재'는 맨 끝
-    var ks = Object.keys((DATA && DATA.cols) || {});
+  function keys() {                           // 오래된 해부터, '현재'는 맨 끝 — 고른 시장 자료가 있는 칸만
+    var mk = $('mk').value;
+    var ks = Object.keys((DATA && DATA.cols) || {}).filter(function (k) { return (DATA.cols[k][mk] || []).length; });
     return ks.filter(function (k) { return k !== 'now'; }).sort().concat(ks.indexOf('now') >= 0 ? ['now'] : []);
   }
   function label(k) {
     if (k !== 'now') return k;
-    var d = DATA.cols.now.date.split('-'); return d[0] + '.' + d[1];
+    var d = nowDate().split('-'); return d[0] + '.' + d[1];
   }
   function chosen() { return keys().filter(function (k) { return ON[k]; }); }
+  function nowDate() { var c = DATA.cols.now || {}; return (isUS() && c.us_date) || c.date || ''; }
   function preset(p) {
     var ks = keys(); ON = {};
     var pick = p === 'none' ? [] : p === 'r5' ? ks.slice(-5)
@@ -359,11 +383,12 @@
 
     // 제목 — 시가총액 탭과 같은 모양: 태극기 + 굵은 시장 이름 + 회색 '시총 순위'
     var title = $('title').value, sub = $('sub').value, flag = $('chk-icon').checked;
-    var ns = 92, fw = function (s) { return flag ? s * 0.66 * 1.5 + s * 0.24 : 0; };
+    var fr = isUS() ? 1.9 : 1.5;
+    var ns = 92, fw = function (s) { return flag ? s * 0.66 * fr + s * 0.24 : 0; };
     ctx.font = font(900, ns);
     while (ns > 36 && ctx.measureText(title).width + fw(ns) > W) { ns -= 1; ctx.font = font(900, ns); }
     var y = S.top + ns * 0.86, XT = X0 + fw(ns);
-    if (flag) drawTaegeuk(ctx, X0, y - ns * 0.37 - ns * 0.33, ns * 0.66);
+    if (flag) (isUS() ? drawUSFlag : drawTaegeuk)(ctx, X0, y - ns * 0.37 - ns * 0.33, ns * 0.66);
     var tm = title.match(/^(.*\S)( 시총 순위)$/);
     ctx.fillStyle = T.ink;
     if (tm) { ctx.font = font(900, ns); ctx.fillText(tm[1], XT, y);
@@ -470,8 +495,8 @@
     ctx.beginPath(); ctx.moveTo(S.left, ruleY); ctx.lineTo(CW - S.right, ruleY); ctx.stroke();
     ctx.fillStyle = T.footer; ctx.font = font(700, 27); ctx.textAlign = 'left';
     var foot = '';
-    if (DATA && ON.now && DATA.cols.now) {
-      var a = DATA.cols.now.date.split('-');
+    if (DATA && ON.now && DATA.cols.now && chosen().indexOf('now') >= 0) {
+      var a = nowDate().split('-');
       foot = a[0] + '년 ' + (+a[1]) + '월 ' + (+a[2]) + '일 기준';
     }
     ctx.fillText(foot, S.left, footY);
@@ -490,7 +515,13 @@
     var b = e.target.closest('button'); if (!b) return;
     $('warn').textContent = ''; preset(b.dataset.p); refresh();
   });
-  ['mk', 'n'].forEach(function (id) { $(id).addEventListener('change', refresh); });
+  $('n').addEventListener('change', refresh);
+  var lastRegion = null;
+  $('mk').addEventListener('change', function () {   // 국내 ↔ 미국을 바꾸면 연도 고르기도 처음 상태로
+    var r = isUS() ? 'us' : 'kr';
+    if (r !== lastRegion) { lastRegion = r; LCOL = {}; preset(keys().length > 12 ? 'five' : 'all'); }
+    refresh();
+  });
   $('hi').addEventListener('change', function () { autoText(); draw(); });
   $('chk-icon').addEventListener('change', draw);
   $('chk-lines').addEventListener('change', draw);
@@ -520,7 +551,7 @@
   fetch('./data/rank.json', { cache: 'no-cache' })
     .then(function (r) { if (!r.ok) throw 0; return r.json(); })
     .then(function (j) {
-      DATA = j; preset(keys().length > 12 ? 'five' : 'all');
+      DATA = j; lastRegion = 'kr'; preset(keys().length > 12 ? 'five' : 'all');
       var ks = keys(), first = ks[0], last = ks.filter(function (k) { return k !== 'now'; }).pop();
       $('src-pill').textContent = '연말 시가총액 ' + first + '~' + (last || '') + (j.cols.now ? ' · 현재 ' + j.cols.now.date : '');
     })

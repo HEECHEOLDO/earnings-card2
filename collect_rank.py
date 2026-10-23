@@ -141,7 +141,9 @@ def main():
     # 현재 — 공공데이터포털은 하루 늦게 올라온다. 어제부터 거꾸로 찾는다.
     d, rows = last_trading(key, today - timedelta(days=1))
     if rows:
+        keep = {k: v for k, v in (cols.get("now") or {}).items() if k.startswith("us")}   # 미국 칸은 collect_us.py 몫
         cols["now"] = column(d, rows)
+        cols["now"].update(keep)
         log("  현재 %s  코스피 1위 %s" % (d, cols["now"]["kospi"][0][1]))
     else:
         log("  ! 최근 자료를 못 찾아 '현재'는 그대로 둡니다")

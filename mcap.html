@@ -159,7 +159,7 @@
       <h3>카드 만들기</h3>
       <div class="row">
         <div><label class="f" for="mk">시장</label>
-          <select id="mk"><option value="kospi" selected>코스피</option><option value="kosdaq">코스닥</option><option value="all">국내 전체 (코스피+코스닥)</option><option value="industry">업종별…</option><option value="theme">테마별…</option></select></div>
+          <select id="mk"><option value="kospi" selected>코스피</option><option value="kosdaq">코스닥</option><option value="all">국내 전체 (코스피+코스닥)</option><option value="industry">업종별…</option><option value="theme">테마별…</option><option value="us">미국</option><option value="us_sector">미국 섹터별…</option><option value="us_industry">미국 업종별…</option></select></div>
         <div><label class="f" for="n">순위</label>
           <select id="n"><option value="10">TOP 10</option><option value="20" selected>TOP 20</option><option value="30">TOP 30</option><option value="50">TOP 50</option></select></div>
       </div>
@@ -177,7 +177,7 @@
         <textarea id="data" spellcheck="false"></textarea>
       </details>
       <button class="btn" id="dl">PNG 내려받기</button>
-      <p class="note">로고 원의 <b>넓이</b>가 시가총액에 비례합니다. ETF·우선주는 빼고 보통주만 셉니다. 작은 원에는 로고만 들어갑니다.</p>
+      <p class="note">로고 원의 <b>넓이</b>가 시가총액에 비례합니다. ETF·우선주는 빼고 보통주만 셉니다. 작은 원에는 로고만 들어갑니다. 미국은 나스닥 종목 검색표 기준이고, 한 회사의 여러 주식(GOOGL·GOOG 등)은 하나로 칩니다.</p>
     </div>
   </div>
 </div>
@@ -213,7 +213,14 @@
     '000100 유한양행 10 +7', '352820 하이브 10 -9'
   ];
   // data/mcap.json (collect_mcap.py 가 매일 만든다)을 읽는다. 없으면 샘플.
-  var DATA = null;
+  var DATA = null, DATA_US = null;
+  // 미국 섹터 이름 (나스닥 분류) → 한국어
+  var US_SECTOR = { 'Technology': '기술', 'Health Care': '헬스케어', 'Finance': '금융', 'Consumer Discretionary': '경기소비재',
+    'Industrials': '산업재', 'Telecommunications': '통신', 'Energy': '에너지', 'Real Estate': '부동산',
+    'Consumer Staples': '필수소비재', 'Utilities': '유틸리티', 'Basic Materials': '소재', 'Miscellaneous': '기타' };
+  function isUSmk(mk) { return /^us/.test(mk || document.getElementById('mk').value); }
+  function usGroups(mk) { return (DATA_US && DATA_US.groups && DATA_US.groups[mk === 'us_sector' ? 'sector' : 'industry']) || []; }
+  function usGroupName(mk, g) { return mk === 'us_sector' ? (US_SECTOR[g.name] || g.name) : g.name; }
   function fill() {
     var mk = document.getElementById('mk').value, lines;
     var src = mk === 'all' && DATA
@@ -221,7 +228,21 @@
       : DATA && DATA[mk];
     var wrap = document.getElementById('grp-wrap'), gsel = document.getElementById('grp');
     var isGrp = mk === 'industry' || mk === 'theme';
-    wrap.style.display = isGrp ? '' : 'none';
+    if (mk === 'us') src = DATA_US && DATA_US.us;
+    var isUG = mk === 'us_sector' || mk === 'us_industry';
+    wrap.style.display = isGrp || isUG ? '' : 'none';
+    if (isUG) {
+      var ugs = usGroups(mk);
+      document.getElementById('grp-label').textContent = mk === 'us_sector' ? '섹터' : '업종';
+      if (gsel.dataset.kind !== mk) {
+        gsel.innerHTML = ugs.map(function (g, i) {
+          return '<option value="' + i + '">' + usGroupName(mk, g) + ' · ' + g.n + '</option>'; }).join('');
+        gsel.dataset.kind = mk;
+      }
+      var ug = ugs[+gsel.value || 0];
+      src = ug ? ug.codes.map(function (c) { var s = DATA_US.stocks[c] || {};
+        return { code: c, name: s.n || c, cap: s.c || 0, ytd: null }; }) : [];
+    }
     if (isGrp) {
       var gs = (DATA && DATA.groups && DATA.groups[mk]) || [];
       document.getElementById('grp-label').textContent = mk === 'industry' ? '업종' : '테마';
@@ -236,7 +257,7 @@
     }
     if (src && src.length) {
       lines = src.map(function (r) {
-        return r.code + ' ' + r.name.replace(/\s+/g, '') + ' ' + (r.cap / 10000).toFixed(4) +
+        return r.code + ' ' + (isUSmk(mk) ? r.name.replace(/\s+/g, '_') : r.name.replace(/\s+/g, '')) + ' ' + (r.cap / 10000).toFixed(4) +
           (r.ytd != null ? ' ' + (r.ytd > 0 ? '+' : '') + r.ytd : '');
       });
     } else lines = SAMPLE;
@@ -246,7 +267,11 @@
   function autoText() {
     var mk = document.getElementById('mk').value, n = document.getElementById('n').value;
     var cnt = document.getElementById('data').value.split('\n').filter(function (l) { return l.trim(); }).length;
-    var gname = { kospi: '코스피 ', kosdaq: '코스닥 ', all: '국내주식 ' }[mk] || '';
+    var gname = { kospi: '코스피 ', kosdaq: '코스닥 ', all: '국내주식 ', us: '미국 ' }[mk] || '';
+    if (mk === 'us_sector' || mk === 'us_industry') {
+      var gg = usGroups(mk)[+document.getElementById('grp').value || 0];
+      gname = gg ? usGroupName(mk, gg) + ' ' : '';
+    }
     if (mk === 'industry' || mk === 'theme') {
       var gg = ((DATA && DATA.groups && DATA.groups[mk]) || [])[+document.getElementById('grp').value || 0];
       gname = gg ? (gg.short || gg.name).replace(/\s*\([^)]*\)\s*/g, ' ').trim() + ' ' : '';
@@ -255,7 +280,8 @@
     }
     var gpart = gname.split('\u0000');      // [이름, 괄호 안, '']
     document.getElementById('title').value = gpart[0] + '시가총액';
-    var a = DATA && DATA.asof ? DATA.asof.split('-') : null;
+    var DD = isUSmk(mk) ? DATA_US : DATA;
+    var a = DD && DD.asof ? DD.asof.split('-') : null;
     var d = a ? " ('" + a[0].slice(2) + '년 ' + (+a[1]) + '월 ' + (+a[2]) + '일 기준)' : ' (샘플)';
     var lab = '';                              // 시장·업종·테마 이름은 제목에, 아래 줄은 날짜만
     var extra = gpart && gpart[1] ? gpart[1] : '';
@@ -265,13 +291,11 @@
     }).filter(function (v) { return v > 0; }).sort(function (a, b) { return b - a; });
     var k = Math.min(+n, vals.length), tot = 0;
     for (var i = 0; i < k; i++) tot += vals[i];
-    var won = tot >= 100 ? Math.round(tot).toLocaleString('ko-KR') + '조'
-            : tot >= 1 ? tot.toFixed(1).replace(/\.0$/, '') + '조'
-            : Math.max(1, Math.round(tot * 10000)).toLocaleString('ko-KR') + '억';
+    var won = money(tot);
     var sumTxt = k ? (k < +n ? k + '개' : '상위 ' + k + '개') + ' 합계 ' + won : '';
     document.getElementById('sub').value = [extra, sumTxt].filter(Boolean).join(' · ');
     window.MCAP_FOOT = a ? a[0] + '년 ' + (+a[1]) + '월 ' + (+a[2]) + '일 기준' : '';
-    window.MCAP_ICON = mcapIcon(mk, (mk === 'industry' || mk === 'theme') ? gg : null);
+    window.MCAP_ICON = mcapIcon(mk, (mk === 'industry' || mk === 'theme' || mk === 'us_sector' || mk === 'us_industry') ? gg : null);
   }
 
   function font(w, s) { return w + ' ' + s + 'px "Noto Sans KR"'; }
@@ -303,7 +327,7 @@
       if (p.length < 3) return;
       var v = parseFloat(p[2].replace(/,/g, ''));
       if (!(v > 0)) return;
-      out.push({ code: p[0], name: p[1], v: v, chg: p[3] != null ? parseFloat(p[3]) : null });
+      out.push({ code: p[0], name: p[1].replace(/_/g, ' '), v: v, chg: p[3] != null ? parseFloat(p[3]) : null });
     });
     out.sort(function (a, b) { return b.v - a.v; });
     return out;
@@ -348,7 +372,7 @@
     if (LOGO[code] !== undefined) return LOGO[code];
     var im = new Image(); LOGO[code] = im;
     im.onload = draw; im.onerror = function () { LOGO[code] = null; draw(); };
-    im.src = './logo/kr/' + code + '.png';
+    im.src = './logo/' + (/^\d/.test(code) ? 'kr' : 'us') + '/' + code + '.png';   // 국내 코드는 숫자로 시작
     return im;
   }
   function ready(im) { return im && im.complete && im.naturalWidth; }
@@ -369,6 +393,8 @@
     return (BRIGHT[key] = n ? sum / n : 1);
   }
   function money(v) { // MCAP_UNIT
+    if (isUSmk()) return v >= 1 ? '$' + v.toFixed(1).replace(/\.0$/, '') + 'T'
+                               : '$' + Math.max(1, Math.round(v * 1000)).toLocaleString('en-US') + 'B';   // 미국: 조 달러
     if (v >= 100) return Math.round(v).toLocaleString('ko-KR') + '조';
     if (v >= 1) return v.toFixed(1).replace(/\.0$/, '') + '조';
     return Math.max(1, Math.round(v * 10000)).toLocaleString('ko-KR') + '억';
@@ -475,6 +501,13 @@
     theme: [["스페이스X|SpaceX", "🚀"], ["딥페이크", "🎭"], ["CCTV|DVR", "📹"], ["SOCAMM|소캠", "💾"], ["카카오뱅크|뱅크", "🏦"], ["토스|toss", "💳"], ["두나무|업비트", "🪙"], ["쿠팡|컬리|kurly", "🛒"], ["야놀자", "🧳"], ["리비안|스마트카", "🚗"], ["종합상사", "🌏"], ["창투사|창업투자", "🌱"], ["환율", "💱"], ["마이데이터", "📊"], ["음성인식", "🗣️"], ["재택근무|스마트워크", "🏡"], ["일자리|취업", "💼"], ["테마파크", "🎢"], ["렌터카", "🚙"], ["해저터널|지하화|지하도로", "🚇"], ["피팅|밸브|관이음", "🔧"], ["요소수|그래핀", "🧪"], ["DMZ", "🕊️"], ["김밥", "🍙"], ["콩|대두", "🌾"], ["유심|USIM", "📶"], ["NI\\(|네트워크통합", "🌐"], ["고령화|노인", "👵"], ["제습기", "🌡️"], ["냉각|액침", "❄️"], ["태풍", "🌀"], ["겨울|한파", "❄️"], ["조림", "🌲"], ["오가노이드|제대혈", "🧬"], ["건강기능식품", "💪"], ["캐릭터", "🧸"], ["엔젤산업", "🍼"], ["콜드체인", "🧊"], ["3D ?프린", "🖨️"], ["아스콘|아스팔트", "🏗️"], ["재건", "🏗️"], ["^귀금속|금값|^금$|금시세", "🥇"], ["의료기기", "🩺"], ["보톡스|보툴리눔|필러", "💉"], ["통신장비", "📡"], ["日|일본", "🌏"], ["가상화폐|가상자산|비트코인|블록체인|NFT|STO|토큰|스테이블|원화코인", "🪙"], ["결제|핀테크|삼성페이|애플페이|카카오페이|네이버페이|페이먼트|간편송금", "💳"], ["화폐|금융자동화|ATM|키오스크|KIOSK", "💵"], ["밸류업|배당|자사주|지주사|지배구조|주주환원|저PBR", "💰"], ["은행|금융지주", "🏦"], ["증권|거래소", "📈"], ["보험", "☂️"], ["S7|대형주", "🏆"], ["조류독감|조류인플루엔자|구제역|돼지열병|광우병|육계|닭고기|돼지고기|축산", "🐔"], ["마스크|미세먼지|황사|공기청정", "😷"], ["코로나|백신|음압|진단키트|진단시약|방역|전염|감염|엠폭스|원숭이두창|독감|바이러스|폐렴|모더나|화이자", "🦠"], ["초전도|페라이트|자석", "🧲"], ["탄소나노|나노|신소재", "🧪"], ["석유화학", "🧪"], ["남북|대북|개성|북한|통일", "🕊️"], ["농기계|트랙터", "🚜"], ["자전거", "🚲"], ["스마트홈", "🏠"], ["사물인터넷|IoT|스마트시티|스마트팩토리|자동화|공작기계", "🏭"], ["스팩|SPAC|기업인수목적", "📄"], ["키즈|아동", "🍼"], ["HBM|CXL|PIM|뉴로모픽|반도체|파운드리|웨이퍼|메모리|유리 ?기판|칩|팹리스|낸드|D램|DRAM", "💾"], ["휴머노이드|로봇", "🤖"], ["AI|인공지능|챗봇|GPT|LLM|딥러닝|온디바이스|머신러닝", "🧠"], ["양자", "⚛️"], ["데이터센터|클라우드|빅데이터|서버", "☁️"], ["보안|해킹|랜섬|인증|생체인식|바이오인식|지문|홍채|안면인식", "🔒"], ["메타버스|가상현실|증강현실|VR|XR|확장현실", "🥽"], ["게임|e스포츠|PC방", "🎮"], ["폐배터리|재활용|폐기물", "♻️"], ["전고체|나트륨|LFP|2차전지|배터리|리튬|ESS|전해|양극재|음극재|분리막", "🔋"], ["충전", "🔌"], ["드론|UAM|도심항공", "🚁"], ["자율주행|전기차|자동차|타이어|모빌리티|車", "🚗"], ["수소|연료전지", "💧"], ["태양광", "☀️"], ["풍력", "🌬️"], ["원자력|원전|SMR|핵융합|우라늄", "☢️"], ["전력|전선|변압기|송전|스마트그리드|전기|전자파", "⚡"], ["탄소|CCUS|온실가스|친환경|신재생|그린뉴딜|RE100|기후|플라스틱|ESG", "🌿"], ["석유|정유|가스|LNG|LPG|셰일|유가|주유소|윤활유", "⛽"], ["우주|위성|누리호|발사체", "🛰️"], ["방위|방산|전쟁|테러|국방|미사일", "🪖"], ["항공|공항|저가항공", "✈️"], ["조선|선박|해운|해양|항만", "🚢"], ["철도|지하철|GTX|고속터미널|고속버스|버스", "🚆"], ["물류|택배|운송|육운", "🚚"], ["부동산|리츠|REITs", "🏢"], ["건설|재개발|재건축|리모델링|시멘트|레미콘|건자재|SOC 사업|모듈러|4대강", "🏗️"], ["희토류|희귀금속|광물|코발트|니켈|구리|아연|알루미늄|비철|광산|광업|자원개발", "⛏️"], ["철강|금속|강관|철", "🔩"], ["화학|페인트|비료|불소|PVC", "🧪"], ["비만|당뇨|GLP", "⚖️"], ["치매|뇌|파킨슨|알츠하이머", "🧠"], ["줄기세포|유전자|바이오|mRNA|세포|항암|면역|CMO|CDMO|신약|펩타이드|ADC|마이크로바이옴|엑소좀", "🧬"], ["제약|의약|치료제|복제약|바이오시밀러|원료의약|탈모", "💊"], ["임플란트|치아|치과", "🦷"], ["의료|병원|헬스케어|진료|원격|미용기기|수술", "🏥"], ["화장품|뷰티|미용", "💄"], ["5G|6G|통신|LTE|안테나", "📶"], ["스마트폰|폴더블|아이폰|갤럭시|휴대폰|애플", "📱"], ["OLED|LED|디스플레이|LCD", "🖥️"], ["카메라|렌즈|광학", "📷"], ["PCB|기판|MLCC|전자부품|부품", "🔧"], ["웹툰|만화|애니메이션", "📖"], ["엔터|K-POP|아이돌|음원|음반|음악|공연|연예", "🎤"], ["영화|드라마|OTT|콘텐츠|미디어|방송", "🎬"], ["광고|마케팅", "📣"], ["카지노", "🎰"], ["면세", "🛍️"], ["여행|관광|호텔|리조트|크루즈", "🧳"], ["골프", "⛳"], ["캠핑|레저|낚시|스키", "🏕️"], ["스포츠|월드컵|올림픽", "⚽"], ["교육|학원|입시|에듀", "🎓"], ["출산|영유아|육아|아기|유아|저출산", "🍼"], ["반려동물|펫|동물", "🐶"], ["주류|맥주|소주|와인|위스키|막걸리", "🍺"], ["커피|카페", "☕"], ["음식료|식품|라면|과자|음료|우유|유가공|HMR|간편식|K-푸드|김치|외식|프랜차이즈", "🍜"], ["담배|전자담배|마리화나|대마", "🚬"], ["수산|어업|참치", "🐟"], ["농업|스마트팜|종자|사료|곡물", "🌾"], ["수자원|상하수도|정수|가뭄|홍수|장마", "🚰"], ["폭염|에어컨|냉방|여름", "🌡️"], ["난방|보일러", "🔥"], ["지진|재난|재해|안전", "⛑️"], ["대선|정치|정책|국회|선거|정부", "🏛️"], ["우크라이나|러시아|중동|이스라엘|사우디|네옴|중국|미국|인도|베트남|인도네시아|트럼프|관세", "🌏"], ["편의점", "🏪"], ["백화점", "🏬"], ["홈쇼핑|이커머스|온라인쇼핑|유통|쇼핑|소매", "🛒"], ["의류|패션|섬유|신발|명품", "👗"], ["가구|인테리어|침대", "🛋️"], ["제지|종이|목재|골판지|포장", "📦"], ["소프트웨어|SW|SaaS|ERP|솔루션|IT|^SI|전자문서|그룹웨어", "💻"], ["인터넷|포털|플랫폼|SNS|검색", "🌐"], ["기계|건설기계|장비", "⚙️"], ["가전|TV|냉장고|세탁기", "📺"], ["시스템|정보", "💻"], ["신규상장|공모|IPO", "🔔"]], other: '📈' }; // emoji-v3
   function mcapIcon(mk, gg) {
     if (mk === 'kospi' || mk === 'kosdaq' || mk === 'all') return 'KR';
+    if (mk === 'us') return 'US';
+    if (mk === 'us_sector' || mk === 'us_industry') {
+      if (!gg) return 'US';
+      var en = gg.name || '';
+      for (var u = 0; u < US_EMOJI.length; u++) if (new RegExp(US_EMOJI[u][0], 'i').test(en)) return US_EMOJI[u][1];
+      return MCAP_EMOJI.other;
+    }
     if (!gg) return '';
     var key = String(gg.name || '').replace(/\s/g, '');
     if (mk === 'industry' && MCAP_EMOJI.upjong[key]) return MCAP_EMOJI.upjong[key];
@@ -484,6 +517,34 @@
       if (re.test(names[0]) || re.test(names[1])) return MCAP_EMOJI.theme[i][1];
     }
     return MCAP_EMOJI.other;
+  }
+  // 미국 섹터·업종(영어 이름) → 이모지
+  var US_EMOJI = [["Semiconductor", "💾"], ["Software|Programming|Data Processing|EDP", "💻"], ["Computer", "🖥️"],
+    ["Internet|Catalog", "🌐"], ["Telecom|Radio|Cable|Wireless", "📶"], ["Bank|Savings", "🏦"], ["Insurance", "☂️"],
+    ["Investment|Brokers|Finance|Trust|Credit", "💰"], ["Real Estate|REIT", "🏢"], ["Pharma|Drug|Biolog|Medicinal", "💊"],
+    ["Medical|Hospital|Health|Dental|Ophthalmic", "🏥"], ["Oil|Gas|Petroleum|Pipeline|Energy", "⛽"], ["Electric|Utilit|Power", "💡"],
+    ["Auto|Motor Vehicle", "🚗"], ["Aerospace|Aircraft|Defense|Military", "🚀"], ["Airline|Air Freight", "✈️"],
+    ["Railroad|Trucking|Transport|Marine|Shipping", "🚚"], ["Restaurant|Food|Beverage|Meat|Grocery|Packaged", "🍜"],
+    ["Retail|Department|Stores|Apparel|Clothing|Shoe", "🛍️"], ["Hotel|Casino|Leisure|Recreation|Entertainment|Movie|Broadcast", "🎬"],
+    ["Chemical|Plastic", "🧪"], ["Metal|Steel|Mining|Gold|Precious", "⛏️"], ["Construction|Building|Homebuild|Engineering", "🏗️"],
+    ["Machinery|Industrial|Electrical Products|Equipment", "⚙️"], ["Tobacco", "🚬"], ["Technology", "💻"], ["Consumer", "🛒"]];
+  // 미국 국기 — 높이 h, 왼쪽 위 (x, y), 폭 1.9h
+  function drawUSFlag(c, x, y, h) {
+    var w = h * 1.9, sh = h / 13, cw = w * 0.4, ch = sh * 7;
+    c.save();
+    c.beginPath(); if (c.roundRect) c.roundRect(x, y, w, h, h * 0.08); else c.rect(x, y, w, h); c.clip();
+    c.fillStyle = '#ffffff'; c.fillRect(x, y, w, h);
+    c.fillStyle = '#B22234';
+    for (var i = 0; i < 13; i += 2) c.fillRect(x, y + i * sh, w, sh);
+    c.fillStyle = '#3C3B6E'; c.fillRect(x, y, cw, ch);
+    c.fillStyle = '#ffffff';
+    for (var r = 0; r < 9; r++) for (var k = 0; k < (r % 2 ? 5 : 6); k++) {
+      c.beginPath(); c.arc(x + cw * ((k * 2 + (r % 2 ? 2 : 1)) / 12), y + ch * ((r + 1) / 10), h * 0.022, 0, 7); c.fill();
+    }
+    c.restore();
+    c.save(); c.beginPath(); if (c.roundRect) c.roundRect(x, y, w, h, h * 0.08); else c.rect(x, y, w, h);
+    c.lineWidth = Math.max(1, h * 0.025); c.strokeStyle = '#D9D6CE'; c.stroke(); c.restore();
+    return w;
   }
   // 태극기 — 높이 h, 왼쪽 위 (x, y)
   function drawTaegeuk(c, x, y, h) {
@@ -517,6 +578,7 @@
     if (!icon) return 0;
     var mid = y - ns * 0.37;
     if (icon === 'KR') { var h = ns * 0.66; if (!dry) drawTaegeuk(c, x, mid - h / 2, h); return h * 1.5 + ns * 0.24; }
+    if (icon === 'US') { var hu = ns * 0.66; if (!dry) drawUSFlag(c, x, mid - hu / 2, hu); return hu * 1.9 + ns * 0.24; }
     c.save(); c.font = Math.round(ns * 0.86) + 'px "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif';
     var w = c.measureText(icon).width;
     if (!dry) { c.textBaseline = 'middle'; c.textAlign = 'left'; c.fillText(icon, x, mid + ns * 0.02); }
@@ -564,6 +626,10 @@
       setTimeout(function () { URL.revokeObjectURL(a.href); }, 10000);
     }, 'image/png');
   });
+  fetch('./data/mcap_us.json', { cache: 'no-cache' })
+    .then(function (r) { if (!r.ok) throw 0; return r.json(); })
+    .then(function (j) { DATA_US = j; if (isUSmk()) { fill(); draw(); } })
+    .catch(function () { });
   fetch('./data/mcap.json', { cache: 'no-cache' })
     .then(function (r) { if (!r.ok) throw 0; return r.json(); })
     .then(function (j) { DATA = j;
