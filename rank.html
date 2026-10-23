@@ -322,6 +322,41 @@
     return (LCOL[code] = 'rgb(' + Math.round(r / n) + ',' + Math.round(gg / n) + ',' + Math.round(b / n) + ')');
   }
 
+  // 로고 그림의 지문 (8×8 밝기 + 평균색). 그림이 같으면 지문도 같다.
+  var PRINT = {};
+  function logoPrint(code) {
+    if (PRINT[code] !== undefined) return PRINT[code];
+    var im = logo(code);
+    if (!ready(im)) return null;
+    var c = document.createElement('canvas'); c.width = c.height = 8;
+    var g = c.getContext('2d'), d;
+    g.fillStyle = '#fff'; g.fillRect(0, 0, 8, 8); g.drawImage(im, 0, 0, 8, 8);
+    try { d = g.getImageData(0, 0, 8, 8).data; } catch (e) { return (PRINT[code] = ''); }
+    var v = [], sum = 0;
+    for (var i = 0; i < d.length; i += 4) { var y = (d[i] * 3 + d[i + 1] * 6 + d[i + 2]) / 10; v.push(y); sum += y; }
+    var avg = sum / v.length;
+    return (PRINT[code] = v.map(function (x) { return x > avg ? 1 : 0; }).join('') + '|' +
+            Math.round(d[108] / 32) + Math.round(d[109] / 32) + Math.round(d[110] / 32));
+  }
+  // 카드에 보이는 회사 중 로고가 같은 묶음을 찾아, 회사마다 짧은 이름을 정한다
+  // 이름에서 묶음의 공통 앞부분을 뺀다: 셀트리온헬스케어 → 헬스케어, 셀트리온제약 → 제약, 셀트리온 → 셀트리온
+  function sameLogoTags(ks, mk, n) {
+    var names = {}, groups = {};
+    ks.forEach(function (k) { (DATA.cols[k][mk] || []).slice(0, n).forEach(function (r) { names[r[0]] = r[1]; }); });
+    Object.keys(names).forEach(function (c) { var p = logoPrint(c); if (p) (groups[p] = groups[p] || []).push(c); });
+    var out = {};
+    Object.keys(groups).forEach(function (p) {
+      var cs = groups[p]; if (cs.length < 2) return;
+      var ns = cs.map(function (c) { return names[c]; }), pre = ns[0];
+      ns.forEach(function (x) { while (x.indexOf(pre) !== 0) pre = pre.slice(0, -1); });
+      cs.forEach(function (c) {
+        var rest = names[c].slice(pre.length).replace(/^[\s·&-]+/, '');
+        out[c] = rest.length >= 1 ? rest : names[c];
+      });
+    });
+    return out;
+  }
+
   // ---- 칸(연도) ----
   function keys() {                           // 오래된 해부터, '현재'는 맨 끝 — 고른 시장 자료가 있는 칸만
     var mk = $('mk').value;
@@ -403,9 +438,11 @@
     if (DATA && ks.length) {
       var top = y + 56, hdr = 52, rk = 58, cw = (W - rk) / ks.length;
       var showCap = $('chk-cap').checked, lines = $('chk-lines').checked;
-      var rh = (ruleY - 30 - top - hdr) / n, d = Math.min(cw * 0.8, rh * (showCap ? 0.66 : 0.84), 130);
+      // 같은 로고를 쓰는 회사(삼성 계열, 셀트리온 계열 등)는 로고 아래에 짧은 이름을 붙여 구분한다
+      var tags = sameLogoTags(ks, mk, n), anyTag = Object.keys(tags).length > 0, showLab = showCap || anyTag;
+      var rh = (ruleY - 30 - top - hdr) / n, d = Math.min(cw * 0.8, rh * (showLab ? 0.66 : 0.84), 130);
       var capF = Math.max(11, Math.min(20, Math.round(rh * 0.19)));
-      var lift = showCap ? capF * 0.62 : 0;      // 시총 글자 자리만큼 로고를 위로
+      var lift = showLab ? capF * 0.62 : 0;      // 글자 자리만큼 로고를 위로
       // 머리줄: 연도
       ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
       ks.forEach(function (k, j) {
@@ -493,10 +530,11 @@
             fit(r[1], 800, Math.round(R * 0.5), 8, R * 1.7); ctx.fillText(r[1], cx, cy + 1);
           }
           ctx.restore();
-          if (showCap) {
+          var lab = [tags[r[0]], showCap ? won(r[2]) : ''].filter(Boolean).join(' · ');
+          if (lab) {
             ctx.save(); ctx.globalAlpha = hi && r[0] !== hi ? 0.25 : 1;
-            ctx.fillStyle = T.inkSoft; ctx.font = font(700, capF); ctx.textAlign = 'center'; ctx.textBaseline = 'top';
-            ctx.fillText(won(r[2]), cx, cy + R + capF * 0.25); ctx.restore();
+            ctx.fillStyle = tags[r[0]] ? T.ink : T.inkSoft; ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+            fit(lab, 700, capF, 9, cw * 0.96); ctx.fillText(lab, cx, cy + R + capF * 0.25); ctx.restore();
           }
           if (hi && r[0] === hi) {
             ctx.beginPath(); ctx.arc(cx, cy, R + Math.max(3, d * 0.06), 0, 7);
