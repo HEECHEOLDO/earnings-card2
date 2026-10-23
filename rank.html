@@ -422,30 +422,44 @@
         ctx.font = font(900, Math.min(30, Math.round(rh * 0.42)));
         ctx.fillText(String(i + 1), X0 + 2, top + hdr + rh * (i + 0.5) + 1);
       }
-      // 회사별 선 — 해마다 같은 회사를 곡선으로 잇는다. 순위 밖으로 나가면 아래로 빠진다.
+      // 회사별 선 — 해마다 같은 회사를 가는 곡선으로 잇는다.
+      // 순위 밖으로 나가거나 새로 들어온 해는 짧게 흐려지는 꼬리만 (아래로 쏟아지는 선을 없앤다).
       if (lines) {
-        var gy0 = top + hdr, gy1 = top + hdr + rh * n, outY = gy1 + rh * 0.9;
+        var gy0 = top + hdr;
         var pos = ks.map(function (k) {
           var m = {}; (DATA.cols[k][mk] || []).slice(0, n).forEach(function (r, i) { m[r[0]] = i; }); return m;
         });
         var codes = {}; pos.forEach(function (m) { Object.keys(m).forEach(function (c) { codes[c] = 1; }); });
+        var lw = Math.max(2.4, d * 0.055), tail = cw * 0.36;
         ctx.save();
-        ctx.beginPath(); ctx.rect(X0, gy0 + 2, W, gy1 - gy0 + rh * 0.25); ctx.clip();
         ctx.lineCap = 'round'; ctx.lineJoin = 'round';
         Object.keys(codes).sort(function (a, b) { return a === hi ? 1 : b === hi ? -1 : 0; }).forEach(function (c) {
-          ctx.strokeStyle = lineColor(c);
-          ctx.lineWidth = Math.max(3, d * (c === hi ? 0.16 : 0.11));
-          ctx.globalAlpha = hi && c !== hi ? 0.12 : 0.95;
+          var col = lineColor(c), w = c === hi ? lw * 2 : lw;
+          ctx.globalAlpha = hi && c !== hi ? 0.1 : 0.8;
+          ctx.lineWidth = w; ctx.strokeStyle = col;
           ctx.beginPath();
           for (var j = 0; j < ks.length - 1; j++) {
             var a = pos[j][c], b = pos[j + 1][c];
-            if (a == null && b == null) continue;
+            if (a == null || b == null) continue;
             var x0 = X0 + rk + cw * (j + 0.5), x1 = x0 + cw;
-            var y0 = a == null ? outY : gy0 + rh * (a + 0.5) - lift;
-            var y1 = b == null ? outY : gy0 + rh * (b + 0.5) - lift;
+            var y0 = gy0 + rh * (a + 0.5) - lift, y1 = gy0 + rh * (b + 0.5) - lift;
             ctx.moveTo(x0, y0); ctx.bezierCurveTo(x0 + cw * 0.5, y0, x1 - cw * 0.5, y1, x1, y1);
           }
           ctx.stroke();
+          // 꼬리: 나가는 해는 오른쪽 아래로, 들어온 해는 왼쪽 아래에서 — 끝으로 갈수록 투명
+          for (var t = 0; t < ks.length; t++) {
+            var here = pos[t][c];
+            if (here == null) continue;
+            var px = X0 + rk + cw * (t + 0.5), py = gy0 + rh * (here + 0.5) - lift;
+            [[t < ks.length - 1 && pos[t + 1][c] == null, 1], [t > 0 && pos[t - 1][c] == null, -1]].forEach(function (q) {
+              if (!q[0]) return;
+              var ex = px + q[1] * tail, ey = py + rh * 0.55;
+              var g = ctx.createLinearGradient(px, py, ex, ey);
+              g.addColorStop(0, col); g.addColorStop(1, 'rgba(255,255,255,0)');
+              ctx.strokeStyle = g; ctx.beginPath(); ctx.moveTo(px, py);
+              ctx.bezierCurveTo(px + q[1] * tail * 0.5, py, ex - q[1] * tail * 0.2, ey - rh * 0.1, ex, ey); ctx.stroke();
+            });
+          }
         });
         ctx.restore();
       }
@@ -467,6 +481,8 @@
         (DATA.cols[k][mk] || []).slice(0, n).forEach(function (r, i) {
           var cx = X0 + rk + cw * (j + 0.5), cy = top + hdr + rh * (i + 0.5) - lift, R = d / 2;
           var im = logo(r[0]), has = ready(im);
+          if (lines) { ctx.save(); ctx.fillStyle = T.paper; ctx.beginPath();
+            ctx.arc(cx, cy, R + Math.max(3, d * 0.06), 0, 7); ctx.fill(); ctx.restore(); }
           ctx.save();
           ctx.globalAlpha = hi && r[0] !== hi ? 0.2 : 1;
           ctx.beginPath(); ctx.arc(cx, cy, R, 0, 7); ctx.clip();
