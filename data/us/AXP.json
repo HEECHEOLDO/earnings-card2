@@ -2,14 +2,14 @@
  "name": "AXP",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "AMERICAN EXPRESS CO",
+ "legal_name": "AMERICAN EXPRESS COMPANY",
  "code": "AXP",
  "cik": "0000004962",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-10-23",
+ "updated": "2026-10-24",
  "annual": [
   {
    "p": 2016,
@@ -145,13 +145,6 @@
  "quarterly": [
   {
    "y": 2024,
-   "q": 1,
-   "rev": 15801.0,
-   "op": null,
-   "ni": 2437.0
-  },
-  {
-   "y": 2024,
    "q": 2,
    "rev": 16333.0,
    "op": null,
@@ -212,6 +205,13 @@
    "rev": 19637.0,
    "op": null,
    "ni": 3110.0
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 20062.0,
+   "op": null,
+   "ni": 3712.0
   }
  ]
 }
