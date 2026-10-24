@@ -28,7 +28,7 @@ OUT_RANK = os.path.join("data", "rank.json")
 CACHE = "_cmc"
 TOP = 60          # 시가총액 탭: 상위 몇 개
 TOP_GROUP = 60    # 섹터·업종마다 몇 개
-TOP_RANK = 30     # 시총 순위 칸마다 몇 위까지
+TOP_RANK = 50     # 시총 순위·시가총액 탭 과거 연도: 칸마다 몇 위까지
 UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Safari/537.36"
 
 # 역대 미국 시총 상위 후보: 티커 → (companiesmarketcap 주소 이름, 짧은 이름)
@@ -221,6 +221,22 @@ def cmc_years(slugs):
     raise RuntimeError(last)
 
 
+def year_end_fx():
+    """미 연준(FRED) 원/달러 환율(DEXKOUS) — 해마다 마지막 값"""
+    txt = get("https://fred.stlouisfed.org/graph/fredgraph.csv?id=DEXKOUS")
+    out = {}
+    for line in txt.splitlines()[1:]:
+        p = line.split(",")
+        if len(p) == 2 and p[1] not in ("", "."):
+            try:
+                out[int(p[0][:4])] = round(float(p[1]), 2)      # 날짜 순이라 마지막 값이 남는다
+            except ValueError:
+                pass
+    if len(out) < 10:
+        raise RuntimeError("환율 표가 이상합니다")
+    return out
+
+
 def history():
     this_year = datetime.now(KST).year
     only_redo = set()
@@ -252,8 +268,18 @@ def history():
         col = cols.setdefault(str(y), {"date": "%d-12-31" % y, "src": "cmc"})
         col["us"] = [[s, n, c] for s, n, c in allr[:TOP_RANK]]
         col["us_only"] = [[s, n, c] for s, n, c in allr if s not in FOREIGN][:TOP_RANK]
+        col["us_date"] = "%d-12-31" % y
         top = col["us"][:3]
         log("  %d  %s" % (y, " · ".join("%s %s" % (r[1], fmt(r[2])) for r in top)))
+    # 해마다 연말 환율 (시가총액 탭에서 미국 합계를 그해 환율로 원화 환산할 때)
+    try:
+        fx = year_end_fx()
+        for y, v in fx.items():
+            if str(y) in cols:
+                cols[str(y)]["usdkrw"] = v
+        log("  연말 환율 %d개 해 (예: 2000년 %s원 · 2025년 %s원)" % (len(fx), fx.get(2000, "-"), fx.get(2025, "-")))
+    except Exception as e:                         # noqa: BLE001
+        log("  ! 연말 환율을 받지 못했습니다 (%r) — 과거 연도 원화 환산은 빠집니다" % e)
     with open(OUT_RANK, "w", encoding="utf-8") as f:
         json.dump(rk, f, ensure_ascii=False, separators=(",", ":"))
     log("\n후보 %d곳 중 %d곳 받음 · 연도 %d개(%s~%s) → %s" % (len(CANDIDATES), len(caps), len(years),

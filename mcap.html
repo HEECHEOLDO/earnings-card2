@@ -162,6 +162,8 @@
           <select id="mk"><option value="kospi" selected>코스피</option><option value="kosdaq">코스닥</option><option value="all">국내 전체 (코스피+코스닥)</option><option value="industry">업종별…</option><option value="theme">테마별…</option><option value="us">미국</option><option value="us_sector">미국 섹터별…</option><option value="us_industry">미국 업종별…</option></select></div>
         <div><label class="f" for="n">순위</label>
           <select id="n"><option value="10">TOP 10</option><option value="20" selected>TOP 20</option><option value="30">TOP 30</option><option value="50">TOP 50</option></select></div>
+        <div><label class="f" for="yr">연도</label>
+          <select id="yr"><option value="now">현재</option></select></div>
       </div>
       <div id="grp-wrap" style="display:none"><label class="f" for="grp" id="grp-label">업종</label>
         <select id="grp"></select></div>
@@ -230,14 +232,35 @@
   function isUSmk(mk) { return /^us/.test(mk || document.getElementById('mk').value); }
   function usGroups(mk) { return (DATA_US && DATA_US.groups && DATA_US.groups[mk === 'us_sector' ? 'sector' : 'industry']) || []; }
   function usGroupName(mk, g) { return mk === 'us_sector' ? (US_SECTOR[g.name] || g.name) : g.name; }
+  // ---- 연도: 지난 해는 연말(그해 마지막 거래일) 순위 — 시총 순위 탭과 같은 자료(data/rank.json) ----
+  var RANK = null;
+  function isGroupMk(mk) { return mk === 'industry' || mk === 'theme' || mk === 'us_sector' || mk === 'us_industry'; }
+  function pastCol() {                        // 지난 해를 골랐으면 그 칸, 아니면 null
+    var mk = document.getElementById('mk').value, y = document.getElementById('yr').value;
+    if (!RANK || y === 'now' || isGroupMk(mk)) return null;
+    var c = RANK.cols[y]; return c && (c[mk] || []).length ? c : null;
+  }
+  function fillYears() {
+    var mk = document.getElementById('mk').value, sel = document.getElementById('yr'), keep = sel.value;
+    var ys = RANK && !isGroupMk(mk) ? Object.keys(RANK.cols).filter(function (k) {
+      return k !== 'now' && (RANK.cols[k][mk] || []).length; }).sort().reverse() : [];
+    sel.innerHTML = '<option value="now">현재</option>' + ys.map(function (y) {
+      return '<option value="' + y + '">' + y + '년 말</option>'; }).join('');
+    sel.value = ys.indexOf(keep) >= 0 ? keep : 'now';
+    sel.disabled = !ys.length;
+    sel.title = isGroupMk(mk) ? '업종·테마·섹터는 지난 해 자료가 없어 현재만 볼 수 있어요' : '';
+  }
   function fill() {
     var mk = document.getElementById('mk').value, lines;
+    fillYears();
     var src = mk === 'all' && DATA
       ? (DATA.kospi || []).concat(DATA.kosdaq || []).sort(function (a, b) { return b.cap - a.cap; })
       : DATA && DATA[mk];
+    var pc = pastCol();
+    if (pc) src = pc[mk].map(function (r) { return { code: r[0], name: r[1], cap: r[2], ytd: null }; });
     var wrap = document.getElementById('grp-wrap'), gsel = document.getElementById('grp');
     var isGrp = mk === 'industry' || mk === 'theme';
-    if (mk === 'us') src = DATA_US && DATA_US.us;
+    if (mk === 'us' && !pc) src = DATA_US && DATA_US.us;
     var isUG = mk === 'us_sector' || mk === 'us_industry';
     wrap.style.display = isGrp || isUG ? '' : 'none';
     if (isUG) {
@@ -289,8 +312,10 @@
     }
     var gpart = gname.split('\u0000');      // [이름, 괄호 안, '']
     document.getElementById('title').value = gpart[0] + '시가총액';
-    var DD = isUSmk(mk) ? DATA_US : DATA;
-    var a = DD && DD.asof ? DD.asof.split('-') : null;
+    var DD = isUSmk(mk) ? DATA_US : DATA, pc = pastCol();
+    var asof = pc ? ((isUSmk(mk) && pc.us_date) || pc.date) : DD && DD.asof;
+    var a = asof ? asof.split('-') : null;
+    var fx = pc ? pc.usdkrw : FX;              // 지난 해는 그해 연말 환율
     var d = a ? " ('" + a[0].slice(2) + '년 ' + (+a[1]) + '월 ' + (+a[2]) + '일 기준)' : ' (샘플)';
     var lab = '';                              // 시장·업종·테마 이름은 제목에, 아래 줄은 날짜만
     var extra = gpart && gpart[1] ? gpart[1] : '';
@@ -301,9 +326,9 @@
     var k = Math.min(+n, vals.length), tot = 0;
     for (var i = 0; i < k; i++) tot += vals[i];
     var won = money(tot);
-    if (isUSmk(mk) && FX && tot > 0) won += ' (' + krw(tot * FX) + ')';   // 미국: 달러 옆에 그날 환율로 원화
+    if (isUSmk(mk) && fx && tot > 0) won += ' (' + krw(tot * fx) + ')';   // 미국: 달러 옆에 그날(그해 말) 환율로 원화
     else if (!isUSmk(mk)) won += ' 원';                                      // 국내: 3,091조 원
-    var sumTxt = k ? (k < +n ? k + '개' : '상위 ' + k + '개') + ' 합계 ' + won : '';
+    var sumTxt = k ? (pc ? a[0] + '년 말 · ' : '') + (k < +n ? k + '개' : '상위 ' + k + '개') + ' 합계 ' + won : '';
     document.getElementById('sub').value = [extra, sumTxt].filter(Boolean).join(' · ');
     window.MCAP_FOOT = a ? a[0] + '년 ' + (+a[1]) + '월 ' + (+a[2]) + '일 기준' : '';
     window.MCAP_ICON = mcapIcon(mk, (mk === 'industry' || mk === 'theme' || mk === 'us_sector' || mk === 'us_industry') ? gg : null);
@@ -612,6 +637,7 @@
   });
   document.getElementById('n').addEventListener('change', function () { autoText(); draw(); });
   document.getElementById('mk').addEventListener('change', function () { fill(); draw(); });
+  document.getElementById('yr').addEventListener('change', function () { fill(); draw(); });
   document.getElementById('grp').addEventListener('change', function () { fill(); draw(); });
   document.getElementById('chk-icon').addEventListener('change', function () { draw(); });
   document.getElementById('btn-mode').addEventListener('click', function () {
@@ -637,6 +663,10 @@
       setTimeout(function () { URL.revokeObjectURL(a.href); }, 10000);
     }, 'image/png');
   });
+  fetch('./data/rank.json', { cache: 'no-cache' })
+    .then(function (r) { if (!r.ok) throw 0; return r.json(); })
+    .then(function (j) { RANK = j; fillYears(); })
+    .catch(function () { });
   fetch('./data/fx.json', { cache: 'no-cache' })
     .then(function (r) { if (!r.ok) throw 0; return r.json(); })
     .then(function (j) { FX = +j.usdkrw || null; if (isUSmk()) { autoText(); draw(); } })

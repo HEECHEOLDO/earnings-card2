@@ -27,7 +27,7 @@ from datetime import date, datetime, timedelta, timezone
 KST = timezone(timedelta(hours=9))
 OUT = os.path.join("data", "rank.json")
 START = 2020            # 공공데이터포털 자료가 있는 첫 해
-TOP = 30                # 칸마다 몇 위까지 적을지 (화면은 TOP 10·15)
+TOP = 50                # 칸마다 몇 위까지 적을지 (시가총액 탭 과거 연도 TOP 50 까지)
 URL = "https://apis.data.go.kr/1160100/service/GetStockSecuritiesInfoService/getStockPriceInfo"
 # 시가총액 탭과 같은 기준 — 우선주·스팩은 뺀다
 BAD = re.compile(r"(우|우B|\d우[BC]?|우\(전환\)|스팩\d*호?|MF)$|기업인수목적|우선$|\(\d?우[A-C]?\)|\d신$|뮤추얼")
@@ -141,7 +141,7 @@ def main():
     # 현재 — 공공데이터포털은 하루 늦게 올라온다. 어제부터 거꾸로 찾는다.
     d, rows = last_trading(key, today - timedelta(days=1))
     if rows:
-        keep = {k: v for k, v in (cols.get("now") or {}).items() if k.startswith("us")}   # 미국 칸은 collect_us.py 몫
+        keep = {k: v for k, v in (cols.get("now") or {}).items() if k.startswith("us")}   # 미국 칸은 collect_us_mcap.py 몫
         cols["now"] = column(d, rows)
         cols["now"].update(keep)
         log("  현재 %s  코스피 1위 %s" % (d, cols["now"]["kospi"][0][1]))
