@@ -198,7 +198,7 @@
             <input id="mv-tail" type="number" min="0" max="8" step="0.1" value="2.5"></div>
         </div>
         <p class="note" id="mv-len"></p>
-        <p class="note">지금 고른 시장의 연말 순위(위 순위 칸, 최대 TOP 20)로, 시작 연도부터 현재까지 원이 자라고 줄며 움직이는 영상을 만듭니다. 화면에서 재생되며 녹화되니 끝날 때까지 이 창을 띄워 두세요.</p>
+        <p class="note">지금 고른 시장의 연말 순위(위 순위 칸, TOP 10·20·30·50 그대로)로, 시작 연도부터 현재까지 원이 자라고 줄며 움직이는 영상을 만듭니다. 화면에서 재생되며 녹화되니 끝날 때까지 이 창을 띄워 두세요.</p>
         <button class="btn" id="mv-go" type="button" style="margin-top:6px">영상 만들기</button>
         <p class="note" id="mv-note"></p>
       </details>
@@ -719,7 +719,7 @@
       label.now = a.length === 3 ? a[0] + '.' + a[1] : '현재'; keys.push('now');
       var asof = a.length === 3 ? a[0] + '년 ' + (+a[1]) + '월 ' + (+a[2]) + '일 기준' : '현재 기준';
     }
-    var n = Math.min(20, +document.getElementById('n').value);
+    var n = +document.getElementById('n').value || 20;
     keys.forEach(function (k) { if (k !== 'now') n = Math.min(n, cols[k].length); });          // 옛 해에 자료가 적으면 그만큼만
     return { mk: mk, years: keys, cols: cols, fx: fx, label: label, n: n, asof: asof || '현재 기준',
              ratio: document.getElementById('mv-ratio').value, per: num('mv-per', 0.8, 0.6, 6), hold: num('mv-hold', 10, 0, 80) / 100,
