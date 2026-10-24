@@ -545,10 +545,11 @@
         fit(r.name, 900, nf, 11, R * 1.55);
         ctx.lineWidth = Math.max(1.5, nf * (light ? 0.14 : 0.06)); ctx.strokeStyle = halo;
         ctx.strokeText(r.name, cx, base); ctx.fillStyle = fg; ctx.fillText(r.name, cx, base);
-        ctx.font = font(800, vf);
+        var mv = money(r.v) + (isUSmk() ? '' : ' 원');   // 국내: 1,248조 원
+        fit(mv, 800, vf, 10, R * 1.55);
         ctx.lineWidth = Math.max(1.5, vf * (light ? 0.14 : 0.06));
-        ctx.strokeText(money(r.v), cx, base + vf * 1.12);
-        ctx.globalAlpha = 0.92; ctx.fillText(money(r.v), cx, base + vf * 1.12);
+        ctx.strokeText(mv, cx, base + vf * 1.12);
+        ctx.globalAlpha = 0.92; ctx.fillText(mv, cx, base + vf * 1.12);
         ctx.restore();
       }
     });
@@ -808,7 +809,7 @@
           X.save(); X.globalAlpha = Math.max(0, Math.min(1, b.al)); X.textAlign = 'center'; X.textBaseline = 'alphabetic';
           X.shadowColor = 'rgba(0,0,0,0.35)'; X.shadowBlur = nf * 0.35; X.fillStyle = '#fff';
           fitX(b.n, 900, nf, 12, b.r * 1.5); X.fillText(b.n, b.x, b.y + b.r * 0.6);
-          X.font = f(800, Math.round(nf * 0.82)); X.fillText(amt(b.v), b.x, b.y + b.r * 0.6 + nf * 1.05); X.restore();
+          var av = amt(b.v) + (us ? '' : ' 원'); fitX(av, 800, Math.round(nf * 0.82), 10, b.r * 1.5); X.fillText(av, b.x, b.y + b.r * 0.6 + nf * 1.05); X.restore();
         }
       });
       var footY = H - 110;
