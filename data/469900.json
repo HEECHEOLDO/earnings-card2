@@ -3,9 +3,9 @@
  "split_adjusted": false,
  "legal_name": "하나31호스팩",
  "code": "469900",
- "market": "코스닥",
+ "market": "기타",
  "sector": "",
- "updated": "2026-09-06",
+ "updated": "2026-10-25",
  "annual": [
   {
    "p": 2023,
@@ -118,5 +118,6 @@
    "op": -0.1,
    "ni": 0.5
   }
- ]
+ ],
+ "q_method": "strict"
 }

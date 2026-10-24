@@ -3,9 +3,9 @@
  "split_adjusted": false,
  "legal_name": "유안타제15호스팩",
  "code": "473050",
- "market": "코스닥",
+ "market": "기타",
  "sector": "",
- "updated": "2026-09-06",
+ "updated": "2026-10-25",
  "annual": [
   {
    "p": 2024,
@@ -22,13 +22,6 @@
   }
  ],
  "quarterly": [
-  {
-   "y": 2024,
-   "q": 3,
-   "rev": 0.0,
-   "op": -0.1,
-   "ni": 0.7
-  },
   {
    "y": 2024,
    "q": 4,
@@ -57,5 +50,6 @@
    "op": -0.1,
    "ni": 0.8
   }
- ]
+ ],
+ "q_method": "strict"
 }

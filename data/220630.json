@@ -5,7 +5,7 @@
  "code": "220630",
  "market": "기타",
  "sector": "",
- "updated": "2026-09-01",
+ "updated": "2026-10-25",
  "annual": [
   {
    "p": 2016,
@@ -99,5 +99,6 @@
    "dps_adj": null
   }
  ],
- "quarterly": []
+ "quarterly": [],
+ "q_method": "strict"
 }

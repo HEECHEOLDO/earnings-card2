@@ -5,7 +5,7 @@
  "code": "471050",
  "market": "기타",
  "sector": "",
- "updated": "2026-09-06",
+ "updated": "2026-10-25",
  "annual": [],
  "quarterly": [
   {
@@ -29,5 +29,6 @@
    "op": -0.1,
    "ni": -0.6
   }
- ]
+ ],
+ "q_method": "strict"
 }

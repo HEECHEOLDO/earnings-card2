@@ -5,7 +5,7 @@
  "code": "377190",
  "market": "코스피",
  "sector": "",
- "updated": "2026-09-05",
+ "updated": "2026-10-25",
  "annual": [
   {
    "p": 2021,
@@ -86,14 +86,6 @@
    "dps_adj": 120.0
   }
  ],
- "quarterly": [
-  {
-   "y": 2023,
-   "q": 2,
-   "rev": 96.9,
-   "op": 51.5,
-   "ni": 16.7
-  }
- ],
+ "quarterly": [],
  "q_method": "strict"
 }

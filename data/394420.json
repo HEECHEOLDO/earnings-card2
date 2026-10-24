@@ -5,7 +5,7 @@
  "code": "394420",
  "market": "코스닥",
  "sector": "",
- "updated": "2026-09-05",
+ "updated": "2026-10-25",
  "annual": [
   {
    "p": 2025,
@@ -21,13 +21,6 @@
    "dps_adj": null
   }
  ],
- "quarterly": [
-  {
-   "y": 2025,
-   "q": 4,
-   "rev": 88.3,
-   "op": -106.4,
-   "ni": -191.2
-  }
- ]
+ "quarterly": [],
+ "q_method": "strict"
 }

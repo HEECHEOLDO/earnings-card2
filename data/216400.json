@@ -5,7 +5,7 @@
  "code": "216400",
  "market": "코넥스",
  "sector": "",
- "updated": "2026-09-01",
+ "updated": "2026-10-25",
  "annual": [
   {
    "p": 2024,
@@ -34,14 +34,6 @@
    "dps_adj": null
   }
  ],
- "quarterly": [
-  {
-   "y": 2024,
-   "q": 4,
-   "rev": 216.5,
-   "op": 3.3,
-   "ni": -107.5
-  }
- ],
+ "quarterly": [],
  "q_method": "strict"
 }

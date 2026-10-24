@@ -5,7 +5,7 @@
  "code": "396690",
  "market": "코스피",
  "sector": "",
- "updated": "2026-09-05",
+ "updated": "2026-10-25",
  "annual": [
   {
    "p": 2022,
@@ -73,14 +73,6 @@
    "dps_adj": 130.0
   }
  ],
- "quarterly": [
-  {
-   "y": 2023,
-   "q": 2,
-   "rev": 53.3,
-   "op": 20.8,
-   "ni": -14.6
-  }
- ],
+ "quarterly": [],
  "q_method": "strict"
 }

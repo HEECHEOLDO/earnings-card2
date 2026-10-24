@@ -5,7 +5,7 @@
  "code": "481850",
  "market": "코스피",
  "sector": "",
- "updated": "2026-09-06",
+ "updated": "2026-10-25",
  "annual": [
   {
    "p": 2024,
@@ -47,14 +47,6 @@
    "dps_adj": 130.0
   }
  ],
- "quarterly": [
-  {
-   "y": 2024,
-   "q": 2,
-   "rev": 16.8,
-   "op": 8.9,
-   "ni": -20.7
-  }
- ],
+ "quarterly": [],
  "q_method": "strict"
 }
