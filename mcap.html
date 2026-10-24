@@ -833,9 +833,9 @@
       var sum = '상위 ' + N + '개 합계 ' + (us ? amt(tot) + (fx ? ' (' + krw(tot / 10000 * fx) + ')' : '') : amt(tot) + ' 원');
       X.font = f(700, 44); X.fillStyle = T.inkSoft; X.fillText(sum, L, y + 80);
       // 큰 연도 — 두 해가 겹쳐 바뀐다
-      // 큰 연도 — 자동차 주행거리계처럼 바뀌는 자리의 숫자만 위로 굴러 올라간다 (흐려지거나 사라지지 않음)
+      // 큰 연도 — 늘 또렷하게. 원들이 반쯤 움직였을 때 숫자만 그 자리에서 바뀐다 (움직임·흐려짐 없음)
       var la = R.label[ys[g.i0]], lb = R.label[ys[g.i1]];
-      drawYear(la, lb, la === lb ? 0 : ease(Math.max(0, Math.min(1, (g.m - 0.2) / 0.6))));      Object.keys(B).map(function (k) { return [k, B[k]]; }).sort(function (a, b) { return a[1].r - b[1].r; }).forEach(function (e) {
+      drawYear(la, lb, g.m >= 0.5 ? 1 : 0);      Object.keys(B).map(function (k) { return [k, B[k]]; }).sort(function (a, b) { return a[1].r - b[1].r; }).forEach(function (e) {
         var k = e[0], b = e[1], im = logo(k); if (b.r < 5) return;
         X.save(); X.globalAlpha = Math.max(0, Math.min(1, b.al)); X.beginPath(); X.arc(b.x, b.y, b.r, 0, 7); X.clip();
         if (ready(im)) X.drawImage(im, b.x - b.r, b.y - b.r, b.r * 2, b.r * 2);
