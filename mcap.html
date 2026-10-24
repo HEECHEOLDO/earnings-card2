@@ -184,6 +184,7 @@
           <div><label class="f" for="mv-ratio">비율</label>
             <select id="mv-ratio"><option value="916">9:16 (1080×1920) · 릴스·쇼츠·틱톡</option><option value="45">4:5 (1080×1350) · 인스타그램 피드</option></select></div>
         </div>
+        <label class="chk" style="margin-top:8px"><input type="checkbox" id="mv-half" checked> 6월 말도 넣기 (반년마다 실제 순위 — 더 부드럽고 정확하게)</label>
         <div class="row" style="margin-top:6px">
           <div><label class="f" for="mv-from">시작</label><select id="mv-from"></select></div>
           <div><label class="f" for="mv-per">한 해 길이 (초)</label>
@@ -688,7 +689,7 @@
     }, 'image/png');
   });
   // ════════ 변천사 영상 (9:16) — 해마다 연말 시총으로 원이 커지고 줄며, 서로 밀고 당겨 자리를 잡는다 ════════
-  var MV = { W: 1080, H: 1920 };
+  var HALF = null;
   function mvSetup() {
     var mk = document.getElementById('mk').value;
     var ok = RANK && !isGroupMk(mk);
@@ -705,25 +706,49 @@
     if (!RANK || document.getElementById('mv-go').disabled) { document.getElementById('mv-len').textContent = ''; return; }
     var R = mvData(), sec = R.lead + (R.years.length - 1) * R.per + R.tail;
     document.getElementById('mv-len').textContent = R.label[R.years[0]] + ' → ' + R.label[R.years[R.years.length - 1]] +
-      ' · ' + R.years.length + '개 시점 · 약 ' + Math.round(sec) + '초' + (sec > 90 ? ' (릴스·쇼츠는 90초 이하 권장)' : '');
+      ' · ' + R.years.length + '개 시점' + (R.half ? ' (6월 말 포함)' : document.getElementById('mv-half').checked ? ' (이 시장은 6월 말 자료가 아직 없어 연말만)' : '') +
+      ' · 약 ' + Math.round(sec) + '초' + (sec > 90 ? ' (릴스·쇼츠는 90초 이하 권장)' : '');
   }
   function mvData() {
     var mk = document.getElementById('mk').value, from = document.getElementById('mv-from').value;
     var keys = Object.keys(RANK.cols).filter(function (k) { return k !== 'now' && k >= from && (RANK.cols[k][mk] || []).length; }).sort();
     var cols = {}, fx = {}, label = {}, asof;
-    keys.forEach(function (k) { cols[k] = RANK.cols[k][mk]; fx[k] = RANK.cols[k].usdkrw; label[k] = k; });
+    var foot = {};
+    keys.forEach(function (k) { cols[k] = RANK.cols[k][mk]; fx[k] = RANK.cols[k].usdkrw; label[k] = k; foot[k] = k + '년 말 기준'; });
+    // 6월 말 끼워 넣기 — 연말 Y-1 과 연말 Y 사이에 Y년 6월 말. 그 시장의 6월 말이 빠짐없이 있을 때만 (박자가 고르게)
+    var hc = HALF && HALF.cols, useHalf = false;
+    function hasHalf(y) { return hc && hc[y] && (hc[y][mk] || []).length; }
+    if (document.getElementById('mv-half').checked && keys.length > 1 &&
+        keys.slice(1).every(function (y) { return hasHalf(y); })) {
+      useHalf = true;
+      var ks = [keys[0]];
+      keys.slice(1).forEach(function (y) {
+        var h = 'h' + y, f0 = fx[String(+y - 1)];
+        cols[h] = hc[y][mk]; label[h] = y; foot[h] = y + '년 6월 말 기준';
+        fx[h] = hc[y].usdkrw || (f0 && fx[y] ? (f0 + fx[y]) / 2 : fx[y]);
+        ks.push(h, y);
+      });
+      keys = ks;
+    }
     var src = mk === 'us' ? (DATA_US && DATA_US.us) : mk === 'all' && DATA
       ? (DATA.kospi || []).concat(DATA.kosdaq || []).sort(function (a, b) { return b.cap - a.cap; }) : DATA && DATA[mk];
     if (src && src.length) {                 // 마지막 칸 = 현재
       cols.now = src.map(function (r) { return [r.code, r.name, r.cap]; });
       fx.now = FX; var a = ((mk === 'us' ? DATA_US : DATA).asof || '').split('-');
+      var ly = String(+keys[keys.length - 1].replace('h', '') + 1);          // 마지막 연말 다음 해 6월 말 (지났으면)
+      if (useHalf && hasHalf(ly) && a.length === 3 && a[0] + '-' + a[1] > ly + '-06') {
+        cols['h' + ly] = hc[ly][mk]; label['h' + ly] = ly; foot['h' + ly] = ly + '년 6월 말 기준'; fx['h' + ly] = hc[ly].usdkrw || FX; keys.push('h' + ly);
+      }
       label.now = a.length === 3 ? a[0] + '.' + a[1] : '현재'; keys.push('now');
       var asof = a.length === 3 ? a[0] + '년 ' + (+a[1]) + '월 ' + (+a[2]) + '일 기준' : '현재 기준';
+      foot.now = asof;
     }
     var n = +document.getElementById('n').value || 20;
     keys.forEach(function (k) { if (k !== 'now') n = Math.min(n, cols[k].length); });          // 옛 해에 자료가 적으면 그만큼만
-    return { mk: mk, years: keys, cols: cols, fx: fx, label: label, n: n, asof: asof || '현재 기준',
-             ratio: document.getElementById('mv-ratio').value, per: num('mv-per', 0.8, 0.6, 6), hold: num('mv-hold', 10, 0, 80) / 100,
+    return { mk: mk, years: keys, cols: cols, fx: fx, label: label, n: n, foot: foot, half: useHalf,
+             ratio: document.getElementById('mv-ratio').value,
+             per: num('mv-per', 0.8, 0.6, 6) / (useHalf ? 2 : 1),          // 한 해 길이는 그대로 — 반년씩 두 걸음
+             hold: num('mv-hold', 10, 0, 80) / 100,
              lead: num('mv-lead', 0.8, 0, 5), tail: num('mv-tail', 2.5, 0, 8) };
   }
   function mvEngine(R, c) {
@@ -815,8 +840,7 @@
       var footY = H - 110;
       X.strokeStyle = T.rule; X.lineWidth = 2; X.beginPath(); X.moveTo(L, footY - 46); X.lineTo(W - L, footY - 46); X.stroke();
       X.font = f(700, 32); X.fillStyle = T.footer; X.textAlign = 'left'; X.textBaseline = 'alphabetic';
-      var nowShown = ys[cross > 0.5 ? g.i1 : g.i0] === 'now';
-      X.fillText(nowShown ? R.asof : '연말 기준', L, footY); X.textAlign = 'right'; X.fillText('@돈굴돈굴', W - L, footY); X.textAlign = 'left';
+      X.fillText(R.foot[ys[g.m > 0.5 ? g.i1 : g.i0]] || '', L, footY); X.textAlign = 'right'; X.fillText('@돈굴돈굴', W - L, footY); X.textAlign = 'left';
     }
     return {
       warm: function () { for (var i = 0; i < 300; i++) step(at(0).rows); draw(at(0)); },
@@ -858,12 +882,16 @@
   }
   document.getElementById('mv-go').addEventListener('click', makeMovie);
   document.getElementById('mk').addEventListener('change', function () { mvSetup(); mvLen(); });
-  ['mv-from', 'mv-per', 'mv-hold', 'mv-lead', 'mv-tail', 'n'].forEach(function (id) {
+  ['mv-from', 'mv-half', 'mv-per', 'mv-hold', 'mv-lead', 'mv-tail', 'n'].forEach(function (id) {
     document.getElementById(id).addEventListener('input', mvLen); document.getElementById(id).addEventListener('change', mvLen); });
 
   fetch('./data/rank.json', { cache: 'no-cache' })
     .then(function (r) { if (!r.ok) throw 0; return r.json(); })
     .then(function (j) { RANK = j; fillYears(); mvSetup(); mvLen(); })
+    .catch(function () { });
+  fetch('./data/rank_half.json', { cache: 'no-cache' })                   // 6월 말 순위 (영상용, 없으면 연말만)
+    .then(function (r) { if (!r.ok) throw 0; return r.json(); })
+    .then(function (j) { HALF = j; mvLen(); })
     .catch(function () { });
   fetch('./data/fx.json', { cache: 'no-cache' })
     .then(function (r) { if (!r.ok) throw 0; return r.json(); })

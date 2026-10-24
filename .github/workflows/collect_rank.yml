@@ -26,12 +26,14 @@ jobs:
       - name: 수집
         env:
           DATA_GO_KEY: ${{ secrets.DATA_GO_KEY }}
-        run: python3 collect_rank.py
+        run: |
+          python3 collect_rank.py
+          python3 collect_half.py --recent   # 6월 말 순위 (영상용) — 새 6월 말이 생긴 해에만 호출
       - name: 커밋
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/rank.json || true
+          git add data/rank.json data/rank_half.json || true
           if git diff --staged --quiet; then echo "변경 없음"; exit 0; fi
           git commit -m "시총 순위 자동 수집 $(date -u +'%Y-%m-%d')"
           for i in 1 2 3 4 5; do
