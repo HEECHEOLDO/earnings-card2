@@ -69,7 +69,7 @@
   canvas{width:100%;height:auto;display:block;border-radius:6px;box-shadow:0 4px 18px -8px rgba(0,0,0,.25)}
   .panel h3{font-size:13px;font-weight:700;margin:0 0 4px;color:var(--text)}
   label.f{display:block;font-size:12px;font-weight:700;color:var(--text-soft);margin:12px 0 6px}
-  select,input[type=text]{width:100%;height:40px;border:1px solid var(--border-strong);border-radius:8px;padding:0 10px;
+  select,input[type=text],input[type=number]{width:100%;height:40px;border:1px solid var(--border-strong);border-radius:8px;padding:0 10px;
     font:inherit;font-size:14px;background:var(--bg);color:var(--text)}
   textarea{width:100%;height:300px;font:12.5px/1.6 ui-monospace,Menlo,monospace;border:1px solid var(--border-strong);
     border-radius:8px;padding:10px;background:var(--bg);color:var(--text)}
@@ -83,7 +83,7 @@
   .note{font-size:12px;color:var(--text-mute);line-height:1.7;margin-top:10px}
   @media (max-width:860px){.grid{grid-template-columns:1fr}}
   @media (max-width:560px){body{padding:14px 12px 56px}.brand h1{font-size:15px}
-    select,input[type=text]{font-size:16px}}
+    select,input[type=text],input[type=number]{font-size:16px}}
 </style>
 <style id="nav-wrap">
   @media (max-width: 1100px) {
@@ -182,9 +182,18 @@
       <details style="margin-top:16px"><summary>변천사 영상 만들기 (9:16 · 릴스·쇼츠)</summary>
         <div class="row" style="margin-top:8px">
           <div><label class="f" for="mv-from">시작</label><select id="mv-from"></select></div>
-          <div><label class="f" for="mv-per">한 해 길이</label>
-            <select id="mv-per"><option value="1.2">1.2초</option><option value="1.6" selected>1.6초</option><option value="2.2">2.2초</option></select></div>
+          <div><label class="f" for="mv-per">한 해 길이 (초)</label>
+            <input id="mv-per" type="number" min="0.6" max="6" step="0.1" value="1.6"></div>
         </div>
+        <div class="row" style="margin-top:6px">
+          <div><label class="f" for="mv-hold">해마다 멈춤 (%)</label>
+            <input id="mv-hold" type="number" min="0" max="80" step="5" value="28"></div>
+          <div><label class="f" for="mv-lead">처음 멈춤 (초)</label>
+            <input id="mv-lead" type="number" min="0" max="5" step="0.1" value="0.8"></div>
+          <div><label class="f" for="mv-tail">마지막 멈춤 (초)</label>
+            <input id="mv-tail" type="number" min="0" max="8" step="0.1" value="1.8"></div>
+        </div>
+        <p class="note" id="mv-len"></p>
         <p class="note">지금 고른 시장의 연말 순위(위 순위 칸, 최대 TOP 20)로, 시작 연도부터 현재까지 원이 자라고 줄며 움직이는 영상을 만듭니다. 화면에서 재생되며 녹화되니 끝날 때까지 이 창을 띄워 두세요.</p>
         <button class="btn" id="mv-go" type="button" style="margin-top:6px">영상 만들기</button>
         <p class="note" id="mv-note"></p>
@@ -686,6 +695,13 @@
     document.getElementById('mv-go').disabled = !ys.length;
     document.getElementById('mv-note').textContent = ys.length ? '' : '업종·테마·섹터는 지난 해 자료가 없어 영상을 만들 수 없어요.';
   }
+  function num(id, d, lo, hi) { var v = parseFloat(document.getElementById(id).value); return isFinite(v) ? Math.max(lo, Math.min(hi, v)) : d; }
+  function mvLen() {                         // 영상 길이 미리 알려 주기
+    if (!RANK || document.getElementById('mv-go').disabled) { document.getElementById('mv-len').textContent = ''; return; }
+    var R = mvData(), sec = R.lead + (R.years.length - 1) * R.per + R.tail;
+    document.getElementById('mv-len').textContent = R.label[R.years[0]] + ' → ' + R.label[R.years[R.years.length - 1]] +
+      ' · ' + R.years.length + '개 시점 · 약 ' + Math.round(sec) + '초' + (sec > 90 ? ' (릴스·쇼츠는 90초 이하 권장)' : '');
+  }
   function mvData() {
     var mk = document.getElementById('mk').value, from = document.getElementById('mv-from').value;
     var keys = Object.keys(RANK.cols).filter(function (k) { return k !== 'now' && k >= from && (RANK.cols[k][mk] || []).length; }).sort();
@@ -700,9 +716,10 @@
       var asof = a.length === 3 ? a[0] + '년 ' + (+a[1]) + '월 ' + (+a[2]) + '일 기준' : '현재 기준';
     }
     var n = Math.min(20, +document.getElementById('n').value);
-    keys.forEach(function (k) { n = Math.min(n, cols[k].length); });          // 옛 해에 자료가 적으면 그만큼만
+    keys.forEach(function (k) { if (k !== 'now') n = Math.min(n, cols[k].length); });          // 옛 해에 자료가 적으면 그만큼만
     return { mk: mk, years: keys, cols: cols, fx: fx, label: label, n: n, asof: asof || '현재 기준',
-             per: +document.getElementById('mv-per').value };
+             per: num('mv-per', 1.6, 0.6, 6), hold: num('mv-hold', 28, 0, 80) / 100,
+             lead: num('mv-lead', 0.8, 0, 5), tail: num('mv-tail', 1.8, 0, 8) };
   }
   function mvEngine(R, c) {
     var X = c.getContext('2d'), W = MV.W, H = MV.H, N = R.n, us = R.mk === 'us';
@@ -717,7 +734,7 @@
     function hash(s) { var h = 0; for (var i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) >>> 0; return h; }
     function at(t) {
       var ys = R.years, last = ys.length - 1; t = Math.max(0, Math.min(last, t));
-      var i0 = Math.floor(t), i1 = Math.min(last, i0 + 1), q = t - i0, hold = 0.28;
+      var i0 = Math.floor(t), i1 = Math.min(last, i0 + 1), q = t - i0, hold = R.hold;
       var m = q < hold ? 0 : ease((q - hold) / (1 - hold)), A = {}, Bq = {}, NM = {};
       R.cols[ys[i0]].slice(0, N).forEach(function (r) { A[r[0]] = r[2]; NM[r[0]] = r[1]; });
       R.cols[ys[i1]].slice(0, N).forEach(function (r) { Bq[r[0]] = r[2]; NM[r[0]] = NM[r[0]] || r[1]; });
@@ -819,7 +836,7 @@
         document.getElementById('mv-note').textContent = type.indexOf('mp4') >= 0 ? '' : 'WebM 으로 저장됐어요. 인스타그램에는 MP4 로 바꿔 올려 주세요.';
       };
       rec.start(1000);
-      var LEAD = 0.8, total = LEAD + E.length * R.per + 1.8, t0 = null, done = 0;
+      var LEAD = R.lead, total = LEAD + E.length * R.per + R.tail, t0 = null, done = 0;
       (function loop(now) {
         if (t0 == null) t0 = now;
         var sec = (now - t0) / 1000, want = Math.floor(sec * 60);   // 물리는 1/60초 걸음 — 화면 주사율과 상관없이 같은 속도
@@ -830,11 +847,13 @@
     }, 1200);
   }
   document.getElementById('mv-go').addEventListener('click', makeMovie);
-  document.getElementById('mk').addEventListener('change', mvSetup);
+  document.getElementById('mk').addEventListener('change', function () { mvSetup(); mvLen(); });
+  ['mv-from', 'mv-per', 'mv-hold', 'mv-lead', 'mv-tail', 'n'].forEach(function (id) {
+    document.getElementById(id).addEventListener('input', mvLen); document.getElementById(id).addEventListener('change', mvLen); });
 
   fetch('./data/rank.json', { cache: 'no-cache' })
     .then(function (r) { if (!r.ok) throw 0; return r.json(); })
-    .then(function (j) { RANK = j; fillYears(); mvSetup(); })
+    .then(function (j) { RANK = j; fillYears(); mvSetup(); mvLen(); })
     .catch(function () { });
   fetch('./data/fx.json', { cache: 'no-cache' })
     .then(function (r) { if (!r.ok) throw 0; return r.json(); })
