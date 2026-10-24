@@ -4,6 +4,7 @@
 
   python3 collect_us_mcap.py              매일: 나스닥 종목 검색표 → data/mcap_us.json + 시총 순위 '현재' 칸의 미국
   python3 collect_us_mcap.py --history    한 번만: 1996~작년 연말 미국 순위 → data/rank.json 의 연도 칸에 'us'
+  python3 collect_us_mcap.py --half       해마다 6월 말 미국 순위 → data/rank_half.json (변천사 영상용)
   python3 collect_us_mcap.py --show       받아 둔 것 보기 (호출 0회)
 
 · 지금 시가총액: 나스닥 종목 검색표(api.nasdaq.com) — 미국 상장 전 종목의 시총·섹터·업종, 키 필요 없음
@@ -291,6 +292,119 @@ def history():
         open(".gitignore", "a", encoding="utf-8").write(("" if ig.endswith("\n") or not ig else "\n") + "/_cmc/\n")
 
 
+# ── 6월 말(반기 말) — 변천사 영상용 → data/rank_half.json 의 us·us_only ─────────────────────
+# 회사 페이지의 차트 자료 data = [{"d": 유닉스시각, "m": 시총}, ...] (매달 하나) 에서 해마다 6월 마지막 값을 쓴다.
+OUT_HALF = os.path.join("data", "rank_half.json")
+JUNE_FX_OLD = {1996: 810.7, 1997: 888.1, 1998: 1373.6}   # 한국은행 6월 말 원/달러 (유럽중앙은행 자료가 1999년부터라)
+
+
+def cmc_page(slugs):
+    """연도별 표가 있는 회사 페이지 (받아 둔 것 먼저)"""
+    os.makedirs(CACHE, exist_ok=True)
+    for slug in slugs.split("|"):
+        path = os.path.join(CACHE, slug + ".html")
+        if os.path.exists(path) and os.path.getsize(path) > 2000:
+            return open(path, encoding="utf-8").read()
+        try:
+            h = get("https://companiesmarketcap.com/%s/marketcap/" % slug, tries=1)
+        except Exception:                          # noqa: BLE001
+            time.sleep(1)
+            continue
+        time.sleep(1.5)
+        if '"d":' in h:
+            open(path, "w", encoding="utf-8").write(h)
+            return h
+    return ""
+
+
+def cmc_monthly(h):
+    """[(날짜, 시총 원래 단위)] — 차트 자료"""
+    return [(datetime.fromtimestamp(int(d), timezone.utc).date(), int(m))
+            for d, m in re.findall(r'\{\s*"d"\s*:\s*(\d{9,10})\s*,\s*"m"\s*:\s*(\d+)\s*\}', h)]
+
+
+def june_fx(years):
+    out = {}
+    for y in years:
+        if y in JUNE_FX_OLD:
+            out[y] = JUNE_FX_OLD[y]
+            continue
+        try:
+            j = json.loads(get("https://api.frankfurter.app/%d-06-30?from=USD&to=KRW" % y, tries=2))
+            out[y] = round(float(j["rates"]["KRW"]), 2)
+        except Exception as e:                     # noqa: BLE001
+            log("  ! %d년 6월 말 환율 못 받음 (%r)" % (y, e))
+        time.sleep(0.3)
+    return out
+
+
+def half(only_if_needed=False):
+    today = datetime.now(KST).date()
+    last = today.year if (today.month, today.day) > (7, 1) else today.year - 1
+    try:
+        hj = json.load(open(OUT_HALF, encoding="utf-8"))
+    except Exception:                              # noqa: BLE001
+        hj = {"cols": {}}
+    hcols = hj.setdefault("cols", {})
+    if only_if_needed and (hcols.get(str(last)) or {}).get("us"):
+        log("미국 6월 말: %d년까지 이미 있음 — 할 일 없음" % last)
+        return
+    caps, units, bad = {}, [], []
+    for i, (sym, (slug, nm)) in enumerate(CANDIDATES.items(), 1):
+        h = cmc_page(slug)
+        pts = cmc_monthly(h) if h else []
+        if not pts:
+            bad.append(sym)
+            continue
+        # 단위 맞추기: 같은 페이지의 연도별 표(억 달러)와 12월 값을 견준다
+        tab = {}
+        for y, v in re.findall(r"<td[^>]*>\s*((?:19|20)\d\d)\s*</td>\s*<td[^>]*>\s*\$?\s*([\d.,]+\s*[TBM])", h):
+            n, u = float(v[:-1].replace(",", "")), v.strip()[-1]
+            tab[int(y)] = n * {"T": 1e4, "B": 10, "M": 0.01}[u]
+        for d, m in pts:
+            if d.month == 12 and d.year in tab and m:
+                units.append(tab[d.year] / m)
+        caps[sym] = pts
+        if i % 25 == 0:
+            log("  %d/%d …" % (i, len(CANDIDATES)))
+    if not units:
+        sys.exit("!! 차트 자료의 단위를 맞추지 못했습니다")
+    units.sort()
+    u = units[len(units) // 2]                      # 가운데 값 (보통 0.001 = 시총 m 이 10만 달러 단위)
+    log("단위: m × %.6g = 억 달러 (견준 값 %d개, 범위 %.4g~%.4g)" % (u, len(units), units[0], units[-1]))
+    years = list(range(1996, last + 1))
+    fx = june_fx(years)
+    for y in years:
+        rows = []
+        for sym, pts in caps.items():
+            jun = [(d, m) for d, m in pts if d.year == y and d.month == 6]
+            if not jun:                              # 6월 값이 없으면 6월 15일~7월 15일 사이 가장 가까운 것
+                near = [(abs((d - datetime(y, 6, 30).date()).days), d, m) for d, m in pts if d.year == y and d.month in (6, 7)]
+                near = [x for x in near if x[0] <= 15]
+                jun = [(x[1], x[2]) for x in sorted(near)[:1]]
+            if jun:
+                d, m = max(jun)
+                if m > 0:
+                    rows.append((sym, CANDIDATES[sym][1], round(m * u, 1)))
+        if not rows:
+            continue
+        rows.sort(key=lambda r: -r[2])
+        col = hcols.setdefault(str(y), {})
+        col["us"] = [list(r) for r in rows[:TOP_RANK]]
+        col["us_only"] = [list(r) for r in rows if r[0] not in FOREIGN][:TOP_RANK]
+        col["us_date"] = "%d-06-30" % y
+        col.setdefault("date", "%d-06-30" % y)
+        if y in fx:
+            col["usdkrw"] = fx[y]
+        log("  %d.06  %s  (환율 %s)" % (y, " · ".join("%s %s" % (r[1], fmt(r[2])) for r in rows[:3]), fx.get(y, "-")))
+    hj["updated"] = today.isoformat()
+    os.makedirs("data", exist_ok=True)
+    with open(OUT_HALF, "w", encoding="utf-8") as f:
+        json.dump(hj, f, ensure_ascii=False, separators=(",", ":"))
+    log("\n미국 6월 말 %d개 해 → %s%s" % (len([y for y in years if (hcols.get(str(y)) or {}).get("us")]), OUT_HALF,
+                                       ("\n차트 자료가 없는 후보 %d곳: %s" % (len(bad), ", ".join(bad))) if bad else ""))
+
+
 def show():
     j = json.load(open(OUT_MCAP, encoding="utf-8"))
     log("%s 기준 · 상위 10" % j["asof"])
@@ -303,5 +417,9 @@ if __name__ == "__main__":
         show()
     elif "--history" in sys.argv:
         history()
+    elif "--half" in sys.argv:
+        half()
+    elif "--half-if-needed" in sys.argv:
+        half(only_if_needed=True)
     else:
         daily()

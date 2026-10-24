@@ -17,19 +17,21 @@ concurrency:
 jobs:
   collect:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
       - name: 수집
-        run: python3 collect_us_mcap.py
+        run: |
+          python3 collect_us_mcap.py
+          python3 collect_us_mcap.py --half-if-needed   # 7월이 되면 한 번: 그 해 6월 말 미국 순위 (영상용)
       - name: 커밋
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/mcap_us.json data/rank.json || true
+          git add data/mcap_us.json data/rank.json data/rank_half.json || true
           if git diff --staged --quiet; then echo "변경 없음"; exit 0; fi
           git commit -m "미국 시가총액 자동 수집 $(date -u +'%Y-%m-%d')"
           for i in 1 2 3 4 5; do
