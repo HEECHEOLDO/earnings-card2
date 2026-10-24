@@ -179,6 +179,16 @@
         <textarea id="data" spellcheck="false"></textarea>
       </details>
       <button class="btn" id="dl">PNG 내려받기</button>
+      <details style="margin-top:16px"><summary>변천사 영상 만들기 (9:16 · 릴스·쇼츠)</summary>
+        <div class="row" style="margin-top:8px">
+          <div><label class="f" for="mv-from">시작</label><select id="mv-from"></select></div>
+          <div><label class="f" for="mv-per">한 해 길이</label>
+            <select id="mv-per"><option value="1.2">1.2초</option><option value="1.6" selected>1.6초</option><option value="2.2">2.2초</option></select></div>
+        </div>
+        <p class="note">지금 고른 시장의 연말 순위(위 순위 칸, 최대 TOP 20)로, 시작 연도부터 현재까지 원이 자라고 줄며 움직이는 영상을 만듭니다. 화면에서 재생되며 녹화되니 끝날 때까지 이 창을 띄워 두세요.</p>
+        <button class="btn" id="mv-go" type="button" style="margin-top:6px">영상 만들기</button>
+        <p class="note" id="mv-note"></p>
+      </details>
       <p class="note">로고 원의 <b>넓이</b>가 시가총액에 비례합니다. ETF·우선주는 빼고 보통주만 셉니다. 작은 원에는 로고만 들어갑니다. 미국은 나스닥 종목 검색표 기준이고, 한 회사의 여러 주식(GOOGL·GOOG 등)은 하나로 칩니다.</p>
     </div>
   </div>
@@ -663,9 +673,168 @@
       setTimeout(function () { URL.revokeObjectURL(a.href); }, 10000);
     }, 'image/png');
   });
+  // ════════ 변천사 영상 (9:16) — 해마다 연말 시총으로 원이 커지고 줄며, 서로 밀고 당겨 자리를 잡는다 ════════
+  var MV = { W: 1080, H: 1920 };
+  function mvSetup() {
+    var mk = document.getElementById('mk').value;
+    var ok = RANK && !isGroupMk(mk);
+    var sel = document.getElementById('mv-from');
+    var ys = ok ? Object.keys(RANK.cols).filter(function (k) { return k !== 'now' && (RANK.cols[k][mk] || []).length; }).sort() : [];
+    var keep = mvSetup.mk === mk ? sel.value : ys[0]; mvSetup.mk = mk;
+    sel.innerHTML = ys.map(function (y) { return '<option value="' + y + '">' + y + '년 말부터</option>'; }).join('');
+    if (ys.indexOf(keep) >= 0) sel.value = keep;
+    document.getElementById('mv-go').disabled = !ys.length;
+    document.getElementById('mv-note').textContent = ys.length ? '' : '업종·테마·섹터는 지난 해 자료가 없어 영상을 만들 수 없어요.';
+  }
+  function mvData() {
+    var mk = document.getElementById('mk').value, from = document.getElementById('mv-from').value;
+    var keys = Object.keys(RANK.cols).filter(function (k) { return k !== 'now' && k >= from && (RANK.cols[k][mk] || []).length; }).sort();
+    var cols = {}, fx = {}, label = {}, asof;
+    keys.forEach(function (k) { cols[k] = RANK.cols[k][mk]; fx[k] = RANK.cols[k].usdkrw; label[k] = k; });
+    var src = mk === 'us' ? (DATA_US && DATA_US.us) : mk === 'all' && DATA
+      ? (DATA.kospi || []).concat(DATA.kosdaq || []).sort(function (a, b) { return b.cap - a.cap; }) : DATA && DATA[mk];
+    if (src && src.length) {                 // 마지막 칸 = 현재
+      cols.now = src.map(function (r) { return [r.code, r.name, r.cap]; });
+      fx.now = FX; var a = ((mk === 'us' ? DATA_US : DATA).asof || '').split('-');
+      label.now = a.length === 3 ? a[0] + '.' + a[1] : '현재'; keys.push('now');
+      var asof = a.length === 3 ? a[0] + '년 ' + (+a[1]) + '월 ' + (+a[2]) + '일 기준' : '현재 기준';
+    }
+    var n = Math.min(20, +document.getElementById('n').value);
+    keys.forEach(function (k) { n = Math.min(n, cols[k].length); });          // 옛 해에 자료가 적으면 그만큼만
+    return { mk: mk, years: keys, cols: cols, fx: fx, label: label, n: n, asof: asof || '현재 기준',
+             per: +document.getElementById('mv-per').value };
+  }
+  function mvEngine(R, c) {
+    var X = c.getContext('2d'), W = MV.W, H = MV.H, N = R.n, us = R.mk === 'us';
+    var L = 70, AW = W - 140, AY = 400, AH = 1150, CX = L + AW / 2, CY = AY + AH / 2;
+    var B = {}, K = null;
+    function f(w, s) { return w + ' ' + s + 'px "Noto Sans KR","Apple SD Gothic Neo",sans-serif'; }
+    function fitX(t, w, s0, min, maxW) { var s = s0; X.font = f(w, s); while (X.measureText(t).width > maxW && s > min) { s--; X.font = f(w, s); } return s; }
+    function amt(v) { return us ? (v / 10000 >= 1 ? '$' + (v / 10000).toFixed(1).replace(/\.0$/, '') + 'T' : '$' + Math.round(v / 10).toLocaleString('en-US') + 'B')
+                                : (v / 10000 >= 1 ? (v / 10000 >= 100 ? Math.round(v / 10000).toLocaleString('ko-KR') : (v / 10000).toFixed(1).replace(/\.0$/, '')) + '조'
+                                                  : Math.round(v).toLocaleString('ko-KR') + '억'); }
+    function ease(x) { return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; }
+    function hash(s) { var h = 0; for (var i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) >>> 0; return h; }
+    function at(t) {
+      var ys = R.years, last = ys.length - 1; t = Math.max(0, Math.min(last, t));
+      var i0 = Math.floor(t), i1 = Math.min(last, i0 + 1), q = t - i0, hold = 0.28;
+      var m = q < hold ? 0 : ease((q - hold) / (1 - hold)), A = {}, Bq = {}, NM = {};
+      R.cols[ys[i0]].slice(0, N).forEach(function (r) { A[r[0]] = r[2]; NM[r[0]] = r[1]; });
+      R.cols[ys[i1]].slice(0, N).forEach(function (r) { Bq[r[0]] = r[2]; NM[r[0]] = NM[r[0]] || r[1]; });
+      return { i0: i0, i1: i1, m: m, rows: Object.keys(NM).map(function (k) {
+        var a = A[k] || 0, b = Bq[k] || 0; return { c: k, n: NM[k], v: a + (b - a) * m }; }).filter(function (o) { return o.v > 0.01; }) };
+    }
+    function step(rows) {
+      var sum = rows.reduce(function (s, o) { return s + o.v; }, 0) || 1;
+      var kT = Math.sqrt(0.5 * AW * AH / (Math.PI * sum)); K = K == null ? kT : K + (kT - K) * 0.08;
+      var live = {};
+      rows.forEach(function (o) {
+        var b = B[o.c];
+        if (!b) { var a = (hash(o.c) % 360) * Math.PI / 180;
+          b = B[o.c] = { x: CX + Math.cos(a) * AW * 0.45, y: CY + Math.sin(a) * AH * 0.45, vx: 0, vy: 0, r: 0, vr: 0, al: 0 }; }
+        b.tr = Math.sqrt(o.v) * K; b.n = o.n; b.v = o.v; live[o.c] = 1;
+      });
+      Object.keys(B).forEach(function (k) { if (!live[k]) { B[k].tr = 0; B[k].v = 0; } });
+      var bs = Object.keys(B).map(function (k) { return B[k]; });
+      bs.forEach(function (b) {               // 크기는 용수철처럼 — 살짝 넘쳤다가 제자리 (자연스러운 숨쉬기)
+        b.vr += (b.tr - b.r) * 0.09; b.vr *= 0.74; b.r = Math.max(0, b.r + b.vr);
+        b.al += ((b.tr > 0 ? 1 : 0) - b.al) * 0.12;
+      });
+      for (var it = 0; it < 3; it++) {
+        bs.forEach(function (b) { b.vx += (CX - b.x) * 0.0011; b.vy += (CY - b.y) * 0.0009; b.vx *= 0.88; b.vy *= 0.88; b.x += b.vx; b.y += b.vy; });
+        for (var i = 0; i < bs.length; i++) for (var j = i + 1; j < bs.length; j++) {
+          var p = bs[i], s = bs[j], dx = s.x - p.x, dy = s.y - p.y, d = Math.sqrt(dx * dx + dy * dy) || 0.01, mn = p.r + s.r + 6;
+          if (d < mn) { var push = (mn - d) * 0.5, ux = dx / d, uy = dy / d, wp = s.r / (p.r + s.r + 1e-6), wq = 1 - wp;
+            p.x -= ux * push * wp * 1.6; p.y -= uy * push * wp * 1.6; s.x += ux * push * wq * 1.6; s.y += uy * push * wq * 1.6;
+            p.vx -= ux * push * wp * 0.05; s.vx += ux * push * wq * 0.05; p.vy -= uy * push * wp * 0.05; s.vy += uy * push * wq * 0.05; }
+        }
+        bs.forEach(function (b) { b.x = Math.max(L + b.r, Math.min(L + AW - b.r, b.x)); b.y = Math.max(AY + b.r, Math.min(AY + AH - b.r, b.y)); });
+      }
+      Object.keys(B).forEach(function (k) { if (B[k].tr === 0 && B[k].r < 0.8) delete B[k]; });
+    }
+    function draw(g) {
+      var ys = R.years;
+      X.drawImage(grain(), 0, 0); X.drawImage(grain(), 0, CH);   // 카드와 같은 종이 결 (1350 + 아래 이어붙임)
+      X.textBaseline = 'alphabetic'; X.textAlign = 'left';
+      var ns = 96, y = 210, h = ns * 0.66, fw = us ? drawUSFlag(X, L, y - ns * 0.37 - h / 2, h) : drawTaegeuk(X, L, y - ns * 0.37 - h / 2, h);
+      var nm = { kospi: '코스피', kosdaq: '코스닥', all: '국내주식', us: '미국' }[R.mk] || '';
+      X.font = f(900, ns); X.fillStyle = T.ink; X.fillText(nm, L + fw + ns * 0.24, y);
+      var w1 = X.measureText(nm).width; X.font = f(400, ns); X.fillStyle = T.inkSoft; X.fillText(' 시가총액', L + fw + ns * 0.24 + w1, y);
+      var tot = g.rows.reduce(function (s, o) { return s + o.v; }, 0);
+      var f0 = R.fx[ys[g.i0]], f1 = R.fx[ys[g.i1]], fx = f0 && f1 ? f0 + (f1 - f0) * g.m : f0 || f1;
+      var sum = '상위 ' + N + '개 합계 ' + (us ? amt(tot) + (fx ? ' (' + krw(tot / 10000 * fx) + ')' : '') : amt(tot) + ' 원');
+      X.font = f(700, 44); X.fillStyle = T.inkSoft; X.fillText(sum, L, y + 80);
+      // 큰 연도 — 두 해가 겹쳐 바뀐다
+      var la = R.label[ys[g.i0]], lb = R.label[ys[g.i1]], cross = ease(Math.max(0, Math.min(1, (g.m - 0.4) / 0.2)));
+      X.textAlign = 'center'; X.font = f(900, 170); X.fillStyle = T.ink;
+      X.globalAlpha = 1 - cross; X.fillText(la, CX, AY + AH + 175 - cross * 60);
+      if (lb !== la) { X.globalAlpha = cross; X.fillText(lb, CX, AY + AH + 175 + (1 - cross) * 60); }
+      X.globalAlpha = 1;
+      Object.keys(B).map(function (k) { return [k, B[k]]; }).sort(function (a, b) { return a[1].r - b[1].r; }).forEach(function (e) {
+        var k = e[0], b = e[1], im = logo(k); if (b.r < 5) return;
+        X.save(); X.globalAlpha = Math.max(0, Math.min(1, b.al)); X.beginPath(); X.arc(b.x, b.y, b.r, 0, 7); X.clip();
+        if (ready(im)) X.drawImage(im, b.x - b.r, b.y - b.r, b.r * 2, b.r * 2);
+        else { X.fillStyle = T.inkSoft; X.fillRect(b.x - b.r, b.y - b.r, b.r * 2, b.r * 2); X.fillStyle = '#fff';
+          X.textAlign = 'center'; X.textBaseline = 'middle'; fitX(b.n, 900, Math.round(b.r * 0.42), 9, b.r * 1.6); X.fillText(b.n, b.x, b.y); }
+        X.restore();
+        if (b.r >= 80 && b.v) {
+          var nf = Math.max(16, Math.min(44, Math.round(b.r * 0.17)));
+          X.save(); X.globalAlpha = Math.max(0, Math.min(1, b.al)); X.textAlign = 'center'; X.textBaseline = 'alphabetic';
+          X.shadowColor = 'rgba(0,0,0,0.35)'; X.shadowBlur = nf * 0.35; X.fillStyle = '#fff';
+          fitX(b.n, 900, nf, 12, b.r * 1.5); X.fillText(b.n, b.x, b.y + b.r * 0.6);
+          X.font = f(800, Math.round(nf * 0.82)); X.fillText(amt(b.v), b.x, b.y + b.r * 0.6 + nf * 1.05); X.restore();
+        }
+      });
+      var footY = H - 110;
+      X.strokeStyle = T.rule; X.lineWidth = 2; X.beginPath(); X.moveTo(L, footY - 46); X.lineTo(W - L, footY - 46); X.stroke();
+      X.font = f(700, 32); X.fillStyle = T.footer; X.textAlign = 'left'; X.textBaseline = 'alphabetic';
+      var nowShown = ys[cross > 0.5 ? g.i1 : g.i0] === 'now';
+      X.fillText(nowShown ? R.asof : '연말 기준', L, footY); X.textAlign = 'right'; X.fillText('@돈굴돈굴', W - L, footY); X.textAlign = 'left';
+    }
+    return {
+      warm: function () { for (var i = 0; i < 300; i++) step(at(0).rows); draw(at(0)); },
+      frame: function (t, n) { var g = at(t); for (var i = 0; i < (n == null ? 1 : n); i++) step(g.rows); draw(g); },
+      length: R.years.length - 1
+    };
+  }
+  window.__mvEngine = mvEngine; window.__mvData = mvData;   // 시험용
+  function makeMovie() {
+    var R = mvData(); if (R.years.length < 2) return;
+    var box = document.getElementById('mv-box'), c = document.getElementById('mv-cv'), btn = document.getElementById('mv-go');
+    box.style.display = 'flex'; btn.disabled = true;
+    Object.keys(R.cols).forEach(function (k) { R.cols[k].slice(0, R.n).forEach(function (r) { logo(r[0]); }); });
+    var types = ['video/mp4;codecs=avc1.42E01E', 'video/mp4', 'video/webm;codecs=vp9', 'video/webm'];
+    var type = types.filter(function (t) { return window.MediaRecorder && MediaRecorder.isTypeSupported(t); })[0];
+    if (!type) { alert('이 브라우저는 영상 녹화를 지원하지 않아요. 크롬이나 사파리 최신 버전에서 해 주세요.'); box.style.display = 'none'; btn.disabled = false; return; }
+    setTimeout(function () {                  // 로고가 들어올 시간
+      var E = mvEngine(R, c); E.warm();
+      var rec = new MediaRecorder(c.captureStream(30), { mimeType: type, videoBitsPerSecond: 8000000 }), parts = [];
+      rec.ondataavailable = function (e) { if (e.data.size) parts.push(e.data); };
+      rec.onstop = function () {
+        var blob = new Blob(parts, { type: type.split(';')[0] }), a = document.createElement('a');
+        var nm = { kospi: '코스피', kosdaq: '코스닥', all: '국내주식', us: '미국' }[R.mk];
+        a.href = URL.createObjectURL(blob); a.download = nm + '_시가총액_변천사_' + R.years[0] + '-' + R.label[R.years[R.years.length - 1]] + (type.indexOf('mp4') >= 0 ? '.mp4' : '.webm');
+        document.body.appendChild(a); a.click(); a.remove(); setTimeout(function () { URL.revokeObjectURL(a.href); }, 20000);
+        box.style.display = 'none'; btn.disabled = false;
+        document.getElementById('mv-note').textContent = type.indexOf('mp4') >= 0 ? '' : 'WebM 으로 저장됐어요. 인스타그램에는 MP4 로 바꿔 올려 주세요.';
+      };
+      rec.start(1000);
+      var LEAD = 0.8, total = LEAD + E.length * R.per + 1.8, t0 = null, done = 0;
+      (function loop(now) {
+        if (t0 == null) t0 = now;
+        var sec = (now - t0) / 1000, want = Math.floor(sec * 60);   // 물리는 1/60초 걸음 — 화면 주사율과 상관없이 같은 속도
+        E.frame(Math.max(0, Math.min(E.length, (sec - LEAD) / R.per)), Math.min(6, want - done)); done = want;
+        document.getElementById('mv-prog').textContent = Math.min(100, Math.round(sec / total * 100)) + '%';
+        if (sec < total) requestAnimationFrame(loop); else rec.stop();
+      })(performance.now());
+    }, 1200);
+  }
+  document.getElementById('mv-go').addEventListener('click', makeMovie);
+  document.getElementById('mk').addEventListener('change', mvSetup);
+
   fetch('./data/rank.json', { cache: 'no-cache' })
     .then(function (r) { if (!r.ok) throw 0; return r.json(); })
-    .then(function (j) { RANK = j; fillYears(); })
+    .then(function (j) { RANK = j; fillYears(); mvSetup(); })
     .catch(function () { });
   fetch('./data/fx.json', { cache: 'no-cache' })
     .then(function (r) { if (!r.ok) throw 0; return r.json(); })
@@ -685,6 +854,10 @@
     .then(draw);
 })();
 </script>
+<div id="mv-box" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.72);z-index:50;align-items:center;justify-content:center;flex-direction:column;gap:10px">
+  <canvas id="mv-cv" width="1080" height="1920" style="height:82vh;width:auto;border-radius:10px;box-shadow:none"></canvas>
+  <div style="color:#fff;font-weight:700">녹화 중 <span id="mv-prog">0%</span> — 끝나면 저절로 저장돼요</div>
+</div>
 <script src="./health.js" defer></script>
 </body>
 </html>
