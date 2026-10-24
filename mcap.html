@@ -191,7 +191,7 @@
             <input id="mv-per" type="number" min="0.6" max="6" step="0.1" value="0.8"></div>
         </div>
         <div class="row" style="margin-top:6px">
-          <div><label class="f" for="mv-hold">해마다 멈춤 (%)</label>
+          <div><label class="f" for="mv-hold">시점마다 느려짐 (%)</label>
             <input id="mv-hold" type="number" min="0" max="80" step="5" value="10"></div>
           <div><label class="f" for="mv-lead">처음 멈춤 (초)</label>
             <input id="mv-lead" type="number" min="0" max="5" step="0.1" value="0.8"></div>
@@ -765,18 +765,32 @@
                                                   : Math.round(v).toLocaleString('ko-KR') + '억'); }
     function ease(x) { return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; }
     function hash(s) { var h = 0; for (var i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) >>> 0; return h; }
+    // 시점마다 값 표 (TOP N 밖이면 0 — 원이 줄어 사라지고, 들어오면 0에서 자란다)
+    var V = R.years.map(function (k) { var o = {}; R.cols[k].slice(0, N).forEach(function (r) { o[r[0]] = r[2]; }); return o; });
+    var NAME = {}; R.years.forEach(function (k) { R.cols[k].slice(0, N).forEach(function (r) { NAME[r[0]] = NAME[r[0]] || r[1]; }); });
+    // 시점 사이를 '멈추지 않는' 부드러운 곡선으로 잇는다 (단조 3차 보간 — 지나치게 출렁이지 않음)
+    function curve(p0, p1, p2, p3, q) {
+      var d0 = p1 - p0, d1 = p2 - p1, d2 = p3 - p2;
+      var m1 = d0 * d1 <= 0 ? 0 : (d0 + d1) / 2, m2 = d1 * d2 <= 0 ? 0 : (d1 + d2) / 2;
+      if (d1 === 0) { m1 = 0; m2 = 0; }
+      else { var a = m1 / d1, b = m2 / d1, h = a * a + b * b; if (h > 9) { var tt = 3 / Math.sqrt(h); m1 = tt * a * d1; m2 = tt * b * d1; } }
+      var q2 = q * q, q3 = q2 * q;
+      return (2 * q3 - 3 * q2 + 1) * p1 + (q3 - 2 * q2 + q) * m1 + (-2 * q3 + 3 * q2) * p2 + (q3 - q2) * m2;
+    }
     function at(t) {
       var ys = R.years, last = ys.length - 1; t = Math.max(0, Math.min(last, t));
-      var i0 = Math.floor(t), i1 = Math.min(last, i0 + 1), q = t - i0, hold = R.hold;
-      var m = q < hold ? 0 : ease((q - hold) / (1 - hold)), A = {}, Bq = {}, NM = {};
-      R.cols[ys[i0]].slice(0, N).forEach(function (r) { A[r[0]] = r[2]; NM[r[0]] = r[1]; });
-      R.cols[ys[i1]].slice(0, N).forEach(function (r) { Bq[r[0]] = r[2]; NM[r[0]] = NM[r[0]] || r[1]; });
-      return { i0: i0, i1: i1, m: m, rows: Object.keys(NM).map(function (k) {
-        var a = A[k] || 0, b = Bq[k] || 0; return { c: k, n: NM[k], v: a + (b - a) * m }; }).filter(function (o) { return o.v > 0.01; }) };
+      var i0 = Math.min(Math.floor(t), Math.max(0, last - 1)), i1 = Math.min(last, i0 + 1), q = t - i0;
+      // '해마다 멈춤' = 시점 근처에서 살짝 느려지는 정도 (완전히 서지는 않는다 → 뚝뚝 끊기지 않음)
+      var h = Math.min(0.85, R.hold * 1.6), m = (1 - h) * q + h * ease(q);
+      var va = V[Math.max(0, i0 - 1)], vb = V[i0], vc = V[i1], vd = V[Math.min(last, i1 + 1)], seen = {};
+      [vb, vc].forEach(function (o) { Object.keys(o).forEach(function (k) { seen[k] = 1; }); });
+      return { i0: i0, i1: i1, m: m, rows: Object.keys(seen).map(function (k) {
+        return { c: k, n: NAME[k], v: Math.max(0, curve(va[k] || 0, vb[k] || 0, vc[k] || 0, vd[k] || 0, m)) };
+      }).filter(function (o) { return o.v > 0.01; }) };
     }
     function step(rows) {
       var sum = rows.reduce(function (s, o) { return s + o.v; }, 0) || 1;
-      var kT = Math.sqrt(0.5 * AW * AH / (Math.PI * sum)); K = K == null ? kT : K + (kT - K) * 0.08;
+      var kT = Math.sqrt(0.5 * AW * AH / (Math.PI * sum)); K = K == null ? kT : K + (kT - K) * 0.15;
       var live = {};
       rows.forEach(function (o) {
         var b = B[o.c];
@@ -787,7 +801,7 @@
       Object.keys(B).forEach(function (k) { if (!live[k]) { B[k].tr = 0; B[k].v = 0; } });
       var bs = Object.keys(B).map(function (k) { return B[k]; });
       bs.forEach(function (b) {               // 크기는 용수철처럼 — 살짝 넘쳤다가 제자리 (자연스러운 숨쉬기)
-        b.vr += (b.tr - b.r) * 0.09; b.vr *= 0.74; b.r = Math.max(0, b.r + b.vr);
+        b.r += (b.tr - b.r) * 0.35;           // 값이 이미 부드러워서 크기는 바로 따라간다 (출렁임 없이)
         b.al += ((b.tr > 0 ? 1 : 0) - b.al) * 0.12;
       });
       for (var it = 0; it < 3; it++) {
@@ -858,7 +872,7 @@
     return {
       warm: function () { for (var i = 0; i < 300; i++) step(at(0).rows); draw(at(0)); },
       frame: function (t, n) { var g = at(t); for (var i = 0; i < (n == null ? 1 : n); i++) step(g.rows); draw(g); },
-      length: R.years.length - 1
+      length: R.years.length - 1, _b: function () { return B; }
     };
   }
   window.__mvEngine = mvEngine; window.__mvData = mvData;   // 시험용
