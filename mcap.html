@@ -782,7 +782,15 @@
     function hash(s) { var h = 0; for (var i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) >>> 0; return h; }
     // 시점마다 값 표 (TOP N 밖이면 0 — 원이 줄어 사라지고, 들어오면 0에서 자란다)
     var V = R.years.map(function (k) { var o = {}; R.cols[k].slice(0, N).forEach(function (r) { o[r[0]] = r[2]; }); return o; });
-    var NAME = {}; R.years.forEach(function (k) { R.cols[k].slice(0, N).forEach(function (r) { NAME[r[0]] = NAME[r[0]] || r[1]; }); });
+    // 이름은 시점마다 그때 이름으로 (000660: 현대전자 → 하이닉스 → SK하이닉스). 순위 밖이면 가까운 시점 이름
+    var NM = R.years.map(function (k) { var o = {}; R.cols[k].forEach(function (r) { o[r[0]] = r[1]; }); return o; });
+    function nameAt(k, i) {
+      for (var d = 0; d < NM.length; d++) {
+        if (NM[i + d] && NM[i + d][k]) return NM[i + d][k];
+        if (NM[i - d] && NM[i - d][k]) return NM[i - d][k];
+      }
+      return k;
+    }
     // 시점 사이를 '멈추지 않는' 부드러운 곡선으로 잇는다 (단조 3차 보간 — 지나치게 출렁이지 않음)
     function curve(p0, p1, p2, p3, q) {
       var d0 = p1 - p0, d1 = p2 - p1, d2 = p3 - p2;
@@ -800,7 +808,7 @@
       var va = V[Math.max(0, i0 - 1)], vb = V[i0], vc = V[i1], vd = V[Math.min(last, i1 + 1)], seen = {};
       [vb, vc].forEach(function (o) { Object.keys(o).forEach(function (k) { seen[k] = 1; }); });
       return { i0: i0, i1: i1, m: m, rows: Object.keys(seen).map(function (k) {
-        return { c: k, n: NAME[k], v: Math.max(0, curve(va[k] || 0, vb[k] || 0, vc[k] || 0, vd[k] || 0, m)) };
+        return { c: k, n: nameAt(k, m < 0.5 ? i0 : i1), v: Math.max(0, curve(va[k] || 0, vb[k] || 0, vc[k] || 0, vd[k] || 0, m)) };
       }).filter(function (o) { return o.v > 0.01; }) };
     }
     function step(rows) {
