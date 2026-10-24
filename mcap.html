@@ -802,6 +802,24 @@
       }
       Object.keys(B).forEach(function (k) { if (B[k].tr === 0 && B[k].r < 0.8) delete B[k]; });
     }
+    function drawYear(la, lb, p) {
+      X.save(); X.font = f(900, YS); X.fillStyle = T.ink; X.textAlign = 'left'; X.textBaseline = 'alphabetic';
+      var dw = 0; for (var d = 0; d < 10; d++) dw = Math.max(dw, X.measureText(String(d)).width);
+      function cw(ch) { return /\d/.test(ch) ? dw : X.measureText(ch).width; }          // 숫자는 같은 폭 — 안 바뀌는 자리가 흔들리지 않게
+      function wid(t) { var w = 0; for (var i = 0; i < t.length; i++) w += cw(t[i]); return w; }
+      var n = Math.max(la.length, lb.length), x = CX - (wid(la) + (wid(lb) - wid(la)) * p) / 2, D = YS * 0.95;
+      X.beginPath(); X.rect(0, YB - YS * 0.82, W, YS * 0.95); X.clip();
+      for (var i = 0; i < n; i++) {
+        var a = la[i] || '', b = lb[i] || '', w = a && b ? cw(b) * p + cw(a) * (1 - p) : b ? cw(b) * p : cw(a) * (1 - p);
+        if (a === b) X.fillText(a, x + (w - cw(a)) / 2, YB);
+        else {
+          if (a) X.fillText(a, x + (w - cw(a)) / 2, YB - p * D);           // 옛 숫자는 위로 빠지고
+          if (b) X.fillText(b, x + (w - cw(b)) / 2, YB + (1 - p) * D);     // 새 숫자가 아래에서 올라온다
+        }
+        x += w;
+      }
+      X.restore();
+    }
     function draw(g) {
       var ys = R.years;
       X.drawImage(grain(), 0, 0); X.drawImage(grain(), 0, CH);   // 카드와 같은 종이 결 (1350 + 아래 이어붙임)
@@ -815,14 +833,9 @@
       var sum = '상위 ' + N + '개 합계 ' + (us ? amt(tot) + (fx ? ' (' + krw(tot / 10000 * fx) + ')' : '') : amt(tot) + ' 원');
       X.font = f(700, 44); X.fillStyle = T.inkSoft; X.fillText(sum, L, y + 80);
       // 큰 연도 — 두 해가 겹쳐 바뀐다
-      var la = R.label[ys[g.i0]], lb = R.label[ys[g.i1]], cross = ease(Math.max(0, Math.min(1, (g.m - 0.4) / 0.2)));
-      var sl = YS * 0.36;                    // 숫자가 굴러가듯 — 띠 안에서만 보인다
-      X.save(); X.beginPath(); X.rect(0, YB - YS * 0.8, W, YS * 0.92); X.clip();
-      X.textAlign = 'center'; X.font = f(900, YS); X.fillStyle = T.ink;
-      X.globalAlpha = 1 - cross; X.fillText(la, CX, YB - cross * sl);
-      if (lb !== la) { X.globalAlpha = cross; X.fillText(lb, CX, YB + (1 - cross) * sl); }
-      X.restore();
-      Object.keys(B).map(function (k) { return [k, B[k]]; }).sort(function (a, b) { return a[1].r - b[1].r; }).forEach(function (e) {
+      // 큰 연도 — 자동차 주행거리계처럼 바뀌는 자리의 숫자만 위로 굴러 올라간다 (흐려지거나 사라지지 않음)
+      var la = R.label[ys[g.i0]], lb = R.label[ys[g.i1]];
+      drawYear(la, lb, la === lb ? 0 : ease(Math.max(0, Math.min(1, (g.m - 0.2) / 0.6))));      Object.keys(B).map(function (k) { return [k, B[k]]; }).sort(function (a, b) { return a[1].r - b[1].r; }).forEach(function (e) {
         var k = e[0], b = e[1], im = logo(k); if (b.r < 5) return;
         X.save(); X.globalAlpha = Math.max(0, Math.min(1, b.al)); X.beginPath(); X.arc(b.x, b.y, b.r, 0, 7); X.clip();
         if (ready(im)) X.drawImage(im, b.x - b.r, b.y - b.r, b.r * 2, b.r * 2);
