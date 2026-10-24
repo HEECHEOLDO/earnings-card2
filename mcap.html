@@ -352,7 +352,7 @@
     var won = money(tot);
     if (isUSmk(mk) && fx && tot > 0) won += ' (' + krw(tot * fx) + ')';   // 미국: 달러 옆에 그날(그해 말) 환율로 원화
     else if (!isUSmk(mk)) won += ' 원';                                      // 국내: 3,091조 원
-    var sumTxt = k ? (pc ? a[0] + '년 말 · ' : '') + (k < +n ? k + '개' : '상위 ' + k + '개') + ' 합계 ' + won : '';
+    var sumTxt = k ? (pc ? a[0] + '년 말 · ' : '') + (k < +n ? k + '개' : '상위 ' + k + '개') + ' 시가총액 : ' + won : '';
     document.getElementById('sub').value = [extra, sumTxt].filter(Boolean).join(' · ');
     window.MCAP_FOOT = a ? a[0] + '년 ' + (+a[1]) + '월 ' + (+a[2]) + '일 기준' : '';
     window.MCAP_ICON = mcapIcon(mk, (mk === 'industry' || mk === 'theme' || mk === 'us_sector' || mk === 'us_industry') ? gg : null);
@@ -867,7 +867,7 @@
       var w1 = X.measureText(nm).width; X.font = f(400, ns); X.fillStyle = T.inkSoft; X.fillText(' 시가총액', L + fw + ns * 0.24 + w1, y);
       var tot = g.rows.reduce(function (s, o) { return s + o.v; }, 0);
       var f0 = R.fx[ys[g.i0]], f1 = R.fx[ys[g.i1]], fx = f0 && f1 ? f0 + (f1 - f0) * g.m : f0 || f1;
-      var sum = '상위 ' + N + '개 합계 ' + (us ? amt(tot) + (fx ? ' (' + krwV(tot / 10000 * fx) + ')' : '') : amt(tot) + ' 원');
+      var sum = '상위 ' + N + '개 시가총액 : ' + (us ? amt(tot) + (fx ? ' (' + krwV(tot / 10000 * fx) + ')' : '') : amt(tot) + ' 원');
       X.font = f(700, 44); X.fillStyle = T.inkSoft; tabText(sum, L, y + 80, 'left');
       // 큰 연도 — 두 해가 겹쳐 바뀐다
       // 큰 연도 — 늘 또렷하게. 원들이 반쯤 움직였을 때 숫자만 그 자리에서 바뀐다 (움직임·흐려짐 없음)
