@@ -187,15 +187,15 @@
         <div class="row" style="margin-top:6px">
           <div><label class="f" for="mv-from">시작</label><select id="mv-from"></select></div>
           <div><label class="f" for="mv-per">한 해 길이 (초)</label>
-            <input id="mv-per" type="number" min="0.6" max="6" step="0.1" value="1.6"></div>
+            <input id="mv-per" type="number" min="0.6" max="6" step="0.1" value="0.8"></div>
         </div>
         <div class="row" style="margin-top:6px">
           <div><label class="f" for="mv-hold">해마다 멈춤 (%)</label>
-            <input id="mv-hold" type="number" min="0" max="80" step="5" value="28"></div>
+            <input id="mv-hold" type="number" min="0" max="80" step="5" value="10"></div>
           <div><label class="f" for="mv-lead">처음 멈춤 (초)</label>
             <input id="mv-lead" type="number" min="0" max="5" step="0.1" value="0.8"></div>
           <div><label class="f" for="mv-tail">마지막 멈춤 (초)</label>
-            <input id="mv-tail" type="number" min="0" max="8" step="0.1" value="1.8"></div>
+            <input id="mv-tail" type="number" min="0" max="8" step="0.1" value="2.5"></div>
         </div>
         <p class="note" id="mv-len"></p>
         <p class="note">지금 고른 시장의 연말 순위(위 순위 칸, 최대 TOP 20)로, 시작 연도부터 현재까지 원이 자라고 줄며 움직이는 영상을 만듭니다. 화면에서 재생되며 녹화되니 끝날 때까지 이 창을 띄워 두세요.</p>
@@ -722,8 +722,8 @@
     var n = Math.min(20, +document.getElementById('n').value);
     keys.forEach(function (k) { if (k !== 'now') n = Math.min(n, cols[k].length); });          // 옛 해에 자료가 적으면 그만큼만
     return { mk: mk, years: keys, cols: cols, fx: fx, label: label, n: n, asof: asof || '현재 기준',
-             ratio: document.getElementById('mv-ratio').value, per: num('mv-per', 1.6, 0.6, 6), hold: num('mv-hold', 28, 0, 80) / 100,
-             lead: num('mv-lead', 0.8, 0, 5), tail: num('mv-tail', 1.8, 0, 8) };
+             ratio: document.getElementById('mv-ratio').value, per: num('mv-per', 0.8, 0.6, 6), hold: num('mv-hold', 10, 0, 80) / 100,
+             lead: num('mv-lead', 0.8, 0, 5), tail: num('mv-tail', 2.5, 0, 8) };
   }
   function mvEngine(R, c) {
     var tall = R.ratio !== '45', W = 1080, H = tall ? 1920 : 1350, N = R.n, us = R.mk === 'us';
