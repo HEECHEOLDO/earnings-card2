@@ -760,9 +760,24 @@
     var B = {}, K = null;
     function f(w, s) { return w + ' ' + s + 'px "Noto Sans KR","Apple SD Gothic Neo",sans-serif'; }
     function fitX(t, w, s0, min, maxW) { var s = s0; X.font = f(w, s); while (X.measureText(t).width > maxW && s > min) { s--; X.font = f(w, s); } return s; }
-    function amt(v) { return us ? (v / 10000 >= 1 ? '$' + (v / 10000).toFixed(1).replace(/\.0$/, '') + 'T' : '$' + Math.round(v / 10).toLocaleString('en-US') + 'B')
-                                : (v / 10000 >= 1 ? (v / 10000 >= 100 ? Math.round(v / 10000).toLocaleString('ko-KR') : (v / 10000).toFixed(1).replace(/\.0$/, '')) + '조'
+    // 영상은 숫자가 매 프레임 조금씩 흘러가도록 카드보다 한 자리 더 촘촘하게 (끝자리 0도 남겨 폭이 일정하게)
+    function amt(v) { return us ? (v / 10000 >= 1 ? '$' + (v / 10000).toFixed(2) + 'T' : '$' + Math.round(v / 10).toLocaleString('en-US') + 'B')
+                                : (v / 10000 >= 1 ? (v / 10000 >= 100 ? Math.round(v / 10000).toLocaleString('ko-KR') : (v / 10000).toFixed(1)) + '조'
                                                   : Math.round(v).toLocaleString('ko-KR') + '억'); }
+    function krwV(jo) {
+      if (jo >= 10000) { var g = Math.floor(jo / 10000), r = Math.round((jo - g * 10000) / 10) * 10; if (r >= 10000) { g++; r = 0; }
+        return '약 ' + g + '경 ' + r.toLocaleString('ko-KR') + '조 원'; }
+      return '약 ' + Math.round(jo).toLocaleString('ko-KR') + '조 원';
+    }
+    // 숫자는 같은 폭 칸에 — 값이 흘러가도 글자가 좌우로 떨지 않게
+    function tabW(t) { var dw = 0, w = 0; for (var d = 0; d < 10; d++) dw = Math.max(dw, X.measureText(String(d)).width);
+      for (var i = 0; i < t.length; i++) w += /\d/.test(t[i]) ? dw : X.measureText(t[i]).width; return [w, dw]; }
+    function tabText(t, x, y, align) {
+      var m = tabW(t), w = m[0], dw = m[1], a = X.textAlign; X.textAlign = 'center';
+      x = align === 'center' ? x - w / 2 : x;
+      for (var i = 0; i < t.length; i++) { var cw = /\d/.test(t[i]) ? dw : X.measureText(t[i]).width; X.fillText(t[i], x + cw / 2, y); x += cw; }
+      X.textAlign = a;
+    }
     function ease(x) { return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; }
     function hash(s) { var h = 0; for (var i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) >>> 0; return h; }
     // 시점마다 값 표 (TOP N 밖이면 0 — 원이 줄어 사라지고, 들어오면 0에서 자란다)
@@ -836,7 +851,7 @@
     }
     function draw(g) {
       var ys = R.years;
-      X.drawImage(grain(), 0, 0); X.drawImage(grain(), 0, CH);   // 카드와 같은 종이 결 (1350 + 아래 이어붙임)
+      X.drawImage(grain(), 0, 0, W, H);   // 카드와 같은 종이 결 (이음매 없이 늘려서)
       X.textBaseline = 'alphabetic'; X.textAlign = 'left';
       var ns = 96, y = 210, h = ns * 0.66, fw = us ? drawUSFlag(X, L, y - ns * 0.37 - h / 2, h) : drawTaegeuk(X, L, y - ns * 0.37 - h / 2, h);
       var nm = { kospi: '코스피', kosdaq: '코스닥', all: '국내주식', us: '미국' }[R.mk] || '';
@@ -844,8 +859,8 @@
       var w1 = X.measureText(nm).width; X.font = f(400, ns); X.fillStyle = T.inkSoft; X.fillText(' 시가총액', L + fw + ns * 0.24 + w1, y);
       var tot = g.rows.reduce(function (s, o) { return s + o.v; }, 0);
       var f0 = R.fx[ys[g.i0]], f1 = R.fx[ys[g.i1]], fx = f0 && f1 ? f0 + (f1 - f0) * g.m : f0 || f1;
-      var sum = '상위 ' + N + '개 합계 ' + (us ? amt(tot) + (fx ? ' (' + krw(tot / 10000 * fx) + ')' : '') : amt(tot) + ' 원');
-      X.font = f(700, 44); X.fillStyle = T.inkSoft; X.fillText(sum, L, y + 80);
+      var sum = '상위 ' + N + '개 합계 ' + (us ? amt(tot) + (fx ? ' (' + krwV(tot / 10000 * fx) + ')' : '') : amt(tot) + ' 원');
+      X.font = f(700, 44); X.fillStyle = T.inkSoft; tabText(sum, L, y + 80, 'left');
       // 큰 연도 — 두 해가 겹쳐 바뀐다
       // 큰 연도 — 늘 또렷하게. 원들이 반쯤 움직였을 때 숫자만 그 자리에서 바뀐다 (움직임·흐려짐 없음)
       var la = R.label[ys[g.i0]], lb = R.label[ys[g.i1]];
@@ -861,7 +876,7 @@
           X.save(); X.globalAlpha = Math.max(0, Math.min(1, b.al)); X.textAlign = 'center'; X.textBaseline = 'alphabetic';
           X.shadowColor = 'rgba(0,0,0,0.35)'; X.shadowBlur = nf * 0.35; X.fillStyle = '#fff';
           fitX(b.n, 900, nf, 12, b.r * 1.5); X.fillText(b.n, b.x, b.y + b.r * 0.6);
-          var av = amt(b.v) + (us ? '' : ' 원'); fitX(av, 800, Math.round(nf * 0.82), 10, b.r * 1.5); X.fillText(av, b.x, b.y + b.r * 0.6 + nf * 1.05); X.restore();
+          var av = amt(b.v) + (us ? '' : ' 원'); fitX(av.replace(/\d/g, '8'), 800, Math.round(nf * 0.82), 10, b.r * 1.35); tabText(av, b.x, b.y + b.r * 0.6 + nf * 1.05, 'center'); X.restore();
         }
       });
       var footY = H - 110;
