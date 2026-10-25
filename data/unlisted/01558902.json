@@ -1,0 +1,87 @@
+{
+ "name": "쿠팡로지스틱스서비스",
+ "legal_name": "쿠팡로지스틱스서비스",
+ "code": "01558902",
+ "market": "비상장",
+ "sector": "배달·커머스",
+ "brand": "쿠팡 배송",
+ "basis": "별도",
+ "source": "audit",
+ "fy_end": 12,
+ "updated": "2026-10-26",
+ "annual": [
+  {
+   "p": 2021,
+   "rev": 1154.7,
+   "op": -15.6,
+   "ni": -15.8,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2022,
+   "rev": 7684.9,
+   "op": 30.2,
+   "ni": 11.6,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2023,
+   "rev": 26216.6,
+   "op": 262.4,
+   "ni": 714.5,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2024,
+   "rev": 38349.5,
+   "op": 551.3,
+   "ni": 342.7,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2025,
+   "rev": 47214.0,
+   "op": 1300.4,
+   "ni": 650.6,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  }
+ ],
+ "quarterly": [],
+ "reports": {
+  "2021": "전기:20230413002657",
+  "2022": "20230413002657",
+  "2023": "20240409003680",
+  "2024": "20250404003791",
+  "2025": "20260410003549"
+ }
+}

@@ -1,0 +1,87 @@
+{
+ "name": "브레이브모바일",
+ "legal_name": "브레이브모바일",
+ "code": "01660997",
+ "market": "비상장",
+ "sector": "플랫폼·앱",
+ "brand": "숨고",
+ "basis": "별도",
+ "source": "audit",
+ "fy_end": 12,
+ "updated": "2026-10-26",
+ "annual": [
+  {
+   "p": 2021,
+   "rev": 151.8,
+   "op": -99.5,
+   "ni": -99.9,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2022,
+   "rev": 313.8,
+   "op": -145.5,
+   "ni": -143.8,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2023,
+   "rev": 458.6,
+   "op": 53.6,
+   "ni": 68.8,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2024,
+   "rev": 624.2,
+   "op": 137.4,
+   "ni": 141.4,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2025,
+   "rev": 719.8,
+   "op": 182.0,
+   "ni": 195.8,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  }
+ ],
+ "quarterly": [],
+ "reports": {
+  "2021": "전기:20230406000574",
+  "2022": "20230406000574",
+  "2023": "20240402000859",
+  "2024": "20250411002850",
+  "2025": "20260414000350"
+ }
+}

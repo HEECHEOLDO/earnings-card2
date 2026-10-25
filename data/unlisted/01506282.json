@@ -1,0 +1,31 @@
+{
+ "name": "데브캣",
+ "legal_name": "데브캣",
+ "code": "01506282",
+ "market": "비상장",
+ "sector": "게임",
+ "brand": "마비노기",
+ "basis": "별도",
+ "source": "audit",
+ "fy_end": 12,
+ "updated": "2026-10-26",
+ "annual": [
+  {
+   "p": 2025,
+   "rev": 1200.7,
+   "op": 688.5,
+   "ni": 590.9,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  }
+ ],
+ "quarterly": [],
+ "reports": {
+  "2025": "20260410003662"
+ }
+}

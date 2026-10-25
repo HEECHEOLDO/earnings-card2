@@ -1,0 +1,45 @@
+{
+ "name": "니트로스튜디오",
+ "legal_name": "니트로스튜디오",
+ "code": "01506334",
+ "market": "비상장",
+ "sector": "게임",
+ "brand": "카트라이더",
+ "basis": "별도",
+ "source": "audit",
+ "fy_end": 12,
+ "updated": "2026-10-26",
+ "annual": [
+  {
+   "p": 2020,
+   "rev": 9.5,
+   "op": -31.1,
+   "ni": -24.6,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2021,
+   "rev": 60.4,
+   "op": -126.2,
+   "ni": -101.4,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  }
+ ],
+ "quarterly": [],
+ "reports": {
+  "2020": "전기:20220408000058",
+  "2021": "20220408000058"
+ }
+}

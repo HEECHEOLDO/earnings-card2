@@ -1,0 +1,45 @@
+{
+ "name": "민트로켓",
+ "legal_name": "민트로켓",
+ "code": "01884904",
+ "market": "비상장",
+ "sector": "게임",
+ "brand": "데이브 더 다이버",
+ "basis": "별도",
+ "source": "audit",
+ "fy_end": 12,
+ "updated": "2026-10-26",
+ "annual": [
+  {
+   "p": 2024,
+   "rev": 48.0,
+   "op": 7.5,
+   "ni": 7.4,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2025,
+   "rev": 320.7,
+   "op": 102.3,
+   "ni": 89.3,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  }
+ ],
+ "quarterly": [],
+ "reports": {
+  "2024": "전기:20260410003705",
+  "2025": "20260410003705"
+ }
+}

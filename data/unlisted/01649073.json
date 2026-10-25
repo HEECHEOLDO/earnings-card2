@@ -1,0 +1,59 @@
+{
+ "name": "카카오헬스케어",
+ "legal_name": "카카오헬스케어",
+ "code": "01649073",
+ "market": "비상장",
+ "sector": "플랫폼·앱",
+ "brand": "파스타",
+ "basis": "별도",
+ "source": "audit",
+ "fy_end": 12,
+ "updated": "2026-10-26",
+ "annual": [
+  {
+   "p": 2023,
+   "rev": 44.9,
+   "op": -220.3,
+   "ni": -221.5,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2024,
+   "rev": 119.5,
+   "op": -349.1,
+   "ni": -546.0,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2025,
+   "rev": 231.2,
+   "op": -392.3,
+   "ni": -383.1,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  }
+ ],
+ "quarterly": [],
+ "reports": {
+  "2023": "전기:20250404003259",
+  "2024": "20250404003259",
+  "2025": "20260410001546"
+ }
+}

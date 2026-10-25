@@ -1,8 +1,8 @@
 {
- "updated": "2026-10-23",
- "count": 186,
+ "updated": "2026-10-26",
+ "count": 229,
  "markets": {
-  "비상장": 186
+  "비상장": 229
  },
  "companies": [
   {
@@ -13,6 +13,15 @@
    "brand": "빕스, 뚜레쥬르",
    "annual_only": true,
    "updated": "2026-10-23"
+  },
+  {
+   "name": "교보문고",
+   "code": "00104175",
+   "market": "비상장",
+   "sector": "미디어·엔터·여가",
+   "brand": "교보문고",
+   "annual_only": true,
+   "updated": "2026-10-26"
   },
   {
    "name": "구글코리아",
@@ -141,6 +150,15 @@
    "updated": "2026-10-23"
   },
   {
+   "name": "니트로스튜디오",
+   "code": "01506334",
+   "market": "비상장",
+   "sector": "게임",
+   "brand": "카트라이더",
+   "annual_only": true,
+   "updated": "2026-10-26"
+  },
+  {
    "name": "다이닝브랜즈그룹",
    "code": "00656988",
    "market": "비상장",
@@ -175,6 +193,15 @@
    "brand": "W컨셉",
    "annual_only": true,
    "updated": "2026-10-23"
+  },
+  {
+   "name": "데브캣",
+   "code": "01506282",
+   "market": "비상장",
+   "sector": "게임",
+   "brand": "마비노기",
+   "annual_only": true,
+   "updated": "2026-10-26"
   },
   {
    "name": "데상트코리아",
@@ -222,6 +249,15 @@
    "updated": "2026-10-23"
   },
   {
+   "name": "딜라이브",
+   "code": "00364935",
+   "market": "비상장",
+   "sector": "미디어·엔터·여가",
+   "brand": "딜라이브",
+   "annual_only": true,
+   "updated": "2026-10-26"
+  },
+  {
    "name": "라이엇게임즈코리아",
    "code": "01455960",
    "market": "비상장",
@@ -231,6 +267,15 @@
    "updated": "2026-10-23"
   },
   {
+   "name": "라이온하트스튜디오",
+   "code": "01588462",
+   "market": "비상장",
+   "sector": "게임",
+   "brand": "오딘",
+   "annual_only": true,
+   "updated": "2026-10-26"
+  },
+  {
    "name": "라인플러스",
    "code": "01026731",
    "market": "비상장",
@@ -238,6 +283,15 @@
    "brand": "라인",
    "annual_only": true,
    "updated": "2026-10-23"
+  },
+  {
+   "name": "레고코리아",
+   "code": "00120234",
+   "market": "비상장",
+   "sector": "해외 IT·전자",
+   "brand": "레고",
+   "annual_only": true,
+   "updated": "2026-10-26"
   },
   {
    "name": "롯데네슬레코리아",
@@ -276,6 +330,15 @@
    "updated": "2026-10-23"
   },
   {
+   "name": "르노코리아",
+   "code": "00361105",
+   "market": "비상장",
+   "sector": "자동차",
+   "brand": "르노",
+   "annual_only": true,
+   "updated": "2026-10-26"
+  },
+  {
    "name": "리디",
    "code": "01083587",
    "market": "비상장",
@@ -310,6 +373,15 @@
    "brand": "마이리얼트립",
    "annual_only": true,
    "updated": "2026-10-23"
+  },
+  {
+   "name": "마켓보로",
+   "code": "01783979",
+   "market": "비상장",
+   "sector": "플랫폼·앱",
+   "brand": "식봄",
+   "annual_only": true,
+   "updated": "2026-10-26"
   },
   {
    "name": "맘스터치앤컴퍼니",
@@ -372,7 +444,25 @@
    "sector": "플랫폼",
    "brand": "무신사, 29CM, 무신사스탠다드",
    "annual_only": false,
-   "updated": "2026-10-17"
+   "updated": "2026-10-26"
+  },
+  {
+   "name": "무인양품",
+   "code": "00661360",
+   "market": "비상장",
+   "sector": "배달·커머스",
+   "brand": "무인양품",
+   "annual_only": true,
+   "updated": "2026-10-26"
+  },
+  {
+   "name": "문화방송",
+   "code": "00121622",
+   "market": "비상장",
+   "sector": "미디어·엔터·여가",
+   "brand": "MBC",
+   "annual_only": true,
+   "updated": "2026-10-26"
   },
   {
    "name": "뮤직카우",
@@ -382,6 +472,15 @@
    "brand": "뮤직카우",
    "annual_only": true,
    "updated": "2026-10-23"
+  },
+  {
+   "name": "민트로켓",
+   "code": "01884904",
+   "market": "비상장",
+   "sector": "게임",
+   "brand": "데이브 더 다이버",
+   "annual_only": true,
+   "updated": "2026-10-26"
   },
   {
    "name": "바디프랜드",
@@ -408,7 +507,7 @@
    "sector": "플랫폼",
    "brand": "뱅크샐러드",
    "annual_only": false,
-   "updated": "2026-10-17"
+   "updated": "2026-10-26"
   },
   {
    "name": "버버리코리아",
@@ -447,6 +546,24 @@
    "updated": "2026-10-23"
   },
   {
+   "name": "볼보자동차코리아",
+   "code": "00372697",
+   "market": "비상장",
+   "sector": "자동차",
+   "brand": "볼보",
+   "annual_only": true,
+   "updated": "2026-10-26"
+  },
+  {
+   "name": "부영주택",
+   "code": "00805201",
+   "market": "비상장",
+   "sector": "건설·주택",
+   "brand": "부영 아파트",
+   "annual_only": true,
+   "updated": "2026-10-26"
+  },
+  {
    "name": "불스원",
    "code": "00417680",
    "market": "비상장",
@@ -454,6 +571,24 @@
    "brand": "불스원샷",
    "annual_only": false,
    "updated": "2026-10-17"
+  },
+  {
+   "name": "브레이브모바일",
+   "code": "01660997",
+   "market": "비상장",
+   "sector": "플랫폼·앱",
+   "brand": "숨고",
+   "annual_only": true,
+   "updated": "2026-10-26"
+  },
+  {
+   "name": "브이씨엔씨",
+   "code": "01472727",
+   "market": "비상장",
+   "sector": "플랫폼·앱",
+   "brand": "타다",
+   "annual_only": true,
+   "updated": "2026-10-26"
   },
   {
    "name": "블루보틀커피코리아",
@@ -555,6 +690,15 @@
    "updated": "2026-10-23"
   },
   {
+   "name": "서울랜드",
+   "code": "00160889",
+   "market": "비상장",
+   "sector": "미디어·엔터·여가",
+   "brand": "서울랜드",
+   "annual_only": true,
+   "updated": "2026-10-26"
+  },
+  {
    "name": "세븐일레븐",
    "code": "00186513",
    "market": "비상장",
@@ -589,6 +733,15 @@
    "brand": "소니",
    "annual_only": true,
    "updated": "2026-10-23"
+  },
+  {
+   "name": "슈퍼캣",
+   "code": "01538263",
+   "market": "비상장",
+   "sector": "게임",
+   "brand": "바람의나라 연",
+   "annual_only": true,
+   "updated": "2026-10-26"
   },
   {
    "name": "스노우",
@@ -636,13 +789,31 @@
    "updated": "2026-10-23"
   },
   {
+   "name": "스텔란티스코리아",
+   "code": "00239222",
+   "market": "비상장",
+   "sector": "자동차",
+   "brand": "지프, 푸조",
+   "annual_only": true,
+   "updated": "2026-10-26"
+  },
+  {
+   "name": "스푼랩스",
+   "code": "01375804",
+   "market": "비상장",
+   "sector": "플랫폼·앱",
+   "brand": "스푼",
+   "annual_only": true,
+   "updated": "2026-10-26"
+  },
+  {
    "name": "신성통상",
    "code": "00136341",
    "market": "비상장",
    "sector": "패션",
    "brand": "탑텐, 지오지아, 올젠",
    "annual_only": false,
-   "updated": "2026-10-17"
+   "updated": "2026-10-26"
   },
   {
    "name": "신세계면세점",
@@ -651,7 +822,7 @@
    "sector": "유통",
    "brand": "신세계면세점",
    "annual_only": false,
-   "updated": "2026-10-17"
+   "updated": "2026-10-26"
   },
   {
    "name": "신세계푸드",
@@ -744,6 +915,15 @@
    "updated": "2026-10-23"
   },
   {
+   "name": "알리익스프레스코리아",
+   "code": "01944598",
+   "market": "비상장",
+   "sector": "배달·커머스",
+   "brand": "알리익스프레스",
+   "annual_only": true,
+   "updated": "2026-10-26"
+  },
+  {
    "name": "애플코리아",
    "code": "00349200",
    "market": "비상장",
@@ -807,6 +987,15 @@
    "updated": "2026-10-23"
   },
   {
+   "name": "에스와이에스리테일",
+   "code": "00130976",
+   "market": "비상장",
+   "sector": "배달·커머스",
+   "brand": "전자랜드",
+   "annual_only": true,
+   "updated": "2026-10-26"
+  },
+  {
    "name": "에스케이스토아",
    "code": "01269567",
    "market": "비상장",
@@ -823,6 +1012,15 @@
    "brand": "OK캐쉬백, 시럽",
    "annual_only": true,
    "updated": "2026-10-23"
+  },
+  {
+   "name": "에어프레미아",
+   "code": "01380727",
+   "market": "비상장",
+   "sector": "미디어·엔터·여가",
+   "brand": "에어프레미아",
+   "annual_only": true,
+   "updated": "2026-10-26"
   },
   {
    "name": "에이블리코퍼레이션",
@@ -897,6 +1095,15 @@
    "updated": "2026-10-17"
   },
   {
+   "name": "엔에이치엔페이코",
+   "code": "01206896",
+   "market": "비상장",
+   "sector": "플랫폼·앱",
+   "brand": "페이코",
+   "annual_only": true,
+   "updated": "2026-10-26"
+  },
+  {
    "name": "엘오케이",
    "code": "01445778",
    "market": "비상장",
@@ -904,6 +1111,15 @@
    "brand": "랑콤, 키엘",
    "annual_only": true,
    "updated": "2026-10-23"
+  },
+  {
+   "name": "엠에이치앤코",
+   "code": "01283840",
+   "market": "비상장",
+   "sector": "배달·커머스",
+   "brand": "모던하우스",
+   "annual_only": true,
+   "updated": "2026-10-26"
   },
   {
    "name": "엠즈씨드",
@@ -931,6 +1147,15 @@
    "brand": "노스페이스",
    "annual_only": true,
    "updated": "2026-10-23"
+  },
+  {
+   "name": "영풍문고",
+   "code": "01512654",
+   "market": "비상장",
+   "sector": "미디어·엔터·여가",
+   "brand": "영풍문고",
+   "annual_only": true,
+   "updated": "2026-10-26"
   },
   {
    "name": "오비맥주",
@@ -978,6 +1203,15 @@
    "updated": "2026-10-23"
   },
   {
+   "name": "우리홈쇼핑",
+   "code": "00409186",
+   "market": "비상장",
+   "sector": "배달·커머스",
+   "brand": "롯데홈쇼핑",
+   "annual_only": true,
+   "updated": "2026-10-26"
+  },
+  {
    "name": "우아한형제들",
    "code": "01063273",
    "market": "비상장",
@@ -1005,6 +1239,15 @@
    "updated": "2026-10-23"
   },
   {
+   "name": "위버스컴퍼니",
+   "code": "01445750",
+   "market": "비상장",
+   "sector": "플랫폼·앱",
+   "brand": "위버스",
+   "annual_only": true,
+   "updated": "2026-10-26"
+  },
+  {
    "name": "유한킴벌리",
    "code": "00145136",
    "market": "비상장",
@@ -1023,6 +1266,15 @@
    "updated": "2026-10-23"
   },
   {
+   "name": "이랜드리테일",
+   "code": "00108418",
+   "market": "비상장",
+   "sector": "배달·커머스",
+   "brand": "NC백화점, 뉴코아",
+   "annual_only": true,
+   "updated": "2026-10-26"
+  },
+  {
    "name": "이랜드월드",
    "code": "00207108",
    "market": "비상장",
@@ -1038,7 +1290,16 @@
    "sector": "유통",
    "brand": "이마트24",
    "annual_only": false,
-   "updated": "2026-10-17"
+   "updated": "2026-10-26"
+  },
+  {
+   "name": "이스타항공",
+   "code": "00764205",
+   "market": "비상장",
+   "sector": "미디어·엔터·여가",
+   "brand": "이스타항공",
+   "annual_only": true,
+   "updated": "2026-10-26"
   },
   {
    "name": "이엘씨에이한국",
@@ -1095,6 +1356,15 @@
    "updated": "2026-10-23"
   },
   {
+   "name": "중흥토건",
+   "code": "00916862",
+   "market": "비상장",
+   "sector": "건설·주택",
+   "brand": "중흥S-클래스",
+   "annual_only": true,
+   "updated": "2026-10-26"
+  },
+  {
    "name": "지마켓",
    "code": "00310280",
    "market": "비상장",
@@ -1129,6 +1399,15 @@
    "brand": "도미노피자",
    "annual_only": true,
    "updated": "2026-10-23"
+  },
+  {
+   "name": "청호나이스",
+   "code": "00227582",
+   "market": "비상장",
+   "sector": "생활가전·렌털",
+   "brand": "청호나이스 정수기",
+   "annual_only": true,
+   "updated": "2026-10-26"
   },
   {
    "name": "카카오VX",
@@ -1167,6 +1446,15 @@
    "updated": "2026-10-23"
   },
   {
+   "name": "카카오엔터프라이즈",
+   "code": "01411434",
+   "market": "비상장",
+   "sector": "플랫폼·앱",
+   "brand": "카카오워크",
+   "annual_only": true,
+   "updated": "2026-10-26"
+  },
+  {
    "name": "카카오페이증권",
    "code": "00762146",
    "market": "비상장",
@@ -1174,6 +1462,15 @@
    "brand": "카카오페이증권",
    "annual_only": true,
    "updated": "2026-10-23"
+  },
+  {
+   "name": "카카오헬스케어",
+   "code": "01649073",
+   "market": "비상장",
+   "sector": "플랫폼·앱",
+   "brand": "파스타",
+   "annual_only": true,
+   "updated": "2026-10-26"
   },
   {
    "name": "캐논코리아",
@@ -1266,6 +1563,15 @@
    "updated": "2026-10-23"
   },
   {
+   "name": "쿠팡로지스틱스서비스",
+   "code": "01558902",
+   "market": "비상장",
+   "sector": "배달·커머스",
+   "brand": "쿠팡 배송",
+   "annual_only": true,
+   "updated": "2026-10-26"
+  },
+  {
    "name": "쿠팡이츠서비스",
    "code": "01571329",
    "market": "비상장",
@@ -1284,6 +1590,15 @@
    "updated": "2026-10-23"
   },
   {
+   "name": "쿠팡풀필먼트서비스",
+   "code": "01474789",
+   "market": "비상장",
+   "sector": "배달·커머스",
+   "brand": "쿠팡 물류센터",
+   "annual_only": true,
+   "updated": "2026-10-26"
+  },
+  {
    "name": "크리스챤디올꾸뛰르코리아",
    "code": "00427623",
    "market": "비상장",
@@ -1300,6 +1615,15 @@
    "brand": "KREAM",
    "annual_only": true,
    "updated": "2026-10-23"
+  },
+  {
+   "name": "크몽",
+   "code": "01369548",
+   "market": "비상장",
+   "sector": "플랫폼·앱",
+   "brand": "크몽",
+   "annual_only": true,
+   "updated": "2026-10-26"
   },
   {
    "name": "클래스101",
@@ -1398,7 +1722,7 @@
    "sector": "호텔",
    "brand": "그랜드 인터컨티넨탈 서울 파르나스, 나인트리",
    "annual_only": false,
-   "updated": "2026-10-17"
+   "updated": "2026-10-26"
   },
   {
    "name": "파리크라상",
@@ -1426,6 +1750,15 @@
    "brand": "인스타그램, 페이스북",
    "annual_only": true,
    "updated": "2026-10-23"
+  },
+  {
+   "name": "포르쉐코리아",
+   "code": "01015391",
+   "market": "비상장",
+   "sector": "자동차",
+   "brand": "포르쉐",
+   "annual_only": true,
+   "updated": "2026-10-26"
   },
   {
    "name": "폭스바겐그룹코리아",
@@ -1471,6 +1804,15 @@
    "brand": "필립스",
    "annual_only": true,
    "updated": "2026-10-23"
+  },
+  {
+   "name": "하이퍼커넥트",
+   "code": "01151231",
+   "market": "비상장",
+   "sector": "플랫폼·앱",
+   "brand": "아자르",
+   "annual_only": true,
+   "updated": "2026-10-26"
   },
   {
    "name": "한국닌텐도",
@@ -1563,6 +1905,15 @@
    "updated": "2026-10-23"
   },
   {
+   "name": "한국지엠",
+   "code": "00426873",
+   "market": "비상장",
+   "sector": "자동차",
+   "brand": "쉐보레",
+   "annual_only": true,
+   "updated": "2026-10-26"
+  },
+  {
    "name": "한국코카콜라",
    "code": "00159953",
    "market": "비상장",
@@ -1579,6 +1930,15 @@
    "brand": "퀄컴",
    "annual_only": true,
    "updated": "2026-10-23"
+  },
+  {
+   "name": "한국토요타자동차",
+   "code": "00336561",
+   "market": "비상장",
+   "sector": "자동차",
+   "brand": "토요타, 렉서스",
+   "annual_only": true,
+   "updated": "2026-10-26"
   },
   {
    "name": "한국파파존스",
@@ -1653,6 +2013,15 @@
    "updated": "2026-10-17"
   },
   {
+   "name": "호반건설",
+   "code": "00236614",
+   "market": "비상장",
+   "sector": "건설·주택",
+   "brand": "호반써밋",
+   "annual_only": true,
+   "updated": "2026-10-26"
+  },
+  {
    "name": "호텔롯데",
    "code": "00165653",
    "market": "비상장",
@@ -1678,6 +2047,24 @@
    "brand": "홈플러스",
    "annual_only": true,
    "updated": "2026-10-23"
+  },
+  {
+   "name": "화해글로벌",
+   "code": "01405947",
+   "market": "비상장",
+   "sector": "플랫폼·앱",
+   "brand": "화해",
+   "annual_only": true,
+   "updated": "2026-10-26"
+  },
+  {
+   "name": "힐링페이퍼",
+   "code": "01548941",
+   "market": "비상장",
+   "sector": "플랫폼·앱",
+   "brand": "강남언니",
+   "annual_only": true,
+   "updated": "2026-10-26"
   }
  ]
 }

@@ -1,0 +1,87 @@
+{
+ "name": "슈퍼캣",
+ "legal_name": "슈퍼캣",
+ "code": "01538263",
+ "market": "비상장",
+ "sector": "게임",
+ "brand": "바람의나라 연",
+ "basis": "별도",
+ "source": "audit",
+ "fy_end": 12,
+ "updated": "2026-10-26",
+ "annual": [
+  {
+   "p": 2020,
+   "rev": 505.3,
+   "op": 397.3,
+   "ni": 388.7,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2021,
+   "rev": 361.9,
+   "op": 172.8,
+   "ni": 168.4,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2022,
+   "rev": 260.2,
+   "op": 47.1,
+   "ni": 48.3,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2023,
+   "rev": 220.1,
+   "op": 1.9,
+   "ni": -31.4,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2024,
+   "rev": 131.7,
+   "op": -216.0,
+   "ni": -203.3,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  }
+ ],
+ "quarterly": [],
+ "reports": {
+  "2020": "전기:20220406001880",
+  "2021": "20220406001880",
+  "2022": "20230413001450",
+  "2023": "20240412000157",
+  "2024": "20250407000180"
+ }
+}
