@@ -5,7 +5,7 @@
  "code": "487360",
  "market": "코스닥",
  "sector": "",
- "updated": "2026-09-07",
+ "updated": "2026-10-26",
  "annual": [],
  "quarterly": [
   {
@@ -15,5 +15,6 @@
    "op": -0.3,
    "ni": 0.5
   }
- ]
+ ],
+ "q_method": "strict"
 }

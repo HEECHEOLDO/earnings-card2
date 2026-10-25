@@ -5,7 +5,7 @@
  "code": "451800",
  "market": "코스피",
  "sector": "",
- "updated": "2026-09-23",
+ "updated": "2026-10-26",
  "annual": [
   {
    "p": 2023,
@@ -60,14 +60,6 @@
    "dps_adj": 135.0
   }
  ],
- "quarterly": [
-  {
-   "y": 2023,
-   "q": 2,
-   "rev": 116.4,
-   "op": 66.4,
-   "ni": 19.5
-  }
- ],
+ "quarterly": [],
  "q_method": "strict"
 }
