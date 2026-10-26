@@ -1,0 +1,87 @@
+{
+ "name": "지에프에프지",
+ "legal_name": "지에프에프지",
+ "code": "01647835",
+ "market": "비상장",
+ "sector": "카페·외식",
+ "brand": "노티드",
+ "basis": "별도",
+ "source": "audit",
+ "fy_end": 12,
+ "updated": "2026-10-27",
+ "annual": [
+  {
+   "p": 2021,
+   "rev": 398.7,
+   "op": 96.9,
+   "ni": 89.1,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2022,
+   "rev": 529.2,
+   "op": 5.1,
+   "ni": -24.4,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2023,
+   "rev": 675.9,
+   "op": -71.6,
+   "ni": -93.4,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2024,
+   "rev": 630.1,
+   "op": 4.7,
+   "ni": -11.5,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2025,
+   "rev": 501.4,
+   "op": -85.5,
+   "ni": -156.4,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  }
+ ],
+ "quarterly": [],
+ "reports": {
+  "2021": "전기:20230413001506",
+  "2022": "20230413001506",
+  "2023": "20240408002914",
+  "2024": "20250331001256",
+  "2025": "20260403003434"
+ }
+}

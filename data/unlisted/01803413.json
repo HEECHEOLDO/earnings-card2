@@ -1,0 +1,59 @@
+{
+ "name": "머니투데이",
+ "legal_name": "머니투데이",
+ "code": "01803413",
+ "market": "비상장",
+ "sector": "미디어·엔터·여가",
+ "brand": "머니투데이",
+ "basis": "별도",
+ "source": "audit",
+ "fy_end": 12,
+ "updated": "2026-10-27",
+ "annual": [
+  {
+   "p": 2023,
+   "rev": 159.3,
+   "op": 13.7,
+   "ni": 6.6,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2024,
+   "rev": 742.5,
+   "op": 113.3,
+   "ni": 81.2,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2025,
+   "rev": 754.4,
+   "op": 121.3,
+   "ni": 90.7,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  }
+ ],
+ "quarterly": [],
+ "reports": {
+  "2023": "20240409003916",
+  "2024": "20250404003913",
+  "2025": "20260403002546"
+ }
+}
