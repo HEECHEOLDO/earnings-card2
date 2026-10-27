@@ -2,14 +2,14 @@
  "name": "AZO",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "AUTOZONE, INC.",
+ "legal_name": "AutoZone, Inc.",
  "code": "AZO",
  "cik": "0000866787",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-10-27",
+ "updated": "2026-10-28",
  "annual": [
   {
    "p": 2017,
@@ -132,7 +132,7 @@
    "p": 2026,
    "rev": 20338.6,
    "op": 3723.3,
-   "ni": 2572.8,
+   "ni": 2572.7,
    "assets": 21630.5,
    "liab": null,
    "equity": -2502.5,
@@ -183,7 +183,7 @@
    "q": 4,
    "rev": 6242.7,
    "op": 1196.1,
-   "ni": 837.0
+   "ni": 836.9
   },
   {
    "y": 2026,
@@ -211,7 +211,7 @@
    "q": 4,
    "rev": 6594.9,
    "op": 1316.9,
-   "ni": 931.6
+   "ni": 931.5
   }
  ]
 }
