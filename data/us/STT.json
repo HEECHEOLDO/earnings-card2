@@ -2,14 +2,14 @@
  "name": "STT",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "STATE STREET CORP",
+ "legal_name": "STATE STREET CORPORATION",
  "code": "STT",
  "cik": "0000093751",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-10-28",
+ "updated": "2026-10-29",
  "annual": [
   {
    "p": 2016,
@@ -145,13 +145,6 @@
  "quarterly": [
   {
    "y": 2024,
-   "q": 1,
-   "rev": 3138.0,
-   "op": 598.0,
-   "ni": 463.0
-  },
-  {
-   "y": 2024,
    "q": 2,
    "rev": 3191.0,
    "op": 912.0,
@@ -212,6 +205,13 @@
    "rev": 4048.0,
    "op": 1389.0,
    "ni": 1084.0
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 4004.0,
+   "op": 1388.0,
+   "ni": 1090.0
   }
  ]
 }

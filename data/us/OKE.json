@@ -2,14 +2,14 @@
  "name": "OKE",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "ONEOK INC /NEW/",
+ "legal_name": "ONEOK, Inc.",
  "code": "OKE",
  "cik": "0001039684",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-10-28",
+ "updated": "2026-10-29",
  "annual": [
   {
    "p": 2016,
@@ -145,13 +145,6 @@
  "quarterly": [
   {
    "y": 2024,
-   "q": 1,
-   "rev": 4781.0,
-   "op": 1064.0,
-   "ni": 639.0
-  },
-  {
-   "y": 2024,
    "q": 2,
    "rev": 4894.0,
    "op": 1229.0,
@@ -211,7 +204,14 @@
    "q": 2,
    "rev": 12049.0,
    "op": 1593.0,
-   "ni": 967.0
+   "ni": 966.0
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 12455.0,
+   "op": 1568.0,
+   "ni": 1384.0
   }
  ]
 }

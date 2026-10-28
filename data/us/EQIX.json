@@ -2,14 +2,14 @@
  "name": "EQIX",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "EQUINIX, INC.",
+ "legal_name": "EQUINIX INC",
  "code": "EQIX",
  "cik": "0001101239",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-10-28",
+ "updated": "2026-10-29",
  "annual": [
   {
    "p": 2016,
@@ -145,13 +145,6 @@
  "quarterly": [
   {
    "y": 2024,
-   "q": 1,
-   "rev": 2127.0,
-   "op": 364.0,
-   "ni": 231.0
-  },
-  {
-   "y": 2024,
    "q": 2,
    "rev": 2159.0,
    "op": 436.0,
@@ -212,6 +205,13 @@
    "rev": 2625.0,
    "op": 665.0,
    "ni": 479.0
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 2571.0,
+   "op": 600.0,
+   "ni": 489.0
   }
  ]
 }

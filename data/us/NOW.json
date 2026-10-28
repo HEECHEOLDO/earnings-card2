@@ -2,14 +2,14 @@
  "name": "NOW",
  "split_adjusted": true,
  "restated_from": null,
- "legal_name": "ServiceNow, Inc.",
+ "legal_name": "SERVICENOW, INC.",
  "code": "NOW",
  "cik": "0001373715",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-10-28",
+ "updated": "2026-10-29",
  "annual": [
   {
    "p": 2016,
@@ -145,13 +145,6 @@
  "quarterly": [
   {
    "y": 2024,
-   "q": 1,
-   "rev": 2603.0,
-   "op": 332.0,
-   "ni": 347.0
-  },
-  {
-   "y": 2024,
    "q": 2,
    "rev": 2627.0,
    "op": 240.0,
@@ -212,6 +205,13 @@
    "rev": 3987.0,
    "op": 162.0,
    "ni": 298.0
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 4106.0,
+   "op": 385.0,
+   "ni": 277.0
   }
  ]
 }

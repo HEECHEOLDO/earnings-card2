@@ -2,14 +2,14 @@
  "name": "NI",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "NISOURCE INC.",
+ "legal_name": "NiSource Inc.",
  "code": "NI",
  "cik": "0001111711",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-10-28",
+ "updated": "2026-10-29",
  "annual": [
   {
    "p": 2016,
@@ -145,13 +145,6 @@
  "quarterly": [
   {
    "y": 2024,
-   "q": 1,
-   "rev": 1643.0,
-   "op": 583.4,
-   "ni": 365.0
-  },
-  {
-   "y": 2024,
    "q": 2,
    "rev": 1054.1,
    "op": 237.0,
@@ -212,6 +205,13 @@
    "rev": 1289.5,
    "op": 228.1,
    "ni": 45.5
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 1299.1,
+   "op": 340.3,
+   "ni": 129.5
   }
  ]
 }

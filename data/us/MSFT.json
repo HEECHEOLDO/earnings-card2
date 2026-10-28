@@ -2,14 +2,14 @@
  "name": "MSFT",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "Microsoft Corporation",
+ "legal_name": "MICROSOFT CORPORATION",
  "code": "MSFT",
  "cik": "0000789019",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-10-28",
+ "updated": "2026-10-29",
  "annual": [
   {
    "p": 2017,
@@ -122,7 +122,7 @@
    "ni": 101832.0,
    "assets": 619003.0,
    "liab": 275524.0,
-   "equity": 343479.0,
+   "equity": 363076.0,
    "dps": 3.32,
    "payout": 23.6,
    "yield": null,
@@ -133,9 +133,9 @@
    "rev": 331839.0,
    "op": 155237.0,
    "ni": 133749.0,
-   "assets": 758376.0,
-   "liab": 315989.0,
-   "equity": 442387.0,
+   "assets": 779403.0,
+   "liab": 308894.0,
+   "equity": 470509.0,
    "dps": 3.64,
    "payout": 19.8,
    "yield": null,
@@ -143,13 +143,6 @@
   }
  ],
  "quarterly": [
-  {
-   "y": 2024,
-   "q": 3,
-   "rev": 61858.0,
-   "op": 27581.0,
-   "ni": 21939.0
-  },
   {
    "y": 2024,
    "q": 4,
@@ -212,6 +205,13 @@
    "rev": 90007.0,
    "op": 40603.0,
    "ni": 35766.0
+  },
+  {
+   "y": 2027,
+   "q": 1,
+   "rev": 92279.0,
+   "op": 45915.0,
+   "ni": 36629.0
   }
  ]
 }

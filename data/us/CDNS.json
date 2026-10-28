@@ -2,14 +2,14 @@
  "name": "CDNS",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "CADENCE DESIGN SYSTEMS, INC.",
+ "legal_name": "Cadence Design Systems, Inc.",
  "code": "CDNS",
  "cik": "0000813672",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-10-28",
+ "updated": "2026-10-29",
  "annual": [
   {
    "p": 2016,
@@ -144,20 +144,6 @@
  ],
  "quarterly": [
   {
-   "y": 2023,
-   "q": 4,
-   "rev": 1068.6,
-   "op": 336.5,
-   "ni": 323.9
-  },
-  {
-   "y": 2024,
-   "q": 1,
-   "rev": 1009.1,
-   "op": 250.0,
-   "ni": 247.6
-  },
-  {
    "y": 2024,
    "q": 2,
    "rev": 1060.7,
@@ -212,6 +198,20 @@
    "rev": 1474.2,
    "op": 431.3,
    "ni": 335.7
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 1584.5,
+   "op": 450.3,
+   "ni": 367.1
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 1633.3,
+   "op": 428.7,
+   "ni": 289.7
   }
  ]
 }

@@ -2,14 +2,14 @@
  "name": "WM",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "WASTE MANAGEMENT INC",
+ "legal_name": "Waste Management, Inc.",
  "code": "WM",
  "cik": "0000823768",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-10-28",
+ "updated": "2026-10-29",
  "annual": [
   {
    "p": 2016,
@@ -145,13 +145,6 @@
  "quarterly": [
   {
    "y": 2024,
-   "q": 1,
-   "rev": 5159.0,
-   "op": 1016.0,
-   "ni": 707.0
-  },
-  {
-   "y": 2024,
    "q": 2,
    "rev": 5402.0,
    "op": 1009.0,
@@ -212,6 +205,13 @@
    "rev": 6684.0,
    "op": 1253.0,
    "ni": 786.0
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 6846.0,
+   "op": 1279.0,
+   "ni": 820.0
   }
  ]
 }

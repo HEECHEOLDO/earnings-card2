@@ -2,14 +2,14 @@
  "name": "CSGP",
  "split_adjusted": true,
  "restated_from": null,
- "legal_name": "COSTAR GROUP, INC.",
+ "legal_name": "CoStar Group, Inc.",
  "code": "CSGP",
  "cik": "0001057352",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-10-28",
+ "updated": "2026-10-29",
  "annual": [
   {
    "p": 2016,
@@ -145,13 +145,6 @@
  "quarterly": [
   {
    "y": 2024,
-   "q": 1,
-   "rev": 656.4,
-   "op": -42.8,
-   "ni": 6.7
-  },
-  {
-   "y": 2024,
    "q": 2,
    "rev": 677.8,
    "op": -16.1,
@@ -188,16 +181,16 @@
   {
    "y": 2025,
    "q": 3,
-   "rev": 833.6,
-   "op": -51.1,
-   "ni": -30.9
+   "rev": 834.0,
+   "op": -51.0,
+   "ni": -31.0
   },
   {
    "y": 2025,
    "q": 4,
-   "rev": 900.4,
-   "op": 49.1,
-   "ni": 46.4
+   "rev": 900.0,
+   "op": 49.0,
+   "ni": 46.5
   },
   {
    "y": 2026,
@@ -212,6 +205,13 @@
    "rev": 925.0,
    "op": 76.0,
    "ni": 55.0
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 952.0,
+   "op": 84.0,
+   "ni": 74.0
   }
  ]
 }
