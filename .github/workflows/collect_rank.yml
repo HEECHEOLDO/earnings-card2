@@ -28,7 +28,7 @@ jobs:
           DATA_GO_KEY: ${{ secrets.DATA_GO_KEY }}
         run: |
           python3 collect_rank.py
-          python3 collect_half.py --recent   # 6월 말 순위 (영상용) — 새 6월 말이 생긴 해에만 호출
+          python3 collect_half.py --recent || echo "::warning::6월 말 수집은 다음에 다시"   # 6월 말 순위 (영상용) — 새 6월 말이 생긴 해에만 호출
       - name: 커밋
         run: |
           git config user.name  "github-actions[bot]"

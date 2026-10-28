@@ -64,16 +64,18 @@ def day_rows(key, d):
     while True:
         q = urllib.parse.urlencode({"serviceKey": key, "resultType": "json", "basDt": d.strftime("%Y%m%d"),
                                     "numOfRows": 1000, "pageNo": page})
-        for t in range(3):
+        waits = (5, 15, 30, 60)                # 공공데이터포털은 가끔 몇 분씩 응답이 없다 — 길게 기다리며 5번
+        for t in range(len(waits) + 1):
             try:
                 CALLS[0] += 1
                 raw = urllib.request.urlopen(URL + "?" + q, timeout=40).read().decode("utf-8", "replace")
                 j = json.loads(raw)
                 break
             except Exception as e:             # noqa: BLE001
-                if t == 2:
+                if t == len(waits):
                     raise RuntimeError("공공데이터포털 응답 이상: %r" % e)
-                time.sleep(2 + 3 * t)
+                log("    … 응답 없음, %d초 뒤 다시 (%d/%d)" % (waits[t], t + 1, len(waits)))
+                time.sleep(waits[t])
         body = j.get("response", {}).get("body", {})
         items = (body.get("items") or {}).get("item") or []
         if isinstance(items, dict):
@@ -131,7 +133,11 @@ def main():
     for y in range(START, today.year):         # 지난 해들의 연말
         if str(y) in cols and not force:
             continue
-        d, rows = last_trading(key, date(y, 12, 31))
+        try:
+            d, rows = last_trading(key, date(y, 12, 31))
+        except RuntimeError as e:
+            log("::warning::%d 연말 자료를 이번엔 못 받았습니다 — 다음에 다시 (%s)" % (y, e))
+            continue
         if not rows:
             log("  ! %d 연말 자료를 못 찾았습니다" % y)
             continue
@@ -139,7 +145,11 @@ def main():
         log("  %d  %s  코스피 1위 %s" % (y, d, cols[str(y)]["kospi"][0][1]))
 
     # 현재 — 공공데이터포털은 하루 늦게 올라온다. 어제부터 거꾸로 찾는다.
-    d, rows = last_trading(key, today - timedelta(days=1))
+    try:
+        d, rows = last_trading(key, today - timedelta(days=1))
+    except RuntimeError as e:                  # 서버가 끝내 응답 없음 → 실패로 끝내지 않고 어제 자료 그대로 (내일 다시)
+        log("::warning::공공데이터포털이 응답하지 않아 오늘은 건너뜁니다 — '현재'는 지난 자료 그대로 (%s)" % e)
+        d, rows = None, []
     if rows:
         keep = {k: v for k, v in (cols.get("now") or {}).items() if k.startswith("us")}   # 미국 칸은 collect_us_mcap.py 몫
         cols["now"] = column(d, rows)
