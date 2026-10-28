@@ -187,6 +187,7 @@
       <select id="hi"><option value="">없음</option></select>
       <label class="chk"><input type="checkbox" id="chk-lines"> 회사별로 선 잇기 (순위 흐름)</label>
       <label class="chk"><input type="checkbox" id="chk-cap"> 로고 아래 시가총액</label>
+      <label class="chk"><input type="checkbox" id="chk-tag"> 같은 로고 회사는 이름 표시 (삼성·SK·LG 계열 구분)</label>
       <label class="chk"><input type="checkbox" id="chk-icon" checked> 제목 왼쪽 국기</label>
       <label class="f" for="title">제목</label>
       <input type="text" id="title" value="코스피 시총 순위">
@@ -439,7 +440,7 @@
       var top = y + 56, hdr = 52, rk = 58, cw = (W - rk) / ks.length;
       var showCap = $('chk-cap').checked, lines = $('chk-lines').checked;
       // 같은 로고를 쓰는 회사(삼성 계열, 셀트리온 계열 등)는 로고 아래에 짧은 이름을 붙여 구분한다
-      var tags = sameLogoTags(ks, mk, n), anyTag = Object.keys(tags).length > 0, showLab = showCap || anyTag;
+      var tags = $('chk-tag').checked ? sameLogoTags(ks, mk, n) : {}, anyTag = Object.keys(tags).length > 0, showLab = showCap || anyTag;
       var rh = (ruleY - 30 - top - hdr) / n, d = Math.min(cw * 0.8, rh * (showLab ? 0.66 : 0.84), 130);
       var capF = Math.max(11, Math.min(20, Math.round(rh * 0.19)));
       var lift = showLab ? capF * 0.62 : 0;      // 글자 자리만큼 로고를 위로
@@ -580,6 +581,7 @@
   $('chk-icon').addEventListener('change', draw);
   $('chk-lines').addEventListener('change', draw);
   $('chk-cap').addEventListener('change', draw);
+  $('chk-tag').addEventListener('change', draw);
   ['title', 'sub'].forEach(function (id) { $(id).addEventListener('input', draw); });
   $('btn-mode').addEventListener('click', function () {
     var r = document.documentElement;
