@@ -2,14 +2,14 @@
  "name": "NTRS",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "NORTHERN TRUST CORP",
+ "legal_name": "NORTHERN TRUST CORPORATION",
  "code": "NTRS",
  "cik": "0000073124",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-10-29",
+ "updated": "2026-10-30",
  "annual": [
   {
    "p": 2016,
@@ -145,13 +145,6 @@
  "quarterly": [
   {
    "y": 2024,
-   "q": 1,
-   "rev": 1142.9,
-   "op": 290.6,
-   "ni": 214.7
-  },
-  {
-   "y": 2024,
    "q": 2,
    "rev": 1166.1,
    "op": 1173.6,
@@ -212,6 +205,13 @@
    "rev": 1349.5,
    "op": 1064.7,
    "ni": 792.2
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 1373.0,
+   "op": 796.5,
+   "ni": 642.9
   }
  ]
 }

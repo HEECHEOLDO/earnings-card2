@@ -2,14 +2,14 @@
  "name": "ICE",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "Intercontinental Exchange, Inc.",
+ "legal_name": "INTERCONTINENTAL EXCHANGE, INC.",
  "code": "ICE",
  "cik": "0001571949",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-10-29",
+ "updated": "2026-10-30",
  "annual": [
   {
    "p": 2016,
@@ -145,13 +145,6 @@
  "quarterly": [
   {
    "y": 2024,
-   "q": 1,
-   "rev": 2801.0,
-   "op": 1063.0,
-   "ni": 783.0
-  },
-  {
-   "y": 2024,
    "q": 2,
    "rev": 2897.0,
    "op": 1066.0,
@@ -212,6 +205,13 @@
    "rev": 3611.0,
    "op": 1391.0,
    "ni": 975.0
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 3630.0,
+   "op": 1410.0,
+   "ni": 956.0
   }
  ]
 }

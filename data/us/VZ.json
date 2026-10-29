@@ -2,14 +2,14 @@
  "name": "VZ",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "VERIZON COMMUNICATIONS INC",
+ "legal_name": "Verizon Communications Inc.",
  "code": "VZ",
  "cik": "0000732712",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-10-29",
+ "updated": "2026-10-30",
  "annual": [
   {
    "p": 2016,
@@ -145,13 +145,6 @@
  "quarterly": [
   {
    "y": 2024,
-   "q": 1,
-   "rev": 32981.0,
-   "op": 7521.0,
-   "ni": 4602.0
-  },
-  {
-   "y": 2024,
    "q": 2,
    "rev": 32796.0,
    "op": 7818.0,
@@ -212,6 +205,13 @@
    "rev": 34253.0,
    "op": 7179.0,
    "ni": 3835.0
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 34313.0,
+   "op": 8650.0,
+   "ni": 5198.0
   }
  ]
 }

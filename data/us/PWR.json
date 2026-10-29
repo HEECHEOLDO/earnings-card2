@@ -2,14 +2,14 @@
  "name": "PWR",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "QUANTA SERVICES, INC.",
+ "legal_name": "Quanta Services, Inc.",
  "code": "PWR",
  "cik": "0001050915",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-10-29",
+ "updated": "2026-10-30",
  "annual": [
   {
    "p": 2016,
@@ -145,13 +145,6 @@
  "quarterly": [
   {
    "y": 2024,
-   "q": 1,
-   "rev": 5031.8,
-   "op": 155.4,
-   "ni": 126.1
-  },
-  {
-   "y": 2024,
    "q": 2,
    "rev": 5594.4,
    "op": 307.2,
@@ -212,6 +205,13 @@
    "rev": 9557.0,
    "op": 694.8,
    "ni": 459.6
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 12014.9,
+   "op": 1026.5,
+   "ni": 706.9
   }
  ]
 }

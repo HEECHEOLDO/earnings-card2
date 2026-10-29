@@ -2,14 +2,14 @@
  "name": "NCLH",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "Norwegian Cruise Line Holdings Ltd.",
+ "legal_name": "NORWEGIAN CRUISE LINE HOLDINGS LTD.",
  "code": "NCLH",
  "cik": "0001513761",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-10-29",
+ "updated": "2026-10-30",
  "annual": [
   {
    "p": 2016,
@@ -145,13 +145,6 @@
  "quarterly": [
   {
    "y": 2024,
-   "q": 1,
-   "rev": 2191.2,
-   "op": 218.4,
-   "ni": 17.4
-  },
-  {
-   "y": 2024,
    "q": 2,
    "rev": 2372.5,
    "op": 341.6,
@@ -212,6 +205,13 @@
    "rev": 2640.5,
    "op": 363.3,
    "ni": 222.6
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 2946.8,
+   "op": 624.3,
+   "ni": 491.5
   }
  ]
 }
