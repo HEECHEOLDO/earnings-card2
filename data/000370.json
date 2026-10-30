@@ -5,7 +5,7 @@
  "code": "000370",
  "market": "코스피",
  "sector": "",
- "updated": "2026-09-10",
+ "updated": "2026-10-30",
  "annual": [
   {
    "p": 2023,
@@ -21,13 +21,6 @@
    "dps_adj": 200.0
   }
  ],
- "quarterly": [
-  {
-   "y": 2023,
-   "q": 4,
-   "rev": 0.0,
-   "op": 131.5,
-   "ni": -68.3
-  }
- ]
+ "quarterly": [],
+ "q_method": "strict"
 }
