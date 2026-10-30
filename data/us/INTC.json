@@ -2,14 +2,14 @@
  "name": "INTC",
  "split_adjusted": false,
  "restated_from": 2022,
- "legal_name": "INTEL CORP",
+ "legal_name": "Intel Corporation",
  "code": "INTC",
  "cik": "0000050863",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-10-30",
+ "updated": "2026-10-31",
  "annual": [
   {
    "p": 2016,
@@ -145,13 +145,6 @@
  "quarterly": [
   {
    "y": 2024,
-   "q": 1,
-   "rev": 12724.0,
-   "op": -1069.0,
-   "ni": -381.0
-  },
-  {
-   "y": 2024,
    "q": 2,
    "rev": 12833.0,
    "op": -1964.0,
@@ -212,6 +205,13 @@
    "rev": 16128.0,
    "op": 1796.0,
    "ni": -11033.0
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 16513.0,
+   "op": 2522.0,
+   "ni": 3320.0
   }
  ]
 }
