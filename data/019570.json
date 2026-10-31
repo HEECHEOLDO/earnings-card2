@@ -5,7 +5,7 @@
  "code": "019570",
  "market": "코스닥",
  "sector": "",
- "updated": "2026-09-12",
+ "updated": "2026-10-31",
  "annual": [
   {
    "p": 2018,
@@ -183,5 +183,6 @@
    "op": 17.0,
    "ni": null
   }
- ]
+ ],
+ "q_method": "strict"
 }
