@@ -482,6 +482,7 @@
   var T = {
     paper:'#fafaf8', ink:'#101216', inkSoft:'#6B7078', rule:'#E6E4DD',
     footer:'#3A3E46', upKR:'#C0392B', downKR:'#2C5AA0',
+    chipBg:'#F4F0E4', chipInk:'#8C6E14',   // 그때 샀다면 카드의 기간 칩과 같은 금색 — 분류 라벨에만 쓴다
     pill:'#ECE9E1', logoEdge:'#DCD7CB', barSoft:'#E2A79F',   // barSoft: 1위가 아닌 막대·점 (옅은 빨강)   // pill: 조건 태그 바탕 (종이색보다 한 단계 진하게)
     safe:{ top:135, right:100, bottom:135, left:100 },
     grain:{ base:[250,250,248], amount:14, speckle:0.08, spike:2.5 },
@@ -496,10 +497,11 @@
   FILTERS.forEach(function (f) { FMAP[f.k] = f; });
 
   // 빠른 조건마다 둘째 줄 (첫 줄은 조건 이름)
-  var HOOK = { '배당귀족':'배당을 해마다 늘린 회사', '고ROE 우량주':'돈을 잘 버는 회사',
-    '꾸준한 성장주':'매출이 매년 늘어난 회사', '턴어라운드':'적자에서 흑자로 돌아선 회사',
-    '고배당':'배당을 많이 주는 회사', '실적 서프라이즈':'이익이 확 뛴 회사',
-    '저평가 알짜':'빚 적고 실속 있는 회사' };
+  // 숫자는 넣지 않는다 — 조건 숫자를 바꾸면 제목이 틀려진다 (숫자는 조건 태그에)
+  var HOOK = { '배당귀족':'배당이 느는 주식', '고ROE 우량주':'돈 잘 버는 주식',
+    '꾸준한 성장주':'매년 크는 주식', '턴어라운드':'흑자 낸 주식',
+    '고배당':'배당 많은 주식', '실적 서프라이즈':'이익 뛴 주식',
+    '저평가 알짜':'속이 알찬 주식' };
   // 원 아래 숫자가 무엇인지 (푸터에 적는다)
   var MLABEL = { divGrowYears:'배당 연속 증가', roeAvg:'5년 평균 ROE', revStreak:'매출 연속 증가',
     op:'영업이익', yield:'시가배당률', qOpYoy:'분기 영업이익 증가율', roe:'ROE', rev:'매출' };
@@ -593,6 +595,11 @@
     if (k === 'turnaround') return '흑자 전환';
     if (k === 'lossCount' && lo === null && hi === 0) return '적자 없음';
     var u = f.u, n = f.n.replace(/\(.*\)/, '');
+    if (u === '억') {                          // 10000억 → 1조, 2500억 → 2,500억
+      var won = function (v) { return Math.abs(v) >= 10000 ? (v / 10000).toLocaleString('ko-KR', { maximumFractionDigits: 1 }) + '조' : v.toLocaleString('ko-KR') + '억'; };
+      if (lo !== null && hi !== null) return n + ' ' + won(lo) + '~' + won(hi);
+      return n + ' ' + won(lo !== null ? lo : hi) + (lo !== null ? ' 이상' : ' 이하');
+    }
     if (lo !== null && hi !== null) return lo === hi ? n + ' ' + lo + u : n + ' ' + lo + '~' + hi + u;
     if (lo !== null) return n + ' ' + lo + u + ' 이상';
     return n + ' ' + hi + u + ' 이하';
@@ -600,9 +607,11 @@
   // 조건이 바뀔 때마다: 제목·둘째 줄·조건·원 아래 숫자를 다시 채운다
   function cardAuto() {
     var f = readFilters(), p = PRESETS[ACTIVE];
-    var keys = p ? Object.keys(p.f).filter(function (k) { return f[k]; }) : Object.keys(f);   // 빠른 조건은 정의한 순서대로
+    // 빠른 조건은 정의한 순서대로, 그 뒤에 직접 더한 조건
+    var keys = p ? Object.keys(p.f).filter(function (k) { return f[k]; })
+                     .concat(Object.keys(f).filter(function (k) { return !(k in p.f); })) : Object.keys(f);
     $('c-title').value = p ? p.n : (keys.length ? '조건 검색' : '전체 종목');
-    $('c-hook').value = p ? HOOK[p.n] || '' : (keys.length ? '이 조건을 통과한 회사' : '매출이 큰 회사');
+    $('c-hook').value = p ? HOOK[p.n] || '' : (keys.length ? '조건 통과 주식' : '매출 큰 주식');
     $('c-sub').value = keys.map(function (k) { return condText(k, f[k][0], f[k][1]); }).filter(Boolean).join(' · ');
     var m = p ? p.m : (sortKey !== 'rev' ? sortKey : (keys[0] || 'rev'));
     if (m === 'turnaround') m = 'op';
@@ -635,13 +644,36 @@
     c.fillStyle = T.paper; c.fillRect(0, 0, CW, CH); grain(c);
     c.textBaseline = 'alphabetic'; c.textAlign = 'left';
 
-    /* 머리글 — 제목 두 줄 (그때 샀다면 카드와 같은 크기·굵기) */
+    /* 머리글 — 두 줄의 역할이 다르니 생김새도 다르게
+       첫 줄(조건 이름)은 분류 이름표 — 작은 빨간 글씨로 위에 얹고,
+       둘째 줄(공감 문구)이 헤드라인 — 가장 크고 굵게. 시선이 헤드라인에서 시작한다. */
     var L1 = $('c-title').value || ' ', L2 = $('c-hook').value || ' ';
-    var ns = Math.min(fit(c, L1, 900, T.type.nameMax, T.type.nameMin, CWID, T.type.nameTrack),
-                      fit(c, L2, 900, T.type.nameMax, T.type.nameMin, CWID, T.type.nameTrack));
-    var y1 = T.safe.top + ns * 0.86, y2 = y1 + ns;
-    c.fillStyle = T.ink; c.font = CF(900, ns); LS(c, T.type.nameTrack);
-    c.fillText(L1, CX, y1); c.fillText(L2, CX, y2); LS(c, '0px');
+    var y1, y2, ns;
+    if (window.CARD_TITLE_STYLE === 'light') {        // 비교용: 첫 줄 굵게 + 둘째 줄 옅게
+      ns = Math.min(fit(c, L1, 900, T.type.nameMax, T.type.nameMin, CWID, T.type.nameTrack),
+                    fit(c, L2, 500, T.type.nameMax, T.type.nameMin, CWID, T.type.nameTrack));
+      y1 = T.safe.top + ns * 0.86; y2 = y1 + ns;
+      c.fillStyle = T.ink; c.font = CF(900, ns); LS(c, T.type.nameTrack); c.fillText(L1, CX, y1);
+      c.fillStyle = T.inkSoft; c.font = CF(500, ns); c.fillText(L2, CX, y2); LS(c, '0px');
+    } else {
+      ns = fit(c, L2, 900, 112, T.type.nameMin, CWID, T.type.nameTrack);
+      if (window.CARD_TITLE_STYLE === 'goldText') {   // 비교용: 금색 글씨만
+        var kf = fit(c, L1, 800, 46, 30, CWID);
+        y1 = T.safe.top + kf * 0.86;
+        c.fillStyle = T.chipInk; c.font = CF(800, kf); c.fillText(L1, CX, y1);
+        y2 = y1 + kf * 0.42 + ns * 0.92;
+      } else {                                         // 금색 칩 — 그때 샀다면 카드의 기간 칩과 같은 부품
+        var cf = fit(c, L1, 700, 38, 26, CWID - 60), cpad = cf * 0.65, chh = Math.round(cf * 1.75);
+        c.font = CF(700, cf);
+        var cww = c.measureText(L1).width + cpad * 2;
+        pill(c, CX, T.safe.top, cww, chh, T.chipBg);
+        c.fillStyle = T.chipInk; c.textBaseline = 'middle'; c.fillText(L1, CX + cpad, T.safe.top + chh / 2 + cf * 0.04);
+        c.textBaseline = 'alphabetic';
+        y1 = T.safe.top + chh;
+        y2 = y1 + 20 + ns * 0.86;
+      }
+      c.fillStyle = T.ink; c.font = CF(900, ns); LS(c, T.type.nameTrack); c.fillText(L2, CX, y2); LS(c, '0px');
+    }
 
     /* 조건 — 회색 한 줄 대신 알약 태그 (휴대폰에서 줄어도 읽히게 30px 굵게, 두 줄까지) */
     var conds = ($('c-sub').value || '').split(/\s*·\s*/).filter(Boolean), yb = y2;
@@ -891,8 +923,12 @@
   /* ---------- 이벤트 ---------- */
   document.addEventListener('input', function (e) {
     if (e.target.closest('.f') || e.target.classList.contains('mk')) {
-      document.querySelectorAll('.preset').forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
-      ACTIVE = -1;
+      // 빠른 조건을 고른 뒤 숫자만 다듬는 경우 — 그 주제(제목·카드 모양·보여줄 숫자)는 그대로 두고
+      // 조건 태그와 종목만 바꾼다. 조건 칸이 모두 비면 그때 빠른 조건이 풀린다.
+      if (ACTIVE >= 0 && !Object.keys(readFilters()).length) {
+        document.querySelectorAll('.preset').forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
+        ACTIVE = -1;
+      }
       apply(true);
     }
   });
