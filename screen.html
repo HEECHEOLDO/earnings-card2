@@ -260,7 +260,8 @@
       <div class="row2">
         <label>카드 모양
           <select id="c-layout"><option value="auto">자동 (조건에 맞게)</option><option value="grid">로고 그리드</option>
-            <option value="bars">막대 차트</option><option value="streak">연속 기록 (년)</option><option value="hero">1위 강조</option></select></label>
+            <option value="bars">막대 차트</option><option value="streak">연속 기록 (년)</option><option value="hero">1위 강조</option>
+            <option value="yearbars">연도 + 계단 막대</option><option value="growbars">성장 막대 (증가율)</option><option value="years">연도 칸 (년)</option><option value="stairs">계단 막대 (해마다 값)</option><option value="growth">그때 → 지금 (몇 배)</option></select></label>
         <label>보여줄 숫자
           <select id="c-metric"></select></label>
       </div>
@@ -726,9 +727,21 @@
     var lay = layoutFor(k);
     if (lay !== 'grid') {                      // 차트형은 값 큰 순으로 다시 세운다 (뽑는 기준은 그대로)
       list = list.slice().sort(function (x, y) { return (val(y, k) || -1e18) - (val(x, k) || -1e18); });
+      if (lay === 'growth') {                  // 그때 → 지금 은 몇 배가 됐나 순서 (아직 못 불러온 종목은 뒤로)
+        var mult = function (r) {
+          var g = growthFrom(seriesOf(val(r, 'code'), k), val(r, k) || 0);
+          return g ? g.to.v / g.from.v : -1;
+        };
+        list.sort(function (x, y) { return mult(y) - mult(x); });
+      }
     }
     if (lay === 'bars') drawBars(c, list, k, top, bot);
     else if (lay === 'streak') drawStreak(c, list, k, top, bot);
+    else if (lay === 'years') drawYears(c, list, k, top, bot);
+    else if (lay === 'stairs') drawStairs(c, list, k, top, bot);
+    else if (lay === 'growth') drawGrowth(c, list, k, top, bot);
+    else if (lay === 'yearbars') drawYearBars(c, list, k, top, bot);
+    else if (lay === 'growbars') drawGrowthBars(c, list, k, top, bot);
     else if (lay === 'hero' && n >= 3) drawHero(c, list, k, top, bot);
     else drawGrid(c, list, k, top, bot);
     footer(c, ry, fb, FOOT);
@@ -736,12 +749,14 @@
 
   /* ---------- 카드 모양 고르기 ----------
      자동: 빠른 조건마다 정해 둔 모양 · 직접 조건은 숫자 단위로 (년 → 연속 기록, % → 막대) */
-  var AUTO_LAYOUT = { '배당귀족':'streak', '고ROE 우량주':'bars', '꾸준한 성장주':'streak', '턴어라운드':'grid',
+  var AUTO_LAYOUT = { '배당귀족':'yearbars', '고ROE 우량주':'bars', '꾸준한 성장주':'growth', '턴어라운드':'grid',
                       '고배당':'bars', '실적 서프라이즈':'hero', '저평가 알짜':'grid' };
   function layoutFor(k) {
     var u = (FMAP[k] || {}).u, sel = $('c-layout').value, p = PRESETS[ACTIVE];
     var lay = sel !== 'auto' ? sel : (p && AUTO_LAYOUT[p.n]) || (u === '년' ? 'streak' : u === '%' ? 'bars' : 'grid');
     if (lay === 'streak' && u !== '년') lay = 'bars';          // 점으로 셀 수 있는 건 '몇 년' 뿐
+    if ((lay === 'years') && u !== '년') lay = 'bars';
+    if ((lay === 'stairs' || lay === 'growth' || lay === 'yearbars' || lay === 'growbars') && !SERIES[k]) lay = u === '년' ? 'streak' : 'bars';   // 해마다의 값이 있는 지표만
     return lay;
   }
   // 값 — 왼쪽 끝 / 오른쪽 끝에 맞춰 그리기
@@ -810,6 +825,221 @@
         c.fillStyle = s < v ? (i === 0 ? T.upKR : T.barSoft) : '#EFEDE7'; c.fill();
       }
       valAt(c, CX + CWID, cy + f.vf * 0.34, nu[0], f.vf, T.upKR, nu[1], true);
+    });
+  }
+
+  /* ---------- 연도별 기록이 필요한 모양 (연도 칸 · 계단 막대 · 그때→지금) ----------
+     카드에 나온 몇 종목만 data/{코드}.json 을 불러온다 (스크리닝 표에는 해마다의 값이 없다) */
+  var HIST = {};
+  function hist(code) {
+    if (HIST[code] !== undefined) return HIST[code];
+    HIST[code] = null;
+    fetch('./data/' + code + '.json').then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (j) { HIST[code] = (j && j.annual) || []; drawCardSoon(); })
+      .catch(function () { HIST[code] = []; drawCardSoon(); });
+    return null;
+  }
+  // 연속 기록 지표 → 해마다 볼 값
+  var SERIES = { divGrowYears:'dps', divYears:'dps', revStreak:'rev', profitStreak:'op' };
+  function seriesOf(code, k) {
+    var a = hist(code), key = SERIES[k];
+    if (!a || !key) return null;
+    return a.map(function (x) { var v = key === 'dps' && x.dps_adj != null ? x.dps_adj : x[key]; return { y:x.p, v:v }; })
+            .filter(function (x) { return x.v != null; });
+  }
+  // 그때 → 지금 의 시작 해. 연속 기록 직전 해를 쓰되, 다음 해에 3배 넘게 뛰면 그 해는 일부 기간만 잡힌 것
+  // (분할 신설·상장 첫해 — 쿠쿠홈시스 2017년 303억은 12월 한 달치) 이라 한 해 뒤로 미룬다
+  function growthFrom(s, v) {
+    if (!s || s.length <= v) return null;
+    var i = s.length - 1 - v;
+    while (i < s.length - 2 && s[i].v > 0 && s[i + 1].v / s[i].v > 3) i++;
+    return s[i].v > 0 ? { from:s[i], to:s[s.length - 1] } : null;
+  }
+  function moneyTxt(v, k) {
+    if (SERIES[k] === 'dps') return Math.round(v).toLocaleString('ko-KR') + '원';
+    // 억 단위 값 → 1조 이상은 '26.7조', 그 아래는 '2,500억', 1억 아래는 '0.4억'
+    var a = Math.abs(v);
+    if (a >= 9999.5) return (v / 10000).toFixed(1).replace(/\.0$/, '') + '조';   // 9,999.6억 이 '10,000억' 으로 나오지 않게
+    if (a >= 1) return Math.round(v).toLocaleString('ko-KR') + '억';
+    return v.toFixed(1) + '억';
+  }
+
+  /* 연도 칸 — 최근 해들을 칸으로 깔고 연속 기록인 해만 채운다. 칸 안에 '21' 처럼 연도를 적는다 */
+  function drawYears(c, list, k, top, bot) {
+    var f = rowsFrame(c, list, k, top, bot), mx = 0, lastY = 0;
+    list.forEach(function (r) {
+      mx = Math.max(mx, val(r, k) || 0);
+      var s = seriesOf(val(r, 'code'), k); if (s && s.length) lastY = Math.max(lastY, s[s.length - 1].y);
+    });
+    if (!lastY) lastY = new Date().getFullYear() - 1;
+    var slots = Math.max(5, Math.min(mx + 1, 10)), gap = 6, cw = (f.trackW - gap * (slots - 1)) / slots;
+    var chh = Math.min(f.rh * 0.30, 40), tf = Math.min(chh * 0.56, cw * 0.5, 22);
+    list.forEach(function (r, i) {
+      var cy = rowHead(c, f, r, i, top), v = val(r, k) || 0, nu = numUnit(v, k);
+      var s = seriesOf(val(r, 'code'), k), ry = s && s.length ? s[s.length - 1].y : lastY;
+      var by = cy + f.rh * 0.20 - chh / 2;
+      for (var j = 0; j < slots; j++) {
+        var yr = lastY - (slots - 1 - j), on = yr <= ry && yr > ry - v, x = f.nameX + j * (cw + gap);
+        c.beginPath(); if (c.roundRect) c.roundRect(x, by, cw, chh, 7); else c.rect(x, by, cw, chh);
+        c.fillStyle = on ? (i === 0 ? T.upKR : T.barSoft) : '#EFEDE7'; c.fill();
+        c.fillStyle = on ? '#fff' : '#B9B6AE'; c.font = CF(800, tf); c.textAlign = 'center'; c.textBaseline = 'middle';
+        c.fillText(String(yr).slice(2), x + cw / 2, by + chh / 2 + tf * 0.04);
+        c.textAlign = 'left'; c.textBaseline = 'alphabetic';
+      }
+      valAt(c, CX + CWID, cy + f.vf * 0.34, nu[0], f.vf, T.upKR, nu[1], true);
+    });
+  }
+
+  /* 계단 막대 — 해마다의 값(배당금·매출)을 작은 막대로. 늘어난 해는 빨강, 기준 해는 회색 */
+  function drawStairs(c, list, k, top, bot) {
+    var f = rowsFrame(c, list, k, top, bot);
+    var N = 0; list.forEach(function (r) { N = Math.max(N, Math.min((val(r, k) || 0) + 1, 10)); });
+    N = Math.max(N, 5);
+    var gap = 5, bw = (f.trackW - gap * (N - 1)) / N, H = Math.min(f.rh * 0.42, 58);
+    list.forEach(function (r, i) {
+      var cy = rowHead(c, f, r, i, top), v = val(r, k) || 0, nu = numUnit(v, k);
+      var s = seriesOf(val(r, 'code'), k), base = cy + f.rh * 0.38;
+      if (!s) {                                   // 아직 불러오는 중 — 빈 트랙
+        pill(c, f.nameX, base - 8, f.trackW, 8, '#EFEDE7');
+      } else {
+        var seg = s.slice(-N), mxv = 0;
+        seg.forEach(function (x) { mxv = Math.max(mxv, x.v); });
+        var off = N - seg.length;
+        seg.forEach(function (x, j) {
+          var h = mxv > 0 ? Math.max(3, x.v / mxv * H) : 3, xx = f.nameX + (off + j) * (bw + gap);
+          var grow = j >= seg.length - v;          // 연속 기록에 든 해
+          c.beginPath(); if (c.roundRect) c.roundRect(xx, base - h, bw, h, [4, 4, 0, 0]); else c.rect(xx, base - h, bw, h);
+          c.fillStyle = grow ? (i === 0 ? T.upKR : T.barSoft) : '#D9D6CE'; c.fill();
+        });
+      }
+      valAt(c, CX + CWID, cy + f.vf * 0.34, nu[0], f.vf, T.upKR, nu[1], true);
+    });
+  }
+
+  /* 그때 → 지금 — 연속 기록이 시작되기 전 해의 값과 지금 값, 몇 배가 됐는지 */
+  function drawGrowth(c, list, k, top, bot) {
+    var n = list.length, rh = (bot - top) / n;
+    var lr = Math.min(rh * 0.36, 50), nameX = CX + lr * 2 + Math.max(18, lr * 0.45);
+    var nf = Math.min(38, rh * 0.30), sf = Math.min(30, rh * 0.24), mf = Math.min(64, rh * 0.50);
+    list.forEach(function (r, i) {
+      var cy = top + rh * i + rh / 2, nm = shorten(val(r, 'name')), v = val(r, k) || 0;
+      logo(c, val(r, 'code'), nm, CX + lr, cy, lr);
+      var g = growthFrom(seriesOf(val(r, 'code'), k), v), from = g && g.from, to = g && g.to;
+      var mult = from && from.v > 0 ? to.v / from.v : null;
+      var mt = mult ? (mult >= 10 ? Math.round(mult) : mult.toFixed(1)) : '';
+      var mw = mult ? vp(c, mt, mf, '배').w : 0;
+      var nfi = fit(c, nm, 800, nf, 22, CX + CWID - mw - 24 - nameX, '-0.01em');
+      c.textAlign = 'left'; c.fillStyle = T.ink; c.font = CF(800, nfi); LS(c, '-0.01em');
+      c.fillText(nm, nameX, cy - rh * 0.04); LS(c, '0px');
+      if (from) {
+        var line = from.y + '년 ' + moneyTxt(from.v, k) + '  →  ' + to.y + '년 ' + moneyTxt(to.v, k);
+        var sfi = fit(c, line, 700, sf, 16, CX + CWID - mw - 24 - nameX);
+        c.fillStyle = T.inkSoft; c.font = CF(700, sfi); c.fillText(line, nameX, cy + rh * 0.04 + sfi * 0.95);
+        valAt(c, CX + CWID, cy + mf * 0.34, mt, mf, T.upKR, '배', true);
+      }
+      if (i < n - 1) {
+        var ly = Math.round(top + rh * (i + 1)) + 0.5;
+        c.strokeStyle = T.rule; c.lineWidth = 1; c.beginPath(); c.moveTo(CX, ly); c.lineTo(CX + CWID, ly); c.stroke();
+      }
+    });
+  }
+
+  /* 연도 + 계단 막대 — 막대 높이는 해마다의 값(배당금·매출), 막대 아래에 연도.
+     연속 기록에 든 해는 빨간 막대 + 진한 연도, 그 전 해는 회색. '언제부터 얼마나' 가 한눈에 */
+  function drawYearBars(c, list, k, top, bot) {
+    var n = list.length, rh = (bot - top) / n;
+    var lr = Math.min(rh * 0.30, 40);
+    var vf = Math.min(56, rh * 0.42), vw = 0;
+    list.forEach(function (r) { var nu = numUnit(val(r, k), k); vw = Math.max(vw, vp(c, nu[0], vf, nu[1]).w); });
+    var leftW = 270, bx0 = CX + leftW, trackW = CX + CWID - vw - 24 - bx0;
+    var N = 0; list.forEach(function (r) { N = Math.max(N, Math.min((val(r, k) || 0) + 1, 10)); });
+    N = Math.max(N, 6);
+    var gap = 6, bw = (trackW - gap * (N - 1)) / N;
+    var lf = Math.round(Math.min(22, bw * 0.5, rh * 0.18));
+    // 기준 연도 — 카드 안 종목들의 가장 최근 해
+    var lastY = 0;
+    list.forEach(function (r) { var s = seriesOf(val(r, 'code'), k); if (s && s.length) lastY = Math.max(lastY, s[s.length - 1].y); });
+    list.forEach(function (r, i) {
+      var y0 = top + rh * i, y1 = y0 + rh, cy = y0 + rh / 2;
+      var code = val(r, 'code'), nm = shorten(val(r, 'name')), v = val(r, k) || 0, nu = numUnit(v, k);
+      // 왼쪽: 로고 + 이름
+      logo(c, code, nm, CX + lr, cy, lr);
+      var nx = CX + lr * 2 + 16, nfi = fit(c, nm, 800, 30, 18, leftW - (nx - CX) - 12, '-0.01em');
+      c.textAlign = 'left'; c.fillStyle = T.ink; c.font = CF(800, nfi); LS(c, '-0.01em');
+      c.fillText(nm, nx, cy + nfi * 0.34); LS(c, '0px');
+      // 가운데: 해마다 막대 + 아래 연도
+      var lb = y1 - rh * 0.10, base = lb - lf - 6, H = base - (y0 + rh * 0.12);
+      var s = seriesOf(code, k);
+      if (s && lastY) {
+        var byY = {}, mxv = 0, ry = s[s.length - 1].y;
+        s.forEach(function (x) { byY[x.y] = x.v; });
+        for (var j = 0; j < N; j++) { var yy = lastY - (N - 1 - j); if (byY[yy] != null) mxv = Math.max(mxv, byY[yy]); }
+        for (var jj = 0; jj < N; jj++) {
+          var yr = lastY - (N - 1 - jj), xx = bx0 + jj * (bw + gap), vv = byY[yr];
+          var grow = yr <= ry && yr > ry - v;
+          if (vv != null) {
+            var hh = mxv > 0 ? Math.max(4, vv / mxv * H) : 4;
+            c.beginPath(); if (c.roundRect) c.roundRect(xx, base - hh, bw, hh, [5, 5, 1, 1]); else c.rect(xx, base - hh, bw, hh);
+            c.fillStyle = grow ? (i === 0 ? T.upKR : T.barSoft) : '#DDD9D0'; c.fill();
+          }
+          c.fillStyle = grow ? T.ink : '#B3AFA6'; c.font = CF(grow ? 800 : 600, lf); c.textAlign = 'center';
+          c.fillText(String(yr).slice(2), xx + bw / 2, lb);
+        }
+        c.textAlign = 'left';
+      }
+      // 오른쪽: 연속 몇 년
+      valAt(c, CX + CWID, cy + vf * 0.34, nu[0], vf, T.upKR, nu[1], true);
+      if (i < n - 1) {
+        var ly = Math.round(y1) + 0.5;
+        c.strokeStyle = T.rule; c.lineWidth = 1; c.beginPath(); c.moveTo(CX, ly); c.lineTo(CX + CWID, ly); c.stroke();
+      }
+    });
+  }
+
+  /* 성장 막대 — 연속 기록 기간만 그린다. 시작 해(회색)를 모두 같은 높이로 맞춰서
+     막대가 얼마나 높아졌나 = 얼마나 커졌나. 줄끼리 높이를 견줄 수 있다. 오른쪽은 기간 동안 증가율 */
+  function drawGrowthBars(c, list, k, top, bot) {
+    var n = list.length, rh = (bot - top) / n;
+    var lr = Math.min(rh * 0.30, 40), vf = Math.min(52, rh * 0.40);
+    var rows = list.map(function (r) {
+      var v = val(r, k) || 0, s = seriesOf(val(r, 'code'), k), seg = null, pct = null;
+      if (s && s.length > v) {
+        seg = s.slice(-(v + 1));
+        if (seg[0].v > 0) pct = (seg[seg.length - 1].v / seg[0].v - 1) * 100;
+      }
+      return { r:r, v:v, seg:seg, pct:pct };
+    });
+    var vw = 0, maxMult = 1, N = 2;
+    rows.forEach(function (o) {
+      if (o.pct != null) vw = Math.max(vw, vp(c, '+' + Math.round(o.pct).toLocaleString('ko-KR'), vf, '%').w);
+      if (o.seg) { N = Math.max(N, o.seg.length); o.seg.forEach(function (x) { maxMult = Math.max(maxMult, x.v / o.seg[0].v); }); }
+    });
+    var leftW = 270, bx0 = CX + leftW, trackW = CX + CWID - vw - 24 - bx0;
+    var gap = 6, bw = (trackW - gap * (N - 1)) / N, lf = Math.round(Math.min(22, bw * 0.5, rh * 0.18));
+    rows.forEach(function (o, i) {
+      var r = o.r, y0 = top + rh * i, y1 = y0 + rh, cy = y0 + rh / 2;
+      var code = val(r, 'code'), nm = shorten(val(r, 'name'));
+      logo(c, code, nm, CX + lr, cy, lr);
+      var nx = CX + lr * 2 + 16, nfi = fit(c, nm, 800, 30, 18, leftW - (nx - CX) - 12, '-0.01em');
+      c.textAlign = 'left'; c.fillStyle = T.ink; c.font = CF(800, nfi); LS(c, '-0.01em');
+      c.fillText(nm, nx, cy + nfi * 0.34); LS(c, '0px');
+      var lb = y1 - rh * 0.10, base = lb - lf - 6, H = base - (y0 + rh * 0.12);
+      if (o.seg) {
+        var off = N - o.seg.length, b0 = o.seg[0].v;
+        o.seg.forEach(function (x, j) {
+          var xx = bx0 + (off + j) * (bw + gap), hh = Math.max(4, (x.v / b0) / maxMult * H);
+          c.beginPath(); if (c.roundRect) c.roundRect(xx, base - hh, bw, hh, [5, 5, 1, 1]); else c.rect(xx, base - hh, bw, hh);
+          c.fillStyle = j === 0 ? '#DDD9D0' : (i === 0 ? T.upKR : T.barSoft); c.fill();
+          c.fillStyle = j === 0 ? '#B3AFA6' : T.ink; c.font = CF(j === 0 ? 600 : 800, lf); c.textAlign = 'center';
+          c.fillText(String(x.y).slice(2), xx + bw / 2, lb);
+        });
+        c.textAlign = 'left';
+      }
+      if (o.pct != null) valAt(c, CX + CWID, cy + vf * 0.34, '+' + Math.round(o.pct).toLocaleString('ko-KR'), vf, T.upKR, '%', true);
+      if (i < n - 1) {
+        var ly = Math.round(y1) + 0.5;
+        c.strokeStyle = T.rule; c.lineWidth = 1; c.beginPath(); c.moveTo(CX, ly); c.lineTo(CX + CWID, ly); c.stroke();
+      }
     });
   }
 
