@@ -683,8 +683,7 @@
     var fb = CH - T.safe.bottom - 4, ry = fb - T.type.footer * 0.85 - 18;
     var top = hr + 38, bot = ry - 32;
     var a = (DATA.updated || '').split('-');
-    var FOOT = (a.length === 3 ? a[0] + '.' + a[1] + '.' + a[2] + ' 기준 · ' : '') + '숫자는 ' +
-               (MLABEL[k] || (FMAP[k] || { n:'매출' }).n.replace(/\(.*\)/, ''));
+    var FOOT = a.length === 3 ? a[0] + '. ' + a[1] + '. ' + a[2] + ' 기준' : '';   // 좌측 하단은 날짜만
 
     if (!n) {
       c.fillStyle = T.inkSoft; c.textAlign = 'center'; c.font = CF(700, 34);
