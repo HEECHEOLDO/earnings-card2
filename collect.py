@@ -671,27 +671,57 @@ def _r(v, nd=1):
     return int(x) if x == int(x) else x
 
 
+def _equity(x):
+    """자본총계. 공시의 계정 태그가 틀려 자본금(예: 현대백화점 2020~22년 1,170억)이
+    잡힌 해가 있다. 자산 - 부채 와 5% 넘게 어긋나면 자산 - 부채 를 쓴다."""
+    e, a, l = x.get("equity"), x.get("assets"), x.get("liab")
+    if a and l is not None and a - l > 0 and (not e or abs(e - (a - l)) / (a - l) > 0.05):
+        return round(a - l, 1)
+    return e
+
+
 def build_screen():
     """data/ 를 훑어 스크리닝용 지표를 미리 계산해 screen.json 으로 저장한다.
-    API를 쓰지 않는다 — 이미 받아둔 파일만 읽는다."""
-    out = []
+    API를 쓰지 않는다 — 이미 받아둔 파일만 읽는다.
+
+    검증(2026-11)에서 고친 것:
+      · 자본총계가 자본금으로 잘못 잡힌 해 → 자산 - 부채 로 바로잡는다 (_equity)
+      · 분기 YoY 를 '다섯 칸 앞' 이 아니라 '작년 같은 분기' 와 견준다 (빠진 분기가 있으면 엉뚱한 분기와 비교했다)
+      · 최근 사업보고서가 2년 넘게 없는 회사(상장폐지·금융업 등)는 뺀다
+      · 최근 분기가 너무 오래된 회사는 분기 지표를 비운다
+      · 해외기업(코드 9로 시작)은 외화 단위라 금액(매출·이익)을 비운다 — 비율 지표는 그대로"""
+    this_year = datetime.now(timezone(timedelta(hours=9))).year
+    files = []
     for fn in sorted(os.listdir(OUT_DIR)):
         if not (fn.endswith(".json") and fn[:-5].isdigit()):
             continue
         try:
             with open(os.path.join(OUT_DIR, fn), encoding="utf-8") as f:
-                d = json.load(f)
+                files.append((fn, json.load(f)))
         except Exception:      # noqa: BLE001
             continue
-
+    # 가장 많은 회사의 최근 분기 (예: 2026.2Q) — 이보다 한 분기 넘게 늦으면 분기 지표를 비운다
+    from collections import Counter
+    lastq = Counter((d["quarterly"][-1]["y"], d["quarterly"][-1]["q"]) for _, d in files if d.get("quarterly"))
+    ref_q = lastq.most_common(1)[0][0] if lastq else None
+    min_q = None
+    if ref_q:
+        min_q = (ref_q[0], ref_q[1] - 1) if ref_q[1] > 1 else (ref_q[0] - 1, 4)
+    out = []
+    for fn, d in files:
+        if not (fn.endswith(".json") and fn[:-5].isdigit()):
+            continue
         a = d.get("annual") or []
         q = d.get("quarterly") or []
         if not a:
             continue
         last = a[-1]
+        if last.get("p", 0) < this_year - 2:          # 2024년 사업보고서도 없으면 지금 고르기엔 낡았다
+            continue
+        foreign = fn.startswith("9")
 
         rev, op, ni = last.get("rev"), last.get("op"), last.get("ni")
-        eq, li, asset = last.get("equity"), last.get("liab"), last.get("assets")
+        eq, li, asset = _equity(last), last.get("liab"), last.get("assets")
 
         margin = _r(op / rev * 100) if rev else None
         netMargin = _r(ni / rev * 100) if (rev and ni is not None) else None
@@ -700,8 +730,8 @@ def build_screen():
         debt = _r(li / eq * 100) if (eq and eq > 0 and li is not None) else None
 
         # 5년 평균 ROE
-        roes = [x["ni"] / x["equity"] * 100 for x in a[-5:]
-                if x.get("equity") and x["equity"] > 0 and x.get("ni") is not None]
+        roes = [x["ni"] / _equity(x) * 100 for x in a[-5:]
+                if _equity(x) and _equity(x) > 0 and x.get("ni") is not None]
         roeAvg = _r(sum(roes) / len(roes)) if roes else None
 
         # 영업이익률 시계열 → 변동성
@@ -758,16 +788,18 @@ def build_screen():
 
         # 분기
         qRev = qOp = qMargin = qRevYoy = qOpYoy = None
-        if q:
+        if q and (min_q is None or (q[-1]["y"], q[-1]["q"]) >= min_q):
             lq = q[-1]
             qRev, qOp = lq.get("rev"), lq.get("op")
             qMargin = _r(qOp / qRev * 100) if qRev else None
-            if len(q) >= 5:
-                y0 = q[-5]
+            y0 = next((x for x in q if x["y"] == lq["y"] - 1 and x["q"] == lq["q"]), None)   # 작년 같은 분기
+            if y0:
                 if y0.get("rev"):
                     qRevYoy = _r((qRev / y0["rev"] - 1) * 100)
                 if y0.get("op") and y0["op"] > 0 and qOp is not None:
                     qOpYoy = _r((qOp / y0["op"] - 1) * 100)
+        if foreign:                                     # 외화 단위 — 금액은 비우고 비율만 남긴다
+            rev = op = ni = qRev = qOp = None
 
         out.append([
             d.get("code", fn[:-5]), d.get("name", ""), d.get("market", ""), len(a),
