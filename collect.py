@@ -650,6 +650,7 @@ SCREEN_FIELDS = [
     "revStreak", "profitStreak", "lossCount", "marginStd", "turnaround",
     "dps", "payout", "yield", "dpsCagr5", "divYears", "divGrowYears",
     "qRev", "qOp", "qMargin", "qRevYoy", "qOpYoy",
+    "yieldDart",
 ]
 
 
@@ -707,6 +708,20 @@ def build_screen():
     min_q = None
     if ref_q:
         min_q = (ref_q[0], ref_q[1] - 1) if ref_q[1] > 1 else (ref_q[0] - 1, 4)
+    # 시가배당률은 현재 주가로 — 그때 샀다면 탭이 매일(평일 16:40) 받는 국내 종가(data/anchor.json)를 쓴다.
+    # 사업보고서의 '현금배당수익률' 은 회사가 지난 결산 무렵 주가로 적은 값이라 지금과 다르고
+    # (삼성전자 공시 1.5% / 지금 0.7%), 분기배당 회사는 기말배당만 넣은 경우도 있다 (현대차 1.9% / 3.4%).
+    price, price_asof = {}, None
+    try:
+        with open(os.path.join(OUT_DIR, "anchor.json"), encoding="utf-8") as f:
+            kr = (json.load(f).get("kr") or {})
+        price_asof = kr.get("asof")
+        for c, it in (kr.get("items") or {}).items():
+            v = ((it or {}).get("now") or {}).get("v")
+            if v and v > 0:
+                price[c] = v
+    except Exception:      # noqa: BLE001
+        pass
     out = []
     for fn, d in files:
         if not (fn.endswith(".json") and fn[:-5].isdigit()):
@@ -807,14 +822,17 @@ def build_screen():
             roe, roeAvg, roa, debt,
             _cagr(a, "rev", 3), _cagr(a, "rev", 5), _cagr(a, "rev", 9), _cagr(a, "op", 5),
             revStreak, profitStreak, lossCount, marginStd, turnaround,
-            _r(dps, 0), _r(last.get("payout")), _r(last.get("yield")),
+            _r(dps, 0), _r(last.get("payout")),
+            # 최근 결산 주당배당금 ÷ 전일 종가. 종가가 없으면 공시값
+            _r(dps / price[d.get("code", fn[:-5])] * 100, 2) if (dps and d.get("code", fn[:-5]) in price) else _r(last.get("yield")),
             dpsCagr5, divYears, divGrowYears,
             _r(qRev, 0), _r(qOp, 0), qMargin, qRevYoy, qOpYoy,
+            _r(last.get("yield")),
         ])
 
     path = os.path.join(OUT_DIR, "screen.json")
     payload = {"updated": datetime.now(timezone(timedelta(hours=9))).strftime("%Y-%m-%d"),
-               "fields": SCREEN_FIELDS, "rows": out}
+               "price_asof": price_asof, "fields": SCREEN_FIELDS, "rows": out}
     if not (os.path.exists(path) and data_unchanged(path, payload)):
         with open(path, "w", encoding="utf-8") as f:
             json.dump(payload, f, ensure_ascii=False, separators=(",", ":"))
