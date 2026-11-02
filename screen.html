@@ -589,6 +589,19 @@
     return signed && v != null && v < 0 ? T.downKR : T.upKR;
   }
   function metricKey() { return $('c-metric').value || 'rev'; }
+  // 카드 숫자가 무엇인지 — 용어 + 쉬운 말 (그리드 위 한 줄)
+  var MDESC = {
+    roe:['ROE', '내 돈 100원으로 1년에 번 돈'], roeAvg:['5년 평균 ROE', '내 돈 100원으로 번 돈, 최근 5년 평균'],
+    roa:['ROA', '자산 100원으로 1년에 번 돈'], margin:['영업이익률', '매출 100원 중 남긴 영업이익'],
+    netMargin:['순이익률', '매출 100원 중 남긴 순이익'], debt:['부채비율', '내 돈 100원당 빚'],
+    yield:['시가배당률', '지금 주가로 사면 1년에 받는 배당'], payout:['배당성향', '번 돈 중 배당으로 나눠 준 몫'],
+    dps:['주당배당금', '1주를 갖고 있으면 받은 배당'], dpsCagr5:['배당 성장률', '최근 5년 배당이 해마다 늘어난 비율'],
+    qOpYoy:['분기 영업이익 증가율', '작년 같은 분기보다 늘어난 영업이익'], qRevYoy:['분기 매출 증가율', '작년 같은 분기보다 늘어난 매출'],
+    qMargin:['분기 영업이익률', '최근 분기 매출 100원 중 남긴 영업이익'],
+    revCagr3:['매출 성장률 (3년)', '매출이 해마다 늘어난 비율'], revCagr5:['매출 성장률 (5년)', '매출이 해마다 늘어난 비율'],
+    revCagr10:['매출 성장률 (10년)', '매출이 해마다 늘어난 비율'], opCagr5:['영업이익 성장률', '영업이익이 해마다 늘어난 비율'],
+    rev:['매출', '최근 1년 매출'], op:['영업이익', '최근 1년 영업이익']
+  };
 
   // 조건 한 줄: '배당성향 20~60%' · '부채비율 100% 이하' · '연속 흑자 5년 이상'
   function condText(k, lo, hi) {
@@ -716,7 +729,10 @@
     var fb = CH - T.safe.bottom - 4, ry = fb - T.type.footer * 0.85 - 18;
     var top = hr + 38, bot = ry - 32;
     var a = (DATA.updated || '').split('-');
-    var FOOT = a.length === 3 ? a[0] + '. ' + a[1] + '. ' + a[2] + ' 기준' : '';   // 좌측 하단은 날짜만
+    var FOOT = a.length === 3 ? a[0] + '. ' + a[1] + '. ' + a[2] + ' 기준' : '';
+    var layF = layoutFor(k);
+    if (MDESC[k] && layF !== 'growth' && layF !== 'yearbars' && layF !== 'streak' && layF !== 'years')
+      FOOT += (FOOT ? ' · ' : '') + MDESC[k][0];
 
     if (!n) {
       c.fillStyle = T.inkSoft; c.textAlign = 'center'; c.font = CF(700, 34);
