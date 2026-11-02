@@ -6,9 +6,14 @@
   python3 collect_us_mcap.py --history    한 번만: 1996~작년 연말 미국 순위 → data/rank.json 의 연도 칸에 'us'
   python3 collect_us_mcap.py --half       해마다 6월 말 미국 순위 → data/rank_half.json (변천사 영상용)
   python3 collect_us_mcap.py --show       받아 둔 것 보기 (호출 0회)
+  python3 collect_us_mcap.py --dry        매일 수집을 시험으로 — 받아서 상위 10만 보여주고 파일은 안 바꿈
 
 · 지금 시가총액: 나스닥 종목 검색표(api.nasdaq.com) — 미국 상장 전 종목의 시총·섹터·업종, 키 필요 없음
   같은 회사의 주식 종류(GOOGL·GOOG, BRK-A·BRK-B)는 하나로 합친다 (큰 쪽).
+  검색표는 장 마감 뒤 한참 지나서야 갱신돼, 아침에 받으면 하루 전 종가인 경우가 많다 (2026-10 확인).
+  그래서 시총 상위 FIX_TOP 종목은 종목별 시세(api.nasdaq.com/api/quote/…/info)의 'Closed at 날짜' 종가로
+  시총을 다시 계산한다: 시총 × 최신 종가 ÷ 검색표 가격 (= 주식 수 × 최신 종가).
+  화면에 찍히는 기준일(asof)도 짐작하지 않고 그 종가의 날짜를 쓴다.
 · 과거 연말: companiesmarketcap.com 의 회사별 '연도별 시가총액' 표.
   모든 미국 회사를 받을 수는 없어서, 역대 시총 상위에 들었던 대형주 후보(CANDIDATES)만 받는다.
   후보에 없는 회사는 과거 순위에 안 나온다 → 빠진 회사가 보이면 CANDIDATES 에 한 줄 더하면 된다.
@@ -30,6 +35,8 @@ CACHE = "_cmc"
 TOP = 60          # 시가총액 탭: 상위 몇 개
 TOP_GROUP = 60    # 섹터·업종마다 몇 개
 TOP_RANK = 50     # 시총 순위·시가총액 탭 과거 연도: 칸마다 몇 위까지
+FIX_TOP = 150     # 최신 종가로 다시 계산할 시총 상위 종목 수 (종목마다 호출 1번)
+FIX_MAX_MOVE = 0.5  # 검색표 가격과 최신 종가가 이보다 더 벌어지면 (액면분할 등) 고치지 않는다
 UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Safari/537.36"
 
 # 역대 미국 시총 상위 후보: 티커 → (companiesmarketcap 주소 이름, 짧은 이름)
@@ -134,10 +141,74 @@ def screener():
         nm = short(r.get("name"))
         key = nm.lower()
         if key not in best or cap / 1e8 > best[key]["cap"]:   # 주식 종류가 여럿이면 큰 쪽 하나
-            best[key] = {"code": sym, "name": nm, "cap": round(cap / 1e8, 1), "sector": r.get("sector") or "",
+            best[key] = {"code": sym, "raw": (r.get("symbol") or "").strip(), "name": nm, "cap": round(cap / 1e8, 1),
+                         "price": num(r.get("lastsale")), "sector": r.get("sector") or "",
                          "industry": r.get("industry") or "", "country": r.get("country") or "",
-                         "chg": num(r.get("pctchange", "").replace("%", "")) if r.get("pctchange") else None}
+                         "chg": num(r.get("pctchange", "").replace("%", "")) if r.get("pctchange") else None,
+                         "date": None}
     return sorted(best.values(), key=lambda x: -x["cap"])
+
+
+CLOSED = re.compile(r"Closed at ([A-Z][a-z]{2}) (\d{1,2}), (\d{4})")
+
+
+def latest_close(raw_sym):
+    """종목별 시세에서 가장 최근 정규장 종가와 그 날짜 → (가격, 'YYYY-MM-DD') 또는 None.
+    장 전·장 중·장 후 어느 때든 'Closed at Oct 30, 2026 4:00 PM ET' 처럼 날짜가 붙은 칸을 쓴다."""
+    sym = raw_sym.replace("/", ".").replace("^", ".")
+    j = json.loads(get("https://api.nasdaq.com/api/quote/%s/info?assetclass=stocks" % urllib.request.quote(sym),
+                       {"Origin": "https://www.nasdaq.com", "Referer": "https://www.nasdaq.com/"}, tries=2))
+    d = j.get("data") or {}
+    for part in ("primaryData", "secondaryData"):
+        p = d.get(part) or {}
+        m = CLOSED.search(p.get("lastTradeTimestamp") or "")
+        price = num(p.get("lastSalePrice"))
+        if m and price > 0:
+            day = datetime.strptime("%s %s %s" % m.groups(), "%b %d %Y").strftime("%Y-%m-%d")
+            return price, day
+    return None
+
+
+def refresh(rows):
+    """시총 상위 FIX_TOP 종목을 최신 종가로 다시 계산한다 (rows 를 고친다).
+    돌려주는 것: (기준일, 요약). 기준일은 고친 종목들의 종가 날짜 중 가장 많은 것."""
+    from collections import Counter
+    from concurrent.futures import ThreadPoolExecutor
+
+    targets = [r for r in rows[:FIX_TOP] if r["price"] > 0]
+
+    def one(r):
+        try:
+            return r, latest_close(r["raw"]), None
+        except Exception as e:                     # noqa: BLE001
+            return r, None, repr(e)
+
+    with ThreadPoolExecutor(max_workers=6) as ex:
+        res = list(ex.map(one, targets))
+    dates, same, fixed, skipped, failed = Counter(), 0, 0, [], []
+    for r, q, err in res:
+        if not q:
+            failed.append(r["code"] + (" (%s)" % err[:60] if err else ""))
+            continue
+        close, day = q
+        dates[day] += 1
+        ratio = close / r["price"]
+        if abs(ratio - 1) < 0.0005:
+            same += 1                                # 검색표 가격이 이미 최신 종가
+        if abs(ratio - 1) > FIX_MAX_MOVE:
+            skipped.append("%s %.2f→%.2f" % (r["code"], r["price"], close))
+            continue
+        r["cap"] = round(r["cap"] * ratio, 1)
+        r["price"], r["date"] = close, day
+        fixed += 1
+    got = sum(dates.values())
+    if not got or got < len(targets) * 0.5:
+        return None, {"fixed": fixed, "failed": failed, "targets": len(targets)}
+    asof = dates.most_common(1)[0][0]
+    info = {"fixed": fixed, "targets": len(targets), "dates": dict(dates), "screener_fresh": same >= got * 0.8,
+            "failed": failed, "skipped": skipped}
+    rows.sort(key=lambda x: -x["cap"])
+    return asof, info
 
 
 def groups(rows, field):
@@ -150,11 +221,30 @@ def groups(rows, field):
     return sorted(out, key=lambda x: -x["sum"])
 
 
-def daily():
+def daily(dry=False):
     rows = screener()
     if len(rows) < 1000:
         sys.exit("!! 나스닥 표가 이상합니다 (%d종목). 파일을 바꾸지 않습니다." % len(rows))
     today = datetime.now(KST)
+    before = {r["code"]: r["cap"] for r in rows[:FIX_TOP]}
+    asof, info = refresh(rows)
+    if asof:
+        log("최신 종가로 다시 계산: %d/%d종목 · 종가 날짜 %s · 검색표가 이미 최신%s"
+            % (info["fixed"], info["targets"], info["dates"], "이었음" if info["screener_fresh"] else " 아니었음 (하루 늦은 값)"))
+        if info["skipped"]:
+            log("  ! 가격 차이가 너무 커서 그대로 둔 종목: %s" % ", ".join(info["skipped"]))
+    else:
+        asof = (today - timedelta(hours=16)).strftime("%Y-%m-%d")
+        log("  ! 종목별 시세를 충분히 받지 못했습니다 (%d/%d) — 검색표 값 그대로, 기준일은 짐작(%s)"
+            % (info["fixed"], info["targets"], asof))
+    if info.get("failed"):
+        log("  시세 못 받은 종목 %d개: %s" % (len(info["failed"]), ", ".join(info["failed"][:10])))
+    if dry:
+        log("\n[시험 실행 — 파일은 바꾸지 않음] 기준일 %s" % asof)
+        for i, r in enumerate(rows[:10], 1):
+            log("  %2d %-6s %-28s %10s  (검색표 %s, 종가 %s)" % (i, r["code"], r["name"][:28], fmt(r["cap"]),
+                                                       fmt(before.get(r["code"], r["cap"])), r["date"] or "-"))
+        return rows, asof, info
     us_only = [r for r in rows if r["country"] in ("United States", "")]
     keep = rows[:TOP] + [r for r in us_only[:TOP] if r not in rows[:TOP]]
     for kind in ("sector", "industry"):
@@ -162,8 +252,9 @@ def daily():
             keep += [r for r in rows if r["code"] in gg["codes"]]
     stocks = {r["code"]: {"n": r["name"], "c": r["cap"], "y": None, "s": r["sector"], "i": r["industry"],
                           "f": r["country"] not in ("United States", "")} for r in keep}
-    out = {"updated": today.strftime("%Y-%m-%d"), "asof": (today - timedelta(hours=16)).strftime("%Y-%m-%d"),
-           "unit": "억달러", "source": "나스닥 종목 검색표",
+    out = {"updated": today.strftime("%Y-%m-%d"), "asof": asof,
+           "unit": "억달러", "source": "나스닥 종목 검색표 + 종목별 종가 (상위 %d)" % FIX_TOP,
+           "fix": {k: info.get(k) for k in ("fixed", "targets", "dates", "screener_fresh")},
            "us": [{"code": r["code"], "name": r["name"], "cap": r["cap"], "ytd": None} for r in rows[:TOP]],
            "us_only": [{"code": r["code"], "name": r["name"], "cap": r["cap"], "ytd": None} for r in us_only[:TOP]],
            "groups": {"sector": groups(rows, "sector"), "industry": groups(rows, "industry")},
@@ -421,5 +512,7 @@ if __name__ == "__main__":
         half()
     elif "--half-if-needed" in sys.argv:
         half(only_if_needed=True)
+    elif "--dry" in sys.argv:
+        daily(dry=True)
     else:
         daily()
