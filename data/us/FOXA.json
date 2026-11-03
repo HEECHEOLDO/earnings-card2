@@ -2,14 +2,14 @@
  "name": "FOXA",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "Fox Corporation",
+ "legal_name": "FOX CORPORATION",
  "code": "FOXA",
  "cik": "0001754301",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-11-02",
+ "updated": "2026-11-03",
  "annual": [
   {
    "p": 2017,
@@ -122,7 +122,7 @@
    "ni": 2293.0,
    "assets": 23195.0,
    "liab": null,
-   "equity": 12067.0,
+   "equity": 12311.0,
    "dps": null,
    "payout": 12.1,
    "yield": null,
@@ -133,9 +133,9 @@
    "rev": 17126.0,
    "op": 2278.0,
    "ni": 1727.0,
-   "assets": 22482.0,
+   "assets": 23093.0,
    "liab": null,
-   "equity": 11728.0,
+   "equity": 12571.0,
    "dps": null,
    "payout": 16.6,
    "yield": null,
@@ -143,13 +143,6 @@
   }
  ],
  "quarterly": [
-  {
-   "y": 2024,
-   "q": 3,
-   "rev": 3447.0,
-   "op": 961.0,
-   "ni": 704.0
-  },
   {
    "y": 2024,
    "q": 4,
@@ -212,6 +205,13 @@
    "rev": 4212.0,
    "op": 921.0,
    "ni": 696.0
+  },
+  {
+   "y": 2027,
+   "q": 1,
+   "rev": 4571.0,
+   "op": 1283.0,
+   "ni": 957.0
   }
  ]
 }

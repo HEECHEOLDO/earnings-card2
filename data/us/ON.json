@@ -2,14 +2,14 @@
  "name": "ON",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "ON SEMICONDUCTOR CORPORATION",
+ "legal_name": "ON SEMICONDUCTOR CORP",
  "code": "ON",
  "cik": "0001097864",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-11-02",
+ "updated": "2026-11-03",
  "annual": [
   {
    "p": 2016,
@@ -145,13 +145,6 @@
  "quarterly": [
   {
    "y": 2024,
-   "q": 1,
-   "rev": 1862.7,
-   "op": 525.2,
-   "ni": 453.0
-  },
-  {
-   "y": 2024,
    "q": 2,
    "rev": 1735.2,
    "op": 388.5,
@@ -212,6 +205,13 @@
    "rev": 1603.5,
    "op": 258.6,
    "ni": 226.8
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 1722.3,
+   "op": 378.3,
+   "ni": 313.9
   }
  ]
 }

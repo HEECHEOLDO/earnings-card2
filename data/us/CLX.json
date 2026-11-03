@@ -2,14 +2,14 @@
  "name": "CLX",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "The Clorox Company",
+ "legal_name": "THE CLOROX COMPANY",
  "code": "CLX",
  "cik": "0000021076",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-11-02",
+ "updated": "2026-11-03",
  "annual": [
   {
    "p": 2016,
@@ -145,13 +145,6 @@
  "quarterly": [
   {
    "y": 2024,
-   "q": 2,
-   "rev": 1990.0,
-   "op": 866.0,
-   "ni": 93.0
-  },
-  {
-   "y": 2024,
    "q": 3,
    "rev": 1814.0,
    "op": 766.0,
@@ -212,6 +205,13 @@
    "rev": 1670.0,
    "op": 722.0,
    "ni": 187.0
+  },
+  {
+   "y": 2027,
+   "q": 1,
+   "rev": 1905.0,
+   "op": 770.0,
+   "ni": 170.0
   }
  ]
 }

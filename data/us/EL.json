@@ -2,14 +2,14 @@
  "name": "EL",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "THE ESTEE LAUDER COMPANIES INC.",
+ "legal_name": "Estee Lauder Companies Inc",
  "code": "EL",
  "cik": "0001001250",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-11-02",
+ "updated": "2026-11-03",
  "annual": [
   {
    "p": 2017,
@@ -133,7 +133,7 @@
    "rev": 15049.0,
    "op": 780.0,
    "ni": 182.0,
-   "assets": 19762.0,
+   "assets": 19963.0,
    "liab": null,
    "equity": 3806.0,
    "dps": 1.4,
@@ -143,13 +143,6 @@
   }
  ],
  "quarterly": [
-  {
-   "y": 2024,
-   "q": 3,
-   "rev": 3940.0,
-   "op": 531.0,
-   "ni": 335.0
-  },
   {
    "y": 2024,
    "q": 4,
@@ -212,6 +205,13 @@
    "rev": 3627.0,
    "op": -39.0,
    "ni": -116.0
+  },
+  {
+   "y": 2027,
+   "q": 1,
+   "rev": 3715.0,
+   "op": 408.0,
+   "ni": 233.0
   }
  ]
 }

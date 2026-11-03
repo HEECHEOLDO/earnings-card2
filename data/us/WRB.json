@@ -2,14 +2,14 @@
  "name": "WRB",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "W. R. BERKLEY CORP",
+ "legal_name": "BERKLEY W R CORP",
  "code": "WRB",
  "cik": "0000011544",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-11-02",
+ "updated": "2026-11-03",
  "annual": [
   {
    "p": 2016,
@@ -145,13 +145,6 @@
  "quarterly": [
   {
    "y": 2024,
-   "q": 1,
-   "rev": 3256.8,
-   "op": 574.1,
-   "ni": 442.5
-  },
-  {
-   "y": 2024,
    "q": 2,
    "rev": 3314.0,
    "op": 487.7,
@@ -212,6 +205,13 @@
    "rev": 3716.1,
    "op": 575.2,
    "ni": 452.3
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 3738.8,
+   "op": 574.3,
+   "ni": 446.0
   }
  ]
 }
