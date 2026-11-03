@@ -2,14 +2,14 @@
  "name": "KEY",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "KEYCORP /NEW/",
+ "legal_name": "KeyCorp",
  "code": "KEY",
  "cik": "0000091576",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-11-03",
+ "updated": "2026-11-04",
  "annual": [
   {
    "p": 2016,
@@ -145,13 +145,6 @@
  "quarterly": [
   {
    "y": 2024,
-   "q": 1,
-   "rev": 1533.0,
-   "op": 219.0,
-   "ni": 219.0
-  },
-  {
-   "y": 2024,
    "q": 2,
    "rev": 1526.0,
    "op": 273.0,
@@ -212,6 +205,13 @@
    "rev": 1964.0,
    "op": 647.0,
    "ni": 509.0
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 2052.0,
+   "op": 738.0,
+   "ni": 579.0
   }
  ]
 }

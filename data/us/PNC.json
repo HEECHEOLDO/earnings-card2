@@ -2,14 +2,14 @@
  "name": "PNC",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "PNC FINANCIAL SERVICES GROUP, INC.",
+ "legal_name": "PNC Financial Services Group, Inc.",
  "code": "PNC",
  "cik": "0000713676",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-11-03",
+ "updated": "2026-11-04",
  "annual": [
   {
    "p": 2016,
@@ -145,13 +145,6 @@
  "quarterly": [
   {
    "y": 2024,
-   "q": 1,
-   "rev": 5145.0,
-   "op": 1656.0,
-   "ni": 1344.0
-  },
-  {
-   "y": 2024,
    "q": 2,
    "rev": 5411.0,
    "op": 1819.0,
@@ -212,6 +205,13 @@
    "rev": 6875.0,
    "op": 2586.0,
    "ni": 2055.0
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 6562.0,
+   "op": 2622.0,
+   "ni": 2097.0
   }
  ]
 }

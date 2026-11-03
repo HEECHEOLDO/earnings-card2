@@ -2,14 +2,14 @@
  "name": "PNW",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "PINNACLE WEST CAPITAL CORP",
+ "legal_name": "PINNACLE WEST CAPITAL CORPORATION",
  "code": "PNW",
  "cik": "0000764622",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-11-03",
+ "updated": "2026-11-04",
  "annual": [
   {
    "p": 2016,
@@ -145,13 +145,6 @@
  "quarterly": [
   {
    "y": 2024,
-   "q": 1,
-   "rev": 951.7,
-   "op": 66.8,
-   "ni": 21.2
-  },
-  {
-   "y": 2024,
    "q": 2,
    "rev": 1309.0,
    "op": 313.7,
@@ -212,6 +205,13 @@
    "rev": 1455.7,
    "op": 305.7,
    "ni": 180.8
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 1972.7,
+   "op": 620.8,
+   "ni": 436.4
   }
  ]
 }
