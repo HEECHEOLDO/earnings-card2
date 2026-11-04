@@ -761,6 +761,7 @@
   }
 
   /* ---------------- 카드 공통: 칩 · 제목 · 푸터 ---------------- */
+  var HEAD_NS = 104;   // 방금 그린 제목 글자 크기 (둘째 줄이 제목보다 커 보이지 않게)
   function head(c, chip, title, segs) {
     c.fillStyle = T.paper; c.fillRect(0, 0, CW, CH); grain(c);
     c.textBaseline = 'alphabetic'; c.textAlign = 'left';
@@ -772,6 +773,22 @@
       c.fillStyle = T.chipInk; c.textBaseline = 'middle'; c.fillText(chip, CX + cpad, T.safe.top + chh / 2 + cf * 0.04); c.textBaseline = 'alphabetic';
     }
     var ns = fit(c, title, 900, 104, 52, CWID, '-0.02em');
+    // 가장 작게 줄여도 한 줄에 안 들어가면 'A vs' / 'B' 두 줄로 (긴 회사 이름)
+    c.font = F(900, ns); LS(c, '-0.02em'); var tooLong = c.measureText(title).width > CWID; LS(c, '0px');
+    var cut = title.indexOf(' vs ');
+    if (tooLong && cut > 0) {
+      var l1 = title.slice(0, cut + 3), l2 = title.slice(cut + 4);
+      var n2 = Math.min(fit(c, l1, 900, 88, 40, CWID, '-0.02em'), fit(c, l2, 900, 88, 40, CWID, '-0.02em')); HEAD_NS = n2;
+      var y1 = T.safe.top + chh + 20 + n2 * 0.86, y2 = y1 + n2 * 1.22;
+      c.font = F(900, n2); LS(c, '-0.02em');
+      if (segs) {          // 색 입힌 제목도 두 줄로
+        var line = function (parts, yy) { var sx = CX; parts.forEach(function (sg) { c.fillStyle = sg[1]; c.fillText(sg[0], sx, yy); sx += c.measureText(sg[0]).width; }); };
+        line([segs[0], [' vs', segs[1][1]]], y1); line([segs[2], segs[3]], y2);
+      } else { c.fillStyle = T.ink; c.fillText(fitText(c, l1, CWID), CX, y1); c.fillText(fitText(c, l2, CWID), CX, y2); }
+      LS(c, '0px');
+      return y2;
+    }
+    HEAD_NS = ns;
     var y = T.safe.top + chh + 20 + ns * 0.86;
     c.fillStyle = T.ink; c.font = F(900, ns); LS(c, '-0.02em');
     if (segs) { var sx = CX; segs.forEach(function (sg) { c.fillStyle = sg[1]; c.fillText(sg[0], sx, y); sx += c.measureText(sg[0]).width; }); }  // 제목 일부를 색으로
@@ -901,18 +918,25 @@
     // 둘째 줄: '5년 영업이익 비교' — 제목보다 작게, 스타일은 window.TREND_SUB 로 비교 (gray | gold)
     var sub = '5년 ' + nm + ' 비교', SS = window.TREND_SUB || 'gray';
     if (SS === 'gold') { c.font = F(800, 46); c.fillStyle = T.chipInk; c.fillText(sub, CX, y + 74); y += 74; }
-    else { c.font = F(800, 60); LS(c, '-0.02em'); c.fillStyle = T.inkSoft; c.fillText(sub, CX, y + 88); LS(c, '0px'); y += 88; }
+    else { var sf = Math.min(60, Math.round(HEAD_NS * 0.72)); c.font = F(800, sf); LS(c, '-0.02em'); c.fillStyle = T.inkSoft; c.fillText(sub, CX, y + sf * 1.47); LS(c, '0px'); y += sf * 1.47; }
     var ly = y + 70, lr = 34, lend;
     if (TL === 'A') {            // A: 로고 + 회사 이름을 로고 색 글자로 (색 점 없이)
       // 배치: window.TREND_LALIGN = 'left'(왼쪽으로 붙여서) | 'right'(오른쪽으로) | 'split'(반씩)
       var LA = window.TREND_LALIGN || 'left', gapL = 40, items = [[p.a, CA], [p.z, CZ]];
-      c.font = F(900, 34);
-      items.forEach(function (x) { x.push(fitText(c, x[0].b, CWID / 2 - lr * 2 - 40)); x.push(lr * 2 + 14 + c.measureText(x[2]).width); });
+      // 이름이 길면: 글자를 34 → 26px 까지 줄이고, 그래도 넘치면 긴 쪽부터 말줄임 (짧은 쪽 몫을 긴 쪽이 쓴다)
+      var avail = CWID - gapL - 2 * (lr * 2 + 14), lfz = 34;
+      var wOf = function (t) { c.font = F(900, lfz); return c.measureText(t).width; };
+      while (lfz > 26 && wOf(p.a.b) + wOf(p.z.b) > avail) lfz--;
+      var wa0 = wOf(p.a.b), wz0 = wOf(p.z.b), capA = avail / 2, capZ = avail / 2;
+      if (wa0 < capA) capZ = avail - wa0; else if (wz0 < capZ) capA = avail - wz0;
+      c.font = F(900, lfz);
+      items[0].push(fitText(c, p.a.b, capA)); items[1].push(fitText(c, p.z.b, capZ));
+      items.forEach(function (x) { x.push(lr * 2 + 14 + c.measureText(x[2]).width); });
       var totalW = items[0][3] + gapL + items[1][3];
       var xs = LA === 'split' ? [CX, CX + CWID / 2] : LA === 'right' ? [CX + CWID - totalW, CX + CWID - items[1][3]] : [CX, CX + items[0][3] + gapL];
       items.forEach(function (x, i) {
         logo(c, x[0], xs[i] + lr, ly, lr);
-        c.font = F(900, 34); c.fillStyle = x[1]; c.fillText(x[2], xs[i] + lr * 2 + 14, ly + 12);
+        c.font = F(900, lfz); c.fillStyle = x[1]; c.fillText(x[2], xs[i] + lr * 2 + 14, ly + lfz * 0.35);
       });
       lend = ly + lr + 22;
     } else if (TL === 'C') {     // C: 가운데 정렬 — [로고] 이름  vs  이름 [로고], 각 이름 아래 색 막대
