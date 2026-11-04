@@ -84,7 +84,28 @@ def jload(path, default):
         return default
 
 
+# 공시 표를 잘못 읽어 숫자가 엉뚱한 해 (2026-11 점검). 그해 금액을 비운다.
+#   한국경제신문: 2018년부터 매출 0~18억(신문사 매출 수천억) · ASML코리아: 2023년부터 3억·70억(직전 3,430억)
+BAD_YEARS = {"00156628": 2018, "00364625": 2023}
+
+
+def sanitize(obj):
+    """저장 직전 숫자 점검: 매출 0 으로 읽힌 해(앞뒤 해는 수백억 이상)와 BAD_YEARS 의 해를 비운다."""
+    a = obj.get("annual") if isinstance(obj, dict) else None
+    if not a:
+        return obj
+    cut = BAD_YEARS.get(str(obj.get("code", "")))
+    for i, r in enumerate(a):
+        nb = [x.get("rev") for x in a[max(0, i - 1):i] + a[i + 1:i + 2] if x.get("rev")]
+        zero = r.get("rev") == 0 and nb and min(nb) > 100
+        if zero or (cut and int(str(r.get("p"))[:4]) >= cut):
+            for k in ("rev", "op", "ni"):
+                r[k] = None
+    return obj
+
+
 def jsave(path, obj, **kw):
+    sanitize(obj)
     os.makedirs(OUT, exist_ok=True)
     with open(path, "w", encoding="utf-8") as f:
         json.dump(obj, f, ensure_ascii=False, **kw)

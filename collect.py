@@ -209,8 +209,54 @@ def fetch_fs(corp_code, year, reprt_code):
             rows = res["list"]
             dbg("FS %s %s %s -> %s (%d행)" % (corp_code, year, reprt_code, fs_div, len(rows)))
             break
+    if rows and any((r.get("currency") or "").upper() == "USD" for r in rows):
+        to_krw(rows, year)
+        log("  [통화] 달러로 공시 — 그해 평균 환율로 원화로 바꿨습니다 (%s)" % year)
     _fs_cache[key] = rows
     return rows
+
+
+_FX_AVG = None
+
+
+def fx_avg(year):
+    """그해 평균 원/달러 환율 (data/fx_usdkrw.json). 없으면 가장 가까운 해."""
+    global _FX_AVG
+    if _FX_AVG is None:
+        _FX_AVG = {}
+        try:
+            with open(os.path.join(OUT_DIR, "fx_usdkrw.json"), encoding="utf-8") as f:
+                rates = json.load(f).get("rates") or {}
+            acc = {}
+            for d, v in rates.items():
+                acc.setdefault(int(d[:4]), []).append(v)
+            _FX_AVG = {y: sum(v) / len(v) for y, v in acc.items()}
+        except Exception:      # noqa: BLE001
+            pass
+    if not _FX_AVG:
+        return 1300.0
+    if year in _FX_AVG:
+        return _FX_AVG[year]
+    near = min(_FX_AVG, key=lambda y: abs(y - year))
+    return _FX_AVG[near]
+
+
+def to_krw(rows, year):
+    """
+    달러로 공시하는 국내 상장사(두산밥캣 2023~, 아남전자 2019~)는 숫자가 달러라
+    매출 9조가 '74.8억' 처럼 1,300분의 1로 보였다 (2026-11 점검). 금액 칸을 그해 평균 환율로 원화로 바꾼다.
+    당기·전기·전전기 금액은 각각 그해 환율을 쓴다.
+    """
+    for r in rows:
+        for k, v in list(r.items()):
+            if not k.endswith("_amount"):
+                continue
+            n = to_num(v)
+            if n is None:
+                continue
+            y = year - (2 if k.startswith("bfefrmtrm") else 1 if k.startswith("frmtrm") else 0)
+            r[k] = str(n * fx_avg(y))
+        r["currency"] = "KRW"
 
 
 def to_num(v):
@@ -557,6 +603,43 @@ def data_unchanged(path, new):
     return a == b
 
 
+def clean_annual(rows):
+    """
+    연간 숫자 중 단위가 틀린 해(원·천원으로 들어와 1천 배·1백만 배로 튄 해)를 바로잡는다 (2026-11 점검:
+    엘에이티 2017 매출 68,923,935억·소프트센 2022·대산F&B 2023·네오크레마 2022·제이앤케이 2021).
+    나머지 해 중앙값의 200배 넘게 크면 1,000 또는 1,000,000 으로 나눠 중앙값에 가장 가까운 쪽을 쓴다. 반환: 고친 해 수
+    """
+    n = 0
+    vals = [abs(r["rev"]) for r in rows if r.get("rev")]
+    if len(vals) < 4:
+        return 0
+    def is_out(r):
+        v = r.get("rev")
+        if not v:
+            return False
+        others = sorted(abs(x["rev"]) for x in rows if x is not r and x.get("rev"))
+        med = others[len(others) // 2]
+        return med > 0 and abs(v) > 200 * med
+    flags = [is_out(r) for r in rows]
+    for i, r in enumerate(rows):
+        if not flags[i]:
+            continue
+        # 단위 오류는 한 해짜리다. 이웃한 해도 같이 튀면(통화가 바뀐 경우 등) 손대지 않는다
+        if (i > 0 and flags[i - 1]) or (i + 1 < len(rows) and flags[i + 1]):
+            continue
+        v = r["rev"]
+        others = sorted(abs(x["rev"]) for x in rows if x is not r and x.get("rev"))
+        med = others[len(others) // 2]
+        f = min((1e3, 1e6), key=lambda k: abs(math.log(abs(v) / k / med)))
+        if abs(math.log(abs(v) / f / med)) > math.log(20):
+            continue
+        for k in ("rev", "op", "ni", "assets", "liab", "equity"):
+            if r.get(k) is not None:
+                r[k] = round(r[k] / f, 1)
+        n += 1
+    return n
+
+
 def clean_quarters(q):
     """
     분기 숫자 중 '단위가 틀린' 칸을 비운다 (2026-11 점검).
@@ -589,6 +672,8 @@ def save_company(code, data):
     반환: True면 실제로 썼음
     """
     path = os.path.join(OUT_DIR, code + ".json")
+    if data.get("annual"):
+        clean_annual(data["annual"])
     if data.get("quarterly"):
         clean_quarters(data["quarterly"])
     if os.path.exists(path) and data_unchanged(path, data):
@@ -771,6 +856,8 @@ def build_screen():
                 d0 = json.load(f)
             if d0.get("annual"):          # 분할 환산은 매번 다시 — 판정 규칙을 고치면 바로 반영된다
                 adjust_for_splits(d0["annual"])
+            if d0.get("annual"):          # 단위가 틀린 해는 바로잡는다
+                clean_annual(d0["annual"])
             if d0.get("quarterly"):       # 단위가 틀린 분기는 비운다
                 clean_quarters(d0["quarterly"])
             files.append((fn, d0))
