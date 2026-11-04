@@ -978,7 +978,7 @@
     }
     if (TL === 'A' || TL === 'C') rule(c, lend);
     ly = lend - lr - 22;          // 아래 차트 위치 계산을 범례 높이에 맞춘다
-    var ry = footer(c, today() + ' 기준 · ' + (qmode ? '분기 실적' : '연간 실적') + (p.a.us || p.z.us ? ' · 1달러 ' + Math.round(FX || 0).toLocaleString('ko-KR') + '원' : ''));
+    var ry = footer(c, today() + ' 기준');      // 날짜만 (연간·분기는 부제에, 환율은 카드에서 뺐다)
     if (!A || !Z || !years.length) return;
     var dense = years.length > 6;    // 기간이 많으면 숫자는 처음과 마지막 기간에만 (겹치지 않게)
     var vals = []; years.forEach(function (yy) { [A.v[yy], Z.v[yy]].forEach(function (v) { if (v != null) vals.push(v); }); });
@@ -990,15 +990,18 @@
     var fmt = function (v) { if (v == null) return '–'; if (m === 'margin') return v.toFixed(1) + '%'; var w = won(v); return w[0] + w[1].replace('원', ''); };
     years.forEach(function (yy, i) {
       var cx = CX + colW * (i + 0.5);
+      // 막대 먼저 그리고, 숫자는 두 막대를 다 본 뒤 겹치지 않는 자리에
+      var labs = [];
       [[A.v[yy], CA, cx - bw - gap / 2], [Z.v[yy], CZ, cx + gap / 2]].forEach(function (b) {
         var v = b[0]; if (v == null) return;
         var h = Math.abs(v) / ((vmax - vmin) || 1) * H, y0 = v >= 0 ? zeroY - h : zeroY;
         c.fillStyle = b[1]; c.fillRect(b[2], y0, bw, Math.max(h, 2));
         if (dense && i !== 0 && i !== years.length - 1) return;
-        var lab = fmt(v), lf = fit(c, lab, 800, 21, 14, dense ? colW + 20 : colW / 2 - 4);
-        c.font = F(800, lf); c.textAlign = 'center'; c.fillStyle = v < 0 ? T.down : T.ink;
-        c.fillText(lab, b[2] + bw / 2, v >= 0 ? y0 - 10 : y0 + h + lf + 6); c.textAlign = 'left';
+        var lab = fmt(v), lf = fit(c, lab, 800, 21, 13, dense ? bw + gap + 8 : colW / 2 + 10);
+        c.font = F(800, lf); var w = c.measureText(lab).width;
+        labs.push({ t:lab, f:lf, w:w, x:b[2] + bw / 2, neg:v < 0, top:y0, bot:y0 + h, bx:b[2] });
       });
+      placeLabels(c, labs, bw);
       c.font = F(700, 24); c.fillStyle = T.inkSoft; c.textAlign = 'center';
       var xl = qmode ? String(yy).slice(2, 4) + '.' + yy.split('.')[1] + 'Q' : (A.fiscal || Z.fiscal ? 'FY' : '') + yy;
       c.font = F(700, fit(c, xl, 700, 24, 15, colW - 6)); c.fillText(xl, cx, bot + 62); c.textAlign = 'left';
@@ -1014,6 +1017,35 @@
         logo(c, sx[1], bx + bw / 2, yTop - 21 - 14 - r, r);
       });
     }
+  }
+  // 막대 위 숫자 자리 잡기 — 글자가 옆 막대나 다른 숫자에 닿으면 위로(음수는 아래로) 비킨다
+  function placeLabels(c, labs, bw) {
+    var hit = function (L, x0, x1) { return L.x + L.w / 2 > x0 - 2 && L.x - L.w / 2 < x1 + 2; };
+    labs.forEach(function (L) { L.y = L.neg ? L.bot + L.f + 6 : L.top - 10; });
+    // ① 글자가 자기 막대보다 넓어 옆의 더 긴 막대에 걸리면, 먼저 옆 막대 반대쪽으로 민다 (같은 높이 유지)
+    labs.forEach(function (L) {
+      labs.forEach(function (O) {
+        if (O === L || L.neg !== O.neg || !hit(L, O.bx, O.bx + bw)) return;
+        var taller = L.neg ? O.bot + L.f + 6 > L.y : O.top - 10 < L.y;
+        if (!taller) return;
+        var nx = O.bx > L.bx ? Math.min(L.x, O.bx - 3 - L.w / 2) : Math.max(L.x, O.bx + bw + 3 + L.w / 2);
+        nx = Math.max(CX + L.w / 2, Math.min(CX + CWID - L.w / 2, nx));
+        if (Math.abs(nx - L.x) <= L.w / 2 + 4 && !hit({ x:nx, w:L.w }, O.bx, O.bx + bw)) L.x = nx;    // 자기 막대 위에서 크게 벗어나지 않을 때만
+        else L.y = L.neg ? Math.max(L.y, O.bot + L.f + 6) : Math.min(L.y, O.top - 10);                 // 안 되면 옆 막대 위로
+      });
+    });
+    // ② 두 숫자끼리 겹치면 낮은 쪽 막대의 숫자를 한 줄 비킨다
+    if (labs.length === 2) {
+      var a = labs[0], b = labs[1];
+      if (a.neg === b.neg && Math.abs(a.x - b.x) < (a.w + b.w) / 2 + 4 && Math.abs(a.y - b.y) < Math.max(a.f, b.f) + 2) {
+        var lowA = a.neg ? a.bot < b.bot : a.top > b.top, m = lowA ? a : b, o = lowA ? b : a;
+        m.y = m.neg ? o.y + o.f + 4 : o.y - o.f - 4;
+      }
+    }
+    labs.forEach(function (L) {
+      c.font = F(800, L.f); c.textAlign = 'center'; c.fillStyle = L.neg ? T.down : T.ink;
+      c.fillText(L.t, L.x, L.y); c.textAlign = 'left';
+    });
   }
   function fitText(c, t, w) { if (c.measureText(t).width <= w) return t; while (t.length > 1 && c.measureText(t + '…').width > w) t = t.slice(0, -1); return t + '…'; }
 
@@ -1033,7 +1065,7 @@
     c.textAlign = 'left';
     var start = cy + R + 24 + nf * 0.86 + 34 + 34;
     rule(c, start);
-    var ry = footer(c, today() + ' 기준' + (p.a.us || p.z.us ? ' · 1달러 ' + Math.round(FX || 0).toLocaleString('ko-KR') + '원' : ''));
+    var ry = footer(c, today() + ' 기준');
     if (!A || !Z) return;
     var rowsDef = [['cap', '시가총액'], ['rev', '매출'], ['op', '영업이익'], ['ni', '순이익'], ['margin', '영업이익률'], ['growth', '매출 성장률']]
       .filter(function (d) { return A[d[0]] != null && Z[d[0]] != null; });
@@ -1195,7 +1227,7 @@
   }
   function findPick(v) {
     v = (v || '').trim(); if (!v || !PICK) return null;
-    var ALIAS = { '네이버':'NAVER', '메가커피':'메가MGC커피', '현대차':'현대자동차', '하이닉스':'SK하이닉스', '엘지전자':'LG전자', '삼전':'삼성전자', '포스코':'POSCO홀딩스', '셀트리온헬스':'셀트리온' };
+    var ALIAS = { '구글':'GOOGL', '알파벳':'GOOGL', '페이스북':'META', '엔씨소프트':'NC', '엔씨':'NC', '네이버':'NAVER', '메가커피':'메가MGC커피', '현대차':'현대자동차', '하이닉스':'SK하이닉스', '엘지전자':'LG전자', '삼전':'삼성전자', '포스코':'POSCO홀딩스', '셀트리온헬스':'셀트리온' };
     if (ALIAS[v]) v = ALIAS[v];
     if (PICK[v]) return PICK[v];
     var lv = v.toLowerCase(), keys = Object.keys(PICK), rank = function (it) { return it.k ? 0 : it.us ? 1 : 2; };
