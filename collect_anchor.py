@@ -188,10 +188,27 @@ def kr_one(code, base, months):
       제외 사유 = 상장 전·상장폐지·거래정지처럼 값을 만들 수 없는 경우
     """
     out, bad = {}, []
+    # 빠른 길 (2026-11): 기간마다 한 번씩(7회) + 오늘 종가(1회) 부르던 것을, 20년 치 일별을 한 번에 받아 잘라 쓴다.
+    # 하루 4시간 넘게 걸려 5시간 제한에 자주 걸렸다(취소). 응답이 잘렸다고 보이면 예전처럼 기간마다 따로 부른다.
+    s_all, _ = month_span(years_back(base, max(SPANS)))
+    allrows, _ = naver_rows(code, s_all, base.strftime("%Y%m%d"), "day")
+    if allrows and months:
+        # 월봉에는 있는 달인데 일별 첫 줄이 그보다 늦으면 잘린 응답 — 믿지 않는다
+        first_m, mon_first = allrows[0][0][:6], min(months)
+        if first_m > max(mon_first, s_all[:6]):
+            allrows = None
+
+    def window(s, e, mk):
+        if allrows:
+            got = [r for r in allrows if s <= r[0] <= e]
+            if got or mk not in months:        # 월봉에도 없는 달이면 정말 시세가 없는 것
+                return got or None, None
+        return naver_rows(code, s, e, "day")    # 못 믿거나 비었으면 그 달만 따로
+
     for n in SPANS:
         tgt = years_back(base, n)
         s, e = month_span(tgt)
-        rows, why = naver_rows(code, s, e, "day")
+        rows, why = window(s, e, tgt.strftime("%Y%m"))
         if not rows:
             continue                          # 상장 전이면 그 기간은 그냥 비운다
         hit = on_or_before(rows, tgt.strftime("%Y%m%d"))
@@ -213,7 +230,9 @@ def kr_one(code, base, months):
 
     # 오늘(휴장이면 직전 거래일) 종가
     s = (base - timedelta(days=14)).strftime("%Y%m%d")
-    rows, _ = naver_rows(code, s, base.strftime("%Y%m%d"), "day")
+    rows = [r for r in (allrows or []) if r[0] >= s]
+    if not rows:
+        rows, _ = naver_rows(code, s, base.strftime("%Y%m%d"), "day")
     if not rows:
         return None, [], "최근 종가 없음 (상장폐지·거래정지)"
     out["now"] = {"d": fmt(rows[-1][0]), "v": rows[-1][1]}
@@ -467,7 +486,8 @@ def main():
             x = mism[c][0]
             excluded[c] = "일별·월봉 불일치 %s (%.2f배, 증자·감자 추정)" % (x["ym"], x["ratio"])
 
-        out["kr"] = {"asof": base.strftime("%Y-%m-%d"),
+        out["kr"] = {"asof": max([v["now"]["d"] for v in items.values() if v.get("now")] or [base.strftime("%Y-%m-%d")]),   # 실제 종가 날짜 (실행이 늦게 시작해도 날짜가 하루 밀리지 않게)
+                     
                      "basis": "일별 종가 · 배당 제외 · 수정주가",
                      "items": items,
                      "excluded": excluded}

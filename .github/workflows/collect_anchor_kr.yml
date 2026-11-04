@@ -17,7 +17,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: data-commit
+  group: anchor-kr
   cancel-in-progress: false
 
 jobs:
