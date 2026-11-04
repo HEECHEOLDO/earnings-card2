@@ -28,6 +28,7 @@ PAGES = {
     "unlisted.html": "unlisted",
     "mcap.html":    "mcap",
     "rank.html":    "rank",
+    "vs.html":      "vs",
     "status.html":  "status",     # 데이터 상태 — 메뉴 칸은 없고 메뉴 아래 한 줄로 들어간다
 }
 
@@ -61,6 +62,9 @@ ITEMS = [
     ("rank",    "./rank.html",
      '<path d="M4 20v-8h5v8M9 20V5h6v15M15 20v-11h5v11"/>',
      "시총 순위", "순위"),
+    ("vs",      "./vs.html",
+     '<path d="M4 7h10M10 3l4 4-4 4"/><path d="M20 17H10M14 13l-4 4 4 4"/>',
+     "비교", "비교"),
     ("screen",  "./screen.html",
      '<circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/>',
      "종목 스크리닝", "스크리닝"),
@@ -85,7 +89,7 @@ def nav_html(here):
 
 NAV_RE = re.compile(r'<nav class="nav"[^>]*>.*?</nav>', re.S)
 
-# 메뉴 줄바꿈 — 넓은 화면은 한 줄, 좁은 화면(태블릿·휴대폰)은 두 줄(5칸 + 4칸).
+# 메뉴 줄바꿈 — 넓은 화면은 한 줄, 좁은 화면(태블릿·휴대폰)은 두 줄(5칸 + 5칸).
 # 화면마다 따로 적힌 메뉴 모양 뒤에 덧붙여 덮어쓴다. 몇 번 돌려도 한 덩어리만 남는다.
 NAV_CSS_RE = re.compile(r'\s*<style id="nav-wrap">.*?</style>', re.S)
 NAV_CSS = """

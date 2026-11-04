@@ -42,6 +42,26 @@
         '<span class="dot" style="background:' + color[st] + '"></span>' + text +
         (when ? ' · ' + when + ' 점검' : '') + '</a>';
       nav.parentNode.insertBefore(box, nav.nextSibling);
+      // 오늘의 업데이트 — 이 화면에 새로 들어온 것이 있으면 앞에 한 줄 (data/updates.json)
+      var PAGE_OF = { kr:'index.html', us:'us.html', unlisted:'unlisted.html', mcap:'mcap.html', screen:'screen.html' };
+      fetch('./data/updates.json', { cache: 'no-cache' })
+        .then(function (r) { if (!r.ok) throw 0; return r.json(); })
+        .then(function (u) {
+          var d = (u.days || [])[0]; if (!d) return;
+          var age = (Date.now() - new Date(d.date + 'T00:00:00+09:00').getTime()) / 864e5;
+          if (age > 1.5) return;                       // 하루 넘게 지난 기록이면 안 보인다
+          var mine = d.sections.filter(function (s) {
+            return PAGE_OF[s.key] === page || (s.key === 'mcap' && page === 'rank.html') || (s.key === 'prices' && (page === 'buy.html' || page === 'returns.html'));
+          });
+          var n = d.sections.length;
+          var t = mine.length ? '오늘 ' + mine[0].summary.split(' · ')[0] : (n ? '오늘의 업데이트 ' + n + '건' : '');
+          if (!t) return;
+          var a = document.createElement('a');
+          a.href = './status.html#updates'; a.title = '오늘 새로 들어온 데이터 보기';
+          a.style.marginRight = '14px'; a.style.color = 'var(--accent-text,#1E4E8C)'; a.style.fontWeight = '600';
+          a.textContent = '↻ ' + t;
+          box.insertBefore(a, box.firstChild);
+        }).catch(function () {});
     })
     .catch(function () {});
 })();

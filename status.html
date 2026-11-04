@@ -75,6 +75,28 @@
   .hero p{margin:3px 0 0;font-size:13px;color:var(--text-soft)}
 
   h3.sec{font-size:13px;font-weight:700;margin:26px 0 10px;color:var(--text-soft)}
+  /* ---------- 오늘의 업데이트 ---------- */
+  .upd-head{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:26px 0 10px}
+  .upd-head h3{font-size:13px;font-weight:700;margin:0;color:var(--text-soft)}
+  .upd-days{display:flex;gap:6px;flex-wrap:wrap}
+  .upd-days button{font:inherit;font-size:12.5px;font-weight:600;height:30px;padding:0 11px;border-radius:999px;cursor:pointer;
+    border:1px solid var(--border-strong);background:var(--surface);color:var(--text-soft)}
+  .upd-days button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+  .upd{background:var(--surface);border-radius:12px;overflow:hidden}
+  .upd-sec{padding:14px 16px;border-bottom:1px solid var(--border)}
+  .upd-sec:last-child{border-bottom:0}
+  .upd-sec summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:minmax(0,170px) 1fr auto;gap:12px;align-items:baseline}
+  .upd-sec summary::-webkit-details-marker{display:none}
+  .upd-sec .t{font-weight:800;font-size:14px}
+  .upd-sec .t a{color:var(--text);text-decoration:none}
+  .upd-sec .t a:hover{color:var(--accent-text)}
+  .upd-sec .s{color:var(--text-soft);font-size:13px;line-height:1.5}
+  .upd-sec .chev{color:var(--text-mute);font-size:12px}
+  .upd-sec[open] .chev{transform:rotate(180deg)}
+  .upd-sec ul{margin:10px 0 2px;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:6px}
+  .upd-sec li{font-size:12.5px;background:var(--surface-2);color:var(--text);border-radius:999px;padding:4px 10px}
+  .upd-sec li.more{background:transparent;color:var(--text-mute)}
+  @media (max-width:560px){ .upd-sec summary{grid-template-columns:1fr auto} .upd-sec .s{grid-column:1 / -1;grid-row:2} }
   .list{background:var(--surface);border-radius:12px;overflow:hidden}
   .row{display:grid;grid-template-columns:20px minmax(0,1.4fr) 110px minmax(0,1.6fr);
     gap:12px;align-items:center;padding:13px 16px;border-bottom:1px solid var(--border);font-size:13.5px}
@@ -169,6 +191,10 @@
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20v-8h5v8M9 20V5h6v15M15 20v-11h5v11"/></svg>
         <span class="nav-full">시총 순위</span><span class="nav-short">순위</span>
       </a>
+      <a href="./vs.html" class="nav-i">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h10M10 3l4 4-4 4"/><path d="M20 17H10M14 13l-4 4 4 4"/></svg>
+        <span class="nav-full">비교</span><span class="nav-short">비교</span>
+      </a>
       <a href="./screen.html" class="nav-i">
         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
         <span class="nav-full">종목 스크리닝</span><span class="nav-short">스크리닝</span>
@@ -183,6 +209,12 @@
     <span class="big" id="hero-dot" style="background:var(--text-mute)"></span>
     <div><h2 id="hero-t">불러오는 중…</h2><p id="hero-p"></p></div>
   </div>
+
+  <div class="upd-head" id="updates">
+    <h3 id="upd-h">오늘의 업데이트</h3>
+    <div class="upd-days" id="upd-days"></div>
+  </div>
+  <div class="upd" id="upd"><div class="empty">불러오는 중…</div></div>
 
   <h3 class="sec">화면별 수집</h3>
   <div class="list" id="sources"></div>
@@ -213,6 +245,34 @@
     var r = document.documentElement;
     r.setAttribute('data-mode', r.getAttribute('data-mode') === 'dark' ? 'light' : 'dark');
   });
+
+  /* ---------- 오늘의 업데이트 (data/updates.json — make_updates.py 가 매일 아침 만든다) ---------- */
+  var UPD = null;
+  function md(d) { var a = (d || '').split('-'); return a.length === 3 ? (+a[1]) + '.' + (+a[2]) : d; }
+  function showDay(i) {
+    var d = UPD.days[i];
+    Array.prototype.forEach.call($('upd-days').children, function (b, j) { b.setAttribute('aria-pressed', j === i ? 'true' : 'false'); });
+    $('upd-h').textContent = (i === 0 ? '오늘의 업데이트' : md(d.date) + ' 업데이트') + ' · ' + md(d.from.slice(0, 10)) + ' ' + d.from.slice(11, 16) + ' 이후';
+    if (!d.sections.length) { $('upd').innerHTML = '<div class="empty">이날은 새로 들어온 것이 없습니다</div>'; return; }
+    $('upd').innerHTML = d.sections.map(function (s, j) {
+      var li = s.items.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') +
+               (s.more ? '<li class="more">외 ' + s.more.toLocaleString('ko-KR') + '건</li>' : '');
+      return '<details class="upd-sec"' + (j < 2 && li ? ' open' : '') + '><summary>' +
+        '<span class="t"><a href="./' + esc(s.page) + '">' + esc(s.name) + '</a></span>' +
+        '<span class="s">' + esc(s.summary) + '</span><span class="chev">' + (li ? '▾' : '') + '</span></summary>' +
+        (li ? '<ul>' + li + '</ul>' : '') + '</details>';
+    }).join('');
+  }
+  fetch('./data/updates.json', { cache: 'no-cache' })
+    .then(function (r) { if (!r.ok) throw 0; return r.json(); })
+    .then(function (j) {
+      UPD = j; if (!j.days || !j.days.length) throw 0;
+      $('upd-days').innerHTML = j.days.slice(0, 7).map(function (d, i) {
+        return '<button type="button" data-i="' + i + '">' + (i === 0 ? '오늘' : md(d.date)) + '</button>'; }).join('');
+      $('upd-days').addEventListener('click', function (e) { var b = e.target.closest('button'); if (b) showDay(+b.dataset.i); });
+      showDay(0);
+    })
+    .catch(function () { $('upd').innerHTML = '<div class="empty">아직 업데이트 기록이 없습니다 · 매일 아침 점검 때 만들어집니다</div>'; });
 
   fetch('./data/health.json', { cache: 'no-cache' })
     .then(function (r) { if (!r.ok) throw 0; return r.json(); })

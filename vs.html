@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>비교 · 돈굴돈굴</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#F4F6F8; --surface:#FFFFFF; --surface-2:#EDF1F5;
+    --border:#E2E6EB; --border-strong:#D3DBE3;
+    --text:#16202B; --text-soft:#5A6673; --text-mute:#8894A2;
+    --accent:#1E4E8C; --accent-soft:#E8F0FA; --accent-text:#1E4E8C;
+    --pos:#1D6E4E; --pos-soft:#E4F2EB; --neg:#B32B22;
+    --radius:8px;
+  }
+  [data-mode="dark"] {
+    --bg:#0E141B; --surface:#161F29; --surface-2:#1D2833;
+    --border:#26313D; --border-strong:#35424F;
+    --text:#E6EBF0; --text-soft:#93A1B0; --text-mute:#6C7A89;
+    --accent:#5B9BE8; --accent-soft:#17293D; --accent-text:#8FBDF0;
+    --pos:#59C79A; --pos-soft:#14312A; --neg:#E8776D;
+  }
+  html { -webkit-text-size-adjust:100%; }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--text);
+    font-family:'Noto Sans KR',-apple-system,'Malgun Gothic',sans-serif;-webkit-font-smoothing:antialiased}
+  body{padding:20px 16px 80px}
+  .shell{max-width:1180px;margin:0 auto}
+
+  .topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;
+    padding-bottom:14px;border-bottom:1px solid var(--border);flex-wrap:wrap}
+  .brand{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .brand h1{font-size:17px;font-weight:800;margin:0;letter-spacing:-.01em}
+  /* ---------- 공통 메뉴 ---------- */
+  .nav{display:flex;gap:4px;margin:14px 0 4px;padding:4px;background:var(--surface-2);border-radius:999px}
+  .nav-i{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:7px;
+    height:40px;padding:0 14px;border-radius:999px;font-size:13.5px;font-weight:700;
+    text-decoration:none;color:var(--text-soft);white-space:nowrap;transition:background .12s,color .12s}
+  .nav-i svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.1;
+    stroke-linecap:round;stroke-linejoin:round;flex:none}
+  .nav-i:hover{color:var(--accent-text)}
+  .nav-short { display: none; }
+  @media (max-width: 480px) {
+    .nav-full { display: none; }
+    .nav-short { display: inline; }
+  }
+
+  .nav-i.on{background:var(--accent);color:#fff;box-shadow:0 2px 8px -3px rgba(30,78,140,.55)}
+  [data-mode="dark"] .nav-i.on{color:#0E141B;box-shadow:none}
+  @media (max-width:560px){
+    .nav{margin:10px 0 2px;gap:2px;padding:3px}
+    .nav-i{height:38px;padding:0 8px;font-size:12px;gap:5px}
+    .nav-i svg{width:15px;height:15px}
+  }
+  @media (max-width: 400px) {
+    /* 아주 좁은 화면에서는 아이콘을 빼고 글자만 남긴다 */
+    .nav-i svg { display: none; }
+    .nav-i { padding: 0 4px; gap: 0; font-size: 12px; }
+  }
+  .topbar-right{display:flex;align-items:center;gap:8px}
+  .pill{font-size:12px;font-weight:600;padding:5px 11px;border-radius:999px;
+    background:var(--pos-soft);color:var(--pos)}
+  .icon-btn{width:36px;height:36px;border-radius:var(--radius);border:1px solid var(--border-strong);
+    background:transparent;color:var(--text-soft);cursor:pointer;font-size:15px}
+
+  h2.sec{font-size:13px;font-weight:700;margin:22px 0 10px;color:var(--text-soft)}
+
+  .presets{display:flex;gap:8px;flex-wrap:wrap}
+  .preset{font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;
+    padding:9px 14px;border-radius:999px;border:1px solid var(--border-strong);
+    background:var(--surface);color:var(--text)}
+  .preset:hover{border-color:var(--accent);color:var(--accent)}
+  .preset[aria-pressed="true"]{background:var(--accent-soft);border-color:transparent;color:var(--accent-text)}
+
+  .filters{background:var(--surface);border-radius:12px;padding:16px 16px 8px;margin-top:12px}
+  .fgroup{margin-bottom:14px}
+  .fgroup > h3{font-size:12px;font-weight:700;color:var(--text-mute);margin:0 0 8px;
+    letter-spacing:.02em}
+  .frow{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px 12px}
+  .f{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--text-soft)}
+  .f .nm{flex:1;min-width:0}
+  .f input{width:62px;height:34px;text-align:right;font-family:inherit;font-size:13px;
+    color:var(--text);background:var(--bg);border:1px solid var(--border-strong);
+    border-radius:6px;padding:0 7px}
+  .f input:focus{outline:none;border-color:var(--accent)}
+  .f input.on{border-color:var(--accent);background:var(--accent-soft)}
+  .f .tilde{color:var(--text-mute);font-size:12px}
+  .f .unit{color:var(--text-mute);font-size:11.5px;width:22px}
+
+  .marketrow{display:flex;gap:14px;align-items:center;font-size:13px;color:var(--text-soft)}
+  .marketrow label{display:inline-flex;align-items:center;gap:6px;cursor:pointer}
+  .marketrow input{width:17px;height:17px;accent-color:var(--accent)}
+
+  .bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+  .btn{font-family:inherit;font-size:14px;font-weight:700;cursor:pointer;border-radius:var(--radius);
+    padding:0 16px;height:40px;border:1px solid var(--border-strong);background:transparent;color:var(--text)}
+  .btn:hover{border-color:var(--accent);color:var(--accent)}
+  .btn-primary{background:var(--accent);border-color:var(--accent);color:#fff}
+  .count{font-size:14px;font-weight:700;color:var(--text)}
+  .count b{color:var(--accent-text)}
+  .sortsel{height:40px;font-family:inherit;font-size:13px;color:var(--text);background:var(--surface);
+    border:1px solid var(--border-strong);border-radius:var(--radius);padding:0 10px;margin-left:auto}
+
+  .tablewrap{background:var(--surface);border-radius:12px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  table{width:100%;border-collapse:collapse;font-size:12.5px;white-space:nowrap}
+  th,td{padding:9px 10px;text-align:right}
+  th:first-child,td:first-child,th:nth-child(2),td:nth-child(2){text-align:left}
+  thead th{color:var(--text-soft);font-weight:600;border-bottom:1px solid var(--border-strong);
+    position:sticky;top:0;background:var(--surface);cursor:pointer;user-select:none}
+  thead th:hover{color:var(--accent)}
+  tbody td{border-bottom:1px solid var(--border)}
+  tbody tr{cursor:pointer}
+  tbody tr:hover{background:var(--surface-2)}
+  td.name{font-weight:700}
+  td .mk{font-size:11px;color:var(--text-mute);margin-left:6px;font-weight:400}
+  .pos{color:var(--pos)} .neg{color:var(--neg)}
+  .empty{padding:40px 16px;text-align:center;color:var(--text-mute);font-size:14px}
+  .note{font-size:12px;color:var(--text-mute);margin-top:10px;line-height:1.7}
+
+  /* ---------- 카드뉴스 ---------- */
+  .cardbox{display:grid;grid-template-columns:minmax(0,440px) 1fr;gap:16px;align-items:start;
+    background:var(--surface);border-radius:12px;padding:16px;margin:4px 0 14px}
+  .cardbox canvas{width:100%;height:auto;display:block;border-radius:8px;
+    box-shadow:0 1px 0 var(--border),0 6px 18px -10px rgba(0,0,0,.25)}
+  .cardctl{display:flex;flex-direction:column;gap:10px;font-size:13px;color:var(--text-soft)}
+  .cardctl label{display:flex;flex-direction:column;gap:5px;font-weight:700;font-size:12px}
+  .cardctl input[type=text],.cardctl select{height:38px;font-family:inherit;font-size:13.5px;color:var(--text);
+    background:var(--bg);border:1px solid var(--border-strong);border-radius:6px;padding:0 10px;font-weight:500}
+  .cardctl .row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .cardctl .chk{flex-direction:row;align-items:center;gap:8px;font-weight:600;font-size:13px}
+  .cardctl .chk input{width:17px;height:17px;accent-color:var(--accent)}
+  .cardctl .hint{font-size:12px;color:var(--text-mute);line-height:1.6}
+  @media (max-width:760px){ .cardbox{grid-template-columns:1fr} .cardctl input[type=text],.cardctl select{font-size:16px} }
+
+  @media (max-width:560px){
+    body{padding:14px 12px 56px}
+    .brand h1{font-size:15px}
+    .topbar{flex-direction:column;align-items:stretch;gap:10px}
+    .topbar-right{width:100%;justify-content:flex-start}
+    .pill{flex:1;min-width:0;white-space:normal;line-height:1.5;
+      font-size:11.5px;padding:6px 11px;border-radius:12px}
+    .brand{width:100%;justify-content:space-between;align-items:center}
+    .f input{font-size:16px;width:58px}
+    .frow{grid-template-columns:1fr}
+    .filters{padding:13px 13px 5px}
+    .sortsel{margin-left:0;width:100%;font-size:16px}
+    th,td{padding:8px 8px;font-size:12px}
+    .bar{gap:8px}
+    .bar .btn{flex:1;padding:0 10px;font-size:13px}
+    .count{width:100%}
+    .preset{font-size:12.5px;padding:8px 12px}
+  }
+  /* ---------- 비교 ---------- */
+  .modes{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+  .mode{font-family:inherit;text-align:left;cursor:pointer;padding:14px 16px;border-radius:12px;
+    border:1px solid var(--border-strong);background:var(--surface);color:var(--text)}
+  .mode b{display:block;font-size:15px;font-weight:800}
+  .mode span{display:block;font-size:12.5px;color:var(--text-mute);margin-top:3px}
+  .mode[aria-pressed="true"]{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent);background:var(--accent-soft)}
+  .note code{font-size:11.5px;background:var(--surface-2);padding:1px 5px;border-radius:4px}
+  @media (max-width:560px){ .modes{grid-template-columns:1fr} }
+</style>
+<style id="nav-wrap">
+  @media (max-width: 1100px) {
+    .nav { flex-wrap: wrap; border-radius: 18px; gap: 4px; padding: 4px; }
+    .nav-i { flex: 1 0 calc(20% - 4px); min-width: 0; border-radius: 12px; }
+  }
+  @media (max-width: 560px) {
+    .nav { gap: 3px; padding: 3px; border-radius: 14px; }
+    .nav-i { flex-basis: calc(20% - 3px); height: 38px; padding: 0 4px; gap: 4px; border-radius: 10px; }
+  }
+  @media (max-width: 480px) {
+    .nav-i { flex-direction: column; height: 50px; gap: 3px; font-size: 11.5px; line-height: 1.1; }
+    .nav-i svg { display: block; width: 16px; height: 16px; }
+  }
+  @media (max-width: 340px) {
+    .nav-i svg { display: none; }
+    .nav-i { height: 38px; }
+  }
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <div class="topbar">
+    <div class="brand">
+      <h1>돈굴돈굴</h1>
+    </div>
+    <div class="topbar-right">
+      <span class="pill" id="src-pill">불러오는 중…</span>
+      <button class="icon-btn" id="btn-mode" aria-label="다크 모드">◐</button>
+    </div>
+  </div>
+
+  <nav class="nav" aria-label="메뉴">
+      <a href="./index.html" class="nav-i">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7 16v-4M12 16V8M17 16v-6"/></svg>
+        <span class="nav-full">국내 실적</span><span class="nav-short">국내</span>
+      </a>
+      <a href="./us.html" class="nav-i">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 010 18M12 3a15 15 0 000 18"/></svg>
+        <span class="nav-full">해외 실적</span><span class="nav-short">해외</span>
+      </a>
+      <a href="./unlisted.html" class="nav-i">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 21V6l8-3 8 3v15"/><path d="M9 21v-5h6v5"/><path d="M9 9h.01M15 9h.01M9 13h.01M15 13h.01"/></svg>
+        <span class="nav-full">비상장 실적</span><span class="nav-short">비상장</span>
+      </a>
+      <a href="./returns.html" class="nav-i">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg>
+        <span class="nav-full">연간 수익률</span><span class="nav-short">수익률</span>
+      </a>
+      <a href="./buy.html" class="nav-i">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 103-6.7"/><path d="M3 4v5h5"/><path d="M12 8v4.5l3 1.8"/></svg>
+        <span class="nav-full">그때 샀다면</span><span class="nav-short">그때</span>
+      </a>
+      <a href="./mcap.html" class="nav-i">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="10" r="6"/><circle cx="17.5" cy="15.5" r="4"/><circle cx="16" cy="5" r="2.2"/></svg>
+        <span class="nav-full">시가총액</span><span class="nav-short">시총</span>
+      </a>
+      <a href="./rank.html" class="nav-i">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20v-8h5v8M9 20V5h6v15M15 20v-11h5v11"/></svg>
+        <span class="nav-full">시총 순위</span><span class="nav-short">순위</span>
+      </a>
+      <a href="./vs.html" class="nav-i on">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h10M10 3l4 4-4 4"/><path d="M20 17H10M14 13l-4 4 4 4"/></svg>
+        <span class="nav-full">비교</span><span class="nav-short">비교</span>
+      </a>
+      <a href="./screen.html" class="nav-i">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <span class="nav-full">종목 스크리닝</span><span class="nav-short">스크리닝</span>
+      </a>
+      <a href="./guru.html" class="nav-i">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3v9l6.4 6.4"/></svg>
+        <span class="nav-full">포트폴리오</span><span class="nav-short">포폴</span>
+      </a>
+    </nav>
+
+  <h2 class="sec">어떤 비교를 만들까요</h2>
+  <div class="modes" id="modes">
+    <button class="mode" data-m="group" aria-pressed="true"><b>브랜드 대결</b><span>같은 업종 여러 브랜드 · 누가 크고 누가 남기나</span></button>
+    <button class="mode" data-m="pair" aria-pressed="false"><b>국내 vs 해외</b><span>한국 회사와 미국 회사 1:1 · 한국 지사 vs 본사</span></button>
+  </div>
+  <div class="presets" id="presets"></div>
+
+  <div class="cardbox">
+    <canvas id="card" width="1080" height="1350" aria-label="비교 카드뉴스 미리보기"></canvas>
+    <div class="cardctl">
+      <div class="row2" id="ctl-group">
+        <label>큰 숫자
+          <select id="c-metric"><option value="margin">영업이익률</option><option value="op">영업이익</option><option value="rev">매출</option><option value="growth">매출 성장률</option></select></label>
+        <label>순서
+          <select id="c-sort"><option value="metric">큰 숫자 큰 순</option><option value="rev">매출 큰 순</option></select></label>
+      </div>
+      <label>위 칩 <input type="text" id="c-chip"></label>
+      <label>제목 <input type="text" id="c-title"></label>
+      <button class="btn btn-primary" id="c-dl">PNG 내려받기 (3240×4050)</button>
+      <p class="hint" id="c-hint"></p>
+    </div>
+  </div>
+
+  <p class="note">
+    비상장사는 DART 감사보고서·사업보고서, 상장사는 DART 사업보고서, 미국은 SEC 공시(회계연도 기준) 숫자입니다.
+    미국 회사 금액은 오늘 환율로 원화로 바꿨습니다. 시가총액은 상장사만 나옵니다.
+    비상장사 로고는 <code>logo/unlisted/회사코드.png</code> 로 넣으면 브랜드 색 원 대신 나옵니다.
+  </p>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  function $(id) { return document.getElementById(id); }
+
+  /* ---------------- 비교 묶음 ----------------
+     u: 비상장(DART 회사코드) · k: 국내 상장(종목코드) · us: 미국(티커)
+     b: 카드에 쓸 브랜드 이름 · c: 로고가 없을 때 원 색 */
+  var GROUPS = [
+    { id:'coffee', chip:'커피 프랜차이즈', title:'커피, 누가 제일 남길까', items:[
+      { u:'00359386', b:'스타벅스', c:'#00704A' }, { u:'01450239', b:'메가커피', c:'#F5C400', ink:'#3B2A0F' },
+      { u:'01275948', b:'투썸플레이스', c:'#C8102E' }, { u:'01755985', b:'컴포즈커피', c:'#FFD200', ink:'#1F1F1F' },
+      { u:'00960942', b:'이디야커피', c:'#1B2B66' }, { u:'00989600', b:'폴바셋', c:'#111111' } ] },
+    { id:'chicken', chip:'치킨 프랜차이즈', title:'치킨, 누가 제일 남길까', items:[
+      { u:'00656988', b:'bhc', c:'#E2231A' }, { u:'00320791', b:'BBQ', c:'#C8102E' }, { u:'00865638', b:'굽네치킨', c:'#B5121B' },
+      { u:'01461110', b:'노랑통닭', c:'#FFC20E', ink:'#3B2A0F' }, { u:'01935697', b:'처갓집', c:'#D71920' }, { u:'00765550', b:'네네치킨', c:'#F47920' } ] },
+    { id:'burger', chip:'햄버거', title:'버거 4대장 성적표', items:[
+      { u:'00120979', b:'맥도날드', c:'#DA291C' }, { u:'00948685', b:'버거킹', c:'#D62300' },
+      { u:'01089855', b:'맘스터치', c:'#E4002B' }, { u:'00514105', b:'KFC', c:'#A3080C' } ] },
+    { id:'bakery', chip:'빵집', title:'빵집, 진짜 남는 곳은', items:[
+      { u:'01995325', b:'파리바게뜨', c:'#0C2D83' }, { u:'01070750', b:'성심당', c:'#6B3E26' }, { u:'01813687', b:'런던베이글', c:'#2A2A2A' } ] },
+    { id:'baseball', chip:'프로야구단', title:'야구단은 돈을 벌까', items:[
+      { u:'00470050', b:'두산', c:'#131230' }, { u:'00471271', b:'롯데', c:'#041E42' }, { u:'00768618', b:'키움', c:'#820024' },
+      { u:'00363097', b:'SSG', c:'#CE0E2D' }, { u:'00923507', b:'NC', c:'#315288' }, { u:'00180546', b:'삼성', c:'#074CA1' },
+      { u:'00234050', b:'한화', c:'#FF6600' }, { u:'00520249', b:'KIA', c:'#EA0029' }, { u:'00981954', b:'KT', c:'#000000' },
+      { u:'00100090', b:'LG', c:'#C30452' } ] },
+    { id:'cars', chip:'수입차', title:'수입차, 한국에서 얼마 벌까', items:[
+      { u:'00454159', b:'벤츠', c:'#222222' }, { u:'00222675', b:'BMW', c:'#1C69D4' }, { u:'01015391', b:'포르쉐', c:'#8B0000' },
+      { u:'00336561', b:'토요타·렉서스', c:'#EB0A1E' }, { u:'00534066', b:'아우디·폭스바겐', c:'#001E50' }, { u:'00372697', b:'볼보', c:'#1E2F5A' } ] },
+    { id:'luxury', chip:'명품', title:'명품, 한국에서 얼마 남길까', items:[
+      { u:'01470792', b:'샤넬', c:'#111111' }, { u:'00241096', b:'루이비통', c:'#5B3A1E' }, { u:'01460643', b:'에르메스', c:'#E86A10' },
+      { u:'00255114', b:'리치몬트 (까르띠에)', c:'#8B1E2D' }, { u:'00427623', b:'디올', c:'#2B2B2B' }, { u:'00243605', b:'프라다', c:'#111111' } ] },
+    { id:'cvs', chip:'편의점', title:'편의점 성적표', items:[
+      { k:'282330', b:'CU' }, { k:'007070', b:'GS리테일 (GS25)' }, { u:'00186513', b:'세븐일레븐', c:'#008061' }, { u:'01003031', b:'이마트24', c:'#FFB81C', ink:'#1F1F1F' } ] },
+    { id:'delivery', chip:'배달앱', title:'배달앱, 누가 남길까', items:[
+      { u:'01063273', b:'배달의민족', c:'#2AC1BC' }, { u:'01571329', b:'쿠팡이츠', c:'#00A6E0' }, { u:'01695300', b:'요기요', c:'#FA0050' } ] }
+  ];
+  var PAIRS = [
+    { id:'mem', chip:'메모리 반도체', title:'SK하이닉스 vs 마이크론', a:{ k:'000660', b:'SK하이닉스' }, z:{ us:'MU', b:'마이크론' } },
+    { id:'phone', chip:'스마트폰', title:'삼성전자 vs 애플', a:{ k:'005930', b:'삼성전자' }, z:{ us:'AAPL', b:'애플' } },
+    { id:'search', chip:'검색 포털', title:'네이버 vs 구글', a:{ k:'035420', b:'네이버' }, z:{ us:'GOOGL', b:'구글' } },
+    { id:'sns', chip:'메신저·SNS', title:'카카오 vs 메타', a:{ k:'035720', b:'카카오' }, z:{ us:'META', b:'메타' } },
+    { id:'auto', chip:'자동차', title:'현대차 vs GM', a:{ k:'005380', b:'현대차' }, z:{ us:'GM', b:'GM' } },
+    { id:'tob', chip:'담배', title:'KT&G vs 필립모리스', a:{ k:'033780', b:'KT&G' }, z:{ us:'PM', b:'필립모리스' } },
+    { id:'beauty', chip:'화장품', title:'아모레 vs 에스티로더', a:{ k:'090430', b:'아모레퍼시픽' }, z:{ us:'EL', b:'에스티로더' } },
+    { id:'air', chip:'항공', title:'대한항공 vs 델타', a:{ k:'003490', b:'대한항공' }, z:{ us:'DAL', b:'델타항공' } },
+    { id:'mart', chip:'대형마트', title:'이마트 vs 월마트', a:{ k:'139480', b:'이마트' }, z:{ us:'WMT', b:'월마트' } },
+    { id:'coupang', chip:'이커머스', title:'쿠팡 vs 아마존', a:{ us:'CPNG', b:'쿠팡' }, z:{ us:'AMZN', b:'아마존' } },
+    // 한국 지사 vs 본사 — 한국 매출이 본사 전체의 몇 % 인지가 핵심
+    { id:'apple-kr', branch:true, chip:'한국 지사 vs 본사', title:'애플, 한국에서 얼마 벌까', a:{ u:'00349200', b:'애플코리아', logo:'us:AAPL' }, z:{ us:'AAPL', b:'애플 본사' } },
+    { id:'sbux-kr', branch:true, chip:'한국 지사 vs 본사', title:'스타벅스, 한국이 얼마나 클까', a:{ u:'00359386', b:'스타벅스코리아', logo:'us:SBUX' }, z:{ us:'SBUX', b:'스타벅스 본사' } },
+    { id:'tsla-kr', branch:true, chip:'한국 지사 vs 본사', title:'테슬라, 한국에서 얼마 팔까', a:{ u:'01475371', b:'테슬라코리아', logo:'us:TSLA' }, z:{ us:'TSLA', b:'테슬라 본사' } },
+    { id:'nflx-kr', branch:true, chip:'한국 지사 vs 본사', title:'넷플릭스, 한국에서 얼마 벌까', a:{ u:'01434295', b:'넷플릭스코리아', logo:'us:NFLX' }, z:{ us:'NFLX', b:'넷플릭스 본사' } },
+    { id:'mcd-kr', branch:true, chip:'한국 지사 vs 본사', title:'맥도날드, 한국은 몇 %일까', a:{ u:'00120979', b:'한국맥도날드', logo:'us:MCD' }, z:{ us:'MCD', b:'맥도날드 본사' } },
+    { id:'nke-kr', branch:true, chip:'한국 지사 vs 본사', title:'나이키, 한국에서 얼마 팔까', a:{ u:'01503133', b:'나이키코리아', logo:'us:NKE' }, z:{ us:'NKE', b:'나이키 본사' } }
+  ];
+
+  /* ---------------- 디자인 값 (다른 카드와 같은 값) ---------------- */
+  var T = { paper:'#fafaf8', ink:'#101216', inkSoft:'#6B7078', rule:'#E6E4DD', footer:'#3A3E46',
+            up:'#C0392B', down:'#2C5AA0', barSoft:'#E2A79F', track:'#EFEDE7', lose:'#D9D6CE',
+            chipBg:'#F4F0E4', chipInk:'#8C6E14', logoEdge:'#DCD7CB',
+            safe:{ top:135, right:100, bottom:135, left:100 },
+            grain:{ base:[250,250,248], amount:14, speckle:0.08, spike:2.5 }, footer:27 };
+  var CW = 1080, CH = 1350, FAM = '"Noto Sans KR"', CX = T.safe.left, CWID = CW - T.safe.left - T.safe.right;
+  var cv = $('card'), ctx = cv.getContext('2d');
+  function F(w, s) { return w + ' ' + s + 'px ' + FAM; }
+  function LS(c, v) { if ('letterSpacing' in c) c.letterSpacing = v; }
+  function fit(c, t, w, start, min, maxW, track) {
+    var s = start; LS(c, track || '0px'); c.font = F(w, s);
+    while (c.measureText(t).width > maxW && s > min) { s -= 1; c.font = F(w, s); }
+    LS(c, '0px'); return s;
+  }
+  function pill(c, x, y, w, h, col) { c.beginPath(); if (c.roundRect) c.roundRect(x, y, w, h, h / 2); else c.rect(x, y, w, h); c.fillStyle = col; c.fill(); }
+  var _grain = null;
+  function grain(c) {
+    if (!_grain) {
+      var G = T.grain, S = 512, t = document.createElement('canvas'); t.width = t.height = S;
+      var tc = t.getContext('2d'), im = tc.createImageData(S, S), d = im.data;
+      for (var i = 0; i < d.length; i += 4) {
+        var n = (Math.random() - .5) * 2 * G.amount;
+        if (Math.random() < G.speckle) n += (Math.random() - .5) * G.spike * G.amount;
+        n = Math.round(n); d[i] = G.base[0] + n; d[i + 1] = G.base[1] + n; d[i + 2] = G.base[2] + n; d[i + 3] = 255;
+      }
+      tc.putImageData(im, 0, 0); _grain = t;
+    }
+    c.save(); c.fillStyle = c.createPattern(_grain, 'repeat'); c.fillRect(0, 0, CW, CH); c.restore();
+  }
+
+  /* ---------------- 자료 ---------------- */
+  var FX = null, MCAP = {}, MCAP_US = {}, CACHE = {};
+  function keyOf(it) { return it.u ? 'u:' + it.u : it.k ? 'k:' + it.k : 'us:' + it.us; }
+  function urlOf(it) { return it.u ? './data/unlisted/' + it.u + '.json' : it.k ? './data/' + it.k + '.json' : './data/us/' + it.us + '.json'; }
+  function load(it) {
+    var key = keyOf(it);
+    if (CACHE[key] !== undefined) return CACHE[key];
+    CACHE[key] = null;
+    fetch(urlOf(it), { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (j) { CACHE[key] = j || false; drawSoon(); }).catch(function () { CACHE[key] = false; drawSoon(); });
+    return null;
+  }
+  // 한 회사의 최근 연간 숫자 (억 원). 미국은 백만 달러 → 억 원
+  function facts(it, ttm) {
+    var d = load(it); if (!d) return d === false ? { missing: true } : null;
+    var a = d.annual || []; if (!a.length) return { missing: true };
+    var l = a[a.length - 1], p = a.length > 1 ? a[a.length - 2] : null;
+    var k = it.us ? (FX || 1400) / 100 : 1;
+    var f = { year: l.p, rev: l.rev != null ? l.rev * k : null, op: l.op != null ? l.op * k : null, ni: l.ni != null ? l.ni * k : null,
+              fiscal: !!(it.us && d.fiscal), basis: d.basis || '', fy: d.fy_end, period: l.p + '년' };
+    f.growth = p && p.rev > 0 && l.rev != null ? (l.rev / p.rev - 1) * 100 : null;
+    // 상장사는 최근 4분기 합계로 — 회계연도가 다른 회사끼리(하이닉스 1~12월 · 마이크론 9~8월) 기간을 맞춘다
+    var q = d.quarterly || [];
+    function run(s) {                              // q[s..s+3] 가 이어진 4분기면 합계
+      if (s < 0 || s + 4 > q.length) return null;
+      for (var i = s + 1; i < s + 4; i++) {
+        var a0 = q[i - 1], a1 = q[i];
+        if (!(a1.y * 4 + a1.q === a0.y * 4 + a0.q + 1)) return null;
+        if (a1.rev == null || a1.op == null) return null;
+      }
+      if (q[s].rev == null || q[s].op == null) return null;
+      var r = { rev: 0, op: 0 };
+      for (var j = s; j < s + 4; j++) { r.rev += q[j].rev; r.op += q[j].op; }
+      return r;
+    }
+    if (ttm && !it.u && q.length >= 4) {
+      var t = run(q.length - 4);
+      if (t) {
+        var lq = q[q.length - 1], pv = run(q.length - 8);
+        f.rev = t.rev * k; f.op = t.op * k;
+        f.growth = pv && pv.rev > 0 ? (t.rev / pv.rev - 1) * 100 : null;
+        f.year = lq.y; f.period = '최근 4분기 · ~' + (it.us && d.fiscal ? '회계 ' : '') + lq.y + '.' + lq.q + 'Q';
+      }
+    }
+    f.margin = f.rev ? f.op / f.rev * 100 : null;
+    if (it.k && MCAP[it.k]) f.cap = MCAP[it.k].c;
+    if (it.us && MCAP_US[it.us]) f.cap = MCAP_US[it.us].c * (FX || 1400);   // 억 달러 × 환율 = 억 원
+    return f;
+  }
+
+  /* ---------------- 로고 ---------------- */
+  var LOGO = {};
+  function logoPath(it) {
+    if (it.logo) { var p = it.logo.split(':'); return './logo/' + p[0] + '/' + p[1] + '.png'; }
+    return it.u ? './logo/unlisted/' + it.u + '.png' : it.k ? './logo/kr/' + it.k + '.png' : './logo/us/' + it.us + '.png';
+  }
+  function logoImg(it) {
+    var src = logoPath(it);
+    if (LOGO[src] !== undefined) return LOGO[src];
+    var im = new Image(); LOGO[src] = im;
+    im.onload = drawSoon; im.onerror = function () { LOGO[src] = null; drawSoon(); };
+    im.src = src; return im;
+  }
+  // 로고가 없으면 브랜드 색 원 + 이름 (길면 줄여서)
+  function logo(c, it, cx, cy, r) {
+    var im = logoImg(it);
+    if (im && im.complete && im.naturalWidth) c.drawImage(im, cx - r, cy - r, r * 2, r * 2);
+    else {
+      c.beginPath(); c.arc(cx, cy, r, 0, 7); c.fillStyle = it.c || T.inkSoft; c.fill();
+      var t = (it.b || '?').split(/[·,\s]/)[0];
+      c.fillStyle = it.ink || '#ffffff'; c.textAlign = 'center'; c.textBaseline = 'middle';
+      var fs = fit(c, t, 900, Math.round(r * (t.length <= 2 ? 0.78 : t.length <= 3 ? 0.56 : 0.44)), Math.round(r * 0.26), r * 1.6, '-0.02em');
+      c.font = F(900, fs); LS(c, '-0.02em'); c.fillText(t, cx, cy + fs * 0.04); LS(c, '0px');
+      c.textBaseline = 'alphabetic'; c.textAlign = 'left';
+    }
+    c.beginPath(); c.arc(cx, cy, r, 0, 7); c.lineWidth = 1; c.strokeStyle = T.logoEdge; c.stroke();
+  }
+
+  /* ---------------- 숫자 ---------------- */
+  // 억 원 → [숫자, 단위]  · 1조 이상 '3.2' '조원' · 그 아래 '6,469' '억원'
+  function won(v) {
+    if (v == null) return ['–', ''];
+    var a = Math.abs(v);
+    if (a >= 9999.5) { var j = v / 10000; return [(Math.abs(j) >= 100 ? Math.round(j).toLocaleString('ko-KR') : j.toFixed(1).replace(/\.0$/, '')), '조원']; }
+    return [Math.round(v).toLocaleString('ko-KR'), '억원'];
+  }
+  function pct(v, sign) { return v == null ? ['–', ''] : [(sign && v > 0 ? '+' : '') + v.toFixed(1), '%']; }
+  function numOf(f, m) {
+    if (!f) return ['', ''];
+    if (m === 'margin') return pct(f.margin);
+    if (m === 'growth') return pct(f.growth, true);
+    return won(f[m]);
+  }
+  function vp(c, num, size, suf) {
+    var ps = Math.round(size * 0.44);
+    c.font = F(900, size); LS(c, '-0.025em'); var wn = c.measureText(num).width; LS(c, '0px');
+    c.font = F(800, ps);
+    return { ps:ps, wn:wn, gap:size * 0.05, w:wn + size * 0.05 + c.measureText(suf).width };
+  }
+  function valAt(c, x, by, num, size, col, suf, align) {
+    var p = vp(c, num, size, suf), x0 = align === 'right' ? x - p.w : align === 'center' ? x - p.w / 2 : x;
+    c.textAlign = 'left'; c.fillStyle = col;
+    c.font = F(900, size); LS(c, '-0.025em'); c.fillText(num, x0, by); LS(c, '0px');
+    c.font = F(800, p.ps); c.fillText(suf, x0 + p.wn + p.gap, by);
+    return p.w;
+  }
+
+  /* ---------------- 카드 공통: 칩 · 제목 · 푸터 ---------------- */
+  function head(c, chip, title) {
+    c.fillStyle = T.paper; c.fillRect(0, 0, CW, CH); grain(c);
+    c.textBaseline = 'alphabetic'; c.textAlign = 'left';
+    var cf = fit(c, chip, 700, 38, 26, CWID - 60), cpad = cf * 0.65, chh = Math.round(cf * 1.75);
+    c.font = F(700, cf); var cww = c.measureText(chip).width + cpad * 2;
+    pill(c, CX, T.safe.top, cww, chh, T.chipBg);
+    c.fillStyle = T.chipInk; c.textBaseline = 'middle'; c.fillText(chip, CX + cpad, T.safe.top + chh / 2 + cf * 0.04); c.textBaseline = 'alphabetic';
+    var ns = fit(c, title, 900, 104, 52, CWID, '-0.02em');
+    var y = T.safe.top + chh + 20 + ns * 0.86;
+    c.fillStyle = T.ink; c.font = F(900, ns); LS(c, '-0.02em'); c.fillText(title, CX, y); LS(c, '0px');
+    return y;
+  }
+  function rule(c, y) { c.strokeStyle = T.rule; c.lineWidth = 1; c.beginPath(); c.moveTo(CX, Math.round(y) + 0.5); c.lineTo(CX + CWID, Math.round(y) + 0.5); c.stroke(); }
+  function footer(c, txt) {
+    var fb = CH - T.safe.bottom - 4, ry = fb - T.footer * 0.85 - 18;
+    rule(c, ry);
+    var sign = '@돈굴돈굴'; c.font = F(700, T.footer); var hw = c.measureText(sign).width + 48;
+    var fs = fit(c, txt, 700, T.footer, 18, CWID - hw);
+    c.fillStyle = T.footer; c.textAlign = 'left'; c.font = F(700, fs); c.fillText(txt, CX, fb);
+    c.font = F(700, T.footer); c.textAlign = 'right'; c.fillText(sign, CX + CWID, fb); c.textAlign = 'left';
+    return ry;
+  }
+  function today() { var d = new Date(Date.now() + 9 * 3600e3); return d.getUTCFullYear() + '. ' + ('0' + (d.getUTCMonth() + 1)).slice(-2) + '. ' + ('0' + d.getUTCDate()).slice(-2); }
+
+  /* ---------------- ① 브랜드 대결 ----------------
+     한 줄 = [로고] 브랜드 / 매출 막대(+금액) · 오른쪽 큰 숫자(영업이익률 등) */
+  function drawGroup(c, g) {
+    var m = $('c-metric').value, y = head(c, $('c-chip').value, $('c-title').value);
+    var rows = g.items.map(function (it) { return { it:it, f:facts(it) }; });
+    var ready = rows.filter(function (r) { return r.f && !r.f.missing; });
+    var years = {}; ready.forEach(function (r) { years[r.f.year] = (years[r.f.year] || 0) + 1; });
+    var yr = Object.keys(years).sort(function (a, b) { return years[b] - years[a]; })[0];
+    var labs = { margin:'영업이익률', op:'영업이익', rev:'매출', growth:'매출 성장률' };
+    // 범례 한 줄: 막대 = 매출 · 큰 숫자 = ○○
+    var ly = y + 54;
+    c.font = F(700, 27);
+    pill(c, CX, ly - 18, 34, 14, T.barSoft); c.fillStyle = T.inkSoft; c.fillText('매출', CX + 44, ly);
+    var lw = c.measureText('매출').width;
+    var lx = CX + 44 + lw + 34;
+    c.fillStyle = T.up; c.font = F(900, 30); c.fillText(m === 'margin' || m === 'growth' ? '%' : '숫자', lx, ly);
+    var sw = c.measureText(m === 'margin' || m === 'growth' ? '%' : '숫자').width;
+    c.fillStyle = T.inkSoft; c.font = F(700, 27); c.fillText(labs[m] + (yr ? ' · ' + yr + '년 실적' : ''), lx + sw + 10, ly);
+    rule(c, ly + 30);
+    var ry = footer(c, today() + ' 기준');
+    var top = ly + 30, bot = ry - 24, n = rows.length, rh = (bot - top) / n;
+    var key = $('c-sort').value === 'rev' ? 'rev' : m;
+    rows.sort(function (a, b) {
+      var x = a.f && !a.f.missing ? a.f[key] : null, z = b.f && !b.f.missing ? b.f[key] : null;
+      return (z == null ? -1e18 : z) - (x == null ? -1e18 : x);
+    });
+    var maxRev = 0; ready.forEach(function (r) { maxRev = Math.max(maxRev, r.f.rev || 0); });
+    var lr = Math.min(rh * 0.36, 52), nameX = CX + lr * 2 + 22;
+    var vf = Math.min(64, rh * 0.46), vw = 0;
+    ready.forEach(function (r) { var nu = numOf(r.f, m); vw = Math.max(vw, vp(c, nu[0], vf, nu[1]).w); });
+    var trackW = CX + CWID - vw - 28 - nameX, bh = Math.min(rh * 0.20, 26), nf = Math.min(36, rh * 0.30);
+    rows.forEach(function (r, i) {
+      var cy = top + rh * i + rh / 2;
+      logo(c, r.it, CX + lr, cy, lr);
+      var nfi = fit(c, r.it.b, 800, nf, 20, trackW, '-0.01em');
+      c.fillStyle = T.ink; c.font = F(800, nfi); LS(c, '-0.01em'); c.fillText(r.it.b, nameX, cy - rh * 0.05); LS(c, '0px');
+      if (r.f && !r.f.missing) {
+        var by = cy + rh * 0.17, len = maxRev > 0 ? Math.max(bh, (r.f.rev || 0) / maxRev * trackW * 0.78) : bh;
+        pill(c, nameX, by - bh / 2, len, bh, i === 0 ? T.up : T.barSoft);
+        var rv = won(r.f.rev); c.font = F(700, Math.round(bh * 1.0));
+        c.fillStyle = T.inkSoft; c.textBaseline = 'middle'; c.fillText(rv[0] + rv[1].replace('원', ''), nameX + len + 10, by + 1); c.textBaseline = 'alphabetic';
+        var v = m === 'margin' ? r.f.margin : m === 'growth' ? r.f.growth : r.f[m], nu = numOf(r.f, m);
+        valAt(c, CX + CWID, cy + vf * 0.34, nu[0], vf, v != null && v < 0 ? T.down : T.up, nu[1], 'right');
+        if (r.f.year && yr && String(r.f.year) !== String(yr)) {     // 다른 해 숫자면 작게 표시
+          c.font = F(700, 20); c.fillStyle = T.inkSoft; c.textAlign = 'right'; c.fillText(r.f.year + '년', CX + CWID, cy + vf * 0.34 + 26); c.textAlign = 'left';
+        }
+      } else if (r.f && r.f.missing) {
+        c.font = F(700, 22); c.fillStyle = T.inkSoft; c.fillText('자료 없음', nameX, cy + rh * 0.22);
+      }
+      if (i < n - 1) rule(c, top + rh * (i + 1));
+    });
+  }
+
+  /* ---------------- ② 국내 vs 해외 (1:1) ----------------
+     위: 두 로고가 마주 보고 가운데 VS · 아래: 지표마다 가운데에서 양쪽으로 뻗는 막대, 이긴 쪽 빨강 */
+  function drawPair(c, p) {
+    var y = head(c, $('c-chip').value, $('c-title').value);
+    var A = facts(p.a, true), Z = facts(p.z, true);
+    var top = y + 46, R = 92, ax = CX + CWID * 0.22, zx = CX + CWID * 0.78, cy = top + R;
+    logo(c, p.a, ax, cy, R); logo(c, p.z, zx, cy, R);
+    c.fillStyle = T.inkSoft; c.font = F(900, 56); c.textAlign = 'center'; c.fillText('VS', CX + CWID / 2, cy + 20);
+    var nf = Math.min(fit(c, p.a.b, 800, 38, 22, CWID * 0.40), fit(c, p.z.b, 800, 38, 22, CWID * 0.40));
+    c.fillStyle = T.ink; c.font = F(800, nf); c.fillText(p.a.b, ax, cy + R + 24 + nf * 0.86); c.fillText(p.z.b, zx, cy + R + 24 + nf * 0.86);
+    var sub = function (f, it) { return f && !f.missing ? f.period + (it.u ? ' · 비상장' : '') : ''; };
+    c.font = F(600, 22); c.fillStyle = T.inkSoft;
+    c.fillText(sub(A, p.a), ax, cy + R + 24 + nf * 0.86 + 34); c.fillText(sub(Z, p.z), zx, cy + R + 24 + nf * 0.86 + 34);
+    c.textAlign = 'left';
+    var start = cy + R + 24 + nf * 0.86 + 34 + 34;
+    rule(c, start);
+    var ry = footer(c, today() + ' 기준 · 1달러 ' + Math.round(FX || 0).toLocaleString('ko-KR') + '원');
+    if (!A || !Z) return;
+    var rowsDef = [['cap', '시가총액'], ['rev', '매출'], ['op', '영업이익'], ['margin', '영업이익률'], ['growth', '매출 성장률']]
+      .filter(function (d) { return A[d[0]] != null && Z[d[0]] != null; });
+    var share = null;
+    if (p.branch && A.rev && Z.rev) share = A.rev / Z.rev * 100;
+    var bot = ry - 24 - (share != null ? 150 : 0), n = rowsDef.length, rh = (bot - start) / Math.max(n, 1);
+    var mid = CX + CWID / 2, half = CWID / 2 - 14, lf = Math.min(28, rh * 0.26), vf = Math.min(52, rh * 0.36), bh = Math.min(rh * 0.16, 18);
+    rowsDef.forEach(function (d, i) {
+      var k = d[0], a = A[k], z = Z[k], y0 = start + rh * i, cyy = y0 + rh * 0.5;
+      var aw = a >= z, mx = Math.max(Math.abs(a), Math.abs(z)) || 1;
+      c.textAlign = 'center'; c.fillStyle = T.inkSoft; c.font = F(700, lf); c.fillText(d[1], mid, y0 + rh * 0.24 + lf * 0.4);
+      var na = k === 'margin' ? pct(a) : k === 'growth' ? pct(a, true) : won(a);
+      var nz = k === 'margin' ? pct(z) : k === 'growth' ? pct(z, true) : won(z);
+      valAt(c, CX, cyy + vf * 0.30, na[0], vf, aw ? T.up : T.inkSoft, na[1], 'left');
+      valAt(c, CX + CWID, cyy + vf * 0.30, nz[0], vf, !aw ? T.up : T.inkSoft, nz[1], 'right');
+      // 가운데에서 양쪽으로
+      var by = y0 + rh * 0.80, la = Math.max(4, Math.abs(a) / mx * half), lz = Math.max(4, Math.abs(z) / mx * half);
+      pill(c, mid - half, by - bh / 2, half * 2, bh, T.track);
+      pill(c, mid - la, by - bh / 2, la, bh, aw ? T.up : T.lose);
+      pill(c, mid, by - bh / 2, lz, bh, !aw ? T.up : T.lose);
+      c.textAlign = 'left';
+      if (i < n - 1) rule(c, y0 + rh);
+    });
+    if (share != null) {                       // 지사 vs 본사 — 한국 매출이 본사 전체의 몇 %
+      var sy = bot + 24;
+      pill(c, CX, sy, CWID, 120, '#F4F0E4');
+      c.fillStyle = T.chipInk; c.font = F(700, 28); c.fillText('한국 매출은 본사 전체의', CX + 36, sy + 72);
+      c.font = F(700, 28); var tw = c.measureText('한국 매출은 본사 전체의').width;
+      valAt(c, CX + 36 + tw + 16, sy + 80, share < 1 ? share.toFixed(2) : share.toFixed(1), 64, T.up, '%', 'left');
+    }
+  }
+
+  /* ---------------- 화면 ---------------- */
+  var MODE = 'group', CUR = GROUPS[0];
+  function list() { return MODE === 'group' ? GROUPS : PAIRS; }
+  function buildPresets() {
+    $('presets').innerHTML = list().map(function (g, i) {
+      return '<button class="preset" data-i="' + i + '" aria-pressed="' + (g === CUR) + '">' + (MODE === 'group' ? g.chip : g.branch ? g.a.b + ' vs 본사' : g.title.replace(/,.*/, '')) + '</button>';
+    }).join('');
+    $('ctl-group').style.display = MODE === 'group' ? '' : 'none';
+  }
+  function pick(g) {
+    CUR = g; $('c-chip').value = g.chip; $('c-title').value = g.title;
+    $('c-hint').textContent = MODE === 'group'
+      ? '막대는 매출, 오른쪽 큰 숫자는 위에서 고른 지표입니다. 로고가 없는 비상장사는 브랜드 색 원으로 나옵니다.'
+      : '이긴 쪽이 빨간색입니다. 미국 회사는 오늘 환율로 원화로 바꿔 견줍니다.';
+    buildPresets(); draw();
+  }
+  var _t = null;
+  function drawSoon() { if (_t) return; _t = requestAnimationFrame(function () { _t = null; draw(); }); }
+  var fontsReady = false;
+  function draw() {
+    if (!fontsReady && document.fonts) {
+      Promise.all(['600', '700', '800', '900'].map(function (w) { return document.fonts.load(w + ' 40px "Noto Sans KR"'); }))
+        .then(function () { fontsReady = true; draw(); }).catch(function () { fontsReady = true; draw(); });
+      return;
+    }
+    if (MODE === 'group') drawGroup(ctx, CUR); else drawPair(ctx, CUR);
+  }
+  window.VS_SELECT = function (mode, id) {        // 자동 점검·미리보기용
+    MODE = mode; document.querySelectorAll('.mode').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.m === mode)); });
+    pick(list().filter(function (g) { return g.id === id; })[0] || list()[0]);
+  };
+
+  $('modes').addEventListener('click', function (e) {
+    var b = e.target.closest('.mode'); if (!b || b.dataset.m === MODE) return;
+    MODE = b.dataset.m;
+    document.querySelectorAll('.mode').forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+    pick(list()[0]);
+  });
+  $('presets').addEventListener('click', function (e) { var b = e.target.closest('.preset'); if (b) pick(list()[+b.dataset.i]); });
+  ['c-metric', 'c-sort'].forEach(function (id) { $(id).addEventListener('change', draw); });
+  ['c-chip', 'c-title'].forEach(function (id) { $(id).addEventListener('input', draw); });
+  $('c-dl').addEventListener('click', function () {
+    var SCALE = 3, big = document.createElement('canvas'), keep = ctx;
+    big.width = CW * SCALE; big.height = CH * SCALE;
+    ctx = big.getContext('2d'); ctx.scale(SCALE, SCALE);
+    try { draw(); } finally { ctx = keep; }
+    var name = ($('c-title').value || '비교').replace(/[\s\/\\:*?"<>|,]+/g, '_') + '_' + big.width + 'x' + big.height + '.png';
+    big.toBlob(function (blob) {
+      if (!blob) { alert('그림을 만들지 못했습니다. 새로고침 후 다시 눌러 주세요.'); return; }
+      var a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = name;
+      document.body.appendChild(a); a.click(); a.remove(); setTimeout(function () { URL.revokeObjectURL(a.href); }, 10000);
+    }, 'image/png');
+  });
+  $('btn-mode').addEventListener('click', function () {
+    var r = document.documentElement; r.setAttribute('data-mode', r.getAttribute('data-mode') === 'dark' ? 'light' : 'dark');
+  });
+
+  Promise.all([
+    fetch('./data/fx.json', { cache: 'no-cache' }).then(function (r) { return r.json(); }).catch(function () { return {}; }),
+    fetch('./data/mcap.json', { cache: 'no-cache' }).then(function (r) { return r.json(); }).catch(function () { return {}; }),
+    fetch('./data/mcap_us.json', { cache: 'no-cache' }).then(function (r) { return r.json(); }).catch(function () { return {}; })
+  ]).then(function (res) {
+    FX = res[0].usdkrw || null; MCAP = res[1].stocks || {}; MCAP_US = res[2].stocks || {};
+    $('src-pill').textContent = FX ? '1달러 ' + Math.round(FX).toLocaleString('ko-KR') + '원 · ' + (res[0].updated || '') : '환율 없음';
+    pick(GROUPS[0]);
+  });
+})();
+</script>
+<script src="./health.js" defer></script>
+</body>
+</html>
