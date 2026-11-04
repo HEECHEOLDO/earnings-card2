@@ -1147,6 +1147,10 @@
 
   // ---- 직접 고르기: 국내 상장 · 미국 상장 · 비상장 목록을 한 검색창에 ----
   var PICK = null;          // 보이는 이름 → 항목 {k|us|u, b}
+  // 비상장 브랜드 이름이 길면 카드에는 짧게 (검색 목록에는 법인명도 같이 나온다)
+  var SHORT = { '그랜드 인터컨티넨탈 서울 파르나스':'파르나스', '갤럭시·아이폰 디스플레이':'삼성디스플레이',
+    '나 혼자만 레벨업: 어라이즈':'나 혼자만 레벨업', '소노호텔앤리조트':'소노호텔', '아워홈 급식·식품':'아워홈',
+    '청호나이스 정수기':'청호나이스' };
   function loadPick() {
     if (PICK) return;
     PICK = {};
@@ -1161,6 +1165,7 @@
       });
       ((res[2] || {}).companies || []).forEach(function (c) {
         var b = (c.brand || c.name).split(',')[0].replace(/\s*\(.*\)/, '').trim();
+        b = SHORT[b] || b;
         add(b + (b !== c.name ? ' · ' + c.name : '') + ' (비상장)', { u:c.code, b:b });
       });
       $('clist').innerHTML = opts.map(function (o) { return '<option value="' + o.replace(/"/g, '&quot;') + '">'; }).join('');
