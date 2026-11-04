@@ -161,6 +161,14 @@
   .mode span{display:block;font-size:12.5px;color:var(--text-mute);margin-top:3px}
   .mode[aria-pressed="true"]{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent);background:var(--accent-soft)}
   #presets{display:block}
+  .custom{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:4px 0 10px;padding:12px 14px;
+    background:var(--surface);border-radius:12px}
+  .custom>b{font-size:13px;font-weight:700;color:var(--text-soft);width:84px;flex:none}
+  .custom input{flex:1 1 180px;min-width:0;font-family:inherit;font-size:14px;padding:9px 12px;
+    border-radius:10px;border:1px solid var(--border-strong);background:var(--bg,transparent);color:var(--text)}
+  .custom .vs{font-weight:800;color:var(--text-mute)}
+  .custom small{flex-basis:100%;font-size:12px;color:var(--text-mute);padding-left:92px}
+  @media (max-width:640px){.custom>b{width:100%}.custom small{padding-left:0}}
   .pcat{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 8px}
   .pcat>span{font-size:12px;font-weight:700;color:var(--text-mute);width:84px;flex:none}
   .pcat .preset{padding:7px 12px;font-size:12.5px}
@@ -247,6 +255,15 @@
   <div class="modes" id="modes">
     <button class="mode" data-m="group" aria-pressed="true"><b>브랜드 대결</b><span>같은 업종 여러 브랜드 · 누가 크고 누가 남기나</span></button>
     <button class="mode" data-m="pair" aria-pressed="false"><b>1:1 대결</b><span>국내 vs 해외 · 국내끼리 · 해외끼리 · 한국 지사 vs 본사</span></button>
+  </div>
+  <div class="custom" id="custom">
+    <b>직접 고르기</b>
+    <input id="ca" list="clist" placeholder="회사 A — 삼성전자, 애플, 스타벅스…" autocomplete="off">
+    <span class="vs">vs</span>
+    <input id="cz" list="clist" placeholder="회사 B" autocomplete="off">
+    <button class="preset" id="cgo">비교하기</button>
+    <datalist id="clist"></datalist>
+    <small id="cmsg">국내 상장사·미국 상장사·비상장사 아무 둘이나 고를 수 있어요.</small>
   </div>
   <div class="presets" id="presets"></div>
 
@@ -665,6 +682,40 @@
     im.onload = drawSoon; im.onerror = function () { LOGO[src] = null; drawSoon(); };
     im.src = src; return im;
   }
+  // 로고에서 대표 색 뽑기 — 흰 배경·회색은 빼고, 채도 높은 색을 우선. 로고가 아직 안 왔으면 null
+  var LCOL = {};
+  function logoColor(it) {
+    var src = logoPath(it);
+    if (LCOL[src] !== undefined) return LCOL[src];
+    var im = logoImg(it);
+    if (!im || !im.complete || !im.naturalWidth) return it.c || null;
+    var n = 48, cv = document.createElement('canvas'); cv.width = cv.height = n;
+    var g = cv.getContext('2d'); g.drawImage(im, 0, 0, n, n);
+    var px; try { px = g.getImageData(0, 0, n, n).data; } catch (e) { return (LCOL[src] = it.c || null); }
+    var bins = {}, dark = {};
+    for (var i = 0; i < px.length; i += 4) {
+      var r = px[i], gg = px[i + 1], b = px[i + 2], a = px[i + 3];
+      if (a < 200) continue;
+      var mx = Math.max(r, gg, b), mn = Math.min(r, gg, b), sat = mx ? (mx - mn) / mx : 0;
+      if (mn > 225) continue;                                   // 흰색·아주 옅은 색
+      var key = (r >> 4) + ',' + (gg >> 4) + ',' + (b >> 4);
+      var lu = (0.299 * r + 0.587 * gg + 0.114 * b) / 255;
+      if (sat > 0.25 && mx > 50) bins[key] = (bins[key] || 0) + sat * sat * Math.max(0.05, 1.15 - lu);   // 진하고 또렷한 색일수록 무겁게 (가장자리 옅은 색은 가볍게)
+      else dark[key] = (dark[key] || 0) + 1;
+    }
+    var pickBin = function (o) { var k = Object.keys(o).sort(function (x, y) { return o[y] - o[x]; })[0]; return k ? k.split(',').map(function (v) { return +v * 16 + 8; }) : null; };
+    var tot = function (o) { return Object.keys(o).reduce(function (s0, k) { return s0 + o[k]; }, 0); };
+    var rgb = tot(bins) >= 4 ? pickBin(bins) : pickBin(dark);   // 색이 거의 없는 로고(애플·나이키)는 가장 많은 짙은 색
+    if (!rgb) return (LCOL[src] = it.c || null);
+    var lum = (0.299 * rgb[0] + 0.587 * rgb[1] + 0.114 * rgb[2]) / 255;
+    if (lum > 0.78) rgb = rgb.map(function (v) { return Math.round(v * 0.7); });   // 너무 옅으면 종이 위에서 안 보인다
+    return (LCOL[src] = 'rgb(' + rgb.join(',') + ')');
+  }
+  function colorGap(a, b) {
+    var p = function (x) { return (x.match(/\d+/g) || []).map(Number); };
+    if (!a || !b || a[0] !== 'r' || b[0] !== 'r') return 999;
+    var u = p(a), v = p(b); return Math.sqrt(Math.pow(u[0] - v[0], 2) + Math.pow(u[1] - v[1], 2) + Math.pow(u[2] - v[2], 2));
+  }
   // 로고가 없으면 브랜드 색 원 + 이름 (길면 줄여서)
   function logo(c, it, cx, cy, r) {
     var im = logoImg(it);
@@ -710,16 +761,22 @@
   }
 
   /* ---------------- 카드 공통: 칩 · 제목 · 푸터 ---------------- */
-  function head(c, chip, title) {
+  function head(c, chip, title, segs) {
     c.fillStyle = T.paper; c.fillRect(0, 0, CW, CH); grain(c);
     c.textBaseline = 'alphabetic'; c.textAlign = 'left';
-    var cf = fit(c, chip, 700, 38, 26, CWID - 60), cpad = cf * 0.65, chh = Math.round(cf * 1.75);
-    c.font = F(700, cf); var cww = c.measureText(chip).width + cpad * 2;
-    pill(c, CX, T.safe.top, cww, chh, T.chipBg);
-    c.fillStyle = T.chipInk; c.textBaseline = 'middle'; c.fillText(chip, CX + cpad, T.safe.top + chh / 2 + cf * 0.04); c.textBaseline = 'alphabetic';
+    var chh = 0;
+    if (chip && chip.trim()) {          // 칩 칸이 비어 있으면 칩 없이 제목부터
+      var cf = fit(c, chip, 700, 38, 26, CWID - 60), cpad = cf * 0.65; chh = Math.round(cf * 1.75);
+      c.font = F(700, cf); var cww = c.measureText(chip).width + cpad * 2;
+      pill(c, CX, T.safe.top, cww, chh, T.chipBg);
+      c.fillStyle = T.chipInk; c.textBaseline = 'middle'; c.fillText(chip, CX + cpad, T.safe.top + chh / 2 + cf * 0.04); c.textBaseline = 'alphabetic';
+    }
     var ns = fit(c, title, 900, 104, 52, CWID, '-0.02em');
     var y = T.safe.top + chh + 20 + ns * 0.86;
-    c.fillStyle = T.ink; c.font = F(900, ns); LS(c, '-0.02em'); c.fillText(title, CX, y); LS(c, '0px');
+    c.fillStyle = T.ink; c.font = F(900, ns); LS(c, '-0.02em');
+    if (segs) { var sx = CX; segs.forEach(function (sg) { c.fillStyle = sg[1]; c.fillText(sg[0], sx, y); sx += c.measureText(sg[0]).width; }); }  // 제목 일부를 색으로
+    else c.fillText(title, CX, y);
+    LS(c, '0px');
     return y;
   }
   function rule(c, y) { c.strokeStyle = T.rule; c.lineWidth = 1; c.beginPath(); c.moveTo(CX, Math.round(y) + 0.5); c.lineTo(CX + CWID, Math.round(y) + 0.5); c.stroke(); }
@@ -728,7 +785,7 @@
     rule(c, ry);
     var sign = '@돈굴돈굴'; c.font = F(700, T.footer); var hw = c.measureText(sign).width + 48;
     var fs = fit(c, txt, 700, T.footer, 18, CWID - hw);
-    c.fillStyle = T.footer; c.textAlign = 'left'; c.font = F(700, fs); c.fillText(txt, CX, fb);
+    c.fillStyle = '#3A3E46'; c.textAlign = 'left'; c.font = F(700, fs); c.fillText(txt, CX, fb);   // T.footer 는 글자 크기로 덮여 색으로 못 쓴다
     c.font = F(700, T.footer); c.textAlign = 'right'; c.fillText(sign, CX + CWID, fb); c.textAlign = 'left';
     return ry;
   }
@@ -832,25 +889,58 @@
   }
   function drawTrend(c, p) {
     var m = $('c-tmetric').value, nm = { rev:'매출', op:'영업이익', ni:'순이익', margin:'영업이익률' }[m];
-    if (!titleEdited) $('c-title').value = p.a.b + ' vs ' + p.z.b + ', 5년 ' + nm;
-    var y = head(c, $('c-chip').value, $('c-title').value);
+    if (!titleEdited) $('c-title').value = p.a.b + ' vs ' + p.z.b;      // 첫 줄: 누구와 누구. 둘째 줄(무엇을)은 아래에서 자동
     var A = series(p.a, m), Z = series(p.z, m);
-    var CA = T.ink, CZ = T.chipInk;
-    // 범례: 로고 + 이름
-    var ly = y + 70, lr = 34;
-    [[p.a, CA, CX], [p.z, CZ, CX + CWID / 2]].forEach(function (x) {
-      logo(c, x[0], x[2] + lr, ly, lr);
-      pill(c, x[2] + lr * 2 + 16, ly - 9, 30, 18, x[1]);
-      c.font = F(800, 32); c.fillStyle = T.ink; c.fillText(fitText(c, x[0].b, CWID / 2 - lr * 2 - 70), x[2] + lr * 2 + 56, ly + 11);
-    });
-    rule(c, ly + lr + 22);
+    // 막대 색 = 각 회사 로고 색. 두 색이 너무 비슷하면 오른쪽은 금색으로
+    var CA = logoColor(p.a) || T.ink, CZ = logoColor(p.z) || T.chipInk;
+    if (colorGap(CA, CZ) < 90) CZ = colorGap(CA, T.chipInk) < 90 ? T.ink : T.chipInk;
+    var TL = window.TREND_LEGEND || 'A', ttl = $('c-title').value, pre = p.a.b + ' vs ' + p.z.b;
+    var segs = TL === 'D' && ttl.indexOf(pre) === 0 ? [[p.a.b, CA], [' vs ', T.inkSoft], [p.z.b, CZ], [ttl.slice(pre.length), T.ink]] : null;
+    if (TL === 'D' && !segs) TL = 'A';      // 제목을 직접 고쳐 회사 이름에 색을 못 입히면 A안(로고 + 색 글자 범례)으로
+    var y = head(c, $('c-chip').value, ttl, segs);
+    // 둘째 줄: '5년 영업이익 비교' — 제목보다 작게, 스타일은 window.TREND_SUB 로 비교 (gray | gold)
+    var sub = '5년 ' + nm + ' 비교', SS = window.TREND_SUB || 'gray';
+    if (SS === 'gold') { c.font = F(800, 46); c.fillStyle = T.chipInk; c.fillText(sub, CX, y + 74); y += 74; }
+    else { c.font = F(800, 60); LS(c, '-0.02em'); c.fillStyle = T.inkSoft; c.fillText(sub, CX, y + 88); LS(c, '0px'); y += 88; }
+    var ly = y + 70, lr = 34, lend;
+    if (TL === 'A') {            // A: 로고 + 회사 이름을 로고 색 글자로 (색 점 없이)
+      // 배치: window.TREND_LALIGN = 'left'(왼쪽으로 붙여서) | 'right'(오른쪽으로) | 'split'(반씩)
+      var LA = window.TREND_LALIGN || 'left', gapL = 40, items = [[p.a, CA], [p.z, CZ]];
+      c.font = F(900, 34);
+      items.forEach(function (x) { x.push(fitText(c, x[0].b, CWID / 2 - lr * 2 - 40)); x.push(lr * 2 + 14 + c.measureText(x[2]).width); });
+      var totalW = items[0][3] + gapL + items[1][3];
+      var xs = LA === 'split' ? [CX, CX + CWID / 2] : LA === 'right' ? [CX + CWID - totalW, CX + CWID - items[1][3]] : [CX, CX + items[0][3] + gapL];
+      items.forEach(function (x, i) {
+        logo(c, x[0], xs[i] + lr, ly, lr);
+        c.font = F(900, 34); c.fillStyle = x[1]; c.fillText(x[2], xs[i] + lr * 2 + 14, ly + 12);
+      });
+      lend = ly + lr + 22;
+    } else if (TL === 'C') {     // C: 가운데 정렬 — [로고] 이름  vs  이름 [로고], 각 이름 아래 색 막대
+      var lr2 = 40, cyc = ly + 6, mid = CX + CWID / 2;
+      c.font = F(900, 34);
+      var na = fitText(c, p.a.b, CWID / 2 - lr2 * 2 - 70), nz = fitText(c, p.z.b, CWID / 2 - lr2 * 2 - 70);
+      var wa = c.measureText(na).width, wz = c.measureText(nz).width;
+      logo(c, p.a, mid - 44 - wa - 18 - lr2, cyc, lr2);
+      c.fillStyle = T.ink; c.textAlign = 'right'; c.fillText(na, mid - 44, cyc + 12);
+      c.textAlign = 'left'; c.fillText(nz, mid + 44, cyc + 12);
+      logo(c, p.z, mid + 44 + wz + 18 + lr2, cyc, lr2);
+      pill(c, mid - 44 - wa, cyc + 26, wa, 8, CA); pill(c, mid + 44, cyc + 26, wz, 8, CZ);
+      c.fillStyle = T.inkSoft; c.font = F(900, 30); c.textAlign = 'center'; c.fillText('vs', mid, cyc + 11); c.textAlign = 'left';
+      lend = cyc + lr2 + 26;
+    } else if (TL === 'B') {     // B: 범례 없이 — 마지막 해 막대 위에 작은 로고를 바로 붙인다
+      lend = y + 20;
+    } else {                     // D: 제목 속 회사 이름이 곧 범례 (로고는 작게 한 줄)
+      lend = y + 20;
+    }
+    if (TL === 'A' || TL === 'C') rule(c, lend);
+    ly = lend - lr - 22;          // 아래 차트 위치 계산을 범례 높이에 맞춘다
     var ry = footer(c, today() + ' 기준 · 연간 실적' + (p.a.us || p.z.us ? ' · 1달러 ' + Math.round(FX || 0).toLocaleString('ko-KR') + '원' : ''));
     if (!A || !Z) return;
     var years = Object.keys(A.v).concat(Object.keys(Z.v)).filter(function (v, i, arr) { return arr.indexOf(v) === i; }).sort().slice(-5);
     var vals = []; years.forEach(function (yy) { [A.v[yy], Z.v[yy]].forEach(function (v) { if (v != null) vals.push(v); }); });
     if (!vals.length) return;
     var vmax = Math.max(0, Math.max.apply(null, vals)), vmin = Math.min(0, Math.min.apply(null, vals));
-    var top = ly + lr + 22 + 70, bot = ry - 170, H = bot - top;
+    var top = lend + (TL === 'B' || TL === 'D' ? 120 : 70), bot = ry - 96, H = bot - top;
     var zeroY = top + H * (vmax / ((vmax - vmin) || 1));
     var colW = CWID / years.length, bw = Math.min(64, colW * 0.3), gap = 14;
     var fmt = function (v) { if (v == null) return '–'; if (m === 'margin') return v.toFixed(1) + '%'; var w = won(v); return w[0] + w[1].replace('원', ''); };
@@ -868,21 +958,16 @@
       c.fillText((A.fiscal || Z.fiscal ? 'FY' : '') + yy, cx, bot + 62); c.textAlign = 'left';
     });
     c.strokeStyle = T.rule; c.lineWidth = 2; c.beginPath(); c.moveTo(CX, zeroY); c.lineTo(CX + CWID, zeroY); c.stroke();
-    // 한 줄 요약: 첫 해 대비
-    var y0s = years[0], y1s = years[years.length - 1];
-    var chg = function (s) {      // 그 회사가 가진 첫 해 → 마지막 해
-      var ys = years.filter(function (yy) { return s.v[yy] != null; });
-      if (ys.length < 2) return '–';
-      var a = s.v[ys[0]], b = s.v[ys[ys.length - 1]];
-      if (a == null || b == null) return '–';
-      if (m === 'margin') { var d = b - a; return (d >= 0 ? '+' : '') + d.toFixed(1) + '%p'; }
-      if (a > 0 && b > 0) { var r = b / a; return r >= 1.95 ? r.toFixed(1) + '배' : (r >= 1 ? '+' : '') + ((r - 1) * 100).toFixed(0) + '%'; }
-      return a <= 0 && b > 0 ? '흑자 전환' : a > 0 && b <= 0 ? '적자 전환' : '적자 지속';
-    };
-    var sy = ry - 60;
-    c.font = F(700, 26); c.fillStyle = T.inkSoft; c.fillText((A.fiscal || Z.fiscal ? '처음 → 마지막 해' : y0s + '년 → ' + y1s + '년'), CX, sy);
-    var t1 = p.a.b + ' ' + chg(A) + '   ·   ' + p.z.b + ' ' + chg(Z);
-    c.font = F(900, fit(c, t1, 900, 34, 22, CWID - 230)); c.fillStyle = T.ink; c.textAlign = 'right'; c.fillText(t1, CX + CWID, sy); c.textAlign = 'left';
+    if (TL === 'B' || TL === 'D') {   // 막대 위 로고: 각 회사가 숫자를 가진 마지막 해 막대 위에
+      [[A, p.a, -1], [Z, p.z, 1]].forEach(function (sx) {
+        var ys = years.filter(function (yy) { return sx[0].v[yy] != null; }); if (!ys.length) return;
+        var yy = ys[ys.length - 1], i = years.indexOf(yy), v = sx[0].v[yy];
+        var cx = CX + colW * (i + 0.5), bx = sx[2] < 0 ? cx - bw - gap / 2 : cx + gap / 2;
+        var h = Math.abs(v) / ((vmax - vmin) || 1) * H, yTop = v >= 0 ? zeroY - h : zeroY;
+        var r = TL === 'B' ? 26 : 20;
+        logo(c, sx[1], bx + bw / 2, yTop - 21 - 14 - r, r);
+      });
+    }
   }
   function fitText(c, t, w) { if (c.measureText(t).width <= w) return t; while (t.length > 1 && c.measureText(t + '…').width > w) t = t.slice(0, -1); return t + '…'; }
 
@@ -968,6 +1053,8 @@
     $('presets').innerHTML = html;
     $('ctl-group').style.display = MODE === 'group' ? '' : 'none';
     $('ctl-pair').style.display = MODE === 'group' ? 'none' : '';
+    $('custom').style.display = MODE === 'group' ? 'none' : '';
+    if (MODE !== 'group') loadPick();
   }
   function pick(g) {
     CUR = g; titleEdited = false; $('c-chip').value = g.chip; $('c-title').value = g.title;
@@ -998,6 +1085,87 @@
     document.querySelectorAll('.mode').forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
     pick(list()[0]);
   });
+  var USN = {   // 미국 기호 → 한글 이름 (그때 샀다면 탭과 같은 표)
+  AAPL:'애플', MSFT:'마이크로소프트', NVDA:'엔비디아', GOOGL:'알파벳', GOOG:'알파벳 C',
+  AMZN:'아마존', META:'메타', TSLA:'테슬라', 'BRK-B':'버크셔', AVGO:'브로드컴',
+  LLY:'일라이릴리', JPM:'JP모건', V:'비자', MA:'마스터카드', XOM:'엑슨모빌',
+  UNH:'유나이티드헬스', JNJ:'존슨앤존슨', PG:'P&G', HD:'홈디포', COST:'코스트코',
+  WMT:'월마트', KO:'코카콜라', PEP:'펩시코', MCD:'맥도날드', NKE:'나이키',
+  SBUX:'스타벅스', DIS:'디즈니', NFLX:'넷플릭스', AMD:'AMD', INTC:'인텔',
+  QCOM:'퀄컴', TXN:'텍사스인스트루먼트', MU:'마이크론', ADBE:'어도비', CRM:'세일즈포스',
+  ORCL:'오라클', CSCO:'시스코', IBM:'IBM', NOW:'서비스나우', AMAT:'어플라이드머티',
+  LRCX:'램리서치', KLAC:'KLA', ASML:'ASML', ARM:'ARM', PLTR:'팔란티어',
+  UBER:'우버', ABNB:'에어비앤비', SHOP:'쇼피파이', PYPL:'페이팔', SQ:'블록',
+  COIN:'코인베이스', MSTR:'마이크로스트래티지', BAC:'뱅크오브아메리카', WFC:'웰스파고',
+  GS:'골드만삭스', MS:'모건스탠리', C:'씨티그룹', BLK:'블랙록', AXP:'아멕스',
+  ABBV:'애브비', MRK:'머크', PFE:'화이자', TMO:'서모피셔', ABT:'애보트',
+  AMGN:'암젠', BMY:'BMS', GILD:'길리어드', NVO:'노보노디스크', ISRG:'인튜이티브',
+  CVX:'셰브론', COP:'코노코필립스', CAT:'캐터필러', DE:'디어', BA:'보잉',
+  GE:'GE', HON:'허니웰', LMT:'록히드마틴', RTX:'RTX', UNP:'유니온퍼시픽',
+  T:'AT&T', VZ:'버라이즌', TMUS:'T모빌', CMCSA:'컴캐스트', LIN:'린데',
+  TSM:'TSMC', BABA:'알리바바', NIO:'니오', RIVN:'리비안', LCID:'루시드',
+  F:'포드', GM:'GM', LULU:'룰루레몬', TGT:'타깃', LOW:'로우스',
+  SPGI:'S&P글로벌', CME:'CME', ICE:'ICE', SCHW:'찰스슈왑', PGR:'프로그레시브',
+  CB:'처브', MMC:'마쉬', ETN:'이튼', PH:'파커하니핀', ANET:'아리스타',
+  PANW:'팔로알토', CRWD:'크라우드스트라이크', SNOW:'스노우플레이크', DDOG:'데이터독',
+  MDB:'몽고DB', ZS:'지스케일러', NET:'클라우드플레어', TTD:'트레이드데스크',
+  SMCI:'슈퍼마이크로', DELL:'델', HPQ:'HP', MRVL:'마벨', ON:'온세미',
+  ADI:'아나로그디바이스', NXPI:'NXP', SNPS:'시놉시스', CDNS:'케이던스', APH:'앰페놀',
+  MO:'알트리아', PM:'필립모리스', CL:'콜게이트', KMB:'킴벌리클라크', GIS:'제너럴밀스',
+  MDLZ:'몬델리즈', KHC:'크래프트하인즈', SYK:'스트라이커', BSX:'보스턴사이언티픽',
+  MDT:'메드트로닉', CI:'시그나', ELV:'엘리번스', HCA:'HCA', VRTX:'버텍스',
+  REGN:'리제네론', BIIB:'바이오젠', MRNA:'모더나', ZTS:'조에티스', DHR:'다나허',
+  BKNG:'부킹홀딩스', MAR:'메리어트', HLT:'힐튼', RCL:'로얄캐리비안', DAL:'델타항공',
+  AMT:'아메리칸타워', PLD:'프로로지스', SPG:'사이먼프로퍼티', O:'리얼티인컴',
+  NEE:'넥스트에라', DUK:'듀크에너지', SO:'서던컴퍼니', ACN:'액센츄어', ADP:'ADP',
+  INTU:'인튜이트', MMM:'3M', UPS:'UPS', FDX:'페덱스', ADM:'ADM'
+};
+
+  // ---- 직접 고르기: 국내 상장 · 미국 상장 · 비상장 목록을 한 검색창에 ----
+  var PICK = null;          // 보이는 이름 → 항목 {k|us|u, b}
+  function loadPick() {
+    if (PICK) return;
+    PICK = {};
+    Promise.all(['./data/index.json', './data/us/index.json', './data/unlisted/index.json'].map(function (u) {
+      return fetch(u, { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; });
+    })).then(function (res) {
+      var opts = [];
+      var add = function (label, it) { if (!PICK[label]) { PICK[label] = it; opts.push(label); } };
+      ((res[0] || {}).companies || []).forEach(function (c) { add(c.name + ' (' + c.code + ')', { k:c.code, b:c.name }); });
+      ((res[1] || {}).companies || []).forEach(function (c) {
+        var ko = USN[c.code]; add((ko ? ko + ' ' : '') + c.code + ' (미국)', { us:c.code, b:ko || c.code });
+      });
+      ((res[2] || {}).companies || []).forEach(function (c) {
+        var b = (c.brand || c.name).split(',')[0].replace(/\s*\(.*\)/, '').trim();
+        add(b + (b !== c.name ? ' · ' + c.name : '') + ' (비상장)', { u:c.code, b:b });
+      });
+      $('clist').innerHTML = opts.map(function (o) { return '<option value="' + o.replace(/"/g, '&quot;') + '">'; }).join('');
+    });
+  }
+  function findPick(v) {
+    v = (v || '').trim(); if (!v || !PICK) return null;
+    var ALIAS = { '네이버':'NAVER', '메가커피':'메가MGC커피', '현대차':'현대자동차', '하이닉스':'SK하이닉스', '엘지전자':'LG전자', '삼전':'삼성전자', '포스코':'POSCO홀딩스', '셀트리온헬스':'셀트리온' };
+    if (ALIAS[v]) v = ALIAS[v];
+    if (PICK[v]) return PICK[v];
+    var lv = v.toLowerCase(), keys = Object.keys(PICK), rank = function (it) { return it.k ? 0 : it.us ? 1 : 2; };
+    var best = function (arr) { return arr.sort(function (x, y) { return rank(x) - rank(y); })[0] || null; };
+    // 이름만 쳐도 — ① 이름이 똑같은 것(국내 상장 → 미국 → 비상장 순) ② 앞부분이 같은 것 ③ 이름에 들어 있는 것
+    var hit = best(keys.map(function (k) { return PICK[k]; }).filter(function (it) { return it.b.toLowerCase() === lv || (it.us || '').toLowerCase() === lv; }));
+    if (!hit) hit = best(keys.filter(function (k) { return k.toLowerCase().indexOf(lv) === 0; }).map(function (k) { return PICK[k]; }));
+    if (!hit) hit = best(keys.filter(function (k) { return k.toLowerCase().indexOf(lv) >= 0; }).map(function (k) { return PICK[k]; }));
+    return hit;
+  }
+  function goCustom() {
+    var A = findPick($('ca').value), Z = findPick($('cz').value);
+    if (!A || !Z) { $('cmsg').textContent = (!A ? '회사 A' : '회사 B') + '를 목록에서 골라 주세요.'; return; }
+    if (keyOf(A) === keyOf(Z)) { $('cmsg').textContent = '서로 다른 두 회사를 골라 주세요.'; return; }
+    $('cmsg').textContent = '국내 상장사·미국 상장사·비상장사 아무 둘이나 고를 수 있어요.';
+    var kr = function (it) { return !!(it.k || it.u); };
+    pick({ id:'custom', chip:'', title:A.b + ' vs ' + Z.b, a:A, z:Z });     // 직접 고른 쌍은 위 칩 없이 (필요하면 칸에 적으면 나온다)
+  }
+  $('cgo').addEventListener('click', goCustom);
+  ['ca', 'cz'].forEach(function (id) { $(id).addEventListener('keydown', function (e) { if (e.key === 'Enter') goCustom(); }); });
+
   $('presets').addEventListener('click', function (e) { var b = e.target.closest('.preset'); if (b) pick(list()[+b.dataset.i]); });
   $('c-pview').addEventListener('change', function () { titleEdited = false; if ($('c-pview').value === 'now' && CUR) $('c-title').value = CUR.title; });
   ['c-metric', 'c-sort', 'c-basis', 'c-pview', 'c-tmetric'].forEach(function (id) { $(id).addEventListener('change', draw); });
