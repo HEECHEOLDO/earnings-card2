@@ -557,6 +557,31 @@ def data_unchanged(path, new):
     return a == b
 
 
+def clean_quarters(q):
+    """
+    분기 숫자 중 '단위가 틀린' 칸을 비운다 (2026-11 점검).
+    공시 한 건이 백만원 대신 원 단위로 들어오면 그 분기는 수천 배로 튀고, 다음 분기는 그만큼 음수가 된다
+    (예: 이큐셀 2025.2Q 매출 6,202억억 → 3Q -6,202억억). 정상 성장·급감은 많아야 수십 배라
+    '나머지 분기 중앙값의 200배 넘게 벗어난 칸' 만 고장으로 본다. 반환: 비운 칸 수
+    """
+    n = 0
+    for key in ("rev", "op", "ni"):
+        vals = [abs(x[key]) for x in q if x.get(key)]
+        if len(vals) < 5:
+            continue
+        for x in q:
+            v = x.get(key)
+            if not v:
+                continue
+            others = sorted(abs(y[key]) for y in q if y is not x and y.get(key))
+            med = others[len(others) // 2] if others else 0
+            ref = med if key == "rev" else max(med, max((abs(y.get("rev") or 0) for y in q), default=0) * 0.01)
+            if ref > 0 and abs(v) > 200 * ref:
+                x[key] = None
+                n += 1
+    return n
+
+
 def save_company(code, data):
     """
     값이 그대로면 파일을 건드리지 않는다.
@@ -564,6 +589,8 @@ def save_company(code, data):
     반환: True면 실제로 썼음
     """
     path = os.path.join(OUT_DIR, code + ".json")
+    if data.get("quarterly"):
+        clean_quarters(data["quarterly"])
     if os.path.exists(path) and data_unchanged(path, data):
         return False
     with open(path, "w", encoding="utf-8") as f:
@@ -710,6 +737,20 @@ def _equity(x):
     return e
 
 
+def _yield_now(dps, px, dart):
+    """시가배당률 = 최근 결산 주당배당금 ÷ 전일 종가.
+    결산 뒤 액면분할을 하면 배당금은 옛 주식 기준, 주가는 새 주식 기준이라 몇 배로 튄다
+    (대한제분 2026 분할: 37% ↔ 공시 2.6%). 10%를 넘고 공시값의 4배를 넘으면 분할로 보고 공시값을 쓴다.
+    주가가 많이 오르내려 생긴 차이(삼성전기 0.9% → 0.2%)는 그대로 둔다. 공시값이 20%를 넘으면 그 값도 믿지 않는다."""
+    ok_dart = _r(dart) if (dart is not None and 0 <= dart <= 20) else None
+    if not (dps and px):
+        return ok_dart
+    y = dps / px * 100
+    if y > 10 and (ok_dart is None or y > ok_dart * 4):
+        return ok_dart
+    return _r(y, 2)
+
+
 def build_screen():
     """data/ 를 훑어 스크리닝용 지표를 미리 계산해 screen.json 으로 저장한다.
     API를 쓰지 않는다 — 이미 받아둔 파일만 읽는다.
@@ -730,6 +771,8 @@ def build_screen():
                 d0 = json.load(f)
             if d0.get("annual"):          # 분할 환산은 매번 다시 — 판정 규칙을 고치면 바로 반영된다
                 adjust_for_splits(d0["annual"])
+            if d0.get("quarterly"):       # 단위가 틀린 분기는 비운다
+                clean_quarters(d0["quarterly"])
             files.append((fn, d0))
         except Exception:      # noqa: BLE001
             continue
@@ -820,6 +863,8 @@ def build_screen():
             v = x.get("dps_adj")
             return v if v is not None else x.get("dps")
         dps = dps_of(last)
+        if dps and dps > 1e6:          # 주당배당금이 100만원 넘으면 총액이 잘못 들어온 것 (와이엔텍 18억 '원')
+            dps = None
         divYears = 0
         for x in reversed(a):
             if (dps_of(x) or 0) > 0:
@@ -847,10 +892,10 @@ def build_screen():
             qPeriod = lq["y"] * 10 + lq["q"]                     # 20263 = 2026년 3분기
             qNew = 1 if (lq["y"], lq["q"]) == newest_q else 0
             qRev, qOp = lq.get("rev"), lq.get("op")
-            qMargin = _r(qOp / qRev * 100) if qRev else None
+            qMargin = _r(qOp / qRev * 100) if (qRev and qOp is not None) else None
             y0 = next((x for x in q if x["y"] == lq["y"] - 1 and x["q"] == lq["q"]), None)   # 작년 같은 분기
             if y0:
-                if y0.get("rev"):
+                if y0.get("rev") and qRev is not None:
                     qRevYoy = _r((qRev / y0["rev"] - 1) * 100)
                 if y0.get("op") and y0["op"] > 0 and qOp is not None:
                     qOpYoy = _r((qOp / y0["op"] - 1) * 100)
@@ -867,7 +912,7 @@ def build_screen():
             revStreak, profitStreak, lossCount, marginStd, turnaround,
             _r(dps, 0), _r(last.get("payout")),
             # 최근 결산 주당배당금 ÷ 전일 종가. 종가가 없으면 공시값
-            _r(dps / price[d.get("code", fn[:-5])] * 100, 2) if (dps and d.get("code", fn[:-5]) in price) else _r(last.get("yield")),
+            _yield_now(dps, price.get(d.get("code", fn[:-5])), last.get("yield")),
             dpsCagr5, divYears, divGrowYears,
             _r(qRev, 0), _r(qOp, 0), qMargin, qRevYoy, qOpYoy,
             _r(last.get("yield")), qPeriod, qNew, qTurn,

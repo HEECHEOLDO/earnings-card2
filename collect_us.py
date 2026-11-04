@@ -632,6 +632,22 @@ def fetch_facts(ciks):
     return merged
 
 
+def blank_bad_revenue(rows):
+    """
+    은행·리츠 일부는 '매출' 태그에 수수료 같은 일부 수익만 적는다 (피프스서드 매출 577 vs 영업이익 2,988).
+    그러면 영업이익률이 500%가 넘게 나온다. 영업이익이 매출보다 크면 매출을 비운다
+    — 엉터리 숫자보다 빈칸이 낫다 (2026-11 점검: CCI·CPT·EXR·FITB·HBAN·MTB·RF). 반환: 비운 칸 수
+    """
+    n = 0
+    for r in rows:
+        rev, op, ni = r.get("rev"), r.get("op"), r.get("ni")
+        # 영업이익은 매출보다 클 수 없다. 순이익은 일회성 이익(사업 매각 등)으로 클 수 있어 영업이익이 없을 때만 본다
+        if rev and rev > 0 and ((op is not None and op > rev * 1.05) or (op is None and ni and ni > rev * 3)):
+            r["rev"] = None
+            n += 1
+    return n
+
+
 def collect_one(ticker, info):
     log("\n=== %s (%s) ===" % (ticker, info["name"]))
     ciks = info["cik"] if isinstance(info["cik"], list) else [info["cik"]]
@@ -715,6 +731,7 @@ def collect_one(ticker, info):
 
     if not annual and not quarterly:
         return None, "쓸 수 있는 데이터 없음"
+    blank_bad_revenue(annual + quarterly)
 
     return {
         "name": ticker,
