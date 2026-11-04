@@ -20,6 +20,8 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 150       # 오늘의 업데이트가 하루 전 파일과 견주려면 기록이 며칠 치 있어야 한다
 
       - uses: actions/setup-python@v5
         with:
@@ -30,11 +32,14 @@ jobs:
           DART_API_KEY: ${{ secrets.DART_API_KEY }}
         run: python3 check_health.py || python3 check_health.py --local
 
+      - name: 오늘의 업데이트 (지난 24시간에 새로 들어온 것)
+        run: python3 make_updates.py || echo "::warning::오늘의 업데이트를 만들지 못했습니다"
+
       - name: 커밋
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/health.json || true
+          git add data/health.json data/updates.json || true
           if git diff --staged --quiet; then echo "변경 없음"; exit 0; fi
           git commit -m "데이터 상태 점검 $(date -u +'%Y-%m-%d')"
           for i in 1 2 3 4 5; do
