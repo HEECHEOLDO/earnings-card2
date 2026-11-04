@@ -255,9 +255,15 @@
     <div class="cardctl">
       <div class="row2" id="ctl-group">
         <label>큰 숫자
-          <select id="c-metric"><option value="margin">영업이익률</option><option value="op">영업이익</option><option value="rev">매출</option><option value="growth">매출 성장률</option></select></label>
+          <select id="c-metric"><option value="margin">영업이익률</option><option value="op">영업이익</option><option value="rev">매출</option><option value="ni">순이익</option><option value="growth">매출 성장률</option><option value="cap">시가총액 (상장사)</option></select></label>
         <label>순서
           <select id="c-sort"><option value="metric">큰 숫자 큰 순</option><option value="rev">매출 큰 순</option></select></label>
+      </div>
+      <div class="row2" id="ctl-pair">
+        <label>카드 형태
+          <select id="c-pview"><option value="now">숫자 비교</option><option value="trend">5년 추이</option></select></label>
+        <label>추이 지표
+          <select id="c-tmetric"><option value="rev">매출</option><option value="op">영업이익</option><option value="ni">순이익</option><option value="margin">영업이익률</option></select></label>
       </div>
       <label>실적 기준
         <select id="c-basis"><option value="ttm">최근 4분기 합계</option><option value="ytd">올해 누적 (수집된 분기까지)</option><option value="annual">작년 연간</option></select></label>
@@ -609,15 +615,15 @@
         if (a1.rev == null || a1.op == null) return null;
       }
       if (q[s].rev == null || q[s].op == null) return null;
-      var r = { rev: 0, op: 0 };
-      for (var j = s; j < s + 4; j++) { r.rev += q[j].rev; r.op += q[j].op; }
+      var r = { rev: 0, op: 0, ni: 0 };
+      for (var j = s; j < s + 4; j++) { r.rev += q[j].rev; r.op += q[j].op; r.ni = r.ni == null || q[j].ni == null ? null : r.ni + q[j].ni; }
       return r;
     }
     if (basis === 'ttm' && !it.u && q.length >= 4) {
       var t = run(q.length - 4);
       if (t) {
         var lq = q[q.length - 1], pv = run(q.length - 8);
-        f.rev = t.rev * k; f.op = t.op * k;
+        f.rev = t.rev * k; f.op = t.op * k; f.ni = t.ni != null ? t.ni * k : null;
         f.growth = pv && pv.rev > 0 ? (t.rev / pv.rev - 1) * 100 : null;
         f.ttm = true; f.tq = lq.y + '.' + lq.q + 'Q';
         f.year = lq.y; f.period = '최근 4분기 · ~' + (it.us && d.fiscal ? '회계 ' : '') + lq.y + '.' + lq.q + 'Q';
@@ -630,6 +636,7 @@
         var nq = cur.length, prev = q.filter(function (x) { return x.y === Y - 1 && x.q <= nq; });
         var sum = function (arr, key) { return arr.reduce(function (s0, x) { return s0 + (x[key] || 0); }, 0); };
         f.rev = sum(cur, 'rev') * k; f.op = sum(cur, 'op') * k;
+        f.ni = cur.every(function (x) { return x.ni != null; }) ? sum(cur, 'ni') * k : null;
         var pr = prev.length === nq && prev.every(function (x) { return x.rev != null; }) ? sum(prev, 'rev') : null;
         f.growth = pr > 0 ? (sum(cur, 'rev') / pr - 1) * 100 : null;
         f.ytd = true; f.tq = Y + '.' + (nq === 1 ? '1Q' : '1~' + nq + 'Q');
@@ -737,6 +744,8 @@
     if (m === 'margin') return all('op', function (f) { return f.op < 0; }) ? t + ', 왜 다 적자일까' : t + ', 누가 ' + top + ' 남길까';
     if (m === 'op') return all('op', function (f) { return f.op < 0; }) ? t + ', 누가 덜 잃을까' : t + ', 누가 ' + top + ' 벌까';
     if (m === 'rev') return n > 2 ? t + ', 매출 1위는 어디' : t + ', 매출은 누가 더 클까';
+    if (m === 'ni') return all('ni', function (f) { return f.ni < 0; }) ? t + ', 왜 다 순손실일까' : n > 2 ? t + ', 순이익 1위는 어디' : t + ', 순이익은 누가 더 많을까';
+    if (m === 'cap') return n > 2 ? t + ', 몸값 1위는 어디' : t + ', 몸값은 누가 더 클까';
     if (m === 'growth') return all('growth', function (f) { return f.growth < 0; }) ? t + ', 매출이 다 줄었다' : t + ', 누가 ' + top + ' 빨리 클까';
     return g.title;
   }
@@ -762,7 +771,7 @@
       if (k[0] === 'Q') { var p = v.split('.'); return short ? p[0] + '년 누적' : p[0] + '년 ' + p[1].replace('Q', '분기') + (p[1] === '1Q' ? '' : ' 누적'); }
       return v + (short ? '년' : '년 실적');
     };
-    var labs = { margin:'영업이익률', op:'영업이익', rev:'매출', growth:'매출 성장률' };
+    var labs = { margin:'영업이익률', op:'영업이익', rev:'매출', growth:'매출 성장률', ni:'순이익', cap:'시가총액' };
     // 범례 한 줄: 막대 = 매출 · 큰 숫자 = ○○
     var ly = y + 54;
     c.font = F(700, 27);
@@ -771,7 +780,7 @@
     var lx = CX + 44 + lw + 34;
     c.fillStyle = T.up; c.font = F(900, 30); c.fillText(m === 'margin' || m === 'growth' ? '%' : '숫자', lx, ly);
     var sw = c.measureText(m === 'margin' || m === 'growth' ? '%' : '숫자').width;
-    c.fillStyle = T.inkSoft; c.font = F(700, 27); c.fillText(labs[m] + (main ? ' · ' + basisTxt(main) : ''), lx + sw + 10, ly);
+    c.fillStyle = T.inkSoft; c.font = F(700, 27); c.fillText(labs[m] + (m === 'cap' ? ' · 최근 종가 기준' : main ? ' · ' + basisTxt(main) : ''), lx + sw + 10, ly);
     rule(c, ly + 30);
     var ry = footer(c, today() + ' 기준');
     var top = ly + 30, bot = ry - 24, n = rows.length, rh = (bot - top) / n;
@@ -796,8 +805,10 @@
         var rv = won(r.f.rev); c.font = F(700, Math.round(bh * 1.0));
         c.fillStyle = T.inkSoft; c.textBaseline = 'middle'; c.fillText(rv[0] + rv[1].replace('원', ''), nameX + len + 10, by + 1); c.textBaseline = 'alphabetic';
         var v = m === 'margin' ? r.f.margin : m === 'growth' ? r.f.growth : r.f[m], nu = numOf(r.f, m);
-        valAt(c, CX + CWID, cy + vf * 0.34, nu[0], vf, v != null && v < 0 ? T.down : T.up, nu[1], 'right');
-        if (main && bk(r.f) !== main) {     // 기준이 다른 숫자(비상장 연간 ↔ 상장 최근 4분기)면 작게 표시
+        if (m === 'cap' && v == null) {      // 비상장사는 시가총액이 없다
+          c.font = F(800, Math.round(vf * 0.42)); c.fillStyle = T.inkSoft; c.textAlign = 'right'; c.fillText(r.it.u ? '비상장' : '–', CX + CWID, cy + vf * 0.2); c.textAlign = 'left';
+        } else valAt(c, CX + CWID, cy + vf * 0.34, nu[0], vf, v != null && v < 0 ? T.down : T.up, nu[1], 'right');
+        if (m !== 'cap' && main && bk(r.f) !== main) {     // 기준이 다른 숫자(비상장 연간 ↔ 상장 최근 4분기)면 작게 표시
           c.font = F(700, 20); c.fillStyle = T.inkSoft; c.textAlign = 'right'; c.fillText(basisTxt(bk(r.f), true), CX + CWID, cy + vf * 0.34 + 26); c.textAlign = 'left';
         }
       } else if (r.f && r.f.missing) {
@@ -806,6 +817,74 @@
       if (i < n - 1) rule(c, top + rh * (i + 1));
     });
   }
+
+
+  /* ---------------- ③ 1:1 5년 추이 ----------------
+     연도마다 두 회사 막대를 나란히. 위에 숫자, 아래 연도. 끝에 '5년 전보다 몇 배' 한 줄 */
+  function series(it, key) {
+    var d = load(it); if (!d || !d.annual) return null;
+    var k = it.us ? (FX || 1400) / 100 : 1, out = {};
+    d.annual.slice(-5).forEach(function (r) {
+      var v = key === 'margin' ? (r.rev && r.op != null ? r.op / r.rev * 100 : null) : r[key] != null ? r[key] * k : null;
+      out[r.p] = v;
+    });
+    return { v:out, fiscal:!!(it.us && d.fiscal) };
+  }
+  function drawTrend(c, p) {
+    var m = $('c-tmetric').value, nm = { rev:'매출', op:'영업이익', ni:'순이익', margin:'영업이익률' }[m];
+    if (!titleEdited) $('c-title').value = p.a.b + ' vs ' + p.z.b + ', 5년 ' + nm;
+    var y = head(c, $('c-chip').value, $('c-title').value);
+    var A = series(p.a, m), Z = series(p.z, m);
+    var CA = T.ink, CZ = T.chipInk;
+    // 범례: 로고 + 이름
+    var ly = y + 70, lr = 34;
+    [[p.a, CA, CX], [p.z, CZ, CX + CWID / 2]].forEach(function (x) {
+      logo(c, x[0], x[2] + lr, ly, lr);
+      pill(c, x[2] + lr * 2 + 16, ly - 9, 30, 18, x[1]);
+      c.font = F(800, 32); c.fillStyle = T.ink; c.fillText(fitText(c, x[0].b, CWID / 2 - lr * 2 - 70), x[2] + lr * 2 + 56, ly + 11);
+    });
+    rule(c, ly + lr + 22);
+    var ry = footer(c, today() + ' 기준 · 연간 실적' + (p.a.us || p.z.us ? ' · 1달러 ' + Math.round(FX || 0).toLocaleString('ko-KR') + '원' : ''));
+    if (!A || !Z) return;
+    var years = Object.keys(A.v).concat(Object.keys(Z.v)).filter(function (v, i, arr) { return arr.indexOf(v) === i; }).sort().slice(-5);
+    var vals = []; years.forEach(function (yy) { [A.v[yy], Z.v[yy]].forEach(function (v) { if (v != null) vals.push(v); }); });
+    if (!vals.length) return;
+    var vmax = Math.max(0, Math.max.apply(null, vals)), vmin = Math.min(0, Math.min.apply(null, vals));
+    var top = ly + lr + 22 + 70, bot = ry - 170, H = bot - top;
+    var zeroY = top + H * (vmax / ((vmax - vmin) || 1));
+    var colW = CWID / years.length, bw = Math.min(64, colW * 0.3), gap = 14;
+    var fmt = function (v) { if (v == null) return '–'; if (m === 'margin') return v.toFixed(1) + '%'; var w = won(v); return w[0] + w[1].replace('원', ''); };
+    years.forEach(function (yy, i) {
+      var cx = CX + colW * (i + 0.5);
+      [[A.v[yy], CA, cx - bw - gap / 2], [Z.v[yy], CZ, cx + gap / 2]].forEach(function (b) {
+        var v = b[0]; if (v == null) return;
+        var h = Math.abs(v) / ((vmax - vmin) || 1) * H, y0 = v >= 0 ? zeroY - h : zeroY;
+        c.fillStyle = b[1]; c.fillRect(b[2], y0, bw, Math.max(h, 2));
+        var lab = fmt(v), lf = fit(c, lab, 800, 21, 14, colW / 2 - 4);
+        c.font = F(800, lf); c.textAlign = 'center'; c.fillStyle = v < 0 ? T.down : T.ink;
+        c.fillText(lab, b[2] + bw / 2, v >= 0 ? y0 - 10 : y0 + h + lf + 6); c.textAlign = 'left';
+      });
+      c.font = F(700, 24); c.fillStyle = T.inkSoft; c.textAlign = 'center';
+      c.fillText((A.fiscal || Z.fiscal ? 'FY' : '') + yy, cx, bot + 62); c.textAlign = 'left';
+    });
+    c.strokeStyle = T.rule; c.lineWidth = 2; c.beginPath(); c.moveTo(CX, zeroY); c.lineTo(CX + CWID, zeroY); c.stroke();
+    // 한 줄 요약: 첫 해 대비
+    var y0s = years[0], y1s = years[years.length - 1];
+    var chg = function (s) {      // 그 회사가 가진 첫 해 → 마지막 해
+      var ys = years.filter(function (yy) { return s.v[yy] != null; });
+      if (ys.length < 2) return '–';
+      var a = s.v[ys[0]], b = s.v[ys[ys.length - 1]];
+      if (a == null || b == null) return '–';
+      if (m === 'margin') { var d = b - a; return (d >= 0 ? '+' : '') + d.toFixed(1) + '%p'; }
+      if (a > 0 && b > 0) { var r = b / a; return r >= 1.95 ? r.toFixed(1) + '배' : (r >= 1 ? '+' : '') + ((r - 1) * 100).toFixed(0) + '%'; }
+      return a <= 0 && b > 0 ? '흑자 전환' : a > 0 && b <= 0 ? '적자 전환' : '적자 지속';
+    };
+    var sy = ry - 60;
+    c.font = F(700, 26); c.fillStyle = T.inkSoft; c.fillText((A.fiscal || Z.fiscal ? '처음 → 마지막 해' : y0s + '년 → ' + y1s + '년'), CX, sy);
+    var t1 = p.a.b + ' ' + chg(A) + '   ·   ' + p.z.b + ' ' + chg(Z);
+    c.font = F(900, fit(c, t1, 900, 34, 22, CWID - 230)); c.fillStyle = T.ink; c.textAlign = 'right'; c.fillText(t1, CX + CWID, sy); c.textAlign = 'left';
+  }
+  function fitText(c, t, w) { if (c.measureText(t).width <= w) return t; while (t.length > 1 && c.measureText(t + '…').width > w) t = t.slice(0, -1); return t + '…'; }
 
   /* ---------------- ② 국내 vs 해외 (1:1) ----------------
      위: 두 로고가 마주 보고 가운데 VS · 아래: 지표마다 가운데에서 양쪽으로 뻗는 막대, 이긴 쪽 빨강 */
@@ -825,7 +904,7 @@
     rule(c, start);
     var ry = footer(c, today() + ' 기준' + (p.a.us || p.z.us ? ' · 1달러 ' + Math.round(FX || 0).toLocaleString('ko-KR') + '원' : ''));
     if (!A || !Z) return;
-    var rowsDef = [['cap', '시가총액'], ['rev', '매출'], ['op', '영업이익'], ['margin', '영업이익률'], ['growth', '매출 성장률']]
+    var rowsDef = [['cap', '시가총액'], ['rev', '매출'], ['op', '영업이익'], ['ni', '순이익'], ['margin', '영업이익률'], ['growth', '매출 성장률']]
       .filter(function (d) { return A[d[0]] != null && Z[d[0]] != null; });
     var share = null;
     if (p.branch && A.rev && Z.rev) share = A.rev / Z.rev * 100;
@@ -888,6 +967,7 @@
     if (rest.length) html += '<div class="pcat"><span>기타</span>' + rest.map(btn).join('') + '</div>';
     $('presets').innerHTML = html;
     $('ctl-group').style.display = MODE === 'group' ? '' : 'none';
+    $('ctl-pair').style.display = MODE === 'group' ? 'none' : '';
   }
   function pick(g) {
     CUR = g; titleEdited = false; $('c-chip').value = g.chip; $('c-title').value = g.title;
@@ -905,7 +985,7 @@
         .then(function () { fontsReady = true; draw(); }).catch(function () { fontsReady = true; draw(); });
       return;
     }
-    if (MODE === 'group') drawGroup(ctx, CUR); else drawPair(ctx, CUR);
+    if (MODE === 'group') drawGroup(ctx, CUR); else if ($('c-pview').value === 'trend') drawTrend(ctx, CUR); else drawPair(ctx, CUR);
   }
   window.VS_SELECT = function (mode, id) {        // 자동 점검·미리보기용
     MODE = mode; document.querySelectorAll('.mode').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.m === mode)); });
@@ -919,7 +999,8 @@
     pick(list()[0]);
   });
   $('presets').addEventListener('click', function (e) { var b = e.target.closest('.preset'); if (b) pick(list()[+b.dataset.i]); });
-  ['c-metric', 'c-sort', 'c-basis'].forEach(function (id) { $(id).addEventListener('change', draw); });
+  $('c-pview').addEventListener('change', function () { titleEdited = false; if ($('c-pview').value === 'now' && CUR) $('c-title').value = CUR.title; });
+  ['c-metric', 'c-sort', 'c-basis', 'c-pview', 'c-tmetric'].forEach(function (id) { $(id).addEventListener('change', draw); });
   $('c-chip').addEventListener('input', draw);
   $('c-title').addEventListener('input', function () { titleEdited = true; draw(); });
   $('c-dl').addEventListener('click', function () {

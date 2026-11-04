@@ -328,7 +328,9 @@
 
     { g:'g-q',      k:'qMargin',    n:'분기 영업이익률', u:'%' },
     { g:'g-q',      k:'qRevYoy',    n:'분기 매출 YoY',   u:'%' },
-    { g:'g-q',      k:'qOpYoy',     n:'분기 영업이익 YoY', u:'%' }
+    { g:'g-q',      k:'qOpYoy',     n:'분기 영업이익 YoY', u:'%' },
+    { g:'g-q',      k:'qNew',       n:'이번 분기 발표(1=예)', u:'' },
+    { g:'g-q',      k:'qTurn',      n:'분기 흑자1·적자-1 전환', u:'' }
   ];
 
   // e: 카드 제목 왼쪽 이모지 · m: 카드 원 아래에 보여줄 값
@@ -338,10 +340,14 @@
     { n:'꾸준한 성장주',  e:'🌱', m:'revStreak',    f:{ revStreak:[5,null], margin:[10,null] } },
     { n:'턴어라운드',     e:'🔄', m:'op',           f:{ turnaround:[1,1] } },
     { n:'고배당',         e:'💰', m:'yield',        f:{ yield:[4,null], payout:[null,70], divYears:[3,null] } },
-    { n:'실적 서프라이즈', e:'🚀', m:'qOpYoy',       f:{ qOpYoy:[50,null] } },
+    { n:'실적 서프라이즈', e:'🚀', m:'qOpYoy',       f:{ qNew:[1,1], qOpYoy:[50,null] }, season:true },
+    { n:'실적 쇼크',      e:'📉', m:'qOpYoy',       f:{ qNew:[1,1], qOpYoy:[null,-50] }, season:true },
+    { n:'분기 흑자전환',  e:'☀️', m:'qOp',          f:{ qNew:[1,1], qTurn:[1,1] }, season:true },
+    { n:'분기 적자전환',  e:'🌧', m:'qOp',          f:{ qNew:[1,1], qTurn:[-1,-1] }, season:true },
     { n:'저평가 알짜',    e:'🔍', m:'roe',          f:{ roe:[10,null], debt:[null,80], margin:[10,null], lossCount:[null,0] } }
   ];
   var ACTIVE = -1;   // 지금 눌린 빠른 조건 (없으면 -1)
+  var SEASON = '';   // 이번 실적 시즌 이름 ('3분기') — 데이터를 받은 뒤 채운다
 
   var COLS = [
     { k:'name',   n:'종목' },
@@ -498,18 +504,19 @@
   var cv = $('card'), ctx = cv.getContext('2d');
   var HAS_LOGO = null;                       // data/logos.json 의 국내 로고 목록
   var LOGO = {};
-  var FMAP = { rev:{ k:'rev', n:'매출', u:'억' }, op:{ k:'op', n:'영업이익', u:'억' } };
+  var FMAP = { rev:{ k:'rev', n:'매출', u:'억' }, op:{ k:'op', n:'영업이익', u:'억' }, qOp:{ k:'qOp', n:'분기 영업이익', u:'억' } };
   FILTERS.forEach(function (f) { FMAP[f.k] = f; });
 
   // 빠른 조건마다 둘째 줄 (첫 줄은 조건 이름)
   // 숫자는 넣지 않는다 — 조건 숫자를 바꾸면 제목이 틀려진다 (숫자는 조건 태그에)
   var HOOK = { '배당귀족':'배당이 느는 주식', '고ROE 우량주':'돈 잘 버는 주식',
     '꾸준한 성장주':'매년 크는 주식', '턴어라운드':'흑자 낸 주식',
-    '고배당':'배당 많은 주식', '실적 서프라이즈':'이익 뛴 주식',
+    '고배당':'배당 많은 주식', '실적 서프라이즈':'이익 뛴 주식', '실적 쇼크':'이익 꺾인 주식',
+    '분기 흑자전환':'흑자로 돌아선 주식', '분기 적자전환':'적자로 돌아선 주식',
     '저평가 알짜':'속이 알찬 주식' };
   // 원 아래 숫자가 무엇인지 (푸터에 적는다)
   var MLABEL = { divGrowYears:'배당 연속 증가', roeAvg:'5년 평균 ROE', revStreak:'매출 연속 증가',
-    op:'영업이익', yield:'시가배당률', qOpYoy:'분기 영업이익 증가율', roe:'ROE', rev:'매출' };
+    op:'영업이익', yield:'시가배당률', qOpYoy:'분기 영업이익 증가율', qOp:'분기 영업이익', roe:'ROE', rev:'매출' };
 
   // 회사 이름 줄이기 — 그때 샀다면 탭과 같은 표
   var TRIM = [
@@ -589,7 +596,7 @@
     return [String(v), u];
   }
   function valColor(v, k) {
-    var signed = k === 'qOpYoy' || k === 'qRevYoy' || /Cagr/.test(k) || k === 'op' || k === 'roe' || k === 'roeAvg';
+    var signed = k === 'qOpYoy' || k === 'qRevYoy' || /Cagr/.test(k) || k === 'op' || k === 'qOp' || k === 'roe' || k === 'roeAvg';
     return signed && v != null && v < 0 ? T.downKR : T.upKR;
   }
   function metricKey() { return $('c-metric').value || 'rev'; }
@@ -604,13 +611,15 @@
     qMargin:['분기 영업이익률', '최근 분기 매출 100원 중 남긴 영업이익'],
     revCagr3:['매출 성장률 (3년)', '매출이 해마다 늘어난 비율'], revCagr5:['매출 성장률 (5년)', '매출이 해마다 늘어난 비율'],
     revCagr10:['매출 성장률 (10년)', '매출이 해마다 늘어난 비율'], opCagr5:['영업이익 성장률', '영업이익이 해마다 늘어난 비율'],
-    rev:['매출', '최근 1년 매출'], op:['영업이익', '최근 1년 영업이익']
+    rev:['매출', '최근 1년 매출'], op:['영업이익', '최근 1년 영업이익'], qOp:['분기 영업이익', '최근 분기 영업이익']
   };
 
   // 조건 한 줄: '배당성향 20~60%' · '부채비율 100% 이하' · '연속 흑자 5년 이상'
   function condText(k, lo, hi) {
     var f = FMAP[k]; if (!f) return '';
     if (k === 'turnaround') return '흑자 전환';
+    if (k === 'qNew') return SEASON ? SEASON + ' 발표' : '이번 분기 발표';
+    if (k === 'qTurn') return lo === -1 ? '작년 같은 분기 흑자 → 적자' : '작년 같은 분기 적자 → 흑자';
     if (k === 'lossCount' && lo === null && hi === 0) return '적자 없음';
     var u = f.u, n = f.n.replace(/\(.*\)/, '');
     if (u === '억') {                          // 10000억 → 1조, 2500억 → 2,500억
@@ -628,7 +637,7 @@
     // 빠른 조건은 정의한 순서대로, 그 뒤에 직접 더한 조건
     var keys = p ? Object.keys(p.f).filter(function (k) { return f[k]; })
                      .concat(Object.keys(f).filter(function (k) { return !(k in p.f); })) : Object.keys(f);
-    $('c-title').value = p ? p.n : (keys.length ? '조건 검색' : '전체 종목');
+    $('c-title').value = p ? (p.season && SEASON ? SEASON + ' ' + p.n.replace(/^분기 /, '') : p.n) : (keys.length ? '조건 검색' : '전체 종목');
     $('c-hook').value = p ? HOOK[p.n] || '' : (keys.length ? '조건 통과 주식' : '매출 큰 주식');
     $('c-sub').value = keys.map(function (k) { return condText(k, f[k][0], f[k][1]); }).filter(Boolean).join(' · ');
     var m = p ? p.m : (sortKey !== 'rev' ? sortKey : (keys[0] || 'rev'));
@@ -770,7 +779,8 @@
   /* ---------- 카드 모양 고르기 ----------
      자동: 빠른 조건마다 정해 둔 모양 · 직접 조건은 숫자 단위로 (년 → 연속 기록, % → 막대) */
   var AUTO_LAYOUT = { '배당귀족':'yearbars', '고ROE 우량주':'bars', '꾸준한 성장주':'growth', '턴어라운드':'grid',
-                      '고배당':'bars', '실적 서프라이즈':'hero', '저평가 알짜':'grid' };
+                      '고배당':'bars', '실적 서프라이즈':'hero', '실적 쇼크':'hero', '분기 흑자전환':'grid', '분기 적자전환':'grid',
+                      '저평가 알짜':'grid' };
   function layoutFor(k) {
     var u = (FMAP[k] || {}).u, sel = $('c-layout').value, p = PRESETS[ACTIVE];
     var lay = sel !== 'auto' ? sel : (p && AUTO_LAYOUT[p.n]) || (u === '년' ? 'streak' : u === '%' ? 'bars' : 'grid');
@@ -1150,7 +1160,7 @@
     c.textAlign = 'left';
   }
 
-  $('c-metric').innerHTML = FILTERS.concat([{ k:'rev', n:'매출' }, { k:'op', n:'영업이익' }])
+  $('c-metric').innerHTML = FILTERS.filter(function (f) { return f.k !== 'qNew' && f.k !== 'qTurn'; }).concat([{ k:'rev', n:'매출' }, { k:'op', n:'영업이익' }, { k:'qOp', n:'분기 영업이익' }])
     .filter(function (f, i, a) { return f.k !== 'turnaround' && a.findIndex(function (x) { return x.k === f.k; }) === i; })
     .map(function (f) { return '<option value="' + f.k + '">' + f.n + '</option>'; }).join('');
   ['c-n', 'c-order', 'c-metric', 'c-logo', 'c-layout'].forEach(function (id) { $(id).addEventListener('change', drawCard); });
@@ -1259,6 +1269,12 @@
     .then(function (j) {
       DATA = j; F = j.fields;
       F.forEach(function (k, i) { IDX[k] = i; });
+      // 이번 실적 시즌 이름 — '이번 분기 발표' 회사들의 분기 (예: 20263 → '3분기')
+      if (IDX.qNew !== undefined) {
+        var cnt = {}; j.rows.forEach(function (r) { if (r[IDX.qNew] === 1) cnt[r[IDX.qPeriod]] = (cnt[r[IDX.qPeriod]] || 0) + 1; });
+        var top = Object.keys(cnt).sort(function (a, b) { return cnt[b] - cnt[a]; })[0];
+        if (top) SEASON = String(top).slice(-1) + '분기';
+      }
       $('src-pill').textContent = j.rows.length.toLocaleString('ko-KR') + '종목 · ' + j.updated;
       apply(true);
     })

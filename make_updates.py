@@ -37,7 +37,10 @@ PRESETS = [
     ("꾸준한 성장주", {"revStreak": [5, None], "margin": [10, None]}),
     ("턴어라운드", {"turnaround": [1, 1]}),
     ("고배당", {"yield": [4, None], "payout": [None, 70], "divYears": [3, None]}),
-    ("실적 서프라이즈", {"qOpYoy": [50, None]}),
+    ("실적 서프라이즈", {"qNew": [1, 1], "qOpYoy": [50, None]}),
+    ("실적 쇼크", {"qNew": [1, 1], "qOpYoy": [None, -50]}),
+    ("분기 흑자전환", {"qNew": [1, 1], "qTurn": [1, 1]}),
+    ("분기 적자전환", {"qNew": [1, 1], "qTurn": [-1, -1]}),
     ("저평가 알짜", {"roe": [10, None], "debt": [None, 80], "margin": [10, None], "lossCount": [None, 0]}),
 ]
 

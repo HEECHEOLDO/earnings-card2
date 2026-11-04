@@ -15,6 +15,7 @@ DART OpenAPI -> data/{종목코드}.json 수집기
 
 import io
 import json
+import math
 import os
 import sys
 import time
@@ -342,25 +343,26 @@ def adjust_for_splits(rows):
             shares.append(None)
 
     # 뒤(최근)에서 앞으로 오면서 누적 분할배수를 만든다
+    # 배당성향·순이익만으로 역산한 주식 수는 흔들린다(지주사·배당 삭감 해 등).
+    # 실제 분할이면 '원래 주당배당금'도 그 배수만큼 같이 떨어진다(병합이면 뛴다) — 두 조건을 다 맞는 배수만 분할로 본다.
+    # (2026-11 수정: 미스토홀딩스·CJ 등 150여 곳이 엉뚱하게 환산돼 연속 증가 연수가 틀렸다)
     factor = [1.0] * len(rows)
     cum = 1.0
     found = False
     for i in range(len(rows) - 1, 0, -1):
         a, b = shares[i - 1], shares[i]
-        if a and b and a > 0:
+        d0, d1 = rows[i - 1].get("dps"), rows[i].get("dps")
+        if a and b and a > 0 and d0 and d1:
             ratio = b / a
-            if ratio >= 1.8 or (0 < ratio <= 0.56):     # 분할 또는 병합
+            if ratio >= 1.8 or (0 < ratio <= 0.56):     # 분할 또는 병합 후보
                 target = ratio if ratio >= 1 else 1 / ratio
-                best = None
-                for cand in CLEAN_RATIOS:
-                    if 0.85 <= target / cand <= 1.06:
-                        best = cand
-                        break
-                # 어떤 배수에도 안 맞으면 분할로 보지 않는다
-                if best is None:
-                    continue
-                cum *= best if ratio >= 1 else 1 / best
-                found = True
+                jump = d0 / d1 if ratio >= 1 else d1 / d0
+                ok = [cand for cand in CLEAN_RATIOS
+                      if 0.85 <= target / cand <= 1.1 and 0.8 * cand <= jump <= 1.35 * cand]
+                if ok:      # 두 값에 가장 가까운 배수 (5:1 분할을 4배로 잡지 않게)
+                    cand = min(ok, key=lambda x: abs(math.log(target / x)) + abs(math.log(jump / x)))
+                    cum *= cand if ratio >= 1 else 1 / cand
+                    found = True
         factor[i - 1] = cum
 
     for i, r in enumerate(rows):
@@ -586,6 +588,33 @@ def save_checked(d):
         json.dump(d, f, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
 
 
+def recent_filers(days=12):
+    """
+    최근 며칠 사이 정기보고서(분기·반기·사업보고서)를 낸 상장사 {종목코드: 접수일 'YYYY-MM-DD'}.
+    실적 시즌(5·8·11·3월 중순)에 막 발표한 회사부터 먼저 받기 위해 쓴다. 호출은 페이지당 1회(100건).
+    """
+    today = datetime.now(timezone(timedelta(hours=9))).date()
+    bgn = (today - timedelta(days=days)).strftime("%Y%m%d")
+    out = {}
+    for page in range(1, 60):
+        res = api_get("list.json", {"bgn_de": bgn, "end_de": today.strftime("%Y%m%d"), "pblntf_ty": "A",
+                                    "page_no": page, "page_count": 100})
+        if not res or str(res.get("status")) != "000":
+            break
+        for it in res.get("list") or []:
+            code = (it.get("stock_code") or "").strip()
+            nm = it.get("report_nm") or ""
+            if not code or not any(k in nm for k in ("분기보고서", "반기보고서", "사업보고서")):
+                continue
+            d = it.get("rcept_dt") or ""
+            d = "%s-%s-%s" % (d[:4], d[4:6], d[6:8]) if len(d) == 8 else ""
+            if d > out.get(code, ""):
+                out[code] = d
+        if page >= int(res.get("total_page") or 1):
+            break
+    return out
+
+
 def load_done(refresh_days=None):
     """
     이미 data/ 에 파일이 있는 종목.
@@ -650,7 +679,7 @@ SCREEN_FIELDS = [
     "revStreak", "profitStreak", "lossCount", "marginStd", "turnaround",
     "dps", "payout", "yield", "dpsCagr5", "divYears", "divGrowYears",
     "qRev", "qOp", "qMargin", "qRevYoy", "qOpYoy",
-    "yieldDart",
+    "yieldDart", "qPeriod", "qNew", "qTurn",
 ]
 
 
@@ -698,13 +727,23 @@ def build_screen():
             continue
         try:
             with open(os.path.join(OUT_DIR, fn), encoding="utf-8") as f:
-                files.append((fn, json.load(f)))
+                d0 = json.load(f)
+            if d0.get("annual"):          # 분할 환산은 매번 다시 — 판정 규칙을 고치면 바로 반영된다
+                adjust_for_splits(d0["annual"])
+            files.append((fn, d0))
         except Exception:      # noqa: BLE001
             continue
     # 가장 많은 회사의 최근 분기 (예: 2026.2Q) — 이보다 한 분기 넘게 늦으면 분기 지표를 비운다
     from collections import Counter
     lastq = Counter((d["quarterly"][-1]["y"], d["quarterly"][-1]["q"]) for _, d in files if d.get("quarterly"))
     ref_q = lastq.most_common(1)[0][0] if lastq else None
+    # 가장 최근 분기 (3곳 이상 낸 분기 중) — 실적 시즌에 '이번 분기 발표' 회사만 고르기 위해
+    # (결산월이 다른 회사는 분기 번호가 어긋나므로 '가장 많은 분기의 바로 다음 분기' 만 본다)
+    newest_q = ref_q
+    if ref_q:
+        nxt = (ref_q[0], ref_q[1] + 1) if ref_q[1] < 4 else (ref_q[0] + 1, 1)
+        if lastq.get(nxt, 0) >= 30:      # 시즌이 시작돼 30곳 넘게 냈을 때부터
+            newest_q = nxt
     min_q = None
     if ref_q:
         min_q = (ref_q[0], ref_q[1] - 1) if ref_q[1] > 1 else (ref_q[0] - 1, 4)
@@ -802,9 +841,11 @@ def build_screen():
             dpsCagr5 = None
 
         # 분기
-        qRev = qOp = qMargin = qRevYoy = qOpYoy = None
+        qRev = qOp = qMargin = qRevYoy = qOpYoy = qPeriod = qNew = qTurn = None
         if q and (min_q is None or (q[-1]["y"], q[-1]["q"]) >= min_q):
             lq = q[-1]
+            qPeriod = lq["y"] * 10 + lq["q"]                     # 20263 = 2026년 3분기
+            qNew = 1 if (lq["y"], lq["q"]) == newest_q else 0
             qRev, qOp = lq.get("rev"), lq.get("op")
             qMargin = _r(qOp / qRev * 100) if qRev else None
             y0 = next((x for x in q if x["y"] == lq["y"] - 1 and x["q"] == lq["q"]), None)   # 작년 같은 분기
@@ -813,6 +854,8 @@ def build_screen():
                     qRevYoy = _r((qRev / y0["rev"] - 1) * 100)
                 if y0.get("op") and y0["op"] > 0 and qOp is not None:
                     qOpYoy = _r((qOp / y0["op"] - 1) * 100)
+                if y0.get("op") is not None and qOp is not None:   # 작년 같은 분기 대비 흑자·적자 전환
+                    qTurn = 1 if (y0["op"] < 0 < qOp) else -1 if (qOp < 0 < y0["op"]) else 0
         if foreign:                                     # 외화 단위 — 금액은 비우고 비율만 남긴다
             rev = op = ni = qRev = qOp = None
 
@@ -827,7 +870,7 @@ def build_screen():
             _r(dps / price[d.get("code", fn[:-5])] * 100, 2) if (dps and d.get("code", fn[:-5]) in price) else _r(last.get("yield")),
             dpsCagr5, divYears, divGrowYears,
             _r(qRev, 0), _r(qOp, 0), qMargin, qRevYoy, qOpYoy,
-            _r(last.get("yield")),
+            _r(last.get("yield")), qPeriod, qNew, qTurn,
         ])
 
     path = os.path.join(OUT_DIR, "screen.json")
@@ -1102,6 +1145,24 @@ def main():
     # 아직 한 번도 안 받은 종목이 먼저, 그다음 오래된 순서로 갱신
     refresh.sort(reverse=True)
     todo = fresh + [(c, a) for _, c, a in refresh]
+
+    # 실적 시즌: 최근 정기보고서를 냈는데 그 뒤로 아직 안 받은 회사를 맨 앞으로 (오늘의 실적 발표 카드용)
+    if not force and "--no-filers" not in sys.argv:
+        try:
+            filers = recent_filers()
+        except Exception as e:      # noqa: BLE001
+            filers = {}
+            log("최근 공시 목록을 못 받았습니다: %r" % e)
+        if filers:
+            chk = load_checked()
+            alias_of = dict(tickers)
+            first = [(c, alias_of.get(c)) for c, d in sorted(filers.items(), key=lambda x: x[1])
+                     if c in alias_of and chk.get(c, "") <= d
+                     and failed.get(c, {}).get("reason") not in skip_reasons]
+            if first:
+                fc = set(c for c, _ in first)
+                todo = first + [(c, a) for c, a in todo if c not in fc]
+                log("최근 정기보고서 제출 %d곳 중 %d곳을 먼저 받습니다." % (len(filers), len(first)))
 
     log("\n목록 %d종목 | 최신 %d | 미수집 %d | 갱신대상 %d | 이전 실패(건너뜀) %d"
         % (len(tickers), len(done), len(fresh), len(refresh), len(failed)))
