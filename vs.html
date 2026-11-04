@@ -710,10 +710,27 @@
   }
   function today() { var d = new Date(Date.now() + 9 * 3600e3); return d.getUTCFullYear() + '. ' + ('0' + (d.getUTCMonth() + 1)).slice(-2) + '. ' + ('0' + d.getUTCDate()).slice(-2); }
 
+
+  // 비교 묶음 제목 — 고른 지표(영업이익률·영업이익·매출·성장률)와 실제 숫자에 맞춰 만든다
+  var TOPIC = {coffee:'커피',chicken:'치킨',burger:'버거 4대장',bakery:'빵집',baseball:'야구단',cars:'수입차',luxury:'명품',cvs:'편의점',delivery:'배달앱',ramen:'라면 4사',beer:'술',game:'게임사',ecom:'쇼핑앱',beauty:'뷰티 유통',spa:'SPA 패션',outdoor:'아웃도어',watch:'시계·보석',furniture:'가구',ent:'엔터 4사',lcc:'저가항공',crypto:'코인 거래소',fintech:'핀테크',ott:'OTT',bigtech:'빅테크 한국 지사',pharma:'외국 제약사',chip:'반도체',ship:'조선 3사','defense-kr':'방산 4사',battery:'배터리',telco:'통신 3사','car-kr':'국산차',dept:'백화점 3사',dutyfree:'면세점','pharma-kr':'제약사',aesthetic:'피부 미용',kbeauty:'K-뷰티',food:'식품 대기업',catering:'급식 회사',cinema:'영화관 3사',news:'신문사',tv:'방송사',hotel:'호텔',stay:'야놀자 vs 여기어때',pizza:'피자',icecream:'아이스크림',drink:'음료',rental:'정수기·안마의자',edu:'교육 회사',build:'건설사',golf:'운동화·골프',books:'서점',luxury2:'명품 패션',fashionapp:'패션 앱',used:'중고 거래',luxapp:'명품 앱',coupangs:'쿠팡 계열사',kakaos:'카카오 계열사',navers:'네이버 계열사',apps:'생활 앱',whisky:'위스키',football:'야구단 vs 축구단',cars2:'수입차 2탄',gamedev:'게임 개발사',household:'생활용품'};
+  function autoTitle(g, m) {
+    var t = TOPIC[g.id] || g.title.replace(/,.*/, ''), n = g.items.length, top = n > 2 ? '제일' : '더';
+    var fs = g.items.map(function (it) { return facts(it); }).filter(function (f) { return f && !f.missing; });
+    var all = function (k, test) { var v = fs.filter(function (f) { return f[k] != null; }); return v.length >= 2 && v.every(test); };
+    if (m === 'margin') return all('op', function (f) { return f.op < 0; }) ? t + ', 왜 다 적자일까' : t + ', 누가 ' + top + ' 남길까';
+    if (m === 'op') return all('op', function (f) { return f.op < 0; }) ? t + ', 누가 덜 잃을까' : t + ', 누가 ' + top + ' 벌까';
+    if (m === 'rev') return n > 2 ? t + ', 매출 1위는 어디' : t + ', 매출은 누가 더 클까';
+    if (m === 'growth') return all('growth', function (f) { return f.growth < 0; }) ? t + ', 매출이 다 줄었다' : t + ', 누가 ' + top + ' 빨리 클까';
+    return g.title;
+  }
+  var titleEdited = false;
+
   /* ---------------- ① 브랜드 대결 ----------------
      한 줄 = [로고] 브랜드 / 매출 막대(+금액) · 오른쪽 큰 숫자(영업이익률 등) */
   function drawGroup(c, g) {
-    var m = $('c-metric').value, y = head(c, $('c-chip').value, $('c-title').value);
+    var m = $('c-metric').value;
+    if (!titleEdited) $('c-title').value = autoTitle(g, m);
+    var y = head(c, $('c-chip').value, $('c-title').value);
     var rows = g.items.map(function (it) { return { it:it, f:facts(it) }; });
     var ready = rows.filter(function (r) { return r.f && !r.f.missing; });
     var years = {}; ready.forEach(function (r) { years[r.f.year] = (years[r.f.year] || 0) + 1; });
@@ -846,7 +863,7 @@
     $('ctl-group').style.display = MODE === 'group' ? '' : 'none';
   }
   function pick(g) {
-    CUR = g; $('c-chip').value = g.chip; $('c-title').value = g.title;
+    CUR = g; titleEdited = false; $('c-chip').value = g.chip; $('c-title').value = g.title;
     $('c-hint').textContent = MODE === 'group'
       ? '막대는 매출, 오른쪽 큰 숫자는 위에서 고른 지표입니다. 로고가 없는 비상장사는 브랜드 색 원으로 나옵니다.'
       : '이긴 쪽이 빨간색입니다. 상장사는 최근 4분기 합계, 비상장사는 최근 사업연도 숫자이고, 미국 회사는 오늘 환율로 원화로 바꿉니다.';
@@ -876,7 +893,8 @@
   });
   $('presets').addEventListener('click', function (e) { var b = e.target.closest('.preset'); if (b) pick(list()[+b.dataset.i]); });
   ['c-metric', 'c-sort'].forEach(function (id) { $(id).addEventListener('change', draw); });
-  ['c-chip', 'c-title'].forEach(function (id) { $(id).addEventListener('input', draw); });
+  $('c-chip').addEventListener('input', draw);
+  $('c-title').addEventListener('input', function () { titleEdited = true; draw(); });
   $('c-dl').addEventListener('click', function () {
     var SCALE = 3, big = document.createElement('canvas'), keep = ctx;
     big.width = CW * SCALE; big.height = CH * SCALE;
