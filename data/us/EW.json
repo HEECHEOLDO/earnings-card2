@@ -2,14 +2,14 @@
  "name": "EW",
  "split_adjusted": true,
  "restated_from": null,
- "legal_name": "Edwards Lifesciences Corporation",
+ "legal_name": "EDWARDS LIFESCIENCES CORPORATION",
  "code": "EW",
  "cik": "0001099800",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-11-04",
+ "updated": "2026-11-05",
  "annual": [
   {
    "p": 2016,
@@ -145,13 +145,6 @@
  "quarterly": [
   {
    "y": 2024,
-   "q": 1,
-   "rev": 1329.9,
-   "op": 349.0,
-   "ni": 351.0
-  },
-  {
-   "y": 2024,
    "q": 2,
    "rev": 1369.4,
    "op": 366.5,
@@ -212,6 +205,13 @@
    "rev": 1741.0,
    "op": 513.2,
    "ni": 241.4
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 1715.5,
+   "op": 299.1,
+   "ni": 301.4
   }
  ]
 }

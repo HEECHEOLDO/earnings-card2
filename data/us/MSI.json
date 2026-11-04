@@ -2,14 +2,14 @@
  "name": "MSI",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "Motorola Solutions, Inc.",
+ "legal_name": "MOTOROLA SOLUTIONS, INC.",
  "code": "MSI",
  "cik": "0000068505",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-11-04",
+ "updated": "2026-11-05",
  "annual": [
   {
    "p": 2016,
@@ -145,13 +145,6 @@
  "quarterly": [
   {
    "y": 2024,
-   "q": 1,
-   "rev": 2389.0,
-   "op": 519.0,
-   "ni": -39.0
-  },
-  {
-   "y": 2024,
    "q": 2,
    "rev": 2628.0,
    "op": 644.0,
@@ -212,6 +205,13 @@
    "rev": 3133.0,
    "op": 809.0,
    "ni": 557.0
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 3376.0,
+   "op": 777.0,
+   "ni": 512.0
   }
  ]
 }

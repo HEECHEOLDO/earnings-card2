@@ -2,14 +2,14 @@
  "name": "PRU",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "PRUDENTIAL FINANCIAL INC",
+ "legal_name": "Prudential Financial, Inc.",
  "code": "PRU",
  "cik": "0001137774",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-11-04",
+ "updated": "2026-11-05",
  "annual": [
   {
    "p": 2016,
@@ -145,13 +145,6 @@
  "quarterly": [
   {
    "y": 2024,
-   "q": 1,
-   "rev": 23509.0,
-   "op": 1390.0,
-   "ni": 1138.0
-  },
-  {
-   "y": 2024,
    "q": 2,
    "rev": 14883.0,
    "op": 1415.0,
@@ -212,6 +205,13 @@
    "rev": 15661.0,
    "op": 1178.0,
    "ni": 985.0
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 14449.0,
+   "op": 1641.0,
+   "ni": 1388.0
   }
  ]
 }

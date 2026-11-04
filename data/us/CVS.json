@@ -2,14 +2,14 @@
  "name": "CVS",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "CVS HEALTH CORPORATION",
+ "legal_name": "CVS HEALTH Corp",
  "code": "CVS",
  "cik": "0000064803",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-11-04",
+ "updated": "2026-11-05",
  "annual": [
   {
    "p": 2016,
@@ -145,13 +145,6 @@
  "quarterly": [
   {
    "y": 2024,
-   "q": 1,
-   "rev": 88437.0,
-   "op": 2271.0,
-   "ni": 1124.0
-  },
-  {
-   "y": 2024,
    "q": 2,
    "rev": 91234.0,
    "op": 3045.0,
@@ -212,6 +205,13 @@
    "rev": 106096.0,
    "op": 4703.0,
    "ni": 2995.0
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 108399.0,
+   "op": 3566.0,
+   "ni": 2171.0
   }
  ]
 }

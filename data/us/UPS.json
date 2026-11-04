@@ -2,14 +2,14 @@
  "name": "UPS",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "UNITED PARCEL SERVICE INC",
+ "legal_name": "United Parcel Service, Inc.",
  "code": "UPS",
  "cik": "0001090727",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-11-04",
+ "updated": "2026-11-05",
  "annual": [
   {
    "p": 2016,
@@ -145,13 +145,6 @@
  "quarterly": [
   {
    "y": 2024,
-   "q": 1,
-   "rev": 21706.0,
-   "op": 1613.0,
-   "ni": 1113.0
-  },
-  {
-   "y": 2024,
    "q": 2,
    "rev": 21818.0,
    "op": 1944.0,
@@ -190,14 +183,14 @@
    "q": 3,
    "rev": 21415.0,
    "op": 1804.0,
-   "ni": null
+   "ni": 1311.0
   },
   {
    "y": 2025,
    "q": 4,
    "rev": 24479.0,
    "op": 2575.0,
-   "ni": null
+   "ni": 1791.0
   },
   {
    "y": 2026,
@@ -212,6 +205,13 @@
    "rev": 22834.0,
    "op": 930.0,
    "ni": 604.0
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 22853.0,
+   "op": 1744.0,
+   "ni": 1163.0
   }
  ]
 }

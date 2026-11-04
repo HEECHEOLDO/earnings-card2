@@ -2,14 +2,14 @@
  "name": "TPL",
  "split_adjusted": true,
  "restated_from": null,
- "legal_name": "TEXAS PACIFIC LAND CORPORATION",
+ "legal_name": "Texas Pacific Land Corporation",
  "code": "TPL",
  "cik": "0001811074",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-11-04",
+ "updated": "2026-11-05",
  "annual": [
   {
    "p": 2018,
@@ -119,13 +119,6 @@
  "quarterly": [
   {
    "y": 2024,
-   "q": 1,
-   "rev": 174.1,
-   "op": 136.0,
-   "ni": 114.4
-  },
-  {
-   "y": 2024,
    "q": 2,
    "rev": 172.3,
    "op": 133.2,
@@ -186,6 +179,13 @@
    "rev": 246.1,
    "op": 191.8,
    "ni": 153.9
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 273.4,
+   "op": 207.8,
+   "ni": 167.4
   }
  ]
 }

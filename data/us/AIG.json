@@ -2,14 +2,14 @@
  "name": "AIG",
  "split_adjusted": false,
  "restated_from": 2022,
- "legal_name": "AMERICAN INTERNATIONAL GROUP, INC.",
+ "legal_name": "American International Group, Inc.",
  "code": "AIG",
  "cik": "0000005272",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-11-04",
+ "updated": "2026-11-05",
  "annual": [
   {
    "p": 2016,
@@ -145,13 +145,6 @@
  "quarterly": [
   {
    "y": 2024,
-   "q": 1,
-   "rev": 6763.0,
-   "op": 797.0,
-   "ni": 1216.0
-  },
-  {
-   "y": 2024,
    "q": 2,
    "rev": 6560.0,
    "op": 475.0,
@@ -212,6 +205,13 @@
    "rev": 7085.0,
    "op": 1264.0,
    "ni": 948.0
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 7443.0,
+   "op": 1119.0,
+   "ni": 849.0
   }
  ]
 }

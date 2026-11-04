@@ -2,14 +2,14 @@
  "name": "UBER",
  "split_adjusted": true,
  "restated_from": null,
- "legal_name": "Uber Technologies, Inc",
+ "legal_name": "UBER TECHNOLOGIES, INC.",
  "code": "UBER",
  "cik": "0001543151",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-11-04",
+ "updated": "2026-11-05",
  "annual": [
   {
    "p": 2017,
@@ -132,13 +132,6 @@
  "quarterly": [
   {
    "y": 2024,
-   "q": 1,
-   "rev": 10131.0,
-   "op": 172.0,
-   "ni": -654.0
-  },
-  {
-   "y": 2024,
    "q": 2,
    "rev": 10700.0,
    "op": 796.0,
@@ -199,6 +192,13 @@
    "rev": 14191.0,
    "op": 1890.0,
    "ni": 2394.0
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 14766.0,
+   "op": 1447.0,
+   "ni": 512.0
   }
  ]
 }

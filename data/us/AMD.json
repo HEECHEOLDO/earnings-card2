@@ -2,14 +2,14 @@
  "name": "AMD",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "ADVANCED MICRO DEVICES INC",
+ "legal_name": "ADVANCED MICRO DEVICES, INC",
  "code": "AMD",
  "cik": "0000002488",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-11-04",
+ "updated": "2026-11-05",
  "annual": [
   {
    "p": 2016,
@@ -145,13 +145,6 @@
  "quarterly": [
   {
    "y": 2024,
-   "q": 1,
-   "rev": 5473.0,
-   "op": 36.0,
-   "ni": 123.0
-  },
-  {
-   "y": 2024,
    "q": 2,
    "rev": 5835.0,
    "op": 269.0,
@@ -212,6 +205,13 @@
    "rev": 11536.0,
    "op": 1990.0,
    "ni": 2297.0
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 13377.0,
+   "op": 2832.0,
+   "ni": 2428.0
   }
  ]
 }
