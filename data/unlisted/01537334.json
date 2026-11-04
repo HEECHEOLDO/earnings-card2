@@ -1,0 +1,101 @@
+{
+ "name": "트렌비",
+ "legal_name": "트렌비",
+ "code": "01537334",
+ "market": "비상장",
+ "sector": "배달·커머스",
+ "brand": "트렌비",
+ "basis": "연결·별도",
+ "source": "audit",
+ "fy_end": 12,
+ "updated": "2026-10-23",
+ "annual": [
+  {
+   "p": 2020,
+   "rev": 171.1,
+   "op": -101.9,
+   "ni": -98.7,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2021,
+   "rev": 217.6,
+   "op": -330.3,
+   "ni": -302.7,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2022,
+   "rev": 882.0,
+   "op": -208.0,
+   "ni": -212.7,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": true
+  },
+  {
+   "p": 2023,
+   "rev": 401.8,
+   "op": -32.3,
+   "ni": -35.2,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": true
+  },
+  {
+   "p": 2024,
+   "rev": 207.0,
+   "op": -29.5,
+   "ni": -51.2,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": true
+  },
+  {
+   "p": 2025,
+   "rev": 181.5,
+   "op": -4.6,
+   "ni": -17.2,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": true
+  }
+ ],
+ "quarterly": [],
+ "reports": {
+  "2020": "전기:20220412000975",
+  "2021": "20220412000975",
+  "2022": "20230407003458",
+  "2023": "20240409000861",
+  "2024": "20250414002733",
+  "2025": "20260414002008"
+ }
+}

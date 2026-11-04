@@ -1,0 +1,101 @@
+{
+ "name": "티맵모빌리티",
+ "legal_name": "티맵모빌리티",
+ "code": "01523386",
+ "market": "비상장",
+ "sector": "플랫폼·앱",
+ "brand": "티맵",
+ "basis": "연결·별도",
+ "source": "audit",
+ "fy_end": 12,
+ "updated": "2026-10-23",
+ "annual": [
+  {
+   "p": 2020,
+   "rev": 0.0,
+   "op": -18.6,
+   "ni": -18.6,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2021,
+   "rev": 0.0,
+   "op": -678.0,
+   "ni": -52.8,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": true
+  },
+  {
+   "p": 2022,
+   "rev": 2046.1,
+   "op": -978.1,
+   "ni": -1608.3,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": true
+  },
+  {
+   "p": 2023,
+   "rev": 2870.7,
+   "op": -789.3,
+   "ni": -423.4,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": true
+  },
+  {
+   "p": 2024,
+   "rev": 3225.8,
+   "op": -433.5,
+   "ni": -774.0,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": true
+  },
+  {
+   "p": 2025,
+   "rev": 2834.9,
+   "op": -141.4,
+   "ni": 249.9,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": true
+  }
+ ],
+ "quarterly": [],
+ "reports": {
+  "2020": "20210402002246",
+  "2021": "20220401002965",
+  "2022": "20230403000719",
+  "2023": "20240409001752",
+  "2024": "20250404002498",
+  "2025": "20260403002422"
+ }
+}

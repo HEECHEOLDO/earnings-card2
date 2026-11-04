@@ -1,0 +1,87 @@
+{
+ "name": "라이온하트스튜디오",
+ "legal_name": "라이온하트스튜디오",
+ "code": "01588462",
+ "market": "비상장",
+ "sector": "게임",
+ "brand": "오딘",
+ "basis": "별도",
+ "source": "audit",
+ "fy_end": 12,
+ "updated": "2026-10-26",
+ "annual": [
+  {
+   "p": 2021,
+   "rev": 2325.8,
+   "op": 2153.4,
+   "ni": -1507.1,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2022,
+   "rev": 2018.1,
+   "op": 1652.7,
+   "ni": 1225.0,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2023,
+   "rev": 1183.3,
+   "op": 718.5,
+   "ni": 667.2,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2024,
+   "rev": 919.9,
+   "op": 380.6,
+   "ni": 427.9,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2025,
+   "rev": 856.6,
+   "op": 175.6,
+   "ni": 197.8,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  }
+ ],
+ "quarterly": [],
+ "reports": {
+  "2021": "20220331003121",
+  "2022": "20230324000430",
+  "2023": "20240329002312",
+  "2024": "20250328002194",
+  "2025": "20260327000182"
+ }
+}

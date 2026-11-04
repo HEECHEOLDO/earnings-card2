@@ -1,0 +1,101 @@
+{
+ "name": "번개장터",
+ "legal_name": "번개장터",
+ "code": "01554164",
+ "market": "비상장",
+ "sector": "배달·커머스",
+ "brand": "번개장터",
+ "basis": "별도",
+ "source": "audit",
+ "fy_end": 12,
+ "updated": "2026-10-23",
+ "annual": [
+  {
+   "p": 2020,
+   "rev": 140.3,
+   "op": -135.2,
+   "ni": -131.7,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2021,
+   "rev": 249.6,
+   "op": -393.4,
+   "ni": -392.7,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2022,
+   "rev": 304.8,
+   "op": -348.3,
+   "ni": -380.3,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2023,
+   "rev": 341.3,
+   "op": -216.3,
+   "ni": -210.0,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2024,
+   "rev": 448.9,
+   "op": -195.6,
+   "ni": -194.7,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2025,
+   "rev": 581.8,
+   "op": -198.8,
+   "ni": -243.1,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  }
+ ],
+ "quarterly": [],
+ "reports": {
+  "2020": "전기:20220412000820",
+  "2021": "20220412000820",
+  "2022": "20230412002533",
+  "2023": "20240412003809",
+  "2024": "20250410000022",
+  "2025": "20260409002808"
+ }
+}

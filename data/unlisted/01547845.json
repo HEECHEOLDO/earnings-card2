@@ -1,0 +1,101 @@
+{
+ "name": "당근마켓",
+ "legal_name": "당근마켓",
+ "code": "01547845",
+ "market": "비상장",
+ "sector": "플랫폼·앱",
+ "brand": "당근마켓",
+ "basis": "연결·별도",
+ "source": "audit",
+ "fy_end": 12,
+ "updated": "2026-10-23",
+ "annual": [
+  {
+   "p": 2020,
+   "rev": 117.5,
+   "op": -133.6,
+   "ni": -130.3,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2021,
+   "rev": 256.7,
+   "op": -352.1,
+   "ni": -364.3,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2022,
+   "rev": 499.3,
+   "op": -564.9,
+   "ni": -540.1,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": true
+  },
+  {
+   "p": 2023,
+   "rev": 1277.7,
+   "op": -11.2,
+   "ni": 24.0,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": true
+  },
+  {
+   "p": 2024,
+   "rev": 1892.4,
+   "op": 25.1,
+   "ni": 84.5,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": true
+  },
+  {
+   "p": 2025,
+   "rev": 2706.9,
+   "op": 145.6,
+   "ni": 230.1,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": true
+  }
+ ],
+ "quarterly": [],
+ "reports": {
+  "2020": "전기:20220331003197",
+  "2021": "20220331003197",
+  "2022": "20230407002272",
+  "2023": "20240328001871",
+  "2024": "20250328000176",
+  "2025": "20260327000262"
+ }
+}

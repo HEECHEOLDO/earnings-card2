@@ -1,0 +1,73 @@
+{
+ "name": "매스프레소",
+ "legal_name": "매스프레소",
+ "code": "01563047",
+ "market": "비상장",
+ "sector": "플랫폼·앱",
+ "brand": "콴다",
+ "basis": "별도",
+ "source": "audit",
+ "fy_end": 12,
+ "updated": "2026-10-23",
+ "annual": [
+  {
+   "p": 2022,
+   "rev": 75.8,
+   "op": -351.5,
+   "ni": -388.1,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2023,
+   "rev": 135.5,
+   "op": -214.8,
+   "ni": -240.6,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2024,
+   "rev": 186.6,
+   "op": -153.6,
+   "ni": -162.4,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2025,
+   "rev": 164.4,
+   "op": -110.9,
+   "ni": -95.8,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  }
+ ],
+ "quarterly": [],
+ "reports": {
+  "2022": "전기:20240405003067",
+  "2023": "20240405003067",
+  "2024": "20250407003346",
+  "2025": "20260406004424"
+ }
+}

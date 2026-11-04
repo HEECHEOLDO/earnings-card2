@@ -1,0 +1,101 @@
+{
+ "name": "애플코리아",
+ "legal_name": "애플코리아",
+ "code": "00349200",
+ "market": "비상장",
+ "sector": "해외 IT·전자",
+ "brand": "아이폰, 애플",
+ "basis": "별도 · 9월 결산",
+ "source": "audit",
+ "fy_end": 9,
+ "updated": "2026-10-23",
+ "annual": [
+  {
+   "p": 2020,
+   "rev": 57129.2,
+   "op": 1285.5,
+   "ni": 1274.0,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2021,
+   "rev": 70972.0,
+   "op": 1115.0,
+   "ni": 1242.8,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2022,
+   "rev": 73348.1,
+   "op": 861.4,
+   "ni": 1128.6,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2023,
+   "rev": 75240.3,
+   "op": 5599.8,
+   "ni": 3215.0,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2024,
+   "rev": 78376.4,
+   "op": 3013.1,
+   "ni": 2062.4,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2025,
+   "rev": 73720.1,
+   "op": 2465.6,
+   "ni": 2205.8,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  }
+ ],
+ "quarterly": [],
+ "reports": {
+  "2020": "전기:20220112000277",
+  "2021": "20220112000277",
+  "2022": "20230113000030",
+  "2023": "20240112000241",
+  "2024": "20250110000429",
+  "2025": "20260105000159"
+ }
+}

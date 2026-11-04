@@ -1,0 +1,101 @@
+{
+ "name": "화해글로벌",
+ "legal_name": "화해글로벌",
+ "code": "01405947",
+ "market": "비상장",
+ "sector": "플랫폼·앱",
+ "brand": "화해",
+ "basis": "별도",
+ "source": "audit",
+ "fy_end": 12,
+ "updated": "2026-10-26",
+ "annual": [
+  {
+   "p": 2020,
+   "rev": 144.6,
+   "op": 3.1,
+   "ni": -41.3,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2021,
+   "rev": 156.7,
+   "op": -78.3,
+   "ni": -127.9,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2022,
+   "rev": 196.8,
+   "op": -172.0,
+   "ni": -129.4,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2023,
+   "rev": 238.8,
+   "op": -161.0,
+   "ni": -163.2,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2024,
+   "rev": 288.2,
+   "op": -43.3,
+   "ni": -60.1,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2025,
+   "rev": 214.6,
+   "op": -95.4,
+   "ni": 473.8,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  }
+ ],
+ "quarterly": [],
+ "reports": {
+  "2020": "전기:20220412000374",
+  "2021": "20220412000374",
+  "2022": "20230410000267",
+  "2023": "20240409001073",
+  "2024": "20250404000877",
+  "2025": "20260324000166"
+ }
+}

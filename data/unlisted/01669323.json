@@ -1,0 +1,73 @@
+{
+ "name": "놀유니버스",
+ "legal_name": "놀유니버스",
+ "code": "01669323",
+ "market": "비상장",
+ "sector": "플랫폼·앱",
+ "brand": "인터파크투어, 트리플",
+ "basis": "연결",
+ "source": "audit",
+ "fy_end": 12,
+ "updated": "2026-10-23",
+ "annual": [
+  {
+   "p": 2022,
+   "rev": 1483.8,
+   "op": -170.0,
+   "ni": 221.4,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": true
+  },
+  {
+   "p": 2023,
+   "rev": 2594.1,
+   "op": -215.6,
+   "ni": 1107.5,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": true
+  },
+  {
+   "p": 2024,
+   "rev": 2883.7,
+   "op": -146.9,
+   "ni": -2181.7,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": true
+  },
+  {
+   "p": 2025,
+   "rev": 7179.6,
+   "op": 144.8,
+   "ni": 128.7,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": true
+  }
+ ],
+ "quarterly": [],
+ "reports": {
+  "2022": "20230403004233",
+  "2023": "20240404002697",
+  "2024": "20250402003300",
+  "2025": "20260402002899"
+ }
+}

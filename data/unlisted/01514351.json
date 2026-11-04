@@ -1,0 +1,101 @@
+{
+ "name": "티빙",
+ "legal_name": "티빙",
+ "code": "01514351",
+ "market": "비상장",
+ "sector": "플랫폼·앱",
+ "brand": "티빙",
+ "basis": "별도",
+ "source": "audit",
+ "fy_end": 12,
+ "updated": "2026-10-23",
+ "annual": [
+  {
+   "p": 2020,
+   "rev": 154.9,
+   "op": -61.3,
+   "ni": -45.4,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2021,
+   "rev": 1315.3,
+   "op": -762.3,
+   "ni": -595.0,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2022,
+   "rev": 2475.7,
+   "op": -1191.5,
+   "ni": -1248.9,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2023,
+   "rev": 3264.2,
+   "op": -1419.7,
+   "ni": -1522.9,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2024,
+   "rev": 4354.6,
+   "op": -710.5,
+   "ni": -771.5,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2025,
+   "rev": 4059.8,
+   "op": -698.2,
+   "ni": -893.4,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  }
+ ],
+ "quarterly": [],
+ "reports": {
+  "2020": "20210407002355",
+  "2021": "20220331002805",
+  "2022": "20230331003849",
+  "2023": "20240329002684",
+  "2024": "20250328000587",
+  "2025": "20260407002377"
+ }
+}

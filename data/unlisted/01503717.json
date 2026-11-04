@@ -1,0 +1,101 @@
+{
+ "name": "교원",
+ "legal_name": "교원",
+ "code": "01503717",
+ "market": "비상장",
+ "sector": "생활가전·렌털",
+ "brand": "구몬, 빨간펜",
+ "basis": "연결·별도",
+ "source": "audit",
+ "fy_end": 12,
+ "updated": "2026-10-27",
+ "annual": [
+  {
+   "p": 2020,
+   "rev": 801.0,
+   "op": 2.4,
+   "ni": 46.0,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2021,
+   "rev": 7347.5,
+   "op": 269.2,
+   "ni": 982.3,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": true
+  },
+  {
+   "p": 2022,
+   "rev": 9916.0,
+   "op": 96.9,
+   "ni": -259.5,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": true
+  },
+  {
+   "p": 2023,
+   "rev": 8497.5,
+   "op": -484.3,
+   "ni": -103.7,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": true
+  },
+  {
+   "p": 2024,
+   "rev": 8108.6,
+   "op": -267.1,
+   "ni": -223.9,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": true
+  },
+  {
+   "p": 2025,
+   "rev": 7720.4,
+   "op": -273.5,
+   "ni": -265.6,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": true
+  }
+ ],
+ "quarterly": [],
+ "reports": {
+  "2020": "20210405001360",
+  "2021": "20220429000855",
+  "2022": "20230428001263",
+  "2023": "20240429000135",
+  "2024": "20250430000162",
+  "2025": "20260430000671"
+ }
+}

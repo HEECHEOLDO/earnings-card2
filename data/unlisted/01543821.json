@@ -1,0 +1,101 @@
+{
+ "name": "클래스101",
+ "legal_name": "클래스101",
+ "code": "01543821",
+ "market": "비상장",
+ "sector": "플랫폼·앱",
+ "brand": "클래스101",
+ "basis": "별도",
+ "source": "audit",
+ "fy_end": 12,
+ "updated": "2026-10-23",
+ "annual": [
+  {
+   "p": 2020,
+   "rev": 545.7,
+   "op": -166.8,
+   "ni": -165.8,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2021,
+   "rev": 866.0,
+   "op": -170.4,
+   "ni": -172.6,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2022,
+   "rev": 656.4,
+   "op": -289.7,
+   "ni": -294.9,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2023,
+   "rev": 324.9,
+   "op": -231.6,
+   "ni": -255.7,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2024,
+   "rev": 309.7,
+   "op": 39.4,
+   "ni": 18.2,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2025,
+   "rev": 282.3,
+   "op": 14.1,
+   "ni": 2.3,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  }
+ ],
+ "quarterly": [],
+ "reports": {
+  "2020": "전기:20220412002446",
+  "2021": "20220412002446",
+  "2022": "20230511000284",
+  "2023": "20241105000120",
+  "2024": "20250328001521",
+  "2025": "20260331003944"
+ }
+}

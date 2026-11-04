@@ -1,0 +1,101 @@
+{
+ "name": "이케아코리아",
+ "legal_name": "이케아코리아",
+ "code": "01505760",
+ "market": "비상장",
+ "sector": "배달·커머스",
+ "brand": "이케아",
+ "basis": "별도 · 8월 결산",
+ "source": "audit",
+ "fy_end": 8,
+ "updated": "2026-10-23",
+ "annual": [
+  {
+   "p": 2020,
+   "rev": 6608.0,
+   "op": -7.2,
+   "ni": -101.3,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2021,
+   "rev": 6872.4,
+   "op": 294.4,
+   "ni": 209.1,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2022,
+   "rev": 6222.9,
+   "op": 218.7,
+   "ni": 133.4,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2023,
+   "rev": 6006.6,
+   "op": 26.0,
+   "ni": -51.9,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2024,
+   "rev": 6258.1,
+   "op": 186.2,
+   "ni": 55.2,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2025,
+   "rev": 6392.7,
+   "op": 108.8,
+   "ni": 33.1,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  }
+ ],
+ "quarterly": [],
+ "reports": {
+  "2020": "전기:20211203000099",
+  "2021": "20211203000099",
+  "2022": "20221213000094",
+  "2023": "20231213000096",
+  "2024": "20241212000079",
+  "2025": "20251212000322"
+ }
+}

@@ -1,0 +1,73 @@
+{
+ "name": "구다이글로벌",
+ "legal_name": "구다이글로벌",
+ "code": "01753163",
+ "market": "비상장",
+ "sector": "패션·명품·뷰티",
+ "brand": "조선미녀",
+ "basis": "연결·별도",
+ "source": "audit",
+ "fy_end": 12,
+ "updated": "2026-10-27",
+ "annual": [
+  {
+   "p": 2022,
+   "rev": 413.1,
+   "op": 142.2,
+   "ni": 109.1,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2023,
+   "rev": 1395.5,
+   "op": 689.1,
+   "ni": 529.6,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2024,
+   "rev": 3308.5,
+   "op": 1305.0,
+   "ni": 1085.9,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": true
+  },
+  {
+   "p": 2025,
+   "rev": 14717.6,
+   "op": 2734.4,
+   "ni": 2337.1,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": true
+  }
+ ],
+ "quarterly": [],
+ "reports": {
+  "2022": "전기:20240405000800",
+  "2023": "20240405000800",
+  "2024": "20250430000504",
+  "2025": "20260413002204"
+ }
+}

@@ -1,0 +1,73 @@
+{
+ "name": "세일즈포스닷컴코리아",
+ "legal_name": "세일즈포스닷컴코리아",
+ "code": "01769881",
+ "market": "비상장",
+ "sector": "해외 IT·전자",
+ "brand": "세일즈포스",
+ "basis": "별도 · 1월 결산",
+ "source": "audit",
+ "fy_end": 1,
+ "updated": "2026-10-23",
+ "annual": [
+  {
+   "p": 2023,
+   "rev": 541.2,
+   "op": 25.9,
+   "ni": 19.6,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2024,
+   "rev": 754.6,
+   "op": 37.7,
+   "ni": 25.6,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2025,
+   "rev": 730.1,
+   "op": 44.3,
+   "ni": 26.0,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2026,
+   "rev": 764.2,
+   "op": 36.9,
+   "ni": 19.0,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  }
+ ],
+ "quarterly": [],
+ "reports": {
+  "2023": "전기:20240726000189",
+  "2024": "20240726000189",
+  "2025": "20250502000150",
+  "2026": "20260429000085"
+ }
+}

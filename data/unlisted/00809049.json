@@ -1,0 +1,45 @@
+{
+ "name": "스마일게이트엔터테인먼트",
+ "legal_name": "스마일게이트엔터테인먼트",
+ "code": "00809049",
+ "market": "비상장",
+ "sector": "게임",
+ "brand": "크로스파이어",
+ "basis": "별도 · 2월 결산",
+ "source": "audit",
+ "fy_end": 2,
+ "updated": "2026-10-23",
+ "annual": [
+  {
+   "p": 2024,
+   "rev": 7181.8,
+   "op": 4051.4,
+   "ni": 3477.5,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2025,
+   "rev": 3173.7,
+   "op": 2616.0,
+   "ni": 2047.1,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  }
+ ],
+ "quarterly": [],
+ "reports": {
+  "2024": "전기:20250602001335",
+  "2025": "20250602001335"
+ }
+}

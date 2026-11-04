@@ -1,0 +1,101 @@
+{
+ "name": "왓챠",
+ "legal_name": "왓챠",
+ "code": "01450424",
+ "market": "비상장",
+ "sector": "플랫폼·앱",
+ "brand": "왓챠",
+ "basis": "연결",
+ "source": "audit",
+ "fy_end": 12,
+ "updated": "2026-10-23",
+ "annual": [
+  {
+   "p": 2019,
+   "rev": 219.8,
+   "op": -108.8,
+   "ni": -165.2,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": true
+  },
+  {
+   "p": 2020,
+   "rev": 380.4,
+   "op": -154.6,
+   "ni": -143.6,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": true
+  },
+  {
+   "p": 2021,
+   "rev": 708.0,
+   "op": -248.1,
+   "ni": -1358.4,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": true
+  },
+  {
+   "p": 2022,
+   "rev": 733.6,
+   "op": -555.3,
+   "ni": -317.6,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": true
+  },
+  {
+   "p": 2023,
+   "rev": 438.0,
+   "op": -220.6,
+   "ni": -197.9,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": true
+  },
+  {
+   "p": 2024,
+   "rev": 341.3,
+   "op": -19.6,
+   "ni": -84.1,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": true
+  }
+ ],
+ "quarterly": [],
+ "reports": {
+  "2019": "전기:20210408001890",
+  "2020": "20210408001890",
+  "2021": "20220413002156",
+  "2022": "20230412000422",
+  "2023": "20240411002417",
+  "2024": "20250613000150"
+ }
+}

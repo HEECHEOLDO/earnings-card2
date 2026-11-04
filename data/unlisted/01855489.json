@@ -1,0 +1,59 @@
+{
+ "name": "케이투코리아",
+ "legal_name": "케이투코리아",
+ "code": "01855489",
+ "market": "비상장",
+ "sector": "패션·명품·뷰티",
+ "brand": "K2, 아이더",
+ "basis": "별도",
+ "source": "audit",
+ "fy_end": 12,
+ "updated": "2026-10-23",
+ "annual": [
+  {
+   "p": 2023,
+   "rev": 151.2,
+   "op": 4.5,
+   "ni": 0.2,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2024,
+   "rev": 154.8,
+   "op": 14.5,
+   "ni": 5.9,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2025,
+   "rev": 190.4,
+   "op": 14.2,
+   "ni": 8.4,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  }
+ ],
+ "quarterly": [],
+ "reports": {
+  "2023": "전기:20250408002332",
+  "2024": "20250408002332",
+  "2025": "20260413001023"
+ }
+}

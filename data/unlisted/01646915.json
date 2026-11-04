@@ -1,0 +1,87 @@
+{
+ "name": "핀다",
+ "legal_name": "핀다",
+ "code": "01646915",
+ "market": "비상장",
+ "sector": "플랫폼·앱",
+ "brand": "핀다",
+ "basis": "별도",
+ "source": "audit",
+ "fy_end": 12,
+ "updated": "2026-10-23",
+ "annual": [
+  {
+   "p": 2021,
+   "rev": 297.1,
+   "op": 6.0,
+   "ni": 6.1,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2022,
+   "rev": 434.1,
+   "op": -189.6,
+   "ni": -216.2,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2023,
+   "rev": 282.9,
+   "op": -130.7,
+   "ni": -243.3,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2024,
+   "rev": 298.1,
+   "op": -62.7,
+   "ni": -42.8,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2025,
+   "rev": 240.1,
+   "op": -66.5,
+   "ni": -12.1,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  }
+ ],
+ "quarterly": [],
+ "reports": {
+  "2021": "전기:20230410001088",
+  "2022": "20230410001088",
+  "2023": "20240411000159",
+  "2024": "20250407000336",
+  "2025": "20260331000239"
+ }
+}

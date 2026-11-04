@@ -1,0 +1,59 @@
+{
+ "name": "아디다스코리아",
+ "legal_name": "아디다스코리아",
+ "code": "00148133",
+ "market": "비상장",
+ "sector": "패션·명품·뷰티",
+ "brand": "아디다스",
+ "basis": "별도",
+ "source": "audit",
+ "fy_end": 12,
+ "updated": "2026-10-23",
+ "annual": [
+  {
+   "p": 2014,
+   "rev": 8485.5,
+   "op": 1250.4,
+   "ni": 1011.4,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2015,
+   "rev": 8974.3,
+   "op": 1315.8,
+   "ni": 1087.5,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2016,
+   "rev": 10003.9,
+   "op": 1498.6,
+   "ni": 1070.7,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  }
+ ],
+ "quarterly": [],
+ "reports": {
+  "2014": "20150226000320",
+  "2015": "20160323000448",
+  "2016": "20170405002324"
+ }
+}

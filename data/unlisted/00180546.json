@@ -1,0 +1,101 @@
+{
+ "name": "삼성라이온즈",
+ "legal_name": "삼성라이온즈",
+ "code": "00180546",
+ "market": "비상장",
+ "sector": "프로스포츠",
+ "brand": "삼성라이온즈",
+ "basis": "별도",
+ "source": "audit",
+ "fy_end": 12,
+ "updated": "2026-10-27",
+ "annual": [
+  {
+   "p": 2020,
+   "rev": 639.9,
+   "op": 1.8,
+   "ni": 4.9,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2021,
+   "rev": 49.2,
+   "op": 15.0,
+   "ni": 14.0,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2022,
+   "rev": 717.3,
+   "op": 5.6,
+   "ni": 3.9,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2023,
+   "rev": 744.4,
+   "op": 3.3,
+   "ni": 3.7,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2024,
+   "rev": 840.2,
+   "op": 0.2,
+   "ni": 2.3,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2025,
+   "rev": 948.3,
+   "op": -1.9,
+   "ni": -0.5,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  }
+ ],
+ "quarterly": [],
+ "reports": {
+  "2020": "전기:20220330000391",
+  "2021": "20220330000391",
+  "2022": "20230331001699",
+  "2023": "20240411001217",
+  "2024": "20250331003174",
+  "2025": "20260331002785"
+ }
+}

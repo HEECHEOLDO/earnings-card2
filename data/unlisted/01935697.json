@@ -1,0 +1,31 @@
+{
+ "name": "한국일오삼",
+ "legal_name": "한국일오삼",
+ "code": "01935697",
+ "market": "비상장",
+ "sector": "카페·외식",
+ "brand": "처갓집양념치킨",
+ "basis": "별도",
+ "source": "audit",
+ "fy_end": 12,
+ "updated": "2026-10-27",
+ "annual": [
+  {
+   "p": 2025,
+   "rev": 1221.1,
+   "op": 105.4,
+   "ni": 82.3,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  }
+ ],
+ "quarterly": [],
+ "reports": {
+  "2025": "20260330000354"
+ }
+}

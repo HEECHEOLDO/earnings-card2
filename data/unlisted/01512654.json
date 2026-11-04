@@ -1,0 +1,101 @@
+{
+ "name": "영풍문고",
+ "legal_name": "영풍문고",
+ "code": "01512654",
+ "market": "비상장",
+ "sector": "미디어·엔터·여가",
+ "brand": "영풍문고",
+ "basis": "별도",
+ "source": "audit",
+ "fy_end": 12,
+ "updated": "2026-10-26",
+ "annual": [
+  {
+   "p": 2020,
+   "rev": 513.4,
+   "op": -11.1,
+   "ni": -8.4,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2021,
+   "rev": 1277.6,
+   "op": -9.0,
+   "ni": -2.3,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2022,
+   "rev": 1319.5,
+   "op": 11.7,
+   "ni": 11.3,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2023,
+   "rev": 1390.7,
+   "op": 19.2,
+   "ni": 8.2,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2024,
+   "rev": 1495.1,
+   "op": 3.6,
+   "ni": 1.8,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2025,
+   "rev": 1452.7,
+   "op": -2.8,
+   "ni": -7.8,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  }
+ ],
+ "quarterly": [],
+ "reports": {
+  "2020": "20210405002975",
+  "2021": "20220407000238",
+  "2022": "20230321000640",
+  "2023": "20240403002776",
+  "2024": "20250328000351",
+  "2025": "20260331000070"
+ }
+}

@@ -1,0 +1,101 @@
+{
+ "name": "토스페이먼츠",
+ "legal_name": "토스페이먼츠",
+ "code": "01492697",
+ "market": "비상장",
+ "sector": "플랫폼·앱",
+ "brand": "토스페이먼츠",
+ "basis": "별도",
+ "source": "audit",
+ "fy_end": 12,
+ "updated": "2026-10-23",
+ "annual": [
+  {
+   "p": 2020,
+   "rev": 2195.1,
+   "op": -54.2,
+   "ni": -62.6,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2021,
+   "rev": 3803.7,
+   "op": -303.6,
+   "ni": -462.7,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2022,
+   "rev": 7362.1,
+   "op": -369.1,
+   "ni": -418.3,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2023,
+   "rev": 7931.5,
+   "op": -458.9,
+   "ni": -649.9,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2024,
+   "rev": 8196.8,
+   "op": -226.7,
+   "ni": -435.1,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2025,
+   "rev": 9251.1,
+   "op": -13.1,
+   "ni": -159.5,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  }
+ ],
+ "quarterly": [],
+ "reports": {
+  "2020": "20210412002954",
+  "2021": "20220401000977",
+  "2022": "20230410003860",
+  "2023": "20240402003617",
+  "2024": "20250331000329",
+  "2025": "20260331000296"
+ }
+}

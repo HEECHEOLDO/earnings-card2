@@ -1,0 +1,45 @@
+{
+ "name": "알리익스프레스코리아",
+ "legal_name": "알리익스프레스코리아",
+ "code": "01944598",
+ "market": "비상장",
+ "sector": "배달·커머스",
+ "brand": "알리익스프레스",
+ "basis": "별도 · 3월 결산",
+ "source": "audit",
+ "fy_end": 3,
+ "updated": "2026-10-26",
+ "annual": [
+  {
+   "p": 2025,
+   "rev": 1605.9,
+   "op": 34.2,
+   "ni": 9.5,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2026,
+   "rev": 1104.4,
+   "op": -366.1,
+   "ni": -337.7,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  }
+ ],
+ "quarterly": [],
+ "reports": {
+  "2025": "전기:20260710000481",
+  "2026": "20260710000481"
+ }
+}

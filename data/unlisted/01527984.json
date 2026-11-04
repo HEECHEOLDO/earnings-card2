@@ -1,0 +1,87 @@
+{
+ "name": "토스증권",
+ "legal_name": "토스증권",
+ "code": "01527984",
+ "market": "비상장",
+ "sector": "플랫폼·앱",
+ "brand": "토스증권",
+ "basis": "연결·별도",
+ "source": "audit",
+ "fy_end": 12,
+ "updated": "2026-10-23",
+ "annual": [
+  {
+   "p": 2021,
+   "rev": 86.3,
+   "op": -778.0,
+   "ni": -783.9,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2022,
+   "rev": 1276.3,
+   "op": -322.9,
+   "ni": -325.0,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2023,
+   "rev": 2019.9,
+   "op": -9.1,
+   "ni": 15.3,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2024,
+   "rev": 4265.9,
+   "op": 1488.4,
+   "ni": 1311.8,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": true
+  },
+  {
+   "p": 2025,
+   "rev": 8825.8,
+   "op": 4458.2,
+   "ni": 3338.8,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": true
+  }
+ ],
+ "quarterly": [],
+ "reports": {
+  "2021": "전기:20230404002113",
+  "2022": "20230404002113",
+  "2023": "20240404002306",
+  "2024": "20250404002153",
+  "2025": "20260401004244"
+ }
+}

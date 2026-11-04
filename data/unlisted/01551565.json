@@ -1,0 +1,73 @@
+{
+ "name": "발란",
+ "legal_name": "발란",
+ "code": "01551565",
+ "market": "비상장",
+ "sector": "배달·커머스",
+ "brand": "발란",
+ "basis": "별도",
+ "source": "audit",
+ "fy_end": 12,
+ "updated": "2026-10-23",
+ "annual": [
+  {
+   "p": 2020,
+   "rev": 243.2,
+   "op": -63.5,
+   "ni": -63.0,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2021,
+   "rev": 521.8,
+   "op": -185.5,
+   "ni": -190.9,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2022,
+   "rev": 891.3,
+   "op": -373.6,
+   "ni": -379.6,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2023,
+   "rev": 392.5,
+   "op": -99.8,
+   "ni": -122.5,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  }
+ ],
+ "quarterly": [],
+ "reports": {
+  "2020": "전기:20220412002073",
+  "2021": "20220412002073",
+  "2022": "20230411001286",
+  "2023": "20240409003638"
+ }
+}

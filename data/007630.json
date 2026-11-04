@@ -1,0 +1,91 @@
+{
+ "name": "폴루스바이오팜",
+ "split_adjusted": false,
+ "legal_name": "폴루스바이오팜",
+ "code": "007630",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-10-29",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 298.6,
+   "op": -55.7,
+   "ni": -174.5,
+   "assets": 596.0,
+   "liab": 481.1,
+   "equity": 114.9,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2017,
+   "rev": 296.2,
+   "op": -50.6,
+   "ni": -29.8,
+   "assets": 548.4,
+   "liab": 335.0,
+   "equity": 213.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 101.6,
+   "op": -95.6,
+   "ni": -243.5,
+   "assets": 1643.3,
+   "liab": 1256.0,
+   "equity": 387.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2019,
+   "rev": 94.9,
+   "op": -42.6,
+   "ni": -132.6,
+   "assets": 1509.3,
+   "liab": 915.9,
+   "equity": 593.4,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2020,
+   "rev": 65.2,
+   "op": -23.6,
+   "ni": -43.4,
+   "assets": 1481.7,
+   "liab": 845.5,
+   "equity": 636.1,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 0.3,
+   "op": -10.2,
+   "ni": -6.0,
+   "assets": 1465.2,
+   "liab": 835.0,
+   "equity": 630.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [],
+ "q_method": "strict"
+}

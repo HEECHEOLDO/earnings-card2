@@ -1,0 +1,87 @@
+{
+ "name": "크림",
+ "legal_name": "크림",
+ "code": "01529876",
+ "market": "비상장",
+ "sector": "배달·커머스",
+ "brand": "KREAM",
+ "basis": "별도",
+ "source": "audit",
+ "fy_end": 12,
+ "updated": "2026-10-23",
+ "annual": [
+  {
+   "p": 2021,
+   "rev": 32.8,
+   "op": -595.5,
+   "ni": -888.8,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2022,
+   "rev": 459.6,
+   "op": -860.6,
+   "ni": -2636.4,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2023,
+   "rev": 1222.2,
+   "op": -408.0,
+   "ni": 108.1,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2024,
+   "rev": 1775.6,
+   "op": -88.8,
+   "ni": -723.4,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2025,
+   "rev": 2025.3,
+   "op": -81.0,
+   "ni": 1354.9,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  }
+ ],
+ "quarterly": [],
+ "reports": {
+  "2021": "전기:20230410000641",
+  "2022": "20230410000641",
+  "2023": "20240329001064",
+  "2024": "20250409000271",
+  "2025": "20260410000429"
+ }
+}

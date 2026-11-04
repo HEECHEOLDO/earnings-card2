@@ -1,0 +1,39 @@
+{
+ "name": "도레이케미칼",
+ "split_adjusted": false,
+ "legal_name": "도레이케미칼",
+ "code": "008000",
+ "market": "기타",
+ "sector": "",
+ "updated": "2026-10-29",
+ "annual": [
+  {
+   "p": 2016,
+   "rev": 8564.6,
+   "op": 486.6,
+   "ni": 218.5,
+   "assets": 7137.7,
+   "liab": 3972.0,
+   "equity": 3165.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 9461.5,
+   "op": 336.8,
+   "ni": 252.0,
+   "assets": 7802.4,
+   "liab": 4211.2,
+   "equity": 3591.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [],
+ "q_method": "strict"
+}

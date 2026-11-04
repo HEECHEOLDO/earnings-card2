@@ -1,0 +1,34 @@
+{
+ "name": "미래에셋비전스팩4호",
+ "split_adjusted": false,
+ "legal_name": "미래에셋비전스팩4호",
+ "code": "477380",
+ "market": "코스닥",
+ "sector": "",
+ "updated": "2026-10-25",
+ "annual": [
+  {
+   "p": 2025,
+   "rev": 0.0,
+   "op": -0.4,
+   "ni": 2.9,
+   "assets": 174.4,
+   "liab": 20.8,
+   "equity": 153.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
+ "quarterly": [
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": 0.0,
+   "op": -0.2,
+   "ni": 0.5
+  }
+ ],
+ "q_method": "strict"
+}

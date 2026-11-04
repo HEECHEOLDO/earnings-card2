@@ -1,0 +1,101 @@
+{
+ "name": "힐링페이퍼",
+ "legal_name": "힐링페이퍼",
+ "code": "01548941",
+ "market": "비상장",
+ "sector": "플랫폼·앱",
+ "brand": "강남언니",
+ "basis": "별도",
+ "source": "audit",
+ "fy_end": 12,
+ "updated": "2026-10-26",
+ "annual": [
+  {
+   "p": 2020,
+   "rev": 117.0,
+   "op": -29.7,
+   "ni": -37.8,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2021,
+   "rev": 158.6,
+   "op": -46.8,
+   "ni": -45.9,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2022,
+   "rev": 244.9,
+   "op": -72.1,
+   "ni": -72.1,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2023,
+   "rev": 417.0,
+   "op": 122.3,
+   "ni": 119.6,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2024,
+   "rev": 530.1,
+   "op": 128.6,
+   "ni": 127.5,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2025,
+   "rev": 752.2,
+   "op": 75.4,
+   "ni": 73.7,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  }
+ ],
+ "quarterly": [],
+ "reports": {
+  "2020": "전기:20220411002515",
+  "2021": "20220411002515",
+  "2022": "20230413001829",
+  "2023": "20240408003132",
+  "2024": "20250402002929",
+  "2025": "20260410001641"
+ }
+}
