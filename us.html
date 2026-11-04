@@ -1351,6 +1351,46 @@
     ctx.restore();
   }
 
+  /* ---- 막대 기본 색 = 회사 로고의 대표 색 (2026-11) ----
+     회사를 고를 때마다 로고에서 색을 뽑아 색 선택기에 넣는다. 그 뒤 사용자가 고른 색은 그대로 쓴다.
+     흰 배경·옅은 테두리는 빼고 진하고 또렷한 색을 우선, 색이 거의 없는 로고는 가장 많은 짙은 색. */
+  function logoBaseColor(list, done) {
+    if (!list || !list.length) return done(null);
+    var im = new Image();
+    im.onload = function () {
+      try {
+        var n = 48, cv = document.createElement('canvas'); cv.width = cv.height = n;
+        var g = cv.getContext('2d'); g.drawImage(im, 0, 0, n, n);
+        var px = g.getImageData(0, 0, n, n).data, bins = {}, dark = {};
+        for (var i = 0; i < px.length; i += 4) {
+          var r = px[i], gg = px[i + 1], b = px[i + 2], a = px[i + 3];
+          if (a < 200) continue;
+          var mx = Math.max(r, gg, b), mn = Math.min(r, gg, b), sat = mx ? (mx - mn) / mx : 0;
+          if (mn > 225) continue;
+          var key = (r >> 4) + ',' + (gg >> 4) + ',' + (b >> 4), lu = (0.299 * r + 0.587 * gg + 0.114 * b) / 255;
+          if (sat > 0.25 && mx > 50) bins[key] = (bins[key] || 0) + sat * sat * Math.max(0.05, 1.15 - lu);
+          else dark[key] = (dark[key] || 0) + 1;
+        }
+        var tot = function (o) { var s = 0; for (var k in o) s += o[k]; return s; };
+        var top = function (o) { var best = null, bv = 0; for (var k in o) if (o[k] > bv) { bv = o[k]; best = k; } return best; };
+        var k = tot(bins) >= 4 ? top(bins) : top(dark);
+        if (!k) return done(null);
+        var rgb = k.split(',').map(function (v) { return Math.min(255, +v * 16 + 8); });
+        done('#' + rgb.map(function (v) { return v.toString(16).padStart(2, '0'); }).join(''));
+      } catch (e) { done(null); }
+    };
+    im.onerror = function () { done(null); };
+    im.src = list[0];
+  }
+  function applyLogoColor() {
+    var want = state.company && state.company.code;
+    logoBaseColor(logoListFor(state), function (c) {
+      if (!c || !window.setBaseColor || !state.company || state.company.code !== want) return;
+      window.setBaseColor(c);
+      refresh();
+    });
+  }
+
   function logoListFor(state) {
     var code = state.company && state.company.code;
     return code ? ['./logo/us/' + code + '.png'] : null;
@@ -2428,6 +2468,7 @@
     });
 
     sync(base.value);
+    window.setBaseColor = function (c) { base.value = c; sync(c); };   // 로고 색을 기본값으로 넣을 때 (사용자 선택은 그대로 바꿀 수 있다)
   }
 
   /* 이벤트 */
@@ -2448,6 +2489,7 @@
       if (!c) { alert('데이터 파일을 불러오지 못했습니다.'); return; }
       if (!c.market) { c.market = hit.market || ''; c.sector = hit.sector || ''; }
       state.company = c;
+      applyLogoColor();
       refresh();
     });
   }
@@ -2628,6 +2670,7 @@
         document.getElementById('q').value = first.name;
         return Adapter.load(first.code).then(function (c) {
           if (c) state.company = c;
+          applyLogoColor();
           refresh();
         });
       }
