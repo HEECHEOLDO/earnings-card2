@@ -95,8 +95,9 @@ FALLBACK = {
            "IncomeLossFromContinuingOperationsBeforeIncomeTaxesDomestic",
            "IncomeLossFromContinuingOperationsBeforeIncomeTaxesForeign",
            "IncomeLossFromContinuingOperationsIncludingPortionAttributableToNoncontrollingInterest",
-           "OperatingIncomeLossBeforeDepreciationDepletionAmortizationAndExplorationExpense",
-           "GrossProfit"],
+           "OperatingIncomeLossBeforeDepreciationDepletionAmortizationAndExplorationExpense"],
+    # GrossProfit(매출총이익)은 쓰지 않는다 — 영업이익보다 몇 배 커서 이익률이 엉터리가 된다
+    # (나이키 영업이익률이 43%로 나왔다. 실제 약 10%). 영업이익이 없으면 빈칸이 낫다.
     "ni": ["NetIncomeLossAvailableToCommonStockholdersBasic"],
     # 은행·보험·리츠는 '매출'이라는 항목 자체를 안 쓰는 경우가 많다
     "rev": ["InterestAndDividendIncomeOperating",

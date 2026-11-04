@@ -246,7 +246,7 @@
   <h2 class="sec">어떤 비교를 만들까요</h2>
   <div class="modes" id="modes">
     <button class="mode" data-m="group" aria-pressed="true"><b>브랜드 대결</b><span>같은 업종 여러 브랜드 · 누가 크고 누가 남기나</span></button>
-    <button class="mode" data-m="pair" aria-pressed="false"><b>국내 vs 해외</b><span>한국 회사와 미국 회사 1:1 · 한국 지사 vs 본사</span></button>
+    <button class="mode" data-m="pair" aria-pressed="false"><b>1:1 대결</b><span>국내 vs 해외 · 국내끼리 · 해외끼리 · 한국 지사 vs 본사</span></button>
   </div>
   <div class="presets" id="presets"></div>
 
@@ -417,7 +417,43 @@
     { id:'books', chip:'서점', title:'서점, 아직 남을까', items:[
       { u:'00104175', b:'교보문고', c:'#2E7D32' }, { k:'053280', b:'예스24' }, { u:'01512654', b:'영풍문고', c:'#1B3A6B' } ] },
     { id:'luxury2', chip:'명품 패션', title:'몽클레르·버버리, 얼마 남길까', items:[
-      { u:'01089253', b:'몽클레르', c:'#111111' }, { u:'00462194', b:'버버리', c:'#8C6E4E' }, { u:'00243605', b:'프라다', c:'#111111' }, { u:'00427623', b:'디올', c:'#2B2B2B' } ] }
+      { u:'01089253', b:'몽클레르', c:'#111111' }, { u:'00462194', b:'버버리', c:'#8C6E4E' }, { u:'00243605', b:'프라다', c:'#111111' }, { u:'00427623', b:'디올', c:'#2B2B2B' } ] },
+    // ── 플랫폼·그룹
+    { id:'fashionapp', chip:'패션 앱', title:'패션 앱, 남는 곳은', items:[
+      { u:'01137727', b:'무신사', c:'#000000' }, { u:'01453546', b:'에이블리', c:'#FF3D60' }, { u:'01372117', b:'지그재그', c:'#FF2D78' },
+      { u:'01213319', b:'W컨셉', c:'#111111' } ] },
+    { id:'used', chip:'중고·리셀', title:'중고 거래, 누가 벌까', items:[
+      { u:'01547845', b:'당근', c:'#FF6F0F' }, { u:'01529876', b:'크림', c:'#111111' }, { u:'01554164', b:'번개장터', c:'#D80C18' } ] },
+    { id:'luxapp', chip:'명품 플랫폼', title:'명품 앱, 왜 다 적자일까', items:[
+      { u:'01537334', b:'트렌비', c:'#1A1A1A' }, { u:'01551565', b:'발란', c:'#111111' }, { u:'01557082', b:'머스트잇', c:'#000000' } ] },
+    { id:'coupangs', chip:'쿠팡 계열사', title:'쿠팡, 어디서 벌까', items:[
+      { u:'01019166', b:'쿠팡 (본업)', c:'#E52528' }, { u:'01474789', b:'쿠팡 물류센터', c:'#E52528' }, { u:'01558902', b:'쿠팡 배송', c:'#E52528' },
+      { u:'01571329', b:'쿠팡이츠', c:'#00A6E0' }, { u:'01561252', b:'쿠팡페이', c:'#E52528' } ] },
+    { id:'kakaos', chip:'카카오 계열사', title:'카카오, 어디서 벌고 잃나', items:[
+      { k:'323410', b:'카카오뱅크' }, { k:'377300', b:'카카오페이' }, { u:'01015805', b:'카카오엔터', c:'#FFCD00', ink:'#1F1F1F' },
+      { u:'01250666', b:'카카오모빌리티', c:'#FFCD00', ink:'#1F1F1F' }, { k:'293490', b:'카카오게임즈' }, { u:'00762146', b:'카카오페이증권', c:'#FFCD00', ink:'#1F1F1F' },
+      { u:'01411434', b:'카카오엔터프라이즈', c:'#FFCD00', ink:'#1F1F1F' }, { u:'01649073', b:'카카오헬스케어', c:'#FFCD00', ink:'#1F1F1F' } ] },
+    { id:'navers', chip:'네이버 계열사', title:'네이버, 어디서 벌고 잃나', items:[
+      { u:'01421750', b:'네이버페이', c:'#03C75A' }, { u:'00777272', b:'네이버클라우드', c:'#03C75A' }, { u:'01026731', b:'라인플러스', c:'#06C755' },
+      { u:'01213832', b:'스노우', c:'#1A1A1A' }, { u:'01486517', b:'제페토 (네이버제트)', c:'#6B4EFF' } ] },
+    { id:'apps', chip:'생활 앱', title:'앱 하나로 얼마 벌까', items:[
+      { u:'01547845', b:'당근', c:'#FF6F0F' }, { u:'01271395', b:'리멤버', c:'#1A1A1A' }, { u:'01369548', b:'크몽', c:'#FFD400', ink:'#1F1F1F' },
+      { u:'01543821', b:'클래스101', c:'#FF5600' }, { u:'01134766', b:'직방', c:'#FF7A00' } ] },
+    // ── 기타 소비재·여가
+    { id:'whisky', chip:'위스키', title:'위스키, 한국에서 얼마', items:[
+      { u:'01697256', b:'디아지오 (조니워커)', c:'#1A1A1A' }, { u:'00235004', b:'페르노리카 (발렌타인)', c:'#002B5C' } ] },
+    { id:'football', chip:'야구 vs 축구', title:'야구단 vs 축구단', items:[
+      { u:'00471271', b:'롯데 자이언츠', c:'#041E42' }, { u:'00470050', b:'두산 베어스', c:'#131230' }, { u:'00180546', b:'삼성 라이온즈', c:'#074CA1' },
+      { u:'00699354', b:'전북현대', c:'#00573F' }, { u:'00504889', b:'FC서울', c:'#B30838' } ] },
+    { id:'cars2', chip:'수입차 2', title:'수입차 2탄, 남는 곳은', items:[
+      { u:'00697736', b:'랜드로버·재규어', c:'#005A2B' }, { u:'00502298', b:'혼다', c:'#CC0000' }, { u:'00239222', b:'지프·푸조', c:'#1A1A1A' },
+      { u:'00683247', b:'페라리', c:'#D40000' } ] },
+    { id:'gamedev', chip:'게임 개발사', title:'게임 하나로 얼마 벌까', items:[
+      { u:'00623555', b:'네오플 (던파)', c:'#1A1A1A' }, { u:'01506282', b:'데브캣 (마비노기)', c:'#4B2C82' }, { u:'01884904', b:'민트로켓 (데이브)', c:'#00A4B4' },
+      { u:'00935821', b:'넷마블네오', c:'#1A1A1A' }, { u:'01588462', b:'라이온하트 (오딘)', c:'#1A1A1A' }, { u:'00961756', b:'스마일게이트RPG (로아)', c:'#E2001A' } ] },
+    { id:'household', chip:'생활용품', title:'생활용품, 누가 남길까', items:[
+      { u:'00145136', b:'유한킴벌리', c:'#00843D' }, { u:'00158592', b:'한국암웨이', c:'#002F87' }, { u:'00256353', b:'허벌라이프', c:'#7AB800' },
+      { k:'051900', b:'LG생활건강' }, { k:'018250', b:'애경산업' } ] }
   ];
   var PAIRS = [
     { id:'mem', chip:'메모리 반도체', title:'SK하이닉스 vs 마이크론', a:{ k:'000660', b:'SK하이닉스' }, z:{ us:'MU', b:'마이크론' } },
@@ -429,7 +465,7 @@
     { id:'beauty', chip:'화장품', title:'아모레 vs 에스티로더', a:{ k:'090430', b:'아모레퍼시픽' }, z:{ us:'EL', b:'에스티로더' } },
     { id:'air', chip:'항공', title:'대한항공 vs 델타', a:{ k:'003490', b:'대한항공' }, z:{ us:'DAL', b:'델타항공' } },
     { id:'mart', chip:'대형마트', title:'이마트 vs 월마트', a:{ k:'139480', b:'이마트' }, z:{ us:'WMT', b:'월마트' } },
-    { id:'coupang', chip:'이커머스', title:'쿠팡 vs 아마존', a:{ us:'CPNG', b:'쿠팡' }, z:{ us:'AMZN', b:'아마존' } },
+    { id:'coupang', cat:'kvu', chip:'이커머스', title:'쿠팡 vs 아마존', a:{ us:'CPNG', b:'쿠팡' }, z:{ us:'AMZN', b:'아마존' } },
     { id:'krafton', chip:'게임', title:'크래프톤 vs 테이크투', a:{ k:'259960', b:'크래프톤' }, z:{ us:'TTWO', b:'테이크투' } },
     { id:'bio', chip:'바이오', title:'셀트리온 vs 암젠', a:{ k:'068270', b:'셀트리온' }, z:{ us:'AMGN', b:'암젠' } },
     { id:'cdmo', chip:'바이오 위탁생산', title:'삼성바이오 vs 써모피셔', a:{ k:'207940', b:'삼성바이오로직스' }, z:{ us:'TMO', b:'써모피셔' } },
@@ -455,6 +491,37 @@
     { id:'daiso', chip:'균일가 매장', title:'다이소 vs 달러트리', a:{ u:'00411835', b:'다이소', c:'#E60012' }, z:{ us:'DLTR', b:'달러트리' } },
     { id:'hanmi', chip:'비만약', title:'한미약품 vs 일라이릴리', a:{ k:'128940', b:'한미약품' }, z:{ us:'LLY', b:'일라이릴리' } },
     { id:'hmc-tsla', chip:'전기차', title:'현대차 vs 테슬라', a:{ k:'005380', b:'현대차' }, z:{ us:'TSLA', b:'테슬라' } },
+    // ── 국내끼리
+    { id:'nk', cat:'kr', chip:'플랫폼', title:'네이버 vs 카카오', a:{ k:'035420', b:'네이버' }, z:{ k:'035720', b:'카카오' } },
+    { id:'sh', cat:'kr', chip:'반도체', title:'삼성전자 vs SK하이닉스', a:{ k:'005930', b:'삼성전자' }, z:{ k:'000660', b:'SK하이닉스' } },
+    { id:'hk', cat:'kr', chip:'자동차', title:'현대차 vs 기아', a:{ k:'005380', b:'현대차' }, z:{ k:'000270', b:'기아' } },
+    { id:'hs', cat:'kr', chip:'엔터', title:'하이브 vs SM', a:{ k:'352820', b:'하이브' }, z:{ k:'041510', b:'SM' } },
+    { id:'amlg', cat:'kr', chip:'화장품', title:'아모레 vs LG생활건강', a:{ k:'090430', b:'아모레퍼시픽' }, z:{ k:'051900', b:'LG생활건강' } },
+    { id:'ns', cat:'kr', chip:'라면', title:'농심 vs 삼양식품', a:{ k:'004370', b:'농심' }, z:{ k:'003230', b:'삼양식품' } },
+    { id:'kbank', cat:'kr', chip:'인터넷 금융', title:'카카오뱅크 vs 토스', a:{ k:'323410', b:'카카오뱅크' }, z:{ u:'01212921', b:'토스', c:'#0064FF' } },
+    { id:'krafton-nc', cat:'kr', chip:'게임', title:'크래프톤 vs 엔씨소프트', a:{ k:'259960', b:'크래프톤' }, z:{ k:'036570', b:'엔씨소프트' } },
+    { id:'cu-gs', cat:'kr', chip:'편의점', title:'CU vs GS25', a:{ k:'282330', b:'BGF리테일 (CU)' }, z:{ k:'007070', b:'GS리테일 (GS25)' } },
+    { id:'baemin-ce', cat:'kr', chip:'배달앱', title:'배민 vs 쿠팡이츠', a:{ u:'01063273', b:'배달의민족', c:'#2AC1BC' }, z:{ u:'01571329', b:'쿠팡이츠', c:'#00A6E0' } },
+    { id:'upbit-bithumb', cat:'kr', chip:'코인 거래소', title:'업비트 vs 빗썸', a:{ u:'01310241', b:'업비트 (두나무)', c:'#093687' }, z:{ u:'01214044', b:'빗썸', c:'#F37321' } },
+    { id:'mega-sbux', cat:'kr', chip:'커피', title:'메가커피 vs 스타벅스', a:{ u:'01450239', b:'메가커피', c:'#F5C400', ink:'#3B2A0F' }, z:{ u:'00359386', b:'스타벅스', c:'#00704A' } },
+    { id:'bhc-bbq', cat:'kr', chip:'치킨', title:'bhc vs BBQ', a:{ u:'00656988', b:'bhc', c:'#E2231A' }, z:{ u:'00320791', b:'BBQ', c:'#C8102E' } },
+    { id:'oy-daiso', cat:'kr', chip:'생활 매장', title:'올리브영 vs 다이소', a:{ u:'01423068', b:'올리브영', c:'#9ACD32', ink:'#1F1F1F' }, z:{ u:'00411835', b:'다이소', c:'#E60012' } },
+    // ── 해외끼리
+    { id:'nvda-amd', cat:'us', chip:'AI 반도체', title:'엔비디아 vs AMD', a:{ us:'NVDA', b:'엔비디아' }, z:{ us:'AMD', b:'AMD' } },
+    { id:'aapl-msft', cat:'us', chip:'빅테크', title:'애플 vs 마이크로소프트', a:{ us:'AAPL', b:'애플' }, z:{ us:'MSFT', b:'마이크로소프트' } },
+    { id:'goog-meta', cat:'us', chip:'광고', title:'구글 vs 메타', a:{ us:'GOOGL', b:'구글' }, z:{ us:'META', b:'메타' } },
+    { id:'ko-pep', cat:'us', chip:'음료', title:'코카콜라 vs 펩시코', a:{ us:'KO', b:'코카콜라' }, z:{ us:'PEP', b:'펩시코' } },
+    { id:'v-ma', cat:'us', chip:'카드', title:'비자 vs 마스터카드', a:{ us:'V', b:'비자' }, z:{ us:'MA', b:'마스터카드' } },
+    { id:'mcd-sbux', cat:'us', chip:'외식', title:'맥도날드 vs 스타벅스', a:{ us:'MCD', b:'맥도날드' }, z:{ us:'SBUX', b:'스타벅스' } },
+    { id:'nke-lulu', cat:'us', chip:'스포츠웨어', title:'나이키 vs 룰루레몬', a:{ us:'NKE', b:'나이키' }, z:{ us:'LULU', b:'룰루레몬' } },
+    { id:'wmt-cost', cat:'us', chip:'유통', title:'월마트 vs 코스트코', a:{ us:'WMT', b:'월마트' }, z:{ us:'COST', b:'코스트코' } },
+    { id:'hd-low', cat:'us', chip:'홈 인테리어', title:'홈디포 vs 로우스', a:{ us:'HD', b:'홈디포' }, z:{ us:'LOW', b:'로우스' } },
+    { id:'nflx-dis', cat:'us', chip:'OTT', title:'넷플릭스 vs 디즈니', a:{ us:'NFLX', b:'넷플릭스' }, z:{ us:'DIS', b:'디즈니' } },
+    { id:'tsla-f', cat:'us', chip:'자동차', title:'테슬라 vs 포드', a:{ us:'TSLA', b:'테슬라' }, z:{ us:'F', b:'포드' } },
+    { id:'lly-pfe', cat:'us', chip:'제약', title:'일라이릴리 vs 화이자', a:{ us:'LLY', b:'일라이릴리' }, z:{ us:'PFE', b:'화이자' } },
+    { id:'jpm-gs', cat:'us', chip:'은행', title:'JP모건 vs 골드만삭스', a:{ us:'JPM', b:'JP모건' }, z:{ us:'GS', b:'골드만삭스' } },
+    { id:'abnb-bkng', cat:'us', chip:'여행', title:'에어비앤비 vs 부킹홀딩스', a:{ us:'ABNB', b:'에어비앤비' }, z:{ us:'BKNG', b:'부킹홀딩스' } },
+    { id:'uber-dash', cat:'us', chip:'모빌리티', title:'우버 vs 도어대시', a:{ us:'UBER', b:'우버' }, z:{ us:'DASH', b:'도어대시' } },
     { id:'defense', chip:'방산', title:'한화에어로 vs 록히드마틴', a:{ k:'012450', b:'한화에어로스페이스' }, z:{ us:'LMT', b:'록히드마틴' } },
     // 한국 지사 vs 본사 — 한국 매출이 본사 전체의 몇 % 인지가 핵심
     // 구글코리아·페이스북코리아는 넣지 않는다: 한국 광고 매출이 대부분 해외 법인에 잡혀
@@ -552,7 +619,10 @@
         f.year = lq.y; f.period = '최근 4분기 · ~' + (it.us && d.fiscal ? '회계 ' : '') + lq.y + '.' + lq.q + 'Q';
       }
     }
-    f.margin = f.rev ? f.op / f.rev * 100 : null;
+    // 미국 공시에 영업이익 태그가 없어 매출총이익이 들어간 회사(나이키·IBM 등)는 영업이익을 비운다.
+    // 순이익의 3.5배가 넘고 이익률이 25% 넘으면 매출총이익으로 본다. 다음 수집부터는 수집기에서 걸러진다.
+    if (it.us && f.op != null && f.ni > 0 && f.rev > 0 && f.op > f.ni * 3.5 && f.op / f.rev > 0.25) f.op = null;
+    f.margin = f.rev && f.op != null ? f.op / f.rev * 100 : null;
     if (it.k && MCAP[it.k]) f.cap = MCAP[it.k].c;
     if (it.us && MCAP_US[it.us]) f.cap = MCAP_US[it.us].c * (FX || 1400);   // 억 달러 × 환율 = 억 원
     return f;
@@ -709,7 +779,7 @@
     c.textAlign = 'left';
     var start = cy + R + 24 + nf * 0.86 + 34 + 34;
     rule(c, start);
-    var ry = footer(c, today() + ' 기준 · 1달러 ' + Math.round(FX || 0).toLocaleString('ko-KR') + '원');
+    var ry = footer(c, today() + ' 기준' + (p.a.us || p.z.us ? ' · 1달러 ' + Math.round(FX || 0).toLocaleString('ko-KR') + '원' : ''));
     if (!A || !Z) return;
     var rowsDef = [['cap', '시가총액'], ['rev', '매출'], ['op', '영업이익'], ['margin', '영업이익률'], ['growth', '매출 성장률']]
       .filter(function (d) { return A[d[0]] != null && Z[d[0]] != null; });
@@ -751,16 +821,20 @@
             ['쇼핑·생활', 'cvs delivery ecom beauty kbeauty spa outdoor golf luxury luxury2 watch furniture rental dept dutyfree books'],
             ['여가·미디어', 'baseball game ent ott cinema news tv hotel stay lcc'],
             ['산업', 'chip ship defense-kr battery telco car-kr cars pharma-kr aesthetic build edu'],
-            ['금융·외국계', 'crypto fintech bigtech pharma']],
-    pair:  [['1:1 대결', null], ['한국 지사 vs 본사', 'branch']]
+            ['금융·외국계', 'crypto fintech bigtech pharma'],
+            ['플랫폼·그룹', 'fashionapp used luxapp coupangs kakaos navers apps'],
+            ['더 보기', 'whisky football cars2 gamedev household']],
+    pair:  [['국내 vs 해외', 'kvu'], ['국내끼리', 'kr'], ['해외끼리', 'us'], ['한국 지사 vs 본사', 'branch']]
   };
+  function isKr(it) { return !!(it.k || it.u); }
+  function catOf(g) { return g.cat || (g.branch ? 'branch' : isKr(g.a) && isKr(g.z) ? 'kr' : !isKr(g.a) && !isKr(g.z) ? 'us' : 'kvu'); }
   function label(g) { return MODE === 'group' ? g.chip : g.branch ? g.a.b.replace(/코리아$|^한국/, '') + ' 지사' : g.title.replace(/,.*/, ''); }
   function btn(g) { return '<button class="preset" data-i="' + list().indexOf(g) + '" aria-pressed="' + (g === CUR) + '">' + label(g) + '</button>'; }
   function buildPresets() {
     var L = list(), used = {}, html = '';
     CATS[MODE].forEach(function (c) {
       var gs = L.filter(function (g) {
-        if (MODE === 'pair') return c[1] === 'branch' ? g.branch : !g.branch;
+        if (MODE === 'pair') return catOf(g) === c[1];
         return (' ' + c[1] + ' ').indexOf(' ' + g.id + ' ') >= 0;
       });
       gs.forEach(function (g) { used[g.id] = 1; });
@@ -775,7 +849,7 @@
     CUR = g; $('c-chip').value = g.chip; $('c-title').value = g.title;
     $('c-hint').textContent = MODE === 'group'
       ? '막대는 매출, 오른쪽 큰 숫자는 위에서 고른 지표입니다. 로고가 없는 비상장사는 브랜드 색 원으로 나옵니다.'
-      : '이긴 쪽이 빨간색입니다. 미국 회사는 오늘 환율로 원화로 바꿔 견줍니다.';
+      : '이긴 쪽이 빨간색입니다. 상장사는 최근 4분기 합계, 비상장사는 최근 사업연도 숫자이고, 미국 회사는 오늘 환율로 원화로 바꿉니다.';
     buildPresets(); draw();
   }
   var _t = null;
