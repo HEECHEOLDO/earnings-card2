@@ -424,6 +424,11 @@ def yearly_from_pairs(pairs):
         if b != a + 1 or not last[a]:
             continue                          # 중간이 비면 잇지 않는다
         out[str(b)] = round((last[b] / last[a] - 1) * 100, 2)
+    # 거래정지로 한 해가 통째로 0% 였다가 다음 해 1,000% 넘게 뛰면, 재개 때 감자·병합이 반영 안 된 값이다
+    # (제일바이오 2024·2025 0% → 2026 +15,285%). 그 해는 비운다 (2026-11 점검)
+    for k in list(out):
+        if out[k] > 1000 and out.get(str(int(k) - 1)) == 0.0:
+            del out[k]
     if not out:
         return None, None
 
