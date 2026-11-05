@@ -594,6 +594,49 @@ def find_ticker(raw):
     return None
 
 
+# ---- 카드 도넛에 넣을 로고 (logo/us/{티커}.png) ----
+# ETF·펀드는 운용사 로고가 붙으면 오해를 사므로 로고를 넣지 않는다
+FUND_RE = re.compile(r"\b(ETF|ETC|EXCHANGE[ -]TRADED|FDS?|FUND|FUNDS|ISHARES|SPDR|VANECK|INDEX|SER TR|TR II|GLOBAL X)\b", re.I)
+# 이름 규칙으로 못 찾는 유명 종목 (정규화된 이름의 앞부분 -> 티커)
+LOGO_FIX = {
+    "AON": "AON", "API": "APG", "BANK AMER": "BAC", "BANK AMERICAN": "BAC",
+    "BARRICK": "B", "BAUSCH PLUS LOMB": "BLCO", "CHART INDUSTRIES": "GTLS",
+    "CME": "CME", "CRH": "CRH", "CSX": "CSX", "CDW": "CDW", "D R HORTON": "DHI",
+    "DHT": "DHT", "ELECTRONIC ARTS": "EA", "EXXON MOBIL": "XOM",
+    "FIRST CITIZENS BANCSHARES": "FCNCA", "FOX": "FOXA", "GALAPAGOS": "GLPG",
+    "GDS": "GDS", "GE AEROSPACE": "GE", "JD COM": "JD", "KLA": "KLAC",
+    "MACYS": "M", "NORFOLK SOUTHN": "NSC", "NORFOLK SOUTHERN": "NSC", "NU": "NU",
+    "NVR": "NVR", "ON": "ONON", "OREILLY AUTOMOTIVE": "ORLY", "PDD": "PDD",
+    "PETROLEO BRASILEIRO": "PBR", "SEA": "SE", "SIRIUSXM": "SIRI", "SLM": "SLM",
+    "ODP": "ODP", "TJX COS": "TJX", "TJX": "TJX", "TKO": "TKO", "UBS": "UBS",
+    "WEBSTER FINANCIAL": "WBS",
+}
+_LOGO_KEYS = sorted(LOGO_FIX, key=len, reverse=True)
+
+def logo_ticker(raw):
+    """보유 종목의 로고 파일 이름(티커). 로고 파일이 없으면 None."""
+    if FUND_RE.search(str(raw)):
+        return None
+    n = norm_name(raw)
+    t = None
+    for k in _LOGO_KEYS:
+        if n == k or n.startswith(k + " "):
+            t = LOGO_FIX[k]; break
+    if not t:
+        t = next((tk for name, tk in load_tickers() if name == n), None) or find_ticker(raw)
+    if not t:
+        return None
+    t = t.replace(".", "-").upper()
+    return t if os.path.exists(os.path.join("logo", "us", t + ".png")) else None
+
+
+def add_logos(funds):
+    """모든 펀드 보유 종목에 logo 필드를 채운다 (공시가 그대로여도)."""
+    for f in funds.values():
+        for h in f.get("holdings", []):
+            h["logo"] = logo_ticker(h.get("raw", ""))
+
+
 def local(tag):
     return tag.split("}")[-1].lower()
 
@@ -847,6 +890,7 @@ def main():
         log("  %-12s %s 보유분 · %d종목 · 1위 %s %.1f%%"
             % (key, meta["period"], n_all, holdings[0]["name"], holdings[0]["weight"]))
 
+    add_logos(result)
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     with open(OUT, "w", encoding="utf-8") as f:
         json.dump({

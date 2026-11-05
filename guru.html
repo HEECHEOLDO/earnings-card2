@@ -283,6 +283,9 @@
         </select>
         <span class="hint">표를 붙여넣으면 티커만 골라 씁니다</span>
       </div>
+      <div class="ctl-row">
+        <label class="check"><input type="checkbox" id="chk-logo" checked> 조각 안에 기업 로고</label>
+      </div>
 
       <div class="ctl-row">
         <label>표시 개수</label>
@@ -411,6 +414,7 @@
         label:36, labelPct:32, footer:27
       },
       gap:{ headToChart:30, chartToRule:40, ruleToText:18 },
+      logo:{ ringFrac:0.62, chordFrac:0.72, minSize:40, border:4 },
       donut:{ holeRatio:0.58, sepWidth:5, minLabelPct:3,
               labelGap:26, lineGap:8, labelPad:8, labelMin:24,
               vertZone:0.26, pushMax:170, pullMax:220, swingMax:20, swingFrac:0.6, maxShrink:10,
@@ -468,6 +472,9 @@
         var sel = document.getElementById('f-fund');
         Object.keys(j.funds || {}).forEach(function (k) {
           var f = j.funds[k];
+          (f.holdings || []).forEach(function (h) {
+            if (h.logo && !(h.name in LOGO_BY_NAME)) LOGO_BY_NAME[h.name] = h.logo;
+          });
           var o = document.createElement('option');
           o.value = k;
           o.textContent = f.title + '  (' + quarterLabel(f.period) + ')';
@@ -543,9 +550,19 @@
       }
       if (!joined) { ticker = null; company = ''; }
 
-      out.push({ ticker: ticker, company: company, w: weight });
+      out.push({ ticker: ticker, company: company, full: joined, w: weight });
     });
     return out;
+  }
+
+  // 종목 -> 로고 파일(logo/us/{티커}.png).
+  // 13F 목록은 '애플'처럼 한글 이름이라 13f.json 의 logo 필드로 찾는다.
+  var LOGO_BY_NAME = {};
+  function logoTicker(x) {
+    var hit = LOGO_BY_NAME[x.full] || LOGO_BY_NAME[x.ticker] || LOGO_BY_NAME[x.company];
+    if (hit) return hit;
+    if (x.ticker && TICKER.test(x.ticker)) return x.ticker.replace(/\./g, '-');
+    return null;
   }
 
   function normalize(items, topN, labelMode, minPct) {
@@ -555,7 +572,7 @@
       var label = labelMode === 'company'
         ? (x.company || x.ticker || '(이름 없음)')
         : (x.ticker || x.company || '(이름 없음)');
-      return { name: label, pct: x.w / total * 100 };
+      return { name: label, pct: x.w / total * 100, logo: logoTicker(x) };
     }).sort(function (a, b) { return b.pct - a.pct; });
 
     // 상위 N개를 고르되, 최소 비중에 못 미치는 조각은 기타로 묶는다.
@@ -656,6 +673,41 @@
   /* ============================================================
      도넛
      ============================================================ */
+  /* 조각 안 로고 — 조각 가운데에 원형 로고를 흰 테두리와 함께 넣는다.
+     로고 크기는 링 두께와 조각 폭 중 작은 쪽에 맞추고, 너무 작은 조각은 건너뛴다. */
+  var _logos = {};
+  function logoImg(t) {
+    if (!t) return null;
+    var rec = _logos[t];
+    if (!rec) {
+      rec = _logos[t] = { img: new Image(), ok: false };
+      rec.img.onload = function () { rec.ok = true; drawPreview(); };
+      rec.img.src = './logo/us/' + t + '.png';
+    }
+    return rec.ok ? rec.img : null;
+  }
+  function drawSliceLogos(ctx, cx, cy, R, r0, rows) {
+    var L = TOKENS.card.logo;
+    var ring = R - r0, rm = (R + r0) / 2, ang = -Math.PI/2;
+    rows.forEach(function (r) {
+      var sweep = r.pct/100 * Math.PI*2, mid = ang + sweep/2;
+      ang += sweep;
+      if (r.etc) return;
+      var im = logoImg(r.logo);
+      if (!im) return;
+      var chord = 2 * rm * Math.sin(Math.min(sweep, Math.PI) / 2) - TOKENS.card.donut.sepWidth;
+      var d = Math.min(ring * L.ringFrac, chord * L.chordFrac);
+      if (d < L.minSize) return;
+      var x = cx + Math.cos(mid) * rm, y = cy + Math.sin(mid) * rm;
+      ctx.save();
+      ctx.beginPath(); ctx.arc(x, y, d/2 + L.border, 0, Math.PI*2);
+      ctx.fillStyle = '#FFFFFF'; ctx.fill();
+      ctx.beginPath(); ctx.arc(x, y, d/2, 0, Math.PI*2); ctx.clip();
+      ctx.drawImage(im, x - d/2, y - d/2, d, d);
+      ctx.restore();
+    });
+  }
+
   function drawDonut(ctx, cx, cy, R, rows, colors, bounds) {
     var T = TOKENS.card, D = T.donut;
     var r0 = R * D.holeRatio;
@@ -690,6 +742,8 @@
       });
       ctx.restore();
     }
+
+    if (state.logos) drawSliceLogos(ctx, cx, cy, R, r0, rows);
 
     /* ---- 라벨 배치 ----
        연결선 없이 각 라벨을 자기 조각 옆에 붙인다.
@@ -890,7 +944,7 @@
   /* ============================================================
      카드
      ============================================================ */
-  var state = { rows: [], colors: [], guide:false, hole:true, handle:'@돈굴돈굴',
+  var state = { rows: [], colors: [], guide:false, logos:true, hole:true, handle:'@돈굴돈굴',
                 name:'워런 버핏', sub:'' };
 
   function drawCard(ctx) {
@@ -1573,6 +1627,9 @@
   document.getElementById('f-min').addEventListener('input', refresh);
   document.getElementById('f-label').addEventListener('change', refresh);
   document.getElementById('color-base').addEventListener('input', refresh);
+  document.getElementById('chk-logo').addEventListener('change', function () {
+    state.logos = this.checked; drawPreview();
+  });
   document.getElementById('chk-guide').addEventListener('change', function () {
     state.guide = this.checked; drawPreview();
   });
