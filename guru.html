@@ -414,7 +414,7 @@
         label:36, labelPct:32, footer:27
       },
       gap:{ headToChart:30, chartToRule:40, ruleToText:18 },
-      logo:{ ringFrac:0.62, chordFrac:0.72, minSize:40, border:4 },
+      logo:{ ringFrac:0.62, chordFrac:0.72, minSize:40, border:0 },
       donut:{ holeRatio:0.58, sepWidth:5, minLabelPct:3,
               labelGap:26, lineGap:8, labelPad:8, labelMin:24,
               vertZone:0.26, pushMax:170, pullMax:220, swingMax:20, swingFrac:0.6, maxShrink:10,
@@ -700,8 +700,10 @@
       if (d < L.minSize) return;
       var x = cx + Math.cos(mid) * rm, y = cy + Math.sin(mid) * rm;
       ctx.save();
-      ctx.beginPath(); ctx.arc(x, y, d/2 + L.border, 0, Math.PI*2);
-      ctx.fillStyle = '#FFFFFF'; ctx.fill();
+      if (L.border > 0) {
+        ctx.beginPath(); ctx.arc(x, y, d/2 + L.border, 0, Math.PI*2);
+        ctx.fillStyle = '#FFFFFF'; ctx.fill();
+      }
       ctx.beginPath(); ctx.arc(x, y, d/2, 0, Math.PI*2); ctx.clip();
       ctx.drawImage(im, x - d/2, y - d/2, d, d);
       ctx.restore();
