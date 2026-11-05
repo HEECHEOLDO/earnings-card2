@@ -5,7 +5,7 @@
  "code": "900290",
  "market": "코스닥",
  "sector": "",
- "updated": "2026-10-26",
+ "updated": "2026-11-05",
  "annual": [
   {
    "p": 2017,
@@ -123,16 +123,22 @@
    "payout": null,
    "yield": null,
    "dps_adj": null
+  },
+  {
+   "p": 2026,
+   "rev": 57.9,
+   "op": 8.9,
+   "ni": 6.3,
+   "assets": 117.4,
+   "liab": 47.7,
+   "equity": 69.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
   }
  ],
  "quarterly": [
-  {
-   "y": 2023,
-   "q": 3,
-   "rev": 6.4,
-   "op": -1.0,
-   "ni": -0.7
-  },
   {
    "y": 2023,
    "q": 4,
@@ -195,6 +201,13 @@
    "rev": 12.7,
    "op": 1.9,
    "ni": 1.1
+  },
+  {
+   "y": 2026,
+   "q": 4,
+   "rev": 15.7,
+   "op": 2.3,
+   "ni": 1.5
   }
  ],
  "q_method": "strict"

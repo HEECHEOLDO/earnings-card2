@@ -5,21 +5,8 @@
  "code": "900120",
  "market": "코스닥",
  "sector": "",
- "updated": "2026-10-26",
+ "updated": "2026-11-05",
  "annual": [
-  {
-   "p": 2016,
-   "rev": 16.4,
-   "op": 3.9,
-   "ni": 2.9,
-   "assets": 36.4,
-   "liab": 1.5,
-   "equity": 34.9,
-   "dps": null,
-   "payout": null,
-   "yield": null,
-   "dps_adj": null
-  },
   {
    "p": 2017,
    "rev": 8.7,
@@ -136,16 +123,22 @@
    "payout": null,
    "yield": null,
    "dps_adj": null
+  },
+  {
+   "p": 2026,
+   "rev": 2.4,
+   "op": 0.1,
+   "ni": 0.4,
+   "assets": 27.2,
+   "liab": 0.1,
+   "equity": 27.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
   }
  ],
  "quarterly": [
-  {
-   "y": 2023,
-   "q": 3,
-   "rev": 0.8,
-   "op": -0.6,
-   "ni": -0.6
-  },
   {
    "y": 2023,
    "q": 4,
@@ -207,6 +200,13 @@
    "q": 4,
    "rev": 1.0,
    "op": 0.4,
+   "ni": 0.5
+  },
+  {
+   "y": 2026,
+   "q": 4,
+   "rev": 0.8,
+   "op": 0.2,
    "ni": 0.5
   }
  ],
