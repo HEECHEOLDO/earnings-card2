@@ -2,14 +2,14 @@
  "name": "ED",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "CONSOLIDATED EDISON INC",
+ "legal_name": "Consolidated Edison, Inc.",
  "code": "ED",
  "cik": "0001047862",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-11-05",
+ "updated": "2026-11-06",
  "annual": [
   {
    "p": 2016,
@@ -144,13 +144,6 @@
  ],
  "quarterly": [
   {
-   "y": 2023,
-   "q": 4,
-   "rev": 3444.0,
-   "op": 451.0,
-   "ni": -2182.5
-  },
-  {
    "y": 2024,
    "q": 1,
    "rev": 4280.0,
@@ -212,6 +205,13 @@
    "rev": 5095.0,
    "op": 1177.0,
    "ni": 924.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": 4913.0,
+   "op": 1170.0,
+   "ni": 308.0
   }
  ]
 }

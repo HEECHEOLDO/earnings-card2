@@ -2,14 +2,14 @@
  "name": "TPR",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "Tapestry, Inc.",
+ "legal_name": "Tapestry, Inc",
  "code": "TPR",
  "cik": "0001116132",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-11-05",
+ "updated": "2026-11-06",
  "annual": [
   {
    "p": 2017,
@@ -122,7 +122,7 @@
    "ni": 183.0,
    "assets": 6580.5,
    "liab": 5722.7,
-   "equity": 857.8,
+   "equity": 400.0,
    "dps": 1.4,
    "payout": 163.6,
    "yield": null,
@@ -133,9 +133,9 @@
    "rev": 8004.2,
    "op": 1914.4,
    "ni": 1528.0,
-   "assets": 6691.7,
-   "liab": 5999.6,
-   "equity": 692.1,
+   "assets": 6615.0,
+   "liab": 6271.0,
+   "equity": 344.0,
    "dps": 1.6,
    "payout": 21.3,
    "yield": null,
@@ -143,13 +143,6 @@
   }
  ],
  "quarterly": [
-  {
-   "y": 2024,
-   "q": 3,
-   "rev": 1482.4,
-   "op": 204.3,
-   "ni": 139.4
-  },
   {
    "y": 2024,
    "q": 4,
@@ -188,9 +181,9 @@
   {
    "y": 2026,
    "q": 1,
-   "rev": 1704.6,
-   "op": 328.2,
-   "ni": 274.8
+   "rev": 1705.0,
+   "op": 328.0,
+   "ni": 275.0
   },
   {
    "y": 2026,
@@ -209,9 +202,16 @@
   {
    "y": 2026,
    "q": 4,
-   "rev": 1876.6,
-   "op": 442.3,
-   "ni": 348.1
+   "rev": 1876.2,
+   "op": 442.5,
+   "ni": 347.9
+  },
+  {
+   "y": 2027,
+   "q": 1,
+   "rev": 1894.0,
+   "op": 424.0,
+   "ni": 360.0
   }
  ]
 }

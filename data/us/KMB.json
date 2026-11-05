@@ -2,14 +2,14 @@
  "name": "KMB",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "KIMBERLY CLARK CORP",
+ "legal_name": "KIMBERLY-CLARK CORPORATION",
  "code": "KMB",
  "cik": "0000055785",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-11-05",
+ "updated": "2026-11-06",
  "annual": [
   {
    "p": 2016,
@@ -145,13 +145,6 @@
  "quarterly": [
   {
    "y": 2024,
-   "q": 1,
-   "rev": 4326.0,
-   "op": 853.0,
-   "ni": 647.0
-  },
-  {
-   "y": 2024,
    "q": 2,
    "rev": 4231.0,
    "op": 539.0,
@@ -212,6 +205,13 @@
    "rev": 4189.0,
    "op": 633.0,
    "ni": 345.0
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 4134.0,
+   "op": 516.0,
+   "ni": 1793.0
   }
  ]
 }

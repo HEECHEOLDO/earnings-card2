@@ -2,14 +2,14 @@
  "name": "MCHP",
  "split_adjusted": true,
  "restated_from": null,
- "legal_name": "MICROCHIP TECHNOLOGY INCORPORATED",
+ "legal_name": "MICROCHIP TECHNOLOGY INC",
  "code": "MCHP",
  "cik": "0000827054",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-11-05",
+ "updated": "2026-11-06",
  "annual": [
   {
    "p": 2017,
@@ -122,7 +122,7 @@
    "ni": -0.5,
    "assets": 15374.6,
    "liab": null,
-   "equity": 6857.1,
+   "equity": 6695.5,
    "dps": 1.816,
    "payout": null,
    "yield": null,
@@ -133,9 +133,9 @@
    "rev": 4713.1,
    "op": 490.1,
    "ni": 230.0,
-   "assets": 14407.4,
+   "assets": 14660.4,
    "liab": null,
-   "equity": 6451.0,
+   "equity": 6640.8,
    "dps": 1.82,
    "payout": 427.8,
    "yield": null,
@@ -143,13 +143,6 @@
   }
  ],
  "quarterly": [
-  {
-   "y": 2024,
-   "q": 4,
-   "rev": 1325.8,
-   "op": 253.5,
-   "ni": 154.7
-  },
   {
    "y": 2025,
    "q": 1,
@@ -212,6 +205,13 @@
    "rev": 1484.7,
    "op": 336.8,
    "ni": 229.8
+  },
+  {
+   "y": 2027,
+   "q": 2,
+   "rev": 1621.5,
+   "op": 464.5,
+   "ni": 401.4
   }
  ]
 }

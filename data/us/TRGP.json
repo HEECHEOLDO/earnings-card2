@@ -2,14 +2,14 @@
  "name": "TRGP",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "Targa Resources Corp.",
+ "legal_name": "TARGA RESOURCES CORP.",
  "code": "TRGP",
  "cik": "0001389170",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-11-05",
+ "updated": "2026-11-06",
  "annual": [
   {
    "p": 2016,
@@ -145,13 +145,6 @@
  "quarterly": [
   {
    "y": 2024,
-   "q": 1,
-   "rev": 4562.4,
-   "op": 639.4,
-   "ni": 275.2
-  },
-  {
-   "y": 2024,
    "q": 2,
    "rev": 3562.0,
    "op": 627.2,
@@ -212,6 +205,13 @@
    "rev": 4440.1,
    "op": 1234.5,
    "ni": 764.6
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 5598.6,
+   "op": 1096.0,
+   "ni": 658.2
   }
  ]
 }
