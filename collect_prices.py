@@ -856,12 +856,15 @@ def nowcast_us(items):
                 it["years"][av["asof"][:4]] = av["y"]
                 it["asof"] = av["asof"]
                 continue
+            # 하루에 1/3 아래로 빠지거나 3배 넘게 뛴 날이 있으면 액면분할 등 자료 문제로 본다.
+            # (기간 전체 변화로 막으면 3배 레버리지 ETF 의 실제 폭락까지 걸러진다 — SOXL 10월 -74%)
+            seg = [p for d, p in rows if d >= base[0]]
+            if any(not (0.3 < b2 / a2 < 3.0) for a2, b2 in zip(seg, seg[1:]) if a2 > 0):
+                skip += 1; continue
             it["ac"] = cls
             by = int(av["asof"][:4])
             if by == cur:
                 r = last[1] / base[1]
-                if not 0.3 < r < 3.0:
-                    skip += 1; continue
                 it["years"][str(cur)] = round(((1 + av["y"] / 100) * r - 1) * 100, 2)
             else:
                 # 해가 바뀌었다: 작년은 연말 종가까지 잇고, 올해는 연말 종가부터 계산
@@ -869,8 +872,6 @@ def nowcast_us(items):
                 if not ye or ye[0] < av["asof"] and ye[0] != base[0]:
                     skip += 1; continue
                 r1, r2 = ye[1] / base[1], last[1] / ye[1]
-                if not (0.3 < r1 < 3.0 and 0.3 < r2 < 3.0):
-                    skip += 1; continue
                 it["years"][str(by)] = round(((1 + av["y"] / 100) * r1 - 1) * 100, 2)
                 if last[0][:4] == str(cur):
                     it["years"][str(cur)] = round((r2 - 1) * 100, 2)
