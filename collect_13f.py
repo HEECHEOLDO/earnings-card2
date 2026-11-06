@@ -41,14 +41,14 @@ FUNDS = [
     ("harvard",    "하버드 대학",      "Harvard Management Co",               1082621),
     ("scion",      "마이클 버리",      "Scion Asset Management",              1649339),
     ("duquesne",   "드러켄밀러",       "Duquesne Family Office",              1536411),
-    ("pershing",   "빌 애크먼",        "Pershing Square Capital",             1336528),
+    ("pershing",   "빌 애크먼",        "Pershing Square Inc",                 2026053),   # 2026년 2분기부터 상장 모회사가 공시 (옛 1336528)
     ("bridgewater","레이 달리오",      "Bridgewater Associates",              1350694),
     ("rentech",    "르네상스 테크",    "Renaissance Technologies",            1037389),
     ("soros",      "조지 소로스",      "Soros Fund Management",               1029160),
     ("appaloosa",  "데이비드 테퍼",    "Appaloosa LP",                        1656456),
     ("baupost",    "세스 클라만",      "Baupost Group",                       1061768),
     ("thirdpoint", "댄 로브",          "Third Point",                         1040273),
-    ("greenlight", "데이비드 아인혼",  "Greenlight Capital",                  1079114),
+    ("greenlight", "데이비드 아인혼",  "DME Capital Management",              1489933),   # 2024년부터 DME 이름으로 공시 (옛 Greenlight 1079114)
     ("tiger",      "타이거 글로벌",    "Tiger Global Management",             1167483),
     ("citadel",    "켄 그리핀",        "Citadel Advisors",                    1423053),
     ("himalaya",   "리루",             "Himalaya Capital Management",         1709323),
