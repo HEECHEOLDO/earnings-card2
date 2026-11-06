@@ -2,14 +2,14 @@
  "name": "AXON",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "AXON ENTERPRISE, INC.",
+ "legal_name": "Axon Enterprise, Inc.",
  "code": "AXON",
  "cik": "0001069183",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-11-06",
+ "updated": "2026-11-07",
  "annual": [
   {
    "p": 2016,
@@ -145,13 +145,6 @@
  "quarterly": [
   {
    "y": 2024,
-   "q": 1,
-   "rev": 459.9,
-   "op": 16.5,
-   "ni": 133.4
-  },
-  {
-   "y": 2024,
    "q": 2,
    "rev": 503.2,
    "op": 33.8,
@@ -212,6 +205,13 @@
    "rev": 904.4,
    "op": 46.8,
    "ni": 29.4
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 908.6,
+   "op": 42.1,
+   "ni": 57.0
   }
  ]
 }

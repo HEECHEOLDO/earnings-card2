@@ -2,14 +2,14 @@
  "name": "SPG",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "SIMON PROPERTY GROUP, INC.",
+ "legal_name": "SIMON PROPERTY GROUP, INC.",
  "code": "SPG",
  "cik": "0001063761",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-11-06",
+ "updated": "2026-11-07",
  "annual": [
   {
    "p": 2016,
@@ -145,13 +145,6 @@
  "quarterly": [
   {
    "y": 2024,
-   "q": 1,
-   "rev": 1442.6,
-   "op": 735.2,
-   "ni": 841.2
-  },
-  {
-   "y": 2024,
    "q": 2,
    "rev": 1458.3,
    "op": 754.1,
@@ -212,6 +205,13 @@
    "rev": 1790.6,
    "op": 824.1,
    "ni": 574.1
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 1814.6,
+   "op": 804.5,
+   "ni": 565.3
   }
  ]
 }

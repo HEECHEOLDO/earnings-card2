@@ -2,14 +2,14 @@
  "name": "ORLY",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "O REILLY AUTOMOTIVE INC",
+ "legal_name": "O Reilly Automotive Inc",
  "code": "ORLY",
  "cik": "0000898173",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-11-06",
+ "updated": "2026-11-07",
  "annual": [
   {
    "p": 2016,
@@ -145,13 +145,6 @@
  "quarterly": [
   {
    "y": 2024,
-   "q": 1,
-   "rev": 3976.2,
-   "op": 752.5,
-   "ni": 547.2
-  },
-  {
-   "y": 2024,
    "q": 2,
    "rev": 4272.2,
    "op": 863.3,
@@ -212,6 +205,13 @@
    "rev": 4892.0,
    "op": 985.7,
    "ni": 715.1
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 5121.3,
+   "op": 1098.3,
+   "ni": 785.6
   }
  ]
 }

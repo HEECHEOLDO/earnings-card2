@@ -2,14 +2,14 @@
  "name": "UHS",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "UNIVERSAL HEALTH SERVICES INC",
+ "legal_name": "UNIVERSAL HEALTH SERVICES, INC.",
  "code": "UHS",
  "cik": "0000352915",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-11-06",
+ "updated": "2026-11-07",
  "annual": [
   {
    "p": 2016,
@@ -145,13 +145,6 @@
  "quarterly": [
   {
    "y": 2024,
-   "q": 1,
-   "rev": 3843.6,
-   "op": 388.8,
-   "ni": 265.8
-  },
-  {
-   "y": 2024,
    "q": 2,
    "rev": 3907.6,
    "op": 436.4,
@@ -212,6 +205,13 @@
    "rev": 4638.0,
    "op": 516.7,
    "ni": 364.6
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 4733.4,
+   "op": 454.4,
+   "ni": 313.3
   }
  ]
 }

@@ -2,31 +2,18 @@
  "name": "FICO",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "FAIR ISAAC CORP",
+ "legal_name": "Fair Isaac Corp",
  "code": "FICO",
  "cik": "0000814547",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-11-06",
+ "updated": "2026-11-07",
  "annual": [
   {
-   "p": 2016,
-   "rev": 881.4,
-   "op": 169.6,
-   "ni": 109.4,
-   "assets": 1220.7,
-   "liab": 773.8,
-   "equity": 481.3,
-   "dps": null,
-   "payout": 2.3,
-   "yield": null,
-   "dps_adj": null
-  },
-  {
    "p": 2017,
-   "rev": 932.2,
+   "rev": 935.0,
    "op": 182.2,
    "ni": 133.4,
    "assets": 1255.6,
@@ -140,16 +127,22 @@
    "payout": null,
    "yield": null,
    "dps_adj": null
+  },
+  {
+   "p": 2026,
+   "rev": 2534.9,
+   "op": 1265.7,
+   "ni": 835.0,
+   "assets": 2075.0,
+   "liab": 5948.2,
+   "equity": -3873.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
   }
  ],
  "quarterly": [
-  {
-   "y": 2024,
-   "q": 2,
-   "rev": 433.8,
-   "op": 194.8,
-   "ni": 129.8
-  },
   {
    "y": 2024,
    "q": 3,
@@ -212,6 +205,13 @@
    "rev": 674.2,
    "op": 362.6,
    "ni": 237.2
+  },
+  {
+   "y": 2026,
+   "q": 4,
+   "rev": 657.0,
+   "op": 266.6,
+   "ni": 175.0
   }
  ]
 }
