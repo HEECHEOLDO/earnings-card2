@@ -549,9 +549,25 @@ def main():
         tried = set()
     base = listed | tried
     keep = {c for c, v in caps.items() if (c in base if base else True) and not bad.search(v["n"])}
+    # 올해 수익률은 returns.json(새벽 3시 수집)에서 가져오는데, 이 수집(자정 무렵)보다 늦게 돌아
+    # 하루 묵은 값이 된다 — 11월 5일 급락 때 삼성전자가 +68% 인데 +84.7% 로 나왔다.
+    # 수익률 기준일이 전날 시총 파일의 기준일과 같으면, 시총 변화(≈주가 변화)로 하루를 이어 붙인다.
+    asof_new = last_close()
+    old_asof = old.get("asof")
+    old_c = {c: v.get("c") for c, v in (old.get("stocks") or {}).items()}
+    chained = 0
     for c in keep:
-        yv = (ret.get(c, {}).get("years") or {}).get(year)
+        it = ret.get(c, {})
+        yv = (it.get("years") or {}).get(year)
+        ra = it.get("asof") or ""
+        if (yv is not None and old_asof and ra == old_asof and ra < asof_new
+                and (old_c.get(c) or 0) > 0 and caps[c]["c"] > 0):
+            r = caps[c]["c"] / old_c[c]
+            if 0.5 < r < 2.0:
+                yv = ((1 + float(yv) / 100) * r - 1) * 100
+                chained += 1
         caps[c]["y"] = round(float(yv), 1) if yv is not None else None
+    log("  올해 수익률: %d종목은 전날 시총 대비로 %s 까지 이어 붙임" % (chained, asof_new))
 
     out = {"updated": datetime.now(KST).strftime("%Y-%m-%d"), "asof": last_close(),
            "unit": "억원", "source": "네이버 금융"}
