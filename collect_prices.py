@@ -762,6 +762,124 @@ def status():
         log("\n해외 종목은 모두 한 번씩은 받았습니다.")
 
 
+# ------------------------------------------------------------------
+# 해외 올해 수익률을 '어제 종가' 기준으로 맞춘다
+# 알파밴티지는 하루 25회라 종목마다 한 달쯤 묵은 값이 된다.
+# 알파밴티지 값(배당 재투자 포함)은 그대로 기준으로 두고, 그 날짜부터
+# 어제까지의 주가 변화만 나스닥 일별 종가로 이어 붙인다.
+#   올해 = (1 + 알파밴티지 올해) × (어제 종가 / 기준일 종가) - 1
+# 기준일 이후의 배당은 빠지지만 길어야 한 달치라 차이는 작다.
+# 원래 값은 items[code]["av"] 에 두고 매일 거기서 다시 계산한다.
+# ------------------------------------------------------------------
+NQ_HIST = ("https://api.nasdaq.com/api/quote/%s/historical?assetclass=%s"
+           "&fromdate=%s&todate=%s&limit=60")
+NQ_HEAD = {"User-Agent": UA, "Accept": "application/json, text/plain, */*",
+           "Accept-Language": "en-US,en;q=0.9",
+           "Origin": "https://www.nasdaq.com", "Referer": "https://www.nasdaq.com/"}
+
+
+def _nq_rows(sym, cls, d0, d1):
+    url = NQ_HIST % (urllib.parse.quote(sym), cls, d0, d1)
+    for t in range(2):
+        try:
+            raw = urllib.request.urlopen(urllib.request.Request(url, headers=NQ_HEAD), timeout=30).read()
+            j = json.loads(raw.decode("utf-8", "replace"))
+            rows = (((j.get("data") or {}).get("tradesTable") or {}).get("rows")) or []
+            out = []
+            for r in rows:
+                try:
+                    m, d, y = r["date"].split("/")
+                    out.append(("%s-%s-%s" % (y, m, d), float(str(r["close"]).replace("$", "").replace(",", ""))))
+                except Exception:                 # noqa: BLE001
+                    continue
+            return sorted(out)
+        except Exception:                         # noqa: BLE001
+            time.sleep(2)
+    return []
+
+
+def _close_on(rows, day):
+    """day 이전(같은 날 포함) 마지막 종가."""
+    got = None
+    for d, p in rows:
+        if d <= day:
+            got = (d, p)
+    return got
+
+
+def nowcast_us(items):
+    from concurrent.futures import ThreadPoolExecutor
+    today = datetime.now(timezone(timedelta(hours=9)))
+    cur = today.year
+    todo = []
+    for code, it in items.items():
+        if it.get("market") != "US":
+            continue
+        av = it.get("av")
+        # 알파밴티지에서 새로 받은 종목은 av 가 없다 — 지금 값이 원본이다
+        if not av:
+            a = it.get("asof") or ""
+            if len(a) < 10 or a[:4] not in it.get("years", {}):
+                continue
+            av = {"asof": a, "y": it["years"][a[:4]], "fetched": it.get("fetched")}
+            it["av"] = av
+        by = int(av["asof"][:4])
+        if by not in (cur, cur - 1):
+            continue
+        todo.append((code, it, av))
+
+    def one(job):
+        code, it, av = job
+        sym = code.replace("-", ".")
+        d0 = (datetime.strptime(av["asof"], "%Y-%m-%d") - timedelta(days=10)).strftime("%Y-%m-%d")
+        d1 = today.strftime("%Y-%m-%d")
+        cls = it.get("ac") or "stocks"
+        rows = _nq_rows(sym, cls, d0, d1)
+        if not rows and not it.get("ac"):
+            cls = "etf"
+            rows = _nq_rows(sym, cls, d0, d1)
+        return code, it, av, cls, rows
+
+    done = skip = fresh = 0
+    with ThreadPoolExecutor(max_workers=6) as ex:
+        for code, it, av, cls, rows in ex.map(one, todo):
+            base = _close_on(rows, av["asof"])
+            last = rows[-1] if rows else None
+            if base and last and last[0] == av["asof"]:
+                fresh += 1                        # 알파밴티지 값이 이미 최신
+                it["years"][av["asof"][:4]] = av["y"]
+                it["asof"] = av["asof"]
+                continue
+            if not base or not last or last[0] < av["asof"]:
+                skip += 1
+                # 이어 붙일 수 없으면 알파밴티지 원본으로 둔다
+                it["years"][av["asof"][:4]] = av["y"]
+                it["asof"] = av["asof"]
+                continue
+            it["ac"] = cls
+            by = int(av["asof"][:4])
+            if by == cur:
+                r = last[1] / base[1]
+                if not 0.3 < r < 3.0:
+                    skip += 1; continue
+                it["years"][str(cur)] = round(((1 + av["y"] / 100) * r - 1) * 100, 2)
+            else:
+                # 해가 바뀌었다: 작년은 연말 종가까지 잇고, 올해는 연말 종가부터 계산
+                ye = _close_on(rows, "%d-12-31" % by)
+                if not ye or ye[0] < av["asof"] and ye[0] != base[0]:
+                    skip += 1; continue
+                r1, r2 = ye[1] / base[1], last[1] / ye[1]
+                if not (0.3 < r1 < 3.0 and 0.3 < r2 < 3.0):
+                    skip += 1; continue
+                it["years"][str(by)] = round(((1 + av["y"] / 100) * r1 - 1) * 100, 2)
+                if last[0][:4] == str(cur):
+                    it["years"][str(cur)] = round((r2 - 1) * 100, 2)
+            it["asof"] = last[0]
+            done += 1
+    log("해외 올해 수익률 최신화: %d종목 · 이미 최신 %d · 못 함 %d (알파밴티지 값 유지) · 나스닥 일별 종가"
+        % (done, fresh, skip))
+
+
 def main():
     global DEBUG
     argv = sys.argv[1:]
@@ -770,6 +888,13 @@ def main():
         return check()
     if "--status" in argv:
         return status()
+    if "--nowcast" in argv:                       # 알파밴티지 없이 올해 값만 최신화
+        with open(OUT, encoding="utf-8") as f:
+            j = json.load(f)
+        nowcast_us(j["items"])
+        with open(OUT, "w", encoding="utf-8") as f:
+            json.dump(j, f, ensure_ascii=False, separators=(",", ":"))
+        return
     DEBUG = "--debug" in argv
     USE_YAHOO = "--yahoo" in argv
     only = "KR" if "--kr" in argv else ("US" if "--us" in argv else None)
@@ -940,6 +1065,11 @@ def main():
 
         if i % 100 == 0 or i == len(universe):
             log("  %d/%d  (%.1f분)" % (i, len(universe), (time.time()-started)/60))
+
+    try:
+        nowcast_us(items)
+    except Exception as e:                        # noqa: BLE001
+        log("  ! 해외 올해 수익률 최신화 실패: %r" % e)
 
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     with open(OUT, "w", encoding="utf-8") as f:
