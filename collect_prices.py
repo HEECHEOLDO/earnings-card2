@@ -849,17 +849,20 @@ def nowcast_us(items):
                 fresh += 1                        # 알파밴티지 값이 이미 최신
                 it["years"][av["asof"][:4]] = av["y"]
                 it["asof"] = av["asof"]
+                it["nc"] = [base[1], base[1], av["asof"]]
                 continue
             if not base or not last or last[0] < av["asof"]:
                 skip += 1
                 # 이어 붙일 수 없으면 알파밴티지 원본으로 둔다
                 it["years"][av["asof"][:4]] = av["y"]
                 it["asof"] = av["asof"]
+                it.pop("nc", None)
                 continue
             # 하루에 1/3 아래로 빠지거나 3배 넘게 뛴 날이 있으면 액면분할 등 자료 문제로 본다.
             # (기간 전체 변화로 막으면 3배 레버리지 ETF 의 실제 폭락까지 걸러진다 — SOXL 10월 -74%)
             seg = [p for d, p in rows if d >= base[0]]
             if any(not (0.3 < b2 / a2 < 3.0) for a2, b2 in zip(seg, seg[1:]) if a2 > 0):
+                it.pop("nc", None)
                 skip += 1; continue
             it["ac"] = cls
             by = int(av["asof"][:4])
@@ -876,9 +879,30 @@ def nowcast_us(items):
                 if last[0][:4] == str(cur):
                     it["years"][str(cur)] = round((r2 - 1) * 100, 2)
             it["asof"] = last[0]
+            # 그때 샀다면(buy.html) 이 '지금' 값으로 쓴다: [기준일 종가, 최근 종가, 최근 날짜]
+            it["nc"] = [base[1], last[1], last[0]]
             done += 1
     log("해외 올해 수익률 최신화: %d종목 · 이미 최신 %d · 못 함 %d (알파밴티지 값 유지) · 나스닥 일별 종가"
         % (done, fresh, skip))
+
+
+def attach_nc(items):
+    """nowcast 결과(nc)를 월말 종가 파일에도 붙인다 — buy.html 은 그 파일만 읽는다."""
+    try:
+        with open(OUT_M, encoding="utf-8") as f:
+            m = json.load(f)
+    except Exception:                             # noqa: BLE001
+        return
+    n = 0
+    for code, o in (m.get("items") or {}).items():
+        nc = (items.get(code) or {}).get("nc")
+        if nc:
+            o["nc"] = nc; n += 1
+        else:
+            o.pop("nc", None)
+    with open(OUT_M, "w", encoding="utf-8") as f:
+        json.dump(m, f, ensure_ascii=False, separators=(",", ":"))
+    log("월말 종가 파일에 최근 종가 연결: %d종목" % n)
 
 
 def main():
@@ -895,6 +919,7 @@ def main():
         nowcast_us(j["items"])
         with open(OUT, "w", encoding="utf-8") as f:
             json.dump(j, f, ensure_ascii=False, separators=(",", ":"))
+        attach_nc(j["items"])
         return
     DEBUG = "--debug" in argv
     USE_YAHOO = "--yahoo" in argv
@@ -1091,6 +1116,8 @@ def main():
             }, f, ensure_ascii=False, separators=(",", ":"))
         log("월말 종가 %d종목 · %.1fMB -> %s"
             % (len(series), os.path.getsize(OUT_M) / 1024 / 1024, OUT_M))
+
+    attach_nc(items)
 
     size = os.path.getsize(OUT) / 1024 / 1024
     log("\n" + "=" * 52)

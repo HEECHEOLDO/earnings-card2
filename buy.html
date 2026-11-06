@@ -372,7 +372,7 @@ var MK = {
   // 시리즈 안에서 색의 뜻이 바뀌지 않게 한다.
   us: { nm:'해외', dir:'./logo/us/', up:T.upKR, down:T.downKR,
         foot:'배당 재투자',
-        hint:'해외는 월말 종가 기준입니다. 배당을 재투자한 조정종가이고, 그 달 말 환율로 원화로 바꿉니다.' }
+        hint:'해외는 과거는 월말 종가, 지금은 최근 종가입니다. 배당을 재투자한 조정종가이고, 그날 환율로 원화로 바꿉니다.' }
 };
 function M(){ return MK[state.mkt]; }
 
@@ -954,6 +954,52 @@ function adoptUS(mj, fj, ij){
     if (cov >= need) { REF = k; break; }
   }
 
+  // 많이 찾는 순서(USN 에 적은 순서) → 나머지는 기호 순
+  function sortOrder(){
+    S.order.sort(function(a,b){
+      var ra = USRANK[a] === undefined ? 1e4 : USRANK[a], rb = USRANK[b] === undefined ? 1e4 : USRANK[b];
+      return ra - rb || (a < b ? -1 : a > b ? 1 : 0);
+    });
+  }
+
+  // ---- '지금' 을 어제 종가로 ----
+  // 월말 종가만 쓰면 지금이 한두 달 전 월말이 된다(알파밴티지가 하루 25종목씩 돈다).
+  // collect_prices.py 가 나스닥 일별 종가로 이어 붙인 값 nc = [받아온 날 종가, 최근 종가, 최근 날짜]
+  // 로 '받아온 날의 조정종가 × 그 뒤 주가 변화' 를 지금 값으로 쓴다.
+  // 과거 기준점은 그 날짜 직전 월말 (예: 지금 26.11.05 → 1년 전 25.10 말).
+  var ncCnt = {}, NOWD = '', nb = 0;
+  codes.forEach(function(c){
+    var n = raw[c] && raw[c].nc;
+    if (n && n[2]) { ncCnt[n[2]] = (ncCnt[n[2]] || 0) + 1; if (ncCnt[n[2]] > nb) { nb = ncCnt[n[2]]; NOWD = n[2]; } }
+  });
+  var fxD = NOWD ? fxOn(NOWD) : 0;
+  if (NOWD && nb >= need && fxD) {
+    var REFm = mkey(NOWD.slice(0,7));
+    codes.forEach(function(c){
+      var o = raw[c], n = o.nc;
+      if (!n || n[2] !== NOWD || !(n[0] > 0) || !(n[1] > 0)) return;   // 최근 종가가 없는 종목은 쉰다
+      var vA = at(o, mkey(String(o.asof || '').slice(0,7)));
+      if (vA === null) return;
+      var pNow = vA * n[1] / n[0];
+      var y = {};
+      S.spans.forEach(function(s){
+        var k0 = REFm - 12 * s - 1, p0 = at(o, k0); if (p0 === null) return;
+        var f0 = fxOn(mend(k0)); if (!f0) return;
+        y[String(s)] = { d: mstr(k0), v: p0, fx: f0 };
+      });
+      if (!Object.keys(y).length) return;
+      var up = c.toUpperCase();
+      S.items[c] = { name: USN[up] || up, disp: USN[up] || up, en: USFULL[up] || '',
+                     now: { d: NOWD, v: pNow, fx: fxD }, y: y };
+      S.order.push(c);
+    });
+    sortOrder();
+    S.asof = NOWD;
+    S.basis = '조정종가(과거 월말 · 지금 최근 종가) · 배당 재투자 · 원화 환산';
+    if (S.order.length) return;
+    S.items = {}; S.order = [];                      // 비면 예전 방식으로
+  }
+
   var fxNow = fxOn(mend(REF));
   if (!fxNow) { S.why = mstr(REF) + ' 말 환율이 없습니다. collect_fx.py 를 다시 돌려 주세요.'; return; }
 
@@ -972,11 +1018,7 @@ function adoptUS(mj, fj, ij){
                    now: { d: mstr(REF), v: pNow, fx: fxNow }, y: y };
     S.order.push(c);
   });
-  // 많이 찾는 순서(USN 에 적은 순서) → 나머지는 기호 순
-  S.order.sort(function(a,b){
-    var ra = USRANK[a] === undefined ? 1e4 : USRANK[a], rb = USRANK[b] === undefined ? 1e4 : USRANK[b];
-    return ra - rb || (a < b ? -1 : a > b ? 1 : 0);
-  });
+  sortOrder();
   S.asof = mstr(REF);
   S.basis = '월말 조정종가 · 배당 재투자 · 원화 환산';
   if (!S.order.length) S.why = '해외 종목이 아직 비어 있습니다.';
@@ -1141,7 +1183,7 @@ function renderPicked(){
                         won(r.f0) + ' → <b>' + won(r.f1) + '원</b> · 연 ' + cs;
         sub.title = (DB.items[r.code].en ? DB.items[r.code].en + '\n' : '') +
           r.back + ' 말  ' + usd(r.p0) + ' × ' + comma(r.f0) + '원\n' +
-          DB.asof + ' 말  ' + usd(r.p1) + ' × ' + comma(r.f1) + '원\n' +
+          DB.asof + (DB.asof.length > 7 ? '  ' : ' 말  ') + usd(r.p1) + ' × ' + comma(r.f1) + '원\n' +
           '주가 ' + (r.p1 / r.p0).toFixed(3) + '배 × 환율 ' + (r.f1 / r.f0).toFixed(3) + '배' +
           ' = ' + (r.amt / SEED).toFixed(3) + '배';
       } else {
