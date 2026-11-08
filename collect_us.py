@@ -59,6 +59,14 @@ CIK_OVERRIDE = {
     "BLK": "2012383 1364742",
 }
 
+BANK_REV = "zzBankTotalRevenue"
+# 같은 기간 다른 매출 태그가 1.5배 넘게 크면 앞 태그는 매출 '일부'로 본다
+# (번지 54억 vs 238억, 크라운캐슬 0.3억 vs 9.9억, 노던트러스트 13.7억 vs 22.9억).
+# 1.5배 아래 차이(주세 포함 여부, 파생상품 손익 등)는 원래 고른 태그를 그대로 쓴다.
+REV_PARTIAL = 1.5
+REV_FILL = ["OperatingLeaseLeaseIncome"]
+PRETAX_SUM = "zzPretaxDomesticPlusForeign"   # 세전이익 = 국내분 + 해외분 (BNY 처럼 둘로만 적는 회사)
+
 # 회사마다 쓰는 태그가 다르다. 앞에서부터 순서대로 시도한다.
 # 같은 뜻이라 합쳐도 되는 태그들.
 # 회사는 중간에 태그를 바꾼다. 애플은 FY2017 까지 SalesRevenueNet,
@@ -68,7 +76,11 @@ TAGS = {
             "RevenueFromContractWithCustomerIncludingAssessedTax",
             "Revenues", "SalesRevenueNet", "SalesRevenueGoodsNet",
             "RevenuesNetOfInterestExpense", "RevenuesExcludingInterestAndDividends",
-            "TotalRevenuesAndOtherIncome"],
+            "TotalRevenuesAndOtherIncome",
+            # 전력·가스 회사 (엑셀에너지는 2019년 이후 이것만 쓴다)
+            "RegulatedAndUnregulatedOperatingRevenue",
+            # 은행 '매출' = 순이자이익 + 비이자이익. add_bank_revenue() 가 만들어 넣는 가상 태그
+            BANK_REV],
     "op":  ["OperatingIncomeLoss"],
     "ni":  ["NetIncomeLoss", "ProfitLoss"],
     "assets": ["Assets"],
@@ -92,8 +104,9 @@ TAGS = {
 FALLBACK = {
     "op": ["IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest",
            "IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments",
-           "IncomeLossFromContinuingOperationsBeforeIncomeTaxesDomestic",
-           "IncomeLossFromContinuingOperationsBeforeIncomeTaxesForeign",
+           # ...Domestic / ...Foreign 은 세전이익의 국내·해외 일부라 따로는 쓰지 않는다
+           # (엑손 2025 영업이익이 국내분 110억 달러로 나왔다 — 전체 413억). 둘을 더한 값만 쓴다
+           PRETAX_SUM,
            "IncomeLossFromContinuingOperationsIncludingPortionAttributableToNoncontrollingInterest",
            "OperatingIncomeLossBeforeDepreciationDepletionAmortizationAndExplorationExpense"],
     # GrossProfit(매출총이익)은 쓰지 않는다 — 영업이익보다 몇 배 커서 이익률이 엉터리가 된다
@@ -222,6 +235,9 @@ DISCOVER = {
 }
 # 매출로 오인하기 쉬운 것들 (부문·이연·미수 등)
 DISCOVER_SKIP = ("deferred", "unearned", "receivable", "remaining",
+                 # 인수 가정(pro forma) 매출, 세전이익의 국내·해외 일부 — 회사 전체 값이 아니다
+                 # (APA 매출이 인수 가정 매출로, JPM 영업이익이 국내분으로 들어가 있었다)
+                 "proforma", "domestic", "foreign",
                  "percentage", "concentration", "segment", "peritem")
 
 _used_tag = {}
@@ -272,12 +288,28 @@ def pick_units(facts, kind):
             if not rs:
                 continue
             n = _usable(rs, kind)
+            if not n and kind not in INSTANT and any(
+                    r.get("start") and r.get("end") and 80 <= _days(r["start"], r["end"]) <= 100
+                    for r in rs):
+                n = 0.5                   # 연간은 아직 없고 분기만 있는 새 태그
             if n:
                 out.append((n, tag, rs))
         out.sort(key=lambda x: -x[0])
         return out
 
-    groups = gather(TAGS[kind]) or gather(FALLBACK.get(kind, []))
+    groups = gather(TAGS[kind])
+    if not any(n >= 1 for n, _, _ in groups):
+        # 연간 값이 있는 주 태그가 없으면 대체 태그를 앞에, 분기만 있는 새 태그는 뒤에
+        groups = gather(FALLBACK.get(kind, [])) + groups
+    if kind == "rev" and groups:
+        # 빈 기간만 메우는 태그 (리츠 임대수익: 비브마크는 2021년 이후 이것만 쓴다)
+        have = {t for _, t, _ in groups}
+        groups = groups + [g for g in gather(REV_FILL) if g[1] not in have]
+    if kind == "ni" and groups:
+        # 순이익은 대체 태그(보통주 귀속 순이익)를 뒤에 붙여 빈 분기만 메운다
+        # (부킹홀딩스는 분기 순이익을 그 태그로만 적어 분기 순이익이 전부 비어 있었다)
+        have = {t for _, t, _ in groups}
+        groups = groups + [g for g in gather(FALLBACK.get(kind, [])) if g[1] not in have]
 
     if not groups:
         keys = DISCOVER.get(kind)
@@ -368,7 +400,11 @@ def annual_series(facts, kind):
                 one[fy] = r["val"]
             kept += 1
         for fy, v in one.items():
-            out.setdefault(fy, v)         # 앞 태그 우선
+            if kind == "rev" and fy in out and v is not None and out[fy] is not None:
+                if v > out[fy] * REV_PARTIAL:
+                    out[fy] = v               # 앞 태그가 매출 일부만 적은 경우 (리츠의 고객계약수익 등)
+            else:
+                out.setdefault(fy, v)         # 앞 태그 우선
     dbg("%s 연간: 채택 %d, 기간 불일치 %d -> %d개 연도" % (kind, kept, dropped, len(out)))
     return out
 
@@ -378,8 +414,8 @@ def quarter_series(facts, kind, fy_end_month=12):
     groups = pick_units(facts, kind)
     if not groups:
         return {}
-    byend = {}
-    for _, _, rows in groups:
+    byend, tagof = {}, {}
+    for _, tag, rows in groups:
         seen = {}
         one = {}
         for r in rows:
@@ -397,7 +433,11 @@ def quarter_series(facts, kind, fy_end_month=12):
                 seen[key] = filed
                 one[key] = r["val"]
         for k, v in one.items():
-            byend.setdefault(k, v)
+            if kind == "rev" and k in byend and v is not None and byend[k] is not None:
+                if v > byend[k] * REV_PARTIAL:
+                    byend[k], tagof[k] = v, tag
+            elif k not in byend:
+                byend[k], tagof[k] = v, tag
 
     def q_fy(end):
         y, m = int(end[:4]), int(end[5:7])
@@ -411,8 +451,34 @@ def quarter_series(facts, kind, fy_end_month=12):
         items.sort()
         for i, (end, val) in enumerate(items[:4]):
             out[(fy, i + 1)] = val
+            QTAG[(kind, fy, i + 1)] = tagof.get(end)
     dbg("%s 분기: %d개 (결산 %d월 기준)" % (kind, len(out), fy_end_month))
     return out
+
+
+QTAG = {}       # (항목, 회계연도, 분기) -> 그 값을 가져온 태그
+
+
+def annual_of_tag(facts, tag, fy):
+    """특정 태그의 연간 값 (4분기를 '연간 - 1~3분기'로 만들 때 같은 태그끼리 빼려고)."""
+    if tag == BANK_REV:
+        node = (facts.get("facts", {}).get("us-gaap", {}) or {}).get(BANK_REV)
+    else:
+        node = facts.get("facts", {}).get("us-gaap", {}).get(tag)
+    if not node:
+        return None
+    best, seen = None, ""
+    for r in node.get("units", {}).get("USD", []):
+        if not r.get("start") or not r.get("end"):
+            continue
+        try:
+            if not 330 <= _days(r["start"], r["end"]) <= 400:
+                continue
+        except Exception:                 # noqa: BLE001
+            continue
+        if fy_of(r["end"]) == fy and r.get("filed", "") >= seen:
+            best, seen = r["val"], r.get("filed", "")
+    return best
 
 
 def mil(v):
@@ -616,6 +682,156 @@ def merge_facts(a, b):
     return a
 
 
+# ------------------------------------------------- companyfacts 에 빠진 최근 공시 보충
+# SEC companyfacts API 에 최근 10-Q 가 몇 달째 안 들어오는 회사가 있다
+# (2026-11 점검: 넥스트에라·듀크·서던·엑손·프롤로지스 등 25곳이 1분기에서 멈춤).
+# 공시 자체는 있으니 그 공시의 XBRL 원본(…_htm.xml)을 직접 읽어 채운다.
+SEC_SUBMIT = "https://data.sec.gov/submissions/CIK%s.json"
+SEC_ARCH = "https://www.sec.gov/Archives/edgar/data/%d/%s/"
+PATCH_TAGS = None
+
+
+def _patch_tags():
+    global PATCH_TAGS
+    if PATCH_TAGS is None:
+        t = set()
+        for k in ("rev", "op", "ni"):
+            t.update(TAGS[k])
+            t.update(FALLBACK.get(k, []))
+        t.update(("NoninterestIncome", "InterestIncomeExpenseNet",
+                  "IncomeLossFromContinuingOperationsBeforeIncomeTaxesDomestic",
+                  "IncomeLossFromContinuingOperationsBeforeIncomeTaxesForeign"))
+        t.discard(BANK_REV)
+        t.discard(PRETAX_SUM)
+        PATCH_TAGS = t
+    return PATCH_TAGS
+
+
+def parse_instance(text, cik):
+    """XBRL 원본에서 '회사 전체'(부문 구분 없는) 기간 값만 뽑는다. {태그: [{start,end,val}]}"""
+    units = {}
+    for m in re.finditer(r'<(?:\w+:)?unit\b[^>]*\bid="([^"]+)"[^>]*>(.*?)</(?:\w+:)?unit>', text, re.S):
+        units[m.group(1)] = "USD" if re.search(r"iso4217:USD\s*<", m.group(2)) and "divide" not in m.group(2) else ""
+    ctx = {}
+    for m in re.finditer(r'<(?:\w+:)?context\b[^>]*\bid="([^"]+)"[^>]*>(.*?)</(?:\w+:)?context>', text, re.S):
+        body = m.group(2)
+        if "segment" in body or "scenario" in body:
+            continue                      # 부문·자회사별 값
+        idm = re.search(r"<(?:\w+:)?identifier[^>]*>\s*0*(\d+)\s*<", body)
+        if idm and int(idm.group(1)) != int(cik):
+            continue
+        a = re.search(r"<(?:\w+:)?startDate>\s*([\d-]+)", body)
+        b = re.search(r"<(?:\w+:)?endDate>\s*([\d-]+)", body)
+        if a and b:
+            ctx[m.group(1)] = (a.group(1), b.group(1))
+    out = {}
+    want = _patch_tags()
+    for m in re.finditer(r"<us-gaap:(\w+)\b([^>]*)>([^<]*)</us-gaap:\1>", text):
+        tag, attrs, val = m.group(1), m.group(2), m.group(3).strip()
+        if tag not in want:
+            continue
+        c = re.search(r'contextRef="([^"]+)"', attrs)
+        u = re.search(r'unitRef="([^"]+)"', attrs)
+        if not c or c.group(1) not in ctx or not u or units.get(u.group(1)) != "USD":
+            continue
+        try:
+            v = float(val)
+        except ValueError:
+            continue
+        st, en = ctx[c.group(1)]
+        out.setdefault(tag, []).append({"start": st, "end": en, "val": v})
+    return out
+
+
+def _latest_end(facts):
+    us = facts.get("facts", {}).get("us-gaap", {})
+    best = ""
+    for tag in _patch_tags():
+        for r in (us.get(tag) or {}).get("units", {}).get("USD", []):
+            if r.get("start") and r.get("end", "") > best:
+                best = r["end"]
+    return best
+
+
+def patch_recent_filings(facts, ciks):
+    latest = _latest_end(facts)
+    if not latest:
+        return 0
+    age = (datetime.now(timezone.utc).date() - datetime.strptime(latest, "%Y-%m-%d").date()).days
+    if age < 105:                         # 최근 분기까지 있으면 확인할 필요 없음
+        return 0
+    cik = ciks[-1]
+    sub = get_json(SEC_SUBMIT % cik)
+    if not sub:
+        return 0
+    rc = sub.get("filings", {}).get("recent", {})
+    todo = []
+    for i, form in enumerate(rc.get("form", [])):
+        if form not in ("10-Q", "10-K", "10-Q/A", "10-K/A"):
+            continue
+        rd = rc["reportDate"][i]
+        if rd and rd > latest:
+            todo.append((rd, rc["filingDate"][i], rc["accessionNumber"][i], form))
+    todo = sorted(todo)[-4:]
+    us = facts.setdefault("facts", {}).setdefault("us-gaap", {})
+    added = 0
+    for rd, filed, acc, form in todo:
+        base = SEC_ARCH % (int(cik), acc.replace("-", ""))
+        idx = get_json(base + "index.json")
+        names = [x.get("name", "") for x in ((idx or {}).get("directory", {}).get("item", []))]
+        inst = [n for n in names if n.endswith("_htm.xml")]
+        if not inst:
+            skip = ("_cal.xml", "_def.xml", "_lab.xml", "_pre.xml")
+            inst = [n for n in names if n.endswith(".xml") and not n.endswith(skip)
+                    and n not in ("FilingSummary.xml",) and not n.startswith("Financial")]
+        if not inst:
+            continue
+        raw = get(base + inst[0])
+        if not raw:
+            continue
+        got = parse_instance(raw.decode("utf-8", "replace"), cik)
+        for tag, rows in got.items():
+            node = us.setdefault(tag, {"units": {}})
+            lst = node.setdefault("units", {}).setdefault("USD", [])
+            for r in rows:
+                lst.append(dict(r, filed=filed, form=form.split("/")[0], accn=acc))
+                added += 1
+        log("  · companyfacts 에 없는 %s(%s) 를 공시 원본에서 보충: %d개 값" % (form, rd, sum(len(v) for v in got.values())))
+    return added
+
+
+def _sum_tags(facts, a_tag, b_tag, out_tag):
+    us = facts.get("facts", {}).get("us-gaap", {})
+    a = (us.get(a_tag) or {}).get("units", {}).get("USD", [])
+    b = (us.get(b_tag) or {}).get("units", {}).get("USD", [])
+    if not a or not b:
+        return 0
+
+    def latest(rows):
+        d = {}
+        for r in rows:
+            if not r.get("start") or not r.get("end"):
+                continue
+            k = (r["start"], r["end"])
+            if k not in d or r.get("filed", "") >= d[k].get("filed", ""):
+                d[k] = r
+        return d
+    A, B = latest(a), latest(b)
+    rows = [{"start": k[0], "end": k[1], "val": A[k]["val"] + B[k]["val"],
+             "filed": max(A[k].get("filed", ""), B[k].get("filed", "")),
+             "form": A[k].get("form", "")} for k in A.keys() & B.keys()]
+    if rows:
+        us[out_tag] = {"units": {"USD": rows}}
+    return len(rows)
+
+
+def add_bank_revenue(facts):
+    """은행 매출 = 순이자이익 + 비이자이익, 세전이익 = 국내분 + 해외분 (같은 기간끼리)."""
+    _sum_tags(facts, "IncomeLossFromContinuingOperationsBeforeIncomeTaxesDomestic",
+              "IncomeLossFromContinuingOperationsBeforeIncomeTaxesForeign", PRETAX_SUM)
+    return _sum_tags(facts, "NoninterestIncome", "InterestIncomeExpenseNet", BANK_REV)
+
+
 def fetch_facts(ciks):
     """CIK 여러 개를 받아 합친 companyfacts 를 돌려준다."""
     merged, names = None, []
@@ -654,6 +870,11 @@ def collect_one(ticker, info):
     facts = fetch_facts(ciks)
     if not facts:
         return None, "SEC 데이터 없음"
+    try:
+        patch_recent_filings(facts, ciks)
+    except Exception as e:                # noqa: BLE001
+        log("  ! 최근 공시 보충 실패: %r" % e)
+    add_bank_revenue(facts)
     ent = facts.get("entityName")
     if ent:
         info = dict(info, name=ent)
@@ -703,6 +924,7 @@ def collect_one(ticker, info):
 
     fem = fiscal_end_month(facts)
     dbg("결산월: %d월" % fem)
+    QTAG.clear()
     Q = {k: quarter_series(facts, k, fem) for k in ("rev", "op", "ni")}
     quarterly = []
     fys = sorted(set(k[0] for k in Q["rev"].keys()))[-5:]
@@ -715,9 +937,16 @@ def collect_one(ticker, info):
         # 4분기를 따로 보고하지 않는 회사는 연간에서 빼서 만든다
         if 4 not in have and have == [1, 2, 3]:
             def q4(key):
-                ann = A[key].get(fy)
                 parts = [Q[key].get((fy, i)) for i in (1, 2, 3)]
-                if ann is None or any(x is None for x in parts):
+                if any(x is None for x in parts):
+                    return None
+                # 1~3분기와 같은 태그의 연간 값에서 뺀다. 태그가 다르면 뜻이 달라 엉터리가 된다
+                # (엑손 4분기 영업이익이 -222억 달러로 나왔다: 연간은 국내분, 분기는 전체 세전이익)
+                tags = {QTAG.get((key, fy, i)) for i in (1, 2, 3)}
+                if len(tags) != 1 or None in tags:
+                    return None
+                ann = annual_of_tag(facts, tags.pop(), fy)
+                if ann is None:
                     return None
                 return ann - sum(parts)
             r4 = q4("rev")
@@ -1002,6 +1231,11 @@ def main():
             continue
         if not data:
             report.append((t, "실패", 0, 0, reason))
+            old = os.path.join(OUT_DIR, t + ".json")
+            if reason == "매출 태그를 못 찾음" and os.path.exists(old):
+                # 예전 규칙으로 엉뚱한 태그(인수 가정 매출 등)를 매출로 썼던 파일 — 남겨 두면 틀린 숫자가 계속 보인다
+                os.remove(old)
+                log("  ! %s: 쓸 수 있는 매출이 없어 예전 파일을 지웁니다" % t)
             continue
         with open(os.path.join(OUT_DIR, t + ".json"), "w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, indent=1)
