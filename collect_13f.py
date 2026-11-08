@@ -29,7 +29,7 @@ from datetime import datetime, timezone, timedelta
 UA = "fincard personal project heecheoldo@gmail.com"
 OUT = "data/13f.json"
 TOP_N = 40                 # 종목이 수천 개인 기관도 있어 상위만 저장
-NAME_VER = 6               # 종목명 규칙 판. 올리면 공시가 그대로여도 다시 만든다
+NAME_VER = 7               # 종목명 규칙 판. 올리면 공시가 그대로여도 다시 만든다
 SLEEP = 0.15
 
 # (키, 카드 제목, 공시 주체, CIK)
@@ -167,7 +167,7 @@ KO = {
     "HONEYWELL": "허니웰", "CATERPILLAR": "캐터필러", "DEERE": "존디어", "3M": "3M", "UNION PACIFIC": "유니언퍼시픽",
     "CSX": "CSX", "NORFOLK": "노퍽서던", "CANADIAN NATL": "CN철도", "CANADIAN NATIONAL": "CN철도",
     "CANADIAN PACIFIC": "CP철도", "FEDEX": "페덱스", "UNITED PARCEL": "UPS", "UPS": "UPS",
-    "DELTA AIR": "델타항공", "UNITED AIRLINES": "유나이티드", "SOUTHWEST": "사우스웨스트",
+    "DELTA AIR": "델타항공", "UNITED AIRLINES": "유나이티드항공", "SOUTHWEST": "사우스웨스트",
     "AMERICAN AIRLINES": "아메리칸항공", "SPIRIT AIRLINES": "스피릿항공", "JETBLUE": "제트블루", "ALASKA AIR": "알래스카항공",
     "WASTE MANAGEMENT": "WM", "REPUBLIC SERVICES": "리퍼블릭", "ECOLAB": "에코랩", "SHERWIN": "셔윈",
     "LINDE": "린데", "AIR PRODUCTS": "에어프로덕츠", "FREEPORT": "프리포트", "NEWMONT": "뉴몬트",
@@ -345,7 +345,7 @@ KO = {
     "NESTLE": "네슬레", "DANONE": "다논", "LOREAL": "로레알", "RECKITT": "레킷",
     "AIRBNB": "에어비앤비", "BOOKING": "부킹", "RYANAIR": "라이언에어", "LUFTHANSA": "루프트한자",
     "INTERNATIONAL CONSOLIDATED": "IAG", "IAG": "IAG", "ACCOR": "아코르", "IHG": "IHG",
-    "COMPASS": "컴패스그룹", "SODEXO": "소덱소", "RELX": "RELX", "WOLTERS": "볼터스", "EXPERIAN": "익스피리언",
+    "COMPASS GROUP": "컴패스그룹", "COMPASS": "컴퍼스", "SODEXO": "소덱소", "RELX": "RELX", "WOLTERS": "볼터스", "EXPERIAN": "익스피리언",
     "LONDON STOCK": "LSE", "DEUTSCHE BOERSE": "도이체뵈르제", "EURONEXT": "유로넥스트",
     "TENCENT MUSIC": "텐센트뮤직", "KUAISHOU": "콰이쇼우", "MEITUAN": "메이투안", "XIAOMI": "샤오미",
     "BYD": "BYD", "GEELY": "지리", "CATL": "CATL", "PING AN": "핑안", "ICBC": "공상은행", "CHINA CONSTRUCTION": "건설은행",
