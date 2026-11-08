@@ -1,6 +1,7 @@
 {
  "name": "ARM",
  "split_adjusted": false,
+ "restated_from": null,
  "legal_name": "ARM HOLDINGS PLC /UK",
  "code": "ARM",
  "cik": "0001973239",
@@ -8,7 +9,7 @@
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-08-31",
+ "updated": "2026-11-09",
  "annual": [
   {
    "p": 2022,
@@ -56,7 +57,7 @@
    "ni": 792.0,
    "assets": 8932.0,
    "liab": 2093.0,
-   "equity": 7007.0,
+   "equity": 7407.0,
    "dps": null,
    "payout": null,
    "yield": null,
@@ -67,9 +68,9 @@
    "rev": 4920.0,
    "op": 900.0,
    "ni": 904.0,
-   "assets": 11196.0,
-   "liab": 2566.0,
-   "equity": 8630.0,
+   "assets": 11414.0,
+   "liab": 2326.0,
+   "equity": 9088.0,
    "dps": null,
    "payout": null,
    "yield": null,
@@ -77,13 +78,6 @@
   }
  ],
  "quarterly": [
-  {
-   "y": 2024,
-   "q": 4,
-   "rev": 928.0,
-   "op": 22.0,
-   "ni": 224.0
-  },
   {
    "y": 2025,
    "q": 1,
@@ -146,6 +140,13 @@
    "rev": 1289.0,
    "op": 91.0,
    "ni": 270.0
+  },
+  {
+   "y": 2027,
+   "q": 2,
+   "rev": 1443.0,
+   "op": 201.0,
+   "ni": 130.0
   }
  ]
 }

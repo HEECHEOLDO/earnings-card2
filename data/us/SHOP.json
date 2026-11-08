@@ -1,14 +1,15 @@
 {
  "name": "SHOP",
  "split_adjusted": true,
- "legal_name": "SHOPIFY INC.",
+ "restated_from": null,
+ "legal_name": "Shopify Inc.",
  "code": "SHOP",
  "cik": "0001594805",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-08-31",
+ "updated": "2026-11-09",
  "annual": [
   {
    "p": 2017,
@@ -131,13 +132,6 @@
  "quarterly": [
   {
    "y": 2024,
-   "q": 1,
-   "rev": 1861.0,
-   "op": 86.0,
-   "ni": -273.0
-  },
-  {
-   "y": 2024,
    "q": 2,
    "rev": 2045.0,
    "op": 241.0,
@@ -198,6 +192,13 @@
    "rev": 3583.0,
    "op": 488.0,
    "ni": 1502.0
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 3742.0,
+   "op": 568.0,
+   "ni": 462.0
   }
  ]
 }

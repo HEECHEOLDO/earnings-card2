@@ -9,7 +9,7 @@
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-11-08",
+ "updated": "2026-11-09",
  "annual": [
   {
    "p": 2017,
@@ -204,7 +204,7 @@
    "q": 4,
    "rev": 321.2,
    "op": 74.3,
-   "ni": 54.6
+   "ni": null
   },
   {
    "y": 2027,
