@@ -256,13 +256,17 @@
       <p class="hint" id="fund-note" style="margin:-6px 0 12px;display:none"></p>
       <div class="two" style="margin-bottom:10px">
         <div>
-          <label class="fld" for="f-name">투자자 이름</label>
-          <input type="text" id="f-name" value="워런 버핏">
+          <label class="fld" for="f-name">제목 첫 줄</label>
+          <input type="text" id="f-name" value="워런 버핏은">
         </div>
         <div>
-          <label class="fld" for="f-sub">아래 줄</label>
-          <input type="text" id="f-sub" value="주식 포트폴리오 · 26년 2분기">
+          <label class="fld" for="f-sub">제목 둘째 줄</label>
+          <input type="text" id="f-sub" value="어디에 투자하고 있을까?">
         </div>
+      </div>
+      <div style="margin-bottom:10px">
+        <label class="fld" for="f-basis">왼쪽 아래 (기준)</label>
+        <input type="text" id="f-basis" value="'26년 2분기 기준">
       </div>
 
       <label class="fld" for="f-data">보유 내역 — 한 줄에 하나씩</label>
@@ -457,6 +461,19 @@
      ============================================================ */
   var F13 = { funds: {} };
 
+  // 받침이 있으면 '은', 없으면 '는' — 알파벳(구글)은 / 손정의(소프트뱅크)는 / AMD는 / GSK는
+  function topic(name) {
+    var s = String(name || '').replace(/[\s)\]』」'"]+$/, '');
+    var ch = s.charAt(s.length - 1);
+    if (!ch) return name;
+    var code = ch.charCodeAt(0), has;
+    if (code >= 0xAC00 && code <= 0xD7A3) has = (code - 0xAC00) % 28 !== 0;
+    else if (/[A-Za-z]/.test(ch)) has = /[LMNRlmnr]/.test(ch);       // 엘·엠·엔·알
+    else if (/[0-9]/.test(ch)) has = /[013678]/.test(ch);            // 영·일·삼·육·칠·팔
+    else has = false;
+    return name + (has ? '은' : '는');
+  }
+
   function quarterLabel(period) {            // '2026-06-30' -> '26년 2분기'
     var m = /^(\d{4})-(\d{2})/.exec(period || '');
     if (!m) return '';
@@ -498,8 +515,9 @@
     var f = F13.funds && F13.funds[key];
     var note = document.getElementById('fund-note');
     if (!f) { note.style.display = 'none'; return; }
-    document.getElementById('f-name').value = f.title;
-    document.getElementById('f-sub').value = '주식 포트폴리오 · ' + quarterLabel(f.period);
+    document.getElementById('f-name').value = topic(f.title);
+    document.getElementById('f-sub').value = '어디에 투자하고 있을까?';
+    document.getElementById('f-basis').value = "'" + quarterLabel(f.period) + ' 기준';
     document.getElementById('f-data').value = f.holdings.map(function (h) {
       return h.name + ' ' + h.weight + '%';
     }).join('\n');
@@ -1027,6 +1045,7 @@
     ctx.textAlign = 'right';
     ctx.fillText(state.handle, CX + CWID, footBase);
     ctx.textAlign = 'left';
+    if (state.basis) ctx.fillText(state.basis, CX, footBase);     // 왼쪽 아래: '26년 3분기 기준
 
     overlays.forEach(function (ov) { if (ov.layer !== 'back') paintOverlay(ctx, ov); });
 
@@ -1071,6 +1090,7 @@
 
     state.name = document.getElementById('f-name').value.trim();
     state.sub = document.getElementById('f-sub').value.trim();
+    state.basis = document.getElementById('f-basis').value.trim();
     state.handle = document.getElementById('handle').value;
 
     var items = parseHoldings(document.getElementById('f-data').value);
@@ -1629,7 +1649,7 @@
   }
 
   /* ---------- 입력 이벤트 ---------- */
-  ['f-name','f-sub','f-data','handle'].forEach(function (id) {
+  ['f-name','f-sub','f-basis','f-data','handle'].forEach(function (id) {
     document.getElementById(id).addEventListener('input', refresh);
   });
   document.getElementById('f-top').addEventListener('input', refresh);

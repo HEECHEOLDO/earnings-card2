@@ -29,7 +29,7 @@ from datetime import datetime, timezone, timedelta
 UA = "fincard personal project heecheoldo@gmail.com"
 OUT = "data/13f.json"
 TOP_N = 40                 # 종목이 수천 개인 기관도 있어 상위만 저장
-NAME_VER = 5               # 종목명 규칙 판. 올리면 공시가 그대로여도 다시 만든다
+NAME_VER = 6               # 종목명 규칙 판. 올리면 공시가 그대로여도 다시 만든다
 SLEEP = 0.15
 
 # (키, 카드 제목, 공시 주체, CIK)
@@ -69,6 +69,18 @@ FUNDS = [
     ("pif",        "사우디 국부펀드",  "Public Investment Fund",              1767640),
     ("mubadala",   "아부다비 무바달라", "Mubadala Investment",                1704268),
     ("temasek",    "싱가포르 테마섹",  "Temasek Holdings",                    1021944),
+    ("oaktree",    "하워드 막스",      "Oaktree Capital Management",          949509),
+    ("fundsmith",  "테리 스미스",      "Fundsmith LLP",                       1569205),
+    ("pabrai",     "모니시 파브라이",  "Dalal Street",                        1549575),
+    ("trian",      "넬슨 펠츠",        "Trian Fund Management",               1345471),
+    ("altimeter",  "브래드 거스너",    "Altimeter Capital Management",        1541617),
+    ("thiel",      "피터 틸",          "Thiel Macro",                         1562087),
+    ("d1",         "댄 선드하임",      "D1 Capital Partners",                 1747057),
+    ("millervalue","빌 밀러",          "Miller Value Partners",               1135778),
+    ("russo",      "토마스 루소",      "Gardner Russo & Quinn",               860643),
+    ("bok",        "한국은행",         "Bank of Korea",                       1965704),
+    ("kic",        "한국투자공사",     "Korea Investment Corp",               1441689),
+    ("snb",        "스위스 중앙은행",  "Swiss National Bank",                 1582202),
     # ---- 유명 기업 (회사가 직접 들고 있는 상장 주식) ----
     # 애플·MS·메타·테슬라·오라클은 13F 를 내지 않는다 (상장 주식 1억 달러 이상 보유 기관만 의무).
     # 세일즈포스·퀄컴은 2023년 이후 공시가 끊겼다.
@@ -714,8 +726,38 @@ def parse_infotable(xml_text):
             continue
         if value <= 0:
             continue
-        rows.append((d.get("nameofissuer", ""), d.get("cusip", "")[:6], value, shares))
+        rows.append((d.get("nameofissuer", ""), d.get("cusip", "")[:6], value, shares,
+                     d.get("titleofclass", ""), d.get("cusip", "")))
     return rows
+
+
+# 운용사 이름만으로는 어떤 ETF 인지 모른다 (한국은행: 아이셰어즈 두 개가 구분되지 않았다).
+# 이런 이름이면 종목 종류(titleOfClass) 를 붙이고, CUSIP 전체로 따로 센다.
+ETF_BRANDS = {"아이셰어즈", "뱅가드", "SPDR", "SPDR섹터", "인베스코"}
+
+
+def etf_name(brand, cls):
+    s = (cls or "").upper().replace("&AMP;", "&")
+    s = re.sub(r"\b(ETF|ETFS|SHS|SHARES|TR|TRUST|FD|FDS|FUND|CORE|INDEX|COM|NEW)\b", " ", s)
+    s = re.sub(r"S&P\s*500", "S&P500", s)
+    s = re.sub(r"S&P TTL STK( MKT)?|TOTAL STOCK( MKT| MARKET)?|TOTAL STK MKT", "토탈마켓", s)
+    s = re.sub(r"\s+", " ", s).strip()
+    known = ETF_KNOWN.get((brand, s))
+    if known:
+        return known
+    # 라벨이 길면 카드 글자가 전부 작아진다 — 14자 안쪽으로
+    return (brand + " " + s).strip()[:14] if s else brand
+
+
+# 자주 나오는 ETF 는 '무엇(티커)' 로 짧게
+ETF_KNOWN = {
+    ("뱅가드", "S&P500"): "S&P500(VOO)", ("아이셰어즈", "S&P500"): "S&P500(IVV)",
+    ("SPDR", "S&P500"): "S&P500(SPY)", ("아이셰어즈", "MSCI INTL"): "선진국(IDEV)",
+    ("아이셰어즈", "토탈마켓"): "미국전체(ITOT)", ("뱅가드", "토탈마켓"): "미국전체(VTI)",
+    ("아이셰어즈", "MSCI EMERGING MKT"): "신흥국(IEMG)", ("아이셰어즈", "MSCI EAFE"): "선진국(IEFA)",
+    ("아이셰어즈", "RUSSELL 2000"): "러셀2000(IWM)", ("뱅가드", "FTSE DEV MKT"): "선진국(VEA)",
+    ("뱅가드", "FTSE EMR MKT"): "신흥국(VWO)",
+}
 
 
 def latest_13f(cik):
@@ -769,9 +811,13 @@ def final_name(raw):
 def build(rows):
     """종목별로 합쳐 비중을 낸다."""
     by = {}
-    for name, cusip6, value, shares in rows:
-        key = cusip6 or name
-        b = by.setdefault(key, {"raw": name, "value": 0.0, "shares": 0.0})
+    for row in rows:
+        name, cusip6, value, shares = row[:4]
+        cls, cusip9 = (row[4], row[5]) if len(row) > 5 else ("", "")
+        brand = final_name(name) in ETF_BRANDS
+        key = (cusip9 or name + cls) if brand else (cusip6 or name)
+        b = by.setdefault(key, {"raw": name, "value": 0.0, "shares": 0.0,
+                                "cls": cls if brand else ""})
         b["value"] += value
         b["shares"] += shares
         if len(name) > len(b["raw"]):
@@ -782,6 +828,8 @@ def build(rows):
     for b in items[:TOP_N]:
         name = final_name(b["raw"])
         ticker = name if name != clean_name(b["raw"]) else None
+        if b.get("cls"):
+            name, ticker = etf_name(name, b["cls"]), None
         out.append({
             "name": name,
             "raw": b["raw"],
