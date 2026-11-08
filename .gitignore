@@ -23,3 +23,7 @@ data/anchor_kr_cache.json
 /_marcap/
 /_scratch/
 /_cmc/
+
+# Claude 올리기 도구 (내 컴퓨터에서만 씀)
+/_push/
+/올리기.command
