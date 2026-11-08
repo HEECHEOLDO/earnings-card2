@@ -292,6 +292,7 @@
       </div>
       <div class="ctl-row">
         <label class="check"><input type="checkbox" id="chk-logo" checked> 조각 안에 기업 로고</label>
+        <label class="check"><input type="checkbox" id="chk-title-logo" checked> 제목 앞에 기업 로고</label>
       </div>
 
       <div class="ctl-row">
@@ -517,8 +518,9 @@
   function applyFund(key) {
     var f = F13.funds && F13.funds[key];
     var note = document.getElementById('fund-note');
-    if (!f) { note.style.display = 'none'; return; }
+    if (!f) { note.style.display = 'none'; state.fundLogo = null; return; }
     document.getElementById('f-name').value = f.title;
+    state.fundLogo = f.kind === 'corp' ? (CORP_LOGO[key] || null) : null;
     document.getElementById('f-josa').value = topic(f.title).slice(f.title.length);
     document.getElementById('f-sub').value = '어디에 투자하고 있을까?';
     document.getElementById('f-basis').value = "'" + quarterLabel(f.period) + ' 기준';
@@ -721,6 +723,36 @@
     }
     return rec.ok ? rec.img : null;
   }
+  /* 제목 왼쪽 기업 로고 — us.html 과 같은 비율
+     d: 지름(글자 크기 대비) · gap: 로고와 글자 사이 · mid: 글자 중심 높이 */
+  var LOGO_K = { d: 0.84, gap: 0.22, mid: 0.37 };
+  var CORP_LOGO = {
+    alphabet: 'us/GOOGL', nvidia: 'us/NVDA', amazon: 'us/AMZN', amd: 'us/AMD', intel: 'us/INTC',
+    uber: 'us/UBER', cisco: 'us/CSCO', jnj: 'us/JNJ', pfizer: 'us/PFE', merck: 'us/MRK',
+    gilead: 'us/GILD', regeneron: 'us/REGN', gsk: 'us/GSK', sanofi: 'us/SNY', toyota: 'us/TM',
+    alibaba: 'us/BABA', blackstone: 'us/BX', brookfield: 'us/BN', samsungct: 'kr/028260'
+  };
+  var _paths = {};
+  function pathLogo(p) {
+    var rec = _paths[p];
+    if (!rec) {
+      rec = _paths[p] = { img: new Image(), ok: false };
+      rec.img.onload = function () { rec.ok = true; drawPreview(); };
+      rec.img.src = './logo/' + p + '.png';
+    }
+    return rec.ok ? rec.img : null;
+  }
+  function drawTitleLogo(ctx, im, x, cy, d) {
+    ctx.save();
+    if ('letterSpacing' in ctx) ctx.letterSpacing = '0px';
+    ctx.beginPath(); ctx.arc(x + d / 2, cy, d / 2, 0, 7); ctx.save(); ctx.clip();
+    ctx.drawImage(im, x, cy - d / 2, d, d);
+    ctx.restore();
+    ctx.beginPath(); ctx.arc(x + d / 2, cy, d / 2, 0, 7);
+    ctx.lineWidth = 1.5; ctx.strokeStyle = 'rgba(0,0,0,0.08)'; ctx.stroke();
+    ctx.restore();
+  }
+
   function drawSliceLogos(ctx, cx, cy, R, r0, rows) {
     var L = TOKENS.card.logo;
     var ring = R - r0, rm = (R + r0) / 2, ang = -Math.PI/2;
@@ -981,7 +1013,7 @@
   /* ============================================================
      카드
      ============================================================ */
-  var state = { rows: [], colors: [], guide:false, logos:true, hole:true, handle:'@돈굴돈굴',
+  var state = { rows: [], colors: [], guide:false, logos:true, showTitleLogo:true, fundLogo:null, hole:true, handle:'@돈굴돈굴',
                 name:'워런 버핏', sub:'' };
 
   function drawCard(ctx) {
@@ -1002,20 +1034,29 @@
     var js = ss || T.type.subMax;
     ctx.font = font(900, js);
     var jw = state.josa ? ctx.measureText(state.josa).width + 4 : 0;
+    // 기업이면 이름 앞에 로고 (국내·해외 실적 카드와 같은 비율)
+    var lgIm = (state.showTitleLogo && state.fundLogo) ? pathLogo(state.fundLogo) : null;
     if (canTrack) ctx.letterSpacing = T.type.nameTrack;
     var ns = fitFont(ctx, state.name || ' ', 900, T.type.nameMax, T.type.nameMin, CWID - jw);
+    var lgD = 0, lgGap = 0;
+    if (lgIm) {
+      ns = fitFont(ctx, state.name || ' ', 900, T.type.nameMax, T.type.nameMin,
+                   CWID - jw - ns * (LOGO_K.d + LOGO_K.gap));
+      lgD = ns * LOGO_K.d; lgGap = ns * LOGO_K.gap;
+    }
     if (canTrack) ctx.letterSpacing = '0px';
 
     var y = S.top + ns*0.86;
     ctx.fillStyle = T.ink;
+    if (lgIm) drawTitleLogo(ctx, lgIm, CX, y - ns * LOGO_K.mid, lgD);
     ctx.font = font(900, ns);
     if (canTrack) ctx.letterSpacing = T.type.nameTrack;
-    ctx.fillText(state.name || '', CX, y);
+    ctx.fillText(state.name || '', CX + lgD + lgGap, y);
     var nw = ctx.measureText(state.name || '').width;
     if (canTrack) ctx.letterSpacing = '0px';
     if (state.josa) {
       ctx.font = font(900, js);
-      ctx.fillText(state.josa, CX + nw + 4, y);      // 같은 글자 밑선(baseline)에 맞춘다
+      ctx.fillText(state.josa, CX + lgD + lgGap + nw + 4, y);      // 같은 글자 밑선(baseline)에 맞춘다
     }
     if (ss) {
       y += ns*T.type.nameToSub + ss*0.86;
@@ -1685,6 +1726,9 @@
   document.getElementById('f-min').addEventListener('input', refresh);
   document.getElementById('f-label').addEventListener('change', refresh);
   document.getElementById('color-base').addEventListener('input', refresh);
+  document.getElementById('chk-title-logo').addEventListener('change', function () {
+    state.showTitleLogo = this.checked; drawPreview();
+  });
   document.getElementById('chk-logo').addEventListener('change', function () {
     state.logos = this.checked; drawPreview();
   });
