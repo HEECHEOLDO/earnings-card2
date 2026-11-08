@@ -256,8 +256,11 @@
       <p class="hint" id="fund-note" style="margin:-6px 0 12px;display:none"></p>
       <div class="two" style="margin-bottom:10px">
         <div>
-          <label class="fld" for="f-name">제목 첫 줄</label>
-          <input type="text" id="f-name" value="워런 버핏은">
+          <label class="fld" for="f-name">이름 (굵게)</label>
+          <div style="display:flex;gap:6px">
+            <input type="text" id="f-name" value="워런 버핏" style="flex:1;min-width:0">
+            <input type="text" id="f-josa" value="은" title="이름 뒤 조사 — 둘째 줄과 같은 크기로 붙습니다" style="width:48px;text-align:center">
+          </div>
         </div>
         <div>
           <label class="fld" for="f-sub">제목 둘째 줄</label>
@@ -515,7 +518,8 @@
     var f = F13.funds && F13.funds[key];
     var note = document.getElementById('fund-note');
     if (!f) { note.style.display = 'none'; return; }
-    document.getElementById('f-name').value = topic(f.title);
+    document.getElementById('f-name').value = f.title;
+    document.getElementById('f-josa').value = topic(f.title).slice(f.title.length);
     document.getElementById('f-sub').value = '어디에 투자하고 있을까?';
     document.getElementById('f-basis').value = "'" + quarterLabel(f.period) + ' 기준';
     document.getElementById('f-data').value = f.holdings.map(function (h) {
@@ -987,17 +991,26 @@
     /* 헤드라인 */
     var canTrack = 'letterSpacing' in ctx;
     ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
-    if (canTrack) ctx.letterSpacing = T.type.nameTrack;
-    var ns = fitFont(ctx, state.name || ' ', 900, T.type.nameMax, T.type.nameMin, CWID);
-    if (canTrack) ctx.letterSpacing = '0px';
+    // 이름은 크게, 뒤에 붙는 조사(은/는)는 둘째 줄과 같은 크기로
     var ss = state.sub ? fitFont(ctx, state.sub, 900, T.type.subMax, T.type.subMin, CWID) : 0;
+    var js = ss || T.type.subMax;
+    ctx.font = font(900, js);
+    var jw = state.josa ? ctx.measureText(state.josa).width + 4 : 0;
+    if (canTrack) ctx.letterSpacing = T.type.nameTrack;
+    var ns = fitFont(ctx, state.name || ' ', 900, T.type.nameMax, T.type.nameMin, CWID - jw);
+    if (canTrack) ctx.letterSpacing = '0px';
 
     var y = S.top + ns*0.86;
     ctx.fillStyle = T.ink;
     ctx.font = font(900, ns);
     if (canTrack) ctx.letterSpacing = T.type.nameTrack;
     ctx.fillText(state.name || '', CX, y);
+    var nw = ctx.measureText(state.name || '').width;
     if (canTrack) ctx.letterSpacing = '0px';
+    if (state.josa) {
+      ctx.font = font(900, js);
+      ctx.fillText(state.josa, CX + nw + 4, y);      // 같은 글자 밑선(baseline)에 맞춘다
+    }
     if (ss) {
       y += ns*T.type.nameToSub + ss*0.86;
       ctx.font = font(900, ss);
@@ -1089,6 +1102,7 @@
     document.getElementById('f-min-val').textContent = minPct.toFixed(1) + '%';
 
     state.name = document.getElementById('f-name').value.trim();
+    state.josa = document.getElementById('f-josa').value.trim();
     state.sub = document.getElementById('f-sub').value.trim();
     state.basis = document.getElementById('f-basis').value.trim();
     state.handle = document.getElementById('handle').value;
@@ -1649,7 +1663,16 @@
   }
 
   /* ---------- 입력 이벤트 ---------- */
-  ['f-name','f-sub','f-basis','f-data','handle'].forEach(function (id) {
+  // 이름을 고치면 은/는 도 자동으로 (직접 바꾼 뒤에는 그대로 둔다)
+  var josaTouched = false;
+  document.getElementById('f-josa').addEventListener('input', function () { josaTouched = true; });
+  document.getElementById('f-name').addEventListener('input', function () {
+    if (josaTouched) return;
+    var n = this.value.trim();
+    document.getElementById('f-josa').value = n ? topic(n).slice(n.length) : '';
+  });
+  document.getElementById('f-fund').addEventListener('change', function () { josaTouched = false; });
+  ['f-name','f-josa','f-sub','f-basis','f-data','handle'].forEach(function (id) {
     document.getElementById(id).addEventListener('input', refresh);
   });
   document.getElementById('f-top').addEventListener('input', refresh);
