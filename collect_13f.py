@@ -29,7 +29,7 @@ from datetime import datetime, timezone, timedelta
 UA = "fincard personal project heecheoldo@gmail.com"
 OUT = "data/13f.json"
 TOP_N = 40                 # 종목이 수천 개인 기관도 있어 상위만 저장
-NAME_VER = 7               # 종목명 규칙 판. 올리면 공시가 그대로여도 다시 만든다
+NAME_VER = 8               # 종목명 규칙 판. 올리면 공시가 그대로여도 다시 만든다
 SLEEP = 0.15
 
 # (키, 카드 제목, 공시 주체, CIK)
@@ -333,7 +333,7 @@ KO = {
     "NEW ORIENTAL": "신동방", "VIPSHOP": "VIP샵", "ZAI LAB": "자이랩", "BEIGENE": "베이진", "LEGEND BIOTECH": "레전드",
     "MINISO": "미니소", "ATOUR": "아투어", "H WORLD": "화주그룹", "YUM BRANDS": "얌브랜즈", "SEA": "씨리미티드",
     "SHOPIFY": "쇼피파이", "CANADIAN NATURAL": "CNQ", "SUNCOR": "선코어", "ENBRIDGE": "엔브리지",
-    "TC ENERGY": "TC에너지", "BROOKFIELD": "브룩필드", "BROOKFIELD ASSET": "브룩필드자산운용", "BROOKFIELD BUSINESS": "브룩필드비즈니스", "BROOKFIELD RENEWABLE": "브룩필드재생에너지", "BROOKFIELD INFRASTRUCTURE": "브룩필드인프라", "BROOKFIELD WEALTH": "브룩필드웰스", "THOMSON REUTERS": "톰슨로이터", "WASTE CONNECTIONS": "웨이스트CN",
+    "TC ENERGY": "TC에너지", "FEDEX FREIGHT": "페덱스프레이트", "FEDEX FGHT": "페덱스프레이트", "CHENIERE ENERGY PARTNERS": "셰니에르파트너스", "BROOKFIELD RENEWABLE CORP": "브룩필드재생(BEPC)", "BROOKFIELD": "브룩필드", "BROOKFIELD ASSET": "브룩필드자산운용", "BROOKFIELD BUSINESS": "브룩필드비즈니스", "BROOKFIELD RENEWABLE": "브룩필드재생에너지", "BROOKFIELD INFRASTRUCTURE": "브룩필드인프라", "BROOKFIELD WEALTH": "브룩필드웰스", "THOMSON REUTERS": "톰슨로이터", "WASTE CONNECTIONS": "웨이스트CN",
     "CGI": "CGI", "OPEN TEXT": "오픈텍스트", "BCE": "BCE", "TELUS": "텔러스", "ROGERS": "로저스",
     "ROYAL BANK": "RBC", "TORONTO DOMINION": "TD", "BANK NOVA SCOTIA": "스코샤", "BANK MONTREAL": "BMO",
     "CANADIAN IMPERIAL": "CIBC", "MANULIFE": "매뉴라이프", "SUN LIFE": "선라이프", "FAIRFAX": "페어팩스",

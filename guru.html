@@ -522,9 +522,12 @@
     document.getElementById('f-josa').value = topic(f.title).slice(f.title.length);
     document.getElementById('f-sub').value = '어디에 투자하고 있을까?';
     document.getElementById('f-basis').value = "'" + quarterLabel(f.period) + ' 기준';
-    document.getElementById('f-data').value = f.holdings.map(function (h) {
-      return h.name + ' ' + h.weight + '%';
-    }).join('\n');
+    // 상위 40개만 저장돼 있다 — 나머지는 '기타'로 넣어야 비중이 전체(100%) 기준이 된다
+    // (안 넣으면 시타델 1위 7.8% 가 27.7% 로 부풀려졌다)
+    var lines = f.holdings.map(function (h) { return h.name + ' ' + h.weight + '%'; });
+    var shown = f.holdings.reduce(function (a, h) { return a + h.weight; }, 0);
+    if (100 - shown > 0.05) lines.push('기타 ' + (100 - shown).toFixed(2) + '%');
+    document.getElementById('f-data').value = lines.join('\n');
     note.style.display = '';
     note.innerHTML = '<b>' + f.entity + '</b> 13F · ' + f.period + ' 보유분 · ' +
       f.filed + ' 공시 · 전체 ' + f.count.toLocaleString('ko-KR') + '종목 중 상위 ' +
@@ -607,9 +610,12 @@
     // 상위 N개를 고르되, 최소 비중에 못 미치는 조각은 기타로 묶는다.
     // 1%짜리 조각은 도넛에선 실선 한 줄인데 라벨만 커서 카드가 지저분해진다.
     var head = [], rest = 0;
-    rows.forEach(function (r, i) {
+    var i = 0;
+    rows.forEach(function (r) {
+      if (r.name === '기타') { rest += r.pct; return; }   // 직접 적은 '기타' 줄은 항상 기타 조각으로
       if (i < topN && r.pct >= minPct) head.push(r);
       else rest += r.pct;
+      i++;
     });
     if (rest > 0.05) head.push({ name: '기타', pct: rest, etc: true });
     return head;
