@@ -81,6 +81,18 @@ FUNDS = [
     ("bok",        "한국은행",         "Bank of Korea",                       1965704),
     ("kic",        "한국투자공사",     "Korea Investment Corp",               1441689),
     ("snb",        "스위스 중앙은행",  "Swiss National Bank",                 1582202),
+    ("baillie",    "베일리 기포드",    "Baillie Gifford",                     1088875),
+    ("baron",      "론 배런",          "BAMCO",                               1017918),
+    ("a16z",       "앤드리슨 호로위츠", "a16z Capital Management",            1540358),
+    ("lightspeed", "라이트스피드",     "Lightspeed Management",               1702122),
+    ("gmo",        "제레미 그랜섬",    "Grantham Mayo Van Otterloo",          1352662),
+    ("paulson",    "존 폴슨",          "Paulson & Co",                        1035674),
+    ("tudor",      "폴 튜더 존스",     "Tudor Investment",                    923093),
+    ("maverick",   "리 에인슬리",      "Maverick Capital",                    934639),
+    ("starboard",  "스타보드 밸류",    "Starboard Value",                     1517137),
+    ("mit",        "MIT 대학",         "Massachusetts Institute of Technology", 351051),
+    ("wellcome",   "웰컴 트러스트",    "Wellcome Trust",                      1026720),
+    ("mirae",      "미래에셋자산운용", "Mirae Asset Global Investments",      1569395),
     # ---- 유명 기업 (회사가 직접 들고 있는 상장 주식) ----
     # 애플·MS·메타·테슬라·오라클은 13F 를 내지 않는다 (상장 주식 1억 달러 이상 보유 기관만 의무).
     # 세일즈포스·퀄컴은 2023년 이후 공시가 끊겼다.
@@ -102,9 +114,12 @@ FUNDS = [
     ("siemens",    "지멘스",           "Siemens AG",                          940418),
     ("alibaba",    "알리바바",         "Alibaba Group Holding",               1577552),
     ("samsungct",  "삼성물산",         "Samsung C&T Corp",                    1928668),
+    ("blackstone", "블랙스톤",         "Blackstone Inc",                      1393818),
+    ("brookfield", "브룩필드",         "Brookfield Corp",                     1001085),
 ]
 CORPS = {"alphabet", "nvidia", "amazon", "amd", "intel", "uber", "cisco", "jnj", "pfizer",
-         "merck", "gilead", "regeneron", "gsk", "sanofi", "toyota", "siemens", "alibaba", "samsungct"}
+         "merck", "gilead", "regeneron", "gsk", "sanofi", "toyota", "siemens", "alibaba", "samsungct",
+         "blackstone", "brookfield"}
 
 # 카드에 한글로 보이게 — 없는 회사는 영문 이름을 정리해서 쓴다
 KO = {
@@ -318,7 +333,7 @@ KO = {
     "NEW ORIENTAL": "신동방", "VIPSHOP": "VIP샵", "ZAI LAB": "자이랩", "BEIGENE": "베이진", "LEGEND BIOTECH": "레전드",
     "MINISO": "미니소", "ATOUR": "아투어", "H WORLD": "화주그룹", "YUM BRANDS": "얌브랜즈", "SEA": "씨리미티드",
     "SHOPIFY": "쇼피파이", "CANADIAN NATURAL": "CNQ", "SUNCOR": "선코어", "ENBRIDGE": "엔브리지",
-    "TC ENERGY": "TC에너지", "BROOKFIELD": "브룩필드", "THOMSON REUTERS": "톰슨로이터", "WASTE CONNECTIONS": "웨이스트CN",
+    "TC ENERGY": "TC에너지", "BROOKFIELD": "브룩필드", "BROOKFIELD ASSET": "브룩필드자산운용", "BROOKFIELD BUSINESS": "브룩필드비즈니스", "BROOKFIELD RENEWABLE": "브룩필드재생에너지", "BROOKFIELD INFRASTRUCTURE": "브룩필드인프라", "BROOKFIELD WEALTH": "브룩필드웰스", "THOMSON REUTERS": "톰슨로이터", "WASTE CONNECTIONS": "웨이스트CN",
     "CGI": "CGI", "OPEN TEXT": "오픈텍스트", "BCE": "BCE", "TELUS": "텔러스", "ROGERS": "로저스",
     "ROYAL BANK": "RBC", "TORONTO DOMINION": "TD", "BANK NOVA SCOTIA": "스코샤", "BANK MONTREAL": "BMO",
     "CANADIAN IMPERIAL": "CIBC", "MANULIFE": "매뉴라이프", "SUN LIFE": "선라이프", "FAIRFAX": "페어팩스",
@@ -757,6 +772,7 @@ ETF_KNOWN = {
     ("아이셰어즈", "MSCI EMERGING MKT"): "신흥국(IEMG)", ("아이셰어즈", "MSCI EAFE"): "선진국(IEFA)",
     ("아이셰어즈", "RUSSELL 2000"): "러셀2000(IWM)", ("뱅가드", "FTSE DEV MKT"): "선진국(VEA)",
     ("뱅가드", "FTSE EMR MKT"): "신흥국(VWO)",
+    ("아이셰어즈", "S&P MCP"): "미국중형주(IJH)", ("아이셰어즈", "S&P SCP"): "미국소형주(IJR)",
 }
 
 
