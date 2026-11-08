@@ -29,7 +29,7 @@ from datetime import datetime, timezone, timedelta
 UA = "fincard personal project heecheoldo@gmail.com"
 OUT = "data/13f.json"
 TOP_N = 40                 # 종목이 수천 개인 기관도 있어 상위만 저장
-NAME_VER = 4               # 종목명 규칙 판. 올리면 공시가 그대로여도 다시 만든다
+NAME_VER = 5               # 종목명 규칙 판. 올리면 공시가 그대로여도 다시 만든다
 SLEEP = 0.15
 
 # (키, 카드 제목, 공시 주체, CIK)
@@ -57,7 +57,20 @@ FUNDS = [
     ("coatue",     "코튜",             "Coatue Management",                   1135730),
     ("norges",     "노르웨이 국부펀드", "Norges Bank",                        1374170),
     ("nps",        "국민연금",         "National Pension Service",            1608046),
+    # ---- 유명 기업 (회사가 직접 들고 있는 상장 주식) ----
+    # 애플·MS·메타·테슬라·오라클은 13F 를 내지 않는다 (상장 주식 1억 달러 이상 보유 기관만 의무).
+    # 세일즈포스·퀄컴은 2023년 이후 공시가 끊겼다.
+    ("alphabet",   "알파벳(구글)",     "Alphabet Inc",                        1652044),
+    ("nvidia",     "엔비디아",         "NVIDIA Corp",                         1045810),
+    ("amazon",     "아마존",           "Amazon com Inc",                      1018724),
+    ("amd",        "AMD",              "Advanced Micro Devices",              2488),
+    ("intel",      "인텔",             "Intel Corp",                          50863),
+    ("uber",       "우버",             "Uber Technologies",                   1543151),
+    ("cisco",      "시스코",           "Cisco Systems",                       858877),
+    ("jnj",        "존슨앤드존슨",     "Johnson & Johnson",                   200406),
+    ("pfizer",     "화이자",           "Pfizer Inc",                          78003),
 ]
+CORPS = {"alphabet", "nvidia", "amazon", "amd", "intel", "uber", "cisco", "jnj", "pfizer"}
 
 # 카드에 한글로 보이게 — 없는 회사는 영문 이름을 정리해서 쓴다
 KO = {
@@ -430,6 +443,12 @@ KO = {
     "PERFORMANCE FOOD": "퍼포먼스푸드", "STERLING INFRASTRUCTURE": "스털링",
     "TTM TECHNOLOGIES": "TTM", "APPLIED DIGITAL": "APLD",
     "CEREBRAS": "세레브라스", "SPACE EXPLORATION": "스페이스X",
+    # 기업 13F 에 나오는 종목 (2026-11 추가)
+    "PLANET LABORATORIES": "플래닛랩스", "X ENERGY": "X-에너지", "BETA TECHNOLOGIES": "베타",
+    "MOBILEYE": "모빌아이", "WERIDE": "위라이드", "ETHOS TECHNOLOGIES": "에토스", "SANMINA": "산미나",
+    "NUTANIX": "뉴타닉스", "COHERENT": "코히런트", "FRESHWORKS": "프레시웍스", "FIGMA": "피그마",
+    "PAYPAY": "페이페이", "ALLEGIANT": "얼리전트", "NANOBIOTIX": "나노바이오틱스", "XANADU": "자나두",
+    "AST SPACEMOBILE": "AST스페이스모바일", "REVOLUTION MEDICINES": "레볼루션메디슨",
     "CIPHER": "사이퍼", "CHIME": "차임", "CHAMPION HOMES": "챔피언홈즈",
     "CAVCO": "캐브코", "CARIS LIFE": "캐리스", "CORCEPT": "코셉트",
     "COYA": "코야", "CVR ENERGY": "CVR에너지", "CVR PARTNERS": "CVR파트너",
@@ -599,7 +618,7 @@ def find_ticker(raw):
 FUND_RE = re.compile(r"\b(ETF|ETC|EXCHANGE[ -]TRADED|FDS?|FUND|FUNDS|ISHARES|SPDR|VANECK|INDEX|SER TR|TR II|GLOBAL X)\b", re.I)
 # 이름 규칙으로 못 찾는 유명 종목 (정규화된 이름의 앞부분 -> 티커)
 LOGO_FIX = {
-    "AON": "AON", "API": "APG", "BANK AMER": "BAC", "BANK AMERICAN": "BAC",
+    "AON": "AON", "API": "APG", "ARM": "ARM", "BANK AMER": "BAC", "BANK AMERICAN": "BAC",
     "BARRICK": "B", "BAUSCH PLUS LOMB": "BLCO", "CHART INDUSTRIES": "GTLS",
     "CME": "CME", "CRH": "CRH", "CSX": "CSX", "CDW": "CDW", "D R HORTON": "DHI",
     "DHT": "DHT", "ELECTRONIC ARTS": "EA", "EXXON MOBIL": "XOM",
@@ -885,6 +904,7 @@ def main():
             "title": title, "entity": sec_name or expect, "cik": cik,
             "period": meta["period"], "filed": meta["filed"], "acc": meta["acc"],
             "count": n_all, "total_value": round(total), "namever": NAME_VER,
+            "kind": "corp" if key in CORPS else "investor",
             "holdings": holdings,
         }
         log("  %-12s %s 보유분 · %d종목 · 1위 %s %.1f%%"
