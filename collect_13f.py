@@ -57,6 +57,18 @@ FUNDS = [
     ("coatue",     "코튜",             "Coatue Management",                   1135730),
     ("norges",     "노르웨이 국부펀드", "Norges Bank",                        1374170),
     ("nps",        "국민연금",         "National Pension Service",            1608046),
+    ("softbank",   "손정의(소프트뱅크)", "SB Investment Advisers",              1731509),   # 비전펀드
+    ("duan",       "돤융핑",           "H&H International Investment",        1759760),
+    ("tci",        "크리스 혼",        "TCI Fund Management",                 1647251),
+    ("akre",       "척 아크레",        "Akre Capital Management",             1112520),
+    ("elliott",    "폴 싱어",          "Elliott Investment Management",       1791786),
+    ("point72",    "스티브 코헨",      "Point72 Asset Management",            1603466),
+    ("viking",     "바이킹 글로벌",    "Viking Global Investors",             1103804),
+    ("fairfax",    "프렘 왓사",        "Fairfax Financial Holdings",          915191),
+    ("markel",     "마켈",             "Markel Group",                        1096343),
+    ("pif",        "사우디 국부펀드",  "Public Investment Fund",              1767640),
+    ("mubadala",   "아부다비 무바달라", "Mubadala Investment",                1704268),
+    ("temasek",    "싱가포르 테마섹",  "Temasek Holdings",                    1021944),
     # ---- 유명 기업 (회사가 직접 들고 있는 상장 주식) ----
     # 애플·MS·메타·테슬라·오라클은 13F 를 내지 않는다 (상장 주식 1억 달러 이상 보유 기관만 의무).
     # 세일즈포스·퀄컴은 2023년 이후 공시가 끊겼다.
@@ -69,8 +81,18 @@ FUNDS = [
     ("cisco",      "시스코",           "Cisco Systems",                       858877),
     ("jnj",        "존슨앤드존슨",     "Johnson & Johnson",                   200406),
     ("pfizer",     "화이자",           "Pfizer Inc",                          78003),
+    ("merck",      "머크",             "Merck & Co",                          310158),
+    ("gilead",     "길리어드",         "Gilead Sciences",                     882095),
+    ("regeneron",  "리제네론",         "Regeneron Pharmaceuticals",           872589),
+    ("gsk",        "GSK",              "GSK plc",                             1131399),
+    ("sanofi",     "사노피",           "Sanofi",                              1121404),
+    ("toyota",     "도요타",           "Toyota Motor Corp",                   1094517),
+    ("siemens",    "지멘스",           "Siemens AG",                          940418),
+    ("alibaba",    "알리바바",         "Alibaba Group Holding",               1577552),
+    ("samsungct",  "삼성물산",         "Samsung C&T Corp",                    1928668),
 ]
-CORPS = {"alphabet", "nvidia", "amazon", "amd", "intel", "uber", "cisco", "jnj", "pfizer"}
+CORPS = {"alphabet", "nvidia", "amazon", "amd", "intel", "uber", "cisco", "jnj", "pfizer",
+         "merck", "gilead", "regeneron", "gsk", "sanofi", "toyota", "siemens", "alibaba", "samsungct"}
 
 # 카드에 한글로 보이게 — 없는 회사는 영문 이름을 정리해서 쓴다
 KO = {
