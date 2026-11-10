@@ -835,6 +835,9 @@
           d.quarterly = (d.quarterly || []).filter(function (x) { return x.rev != null; });
           d.noOp = d.annual.length > 0 &&
                    d.annual.every(function (x) { return x.op == null; });
+          // 분기 영업이익이 하나도 없으면 분기 카드는 순이익으로 (0.0조로 그리지 않게)
+          d.noOpQ = d.quarterly.length > 0 &&
+                    d.quarterly.every(function (x) { return x.op == null; });
           Adapter.loaded[code] = d;
           return d;
         })
@@ -929,6 +932,23 @@
       };
     }
 
+    if (period === 'quarterly' && state.company && state.company.noOpQ) {
+      return {
+        bars: [{ key: 'bar1', label: '매출', color: 'bar1' },
+               { key: 'ni', label: '순이익', color: 'bar2' }],
+        line: { key: 'netMargin', label: '순이익률', fmt: pct, chipFmt: pct },
+        barUnit: 'auto', unitNote: null,
+        altChip: function (last) { return { l: '순이익률', v: pct(last.netMargin), c: 'bar2' }; },
+        chips: function (last, unit) {
+          return [
+            { l: '매출', v: fmtChip(last.bar1, unit), c: 'ink' },
+            { l: '순이익', v: fmtChip(last.ni, unit), c: 'bar2' },
+            { l: '순이익률', v: pct(last.netMargin), c: 'line' }
+          ];
+        },
+        basisFmt: function (last) { return "'" + last.label.slice(2) + ' 기준'; }
+      };
+    }
     if (period === 'quarterly') {
       return {
         bars: [{ key: 'bar1', label: '매출', color: 'bar1' },

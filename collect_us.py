@@ -301,6 +301,16 @@ def pick_units(facts, kind):
     if not any(n >= 1 for n, _, _ in groups):
         # 연간 값이 있는 주 태그가 없으면 대체 태그를 앞에, 분기만 있는 새 태그는 뒤에
         groups = gather(FALLBACK.get(kind, [])) + groups
+    elif FALLBACK.get(kind):
+        # 주 태그를 예전에만 쓰고 그만둔 회사: 대체 태그가 1년 넘게 더 최근까지 있으면 대체 태그를 앞에
+        # (버크셔: 영업이익 태그는 2013년이 마지막, 세전이익은 지금까지 — 영업이익이 전부 비어 있었다)
+        def last_end(gs):
+            return max((r.get("end", "") for _, _, rows in gs for r in rows), default="")
+        fb = gather(FALLBACK[kind])
+        le_main, le_fb = last_end(groups), last_end(fb)
+        if fb and le_main and le_fb and le_fb > le_main and _days(le_main, le_fb) > 365:
+            have = {t for _, t, _ in fb}
+            groups = fb + [g for g in groups if g[1] not in have]
     if kind == "rev" and groups:
         # 빈 기간만 메우는 태그 (리츠 임대수익: 비브마크는 2021년 이후 이것만 쓴다)
         have = {t for _, t, _ in groups}
