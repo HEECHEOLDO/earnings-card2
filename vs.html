@@ -278,11 +278,13 @@
       </div>
       <div class="row2" id="ctl-pair">
         <label>카드 형태
-          <select id="c-pview"><option value="now">숫자 비교</option><option value="trend">5년 추이</option></select></label>
+          <select id="c-pview"><option value="now">숫자 비교</option><option value="trend">기간별 추이</option></select></label>
         <label>추이 지표
           <select id="c-tmetric"><option value="rev">매출</option><option value="op">영업이익</option><option value="ni">순이익</option><option value="margin">영업이익률</option></select></label>
+        <label>단위
+          <select id="c-tunit"><option value="y">연간</option><option value="q">분기</option></select></label>
         <label>기간
-          <select id="c-tperiod"><option value="y5">최근 5년 (연간)</option><option value="y3">최근 3년 (연간)</option><option value="y10">최근 10년 (연간)</option><option value="q8">최근 8분기</option><option value="q12">최근 12분기</option></select></label>
+          <span style="display:flex;gap:4px;align-items:center"><select id="c-tfrom" style="flex:1;min-width:0"></select>~<select id="c-tto" style="flex:1;min-width:0"></select></span></label>
       </div>
       <label>실적 기준
         <select id="c-basis"><option value="ttm">최근 4분기 합계</option><option value="ytd">올해 누적 (수집된 분기까지)</option><option value="annual">작년 연간</option></select></label>
@@ -908,25 +910,51 @@
     });
     return { v:out, fiscal:!!(it.us && d.fiscal) };
   }
+  var TREND_MAX = 12, TREND_UNIT = null;
+  // '2021' -> '2021년' / '2025.3' -> '25년 3분기'.  끝쪽 연간은 '2023년', 시작쪽은 '2019' (2019~2023년)
+  function periodName(x, q, isStart) {
+    if (!q) return isStart ? x : x + '년';
+    var s = x.split('.');
+    return String(s[0]).slice(2) + '년 ' + s[1] + '분기';
+  }
+  // 시작·끝 선택칸을 채우고, 고른 구간을 돌려준다
+  function pickRange(list, q) {
+    var fromSel = $('c-tfrom'), toSel = $('c-tto');
+    var unitChanged = TREND_UNIT !== (q ? 'q' : 'y');
+    TREND_UNIT = q ? 'q' : 'y';
+    var keepFrom = unitChanged ? null : fromSel.value, keepTo = unitChanged ? null : toSel.value;
+    var opts = list.map(function (x) { return '<option value="' + x + '">' + periodName(x, q, false) + '</option>'; }).join('');
+    fromSel.innerHTML = opts; toSel.innerHTML = opts;
+    if (!list.length) return [];
+    var iTo = list.indexOf(keepTo); if (iTo < 0) iTo = list.length - 1;
+    var iFrom = list.indexOf(keepFrom);
+    if (iFrom < 0) iFrom = Math.max(0, iTo - (q ? 7 : 4));          // 기본: 연간 5년, 분기 8분기
+    if (iFrom > iTo) { var t = iFrom; iFrom = iTo; iTo = t; }
+    if (iTo - iFrom + 1 > TREND_MAX) iFrom = iTo - TREND_MAX + 1;     // 막대가 너무 많으면 읽을 수 없다
+    fromSel.value = list[iFrom]; toSel.value = list[iTo];
+    return list.slice(iFrom, iTo + 1);
+  }
   function drawTrend(c, p) {
     var m = $('c-tmetric').value, nm = { rev:'매출', op:'영업이익', ni:'순이익', margin:'영업이익률' }[m];
     if (!titleEdited) $('c-title').value = p.a.b + ' vs ' + p.z.b;      // 첫 줄: 누구와 누구. 둘째 줄(무엇을)은 아래에서 자동
-    var per = $('c-tperiod').value, qmode = per[0] === 'q', want = +per.slice(1);
+    // 기간: 단위(연간/분기) + 시작~끝을 사용자가 고른다. 고를 수 있는 기간 = 두 회사 모두 숫자가 있는 기간
+    var qmode = $('c-tunit').value === 'q';
     var A = series(p.a, m, qmode), Z = series(p.z, m, qmode), qFallback = false;
     if (qmode && A && Z && (A.none || Z.none)) {     // 비상장사는 분기 실적이 없다 → 연간으로
-      qFallback = true; qmode = false; want = 5; A = series(p.a, m, false); Z = series(p.z, m, false);
+      qFallback = true; qmode = false; A = series(p.a, m, false); Z = series(p.z, m, false);
     }
-    // 두 회사 모두 숫자가 있는 기간만 (한쪽만 있으면 비교가 안 된다). 그런 기간이 2개 미만이면 있는 대로
-    var years = [];
+    var list = [];
     if (A && Z) {
       var all = Object.keys(A.v).concat(Object.keys(Z.v)).filter(function (v, i, arr) { return arr.indexOf(v) === i; });
       var ord = function (x) { var q = x.split('.'); return +q[0] * 10 + (+q[1] || 0); };
       all.sort(function (x, y2) { return ord(x) - ord(y2); });
       var both = all.filter(function (x) { return A.v[x] != null && Z.v[x] != null; });
-      years = (both.length >= 2 ? both : all).slice(-want);
+      list = both.length >= 2 ? both : all;
     }
-    $('c-hint').textContent = qFallback ? '비상장사는 분기 실적을 공시하지 않아 연간으로 보여 줍니다.'
-      : '두 회사 모두 숫자가 있는 기간만 보여 줍니다. 미국 회사는 오늘 환율로 원화로 바꿉니다.';
+    var years = pickRange(list, qmode);
+    var latest = list.length && years.length && years[years.length - 1] === list[list.length - 1];
+    $('c-hint').textContent = (qFallback ? '비상장사는 분기 실적을 공시하지 않아 연간으로 보여 줍니다. ' : '') +
+      '두 회사 모두 숫자가 있는 기간만 고를 수 있습니다 (최대 ' + TREND_MAX + '개). 미국 회사는 오늘 환율로 원화로 바꿉니다.';
     // 막대 색 = 각 회사 로고 색. 두 색이 너무 비슷하면 오른쪽은 금색으로
     var CA = logoColor(p.a) || T.ink, CZ = logoColor(p.z) || T.chipInk;
     if (colorGap(CA, CZ) < 90) CZ = colorGap(CA, T.chipInk) < 90 ? T.ink : T.chipInk;
@@ -935,8 +963,12 @@
     if (TL === 'D' && !segs) TL = 'A';      // 제목을 직접 고쳐 회사 이름에 색을 못 입히면 A안(로고 + 색 글자 범례)으로
     var y = head(c, $('c-chip').value, ttl, segs);
     // 둘째 줄: '5년 영업이익 비교' — 제목보다 작게, 스타일은 window.TREND_SUB 로 비교 (gray | gold)
-    var nP = years.length || want;
-    var sub = (qmode ? '최근 ' + nP + '분기 ' : nP + '년 ') + nm + ' 비교', SS = window.TREND_SUB || 'gray';
+    // 끝이 가장 최근이면 '최근 8분기 매출 비교' / '5년 매출 비교', 과거 구간이면 '2019~2023년 매출 비교'
+    var nP = years.length, sub;
+    if (!nP) sub = nm + ' 비교';
+    else if (latest) sub = (qmode ? '최근 ' + nP + '분기 ' : nP + '년 ') + nm + ' 비교';
+    else sub = periodName(years[0], qmode, true) + '~' + periodName(years[nP - 1], qmode, false) + ' ' + nm + ' 비교';
+    var SS = window.TREND_SUB || 'gray';
     if (SS === 'gold') { c.font = F(800, 46); c.fillStyle = T.chipInk; c.fillText(sub, CX, y + 74); y += 74; }
     else { var sf = Math.min(60, Math.round(HEAD_NS * 0.72)); c.font = F(800, sf); LS(c, '-0.02em'); c.fillStyle = T.inkSoft; c.fillText(sub, CX, y + sf * 1.47); LS(c, '0px'); y += sf * 1.47; }
     var ly = y + 70, lr = 34, lend;
@@ -1251,7 +1283,7 @@
 
   $('presets').addEventListener('click', function (e) { var b = e.target.closest('.preset'); if (b) pick(list()[+b.dataset.i]); });
   $('c-pview').addEventListener('change', function () { titleEdited = false; if ($('c-pview').value === 'now' && CUR) $('c-title').value = CUR.title; });
-  ['c-metric', 'c-sort', 'c-basis', 'c-pview', 'c-tmetric', 'c-tperiod'].forEach(function (id) { $(id).addEventListener('change', draw); });
+  ['c-metric', 'c-sort', 'c-basis', 'c-pview', 'c-tmetric', 'c-tunit', 'c-tfrom', 'c-tto'].forEach(function (id) { $(id).addEventListener('change', draw); });
   $('c-chip').addEventListener('input', draw);
   $('c-title').addEventListener('input', function () { titleEdited = true; draw(); });
   $('c-dl').addEventListener('click', function () {

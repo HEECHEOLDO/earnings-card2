@@ -744,13 +744,25 @@ def parse_instance(text, cik):
 
 
 def _latest_end(facts):
+    """매출·영업이익·순이익 각각의 최신 기간 중 가장 이른 것.
+    (콘에디슨: 순이익은 3분기까지 들어왔는데 매출은 2분기에서 멈춰 3분기가 통째로 빠졌다)"""
     us = facts.get("facts", {}).get("us-gaap", {})
-    best = ""
-    for tag in _patch_tags():
-        for r in (us.get(tag) or {}).get("units", {}).get("USD", []):
-            if r.get("start") and r.get("end", "") > best:
-                best = r["end"]
-    return best
+    ends = []
+    for k in ("rev", "op", "ni"):
+        tags = set(TAGS[k]) | set(FALLBACK.get(k, []))
+        best = ""
+        for tag in tags:
+            for r in (us.get(tag) or {}).get("units", {}).get("USD", []):
+                if r.get("start") and r.get("end", "") > best:
+                    best = r["end"]
+        if best:
+            ends.append(best)
+    if not ends:
+        return ""
+    # 2년 넘게 안 쓴 항목(예전에 쓰다 그만둔 태그)은 기준에서 뺀다 — 매일 옛 공시를 받는 일이 없게
+    top = max(ends)
+    cut = (datetime.strptime(top, "%Y-%m-%d") - timedelta(days=730)).strftime("%Y-%m-%d")
+    return min(e for e in ends if e >= cut)
 
 
 def patch_recent_filings(facts, ciks):
