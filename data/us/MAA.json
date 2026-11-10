@@ -9,135 +9,135 @@
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-11-10",
+ "updated": "2026-11-11",
  "annual": [
   {
    "p": 2012,
    "rev": 446.5,
-   "op": 115.9,
-   "ni": 102.3,
+   "op": 60.2,
+   "ni": 98.7,
    "assets": 2751.1,
    "liab": 1801.2,
    "equity": 945.1,
    "dps": 2.675,
-   "payout": 105.4,
+   "payout": 109.1,
    "yield": null,
    "dps_adj": 0.8917
   },
   {
    "p": 2017,
    "rev": 1529.0,
-   "op": null,
-   "ni": 340.5,
+   "op": 341.8,
+   "ni": 328.4,
    "assets": null,
    "liab": null,
    "equity": 6573.9,
    "dps": 3.5325,
-   "payout": 116.1,
+   "payout": 120.4,
    "yield": null,
    "dps_adj": 3.5325
   },
   {
    "p": 2018,
    "rev": 1571.3,
-   "op": null,
-   "ni": 231.0,
+   "op": 231.8,
+   "ni": 222.9,
    "assets": 11323.8,
    "liab": 4942.2,
    "equity": 6372.2,
    "dps": 3.7275,
-   "payout": 181.7,
+   "payout": 188.4,
    "yield": null,
    "dps_adj": 3.7275
   },
   {
    "p": 2019,
    "rev": 1641.0,
-   "op": null,
-   "ni": 366.6,
+   "op": 368.7,
+   "ni": 353.8,
    "assets": 11230.5,
    "liab": 4926.9,
    "equity": 6289.5,
    "dps": 3.88,
-   "payout": 119.4,
+   "payout": 123.7,
    "yield": null,
    "dps_adj": 3.88
   },
   {
    "p": 2020,
    "rev": 1678.0,
-   "op": null,
-   "ni": 264.0,
+   "op": 265.8,
+   "ni": 255.0,
    "assets": 11194.8,
    "liab": 5091.0,
    "equity": 6088.4,
    "dps": 4.025,
-   "payout": 173.2,
+   "payout": 179.4,
    "yield": null,
    "dps_adj": 4.025
   },
   {
    "p": 2021,
    "rev": 1778.1,
-   "op": null,
-   "ni": 550.7,
+   "op": 563.1,
+   "ni": 533.8,
    "assets": 11285.2,
    "liab": 5101.1,
    "equity": 6153.9,
    "dps": 4.1625,
-   "payout": 85.4,
+   "payout": 88.1,
    "yield": null,
    "dps_adj": 4.1625
   },
   {
    "p": 2022,
    "rev": 2019.9,
-   "op": null,
-   "ni": 654.8,
+   "op": 647.0,
+   "ni": 637.4,
    "assets": 11241.2,
    "liab": 5030.7,
    "equity": 6189.7,
    "dps": 4.9875,
-   "payout": 82.4,
+   "payout": 84.7,
    "yield": null,
    "dps_adj": 4.9875
   },
   {
    "p": 2023,
    "rev": 2148.5,
-   "op": null,
-   "ni": 567.8,
+   "op": 570.8,
+   "ni": 552.8,
    "assets": 11484.5,
    "liab": 5185.4,
    "equity": 6280.0,
    "dps": 5.67,
-   "payout": 114.8,
+   "payout": 117.9,
    "yield": null,
    "dps_adj": 5.67
   },
   {
    "p": 2024,
    "rev": 2191.0,
-   "op": null,
-   "ni": 541.6,
+   "op": 544.9,
+   "ni": 527.5,
    "assets": 11812.4,
    "liab": 5664.7,
    "equity": 6125.4,
    "dps": 5.925,
-   "payout": 126.8,
+   "payout": 130.2,
    "yield": null,
    "dps_adj": 5.925
   },
   {
    "p": 2025,
    "rev": 2209.1,
-   "op": null,
-   "ni": 456.6,
+   "op": 459.1,
+   "ni": 446.9,
    "assets": 11975.4,
    "liab": 6135.7,
    "equity": 5819.2,
    "dps": 6.075,
-   "payout": 155.3,
+   "payout": 158.7,
    "yield": null,
    "dps_adj": 6.075
   }
@@ -147,71 +147,71 @@
    "y": 2024,
    "q": 2,
    "rev": 546.4,
-   "op": null,
-   "ni": 104.7
+   "op": 105.2,
+   "ni": 102.0
   },
   {
    "y": 2024,
    "q": 3,
    "rev": 551.1,
-   "op": null,
-   "ni": 118.2
+   "op": 118.4,
+   "ni": 115.2
   },
   {
    "y": 2024,
    "q": 4,
    "rev": 549.8,
-   "op": null,
-   "ni": 171.1
+   "op": 172.3,
+   "ni": 166.6
   },
   {
    "y": 2025,
    "q": 1,
    "rev": 549.3,
-   "op": null,
-   "ni": 186.4
+   "op": 187.0,
+   "ni": 181.7
   },
   {
    "y": 2025,
    "q": 2,
    "rev": 549.9,
-   "op": null,
-   "ni": 110.9
+   "op": 110.9,
+   "ni": 108.1
   },
   {
    "y": 2025,
    "q": 3,
    "rev": 554.4,
-   "op": null,
-   "ni": 102.0
+   "op": 103.4,
+   "ni": 99.5
   },
   {
    "y": 2025,
    "q": 4,
    "rev": 555.6,
-   "op": null,
-   "ni": 57.2
+   "op": 57.7,
+   "ni": 57.6
   },
   {
    "y": 2026,
    "q": 1,
    "rev": 553.7,
-   "op": null,
-   "ni": 126.6
+   "op": 131.9,
+   "ni": 124.4
   },
   {
    "y": 2026,
    "q": 2,
    "rev": 555.1,
-   "op": null,
-   "ni": 124.8
+   "op": 125.0,
+   "ni": 121.8
   },
   {
    "y": 2026,
    "q": 3,
    "rev": 560.1,
-   "op": null,
-   "ni": 85.8
+   "op": 87.9,
+   "ni": 84.0
   }
  ]
 }

@@ -2,28 +2,15 @@
  "name": "SWKS",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "SKYWORKS SOLUTIONS, INC.",
+ "legal_name": "Skyworks Solutions, Inc.",
  "code": "SWKS",
  "cik": "0000004127",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-11-10",
+ "updated": "2026-11-11",
  "annual": [
-  {
-   "p": 2016,
-   "rev": 3289.0,
-   "op": 1118.7,
-   "ni": 995.2,
-   "assets": 3855.4,
-   "liab": 314.0,
-   "equity": 3541.4,
-   "dps": 1.06,
-   "payout": 20.2,
-   "yield": null,
-   "dps_adj": 1.06
-  },
   {
    "p": 2017,
    "rev": 3651.4,
@@ -122,7 +109,7 @@
    "ni": 596.0,
    "assets": 8283.3,
    "liab": 1946.6,
-   "equity": 6400.7,
+   "equity": 6336.7,
    "dps": 2.74,
    "payout": 73.7,
    "yield": null,
@@ -135,21 +122,27 @@
    "ni": 477.1,
    "assets": 7917.0,
    "liab": 2159.9,
-   "equity": 5758.9,
+   "equity": 5757.1,
    "dps": 2.81,
    "payout": 90.7,
    "yield": null,
    "dps_adj": 2.81
+  },
+  {
+   "p": 2026,
+   "rev": 3959.6,
+   "op": 216.7,
+   "ni": 172.1,
+   "assets": 9436.8,
+   "liab": 3721.1,
+   "equity": 5715.7,
+   "dps": 2.13,
+   "payout": 186.0,
+   "yield": null,
+   "dps_adj": 2.13
   }
  ],
  "quarterly": [
-  {
-   "y": 2024,
-   "q": 2,
-   "rev": 1046.0,
-   "op": 189.2,
-   "ni": 183.3
-  },
   {
    "y": 2024,
    "q": 3,
@@ -212,6 +205,13 @@
    "rev": 934.8,
    "op": 48.5,
    "ni": 33.9
+  },
+  {
+   "y": 2026,
+   "q": 4,
+   "rev": 1045.7,
+   "op": 22.3,
+   "ni": 23.4
   }
  ]
 }

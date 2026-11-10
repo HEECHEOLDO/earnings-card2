@@ -9,7 +9,7 @@
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-11-10",
+ "updated": "2026-11-11",
  "annual": [
   {
    "p": 2017,
@@ -80,12 +80,12 @@
    "p": 2022,
    "rev": 93512.0,
    "op": 6245.0,
-   "ni": 0.0,
+   "ni": 3826.0,
    "assets": 85994.0,
    "liab": null,
    "equity": 24939.0,
    "dps": 3,
-   "payout": null,
+   "payout": 20.7,
    "yield": null,
    "dps_adj": 3.0
   },
@@ -93,12 +93,12 @@
    "p": 2023,
    "rev": 90155.0,
    "op": 4912.0,
-   "ni": 0.0,
+   "ni": 3972.0,
    "assets": 87143.0,
    "liab": null,
    "equity": 26088.0,
    "dps": 5.86,
-   "payout": null,
+   "payout": 29.6,
    "yield": null,
    "dps_adj": 5.86
   },
@@ -106,12 +106,12 @@
    "p": 2024,
    "rev": 87693.0,
    "op": 5559.0,
-   "ni": 0.0,
+   "ni": 4331.0,
    "assets": 87007.0,
    "liab": null,
    "equity": 27582.0,
    "dps": 3.78,
-   "payout": null,
+   "payout": 29.1,
    "yield": null,
    "dps_adj": 3.78
   },
@@ -119,12 +119,12 @@
    "p": 2025,
    "rev": 87926.0,
    "op": 5217.0,
-   "ni": 0.0,
+   "ni": 4092.0,
    "assets": 87627.0,
    "liab": null,
    "equity": 27838.0,
    "dps": 5.52,
-   "payout": null,
+   "payout": 32.7,
    "yield": null,
    "dps_adj": 5.52
   },
@@ -132,12 +132,12 @@
    "p": 2026,
    "rev": 94720.0,
    "op": 5463.0,
-   "ni": 0.0,
+   "ni": 4433.0,
    "assets": 92926.0,
    "liab": null,
    "equity": 34568.0,
    "dps": 5.8,
-   "payout": null,
+   "payout": 31.0,
    "yield": null,
    "dps_adj": 5.8
   }
@@ -148,7 +148,7 @@
    "q": 4,
    "rev": 22109.0,
    "op": 1555.0,
-   "ni": -2857.0
+   "ni": 1474.0
   },
   {
    "y": 2025,
@@ -176,7 +176,7 @@
    "q": 4,
    "rev": 22220.0,
    "op": 1793.0,
-   "ni": -2444.0
+   "ni": 1648.0
   },
   {
    "y": 2026,
