@@ -678,6 +678,11 @@ LOGO_FIX = {
     "PETROLEO BRASILEIRO": "PBR", "SEA": "SE", "SIRIUSXM": "SIRI", "SLM": "SLM",
     "ODP": "ODP", "TJX COS": "TJX", "TJX": "TJX", "TKO": "TKO", "UBS": "UBS",
     "WEBSTER FINANCIAL": "WBS",
+    # 2026-11 점검: 포트폴리오 상위 10 안인데 로고가 빠졌던 이름들
+    "KKR": "KKR", "WENDYS": "WEN", "TELEPHONE DATA SYSTEMS": "TDS", "JANUS HENDERSON": "JHG",
+    "WILLIAMS COS": "WMB", "TESLA": "TSLA", "AMERICAS CAR MART": "CRMT", "ACACIA RESH": "ACTG",
+    "KASPI KZ": "KSPI", "NESTLE": "NSRGY", "COMPAGNIE FINANCIERE RICHEMONT": "CFRUY", "ORLA MINING": "ORLA",
+    "ATS": "ATS", "EVAXION BIOTECH": "EVAX", "HEINEKEN": "HKHHY",
 }
 _LOGO_KEYS = sorted(LOGO_FIX, key=len, reverse=True)
 
@@ -685,7 +690,7 @@ def logo_ticker(raw):
     """보유 종목의 로고 파일 이름(티커). 로고 파일이 없으면 None."""
     if FUND_RE.search(str(raw)):
         return None
-    n = norm_name(raw)
+    n = re.sub(r" US$", "", norm_name(raw))      # 'Tesla Inc - US' 처럼 끝에 거래소가 붙는 공시
     t = None
     for k in _LOGO_KEYS:
         if n == k or n.startswith(k + " "):
