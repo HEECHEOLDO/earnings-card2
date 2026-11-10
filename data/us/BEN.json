@@ -2,28 +2,15 @@
  "name": "BEN",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "FRANKLIN RESOURCES INC",
+ "legal_name": "FRANKLIN TEMPLETON, INC.",
  "code": "BEN",
  "cik": "0000038777",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-11-09",
+ "updated": "2026-11-10",
  "annual": [
-  {
-   "p": 2016,
-   "rev": 6618.0,
-   "op": 2365.7,
-   "ni": 1726.7,
-   "assets": 16098.8,
-   "liab": 3509.5,
-   "equity": 12528.2,
-   "dps": 0.72,
-   "payout": 23.7,
-   "yield": null,
-   "dps_adj": 0.72
-  },
   {
    "p": 2017,
    "rev": 6392.2,
@@ -122,7 +109,7 @@
    "ni": 464.8,
    "assets": 32464.5,
    "liab": 17899.7,
-   "equity": 13233.7,
+   "equity": 13243.0,
    "dps": 1.24,
    "payout": 141.2,
    "yield": null,
@@ -135,21 +122,27 @@
    "ni": 524.9,
    "assets": 32368.3,
    "liab": 18179.5,
-   "equity": 13100.5,
+   "equity": 13006.8,
    "dps": 1.28,
    "payout": 130.3,
    "yield": null,
    "dps_adj": 1.28
+  },
+  {
+   "p": 2026,
+   "rev": 9415.3,
+   "op": 1175.9,
+   "ni": 1075.3,
+   "assets": 38626.5,
+   "liab": 23961.9,
+   "equity": 13248.7,
+   "dps": 1.32,
+   "payout": 64.9,
+   "yield": null,
+   "dps_adj": 1.32
   }
  ],
  "quarterly": [
-  {
-   "y": 2024,
-   "q": 2,
-   "rev": 2152.8,
-   "op": 129.3,
-   "ni": 124.2
-  },
   {
    "y": 2024,
    "q": 3,
@@ -212,6 +205,13 @@
    "rev": 2358.4,
    "op": 215.8,
    "ni": 171.5
+  },
+  {
+   "y": 2026,
+   "q": 4,
+   "rev": 2434.9,
+   "op": 355.8,
+   "ni": 380.1
   }
  ]
 }

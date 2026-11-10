@@ -2,14 +2,14 @@
  "name": "FERG",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "Ferguson Enterprises Inc. /DE/",
+ "legal_name": "Ferguson Enterprises Inc.",
  "code": "FERG",
  "cik": "0002011641",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-11-09",
+ "updated": "2026-11-10",
  "annual": [
   {
    "p": 2022,
@@ -67,20 +67,6 @@
  "quarterly": [
   {
    "y": 2024,
-   "q": 2,
-   "rev": 6673.0,
-   "op": 477.0,
-   "ni": 322.0
-  },
-  {
-   "y": 2024,
-   "q": 3,
-   "rev": 7308.0,
-   "op": 625.0,
-   "ni": 443.0
-  },
-  {
-   "y": 2024,
    "q": 4,
    "rev": 7946.0,
    "op": 811.0,
@@ -117,23 +103,37 @@
   {
    "y": 2026,
    "q": 1,
+   "rev": 8245.0,
+   "op": 844.0,
+   "ni": 638.0
+  },
+  {
+   "y": 2026,
+   "q": 2,
    "rev": 8169.0,
    "op": 771.0,
    "ni": 570.0
   },
   {
    "y": 2026,
-   "q": 2,
+   "q": 3,
    "rev": 7472.0,
    "op": 612.0,
    "ni": 414.0
   },
   {
    "y": 2026,
-   "q": 3,
+   "q": 4,
    "rev": 8751.0,
    "op": 893.0,
    "ni": 666.0
+  },
+  {
+   "y": 2027,
+   "q": 1,
+   "rev": 9026.0,
+   "op": 885.0,
+   "ni": 598.0
   }
  ]
 }

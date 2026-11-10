@@ -2,28 +2,15 @@
  "name": "TEL",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "TE CONNECTIVITY PLC",
+ "legal_name": "TE CONNECTIVITY PLC",
  "code": "TEL",
  "cik": "0001385157",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-11-09",
+ "updated": "2026-11-10",
  "annual": [
-  {
-   "p": 2016,
-   "rev": 11352.0,
-   "op": 1808.0,
-   "ni": 2009.0,
-   "assets": 17608.0,
-   "liab": 9123.0,
-   "equity": 8485.0,
-   "dps": 1.4,
-   "payout": 25.3,
-   "yield": null,
-   "dps_adj": 1.4
-  },
   {
    "p": 2017,
    "rev": 12185.0,
@@ -140,16 +127,22 @@
    "payout": 43.6,
    "yield": null,
    "dps_adj": 2.72
+  },
+  {
+   "p": 2026,
+   "rev": 19885.0,
+   "op": 3991.0,
+   "ni": 3253.0,
+   "assets": 26672.0,
+   "liab": 12949.0,
+   "equity": 13573.0,
+   "dps": 2.98,
+   "payout": 26.7,
+   "yield": null,
+   "dps_adj": 2.98
   }
  ],
  "quarterly": [
-  {
-   "y": 2024,
-   "q": 2,
-   "rev": 3967.0,
-   "op": 692.0,
-   "ni": 541.0
-  },
   {
    "y": 2024,
    "q": 3,
@@ -212,6 +205,13 @@
    "rev": 5160.0,
    "op": 981.0,
    "ni": 748.0
+  },
+  {
+   "y": 2026,
+   "q": 4,
+   "rev": 5312.0,
+   "op": 1093.0,
+   "ni": 900.0
   }
  ]
 }

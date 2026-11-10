@@ -2,14 +2,14 @@
  "name": "TTD",
  "split_adjusted": true,
  "restated_from": null,
- "legal_name": "The Trade Desk, Inc.",
+ "legal_name": "TRADE DESK, INC.",
  "code": "TTD",
  "cik": "0001671933",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-11-09",
+ "updated": "2026-11-10",
  "annual": [
   {
    "p": 2016,
@@ -145,13 +145,6 @@
  "quarterly": [
   {
    "y": 2024,
-   "q": 1,
-   "rev": 491.3,
-   "op": 28.7,
-   "ni": 31.7
-  },
-  {
-   "y": 2024,
    "q": 2,
    "rev": 584.5,
    "op": 94.7,
@@ -212,6 +205,13 @@
    "rev": 715.1,
    "op": 101.6,
    "ni": 64.4
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 736.0,
+   "op": 92.6,
+   "ni": 38.0
   }
  ]
 }

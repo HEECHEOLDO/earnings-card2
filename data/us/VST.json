@@ -2,14 +2,14 @@
  "name": "VST",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "Vistra Operations Company LLC",
+ "legal_name": "Vistra Corp.",
  "code": "VST",
  "cik": "0001692819",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-11-09",
+ "updated": "2026-11-10",
  "annual": [
   {
    "p": 2017,
@@ -132,13 +132,6 @@
  "quarterly": [
   {
    "y": 2024,
-   "q": 1,
-   "rev": 3054.0,
-   "op": 86.0,
-   "ni": 18.0
-  },
-  {
-   "y": 2024,
    "q": 2,
    "rev": 3845.0,
    "op": 808.0,
@@ -199,6 +192,13 @@
    "rev": 4017.0,
    "op": 553.0,
    "ni": 305.0
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 6347.0,
+   "op": 1706.0,
+   "ni": 1140.0
   }
  ]
 }

@@ -2,28 +2,15 @@
  "name": "EMR",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "EMERSON ELECTRIC CO.",
+ "legal_name": "Emerson Electric Co.",
  "code": "EMR",
  "cik": "0000032604",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-11-09",
+ "updated": "2026-11-10",
  "annual": [
-  {
-   "p": 2016,
-   "rev": 14522.0,
-   "op": 2316.0,
-   "ni": 1635.0,
-   "assets": 21732.0,
-   "liab": null,
-   "equity": 7618.0,
-   "dps": 1.9,
-   "payout": 75.0,
-   "yield": null,
-   "dps_adj": 1.9
-  },
   {
    "p": 2017,
    "rev": 15264.0,
@@ -118,38 +105,44 @@
   {
    "p": 2024,
    "rev": 17492.0,
-   "op": 2020.0,
-   "ni": 1968.0,
-   "assets": 42610.0,
+   "op": 2031.0,
+   "ni": 1974.0,
+   "assets": 44246.0,
    "liab": null,
-   "equity": 26379.0,
+   "equity": 27509.0,
    "dps": 2.1,
-   "payout": 61.0,
+   "payout": 60.8,
    "yield": null,
    "dps_adj": 2.1
   },
   {
    "p": 2025,
    "rev": 18016.0,
-   "op": 2934.0,
-   "ni": 2293.0,
+   "op": 2905.0,
+   "ni": 2270.0,
    "assets": 41964.0,
    "liab": null,
    "equity": 20298.0,
    "dps": 2.11,
-   "payout": 52.0,
+   "payout": 52.5,
    "yield": null,
    "dps_adj": 2.11
+  },
+  {
+   "p": 2026,
+   "rev": 18982.0,
+   "op": 3489.0,
+   "ni": 2691.0,
+   "assets": 41814.0,
+   "liab": null,
+   "equity": 20756.0,
+   "dps": 2.22,
+   "payout": 46.2,
+   "yield": null,
+   "dps_adj": 2.22
   }
  ],
  "quarterly": [
-  {
-   "y": 2024,
-   "q": 2,
-   "rev": 4376.0,
-   "op": 711.0,
-   "ni": 501.0
-  },
   {
    "y": 2024,
    "q": 3,
@@ -169,49 +162,56 @@
    "q": 1,
    "rev": 4175.0,
    "op": 775.0,
-   "ni": 585.0
+   "ni": 586.0
   },
   {
    "y": 2025,
    "q": 2,
    "rev": 4432.0,
    "op": 629.0,
-   "ni": 485.0
+   "ni": 486.0
   },
   {
    "y": 2025,
    "q": 3,
    "rev": 4553.0,
    "op": 734.0,
-   "ni": 586.0
+   "ni": 588.0
   },
   {
    "y": 2025,
    "q": 4,
    "rev": 4855.0,
    "op": null,
-   "ni": 637.0
+   "ni": 609.0
   },
   {
    "y": 2026,
    "q": 1,
    "rev": 4346.0,
    "op": 775.0,
-   "ni": 605.0
+   "ni": 607.0
   },
   {
    "y": 2026,
    "q": 2,
    "rev": 4562.0,
    "op": 793.0,
-   "ni": 618.0
+   "ni": 620.0
   },
   {
    "y": 2026,
    "q": 3,
    "rev": 4873.0,
    "op": 916.0,
-   "ni": 718.0
+   "ni": 720.0
+  },
+  {
+   "y": 2026,
+   "q": 4,
+   "rev": 5201.0,
+   "op": null,
+   "ni": 744.0
   }
  ]
 }

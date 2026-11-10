@@ -2,14 +2,14 @@
  "name": "NRG",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "NRG Energy, Inc",
+ "legal_name": "NRG ENERGY, INC.",
  "code": "NRG",
  "cik": "0001013871",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-11-09",
+ "updated": "2026-11-10",
  "annual": [
   {
    "p": 2016,
@@ -145,13 +145,6 @@
  "quarterly": [
   {
    "y": 2024,
-   "q": 1,
-   "rev": 7429.0,
-   "op": 872.0,
-   "ni": 511.0
-  },
-  {
-   "y": 2024,
    "q": 2,
    "rev": 6659.0,
    "op": 1410.0,
@@ -212,6 +205,13 @@
    "rev": 7481.0,
    "op": 976.0,
    "ni": 506.0
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 9466.0,
+   "op": 1084.0,
+   "ni": 561.0
   }
  ]
 }
