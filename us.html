@@ -646,7 +646,8 @@
     // 배당 선을 실제로 그릴 때만 제목에 '·배당' 을 붙인다
     var withDiv = showLine !== false && !!spec && !!spec.line &&
                   spec.line.label === '주당배당금';
-    return LABELS[period].suffix(rows.length, withDiv);
+    var n = rows.filter(function (r) { return !r.partial; }).length;   // 올해 누적 막대는 햇수에 넣지 않는다
+    return LABELS[period].suffix(n, withDiv);
   }
 
   /* ============================================================
@@ -894,7 +895,38 @@
     }
 
     rows.forEach(function (r) { r.bar1 = r.rev; r.bar2 = r.op; r.line = r.dps; });
-    return rows.slice(-(count || rows.length));
+    rows = rows.slice(-(count || rows.length));
+    var ytd = ytdRow(company);                 // '최근 10년' 은 다 끝난 해 10개 + 올해 누적 막대
+    if (ytd) rows.push(ytd);
+    return rows;
+  }
+
+  // 올해 1분기부터 지금까지 나온 분기를 더한 막대 (2026-11).
+  // 연간 실적은 사업보고서가 나와야 생겨서 11월에도 마지막 막대가 작년이었다. 그 사이를 누적으로 메운다.
+  // 3분기까지 낸 회사는 1~3분기, 아직 2분기까지인 회사는 1~2분기 — 다음 분기가 나오면 자동으로 늘어난다.
+  // 1분기부터 빠짐없이 이어질 때만 만든다. 해당 연도 연간 실적이 이미 있으면 만들지 않는다.
+  function ytdRow(company) {
+    function num(v) { return (v === null || v === undefined || isNaN(v)) ? 0 : v; }
+    var q = company.quarterly || [], a = company.annual || [];
+    if (!q.length) return null;
+    var Y = q[q.length - 1].y;
+    if (a.length && a[a.length - 1].p >= Y) return null;
+    if (a.length && a[a.length - 1].p !== Y - 1) return null;          // 작년 연간도 없으면 이어 붙이지 않는다
+    var cur = q.filter(function (x) { return x.y === Y; });
+    for (var i = 0; i < cur.length; i++) if (cur[i].q !== i + 1 || cur[i].rev == null) return null;
+    var n = cur.length; if (!n) return null;
+    var noOp = cur.some(function (x) { return x.op == null; });
+    var sum = function (k) { return cur.reduce(function (s0, x) { return s0 + num(x[k]); }, 0); };
+    var rev = sum('rev'), op = noOp ? null : sum('op'), ni = cur.every(function (x) { return x.ni != null; }) ? sum('ni') : null;
+    var span = n === 1 ? '1분기' : '1~' + n + '분기';
+    return {
+      label: Y + ' ' + (n === 1 ? '1Q' : '1~' + n + 'Q'), short: "'" + String(Y).slice(2),
+      yearMark: n === 4 ? '분기 합' : (n === 1 ? '1Q' : '1~' + n + 'Q') + ' 누적', partial: true, span: span, year: Y,
+      rev: conv(rev), op: conv(num(op)), ni: conv(num(ni)), bar1: conv(rev), bar2: conv(num(op)),
+      dps: null, dpsRaw: null, payout: null, yield: null, line: null,
+      margin: rev && op != null ? op / rev * 100 : 0,
+      netMargin: rev && ni != null ? ni / rev * 100 : 0
+    };
   }
 
   function maxCount(company, period) {
@@ -906,7 +938,7 @@
     return a.length - first;
   }
 
-  function seriesSpec(period, rows) {
+  function seriesSpec0(period, rows) {
     var won = function (v) { return Math.round(v).toLocaleString('ko-KR'); };
     var pct = function (v) { return (v === null || v === undefined || isNaN(v)) ? '-' : v.toFixed(1) + '%'; };
     var yearBasis = function (last) { return "'" + last.label.slice(2) + '년 기준'; };
@@ -1021,6 +1053,31 @@
       },
       basisFmt: yearBasis
     };
+  }
+
+  // 마지막 막대가 올해 누적이면: 배당 칩 대신 이익률, 기준 문구는 '\'26년 1~3분기 누적 기준'
+  function seriesSpec(period, rows) {
+    var spec = seriesSpec0(period, rows);
+    var last = rows && rows[rows.length - 1];
+    if (period !== 'annual' || !last || !last.partial) return spec;
+    var pct = function (v) { return (v === null || v === undefined || isNaN(v)) ? '-' : v.toFixed(1) + '%'; };
+    var noOp = !spec.bars.some(function (b) { return b.key === 'bar2'; });
+    var chips0 = spec.chips, alt0 = spec.altChip;
+    spec.chips = function (l, unit, rs) {
+      return chips0(l, unit, rs).map(function (c) {
+        return c.l === '주당배당금'
+          ? (noOp ? { l: '순이익률', v: pct(l.netMargin), c: 'ink' } : { l: '영업이익률', v: pct(l.margin), c: 'ink' })
+          : c;
+      });
+    };
+    spec.altChip = function (l, unit) {
+      var c = alt0(l, unit);
+      return c;
+    };
+    spec.basisFmt = function (l) {
+      return "'" + String(l.year).slice(2) + '년 ' + l.span + (l.span === '1분기' ? '' : ' 누적') + ' 기준';
+    };
+    return spec;
   }
 
   /* ============================================================
@@ -1254,8 +1311,10 @@
         var top = v >= 0 ? y : zero, h = Math.abs(zero - y);
         if (h < 1) h = 1;
         ctx.fillStyle = colors[b.color];
+        ctx.globalAlpha = r.partial ? 0.55 : 1;                      // 올해 누적(아직 1년이 안 찬 막대)은 옅게
         roundRect(ctx, gx + bw * j, top, bw - (nBars === 1 ? 0 : 4), h, 4);
         ctx.fill();
+        ctx.globalAlpha = 1;
       });
     });
 
