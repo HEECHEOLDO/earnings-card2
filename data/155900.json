@@ -117,9 +117,9 @@
   {
    "y": 2023,
    "q": 3,
-   "rev": -0.7,
-   "op": 8.0,
-   "ni": -32.9
+   "rev": null,
+   "op": null,
+   "ni": null
   }
  ],
  "q_method": "strict"

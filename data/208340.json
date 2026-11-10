@@ -153,9 +153,9 @@
   {
    "y": 2025,
    "q": 4,
-   "rev": -21.4,
-   "op": -100.3,
-   "ni": -77.2
+   "rev": null,
+   "op": null,
+   "ni": null
   }
  ],
  "q_method": "strict"

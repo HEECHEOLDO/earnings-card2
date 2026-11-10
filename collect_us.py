@@ -854,6 +854,20 @@ def add_bank_revenue(facts):
     return _sum_tags(facts, "NoninterestIncome", "InterestIncomeExpenseNet", BANK_REV)
 
 
+PROXY_FORMS = ("DEF 14A", "DEFA14A", "DEFM14A", "DEFR14A", "PRE 14A", "PRER14A")
+
+
+def drop_proxy_facts(j):
+    """주주총회 안내서(DEF 14A)의 '보수 대 성과' 표 숫자는 버린다.
+    순이익이 천 달러 단위로 잘못 적혀 들어오고(슈왑 2025 순이익 88.5억 → 885만 달러),
+    10-K 보다 늦게 제출돼 '가장 최근 값'으로 뽑혔다 (슈왑·아리스타·메드트로닉·페덱스·페이첵스·콘에드 등)."""
+    for ns in (j or {}).get("facts", {}).values():
+        for node in ns.values():
+            for unit, rows in list(node.get("units", {}).items()):
+                node["units"][unit] = [r for r in rows if (r.get("form") or "") not in PROXY_FORMS]
+    return j
+
+
 def fetch_facts(ciks):
     """CIK 여러 개를 받아 합친 companyfacts 를 돌려준다."""
     merged, names = None, []
@@ -864,7 +878,7 @@ def fetch_facts(ciks):
             continue
         nm = j.get("entityName") or "?"
         names.append("%s(%s)" % (nm, cik))
-        merged = merge_facts(merged, j)
+        merged = merge_facts(merged, drop_proxy_facts(j))
     if names:
         log("  법인: " + " + ".join(names))
     return merged
