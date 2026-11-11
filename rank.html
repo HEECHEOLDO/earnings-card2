@@ -203,8 +203,12 @@
           <div><label class="f" for="rv-ratio">비율</label>
             <select id="rv-ratio"><option value="916">9:16 (1080×1920) · 릴스·쇼츠</option><option value="45">4:5 (1080×1350) · 피드</option></select></div>
           <div><label class="f" for="rv-from">시작</label><select id="rv-from"></select></div>
-          <div><label class="f" for="rv-n">회사 수</label>
-            <select id="rv-n"><option value="5">TOP 5</option><option value="10" selected>TOP 10</option><option value="15">TOP 15</option><option value="20">TOP 20</option><option value="30">TOP 30</option></select></div>
+        </div>
+        <label class="f" for="rv-n" style="margin-top:6px">회사 수 <b id="rv-n-val">TOP 10</b></label>
+        <input id="rv-n" type="range" min="3" max="30" step="1" value="10" style="width:100%">
+        <div class="mini" id="rv-n-quick" style="margin-top:4px">
+          <button type="button" data-n="5">5</button><button type="button" data-n="7">7</button><button type="button" data-n="10">10</button>
+          <button type="button" data-n="15">15</button><button type="button" data-n="20">20</button><button type="button" data-n="30">30</button>
         </div>
         <div class="row" style="margin-top:6px">
           <div><label class="f" for="rv-per">한 해 길이 (초)</label><input id="rv-per" type="number" min="0.5" max="8" step="0.1" value="1.5"></div>
@@ -801,6 +805,11 @@
   }
   window.__rv = { draw: rvDraw, opts: rvOpts };
   $('rv-go').addEventListener('click', rvGo);
+  function rvN() { $('rv-n-val').textContent = 'TOP ' + $('rv-n').value; rvLen(); }      // 끌면 바로 숫자가 바뀐다 (3~30)
+  $('rv-n').addEventListener('input', rvN);
+  $('rv-n-quick').addEventListener('click', function (e) {
+    var b = e.target.closest('button'); if (!b) return; $('rv-n').value = b.getAttribute('data-n'); rvN();
+  });
   ['rv-from', 'rv-per', 'rv-tail', 'rv-ratio', 'rv-n'].forEach(function (id) { $(id).addEventListener('change', rvLen); $(id).addEventListener('input', rvLen); });
   $('mk').addEventListener('change', rvSetup);
 
