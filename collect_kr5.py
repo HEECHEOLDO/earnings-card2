@@ -132,7 +132,7 @@ def deep_old(code, corp_code, have):
 
 
 T0 = dt.datetime.now()
-MAX_MIN = 45                                    # 워크플로 제한 시간 안에 저장하고 끝내도록
+MAX_MIN = 70                                    # 워크플로 제한 시간 안에 저장하고 끝내도록
 
 
 def late():
