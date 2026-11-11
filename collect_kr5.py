@@ -131,6 +131,14 @@ def deep_old(code, corp_code, have):
     return rows
 
 
+T0 = dt.datetime.now()
+MAX_MIN = 45                                    # 워크플로 제한 시간 안에 저장하고 끝내도록
+
+
+def late():
+    return (dt.datetime.now() - T0).total_seconds() > MAX_MIN * 60
+
+
 def fetch(budget):
     raw = load_json(RAW, {"checked": {}, "rows": {}})
     raw.setdefault("deep", {})
@@ -145,7 +153,7 @@ def fetch(budget):
     C.log("상장사 %d곳 중 이번에 볼 곳 %d곳 (한도 %d회)" % (len(mc), len(todo), budget))
     done = 0
     for code in todo:
-        if C._call_count >= budget:
+        if C._call_count >= budget or late():
             break
         res = C.api_get("majorstock.json", {"corp_code": cmap[code]["corp_code"]})
         if C.ABORT:
@@ -181,7 +189,7 @@ def fetch(budget):
     deep_todo = sorted((c for c in mc if c in cmap and c not in raw["deep"]), key=lambda c: -mc[c].get("c", 0))
     dn = 0
     for code in deep_todo:
-        if C.ABORT or C._call_count >= budget:
+        if C.ABORT or C._call_count >= budget or late():
             break
         have = {r["fund"] for r in raw["rows"].get(code, [])}
         add = deep_old(code, cmap[code]["corp_code"], have)
