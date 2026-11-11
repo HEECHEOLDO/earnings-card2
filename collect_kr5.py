@@ -254,7 +254,7 @@ def main():
         C.API_KEY = C.get_key()
         cmap = C.load_corp_map()
         for spec in a.debug[3:].split(","):
-            code, y, rc = spec.split(":")
+            code, y, rc = spec.replace("fs:", "").split(":")
             rows = C.fetch_fs(cmap[code]["corp_code"], int(y), rc) or []
             C.log("== %s %s %s %s행" % (code, y, rc, len(rows)))
             for r in rows:
