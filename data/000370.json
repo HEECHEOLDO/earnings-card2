@@ -5,7 +5,7 @@
  "code": "000370",
  "market": "코스피",
  "sector": "",
- "updated": "2026-10-30",
+ "updated": "2026-11-11",
  "annual": [
   {
    "p": 2023,
@@ -19,8 +19,105 @@
    "payout": 14.8,
    "yield": 3.8,
    "dps_adj": 200.0
+  },
+  {
+   "p": 2024,
+   "rev": null,
+   "op": 4357.4,
+   "ni": 3159.7,
+   "assets": 198341.6,
+   "liab": 168810.8,
+   "equity": 29530.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": null,
+   "op": 4295.9,
+   "ni": 2923.3,
+   "assets": 204928.3,
+   "liab": 177852.5,
+   "equity": 27075.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
   }
  ],
- "quarterly": [],
+ "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": null,
+   "op": 1558.8,
+   "ni": 1084.7
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": null,
+   "op": 1480.3,
+   "ni": 1160.5
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": null,
+   "op": 1206.7,
+   "ni": 850.0
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": null,
+   "op": 111.7,
+   "ni": 64.3
+  },
+  {
+   "y": 2025,
+   "q": 1,
+   "rev": null,
+   "op": 1728.7,
+   "ni": 1275.2
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": null,
+   "op": 1059.8,
+   "ni": 698.6
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": null,
+   "op": 638.6,
+   "ni": 357.1
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": null,
+   "op": 868.9,
+   "ni": 592.5
+  },
+  {
+   "y": 2026,
+   "q": 1,
+   "rev": null,
+   "op": 1358.7,
+   "ni": 1064.6
+  },
+  {
+   "y": 2026,
+   "q": 2,
+   "rev": null,
+   "op": 1407.7,
+   "ni": 1211.7
+  }
+ ],
  "q_method": "strict"
 }
