@@ -57,8 +57,11 @@ def _ym_add(ym, k):
     return "%04d-%02d" % (y + m // 12, m % 12 + 1)
 
 
+US_FROM = "2008"        # 미국은 2009년부터 (2008년 말이 첫 기준점) — 월말 주가가 고르게 있는 때부터
+
+
 def add_us(months):
-    """미국 달마다 순위 (추정) — 달별 시가총액 무료 자료가 없어서
+    """미국 달마다 순위 (2009년~) — 달별 시가총액 무료 자료가 없어서
     연말 실제 시가총액(rank.json 의 us·us_only, companiesmarketcap)을 기준점으로 두고,
     그 사이 달은 월말 주가(monthly_us.json, 2005-11~) 오르내림만큼 늘리고 줄인다.
     두 연말 사이 주식 수 변화 등으로 생기는 차이는 달마다 조금씩 나눠 맞춰, 연말에는 실제 값과 같아진다.
@@ -77,8 +80,11 @@ def add_us(months):
         i = (int(ym[:4]) - int(s[:4])) * 12 + int(ym[5:7]) - int(s[5:7])
         v = it["v"]
         return v[i] if 0 <= i < len(v) and v[i] else None
-    anchors = []                                  # (월, 시점 키) — 연말들 + 지금
-    for y in sorted(k for k in R if k.isdigit()):
+    for v in months.values():                     # 예전에 만든 미국 칸은 지우고 다시
+        v.pop("us", None)
+        v.pop("us_only", None)
+    anchors = []                                  # (월, 시점 키) — 2008년 말부터의 연말들 + 지금
+    for y in sorted(k for k in R if k.isdigit() and k >= US_FROM):
         if R[y].get("us"):
             anchors.append(("%s-12" % y, y))
     now = R.get("now") or {}
@@ -123,7 +129,7 @@ def add_us(months):
                 rows.sort(key=lambda r: -r[2])
                 months.setdefault(ym, {"date": ym + "-28"})[mk] = rows[:30]
                 n_months += (mk == "us")
-    print("  미국 %d개월 (연말 실제 값 + 월말 주가로 추정)" % n_months)
+    print("  미국 %d개월 (2009~, 월말 종가 × 주식 수 — 연말은 실제 시가총액)" % n_months)
 
 
 def main():
