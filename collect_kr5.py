@@ -74,6 +74,17 @@ def ymd(d):
     return "%s-%s-%s" % (d[:4], d[4:6], d[6:8]) if len(d) == 8 else ""
 
 
+def dec(b):
+    """예전 공시 본문은 EUC-KR(cp949)이다."""
+    head = b[:200].decode("ascii", "ignore").lower()
+    for enc in (["euc-kr", "cp949"] if "euc-kr" in head else []) + ["utf-8", "cp949"]:
+        try:
+            return b.decode("cp949" if enc == "euc-kr" else enc)
+        except UnicodeDecodeError:
+            pass
+    return b.decode("utf-8", "replace")
+
+
 def parse_doc_rate(rno):
     """5% 보고서 본문에서 '이번 보고서' 보유주식 수·보유비율을 읽는다 (요약정보 표)."""
     blob = C.api_get("document.xml", {"rcept_no": rno}, raw=True) or b""
@@ -81,7 +92,7 @@ def parse_doc_rate(rno):
         return None
     with zipfile.ZipFile(io.BytesIO(blob)) as z:
         for nm in z.namelist():
-            t = re.sub(r"<[^>]+>", " ", z.read(nm).decode("utf-8", "replace"))
+            t = re.sub(r"<[^>]+>", " ", dec(z.read(nm)))
             t = re.sub(r"\s+", " ", t)
             m = re.search(r"보유주식등의 수 및 보유비율 보유주식등의 수 보유비율 직전 보고서 \S+ \S+ "
                           r"이번 보고서 ([\d,]+) ([\d.]+)", t)
@@ -240,7 +251,7 @@ def main():
                 C.log(rno, blob[:200]); continue
             with _zf.ZipFile(_io.BytesIO(blob)) as z:
                 for nm in z.namelist():
-                    t = z.read(nm).decode("utf-8", "replace")
+                    t = dec(z.read(nm))
                     t = re.sub(r"<[^>]+>", " ", t); t = re.sub(r"\s+", " ", t)
                     i = t.find("보유비율")
                     C.log("== %s %s len=%d" % (rno, nm, len(t)))
