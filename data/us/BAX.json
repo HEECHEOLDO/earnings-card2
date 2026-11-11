@@ -9,7 +9,7 @@
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-11-11",
+ "updated": "2026-11-12",
  "annual": [
   {
    "p": 2016,
@@ -88,19 +88,6 @@
    "payout": 41.3,
    "yield": null,
    "dps_adj": 1.085
-  },
-  {
-   "p": 2022,
-   "rev": 10057.0,
-   "op": -2845.0,
-   "ni": -2433.0,
-   "assets": 28287.0,
-   "liab": 22392.0,
-   "equity": 5895.0,
-   "dps": 1.15,
-   "payout": null,
-   "yield": null,
-   "dps_adj": 1.15
   },
   {
    "p": 2023,

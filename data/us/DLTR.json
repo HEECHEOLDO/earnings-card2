@@ -9,7 +9,7 @@
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-11-11",
+ "updated": "2026-11-12",
  "annual": [
   {
    "p": 2017,
@@ -84,32 +84,6 @@
    "assets": 22909.5,
    "liab": 14634.2,
    "equity": 7718.5,
-   "dps": null,
-   "payout": null,
-   "yield": null,
-   "dps_adj": null
-  },
-  {
-   "p": 2023,
-   "rev": 15405.7,
-   "op": 2099.3,
-   "ni": 1615.4,
-   "assets": 24031.2,
-   "liab": 15033.0,
-   "equity": 8751.5,
-   "dps": null,
-   "payout": null,
-   "yield": null,
-   "dps_adj": null
-  },
-  {
-   "p": 2024,
-   "rev": 16770.3,
-   "op": 1774.5,
-   "ni": -998.4,
-   "assets": 23332.8,
-   "liab": 15696.7,
-   "equity": 7313.1,
    "dps": null,
    "payout": null,
    "yield": null,
