@@ -11,8 +11,9 @@ permissions:
   contents: write
 
 concurrency:
-  group: us-mcap-collect
-  cancel-in-progress: true
+  # 시총 순위(rank.json)를 같이 고치는 두 워크플로가 겹치면 푸시 충돌로 실패했다 (2026-11-11) — 같은 줄에 세운다
+  group: rank-json-write
+  cancel-in-progress: false
 
 jobs:
   collect:

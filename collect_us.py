@@ -989,6 +989,15 @@ def collect_one(ticker, info):
             if r4 is not None:
                 quarterly.append({"y": fy, "q": 4, "rev": mil(r4),
                                   "op": mil(q4("op")), "ni": mil(q4("ni"))})
+    # 연간 매출이 1~3분기 합보다 작으면 연간 값이 틀린 것이다 (FIX 2025: 연간 매출이 1분기 값 1,831으로 공시 태그됨
+    # → 4분기 = 연간 - 3분기 누적이 -4,624). 그 해 연간 줄과 거기서 만든 4분기를 뺀다
+    for a in list(annual):
+        parts = [x["rev"] for x in quarterly if x["y"] == a["p"] and x["q"] in (1, 2, 3)]
+        if len(parts) == 3 and None not in parts and a.get("rev") and sum(parts) > a["rev"] * 1.02:
+            log("  [버림] FY%d 연간 매출 %s 이 1~3분기 합 %s 보다 작다 — 연간·4분기 값 제외"
+                % (a["p"], f"{a['rev']:,.0f}", f"{sum(parts):,.0f}"))
+            annual.remove(a)
+            quarterly = [x for x in quarterly if not (x["y"] == a["p"] and x["q"] == 4)]
     quarterly.sort(key=lambda x: (x["y"], x["q"]))
     quarterly = [x for x in quarterly if x["rev"] is not None][-QUARTERS:]
     for x in quarterly:
