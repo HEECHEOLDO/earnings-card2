@@ -778,8 +778,12 @@
       return fetch('./data/' + code + '.json', { cache: 'no-cache' })
         .then(function (r) { if (!r.ok) throw new Error('not found'); return r.json(); })
         .then(function (d) {
-          d.annual = (d.annual || []).filter(function (x) { return x.rev != null && x.op != null; });
-          d.quarterly = (d.quarterly || []).filter(function (x) { return x.rev != null && x.op != null; });
+          // 금융사 중 2025년부터 손익계산서에 매출(영업수익) 합계가 없는 곳(한국금융지주·한화생명 등)은
+          // 매출 대신 영업이익·순이익 막대로 그린다 (d.noRev)
+          d.noRev = (d.annual || []).slice(-3).some(function (x) { return x.rev == null && x.op != null; });
+          var keep = d.noRev ? function (x) { return x.op != null; } : function (x) { return x.rev != null && x.op != null; };
+          d.annual = (d.annual || []).filter(keep);
+          d.quarterly = (d.quarterly || []).filter(keep);
           Adapter.loaded[code] = d;
           return d;
         })
@@ -804,8 +808,8 @@
         return {
           label: d.y + '.' + d.q + 'Q', short: d.q + 'Q',
           yearMark: showYear ? d.y + '년' : null,
-          bar1: num(d.rev), bar2: num(d.op),
-          line: d.rev ? num(d.op) / d.rev * 100 : 0, ni: num(d.ni)
+          bar1: company.noRev ? num(d.op) : num(d.rev), bar2: company.noRev ? num(d.ni) : num(d.op),
+          line: company.noRev ? null : (d.rev ? num(d.op) / d.rev * 100 : 0), ni: num(d.ni), noRev: !!company.noRev
         };
       });
     }
@@ -833,6 +837,7 @@
     rows = rows.slice(-(count || rows.length));
     var ytd = ytdRow(company);                 // '최근 10년' 은 다 끝난 해 10개 + 올해 누적 막대
     if (ytd) rows.push(ytd);
+    if (company.noRev) rows.forEach(function (r) { r.bar1 = r.op; r.bar2 = r.ni; r.margin = null; r.noRev = true; });
     return rows;
   }
 
@@ -848,17 +853,19 @@
     if (a.length && a[a.length - 1].p >= Y) return null;
     if (a.length && a[a.length - 1].p !== Y - 1) return null;          // 작년 연간도 없으면 이어 붙이지 않는다
     var cur = q.filter(function (x) { return x.y === Y; });
-    for (var i = 0; i < cur.length; i++) if (cur[i].q !== i + 1 || cur[i].rev == null) return null;
+    for (var i = 0; i < cur.length; i++) if (cur[i].q !== i + 1 || (cur[i].rev == null && !company.noRev) || cur[i].op == null) return null;
     var n = cur.length; if (!n) return null;
     var noOp = cur.some(function (x) { return x.op == null; });
     var sum = function (k) { return cur.reduce(function (s0, x) { return s0 + num(x[k]); }, 0); };
     var rev = sum('rev'), op = noOp ? null : sum('op'), ni = cur.every(function (x) { return x.ni != null; }) ? sum('ni') : null;
     var span = n === 1 ? '1분기' : '1~' + n + '분기';
+    var prevQ = q.filter(function (x) { return x.y === Y - 1 && x.q <= n && x.op != null; });
+    var prevOp = prevQ.length === n ? prevQ.reduce(function (s0, x) { return s0 + x.op; }, 0) : null;   // 작년 같은 기간
     return {
       label: Y + ' ' + (n === 1 ? '1Q' : '1~' + n + 'Q'), short: "'" + String(Y).slice(2),
       yearMark: n === 4 ? '분기 합' : (n === 1 ? '1Q' : '1~' + n + 'Q') + ' 누적', partial: true, span: span, year: Y,
       rev: (rev), op: (num(op)), ni: (num(ni)), bar1: (rev), bar2: (num(op)),
-      dps: null, dpsRaw: null, payout: null, yield: null, line: null,
+      dps: null, dpsRaw: null, payout: null, yield: null, line: null, prevOp: prevOp,
       margin: rev && op != null ? op / rev * 100 : 0,
       netMargin: rev && ni != null ? ni / rev * 100 : 0
     };
@@ -961,9 +968,40 @@
     };
   }
 
+  // 매출 합계가 없는 금융사: 막대 = 영업이익·순이익, 선 = 주당배당금(연간·배당하는 회사) 아니면 없음
+  function noRevSpec(spec, period, rows) {
+    var won = function (v) { return Math.round(v).toLocaleString('ko-KR'); };
+    var pays = period === 'annual' && rows.some(function (r) { return r.dps > 0; });
+    var back = period === 'quarterly' ? 4 : 1;
+    var yoy = function (l, rs) {
+      var base = l.partial ? l.prevOp : (rs[rs.length - 1 - back] || {}).bar1;
+      if (!(base > 0)) return '-';
+      var v = (l.bar1 / base - 1) * 100;
+      return (v >= 0 ? '+' : '') + v.toFixed(1) + '%';
+    };
+    spec.bars = [{ key: 'bar1', label: '영업이익', color: 'bar1' }, { key: 'bar2', label: '순이익', color: 'bar2' }];
+    spec.line = pays ? { key: 'line', label: '주당배당금', fmt: won, chipFmt: function (v) { return won(v) + '원'; } }
+                     : { key: 'noline', label: '', fmt: won, chipFmt: won };
+    spec.unitNote = pays ? '배당 원' : null;
+    spec.chips = function (l, unit, rs) {
+      rs = rs || rows;
+      return [
+        { l: '영업이익', v: fmtChip(l.bar1, unit), c: 'ink' },
+        { l: '순이익', v: fmtChip(l.bar2, unit), c: 'bar2' },
+        pays && !l.partial ? { l: '주당배당금', v: won(l.dps) + '원', c: 'line' }
+                           : { l: period === 'quarterly' ? '전년 동기 대비' : '전년 대비', v: yoy(l, rs), c: 'ink' }
+      ];
+    };
+    spec.altChip = function (l) {
+      return { l: period === 'quarterly' ? '전년 동기 대비' : '전년 대비', v: yoy(l, rows), c: 'ink' };
+    };
+    return spec;
+  }
+
   // 마지막 막대가 올해 누적이면: 배당 칩 대신 이익률, 기준 문구는 '\'26년 1~3분기 누적 기준'
   function seriesSpec(period, rows) {
     var spec = seriesSpec0(period, rows);
+    if (period !== 'dividend' && rows && rows.length && rows[0].noRev) spec = noRevSpec(spec, period, rows);
     var last = rows && rows[rows.length - 1];
     if (period !== 'annual' || !last || !last.partial) return spec;
     var pct = function (v) { return (v === null || v === undefined || isNaN(v)) ? '-' : v.toFixed(1) + '%'; };
@@ -1373,7 +1411,7 @@
     ctx.textBaseline = 'alphabetic';
     ctx.textAlign = 'left';
 
-    var showLine = state.showLine[state.period] !== false;
+    var showLine = state.showLine[state.period] !== false && !(spec && spec.line && spec.line.key === 'noline');
 
     /* 헤드라인 — 두 줄 모두 900/먹색, 회사명만 크게 */
     // 사용자가 적어 넣었으면 그걸 쓰고, 비워뒀으면 자동 문구를 쓴다
@@ -1632,7 +1670,7 @@
          { type: 'line', label: '배당성향(%)', data: rows.map(function (r) { return r.payout; }),
            borderColor: colors.bar2, backgroundColor: colors.bar2, tension: .3, yAxisID: 'y1' }]
       : [{ type: 'line', label: '영업이익률(%)',
-           data: rows.map(function (r) { return +r.line.toFixed(1); }),
+           data: rows.map(function (r) { return r.line == null ? null : +r.line.toFixed(1); }),
            borderColor: colors.line, backgroundColor: colors.line, tension: .3, yAxisID: 'y' }];
 
     chart2 = new Chart(document.getElementById('chart2'), {
@@ -1662,23 +1700,26 @@
           '<td>' + Math.round(r.ni).toLocaleString('ko-KR') + '</td>'].join('');
       });
     } else if (period === 'annual') {
-      head = ['연도', '매출(' + unit + ')', '영업이익(' + unit + ')', '영업이익률', 'DPS(원)', '배당성향'];
+      var nr = rows.length && rows[0].noRev;
+      head = ['연도', (nr ? '영업이익(' : '매출(') + unit + ')', (nr ? '순이익(' : '영업이익(') + unit + ')', '영업이익률', 'DPS(원)', '배당성향'];
       body = rows.map(function (r) {
         return ['<td>' + r.label + '</td>',
           '<td>' + fmtAmount(r.bar1, unit) + '</td>',
           '<td>' + fmtAmount(r.bar2, unit) + '</td>',
-          '<td>' + r.margin.toFixed(1) + '%</td>',
+          '<td>' + (r.margin == null ? '-' : r.margin.toFixed(1) + '%') + '</td>',
           '<td>' + (r.partial ? '-' : Math.round(r.dps).toLocaleString('ko-KR')) + '</td>',
           '<td>' + (r.partial ? '-' : r.payout.toFixed(1) + '%') + '</td>'].join('');
       });
     } else {
-      head = ['분기', '매출(' + unit + ')', '영업이익(' + unit + ')', '순이익(' + unit + ')', '영업이익률'];
+      var nq = rows.length && rows[0].noRev;
+      head = nq ? ['분기', '영업이익(' + unit + ')', '순이익(' + unit + ')', '순이익(' + unit + ')', '영업이익률']
+                : ['분기', '매출(' + unit + ')', '영업이익(' + unit + ')', '순이익(' + unit + ')', '영업이익률'];
       body = rows.map(function (r) {
         return ['<td>' + r.label + '</td>',
           '<td>' + fmtAmount(r.bar1, unit) + '</td>',
           '<td>' + fmtAmount(r.bar2, unit) + '</td>',
           '<td>' + fmtAmount(r.ni, unit) + '</td>',
-          '<td>' + r.line.toFixed(1) + '%</td>'].join('');
+          '<td>' + (r.line == null ? '-' : r.line.toFixed(1) + '%') + '</td>'].join('');
       });
     }
     t.innerHTML = '<thead><tr>' + head.map(function (h) { return '<th>' + h + '</th>'; }).join('') +
@@ -2260,7 +2301,7 @@
   }
   function autoSubText() {
     try {
-      var showLine = state.showLine[state.period] !== false;
+      var showLine = state.showLine[state.period] !== false && !(state.spec && state.spec.line && state.spec.line.key === 'noline');
       return cardTitle(state.period, state.rows, state.spec, showLine) || '';
     } catch (e) { return ''; }
   }
