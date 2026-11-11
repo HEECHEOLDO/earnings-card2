@@ -250,6 +250,18 @@ def main():
     ap.add_argument("--build", action="store_true")
     ap.add_argument("--debug", default="", help="쉼표로 종목코드: 응답 요약만 찍는다")
     a = ap.parse_args()
+    if a.debug.startswith("fs:"):
+        C.API_KEY = C.get_key()
+        cmap = C.load_corp_map()
+        for spec in a.debug[3:].split(","):
+            code, y, rc = spec.split(":")
+            rows = C.fetch_fs(cmap[code]["corp_code"], int(y), rc) or []
+            C.log("== %s %s %s %s행" % (code, y, rc, len(rows)))
+            for r in rows:
+                if r.get("sj_div") in ("IS", "CIS"):
+                    C.log("   %s|%s|%s|%s|%s" % (r.get("sj_div"), r.get("ord"), (r.get("account_id") or "")[:60],
+                                               r.get("account_nm"), r.get("thstrm_amount")))
+        return
     if a.debug.startswith("doc:"):
         import io as _io, zipfile as _zf
         C.API_KEY = C.get_key()
