@@ -50,7 +50,7 @@ jobs:
           DART_API_KEY: ${{ secrets.DART_API_KEY }}
         run: |
           if [ -n "${{ github.event.inputs.kr_codes }}" ]; then
-            python3 collect.py ${{ github.event.inputs.kr_codes }}
+            python3 collect.py --force ${{ github.event.inputs.kr_codes }}
           elif [ -n "${{ github.event.inputs.debug }}" ]; then
             python3 collect_kr5.py --debug "${{ github.event.inputs.debug }}"
           else
