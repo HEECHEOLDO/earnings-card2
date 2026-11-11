@@ -159,6 +159,33 @@ def main():
     ap.add_argument("--build", action="store_true")
     ap.add_argument("--debug", default="", help="쉼표로 종목코드: 응답 요약만 찍는다")
     a = ap.parse_args()
+    if a.debug.startswith("doc:"):
+        import io as _io, zipfile as _zf
+        C.API_KEY = C.get_key()
+        for rno in a.debug[4:].split(","):
+            blob = C.api_get("document.xml", {"rcept_no": rno}, raw=True) or b""
+            if blob[:2] != b"PK":
+                C.log(rno, blob[:200]); continue
+            with _zf.ZipFile(_io.BytesIO(blob)) as z:
+                for nm in z.namelist():
+                    t = z.read(nm).decode("utf-8", "replace")
+                    t = re.sub(r"<[^>]+>", " ", t); t = re.sub(r"\s+", " ", t)
+                    i = t.find("보유비율")
+                    C.log("== %s %s len=%d" % (rno, nm, len(t)))
+                    for m in list(re.finditer("보유비율|보유주식등의 수", t))[:6]:
+                        C.log("   ..." + t[max(0, m.start() - 150): m.start() + 450])
+        return
+    if a.debug.startswith("list:"):
+        C.API_KEY = C.get_key()
+        cmap = C.load_corp_map()
+        for code in a.debug[5:].split(","):
+            res = C.api_get("list.json", {"corp_code": cmap[code]["corp_code"], "bgn_de": "20100101", "end_de": "20241231",
+                                          "pblntf_detail_ty": "D001", "page_count": 100}) or {}
+            L = res.get("list", [])
+            C.log("%s status=%s total=%s n=%d %s" % (code, res.get("status"), res.get("total_count"), len(L), res.get("message")))
+            for r in L[:12]:
+                C.log("   %s %s %s %s" % (r.get("rcept_dt"), r.get("rcept_no"), r.get("flr_nm"), r.get("report_nm")))
+        return
     if a.debug:
         C.API_KEY = C.get_key()
         cmap = C.load_corp_map()
