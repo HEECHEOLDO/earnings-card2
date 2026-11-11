@@ -11,6 +11,10 @@ on:
         description: '이번 실행에서 쓸 API 호출 수'
         required: false
         default: '1000'
+      kr_codes:
+        description: '실적을 다시 받을 국내 종목코드 (공백으로 구분, 이것만 하고 끝)'
+        required: false
+        default: ''
       debug:
         description: '응답만 살펴볼 종목코드 (쉼표)'
         required: false
@@ -45,7 +49,9 @@ jobs:
         env:
           DART_API_KEY: ${{ secrets.DART_API_KEY }}
         run: |
-          if [ -n "${{ github.event.inputs.debug }}" ]; then
+          if [ -n "${{ github.event.inputs.kr_codes }}" ]; then
+            python3 collect.py ${{ github.event.inputs.kr_codes }}
+          elif [ -n "${{ github.event.inputs.debug }}" ]; then
             python3 collect_kr5.py --debug "${{ github.event.inputs.debug }}"
           else
             python3 collect_kr5.py --budget ${{ github.event.inputs.budget || '1000' }}
@@ -55,12 +61,12 @@ jobs:
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/kr5.json data/kr5_raw.json
+          git add data/kr5.json data/kr5_raw.json data/*.json
           if git diff --staged --quiet; then
             echo "바뀐 것이 없습니다."
             exit 0
           fi
-          git commit -m "국내 운용사 5% 지분 갱신"
+          git commit -m "국내 운용사 5% 지분 갱신 ${{ github.event.inputs.kr_codes }}"
           for i in 1 2 3 4 5; do
             if git push; then
               echo "푸시 성공"

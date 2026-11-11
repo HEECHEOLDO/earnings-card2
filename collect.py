@@ -294,9 +294,14 @@ def pick_account(rows, kind, cumulative):
                 return v
         return to_num(r.get("thstrm_amount"))
 
+    def bad_name(r):
+        # 현대차증권 2025 반기: ifrs-full_Revenue 에 '영업이익' 이 붙어 와 매출=영업이익이 됐다
+        nm = (r.get("account_nm") or "")
+        return kind == "rev" and any(w in nm for w in ("이익", "손익", "비용"))
+
     for aid in cand["ids"]:
         for r in pool:
-            if (r.get("account_id") or "").strip() == aid:
+            if (r.get("account_id") or "").strip() == aid and not bad_name(r):
                 v = value_of(r)
                 if v is not None:
                     dbg("%s <- account_id %s" % (kind, aid))
@@ -310,6 +315,65 @@ def pick_account(rows, kind, cumulative):
                     dbg("%s <- account_nm %s" % (kind, nm))
                     return v
     return None
+
+
+FIN_IDS = {"ifrs-full_FeeAndCommissionIncome", "ifrs-full_RevenueFromInterest", "ifrs-full_InsuranceRevenue",
+           "ifrs-full_InsuranceServiceResult", "ifrs-full_InterestRevenueExpense", "dart_OperatingIncomeInsurance"}
+# 은행·카드·증권: 손익계산서에 '영업수익' 합계 줄이 없어진 경우(삼성카드 2025~) 총수익 = 아래 수익 줄의 합
+FIN_GROSS_IDS = ["ifrs-full_RevenueFromInterest", "ifrs-full_FeeAndCommissionIncome", "ifrs-full_RevenueFromDividends",
+                 "dart_LeaseIncome", "ifrs-full_ForeignExchangeGain", "ifrs-full_MiscellaneousOtherOperatingIncome",
+                 "dart_OtherOperatingIncome", "dart_InsuranceFinanceIncomeFromInsuranceContractsIssued"]
+_GROSS_OK = {}
+
+
+def is_financial(rows):
+    return any((r.get("account_id") or "").strip() in FIN_IDS for r in rows or [])
+
+
+def fin_gross(rows, cumulative):
+    """
+    2025년부터 금융회사 상당수가 손익계산서를 순액(순이자손익·순수수료손익…)으로만 내 '영업수익' 줄이 없다
+    (메리츠금융·삼성카드·한국금융지주·현대차증권 등 — 2025 사업보고서부터 매출 매칭 실패로 실적이 멈춰 있었다).
+    수익 줄(이자수익·수수료수익·배당·리스·외환이익·파생/유가증권 '이익')을 더해 총수익을 만든다.
+    보험사는 보험영업수익 + 투자영업수익. 이 값이 예전 '영업수익' 과 맞는지는 호출하는 쪽에서 직전 해와 비교해 확인한다.
+    """
+    sub = [r for r in rows or [] if r.get("sj_div") in ("IS", "CIS")]
+
+    def val(r):
+        if cumulative:
+            v = to_num(r.get("thstrm_add_amount"))
+            if v is not None:
+                return v
+        return to_num(r.get("thstrm_amount"))
+
+    def first(aid):
+        for r in sub:
+            if (r.get("account_id") or "").strip() == aid:
+                v = val(r)
+                if v is not None:
+                    return v
+        return None
+
+    ins = first("dart_OperatingIncomeInsurance")
+    inv = first("ifrs-full_InvestmentIncome")
+    if inv is not None and ins is not None:                 # 보험사
+        return ins + inv
+    total, used = 0.0, set()
+    for aid in FIN_GROSS_IDS:
+        v = first(aid)
+        if v is not None and v > 0:
+            total += v
+            used.add(aid)
+    for r in sub:                                           # 파생·유가증권 '이익' 줄 (손익·순액 줄은 뺀다)
+        aid = (r.get("account_id") or "").strip()
+        nm = (r.get("account_nm") or "").replace(" ", "")
+        if aid.startswith("dart_Gain") and not aid.startswith("dart_GainLoss") and aid not in used \
+                and (nm.endswith("이익") or nm.endswith("수익")):
+            v = val(r)
+            if v is not None and v > 0:
+                total += v
+                used.add(aid)
+    return total if used and total > 0 else None
 
 
 def eok(v):
@@ -427,7 +491,16 @@ def collect_annual(corp_code, latest_year):
         rev = pick_account(fs, "rev", cumulative=False)
         op = pick_account(fs, "op", cumulative=False)
         ni = pick_account(fs, "ni", cumulative=False)
-        if rev is None or op is None:
+        if rev is None and op is not None and is_financial(fs):
+            g = fin_gross(fs, cumulative=False)
+            prev = rows[-1]["rev"] if rows and rows[-1]["p"] == y - 1 and rows[-1].get("rev") else None
+            if g and (_GROSS_OK.get(corp_code) or (prev and 0.7 <= eok(g) / prev <= 1.45)):
+                rev = g
+                _GROSS_OK[corp_code] = True
+                log("  · %d년 매출 = 수익 줄 합계 %s억 (금융사, 영업수익 합계 줄 없음)" % (y, f"{eok(g):,.0f}"))
+            else:
+                log("  · %d년 매출 합계 줄 없음 — 영업이익·순이익만 넣는다 (금융사)" % y)
+        if op is None or (rev is None and not is_financial(fs)):
             log("  - %d년 매출/영업이익 매칭 실패, 건너뜀" % y)
             continue
         assets = pick_account(fs, "assets", cumulative=False)
@@ -440,7 +513,7 @@ def collect_annual(corp_code, latest_year):
             "dps": div["dps"], "payout": div["payout"], "yield": div["yield"],
         })
         log("  %d년  매출 %s억  영업이익 %s억  DPS %s" %
-            (y, f"{eok(rev):,.0f}", f"{eok(op):,.0f}",
+            (y, f"{eok(rev):,.0f}" if rev is not None else "-", f"{eok(op):,.0f}",
              f"{div['dps']:,.0f}원" if div["dps"] else "-"))
     return rows[-YEARS:]
 
@@ -465,14 +538,20 @@ def collect_quarterly(corp_code, latest_year):
     out = []
     for y in range(latest_year - 3, latest_year + 1):
         cum = {}
+        fin_tags = set()
         for tag, code in (("Q1", REPRT["Q1"]), ("HALF", REPRT["HALF"]),
                           ("Q3", REPRT["Q3"]), ("YEAR", REPRT["YEAR"])):
             fs = fetch_fs(corp_code, y, code)
             if not fs:
                 continue
             use_cum = tag != "YEAR"
+            rv = pick_account(fs, "rev", cumulative=use_cum)
+            if rv is None and _GROSS_OK.get(corp_code):          # 연간에서 맞는지 확인된 금융사만
+                rv = fin_gross(fs, cumulative=use_cum)
+            if rv is None and is_financial(fs):
+                fin_tags.add(tag)
             cum[tag] = {
-                "rev": pick_account(fs, "rev", cumulative=use_cum),
+                "rev": rv,
                 "op": pick_account(fs, "op", cumulative=use_cum),
                 "ni": pick_account(fs, "ni", cumulative=use_cum),
             }
@@ -493,10 +572,10 @@ def collect_quarterly(corp_code, latest_year):
         ]
         for q, fn in steps:
             rev, op, ni = fn("rev"), fn("op"), fn("ni")
-            if rev is None or op is None:
+            if op is None or (rev is None and not fin_tags):
                 continue
             out.append({"y": y, "q": q, "rev": eok(rev), "op": eok(op), "ni": eok(ni)})
-            log("  %d.%dQ  매출 %s억  영업이익 %s억" % (y, q, f"{eok(rev):,.0f}", f"{eok(op):,.0f}"))
+            log("  %d.%dQ  매출 %s억  영업이익 %s억" % (y, q, f"{eok(rev):,.0f}" if rev is not None else "-", f"{eok(op):,.0f}"))
 
     return out[-QUARTERS:]
 
@@ -560,6 +639,8 @@ def check_quarters_vs_annual(annual, quarterly):
     checked = 0
     for y, qs in sorted(by_year.items()):
         if len(qs) != 4 or y not in amap:
+            continue
+        if any(q.get("rev") is None for q in qs):
             continue
         s = sum(q["rev"] for q in qs)
         a = amap[y]["rev"]
