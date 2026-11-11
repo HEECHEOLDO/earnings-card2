@@ -4,6 +4,7 @@
 
   python3 build_rank_monthly.py          처음엔 1995년부터 전부, 그다음엔 올해·작년만 다시
   python3 build_rank_monthly.py --all    전부 다시
+  python3 build_rank_monthly.py --us-only  국내는 그대로 두고 미국(추정)만 다시
 
 출처: FinanceData/marcap (import_marcap.py 와 같은 곳 — 한국거래소 일별 전 종목 시가총액, 연도별 parquet).
 달마다 마지막 거래일 하루를 골라 collect_rank.column() 으로 코스피·코스닥·전체 TOP 50 을 만든다.
@@ -51,6 +52,80 @@ def months_of(path, y):
     return out
 
 
+def _ym_add(ym, k):
+    y, m = int(ym[:4]), int(ym[5:7]) - 1 + k
+    return "%04d-%02d" % (y + m // 12, m % 12 + 1)
+
+
+def add_us(months):
+    """미국 달마다 순위 (추정) — 달별 시가총액 무료 자료가 없어서
+    연말 실제 시가총액(rank.json 의 us·us_only, companiesmarketcap)을 기준점으로 두고,
+    그 사이 달은 월말 주가(monthly_us.json, 2005-11~) 오르내림만큼 늘리고 줄인다.
+    두 연말 사이 주식 수 변화 등으로 생기는 차이는 달마다 조금씩 나눠 맞춰, 연말에는 실제 값과 같아진다.
+    주가가 없는 회사(옛 회사·외국 회사)와 2005년 이전은 두 연말 값 사이를 고르게(기하) 잇는다."""
+    try:
+        R = json.load(open(C.OUT, encoding="utf-8"))["cols"]
+        P = json.load(open(os.path.join("data", "monthly_us.json"), encoding="utf-8"))["items"]
+    except Exception as e:                       # noqa: BLE001
+        print("  !! 미국: 자료 없음 (%s)" % e)
+        return
+    def price(t, ym):
+        it = P.get(t)
+        if not it:
+            return None
+        s = it["s"]
+        i = (int(ym[:4]) - int(s[:4])) * 12 + int(ym[5:7]) - int(s[5:7])
+        v = it["v"]
+        return v[i] if 0 <= i < len(v) and v[i] else None
+    anchors = []                                  # (월, 시점 키) — 연말들 + 지금
+    for y in sorted(k for k in R if k.isdigit()):
+        if R[y].get("us"):
+            anchors.append(("%s-12" % y, y))
+    now = R.get("now") or {}
+    nd = now.get("us_date") or now.get("date") or ""
+    if now.get("us") and len(nd) >= 7 and anchors and nd[:7] > anchors[-1][0]:
+        anchors.append((nd[:7], "now"))
+    n_months = 0
+    for (m0, k0), (m1, k1) in zip(anchors, anchors[1:]):
+        span = (int(m1[:4]) - int(m0[:4])) * 12 + int(m1[5:7]) - int(m0[5:7])
+        for mk in ("us", "us_only"):
+            A = {r[0]: (r[1], r[2]) for r in R[k0].get(mk, [])[:40]}
+            B = {r[0]: (r[1], r[2]) for r in R[k1].get(mk, [])[:40]}
+            for step in range(1, span + 1):
+                ym = _ym_add(m0, step)
+                if k1 == "now" and step == span:
+                    continue                      # 이번 달은 rank.html 이 '지금' 칸으로 붙인다
+                f = step / span
+                if step == span:                  # 연말 = 실제 순위 그대로
+                    months.setdefault(ym, {"date": ym + "-28"})[mk] = [list(r) for r in R[k1].get(mk, [])[:30]]
+                    n_months += (mk == "us")
+                    continue
+                # 한쪽 연말 목록(40위)에 없는 회사는 그 목록의 끝자리 바로 아래 값으로 잇는다
+                # (루슨트 2000년: 1999년 말 2위 → 2000년 말 40위 밖. 없다고 1999년 값을 그대로 두면 안 된다)
+                fa = min(v for _, v in A.values()) * 0.95 if A else 0
+                fb = min(v for _, v in B.values()) * 0.95 if B else 0
+                rows = []
+                for c in set(A) | set(B):
+                    a, b = A.get(c), B.get(c)
+                    nm = (b if (b and f >= 0.5) or not a else a)[0]
+                    pa, pm, pb = price(c, m0), price(c, ym), price(c, m1)
+                    if a and b and pa and pm and pb:
+                        drift = b[1] / (a[1] * pb / pa)
+                        v = a[1] * pm / pa * drift ** f
+                    elif a and pa and pm:
+                        v = a[1] * pm / pa
+                    elif b and pb and pm:
+                        v = b[1] * pm / pb
+                    else:
+                        va, vb = (a[1] if a else fa), (b[1] if b else fb)
+                        v = va * (vb / va) ** f if va > 0 and vb > 0 else (va or vb)
+                    rows.append([c, nm, round(v, 1)])
+                rows.sort(key=lambda r: -r[2])
+                months.setdefault(ym, {"date": ym + "-28"})[mk] = rows[:30]
+                n_months += (mk == "us")
+    print("  미국 %d개월 (연말 실제 값 + 월말 주가로 추정)" % n_months)
+
+
 def main():
     try:
         j = json.load(open(OUT, encoding="utf-8"))
@@ -59,7 +134,7 @@ def main():
     months = j.setdefault("months", {})
     this = date.today().year
     have_years = {k[:4] for k in months}
-    years = [y for y in range(FIRST, this + 1)
+    years = [] if "--us-only" in sys.argv else [y for y in range(FIRST, this + 1)
              if "--all" in sys.argv or str(y) not in have_years or y >= this - 1]
     for y in years:
         try:
@@ -75,6 +150,7 @@ def main():
         if ks:
             top = got[ks[-1]]["all"][:3]
             print("  %d  %s~%s (%d개월)  %s" % (y, ks[0], ks[-1], len(ks), " · ".join(r[1] for r in top)))
+    add_us(months)                               # 미국은 늘 다시 (호출 없음)
     j["months"] = dict(sorted(months.items()))
     j["updated"] = date.today().isoformat()
     j["unit"] = "억원"

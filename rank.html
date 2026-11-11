@@ -211,7 +211,7 @@
           <div><label class="f" for="rv-tail">마지막 멈춤 (초)</label><input id="rv-tail" type="number" min="0" max="8" step="0.1" value="3"></div>
         </div>
         <p class="note" id="rv-len"></p>
-        <p class="note">위에서 고른 시장·제목으로, 달마다 마지막 거래일 순위가 바뀌는 대로 로고가 위아래로 자리를 바꾸는 영상을 만듭니다. 국내는 1995년 5월부터 달마다, 미국은 달별 자료가 없어 해마다입니다. 화면에서 재생되며 녹화되니 끝날 때까지 이 창을 띄워 두세요.</p>
+        <p class="note">위에서 고른 시장·제목으로, 달마다 마지막 거래일 순위가 바뀌는 대로 로고가 위아래로 자리를 바꾸는 영상을 만듭니다. 국내는 1995년 5월부터 달마다 실제 순위, 미국은 1997년부터 달마다인데 연말만 실제 값이고 그 사이 달은 월말 주가로 추정한 값입니다(아래에 '추정' 표시). 화면에서 재생되며 녹화되니 끝날 때까지 이 창을 띄워 두세요.</p>
         <button class="btn" id="rv-go" type="button" style="margin-top:6px">영상 만들기</button>
         <p class="note" id="rv-note"></p>
         <canvas id="rv-cv" style="display:none;width:100%;max-width:360px;margin-top:10px;border-radius:12px"></canvas>
@@ -634,10 +634,13 @@
     .catch(function () { rvSetup(); });
   function rvSeries() {                      // [{k, label, foot, rows:[[code,name,cap]...]}] 오래된 것부터
     var mk = $('mk').value, out = [];
-    if (!isUS() && MONTH && MONTH.months) {
+    var hasM = MONTH && MONTH.months && Object.keys(MONTH.months).some(function (k) { return (MONTH.months[k][mk] || []).length; });
+    if (hasM) {                              // 국내 = 실제 월말 / 미국 = 연말 실제 + 월말 주가로 추정 (12월은 실제)
       Object.keys(MONTH.months).sort().forEach(function (k) {
         var rs = MONTH.months[k][mk]; if (!rs || !rs.length) return;
-        out.push({ k: k, y: k.slice(0, 4), label: k.replace('-', '.'), foot: k.slice(0, 4) + '년 ' + (+k.slice(5, 7)) + '월 말 기준', rows: rs });
+        var est = isUS() && k.slice(5, 7) !== '12';
+        out.push({ k: k, y: k.slice(0, 4), label: k.replace('-', '.'),
+                   foot: k.slice(0, 4) + '년 ' + (+k.slice(5, 7)) + '월 말 기준' + (est ? ' (추정)' : ''), rows: rs });
       });
     } else if (DATA) {
       keys().filter(function (k) { return k !== 'now'; }).forEach(function (k) {
