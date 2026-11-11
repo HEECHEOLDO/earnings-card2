@@ -696,7 +696,22 @@
   function rvDraw(X, O, t) {                 // t = 시점 번호(소수) — 정수 사이를 부드럽게
     var W = 1080, H = O.tall ? 1920 : 1350, S = O.S, N = O.n, us = isUS();
     var i0 = Math.max(0, Math.min(S.length - 1, Math.floor(t))), i1 = Math.min(S.length - 1, i0 + 1), q = t - i0;
-    var e = q < 0.5 ? 4 * q * q * q : 1 - Math.pow(-2 * q + 2, 3) / 2;      // 순위 자리 바꿈은 부드럽게
+    // 분기마다 멈췄다 가지 않게: 앞뒤 시점까지 보고 이어지는 곡선(단조 3차 보간)으로 자리·값을 잇는다
+    var ip = Math.max(0, i0 - 1), inx = Math.min(S.length - 1, i1 + 1);
+    var K = [ip, i0, i1, inx].map(function (k) {
+      var m = {}, rs = S[k].rows, lo = rs.length ? rs[rs.length - 1][2] : 0;
+      rs.forEach(function (r, i) { m[r[0]] = [i, r[2]]; });
+      return { m: m, lo: lo };
+    });
+    function at(j, c, w) { var x = K[j].m[c]; return x ? x[w] : (w ? K[j].lo * 0.9 : N + 2); }
+    function tan(a, b, c2, h0, h1) { var d0 = (b - a) / h0, d1 = (c2 - b) / h1; return d0 * d1 <= 0 ? 0 : 2 / (1 / d0 + 1 / d1); }
+    function curve(c, w) {
+      var p0 = at(0, c, w), p1 = at(1, c, w), p2 = at(2, c, w), p3 = at(3, c, w);
+      if (i1 === i0) return p1;
+      var m1 = ip === i0 ? p2 - p1 : tan(p0, p1, p2, 1, 1), m2 = inx === i1 ? p2 - p1 : tan(p1, p2, p3, 1, 1);
+      var q2 = q * q, q3 = q2 * q;
+      return (2 * q3 - 3 * q2 + 1) * p1 + (q3 - 2 * q2 + q) * m1 + (-2 * q3 + 3 * q2) * p2 + (q3 - q2) * m2;
+    }
     var A = {}, B = {}, NM = {};
     S[i0].rows.slice(0, N + 2).forEach(function (r, i) { A[r[0]] = [i, r[2]]; NM[r[0]] = r[1]; });
     S[i1].rows.slice(0, N + 2).forEach(function (r, i) { B[r[0]] = [i, r[2]]; if (q >= 0.5 || !NM[r[0]]) NM[r[0]] = r[1]; });
@@ -717,9 +732,7 @@
     var rh = (gy1 - gy0) / N, d = Math.min(rh * 0.8, 120), rk = 70, lx = L + rk + d / 2;
     var codes = {}; Object.keys(A).forEach(function (c) { codes[c] = 1; }); Object.keys(B).forEach(function (c) { codes[c] = 1; });
     var rows = Object.keys(codes).map(function (c) {
-      var a = A[c], b = B[c], ra = a ? a[0] : N + 1, rb = b ? b[0] : N + 1;
-      var va = a ? a[1] : 0, vb = b ? b[1] : 0;
-      return { c: c, pos: ra + (rb - ra) * e, v: va + (vb - va) * q };
+      return { c: c, pos: Math.min(N + 2, curve(c, 0)), v: Math.max(0, curve(c, 1)) };
     }).filter(function (o) { return o.pos < N + 0.5; });
     var vmax = Math.max.apply(null, rows.map(function (o) { return o.v; }).concat([1]));
     X.textBaseline = 'middle';
