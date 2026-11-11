@@ -11,6 +11,10 @@ on:
         description: '이번 실행에서 쓸 API 호출 수'
         required: false
         default: '1000'
+      debug:
+        description: '응답만 살펴볼 종목코드 (쉼표)'
+        required: false
+        default: ''
 
 permissions:
   contents: write
@@ -40,7 +44,12 @@ jobs:
       - name: 5% 공시 수집
         env:
           DART_API_KEY: ${{ secrets.DART_API_KEY }}
-        run: python3 collect_kr5.py --budget ${{ github.event.inputs.budget || '1000' }}
+        run: |
+          if [ -n "${{ github.event.inputs.debug }}" ]; then
+            python3 collect_kr5.py --debug "${{ github.event.inputs.debug }}"
+          else
+            python3 collect_kr5.py --budget ${{ github.event.inputs.budget || '1000' }}
+          fi
 
       - name: 변경분 커밋
         run: |

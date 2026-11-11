@@ -157,7 +157,21 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--budget", type=int, default=1000)
     ap.add_argument("--build", action="store_true")
+    ap.add_argument("--debug", default="", help="쉼표로 종목코드: 응답 요약만 찍는다")
     a = ap.parse_args()
+    if a.debug:
+        C.API_KEY = C.get_key()
+        cmap = C.load_corp_map()
+        for code in a.debug.split(","):
+            res = C.api_get("majorstock.json", {"corp_code": cmap[code]["corp_code"]}) or {}
+            L = res.get("list", [])
+            C.log("%s status=%s n=%d keys=%s" % (code, res.get("status"), len(L), sorted(L[0].keys()) if L else "-"))
+            reps = {}
+            for r in L:
+                reps.setdefault(r.get("repror"), []).append(r.get("rcept_dt"))
+            for k, v in sorted(reps.items(), key=lambda kv: -len(kv[1]))[:15]:
+                C.log("   %s  %d건  %s ~ %s" % (k, len(v), min(v), max(v)))
+        return
     raw = load_json(RAW, {"checked": {}, "rows": {}}) if a.build else fetch(a.budget)
     build(raw)
     if C.ABORT and not a.build:
