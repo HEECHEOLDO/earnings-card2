@@ -25,6 +25,7 @@ import os
 import re
 import sys
 import time
+import urllib.error
 import urllib.request
 from datetime import datetime, timedelta, timezone
 
@@ -516,4 +517,18 @@ if __name__ == "__main__":
     elif "--dry" in sys.argv:
         daily(dry=True)
     else:
-        daily()
+        try:
+            daily()
+        except urllib.error.HTTPError as e:
+            # 나스닥이 GitHub 서버를 막는 날이 있다(2026-11-11 하루 종일 403). 며칠 안 된 파일이면
+            # 실패로 표시하지 않고 그대로 둔다 — 사흘 넘게 못 받으면 그때는 실패로 알린다
+            try:
+                with open(OUT_MCAP, encoding="utf-8") as f:
+                    last = json.load(f).get("asof") or ""
+                age = (datetime.now(KST).date() - datetime.strptime(last, "%Y-%m-%d").date()).days
+            except Exception:                  # noqa: BLE001
+                age = 99
+            if age <= 3:
+                log("!! 나스닥 검색표 %s — %s 자료(%d일 전)를 그대로 둡니다. 다음 실행에서 다시 받습니다." % (e.code, last, age))
+                sys.exit(0)
+            raise
