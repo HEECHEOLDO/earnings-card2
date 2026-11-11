@@ -14,6 +14,8 @@ DART majorstock(대량보유 상황보고) API 는 '발행 회사' 단위로만 
 평가액 = 최근 보고 지분율 × 지금 시가총액(data/mcap.json). 5% 밑으로 내려간 마지막 보고는 '처분'으로 본다.
 """
 import argparse
+import io
+import zipfile
 import datetime as dt
 import json
 import os
@@ -67,8 +69,60 @@ def load_json(p, default):
         return default
 
 
+def ymd(d):
+    d = re.sub(r"\D", "", str(d or ""))
+    return "%s-%s-%s" % (d[:4], d[4:6], d[6:8]) if len(d) == 8 else ""
+
+
+def parse_doc_rate(rno):
+    """5% 보고서 본문에서 '이번 보고서' 보유주식 수·보유비율을 읽는다 (요약정보 표)."""
+    blob = C.api_get("document.xml", {"rcept_no": rno}, raw=True) or b""
+    if blob[:2] != b"PK":
+        return None
+    with zipfile.ZipFile(io.BytesIO(blob)) as z:
+        for nm in z.namelist():
+            t = re.sub(r"<[^>]+>", " ", z.read(nm).decode("utf-8", "replace"))
+            t = re.sub(r"\s+", " ", t)
+            m = re.search(r"보유주식등의 수 및 보유비율 보유주식등의 수 보유비율 직전 보고서 \S+ \S+ "
+                          r"이번 보고서 ([\d,]+) ([\d.]+)", t)
+            if m:
+                return num(m.group(1)), num(m.group(2))
+    return None
+
+
+def deep_old(code, corp_code, have):
+    """majorstock API 는 최근 2년치만 준다. 그보다 오래 바뀌지 않은 지분(국민연금의 삼성전자 등)은
+    공시 목록(list.json)에서 그 보고자의 마지막 5% 보고서를 찾아 본문에서 지분율을 읽는다."""
+    latest, page = {}, 1
+    while True:
+        res = C.api_get("list.json", {"corp_code": corp_code, "bgn_de": "20000101",
+                                      "end_de": dt.date.today().strftime("%Y%m%d"),
+                                      "pblntf_detail_ty": "D001", "page_count": 100, "page_no": page})
+        if not res or str(res.get("status")) != "000":
+            return [] if res and str(res.get("status")) == "013" else None
+        for r in res.get("list", []):
+            k = which_fund(r.get("flr_nm"))
+            if k and k not in have and (k not in latest or r["rcept_no"] > latest[k]["rcept_no"]):
+                latest[k] = r
+        if page >= int(res.get("total_page") or 1) or page >= 5:
+            break
+        page += 1
+    rows = []
+    for k, r in latest.items():
+        got = parse_doc_rate(r["rcept_no"])
+        if C.ABORT:
+            return None
+        if got:
+            rows.append({"fund": k, "repror": r.get("flr_nm"), "date": ymd(r.get("rcept_dt")), "rcept_no": r["rcept_no"],
+                         "rate": got[1], "shares": got[0], "reason": "본문(" + (r.get("report_nm") or "")[:30] + ")"})
+        else:
+            C.log("  ! %s %s 본문에서 지분율을 못 읽음" % (code, r["rcept_no"]))
+    return rows
+
+
 def fetch(budget):
     raw = load_json(RAW, {"checked": {}, "rows": {}})
+    raw.setdefault("deep", {})
     mc = load_json("data/mcap.json", {}).get("stocks", {})
     C.API_KEY = C.get_key()
     cmap = C.load_corp_map()
@@ -79,41 +133,59 @@ def fetch(budget):
     todo = sorted((c for c in mc if c in cmap and age(c) >= REFRESH_DAYS), key=lambda c: (-age(c), -mc[c].get("c", 0)))
     C.log("상장사 %d곳 중 이번에 볼 곳 %d곳 (한도 %d회)" % (len(mc), len(todo), budget))
     done = 0
-    for code in todo[:budget]:
+    for code in todo:
+        if C._call_count >= budget:
+            break
         res = C.api_get("majorstock.json", {"corp_code": cmap[code]["corp_code"]})
         if C.ABORT:
             break
         if res is None:
             continue
         st = str(res.get("status", ""))
-        rows = []
-        if st == "000":
-            latest = {}
-            for r in res.get("list", []):
-                k = which_fund(r.get("repror"))
-                if not k:
-                    continue
-                key = (r.get("rcept_dt") or "", r.get("rcept_no") or "")
-                if k not in latest or key > latest[k][0]:
-                    latest[k] = (key, r)
-            for k, (_, r) in latest.items():
-                rows.append({"fund": k, "repror": r.get("repror"), "date": r.get("rcept_dt"),
-                             "rcept_no": r.get("rcept_no"), "rate": num(r.get("stkrt")),
-                             "shares": num(r.get("stkqy")), "reason": (r.get("report_resn") or "")[:60]})
-        elif st != "013":                      # 013 = 보고서 없음
+        if st not in ("000", "013"):           # 013 = 보고서 없음
             C.log("  ! %s %s" % (code, res.get("message")))
             continue
+        latest = {}
+        for r in (res.get("list", []) if st == "000" else []):
+            k = which_fund(r.get("repror"))
+            if not k:
+                continue
+            key = (r.get("rcept_dt") or "", r.get("rcept_no") or "")
+            if k not in latest or key > latest[k][0]:
+                latest[k] = (key, r)
+        # 최근 2년 창에서 빠진 보고자는 예전 줄을 그대로 둔다 (빠졌다고 판 게 아니다 — 5% 밑으로 내려가면 보고가 나온다)
+        rows = {r["fund"]: r for r in raw["rows"].get(code, [])}
+        for k, (_, r) in latest.items():
+            rows[k] = {"fund": k, "repror": r.get("repror"), "date": ymd(r.get("rcept_dt")),
+                       "rcept_no": r.get("rcept_no"), "rate": num(r.get("stkrt")),
+                       "shares": num(r.get("stkqy")), "reason": (r.get("report_resn") or "")[:60]}
         if rows:
-            raw["rows"][code] = rows
-        else:
-            raw["rows"].pop(code, None)
+            raw["rows"][code] = list(rows.values())
         raw["checked"][code] = today.isoformat()
         done += 1
         if done % 200 == 0:
             C.log("  %d곳 확인" % done)
             save(RAW, raw)
+    # 오래된 지분 한 번씩 (회사마다 1번, 공시 목록 + 찾은 보고서 본문)
+    deep_todo = sorted((c for c in mc if c in cmap and c not in raw["deep"]), key=lambda c: -mc[c].get("c", 0))
+    dn = 0
+    for code in deep_todo:
+        if C.ABORT or C._call_count >= budget:
+            break
+        have = {r["fund"] for r in raw["rows"].get(code, [])}
+        add = deep_old(code, cmap[code]["corp_code"], have)
+        if add is None:
+            continue
+        if add:
+            raw["rows"][code] = raw["rows"].get(code, []) + add
+        raw["deep"][code] = today.isoformat()
+        dn += 1
+        if dn % 200 == 0:
+            C.log("  오래된 지분 %d곳 확인" % dn)
+            save(RAW, raw)
     save(RAW, raw)
-    C.log("확인 %d곳 · 호출 %d회%s" % (done, C._call_count, (" · 중단: " + C.ABORT) if C.ABORT else ""))
+    C.log("확인 %d곳 · 오래된 지분 %d곳 (남은 %d곳) · 호출 %d회%s" % (done, dn, len(deep_todo) - dn, C._call_count,
+          (" · 중단: " + C.ABORT) if C.ABORT else ""))
     return raw
 
 
