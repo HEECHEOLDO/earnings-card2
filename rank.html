@@ -198,6 +198,22 @@
       <label class="f" for="sub">아래 줄</label>
       <input type="text" id="sub" value="" placeholder="비워 두면 안 나옵니다">
       <button class="btn" id="dl">PNG 내려받기</button>
+      <details style="margin-top:16px"><summary>순위 변동 영상 만들기 (달마다)</summary>
+        <div class="row" style="margin-top:8px">
+          <div><label class="f" for="rv-ratio">비율</label>
+            <select id="rv-ratio"><option value="916">9:16 (1080×1920) · 릴스·쇼츠</option><option value="45">4:5 (1080×1350) · 피드</option></select></div>
+          <div><label class="f" for="rv-from">시작</label><select id="rv-from"></select></div>
+        </div>
+        <div class="row" style="margin-top:6px">
+          <div><label class="f" for="rv-per">한 해 길이 (초)</label><input id="rv-per" type="number" min="0.5" max="8" step="0.1" value="1.5"></div>
+          <div><label class="f" for="rv-tail">마지막 멈춤 (초)</label><input id="rv-tail" type="number" min="0" max="8" step="0.1" value="3"></div>
+        </div>
+        <p class="note" id="rv-len"></p>
+        <p class="note">위에서 고른 시장·TOP 10/15·제목으로, 달마다 마지막 거래일 순위가 바뀌는 대로 로고가 위아래로 자리를 바꾸는 영상을 만듭니다. 국내는 1995년 5월부터 달마다, 미국은 달별 자료가 없어 해마다입니다. 화면에서 재생되며 녹화되니 끝날 때까지 이 창을 띄워 두세요.</p>
+        <button class="btn" id="rv-go" type="button" style="margin-top:6px">영상 만들기</button>
+        <p class="note" id="rv-note"></p>
+        <canvas id="rv-cv" style="display:none;width:100%;max-width:360px;margin-top:10px;border-radius:12px"></canvas>
+      </details>
       <p class="note">해마다 <b>마지막 거래일</b>의 시가총액 순위입니다. 우선주·스팩은 빼고 셉니다. '현재'는 가장 최근 거래일 기준이고 매일 바뀝니다. 로고가 없는 회사는 이름으로 표시합니다.</p>
     </div>
   </div>
@@ -608,6 +624,161 @@
     }, 'image/png');
   });
 
+  // ════════ 순위 변동 영상 — 달마다(국내) / 해마다(미국) 순위대로 로고 줄이 위아래로 자리를 바꾼다 ════════
+  var MONTH = null;
+  fetch('./data/rank_monthly.json', { cache: 'no-cache' })
+    .then(function (r) { if (!r.ok) throw 0; return r.json(); })
+    .then(function (j) { MONTH = j; rvSetup(); })
+    .catch(function () { rvSetup(); });
+  function rvSeries() {                      // [{k, label, foot, rows:[[code,name,cap]...]}] 오래된 것부터
+    var mk = $('mk').value, out = [];
+    if (!isUS() && MONTH && MONTH.months) {
+      Object.keys(MONTH.months).sort().forEach(function (k) {
+        var rs = MONTH.months[k][mk]; if (!rs || !rs.length) return;
+        out.push({ k: k, y: k.slice(0, 4), label: k.replace('-', '.'), foot: k.slice(0, 4) + '년 ' + (+k.slice(5, 7)) + '월 말 기준', rows: rs });
+      });
+    } else if (DATA) {
+      keys().filter(function (k) { return k !== 'now'; }).forEach(function (k) {
+        out.push({ k: k, y: k, label: k, foot: k + '년 말 기준', rows: DATA.cols[k][mk] });
+      });
+    }
+    var now = DATA && DATA.cols.now, nr = now && now[mk];
+    if (nr && nr.length) {                   // 마지막 = 지금
+      var d = nowDate().split('-'), lab = d.length === 3 ? d[0] + '.' + d[1] : '현재';
+      if (out.length && out[out.length - 1].label === lab) out.pop();
+      out.push({ k: 'now', y: d[0], label: lab, foot: d.length === 3 ? d[0] + '년 ' + (+d[1]) + '월 ' + (+d[2]) + '일 기준' : '현재 기준', rows: nr });
+    }
+    return out;
+  }
+  function rvOpts() {
+    var S = rvSeries(), from = $('rv-from').value;
+    var per = Math.max(0.5, Math.min(8, parseFloat($('rv-per').value) || 1.5));
+    var monthly = S.length && /^\d{4}-\d{2}$/.test(S[0].k);
+    S = S.filter(function (x) { return !from || x.y >= from; });
+    return { S: S, n: +$('n').value || 10, step: monthly ? per / 12 : per, monthly: monthly,
+             tail: Math.max(0, Math.min(8, parseFloat($('rv-tail').value) || 0)), lead: 0.8,
+             tall: $('rv-ratio').value !== '45' };
+  }
+  function rvSetup() {
+    var S = rvSeries(), ys = S.map(function (x) { return x.y; }).filter(function (y, i, a) { return a.indexOf(y) === i; });
+    var sel = $('rv-from'), keep = sel.value;
+    sel.innerHTML = ys.map(function (y) { return '<option value="' + y + '">' + y + '년부터</option>'; }).join('');
+    if (ys.indexOf(keep) >= 0) sel.value = keep;
+    rvLen();
+  }
+  function rvLen() {
+    var O = rvOpts(), S = O.S;
+    if (!S.length) { $('rv-len').textContent = ''; $('rv-go').disabled = true; return; }
+    $('rv-go').disabled = false;
+    var sec = O.lead + (S.length - 1) * O.step + O.tail;
+    $('rv-len').textContent = S[0].label + ' → ' + S[S.length - 1].label + ' · ' + S.length + '개 시점' +
+      (O.monthly ? ' (달마다)' : ' (해마다)') + ' · 약 ' + Math.round(sec) + '초' + (sec > 90 ? ' (릴스·쇼츠는 90초 이하 권장)' : '');
+  }
+  function rvDraw(X, O, t) {                 // t = 시점 번호(소수) — 정수 사이를 부드럽게
+    var W = 1080, H = O.tall ? 1920 : 1350, S = O.S, N = O.n, us = isUS();
+    var i0 = Math.max(0, Math.min(S.length - 1, Math.floor(t))), i1 = Math.min(S.length - 1, i0 + 1), q = t - i0;
+    var e = q < 0.5 ? 4 * q * q * q : 1 - Math.pow(-2 * q + 2, 3) / 2;      // 순위 자리 바꿈은 부드럽게
+    var A = {}, B = {}, NM = {};
+    S[i0].rows.slice(0, N + 2).forEach(function (r, i) { A[r[0]] = [i, r[2]]; NM[r[0]] = r[1]; });
+    S[i1].rows.slice(0, N + 2).forEach(function (r, i) { B[r[0]] = [i, r[2]]; if (q >= 0.5 || !NM[r[0]]) NM[r[0]] = r[1]; });
+    X.fillStyle = T.paper; X.fillRect(0, 0, W, H);
+    var L = 80, R = W - 80, top = O.tall ? 200 : 140;
+    // 제목 (카드와 같은 모양)
+    var title = $('title').value, flag = $('chk-icon').checked, fr = us ? 1.9 : 1.5, ns = 84;
+    var fw = function (s) { return flag ? s * 0.66 * fr + s * 0.24 : 0; };
+    X.font = font(900, ns); while (ns > 36 && X.measureText(title).width + fw(ns) > R - L) { ns--; X.font = font(900, ns); }
+    var y = top + ns * 0.86, XT = L + fw(ns);
+    if (flag) (us ? drawUSFlag : drawTaegeuk)(X, L, y - ns * 0.7, ns * 0.66);
+    var tm = title.match(/^(.*\S)( 시총 순위)$/); X.textAlign = 'left'; X.textBaseline = 'alphabetic'; X.fillStyle = T.ink;
+    if (tm) { X.font = font(900, ns); X.fillText(tm[1], XT, y); var tw = X.measureText(tm[1]).width;
+      X.font = font(400, ns); X.fillStyle = T.inkSoft; X.fillText(tm[2], XT + tw, y); }
+    else { X.font = font(900, ns); X.fillText(title, XT, y); }
+    // 줄들
+    var bigY = O.tall ? H - 300 : H - 215, gy0 = y + 70, gy1 = bigY - (O.tall ? 190 : 150);
+    var rh = (gy1 - gy0) / N, d = Math.min(rh * 0.8, 120), rk = 70, lx = L + rk + d / 2;
+    var codes = {}; Object.keys(A).forEach(function (c) { codes[c] = 1; }); Object.keys(B).forEach(function (c) { codes[c] = 1; });
+    var rows = Object.keys(codes).map(function (c) {
+      var a = A[c], b = B[c], ra = a ? a[0] : N + 1, rb = b ? b[0] : N + 1;
+      var va = a ? a[1] : 0, vb = b ? b[1] : 0;
+      return { c: c, pos: ra + (rb - ra) * e, v: va + (vb - va) * q };
+    }).filter(function (o) { return o.pos < N + 0.5; });
+    var vmax = Math.max.apply(null, rows.map(function (o) { return o.v; }).concat([1]));
+    X.textBaseline = 'middle';
+    for (var i = 0; i < N; i++) {            // 순위 숫자는 제자리
+      X.fillStyle = T.inkSoft; X.font = font(900, Math.min(40, Math.round(rh * 0.36))); X.textAlign = 'left';
+      X.fillText(String(i + 1), L, gy0 + rh * (i + 0.5));
+    }
+    X.save(); X.beginPath(); X.rect(0, gy0 - 4, W, gy1 - gy0 + 8); X.clip();
+    rows.sort(function (a, b) { return b.pos - a.pos; }).forEach(function (o) {
+      var cy = gy0 + rh * (o.pos + 0.5), al = Math.max(0, Math.min(1, N + 0.5 - o.pos));
+      X.globalAlpha = al;
+      var bx = lx + d / 2 + 14, bw = Math.max(6, (R - 150 - bx) * o.v / vmax), bh = d * 0.5;
+      X.fillStyle = lineColor(o.c); X.globalAlpha = al * 0.22;
+      if (X.roundRect) { X.beginPath(); X.roundRect(bx, cy - bh / 2, bw, bh, bh / 2); X.fill(); } else X.fillRect(bx, cy - bh / 2, bw, bh);
+      X.globalAlpha = al;
+      var im = logo(o.c);
+      X.save(); X.beginPath(); X.arc(lx, cy, d / 2, 0, 7); X.clip();
+      if (ready(im)) X.drawImage(im, lx - d / 2, cy - d / 2, d, d);
+      else { X.fillStyle = '#C9C6BC'; X.fillRect(lx - d / 2, cy - d / 2, d, d); }
+      X.restore();
+      var nm = NM[o.c] || o.c, fs = Math.min(40, Math.round(rh * 0.34));
+      X.textAlign = 'left'; X.fillStyle = T.ink; X.font = font(800, fs); X.fillText(nm, bx + 18, cy);
+      X.textAlign = 'right'; X.fillStyle = T.inkSoft; X.font = font(800, Math.round(fs * 0.9));
+      X.fillText(won(o.v) + (us ? '' : ' 원'), R, cy);
+    });
+    X.restore(); X.globalAlpha = 1;
+    // 큰 시점 글자 + 아래 줄
+    var lab = S[q >= 0.5 ? i1 : i0].label;
+    X.textAlign = 'center'; X.textBaseline = 'alphabetic'; X.fillStyle = T.ink; X.font = font(900, O.tall ? 170 : 120);
+    X.fillText(lab, W / 2, bigY);
+    var footY = H - (O.tall ? 110 : 80);
+    X.strokeStyle = T.rule; X.lineWidth = 2; X.beginPath(); X.moveTo(L, footY - 46); X.lineTo(R, footY - 46); X.stroke();
+    X.font = font(700, 32); X.fillStyle = T.footer; X.textAlign = 'left';
+    X.fillText(S[q >= 0.5 ? i1 : i0].foot, L, footY); X.textAlign = 'right'; X.fillText('@돈굴돈굴', R, footY);
+  }
+  function rvGo() {
+    var O = rvOpts(); if (!O.S.length) return;
+    var c = $('rv-cv'), btn = $('rv-go');
+    c.width = 1080; c.height = O.tall ? 1920 : 1350; c.style.display = 'block';
+    var X = c.getContext('2d');
+    var types = ['video/mp4;codecs=avc1.42E01E', 'video/mp4', 'video/webm;codecs=vp9', 'video/webm'];
+    var type = types.filter(function (t) { return window.MediaRecorder && MediaRecorder.isTypeSupported(t); })[0];
+    if (!type) { alert('이 브라우저는 영상 녹화를 지원하지 않아요. 크롬이나 사파리 최신 버전에서 해 주세요.'); return; }
+    btn.disabled = true; $('rv-note').textContent = '로고를 불러오는 중…';
+    var codes = {}; O.S.forEach(function (x) { x.rows.slice(0, O.n + 2).forEach(function (r) { codes[r[0]] = 1; }); });
+    var waits = Object.keys(codes).map(function (k) {
+      var im = logo(k); return new Promise(function (res) {
+        if (!im || im.complete) return res(); im.addEventListener('load', res); im.addEventListener('error', res); setTimeout(res, 4000); });
+    });
+    Promise.all(waits).then(function () {
+      Object.keys(codes).forEach(function (k) { lineColor(k); });
+      var rec = new MediaRecorder(c.captureStream(30), { mimeType: type, videoBitsPerSecond: 8000000 }), parts = [];
+      rec.ondataavailable = function (ev) { if (ev.data && ev.data.size) parts.push(ev.data); };
+      rec.onstop = function () {
+        var blob = new Blob(parts, { type: type.split(';')[0] }), a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = ($('title').value || '시총 순위').replace(/[\s\/\\:*?"<>|]+/g, '_') + '_' + O.S[0].label + '-' + O.S[O.S.length - 1].label +
+          (O.tall ? '_9x16' : '_4x5') + (type.indexOf('mp4') >= 0 ? '.mp4' : '.webm');
+        document.body.appendChild(a); a.click(); a.remove();
+        btn.disabled = false;
+        $('rv-note').textContent = type.indexOf('mp4') >= 0 ? '다 만들었어요.' : 'WebM 으로 저장됐어요. 인스타그램에는 MP4 로 바꿔 올려 주세요.';
+      };
+      var len = O.S.length - 1, total = O.lead + len * O.step + O.tail, t0 = null;
+      rvDraw(X, O, 0); rec.start(); $('rv-note').textContent = '녹화 중… (약 ' + Math.round(total) + '초)';
+      function tick(ts) {
+        if (t0 === null) t0 = ts;
+        var sec = (ts - t0) / 1000;
+        rvDraw(X, O, Math.max(0, Math.min(len, (sec - O.lead) / O.step)));
+        if (sec < total) requestAnimationFrame(tick); else setTimeout(function () { rec.stop(); }, 200);
+      }
+      requestAnimationFrame(tick);
+    });
+  }
+  window.__rv = { draw: rvDraw, opts: rvOpts };
+  $('rv-go').addEventListener('click', rvGo);
+  ['rv-from', 'rv-per', 'rv-tail', 'rv-ratio', 'n'].forEach(function (id) { $(id).addEventListener('change', rvLen); $(id).addEventListener('input', rvLen); });
+  $('mk').addEventListener('change', rvSetup);
+
   fetch('./data/rank.json', { cache: 'no-cache' })
     .then(function (r) { if (!r.ok) throw 0; return r.json(); })
     .then(function (j) {
@@ -616,7 +787,7 @@
       $('src-pill').textContent = '연말 시가총액 ' + first + '~' + (last || '') + (j.cols.now ? ' · 현재 ' + j.cols.now.date : '');
     })
     .catch(function () { $('src-pill').textContent = '데이터 없음'; $('warn').textContent = 'data/rank.json 이 아직 없습니다. collect_rank.py 를 먼저 돌려 주세요.'; })
-    .then(function () { if (DATA) { chips(); fillHi(); autoText(); } return document.fonts ? document.fonts.ready : null; })
+    .then(function () { if (DATA) { chips(); fillHi(); autoText(); rvSetup(); } return document.fonts ? document.fonts.ready : null; })
     .then(draw);
 })();
 </script>
