@@ -151,6 +151,45 @@ def screener():
     return sorted(best.values(), key=lambda x: -x["cap"])
 
 
+def last_us_close(now_kst):
+    """가장 최근에 끝난 미국 정규장 날짜 (뉴욕 16시 마감, 주말 건너뜀. 공휴일은 무시)."""
+    ny = now_kst.astimezone(timezone(timedelta(hours=-5)))       # 대략 ET (서머타임 1시간 차이는 마감 판정에만 영향)
+    d = ny.date() if ny.hour >= 16 else ny.date() - timedelta(days=1)
+    while d.weekday() >= 5:
+        d -= timedelta(days=1)
+    return d.strftime("%Y-%m-%d")
+
+
+def screener_cmc():
+    """나스닥이 막힌 날의 대신: companiesmarketcap 전 세계 시총 표(CSV). 섹터·업종은 전날 파일에서 가져온다.
+    미국에 상장된 것(종목 코드에 '.' 이 없는 것)만 쓴다 — 아람코 2222.SR 같은 해외 상장은 뺀다."""
+    import csv
+    import io
+    try:
+        with open(OUT_MCAP, encoding="utf-8") as f:
+            prev = json.load(f).get("stocks") or {}
+    except Exception:                              # noqa: BLE001
+        prev = {}
+    txt = get("https://companiesmarketcap.com/?download=csv", tries=4, wait=10)
+    best = {}
+    for r in csv.DictReader(io.StringIO(txt)):
+        k = {(kk or "").strip().lower(): v for kk, v in r.items()}
+        sym = (k.get("symbol") or "").strip().upper()
+        cap = num(k.get("marketcap"))
+        if not sym or "." in sym or cap <= 0 or SKIP.search(k.get("name") or ""):
+            continue
+        nm = short(k.get("name"))
+        pv = prev.get(sym) or {}
+        key = nm.lower()
+        if key not in best or cap / 1e8 > best[key]["cap"]:
+            best[key] = {"code": sym, "raw": sym, "name": pv.get("n") or nm, "cap": round(cap / 1e8, 1),
+                         "price": num(k.get("price (usd)") or k.get("price")), "sector": pv.get("s") or "",
+                         "industry": pv.get("i") or "",
+                         "country": "United States" if (k.get("country") or "").strip() in ("United States", "USA") else (k.get("country") or "").strip(),
+                         "chg": None, "date": None}
+    return sorted(best.values(), key=lambda x: -x["cap"])
+
+
 CLOSED = re.compile(r"Closed at ([A-Z][a-z]{2}) (\d{1,2}), (\d{4})")
 
 
@@ -224,17 +263,30 @@ def groups(rows, field):
 
 
 def daily(dry=False):
-    rows = screener()
+    src = "나스닥 종목 검색표 + 종목별 종가 (상위 %d)" % FIX_TOP
+    try:
+        rows = screener()
+    except Exception as e:                         # noqa: BLE001
+        # 나스닥이 GitHub 서버를 막는 날(2026-11-11 하루 종일 403) — companiesmarketcap 표로 대신 받는다
+        log("!! 나스닥 검색표를 못 받음 (%s) — companiesmarketcap 시총 표로 대신합니다" % str(e)[:80])
+        rows = screener_cmc()
+        src = "companiesmarketcap 시총 표 (나스닥이 막힌 날)"
     if len(rows) < 1000:
-        sys.exit("!! 나스닥 표가 이상합니다 (%d종목). 파일을 바꾸지 않습니다." % len(rows))
+        sys.exit("!! 시총 표가 이상합니다 (%d종목). 파일을 바꾸지 않습니다." % len(rows))
     today = datetime.now(KST)
     before = {r["code"]: r["cap"] for r in rows[:FIX_TOP]}
-    asof, info = refresh(rows)
+    if src.startswith("나스닥"):
+        asof, info = refresh(rows)
+    else:
+        asof, info = None, {"fixed": 0, "targets": 0, "failed": []}   # 종목별 시세도 나스닥이라 건너뛴다
     if asof:
         log("최신 종가로 다시 계산: %d/%d종목 · 종가 날짜 %s · 검색표가 이미 최신%s"
             % (info["fixed"], info["targets"], info["dates"], "이었음" if info["screener_fresh"] else " 아니었음 (하루 늦은 값)"))
         if info["skipped"]:
             log("  ! 가격 차이가 너무 커서 그대로 둔 종목: %s" % ", ".join(info["skipped"]))
+    elif not src.startswith("나스닥"):
+        asof = last_us_close(today)
+        log("  기준일 = 가장 최근 미국 장 마감 %s" % asof)
     else:
         asof = (today - timedelta(hours=16)).strftime("%Y-%m-%d")
         log("  ! 종목별 시세를 충분히 받지 못했습니다 (%d/%d) — 검색표 값 그대로, 기준일은 짐작(%s)"
@@ -255,7 +307,7 @@ def daily(dry=False):
     stocks = {r["code"]: {"n": r["name"], "c": r["cap"], "y": None, "s": r["sector"], "i": r["industry"],
                           "f": r["country"] not in ("United States", "")} for r in keep}
     out = {"updated": today.strftime("%Y-%m-%d"), "asof": asof,
-           "unit": "억달러", "source": "나스닥 종목 검색표 + 종목별 종가 (상위 %d)" % FIX_TOP,
+           "unit": "억달러", "source": src,
            "fix": {k: info.get(k) for k in ("fixed", "targets", "dates", "screener_fresh")},
            "us": [{"code": r["code"], "name": r["name"], "cap": r["cap"], "ytd": None} for r in rows[:TOP]],
            "us_only": [{"code": r["code"], "name": r["name"], "cap": r["cap"], "ytd": None} for r in us_only[:TOP]],
