@@ -696,25 +696,39 @@
   function rvDraw(X, O, t) {                 // t = 시점 번호(소수) — 정수 사이를 부드럽게
     var W = 1080, H = O.tall ? 1920 : 1350, S = O.S, N = O.n, us = isUS();
     var i0 = Math.max(0, Math.min(S.length - 1, Math.floor(t))), i1 = Math.min(S.length - 1, i0 + 1), q = t - i0;
-    // 분기마다 멈췄다 가지 않게: 앞뒤 시점까지 보고 이어지는 곡선(단조 3차 보간)으로 자리·값을 잇는다
-    var ip = Math.max(0, i0 - 1), inx = Math.min(S.length - 1, i1 + 1);
-    var K = [ip, i0, i1, inx].map(function (k) {
-      var m = {}, rs = S[k].rows, lo = rs.length ? rs[rs.length - 1][2] : 0;
-      rs.forEach(function (r, i) { m[r[0]] = [i, r[2]]; });
-      return { m: m, lo: lo };
+    // Flourish 바 레이스처럼: 값은 앞뒤 시점을 이어 멈춤 없이 흐르게(카트멀-롬) 하고,
+    // 순위 자리는 '그 순간의 값 순서'를 짧은 시간 동안 평균 내어 미끄러지듯 옮긴다.
+    // (회사마다 따로 곡선을 그리면 자리끼리 겹치거나 빈 칸이 생긴다 — 평균을 내면 늘 한 칸에 한 회사)
+    if (!O._maps) O._maps = S.map(function (x) {
+      var m = {}; x.rows.forEach(function (r) { m[r[0]] = r[2]; });
+      return { m: m, lo: x.rows.length ? x.rows[x.rows.length - 1][2] * 0.9 : 0 };
     });
-    function at(j, c, w) { var x = K[j].m[c]; return x ? x[w] : (w ? K[j].lo * 0.9 : N + 2); }
-    function tan(a, b, c2, h0, h1) { var d0 = (b - a) / h0, d1 = (c2 - b) / h1; return d0 * d1 <= 0 ? 0 : 2 / (1 / d0 + 1 / d1); }
-    function curve(c, w) {
-      var p0 = at(0, c, w), p1 = at(1, c, w), p2 = at(2, c, w), p3 = at(3, c, w);
-      if (i1 === i0) return p1;
-      var m1 = ip === i0 ? p2 - p1 : tan(p0, p1, p2, 1, 1), m2 = inx === i1 ? p2 - p1 : tan(p1, p2, p3, 1, 1);
-      var q2 = q * q, q3 = q2 * q;
-      return (2 * q3 - 3 * q2 + 1) * p1 + (q3 - 2 * q2 + q) * m1 + (-2 * q3 + 3 * q2) * p2 + (q3 - q2) * m2;
+    var last = S.length - 1;
+    function kv(k, c) { var x = O._maps[Math.max(0, Math.min(last, k))], v = x.m[c]; return v != null ? v : x.lo; }
+    function val(c, tt) {
+      tt = Math.max(0, Math.min(last, tt));
+      var k = Math.min(last - 1, Math.floor(tt)), u = tt - k;
+      if (last < 1) return kv(0, c);
+      var p0 = kv(k - 1, c), p1 = kv(k, c), p2 = kv(k + 1, c), p3 = kv(k + 2, c);
+      if (k === 0) p0 = 2 * p1 - p2;
+      if (k + 2 > last) p3 = 2 * p2 - p1;
+      var u2 = u * u, u3 = u2 * u;
+      return Math.max(0, 0.5 * (2 * p1 + (p2 - p0) * u + (2 * p0 - 5 * p1 + 4 * p2 - p3) * u2 + (3 * p1 - p0 - 3 * p2 + p3) * u3));
     }
-    var A = {}, B = {}, NM = {};
-    S[i0].rows.slice(0, N + 2).forEach(function (r, i) { A[r[0]] = [i, r[2]]; NM[r[0]] = r[1]; });
-    S[i1].rows.slice(0, N + 2).forEach(function (r, i) { B[r[0]] = [i, r[2]]; if (q >= 0.5 || !NM[r[0]]) NM[r[0]] = r[1]; });
+    var cand = {};
+    for (var k = i0 - 1; k <= i0 + 2; k++) S[Math.max(0, Math.min(last, k))].rows.slice(0, N + 3).forEach(function (r) { cand[r[0]] = 1; });
+    cand = Object.keys(cand);
+    var win = Math.min(0.35, 0.25 / O.step), J = 16, posSum = {}, wSum = 0;     // 자리 옮기는 시간 ≈ 0.5초
+    cand.forEach(function (c) { posSum[c] = 0; });
+    for (var j = 0; j < J; j++) {
+      var s = (j + 0.5) / J * 2 - 1, wt = 1 - Math.abs(s), tt = t + s * win;   // 삼각형 가중 평균
+      var ord = cand.map(function (c) { return [c, val(c, tt)]; }).sort(function (a, b) { return b[1] - a[1]; });
+      ord.forEach(function (o, i) { posSum[o[0]] += wt * Math.min(i, N + 2); });
+      wSum += wt;
+    }
+    var NM = {};
+    S[i0].rows.forEach(function (r) { NM[r[0]] = r[1]; });
+    S[i1].rows.forEach(function (r) { if (q >= 0.5 || !NM[r[0]]) NM[r[0]] = r[1]; });
     X.fillStyle = T.paper; X.fillRect(0, 0, W, H);
     var L = 80, R = W - 80, top = O.tall ? 200 : 140;
     // 제목 (카드와 같은 모양)
@@ -730,11 +744,23 @@
     // 줄들
     var bigY = O.tall ? H - 300 : H - 215, gy0 = y + 70, gy1 = bigY - (O.tall ? 190 : 150);
     var rh = (gy1 - gy0) / N, d = Math.min(rh * 0.8, 120), rk = 70, lx = L + rk + d / 2;
-    var codes = {}; Object.keys(A).forEach(function (c) { codes[c] = 1; }); Object.keys(B).forEach(function (c) { codes[c] = 1; });
-    var rows = Object.keys(codes).map(function (c) {
-      return { c: c, pos: Math.min(N + 2, curve(c, 0)), v: Math.max(0, curve(c, 1)) };
-    }).filter(function (o) { return o.pos < N + 0.5; });
-    var vmax = Math.max.apply(null, rows.map(function (o) { return o.v; }).concat([1]));
+    var rows = cand.map(function (c) { return { c: c, pos: posSum[c] / wSum, v: val(c, t) }; })
+      .filter(function (o) { return o.pos < N + 0.5; });
+    // 막대 눈금(가장 긴 막대 = 폭 전체)이 1등 회사 값이 오르내릴 때마다 같이 출렁이면 모든 막대가 한꺼번에 커졌다 작아진다.
+    // 앞뒤 시점의 최댓값을 묶어 고르게 다듬은 눈금을 쓰고, 그보다 큰 막대가 나올 때만 그만큼 늘린다
+    if (!O._M) {
+      var M = S.map(function (x) { return x.rows.length ? Math.max.apply(null, x.rows.slice(0, N).map(function (r) { return r[2]; })) : 1; });
+      var g = function (a, k) { return a[Math.max(0, Math.min(a.length - 1, k))]; };
+      var E = M.map(function (_, k) { return Math.max(g(M, k - 1), g(M, k), g(M, k + 1)); });
+      O._top = Math.max.apply(null, M.concat([1]));
+      O._M = E.map(function (_, k) { return (g(E, k - 2) + 2 * g(E, k - 1) + 3 * g(E, k) + 2 * g(E, k + 1) + g(E, k + 2)) / 9; });
+    }
+    var sc = (function () {
+      var a = O._M, g = function (k) { return a[Math.max(0, Math.min(a.length - 1, k))]; };
+      var p0 = g(i0 - 1), p1 = g(i0), p2 = g(i0 + 1), p3 = g(i0 + 2), q2 = q * q, q3 = q2 * q;
+      return 0.5 * (2 * p1 + (p2 - p0) * q + (2 * p0 - 5 * p1 + 4 * p2 - p3) * q2 + (3 * p1 - p0 - 3 * p2 + p3) * q3);
+    })();
+    var vmax = Math.max.apply(null, rows.map(function (o) { return o.v; }).concat([1, sc]));
     X.textBaseline = 'middle';
     for (var i = 0; i < N; i++) {            // 순위 숫자는 제자리
       X.fillStyle = T.inkSoft; X.font = font(900, Math.min(40, Math.round(rh * 0.36))); X.textAlign = 'left';
@@ -747,7 +773,8 @@
       // Flourish 바 레이스처럼: 로고는 막대 오른쪽 끝 안쪽, 시가총액은 막대 끝을 따라간다. 오른쪽에 숫자 자리를 남긴다
       var fs = Math.max(14, Math.min(40, Math.round(rh * 0.34)));
       X.font = font(800, Math.round(fs * 0.9));
-      var room = X.measureText(won(vmax) + (us ? '' : ' 원')).width + 24;
+      // 숫자 자리는 영상 전체에서 가장 긴 숫자에 맞춰 한 번만 — 매 장면 숫자 폭이 바뀌면 막대 전체가 미세하게 떨린다
+      var room = X.measureText(won(O._top) + (us ? '' : ' 원')).width + 24;
       var bh = Math.max(12, rh * 0.82), ld = bh - 8, bx = L + rk;          // 로고 지름 = 막대 높이 - 여백
       var bw = Math.max(ld + 8, (R - room - bx) * o.v / vmax);
       // 줄 뒤에 종이색 판 — 두 회사가 자리를 바꾸며 겹칠 때 아래 줄 글자가 비치지 않게 (위 순위가 위에 그려진다)
