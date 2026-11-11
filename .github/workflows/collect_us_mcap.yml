@@ -17,7 +17,7 @@ concurrency:
 jobs:
   collect:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 40
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -25,7 +25,8 @@ jobs:
           python-version: '3.11'
       - name: 수집
         run: |
-          python3 collect_us_mcap.py
+          # 나스닥이 잠깐 막으면(403) 10분 쉬고 한 번 더
+          python3 collect_us_mcap.py || (sleep 600 && python3 collect_us_mcap.py)
           python3 collect_us_mcap.py --half-if-needed   # 7월이 되면 한 번: 그 해 6월 말 미국 순위 (영상용)
       - name: 커밋
         run: |

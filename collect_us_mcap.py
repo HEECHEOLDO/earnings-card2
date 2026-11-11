@@ -99,7 +99,7 @@ def log(*a):
     print(*a, flush=True)
 
 
-def get(url, extra=None, tries=3):
+def get(url, extra=None, tries=3, wait=3):
     h = {"User-Agent": UA, "Accept": "application/json, text/html, */*", "Accept-Language": "en-US,en;q=0.9"}
     h.update(extra or {})
     for t in range(tries):
@@ -108,7 +108,7 @@ def get(url, extra=None, tries=3):
         except Exception:                          # noqa: BLE001
             if t == tries - 1:
                 raise
-            time.sleep(3 + 5 * t)
+            time.sleep(wait + 5 * t if wait <= 3 else wait * (t + 1))
 
 
 def short(name):
@@ -130,7 +130,8 @@ def num(x):
 
 def screener():
     j = json.loads(get("https://api.nasdaq.com/api/screener/stocks?tableonly=true&limit=10000&download=true",
-                       {"Origin": "https://www.nasdaq.com", "Referer": "https://www.nasdaq.com/"}))
+                       {"Origin": "https://www.nasdaq.com", "Referer": "https://www.nasdaq.com/"},
+                       tries=6, wait=20))      # 나스닥이 가끔 403 을 낸다 (2026-11-11 한 번) — 20·40·60…초 쉬며 다시
     rows = (j.get("data") or {}).get("rows") or []
     best = {}
     for r in rows:
