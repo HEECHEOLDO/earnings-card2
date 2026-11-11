@@ -721,27 +721,30 @@
     rows.sort(function (a, b) { return b.pos - a.pos; }).forEach(function (o) {
       var cy = gy0 + rh * (o.pos + 0.5), al = Math.max(0, Math.min(1, N + 0.5 - o.pos));
       X.globalAlpha = al;
-      // 막대 끝에 시가총액이 붙어 함께 움직인다 (Flourish 바 레이스처럼). 오른쪽에 숫자 자리를 남긴다
+      // Flourish 바 레이스처럼: 로고는 막대 오른쪽 끝 안쪽, 시가총액은 막대 끝을 따라간다. 오른쪽에 숫자 자리를 남긴다
       var fs = Math.max(14, Math.min(40, Math.round(rh * 0.34)));
       X.font = font(800, Math.round(fs * 0.9));
       var room = X.measureText(won(vmax) + (us ? '' : ' 원')).width + 24;
-      var bx = lx + d / 2 + 12, bw = Math.max(8, (R - room - bx) * o.v / vmax), bh = Math.max(10, d * 0.78);
+      var bh = Math.max(12, rh * 0.82), ld = bh - 8, bx = L + rk;          // 로고 지름 = 막대 높이 - 여백
+      var bw = Math.max(ld + 8, (R - room - bx) * o.v / vmax);
       // 줄 뒤에 종이색 판 — 두 회사가 자리를 바꾸며 겹칠 때 아래 줄 글자가 비치지 않게 (위 순위가 위에 그려진다)
-      X.globalAlpha = al; X.fillStyle = T.paper; X.fillRect(lx - d / 2 - 6, cy - rh * 0.48, R - lx + d / 2 + 6, rh * 0.96);
+      X.globalAlpha = al; X.fillStyle = T.paper; X.fillRect(bx - 4, cy - rh * 0.48, R - bx + 4, rh * 0.96);
       X.fillStyle = lineColor(o.c); X.globalAlpha = al * 0.9;
-      if (X.roundRect) { X.beginPath(); X.roundRect(bx, cy - bh / 2, bw, bh, Math.min(10, bh / 4)); X.fill(); } else X.fillRect(bx, cy - bh / 2, bw, bh);
+      if (X.roundRect) { X.beginPath(); X.roundRect(bx, cy - bh / 2, bw, bh, Math.min(12, bh / 3)); X.fill(); } else X.fillRect(bx, cy - bh / 2, bw, bh);
       X.globalAlpha = al;
-      var im = logo(o.c);
-      X.save(); X.beginPath(); X.arc(lx, cy, d / 2, 0, 7); X.clip();
-      if (ready(im)) X.drawImage(im, lx - d / 2, cy - d / 2, d, d);
-      else { X.fillStyle = '#C9C6BC'; X.fillRect(lx - d / 2, cy - d / 2, d, d); }
+      var im = logo(o.c), lcx = bx + bw - 4 - ld / 2;
+      X.save(); X.beginPath(); X.arc(lcx, cy, ld / 2, 0, 7); X.clip();
+      if (ready(im)) X.drawImage(im, lcx - ld / 2, cy - ld / 2, ld, ld);
+      else { X.fillStyle = '#C9C6BC'; X.fillRect(lcx - ld / 2, cy - ld / 2, ld, ld); }
       X.restore();
+      X.strokeStyle = 'rgba(255,255,255,0.85)'; X.lineWidth = Math.max(2, ld * 0.05);       // 막대색과 로고가 섞이지 않게 흰 테
+      X.beginPath(); X.arc(lcx, cy, ld / 2, 0, 7); X.stroke();
       var nm = NM[o.c] || o.c, val = won(o.v) + (us ? '' : ' 원');
-      X.font = font(800, fs); var nw = X.measureText(nm).width;
+      X.font = font(800, fs); var nw = X.measureText(nm).width, inside = nw + ld + 30 < bw;
       X.textAlign = 'left';
-      if (nw + 28 < bw) { X.fillStyle = light(lineColor(o.c)) ? T.ink : '#fff'; X.fillText(nm, bx + 14, cy); }   // 막대 안에 이름
-      else { X.fillStyle = T.ink; X.fillText(nm, bx + bw + 12, cy); }                  // 짧으면 막대 뒤에
-      var vx = bx + bw + 12 + (nw + 28 < bw ? 0 : nw + 14);
+      if (inside) { X.fillStyle = light(lineColor(o.c)) ? T.ink : '#fff'; X.fillText(nm, bx + 14, cy); }   // 막대 안에 이름
+      else { X.fillStyle = T.ink; X.fillText(nm, bx + bw + 12, cy); }                                      // 짧으면 막대 뒤에
+      var vx = bx + bw + 12 + (inside ? 0 : nw + 14);
       X.fillStyle = T.inkSoft; X.font = font(800, Math.round(fs * 0.9));
       X.fillText(val, Math.min(vx, R - X.measureText(val).width), cy);
     });
