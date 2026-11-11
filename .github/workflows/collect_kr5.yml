@@ -1,0 +1,64 @@
+name: 국내 운용사 5% 지분 수집
+
+on:
+  schedule:
+    # 매일 00:05 KST (UTC 15:05) — DART 한도가 자정에 초기화된 직후, 실적 수집(02:00 KST)보다 먼저.
+    # 하루 1,000곳씩 보고 7일 지나면 다시 본다 (실적 수집 18,000 + 이것 1,000 < 하루 한도 20,000)
+    - cron: '5 15 * * *'
+  workflow_dispatch:
+    inputs:
+      budget:
+        description: '이번 실행에서 쓸 API 호출 수'
+        required: false
+        default: '1000'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: dart-kr5
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 캐시 복원 (corpCode.xml)
+        uses: actions/cache@v4
+        with:
+          path: .cache
+          key: corpcode-kr5-${{ github.run_id }}
+          restore-keys: corpcode-
+
+      - name: 5% 공시 수집
+        env:
+          DART_API_KEY: ${{ secrets.DART_API_KEY }}
+        run: python3 collect_kr5.py --budget ${{ github.event.inputs.budget || '1000' }}
+
+      - name: 변경분 커밋
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/kr5.json data/kr5_raw.json
+          if git diff --staged --quiet; then
+            echo "바뀐 것이 없습니다."
+            exit 0
+          fi
+          git commit -m "국내 운용사 5% 지분 갱신"
+          for i in 1 2 3 4 5; do
+            if git push; then
+              echo "푸시 성공"
+              exit 0
+            fi
+            echo "푸시 거부됨 — 원격 변경분을 가져와 재시도 ($i/5)"
+            git pull --rebase --autostash origin main || exit 1
+            sleep 5
+          done
+          exit 1

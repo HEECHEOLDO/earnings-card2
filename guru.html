@@ -485,16 +485,41 @@
     return m[1].slice(2) + '년 ' + q + '분기';
   }
 
+  function monthLabel(d) {                   // '2026-11-10' -> '26년 11월'
+    var m = /^(\d{4})-(\d{2})/.exec(d || '');
+    return m ? m[1].slice(2) + '년 ' + parseInt(m[2], 10) + '월' : '';
+  }
+
+  // 국내 운용사는 13F 가 없어 5% 공시(대량보유)로 만든 data/kr5.json 을 함께 읽는다 — 없으면 건너뜀
+  function loadKr5() {
+    return fetch('./data/kr5.json', { cache: 'no-cache' })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .catch(function () { return null; });
+  }
+
   function loadFunds() {
-    return fetch('./data/13f.json', { cache: 'no-cache' })
-      .then(function (r) { if (!r.ok) throw new Error('no file'); return r.json(); })
-      .then(function (j) {
+    return Promise.all([
+      fetch('./data/13f.json', { cache: 'no-cache' })
+        .then(function (r) { if (!r.ok) throw new Error('no file'); return r.json(); }),
+      loadKr5()
+    ])
+      .then(function (both) {
+        var j = both[0], k5 = both[1];
+        j.funds = j.funds || {};
+        if (k5 && k5.funds) {
+          Object.keys(k5.funds).forEach(function (k) {
+            var f = k5.funds[k];
+            if (f.count >= 2) j.funds['kr5_' + k] = f;          // 종목이 1개뿐이면 도넛이 의미 없다
+          });
+        }
         F13 = j;
         var sel = document.getElementById('f-fund');
         // 투자자 / 유명 기업 두 묶음으로 나눠 보여준다
-        var groups = { investor: document.createElement('optgroup'), corp: document.createElement('optgroup') };
+        var groups = { investor: document.createElement('optgroup'), corp: document.createElement('optgroup'),
+                       kr5: document.createElement('optgroup') };
         groups.investor.label = '유명 투자자';
         groups.corp.label = '유명 기업 (회사가 직접 투자한 종목)';
+        groups.kr5.label = '국내 운용사·기관 (지분 5% 이상 종목)';
         Object.keys(j.funds || {}).forEach(function (k) {
           var f = j.funds[k];
           (f.holdings || []).forEach(function (h) {
@@ -502,11 +527,12 @@
           });
           var o = document.createElement('option');
           o.value = k;
-          o.textContent = f.title + '  (' + quarterLabel(f.period) + ')';
-          groups[f.kind === 'corp' ? 'corp' : 'investor'].appendChild(o);
+          o.textContent = f.title + '  (' + (f.kind === 'kr5' ? monthLabel(f.period) : quarterLabel(f.period)) + ')';
+          groups[f.kind === 'corp' ? 'corp' : f.kind === 'kr5' ? 'kr5' : 'investor'].appendChild(o);
         });
         sel.appendChild(groups.investor);
         if (groups.corp.children.length) sel.appendChild(groups.corp);
+        if (groups.kr5.children.length) sel.appendChild(groups.kr5);
       })
       .catch(function () {
         var sel = document.getElementById('f-fund');
@@ -523,7 +549,7 @@
     state.fundLogo = f.kind === 'corp' ? (CORP_LOGO[key] || null) : null;
     document.getElementById('f-josa').value = topic(f.title).slice(f.title.length);
     document.getElementById('f-sub').value = '어디에 투자하고 있을까?';
-    document.getElementById('f-basis').value = "'" + quarterLabel(f.period) + ' 기준';
+    document.getElementById('f-basis').value = "'" + (f.kind === 'kr5' ? monthLabel(f.period) : quarterLabel(f.period)) + ' 기준';
     // 상위 40개만 저장돼 있다 — 나머지는 '기타'로 넣어야 비중이 전체(100%) 기준이 된다
     // (안 넣으면 시타델 1위 7.8% 가 27.7% 로 부풀려졌다)
     var lines = f.holdings.map(function (h) { return h.name + ' ' + h.weight + '%'; });
@@ -531,6 +557,13 @@
     if (100 - shown > 0.05) lines.push('기타 ' + (100 - shown).toFixed(2) + '%');
     document.getElementById('f-data').value = lines.join('\n');
     note.style.display = '';
+    if (f.kind === 'kr5') {
+      note.innerHTML = '<b>' + f.entity + '</b> 대량보유(5%) 공시 · ' + f.period + ' 시가총액 기준 · 지분 5% 이상 ' +
+        f.count.toLocaleString('ko-KR') + '종목. 국내에는 보유 종목 전체를 내는 공시가 없어 5% 미만으로 가진 종목은 빠집니다. ' +
+        '금액 = 최근 공시 지분율 × 지금 시가총액이고, 비중은 이 종목들끼리 나눈 값입니다.';
+      refresh();
+      return;
+    }
     note.innerHTML = '<b>' + f.entity + '</b> 13F · ' + f.period + ' 보유분 · ' +
       f.filed + ' 공시 · 전체 ' + f.count.toLocaleString('ko-KR') + '종목 중 상위 ' +
       f.holdings.length + '개. 미국 상장 주식만 포함되고 옵션·채권·비상장은 빠집니다.' +
@@ -719,7 +752,7 @@
     if (!rec) {
       rec = _logos[t] = { img: new Image(), ok: false };
       rec.img.onload = function () { rec.ok = true; drawPreview(); };
-      rec.img.src = './logo/us/' + t + '.png';
+      rec.img.src = t.indexOf('/') >= 0 ? './logo/' + t + '.png' : './logo/us/' + t + '.png';   // 'kr/005930' = 국내
     }
     return rec.ok ? rec.img : null;
   }
