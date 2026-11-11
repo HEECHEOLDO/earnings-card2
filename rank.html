@@ -198,11 +198,13 @@
       <label class="f" for="sub">아래 줄</label>
       <input type="text" id="sub" value="" placeholder="비워 두면 안 나옵니다">
       <button class="btn" id="dl">PNG 내려받기</button>
-      <details style="margin-top:16px"><summary>순위 변동 영상 만들기 (달마다)</summary>
+      <details style="margin-top:16px"><summary>순위 변동 영상 만들기</summary>
         <div class="row" style="margin-top:8px">
           <div><label class="f" for="rv-ratio">비율</label>
             <select id="rv-ratio"><option value="916">9:16 (1080×1920) · 릴스·쇼츠</option><option value="45">4:5 (1080×1350) · 피드</option></select></div>
           <div><label class="f" for="rv-from">시작</label><select id="rv-from"></select></div>
+          <div><label class="f" for="rv-step">간격</label>
+            <select id="rv-step"><option value="3" selected>분기마다 (3·6·9·12월)</option><option value="1">달마다</option><option value="12">해마다 (12월)</option></select></div>
         </div>
         <label class="f" for="rv-n" style="margin-top:6px">회사 수 <b id="rv-n-val">TOP 10</b></label>
         <input id="rv-n" type="range" min="3" max="30" step="1" value="10" style="width:100%">
@@ -215,7 +217,7 @@
           <div><label class="f" for="rv-tail">마지막 멈춤 (초)</label><input id="rv-tail" type="number" min="0" max="8" step="0.1" value="3"></div>
         </div>
         <p class="note" id="rv-len"></p>
-        <p class="note">위에서 고른 시장·제목으로, 달마다 마지막 거래일 순위가 바뀌는 대로 로고가 위아래로 자리를 바꾸는 영상을 만듭니다. 국내는 1995년 5월부터 달마다 실제 순위, 미국은 1997년부터 달마다인데 연말만 실제 값이고 그 사이 달은 월말 주가로 추정한 값입니다(아래에 '추정' 표시). 화면에서 재생되며 녹화되니 끝날 때까지 이 창을 띄워 두세요.</p>
+        <p class="note">위에서 고른 시장·제목으로, 분기(또는 달·해)마다 마지막 거래일 순위가 바뀌는 대로 로고가 위아래로 자리를 바꾸는 영상을 만듭니다. 국내는 1995년 5월부터 달마다 실제 순위, 미국은 1997년부터 달마다인데 연말만 실제 값이고 그 사이 달은 월말 주가로 추정한 값입니다(아래에 '추정' 표시). 화면에서 재생되며 녹화되니 끝날 때까지 이 창을 띄워 두세요.</p>
         <button class="btn" id="rv-go" type="button" style="margin-top:6px">영상 만들기</button>
         <p class="note" id="rv-note"></p>
         <canvas id="rv-cv" style="display:none;width:100%;max-width:360px;margin-top:10px;border-radius:12px"></canvas>
@@ -662,9 +664,11 @@
   function rvOpts() {
     var S = rvSeries(), from = $('rv-from').value;
     var per = Math.max(0.5, Math.min(8, parseFloat($('rv-per').value) || 1.5));
-    var monthly = S.length && /^\d{4}-\d{2}$/.test(S[0].k);
+    var monthly = S.length && /^\d{4}-\d{2}$/.test(S[0].k), every = monthly ? +$('rv-step').value || 3 : 12;
     S = S.filter(function (x) { return !from || x.y >= from; });
-    return { S: S, n: +$('rv-n').value || 10, step: monthly ? per / 12 : per, monthly: monthly,
+    // 분기마다면 3·6·9·12월만, 해마다면 12월만 ('지금' 칸은 늘 끝에 남긴다)
+    if (monthly && every > 1) S = S.filter(function (x) { return x.k === 'now' || +x.k.slice(5, 7) % every === 0; });
+    return { S: S, n: +$('rv-n').value || 10, step: monthly ? per / (12 / every) : per, monthly: monthly, every: every,
              tail: Math.max(0, Math.min(8, parseFloat($('rv-tail').value) || 0)), lead: 0.8,
              tall: $('rv-ratio').value !== '45' };
   }
@@ -681,7 +685,7 @@
     $('rv-go').disabled = false;
     var sec = O.lead + (S.length - 1) * O.step + O.tail;
     $('rv-len').textContent = S[0].label + ' → ' + S[S.length - 1].label + ' · ' + S.length + '개 시점' +
-      (O.monthly ? ' (달마다)' : ' (해마다)') + ' · 약 ' + Math.round(sec) + '초' + (sec > 90 ? ' (릴스·쇼츠는 90초 이하 권장)' : '');
+      (O.monthly && O.every === 1 ? ' (달마다)' : O.monthly && O.every === 3 ? ' (분기마다)' : ' (해마다)') + ' · 약 ' + Math.round(sec) + '초' + (sec > 90 ? ' (릴스·쇼츠는 90초 이하 권장)' : '');
   }
   function light(col) {                      // 밝은 막대(노랑 등)엔 검은 글자
     var m = /(\d+),\s*(\d+),\s*(\d+)/.exec(col || ''), r, g, b;
@@ -810,7 +814,7 @@
   $('rv-n-quick').addEventListener('click', function (e) {
     var b = e.target.closest('button'); if (!b) return; $('rv-n').value = b.getAttribute('data-n'); rvN();
   });
-  ['rv-from', 'rv-per', 'rv-tail', 'rv-ratio', 'rv-n'].forEach(function (id) { $(id).addEventListener('change', rvLen); $(id).addEventListener('input', rvLen); });
+  ['rv-from', 'rv-per', 'rv-tail', 'rv-ratio', 'rv-n', 'rv-step'].forEach(function (id) { $(id).addEventListener('change', rvLen); $(id).addEventListener('input', rvLen); });
   $('mk').addEventListener('change', rvSetup);
 
   fetch('./data/rank.json', { cache: 'no-cache' })
