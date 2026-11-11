@@ -697,8 +697,8 @@
     var W = 1080, H = O.tall ? 1920 : 1350, S = O.S, N = O.n, us = isUS();
     var i0 = Math.max(0, Math.min(S.length - 1, Math.floor(t))), i1 = Math.min(S.length - 1, i0 + 1), q = t - i0;
     // Flourish 바 레이스처럼: 값은 앞뒤 시점을 이어 멈춤 없이 흐르게(카트멀-롬) 하고,
-    // 순위 자리는 '그 순간의 값 순서'를 짧은 시간 동안 평균 내어 미끄러지듯 옮긴다.
-    // (회사마다 따로 곡선을 그리면 자리끼리 겹치거나 빈 칸이 생긴다 — 평균을 내면 늘 한 칸에 한 회사)
+    // 순위는 매 순간 그 순간의 값으로 다시 세우고, 순위가 바뀌면 그때부터 약 0.6초 동안 새 자리로 미끄러져 간다
+    // (Flourish 방식 — 바뀐 뒤에 움직이므로 미리 출발하는 회사가 없다. 지난 0.6초의 순위를 종 모양 가중으로 평균한 것과 같다)
     if (!O._maps) O._maps = S.map(function (x) {
       var m = {}; x.rows.forEach(function (r) { m[r[0]] = r[2]; });
       return { m: m, lo: x.rows.length ? x.rows[x.rows.length - 1][2] * 0.9 : 0 };
@@ -718,10 +718,10 @@
     var cand = {};
     for (var k = i0 - 1; k <= i0 + 2; k++) S[Math.max(0, Math.min(last, k))].rows.slice(0, N + 3).forEach(function (r) { cand[r[0]] = 1; });
     cand = Object.keys(cand);
-    var win = Math.min(0.35, 0.25 / O.step), J = 16, posSum = {}, wSum = 0;     // 자리 옮기는 시간 ≈ 0.5초
+    var win = Math.min(0.8, 0.6 / O.step), J = 24, posSum = {}, wSum = 0;      // 자리 옮기는 시간 ≈ 0.6초
     cand.forEach(function (c) { posSum[c] = 0; });
     for (var j = 0; j < J; j++) {
-      var s = (j + 0.5) / J * 2 - 1, wt = 1 - Math.abs(s), tt = t + s * win;   // 삼각형 가중 평균
+      var x = (j + 0.5) / J, wt = 6 * x * (1 - x), tt = t - x * win;          // 지난 시간만, 부드러운 출발·도착
       var ord = cand.map(function (c) { return [c, val(c, tt)]; }).sort(function (a, b) { return b[1] - a[1]; });
       ord.forEach(function (o, i) { posSum[o[0]] += wt * Math.min(i, N + 2); });
       wSum += wt;
@@ -767,7 +767,9 @@
       X.fillText(String(i + 1), L, gy0 + rh * (i + 0.5));
     }
     X.save(); X.beginPath(); X.rect(0, gy0 - 4, W, gy1 - gy0 + 8); X.clip();
-    rows.sort(function (a, b) { return b.pos - a.pos; }).forEach(function (o) {
+    // 자리를 옮기는 중인 막대를 맨 위에 그린다 — 여러 칸을 지나가는 회사가 다른 막대 뒤에 숨어 빈칸처럼 보이지 않게
+    rows.forEach(function (o) { o.mv = Math.abs(o.pos - Math.round(o.pos)); });
+    rows.sort(function (a, b) { return (a.mv - b.mv) || (b.pos - a.pos); }).forEach(function (o) {
       var cy = gy0 + rh * (o.pos + 0.5), al = Math.max(0, Math.min(1, N + 0.5 - o.pos));
       X.globalAlpha = al;
       // Flourish 바 레이스처럼: 로고는 막대 오른쪽 끝 안쪽, 시가총액은 막대 끝을 따라간다. 오른쪽에 숫자 자리를 남긴다
@@ -778,7 +780,7 @@
       var bh = Math.max(12, rh * 0.82), ld = bh - 8, bx = L + rk;          // 로고 지름 = 막대 높이 - 여백
       var bw = Math.max(ld + 8, (R - room - bx) * o.v / vmax);
       // 줄 뒤에 종이색 판 — 두 회사가 자리를 바꾸며 겹칠 때 아래 줄 글자가 비치지 않게 (위 순위가 위에 그려진다)
-      X.globalAlpha = al; X.fillStyle = T.paper; X.fillRect(bx - 4, cy - rh * 0.48, R - bx + 4, rh * 0.96);
+      X.globalAlpha = al; X.fillStyle = T.paper; X.fillRect(bx - 4, cy - bh / 2 - 3, R - bx + 4, bh + 6);
       X.fillStyle = lineColor(o.c); X.globalAlpha = al * 0.9;
       if (X.roundRect) { X.beginPath(); X.roundRect(bx, cy - bh / 2, bw, bh, Math.min(12, bh / 3)); X.fill(); } else X.fillRect(bx, cy - bh / 2, bw, bh);
       X.globalAlpha = al;
