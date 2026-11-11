@@ -213,7 +213,7 @@
           <button type="button" data-n="15">15</button><button type="button" data-n="20">20</button><button type="button" data-n="30">30</button>
         </div>
         <div class="row" style="margin-top:6px">
-          <div><label class="f" for="rv-per">한 해 길이 (초)</label><input id="rv-per" type="number" min="0.5" max="8" step="0.1" value="1.5"></div>
+          <div><label class="f" for="rv-per">한 해 길이 (초)</label><input id="rv-per" type="number" min="0.5" max="8" step="0.1" value="3"></div>
           <div><label class="f" for="rv-tail">마지막 멈춤 (초)</label><input id="rv-tail" type="number" min="0" max="8" step="0.1" value="3"></div>
         </div>
         <p class="note" id="rv-len"></p>
@@ -662,7 +662,7 @@
   }
   function rvOpts() {
     var S = rvSeries(), from = $('rv-from').value;
-    var per = Math.max(0.5, Math.min(8, parseFloat($('rv-per').value) || 1.5));
+    var per = Math.max(0.5, Math.min(8, parseFloat($('rv-per').value) || 3));
     var monthly = S.length && /^\d{4}-\d{2}$/.test(S[0].k), every = monthly ? +$('rv-step').value || 3 : 12;
     S = S.filter(function (x) { return !from || x.y >= from; });
     // 분기마다면 3·6·9·12월만, 해마다면 12월만 ('지금' 칸은 늘 끝에 남긴다)
