@@ -171,6 +171,12 @@ def screener_cmc():
     except Exception:                              # noqa: BLE001
         prev = {}
     txt = get("https://companiesmarketcap.com/?download=csv", tries=4, wait=10)
+    # 전날 나스닥 표에 있던 종목만 쓴다 — companiesmarketcap 에는 장외(OTC) ADR(텐센트 TCEHY 등)도 섞여 있다.
+    # 같은 회사가 다른 주식 종류로 올라 있으면(구글 GOOG↔GOOGL, 버크셔 BRK-A↔BRK-B) 전날 코드로 맞춘다
+    first = {}
+    for code, v in prev.items():
+        w = (v.get("n") or "").split(" ")[0].lower()
+        first.setdefault(w, []).append(code)
     best = {}
     for r in csv.DictReader(io.StringIO(txt)):
         k = {(kk or "").strip().lower(): v for kk, v in r.items()}
@@ -178,6 +184,13 @@ def screener_cmc():
         cap = num(k.get("marketcap"))
         if not sym or "." in sym or cap <= 0 or SKIP.search(k.get("name") or ""):
             continue
+        if sym not in prev:
+            w = (k.get("name") or "").split(" ")[0].lower()
+            cand = [c for c in first.get(w, []) if c.split("-")[0][:3] == sym.split("-")[0][:3]
+                    and 0.5 < cap / 1e8 / max(prev[c].get("c") or 1, 1) < 2]
+            if len(cand) != 1:
+                continue
+            sym = cand[0]
         nm = short(k.get("name"))
         pv = prev.get(sym) or {}
         key = nm.lower()
