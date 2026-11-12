@@ -186,6 +186,7 @@
   .range-pick { display: flex; align-items: center; gap: 7px; margin-left: auto; }
   .range-pick label { font-size: 12px; color: var(--text-mute); }
   .range-pick select { height: 34px; font-size: 13px; padding: 0 8px; }
+  .range-pick .range-sep { font-size: 13px; color: var(--text-mute); }
   .tab {
     font-size: 13px; font-weight: 600; padding: 8px 16px; cursor: pointer;
     border-radius: var(--radius); border: 1px solid var(--border-strong);
@@ -406,8 +407,10 @@
     <button class="tab" role="tab" data-period="quarterly" aria-selected="false">최근 10분기</button>
     <button class="tab" role="tab" data-period="dividend" aria-selected="false">배당금</button>
     <div class="range-pick">
-      <label for="range-n">구간</label>
-      <select id="range-n"></select>
+      <label for="range-from">구간</label>
+      <select id="range-from" aria-label="시작"></select>
+      <span class="range-sep">~</span>
+      <select id="range-to" aria-label="끝"></select>
     </div>
   </div>
 
@@ -626,6 +629,11 @@
     // 배당 선을 실제로 그릴 때만 제목에 '·배당' 을 붙인다
     var withDiv = showLine !== false && !!spec && !!spec.line &&
                   spec.line.label === '주당배당금';
+    if (rows && rows._span) {                     // 과거 구간: '2016~2020년 실적 추이'
+      var sp = rows._span[0] + '~' + rows._span[1];
+      return period === 'quarterly' ? sp + ' 실적 추이'
+           : sp + ' ' + (period === 'dividend' ? '배당' : '실적' + (withDiv ? '·배당' : '')) + ' 추이';
+    }
     var n = rows.filter(function (r) { return !r.partial; }).length;   // 올해 누적 막대는 햇수에 넣지 않는다
     return LABELS[period].suffix(n, withDiv);
   }
@@ -2415,26 +2423,44 @@
       .catch(function () {});
   }
 
+  // 구간: 시작 ~ 끝을 고른다 (2026-11). 회사나 탭이 바뀌면 처음부터 끝(가장 최근)까지 전부로 연다.
+  // 끝을 가장 최근에 두면 예전처럼 '최근 N년', 과거에서 끝나면 제목이 '2016~2020년 …' 으로 바뀐다
+  function rangeLabel(r, period) {
+    if (r.partial) return r.year + ' ' + (r.span === '1분기' ? '1Q' : r.span.replace('분기', 'Q')) + ' 누적';
+    return period === 'quarterly' ? r.label : r.label + '년';
+  }
   function fillRangeOptions() {
-    var sel = document.getElementById('range-n');
-    var max = maxCount(state.company, state.period);
-    var unitTxt = state.period === 'quarterly' ? '분기' : '년';
-    // 회사나 탭이 바뀌면 그 회사의 가장 긴 구간으로 연다. 앞 회사가 3년뿐이었다고
-    // 다음 회사도 3년으로 열리지 않게. 사용자가 고른 구간은 같은 회사·탭 안에서만 유지.
+    var full = buildSeries(state.company, state.period, 0);
+    state.fullRows = full;
+    var N = full.length;
     var c0 = state.company || {};
     var rkey = (c0.code || c0.ticker || c0.name) + '|' + state.period;
-    if (state.rangeKey !== rkey) { state.rangeKey = rkey; state.counts[state.period] = max; }
-    var cur = Math.min(state.counts[state.period] || max, max);
-    if (cur < 2) cur = Math.min(2, max);
-    state.counts[state.period] = cur;
-
-    var html = '';
-    for (var i = max; i >= 2; i--) {
-      html += '<option value="' + i + '"' + (i === cur ? ' selected' : '') + '>' +
-              i + unitTxt + '</option>';
+    state.range = state.range || {};
+    var rg = state.range[state.period];
+    if (state.rangeKey !== rkey || !rg) { state.rangeKey = rkey; rg = state.range[state.period] = { f: 0, t: N - 1 }; }
+    rg.t = Math.max(0, Math.min(rg.t, N - 1));
+    rg.f = Math.max(0, Math.min(rg.f, rg.t - 1));
+    var fs = document.getElementById('range-from'), ts = document.getElementById('range-to');
+    var hf = '', ht = '';
+    full.forEach(function (r, i) {
+      var lab = rangeLabel(r, state.period);
+      if (i < N - 1) hf += '<option value="' + i + '"' + (i === rg.f ? ' selected' : '') + '>' + lab + '</option>';
+      if (i > 0) ht += '<option value="' + i + '"' + (i === rg.t ? ' selected' : '') + '>' + lab + '</option>';
+    });
+    fs.innerHTML = hf; ts.innerHTML = ht;
+    fs.disabled = ts.disabled = N < 3;
+  }
+  function rowsInRange() {
+    var full = state.fullRows || [], rg = state.range && state.range[state.period];
+    if (!rg || full.length < 2) return full;
+    var rows = full.slice(rg.f, rg.t + 1);
+    if (state.period === 'quarterly' && rows.length && !rows[0].yearMark && rows[0].label) {
+      rows[0] = Object.assign({}, rows[0], { yearMark: rows[0].label.split('.')[0] + '년' });   // 첫 칸에는 늘 연도
     }
-    sel.innerHTML = html || '<option value="1">1' + unitTxt + '</option>';
-    sel.disabled = max < 2;
+    var N = full.length;
+    var latest = rg.t >= N - 1 || (rg.t === N - 2 && full[N - 1].partial);
+    if (!latest) rows._span = [rangeLabel(rows[0], state.period).replace(/년$/, ''), rangeLabel(rows[rows.length - 1], state.period)];
+    return rows;
   }
 
   function syncLineToggle() {
@@ -2455,7 +2481,7 @@
 
   function refresh() {
     fillRangeOptions();
-    state.rows = buildSeries(state.company, state.period, state.counts[state.period]);
+    state.rows = rowsInRange();
 
     if (!state.rows.length) {
       // 이 구간에 쓸 데이터가 없다. 쓸 수 있는 다른 구간으로 옮긴다.
@@ -2780,8 +2806,14 @@
     btn.addEventListener('click', function () { setPeriod(btn.dataset.period); });
   });
 
-  document.getElementById('range-n').addEventListener('change', function () {
-    state.counts[state.period] = parseInt(this.value, 10);
+  document.getElementById('range-from').addEventListener('change', function () {
+    var rg = state.range[state.period], v = parseInt(this.value, 10);
+    rg.f = v; if (rg.t <= v) rg.t = v + 1;
+    refresh();
+  });
+  document.getElementById('range-to').addEventListener('change', function () {
+    var rg = state.range[state.period], v = parseInt(this.value, 10);
+    rg.t = v; if (rg.f >= v) rg.f = v - 1;
     refresh();
   });
 
