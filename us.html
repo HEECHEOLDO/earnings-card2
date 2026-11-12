@@ -1716,8 +1716,8 @@
     // 숫자가 '자기 선' 쪽에 붙어 있어야 읽힌다 (2026-11 — 실리콘투 '22 매출 숫자가 매출 선 아래, 영업이익 위에 놓여
     // 영업이익 숫자처럼 보였고, 영업이익 숫자는 자리를 잃었다).
     // 규칙: 숫자 상자는 자기 선과 이웃 선 '사이'에만 — 위쪽에 둘 때는 자기 선보다 위이면서 바로 위 선보다는 아래,
-    // 아래쪽에 둘 때는 자기 선보다 아래이면서 바로 아래 선보다는 위. 맨 위 선은 위쪽부터, 맨 아래 선은 아래쪽부터,
-    // 가운데 선은 틈이 넓은 쪽부터. 가운데 맞춤 → 오른쪽·왼쪽으로 비켜서 → 한 칸 더 떨어져서 순서로 빈 곳을 찾는다
+    // 아래쪽에 둘 때는 자기 선보다 아래이면서 바로 아래 선보다는 위. 어느 선이든 위쪽부터, 위에 틈이 없을 때만 아래.
+    // 가운데 맞춤 → 오른쪽·왼쪽으로 비켜서 → 한 칸 더 떨어져서 순서로 빈 곳을 찾는다
     function lineY(s, px) {
       var pts = [];
       rows.forEach(function (r, i) { if (has(r, s.key)) pts.push([xA(i), yA(r[s.key])]); });
@@ -1756,8 +1756,8 @@
                      .sort(function (a, b) { return a.y - b.y; });
       items.forEach(function (it, k) {
         var txt = fmtAmount(it.v, unit), w = ctx.measureText(txt).width, h = lh + 4, side = 16;
-        var gapUp = k > 0 ? it.y - items[k - 1].y : 1e9, gapDn = k < items.length - 1 ? items[k + 1].y - it.y : plotB - it.y;
-        var order = k === 0 ? [true, false] : k === items.length - 1 ? [false, true] : (gapUp >= gapDn ? [true, false] : [false, true]);
+        // 기본은 늘 '점 위' (사용자 요청 2026-11-12). 위에 둘 틈이 없을 때만 아래로
+        var order = [true, false];
         var tryPlace = function (allowSeg) {
           for (var o = 0; o < order.length; o++) {
             var up = order[o];
