@@ -88,7 +88,22 @@ CHART_YEARS = 11
 _last_rows = [None]
 
 
+def unjump(rows):
+    """네이버 수정주가에도 감자·병합 뒤 값이 안 고쳐진 날이 있다 (하루 ×5·×10·×15).
+    가격제한폭(±30%)을 넘는 하루 변화는 실제 거래로 나올 수 없으니 그 앞을 모두 그 배수만큼 맞춘다."""
+    out = [[d, v] for d, v in rows]
+    raw = [v for d, v in rows]
+    f = 1.0
+    for i in range(len(out) - 1, 0, -1):
+        r = raw[i] / raw[i - 1] if raw[i - 1] else 1
+        if r > 1.45 or r < 0.65:
+            f *= r
+        out[i - 1][1] = raw[i - 1] * f
+    return [(d, v) for d, v in out]
+
+
 def chart_of(rows, base):
+    rows = unjump(rows)
     d0 = (base - timedelta(days=CHART_DAYS)).strftime("%Y%m%d")
     w0 = years_back(base, CHART_YEARS).strftime("%Y%m%d")
     daily = [[int(d), round(v, 2) if v % 1 else int(v)] for d, v in rows if d >= d0]
