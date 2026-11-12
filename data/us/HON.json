@@ -1,6 +1,6 @@
 {
  "name": "HON",
- "split_adjusted": false,
+ "split_adjusted": true,
  "restated_from": null,
  "legal_name": "Honeywell International Inc",
  "code": "HON",
@@ -22,7 +22,7 @@
    "dps": 2.45,
    "payout": 39.8,
    "yield": null,
-   "dps_adj": 2.45
+   "dps_adj": 4.9
   },
   {
    "p": 2017,
@@ -35,7 +35,7 @@
    "dps": 2.74,
    "payout": 137.2,
    "yield": null,
-   "dps_adj": 2.74
+   "dps_adj": 5.48
   },
   {
    "p": 2018,
@@ -48,7 +48,7 @@
    "dps": 3.055,
    "payout": 33.6,
    "yield": null,
-   "dps_adj": 3.055
+   "dps_adj": 6.11
   },
   {
    "p": 2019,
@@ -61,7 +61,7 @@
    "dps": 3.36,
    "payout": 39.8,
    "yield": null,
-   "dps_adj": 3.36
+   "dps_adj": 6.72
   },
   {
    "p": 2020,
@@ -74,7 +74,7 @@
    "dps": 3.63,
    "payout": 54.2,
    "yield": null,
-   "dps_adj": 3.63
+   "dps_adj": 7.26
   },
   {
    "p": 2021,
@@ -87,7 +87,7 @@
    "dps": 3.77,
    "payout": 47.4,
    "yield": null,
-   "dps_adj": 3.77
+   "dps_adj": 7.54
   },
   {
    "p": 2022,
@@ -100,7 +100,7 @@
    "dps": 3.97,
    "payout": 54.8,
    "yield": null,
-   "dps_adj": 3.97
+   "dps_adj": 7.94
   },
   {
    "p": 2023,
@@ -113,7 +113,7 @@
    "dps": 4.17,
    "payout": 50.5,
    "yield": null,
-   "dps_adj": 4.17
+   "dps_adj": 8.34
   },
   {
    "p": 2024,
@@ -126,7 +126,7 @@
    "dps": 4.37,
    "payout": 50.9,
    "yield": null,
-   "dps_adj": 4.37
+   "dps_adj": 8.74
   },
   {
    "p": 2025,
@@ -139,7 +139,7 @@
    "dps": 4.58,
    "payout": 62.9,
    "yield": null,
-   "dps_adj": 4.58
+   "dps_adj": 9.16
   }
  ],
  "quarterly": [

@@ -22,7 +22,7 @@
    "dps": 0.58,
    "payout": 20.7,
    "yield": null,
-   "dps_adj": 0.145
+   "dps_adj": 0.0725
   },
   {
    "p": 2017,
@@ -35,7 +35,7 @@
    "dps": 0.7,
    "payout": 31.0,
    "yield": null,
-   "dps_adj": 0.175
+   "dps_adj": 0.0875
   },
   {
    "p": 2018,
@@ -48,7 +48,7 @@
    "dps": 0.88,
    "payout": 20.8,
    "yield": null,
-   "dps_adj": 0.22
+   "dps_adj": 0.11
   },
   {
    "p": 2019,
@@ -61,7 +61,7 @@
    "dps": 0.48,
    "payout": 24.0,
    "yield": null,
-   "dps_adj": 0.24
+   "dps_adj": 0.12
   },
   {
    "p": 2020,
@@ -74,7 +74,7 @@
    "dps": 0.52,
    "payout": 24.5,
    "yield": null,
-   "dps_adj": 0.26
+   "dps_adj": 0.13
   },
   {
    "p": 2021,
@@ -87,7 +87,7 @@
    "dps": 0.635,
    "payout": 21.6,
    "yield": null,
-   "dps_adj": 0.3175
+   "dps_adj": 0.1588
   },
   {
    "p": 2022,
@@ -100,7 +100,7 @@
    "dps": 0.405,
    "payout": 24.9,
    "yield": null,
-   "dps_adj": 0.405
+   "dps_adj": 0.2025
   },
   {
    "p": 2023,
@@ -113,7 +113,7 @@
    "dps": 0.425,
    "payout": 25.7,
    "yield": null,
-   "dps_adj": 0.425
+   "dps_adj": 0.2125
   },
   {
    "p": 2024,
@@ -126,7 +126,7 @@
    "dps": 0.55,
    "payout": 24.4,
    "yield": null,
-   "dps_adj": 0.55
+   "dps_adj": 0.275
   },
   {
    "p": 2025,
@@ -139,7 +139,7 @@
    "dps": 0.745,
    "payout": 18.6,
    "yield": null,
-   "dps_adj": 0.745
+   "dps_adj": 0.3725
   }
  ],
  "quarterly": [
