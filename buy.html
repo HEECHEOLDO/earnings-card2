@@ -977,7 +977,9 @@ function adoptUS(mj, fj, ij){
     var REFm = mkey(NOWD.slice(0,7));
     codes.forEach(function(c){
       var o = raw[c], n = o.nc;
-      if (!n || n[2] !== NOWD || !(n[0] > 0) || !(n[1] > 0)) return;   // 최근 종가가 없는 종목은 쉰다
+      // 최근 종가가 없는 종목은 쉰다. 나스닥이 일부만 막힌 날은 종목마다 날짜가 하루이틀 다를 수 있어
+      // 기준일보다 7일 안쪽으로 앞선 값까지는 받는다 (예전엔 날짜가 다르면 빼서 종목이 통째로 사라졌다)
+      if (!n || !n[2] || n[2] > NOWD || (Date.parse(NOWD) - Date.parse(n[2])) / 864e5 > 7 || !(n[0] > 0) || !(n[1] > 0)) return;
       var vA = at(o, mkey(String(o.asof || '').slice(0,7)));
       if (vA === null) return;
       var pNow = vA * n[1] / n[0];
@@ -990,7 +992,7 @@ function adoptUS(mj, fj, ij){
       if (!Object.keys(y).length) return;
       var up = c.toUpperCase();
       S.items[c] = { name: USN[up] || up, disp: USN[up] || up, en: USFULL[up] || '',
-                     now: { d: NOWD, v: pNow, fx: fxD }, y: y };
+                     now: { d: n[2], v: pNow, fx: fxOn(n[2]) || fxD }, y: y };
       S.order.push(c);
     });
     sortOrder();

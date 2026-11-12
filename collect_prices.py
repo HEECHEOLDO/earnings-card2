@@ -864,7 +864,7 @@ def nowcast_us(items):
             rows = _nq_rows(sym, cls, d0, d1)
         return code, it, av, cls, rows
 
-    done = skip = fresh = 0
+    done = skip = fresh = kept = 0
     with ThreadPoolExecutor(max_workers=6) as ex:
         for code, it, av, cls, rows in ex.map(one, todo):
             base = _close_on(rows, av["asof"])
@@ -874,6 +874,12 @@ def nowcast_us(items):
                 it["years"][av["asof"][:4]] = av["y"]
                 it["asof"] = av["asof"]
                 it["nc"] = [base[1], base[1], av["asof"]]
+                it["ncb"] = av["asof"]
+                continue
+            if not rows and it.get("nc") and it.get("ncb") == av["asof"] and len(it["nc"]) == 3:
+                # 나스닥이 막힌 날 (2026-11): 지난번에 이어 붙인 최근 종가를 그대로 둔다.
+                # 예전에는 여기서 지워서, 하루만 막혀도 '그때 샀다면' 이 몇 주 전 월말로 돌아갔다
+                kept += 1
                 continue
             if not base or not last or last[0] < av["asof"]:
                 skip += 1
@@ -905,9 +911,10 @@ def nowcast_us(items):
             it["asof"] = last[0]
             # 그때 샀다면(buy.html) 이 '지금' 값으로 쓴다: [기준일 종가, 최근 종가, 최근 날짜]
             it["nc"] = [base[1], last[1], last[0]]
+            it["ncb"] = av["asof"]                # nc 의 기준일 — 알파밴티지로 새로 받으면 달라져서 옛 nc 를 버린다
             done += 1
-    log("해외 올해 수익률 최신화: %d종목 · 이미 최신 %d · 못 함 %d (알파밴티지 값 유지) · 나스닥 일별 종가"
-        % (done, fresh, skip))
+    log("해외 올해 수익률 최신화: %d종목 · 이미 최신 %d · 나스닥 막혀 지난 값 유지 %d · 못 함 %d (알파밴티지 값 유지) · 나스닥 일별 종가"
+        % (done, fresh, kept, skip))
 
 
 def attach_nc(items):
