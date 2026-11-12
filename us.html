@@ -1421,19 +1421,82 @@
       });
     });
 
-    // 구간이 적으면 막대 위에 값을 적는다
+    // 구간이 적으면 막대 위에 값을 적는다 — 옆 막대·보조 선·다른 글자와 겹치면 자리를 옮긴다 (2026-11)
+    // 후보: 막대 바로 위 → 바깥쪽(왼쪽 막대는 왼쪽, 오른쪽 막대는 오른쪽)으로 비켜서 → 한두 칸 더 위. 다 걸리면 적지 않는다
+    var labelOps = [];          // 값 글자는 보조 선을 그린 뒤에 얹는다 (바탕을 깐 글자가 선에 가리지 않게)
     if (showVals) {
-      ctx.textAlign = 'center';
-      ctx.font = font(800, T.type.valueLabel);
+      // 글자 크기는 예전 화면 그대로 (T.type.valueLabel 은 없는 값이라 눈금 글자 크기로 그려지고 있었다)
+      ctx.font = font(700, T.type.tick);
+      var vh = T.type.tick * 0.82 + 4;
+      var bars = [], lsegs = [], lpts = [], placedB = [];
       rows.forEach(function (r, i) {
         var gx = plotL + slot * i + (slot - gw) / 2;
         barDefs.forEach(function (b, j) {
-          var v = r[b.key] || 0, y = yA(v);
-          var cx = gx + bw * j + (bw - (nBars === 1 ? 0 : 4)) / 2;
-          ctx.fillStyle = colors[b.color];
-          if (v >= 0) ctx.fillText(fmtAmount(v, unit), cx, y - 12);
-          else ctx.fillText(fmtAmount(v, unit), cx, y + 12 + T.type.valueLabel * 0.82);
+          var v = r[b.key] || 0, y = yA(v), top = v >= 0 ? y : zero, h = Math.max(1, Math.abs(zero - y));
+          bars.push({ i: i, j: j, x: gx + bw * j, y: top, w: bw - (nBars === 1 ? 0 : 4), h: h });
         });
+      });
+      if (showLine) {
+        var prevP = null;
+        rows.forEach(function (r, i) {
+          var v = r[lineKey];
+          if (v === null || v === undefined || isNaN(v)) { prevP = null; return; }
+          var p = [plotL + slot * i + slot / 2, yB(v)];
+          lpts.push(p);
+          if (prevP) lsegs.push([prevP[0], prevP[1], p[0], p[1]]);
+          prevP = p;
+        });
+      }
+      var hitSeg = function (sg, b) {
+        var x1 = sg[0], y1 = sg[1], x2 = sg[2], y2 = sg[3];
+        var L = b[0] - 5, R = b[0] + b[2] + 5, Tt = b[1] - 5, B = b[1] + b[3] + 5;
+        if (Math.max(x1, x2) < L || Math.min(x1, x2) > R || Math.max(y1, y2) < Tt || Math.min(y1, y2) > B) return false;
+        var t0 = 0, t1 = 1, dx = x2 - x1, dy = y2 - y1;
+        var P = [-dx, dx, -dy, dy], Q = [x1 - L, R - x1, y1 - Tt, B - y1];
+        for (var k = 0; k < 4; k++) {
+          if (P[k] === 0) { if (Q[k] < 0) return false; continue; }
+          var tt = Q[k] / P[k];
+          if (P[k] < 0) { if (tt > t1) return false; if (tt > t0) t0 = tt; }
+          else { if (tt < t0) return false; if (tt < t1) t1 = tt; }
+        }
+        return true;
+      };
+      var freeB = function (b, self) {
+        if (b[1] < oy - 4 || b[1] + b[3] > plotB + 2) return false;
+        if (bars.some(function (q) { return q !== self && b[0] < q.x + q.w + 3 && b[0] + b[2] > q.x - 3 && b[1] < q.y + q.h && b[1] + b[3] > q.y - 3; })) return false;
+        if (placedB.some(function (q) { return b[0] < q[0] + q[2] + 4 && b[0] + b[2] + 4 > q[0] && b[1] < q[1] + q[3] && b[1] + b[3] > q[1]; })) return false;
+        if (lpts.some(function (d) { return d[0] > b[0] - 10 && d[0] < b[0] + b[2] + 10 && d[1] > b[1] - 10 && d[1] < b[1] + b[3] + 10; })) return false;
+        return !lsegs.some(function (sg) { return hitSeg(sg, b); });
+      };
+      ctx.textAlign = 'left';
+      bars.forEach(function (q) {
+        var r = rows[q.i], bdef = barDefs[q.j], v = r[bdef.key] || 0;
+        var txt = fmtAmount(v, unit), w = ctx.measureText(txt).width;
+        var cx = q.x + q.w / 2, out = nBars === 1 ? 0 : (q.j === 0 ? -1 : 1);
+        var base = v >= 0 ? q.y - 8 - vh : q.y + q.h + 8;
+        var step = v >= 0 ? -vh : vh;
+        var cands = [[cx - w / 2, base]];
+        if (out) cands.push([out < 0 ? q.x + q.w - w : q.x, base]);        // 바깥쪽으로 비켜서 (막대 끝에 맞춤)
+        for (var k = 1; k <= 5; k++) {                                     // 한 칸씩 더 위로 (보조 선을 피해)
+          cands.push([cx - w / 2, base + step * k]);
+          if (out) cands.push([out < 0 ? q.x + q.w - w : q.x, base + step * k]);
+        }
+        for (var c = 0; c < cands.length; c++) {
+          var b = [cands[c][0], cands[c][1], w, vh];
+          if (!freeB(b, q)) continue;
+          placedB.push(b);
+          labelOps.push([txt, b, colors[bdef.color], false]);
+          return;
+        }
+        // 어디에 놓아도 보조 선이 지나가면: 막대 바로 위에 두고 글자 뒤에 종이색 바탕을 깐다 (선 위에 그린다)
+        var lineOk = function (b2) { var s0 = lsegs, p0 = lpts; lsegs = []; lpts = []; var ok = freeB(b2, q); lsegs = s0; lpts = p0; return ok; };
+        for (var c2 = 0; c2 < cands.length; c2++) {
+          var b2 = [cands[c2][0], cands[c2][1], w, vh];
+          if (!lineOk(b2)) continue;
+          placedB.push(b2);
+          labelOps.push([txt, b2, colors[bdef.color], true]);
+          return;
+        }
       });
       ctx.textAlign = 'left';
     }
@@ -1466,6 +1529,23 @@
         ctx.beginPath();
         ctx.arc(cx, yB(r[lineKey]), i === rows.length - 1 ? 9 : 6, 0, Math.PI * 2);
         ctx.fill();
+      });
+      ctx.restore();
+    }
+
+    if (labelOps.length) {
+      ctx.save();
+      ctx.font = font(700, T.type.tick);
+      ctx.textAlign = 'left';
+      labelOps.forEach(function (op) {
+        var b = op[1];
+        if (op[3]) {
+          ctx.fillStyle = T.paper;
+          roundRect(ctx, b[0] - 5, b[1] - 1, b[2] + 10, b[3] + 2, 6);
+          ctx.fill();
+        }
+        ctx.fillStyle = op[2];
+        ctx.fillText(op[0], b[0], b[1] + b[3] - 4);
       });
       ctx.restore();
     }
@@ -1588,27 +1668,91 @@
         ctx.fillText(fmtAmount(it.v, unit), x, it.c);
       });
     })();
+    // 점 위 값: 선·점·다른 글자와 겹치지 않는 자리를 후보 중에서 고른다 (2026-11 — 실리콘투 '6,915' 가 선에 걸쳤다).
+    // 후보: 위 → 아래 → 위 오른쪽/왼쪽 → 아래 오른쪽/왼쪽 → 한 칸 더 위/아래. 다 걸리면 그 값은 적지 않는다
+    var segs = [], dots = [];
+    ser.forEach(function (s) {
+      var prev = null;
+      rows.forEach(function (r, i) {
+        if (!has(r, s.key)) { prev = null; return; }
+        var p = [xA(i), yA(r[s.key])];
+        dots.push(p);
+        if (prev) segs.push([prev[0], prev[1], p[0], p[1]]);
+        prev = p;
+      });
+    });
+    function segHits(sg, b) {                       // 선분이 상자(선 두께만큼 넓힌)를 지나가나
+      var x1 = sg[0], y1 = sg[1], x2 = sg[2], y2 = sg[3];
+      var L = b[0] - 5, R = b[0] + b[2] + 5, Tt = b[1] - 5, B = b[1] + b[3] + 5;
+      if (Math.max(x1, x2) < L || Math.min(x1, x2) > R || Math.max(y1, y2) < Tt || Math.min(y1, y2) > B) return false;
+      var t0 = 0, t1 = 1, dx = x2 - x1, dy = y2 - y1;
+      var P = [-dx, dx, -dy, dy], Q = [x1 - L, R - x1, y1 - Tt, B - y1];
+      for (var k = 0; k < 4; k++) {
+        if (P[k] === 0) { if (Q[k] < 0) return false; continue; }
+        var tt = Q[k] / P[k];
+        if (P[k] < 0) { if (tt > t1) return false; if (tt > t0) t0 = tt; }
+        else { if (tt < t0) return false; if (tt < t1) t1 = tt; }
+      }
+      return true;
+    }
+    var placed = [];
+    // 끝값 상자도 장애물로 넣는다
+    (function () {
+      var x = xA(n - 1) + 18;
+      ser.forEach(function (s) {
+        if (!has(lastR, s.key)) return;
+        var w = ctx.measureText(fmtAmount(lastR[s.key], unit)).width, c = yA(lastR[s.key]) + lh / 2;
+        placed.push([x, c - lh - 2, w, lh + 6]);
+      });
+    })();
+    function free(b) {
+      if (b[1] < oy || b[1] + b[3] > plotB - 2 || b[0] < ox || b[0] + b[2] > ox + W) return false;
+      if (placed.some(function (q) { return b[0] < q[0] + q[2] + 4 && b[0] + b[2] + 4 > q[0] && b[1] < q[1] + q[3] && b[1] + b[3] > q[1]; })) return false;
+      if (dots.some(function (d) { return d[0] > b[0] - 10 && d[0] < b[0] + b[2] + 10 && d[1] > b[1] - 10 && d[1] < b[1] + b[3] + 10; })) return false;
+      return !segs.some(function (sg) { return segHits(sg, b); });
+    }
     rows.forEach(function (r, i) {
       if (!(n <= T.valueLabelMax) || i === n - 1) return;
-      var x = xA(i), boxes = [];
+      var x = xA(i);
       var items = ser.filter(function (s) { return has(r, s.key); })
                      .map(function (s) { return { s: s, v: r[s.key], y: yA(r[s.key]) }; })
                      .sort(function (a, b) { return a.y - b.y; });
-      items.forEach(function (it, k) {
-        var txt = fmtAmount(it.v, unit), w = ctx.measureText(txt).width;
-        var cx = Math.max(ox + w / 2, Math.min(ox + W - w / 2, x));
-        var tries = k === items.length - 1 && items.length > 1
-          ? [it.y + gapY + lh, it.y - gapY]                 // 맨 아래 선은 아래쪽부터
-          : [it.y - gapY, it.y + gapY + lh];
-        for (var t = 0; t < tries.length; t++) {
-          var base = tries[t], top = base - lh - 3, bot = base + 5;
-          if (top < oy || bot > plotB + 4) continue;
-          var clash = boxes.some(function (b) { return top < b[1] && bot > b[0] && Math.abs(cx - b[2]) < (w + b[3]) / 2 + 6; });
-          if (clash) continue;
-          boxes.push([top, bot, cx, w]);
+      items.forEach(function (it) {
+        var txt = fmtAmount(it.v, unit), w = ctx.measureText(txt).width, h = lh + 4;
+        var up = it.y - gapY - h, dn = it.y + gapY, side = 16;
+        var cands = [
+          [x - w / 2, up], [x - w / 2, dn],
+          [x + side, up], [x - side - w, up], [x + side, dn], [x - side - w, dn],
+          [x - w / 2, up - h * 0.9], [x - w / 2, dn + h * 0.9],
+          [x + side, it.y - h / 2], [x - side - w, it.y - h / 2],
+          [x + side, up - h * 0.9], [x - side - w, up - h * 0.9], [x + side, dn + h * 0.9], [x - side - w, dn + h * 0.9],
+          [x - w / 2, up - h * 1.8], [x - w / 2, dn + h * 1.8]
+        ];
+        var done = false;
+        for (var k = 0; k < cands.length; k++) {
+          var b = [cands[k][0], cands[k][1], w, h];
+          if (!free(b)) continue;
+          placed.push(b);
           ctx.fillStyle = colors[it.s.color];
-          ctx.fillText(txt, cx - w / 2, base);
+          ctx.fillText(txt, b[0], b[1] + lh + 1);
+          done = true;
           break;
+        }
+        // 어디에 놓아도 선이 지나가면: 다른 글자·점과는 안 겹치는 첫 자리에 종이색 바탕을 깔고 적는다
+        if (!done) {
+          var keep = segs; segs = [];
+          for (var k2 = 0; k2 < cands.length; k2++) {
+            var b2 = [cands[k2][0], cands[k2][1], w, h];
+            if (!free(b2)) continue;
+            placed.push(b2);
+            ctx.fillStyle = T.paper;
+            roundRect(ctx, b2[0] - 5, b2[1] - 1, b2[2] + 10, b2[3] + 2, 6);
+            ctx.fill();
+            ctx.fillStyle = colors[it.s.color];
+            ctx.fillText(txt, b2[0], b2[1] + lh + 1);
+            break;
+          }
+          segs = keep;
         }
       });
     });
