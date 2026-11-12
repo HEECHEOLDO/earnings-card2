@@ -984,8 +984,11 @@ def nowcast_us(items):
     def cnbc_rows(code, av):
         q = cnbc.get(code.upper())
         b = base_close(code, av)
-        if not q or not b or q[0] <= av["asof"] or not (0.5 < q[1] / b < 2.0):
+        # 1/3 ~ 3배 밖이면 그 사이 액면분할 등으로 본다 (레버리지 ETF 는 한 달에 반토막도 난다 — SOXL)
+        if not q or not b or q[0] < av["asof"] or not (0.33 < q[1] / b < 3.0):
             return []
+        if q[0] == av["asof"]:                    # 알파밴티지로 막 받은 종목 — 이미 최신
+            return [(av["asof"], float(b))]
         return [(av["asof"], float(b)), (q[0], float(q[1]))]
 
     def cmc_rows(code, av):
