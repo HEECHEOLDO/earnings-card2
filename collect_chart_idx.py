@@ -70,7 +70,7 @@ def main():
         if not daily and cn:
             daily = cnbc_bars(cn, "1Y")
             if daily:
-                wk = weekly(sorted(set(cnbc_bars(cn, "5Y") or []) | set(daily)))
+                wk = weekly(sorted(set(x for x in (cnbc_bars(cn, "5Y") or []) if x[0] < daily[0][0]) | set(daily)))
                 src = "cnbc"
         time.sleep(0.4)
         if not daily or len(daily) < 2:

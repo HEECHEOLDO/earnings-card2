@@ -227,7 +227,8 @@ def build(sym, mon, today, probe=False):
     if not daily:
         return None, ""
     d = [[a, rnd(b)] for a, b in daily if a >= d0]
-    wk = weekly(sorted(set(tuple(x) for x in (wk or [])) | set(daily)))
+    # 일별이 있는 기간은 일별로 주를 만든다 (CNBC 이번 주 막대는 값이 늦게 바뀌는 일이 있다)
+    wk = weekly(sorted(set(tuple(x) for x in (wk or []) if x[0] < daily[0][0]) | set(daily)))
     # 월말 종가(알파밴티지, 배당까지 고친 값)는 기준이 달라 이어 붙이면 계단이 생긴다 (알트리아 33 → 62).
     # CNBC 5년 차트가 실제로는 약 10년 치 주별을 주므로 그것만 쓴다
     w = [[a, rnd(b)] for a, b in wk if a >= w0]
