@@ -226,7 +226,56 @@ def build(sym, mon, today, probe=False):
     # 월말 종가(알파밴티지, 배당까지 고친 값)는 기준이 달라 이어 붙이면 계단이 생긴다 (알트리아 33 → 62).
     # CNBC 5년 차트가 실제로는 약 10년 치 주별을 주므로 그것만 쓴다
     w = [[a, rnd(b)] for a, b in wk if a >= w0]
+    d, w = fix_jumps(d, w, mon_map(mon, sym))
     return {"u": "USD", "d": d, "w": w, "src": "+".join(src)}, "+".join(src)
+
+
+def mon_map(mon, sym):
+    """{YYYYMM: 월말 종가} — 뜀 확인용 참고값"""
+    return {a // 100: b for a, b in monthly_rows(mon, sym)}
+
+
+def fix_jumps(d, w, mm):
+    """CNBC 오래된 주별에 분할을 두 번 반영하는 등 계단이 끼는 일이 있다 (브라운앤브라운 2018 12→25,
+    QLD·SSO·SQQQ 2020, SOXS 2022). 판별: 주별 값 ÷ 같은 달 월말 종가(따로 받은 값)의 비율이 뜀 앞뒤로
+    뛴 배수만큼 바뀌면 자료 오류(또는 분사 미반영) — 그 앞을 모두 맞춘다. 실제로 크게 뛴 날은 비율이 그대로라 손대지 않는다.
+    맨 앞 점이 혼자 동떨어진 경우(상장 첫 주 공모가)는 그 점을 뺀다."""
+    def mid(xs):
+        xs = sorted(xs)
+        return xs[len(xs) // 2] if xs else None
+
+    def offset(s, lo, hi):                       # lo < 달 < hi 범위에서 (그 달 마지막 값 ÷ 월말 종가) 중앙값
+        last = {}
+        for a, b in s:
+            last[a // 100] = b
+        return mid([last[k] / mm[k] for k in last if lo < k < hi and mm.get(k)])
+
+    def mshift(k, n):
+        y, m = divmod(k, 100)
+        t = y * 12 + m - 1 + n
+        return (t // 12) * 100 + t % 12 + 1
+
+    for _ in range(6):
+        if len(w) > 2 and not 0.6 <= w[1][1] / w[0][1] <= 1.6:
+            w = w[1:]
+            continue
+        hit = None
+        for i in range(len(w) - 1):
+            r = w[i + 1][1] / w[i][1]
+            if 0.6 <= r <= 1.6:
+                continue
+            k = w[i + 1][0] // 100
+            ob = offset(w[:i + 1], mshift(k, -7), k)
+            oa = offset(w[i + 1:], k, mshift(k, 7))
+            if ob and oa and 0.8 <= (oa / ob) / r <= 1.25:
+                hit = (w[i + 1][0], oa / ob)          # 다음 주 표시일 앞까지가 옛 기준
+                break
+        if not hit:
+            break
+        cut, f = hit
+        w = [[a, rnd(b * f) if a < cut else b] for a, b in w]
+        d = [[a, rnd(b * f) if a < cut else b] for a, b in d]
+    return d, w
 
 
 def append_quote(path, q):
