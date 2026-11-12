@@ -682,6 +682,20 @@ def load_universe(args, only):
                     add(c["code"], c["code"], "US", c.get("legal_name") or "")
         except Exception:                     # noqa: BLE001
             log("! data/us/index.json 을 읽지 못했습니다 (해외 건너뜀)")
+        # 시총 순위(미국)에 오른 회사도 — 외국 회사(TSMC·도요타 등)는 위 목록에 없어서
+        # 새로 순위에 들면 월말 주가가 없어 순위 영상에서 실제 값을 못 쓴다. 이렇게 두면 저절로 따라 들어온다
+        try:
+            with open("data/rank.json", encoding="utf-8") as f:
+                cols = json.load(f).get("cols", {})
+            for k in sorted(cols):
+                if not (k == "now" or k >= "2008"):     # 영상은 2009년부터 — 옛 상장폐지 회사로 하루 한도를 쓰지 않게
+                    continue
+                for mk in ("us", "us_only"):
+                    for r in (cols[k].get(mk) or [])[:40]:
+                        if r and isinstance(r[0], str) and r[0].replace(".", "").replace("-", "").isalpha():
+                            add(r[0].upper(), r[1] if len(r) > 1 else r[0], "US", "")
+        except Exception:                     # noqa: BLE001
+            log("! data/rank.json 을 읽지 못했습니다 (시총 순위 회사 건너뜀)")
 
     return items
 
