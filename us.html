@@ -187,6 +187,14 @@
   .range-pick label { font-size: 12px; color: var(--text-mute); }
   .range-pick select { height: 34px; font-size: 13px; padding: 0 8px; }
   .range-pick .range-sep { font-size: 13px; color: var(--text-mute); }
+  .series-pick { display: flex; gap: 6px; flex-wrap: wrap; }
+  .series-pick button { font-family: inherit; font-size: 12.5px; font-weight: 700; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 999px;
+    border: 1px solid var(--border-strong); background: transparent; color: var(--text-soft); }
+  .series-pick button .sw { width: 14px; height: 4px; border-radius: 2px; }
+  .series-pick button[aria-pressed="true"] { background: var(--surface-2); color: var(--text); border-color: transparent; }
+  .series-pick button[aria-pressed="false"] { opacity: .55; }
+  .series-pick button[aria-pressed="false"] .sw { background: var(--border-strong) !important; }
   .tab {
     font-size: 13px; font-weight: 600; padding: 8px 16px; cursor: pointer;
     border-radius: var(--radius); border: 1px solid var(--border-strong);
@@ -521,6 +529,10 @@
           <button type="button" class="cp-tab ctype on" data-ct="bar">막대</button>
           <button type="button" class="cp-tab ctype" data-ct="line">선</button>
         </div>
+      </div>
+      <div class="ctl-row" id="row-series" style="display:none">
+        <label>보일 선</label>
+        <div class="series-pick" id="series-pick" role="group" aria-label="보일 선"></div>
       </div>
       <div class="ctl-row" id="row-line">
         <label class="check"><input type="checkbox" id="chk-line" checked> <span id="chk-line-label">주당배당금 선 표시</span></label>
@@ -1083,7 +1095,19 @@
 
   // 선 그래프 모양: 매출·영업이익·순이익을 같은 눈금에 선 세 개로 (금융사는 영업이익·순이익 두 개)
   // 색은 막대 모양과 같은 짝 — 매출은 연한 쪽(중간 톤), 영업이익은 진한 쪽, 순이익은 금색
+  // 선 모양에서 끈 선을 뺀다 (매출·영업이익·순이익 버튼). 하나는 늘 남긴다
+  function visibleSeries(all) {
+    var hide = (state && state.lineHide) || {};
+    var vis = all.filter(function (b) { return !hide[b.label]; });
+    return vis.length ? vis : all.slice(0, 1);
+  }
   function lineModeSpec(spec, rows) {
+    var out0 = lineModeSpecAll(spec, rows);
+    out0.allBars = out0.bars;
+    out0.bars = visibleSeries(out0.bars);
+    return out0;
+  }
+  function lineModeSpecAll(spec, rows) {
     var noRev = rows && rows.length && rows[0].noRev;
     var out = {};
     for (var k in spec) out[k] = spec[k];
@@ -1146,8 +1170,10 @@
   function pickUnit(rows, spec) {
     if (spec && spec.barUnit === 'won') return '달러';   // 주당 금액은 늘 달러
     var m = 0;
+    // 선 모양에서 매출을 끄면 남은 선(이익) 크기로 단위를 정한다 — 매출 때문에 이익이 '0.4조' 처럼 보이지 않게
+    var keys = spec && spec.lineMode ? spec.bars.map(function (b) { return b.key; }) : ['bar1', 'bar2'];
     rows.forEach(function (r) {
-      m = Math.max(m, Math.abs(r.bar1 || 0), Math.abs(r.bar2 || 0));
+      keys.forEach(function (k) { m = Math.max(m, Math.abs(r[k] || 0)); });
     });
     if (CUR === 'USD') return m >= 1000 ? '십억달러' : '백만달러';
     return m >= 100000 ? '조원' : '억원';
@@ -2044,6 +2070,7 @@
     counts: { annual: 10, quarterly: 10, dividend: 10 },
     showLine: { annual: true, quarterly: true, dividend: true },
     chartType: 'bar',              // 'bar' | 'line' — 실적(연간·분기) 카드의 그래프 모양
+    lineHide: {},                  // 선 모양에서 끈 선 { '매출': true, ... }
     rows: null, spec: null, colors: null,
     guide: false, showSource: true, showLogo: true,
     title: '', sub: '',            // 비워두면 자동 문구
@@ -2564,6 +2591,20 @@
     var isDiv = state.period === 'dividend';
     document.getElementById('row-ctype').style.display = isDiv ? 'none' : '';
     document.getElementById('row-line').style.display = isLineMode(state) ? 'none' : '';
+    // 선 모양일 때만: 매출·영업이익·순이익 버튼 (금융사는 영업이익·순이익)
+    var rs = document.getElementById('row-series'), sp = document.getElementById('series-pick');
+    if (isLineMode(state) && state.spec && state.rows && state.rows.length && state.colors) {
+      var all = lineModeSpecAll(state.spec, state.rows).bars;
+      var vis = visibleSeries(all).map(function (b) { return b.label; });
+      sp.innerHTML = all.map(function (b) {
+        var on = vis.indexOf(b.label) >= 0;
+        return '<button type="button" data-s="' + b.label + '" aria-pressed="' + on + '">' +
+               '<span class="sw" style="background:' + state.colors[b.color] + '"></span>' + b.label + '</button>';
+      }).join('');
+      rs.style.display = '';
+    } else {
+      rs.style.display = 'none';
+    }
     Array.prototype.forEach.call(document.querySelectorAll('.ctype'), function (b) {
       b.classList.toggle('on', b.dataset.ct === state.chartType);
     });
@@ -2942,6 +2983,20 @@
       drawPreview();
     });
   });
+  document.getElementById('series-pick').addEventListener('click', function (e) {
+    var b = e.target.closest('button[data-s]');
+    if (!b) return;
+    var name = b.dataset.s, all = lineModeSpecAll(state.spec, state.rows).bars;
+    var hide = Object.assign({}, state.lineHide);
+    hide[name] = !hide[name];
+    // 마지막 하나는 끌 수 없다
+    if (!all.some(function (x) { return !hide[x.label]; })) return;
+    state.lineHide = hide;
+    try { localStorage.setItem('fc.lineHide', JSON.stringify(hide)); } catch (e2) {}
+    syncLineToggle();
+    drawPreview();
+  });
+  try { var _lh = JSON.parse(localStorage.getItem('fc.lineHide') || '{}'); if (_lh && typeof _lh === 'object') state.lineHide = _lh; } catch (e) {}
   try { var _ct = localStorage.getItem('fc.chartType'); if (_ct === 'line' || _ct === 'bar') state.chartType = _ct; } catch (e) {}
   document.getElementById('chk-line').addEventListener('change', function () {
     state.showLine[state.period] = this.checked;
