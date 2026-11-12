@@ -3,6 +3,10 @@ name: SEC 원자료 점검 (수동)
 on:
   workflow_dispatch:
     inputs:
+      mode:
+        description: 'sec = SEC 원자료, net = 시세 출처 점검'
+        required: false
+        default: 'sec'
       tickers:
         description: '티커 (띄어쓰기로)'
         required: true
@@ -20,4 +24,7 @@ jobs:
       - name: 점검
         env:
           SEC_UA: ${{ secrets.SEC_UA }}
-        run: python3 sec_probe.py ${{ github.event.inputs.tickers }}
+          MODE: ${{ github.event.inputs.mode }}
+          TICKERS: ${{ github.event.inputs.tickers }}
+        run: |
+          if [ "$MODE" = "net" ]; then python3 net_probe.py $TICKERS; else python3 sec_probe.py $TICKERS; fi
