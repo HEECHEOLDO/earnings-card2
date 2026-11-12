@@ -822,6 +822,44 @@ def _nq_rows(sym, cls, d0, d1):
     return []
 
 
+YH_DAILY = "https://query1.finance.yahoo.com/v8/finance/chart/%s?period1=%d&period2=%d&interval=1d"
+
+
+def _yh_rows(sym, d0, d1):
+    """나스닥이 막힌 날의 두 번째 출처 — 야후 일별 종가(수정 전 종가, 나스닥과 같은 기준)."""
+    t0 = int(datetime.strptime(d0, "%Y-%m-%d").replace(tzinfo=timezone.utc).timestamp())
+    t1 = int((datetime.strptime(d1, "%Y-%m-%d") + timedelta(days=1)).replace(tzinfo=timezone.utc).timestamp())
+    url = YH_DAILY % (urllib.parse.quote(sym.replace(".", "-")), t0, t1)
+    for t in range(2):
+        try:
+            raw = urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": UA}), timeout=20).read()
+            r = (json.loads(raw.decode("utf-8", "replace")).get("chart") or {}).get("result") or []
+            if not r:
+                return []
+            r = r[0]
+            off = int((r.get("meta") or {}).get("gmtoffset") or 0)
+            closes = ((r.get("indicators") or {}).get("quote") or [{}])[0].get("close") or []
+            out = []
+            for ts, c in zip(r.get("timestamp") or [], closes):
+                if c:
+                    out.append((datetime.fromtimestamp(ts + off, timezone.utc).strftime("%Y-%m-%d"), float(c)))
+            return sorted(out)
+        except Exception:                         # noqa: BLE001
+            time.sleep(2)
+    return []
+
+
+def _cmc_prices():
+    """세 번째 출처 — 시가총액 탭이 매일 받는 표(data/mcap_us.json)의 종목별 현재가. ETF 는 없다."""
+    try:
+        with open("data/mcap_us.json", encoding="utf-8") as f:
+            j = json.load(f)
+    except Exception:                             # noqa: BLE001
+        return "", {}
+    d = j.get("asof") or ""
+    return d, {k: v.get("p") for k, v in (j.get("stocks") or {}).items() if v.get("p")}
+
+
 def _close_on(rows, day):
     """day 이전(같은 날 포함) 마지막 종가."""
     got = None
@@ -864,9 +902,59 @@ def nowcast_us(items):
             rows = _nq_rows(sym, cls, d0, d1)
         return code, it, av, cls, rows
 
-    done = skip = fresh = kept = 0
+    # 나스닥이 막혀 빈 종목은 야후 → 시가총액 표 현재가 순으로 메운다 (2026-11)
     with ThreadPoolExecutor(max_workers=6) as ex:
-        for code, it, av, cls, rows in ex.map(one, todo):
+        got = list(ex.map(one, todo))
+    nq_ok = {g[0] for g in got if g[4]}           # 나스닥에서 받은 종목만 종류(ac: 주식/ETF)를 기억한다
+    empty = [g for g in got if not g[4]]
+    yh_ok = yh_try = 0
+    if empty:
+        log("나스닥 일별 종가를 못 받은 종목 %d개 — 야후로 다시" % len(empty))
+        d1 = today.strftime("%Y-%m-%d")
+        for k, (code, it, av, cls, rows) in enumerate(empty):
+            if yh_try >= 8 and yh_ok == 0:
+                log("  야후도 막힘 (%d번 연속 실패) — 그만" % yh_try)
+                break
+            d0 = (datetime.strptime(av["asof"], "%Y-%m-%d") - timedelta(days=10)).strftime("%Y-%m-%d")
+            r2 = _yh_rows(code, d0, d1)
+            yh_try += 1
+            if r2:
+                yh_ok += 1
+                rows[:] = r2
+            time.sleep(0.4)
+        log("  야후로 받은 종목 %d / %d" % (yh_ok, yh_try))
+    cmc_d, cmc = _cmc_prices()
+    try:
+        with open(OUT_M, encoding="utf-8") as f:
+            MON = json.load(f).get("items") or {}
+    except Exception:                             # noqa: BLE001
+        MON = {}
+
+    def cmc_rows(code, av):
+        """[(기준일, 기준일 종가), (표 날짜, 현재가)] — 기준일 종가는 월말 종가 파일의 진행 중인 달 값
+        (알파밴티지가 받은 날의 종가 = 그날의 수정 전 종가와 같다)."""
+        p = cmc.get(code) or cmc.get(code.replace("-", ".")) or cmc.get(code.replace(".", "-"))
+        o = MON.get(code) or {}
+        if not p or not cmc_d or cmc_d <= av["asof"] or o.get("asof") != av["asof"]:
+            return []
+        s0, v = o.get("s") or "", o.get("v") or []
+        try:
+            i = (int(av["asof"][:4]) - int(s0[:4])) * 12 + int(av["asof"][5:7]) - int(s0[5:7])
+            b = v[i]
+        except Exception:                         # noqa: BLE001
+            return []
+        if not b or not (0.5 < p / b < 2.0):      # 그 사이 액면분할 등 — 쓰지 않는다
+            return []
+        return [(av["asof"], float(b)), (cmc_d, float(p))]
+
+    done = skip = fresh = kept = by_cmc = 0
+    if True:
+        for code, it, av, cls, rows in got:
+            if not rows:
+                pn = it.get("nc")
+                cr = cmc_rows(code, av)
+                if cr and not (pn and it.get("ncb") == av["asof"] and len(pn) == 3 and pn[2] >= cr[-1][0]):
+                    rows = cr; by_cmc += 1
             base = _close_on(rows, av["asof"])
             last = rows[-1] if rows else None
             if base and last and last[0] == av["asof"]:
@@ -894,7 +982,8 @@ def nowcast_us(items):
             if any(not (0.3 < b2 / a2 < 3.0) for a2, b2 in zip(seg, seg[1:]) if a2 > 0):
                 it.pop("nc", None)
                 skip += 1; continue
-            it["ac"] = cls
+            if code in nq_ok:
+                it["ac"] = cls
             by = int(av["asof"][:4])
             if by == cur:
                 r = last[1] / base[1]
@@ -913,8 +1002,8 @@ def nowcast_us(items):
             it["nc"] = [base[1], last[1], last[0]]
             it["ncb"] = av["asof"]                # nc 의 기준일 — 알파밴티지로 새로 받으면 달라져서 옛 nc 를 버린다
             done += 1
-    log("해외 올해 수익률 최신화: %d종목 · 이미 최신 %d · 나스닥 막혀 지난 값 유지 %d · 못 함 %d (알파밴티지 값 유지) · 나스닥 일별 종가"
-        % (done, fresh, kept, skip))
+    log("해외 올해 수익률 최신화: %d종목 (그중 시가총액 표 현재가 %d · 야후 %d) · 이미 최신 %d · 지난 값 유지 %d · 못 함 %d"
+        % (done, by_cmc, yh_ok, fresh, kept, skip))
 
 
 def attach_nc(items):

@@ -317,8 +317,10 @@ def daily(dry=False):
     for kind in ("sector", "industry"):
         for gg in groups(rows, kind)[:200]:
             keep += [r for r in rows if r["code"] in gg["codes"]]
+    # p = 현재가 — '그때 샀다면' 해외가 나스닥 일별 종가를 못 받은 날 이 값으로 '지금' 을 잇는다 (collect_prices)
     stocks = {r["code"]: {"n": r["name"], "c": r["cap"], "y": None, "s": r["sector"], "i": r["industry"],
-                          "f": r["country"] not in ("United States", "")} for r in keep}
+                          "f": r["country"] not in ("United States", ""),
+                          "p": round(r["price"], 4) if r.get("price") else None} for r in keep}
     out = {"updated": today.strftime("%Y-%m-%d"), "asof": asof,
            "unit": "억달러", "source": src,
            "fix": {k: info.get(k) for k in ("fixed", "targets", "dates", "screener_fresh")},
