@@ -1766,14 +1766,20 @@
         };
         // 기본은 늘 '점 위' (사용자 요청 2026-11-12). 위에 둘 틈이 없을 때만 아래로
         var order = [true, false];
-        var tryPlace = function (allowSeg) {
+        var tryPlace = function (allowSeg, sideOnly, upOnly) {
           for (var o = 0; o < order.length; o++) {
             var up = order[o];
-            for (var d = 0; d < 3; d++) {
-              var yy = up ? it.y - gapY - h - d * h * 0.9 : it.y + gapY + d * h * 0.9;
-              var xs = [x - w / 2, x + side, x - side - w];
-              for (var c = 0; c < xs.length; c++) {
-                var b = [xs[c], yy, w, h];
+            if (up !== upOnly) continue;
+            // 점 바로 위 가운데가 먼저 — 선이 걸리면 조금 더 올려서 가운데, 그래도 안 되면 옆으로 비켜서
+            // (실리콘투 '22 매출 1,653 이 오르막 선을 피해 왼쪽으로 비켜 적혀 다른 해 숫자처럼 보였다)
+            var spots = [];
+            if (!sideOnly) for (var d = 0; d < 3; d++) spots.push([x - w / 2, d]);
+            else for (var d2 = 0; d2 < 3; d2++) { spots.push([x + side, d2]); spots.push([x - side - w, d2]); }
+            for (var sIdx = 0; sIdx < spots.length; sIdx++) {
+              {
+                var dd = spots[sIdx][1];
+                var yy = up ? it.y - gapY - h - dd * h * 0.6 : it.y + gapY + dd * h * 0.6;
+                var b = [spots[sIdx][0], yy, w, h];
                 if (!sideOK(b, it.s, up) || !orderOK(b)) continue;
                 var keep = segs;
                 if (allowSeg) segs = [];
@@ -1786,8 +1792,16 @@
           }
           return null;
         };
-        var b = tryPlace(false), halo = false;
-        if (!b) { b = tryPlace(true); halo = !!b; }       // 선이 스치면 종이색 바탕을 깔고
+        // 순서: 가운데(깨끗) → 가운데(선이 스치면 종이색 바탕) → 옆(깨끗) → 옆(바탕). 숫자는 되도록 점 바로 위에
+        // 위쪽을 다 해 본 뒤에야 아래쪽 (위: 가운데 → 가운데+바탕 → 옆 → 옆+바탕, 아래도 같은 순서)
+        var b = null, halo = false;
+        [true, false].some(function (upSide) {
+          return [[false, false], [true, false], [false, true], [true, true]].some(function (m) {
+            b = tryPlace(m[0], m[1], upSide);
+            halo = !!b && m[0];
+            return !!b;
+          });
+        });
         if (!b) return;                                   // 자기 선 쪽에 자리가 없으면 적지 않는다 (엉뚱한 선에 붙지 않게)
         placed.push(b);
         colPlaced.push([it.v, b[1] + b[3] / 2]);
