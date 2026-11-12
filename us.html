@@ -576,6 +576,7 @@
 
 </div>
 
+<script src="./us_ko.js"></script>
 <script>
 (function () {
   'use strict';
@@ -788,6 +789,12 @@
         .then(function (r) { if (!r.ok) throw new Error('no index'); return r.json(); })
         .then(function (j) {
           Adapter.index = j.companies || [];
+          // 한글 이름이 있는 회사는 이름을 한글로 (검색·카드 제목 기본값). 티커는 code 에 그대로 있다
+          var KO = window.US_KO || {};
+          Adapter.index.forEach(function (c) {
+            var ko = KO[c.code] || KO[c.code.replace('.', '-')];
+            if (ko) { c.ko = ko; c.name = ko; }
+          });
           Adapter.markets = j.markets || null;
           Adapter.source = 'sec';
           return j;
@@ -806,7 +813,7 @@
       if (!s) return null;
       var list = Adapter.index || [];
       var i;
-      for (i = 0; i < list.length; i++) if (list[i].code === s) return list[i];
+      for (i = 0; i < list.length; i++) if (list[i].code === s || list[i].code.toLowerCase() === s.toLowerCase()) return list[i];
       for (i = 0; i < list.length; i++) if (list[i].name === s) return list[i];
       for (i = 0; i < list.length; i++) if (list[i].name.indexOf(s) === 0) return list[i];
       var low = s.toLowerCase();
@@ -825,11 +832,11 @@
       if (!s) return list.slice();
       var out = [];
       for (var i = 0; i < list.length; i++) {
-        var c = list[i], name = c.name.toLowerCase(), rank = -1;
-        if (c.code === s) rank = 0;
+        var c = list[i], name = c.name.toLowerCase(), code = c.code.toLowerCase(), rank = -1;
+        if (code === s) rank = 0;
         else if (name === s) rank = 1;
         else if (name.indexOf(s) === 0) rank = 2;
-        else if (c.code.indexOf(s) === 0) rank = 3;
+        else if (code.indexOf(s) === 0) rank = 3;
         else if (name.indexOf(s) >= 0) rank = 4;
         else if ((c.legal_name || '').toLowerCase().indexOf(s) === 0) rank = 5;
         else if ((c.legal_name || '').toLowerCase().indexOf(s) >= 0) rank = 6;
@@ -856,6 +863,8 @@
           // 분기 영업이익이 하나도 없으면 분기 카드는 순이익으로 (0.0조로 그리지 않게)
           d.noOpQ = d.quarterly.length > 0 &&
                     d.quarterly.every(function (x) { return x.op == null; });
+          var ko = (window.US_KO || {})[code];
+          if (ko) { d.ticker = d.ticker || code; d.name = ko; }      // 카드 제목 기본값은 한글 이름
           Adapter.loaded[code] = d;
           return d;
         })
@@ -2832,8 +2841,10 @@
       html += '<li class="empty">일치하는 종목이 없습니다</li>';
     } else {
       html += sugItems.map(function (c, i) {
+        var sub = c.ko ? c.code + (c.legal_name ? ' · ' + c.legal_name : '')
+                       : (c.legal_name && c.legal_name !== c.name ? c.legal_name : c.code);
         return '<li role="option" data-i="' + i + '"><span>' + c.name +
-               '</span><span class="code">' + (c.legal_name && c.legal_name !== c.name ? c.legal_name : c.code) + '</span></li>';
+               '</span><span class="code">' + sub + '</span></li>';
       }).join('');
     }
     sugBox.innerHTML = html;
