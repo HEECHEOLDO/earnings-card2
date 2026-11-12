@@ -16,9 +16,10 @@
   var state = { item: null, span: '1y', data: null, color: null, colorUser: false, name: '', title: '', titleUser: false, nameUser: false };
   var LIST = [], BY = {}, MON = null;
   // 주요 시장 지수 — data/chart/idx/{코드}.json (collect_chart_idx.py). 이름·코드는 그쪽 INDICES 와 맞춘다
-  var INDICES = [['KOSPI', '코스피'], ['KOSDAQ', '코스닥'], ['KOSPI200', '코스피 200'], ['SPX', 'S&P 500'],
-    ['IXIC', '나스닥 종합'], ['NDX', '나스닥 100'], ['DJI', '다우존스'], ['SOX', '필라델피아 반도체'],
-    ['RUT', '러셀 2000'], ['N225', '닛케이 225'], ['HSI', '항셍'], ['SSEC', '상하이 종합']];
+  // 셋째 칸: 로고 자리에 넣을 국기 (logo/idx/{나라}.png)
+  var INDICES = [['KOSPI', '코스피', 'KR'], ['KOSDAQ', '코스닥', 'KR'], ['KOSPI200', '코스피 200', 'KR'], ['SPX', 'S&P 500', 'US'],
+    ['IXIC', '나스닥 종합', 'US'], ['NDX', '나스닥 100', 'US'], ['DJI', '다우존스', 'US'], ['SOX', '필라델피아 반도체', 'US'],
+    ['RUT', '러셀 2000', 'US'], ['N225', '닛케이 225', 'JP'], ['HSI', '항셍', 'HK'], ['SSEC', '상하이 종합', 'CN']];
   var LOGO = {};
 
   /* ------------------------------------------------------------ 자료 */
@@ -117,9 +118,8 @@
   }
 
   /* ------------------------------------------------------------ 로고·색 */
-  function logoPath(it) { return it.kr ? './logo/kr/' + it.code + '.png' : './logo/us/' + it.code + '.png'; }
+  function logoPath(it) { if (it.ix) return './logo/idx/' + it.cc + '.png'; return it.kr ? './logo/kr/' + it.code + '.png' : './logo/us/' + it.code + '.png'; }
   function logoImg(it, cb) {
-    if (it.ix) { cb(null); return; }                // 지수는 로고 없이 이름만
     var src = logoPath(it);
     if (LOGO[src] !== undefined) { cb(LOGO[src]); return; }
     var im = new Image();
@@ -366,7 +366,7 @@
     var p1 = load(it).then(function (d) { state.data = d; });
     var p2 = new Promise(function (res) { logoImg(it, function (im) { state.logo = im; res(); }); });
     Promise.all([p1, p2]).then(function () {
-      if (!state.colorUser) { state.color = logoColor(state.logo) || '#2B59C3'; $('c-color').value = state.color; }
+      if (!state.colorUser) { state.color = (it.ix ? null : logoColor(state.logo)) || '#2B59C3'; $('c-color').value = state.color; }   // 국기 색은 선 색으로 안 쓴다
       $('qmsg').textContent = it.name + ' · ' + (it.ix ? '시장 지수' : it.kr ? it.code + ' · 국내' : it.code + ' · 해외');
       render();
     });
@@ -398,7 +398,7 @@
   $('c-name').addEventListener('input', function () { state.name = this.value; render(); });
   $('c-title').addEventListener('input', function () { state.title = this.value; state.titleUser = true; render(); });
   $('c-color').addEventListener('input', function () { state.color = this.value; state.colorUser = true; render(); });
-  $('c-auto').addEventListener('click', function () { state.colorUser = false; state.color = logoColor(state.logo) || '#2B59C3'; $('c-color').value = state.color; render(); });
+  $('c-auto').addEventListener('click', function () { state.colorUser = false; state.color = (state.item && state.item.ix ? null : logoColor(state.logo)) || '#2B59C3'; $('c-color').value = state.color; render(); });
   $('c-dl').addEventListener('click', function () {
     var s = series(state.data, state.span); if (!s) return;
     var big = document.createElement('canvas'); big.width = CW * 3; big.height = CH * 3;
@@ -429,7 +429,7 @@
       var it = { code: code, name: name || code, kr: kr };
       LIST.push(it); BY[code.toUpperCase()] = it;
     }
-    INDICES.forEach(function (x) { add(x[0], x[1], false); LIST[LIST.length - 1].ix = true; });   // 지수 먼저
+    INDICES.forEach(function (x) { add(x[0], x[1], false); LIST[LIST.length - 1].ix = true; LIST[LIST.length - 1].cc = x[2]; });   // 지수 먼저
     Object.keys(KO).forEach(function (t) { if (ret[t]) add(t, KO[t], false); });            // 한글 이름 있는 해외 먼저
     idx.forEach(function (c) { add(c.code, c.name, true); });
     Object.keys(ret).forEach(function (c) { var v = ret[c]; add(c, v.market === 'US' ? (KO[c] || v.name) : v.name, v.market !== 'US'); });
