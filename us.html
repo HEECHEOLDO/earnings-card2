@@ -512,9 +512,18 @@
         <span class="hint" id="fx-note"></span>
       </div>
 
-      <div class="ctl-row">
+      <div class="ctl-row" id="row-ctype">
+        <label>그래프 모양</label>
+        <div class="cp-tabs" role="group" aria-label="그래프 모양">
+          <button type="button" class="cp-tab ctype on" data-ct="bar">막대</button>
+          <button type="button" class="cp-tab ctype" data-ct="line">선</button>
+        </div>
+      </div>
+      <div class="ctl-row" id="row-line">
         <label class="check"><input type="checkbox" id="chk-line" checked> <span id="chk-line-label">주당배당금 선 표시</span></label>
       </div>
+
+
 
       <div class="ctl-row">
         <label class="check"><input type="checkbox" id="chk-guide"> 안전영역 표시</label>
@@ -1055,6 +1064,40 @@
     };
   }
 
+  // 선 그래프 모양: 매출·영업이익·순이익을 같은 눈금에 선 세 개로 (금융사는 영업이익·순이익 두 개)
+  // 색은 막대 모양과 같은 짝 — 매출은 연한 쪽(중간 톤), 영업이익은 진한 쪽, 순이익은 금색
+  function lineModeSpec(spec, rows) {
+    var noRev = rows && rows.length && rows[0].noRev;
+    var out = {};
+    for (var k in spec) out[k] = spec[k];
+    out.lineMode = true;
+    out.unitNote = null;
+    if (noRev) {
+      out.bars = [{ key: 'bar1', label: '영업이익', color: 'mid' }, { key: 'bar2', label: '순이익', color: 'bar2' }];
+      out.chips = function (l, unit, rs) {
+        return spec.chips(l, unit, rs).map(function (c, i) { return i === 0 ? { l: c.l, v: c.v, c: 'mid' } : c; });
+      };
+      return out;
+    }
+    out.bars = [{ key: 'bar1', label: '매출', color: 'mid' },
+                { key: 'bar2', label: '영업이익', color: 'bar2' },
+                { key: 'ni', label: '순이익', color: 'ni' }];
+    out.chips = function (l, unit) {
+      return [
+        { l: '매출', v: fmtChip(l.bar1, unit), c: 'mid' },
+        { l: '영업이익', v: fmtChip(l.bar2, unit), c: 'bar2' },
+        { l: '순이익', v: fmtChip(l.ni, unit), c: 'ni' }
+      ];
+    };
+    out.altChip = null;
+    return out;
+  }
+  function isLineMode(st) { return st.chartType === 'line' && st.period !== 'dividend'; }
+  function effShowLine(st) {
+    return !isLineMode(st) && st.showLine[st.period] !== false &&
+           !(st.spec && st.spec.line && st.spec.line.key === 'noline');
+  }
+
   // 마지막 막대가 올해 누적이면: 배당 칩 대신 이익률, 기준 문구는 '\'26년 1~3분기 누적 기준'
   function seriesSpec(period, rows) {
     var spec = seriesSpec0(period, rows);
@@ -1164,8 +1207,25 @@
     return {
       bar1: hslToHex(c.h, gray ? 0 : Math.max(c.s - 8, 22), light),
       bar2: hslToHex(c.h, gray ? 0 : Math.min(c.s + 10, 95), dark),
-      line: TOKENS.card.gold
+      line: TOKENS.card.gold,
+      // 선 그래프용 중간 톤 — 연한 막대색(bar1)은 선으로 그으면 종이에 묻혀서 한 단계 진하게.
+      // 노랑처럼 밝은 색은 글자가 안 읽혀서 종이와 대비가 3:1 이 될 때까지 더 어둡게
+      mid: legibleOnPaper(c.h, gray ? 0 : Math.max(c.s - 4, 26), Math.round((dark + light) / 2 + 4)),
+      // 순이익 선: 기본은 금색, 고른 색이 금색과 비슷한 계열(노랑·주황)이면 회색으로 — 선끼리 구분되게
+      ni: (!gray && c.h >= 18 && c.h <= 62) ? '#7A7F88' : TOKENS.card.gold
     };
+  }
+  function relLum(hex) {
+    var v = [1, 3, 5].map(function (i) {
+      var x = parseInt(hex.slice(i, i + 2), 16) / 255;
+      return x <= 0.03928 ? x / 12.92 : Math.pow((x + 0.055) / 1.055, 2.4);
+    });
+    return 0.2126 * v[0] + 0.7152 * v[1] + 0.0722 * v[2];
+  }
+  function legibleOnPaper(h, sat, l) {
+    var paper = relLum(TOKENS.card.paper), hex = hslToHex(h, sat, l);
+    while (l > 20 && (paper + 0.05) / (relLum(hex) + 0.05) < 3) { l -= 3; hex = hslToHex(h, sat, l); }
+    return hex;
   }
 
   /* ============================================================
@@ -1296,7 +1356,7 @@
     ctx.fillStyle = T.tick;
     ctx.textBaseline = 'middle';
     ctx.textAlign = 'right';
-    A.ticks.forEach(function (t) { ctx.fillText(fmtAmount(t, unit), plotL - 10, yA(t)); });
+    A.ticks.forEach(function (t) { ctx.fillText(fmtAmount(Math.abs(t) < 1e-9 ? 0 : t, unit), plotL - 10, yA(t)); });
     if (showLine) {
       ctx.textAlign = 'left';
       B.ticks.forEach(function (t) { ctx.fillText(spec.line.fmt(t), plotR + 10, yB(t)); });
@@ -1374,6 +1434,145 @@
     ctx.textAlign = 'center';
     rows.forEach(function (r, i) {
       var cx = plotL + slot * i + slot / 2, last = i === rows.length - 1;
+      ctx.font = font(last ? 800 : 600, last ? T.type.periodLast : T.type.period);
+      ctx.fillStyle = last ? colors.bar2 : T.inkSoft;
+      ctx.fillText(r.short, cx, plotB + 32);
+      if (r.yearMark) {
+        ctx.font = font(600, T.type.year);
+        ctx.fillStyle = T.tick;
+        ctx.fillText(r.yearMark, cx, plotB + 58);
+      }
+    });
+    ctx.textAlign = 'left';
+  }
+
+  /* 선 그래프 모양 — 매출·영업이익·순이익을 같은 눈금 위에 선으로.
+     점 위에 값을 적되(구간이 적을 때는 전부, 많을 때는 마지막 점만) 같은 칸에서 글자가 겹치면 점 아래로 내리고,
+     그래도 겹치면 적지 않는다. 올해 누적(아직 1년이 안 찬 칸)으로 가는 마지막 구간은 점선 + 속 빈 점. */
+  function drawLineChart(ctx, ox, oy, W, H, rows, colors, unit, spec) {
+    var T = TOKENS.card;
+    var padT = 46, padB = 62;
+    var ser = spec.bars;
+    var vals = [];
+    rows.forEach(function (r) { ser.forEach(function (s) { var v = r[s.key]; if (v != null && !isNaN(v)) vals.push(v); }); });
+    var A = axisFor(vals, 4);
+
+    ctx.font = font(600, T.type.tick);
+    var lw = 0;
+    A.ticks.forEach(function (t) { lw = Math.max(lw, ctx.measureText(fmtAmount(t, unit)).width); });
+    // 마지막 점의 값은 선 끝 오른쪽에 붙여 적는다 — 그 자리를 비워 둔다
+    var fs = Math.round((T.valueLabel || 30) * 0.9), lh = fs * 0.82, gapY = 16;
+    var lastR = rows[rows.length - 1] || {};
+    ctx.font = font(800, fs);
+    var endW = 0;
+    ser.forEach(function (s) { var v = lastR[s.key]; if (v != null && !isNaN(v)) endW = Math.max(endW, ctx.measureText(fmtAmount(v, unit)).width); });
+    var padL = Math.ceil(lw) + 16;
+    var n = rows.length;
+    var slot0 = (W - padL - 12) / n;
+    var padR = Math.max(12, Math.ceil(endW) + 22 - slot0 / 2);
+    var plotL = ox + padL, plotR = ox + W - padR;
+    var plotT = oy + padT, plotB = oy + H - padB;
+    var plotH = plotB - plotT;
+    var slot = (plotR - plotL) / n;
+    function yA(v) { return plotB - ((v - A.min) / (A.max - A.min)) * plotH; }
+    function xA(i) { return plotL + slot * i + slot / 2; }
+    var zero = yA(0);
+
+    ctx.save();
+    ctx.strokeStyle = T.grid; ctx.lineWidth = 1.5;
+    A.ticks.forEach(function (t) {
+      if (Math.abs(t) < 1e-9) return;
+      var gy = yA(t);
+      ctx.beginPath(); ctx.moveTo(plotL, gy); ctx.lineTo(plotR, gy); ctx.stroke();
+    });
+    ctx.font = font(600, T.type.tick);
+    ctx.fillStyle = T.tick; ctx.textBaseline = 'middle'; ctx.textAlign = 'right';
+    A.ticks.forEach(function (t) { ctx.fillText(fmtAmount(Math.abs(t) < 1e-9 ? 0 : t, unit), plotL - 10, yA(t)); });
+    ctx.restore();
+    ctx.textBaseline = 'alphabetic';
+
+    ctx.beginPath();
+    ctx.strokeStyle = T.axis; ctx.lineWidth = 3;
+    ctx.moveTo(plotL, zero); ctx.lineTo(plotR, zero); ctx.stroke();
+
+    var has = function (r, k) { var v = r[k]; return v !== null && v !== undefined && !isNaN(v); };
+    // 진한 선(영업이익)이 맨 위에 오게: 중간 톤 → 금색 → 진한 색 순서로 긋는다
+    var rank = { mid: 0, bar1: 0, ni: 1, line: 1, bar2: 2 };
+    var order = ser.slice().sort(function (a, b) { return (rank[a.color] || 0) - (rank[b.color] || 0); });
+    order.forEach(function (s) {
+      var col = colors[s.color];
+      ctx.save();
+      ctx.strokeStyle = col; ctx.lineWidth = 6; ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+      var prev = null;
+      rows.forEach(function (r, i) {
+        if (!has(r, s.key)) { prev = null; return; }
+        var p = [xA(i), yA(r[s.key])];
+        if (prev) {
+          ctx.setLineDash(r.partial ? [4, 14] : []);
+          ctx.beginPath(); ctx.moveTo(prev[0], prev[1]); ctx.lineTo(p[0], p[1]); ctx.stroke();
+        }
+        prev = p;
+      });
+      ctx.setLineDash([]);
+      rows.forEach(function (r, i) {
+        if (!has(r, s.key)) return;
+        var x = xA(i), y = yA(r[s.key]), last = i === n - 1, rad = last ? 11 : 7;
+        ctx.beginPath(); ctx.arc(x, y, rad, 0, Math.PI * 2);
+        if (r.partial) {
+          ctx.fillStyle = T.paper; ctx.fill(); ctx.lineWidth = 4; ctx.stroke();
+        } else {
+          ctx.fillStyle = col; ctx.fill();
+          if (last) { ctx.lineWidth = 4; ctx.strokeStyle = T.paper; ctx.stroke(); ctx.strokeStyle = col; }
+        }
+      });
+      ctx.restore();
+    });
+
+    // 값 라벨
+    ctx.font = font(800, fs);
+    ctx.textAlign = 'left';
+    // 끝값: 점 오른쪽, 세로로 겹치면 아래로 밀어 낸다
+    (function () {
+      var x = xA(n - 1) + 18;
+      var its = ser.filter(function (s) { return has(lastR, s.key); })
+                   .map(function (s) { return { s: s, v: lastR[s.key], c: yA(lastR[s.key]) + lh / 2 }; })
+                   .sort(function (a, b) { return a.c - b.c; });
+      for (var k = 1; k < its.length; k++) if (its[k].c - its[k - 1].c < lh + 10) its[k].c = its[k - 1].c + lh + 10;
+      var over = its.length ? its[its.length - 1].c - (plotB - 4) : 0;    // 바닥 밖으로 밀리면 전체를 올린다
+      if (over > 0) its.forEach(function (it) { it.c -= over; });
+      its.forEach(function (it) {
+        ctx.fillStyle = colors[it.s.color];
+        ctx.fillText(fmtAmount(it.v, unit), x, it.c);
+      });
+    })();
+    rows.forEach(function (r, i) {
+      if (!(n <= T.valueLabelMax) || i === n - 1) return;
+      var x = xA(i), boxes = [];
+      var items = ser.filter(function (s) { return has(r, s.key); })
+                     .map(function (s) { return { s: s, v: r[s.key], y: yA(r[s.key]) }; })
+                     .sort(function (a, b) { return a.y - b.y; });
+      items.forEach(function (it, k) {
+        var txt = fmtAmount(it.v, unit), w = ctx.measureText(txt).width;
+        var cx = Math.max(ox + w / 2, Math.min(ox + W - w / 2, x));
+        var tries = k === items.length - 1 && items.length > 1
+          ? [it.y + gapY + lh, it.y - gapY]                 // 맨 아래 선은 아래쪽부터
+          : [it.y - gapY, it.y + gapY + lh];
+        for (var t = 0; t < tries.length; t++) {
+          var base = tries[t], top = base - lh - 3, bot = base + 5;
+          if (top < oy || bot > plotB + 4) continue;
+          var clash = boxes.some(function (b) { return top < b[1] && bot > b[0] && Math.abs(cx - b[2]) < (w + b[3]) / 2 + 6; });
+          if (clash) continue;
+          boxes.push([top, bot, cx, w]);
+          ctx.fillStyle = colors[it.s.color];
+          ctx.fillText(txt, cx - w / 2, base);
+          break;
+        }
+      });
+    });
+
+    ctx.textAlign = 'center';
+    rows.forEach(function (r, i) {
+      var cx = xA(i), last = i === n - 1;
       ctx.font = font(last ? 800 : 600, last ? T.type.periodLast : T.type.period);
       ctx.fillStyle = last ? colors.bar2 : T.inkSoft;
       ctx.fillText(r.short, cx, plotB + 32);
@@ -1479,6 +1678,8 @@
     var T = TOKENS.card, S = T.safe;
     var CX = S.left, CWID = CW - S.left - S.right;
     var rows = state.rows, spec = state.spec, colors = state.colors;
+    var lineMode = isLineMode(state);
+    if (lineMode) spec = lineModeSpec(spec, rows);
     var unit = pickUnit(rows, spec), last = rows[rows.length - 1];
 
     ctx.clearRect(0, 0, CW, CH);
@@ -1491,7 +1692,7 @@
     ctx.textBaseline = 'alphabetic';
     ctx.textAlign = 'left';
 
-    var showLine = state.showLine[state.period] !== false;
+    var showLine = effShowLine(state);
 
     /* 헤드라인 — 두 줄 모두 900/먹색, 회사명만 크게 */
     // 사용자가 적어 넣었으면 그걸 쓰고, 비워뒀으면 자동 문구를 쓴다
@@ -1534,8 +1735,15 @@
     if (showLine) legendItems.push([colors.line, spec.line.label]);
     legendItems.forEach(function (it) {
       ctx.fillStyle = it[0];
-      roundRect(ctx, lx, legendY - sw + 5, sw, sw, 5);
-      ctx.fill();
+      if (lineMode) {                                   // 선 모양 범례: 짧은 선 + 점
+        var my = legendY - sw / 2 + 5;
+        ctx.fillRect(lx, my - 2.5, sw + 8, 5);
+        ctx.beginPath(); ctx.arc(lx + (sw + 8) / 2, my, 7, 0, Math.PI * 2); ctx.fill();
+        lx += 8;
+      } else {
+        roundRect(ctx, lx, legendY - sw + 5, sw, sw, 5);
+        ctx.fill();
+      }
       lx += sw + 9;
       ctx.fillStyle = T.ink;
       ctx.fillText(it[1], lx, legendY);
@@ -1572,7 +1780,8 @@
     );
 
     /* 차트 */
-    drawCardChart(ctx, CX, chartTop, CWID, chartH, rows, colors, unit, spec, showLine);
+    if (lineMode) drawLineChart(ctx, CX, chartTop, CWID, chartH, rows, colors, unit, spec);
+    else drawCardChart(ctx, CX, chartTop, CWID, chartH, rows, colors, unit, spec, showLine);
 
     /* 기준 라벨 */
     ctx.font = font(700, T.type.basis);
@@ -1580,9 +1789,9 @@
     ctx.fillText(spec.basisFmt(last), CX, basisBaseline);
 
     /* 요약 3칸 */
-    var palette = { ink: T.ink, bar1: colors.bar1, bar2: colors.bar2, line: colors.line };
+    var palette = { ink: T.ink, bar1: colors.bar1, bar2: colors.bar2, line: colors.line, mid: colors.mid, ni: colors.ni };
     var chipDefs = spec.chips(last, unit, rows);
-    if (!showLine && spec.altChip) chipDefs[2] = spec.altChip(last, unit);
+    if (!showLine && !lineMode && spec.altChip) chipDefs[2] = spec.altChip(last, unit);
     var chips = chipDefs.map(function (c) {
       return { l: c.l, v: c.v, c: palette[c.c] || T.ink };
     });
@@ -1814,6 +2023,7 @@
     period: 'annual',
     counts: { annual: 10, quarterly: 10, dividend: 10 },
     showLine: { annual: true, quarterly: true, dividend: true },
+    chartType: 'bar',              // 'bar' | 'line' — 실적(연간·분기) 카드의 그래프 모양
     rows: null, spec: null, colors: null,
     guide: false, showSource: true, showLogo: true,
     title: '', sub: '',            // 비워두면 자동 문구
@@ -2311,6 +2521,14 @@
     var name = (state.spec && state.spec.line && state.spec.line.label) || '보조 지표';
     lab.textContent = name + ' 선 표시';
     box.checked = state.showLine[state.period] !== false;
+    // 그래프 모양은 실적 카드(연간·분기)에만 — 배당 카드에서는 숨긴다.
+    // 선 모양일 때는 보조 지표 선(배당·이익률)을 그리지 않으므로 그 체크칸도 숨긴다
+    var isDiv = state.period === 'dividend';
+    document.getElementById('row-ctype').style.display = isDiv ? 'none' : '';
+    document.getElementById('row-line').style.display = isLineMode(state) ? 'none' : '';
+    Array.prototype.forEach.call(document.querySelectorAll('.ctype'), function (b) {
+      b.classList.toggle('on', b.dataset.ct === state.chartType);
+    });
   }
 
   function updateFxNote() {
@@ -2387,8 +2605,7 @@
   }
   function autoSubText() {
     try {
-      var showLine = state.showLine[state.period] !== false;
-      return cardTitle(state.period, state.rows, state.spec, showLine) || '';
+      return cardTitle(state.period, state.rows, state.spec, effShowLine(state)) || '';
     } catch (e) { return ''; }
   }
 
@@ -2447,7 +2664,7 @@
     drawCard(ctx, state);
     drawSelection(ctx);
     document.getElementById('card-caption').textContent =
-      '1080 × 1350 · ' + state.company.name + ' ' + cardTitle(state.period, state.rows, state.spec, state.showLine[state.period]);
+      '1080 × 1350 · ' + state.company.name + ' ' + cardTitle(state.period, state.rows, state.spec, effShowLine(state));
   }
 
 
@@ -2669,6 +2886,17 @@
     });
   });
 
+  Array.prototype.forEach.call(document.querySelectorAll('.ctype'), function (b) {
+    b.addEventListener('click', function () {
+      if (state.chartType === b.dataset.ct) return;
+      state.chartType = b.dataset.ct;
+      try { localStorage.setItem('fc.chartType', state.chartType); } catch (e) {}
+      syncLineToggle();
+      syncTitleHints();
+      drawPreview();
+    });
+  });
+  try { var _ct = localStorage.getItem('fc.chartType'); if (_ct === 'line' || _ct === 'bar') state.chartType = _ct; } catch (e) {}
   document.getElementById('chk-line').addEventListener('change', function () {
     state.showLine[state.period] = this.checked;
     syncTitleHints();          // 배당 선을 끄고 켜면 자동 문구도 달라진다
