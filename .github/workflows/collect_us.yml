@@ -43,7 +43,8 @@ jobs:
           fi
           git commit -m "해외 실적 자동 수집 $(date -u +'%Y-%m-%d')"
           for i in 1 2 3 4 5; do
-            git pull --rebase --autostash && git push && exit 0
+            git pull --rebase -X theirs --autostash && git push && exit 0
+            git rebase --abort 2>/dev/null || true
             echo "푸시 재시도 $i"
             sleep 10
           done

@@ -44,8 +44,11 @@ jobs:
             exit 0
           fi
           git commit -m "연간 수익률 자동 수집 $(date -u +'%Y-%m-%d')"
+          # 그 사이 다른 수집이 같은 파일을 올렸으면(2026-11-12 충돌로 실패) 이번에 새로 받은 값으로 덮는다.
+          # rebase 중 '-X theirs' = 지금 올리려는 커밋 쪽. 충돌이 남으면 rebase 를 풀고 다시 시도
           for i in 1 2 3 4 5; do
-            git pull --rebase --autostash && git push && exit 0
+            git pull --rebase -X theirs --autostash && git push && exit 0
+            git rebase --abort 2>/dev/null || true
             echo "푸시 재시도 $i"
             sleep 10
           done

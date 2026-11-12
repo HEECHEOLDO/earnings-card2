@@ -1,0 +1,23 @@
+name: SEC 원자료 점검 (수동)
+
+on:
+  workflow_dispatch:
+    inputs:
+      tickers:
+        description: '티커 (띄어쓰기로)'
+        required: true
+        default: 'NVDA TPL FAST APH ODFL KLAC LHX HON OXY'
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: 점검
+        env:
+          SEC_UA: ${{ secrets.SEC_UA }}
+        run: python3 sec_probe.py ${{ github.event.inputs.tickers }}
