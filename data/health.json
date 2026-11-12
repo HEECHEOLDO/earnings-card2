@@ -1,12 +1,12 @@
 {
- "checked": "2026-11-11 14:57",
+ "checked": "2026-11-12 15:59",
  "status": "ok",
  "sources": [
   {
    "key": "kr",
    "name": "국내 실적",
    "page": "index.html",
-   "last": "2026-11-11",
+   "last": "2026-11-12",
    "days": 0,
    "status": "ok",
    "msg": "정상",
@@ -16,7 +16,7 @@
    "key": "us",
    "name": "해외 실적",
    "page": "us.html",
-   "last": "2026-11-11",
+   "last": "2026-11-12",
    "days": 0,
    "status": "ok",
    "msg": "정상",
@@ -26,7 +26,7 @@
    "key": "unlisted",
    "name": "비상장 실적 (정기보고서)",
    "page": "unlisted.html",
-   "last": "2026-11-11",
+   "last": "2026-11-12",
    "days": 0,
    "status": "ok",
    "msg": "정상",
@@ -36,7 +36,7 @@
    "key": "audit",
    "name": "비상장 실적 (감사보고서)",
    "page": "unlisted.html",
-   "last": "2026-11-11",
+   "last": "2026-11-12",
    "days": 0,
    "status": "ok",
    "msg": "정상",
@@ -46,17 +46,17 @@
    "key": "returns",
    "name": "연간 수익률",
    "page": "returns.html",
-   "last": "2026-11-11",
+   "last": "2026-11-12",
    "days": 0,
    "status": "ok",
    "msg": "정상",
-   "note": "국내 2,962 · 해외 449종목"
+   "note": "국내 2,962 · 해외 458종목"
   },
   {
    "key": "buy_us",
    "name": "그때 샀다면 (해외 주가)",
    "page": "buy.html",
-   "last": "2026-11-11",
+   "last": "2026-11-12",
    "days": 0,
    "status": "ok",
    "msg": "정상",
@@ -66,7 +66,7 @@
    "key": "mcap",
    "name": "시가총액",
    "page": "mcap.html",
-   "last": "2026-11-11",
+   "last": "2026-11-12",
    "days": 0,
    "status": "ok",
    "msg": "정상",
@@ -76,7 +76,7 @@
    "key": "rank",
    "name": "시총 순위",
    "page": "rank.html",
-   "last": "2026-11-10",
+   "last": "2026-11-11",
    "days": 1,
    "status": "ok",
    "msg": "정상",
@@ -86,7 +86,7 @@
    "key": "fx",
    "name": "환율",
    "page": "buy.html",
-   "last": "2026-11-11",
+   "last": "2026-11-12",
    "days": 0,
    "status": "ok",
    "msg": "정상",
@@ -96,7 +96,7 @@
    "key": "guru",
    "name": "포트폴리오 (13F)",
    "page": "guru.html",
-   "last": "2026-11-11",
+   "last": "2026-11-12",
    "days": 0,
    "status": "ok",
    "msg": "정상",
@@ -104,10 +104,10 @@
   }
  ],
  "filings": {
-  "filings": 138,
+  "filings": 305,
   "partial": false,
   "late": [],
   "missing": [],
-  "calls": 2
+  "calls": 4
  }
 }
