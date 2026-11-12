@@ -1098,6 +1098,8 @@
   // 선 모양에서 끈 선을 뺀다 (매출·영업이익·순이익 버튼). 하나는 늘 남긴다
   function visibleSeries(all) {
     var hide = (state && state.lineHide) || {};
+    // 금융사(영업이익·순이익 두 선)는 처음 기본값으로 순이익을 끄면 선이 하나뿐이라 둘 다 보여준다
+    if (!(state && state.lineHideUser) && all.length === 2) hide = {};
     var vis = all.filter(function (b) { return !hide[b.label]; });
     return vis.length ? vis : all.slice(0, 1);
   }
@@ -2247,7 +2249,8 @@
     counts: { annual: 10, quarterly: 10, dividend: 10 },
     showLine: { annual: true, quarterly: true, dividend: true },
     chartType: 'bar',              // 'bar' | 'line' — 실적(연간·분기) 카드의 그래프 모양
-    lineHide: {},                  // 선 모양에서 끈 선 { '매출': true, ... }
+    lineHide: { '순이익': true },  // 선 모양에서 끈 선 — 처음엔 매출·영업이익만 (순이익은 꺼 둔다)
+    lineHideUser: false,           // 사용자가 버튼을 한 번이라도 눌렀나
     rows: null, spec: null, colors: null,
     guide: false, showSource: true, showLogo: true,
     title: '', sub: '',            // 비워두면 자동 문구
@@ -3164,16 +3167,17 @@
     var b = e.target.closest('button[data-s]');
     if (!b) return;
     var name = b.dataset.s, all = lineModeSpecAll(state.spec, state.rows).bars;
-    var hide = Object.assign({}, state.lineHide);
+    var hide = (!state.lineHideUser && all.length === 2) ? {} : Object.assign({}, state.lineHide);
     hide[name] = !hide[name];
     // 마지막 하나는 끌 수 없다
     if (!all.some(function (x) { return !hide[x.label]; })) return;
     state.lineHide = hide;
+    state.lineHideUser = true;
     try { localStorage.setItem('fc.lineHide', JSON.stringify(hide)); } catch (e2) {}
     syncLineToggle();
     drawPreview();
   });
-  try { var _lh = JSON.parse(localStorage.getItem('fc.lineHide') || '{}'); if (_lh && typeof _lh === 'object') state.lineHide = _lh; } catch (e) {}
+  try { var _lh = localStorage.getItem('fc.lineHide'); if (_lh) { _lh = JSON.parse(_lh); if (_lh && typeof _lh === 'object') { state.lineHide = _lh; state.lineHideUser = true; } } } catch (e) {}
   try { var _ct = localStorage.getItem('fc.chartType'); if (_ct === 'line' || _ct === 'bar') state.chartType = _ct; } catch (e) {}
   document.getElementById('chk-line').addEventListener('change', function () {
     state.showLine[state.period] = this.checked;
