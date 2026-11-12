@@ -4,6 +4,11 @@ on:
   schedule:
     - cron: '0 18 * * *'       # KST 03:00
   workflow_dispatch:
+    inputs:
+      only:
+        description: "'--us' 면 해외만 (몇 분), 비우면 전체"
+        required: false
+        default: ''
 
 concurrency:
   group: prices-collect
@@ -29,7 +34,8 @@ jobs:
         env:
           # Secrets 에 AV_KEY 가 있으면 그 값을, 없으면 코드에 박힌 키를 씁니다.
           AV_KEY: ${{ secrets.AV_KEY }}
-        run: python3 collect_prices.py
+          ONLY: ${{ github.event.inputs.only }}
+        run: python3 collect_prices.py $ONLY
 
       - name: 환율 수집
         run: python3 collect_fx.py || true

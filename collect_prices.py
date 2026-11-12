@@ -849,6 +849,41 @@ def _yh_rows(sym, d0, d1):
     return []
 
 
+CNBC_Q = ("https://quote.cnbc.com/quote-html-webservice/restQuote/symbolType/symbol?symbols=%s"
+          "&requestMethod=itv&noform=1&partnerId=2&fund=1&exthrs=1&output=json")
+
+
+def _cnbc_quotes(codes):
+    """세 번째 출처 — CNBC 시세 (2026-11 점검: 나스닥·야후가 막힌 날에도 GitHub 에서 열렸다. ETF 도 준다).
+    {코드: (날짜, 최근 종가)} — 한 번에 40종목씩."""
+    out = {}
+    codes = list(codes)
+    for i in range(0, len(codes), 40):
+        part = codes[i:i + 40]
+        sy = "|".join(c.replace("-", ".") for c in part)
+        try:
+            raw = urllib.request.urlopen(urllib.request.Request(CNBC_Q % urllib.parse.quote(sy, safe="|."),
+                                                                headers={"User-Agent": UA}), timeout=30).read()
+            q = ((json.loads(raw.decode("utf-8", "replace")).get("FormattedQuoteResult") or {})
+                 .get("FormattedQuote")) or []
+        except Exception as e:                    # noqa: BLE001
+            log("  CNBC 실패: %s" % str(e)[:80])
+            continue
+        if isinstance(q, dict):
+            q = [q]
+        for x in q:
+            try:
+                sym = str(x.get("symbol") or "").replace(".", "-").upper()
+                p = float(str(x.get("last") or "").replace(",", ""))
+                d = str(x.get("last_time") or "")[:10]
+                if sym and p > 0 and len(d) == 10 and d[4] == "-":
+                    out[sym] = (d, p)
+            except Exception:                     # noqa: BLE001
+                continue
+        time.sleep(0.5)
+    return out
+
+
 def _cmc_prices():
     """세 번째 출처 — 시가총액 탭이 매일 받는 표(data/mcap_us.json)의 종목별 현재가. ETF 는 없다."""
     try:
@@ -923,12 +958,35 @@ def nowcast_us(items):
                 rows[:] = r2
             time.sleep(0.4)
         log("  야후로 받은 종목 %d / %d" % (yh_ok, yh_try))
+    # CNBC: 나스닥·야후가 둘 다 못 준 종목 (ETF 포함) — 시가총액 표보다 먼저 쓴다
+    still = [g[0] for g in got if not g[4]]
+    cnbc = _cnbc_quotes(still) if still else {}
+    if still:
+        log("  CNBC 로 받은 종목 %d / %d" % (len(cnbc), len(still)))
     cmc_d, cmc = _cmc_prices()
     try:
         with open(OUT_M, encoding="utf-8") as f:
             MON = json.load(f).get("items") or {}
     except Exception:                             # noqa: BLE001
         MON = {}
+
+    def base_close(code, av):
+        o = MON.get(code) or {}
+        if o.get("asof") != av["asof"]:
+            return None
+        s0, v = o.get("s") or "", o.get("v") or []
+        try:
+            i = (int(av["asof"][:4]) - int(s0[:4])) * 12 + int(av["asof"][5:7]) - int(s0[5:7])
+            return v[i]
+        except Exception:                         # noqa: BLE001
+            return None
+
+    def cnbc_rows(code, av):
+        q = cnbc.get(code.upper())
+        b = base_close(code, av)
+        if not q or not b or q[0] <= av["asof"] or not (0.5 < q[1] / b < 2.0):
+            return []
+        return [(av["asof"], float(b)), (q[0], float(q[1]))]
 
     def cmc_rows(code, av):
         """[(기준일, 기준일 종가), (표 날짜, 현재가)] — 기준일 종가는 월말 종가 파일의 진행 중인 달 값
@@ -947,9 +1005,13 @@ def nowcast_us(items):
             return []
         return [(av["asof"], float(b)), (cmc_d, float(p))]
 
-    done = skip = fresh = kept = by_cmc = 0
+    done = skip = fresh = kept = by_cmc = by_cnbc = 0
     if True:
         for code, it, av, cls, rows in got:
+            if not rows:
+                rows = cnbc_rows(code, av)
+                if rows:
+                    by_cnbc += 1
             if not rows:
                 pn = it.get("nc")
                 cr = cmc_rows(code, av)
@@ -1002,8 +1064,8 @@ def nowcast_us(items):
             it["nc"] = [base[1], last[1], last[0]]
             it["ncb"] = av["asof"]                # nc 의 기준일 — 알파밴티지로 새로 받으면 달라져서 옛 nc 를 버린다
             done += 1
-    log("해외 올해 수익률 최신화: %d종목 (그중 시가총액 표 현재가 %d · 야후 %d) · 이미 최신 %d · 지난 값 유지 %d · 못 함 %d"
-        % (done, by_cmc, yh_ok, fresh, kept, skip))
+    log("해외 올해 수익률 최신화: %d종목 (그중 CNBC %d · 시가총액 표 현재가 %d · 야후 %d) · 이미 최신 %d · 지난 값 유지 %d · 못 함 %d"
+        % (done, by_cnbc, by_cmc, yh_ok, fresh, kept, skip))
 
 
 def attach_nc(items):
