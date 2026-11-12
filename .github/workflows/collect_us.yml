@@ -4,6 +4,11 @@ on:
   schedule:
     - cron: '30 17 * * *'      # KST 02:30
   workflow_dispatch:
+    inputs:
+      tickers:
+        description: '이 종목만 다시 (띄어쓰기로, 비우면 전체)'
+        required: false
+        default: ''
 
 concurrency:
   group: sec-collect
@@ -27,7 +32,8 @@ jobs:
           # SEC 는 이메일 형식 연락처를 요구합니다.
           # 저장소 Settings > Secrets > Actions 에 SEC_UA 를 넣으면 그 값을 씁니다.
           SEC_UA: ${{ secrets.SEC_UA }}
-        run: python3 collect_us.py
+          TICKERS: ${{ github.event.inputs.tickers }}
+        run: python3 collect_us.py $TICKERS
 
       - name: 13F 보유 현황
         run: python3 collect_13f.py || true     # 13F 가 막혀도 실적은 올린다

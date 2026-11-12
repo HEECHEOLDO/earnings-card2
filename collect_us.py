@@ -241,6 +241,7 @@ DISCOVER_SKIP = ("deferred", "unearned", "receivable", "remaining",
                  "percentage", "concentration", "segment", "peritem")
 
 _used_tag = {}
+FILED = {}            # {항목: {회계연도: 그 값을 가져온 공시의 제출일}} — 액면분할 환산에 쓴다
 
 
 def _usable(rows, kind):
@@ -372,6 +373,8 @@ def fiscal_end_month(facts):
         except Exception:                 # noqa: BLE001
             continue
         m = int(r["end"][5:7])
+        if m == 1 and int(r["end"][8:10]) <= 10:
+            m = 12                        # 1월 초에 끝나는 52/53주 회계연도 = 12월 결산 (L3해리스: 분기 연도가 1년씩 밀렸다)
         counts[m] = counts.get(m, 0) + 1
     if not counts:
         return 12
@@ -388,6 +391,7 @@ def annual_series(facts, kind):
         return {}
     out = {}
     kept = dropped = 0
+    FILED[kind] = {}
     for _, _, rows in groups:
         one, seen = {}, {}
         for r in rows:
@@ -414,6 +418,8 @@ def annual_series(facts, kind):
                 if v > out[fy] * REV_PARTIAL:
                     out[fy] = v               # 앞 태그가 매출 일부만 적은 경우 (리츠의 고객계약수익 등)
             else:
+                if fy not in out:
+                    FILED[kind][fy] = seen.get(fy, "")
                 out.setdefault(fy, v)         # 앞 태그 우선
     dbg("%s 연간: 채택 %d, 기간 불일치 %d -> %d개 연도" % (kind, kept, dropped, len(out)))
     return out
@@ -428,7 +434,21 @@ def quarter_series(facts, kind, fy_end_month=12):
     for _, tag, rows in groups:
         seen = {}
         one = {}
+        # 회사가 4분기 칸(약 3개월)에 연간 값을 그대로 적은 경우 (L3해리스 2024·2025 4분기 = 연간 매출) — 버린다
+        ann_vals = set()
         for r in rows:
+            try:
+                if r.get("start") and r.get("end") and 330 <= _days(r["start"], r["end"]) <= 400:
+                    ann_vals.add((r["end"], r["val"]))
+            except Exception:             # noqa: BLE001
+                pass
+        for r in rows:
+            if (r.get("end"), r.get("val")) in ann_vals and r.get("start"):
+                try:
+                    if _days(r["start"], r["end"]) < 200:
+                        continue
+                except Exception:         # noqa: BLE001
+                    pass
             if not r.get("start") or not r.get("end"):
                 continue
             try:
@@ -451,11 +471,30 @@ def quarter_series(facts, kind, fy_end_month=12):
 
     def q_fy(end):
         y, m = int(end[:4]), int(end[5:7])
+        if m == 1 and int(end[8:10]) <= 10 and fy_end_month == 12:
+            return y - 1                  # 1월 초에 끝난 분기 = 지난해 4분기 (52/53주 회계연도)
         return y + 1 if m > fy_end_month else y
 
     groups2 = {}
     for end, val in byend.items():
         groups2.setdefault(q_fy(end), []).append((end, val))
+    if kind == "rev":
+        # 3개월 칸에 연간 값을 적은 경우 (L3해리스 FY2025 10-K: 연간 매출 21,865 를 10~12월 기간으로 태그) —
+        # 같은 해 다른 분기 중앙값의 3배가 넘는 칸은 버린다 (계절성이 큰 인튜이트 3분기도 2배 남짓)
+        for fy, items in groups2.items():
+            vals = [v for _, v in items if v]
+            if len(vals) < 3:
+                continue
+            keep = []
+            for end, val in items:
+                others = sorted(v for e, v in items if e != end and v)
+                med = others[len(others) // 2] if others else 0
+                if val and med > 0 and val > 3 * med:
+                    log("  [버림] %s 끝 분기 매출 %s — 같은 해 다른 분기(%s)의 3배 넘음 (연간 값 오기)"
+                        % (end, f"{val / 1e6:,.0f}", f"{med / 1e6:,.0f}"))
+                    continue
+                keep.append((end, val))
+            groups2[fy] = keep
     out = {}
     for fy, items in groups2.items():
         items.sort()
@@ -467,6 +506,27 @@ def quarter_series(facts, kind, fy_end_month=12):
 
 
 QTAG = {}       # (항목, 회계연도, 분기) -> 그 값을 가져온 태그
+Q4FILED = {}    # 회계연도 -> 4분기를 만들 때 쓴 연간 매출의 제출일
+
+
+def annual_cands_of_tag(facts, tag, fy):
+    """그 해 연간 값 후보 [(제출일, 값)] — 나중 공시가 사업 매각 등으로 과거 연간을 고쳐 적으면 여럿이 된다."""
+    if tag == BANK_REV:
+        node = (facts.get("facts", {}).get("us-gaap", {}) or {}).get(BANK_REV)
+    else:
+        node = facts.get("facts", {}).get("us-gaap", {}).get(tag)
+    out = []
+    for r in ((node or {}).get("units", {}) or {}).get("USD", []):
+        if not r.get("start") or not r.get("end"):
+            continue
+        try:
+            if not 330 <= _days(r["start"], r["end"]) <= 400:
+                continue
+        except Exception:                 # noqa: BLE001
+            continue
+        if fy_of(r["end"]) == fy and r.get("val") is not None:
+            out.append((r.get("filed", ""), r["val"]))
+    return sorted(out)
 
 
 def annual_of_tag(facts, tag, fy):
@@ -644,6 +704,96 @@ def fix_dps_scale(annual, A):
         log("  [보정] FY%d 주당배당금 $%.4f -> $%.4f (연간 값이 아니었음, %d배)"
             % (y, before, after, cand))
     return bool(fixed)
+
+
+SPLIT_TAGS = ("StockholdersEquityNoteStockSplitConversionRatio1", "StockholdersEquityNoteStockSplitConversionRatio")
+SPLIT_CLEAN = (1.5, 2, 3, 4, 5, 6, 7, 8, 10, 15, 20, 25, 40, 50)
+
+
+def split_events(facts):
+    """액면분할 [(날짜, 배수)] — 두 가지 출처를 합친다 (2026-11).
+    1) 회사가 적은 분할 비율 태그 (엔비디아 2021년 4, 2024년 10)
+    2) 같은 기간의 주당배당금이 나중 공시에서 깔끔한 배수만큼 고쳐 적힌 경우
+       (KLA 는 비율 태그가 이상하지만 FY2024 배당이 2025년 공시엔 5.65, 2026년 공시엔 0.565 → 10:1)
+    날짜 = 그 날보다 늦게 제출된 공시는 이미 분할 기준으로 다시 적혀 있다는 뜻.
+    2) 가 있으면 그 경계(분할 전 기준으로 적힌 마지막 공시일)가 가장 정확해서 그걸 쓴다
+    (올드도미니언은 2024년 2월 16일에 분할을 '발표' 했고 2월 26일 공시는 아직 분할 전 기준이었다)."""
+    us = facts.get("facts", {}).get("us-gaap", {})
+    pts = []
+    for tag in SPLIT_TAGS:
+        for unit, lst in ((us.get(tag) or {}).get("units") or {}).items():
+            for r in lst:
+                v, e = r.get("val"), r.get("end")
+                if not (e and v and v > 0):
+                    continue
+                # 깔끔한 배수만 (KLA 는 한 공시에 10 을 10000 으로 잘못 적었다)
+                ok = [cc for c in SPLIT_CLEAN for cc in (c, 1.0 / c) if abs(v / cc - 1) <= 0.03]
+                if ok:
+                    pts.append((e, ok[0], not r.get("start")))
+    pts.sort()
+    clusters = []                                  # 같은 분할을 여러 공시가 적는다 — 400일 안 같은 배수는 하나로
+    for e, v, inst in pts:
+        if clusters and abs(clusters[-1]["v"] - v) < 1e-6 and _days(clusters[-1]["first"], e) <= 400:
+            clusters[-1]["rows"].append((e, inst))
+        else:
+            clusters.append({"v": v, "first": e, "rows": [(e, inst)]})
+    ev = []
+    for c in clusters:
+        inst = [e for e, i in c["rows"] if i]      # 시점 값: 늦은 날짜가 실제 시행일에 가깝다 (앞선 건 발표일)
+        per = [e for e, i in c["rows"] if not i]   # 기간 값('그 분기 중'): 가장 이른 기간 끝
+        cands = ([max(inst)] if inst else []) + ([min(per)] if per else [])
+        ev.append([min(cands), c["v"]])
+    # 고쳐 적힌 배당으로 찾기
+    rows = []
+    for tag in TAGS.get("dps", []):
+        node = us.get(tag) or {}
+        for unit in ("USD/shares", "USD-per-shares", "USD"):
+            rows += (node.get("units") or {}).get(unit, [])
+    by = {}
+    for r in rows:
+        if r.get("end") and r.get("val"):
+            by.setdefault((r.get("start"), r["end"]), []).append(r)
+    cand = []
+    for lst in by.values():
+        lst = sorted(lst, key=lambda r: r.get("filed", ""))
+        for a, b in zip(lst, lst[1:]):
+            if not (a["val"] > 0 and b["val"] > 0) or a.get("filed") == b.get("filed"):
+                continue
+            k = a["val"] / b["val"]
+            for c in SPLIT_CLEAN:
+                for cc in (c, 1.0 / c):
+                    if abs(k / cc - 1) <= 0.03:
+                        cand.append((a.get("filed", ""), b.get("filed", ""), cc))
+    for c in sorted(set(x[2] for x in cand)):
+        grp = [x for x in cand if x[2] == c]
+        cut = max(x[0] for x in grp)              # 이 날까지 제출된 공시는 분할 전 기준
+        if not any(x[1] > cut for x in grp):
+            continue
+        near = [e for e in ev if abs(e[1] - c) < 1e-6 and abs(_days(e[0][:10], cut)) <= 400]
+        if near:
+            near[0][0] = cut + "~"                # 비율 태그로 잡힌 분할의 날짜를 공시 경계로 바로잡는다
+        else:
+            ev.append([cut + "~", c])             # 'cut~' 는 cut 당일보다 늦고 다음 날보다 이른 문자열
+    ev.sort()
+    return [tuple(e) for e in ev]
+
+
+def adjust_splits_by_filing(annual, events, filed):
+    """공시 제출일 기준 환산: 그 해 배당을 가져온 공시 '이후' 에 일어난 분할만큼 나눈다.
+    SEC 는 해마다 어떤 공시는 과거 배당을 분할 기준으로 고쳐 적고 어떤 공시는 그대로 둬서,
+    주식 수 변화로 추정하면 엔비디아처럼 해마다 기준이 섞였다."""
+    found = False
+    for r in annual:
+        d = r.get("dps")
+        f = filed.get(r["p"]) or ""
+        k = 1.0
+        for e, v in events:
+            if f and e > f:
+                k *= v
+        if d and abs(k - 1) > 1e-9:
+            found = True
+        r["dps_adj"] = round(d / k, 4) if d else d
+    return found
 
 
 def adjust_splits(annual, shares):
@@ -971,7 +1121,12 @@ def collect_one(ticker, info):
         log("  [주의] FY%d 부터 실적 기준이 바뀐 것으로 보입니다" % restated)
         log("         (사업 분할 등으로 과거를 다시 쓴 경우. 그 이전 연도와 직접 비교하기 어렵습니다)")
 
-    split = adjust_splits(annual, A["shares"])
+    events = split_events(facts)
+    if events:
+        log("  [분할] %s" % ", ".join("%s %g배" % (e[:10], v) for e, v in events))
+        split = adjust_splits_by_filing(annual, events, FILED.get("dps", {}))
+    else:
+        split = adjust_splits(annual, A["shares"])
 
     if split:
         log("  [분할] 액면분할 감지 — 과거 주당배당금을 현재 주식 수 기준으로 환산")
@@ -982,6 +1137,7 @@ def collect_one(ticker, info):
     fem = fiscal_end_month(facts)
     dbg("결산월: %d월" % fem)
     QTAG.clear()
+    Q4FILED.clear()
     Q = {k: quarter_series(facts, k, fem) for k in ("rev", "op", "ni")}
     quarterly = []
     fys = sorted(set(k[0] for k in Q["rev"].keys()))[-5:]
@@ -1002,9 +1158,19 @@ def collect_one(ticker, info):
                 tags = {QTAG.get((key, fy, i)) for i in (1, 2, 3)}
                 if len(tags) != 1 or None in tags:
                     return None
-                ann = annual_of_tag(facts, tags.pop(), fy)
-                if ann is None:
+                cands = annual_cands_of_tag(facts, tags.pop(), fy)
+                if not cands:
                     return None
+                # 연간을 나중에 고쳐 적은 회사(옥시덴탈 2024: 화학 사업 매각 후 연간 22,710 → 1~3분기는 옛 기준 20,553)는
+                # '고친 연간 - 옛 1~3분기' 가 엉터리 4분기(2,157)가 된다. 1~3분기와 같은 기준의 연간을 고른다:
+                # 매출은 4분기가 1~3분기 평균에 가장 가까운 후보, 이익은 매출과 같은 날 제출된 연간
+                if key == "rev":
+                    avg = sum(parts) / 3.0
+                    f, ann = min(cands, key=lambda c: (abs(c[1] - sum(parts) - avg), -len(c[0]), c[0]))
+                    Q4FILED[fy] = f
+                else:
+                    same = [c for c in cands if c[0] == Q4FILED.get(fy)]
+                    f, ann = same[-1] if same else cands[-1]
                 return ann - sum(parts)
             r4 = q4("rev")
             if r4 is not None:
