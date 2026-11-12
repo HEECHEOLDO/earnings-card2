@@ -13,7 +13,7 @@
 출처는 앞에서부터 되는 것을 쓴다 (나스닥·야후가 GitHub 에서 자주 막혀서 여러 곳을 둔다):
   1) CNBC 차트 (1년 일별 · 5년 주별)  2) 야후 (일별·주별)  3) 나스닥 과거 시세
 다 막히면: 이미 있는 파일에 CNBC 오늘 시세 한 줄을 붙인다 (일별이 하루씩 쌓인다).
-5년보다 앞은 data/monthly_us.json 의 월말 종가로 채운다 (주별 자리에 월말 값).
+(CNBC '5Y' 는 실제로 약 10년 치 주별을 준다. 월말 종가는 배당 반영 기준이라 섞지 않는다)
 """
 import json
 import os
@@ -223,9 +223,9 @@ def build(sym, mon, today, probe=False):
         return None, ""
     d = [[a, rnd(b)] for a, b in daily if a >= d0]
     wk = weekly(sorted(set(tuple(x) for x in (wk or [])) | set(daily)))
-    first_w = wk[0][0] if wk else 99999999
-    old = [(a, b) for a, b in monthly_rows(mon, sym) if a < first_w]   # 주별보다 앞은 월말 값
-    w = [[a, rnd(b)] for a, b in sorted(old + [tuple(x) for x in wk]) if a >= w0]
+    # 월말 종가(알파밴티지, 배당까지 고친 값)는 기준이 달라 이어 붙이면 계단이 생긴다 (알트리아 33 → 62).
+    # CNBC 5년 차트가 실제로는 약 10년 치 주별을 주므로 그것만 쓴다
+    w = [[a, rnd(b)] for a, b in wk if a >= w0]
     return {"u": "USD", "d": d, "w": w, "src": "+".join(src)}, "+".join(src)
 
 
