@@ -824,7 +824,7 @@
           label: d.y + '.' + d.q + 'Q', short: d.q + 'Q',
           yearMark: showYear ? d.y + '년' : null,
           bar1: company.noRev ? num(d.op) : num(d.rev), bar2: company.noRev ? num(d.ni) : num(d.op),
-          line: company.noRev ? null : (d.rev ? num(d.op) / d.rev * 100 : 0), ni: num(d.ni), noRev: !!company.noRev
+          line: company.noRev ? null : ((d.rev && d.op != null) ? num(d.op) / d.rev * 100 : null), ni: num(d.ni), noRev: !!company.noRev
         };
       });
     }
@@ -897,7 +897,7 @@
 
   function seriesSpec0(period, rows) {
     var won = function (v) { return Math.round(v).toLocaleString('ko-KR'); };
-    var pct = function (v) { return v.toFixed(1) + '%'; };
+    var pct = function (v) { return (v === null || v === undefined || isNaN(v)) ? '-' : v.toFixed(1) + '%'; };
     var yearBasis = function (last) { return "'" + last.label.slice(2) + '년 기준'; };
 
     if (period === 'dividend') {
@@ -2886,7 +2886,7 @@
       line = function (r) { return [r.label, r.bar1, r.bar2, r.ni, r.dps, r.payout].join(','); };
     } else {
       head = ['분기', '매출(억원)', '영업이익(억원)', '순이익(억원)', '영업이익률(%)'];
-      line = function (r) { return [r.label, r.bar1, r.bar2, r.ni, r.line.toFixed(1)].join(','); };
+      line = function (r) { return [r.label, r.bar1, r.bar2, r.ni, r.line == null ? '' : r.line.toFixed(1)].join(','); };
     }
     var lines = [head.join(',')];
     rows.forEach(function (r) { lines.push(line(r)); });

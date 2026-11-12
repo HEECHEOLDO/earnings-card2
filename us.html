@@ -887,10 +887,10 @@
       return qs.map(function (d, i) {
         var showYear = (i === 0 || d.q === 1);
         return {
-          label: d.y + '.' + d.q + 'Q', short: d.q + 'Q',
+          label: d.y + '.' + d.q + 'Q', short: d.q + 'Q' + (d.restated ? '*' : ''), restated: !!d.restated,
           yearMark: showYear ? d.y + '년' : null,
           bar1: conv(num(d.rev)), bar2: conv(num(d.op)),
-          line: d.rev ? num(d.op) / d.rev * 100 : 0, ni: conv(num(d.ni)),
+          line: (d.rev && d.op != null) ? num(d.op) / d.rev * 100 : null, ni: conv(num(d.ni)),
           netMargin: d.rev ? num(d.ni) / d.rev * 100 : 0
         };
       });
@@ -1803,7 +1803,10 @@
     /* 기준 라벨 */
     ctx.font = font(700, T.type.basis);
     ctx.fillStyle = T.inkSoft;
-    ctx.fillText(spec.basisFmt(last), CX, basisBaseline);
+    // * 붙은 분기: 회사가 나중에 사업 분할·매각 후 기준으로 고쳐 적은 값 (하니웰 3분기 등) — 다른 분기와 기준이 다르다
+    var basisTxt = spec.basisFmt(last);
+    if (rows.some(function (r) { return r.restated; })) basisTxt += '  ·  * 분할·매각 후 다시 적은 분기';
+    ctx.fillText(basisTxt, CX, basisBaseline);
 
     /* 요약 3칸 */
     var palette = { ink: T.ink, bar1: colors.bar1, bar2: colors.bar2, line: colors.line, mid: colors.mid, ni: colors.ni };
@@ -1972,7 +1975,7 @@
          { type: 'line', label: '배당성향(%)', data: rows.map(function (r) { return r.payout; }),
            borderColor: colors.bar2, backgroundColor: colors.bar2, tension: .3, yAxisID: 'y1' }]
       : [{ type: 'line', label: '영업이익률(%)',
-           data: rows.map(function (r) { return +r.line.toFixed(1); }),
+           data: rows.map(function (r) { return r.line == null ? null : +r.line.toFixed(1); }),
            borderColor: colors.line, backgroundColor: colors.line, tension: .3, yAxisID: 'y' }];
 
     chart2 = new Chart(document.getElementById('chart2'), {
@@ -2021,7 +2024,7 @@
           '<td>' + fmtAmount(r.bar1, unit) + '</td>',
           '<td>' + fmtAmount(r.bar2, unit) + '</td>',
           '<td>' + fmtAmount(r.ni, unit) + '</td>',
-          '<td>' + r.line.toFixed(1) + '%</td>'].join('');
+          '<td>' + (r.line == null ? '-' : r.line.toFixed(1) + '%') + '</td>'].join('');
       });
     }
     t.innerHTML = '<thead><tr>' + head.map(function (h) { return '<th>' + h + '</th>'; }).join('') +
@@ -2995,7 +2998,7 @@
       line = function (r) { return [r.label, r.bar1, r.bar2, r.ni, r.dps, r.payout].join(','); };
     } else {
       head = ['분기', '매출', '영업이익', '순이익', '영업이익률(%)'];
-      line = function (r) { return [r.label, r.bar1, r.bar2, r.ni, r.line.toFixed(1)].join(','); };
+      line = function (r) { return [r.label, r.bar1, r.bar2, r.ni, r.line == null ? '' : r.line.toFixed(1)].join(','); };
     }
     var lines = [head.join(',')];
     rows.forEach(function (r) { lines.push(line(r)); });

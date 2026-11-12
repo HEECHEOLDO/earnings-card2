@@ -439,6 +439,7 @@ def quarter_series(facts, kind, fy_end_month=12):
     if not groups:
         return {}
     byend, tagof = {}, {}
+    first = {}
     for _, tag, rows in groups:
         seen = {}
         one = {}
@@ -470,6 +471,8 @@ def quarter_series(facts, kind, fy_end_month=12):
             if key not in seen or filed >= seen[key]:
                 seen[key] = filed
                 one[key] = r["val"]
+            if key not in first or filed < first[key][0]:
+                first[key] = (filed, r["val"])
         for k, v in one.items():
             if kind == "rev" and k in byend and v is not None and byend[k] is not None:
                 if v > byend[k] * REV_PARTIAL:
@@ -509,12 +512,17 @@ def quarter_series(facts, kind, fy_end_month=12):
         for i, (end, val) in enumerate(items[:4]):
             out[(fy, i + 1)] = val
             QTAG[(kind, fy, i + 1)] = tagof.get(end)
+            # 나중 공시가 그 분기를 25% 넘게 고쳐 적었으면(사업 분할·매각 후 기준) 표시한다 — 하니웰 2025·2026년 3분기
+            f0 = first.get(end)
+            if kind == "rev" and f0 and f0[1] and val and abs(val / f0[1] - 1) > 0.25:
+                QRESTATED.add((fy, i + 1))
     dbg("%s 분기: %d개 (결산 %d월 기준)" % (kind, len(out), fy_end_month))
     return out
 
 
 QTAG = {}       # (항목, 회계연도, 분기) -> 그 값을 가져온 태그
 Q4FILED = {}    # 회계연도 -> 4분기를 만들 때 쓴 연간 매출의 제출일
+QRESTATED = set()   # (회계연도, 분기) — 나중 공시가 크게 고쳐 적은 분기 (분할·매각 후 기준)
 
 
 RECOVERED = {}    # 회계연도 -> 3개월 칸에 잘못 적힌 연간 매출 (그 해 연간이 따로 없을 때만)
@@ -1209,6 +1217,7 @@ def collect_one(ticker, info):
     dbg("결산월: %d월" % fem)
     QTAG.clear()
     Q4FILED.clear()
+    QRESTATED.clear()
     Q = {k: quarter_series(facts, k, fem) for k in ("rev", "op", "ni")}
     quarterly = []
     fys = sorted(set(k[0] for k in Q["rev"].keys()))[-5:]
@@ -1218,6 +1227,8 @@ def collect_one(ticker, info):
             quarterly.append({"y": fy, "q": q, "rev": mil(Q["rev"].get((fy, q))),
                               "op": mil(Q["op"].get((fy, q))),
                               "ni": mil(Q["ni"].get((fy, q)))})
+            if (fy, q) in QRESTATED:
+                quarterly[-1]["restated"] = True
         # 4분기를 따로 보고하지 않는 회사는 연간에서 빼서 만든다
         if 4 not in have and have == [1, 2, 3]:
             def q4(key):
