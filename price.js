@@ -1,0 +1,445 @@
+/* 주가 추이 카드 (price.html) — 2026-11
+   국내: data/chart/kr/{코드}.json  (collect_anchor.py 가 평일마다 만든다)
+   해외: data/chart/us/{티커}.json  이 있으면 그것, 없으면 data/monthly_us.json 의 월말 종가 + 최근 종가(nc)
+   파일 모양: {"u":"KRW"|"USD", "d":[[YYYYMMDD,종가]...] 최근 약 400일 일별, "w":[[YYYYMMDD,종가]...] 약 11년 주별} */
+(function () {
+  'use strict';
+  var $ = function (id) { return document.getElementById(id); };
+  var T = { paper: '#fafaf8', ink: '#101216', inkSoft: '#6B7078', rule: '#E6E4DD', grid: '#EAE8E1', axis: '#C9C6BC',
+            tick: '#9AA0A8', footer: '#3A3E46', up: '#D6362C', down: '#2B6CD9' };
+  var FF = "'Noto Sans KR', 'Noto Sans CJK KR', sans-serif";
+  function font(w, px) { return w + ' ' + px + 'px ' + FF; }
+  var CW = 1080, CH = 1350, L = 100, R = 980;
+  var SPANS = { ytd: { label: '올해' }, '1m': { m: 1 }, '3m': { m: 3 }, '6m': { m: 6 }, '1y': { y: 1 },
+                '3y': { y: 3 }, '5y': { y: 5 }, '10y': { y: 10 } };
+
+  var state = { item: null, span: '1y', data: null, color: null, colorUser: false, name: '', title: '', titleUser: false, nameUser: false };
+  var LIST = [], BY = {}, MON = null;
+  var LOGO = {};
+
+  /* ------------------------------------------------------------ 자료 */
+  function ymd(n) { n = String(n); return { y: +n.slice(0, 4), m: +n.slice(4, 6), d: +n.slice(6, 8), n: +n }; }
+  function toN(dt) { return dt.getFullYear() * 10000 + (dt.getMonth() + 1) * 100 + dt.getDate(); }
+
+  function loadUS(code) {
+    return fetch('./data/chart/us/' + code + '.json', { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : null; })
+      .catch(function () { return null; }).then(function (j) {
+        if (j && j.d && j.d.length) return j;
+        // 일별 파일이 아직 없으면 월말 종가 + 최근 종가로 (점이 성글다)
+        return (MON ? Promise.resolve(MON) : fetch('./data/monthly_us.json', { cache: 'no-cache' }).then(function (r) { return r.json(); })
+          .then(function (m) { MON = m; return m; })).then(function (m) {
+            var it = (m.items || {})[code];
+            if (!it || !it.v) return null;
+            var y0 = +it.s.slice(0, 4), m0 = +it.s.slice(5, 7) - 1, w = [];
+            it.v.forEach(function (v, i) {
+              if (!v) return;
+              var mm = m0 + i, y = y0 + Math.floor(mm / 12), mo = mm % 12 + 1;
+              var last = new Date(y, mo, 0);                         // 그 달 마지막 날 (주말이어도 표시용)
+              w.push([toN(last), v]);
+            });
+            var nc = it.nc, d = [];
+            if (nc && nc[2] && nc[1] > 0) {
+              var n = +nc[2].replace(/-/g, '');
+              w = w.filter(function (p) { return Math.floor(p[0] / 100) < Math.floor(n / 100); });   // 진행 중인 달 빼고
+              d = w.slice(-14).concat([[n, nc[1]]]);
+            } else d = w.slice(-14);
+            return { u: 'USD', d: d, w: w, coarse: true };
+          });
+      });
+  }
+  function load(item) {
+    if (item.kr) return fetch('./data/chart/kr/' + item.code + '.json', { cache: 'no-cache' })
+      .then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; });
+    return loadUS(item.code);
+  }
+
+  // 고른 기간의 점들 [{n, v}] — 시작점은 '기간 시작일 이전 마지막 종가'
+  function series(data, span) {
+    if (!data) return null;
+    var d = (data.d || []).filter(function (p) { return p[1] > 0; });
+    var w = (data.w || []).filter(function (p) { return p[1] > 0; });
+    if (!d.length && !w.length) return null;
+    var lastP = d.length ? d[d.length - 1] : w[w.length - 1];
+    if (w.length && w[w.length - 1][0] > lastP[0]) lastP = w[w.length - 1];
+    var end = ymd(lastP[0]), sp = SPANS[span], start;
+    if (span === 'ytd') start = (end.y - 1) * 10000 + 1231;
+    else {
+      var dt = new Date(end.y, end.m - 1, end.d);
+      if (sp.m) dt.setMonth(dt.getMonth() - sp.m); else dt.setFullYear(dt.getFullYear() - sp.y);
+      start = toN(dt);
+    }
+    var daily = span === 'ytd' || !!sp.m || sp.y <= 1, src;
+    if (daily) {
+      // 1년 이하: 일별. 일별이 기간 시작까지 안 닿으면 그 앞은 주별로 잇는다
+      var cut = d.length ? d[0][0] : 99999999;
+      src = (d.length && d[0][0] <= start) ? d : w.filter(function (p) { return p[0] < cut; }).concat(d);
+    } else {
+      // 3년 이상: 주별, 끝에는 가장 최근 종가
+      src = w.slice();
+      if (!src.length || src[src.length - 1][0] < lastP[0]) src.push(lastP);
+    }
+    var base = null, out = [];
+    src.forEach(function (p) { if (p[0] <= start) base = p; else out.push(p); });
+    if (base) out.unshift(base);
+    var listed = !base;                            // 기간 시작 때 아직 상장 전 (처음부터 그린다)
+    var pts = out.map(function (p) { var o = ymd(p[0]); o.v = p[1]; return o; });
+    if (pts.length < 2) return null;
+    return { pts: pts, listed: listed, coarse: !!data.coarse };
+  }
+
+  /* ------------------------------------------------------------ 글자 */
+  function money(v, kr) {
+    if (kr) return Math.round(v).toLocaleString('ko-KR') + '원';
+    return '$' + (v >= 1000 ? Math.round(v).toLocaleString('en-US') : v >= 1 ? v.toFixed(2) : v.toFixed(3));
+  }
+  function tickTxt(v, kr, st) {
+    if (kr) return Math.round(v).toLocaleString('ko-KR');
+    var dec = st >= 1 ? 0 : st >= 0.1 ? 1 : 2;
+    return '$' + (v >= 1000 ? Math.round(v).toLocaleString('en-US') : v.toFixed(dec));
+  }
+  function dlab(p) { return p.y + '.' + (p.m < 10 ? '0' : '') + p.m + '.' + (p.d < 10 ? '0' : '') + p.d; }
+  function pct(x) { var a = Math.abs(x); return (a >= 1000 ? Math.round(a).toLocaleString('en-US') : a.toFixed(1)) + '%'; }
+  function autoTitle(s) {
+    if (!s) return '';
+    if (state.span === 'ytd') return s.pts[s.pts.length - 1].y + '년 주가 추이';
+    var sp = SPANS[state.span];
+    return '최근 ' + (sp.m ? sp.m + '개월' : sp.y + '년') + ' 주가 추이';
+  }
+
+  /* ------------------------------------------------------------ 로고·색 */
+  function logoPath(it) { return it.kr ? './logo/kr/' + it.code + '.png' : './logo/us/' + it.code + '.png'; }
+  function logoImg(it, cb) {
+    var src = logoPath(it);
+    if (LOGO[src] !== undefined) { cb(LOGO[src]); return; }
+    var im = new Image();
+    im.onload = function () { LOGO[src] = im; cb(im); };
+    im.onerror = function () { LOGO[src] = null; cb(null); };
+    im.src = src;
+  }
+  function logoColor(im) {
+    if (!im || !im.naturalWidth) return null;
+    var n = 48, cv = document.createElement('canvas'); cv.width = cv.height = n;
+    var g = cv.getContext('2d'); g.drawImage(im, 0, 0, n, n);
+    var px; try { px = g.getImageData(0, 0, n, n).data; } catch (e) { return null; }
+    var bins = {}, dark = {};
+    for (var i = 0; i < px.length; i += 4) {
+      var r = px[i], gg = px[i + 1], b = px[i + 2], a = px[i + 3];
+      if (a < 200) continue;
+      var mx = Math.max(r, gg, b), mn = Math.min(r, gg, b), sat = mx ? (mx - mn) / mx : 0;
+      if (mn > 225) continue;
+      var key = (r >> 4) + ',' + (gg >> 4) + ',' + (b >> 4);
+      var lu = (0.299 * r + 0.587 * gg + 0.114 * b) / 255;
+      if (sat > 0.25 && mx > 50) bins[key] = (bins[key] || 0) + sat * sat * Math.max(0.05, 1.15 - lu);
+      else dark[key] = (dark[key] || 0) + 1;
+    }
+    var pickBin = function (o) { var k = Object.keys(o).sort(function (x, y) { return o[y] - o[x]; })[0]; return k ? k.split(',').map(function (v) { return +v * 16 + 8; }) : null; };
+    var tot = function (o) { return Object.keys(o).reduce(function (s0, k) { return s0 + o[k]; }, 0); };
+    var rgb = tot(bins) >= 4 ? pickBin(bins) : pickBin(dark);
+    if (!rgb) return null;
+    var lum = (0.299 * rgb[0] + 0.587 * rgb[1] + 0.114 * rgb[2]) / 255;
+    if (lum > 0.62) rgb = rgb.map(function (v) { return Math.round(v * 0.62 / lum); });   // 너무 옅으면 종이 위에서 안 보인다
+    return '#' + rgb.map(function (v) { return ('0' + Math.max(0, Math.min(255, v)).toString(16)).slice(-2); }).join('');
+  }
+
+  /* ------------------------------------------------------------ 그리기 */
+  var GRAIN = null;
+  function grain(X) {
+    if (!GRAIN) {
+      GRAIN = document.createElement('canvas'); GRAIN.width = CW; GRAIN.height = CH;
+      var g = GRAIN.getContext('2d'); g.fillStyle = T.paper; g.fillRect(0, 0, CW, CH);
+      var im = g.getImageData(0, 0, CW, CH), d = im.data, seed = 7;
+      for (var i = 0; i < d.length; i += 4) {
+        seed = (seed * 16807) % 2147483647;
+        var n = ((seed / 2147483647) - 0.5) * 14;
+        d[i] += n; d[i + 1] += n; d[i + 2] += n;
+      }
+      g.putImageData(im, 0, 0);
+    }
+    X.drawImage(GRAIN, 0, 0);
+  }
+
+  function draw(X, s, opt) {
+    var kr = opt.kr, color = opt.color || '#2B59C3', pts = s.pts, n = pts.length, last = n - 1;
+    X.save();
+    X.textAlign = 'left'; X.textBaseline = 'alphabetic';
+    grain(X);
+
+    // 머리: 로고 + 이름 + 제목
+    var y0 = 205, nx = L;
+    if (opt.logo) {
+      X.save(); X.beginPath(); X.arc(L + 36, y0 - 30, 36, 0, 7); X.clip();
+      X.fillStyle = '#fff'; X.fillRect(L, y0 - 66, 72, 72);
+      X.drawImage(opt.logo, L, y0 - 66, 72, 72); X.restore();
+      nx = L + 90;
+    }
+    var nameFs = 92;
+    X.font = font(900, nameFs);
+    while (nameFs > 52 && X.measureText(opt.name).width > R - nx) { nameFs -= 4; X.font = font(900, nameFs); }
+    X.fillStyle = T.ink; X.fillText(opt.name, nx, y0);
+    var tFs = 56; X.font = font(900, tFs);
+    while (tFs > 34 && X.measureText(opt.title).width > R - L) { tFs -= 2; X.font = font(900, tFs); }
+    X.fillText(opt.title, L, y0 + 82);
+
+    // 눈금
+    var top = y0 + 160, bot = 1120, pl = L + 70, pr = R - 175;
+    var vs = pts.map(function (p) { return p.v; });
+    var mn = Math.min.apply(null, vs), mx = Math.max.apply(null, vs);
+    var span0 = mx - mn; if (!(span0 > 0)) span0 = Math.max(Math.abs(mx) * 0.1, 1e-6);
+    var raw = span0 / 4, step = Math.pow(10, Math.floor(Math.log10(raw)));
+    var st = [1, 2, 2.5, 5, 10].map(function (k) { return k * step; }).filter(function (k) { return span0 / k <= 5; })[0] || step * 10;
+    var lo = Math.floor(mn / st) * st, hi = Math.ceil(mx / st) * st;
+    if (hi === lo) { hi += st; lo = Math.max(0, lo - st); }
+    if (mn - lo < 0.12 * (hi - lo) && lo - st >= 0) lo -= st;
+    if (hi - mx < 0.08 * (hi - lo)) hi += st;
+    // 왼쪽 눈금 글자가 길면 그래프를 오른쪽으로 민다
+    X.font = font(600, 22);
+    var tw = 0; for (var t0 = lo; t0 <= hi + st * 1e-6; t0 += st) tw = Math.max(tw, X.measureText(tickTxt(t0, kr, st)).width);
+    pl = Math.max(pl, L + tw + 14);
+    function xA(i) { return n === 1 ? (pl + pr) / 2 : pl + (pr - pl) * i / (n - 1); }
+    function yA(v) { return bot - (v - lo) / (hi - lo) * (bot - top); }
+
+    X.strokeStyle = T.grid; X.lineWidth = 1.5; X.fillStyle = T.tick; X.textAlign = 'right';
+    var tickBoxes = [];
+    for (var t = lo; t <= hi + st * 1e-6; t += st) {
+      var gy = yA(t), tt = tickTxt(t, kr, st), tw2 = X.measureText(tt).width;
+      X.beginPath(); X.moveTo(pl, gy); X.lineTo(pr + 40, gy); X.stroke();
+      X.fillText(tt, pl - 12, gy + 7);
+      tickBoxes.push([pl - 12 - tw2, gy - 12, tw2, 22]);         // 숫자 표시가 눈금 글자 위에 얹히지 않게
+    }
+    X.textAlign = 'left';
+
+    // 선과 면
+    var grad = X.createLinearGradient(0, top, 0, bot); grad.addColorStop(0, color + '33'); grad.addColorStop(1, color + '00');
+    X.beginPath(); X.moveTo(xA(0), bot);
+    pts.forEach(function (p, i) { X.lineTo(xA(i), yA(p.v)); });
+    X.lineTo(xA(last), bot); X.closePath(); X.fillStyle = grad; X.fill();
+    X.beginPath(); pts.forEach(function (p, i) { if (i) X.lineTo(xA(i), yA(p.v)); else X.moveTo(xA(i), yA(p.v)); });
+    X.strokeStyle = color; X.lineWidth = n > 300 ? 4 : 5; X.lineJoin = 'round'; X.lineCap = 'round'; X.stroke();
+    X.strokeStyle = T.axis; X.lineWidth = 3; X.beginPath(); X.moveTo(pl, bot); X.lineTo(pr + 40, bot); X.stroke();
+
+    // 표시점: 시작·최고·최저·마지막
+    var iHi = vs.indexOf(mx), iLo = vs.lastIndexOf(mn);
+    var placed = tickBoxes.slice(), dates = [];
+    function segHit(x1, y1, x2, y2, b) {
+      var L2 = b[0] - 6, R2 = b[0] + b[2] + 6, T2 = b[1] - 6, B2 = b[1] + b[3] + 6;
+      if (Math.max(x1, x2) < L2 || Math.min(x1, x2) > R2 || Math.max(y1, y2) < T2 || Math.min(y1, y2) > B2) return false;
+      var a0 = 0, a1 = 1, dx = x2 - x1, dy = y2 - y1, P = [-dx, dx, -dy, dy], Q = [x1 - L2, R2 - x1, y1 - T2, B2 - y1];
+      for (var k = 0; k < 4; k++) {
+        if (P[k] === 0) { if (Q[k] < 0) return false; continue; }
+        var tt = Q[k] / P[k];
+        if (P[k] < 0) { if (tt > a1) return false; if (tt > a0) a0 = tt; } else { if (tt < a0) return false; if (tt < a1) a1 = tt; }
+      }
+      return true;
+    }
+    var keyPts = [0, iHi, iLo, last];
+    function freeBox(b, own) {
+      if (b[0] < L || b[0] + b[2] > R || b[1] < top - 40 || b[1] + b[3] > bot - 4) return false;
+      if (placed.some(function (q) { return b[0] < q[0] + q[2] + 6 && b[0] + b[2] + 6 > q[0] && b[1] < q[1] + q[3] + 4 && b[1] + b[3] + 4 > q[1]; })) return false;
+      function dist(i) { var px = xA(i), py = yA(pts[i].v); var dx = Math.max(b[0] - px, 0, px - b[0] - b[2]), dy = Math.max(b[1] - py, 0, py - b[1] - b[3]); return Math.sqrt(dx * dx + dy * dy); }
+      var dOwn = dist(own), ox = xA(own), oy = yA(pts[own].v);
+      // 다른 표시점에 더 가까우면 그 점의 숫자처럼 보인다 (아주 붙어 있는 점끼리는 어차피 같은 자리라 따지지 않는다)
+      if (keyPts.some(function (i) {
+        if (i === own) return false;
+        var ddx = xA(i) - ox, ddy = yA(pts[i].v) - oy;
+        if (ddx * ddx + ddy * ddy < 45 * 45) return false;
+        return dist(i) < dOwn + 10;
+      })) return false;
+      // 선분 검사는 상자 근처만 (일별 점이 많아도 빠르게)
+      var i0 = Math.max(1, Math.floor((b[0] - 10 - pl) / (pr - pl) * (n - 1))), i1 = Math.min(last, Math.ceil((b[0] + b[2] + 10 - pl) / (pr - pl) * (n - 1)) + 1);
+      for (var k = i0; k <= i1; k++) if (segHit(xA(k - 1), yA(pts[k - 1].v), xA(k), yA(pts[k].v), b)) return false;
+      return true;
+    }
+    function dateAt(i) {
+      var x = xA(i), txt = dlab(pts[i]);
+      X.font = font(600, 22); var w = X.measureText(txt).width;
+      var lx = Math.max(L, Math.min(R - w, x - w / 2));
+      if (dates.some(function (q) { return lx < q[0] + q[1] + 14 && lx + w + 14 > q[0]; })) return;
+      dates.push([lx, w]);
+      X.fillStyle = T.inkSoft; X.fillText(txt, lx, bot + 36);
+    }
+    function mark(i, txt, above, sub) {
+      var x = xA(i), y = yA(pts[i].v);
+      X.setLineDash([5, 7]); X.strokeStyle = T.axis; X.lineWidth = 2; X.beginPath(); X.moveTo(x, y + 10); X.lineTo(x, bot); X.stroke(); X.setLineDash([]);
+      X.fillStyle = T.paper; X.beginPath(); X.arc(x, y, 10, 0, 7); X.fill(); X.strokeStyle = color; X.lineWidth = 5; X.stroke();
+      X.font = font(600, 22); var ws = X.measureText(sub + ' ').width;
+      X.font = font(800, 30); var w = ws + X.measureText(txt).width, h = 34;
+      var ys = [], cands = [];
+      // 고른 쪽(위/아래)으로 그래프 끝까지 조금씩 떨어뜨려 보고, 안 되면 반대쪽
+      for (var lv = 0; lv < 14; lv++) ys.push(above ? y - 20 - h - lv * h * 0.8 : y + 20 + lv * h * 0.8);
+      for (var lv2 = 0; lv2 < 14; lv2++) ys.push(above ? y + 20 + lv2 * h * 0.8 : y - 20 - h - lv2 * h * 0.8);
+      var xs = [x - w / 2, x + 14, x - 14 - w, x + 50, x - 50 - w];
+      if (i === 0) xs.push(pl - 4);                // 시작점: 그래프 왼쪽 끝에 맞춘 자리
+      ys.forEach(function (yy) { xs.forEach(function (xx) { cands.push([xx, yy, w, h]); }); });
+      var b = null, stack = false;
+      for (var c = 0; c < cands.length; c++) if (freeBox(cands[c], i)) { b = cands[c]; break; }
+      if (!b) {
+        // 한 줄로 놓을 자리가 없으면 두 줄('시작' 위, 숫자 아래)로 좁혀 다시 찾는다
+        var wv = w - ws, w2 = Math.max(ws, wv), h2 = 58, c2 = [];
+        var ys2 = [];
+        for (var l3 = 0; l3 < 12; l3++) { ys2.push(y - 18 - h2 - l3 * 20); ys2.push(y + 18 + l3 * 20); }
+        ys2.forEach(function (yy) { [x - w2 / 2, x + 14, x - 14 - w2].forEach(function (xx) { c2.push([xx, yy, w2, h2]); }); });
+        for (var k2 = 0; k2 < c2.length; k2++) if (freeBox(c2[k2], i)) { b = c2[k2]; stack = true; break; }
+      }
+      if (b && stack) {
+        placed.push(b);
+        X.font = font(600, 22); X.fillStyle = T.inkSoft; X.fillText(sub, b[0], b[1] + 20);
+        X.font = font(800, 30); X.fillStyle = color; X.fillText(txt, b[0], b[1] + 52);
+      } else if (b) {
+        placed.push(b);
+        var ny = Math.max(b[1], Math.min(b[1] + b[3], y));
+        if (Math.abs(ny - y) > 40) {
+          X.strokeStyle = color; X.globalAlpha = 0.5; X.lineWidth = 1.5; X.beginPath();
+          X.moveTo(x, y + (ny > y ? 12 : -12)); X.lineTo(x, ny > y ? b[1] - 4 : b[1] + b[3] + 2); X.stroke(); X.globalAlpha = 1;
+        }
+        X.font = font(600, 22); X.fillStyle = T.inkSoft; X.fillText(sub + ' ', b[0], b[1] + h - 6);
+        X.font = font(800, 30); X.fillStyle = color; X.fillText(txt, b[0] + ws, b[1] + h - 4);
+      }
+      dateAt(i);
+      return !!b;
+    }
+    // 마지막 점 (가장 최근 종가) — 크게
+    var lx = xA(last), ly = yA(pts[last].v);
+    X.fillStyle = color; X.beginPath(); X.arc(lx, ly, 13, 0, 7); X.fill(); X.strokeStyle = T.paper; X.lineWidth = 5; X.stroke();
+    var endTxt = money(pts[last].v, kr), efs = 36;
+    var eShift = Math.min(0, bot - 10 - (ly + 52));       // 끝이 바닥 가까이면 글자를 올려 날짜 줄과 안 겹치게
+    eShift = Math.max(eShift, top - 30 - (ly - 26));
+    X.font = font(900, efs);
+    while (efs > 26 && lx + 22 + X.measureText(endTxt).width > CW - 24) { efs -= 2; X.font = font(900, efs); }
+    X.fillStyle = T.ink; X.fillText(endTxt, lx + 22, ly + 12 + eShift);
+    var chg = (pts[last].v / pts[0].v - 1) * 100, up = chg >= 0;
+    X.font = font(700, 23); X.fillStyle = Math.abs(chg) < 0.05 ? T.inkSoft : up ? T.up : T.down;
+    X.fillText((Math.abs(chg) < 0.05 ? '− ' : up ? '▲ ' : '▼ ') + pct(chg), lx + 22, ly + 46 + eShift);
+    placed.push([lx + 16, ly - 26 + eShift, Math.max(X.measureText(endTxt).width, 120) + 12, 82]);
+    X.font = font(600, 22); var lw = X.measureText(dlab(pts[last])).width;
+    var llx = Math.min(R - lw, lx - lw / 2); dates.push([llx, lw]);
+    X.fillStyle = T.inkSoft; X.fillText(dlab(pts[last]), llx, bot + 36);
+
+    var shown = { start: false, hi: false, lo: false };
+    shown.start = mark(0, money(pts[0].v, kr), pts[0].v >= (mx + mn) / 2, opt.ytd ? '연초' : s.listed ? '상장' : '시작');
+    // 끝점 바로 옆(40px 안)의 최고·최저는 끝값과 겹쳐 보이므로 따로 적지 않는다
+    var nearEnd = function (i) { return Math.abs(xA(i) - lx) < 40 && Math.abs(yA(pts[i].v) - ly) < 60; };
+    if (iHi !== last && iHi !== 0 && !nearEnd(iHi)) shown.hi = mark(iHi, money(mx, kr), true, '최고');
+    if (iLo !== last && iLo !== 0 && iLo !== iHi && !nearEnd(iLo)) shown.lo = mark(iLo, money(mn, kr), false, '최저');
+
+    X.fillStyle = T.rule; X.fillRect(L, 1180, R - L, 2);
+    X.font = font(700, 26); X.fillStyle = T.footer; X.textAlign = 'right'; X.fillText('@돈굴돈굴', R, 1224); X.textAlign = 'left';
+    X.restore();
+    return { shown: shown, iHi: nearEnd(iHi) ? last : iHi, iLo: nearEnd(iLo) ? last : iLo, last: last, n: n };
+  }
+
+  /* ------------------------------------------------------------ 화면 */
+  var cv = $('card'), X = cv.getContext('2d');
+  function render() {
+    var it = state.item;
+    if (!it) return;
+    var s = series(state.data, state.span);
+    if (!s) {
+      grain(X);
+      X.fillStyle = T.inkSoft; X.font = font(700, 34); X.textAlign = 'center';
+      X.fillText(state.data ? '이 기간에는 주가가 없어요' : '주가 자료가 아직 없어요', CW / 2, CH / 2); X.textAlign = 'left';
+      $('c-hint').textContent = state.data ? '상장한 지 얼마 안 됐거나 거래가 멈춘 종목일 수 있어요. 다른 기간을 골라 보세요.'
+                                           : '이 종목은 아직 주가를 모으지 못했어요.';
+      return;
+    }
+    if (!state.titleUser) { state.title = autoTitle(s); $('c-title').value = state.title; }
+    draw(X, s, { kr: it.kr, color: state.color, name: state.name || it.name, title: state.title, logo: state.logo, ytd: state.span === 'ytd' });
+    var a = s.pts[0], b = s.pts[s.pts.length - 1];
+    $('c-hint').textContent = dlab(a) + ' ~ ' + dlab(b) + ' · ' + s.pts.length + '개 점' +
+      (s.coarse ? ' · 이 종목은 아직 일별 주가가 없어 월말 종가로 그렸어요' : '') +
+      (s.listed ? ' · 기간 중간에 상장해 상장일부터 그렸어요' : '');
+  }
+  function pick(it) {
+    state.item = it; state.data = null; state.logo = null; state.titleUser = false; state.nameUser = false;
+    state.name = it.name; $('c-name').value = it.name; $('q').value = it.name;
+    if (!state.colorUser) state.color = '#2B59C3';
+    var p1 = load(it).then(function (d) { state.data = d; });
+    var p2 = new Promise(function (res) { logoImg(it, function (im) { state.logo = im; res(); }); });
+    Promise.all([p1, p2]).then(function () {
+      if (!state.colorUser) { state.color = logoColor(state.logo) || '#2B59C3'; $('c-color').value = state.color; }
+      $('qmsg').textContent = it.name + ' · ' + (it.kr ? it.code + ' · 국내' : it.code + ' · 해외');
+      render();
+    });
+  }
+  function find(q) {
+    q = (q || '').trim(); if (!q) return null;
+    var lq = q.toLowerCase();
+    var hit = LIST.filter(function (x) { return x.name === q || x.code.toLowerCase() === lq; })[0];
+    if (hit) return hit;
+    var m = /\(([^)]+)\)\s*$/.exec(q);
+    if (m && BY[m[1].toUpperCase()]) return BY[m[1].toUpperCase()];
+    return LIST.filter(function (x) { return x.name.toLowerCase().indexOf(lq) === 0; })[0] ||
+           LIST.filter(function (x) { return x.name.toLowerCase().indexOf(lq) >= 0; })[0] || null;
+  }
+
+  $('go').addEventListener('click', function () {
+    var it = find($('q').value);
+    if (it) pick(it); else $('qmsg').textContent = '찾는 종목이 없어요. 이름이나 종목코드·티커로 찾아 보세요.';
+  });
+  $('q').addEventListener('change', function () { var it = find(this.value); if (it) pick(it); });
+  $('q').addEventListener('keydown', function (e) { if (e.key === 'Enter') $('go').click(); });
+  Array.prototype.forEach.call(document.querySelectorAll('#spans .preset'), function (b) {
+    b.addEventListener('click', function () {
+      state.span = b.dataset.s; state.titleUser = false;
+      Array.prototype.forEach.call(document.querySelectorAll('#spans .preset'), function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      render();
+    });
+  });
+  $('c-name').addEventListener('input', function () { state.name = this.value; render(); });
+  $('c-title').addEventListener('input', function () { state.title = this.value; state.titleUser = true; render(); });
+  $('c-color').addEventListener('input', function () { state.color = this.value; state.colorUser = true; render(); });
+  $('c-auto').addEventListener('click', function () { state.colorUser = false; state.color = logoColor(state.logo) || '#2B59C3'; $('c-color').value = state.color; render(); });
+  $('c-dl').addEventListener('click', function () {
+    var s = series(state.data, state.span); if (!s) return;
+    var big = document.createElement('canvas'); big.width = CW * 3; big.height = CH * 3;
+    var g = big.getContext('2d'); g.scale(3, 3);
+    draw(g, s, { kr: state.item.kr, color: state.color, name: state.name || state.item.name, title: state.title, logo: state.logo, ytd: state.span === 'ytd' });
+    big.toBlob(function (blob) {
+      if (!blob) { alert('그림을 만들지 못했습니다. 새로고침 후 다시 눌러 주세요.'); return; }
+      var a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+      a.download = (state.name || state.item.name) + '_주가추이_' + state.span + '.png';
+      document.body.appendChild(a); a.click(); a.remove(); setTimeout(function () { URL.revokeObjectURL(a.href); }, 10000);
+    }, 'image/png');
+  });
+  $('btn-mode').addEventListener('click', function () {
+    var r = document.documentElement; r.setAttribute('data-mode', r.getAttribute('data-mode') === 'dark' ? 'light' : 'dark');
+  });
+
+  // 종목 목록: 국내는 data/index.json(실적 회사) + data/returns.json(ETF 포함), 해외는 returns.json 의 미국 종목
+  Promise.all([
+    fetch('./data/returns.json', { cache: 'no-cache' }).then(function (r) { return r.json(); }).catch(function () { return {}; }),
+    fetch('./data/index.json', { cache: 'no-cache' }).then(function (r) { return r.json(); }).catch(function () { return {}; }),
+    fetch('./data/anchor.json', { cache: 'no-cache' }).then(function (r) { return r.json(); }).catch(function () { return {}; })
+  ]).then(function (res) {
+    var ret = (res[0] && res[0].items) || {}, idx = ((res[1] && res[1].companies) || []), KO = window.US_KO || {};
+    var seen = {};
+    function add(code, name, kr) {
+      if (!code || seen[code]) return;
+      seen[code] = 1;
+      var it = { code: code, name: name || code, kr: kr };
+      LIST.push(it); BY[code.toUpperCase()] = it;
+    }
+    Object.keys(KO).forEach(function (t) { if (ret[t]) add(t, KO[t], false); });            // 한글 이름 있는 해외 먼저
+    idx.forEach(function (c) { add(c.code, c.name, true); });
+    Object.keys(ret).forEach(function (c) { var v = ret[c]; add(c, v.market === 'US' ? (KO[c] || v.name) : v.name, v.market !== 'US'); });
+    var dl = $('qlist'), html = [];
+    LIST.forEach(function (x) { html.push('<option value="' + x.name.replace(/"/g, '&quot;') + (x.kr ? '' : ' (' + x.code + ')') + '">'); });
+    dl.innerHTML = html.join('');
+    var kr = res[2] && res[2].kr;
+    // 국내는 주가를 모으는 종목(anchor.json)만 남긴다 — 실적만 있고 주가가 없는 종목은 고를 수 없게
+    if (kr && kr.items) {
+      LIST = LIST.filter(function (x) { return !x.kr || kr.items[x.code]; });
+      BY = {}; LIST.forEach(function (x) { BY[x.code.toUpperCase()] = x; });
+      html = []; LIST.forEach(function (x) { html.push('<option value="' + x.name.replace(/"/g, '&quot;') + (x.kr ? '' : ' (' + x.code + ')') + '">'); });
+      dl.innerHTML = html.join('');
+    }
+    $('src-pill').textContent = '국내 ' + ((kr && kr.asof) || '') + ' 종가 기준';
+    var q = new URLSearchParams(location.search), c0 = (q.get('code') || '005930').toUpperCase();
+    if (q.get('span') && SPANS[q.get('span')]) {
+      state.span = q.get('span');
+      Array.prototype.forEach.call(document.querySelectorAll('#spans .preset'), function (x) { x.setAttribute('aria-pressed', x.dataset.s === state.span ? 'true' : 'false'); });
+    }
+    pick(BY[c0] || LIST[0]);
+  });
+
+  window.__pc = { series: series, draw: draw, load: load, list: function () { return LIST; }, state: state };
+})();

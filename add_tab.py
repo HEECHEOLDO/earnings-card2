@@ -25,6 +25,7 @@ PAGES = {
     "screen.html":  "screen",
     "guru.html":    "guru",
     "buy.html":     "buy",
+    "price.html":   "price",
     "unlisted.html": "unlisted",
     "mcap.html":    "mcap",
     "rank.html":    "rank",
@@ -56,6 +57,9 @@ ITEMS = [
     ("buy",     "./buy.html",
      '<path d="M3 12a9 9 0 103-6.7"/><path d="M3 4v5h5"/><path d="M12 8v4.5l3 1.8"/>',
      "그때 샀다면", "그때"),
+    ("price",   "./price.html",
+     '<path d="M3 3v18h18"/><path d="M6 15l4-5 3 3 5-7"/>',
+     "주가 추이", "주가"),
     ("mcap",    "./mcap.html",
      '<circle cx="9" cy="10" r="6"/><circle cx="17.5" cy="15.5" r="4"/><circle cx="16" cy="5" r="2.2"/>',
      "시가총액", "시총"),
@@ -89,18 +93,18 @@ def nav_html(here):
 
 NAV_RE = re.compile(r'<nav class="nav"[^>]*>.*?</nav>', re.S)
 
-# 메뉴 줄바꿈 — 넓은 화면은 한 줄, 좁은 화면(태블릿·휴대폰)은 두 줄(5칸 + 5칸).
+# 메뉴 줄바꿈 — 넓은 화면은 한 줄, 좁은 화면(태블릿·휴대폰)은 두 줄(6칸 + 5칸).
 # 화면마다 따로 적힌 메뉴 모양 뒤에 덧붙여 덮어쓴다. 몇 번 돌려도 한 덩어리만 남는다.
 NAV_CSS_RE = re.compile(r'\s*<style id="nav-wrap">.*?</style>', re.S)
 NAV_CSS = """
 <style id="nav-wrap">
   @media (max-width: 1100px) {
     .nav { flex-wrap: wrap; border-radius: 18px; gap: 4px; padding: 4px; }
-    .nav-i { flex: 1 0 calc(20% - 4px); min-width: 0; border-radius: 12px; }
+    .nav-i { flex: 1 0 calc(16.66% - 4px); min-width: 0; border-radius: 12px; }
   }
   @media (max-width: 560px) {
     .nav { gap: 3px; padding: 3px; border-radius: 14px; }
-    .nav-i { flex-basis: calc(20% - 3px); height: 38px; padding: 0 4px; gap: 4px; border-radius: 10px; }
+    .nav-i { flex-basis: calc(16.66% - 3px); height: 38px; padding: 0 4px; gap: 4px; border-radius: 10px; }
   }
   @media (max-width: 480px) {
     .nav-i { flex-direction: column; height: 50px; gap: 3px; font-size: 11.5px; line-height: 1.1; }

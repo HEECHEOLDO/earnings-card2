@@ -1,0 +1,47 @@
+# 해외 주가 추이 카드(price.html)용 일별·주별 종가 — data/chart/us/
+# 미국 장 마감(KST 06:00) 뒤 평일 아침에 돈다. 출처가 다 막히면 오늘 시세 한 줄만 붙인다.
+name: 해외 주가 추이 수집
+
+on:
+  schedule:
+    - cron: '10 23 * * 1-5'     # UTC 23:10 = KST 08:10 (화~토)
+  workflow_dispatch:
+    inputs:
+      args:
+        description: "비우면 전체 · 'AAPL TSLA' 몇 종목 · '--probe AAPL SPY' 출처 점검"
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+concurrency:
+  group: chart-us
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: 수집
+        env:
+          ARGS: ${{ github.event.inputs.args }}
+        run: python3 collect_chart_us.py $ARGS
+      - name: 커밋
+        run: |
+          if [ -z "$(git status --porcelain -- data/chart/us)" ]; then echo "변경 없음"; exit 0; fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git add data/chart/us
+          git commit -m "해외 주가 추이 $(TZ=Asia/Seoul date +%F)"
+          for i in 1 2 3 4 5; do
+            git pull --rebase -X theirs --autostash && git push && exit 0
+            git rebase --abort 2>/dev/null || true
+            sleep 10
+          done
+          exit 1

@@ -80,6 +80,41 @@ KEEP_RATIO = 0.90
 PAUSE = 0.15              # 네이버에 들이대지 않는다
 _calls = [0]
 
+# 주가 추이 카드(price.html)용 — 기준점을 만들려고 이미 받은 20년 치 일별을 버리지 않고 잘라 저장한다 (2026-11)
+#   data/chart/kr/{코드}.json = {"u":"KRW","d":[[YYYYMMDD,종가]...] 최근 400일 일별, "w":[[YYYYMMDD,종가]...] 11년 주별(주 마지막 거래일)}
+CHART_DIR = os.path.join("data", "chart", "kr")
+CHART_DAYS = 400
+CHART_YEARS = 11
+_last_rows = [None]
+
+
+def chart_of(rows, base):
+    d0 = (base - timedelta(days=CHART_DAYS)).strftime("%Y%m%d")
+    w0 = years_back(base, CHART_YEARS).strftime("%Y%m%d")
+    daily = [[int(d), round(v, 2) if v % 1 else int(v)] for d, v in rows if d >= d0]
+    weekly, last_key = [], None
+    for d, v in rows:
+        if d < w0:
+            continue
+        dt = datetime.strptime(d, "%Y%m%d").date()
+        key = dt.isocalendar()[:2]
+        val = [int(d), round(v, 2) if v % 1 else int(v)]
+        if key == last_key:
+            weekly[-1] = val                  # 같은 주면 늦은 날로 덮는다 → 주 마지막 거래일
+        else:
+            weekly.append(val)
+            last_key = key
+    return {"u": "KRW", "d": daily, "w": weekly}
+
+
+def write_chart(code, rows, base):
+    if not rows or len(rows) < 5:
+        return False
+    os.makedirs(CHART_DIR, exist_ok=True)
+    with open(os.path.join(CHART_DIR, code + ".json"), "w", encoding="utf-8") as f:
+        json.dump(chart_of(rows, base), f, separators=(",", ":"))
+    return True
+
 
 def log(*a):
     print(*a)
@@ -192,6 +227,7 @@ def kr_one(code, base, months):
     # 하루 4시간 넘게 걸려 5시간 제한에 자주 걸렸다(취소). 응답이 잘렸다고 보이면 예전처럼 기간마다 따로 부른다.
     s_all, _ = month_span(years_back(base, max(SPANS)))
     allrows, _ = naver_rows(code, s_all, base.strftime("%Y%m%d"), "day")
+    _last_rows[0] = None
     if allrows and months:
         # 월봉에는 있는 달인데 일별 첫 줄이 그보다 늦으면 잘린 응답 — 믿지 않는다
         first_m, mon_first = allrows[0][0][:6], min(months)
@@ -236,6 +272,7 @@ def kr_one(code, base, months):
     if not rows:
         return None, [], "최근 종가 없음 (상장폐지·거래정지)"
     out["now"] = {"d": fmt(rows[-1][0]), "v": rows[-1][1]}
+    _last_rows[0] = allrows                   # 믿을 수 있는 20년 치 일별 (잘린 응답이면 None)
     return out, bad, None
 
 
@@ -281,6 +318,8 @@ def collect_kr(codes, names, base, limit, fresh=False):
                 months[d[:6]] = v
             got, bad, why = kr_one(code, base, months)
             done[code] = {"got": got, "bad": bad, "why": why}
+            if got and not bad and _last_rows[0]:
+                done[code]["chart"] = write_chart(code, _last_rows[0], base)
             fresh_n += 1
             if fresh_n % 25 == 0:
                 save_cache(base, done)
