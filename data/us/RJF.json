@@ -1,6 +1,6 @@
 {
  "name": "RJF",
- "split_adjusted": false,
+ "split_adjusted": true,
  "restated_from": null,
  "legal_name": "RAYMOND JAMES FINANCIAL, INC.",
  "code": "RJF",
@@ -9,7 +9,7 @@
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-11-12",
+ "updated": "2026-11-13",
  "annual": [
   {
    "p": 2016,
@@ -22,7 +22,7 @@
    "dps": 0.8,
    "payout": 21.4,
    "yield": null,
-   "dps_adj": 0.8
+   "dps_adj": 0.5333
   },
   {
    "p": 2017,
@@ -35,7 +35,7 @@
    "dps": 0.88,
    "payout": 20.0,
    "yield": null,
-   "dps_adj": 0.88
+   "dps_adj": 0.5867
   },
   {
    "p": 2018,
@@ -48,7 +48,7 @@
    "dps": 1.1,
    "payout": 17.6,
    "yield": null,
-   "dps_adj": 1.1
+   "dps_adj": 0.7333
   },
   {
    "p": 2019,

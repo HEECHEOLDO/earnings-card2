@@ -1,6 +1,6 @@
 {
  "name": "SRE",
- "split_adjusted": false,
+ "split_adjusted": true,
  "restated_from": null,
  "legal_name": "SEMPRA",
  "code": "SRE",
@@ -9,7 +9,7 @@
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-11-12",
+ "updated": "2026-11-13",
  "annual": [
   {
    "p": 2016,
@@ -22,7 +22,7 @@
    "dps": 3.02,
    "payout": 45.2,
    "yield": null,
-   "dps_adj": 3.02
+   "dps_adj": 0.755
   },
   {
    "p": 2017,
@@ -35,7 +35,7 @@
    "dps": 3.29,
    "payout": 215.1,
    "yield": null,
-   "dps_adj": 3.29
+   "dps_adj": 0.8225
   },
   {
    "p": 2018,
@@ -48,7 +48,7 @@
    "dps": 3.58,
    "payout": 77.9,
    "yield": null,
-   "dps_adj": 3.58
+   "dps_adj": 1.79
   },
   {
    "p": 2019,
@@ -61,7 +61,7 @@
    "dps": 3.87,
    "payout": 42.0,
    "yield": null,
-   "dps_adj": 3.87
+   "dps_adj": 1.935
   },
   {
    "p": 2020,
@@ -74,7 +74,7 @@
    "dps": 4.18,
    "payout": 28.6,
    "yield": null,
-   "dps_adj": 4.18
+   "dps_adj": 2.09
   },
   {
    "p": 2021,

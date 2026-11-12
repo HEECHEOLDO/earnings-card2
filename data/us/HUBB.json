@@ -1,6 +1,6 @@
 {
  "name": "HUBB",
- "split_adjusted": false,
+ "split_adjusted": true,
  "restated_from": null,
  "legal_name": "HUBBELL INC",
  "code": "HUBB",
@@ -9,7 +9,7 @@
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-11-12",
+ "updated": "2026-11-13",
  "annual": [
   {
    "p": 2016,
@@ -22,7 +22,7 @@
    "dps": 2.59,
    "payout": 49.1,
    "yield": null,
-   "dps_adj": 2.59
+   "dps_adj": 1.295
   },
   {
    "p": 2017,
@@ -35,7 +35,7 @@
    "dps": 2.87,
    "payout": 64.8,
    "yield": null,
-   "dps_adj": 2.87
+   "dps_adj": 1.435
   },
   {
    "p": 2018,

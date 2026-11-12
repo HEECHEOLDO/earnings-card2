@@ -1,6 +1,6 @@
 {
  "name": "CCI",
- "split_adjusted": false,
+ "split_adjusted": true,
  "restated_from": null,
  "legal_name": "CROWN CASTLE INC.",
  "code": "CCI",
@@ -9,7 +9,7 @@
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-11-12",
+ "updated": "2026-11-13",
  "annual": [
   {
    "p": 2016,
@@ -22,7 +22,7 @@
    "dps": 3.61,
    "payout": 347.1,
    "yield": null,
-   "dps_adj": 3.61
+   "dps_adj": 1.805
   },
   {
    "p": 2017,
@@ -35,7 +35,7 @@
    "dps": 3.9,
    "payout": 412.3,
    "yield": null,
-   "dps_adj": 3.9
+   "dps_adj": 1.95
   },
   {
    "p": 2018,
@@ -48,7 +48,7 @@
    "dps": 4.28,
    "payout": 286.5,
    "yield": null,
-   "dps_adj": 4.28
+   "dps_adj": 2.14
   },
   {
    "p": 2019,
@@ -61,7 +61,7 @@
    "dps": 4.58,
    "payout": 222.3,
    "yield": null,
-   "dps_adj": 4.58
+   "dps_adj": 2.29
   },
   {
    "p": 2020,
@@ -74,7 +74,7 @@
    "dps": 4.93,
    "payout": 199.3,
    "yield": null,
-   "dps_adj": 4.93
+   "dps_adj": 2.465
   },
   {
    "p": 2021,
@@ -135,14 +135,16 @@
    "q": 2,
    "rev": 1107.0,
    "op": 495.0,
-   "ni": 251.0
+   "ni": 251.0,
+   "restated": true
   },
   {
    "y": 2024,
    "q": 3,
    "rev": 1120.0,
    "op": 532.0,
-   "ni": 303.0
+   "ni": 303.0,
+   "restated": true
   },
   {
    "y": 2024,
@@ -156,21 +158,24 @@
    "q": 1,
    "rev": 1061.0,
    "op": 521.0,
-   "ni": -464.0
+   "ni": -464.0,
+   "restated": true
   },
   {
    "y": 2025,
    "q": 2,
    "rev": 1060.0,
    "op": 506.0,
-   "ni": 291.0
+   "ni": 291.0,
+   "restated": true
   },
   {
    "y": 2025,
    "q": 3,
    "rev": 1072.0,
    "op": 525.0,
-   "ni": 323.0
+   "ni": 323.0,
+   "restated": true
   },
   {
    "y": 2025,
@@ -184,21 +189,24 @@
    "q": 1,
    "rev": 1010.0,
    "op": 465.0,
-   "ni": 151.0
+   "ni": 151.0,
+   "restated": true
   },
   {
    "y": 2026,
    "q": 2,
    "rev": 1008.0,
    "op": 470.0,
-   "ni": 94.0
+   "ni": 94.0,
+   "restated": true
   },
   {
    "y": 2026,
    "q": 3,
    "rev": 995.0,
    "op": 465.0,
-   "ni": 283.0
+   "ni": 283.0,
+   "restated": true
   }
  ]
 }

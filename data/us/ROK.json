@@ -2,28 +2,15 @@
  "name": "ROK",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "Rockwell Automation, Inc.",
+ "legal_name": "Rockwell Automation, Inc",
  "code": "ROK",
  "cik": "0001024478",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-11-12",
+ "updated": "2026-11-13",
  "annual": [
-  {
-   "p": 2016,
-   "rev": 5879.5,
-   "op": null,
-   "ni": 729.7,
-   "assets": 7101.2,
-   "liab": null,
-   "equity": 1990.1,
-   "dps": 2.9,
-   "payout": 51.8,
-   "yield": null,
-   "dps_adj": 2.9
-  },
   {
    "p": 2017,
    "rev": 6311.3,
@@ -140,16 +127,22 @@
    "payout": 68.0,
    "yield": null,
    "dps_adj": 5.24
+  },
+  {
+   "p": 2026,
+   "rev": 8989.0,
+   "op": null,
+   "ni": 1409.0,
+   "assets": 11268.0,
+   "liab": null,
+   "equity": 3552.0,
+   "dps": 5.52,
+   "payout": 43.9,
+   "yield": null,
+   "dps_adj": 5.52
   }
  ],
  "quarterly": [
-  {
-   "y": 2024,
-   "q": 2,
-   "rev": 2126.0,
-   "op": null,
-   "ni": 266.0
-  },
   {
    "y": 2024,
    "q": 3,
@@ -160,9 +153,9 @@
   {
    "y": 2024,
    "q": 4,
-   "rev": 2035.0,
+   "rev": 2035.2,
    "op": null,
-   "ni": 240.0
+   "ni": 239.5
   },
   {
    "y": 2025,
@@ -212,6 +205,13 @@
    "rev": 2313.0,
    "op": 550.0,
    "ni": 408.0
+  },
+  {
+   "y": 2026,
+   "q": 4,
+   "rev": 2332.0,
+   "op": null,
+   "ni": 346.0
   }
  ]
 }

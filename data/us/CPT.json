@@ -9,7 +9,7 @@
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-11-12",
+ "updated": "2026-11-13",
  "annual": [
   {
    "p": 2016,
@@ -148,14 +148,16 @@
    "q": 2,
    "rev": 387.1,
    "op": null,
-   "ni": 44.8
+   "ni": 44.8,
+   "restated": true
   },
   {
    "y": 2024,
    "q": 3,
    "rev": 387.2,
    "op": null,
-   "ni": -2.3
+   "ni": -2.3,
+   "restated": true
   },
   {
    "y": 2024,
@@ -169,21 +171,24 @@
    "q": 1,
    "rev": 390.6,
    "op": null,
-   "ni": 40.8
+   "ni": 40.8,
+   "restated": true
   },
   {
    "y": 2025,
    "q": 2,
    "rev": 396.5,
    "op": null,
-   "ni": 82.6
+   "ni": 82.6,
+   "restated": true
   },
   {
    "y": 2025,
    "q": 3,
    "rev": 395.7,
    "op": null,
-   "ni": 113.6
+   "ni": 113.6,
+   "restated": true
   },
   {
    "y": 2025,
@@ -197,21 +202,24 @@
    "q": 1,
    "rev": 388.8,
    "op": null,
-   "ni": 44.4
+   "ni": 44.4,
+   "restated": true
   },
   {
    "y": 2026,
    "q": 2,
    "rev": 392.9,
    "op": null,
-   "ni": 20.7
+   "ni": 20.7,
+   "restated": true
   },
   {
    "y": 2026,
    "q": 3,
    "rev": 381.1,
    "op": null,
-   "ni": 906.8
+   "ni": 906.8,
+   "restated": true
   }
  ]
 }

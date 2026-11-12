@@ -1,6 +1,6 @@
 {
  "name": "WAB",
- "split_adjusted": true,
+ "split_adjusted": false,
  "restated_from": null,
  "legal_name": "WESTINGHOUSE AIR BRAKE TECHNOLOGIES CORPORATION",
  "code": "WAB",
@@ -9,7 +9,7 @@
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-11-12",
+ "updated": "2026-11-13",
  "annual": [
   {
    "p": 2016,
@@ -22,7 +22,7 @@
    "dps": 0.36,
    "payout": 10.6,
    "yield": null,
-   "dps_adj": 0.18
+   "dps_adj": 0.36
   },
   {
    "p": 2017,
@@ -35,7 +35,7 @@
    "dps": 0.44,
    "payout": 16.1,
    "yield": null,
-   "dps_adj": 0.22
+   "dps_adj": 0.44
   },
   {
    "p": 2018,
@@ -48,7 +48,7 @@
    "dps": 0.48,
    "payout": 15.7,
    "yield": null,
-   "dps_adj": 0.24
+   "dps_adj": 0.48
   },
   {
    "p": 2019,

@@ -1,6 +1,6 @@
 {
  "name": "LYB",
- "split_adjusted": false,
+ "split_adjusted": true,
  "restated_from": null,
  "legal_name": "LYONDELLBASELL INDUSTRIES N.V.",
  "code": "LYB",
@@ -9,7 +9,7 @@
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-11-12",
+ "updated": "2026-11-13",
  "annual": [
   {
    "p": 2016,
@@ -22,7 +22,7 @@
    "dps": 3.33,
    "payout": 36.4,
    "yield": null,
-   "dps_adj": 3.33
+   "dps_adj": 1.665
   },
   {
    "p": 2017,
@@ -35,7 +35,7 @@
    "dps": 3.55,
    "payout": 29.0,
    "yield": null,
-   "dps_adj": 3.55
+   "dps_adj": 1.775
   },
   {
    "p": 2018,
@@ -48,7 +48,7 @@
    "dps": 4,
    "payout": 33.1,
    "yield": null,
-   "dps_adj": 4.0
+   "dps_adj": 2.0
   },
   {
    "p": 2019,
@@ -61,7 +61,7 @@
    "dps": 4.15,
    "payout": 43.0,
    "yield": null,
-   "dps_adj": 4.15
+   "dps_adj": 2.075
   },
   {
    "p": 2020,
@@ -74,7 +74,7 @@
    "dps": 4.2,
    "payout": 98.5,
    "yield": null,
-   "dps_adj": 4.2
+   "dps_adj": 2.1
   },
   {
    "p": 2021,
@@ -87,7 +87,7 @@
    "dps": 4.44,
    "payout": 26.5,
    "yield": null,
-   "dps_adj": 4.44
+   "dps_adj": 2.22
   },
   {
    "p": 2022,
@@ -100,7 +100,7 @@
    "dps": 4.7,
    "payout": 83.5,
    "yield": null,
-   "dps_adj": 4.7
+   "dps_adj": 2.35
   },
   {
    "p": 2023,

@@ -1,6 +1,6 @@
 {
  "name": "ROL",
- "split_adjusted": false,
+ "split_adjusted": true,
  "restated_from": null,
  "legal_name": "ROLLINS, INC.",
  "code": "ROL",
@@ -9,7 +9,7 @@
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-11-12",
+ "updated": "2026-11-13",
  "annual": [
   {
    "p": 2016,
@@ -22,7 +22,7 @@
    "dps": 0.33,
    "payout": 65.1,
    "yield": null,
-   "dps_adj": 0.33
+   "dps_adj": 0.22
   },
   {
    "p": 2017,
@@ -35,7 +35,7 @@
    "dps": 0.37,
    "payout": 68.1,
    "yield": null,
-   "dps_adj": 0.37
+   "dps_adj": 0.2467
   },
   {
    "p": 2018,

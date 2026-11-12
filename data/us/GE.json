@@ -1,6 +1,6 @@
 {
  "name": "GE",
- "split_adjusted": false,
+ "split_adjusted": true,
  "restated_from": null,
  "legal_name": "GENERAL ELECTRIC COMPANY",
  "code": "GE",
@@ -9,7 +9,7 @@
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-11-12",
+ "updated": "2026-11-13",
  "annual": [
   {
    "p": 2016,
@@ -22,7 +22,7 @@
    "dps": 0.93,
    "payout": 117.4,
    "yield": null,
-   "dps_adj": 0.93
+   "dps_adj": 7.44
   },
   {
    "p": 2017,
@@ -35,7 +35,7 @@
    "dps": 0.84,
    "payout": null,
    "yield": null,
-   "dps_adj": 0.84
+   "dps_adj": 6.72
   },
   {
    "p": 2018,
@@ -48,7 +48,7 @@
    "dps": 0.37,
    "payout": null,
    "yield": null,
-   "dps_adj": 0.37
+   "dps_adj": 2.96
   },
   {
    "p": 2019,

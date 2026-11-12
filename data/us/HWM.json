@@ -1,6 +1,6 @@
 {
  "name": "HWM",
- "split_adjusted": false,
+ "split_adjusted": true,
  "restated_from": null,
  "legal_name": "HOWMET AEROSPACE INC.",
  "code": "HWM",
@@ -9,7 +9,7 @@
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-11-12",
+ "updated": "2026-11-13",
  "annual": [
   {
    "p": 2016,
@@ -22,7 +22,7 @@
    "dps": 0.36,
    "payout": null,
    "yield": null,
-   "dps_adj": 0.36
+   "dps_adj": 0.045
   },
   {
    "p": 2017,

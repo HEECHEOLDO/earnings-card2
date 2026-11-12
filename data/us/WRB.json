@@ -1,6 +1,6 @@
 {
  "name": "WRB",
- "split_adjusted": false,
+ "split_adjusted": true,
  "restated_from": null,
  "legal_name": "BERKLEY W R CORP",
  "code": "WRB",
@@ -9,7 +9,7 @@
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-11-12",
+ "updated": "2026-11-13",
  "annual": [
   {
    "p": 2016,
@@ -35,7 +35,7 @@
    "dps": 1.03,
    "payout": 34.3,
    "yield": null,
-   "dps_adj": 1.03
+   "dps_adj": 0.4578
   },
   {
    "p": 2018,
@@ -48,7 +48,7 @@
    "dps": 1.39,
    "payout": 39.8,
    "yield": null,
-   "dps_adj": 1.39
+   "dps_adj": 0.6178
   },
   {
    "p": 2019,
@@ -61,7 +61,7 @@
    "dps": 1.68,
    "payout": 45.2,
    "yield": null,
-   "dps_adj": 1.68
+   "dps_adj": 0.7467
   },
   {
    "p": 2020,
@@ -74,7 +74,7 @@
    "dps": 0.31,
    "payout": 15.9,
    "yield": null,
-   "dps_adj": 0.31
+   "dps_adj": 0.2067
   },
   {
    "p": 2021,
@@ -87,7 +87,7 @@
    "dps": 1.34,
    "payout": 34.8,
    "yield": null,
-   "dps_adj": 1.34
+   "dps_adj": 0.8933
   },
   {
    "p": 2022,

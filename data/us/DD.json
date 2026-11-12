@@ -9,7 +9,7 @@
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-11-12",
+ "updated": "2026-11-13",
  "annual": [
   {
    "p": 2016,
@@ -22,7 +22,7 @@
    "dps": 1.84,
    "payout": 57.0,
    "yield": null,
-   "dps_adj": 3.68
+   "dps_adj": 5.52
   },
   {
    "p": 2017,
@@ -35,7 +35,7 @@
    "dps": 5.28,
    "payout": 292.8,
    "yield": null,
-   "dps_adj": 5.28
+   "dps_adj": 15.84
   },
   {
    "p": 2018,
@@ -48,7 +48,7 @@
    "dps": 4.56,
    "payout": 90.8,
    "yield": null,
-   "dps_adj": 4.56
+   "dps_adj": 13.68
   },
   {
    "p": 2019,
@@ -61,7 +61,7 @@
    "dps": 2.16,
    "payout": 323.5,
    "yield": null,
-   "dps_adj": 2.16
+   "dps_adj": 6.48
   },
   {
    "p": 2020,
@@ -74,7 +74,7 @@
    "dps": 1.2,
    "payout": null,
    "yield": null,
-   "dps_adj": 1.2
+   "dps_adj": 3.6
   },
   {
    "p": 2021,
@@ -87,7 +87,7 @@
    "dps": 1.2,
    "payout": 9.7,
    "yield": null,
-   "dps_adj": 1.2
+   "dps_adj": 3.6
   },
   {
    "p": 2022,
@@ -100,7 +100,7 @@
    "dps": 1.32,
    "payout": 11.1,
    "yield": null,
-   "dps_adj": 1.32
+   "dps_adj": 3.96
   },
   {
    "p": 2024,
@@ -113,7 +113,7 @@
    "dps": 1.52,
    "payout": 90.3,
    "yield": null,
-   "dps_adj": 1.52
+   "dps_adj": 4.56
   },
   {
    "p": 2025,
@@ -126,7 +126,7 @@
    "dps": 1.43,
    "payout": null,
    "yield": null,
-   "dps_adj": 1.43
+   "dps_adj": 4.29
   }
  ],
  "quarterly": [
@@ -135,14 +135,16 @@
    "q": 2,
    "rev": 1717.0,
    "op": 1.0,
-   "ni": 178.0
+   "ni": 178.0,
+   "restated": true
   },
   {
    "y": 2024,
    "q": 3,
    "rev": 1714.0,
    "op": 287.0,
-   "ni": 454.0
+   "ni": 454.0,
+   "restated": true
   },
   {
    "y": 2024,
@@ -156,21 +158,24 @@
    "q": 1,
    "rev": 1612.0,
    "op": 97.0,
-   "ni": -589.0
+   "ni": -589.0,
+   "restated": true
   },
   {
    "y": 2025,
    "q": 2,
    "rev": 1749.0,
    "op": 78.0,
-   "ni": 59.0
+   "ni": 59.0,
+   "restated": true
   },
   {
    "y": 2025,
    "q": 3,
    "rev": 1795.0,
    "op": 91.0,
-   "ni": -123.0
+   "ni": -123.0,
+   "restated": true
   },
   {
    "y": 2025,

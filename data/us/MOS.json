@@ -1,6 +1,6 @@
 {
  "name": "MOS",
- "split_adjusted": false,
+ "split_adjusted": true,
  "restated_from": null,
  "legal_name": "MOSAIC CO",
  "code": "MOS",
@@ -9,7 +9,7 @@
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-11-12",
+ "updated": "2026-11-13",
  "annual": [
   {
    "p": 2016,
@@ -22,7 +22,7 @@
    "dps": 1.1,
    "payout": 127.9,
    "yield": null,
-   "dps_adj": 1.1
+   "dps_adj": 0.55
   },
   {
    "p": 2017,
@@ -35,7 +35,7 @@
    "dps": 0.35,
    "payout": null,
    "yield": null,
-   "dps_adj": 0.35
+   "dps_adj": 0.175
   },
   {
    "p": 2018,
@@ -48,7 +48,7 @@
    "dps": 0.1,
    "payout": 8.2,
    "yield": null,
-   "dps_adj": 0.1
+   "dps_adj": 0.05
   },
   {
    "p": 2019,

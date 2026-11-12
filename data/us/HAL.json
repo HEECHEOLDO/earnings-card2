@@ -1,6 +1,6 @@
 {
  "name": "HAL",
- "split_adjusted": false,
+ "split_adjusted": true,
  "restated_from": null,
  "legal_name": "HALLIBURTON COMPANY",
  "code": "HAL",
@@ -9,7 +9,7 @@
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-11-12",
+ "updated": "2026-11-13",
  "annual": [
   {
    "p": 2016,
@@ -22,7 +22,7 @@
    "dps": 0.72,
    "payout": null,
    "yield": null,
-   "dps_adj": 0.72
+   "dps_adj": 0.18
   },
   {
    "p": 2017,
@@ -35,7 +35,7 @@
    "dps": 0.72,
    "payout": null,
    "yield": null,
-   "dps_adj": 0.72
+   "dps_adj": 0.18
   },
   {
    "p": 2018,
@@ -48,7 +48,7 @@
    "dps": 0.72,
    "payout": 38.0,
    "yield": null,
-   "dps_adj": 0.72
+   "dps_adj": 0.18
   },
   {
    "p": 2019,

@@ -1,6 +1,6 @@
 {
  "name": "FE",
- "split_adjusted": false,
+ "split_adjusted": true,
  "restated_from": null,
  "legal_name": "FIRSTENERGY CORP",
  "code": "FE",
@@ -9,7 +9,7 @@
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-11-12",
+ "updated": "2026-11-13",
  "annual": [
   {
    "p": 2016,
@@ -22,7 +22,7 @@
    "dps": 1.44,
    "payout": null,
    "yield": null,
-   "dps_adj": 1.44
+   "dps_adj": 0.72
   },
   {
    "p": 2017,

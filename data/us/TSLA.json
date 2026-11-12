@@ -1,6 +1,6 @@
 {
  "name": "TSLA",
- "split_adjusted": true,
+ "split_adjusted": false,
  "restated_from": null,
  "legal_name": "Tesla, Inc.",
  "code": "TSLA",
@@ -9,7 +9,7 @@
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "updated": "2026-11-12",
+ "updated": "2026-11-13",
  "annual": [
   {
    "p": 2016,
