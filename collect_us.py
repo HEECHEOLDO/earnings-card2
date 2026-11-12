@@ -517,6 +517,43 @@ QTAG = {}       # (항목, 회계연도, 분기) -> 그 값을 가져온 태그
 Q4FILED = {}    # 회계연도 -> 4분기를 만들 때 쓴 연간 매출의 제출일
 
 
+RECOVERED = {}    # 회계연도 -> 3개월 칸에 잘못 적힌 연간 매출 (그 해 연간이 따로 없을 때만)
+
+
+def recover_misdated_annual(facts):
+    """연간 보고서(10-K)가 연간 매출을 3개월 기간으로 잘못 태그한 경우 그 값을 그 해 연간으로 쓴다
+    (L3해리스 FY2025: 21,865 를 10~12월 기간으로 적고 1년 기간 값은 없다 — 연간과 4분기가 둘 다 비었다).
+    조건: 그 해 1년 기간 매출이 없고, 10-K 의 3개월 칸 값이 같은 해 다른 분기 중앙값의 3배 넘음."""
+    RECOVERED.clear()
+    rows = all_rows(facts, "rev")
+    have = set()
+    qs = {}
+    for r in rows:
+        if not (r.get("start") and r.get("end")):
+            continue
+        try:
+            d = _days(r["start"], r["end"])
+        except Exception:                 # noqa: BLE001
+            continue
+        fy = fy_of(r["end"])
+        if 330 <= d <= 400:
+            have.add(fy)
+        elif 80 <= d <= 100:
+            qs.setdefault(fy, []).append(r)
+    for fy, lst in qs.items():
+        if fy in have:
+            continue
+        for r in lst:
+            if (r.get("form") or "").startswith("10-K"):
+                others = sorted(x["val"] for x in lst if x is not r and x.get("val") and x["end"] != r["end"])
+                med = others[len(others) // 2] if others else 0
+                if med > 0 and r.get("val") and r["val"] > 3 * med:
+                    RECOVERED[fy] = r["val"]
+                    log("  [보충] FY%d 연간 매출 %s — 10-K 가 3개월 칸에 적은 값" % (fy, f"{r['val'] / 1e6:,.0f}"))
+                    break
+    return RECOVERED
+
+
 def annual_cands_of_tag(facts, tag, fy):
     """그 해 연간 값 후보 [(제출일, 값)] — 나중 공시가 사업 매각 등으로 과거 연간을 고쳐 적으면 여럿이 된다."""
     if tag == BANK_REV:
@@ -1121,6 +1158,8 @@ def collect_one(ticker, info):
     A = {k: annual_series(facts, k) for k in
          ("rev", "op", "ni", "assets", "liab", "equity", "dps", "shares", "divpaid")}
     A["shares"] = normalize_shares(A["shares"])
+    for fy, v in recover_misdated_annual(facts).items():
+        A["rev"].setdefault(fy, v)
     dbg("사용 태그:", _used_tag)
     if not A["rev"]:
         return None, "매출 태그를 못 찾음"
@@ -1191,6 +1230,8 @@ def collect_one(ticker, info):
                 if len(tags) != 1 or None in tags:
                     return None
                 cands = annual_cands_of_tag(facts, tags.pop(), fy)
+                if not cands and key == "rev" and RECOVERED.get(fy):
+                    cands = [("", RECOVERED[fy])]
                 if not cands:
                     return None
                 # 연간을 나중에 고쳐 적은 회사(옥시덴탈 2024: 화학 사업 매각 후 연간 22,710 → 1~3분기는 옛 기준 20,553)는
