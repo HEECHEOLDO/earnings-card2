@@ -1754,8 +1754,16 @@
       var items = ser.filter(function (s) { return has(r, s.key); })
                      .map(function (s) { return { s: s, v: r[s.key], y: yA(r[s.key]) }; })
                      .sort(function (a, b) { return a.y - b.y; });
+      var colPlaced = [];                               // 이 칸에 이미 적은 숫자 [값, 상자 가운데 y]
       items.forEach(function (it, k) {
         var txt = fmtAmount(it.v, unit), w = ctx.measureText(txt).width, h = lh + 4, side = 16;
+        // 같은 칸에서는 큰 값의 숫자가 늘 위에 (실리콘투 '23: 순이익 380 이 영업이익 478 보다 위에 적혔다)
+        var orderOK = function (b) {
+          var c = b[1] + b[3] / 2;
+          return colPlaced.every(function (pc) {
+            return pc[0] === it.v || (pc[0] > it.v ? pc[1] < c - 2 : pc[1] > c + 2);
+          });
+        };
         // 기본은 늘 '점 위' (사용자 요청 2026-11-12). 위에 둘 틈이 없을 때만 아래로
         var order = [true, false];
         var tryPlace = function (allowSeg) {
@@ -1766,7 +1774,7 @@
               var xs = [x - w / 2, x + side, x - side - w];
               for (var c = 0; c < xs.length; c++) {
                 var b = [xs[c], yy, w, h];
-                if (!sideOK(b, it.s, up)) continue;
+                if (!sideOK(b, it.s, up) || !orderOK(b)) continue;
                 var keep = segs;
                 if (allowSeg) segs = [];
                 var ok = free(b);
@@ -1782,6 +1790,7 @@
         if (!b) { b = tryPlace(true); halo = !!b; }       // 선이 스치면 종이색 바탕을 깔고
         if (!b) return;                                   // 자기 선 쪽에 자리가 없으면 적지 않는다 (엉뚱한 선에 붙지 않게)
         placed.push(b);
+        colPlaced.push([it.v, b[1] + b[3] / 2]);
         if (halo) {
           ctx.fillStyle = T.paper;
           roundRect(ctx, b[0] - 5, b[1] - 1, b[2] + 10, b[3] + 2, 6);
