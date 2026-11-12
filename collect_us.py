@@ -363,6 +363,14 @@ def fiscal_end_month(facts):
     """이 회사의 회계연도가 몇 월에 끝나는지 알아낸다.
     연간(약 1년)에 해당하는 값들의 종료월 중 가장 흔한 달."""
     rows = all_rows(facts, "rev")
+    # 최근 몇 년만 본다 — 결산월을 바꾼 회사(L3해리스: 2019년까지 6월 결산 → 이후 12월)는
+    # 전체에서 가장 흔한 달을 고르면 지금 분기가 엉뚱한 연도로 붙는다
+    ends = sorted(r["end"] for r in rows if r.get("end"))
+    if ends:
+        lo = "%d" % (int(ends[-1][:4]) - 3)
+        recent = [r for r in rows if (r.get("end") or "") >= lo]
+        if recent:
+            rows = recent
     counts = {}
     for r in rows:
         if not r.get("start") or not r.get("end"):
@@ -710,7 +718,7 @@ SPLIT_TAGS = ("StockholdersEquityNoteStockSplitConversionRatio1", "StockholdersE
 SPLIT_CLEAN = (1.5, 2, 3, 4, 5, 6, 7, 8, 10, 15, 20, 25, 40, 50)
 
 
-def split_events(facts):
+def split_events(facts, shares=None):
     """액면분할 [(날짜, 배수)] — 두 가지 출처를 합친다 (2026-11).
     1) 회사가 적은 분할 비율 태그 (엔비디아 2021년 4, 2024년 10)
     2) 같은 기간의 주당배당금이 나중 공시에서 깔끔한 배수만큼 고쳐 적힌 경우
@@ -763,9 +771,13 @@ def split_events(facts):
             for c in SPLIT_CLEAN:
                 for cc in (c, 1.0 / c):
                     if abs(k / cc - 1) <= 0.03:
-                        cand.append((a.get("filed", ""), b.get("filed", ""), cc))
+                        cand.append((a.get("filed", ""), b.get("filed", ""), cc, (a.get("start"), a["end"])))
     for c in sorted(set(x[2] for x in cand)):
         grp = [x for x in cand if x[2] == c]
+        # 기간 두 개 이상이 같은 배수로 고쳐 적혔을 때만 분할로 본다 (한 칸만 다르면 단순 정정일 수 있다 —
+        # 시게이트 2배, 셔윈윌리엄스·하니웰 0.5배 같은 오탐). 병합(배수 < 1)은 고쳐 적힌 배당만으로는 보지 않는다
+        if c < 1 or len(set(x[3] for x in grp)) < 2:
+            continue
         cut = max(x[0] for x in grp)              # 이 날까지 제출된 공시는 분할 전 기준
         if not any(x[1] > cut for x in grp):
             continue
@@ -774,8 +786,28 @@ def split_events(facts):
             near[0][0] = cut + "~"                # 비율 태그로 잡힌 분할의 날짜를 공시 경계로 바로잡는다
         else:
             ev.append([cut + "~", c])             # 'cut~' 는 cut 당일보다 늦고 다음 날보다 이른 문자열
-    ev.sort()
-    return [tuple(e) for e in ev]
+    # 비율 태그만 있고 아무 흔적도 없는 분할은 버린다 — 배당이 고쳐 적힌 흔적(기간 하나라도)이나
+    # 그 무렵 주식 수가 그 배수 가까이 뛴 흔적이 있어야 한다 (시게이트: 분할한 적이 없는데 2 가 적혀 옛 배당이 반토막)
+    def backed(e, v):
+        if e.endswith("~"):
+            return True
+        if any(abs(x[2] - v) < 1e-6 and abs(_days(x[0], e[:10])) <= 500 for x in cand):
+            return True
+        if shares:
+            y = int(e[:4])
+            for y0, y1 in ((y - 1, y), (y - 1, y + 1), (y, y + 1)):
+                a, b = shares.get(y0), shares.get(y1)
+                if a and b and a > 0 and ((v > 1 and b / a >= v * 0.7) or (v < 1 and b / a <= v * 1.4)):
+                    return True
+        return False
+    kept = []
+    for e, v in ev:
+        if backed(e, v):
+            kept.append((e, v))
+        else:
+            log("  · 분할 비율 태그 %s %g배 — 배당·주식 수에 흔적이 없어 쓰지 않음" % (e[:10], v))
+    kept.sort()
+    return kept
 
 
 def adjust_splits_by_filing(annual, events, filed):
@@ -1121,7 +1153,7 @@ def collect_one(ticker, info):
         log("  [주의] FY%d 부터 실적 기준이 바뀐 것으로 보입니다" % restated)
         log("         (사업 분할 등으로 과거를 다시 쓴 경우. 그 이전 연도와 직접 비교하기 어렵습니다)")
 
-    events = split_events(facts)
+    events = split_events(facts, A["shares"])
     if events:
         log("  [분할] %s" % ", ".join("%s %g배" % (e[:10], v) for e, v in events))
         split = adjust_splits_by_filing(annual, events, FILED.get("dps", {}))
