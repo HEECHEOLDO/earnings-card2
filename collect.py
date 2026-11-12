@@ -469,6 +469,11 @@ def adjust_for_splits(rows):
                 jump = d0 / d1 if ratio >= 1 else d1 / d0
                 ok = [cand for cand in CLEAN_RATIOS
                       if 0.85 <= target / cand <= 1.1 and 0.8 * cand <= jump <= 1.35 * cand]
+                if not ok:
+                    # 분할하면서 배당을 늘리거나 줄인 해 (삼성전자 2018: 50:1 분할 + 배당 확대 → 원래 배당은 30분의 1).
+                    # 주식 수가 큰 배수(5배 이상)에 거의 정확히(±3%) 맞으면 배당 변화 폭을 넓게 봐준다
+                    ok = [cand for cand in CLEAN_RATIOS
+                          if cand >= 5 and 0.97 <= target / cand <= 1.03 and 0.45 * cand <= jump <= 1.5 * cand]
                 if ok:      # 두 값에 가장 가까운 배수 (5:1 분할을 4배로 잡지 않게)
                     cand = min(ok, key=lambda x: abs(math.log(target / x)) + abs(math.log(jump / x)))
                     cum *= cand if ratio >= 1 else 1 / cand

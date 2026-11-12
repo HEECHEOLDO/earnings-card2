@@ -577,6 +577,26 @@ def payout_of(fy, A):
 CLEAN_RATIOS = [2, 3, 4, 5, 7, 10, 20]
 
 
+def fix_dps_units(annual):
+    """단위를 잘못 적은 해 (시게이트 FY2022: $2.77 을 2,770,000 으로) — 다른 해 중앙값의 1,000배가 넘으면
+    1,000 이나 1,000,000 으로 나눠 중앙값 근처(0.5~2배)에 들어오면 그 값으로, 아니면 비운다."""
+    vals = sorted(r["dps"] for r in annual if r.get("dps"))
+    if len(vals) < 3:
+        return
+    med = vals[len(vals) // 2]
+    for r in annual:
+        d = r.get("dps")
+        if not d or not med or d / med < 1000:
+            continue
+        new = None
+        for k in (1e3, 1e6):
+            if 0.5 <= (d / k) / med <= 2:
+                new = round(d / k, 4)
+                break
+        log("  [보정] FY%d 주당배당금 %s -> %s (단위 오류)" % (r["p"], d, new))
+        r["dps"] = new
+
+
 def fix_dps_scale(annual, A):
     """주당배당금이 연간 값이 아닌 해를 찾아 바로잡는다.
 
@@ -943,6 +963,7 @@ def collect_one(ticker, info):
             (f"{po}%" if po is not None else "-")))
     annual = annual[-YEARS:]
 
+    fix_dps_units(annual)
     fix_dps_scale(annual, A)
 
     restated = find_restatement(annual)
@@ -998,6 +1019,16 @@ def collect_one(ticker, info):
                 % (a["p"], f"{a['rev']:,.0f}", f"{sum(parts):,.0f}"))
             annual.remove(a)
             quarterly = [x for x in quarterly if not (x["y"] == a["p"] and x["q"] == 4)]
+    # 연간 값이 분기 칸에 들어온 경우 (니소스 4분기 = 연간 매출 그대로): 그 분기 매출이 연간의 80% 이상인데
+    # 그 해 분기 합이 연간보다 30% 넘게 크면 계산이 엇갈린 것 — 그 분기를 뺀다 (2026-11 점검)
+    ann_rev = {a["p"]: a.get("rev") for a in annual}
+    for x in list(quarterly):
+        r, av = x.get("rev"), ann_rev.get(x["y"])
+        if r and av and av > 0 and r >= 0.8 * av:
+            tot = sum((y.get("rev") or 0) for y in quarterly if y["y"] == x["y"])
+            if tot > 1.3 * av:
+                log("  [버림] FY%d %dQ 매출 %s — 연간 값(%s)이 분기 칸에 들어옴" % (x["y"], x["q"], f"{r:,.0f}", f"{av:,.0f}"))
+                quarterly.remove(x)
     quarterly.sort(key=lambda x: (x["y"], x["q"]))
     quarterly = [x for x in quarterly if x["rev"] is not None][-QUARTERS:]
     for x in quarterly:

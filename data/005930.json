@@ -1,6 +1,6 @@
 {
  "name": "삼성전자",
- "split_adjusted": false,
+ "split_adjusted": true,
  "legal_name": "삼성전자",
  "code": "005930",
  "market": "코스피",
@@ -18,7 +18,7 @@
    "dps": 28500.0,
    "payout": 17.8,
    "yield": 1.6,
-   "dps_adj": 28500.0
+   "dps_adj": 570.0
   },
   {
    "p": 2017,
@@ -31,7 +31,7 @@
    "dps": 42500.0,
    "payout": 14.1,
    "yield": 1.7,
-   "dps_adj": 42500.0
+   "dps_adj": 850.0
   },
   {
    "p": 2018,

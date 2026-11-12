@@ -1,6 +1,6 @@
 {
  "name": "방림",
- "split_adjusted": false,
+ "split_adjusted": true,
  "legal_name": "방림",
  "code": "003610",
  "market": "코스피",
@@ -18,7 +18,7 @@
    "dps": 380.0,
    "payout": 30.57,
    "yield": 1.5,
-   "dps_adj": 380.0
+   "dps_adj": 38.0
   },
   {
    "p": 2017,
@@ -31,7 +31,7 @@
    "dps": 520.0,
    "payout": 28.96,
    "yield": 2.5,
-   "dps_adj": 520.0
+   "dps_adj": 52.0
   },
   {
    "p": 2018,
@@ -44,7 +44,7 @@
    "dps": 580.0,
    "payout": 75.66,
    "yield": 2.2,
-   "dps_adj": 580.0
+   "dps_adj": 58.0
   },
   {
    "p": 2019,

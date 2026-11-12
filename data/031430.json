@@ -1,6 +1,6 @@
 {
  "name": "신세계인터내셔날",
- "split_adjusted": false,
+ "split_adjusted": true,
  "legal_name": "신세계인터내셔날",
  "code": "031430",
  "market": "코스피",
@@ -18,7 +18,7 @@
    "dps": 600.0,
    "payout": 24.7,
    "yield": 0.93,
-   "dps_adj": 600.0
+   "dps_adj": 120.0
   },
   {
    "p": 2017,
@@ -70,7 +70,7 @@
    "dps": 1100.0,
    "payout": 15.42,
    "yield": 0.7,
-   "dps_adj": 1100.0
+   "dps_adj": 220.0
   },
   {
    "p": 2021,
@@ -83,7 +83,7 @@
    "dps": 1500.0,
    "payout": 13.05,
    "yield": 1.02,
-   "dps_adj": 1500.0
+   "dps_adj": 300.0
   },
   {
    "p": 2022,

@@ -1,6 +1,6 @@
 {
  "name": "지아이텍",
- "split_adjusted": false,
+ "split_adjusted": true,
  "legal_name": "지아이텍",
  "code": "382480",
  "market": "코스닥",
@@ -18,7 +18,7 @@
    "dps": 110.0,
    "payout": 20.2,
    "yield": 0.5,
-   "dps_adj": 110.0
+   "dps_adj": 22.0
   },
   {
    "p": 2022,
