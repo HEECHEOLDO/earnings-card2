@@ -244,10 +244,22 @@
 
   <div class="pick">
     <b>종목</b>
-    <input id="q" list="qlist" placeholder="삼성전자, 카카오, 애플, TSLA…" autocomplete="off">
+    <input id="q" list="qlist" placeholder="삼성전자, 애플, TSLA, 코스피, 나스닥…" autocomplete="off">
     <button class="preset" id="go">불러오기</button>
     <datalist id="qlist"></datalist>
-    <small id="qmsg">국내 상장사·ETF와 미국 주요 종목을 고를 수 있어요.</small>
+    <small id="qmsg">국내 상장사·ETF, 미국 주요 종목, 주요 시장 지수를 고를 수 있어요.</small>
+  </div>
+  <div class="pick">
+    <b>지수</b>
+    <div class="spans" id="ixs">
+      <button class="preset" data-c="KOSPI">코스피</button>
+      <button class="preset" data-c="KOSDAQ">코스닥</button>
+      <button class="preset" data-c="SPX">S&amp;P 500</button>
+      <button class="preset" data-c="IXIC">나스닥</button>
+      <button class="preset" data-c="DJI">다우</button>
+      <button class="preset" data-c="SOX">반도체(SOX)</button>
+      <button class="preset" data-c="N225">닛케이</button>
+    </div>
   </div>
   <div class="pick">
     <b>기간</b>

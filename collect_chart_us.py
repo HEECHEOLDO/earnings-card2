@@ -71,6 +71,11 @@ def cnbc_bars(sym, rng):
             d = n8(b.get("tradeTime") or "")
             c = float(str(b.get("close") or "0").replace(",", ""))
             if d and c > 0:
+                if rng != "1Y":                   # 주별 막대는 주가 시작하는 일요일 날짜로 온다 → 그 주 금요일로
+                    dt = date(d // 10000, d // 100 % 100, d % 100)
+                    if dt.weekday() == 6:
+                        dt = min(dt + timedelta(days=5), date.today())
+                        d = int(dt.strftime("%Y%m%d"))
                 out.append((d, c))
         out.sort()
         return out or None

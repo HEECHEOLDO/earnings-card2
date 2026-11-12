@@ -15,6 +15,10 @@
 
   var state = { item: null, span: '1y', data: null, color: null, colorUser: false, name: '', title: '', titleUser: false, nameUser: false };
   var LIST = [], BY = {}, MON = null;
+  // 주요 시장 지수 — data/chart/idx/{코드}.json (collect_chart_idx.py). 이름·코드는 그쪽 INDICES 와 맞춘다
+  var INDICES = [['KOSPI', '코스피'], ['KOSDAQ', '코스닥'], ['KOSPI200', '코스피 200'], ['SPX', 'S&P 500'],
+    ['IXIC', '나스닥 종합'], ['NDX', '나스닥 100'], ['DJI', '다우존스'], ['SOX', '필라델피아 반도체'],
+    ['RUT', '러셀 2000'], ['N225', '닛케이 225'], ['HSI', '항셍'], ['SSEC', '상하이 종합']];
   var LOGO = {};
 
   /* ------------------------------------------------------------ 자료 */
@@ -48,6 +52,8 @@
       });
   }
   function load(item) {
+    if (item.ix) return fetch('./data/chart/idx/' + item.code + '.json', { cache: 'no-cache' })
+      .then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; });
     if (item.kr) return fetch('./data/chart/kr/' + item.code + '.json', { cache: 'no-cache' })
       .then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; });
     return loadUS(item.code);
@@ -88,11 +94,14 @@
   }
 
   /* ------------------------------------------------------------ 글자 */
+  // kr: true(원) · false(달러) · 'ix'(지수 — 단위 없이 포인트)
   function money(v, kr) {
+    if (kr === 'ix') return v.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     if (kr) return Math.round(v).toLocaleString('ko-KR') + '원';
     return '$' + (v >= 1000 ? Math.round(v).toLocaleString('en-US') : v >= 1 ? v.toFixed(2) : v.toFixed(3));
   }
   function tickTxt(v, kr, st) {
+    if (kr === 'ix') return v.toLocaleString('en-US', { maximumFractionDigits: st >= 1 ? 0 : 2 });
     if (kr) return Math.round(v).toLocaleString('ko-KR');
     var dec = st >= 1 ? 0 : st >= 0.1 ? 1 : 2;
     return '$' + (v >= 1000 ? Math.round(v).toLocaleString('en-US') : v.toFixed(dec));
@@ -101,14 +110,16 @@
   function pct(x) { var a = Math.abs(x); return (a >= 1000 ? Math.round(a).toLocaleString('en-US') : a.toFixed(1)) + '%'; }
   function autoTitle(s) {
     if (!s) return '';
-    if (state.span === 'ytd') return s.pts[s.pts.length - 1].y + '년 주가 추이';
+    var what = state.item && state.item.ix ? ' 지수 추이' : ' 주가 추이';
+    if (state.span === 'ytd') return s.pts[s.pts.length - 1].y + '년' + what;
     var sp = SPANS[state.span];
-    return '최근 ' + (sp.m ? sp.m + '개월' : sp.y + '년') + ' 주가 추이';
+    return '최근 ' + (sp.m ? sp.m + '개월' : sp.y + '년') + what;
   }
 
   /* ------------------------------------------------------------ 로고·색 */
   function logoPath(it) { return it.kr ? './logo/kr/' + it.code + '.png' : './logo/us/' + it.code + '.png'; }
   function logoImg(it, cb) {
+    if (it.ix) { cb(null); return; }                // 지수는 로고 없이 이름만
     var src = logoPath(it);
     if (LOGO[src] !== undefined) { cb(LOGO[src]); return; }
     var im = new Image();
@@ -342,7 +353,7 @@
       return;
     }
     if (!state.titleUser) { state.title = autoTitle(s); $('c-title').value = state.title; }
-    draw(X, s, { kr: it.kr, color: state.color, name: state.name || it.name, title: state.title, logo: state.logo, ytd: state.span === 'ytd' });
+    draw(X, s, { kr: it.ix ? 'ix' : it.kr, color: state.color, name: state.name || it.name, title: state.title, logo: state.logo, ytd: state.span === 'ytd' });
     var a = s.pts[0], b = s.pts[s.pts.length - 1];
     $('c-hint').textContent = dlab(a) + ' ~ ' + dlab(b) + ' · ' + s.pts.length + '개 점' +
       (s.coarse ? ' · 이 종목은 아직 일별 주가가 없어 월말 종가로 그렸어요' : '') +
@@ -356,7 +367,7 @@
     var p2 = new Promise(function (res) { logoImg(it, function (im) { state.logo = im; res(); }); });
     Promise.all([p1, p2]).then(function () {
       if (!state.colorUser) { state.color = logoColor(state.logo) || '#2B59C3'; $('c-color').value = state.color; }
-      $('qmsg').textContent = it.name + ' · ' + (it.kr ? it.code + ' · 국내' : it.code + ' · 해외');
+      $('qmsg').textContent = it.name + ' · ' + (it.ix ? '시장 지수' : it.kr ? it.code + ' · 국내' : it.code + ' · 해외');
       render();
     });
   }
@@ -392,7 +403,7 @@
     var s = series(state.data, state.span); if (!s) return;
     var big = document.createElement('canvas'); big.width = CW * 3; big.height = CH * 3;
     var g = big.getContext('2d'); g.scale(3, 3);
-    draw(g, s, { kr: state.item.kr, color: state.color, name: state.name || state.item.name, title: state.title, logo: state.logo, ytd: state.span === 'ytd' });
+    draw(g, s, { kr: state.item.ix ? 'ix' : state.item.kr, color: state.color, name: state.name || state.item.name, title: state.title, logo: state.logo, ytd: state.span === 'ytd' });
     big.toBlob(function (blob) {
       if (!blob) { alert('그림을 만들지 못했습니다. 새로고침 후 다시 눌러 주세요.'); return; }
       var a = document.createElement('a'); a.href = URL.createObjectURL(blob);
@@ -418,18 +429,19 @@
       var it = { code: code, name: name || code, kr: kr };
       LIST.push(it); BY[code.toUpperCase()] = it;
     }
+    INDICES.forEach(function (x) { add(x[0], x[1], false); LIST[LIST.length - 1].ix = true; });   // 지수 먼저
     Object.keys(KO).forEach(function (t) { if (ret[t]) add(t, KO[t], false); });            // 한글 이름 있는 해외 먼저
     idx.forEach(function (c) { add(c.code, c.name, true); });
     Object.keys(ret).forEach(function (c) { var v = ret[c]; add(c, v.market === 'US' ? (KO[c] || v.name) : v.name, v.market !== 'US'); });
     var dl = $('qlist'), html = [];
-    LIST.forEach(function (x) { html.push('<option value="' + x.name.replace(/"/g, '&quot;') + (x.kr ? '' : ' (' + x.code + ')') + '">'); });
+    LIST.forEach(function (x) { html.push('<option value="' + x.name.replace(/"/g, '&quot;') + (x.kr || x.ix ? '' : ' (' + x.code + ')') + '">'); });
     dl.innerHTML = html.join('');
     var kr = res[2] && res[2].kr;
     // 국내는 주가를 모으는 종목(anchor.json)만 남긴다 — 실적만 있고 주가가 없는 종목은 고를 수 없게
     if (kr && kr.items) {
       LIST = LIST.filter(function (x) { return !x.kr || kr.items[x.code]; });
       BY = {}; LIST.forEach(function (x) { BY[x.code.toUpperCase()] = x; });
-      html = []; LIST.forEach(function (x) { html.push('<option value="' + x.name.replace(/"/g, '&quot;') + (x.kr ? '' : ' (' + x.code + ')') + '">'); });
+      html = []; LIST.forEach(function (x) { html.push('<option value="' + x.name.replace(/"/g, '&quot;') + (x.kr || x.ix ? '' : ' (' + x.code + ')') + '">'); });
       dl.innerHTML = html.join('');
     }
     $('src-pill').textContent = '국내 ' + ((kr && kr.asof) || '') + ' 종가 기준';
@@ -438,7 +450,10 @@
       state.span = q.get('span');
       Array.prototype.forEach.call(document.querySelectorAll('#spans .preset'), function (x) { x.setAttribute('aria-pressed', x.dataset.s === state.span ? 'true' : 'false'); });
     }
-    pick(BY[c0] || LIST[0]);
+    pick(BY[c0] || BY['005930'] || LIST[0]);
+    Array.prototype.forEach.call(document.querySelectorAll('#ixs .preset'), function (b) {
+      b.addEventListener('click', function () { var it = BY[b.dataset.c]; if (it) pick(it); });
+    });
   });
 
   window.__pc = { series: series, draw: draw, load: load, list: function () { return LIST; }, state: state };
