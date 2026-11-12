@@ -23,6 +23,16 @@ def tries(s):
         ("stockanalysis", "https://stockanalysis.com/etf/%s/" % lo),
         ("finviz", "https://finviz.com/quote.ashx?t=%s" % s),
         ("marketwatch", "https://www.marketwatch.com/investing/fund/%s" % lo),
+        # 일별 과거 시세 후보 (주가 추이 카드용, 2026-11)
+        ("cnbc-1y", "https://ts-api.cnbc.com/harmony/app/charts/1Y.json?symbol=%s" % s),
+        ("cnbc-5y", "https://ts-api.cnbc.com/harmony/app/charts/5Y.json?symbol=%s" % s),
+        ("nasdaq-hist", "https://api.nasdaq.com/api/quote/%s/historical?assetclass=stocks&fromdate=2016-01-01&limit=9999" % s),
+        ("naver-w-O", "https://api.stock.naver.com/chart/foreign/item/%s.O/day?startDateTime=202510010000&endDateTime=202611110000" % s),
+        ("naver-w-N", "https://api.stock.naver.com/chart/foreign/item/%s.N/day?startDateTime=202510010000&endDateTime=202611110000" % s),
+        ("naver-w-K", "https://api.stock.naver.com/chart/foreign/item/%s.K/day?startDateTime=202510010000&endDateTime=202611110000" % s),
+        ("naver-w", "https://api.stock.naver.com/chart/foreign/item/%s/day?startDateTime=202510010000&endDateTime=202611110000" % s),
+        ("naver-basic-O", "https://api.stock.naver.com/stock/%s.O/basic" % s),
+        ("naver-basic", "https://api.stock.naver.com/stock/%s/basic" % s),
     ]
 
 for s in SYMS:
@@ -38,7 +48,8 @@ for s in SYMS:
             print("  %-14s 실패 %s" % (name, str(e)[:120])); continue
         snip = " ".join(b[:300].split())
         hit = ""
-        for key in ('"regularMarketPrice":', '"last":', 'data-last-price="', '"lastSalePrice":', 'YMtoe', '"p":'):
+        for key in ('"regularMarketPrice":', '"last":', 'data-last-price="', '"lastSalePrice":', 'YMtoe', '"p":',
+                    '"closePrice"', '"close"', '"localTradedAt"', '"reutersCode"'):
             i = b.find(key)
             if i >= 0:
                 hit = b[i:i + 60].replace("\n", " "); break
