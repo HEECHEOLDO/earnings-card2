@@ -9,6 +9,7 @@
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
+ "fye": 9,
  "updated": "2026-11-13",
  "annual": [
   {
