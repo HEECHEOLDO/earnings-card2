@@ -23,6 +23,8 @@ def tries(s):
             ("chart-day-K", "https://api.stock.naver.com/chart/domestic/item/%s/day?startDateTime=202611050000&endDateTime=202611132359&marketType=KRX" % s),
             ("fchart", "https://fchart.stock.naver.com/sise.nhn?symbol=%s&timeframe=day&count=6&requestType=0" % s),
             ("fchart-krx", "https://fchart.stock.naver.com/siseJson.nhn?symbol=%s&requestType=1&startTime=20261105&endTime=20261113&timeframe=day&marketType=KRX" % s),
+            ("poll-new", "https://polling.finance.naver.com/api/realtime/domestic/stock/%s,005930" % s),
+            ("poll-old", "https://polling.finance.naver.com/api/realtime?query=SERVICE_ITEM:%s,005930" % s),
             ("daum", "https://finance.daum.net/api/quote/A%s/days?symbolCode=A%s&page=1&perPage=6&pagination=true" % (s, s)),
         ]
     return [
@@ -64,7 +66,7 @@ for s in SYMS:
             t = re.sub(r"<[^>]+>", " ", b) if "<html" in b[:2000].lower() or "<table" in b else b
             t = " ".join(t.split())
             i = t.find("2026.11.1") if "2026.11.1" in t else 0
-            print("  %-14s %s  %d바이트 | %s" % (name, code, len(b), t[i:i + 900] if i else t[:900]))
+            print("  %-14s %s  %d바이트 | %s" % (name, code, len(b), t[i:i + 900] if i else t[:2500]))
             continue
         snip = " ".join(b[:300].split())
         hit = ""
