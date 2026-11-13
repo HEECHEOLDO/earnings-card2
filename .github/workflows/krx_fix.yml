@@ -1,0 +1,40 @@
+# 국내 종가를 KRX 정규장 종가로 바로잡기 (수동) — 빠진 날 받기 + 이미 만든 주가 추이·기준점 고치기
+name: KRX 종가 바로잡기 (수동)
+
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: anchor-kr
+  cancel-in-progress: false
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: KRX 종가 받기
+        env:
+          DATA_GO_KEY: ${{ secrets.DATA_GO_KEY }}
+        run: python3 krx_close.py
+      - name: 고치기
+        run: python3 krx_close.py --apply
+      - name: 커밋
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git add data/krx data/chart/kr data/anchor.json
+          git diff --cached --quiet && { echo "변경 없음"; exit 0; }
+          git commit -m "국내 종가 KRX 정규장 기준으로 바로잡기 $(TZ=Asia/Seoul date +%F)"
+          for i in 1 2 3; do
+            git pull --rebase -X theirs && git push && exit 0
+            git rebase --abort 2>/dev/null; sleep 5
+          done
+          exit 1

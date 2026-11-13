@@ -52,6 +52,8 @@ import sys
 import time
 from datetime import datetime, timedelta, timezone
 
+from krx_close import add_today, krx_fix
+
 KST = timezone(timedelta(hours=9))
 
 NAVER = ("https://api.finance.naver.com/siseJson.naver"
@@ -186,6 +188,9 @@ def naver_rows(code, start, end, frame):
         except Exception:                     # noqa: BLE001
             continue
     out.sort()
+    if frame == "day":
+        # 넥스트레이드(2025-03~) 뒤 네이버 일별 종가는 애프터마켓 마지막 체결가 → KRX 정규장 종가로 (krx_close.py)
+        out = krx_fix(code, out)
     return (out, None) if out else (None, "값 없음")
 
 
@@ -322,6 +327,7 @@ def collect_kr(codes, names, base, limit, fresh=False):
     again = sum(1 for c in todo if c in done)
     log("국내 %d종목 — 기준일 %s%s" % (len(todo), base,
         ("  (이어받기: %d종목은 저장분 사용)" % again) if again else ""))
+    add_today([c for c in todo if c not in done])    # 오늘 정규장 종가 (네이버 실시간 — 애프터마켓과 따로 온다)
     fresh_n = 0
     for i, code in enumerate(todo, 1):
         if code not in done:

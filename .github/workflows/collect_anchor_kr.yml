@@ -31,6 +31,11 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: KRX 정규장 종가 (공공데이터포털 — 넥스트레이드 애프터마켓 값 바로잡기용)
+        env:
+          DATA_GO_KEY: ${{ secrets.DATA_GO_KEY }}
+        run: python3 krx_close.py || true
+
       - name: 국내 기준점 수집
         run: python3 collect_anchor.py --kr
 
@@ -42,12 +47,12 @@ jobs:
 
       - name: 바뀌었으면 커밋      # 앞 단계가 실패하면 건너뛴다
         run: |
-          if git diff --quiet -- data/anchor.json && [ -z "$(git status --porcelain -- data/chart)" ]; then
+          if git diff --quiet -- data/anchor.json && [ -z "$(git status --porcelain -- data/chart data/krx)" ]; then
             echo "변경 없음"; exit 0
           fi
           git config user.name  "github-actions[bot]"
           git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
-          git add data/anchor.json data/chart
+          git add data/anchor.json data/chart data/krx
           git commit -m "anchor: 국내 기준점 자동 갱신 $(TZ=Asia/Seoul date +%F)"
           for i in 1 2 3; do
             git pull --rebase && git push && exit 0
