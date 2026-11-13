@@ -936,9 +936,15 @@
       return rows.slice(-(count || rows.length));
     }
 
-    rows.forEach(function (r) { r.bar1 = r.rev; r.bar2 = r.op; r.line = r.dps; });
+    // 연간 보고서가 아직 안 잡힌 해: 네 분기가 다 있으면 분기 합으로 채운다 (퍼거슨 '26)
+    var fill = quarterYear(company);
+    if (fill) rows.push(fill);
+    // 배당을 시작하기 전 해는 $0 이 아니라 빈칸 — 선이 0 에서 솟아오르지 않게 (알파벳 '24 첫 배당)
+    var fd = 0;
+    while (fd < rows.length && !(rows[fd].dps > 0)) fd++;
+    rows.forEach(function (r, i) { r.bar1 = r.rev; r.bar2 = r.op; r.line = i < fd ? null : r.dps; });
     rows = rows.slice(-(count || rows.length));
-    var ytd = ytdRow(company);                 // '최근 10년' 은 다 끝난 해 10개 + 올해 누적 막대
+    var ytd = ytdRow(company, fill ? fill.year : null);                 // '최근 10년' 은 다 끝난 해 10개 + 올해 누적 막대
     if (ytd) rows.push(ytd);
     return rows;
   }
@@ -947,15 +953,35 @@
   // 연간 실적은 사업보고서가 나와야 생겨서 11월에도 마지막 막대가 작년이었다. 그 사이를 누적으로 메운다.
   // 3분기까지 낸 회사는 1~3분기, 아직 2분기까지인 회사는 1~2분기 — 다음 분기가 나오면 자동으로 늘어난다.
   // 1분기부터 빠짐없이 이어질 때만 만든다. 해당 연도 연간 실적이 이미 있으면 만들지 않는다.
-  function ytdRow(company) {
+  function quarterYear(company) {
+    var q = company.quarterly || [], a = company.annual || [];
+    if (!q.length || !a.length) return null;
+    var Y = a[a.length - 1].p + 1;
+    var qs = q.filter(function (x) { return x.y === Y; });
+    if (qs.length !== 4 || qs.some(function (x, i) { return x.q !== i + 1 || x.rev == null; })) return null;
+    if (!q.some(function (x) { return x.y > Y; })) return null;     // 다음 해 분기가 나온 뒤에만 (연간 공시 지연으로 확정)
+    var sum = function (k) { return qs.every(function (x) { return x[k] != null; }) ? qs.reduce(function (s0, x) { return s0 + x[k]; }, 0) : null; };
+    var rev = sum('rev'), op = sum('op'), ni = sum('ni');
+    return {
+      label: String(Y), short: "'" + String(Y).slice(2), yearMark: null, year: Y, fromQ: true,
+      rev: conv(rev), op: conv(op || 0), ni: conv(ni || 0), dps: null, dpsRaw: null, payout: null, yield: null,
+      margin: rev && op != null ? op / rev * 100 : 0, netMargin: rev && ni != null ? ni / rev * 100 : 0
+    };
+  }
+
+  function ytdRow(company, filledYear) {
     function num(v) { return (v === null || v === undefined || isNaN(v)) ? 0 : v; }
     var q = company.quarterly || [], a = company.annual || [];
     if (!q.length) return null;
     var Y = q[q.length - 1].y;
-    if (a.length && a[a.length - 1].p >= Y) return null;
-    if (a.length && a[a.length - 1].p !== Y - 1) return null;          // 작년 연간도 없으면 이어 붙이지 않는다
+    var lastP = filledYear || (a.length ? a[a.length - 1].p : null);
+    if (lastP != null && lastP >= Y) return null;
+    if (lastP != null && lastP !== Y - 1) return null;                 // 작년 연간도 없으면 이어 붙이지 않는다
     var cur = q.filter(function (x) { return x.y === Y; });
-    for (var i = 0; i < cur.length; i++) if (cur[i].q !== i + 1 || cur[i].rev == null) return null;
+    // 1분기부터 이어지는 데까지만 (얌브랜즈처럼 3분기 매출이 빠졌으면 1~2분기 누적)
+    var k = 0;
+    while (k < cur.length && cur[k].q === k + 1 && cur[k].rev != null) k++;
+    cur = cur.slice(0, k);
     var n = cur.length; if (!n) return null;
     var noOp = cur.some(function (x) { return x.op == null; });
     var sum = function (k) { return cur.reduce(function (s0, x) { return s0 + num(x[k]); }, 0); };
