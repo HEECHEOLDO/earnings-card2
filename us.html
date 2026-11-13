@@ -2038,6 +2038,9 @@
     // * 붙은 분기: 회사가 나중에 사업 분할·매각 후 기준으로 고쳐 적은 값 (하니웰 3분기 등) — 다른 분기와 기준이 다르다
     var basisTxt = spec.basisFmt(last);
     if (rows.some(function (r) { return r.restated; })) basisTxt += '  ·  * 분할·매각 후 다시 적은 분기';
+    // 12월 결산이 아닌 회사는 결산월을 밝힌다 — 스타벅스 '26 = 2025.10~2026.9 (이미 끝난 해), 나이키 '27 1분기 = 2026.6~8
+    var fye = state.company.fye;
+    if (fye && fye !== 12 && state.period !== 'quarterly') basisTxt += '  ·  회계연도 ' + fye + '월 결산';
     ctx.fillText(basisTxt, CX, basisBaseline);
 
     /* 요약 3칸 */

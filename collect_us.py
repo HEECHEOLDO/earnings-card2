@@ -1299,6 +1299,7 @@ def collect_one(ticker, info):
         "currency": "USD",
         "unit": "백만달러",
         "fiscal": True,
+        "fye": fem,                       # 결산월 (12가 아니면 카드에 'N월 결산' 표시)
         "updated": datetime.now(timezone(timedelta(hours=9))).strftime("%Y-%m-%d"),
         "annual": annual,
         "quarterly": quarterly,
