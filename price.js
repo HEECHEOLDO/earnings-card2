@@ -97,7 +97,7 @@
   /* ------------------------------------------------------------ 글자 */
   // kr: true(원) · false(달러) · 'ix'(지수 — 단위 없이 포인트)
   function money(v, kr) {
-    if (kr === 'ix') return v.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    if (kr === 'ix') return v.toLocaleString('en-US', { minimumFractionDigits: 1, maximumFractionDigits: 1 });   // 지수는 소수점 한 자리
     if (kr) return Math.round(v).toLocaleString('ko-KR') + '원';
     return '$' + (v >= 1000 ? Math.round(v).toLocaleString('en-US') : v >= 1 ? v.toFixed(2) : v.toFixed(3));
   }
@@ -382,12 +382,72 @@
            LIST.filter(function (x) { return x.name.toLowerCase().indexOf(lq) >= 0; })[0] || null;
   }
 
-  $('go').addEventListener('click', function () {
-    var it = find($('q').value);
-    if (it) pick(it); else $('qmsg').textContent = '찾는 종목이 없어요. 이름이나 종목코드·티커로 찾아 보세요.';
+  /* ------------------------------------------------------------ 검색 (실적 탭과 같은 드롭다운) */
+  var MKT = 'all', sugItems = [], sugActive = -1, qIn = $('q'), sugBox = $('suggest');
+  var MKT_NAME = { all: '전체', kr: '국내', us: '해외', ix: '지수' };
+  var CC_NAME = { KR: '한국', US: '미국', JP: '일본', HK: '홍콩', CN: '중국' };
+  function inMkt(x) {
+    return MKT === 'all' || (MKT === 'ix' ? x.ix : MKT === 'kr' ? (x.kr && !x.ix) : (!x.kr && !x.ix));
+  }
+  function search(q) {
+    q = (q || '').trim().toLowerCase();
+    if (state.item && q === state.item.name.toLowerCase()) q = '';     // 지금 고른 종목 이름이면 전체 보기
+    var pool = LIST.filter(inMkt);
+    if (!q) return { q: '', items: pool, total: pool.length };
+    var a = [], b = [], c = [];
+    pool.forEach(function (x) {
+      var n = x.name.toLowerCase(), k = x.code.toLowerCase();
+      if (n === q || k === q) a.push(x);
+      else if (n.indexOf(q) === 0 || k.indexOf(q) === 0) b.push(x);
+      else if (n.indexOf(q) >= 0 || k.indexOf(q) >= 0) c.push(x);
+    });
+    return { q: q, items: a.concat(b, c), total: pool.length };
+  }
+  function esc(t) { return String(t).replace(/[&<>"]/g, function (m) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[m]; }); }
+  function closeSuggest() { sugBox.style.display = 'none'; sugActive = -1; }
+  function openSuggest() {
+    var r = search(qIn.value);
+    sugItems = r.items.slice(0, 300);
+    var html = '<div class="head">' + (r.q ? r.items.length.toLocaleString() + '개 일치'
+      : (MKT === 'ix' ? '지수 ' + r.total + '개' : MKT_NAME[MKT] + ' ' + r.total.toLocaleString() + '종목') + ' · 이름이나 코드를 입력해보세요') + '</div>';
+    html += sugItems.length ? sugItems.map(function (x, i) {
+      return '<li role="option" data-i="' + i + '"><span>' + esc(x.name) + '</span><span class="code">' +
+        (x.ix ? (CC_NAME[x.cc] || '') + ' 지수' : esc(x.code) + (MKT === 'all' ? ' · ' + (x.kr ? '국내' : '해외') : '')) + '</span></li>';
+    }).join('') : '<li class="empty">일치하는 종목이 없습니다</li>';
+    sugBox.innerHTML = html; sugBox.style.display = 'block'; sugBox.scrollTop = 0; sugActive = -1;
+  }
+  function choose(it) { if (!it) return; closeSuggest(); qIn.blur(); pick(it); }
+  qIn.addEventListener('focus', openSuggest);
+  qIn.addEventListener('input', openSuggest);
+  sugBox.addEventListener('mousedown', function (e) {
+    var li = e.target.closest('li[data-i]'); if (!li) return;
+    e.preventDefault(); choose(sugItems[+li.dataset.i]);
   });
-  $('q').addEventListener('change', function () { var it = find(this.value); if (it) pick(it); });
-  $('q').addEventListener('keydown', function (e) { if (e.key === 'Enter') $('go').click(); });
+  qIn.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') { e.preventDefault(); $('go').click(); return; }
+    if (sugBox.style.display !== 'block') return;
+    var lis = sugBox.querySelectorAll('li[data-i]');
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+      e.preventDefault(); if (!lis.length) return;
+      sugActive += e.key === 'ArrowDown' ? 1 : -1;
+      if (sugActive < 0) sugActive = lis.length - 1; if (sugActive >= lis.length) sugActive = 0;
+      for (var i = 0; i < lis.length; i++) lis[i].setAttribute('aria-selected', String(i === sugActive));
+      lis[sugActive].scrollIntoView({ block: 'nearest' });
+    } else if (e.key === 'Escape') closeSuggest();
+  });
+  document.addEventListener('click', function (e) { if (!e.target.closest('.search-wrap') && !e.target.closest('#mkts')) closeSuggest(); });
+  $('go').addEventListener('click', function () {
+    var it = sugBox.style.display === 'block' && sugActive >= 0 ? sugItems[sugActive] : null;
+    if (!it) { var r = search(qIn.value); it = r.q ? r.items[0] : find(qIn.value); }
+    if (it) choose(it); else $('qmsg').textContent = '찾는 종목이 없어요. 이름이나 종목코드·티커로 찾아 보세요.';
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('#mkts .preset'), function (b) {
+    b.addEventListener('click', function () {
+      MKT = b.dataset.m;
+      Array.prototype.forEach.call(document.querySelectorAll('#mkts .preset'), function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+      qIn.value = ''; qIn.focus(); openSuggest();
+    });
+  });
   Array.prototype.forEach.call(document.querySelectorAll('#spans .preset'), function (b) {
     b.addEventListener('click', function () {
       state.span = b.dataset.s; state.titleUser = false;
@@ -433,16 +493,11 @@
     Object.keys(KO).forEach(function (t) { if (ret[t]) add(t, KO[t], false); });            // 한글 이름 있는 해외 먼저
     idx.forEach(function (c) { add(c.code, c.name, true); });
     Object.keys(ret).forEach(function (c) { var v = ret[c]; add(c, v.market === 'US' ? (KO[c] || v.name) : v.name, v.market !== 'US'); });
-    var dl = $('qlist'), html = [];
-    LIST.forEach(function (x) { html.push('<option value="' + x.name.replace(/"/g, '&quot;') + (x.kr || x.ix ? '' : ' (' + x.code + ')') + '">'); });
-    dl.innerHTML = html.join('');
     var kr = res[2] && res[2].kr;
     // 국내는 주가를 모으는 종목(anchor.json)만 남긴다 — 실적만 있고 주가가 없는 종목은 고를 수 없게
     if (kr && kr.items) {
       LIST = LIST.filter(function (x) { return !x.kr || kr.items[x.code]; });
       BY = {}; LIST.forEach(function (x) { BY[x.code.toUpperCase()] = x; });
-      html = []; LIST.forEach(function (x) { html.push('<option value="' + x.name.replace(/"/g, '&quot;') + (x.kr || x.ix ? '' : ' (' + x.code + ')') + '">'); });
-      dl.innerHTML = html.join('');
     }
     $('src-pill').textContent = '국내 ' + ((kr && kr.asof) || '') + ' 종가 기준';
     var q = new URLSearchParams(location.search), c0 = (q.get('code') || '005930').toUpperCase();

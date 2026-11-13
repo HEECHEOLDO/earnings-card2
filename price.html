@@ -161,7 +161,19 @@
     border-radius:10px;border:1px solid var(--border-strong);background:var(--bg);color:var(--text)}
   .pick small{flex-basis:100%;font-size:12px;color:var(--text-mute);padding-left:60px}
   .spans{display:flex;flex-wrap:wrap;gap:6px}
-  @media (max-width:640px){.pick>b{width:100%}.pick small{padding-left:0}.pick input{font-size:16px}}
+  .qrow{display:flex;gap:8px;flex:1 1 100%;margin-left:60px;min-width:0}
+  .search-wrap{position:relative;flex:1;min-width:0}
+  .search-wrap input{width:100%;box-sizing:border-box}
+  #suggest{display:none;position:absolute;z-index:40;left:0;right:0;top:calc(100% + 4px);margin:0;padding:4px;list-style:none;
+    max-height:46vh;overflow-y:auto;-webkit-overflow-scrolling:touch;background:var(--surface);
+    border:1px solid var(--border-strong);border-radius:var(--radius);box-shadow:0 14px 34px -12px rgba(0,0,0,.35)}
+  #suggest li{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:44px;padding:8px 12px;
+    border-radius:6px;cursor:pointer;font-size:15px;color:var(--text)}
+  #suggest li:hover,#suggest li[aria-selected="true"]{background:var(--surface-2)}
+  #suggest li .code{font-size:12px;color:var(--text-mute);font-variant-numeric:tabular-nums;flex:none}
+  #suggest li.empty{color:var(--text-mute);cursor:default;justify-content:center;font-size:14px}
+  #suggest .head{padding:6px 12px 8px;font-size:12px;color:var(--text-mute);border-bottom:1px solid var(--border);margin-bottom:4px}
+  @media (max-width:640px){.qrow{margin-left:0}.pick>b{width:100%}.pick small{padding-left:0}.pick input{font-size:16px}}
 </style>
 <style id="nav-wrap">
   @media (max-width: 1100px) {
@@ -244,9 +256,20 @@
 
   <div class="pick">
     <b>종목</b>
-    <input id="q" list="qlist" placeholder="삼성전자, 애플, TSLA, 코스피, 나스닥…" autocomplete="off">
-    <button class="preset" id="go">불러오기</button>
-    <datalist id="qlist"></datalist>
+    <div class="spans" id="mkts">
+      <button class="preset" data-m="all" aria-pressed="true">전체</button>
+      <button class="preset" data-m="kr" aria-pressed="false">국내</button>
+      <button class="preset" data-m="us" aria-pressed="false">해외</button>
+      <button class="preset" data-m="ix" aria-pressed="false">지수</button>
+    </div>
+    <div class="qrow">
+      <div class="search-wrap">
+        <input type="text" id="q" placeholder="종목명 또는 코드·티커 (눌러서 전체 보기)" autocomplete="off"
+               autocorrect="off" autocapitalize="off" spellcheck="false">
+        <ul id="suggest" role="listbox"></ul>
+      </div>
+      <button class="preset" id="go">불러오기</button>
+    </div>
     <small id="qmsg">국내 상장사·ETF, 미국 주요 종목, 주요 시장 지수를 고를 수 있어요.</small>
   </div>
   <div class="pick">
