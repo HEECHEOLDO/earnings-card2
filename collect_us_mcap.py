@@ -231,7 +231,21 @@ def refresh(rows):
 
     targets = [r for r in rows[:FIX_TOP] if r["price"] > 0]
 
+    # 1) CNBC 시세 (40종목씩 한 번에, GitHub 에서도 열린다) — 나스닥 종목별 시세가 2026-11 부터 막혀 0종목만 고쳐지던 것
+    cn = {}
+    try:
+        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+        from collect_chart_us import cnbc_quotes
+        for sym, (d8, p) in cnbc_quotes([r["code"] for r in targets]).items():
+            cn[sym] = (p, "%04d-%02d-%02d" % (d8 // 10000, d8 // 100 % 100, d8 % 100))
+        log("  CNBC 종가 %d / %d종목" % (len(cn), len(targets)))
+    except Exception as e:                         # noqa: BLE001
+        log("  CNBC 시세 못 받음 (%s)" % str(e)[:80])
+
+    # 2) 나머지만 나스닥 종목별 시세
     def one(r):
+        if r["code"] in cn:
+            return r, cn[r["code"]], None
         try:
             return r, latest_close(r["raw"]), None
         except Exception as e:                     # noqa: BLE001
@@ -276,7 +290,7 @@ def groups(rows, field):
 
 
 def daily(dry=False):
-    src = "나스닥 종목 검색표 + 종목별 종가 (상위 %d)" % FIX_TOP
+    src = "나스닥 종목 검색표 + 종목별 종가 (상위 %d, CNBC)" % FIX_TOP
     try:
         rows = screener()
     except Exception as e:                         # noqa: BLE001
@@ -291,7 +305,7 @@ def daily(dry=False):
     if src.startswith("나스닥"):
         asof, info = refresh(rows)
     else:
-        asof, info = None, {"fixed": 0, "targets": 0, "failed": []}   # 종목별 시세도 나스닥이라 건너뛴다
+        asof, info = refresh(rows)                 # CNBC 종가로 고친다 (나스닥이 막혀도 된다)
     if asof:
         log("최신 종가로 다시 계산: %d/%d종목 · 종가 날짜 %s · 검색표가 이미 최신%s"
             % (info["fixed"], info["targets"], info["dates"], "이었음" if info["screener_fresh"] else " 아니었음 (하루 늦은 값)"))

@@ -139,7 +139,7 @@ def cnbc_quotes(syms):
     for i in range(0, len(syms), 40):
         part = syms[i:i + 40]
         url = ("https://quote.cnbc.com/quote-html-webservice/restQuote/symbolType/symbol?symbols=%s"
-               "&requestMethod=itv&noform=1&partnerId=2&fund=1&exthrs=1&output=json"
+               "&requestMethod=itv&noform=1&partnerId=2&fund=1&exthrs=0&output=json"   # 정규장 종가만 (시간외 가격 X)
                % urllib.parse.quote("|".join(s.replace("-", ".") for s in part), safe="|."))
         t = get(url)
         if not t:
