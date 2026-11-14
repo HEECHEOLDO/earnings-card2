@@ -1,0 +1,372 @@
+{
+ "updated": "2026-11-14",
+ "items": {
+  "gold": {
+   "ok": true,
+   "name": "금 (온스당)",
+   "unit": "달러",
+   "freq": "D",
+   "src": "CNBC",
+   "last": 20261113,
+   "n": 919
+  },
+  "silver": {
+   "ok": true,
+   "name": "은 (온스당)",
+   "unit": "달러",
+   "freq": "D",
+   "src": "CNBC",
+   "last": 20261113,
+   "n": 918
+  },
+  "copper": {
+   "ok": true,
+   "name": "구리 (파운드당)",
+   "unit": "달러",
+   "freq": "D",
+   "src": "CNBC",
+   "last": 20261113,
+   "n": 918
+  },
+  "wti": {
+   "ok": true,
+   "name": "국제유가 WTI (배럴당)",
+   "unit": "달러",
+   "freq": "D",
+   "src": "CNBC",
+   "last": 20261113,
+   "n": 916
+  },
+  "brent": {
+   "ok": true,
+   "name": "브렌트유 (배럴당)",
+   "unit": "달러",
+   "freq": "D",
+   "src": "CNBC",
+   "last": 20261113,
+   "n": 932
+  },
+  "natgas": {
+   "ok": true,
+   "name": "천연가스",
+   "unit": "달러",
+   "freq": "D",
+   "src": "CNBC",
+   "last": 20261113,
+   "n": 917
+  },
+  "btc": {
+   "ok": true,
+   "name": "비트코인",
+   "unit": "달러",
+   "freq": "D",
+   "src": "CNBC",
+   "last": 20261113,
+   "n": 1146
+  },
+  "eth": {
+   "ok": true,
+   "name": "이더리움",
+   "unit": "달러",
+   "freq": "D",
+   "src": "CNBC",
+   "last": 20261113,
+   "n": 1146
+  },
+  "dxy": {
+   "ok": true,
+   "name": "달러지수",
+   "unit": "pt",
+   "freq": "D",
+   "src": "CNBC",
+   "last": 20261113,
+   "n": 956
+  },
+  "vix": {
+   "ok": true,
+   "name": "공포지수 VIX",
+   "unit": "pt",
+   "freq": "D",
+   "src": "CNBC",
+   "last": 20261113,
+   "n": 933
+  },
+  "us10y": {
+   "ok": true,
+   "name": "미국 국채 10년",
+   "unit": "%",
+   "freq": "D",
+   "src": "CNBC",
+   "last": 20261113,
+   "n": 922
+  },
+  "us2y": {
+   "ok": true,
+   "name": "미국 국채 2년",
+   "unit": "%",
+   "freq": "D",
+   "src": "CNBC",
+   "last": 20261113,
+   "n": 924
+  },
+  "kr10y": {
+   "ok": true,
+   "name": "한국 국채 10년",
+   "unit": "%",
+   "freq": "D",
+   "src": "CNBC",
+   "last": 20261113,
+   "n": 948
+  },
+  "kr3y": {
+   "ok": false,
+   "name": "한국 국채 3년",
+   "why": "자료 없음"
+  },
+  "jp10y": {
+   "ok": true,
+   "name": "일본 국채 10년",
+   "unit": "%",
+   "freq": "D",
+   "src": "CNBC",
+   "last": 20261114,
+   "n": 945
+  },
+  "usdkrw": {
+   "ok": true,
+   "name": "원·달러",
+   "unit": "원",
+   "freq": "D",
+   "src": "CNBC",
+   "last": 20261113,
+   "n": 975
+  },
+  "jpykrw": {
+   "ok": true,
+   "name": "원·엔 (1엔)",
+   "unit": "원",
+   "freq": "D",
+   "src": "CNBC",
+   "last": 20261113,
+   "n": 1003
+  },
+  "eurkrw": {
+   "ok": true,
+   "name": "원·유로",
+   "unit": "원",
+   "freq": "D",
+   "src": "CNBC",
+   "last": 20261113,
+   "n": 991
+  },
+  "cnykrw": {
+   "ok": true,
+   "name": "원·위안",
+   "unit": "원",
+   "freq": "D",
+   "src": "CNBC",
+   "last": 20261113,
+   "n": 966
+  },
+  "us_rate": {
+   "ok": false,
+   "name": "미국 기준금리 (상단)",
+   "why": "FRED 응답 없음"
+  },
+  "us_cpi": {
+   "ok": false,
+   "name": "미국 소비자물가",
+   "why": "FRED 응답 없음"
+  },
+  "us_core": {
+   "ok": false,
+   "name": "미국 근원물가",
+   "why": "FRED 응답 없음"
+  },
+  "us_unemp": {
+   "ok": false,
+   "name": "미국 실업률",
+   "why": "FRED 응답 없음"
+  },
+  "us_jobs": {
+   "ok": false,
+   "name": "미국 비농업 고용",
+   "why": "FRED 응답 없음"
+  },
+  "us_mort": {
+   "ok": false,
+   "name": "미국 30년 주택담보대출 금리",
+   "why": "FRED 응답 없음"
+  },
+  "us_gas": {
+   "ok": false,
+   "name": "미국 휘발유 (갤런당)",
+   "why": "FRED 응답 없음"
+  },
+  "us_sent": {
+   "ok": false,
+   "name": "미국 소비자심리",
+   "why": "FRED 응답 없음"
+  },
+  "us_m2": {
+   "ok": false,
+   "name": "미국 통화량 M2",
+   "why": "FRED 응답 없음"
+  },
+  "us_home": {
+   "ok": false,
+   "name": "미국 집값 (케이스-실러)",
+   "why": "FRED 응답 없음"
+  },
+  "us_retail": {
+   "ok": false,
+   "name": "미국 소매판매",
+   "why": "FRED 응답 없음"
+  },
+  "us_cars": {
+   "ok": false,
+   "name": "미국 자동차 판매 (연율)",
+   "why": "FRED 응답 없음"
+  },
+  "kr_cpi": {
+   "ok": false,
+   "name": "한국 소비자물가 (OECD)",
+   "why": "FRED 응답 없음"
+  },
+  "kr_unemp": {
+   "ok": false,
+   "name": "한국 실업률 (OECD)",
+   "why": "FRED 응답 없음"
+  },
+  "kr_10y_m": {
+   "ok": false,
+   "name": "한국 국채 10년 (월평균)",
+   "why": "FRED 응답 없음"
+  },
+  "kr_3m": {
+   "ok": false,
+   "name": "한국 3개월 금리",
+   "why": "FRED 응답 없음"
+  },
+  "kr_exp": {
+   "ok": false,
+   "name": "한국 수출액 (OECD, 계절조정)",
+   "why": "FRED 응답 없음"
+  },
+  "kr_imp": {
+   "ok": false,
+   "name": "한국 수입액 (OECD, 계절조정)",
+   "why": "FRED 응답 없음"
+  },
+  "kr_house": {
+   "ok": false,
+   "name": "한국 집값 (BIS 실질)",
+   "why": "FRED 응답 없음"
+  },
+  "kr_prod": {
+   "ok": false,
+   "name": "한국 산업생산",
+   "why": "FRED 응답 없음"
+  },
+  "t_semi": {
+   "ok": false,
+   "name": "반도체 수출",
+   "why": "관세청 API: 응답 없음"
+  },
+  "t_car": {
+   "ok": false,
+   "name": "승용차 수출",
+   "why": "관세청 API: 응답 없음"
+  },
+  "t_parts": {
+   "ok": false,
+   "name": "자동차 부품 수출",
+   "why": "관세청 API: 응답 없음"
+  },
+  "t_batt": {
+   "ok": false,
+   "name": "2차전지 수출",
+   "why": "관세청 API: 응답 없음"
+  },
+  "t_ship": {
+   "ok": false,
+   "name": "선박 수출",
+   "why": "관세청 API: 응답 없음"
+  },
+  "t_cosm": {
+   "ok": false,
+   "name": "화장품 수출",
+   "why": "관세청 API: 응답 없음"
+  },
+  "t_ramen": {
+   "ok": false,
+   "name": "라면 수출",
+   "why": "관세청 API: 응답 없음"
+  },
+  "t_laver": {
+   "ok": false,
+   "name": "조미김 등 수출",
+   "why": "관세청 API: 응답 없음"
+  },
+  "t_gim": {
+   "ok": false,
+   "name": "김 (마른김) 수출",
+   "why": "관세청 API: 응답 없음"
+  },
+  "t_soju": {
+   "ok": false,
+   "name": "소주 등 증류주 수출",
+   "why": "관세청 API: 응답 없음"
+  },
+  "t_pharm": {
+   "ok": false,
+   "name": "의약품 수출",
+   "why": "관세청 API: 응답 없음"
+  },
+  "t_phone": {
+   "ok": false,
+   "name": "스마트폰 수출",
+   "why": "관세청 API: 응답 없음"
+  },
+  "t_oil": {
+   "ok": false,
+   "name": "석유제품 수출",
+   "why": "관세청 API: 응답 없음"
+  },
+  "t_steel": {
+   "ok": false,
+   "name": "철강판 수출",
+   "why": "관세청 API: 응답 없음"
+  },
+  "t_display": {
+   "ok": false,
+   "name": "디스플레이 수출",
+   "why": "관세청 API: 응답 없음"
+  },
+  "t_comp": {
+   "ok": false,
+   "name": "컴퓨터 수출",
+   "why": "관세청 API: 응답 없음"
+  },
+  "t_bio": {
+   "ok": false,
+   "name": "백신·바이오 의약품 수출",
+   "why": "관세청 API: 응답 없음"
+  },
+  "t_tire": {
+   "ok": false,
+   "name": "타이어 수출",
+   "why": "관세청 API: 응답 없음"
+  },
+  "t_food_snack": {
+   "ok": false,
+   "name": "과자·빵 수출",
+   "why": "관세청 API: 응답 없음"
+  },
+  "t_beauty_dev": {
+   "ok": false,
+   "name": "미용기기 등 수출",
+   "why": "관세청 API: 응답 없음"
+  }
+ }
+}
