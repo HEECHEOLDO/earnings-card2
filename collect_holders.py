@@ -49,14 +49,20 @@ def candidates(today):
     return out
 
 
-def latest(corp, endpoint, today):
+def latest(corp, endpoint, today, ok=None):
+    """가장 최근 정기보고서의 표. ok 가 있으면 그 검사를 통과하는 것만 (최대주주 칸이 '-' 뿐인 보고서는 건너뛴다)"""
     for y, rc, nm, asof in candidates(today):
         if asof > today.isoformat():
             continue
         rows = rows_of(C.api_get(endpoint, {"corp_code": corp, "bsns_year": y, "reprt_code": rc}))
-        if rows:
+        if rows and (ok is None or ok(rows)):
             return rows, (y, rc, nm, asof)
     return None, None
+
+
+def has_people(rows):
+    return any(common(r) and (n(r.get("trmend_posesn_stock_qota_rt")) or 0) > 0 and (r.get("nm") or "").strip() not in ("계", "합계", "-")
+               for r in rows)
 
 
 def common(r):
@@ -77,7 +83,7 @@ def one(code, cm, today, force=False):
     if os.path.exists(path):
         old = json.load(open(path, encoding="utf-8"))
 
-    major, rep = latest(corp, "hyslrSttus.json", today)
+    major, rep = latest(corp, "hyslrSttus.json", today, has_people)
     if not major:
         return None, "최대주주 자료 없음"
     y, rc, rname, asof = rep
@@ -123,8 +129,12 @@ def one(code, cm, today, force=False):
         if who and pct is not None:
             five[who] = {"n": who, "pct": round(pct, 2), "dt": r.get("rcept_dt") or ""}
     # 5% 보고는 보고자와 특별관계자를 합친 지분이라, 최대주주 쪽 사람이 낸 보고(김성운 48.8%·삼성물산 19.7%)는 뺀다
-    mine = set(norm(p["n"]) for p in people)
-    big = [v for v in five.values() if v["pct"] >= 5 and norm(v["n"]) not in mine]
+    mine = [norm(p["n"]) for p in people]
+
+    def same(a):                                   # '국민연금공단'(5% 보고) = '국민연금기금'(최대주주 표) 처럼 앞 네 글자가 같으면 같은 주주
+        a = norm(a)
+        return any(a == m or (len(a) >= 4 and a[:4] == m[:4]) for m in mine)
+    big = [v for v in five.values() if v["pct"] >= 5 and not same(v["n"])]
     big.sort(key=lambda x: -x["pct"])
 
     if not issued and people:                      # 주식 총수 표가 없는 보고서 — 최대주주 주식 수 ÷ 지분율로
