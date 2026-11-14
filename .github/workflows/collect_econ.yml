@@ -21,7 +21,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: econ
+  group: econ-v2
   cancel-in-progress: false
 
 jobs:

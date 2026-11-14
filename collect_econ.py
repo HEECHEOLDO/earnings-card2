@@ -143,7 +143,7 @@ def key_datago():
 def trade_call(key, hs, a, b):
     q = urllib.parse.urlencode({"serviceKey": urllib.parse.unquote(key), "strtYymm": a, "endYymm": b, "hsSgn": hs})
     for base in ("https://apis.data.go.kr/1220000/nitemtrade/getNitemtradeList", "http://apis.data.go.kr/1220000/nitemtrade/getNitemtradeList"):
-        t = get(base + "?" + q, tries=2)
+        t = get(base + "?" + q, tries=1, timeout=25)
         if t and "<" in t:
             return t
     return None
@@ -156,6 +156,13 @@ def trade():
             STATUS[id_] = {"ok": False, "name": name + " 수출", "why": "DATA_GO_KEY 없음"}
         return
     y1 = TODAY.year
+    t = trade_call(key, "3304", "%d01" % (y1 - 1), "%d12" % (y1 - 1))   # 먼저 한 번 열어 본다 — 막혀 있으면 다 건너뛴다
+    print("  관세청 점검 응답:", re.sub(r"\s+", " ", (t or "없음"))[:300])
+    if not t or "<item>" not in t:
+        why = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", t or "응답 없음"))[:150]
+        for id_, hs, name in TRADE:
+            STATUS[id_] = {"ok": False, "name": name + " 수출", "why": "관세청 API: " + why}
+        return
     for id_, hs, name in TRADE:
         mon = {}
         why = ""
