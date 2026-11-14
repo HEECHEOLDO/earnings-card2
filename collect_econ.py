@@ -42,8 +42,14 @@ def get(url, tries=3, timeout=40):
         except Exception as e:                    # noqa: BLE001
             err = str(e)
             time.sleep(2 + i * 3)
-    print("  !! %s — %s" % (url[:110], err[:120]))
+    print("  !! %s — %s" % (safe(url), safe(err)[:120]))
     return None
+
+
+def safe(t):
+    """로그에 키가 찍히지 않게 — serviceKey·api_key·ECOS 경로의 키를 가린다"""
+    t = re.sub(r"(serviceKey|api_key|key)=[^&\s]+", r"\1=***", str(t))
+    return re.sub(r"(StatisticSearch/)[^/]+", r"\1***", t)[:160]
 
 
 def save(id_, name, unit, freq, src, rows, **extra):
@@ -106,11 +112,13 @@ FRED = [  # id, 시리즈, 이름, 단위
 
 
 def fred():
-    t0 = get("https://fred.stlouisfed.org/graph/fredgraph.csv?id=UNRATE&cosd=2024-01-01", tries=2, timeout=25)
+    t0 = get("https://fred.stlouisfed.org/graph/fredgraph.csv?id=UNRATE&cosd=2024-01-01", tries=1, timeout=90)
     print("  FRED 점검 응답:", (t0 or "없음")[:120].replace("\n", " | "))
     if not t0:
         for id_, sid, name, unit in FRED:
-            STATUS[id_] = {"ok": False, "name": name, "why": "FRED 응답 없음"}
+            STATUS[id_] = {"ok": False, "name": name, "why": "FRED 응답 없음 (GitHub 서버에서 막힘)"}
+        bls()
+        nyfed()
         return
     for id_, sid, name, unit in FRED:
         t = get("https://fred.stlouisfed.org/graph/fredgraph.csv?id=" + sid + "&cosd=2005-01-01", tries=2, timeout=30)
@@ -127,6 +135,53 @@ def fred():
                 continue
             rows.append([int(r[0].replace("-", "")), v])
         save(id_, name, unit, "M" if sid not in ("DFEDTARU", "MORTGAGE30US", "GASREGW") else "W", "FRED · " + sid, rows)
+
+
+# ------------------------------------------------------------------ 2-1) FRED 가 막힐 때: 미국 노동통계국(BLS) · 뉴욕 연준 (키 없음)
+BLS = [("us_cpi", "CUUR0000SA0", "미국 소비자물가", "지수"), ("us_core", "CUUR0000SA0L1E", "미국 근원물가", "지수"),
+       ("us_unemp", "LNS14000000", "미국 실업률", "%"), ("us_jobs", "CES0000000001", "미국 비농업 고용", "천 명"),
+       ("us_gas", "APU000074714", "미국 휘발유 (갤런당)", "달러")]
+
+
+def bls():
+    y1 = TODAY.year
+    for y0 in (y1 - 9, y1 - 19):                 # v1 은 한 번에 10년까지
+        pass
+    acc = {k[0]: [] for k in BLS}
+    for a, b in ((y1 - 9, y1), (y1 - 19, y1 - 10)):
+        body = json.dumps({"seriesid": [k[1] for k in BLS], "startyear": str(a), "endyear": str(b)}).encode()
+        try:
+            req = urllib.request.Request("https://api.bls.gov/publicAPI/v1/timeseries/data/", data=body,
+                                         headers={"Content-Type": "application/json", "User-Agent": UA})
+            j = json.loads(urllib.request.urlopen(req, timeout=60).read().decode())
+        except Exception as e:                    # noqa: BLE001
+            print("  !! BLS", safe(e))
+            continue
+        for ser in (j.get("Results") or {}).get("series", []):
+            k = [x for x in BLS if x[1] == ser.get("seriesID")]
+            if not k:
+                continue
+            for r in ser.get("data", []):
+                if not r.get("period", "").startswith("M") or r["period"] == "M13":
+                    continue
+                try:
+                    acc[k[0][0]].append([int(r["year"]) * 10000 + int(r["period"][1:]) * 100 + 1, float(r["value"])])
+                except ValueError:
+                    pass
+        time.sleep(1)
+    for id_, sid, name, unit in BLS:
+        save(id_, name, unit, "M", "미국 노동통계국 BLS · " + sid, acc[id_])
+
+
+def nyfed():
+    t = get("https://markets.newyorkfed.org/api/rates/unsecured/effr/search.json?startDate=2015-01-01&endDate=" + TODAY.isoformat(), tries=2, timeout=60)
+    rows = []
+    try:
+        for r in json.loads(t)["refRates"]:
+            rows.append([int(r["effectiveDate"].replace("-", "")), float(r.get("targetRateTo") or r["percentRate"])])
+    except Exception:                             # noqa: BLE001
+        pass
+    save("us_rate", "미국 기준금리 (상단)", "%", "D", "뉴욕 연준 · EFFR 목표 범위", rows)
 
 
 # ------------------------------------------------------------------ 3) 관세청 품목별 수출입 (공공데이터포털)
@@ -163,9 +218,9 @@ def trade():
         return
     y1 = TODAY.year
     t = trade_call(key, "3304", "%d01" % (y1 - 1), "%d12" % (y1 - 1))   # 먼저 한 번 열어 본다 — 막혀 있으면 다 건너뛴다
-    print("  관세청 점검 응답:", re.sub(r"\s+", " ", (t or "없음"))[:300])
+    print("  관세청 점검 응답:", safe(re.sub(r"\s+", " ", (t or "없음"))[:300]))
     if not t or "<item>" not in t:
-        why = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", t or "응답 없음"))[:150]
+        why = "403 — 공공데이터포털에서 '관세청_품목별 수출입실적' 활용신청 필요" if not t else safe(re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", t)))[:150]
         for id_, hs, name in TRADE:
             STATUS[id_] = {"ok": False, "name": name + " 수출", "why": "관세청 API: " + why}
         return
@@ -206,7 +261,7 @@ def trade():
         else:
             STATUS[id_] = {"ok": False, "name": name + " 수출", "why": why or "자료 없음"}
         if why and "SERVICE_KEY" in why:
-            print("  !! 관세청 API 키 승인이 안 된 것 같습니다:", why)
+            print("  !! 관세청 API 키 승인이 안 된 것 같습니다:", safe(why))
             for jd, h2, n2 in TRADE:
                 STATUS.setdefault(jd, {"ok": False, "name": n2 + " 수출", "why": why})
             return
@@ -233,7 +288,7 @@ def ecos():
             for r in json.loads(t)["StatisticSearch"]["row"]:
                 rows.append([int(r["TIME"]), float(r["DATA_VALUE"])])
         except Exception:                         # noqa: BLE001
-            STATUS[id_] = {"ok": False, "name": name, "why": (t or "응답 없음")[:120]}
+            STATUS[id_] = {"ok": False, "name": name, "why": safe((t or "응답 없음")[:120])}
             continue
         save(id_, name, unit, fq, "한국은행 ECOS · " + tb, rows)
 

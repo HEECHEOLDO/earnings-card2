@@ -21,7 +21,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: econ-v3
+  group: econ-v4
   cancel-in-progress: false
 
 jobs:
@@ -40,7 +40,7 @@ jobs:
           PARTS: ${{ github.event.inputs.parts }}
         run: |
           mkdir -p data/econ
-          python3 collect_econ.py $PARTS 2>&1 | tee data/econ/_log.txt
+          python3 collect_econ.py $PARTS 2>&1 | tee "$RUNNER_TEMP/econ_log.txt"
       - name: 커밋
         run: |
           if [ -z "$(git status --porcelain -- data/econ)" ]; then echo "변경 없음"; exit 0; fi
