@@ -148,7 +148,7 @@
    "freq": "D",
    "src": "CNBC",
    "last": 20261113,
-   "n": 1003
+   "n": 989
   },
   "eurkrw": {
    "ok": true,
@@ -166,207 +166,231 @@
    "freq": "D",
    "src": "CNBC",
    "last": 20261113,
-   "n": 966
+   "n": 978
   },
   "us_rate": {
-   "ok": false,
+   "ok": true,
    "name": "미국 기준금리 (상단)",
-   "why": "FRED 응답 없음"
+   "unit": "%",
+   "freq": "D",
+   "src": "뉴욕 연준 · EFFR 목표 범위",
+   "last": 20261112,
+   "n": 2980
   },
   "us_cpi": {
-   "ok": false,
+   "ok": true,
    "name": "미국 소비자물가",
-   "why": "FRED 응답 없음"
+   "unit": "지수",
+   "freq": "M",
+   "src": "미국 노동통계국 BLS · CUUR0000SA0",
+   "last": 20261001,
+   "n": 237
   },
   "us_core": {
-   "ok": false,
+   "ok": true,
    "name": "미국 근원물가",
-   "why": "FRED 응답 없음"
+   "unit": "지수",
+   "freq": "M",
+   "src": "미국 노동통계국 BLS · CUUR0000SA0L1E",
+   "last": 20261001,
+   "n": 237
   },
   "us_unemp": {
-   "ok": false,
+   "ok": true,
    "name": "미국 실업률",
-   "why": "FRED 응답 없음"
+   "unit": "%",
+   "freq": "M",
+   "src": "미국 노동통계국 BLS · LNS14000000",
+   "last": 20261001,
+   "n": 237
   },
   "us_jobs": {
-   "ok": false,
+   "ok": true,
    "name": "미국 비농업 고용",
-   "why": "FRED 응답 없음"
+   "unit": "천 명",
+   "freq": "M",
+   "src": "미국 노동통계국 BLS · CES0000000001",
+   "last": 20261001,
+   "n": 238
   },
   "us_mort": {
    "ok": false,
    "name": "미국 30년 주택담보대출 금리",
-   "why": "FRED 응답 없음"
+   "why": "FRED 응답 없음 (GitHub 서버에서 막힘)"
   },
   "us_gas": {
-   "ok": false,
+   "ok": true,
    "name": "미국 휘발유 (갤런당)",
-   "why": "FRED 응답 없음"
+   "unit": "달러",
+   "freq": "M",
+   "src": "미국 노동통계국 BLS · APU000074714",
+   "last": 20261001,
+   "n": 238
   },
   "us_sent": {
    "ok": false,
    "name": "미국 소비자심리",
-   "why": "FRED 응답 없음"
+   "why": "FRED 응답 없음 (GitHub 서버에서 막힘)"
   },
   "us_m2": {
    "ok": false,
    "name": "미국 통화량 M2",
-   "why": "FRED 응답 없음"
+   "why": "FRED 응답 없음 (GitHub 서버에서 막힘)"
   },
   "us_home": {
    "ok": false,
    "name": "미국 집값 (케이스-실러)",
-   "why": "FRED 응답 없음"
+   "why": "FRED 응답 없음 (GitHub 서버에서 막힘)"
   },
   "us_retail": {
    "ok": false,
    "name": "미국 소매판매",
-   "why": "FRED 응답 없음"
+   "why": "FRED 응답 없음 (GitHub 서버에서 막힘)"
   },
   "us_cars": {
    "ok": false,
    "name": "미국 자동차 판매 (연율)",
-   "why": "FRED 응답 없음"
+   "why": "FRED 응답 없음 (GitHub 서버에서 막힘)"
   },
   "kr_cpi": {
    "ok": false,
    "name": "한국 소비자물가 (OECD)",
-   "why": "FRED 응답 없음"
+   "why": "FRED 응답 없음 (GitHub 서버에서 막힘)"
   },
   "kr_unemp": {
    "ok": false,
    "name": "한국 실업률 (OECD)",
-   "why": "FRED 응답 없음"
+   "why": "FRED 응답 없음 (GitHub 서버에서 막힘)"
   },
   "kr_10y_m": {
    "ok": false,
    "name": "한국 국채 10년 (월평균)",
-   "why": "FRED 응답 없음"
+   "why": "FRED 응답 없음 (GitHub 서버에서 막힘)"
   },
   "kr_3m": {
    "ok": false,
    "name": "한국 3개월 금리",
-   "why": "FRED 응답 없음"
+   "why": "FRED 응답 없음 (GitHub 서버에서 막힘)"
   },
   "kr_exp": {
    "ok": false,
    "name": "한국 수출액 (OECD, 계절조정)",
-   "why": "FRED 응답 없음"
+   "why": "FRED 응답 없음 (GitHub 서버에서 막힘)"
   },
   "kr_imp": {
    "ok": false,
    "name": "한국 수입액 (OECD, 계절조정)",
-   "why": "FRED 응답 없음"
+   "why": "FRED 응답 없음 (GitHub 서버에서 막힘)"
   },
   "kr_house": {
    "ok": false,
    "name": "한국 집값 (BIS 실질)",
-   "why": "FRED 응답 없음"
+   "why": "FRED 응답 없음 (GitHub 서버에서 막힘)"
   },
   "kr_prod": {
    "ok": false,
    "name": "한국 산업생산",
-   "why": "FRED 응답 없음"
+   "why": "FRED 응답 없음 (GitHub 서버에서 막힘)"
   },
   "t_semi": {
    "ok": false,
    "name": "반도체 수출",
-   "why": "관세청 API: 응답 없음"
+   "why": "관세청 API: 403 — 공공데이터포털에서 '관세청_품목별 수출입실적' 활용신청 필요"
   },
   "t_car": {
    "ok": false,
    "name": "승용차 수출",
-   "why": "관세청 API: 응답 없음"
+   "why": "관세청 API: 403 — 공공데이터포털에서 '관세청_품목별 수출입실적' 활용신청 필요"
   },
   "t_parts": {
    "ok": false,
    "name": "자동차 부품 수출",
-   "why": "관세청 API: 응답 없음"
+   "why": "관세청 API: 403 — 공공데이터포털에서 '관세청_품목별 수출입실적' 활용신청 필요"
   },
   "t_batt": {
    "ok": false,
    "name": "2차전지 수출",
-   "why": "관세청 API: 응답 없음"
+   "why": "관세청 API: 403 — 공공데이터포털에서 '관세청_품목별 수출입실적' 활용신청 필요"
   },
   "t_ship": {
    "ok": false,
    "name": "선박 수출",
-   "why": "관세청 API: 응답 없음"
+   "why": "관세청 API: 403 — 공공데이터포털에서 '관세청_품목별 수출입실적' 활용신청 필요"
   },
   "t_cosm": {
    "ok": false,
    "name": "화장품 수출",
-   "why": "관세청 API: 응답 없음"
+   "why": "관세청 API: 403 — 공공데이터포털에서 '관세청_품목별 수출입실적' 활용신청 필요"
   },
   "t_ramen": {
    "ok": false,
    "name": "라면 수출",
-   "why": "관세청 API: 응답 없음"
+   "why": "관세청 API: 403 — 공공데이터포털에서 '관세청_품목별 수출입실적' 활용신청 필요"
   },
   "t_laver": {
    "ok": false,
    "name": "조미김 등 수출",
-   "why": "관세청 API: 응답 없음"
+   "why": "관세청 API: 403 — 공공데이터포털에서 '관세청_품목별 수출입실적' 활용신청 필요"
   },
   "t_gim": {
    "ok": false,
    "name": "김 (마른김) 수출",
-   "why": "관세청 API: 응답 없음"
+   "why": "관세청 API: 403 — 공공데이터포털에서 '관세청_품목별 수출입실적' 활용신청 필요"
   },
   "t_soju": {
    "ok": false,
    "name": "소주 등 증류주 수출",
-   "why": "관세청 API: 응답 없음"
+   "why": "관세청 API: 403 — 공공데이터포털에서 '관세청_품목별 수출입실적' 활용신청 필요"
   },
   "t_pharm": {
    "ok": false,
    "name": "의약품 수출",
-   "why": "관세청 API: 응답 없음"
+   "why": "관세청 API: 403 — 공공데이터포털에서 '관세청_품목별 수출입실적' 활용신청 필요"
   },
   "t_phone": {
    "ok": false,
    "name": "스마트폰 수출",
-   "why": "관세청 API: 응답 없음"
+   "why": "관세청 API: 403 — 공공데이터포털에서 '관세청_품목별 수출입실적' 활용신청 필요"
   },
   "t_oil": {
    "ok": false,
    "name": "석유제품 수출",
-   "why": "관세청 API: 응답 없음"
+   "why": "관세청 API: 403 — 공공데이터포털에서 '관세청_품목별 수출입실적' 활용신청 필요"
   },
   "t_steel": {
    "ok": false,
    "name": "철강판 수출",
-   "why": "관세청 API: 응답 없음"
+   "why": "관세청 API: 403 — 공공데이터포털에서 '관세청_품목별 수출입실적' 활용신청 필요"
   },
   "t_display": {
    "ok": false,
    "name": "디스플레이 수출",
-   "why": "관세청 API: 응답 없음"
+   "why": "관세청 API: 403 — 공공데이터포털에서 '관세청_품목별 수출입실적' 활용신청 필요"
   },
   "t_comp": {
    "ok": false,
    "name": "컴퓨터 수출",
-   "why": "관세청 API: 응답 없음"
+   "why": "관세청 API: 403 — 공공데이터포털에서 '관세청_품목별 수출입실적' 활용신청 필요"
   },
   "t_bio": {
    "ok": false,
    "name": "백신·바이오 의약품 수출",
-   "why": "관세청 API: 응답 없음"
+   "why": "관세청 API: 403 — 공공데이터포털에서 '관세청_품목별 수출입실적' 활용신청 필요"
   },
   "t_tire": {
    "ok": false,
    "name": "타이어 수출",
-   "why": "관세청 API: 응답 없음"
+   "why": "관세청 API: 403 — 공공데이터포털에서 '관세청_품목별 수출입실적' 활용신청 필요"
   },
   "t_food_snack": {
    "ok": false,
    "name": "과자·빵 수출",
-   "why": "관세청 API: 응답 없음"
+   "why": "관세청 API: 403 — 공공데이터포털에서 '관세청_품목별 수출입실적' 활용신청 필요"
   },
   "t_beauty_dev": {
    "ok": false,
    "name": "미용기기 등 수출",
-   "why": "관세청 API: 응답 없음"
+   "why": "관세청 API: 403 — 공공데이터포털에서 '관세청_품목별 수출입실적' 활용신청 필요"
   }
  }
 }
