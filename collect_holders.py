@@ -71,7 +71,7 @@ def one(code, cm, today, force=False):
     if os.path.exists(path):
         old = json.load(open(path, encoding="utf-8"))
 
-    major, rep = latest(corp, "hyslrSttus", today)
+    major, rep = latest(corp, "hyslrSttus.json", today)
     if not major:
         return None, "최대주주 자료 없음"
     y, rc, rname, asof = rep
@@ -89,7 +89,7 @@ def one(code, cm, today, force=False):
                        "sh": int(sh), "pct": round(pct, 2)})
     people.sort(key=lambda x: -x["pct"])
 
-    tot = rows_of(C.api_get("stockTotqySttus", {"corp_code": corp, "bsns_year": y, "reprt_code": rc})) or []
+    tot = rows_of(C.api_get("stockTotqySttus.json", {"corp_code": corp, "bsns_year": y, "reprt_code": rc})) or []
     issued = treasury = None
     for r in tot:
         se = (r.get("se") or "").replace(" ", "")
@@ -102,7 +102,7 @@ def one(code, cm, today, force=False):
                 issued, treasury = n(r.get("istc_totqy")), n(r.get("tesstk_co"))
 
     minor = None
-    mr, mrep = latest(corp, "mrhlSttus", today)
+    mr, mrep = latest(corp, "mrhlSttus.json", today)
     for r in mr or []:
         hc, rate = n(r.get("shrholdr_co")), n(r.get("hold_stock_rate"))
         if hc:
@@ -110,7 +110,7 @@ def one(code, cm, today, force=False):
             break
 
     five = {}
-    ms = rows_of(C.api_get("majorstock", {"corp_code": corp})) or []
+    ms = rows_of(C.api_get("majorstock.json", {"corp_code": corp})) or []
     for r in sorted(ms, key=lambda r: r.get("rcept_dt") or ""):
         who = (r.get("repror") or "").strip()
         pct = n(r.get("stkrt"))
