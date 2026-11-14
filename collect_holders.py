@@ -22,7 +22,7 @@ from datetime import date
 import collect as C
 
 OUT = os.path.join("data", "holders")
-BUDGET = int(os.environ.get("HOLDERS_BUDGET", "9000"))   # 한 번에 쓰는 DART 호출 수 (하루 한도 2만 회)
+BUDGET = int(os.environ.get("HOLDERS_BUDGET", "5000"))   # 한 번에 쓰는 DART 호출 수 (하루 한도 2만 회)
 # 보고서 코드: 사업 11011 · 반기 11012 · 1분기 11013 · 3분기 11014
 REPORTS = [("11014", "3분기보고서", "09-30"), ("11012", "반기보고서", "06-30"),
            ("11013", "1분기보고서", "03-31"), ("11011", "사업보고서", "12-31")]
