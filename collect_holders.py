@@ -170,7 +170,37 @@ def one(code, cm, today, force=False):
         "major": people, "five": big[:8], "minor": minor,
         "updated": today.isoformat(),
     }
-    return out, "새로"
+    return clean(out), "새로"
+
+
+NOT_PERSON = ("소액주주", "자기주식", "자사주")
+
+
+def clean(out):
+    """보고서·5% 보고를 섞을 때 생기는 겹침을 걷어낸다 (전체가 100%를 넘지 않게)
+      - 최대주주 표에 '기타소액주주'·'자기주식' 줄을 넣는 회사가 있다 → 뺀다
+      - 5% 보고자가 최대주주 쪽과 이름이 달라도(POSCO홀딩스=포스코홀딩스, AK홀딩스=에이케이홀딩스)
+        지분이 최대주주 한 명이나 최대주주 측 합계와 거의 같으면 같은 보고로 보고 뺀다
+      - 그래도 합이 100%를 넘으면(보고서 뒤에 주인이 바뀐 회사·담보 보고 등) 넘치는 5% 보고는 뺀다"""
+    out["major"] = [p for p in out["major"] if not any(w in p["n"] for w in NOT_PERSON) and p["n"] != "기타"]
+    # 우선주 줄을 '보통주'로 적지 않은 회사(코오롱글로벌·롯데칠성) — 주식 수 ÷ 지분율로 본 '전체 주식 수'가
+    # 보통주보다 훨씬 작으면 다른 종류 주식 줄이다
+    tots = [p["sh"] / p["pct"] * 100 for p in out["major"] if p.get("sh") and p["pct"] >= 1]
+    if tots:
+        big = max(tots)
+        out["major"] = [p for p in out["major"] if not p.get("sh") or not p["pct"] or p["sh"] / p["pct"] * 100 >= big * 0.5]
+    ms = sum(p["pct"] for p in out["major"])
+    tr = (out["treasury"] or 0) / out["issued"] * 100 if out.get("issued") else 0
+    keep, used = [], ms + tr
+    for f in sorted(out.get("five") or [], key=lambda x: -x["pct"]):
+        if abs(f["pct"] - ms) <= 0.6 or any(abs(f["pct"] - p["pct"]) <= 0.3 and f["pct"] >= 5 for p in out["major"][:3]):
+            continue
+        if used + f["pct"] > 100.0:
+            continue
+        keep.append(f)
+        used += f["pct"]
+    out["five"] = keep
+    return out
 
 
 def main():
