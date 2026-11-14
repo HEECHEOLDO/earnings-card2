@@ -1,0 +1,56 @@
+# 경제 지표 (인포그래픽 '경제·생활' 카드) — data/econ/
+# 시장 가격은 매일, 월별 지표는 나오는 대로. 수집기를 고치면(push) 바로 한 번 돈다.
+name: 경제 지표 수집
+
+on:
+  schedule:
+    - cron: '40 23 * * *'       # UTC 23:40 = KST 08:40 매일
+  push:
+    branches: [main]
+    paths:
+      - 'collect_econ.py'
+      - '.github/workflows/collect_econ.yml'
+  workflow_dispatch:
+    inputs:
+      parts:
+        description: "비우면 전체 · 'market fred trade ecos' 중 일부"
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+concurrency:
+  group: econ
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: 수집
+        env:
+          DATA_GO_KEY: ${{ secrets.DATA_GO_KEY }}
+          ECOS_KEY: ${{ secrets.ECOS_KEY }}
+          PARTS: ${{ github.event.inputs.parts }}
+        run: |
+          mkdir -p data/econ
+          python3 collect_econ.py $PARTS 2>&1 | tee data/econ/_log.txt
+      - name: 커밋
+        run: |
+          if [ -z "$(git status --porcelain -- data/econ)" ]; then echo "변경 없음"; exit 0; fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git add data/econ
+          git commit -m "경제 지표 $(TZ=Asia/Seoul date +%F)"
+          for i in 1 2 3 4 5; do
+            git pull --rebase -X theirs --autostash && git push && exit 0
+            git rebase --abort 2>/dev/null || true
+            sleep 10
+          done
+          exit 1
