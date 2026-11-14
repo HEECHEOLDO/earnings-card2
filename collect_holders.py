@@ -144,7 +144,8 @@ def one(code, cm, today, force=False):
     out = {
         "name": cm[code]["name"], "asof": asof, "report": "%s %s" % (y, rname),
         "rcept_no": major[0].get("rcept_no") or "",
-        "issued": int(issued) if issued else None, "treasury": int(treasury) if treasury else 0,
+        "issued": int(issued) if issued else None,
+        "treasury": int(treasury) if treasury is not None else None,     # 주식 총수 표가 없으면 모름(None)
         "major": people, "five": big[:8], "minor": minor,
         "updated": today.isoformat(),
     }
