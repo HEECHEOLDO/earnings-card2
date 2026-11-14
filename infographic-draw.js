@@ -70,19 +70,19 @@
       X.fillStyle = '#2A2D33'; X.fillRect(gc.x, gc.y, gc.w, gc.h);
       cells.forEach(function (c) {
         var it = c.it;
-        X.fillStyle = it.other || it.nodata ? '#C9C6BC' : retColor(it.y); X.fillRect(c.x + 1, c.y + 1, c.w - 2, c.h - 2);
+        X.fillStyle = it.other || it.nodata ? '#C9C6BC' : retColor(it.y / (o.k || 1)); X.fillRect(c.x + 1, c.y + 1, c.w - 2, c.h - 2);
         var m = Math.min(c.w, c.h);
         if (it.logo && m > 90) {
           var r = Math.min(m * 0.22, 46), lx = c.x + c.w / 2, ly = c.y + c.h / 2 - (m > 150 ? 26 : 12);
           X.save(); X.beginPath(); X.arc(lx, ly, r, 0, 7); X.clip(); X.fillStyle = '#fff'; X.fillRect(lx - r, ly - r, 2 * r, 2 * r); X.drawImage(it.logo, lx - r, ly - r, 2 * r, 2 * r); X.restore();
           X.fillStyle = '#fff'; X.textAlign = 'center';
-          X.font = font(800, Math.min(28, m * 0.13)); X.fillText(it.n, lx, ly + r + Math.min(30, m * 0.15));
-          if (!it.nodata) { X.font = font(900, Math.min(30, m * 0.14)); X.fillText((it.y >= 0 ? '+' : '') + Math.round(it.y) + '%', lx, ly + r + Math.min(62, m * 0.31)); }
+          X.font = font(800, Math.min(28, m * 0.13)); var nm0 = it.n; while (nm0.length > 1 && X.measureText(nm0).width > c.w - 12) nm0 = nm0.slice(0, -1); X.fillText(nm0, lx, ly + r + Math.min(30, m * 0.15));
+          if (!it.nodata) { X.font = font(900, Math.min(30, m * 0.14)); X.fillText(it.lab != null ? it.lab : (it.y >= 0 ? '+' : '') + Math.round(it.y) + '%', lx, ly + r + Math.min(62, m * 0.31)); }
         } else if (m > 54 && c.w > 70) {
           X.fillStyle = it.other || it.nodata ? '#3A3E46' : '#fff'; X.textAlign = 'center'; X.textBaseline = 'middle';
           X.font = font(800, 18); var nm = it.n; while (nm.length > 1 && X.measureText(nm).width > c.w - 10) nm = nm.slice(0, -1);
           X.fillText(nm, c.x + c.w / 2, c.y + c.h / 2 - (it.other ? 0 : 10));
-          if (!it.other && !it.nodata) { X.font = font(900, 18); X.fillText((it.y >= 0 ? '+' : '') + Math.round(it.y) + '%', c.x + c.w / 2, c.y + c.h / 2 + 12); }
+          if (!it.other && !it.nodata) { X.font = font(900, 18); X.fillText(it.lab != null ? it.lab : (it.y >= 0 ? '+' : '') + Math.round(it.y) + '%', c.x + c.w / 2, c.y + c.h / 2 + 12); }
           X.textBaseline = 'alphabetic';
         }
       });
@@ -94,9 +94,9 @@
     });
     // 색 범례
     var ly0 = 1218, lx0 = L;
-    X.fillStyle = T.soft; X.font = font(700, 22); X.textAlign = 'left'; X.fillText('올해 수익률', lx0, ly0 + 18);
-    [-60, -20, 0, 20, 60, 120].forEach(function (v, i) {
-      var x = lx0 + 140 + i * 90; X.fillStyle = retColor(v); X.fillRect(x, ly0, 84, 24);
+    X.fillStyle = T.soft; X.font = font(700, 22); X.textAlign = 'left'; X.fillText(o.legendTitle || '올해 수익률', lx0, ly0 + 18); var lw = X.measureText(o.legendTitle || '올해 수익률').width;
+    (o.stops || [-60, -20, 0, 20, 60, 120]).forEach(function (v, i) {
+      var x = lx0 + Math.max(140, lw + 20) + i * 90; X.fillStyle = retColor(v / (o.k || 1)); X.fillRect(x, ly0, 84, 24);
       X.fillStyle = T.soft; X.font = font(700, 18); X.textAlign = 'center'; X.fillText((v > 0 ? '+' : '') + v + '%', x + 42, ly0 + 48);
     });
     foot(X, o.src);

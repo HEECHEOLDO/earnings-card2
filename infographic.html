@@ -73,6 +73,10 @@
     padding:9px 14px;border-radius:999px;border:1px solid var(--border-strong);
     background:var(--surface);color:var(--text)}
   .preset:hover{border-color:var(--accent);color:var(--accent)}
+  #opts{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;padding-top:10px;border-top:1px dashed var(--border-strong)}
+  #opts[hidden]{display:none}
+  .chip{font-family:inherit;font-size:12.5px;font-weight:600;cursor:pointer;padding:6px 11px;border-radius:8px;border:1px solid var(--border-strong);background:var(--bg);color:var(--text-2, var(--text))}
+  .chip[aria-pressed="true"]{background:var(--text);color:var(--bg);border-color:transparent}
   .preset[aria-pressed="true"]{background:var(--accent-soft);border-color:transparent;color:var(--accent-text)}
 
   .filters{background:var(--surface);border-radius:12px;padding:16px 16px 8px;margin-top:12px}
@@ -266,7 +270,8 @@
   <div class="pick">
     <b>인포그래픽</b>
     <div class="presets" id="kinds" role="group" aria-label="인포그래픽 종류" style="display:flex;flex-wrap:wrap;gap:6px"></div>
-    <small>사이트에 모인 시가총액·수익률·연말 순위 자료로 그린 그림 카드예요. 열 때마다 최신 자료로 다시 계산하고, 제목도 숫자에 맞춰 바뀝니다.</small>
+    <div id="opts" role="group" aria-label="세부 선택" hidden></div>
+    <small>사이트에 모인 시가총액·실적·지수·수익률·주주·포트폴리오 자료로 그린 그림 카드예요. 열 때마다 최신 자료로 다시 계산하고, 제목도 숫자에 맞춰 바뀝니다.</small>
   </div>
 
   <div class="cardbox">
@@ -278,13 +283,14 @@
   </div>
 
   <p class="note">
-    국내는 네이버 금융 업종 분류와 종가, 미국은 나스닥 종목 검색표의 업종과 종가, 연말 순위는 한국거래소 시가총액 자료입니다.
-    올해 수익률은 연초 첫 거래일 대비이고, 수익률 자료가 없는 일부 종목(금융지주 등)은 회색으로 두거나 빠집니다.
-    1995년 회사들의 지금 이름(합병·분할)은 직접 확인해 적은 것입니다.
+    국내 시가총액·업종은 네이버 금융, 실적은 금융감독원 전자공시(DART)·미국 SEC, 지수는 네이버·CNBC, 연간 수익률은 수정·조정 종가(배당 재투자),
+    주주 현황은 정기보고서, 투자 대가 포트폴리오는 SEC 13F(미국 주식만) 자료입니다. 올해 수익률은 작년 마지막 종가 대비이고,
+    수익률 자료가 없는 일부 종목(금융지주 등)은 회색으로 두거나 빠집니다. 1995년 회사들의 지금 이름(합병·분할)과 한미 맞수 짝은 직접 정한 것입니다.
   </p>
 </div>
 <script src="./us_ko.js"></script>
 <script src="./infographic-draw.js"></script>
+<script src="./infographic-draw2.js"></script>
 <script src="./infographic-data.js"></script>
 <script src="./health.js" defer></script>
 </body>
