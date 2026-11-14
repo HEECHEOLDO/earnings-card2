@@ -108,16 +108,16 @@
   /* 4) 월별 열지도 — o.years:[연], o.rows:{연:[12개월 %|null]}, o.total:{연:%} */
   function heatgrid(X, o) {
     head(X, o);
-    var top = 290, ny = o.years.length, lw = 76, tw = 104, cw = (R - L - lw - tw) / 12, ch = Math.min(74, 900 / (ny + 1));
+    var NC = o.cols ? o.cols.length : 12, top = 290, ny = o.years.length, lw = o.lw || 76, tw = 104, cw = (R - L - lw - tw) / NC, ch = Math.min(74, 900 / (ny + 1));
     X.fillStyle = T.soft; X.font = font(800, 19); X.textAlign = 'center';
-    for (var m = 0; m < 12; m++) X.fillText((m + 1) + '월', L + lw + cw * m + cw / 2, top - 12);
-    X.fillText('1년', R - tw / 2, top - 12);
+    for (var m = 0; m < NC; m++) X.fillText(o.cols ? o.cols[m] : (m + 1) + '월', L + lw + cw * m + cw / 2, top - 12);
+    X.fillText(o.totalLabel || '1년', R - tw / 2, top - 12);
     o.years.forEach(function (y, i) {
       var cy = top + i * ch;
-      X.fillStyle = T.ink; X.font = font(800, 22); X.textAlign = 'left'; X.textBaseline = 'middle'; X.fillText("'" + String(y).slice(2), L, cy + ch / 2);
+      X.fillStyle = T.ink; X.font = font(800, 22); X.textAlign = 'left'; X.textBaseline = 'middle'; X.fillText(o.rowLabel ? o.rowLabel(y) : "'" + String(y).slice(2), L, cy + ch / 2);
       o.rows[y].forEach(function (v, m) {
         var x = L + lw + cw * m;
-        X.fillStyle = v == null ? 'rgba(16,18,22,0.05)' : heat(v, 10); rr(X, x + 2, cy + 2, cw - 4, ch - 4, 6); X.fill();
+        X.fillStyle = v == null ? 'rgba(16,18,22,0.05)' : heat(v, o.k || 10); rr(X, x + 2, cy + 2, cw - 4, ch - 4, 6); X.fill();
         if (v != null) { X.fillStyle = Math.abs(v) >= 6 ? '#fff' : '#111214'; X.font = font(800, 17); X.textAlign = 'center'; X.fillText(v.toFixed(1), x + cw / 2, cy + ch / 2 + 1); }
       });
       var t = o.total[y]; if (t != null) {
@@ -129,7 +129,7 @@
     // 월별 평균
     var ay = top + ny * ch + 18;
     X.fillStyle = T.ink; X.font = font(800, 20); X.textAlign = 'left'; X.fillText('평균', L, ay + 26);
-    for (m = 0; m < 12; m++) {
+    for (m = 0; m < NC; m++) {
       var vs = o.years.map(function (y) { return o.rows[y][m]; }).filter(function (v) { return v != null; }), a = vs.reduce(function (s, v) { return s + v; }, 0) / (vs.length || 1);
       X.fillStyle = a >= 0 ? T.up : T.down; X.font = font(900, 19); X.textAlign = 'center'; X.fillText(a.toFixed(1), L + lw + cw * m + cw / 2, ay + 26);
     }
@@ -252,6 +252,28 @@
     if (o.note) { X.textAlign = 'left'; X.fillStyle = T.ink; X.font = font(800, 26); X.fillText(o.note, L, 1240); }
     foot(X, o.src);
   }
+
+  /* 9) 52주 범위 — rows:[{n, logo, lo, hi, now, lab}] 막대 = 최저~최고, 점 = 지금 (0~100% 위치) */
+  function range(X, o) {
+    head(X, o);
+    var rows = o.rows, top = 300, rowH = Math.min(60, 900 / rows.length), x0 = L + 280, x1 = R - 110;
+    X.fillStyle = T.soft; X.font = font(800, 20); X.textAlign = 'center'; X.fillText('52주 최저', x0, top - 16); X.fillText('52주 최고', x1, top - 16); X.fillText('중간', (x0 + x1) / 2, top - 16);
+    X.strokeStyle = T.rule; X.setLineDash([4, 6]); X.lineWidth = 1; X.beginPath(); X.moveTo((x0 + x1) / 2, top); X.lineTo((x0 + x1) / 2, top + rows.length * rowH); X.stroke(); X.setLineDash([]);
+    rows.forEach(function (r, i) {
+      var cy = top + i * rowH + rowH / 2, t = (r.now - r.lo) / ((r.hi - r.lo) || 1), x = x0 + (x1 - x0) * t;
+      logoAt(X, r.logo, L + 18, cy, 16);
+      X.fillStyle = T.ink; X.font = font(800, 21); X.textAlign = 'left'; X.textBaseline = 'middle'; X.fillText(fit(X, r.n, x0 - L - 70), L + 44, cy);
+      X.strokeStyle = 'rgba(16,18,22,0.14)'; X.lineWidth = 12; X.lineCap = 'round'; X.beginPath(); X.moveTo(x0, cy); X.lineTo(x1, cy); X.stroke();
+      var g = X.createLinearGradient(x0, 0, x1, 0); g.addColorStop(0, '#2B6CD9'); g.addColorStop(1, '#D6362C');
+      X.strokeStyle = g; X.lineWidth = 12; X.beginPath(); X.moveTo(x0, cy); X.lineTo(Math.max(x0 + 1, x), cy); X.stroke(); X.lineCap = 'butt';
+      X.fillStyle = '#fff'; X.beginPath(); X.arc(x, cy, 11, 0, 7); X.fill(); X.strokeStyle = T.ink; X.lineWidth = 3; X.stroke();
+      X.fillStyle = t >= 0.5 ? T.up : T.down; X.font = font(900, 20); X.textAlign = 'right'; X.fillText(r.lab, R, cy);
+      X.textBaseline = 'alphabetic';
+    });
+    if (o.note) { X.textAlign = 'left'; X.fillStyle = T.ink; X.font = font(800, 24); X.fillText(o.note, L, 1250); }
+    foot(X, o.src);
+  }
+  base.range = range;
   base.line = line;
   base.hist = hist; base.butterfly = butterfly; base.calendar = calendar; base.heatgrid = heatgrid; base.underwater = underwater; base.scatter = scatter; base.slope = slope;
 })();

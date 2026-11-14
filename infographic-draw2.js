@@ -117,7 +117,7 @@
   /* 3) 100% 쌓은 막대 — 행: {n, logo, parts:[v...]} · o.keys:[[이름, 색, 글자색]] */
   function stack100(X, o) {
     head(X, o);
-    var rows = o.rows, top = 300, rowH = Math.min(46, 880 / rows.length), x0 = L + 250, w = R - x0;
+    var rows = o.rows, top = 300, rowH = Math.min(rows.length <= 6 ? 120 : 46, 880 / rows.length), x0 = L + 250, w = R - x0;
     // 범례
     var lx = L, ly = 262;
     o.keys.forEach(function (k) { X.fillStyle = k[1]; rr(X, lx, ly - 18, 22, 22, 4); X.fill(); X.fillStyle = T.ink; X.font = font(700, 22); X.textAlign = 'left'; X.fillText(k[0], lx + 30, ly); lx += X.measureText(k[0]).width + 62; });
