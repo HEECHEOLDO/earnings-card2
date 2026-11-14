@@ -5,6 +5,8 @@
   'use strict';
   var T = { paper: '#fafaf8', ink: '#101216', inkSoft: '#6B7078', rule: '#E6E4DD', track: '#ECEAE3', chip: '#F1EFEA',
             footer: '#3A3E46', treasury: '#A3A8AF', rest: '#E2DFD6' };
+  var LIGHT = Object.assign({ dark: false }, T), DARK = { dark: true, paper: '#17191D', ink: '#F3F2EE', inkSoft: '#A2A7AF', rule: '#2E3137', track: '#2A2D33', chip: '#212429', footer: '#C9CCD1', treasury: '#646A73', rest: '#34373E' };
+  function theme(dark) { Object.assign(T, dark ? DARK : LIGHT); }   // 카드 바탕: 밝게 / 어둡게
   var FF = "'Noto Sans KR', 'Noto Sans CJK KR', sans-serif";
   function font(w, px) { return w + ' ' + px + 'px ' + FF; }
   var CW = 1080, CH = 1350, L = 100, R = 980;
@@ -50,20 +52,50 @@
     return s + '…';
   }
 
-  var GRAIN = null;
+  // 어두운 바탕에서 남색·검정 같은 진한 회사 색은 안 보이니 밝힌다
+  function forDark(c) {
+    var h = c.replace('#', ''), a = [0, 2, 4].map(function (k) { return parseInt(h.substr(k, 2), 16) / 255; });
+    if (!T.dark || a.some(isNaN)) return c;
+    var lu = 0.299 * a[0] + 0.587 * a[1] + 0.114 * a[2];
+    if (lu >= 0.3) return c;                                   // 빨강·초록·노랑 같은 밝은 색은 그대로
+    var mx = Math.max.apply(null, a), mn = Math.min.apply(null, a), l = (mx + mn) / 2, d = mx - mn, hh = 0, sat = 0;
+    if (d) {
+      sat = d / (1 - Math.abs(2 * l - 1));
+      hh = mx === a[0] ? ((a[1] - a[2]) / d) % 6 : mx === a[1] ? (a[2] - a[0]) / d + 2 : (a[0] - a[1]) / d + 4;
+      hh *= 60; if (hh < 0) hh += 360;
+    }
+    l = 0.64; sat = Math.min(1, Math.max(sat, d ? 0.6 : 0));   // 색은 그대로, 밝기만 올린다 (남색 → 선명한 파랑)
+    var C = (1 - Math.abs(2 * l - 1)) * sat, x = C * (1 - Math.abs((hh / 60) % 2 - 1)), m = l - C / 2;
+    var rgb = hh < 60 ? [C, x, 0] : hh < 120 ? [x, C, 0] : hh < 180 ? [0, C, x] : hh < 240 ? [0, x, C] : hh < 300 ? [x, 0, C] : [C, 0, x];
+    return '#' + rgb.map(function (v) { return ('0' + Math.round((v + m) * 255).toString(16)).slice(-2); }).join('');
+  }
+  // 바탕 질감: 밝은 종이 / 어두운 판 (아주 옅은 빛 번짐 + 고운 입자 + 드문 반짝임)
+  var GRAINS = {};
   function grain(X) {
-    if (!GRAIN) {
-      GRAIN = document.createElement('canvas'); GRAIN.width = CW; GRAIN.height = CH;
-      var g = GRAIN.getContext('2d'); g.fillStyle = T.paper; g.fillRect(0, 0, CW, CH);
-      var im = g.getImageData(0, 0, CW, CH), d = im.data, seed = 7;
+    var key = T.paper;
+    if (!GRAINS[key]) {
+      var cv = document.createElement('canvas'); cv.width = CW; cv.height = CH;
+      var g = cv.getContext('2d'); g.fillStyle = T.paper; g.fillRect(0, 0, CW, CH);
+      var dark = T.dark;
+      if (dark) {                                   // 왼쪽 위에서 아주 옅게 빛이 번지는 느낌
+        var rg = g.createRadialGradient(CW * 0.28, CH * 0.12, 40, CW * 0.45, CH * 0.35, CH * 0.95);
+        rg.addColorStop(0, 'rgba(255,255,255,0.075)'); rg.addColorStop(1, 'rgba(255,255,255,0)');
+        g.fillStyle = rg; g.fillRect(0, 0, CW, CH);
+        var vg = g.createRadialGradient(CW / 2, CH / 2, CH * 0.45, CW / 2, CH / 2, CH * 0.85);
+        vg.addColorStop(0, 'rgba(0,0,0,0)'); vg.addColorStop(1, 'rgba(0,0,0,0.28)');
+        g.fillStyle = vg; g.fillRect(0, 0, CW, CH);
+      }
+      var im = g.getImageData(0, 0, CW, CH), d = im.data, seed = 7, amp = dark ? 16 : 14;
       for (var i = 0; i < d.length; i += 4) {
         seed = (seed * 16807) % 2147483647;
-        var k = ((seed / 2147483647) - 0.5) * 14;
+        var r = seed / 2147483647, k = (r - 0.5) * amp;
+        if (dark && r > 0.9993) k += 38;            // 드문 밝은 입자 (돌판·종이 섬유 느낌)
         d[i] += k; d[i + 1] += k; d[i + 2] += k;
       }
       g.putImageData(im, 0, 0);
+      GRAINS[key] = cv;
     }
-    X.drawImage(GRAIN, 0, 0);
+    X.drawImage(GRAINS[key], 0, 0);
   }
 
   /* 도넛 조각: 최대주주 측 · 5% 이상 주주 · 자기주식 · 기타 */
@@ -79,9 +111,9 @@
   }
 
   function draw(X, h, opt) {
-    var color = opt.color || '#2B59C3';
+    var color;
     X.save(); X.textAlign = 'left'; X.textBaseline = 'alphabetic';
-    grain(X);
+    theme(!!opt.dark); grain(X); color = forDark(opt.color || '#2B59C3');
 
     // 머리 (주가 추이 카드와 같은 자리·크기)
     var y0 = 205, nx = L;
@@ -127,7 +159,7 @@
       var room = x.da * rr;                                        // 그 반지름에서 조각 폭
       if (room > Math.max(nw, pw) + 26 && x.da > 0.32) {
         var tx = cx + Math.cos(x.mid) * rr, ty = cy + Math.sin(x.mid) * rr;
-        var ink = lum(x.c) < 0.62 ? '#fff' : (x.rest ? T.inkSoft : T.ink);
+        var ink = x.rest ? T.inkSoft : (lum(x.c) < 0.62 ? '#fff' : '#101216');
         X.fillStyle = ink; X.font = font(800, nfs); X.fillText(x.k, tx, ty - 24);
         X.font = font(900, pfs); X.fillText(pt, tx, ty + 18);
       } else outs.push(x);
@@ -143,7 +175,7 @@
     if (under > 0) Lb.forEach(function (p) { p.y += under; });
     Lb.forEach(function (p) {
       var x = p.x, ex = cx + Math.cos(x.mid) * (ro + 4), ey = cy + Math.sin(x.mid) * (ro + 4);
-      X.strokeStyle = '#A9AEB5'; X.lineWidth = 2;
+      X.strokeStyle = T.dark ? '#5C6169' : '#A9AEB5'; X.lineWidth = 2;
       X.beginPath(); X.moveTo(ex, ey); X.lineTo(col - 34, p.y); X.lineTo(col - 12, p.y); X.stroke();
       X.fillStyle = x.c; X.beginPath(); X.arc(col + 9, p.y - 16, 9, 0, 7); X.fill();
       X.textAlign = 'left'; X.textBaseline = 'middle';
