@@ -208,7 +208,7 @@
         seen[k[1]] = 1;
         items.push({ n: k[1], sub: j.freq === 'M' ? '월별 · ' + ym(d[d.length - 1][0]) : j.freq === 'W' ? '주별' : '일별', big: big, chg: chg, up: up, pts: pts, c: col });
       });
-      if (items.length < 2) throw new Error('지표 자료 준비 중');
+      if (items.length < 4) throw new Error('지표 자료 준비 중');
       return { fn: 'multiples', o: { h1: '', items: items.slice(0, 8) }, asof: d8(last), tail: '기준 · 최근 5년 흐름 (월별 지표는 발표 시점에 따라 1~2달 늦음)' };
     });
   }
