@@ -175,14 +175,15 @@
   #suggest .head{padding:6px 12px 8px;font-size:12px;color:var(--text-mute);border-bottom:1px solid var(--border);margin-bottom:4px}
   @media (max-width:640px){.qrow{margin-left:0}.pick>b{width:100%}.pick small{padding-left:0}.pick input{font-size:16px}}
 </style>
+<script src="./card-theme.js"></script>
 <style id="nav-wrap">
   @media (max-width: 1100px) {
     .nav { flex-wrap: wrap; border-radius: 18px; gap: 4px; padding: 4px; }
-    .nav-i { flex: 1 0 calc(16.66% - 4px); min-width: 0; border-radius: 12px; }
+    .nav-i { flex: 1 0 calc(14.28% - 4px); min-width: 0; border-radius: 12px; }
   }
   @media (max-width: 560px) {
     .nav { gap: 3px; padding: 3px; border-radius: 14px; }
-    .nav-i { flex-basis: calc(16.66% - 3px); height: 38px; padding: 0 4px; gap: 4px; border-radius: 10px; }
+    .nav-i { flex-basis: calc(14.28% - 3px); height: 38px; padding: 0 4px; gap: 4px; border-radius: 10px; }
   }
   @media (max-width: 480px) {
     .nav-i { flex-direction: column; height: 50px; gap: 3px; font-size: 11.5px; line-height: 1.1; }
@@ -193,7 +194,6 @@
     .nav-i { height: 38px; }
   }
 </style>
-<script src="./card-theme.js"></script>
 </head>
 <body>
 <div class="shell">
@@ -244,6 +244,10 @@
       <a href="./rank.html" class="nav-i">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20v-8h5v8M9 20V5h6v15M15 20v-11h5v11"/></svg>
         <span class="nav-full">시총 순위</span><span class="nav-short">순위</span>
+      </a>
+      <a href="./infographic.html" class="nav-i">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="8" height="11" rx="1.5"/><rect x="13" y="3" width="8" height="6" rx="1.5"/><rect x="13" y="11" width="8" height="10" rx="1.5"/><rect x="3" y="16" width="8" height="5" rx="1.5"/></svg>
+        <span class="nav-full">인포그래픽</span><span class="nav-short">인포</span>
       </a>
       <a href="./vs.html" class="nav-i">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h10M10 3l4 4-4 4"/><path d="M20 17H10M14 13l-4 4 4 4"/></svg>
