@@ -1158,6 +1158,18 @@
       });
     });
 
+    // 연한 막대 색을 그대로 글자로 쓰면 종이 바탕에서 흐리다 → 대비 3 이상이 될 때까지 진하게 (어두운 바탕은 card-theme.js 가 맡는다)
+    function onPaper(c) {
+      if (!/^#[0-9a-f]{6}$/i.test(c)) return c;
+      function lin(v) { v /= 255; return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); }
+      var rgb = [1, 3, 5].map(function (k) { return parseInt(c.substr(k, 2), 16); }), ink = [16, 18, 22], paper = 0.955;
+      for (var t = 0; t < 12; t++) {
+        var L = 0.2126 * lin(rgb[0]) + 0.7152 * lin(rgb[1]) + 0.0722 * lin(rgb[2]);
+        if ((paper + 0.05) / (L + 0.05) >= 3) break;
+        rgb = rgb.map(function (v, i) { return v + (ink[i] - v) * 0.15; });
+      }
+      return '#' + rgb.map(function (v) { return ('0' + Math.round(v).toString(16)).slice(-2); }).join('');
+    }
     // 구간이 적으면 막대 위에 값을 적는다
     if (showVals) {
       ctx.textAlign = 'center';
@@ -1167,7 +1179,7 @@
         barDefs.forEach(function (b, j) {
           var v = r[b.key] || 0, y = yA(v);
           var cx = gx + bw * j + (bw - (nBars === 1 ? 0 : 4)) / 2;
-          ctx.fillStyle = colors[b.color];
+          ctx.fillStyle = onPaper(colors[b.color]);
           if (v >= 0) ctx.fillText(fmtAmount(v, unit), cx, y - 12);
           else ctx.fillText(fmtAmount(v, unit), cx, y + 12 + T.type.valueLabel * 0.82);
         });
