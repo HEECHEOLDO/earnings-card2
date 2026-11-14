@@ -171,9 +171,11 @@
 </style>
 <script src="./card-theme.js"></script>
 <style id="nav-wrap">
-  @media (max-width: 1100px) {
-    .nav { flex-wrap: wrap; border-radius: 18px; gap: 4px; padding: 4px; }
-    .nav-i { flex: 1 0 calc(14.28% - 4px); min-width: 0; border-radius: 12px; }
+  .nav { flex-wrap: wrap; border-radius: 18px; gap: 4px; padding: 4px; }
+  .nav-i { flex: 1 0 calc(14.28% - 4px); min-width: 0; border-radius: 12px; padding: 0 8px; }
+  @media (max-width: 1000px) {
+    .nav-full { display: none; }
+    .nav-short { display: inline; }
   }
   @media (max-width: 560px) {
     .nav { gap: 3px; padding: 3px; border-radius: 14px; }

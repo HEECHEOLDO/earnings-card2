@@ -138,6 +138,21 @@
       .map(function (k) { return ['us:' + k, ko(k, us[k].n)]; });
     return kr.concat(u);
   }
+
+  function pct1(v) { return (v > 0 ? '+' : '') + v.toFixed(1) + '%'; }
+  var IDXOPT = [['KOSPI', '코스피'], ['KOSDAQ', '코스닥'], ['SPX', 'S&P 500'], ['NDX', '나스닥 100'], ['SOX', '필라델피아 반도체'], ['N225', '닛케이 225']];
+  var IDXN = {}; IDXOPT.forEach(function (x) { IDXN[x[0]] = x[1]; });
+  // 지수: 주별(약 10년) + 일별(최근 1년)을 합친 종가
+  function IDXS(code) {
+    return JJ('./data/chart/idx/' + code + '.json').then(function (j) {
+      var m = {}; (j.w || []).forEach(function (p) { m[p[0]] = p[1]; }); (j.d || []).forEach(function (p) { m[p[0]] = p[1]; });
+      return Object.keys(m).map(Number).sort(function (a, b) { return a - b; }).map(function (k) { return [k, m[k]]; });
+    });
+  }
+  function IDXY(code) {
+    var y0 = +D.asof.slice(0, 4) * 10000;
+    return IDXS(code).then(function (p) { var b = p.filter(function (x) { return x[0] < y0; }).slice(-1)[0], e = p[p.length - 1]; return b ? (e[1] / b[1] - 1) * 100 : 0; });
+  }
   function ko(code, n) { return (window.US_KO && window.US_KO[code]) || n; }
 
   var CARDS = [
@@ -429,6 +444,140 @@
       return Promise.all([].concat.apply([], pairs.map(function (p) { return [logo(p.a, true), logo(p.b)]; }))).then(function () {
         return { fn: 'rivals', o: { kicker: '한미 맞수 비교 · 원 넓이 = 시가총액', h1: '같은 업종, 크기는 최대 ' + Math.round(mx) + '배 차이', pairs: pairs }, tail: '종가 기준 · 환율 ' + Math.round(D.fx).toLocaleString() + '원' };
       });
+    } },
+    /* ---------------- 3차: 분포 · 기여도 · 이익 비중 · 달력 · 월별 · 하락폭 · 산점도 · 배당 · 순위 변화 · 이익 TOP ---------------- */
+    { id: 'breadth', name: '지수 vs 내 종목', icon: '▅', opts: MKT, build: function (mk) {
+      var st = D.st, ys = Object.keys(st).filter(function (c) { return st[c].y != null && (mk === 'all' || st[c].m === mk); }).map(function (c) { return st[c].y; }).sort(function (a, b) { return a - b; });
+      return IDXY(mk === 'kosdaq' ? 'KOSDAQ' : 'KOSPI').then(function (iy) {
+        var bins = [], lo = -80, step = 20;
+        for (var b = lo; b < 220; b += step) bins.push({ lo: b, hi: b + step, n: 0, tick: (b > 0 ? '+' : '') + b + '%' });
+        bins[bins.length - 1].tickEnd = '+220%↑';
+        ys.forEach(function (v) { var i = Math.floor((Math.max(lo, Math.min(219.9, v)) - lo) / step); bins[i].n++; });
+        var up = ys.filter(function (v) { return v > 0; }).length, beat = ys.filter(function (v) { return v > iy; }).length, med = ys[Math.floor(ys.length / 2)];
+        var nm = mk === 'kosdaq' ? '코스닥' : '코스피';
+        return { fn: 'hist', o: { kicker: MKN[mk] + ' ' + ys.length.toLocaleString() + '종목 올해 수익률', h1: nm + ' ' + pct1(iy) + ', 종목 중간값은 ' + pct1(med),
+          stats: [[up.toLocaleString() + '곳', '올랐다', '#D6362C'], [(ys.length - up).toLocaleString() + '곳', '내렸다', '#2B6CD9'], [Math.round(beat / ys.length * 100) + '%', nm + ' 지수보다 더 오른 종목']],
+          bins: bins, mark: { v: iy, label: nm + ' 지수 ' + pct1(iy) }, axis: '연초 대비 수익률 (칸 하나 = 20%p)' } };
+      });
+    } },
+    { id: 'contrib', name: '누가 시총을 올렸나', icon: '⊕', build: function () {
+      var st = D.st, g = Object.keys(st).filter(function (c) { return st[c].y != null && st[c].c; }).map(function (c) { var c1 = st[c].c, c0 = c1 / (1 + st[c].y / 100); return { code: c, n: st[c].n, d: c1 - c0 }; });
+      var tot = g.reduce(function (t, x) { return t + x.d; }, 0); g.sort(function (a, b) { return b.d - a.d; });
+      var top = g.slice(0, 12), rest = tot - top.reduce(function (t, x) { return t + x.d; }, 0), two = (top[0].d + top[1].d) / tot * 100;
+      var rows = top.map(function (x) { return { code: x.code, n: x.n, v: x.d, lab: (x.d >= 0 ? '+' : '') + jo(x.d), sub: '늘어난 시총의 ' + Math.round(x.d / tot * 100) + '%', c: x.d >= 0 ? '#D6362C' : '#2B6CD9' }; });
+      rows.push({ n: '그 외 ' + (g.length - 12).toLocaleString() + '종목', v: rest, lab: (rest >= 0 ? '+' : '') + jo(rest), sub: '늘어난 시총의 ' + Math.round(rest / tot * 100) + '%', c: '#9A9890' });
+      return Promise.all(rows.map(function (r) { return r.code ? logo(r) : null; })).then(function () {
+        return { fn: 'bars', o: { kicker: '올해 늘어난 시가총액 ' + jo(tot), h1: two > 100 ? top[0].n + '·' + top[1].n + ', 둘이 늘린 게 전체보다 많다' : top[0].n + '·' + top[1].n + ', 둘이 ' + Math.round(two) + '%를 올렸다', rows: rows } };
+      });
+    } },
+    { id: 'profitshare', name: '시총 비중 vs 이익 비중', icon: '⇋', build: function () {
+      return SCREEN().then(function (S) {
+        var st = D.st, rows = D.inds.slice(0, 14).map(function (g) {
+          var op = g.codes.reduce(function (t, c) { return t + (S[c] && S[c].op > 0 ? S[c].op : 0); }, 0);
+          return { n: (g.short || g.name).trim(), cap: g.sum, op: op };
+        });
+        var allOp = Object.keys(S).reduce(function (t, c) { return t + (S[c].op > 0 && st[c] ? S[c].op : 0); }, 0);
+        rows.forEach(function (r) { r.a = r.cap / D.total * 100; r.b = r.op / allOp * 100; });
+        var t = rows[0];
+        return { fn: 'butterfly', o: { kicker: '덩치와 실속', h1: t.n + ', 시총은 ' + Math.round(t.a) + '% 이익은 ' + Math.round(t.b) + '%', rows: rows,
+          left: '시가총액 비중', right: "영업이익 비중('" + String(+D.asof.slice(0, 4) - 1).slice(2) + '년)', ca: '#4A5A78', cb: '#2E9E6B',
+          note: '이익보다 시총 비중이 크면 → 앞으로 더 벌 거라고 보는 업종' }, tail: '종가 · 직전 연도 실적 기준' };
+      });
+    } },
+    { id: 'calendar', name: '1년 등락 달력', icon: '▦', opts: IDXOPT, build: function (code) {
+      return JJ('./data/chart/idx/' + code + '.json').then(function (j) {
+        var d = j.d, days = [];
+        for (var i = 1; i < d.length; i++) days.push([d[i][0], (d[i][1] / d[i - 1][1] - 1) * 100]);
+        days = days.slice(-260);
+        var up = days.filter(function (x) { return x[1] > 0; }).length, best = days.reduce(function (a, x) { return x[1] > a[1] ? x : a; }), worst = days.reduce(function (a, x) { return x[1] < a[1] ? x : a; });
+        var dd = function (x) { var s = String(x[0]); return (+s.slice(4, 6)) + '/' + (+s.slice(6)); };
+        var last = String(d[d.length - 1][0]);
+        return { fn: 'calendar', o: { kicker: IDXN[code] + ' 하루하루', h1: '1년 중 오른 날 ' + up + '일, 내린 날 ' + (days.length - up) + '일', days: days,
+          note: '최고 ' + dd(best) + ' ' + pct1(best[1]) + ' · 최악 ' + dd(worst) + ' ' + pct1(worst[1]) }, asof: last.slice(0, 4) + '-' + last.slice(4, 6) + '-' + last.slice(6) };
+      });
+    } },
+    { id: 'monthly', name: '월별 수익률 표', icon: '▤', opts: IDXOPT, build: function (code) {
+      return IDXS(code).then(function (pts) {
+        var me = {}; pts.forEach(function (p) { me[String(p[0]).slice(0, 6)] = p; });
+        var ks = Object.keys(me).sort(), rows = {}, total = {}, years = [];
+        for (var i = 1; i < ks.length; i++) {
+          var y = +ks[i].slice(0, 4), m = +ks[i].slice(4) - 1, v = (me[ks[i]][1] / me[ks[i - 1]][1] - 1) * 100;
+          if (!rows[y]) { rows[y] = [null, null, null, null, null, null, null, null, null, null, null, null]; years.push(y); }
+          rows[y][m] = v;
+        }
+        years = years.filter(function (y) { return rows[y].filter(function (v) { return v != null; }).length >= 3; }).slice(-10);
+        years.forEach(function (y) { var e = ks.filter(function (k) { return +k.slice(0, 4) === y; }).pop(), b = ks.filter(function (k) { return +k.slice(0, 4) === y - 1; }).pop(); total[y] = b ? (me[e][1] / me[b][1] - 1) * 100 : null; });
+        var avg = []; for (var m2 = 0; m2 < 12; m2++) { var vs = years.map(function (y) { return rows[y][m2]; }).filter(function (v) { return v != null; }); avg.push(vs.reduce(function (s, v) { return s + v; }, 0) / (vs.length || 1)); }
+        var bm = avg.indexOf(Math.max.apply(null, avg)), wm = avg.indexOf(Math.min.apply(null, avg)), last = String(pts[pts.length - 1][0]);
+        return { fn: 'heatgrid', o: { kicker: IDXN[code] + ' 월별 수익률', h1: years.length + '년 평균, ' + (bm + 1) + '월이 가장 좋았다', years: years, rows: rows, total: total,
+          note: '가장 약했던 달은 ' + (wm + 1) + '월 (평균 ' + pct1(avg[wm]) + ')' }, asof: last.slice(0, 4) + '-' + last.slice(4, 6) + '-' + last.slice(6) };
+      });
+    } },
+    { id: 'drawdown', name: '고점 대비 하락폭', icon: '⌄', build: function () {
+      var C = [['KOSPI', '코스피', '#D6362C'], ['SPX', 'S&P 500', '#2B6CD9'], ['KOSDAQ', '코스닥', '#E0A43A']];
+      return Promise.all(C.map(function (c) { return IDXS(c[0]); })).then(function (all) {
+        var t0 = Math.max.apply(null, all.map(function (p) { return p[0][0]; })), t1 = Math.max.apply(null, all.map(function (p) { return p[p.length - 1][0]; }));
+        var num = function (n) { var s = String(n); return new Date(+s.slice(0, 4), +s.slice(4, 6) - 1, +s.slice(6)).getTime(); }, a = num(t0), b = num(t1);
+        var series = C.map(function (c, k) {
+          var mx = 0, pts = [];
+          all[k].forEach(function (p) { if (p[1] > mx) mx = p[1]; if (p[0] >= t0) { var s = String(p[0]); pts.push([(num(p[0]) - a) / (b - a), (p[1] / mx - 1) * 100, "'" + s.slice(2, 4) + '.' + (+s.slice(4, 6))]); } });
+          return { n: c[1], c: c[2], pts: pts };
+        });
+        var ticks = []; for (var y = +String(t0).slice(0, 4) + 1; y <= +String(t1).slice(0, 4); y++) { var tt = (new Date(y, 0, 1).getTime() - a) / (b - a); if (tt > 0.02 && tt < 0.98) ticks.push([tt, "'" + String(y).slice(2)]); }
+        var k0 = series[0], cur = k0.pts[k0.pts.length - 1][1], worst = k0.pts.reduce(function (m, p) { return p[1] < m ? p[1] : m; }, 0);
+        var last = String(t1);
+        return { fn: 'underwater', o: { kicker: '고점에서 얼마나 빠졌나', h1: '코스피 ' + Math.round((b - a) / 3.156e10) + '년, 최대 ' + Math.round(worst) + '%까지 빠졌다', series: series, ticks: ticks,
+          note: '지금 코스피는 고점 대비 ' + (cur > -0.5 ? '사상 최고 근처' : Math.round(cur) + '%') }, asof: last.slice(0, 4) + '-' + last.slice(4, 6) + '-' + last.slice(6) };
+      });
+    } },
+    { id: 'scatter', name: '이익과 주가', icon: '⁘', build: function () {
+      return SCREEN().then(function (S) {
+        var st = D.st, pts = Object.keys(st).filter(function (c) { var r = S[c]; return c.slice(-1) === '0' && st[c].y != null && r && r.qOpYoy != null && !r.qTurn; })
+          .sort(function (a, b) { return st[b].c - st[a].c; }).slice(0, 40).map(function (c) {
+            var x = S[c].qOpYoy, y = st[c].y; return { code: c, n: st[c].n, x: x, y: y, v: st[c].c, c: x >= 0 && y >= 0 ? '#D6362C' : x < 0 && y < 0 ? '#2B6CD9' : '#9A9890' };
+          });
+        var same = pts.filter(function (p) { return (p.x >= 0) === (p.y >= 0); }).length;
+        return Promise.all(pts.map(function (p) { return logo(p); })).then(function () {
+          return { fn: 'scatter', o: { kicker: '시총 상위 ' + pts.length + '곳 · 원 크기 = 시총', h1: '이익이 늘면 주가도 올랐을까? ' + same + '곳은 같은 방향', pts: pts,
+            xr: [-100, 300], yr: [-60, 250], xt: [-100, -50, 0, 50, 100, 200, 300], yt: [-50, 0, 50, 100, 150, 200, 250], xl: '최근 분기 영업이익 (1년 전 대비)', yl: '올해 주가 수익률',
+            q1: '이익↑ 주가↑', q3: '이익↓ 주가↓', labels: 16 }, tail: '종가 · 최근 분기 실적 기준' };
+        });
+      });
+    } },
+    { id: 'dividend', name: '배당수익률 TOP', icon: '¤', opts: MKT, build: function (mk) {
+      return SCREEN().then(function (S) {
+        var st = D.st, rows = Object.keys(S).filter(function (c) { var r = S[c]; return st[c] && st[c].c >= 5000 && (mk === 'all' || st[c].m === mk) && r.yield != null && r.yield < 12 && r.divYears >= 3; })
+          .sort(function (a, b) { return S[b].yield - S[a].yield; }).slice(0, 15).map(function (c) {
+            var r = S[c]; return { code: c, n: st[c].n, v: r.yield, lab: r.yield.toFixed(1) + '%', sub: (D.sec[c] || '') + ' · 배당 ' + r.divYears + '년째' + (r.divGrowYears >= 3 ? ' · ' + r.divGrowYears + '년 연속 증가' : ''), c: r.divGrowYears >= 3 ? '#2E9E6B' : '#7FB89B' };
+          });
+        return Promise.all(rows.map(function (r) { return logo(r); })).then(function () {
+          return { fn: 'bars', o: { kicker: '배당수익률 TOP 15 · ' + MKN[mk], h1: '1,000만 원 넣으면 1년 배당 ' + Math.round(rows[0].v * 10) + '만 원', rows: rows,
+            legend: [['3년 이상 연속 배당 증가', '#2E9E6B'], ['그 외', '#7FB89B']] }, tail: '종가 · 직전 연도 주당 배당금 기준 (시총 5,000억 이상, 3년 이상 배당)' };
+        });
+      });
+    } },
+    { id: 'slope', name: '작년 말 vs 지금 순위', icon: '⟋', build: function () {
+      var y = String(+D.asof.slice(0, 4) - 1), A = (D.rank.cols[y] || {}).kospi || [], B = (D.kr.kospi || []).filter(function (x) { return x.code.slice(-1) === '0'; }), N = 15;
+      var ra = {}, rb = {}, nm = {}; A.forEach(function (r, i) { ra[r[0]] = i + 1; nm[r[0]] = r[1]; }); B.forEach(function (r, i) { rb[r.code] = i + 1; nm[r.code] = r.name; });
+      var codes = Object.keys(nm).filter(function (c) { return (ra[c] && ra[c] <= N) || (rb[c] && rb[c] <= N); });
+      var rows = codes.map(function (c) { var a = ra[c] || null, b = rb[c] || null, d = a && b ? a - b : null; return { code: c, n: nm[c], a: a, b: b, hi: d != null && Math.abs(d) >= 3, c: d == null ? (b && b <= N ? '#D6362C' : '#9A9890') : d > 0 ? '#D6362C' : d < 0 ? '#2B6CD9' : '#9A9890' }; });
+      var moved = rows.filter(function (r) { return r.a !== r.b; }).length;
+      return Promise.all(rows.map(function (r) { return logo(r); })).then(function () {
+        return { fn: 'slope', o: { kicker: '코스피 시총 순위 TOP ' + N, h1: "'" + y.slice(2) + '년 말과 지금, ' + moved + '곳 순위가 바뀌었다', rows: rows, n: N, la: "'" + y.slice(2) + '년 말', lb: '지금' } };
+      });
+    } },
+    { id: 'profit', name: '돈 잘 버는 회사', icon: '₩', build: function () {
+      return SCREEN().then(function (S) {
+        var st = D.st, secs = [], col = {}, rows = Object.keys(S).filter(function (c) { return S[c].op != null && st[c]; }).sort(function (a, b) { return S[b].op - S[a].op; }).slice(0, 15).map(function (c) {
+          var r = S[c], s = D.sec[c] || '기타'; if (!(s in col)) { col[s] = PAL[secs.length % PAL.length]; secs.push(s); }
+          return { code: c, n: st[c].n, v: r.op, lab: jo(r.op), sub: s + ' · 영업이익률 ' + Math.round(r.margin) + '%', c: col[s] };
+        });
+        var y = String(+D.asof.slice(0, 4) - 1);
+        return Promise.all(rows.map(function (r) { return logo(r); })).then(function () {
+          return { fn: 'bars', o: { kicker: "'" + y.slice(2) + '년 영업이익 TOP 15', h1: '한국에서 돈 제일 잘 버는 회사는 ' + rows[0].n, rows: rows, legend: secs.slice(0, 6).map(function (s) { return [s, col[s]]; }) },
+            src: "'" + y.slice(2) + '년 연간 실적 기준 (DART)' };
+        });
+      });
     } }
 
   ];
@@ -438,9 +587,13 @@
     var cv = $('card'); if (!cv) return;
     var X = cv.getContext('2d'), cur = null, last = null, cache = {};
     var bar = $('kinds');
+    var GRP = [['한국 증시', ['treemap', 'ranked', 'breadth', 'contrib', 'dumbbell', 'radial', 'compare']], ['순위·역사', ['bump', 'slope', 'thennow', 'drawdown', 'monthly', 'calendar']],
+      ['실적·배당', ['sankey', 'surprise', 'margin', 'profit', 'profitshare', 'scatter', 'dividend']], ['미국·세계', ['voronoi', 'usmap', 'usranked', 'world', 'rivals']],
+      ['투자·주주', ['quilt', 'growth', 'waffle', 'holders']]], gbox = {};
+    GRP.forEach(function (g) { var d = document.createElement('div'); d.className = 'kgrp'; d.innerHTML = '<span>' + g[0] + '</span>'; bar.appendChild(d); g[1].forEach(function (id) { gbox[id] = d; }); });
     CARDS.forEach(function (c) {
       var b = document.createElement('button'); b.className = 'preset'; b.dataset.k = c.id; b.setAttribute('aria-pressed', 'false');
-      b.innerHTML = '<span aria-hidden="true">' + c.icon + '</span> ' + c.name; bar.appendChild(b);
+      b.innerHTML = '<span aria-hidden="true">' + c.icon + '</span> ' + c.name; (gbox[c.id] || bar.lastChild).appendChild(b);
       b.addEventListener('click', function () { pick(c.id); });
     });
     function draw() { if (!last) return; X.setTransform(1, 0, 0, 1, 0, 0); window.__vc[last.fn](X, last.o); }
@@ -456,7 +609,7 @@
     }
     function pick(id) {
       cur = id;
-      Array.prototype.forEach.call(bar.children, function (b) { b.setAttribute('aria-pressed', String(b.dataset.k === id)); });
+      Array.prototype.forEach.call(bar.querySelectorAll('button'), function (b) { b.setAttribute('aria-pressed', String(b.dataset.k === id)); });
       var c = CARDS.filter(function (x) { return x.id === id; })[0], list = optsOf(c);
       if (list && !list.some(function (o) { return o[0] === sel[id]; })) sel[id] = list[0][0];
       drawOpts(c);
@@ -469,9 +622,17 @@
         var a = r.asof || (id === 'voronoi' ? D.us.asof : D.asof) || '', p = a.split('-');
         r.o.h2 = ''; r.o.src = r.src || (p.length === 3 ? "'" + p[0].slice(2) + '년 ' + (+p[1]) + '월 ' + (+p[2]) + '일 ' + (r.tail || '종가 기준') : '');
         last = r; last.name = c.name + (list ? '_' + list.filter(function (o) { return o[0] === sel[id]; })[0][1] : '');
-        draw(); $('c-hint').textContent = c.name + ' · 최신 자료로 방금 다시 계산했어요.';
+        if (!r.auto) r.auto = { k: r.o.kicker, h: r.o.h1 };
+        // 직접 고친 제목은 같은 카드·같은 선택지로 돌아와도 남는다
+        var ed = edits[key]; r.o.kicker = ed ? ed.k : r.auto.k; r.o.h1 = ed ? ed.h : r.auto.h; last.key = key;
+        $('c-kicker').value = r.o.kicker; $('c-title').value = r.o.h1;
+        draw(); $('c-hint').textContent = c.name + ' · 최신 자료로 방금 다시 계산했어요. 윗줄·제목은 직접 고칠 수 있어요.';
       }).catch(function (e) { delete cache[key]; $('c-hint').textContent = '이 카드를 그리지 못했어요 (' + (e && e.message || e) + ').'; });
     }
+    var edits = {};
+    function onEdit() { if (!last) return; last.o.kicker = $('c-kicker').value; last.o.h1 = $('c-title').value; edits[last.key] = { k: last.o.kicker, h: last.o.h1 }; draw(); }
+    $('c-kicker').addEventListener('input', onEdit); $('c-title').addEventListener('input', onEdit);
+    $('c-reset').addEventListener('click', function () { if (!last) return; delete edits[last.key]; last.o.kicker = last.auto.k; last.o.h1 = last.auto.h; $('c-kicker').value = last.o.kicker; $('c-title').value = last.o.h1; draw(); });
     $('c-dl').addEventListener('click', function () {
       if (!last) return;
       var big = document.createElement('canvas'); big.width = 1080 * 3; big.height = 1350 * 3;

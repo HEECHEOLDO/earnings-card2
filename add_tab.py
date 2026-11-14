@@ -101,14 +101,16 @@ def nav_html(here):
 
 NAV_RE = re.compile(r'<nav class="nav"[^>]*>.*?</nav>', re.S)
 
-# 메뉴 줄바꿈 — 넓은 화면은 한 줄, 좁은 화면(태블릿·휴대폰)은 두 줄(7칸 + 6칸).
+# 메뉴 줄바꿈 — 13칸이라 어느 화면이든 두 줄(7칸 + 6칸). 1000px 아래에서는 짧은 이름.
 # 화면마다 따로 적힌 메뉴 모양 뒤에 덧붙여 덮어쓴다. 몇 번 돌려도 한 덩어리만 남는다.
 NAV_CSS_RE = re.compile(r'\s*<style id="nav-wrap">.*?</style>', re.S)
 NAV_CSS = """
 <style id="nav-wrap">
-  @media (max-width: 1100px) {
-    .nav { flex-wrap: wrap; border-radius: 18px; gap: 4px; padding: 4px; }
-    .nav-i { flex: 1 0 calc(14.28% - 4px); min-width: 0; border-radius: 12px; }
+  .nav { flex-wrap: wrap; border-radius: 18px; gap: 4px; padding: 4px; }
+  .nav-i { flex: 1 0 calc(14.28% - 4px); min-width: 0; border-radius: 12px; padding: 0 8px; }
+  @media (max-width: 1000px) {
+    .nav-full { display: none; }
+    .nav-short { display: inline; }
   }
   @media (max-width: 560px) {
     .nav { gap: 3px; padding: 3px; border-radius: 14px; }
@@ -146,6 +148,8 @@ def main():
         new = NAV_CSS_RE.sub("", new)
         if "</head>" in new:
             new = new.replace("</head>", NAV_CSS.lstrip("\n") + "\n</head>", 1)
+        elif "<body" in new:                      # </head> 를 안 쓴 화면 (buy.html)
+            new = new.replace("<body", NAV_CSS.lstrip("\n") + "\n<body", 1)
         if HEALTH_TAG not in new and "</body>" in new:
             new = new.replace("</body>", HEALTH_TAG + "\n</body>", 1)
         if new == s:

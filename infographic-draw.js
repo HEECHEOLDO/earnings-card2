@@ -50,7 +50,7 @@
   function head(X, kicker, h1, h2) {
     X.textAlign = 'left'; X.textBaseline = 'alphabetic';
     X.fillStyle = T.up; X.font = font(800, 26); X.fillText(kicker, L, 110);
-    X.fillStyle = T.ink; X.font = font(900, 64); X.fillText(h1, L, 186);
+    X.fillStyle = T.ink; var hp = 64; X.font = font(900, hp); while (hp > 40 && X.measureText(h1).width > R - L) { hp -= 2; X.font = font(900, hp); } X.fillText(h1, L, 186);
     X.fillStyle = T.soft; X.font = font(600, 30); X.fillText(h2, L, 236);
   }
   function foot(X, src) {
@@ -143,7 +143,7 @@
   function head(X, kicker, h1, h2) {
     X.textAlign = 'left'; X.textBaseline = 'alphabetic';
     X.fillStyle = T.up; X.font = font(800, 26); X.fillText(kicker, L, 110);
-    X.fillStyle = T.ink; X.font = font(900, 60); X.fillText(h1, L, 184);
+    X.fillStyle = T.ink; var hp = 60; X.font = font(900, hp); while (hp > 40 && X.measureText(h1).width > R - L) { hp -= 2; X.font = font(900, hp); } X.fillText(h1, L, 184);
     X.fillStyle = T.soft; X.font = font(600, 30); X.fillText(h2, L, 232);
   }
   function foot(X, src) {
@@ -230,7 +230,7 @@
   function head(X, kicker, h1, h2) {
     X.textAlign = 'left'; X.textBaseline = 'alphabetic';
     X.fillStyle = T.up; X.font = font(800, 26); X.fillText(kicker, L, 110);
-    X.fillStyle = T.ink; X.font = font(900, 60); X.fillText(h1, L, 184);
+    X.fillStyle = T.ink; var hp = 60; X.font = font(900, hp); while (hp > 40 && X.measureText(h1).width > R - L) { hp -= 2; X.font = font(900, hp); } X.fillText(h1, L, 184);
     X.fillStyle = T.soft; X.font = font(600, 30); X.fillText(h2, L, 232);
   }
   function foot(X, src) {

@@ -73,6 +73,12 @@
     padding:9px 14px;border-radius:999px;border:1px solid var(--border-strong);
     background:var(--surface);color:var(--text)}
   .preset:hover{border-color:var(--accent);color:var(--accent)}
+  .pick>b{width:100%}
+  .pick small{padding-left:0}
+  #kinds{flex-direction:column;gap:8px!important;width:100%}
+  .kgrp{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+  .kgrp>span{font-size:12px;font-weight:700;color:var(--text-mute);width:78px;flex:none}
+  @media (max-width:640px){.kgrp>span{width:100%}}
   #opts{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;padding-top:10px;border-top:1px dashed var(--border-strong)}
   #opts[hidden]{display:none}
   .chip{font-family:inherit;font-size:12.5px;font-weight:600;cursor:pointer;padding:6px 11px;border-radius:8px;border:1px solid var(--border-strong);background:var(--bg);color:var(--text-2, var(--text))}
@@ -181,9 +187,11 @@
 </style>
 <script src="./card-theme.js"></script>
 <style id="nav-wrap">
-  @media (max-width: 1100px) {
-    .nav { flex-wrap: wrap; border-radius: 18px; gap: 4px; padding: 4px; }
-    .nav-i { flex: 1 0 calc(14.28% - 4px); min-width: 0; border-radius: 12px; }
+  .nav { flex-wrap: wrap; border-radius: 18px; gap: 4px; padding: 4px; }
+  .nav-i { flex: 1 0 calc(14.28% - 4px); min-width: 0; border-radius: 12px; padding: 0 8px; }
+  @media (max-width: 1000px) {
+    .nav-full { display: none; }
+    .nav-short { display: inline; }
   }
   @media (max-width: 560px) {
     .nav { gap: 3px; padding: 3px; border-radius: 14px; }
@@ -268,15 +276,18 @@
     </nav>
 
   <div class="pick">
-    <b>인포그래픽</b>
+    <b style="width:100%">인포그래픽</b>
     <div class="presets" id="kinds" role="group" aria-label="인포그래픽 종류" style="display:flex;flex-wrap:wrap;gap:6px"></div>
     <div id="opts" role="group" aria-label="세부 선택" hidden></div>
-    <small>사이트에 모인 시가총액·실적·지수·수익률·주주·포트폴리오 자료로 그린 그림 카드예요. 열 때마다 최신 자료로 다시 계산하고, 제목도 숫자에 맞춰 바뀝니다.</small>
+    <small style="padding-left:0">사이트에 모인 시가총액·실적·지수·수익률·주주·포트폴리오 자료로 그린 그림 카드예요. 열 때마다 최신 자료로 다시 계산하고, 제목도 숫자에 맞춰 바뀝니다.</small>
   </div>
 
   <div class="cardbox">
     <canvas id="card" width="1080" height="1350" aria-label="인포그래픽 카드 미리보기"></canvas>
     <div class="cardctl">
+      <label>윗줄 <input type="text" id="c-kicker" autocomplete="off"></label>
+      <label>제목 <input type="text" id="c-title" autocomplete="off"></label>
+      <button class="btn" id="c-reset">자동 제목으로 되돌리기</button>
       <button class="btn btn-primary" id="c-dl">PNG 내려받기 (3240×4050)</button>
       <p class="hint" id="c-hint"></p>
     </div>
@@ -291,6 +302,7 @@
 <script src="./us_ko.js"></script>
 <script src="./infographic-draw.js"></script>
 <script src="./infographic-draw2.js"></script>
+<script src="./infographic-draw3.js"></script>
 <script src="./infographic-data.js"></script>
 <script src="./health.js" defer></script>
 </body>
