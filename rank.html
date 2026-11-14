@@ -870,8 +870,30 @@
   ['rv-from', 'rv-per', 'rv-tail', 'rv-ratio', 'rv-n', 'rv-step'].forEach(function (id) { $(id).addEventListener('change', rvLen); $(id).addEventListener('input', rvLen); });
   $('mk').addEventListener('change', rvSetup);
 
+  // 국내 '현재' 칸: 공공데이터포털은 하루 늦게 올라오니, 시가총액 탭(data/mcap.json, 네이버 장 마감 값)이 더 새것이면 그걸로 바꾼다
+  function freshNow(j) {
+    return fetch('./data/mcap.json', { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; })
+      .then(function (m) {
+        var now = j && j.cols && j.cols.now;
+        if (!m || !now || !m.asof || !(m.asof > (now.date || ''))) return j;
+        function rows(list) {
+          return (list || []).filter(function (x) { return x.code && x.code.slice(-1) === '0' && x.cap > 0; })     // 보통주만 (collect_rank.py 와 같게)
+            .map(function (x) { return [x.code, x.name, Math.round(x.cap)]; });
+        }
+        var kp = rows(m.kospi), kq = rows(m.kosdaq);
+        if (kp.length < 10) return j;
+        var by = function (p, q) { return q[2] - p[2]; }, TOPN = (now.kospi || []).length || 50;
+        now.kospi = kp.sort(by).slice(0, TOPN);
+        now.kosdaq = kq.sort(by).slice(0, TOPN);
+        now.all = kp.concat(kq).sort(by).slice(0, TOPN);
+        now.date = m.asof; now.src = 'naver';
+        return j;
+      });
+  }
+
   fetch('./data/rank.json', { cache: 'no-cache' })
     .then(function (r) { if (!r.ok) throw 0; return r.json(); })
+    .then(freshNow)
     .then(function (j) {
       DATA = j; lastRegion = 'kr'; preset(keys().length > 12 ? 'five' : 'all');
       var ks = keys(), first = ks[0], last = ks.filter(function (k) { return k !== 'now'; }).pop();
