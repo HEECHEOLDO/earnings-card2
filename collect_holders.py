@@ -22,6 +22,7 @@ from datetime import date
 import collect as C
 
 OUT = os.path.join("data", "holders")
+BUDGET = int(os.environ.get("HOLDERS_BUDGET", "9000"))   # 한 번에 쓰는 DART 호출 수 (하루 한도 2만 회)
 # 보고서 코드: 사업 11011 · 반기 11012 · 1분기 11013 · 3분기 11014
 REPORTS = [("11014", "3분기보고서", "09-30"), ("11012", "반기보고서", "06-30"),
            ("11013", "1분기보고서", "03-31"), ("11011", "사업보고서", "12-31")]
@@ -47,6 +48,17 @@ def candidates(today):
         for code, nm, md in REPORTS:
             out.append((str(y), code, nm, "%d-%s" % (y, md)))
     return out
+
+
+def newest_possible(today):
+    """오늘 기준으로 나와 있을 수 있는 가장 새 정기보고서의 기준일 (분기 45일 · 사업 90일 뒤 제출 마감)"""
+    best = None
+    for y, rc, nm, asof in candidates(today):
+        d = date(int(asof[:4]), int(asof[5:7]), int(asof[8:10]))
+        if (today - d).days >= (90 if rc == "11011" else 45):
+            if best is None or asof > best:
+                best = asof
+    return best
 
 
 def latest(corp, endpoint, today, ok=None):
@@ -83,6 +95,8 @@ def one(code, cm, today, force=False):
     if os.path.exists(path):
         old = json.load(open(path, encoding="utf-8"))
 
+    if old and not force and old.get("asof") == newest_possible(today):
+        return old, "그대로"                      # 나올 수 있는 가장 새 보고서를 이미 받았다 — 묻지도 않는다
     major, rep = latest(corp, "hyslrSttus.json", today, has_people)
     if not major:
         return None, "최대주주 자료 없음"
@@ -113,8 +127,15 @@ def one(code, cm, today, force=False):
             if "합계" in (r.get("se") or ""):
                 issued, treasury = n(r.get("istc_totqy")), n(r.get("tesstk_co"))
 
+    # 소액주주: 같은 보고서에 없으면 가장 최근 사업보고서 (호출 수를 아끼려고 두 곳만 본다)
     minor = None
-    mr, mrep = latest(corp, "mrhlSttus.json", today)
+    mr, mrep = None, None
+    for yy, rr_, nm2, as2 in [(y, rc, rname, asof), (str(int(y) - (0 if rc == "11011" else 1)), "11011", "사업보고서",
+                                                      "%d-12-31" % (int(y) - (0 if rc == "11011" else 1)))]:
+        mr = rows_of(C.api_get("mrhlSttus.json", {"corp_code": corp, "bsns_year": yy, "reprt_code": rr_}))
+        if mr:
+            mrep = (yy, rr_, nm2, as2)
+            break
     for r in mr or []:
         hc, rate = n(r.get("shrholdr_co")), n(r.get("hold_stock_rate"))
         if hc:
@@ -161,8 +182,7 @@ def main():
         codes = args
     else:
         idx = json.load(open(os.path.join("data", "index.json"), encoding="utf-8"))
-        items = idx.get("items") or idx
-        codes = sorted(k for k in (items if isinstance(items, dict) else [x.get("code") for x in items]) if k in cm)
+        codes = sorted(x["code"] for x in idx.get("companies") or [] if x.get("code") in cm)
     os.makedirs(OUT, exist_ok=True)
     today = date.today()
     cnt = {}
@@ -181,8 +201,26 @@ def main():
             print("!! 중단:", C.ABORT)
             break
         if i % 100 == 0:
-            print("  %d/%d %s" % (i, len(codes), cnt), flush=True)
-    print("끝:", cnt)
+            print("  %d/%d %s · DART 호출 %d" % (i, len(codes), cnt, C._call_count), flush=True)
+        if C._call_count >= BUDGET:
+            print("  호출 %d회 — 오늘은 여기까지 (DART 하루 한도를 실적 수집과 나눠 쓴다). 다음 실행 때 이어서" % C._call_count)
+            break
+    write_index()
+    print("끝:", cnt, "· DART 호출", C._call_count)
+
+
+def write_index():
+    """data/holders/index.json — 탭의 종목 목록 {코드: [이름, 기준일]}"""
+    items = {}
+    for f in sorted(os.listdir(OUT)):
+        if f.endswith(".json") and f[:6].isdigit():
+            try:
+                j = json.load(open(os.path.join(OUT, f), encoding="utf-8"))
+                items[f[:-5]] = [j.get("name"), j.get("asof")]
+            except Exception:                     # noqa: BLE001
+                pass
+    with open(os.path.join(OUT, "index.json"), "w", encoding="utf-8") as f:
+        json.dump({"updated": date.today().isoformat(), "items": items}, f, ensure_ascii=False, separators=(",", ":"))
 
 
 if __name__ == "__main__":
