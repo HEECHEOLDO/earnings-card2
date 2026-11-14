@@ -789,17 +789,17 @@
         var a = r.asof || (id === 'voronoi' ? D.us.asof : D.asof) || '', p = a.split('-');
         r.o.h2 = ''; r.o.src = r.src || (p.length === 3 ? "'" + p[0].slice(2) + '년 ' + (+p[1]) + '월 ' + (+p[2]) + '일 ' + (r.tail || '종가 기준') : '');
         last = r; last.name = c.name + (list ? '_' + list.filter(function (o) { return o[0] === sel[id]; })[0][1] : '');
-        if (!r.auto) r.auto = { k: r.o.kicker, h: r.o.h1 };
+        if (!r.auto) r.auto = { k: '', h: r.o.h1 };   // 빨간 윗줄은 쓰지 않는다
         // 직접 고친 제목은 같은 카드·같은 선택지로 돌아와도 남는다
         var ed = edits[key]; r.o.kicker = ed ? ed.k : r.auto.k; r.o.h1 = ed ? ed.h : r.auto.h; last.key = key;
-        $('c-kicker').value = r.o.kicker; $('c-title').value = r.o.h1;
-        draw(); $('c-hint').textContent = c.name + ' · 최신 자료로 방금 다시 계산했어요. 윗줄·제목은 직접 고칠 수 있어요.';
+        $('c-title').value = r.o.h1;
+        draw(); $('c-hint').textContent = c.name + ' · 최신 자료로 방금 다시 계산했어요. 제목은 직접 고칠 수 있어요.';
       }).catch(function (e) { delete cache[key]; $('c-hint').textContent = '이 카드를 그리지 못했어요 (' + (e && e.message || e) + ').'; });
     }
     var edits = {};
-    function onEdit() { if (!last) return; last.o.kicker = $('c-kicker').value; last.o.h1 = $('c-title').value; edits[last.key] = { k: last.o.kicker, h: last.o.h1 }; draw(); }
-    $('c-kicker').addEventListener('input', onEdit); $('c-title').addEventListener('input', onEdit);
-    $('c-reset').addEventListener('click', function () { if (!last) return; delete edits[last.key]; last.o.kicker = last.auto.k; last.o.h1 = last.auto.h; $('c-kicker').value = last.o.kicker; $('c-title').value = last.o.h1; draw(); });
+    function onEdit() { if (!last) return; last.o.h1 = $('c-title').value; edits[last.key] = { k: last.o.kicker, h: last.o.h1 }; draw(); }
+    $('c-title').addEventListener('input', onEdit);
+    $('c-reset').addEventListener('click', function () { if (!last) return; delete edits[last.key]; last.o.kicker = last.auto.k; last.o.h1 = last.auto.h; $('c-title').value = last.o.h1; draw(); });
     $('c-dl').addEventListener('click', function () {
       if (!last) return;
       var big = document.createElement('canvas'); big.width = 1080 * 3; big.height = 1350 * 3;
