@@ -6,7 +6,7 @@
   1) 시장 가격 (CNBC 차트): 금·은·구리·유가·천연가스·비트코인·달러지수·국채 금리·환율 — 일별 1년 + 주별 5년
   2) 거시 지표 (미국 연준 FRED, 키 없음): 미국 기준금리·물가·실업률·고용·모기지 금리·휘발유 값,
      한국 물가·실업률·금리·수출(OECD 자료) — 월별
-  3) 품목별 수출 (관세청 수출입실적, 공공데이터포털 키 DATA_GO_KEY): 화장품·반도체·자동차·라면·김 등 — 월별
+  3) 품목별 수출 (관세청_품목별 수출입실적(GW) data.go.kr/data/15101609 — 공공데이터포털 키 DATA_GO_KEY, 활용신청 필요): 화장품·반도체·자동차·라면·김 등 — 월별
   4) (선택) 한국은행 ECOS (키 ECOS_KEY 가 있을 때만): 기준금리·소비자물가·가계대출
 
 파일: data/econ/{id}.json  {"id","name","unit","freq","src","d":[[날짜, 값, …]], "updated"}
@@ -203,7 +203,7 @@ def key_datago():
 
 def trade_call(key, hs, a, b):
     q = urllib.parse.urlencode({"serviceKey": urllib.parse.unquote(key), "strtYymm": a, "endYymm": b, "hsSgn": hs})
-    for base in ("https://apis.data.go.kr/1220000/nitemtrade/getNitemtradeList", "http://apis.data.go.kr/1220000/nitemtrade/getNitemtradeList"):
+    for base in ("https://apis.data.go.kr/1220000/Itemtrade/getItemtradeList", "http://apis.data.go.kr/1220000/Itemtrade/getItemtradeList"):
         t = get(base + "?" + q, tries=1, timeout=25)
         if t and "<" in t:
             return t
