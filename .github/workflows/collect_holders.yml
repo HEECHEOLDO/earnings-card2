@@ -1,0 +1,56 @@
+# 국내 주주현황 (data/holders) — DART 정기보고서 기준. 새 보고서가 나온 종목만 다시 받는다.
+# 정기보고서 마감(5/15·8/14·11/14·3/31) 뒤 몇 주 동안 올라오므로 매주 월·목에 돈다.
+name: 주주현황 수집
+
+on:
+  schedule:
+    - cron: "17 21 * * 0,3"     # 월·목 06:17 KST
+  workflow_dispatch:
+    inputs:
+      codes:
+        description: "종목코드 몇 개만 (비우면 전 종목)"
+        required: false
+        default: ""
+      force:
+        description: "이미 받은 보고서도 다시 (--force)"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: holders
+  cancel-in-progress: false
+
+jobs:
+  holders:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: DART 고유번호 캐시
+        uses: actions/cache@v4
+        with:
+          path: .cache
+          key: dart-corpcode-${{ github.run_id }}
+          restore-keys: dart-corpcode-
+      - name: 주주현황
+        env:
+          DART_API_KEY: ${{ secrets.DART_API_KEY }}
+        run: python3 collect_holders.py ${{ github.event.inputs.force }} ${{ github.event.inputs.codes }}
+      - name: 커밋
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git add data/holders
+          git diff --cached --quiet && { echo "변경 없음"; exit 0; }
+          git commit -m "주주현황 $(TZ=Asia/Seoul date +%F)"
+          for i in 1 2 3; do
+            git pull --rebase -X theirs && git push && exit 0
+            git rebase --abort 2>/dev/null; sleep 5
+          done
+          exit 1
