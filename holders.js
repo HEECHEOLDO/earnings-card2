@@ -159,8 +159,7 @@
     X.strokeStyle = T.rule; X.lineWidth = 2; X.beginPath(); X.moveTo(L, 1282); X.lineTo(R, 1282); X.stroke();
     var d = (h.asof || '').split('-');
     X.textAlign = 'left'; X.fillStyle = T.footer; X.font = font(700, 23);
-    X.fillText('자료 : 금융감독원 DART · ' + (h.report || '').replace(/^20(\d\d) /, "'$1년 ") +
-      (d.length === 3 ? ' (' + (+d[1]) + '월 ' + (+d[2]) + '일)' : ''), L, 1318);
+    X.fillText('자료 : ' + (h.report || '').replace(/^20(\d\d) /, "'$1년 ").replace(/보고서$/, ' 보고서'), L, 1318);
     X.textAlign = 'right'; X.font = font(800, 24); X.fillText('@돈굴돈굴', R, 1318);
     X.restore();
     return { segs: segs };
