@@ -60,8 +60,14 @@ def latest(corp, endpoint, today):
 
 
 def common(r):
+    """보통주 줄만 (우선주 줄은 뺀다). 회사마다 '보통주'·'의결권있는주식'·'-' 등 적는 법이 달라 '우선'만 거른다"""
     k = (r.get("stock_knd") or r.get("se") or "").replace(" ", "")
-    return (not k) or ("보통" in k) or (k in ("-",))
+    return "우선" not in k and "종류" not in k
+
+
+def norm(s):
+    s = (s or "").replace("㈜", "").replace("(주)", "").replace("주식회사", "").replace(" ", "").lower()
+    return s.split("\n")[0].split("(")[0]
 
 
 def one(code, cm, today, force=False):
@@ -116,9 +122,15 @@ def one(code, cm, today, force=False):
         pct = n(r.get("stkrt"))
         if who and pct is not None:
             five[who] = {"n": who, "pct": round(pct, 2), "dt": r.get("rcept_dt") or ""}
-    big = [v for v in five.values() if v["pct"] >= 5]
+    # 5% 보고는 보고자와 특별관계자를 합친 지분이라, 최대주주 쪽 사람이 낸 보고(김성운 48.8%·삼성물산 19.7%)는 뺀다
+    mine = set(norm(p["n"]) for p in people)
+    big = [v for v in five.values() if v["pct"] >= 5 and norm(v["n"]) not in mine]
     big.sort(key=lambda x: -x["pct"])
 
+    if not issued and people:                      # 주식 총수 표가 없는 보고서 — 최대주주 주식 수 ÷ 지분율로
+        issued = round(people[0]["sh"] / people[0]["pct"] * 100)
+    if os.environ.get("HOLDERS_DEBUG"):
+        print("  raw", code, [(r.get("nm"), r.get("stock_knd"), r.get("trmend_posesn_stock_qota_rt")) for r in major[:6]])
     out = {
         "name": cm[code]["name"], "asof": asof, "report": "%s %s" % (y, rname),
         "rcept_no": major[0].get("rcept_no") or "",

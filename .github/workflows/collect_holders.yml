@@ -41,7 +41,7 @@ jobs:
       - name: 주주현황
         env:
           DART_API_KEY: ${{ secrets.DART_API_KEY }}
-        run: python3 collect_holders.py ${{ github.event.inputs.force }} ${{ github.event.inputs.codes }}
+        run: HOLDERS_DEBUG="${{ github.event.inputs.codes }}" python3 collect_holders.py ${{ github.event.inputs.force }} ${{ github.event.inputs.codes }}
       - name: 커밋
         run: |
           git config user.name  "github-actions[bot]"
