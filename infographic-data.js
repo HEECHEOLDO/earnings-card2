@@ -245,6 +245,9 @@
       $('c-hint').textContent = '그리는 중…';
       (cache[id] || (cache[id] = c.build())).then(function (r) {
         if (cur !== id) return;
+        // 카드 아래 한 줄은 날짜만, 제목 아래 회색 설명 줄은 넣지 않는다
+        var a = (id === 'voronoi' ? D.us.asof : D.asof) || '', p = a.split('-');
+        r.o.h2 = ''; r.o.src = p.length === 3 ? "'" + p[0].slice(2) + '년 ' + (+p[1]) + '월 ' + (+p[2]) + '일 종가 기준' : '';
         last = r; draw(); $('c-hint').textContent = c.name + ' · ' + md(D.asof) + ' 기준 자료로 방금 다시 계산했어요.';
       }).catch(function (e) { $('c-hint').textContent = '이 카드를 그리지 못했어요 (' + (e && e.message || e) + ').'; });
     }

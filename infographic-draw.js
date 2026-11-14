@@ -55,7 +55,7 @@
   }
   function foot(X, src) {
     X.strokeStyle = T.rule; X.lineWidth = 2; X.beginPath(); X.moveTo(L, 1286); X.lineTo(R, 1286); X.stroke();
-    X.fillStyle = '#3A3E46'; X.textAlign = 'left'; X.font = font(700, 22); X.fillText('자료 : ' + src, L, 1320);
+    X.fillStyle = '#3A3E46'; X.textAlign = 'left'; X.font = font(700, 22); X.fillText(src, L, 1320);
     X.textAlign = 'right'; X.font = font(800, 24); X.fillText('@돈굴돈굴', R, 1320);
   }
 
@@ -148,7 +148,7 @@
   }
   function foot(X, src) {
     X.strokeStyle = T.rule; X.lineWidth = 2; X.beginPath(); X.moveTo(L, 1286); X.lineTo(R, 1286); X.stroke();
-    X.fillStyle = '#3A3E46'; X.textAlign = 'left'; X.font = font(700, 22); X.fillText('자료 : ' + src, L, 1320);
+    X.fillStyle = '#3A3E46'; X.textAlign = 'left'; X.font = font(700, 22); X.fillText(src, L, 1320);
     X.textAlign = 'right'; X.font = font(800, 24); X.fillText('@돈굴돈굴', R, 1320);
   }
 
@@ -235,7 +235,7 @@
   }
   function foot(X, src) {
     X.strokeStyle = T.rule; X.lineWidth = 2; X.beginPath(); X.moveTo(L, 1286); X.lineTo(R, 1286); X.stroke();
-    X.fillStyle = '#3A3E46'; X.textAlign = 'left'; X.font = font(700, 22); X.fillText('자료 : ' + src, L, 1320);
+    X.fillStyle = '#3A3E46'; X.textAlign = 'left'; X.font = font(700, 22); X.fillText(src, L, 1320);
     X.textAlign = 'right'; X.font = font(800, 24); X.fillText('@돈굴돈굴', R, 1320);
   }
   function logoAt(X, im, x, y, r) {
