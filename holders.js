@@ -94,7 +94,7 @@
     var fs = 92; X.font = font(900, fs);
     while (fs > 52 && X.measureText(opt.name).width > R - nx) { fs -= 4; X.font = font(900, fs); }
     X.fillStyle = T.ink; X.fillText(opt.name, nx, y0);
-    X.font = font(900, 56); X.fillText(opt.title || '주주 구성', L, y0 + 82);
+    X.font = font(900, 56); X.fillText(opt.title || '주주 구성 현황', L, y0 + 82);
 
     // 큰 도넛 하나 (연합뉴스 주주구성 그래픽처럼 조각 위에 이름·지분을 바로 쓴다)
     // 최대주주 측은 사람별로 (회사 색을 진하게→옅게), 그다음 5% 주주 · 자기주식 · 기타
