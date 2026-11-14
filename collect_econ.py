@@ -73,14 +73,21 @@ MARKET = [  # id, CNBC 기호, 이름, 단위
 
 
 def market():
-    from collect_chart_us import cnbc_bars, weekly
+    from collect_chart_us import cnbc_bars
     for id_, sym, name, unit in MARKET:
-        d1 = cnbc_bars(sym, "1Y") or []
-        w5 = cnbc_bars(sym, "5Y") or []
-        if d1:
-            w5 = weekly(sorted(set(x for x in w5 if x[0] < d1[0][0]) | set(d1)))
-        rows = sorted(set(w5[:-1] if d1 and w5 else w5) | set(d1))
-        rows = [[a, round(b, 4)] for a, b in rows]
+        try:
+            d1 = [tuple(x) for x in (cnbc_bars(sym, "1Y") or [])]
+            w5 = [tuple(x) for x in (cnbc_bars(sym, "5Y") or [])]
+        except Exception as e:                    # noqa: BLE001
+            STATUS[id_] = {"ok": False, "name": name, "why": str(e)[:100]}
+            continue
+        m = {}
+        for a, b in w5:                           # 주별(5년) 위에 일별(1년)을 덮는다
+            if not d1 or a < d1[0][0]:
+                m[a] = b
+        for a, b in d1:
+            m[a] = b
+        rows = [[a, round(b, 4)] for a, b in sorted(m.items())]
         save(id_, name, unit, "D", "CNBC", rows)
 
 
