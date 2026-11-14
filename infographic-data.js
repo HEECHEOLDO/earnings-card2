@@ -578,6 +578,47 @@
             src: "'" + y.slice(2) + '년 연간 실적 기준 (DART)' };
         });
       });
+    } },
+    { id: 'tiers', name: '대형주 vs 중소형주', icon: '▮', opts: MKT, build: function (mk) {
+      var st = D.st, cs = Object.keys(st).filter(function (c) { return st[c].c && st[c].y != null && (mk === 'all' || st[c].m === mk); }).sort(function (a, b) { return st[b].c - st[a].c; });
+      var T = [['시총 1~10위', 0, 10], ['11~50위', 10, 50], ['51~100위', 50, 100], ['101~300위', 100, 300], ['301~1000위', 300, 1000], ['1000위 밖', 1000, 1e9]];
+      var rows = T.filter(function (t) { return cs.length > t[1]; }).map(function (t) {
+        var g = cs.slice(t[1], t[2]), cap = g.reduce(function (s, c) { return s + st[c].c; }, 0), c0 = g.reduce(function (s, c) { return s + st[c].c / (1 + st[c].y / 100); }, 0);
+        var ew = g.reduce(function (s, c) { return s + st[c].y; }, 0) / g.length, v = (cap / c0 - 1) * 100;
+        return { n: t[0], v: v, lab: pct1(v), sub: g.length.toLocaleString() + '종목 · 단순 평균 ' + pct1(ew) };
+      });
+      return Promise.resolve({ fn: 'bars', o: { kicker: MKN[mk] + ' 시총 규모별 올해 수익률', h1: '큰 종목일수록 더 올랐다?', rows: rows, top: 320 }, tail: '종가 기준 · 막대는 시총 가중 수익률' }).then(function (r) {
+        var a = rows[0].v, z = rows[rows.length - 1].v; r.o.h1 = a > z ? 'TOP 10은 ' + pct1(a) + ', 1000위 밖은 ' + pct1(z) : '작은 종목이 더 올랐다: ' + pct1(z) + ' vs ' + pct1(a); return r;
+      });
+    } },
+    { id: 'sectors', name: '업종 성적표', icon: '≣', opts: [['kr', '한국'], ['us', '미국']], build: function (cc) {
+      if (cc === 'us') return USY().then(function (Y) {
+        var g = {}; Y.forEach(function (x) { if (x.y == null) return; var k = g[x.sec] = g[x.sec] || { c1: 0, c0: 0, n: 0 }; k.c1 += x.c; k.c0 += x.c / (1 + x.y / 100); k.n++; });
+        var rows = Object.keys(g).filter(function (k) { return g[k].n >= 2; }).map(function (k) { var v = (g[k].c1 / g[k].c0 - 1) * 100; return { n: k, v: v, lab: pct1(v), sub: g[k].n + '종목 · 시총 $' + (g[k].c1 / 1e4).toFixed(1) + 'T', c: v >= 0 ? '#D6362C' : '#2B6CD9' }; }).sort(function (a, b) { return b.v - a.v; });
+        return { fn: 'bars', o: { kicker: '미국 시총 상위 100 · 업종별 올해 수익률', h1: '미국 올해 1등 업종은 ' + rows[0].n, rows: rows }, asof: D.us.asof, tail: '종가 기준 · 시총 가중' };
+      });
+      var st = D.st, rows = D.inds.map(function (g) {
+        var c1 = 0, c0 = 0, n = 0; g.codes.forEach(function (c) { if (st[c] && st[c].c && st[c].y != null) { c1 += st[c].c; c0 += st[c].c / (1 + st[c].y / 100); n++; } });
+        return { n: (g.short || g.name).trim(), cap: g.sum, v: c0 ? (c1 / c0 - 1) * 100 : 0, k: n };
+      }).filter(function (r) { return r.k >= 3; }).sort(function (a, b) { return b.cap - a.cap; }).slice(0, 18).sort(function (a, b) { return b.v - a.v; })
+        .map(function (r) { return { n: r.n, v: r.v, lab: pct1(r.v), sub: '시총 ' + jo(r.cap), c: r.v >= 0 ? '#D6362C' : '#2B6CD9' }; });
+      return Promise.resolve({ fn: 'bars', o: { kicker: '시총 상위 18개 업종 · 올해 수익률', h1: '올해 1등 업종은 ' + rows[0].n + ', 꼴찌는 ' + rows[rows.length - 1].n, rows: rows }, tail: '종가 기준 · 시총 가중' });
+    } },
+    { id: 'fx', name: '원·달러 환율', icon: '$', opts: [['20', '20년'], ['5', '5년'], ['1', '1년']], build: function (yrs) {
+      return JJ('./data/fx_usdkrw.json').then(function (F) {
+        var ks = Object.keys(F.rates).sort(), end = ks[ks.length - 1], y0 = (+end.slice(0, 4) - +yrs) + end.slice(4);
+        ks = ks.filter(function (k) { return k >= y0; });
+        var stepN = Math.max(1, Math.floor(ks.length / 700)), sel = ks.filter(function (k, i) { return i % stepN === 0 || i === ks.length - 1; });
+        var num = function (k) { return new Date(k).getTime(); }, a = num(sel[0]), b = num(end);
+        var pts = sel.map(function (k) { return [(num(k) - a) / (b - a), F.rates[k], "'" + k.slice(2, 4) + '.' + (+k.slice(5, 7))]; });
+        var imax = 0, imin = 0; pts.forEach(function (p, i) { if (p[1] > pts[imax][1]) imax = i; if (p[1] < pts[imin][1]) imin = i; });
+        var ticks = [], yA = +sel[0].slice(0, 4), yB = +end.slice(0, 4), every = +yrs >= 10 ? 4 : 1;
+        for (var y = yA + 1; y <= yB; y++) if ((y - yA) % every === 0 || +yrs < 10) { var t = (new Date(y + '-01-01').getTime() - a) / (b - a); if (t > 0.03 && t < 0.97) ticks.push([t, "'" + String(y).slice(2)]); }
+        if (+yrs === 1) { ticks = []; for (var m = 1; m <= 12; m++) { var d = new Date(new Date(sel[0]).getFullYear(), new Date(sel[0]).getMonth() + m, 1), t2 = (d.getTime() - a) / (b - a); if (t2 > 0.03 && t2 < 0.97 && m % 2 === 0) ticks.push([t2, (d.getMonth() + 1) + '월']); } }
+        var now = F.rates[end], first = pts[0][1];
+        return { fn: 'line', o: { kicker: '원·달러 환율 ' + yrs + '년', h1: '지금 1달러 = ' + Math.round(now).toLocaleString() + '원', pts: pts, ticks: ticks, marks: [imax, imin], fmt: function (v) { return Math.round(v).toLocaleString(); },
+          note: yrs + '년 전보다 원화 가치 ' + (now > first ? Math.round((1 - first / now) * 100) + '% 떨어짐' : Math.round((first / now - 1) * 100) + '% 오름') + ' · 최고 ' + Math.round(pts[imax][1]).toLocaleString() + '원' }, asof: end, tail: '기준 · 유럽중앙은행 기준환율' };
+      });
     } }
 
   ];
@@ -587,8 +628,8 @@
     var cv = $('card'); if (!cv) return;
     var X = cv.getContext('2d'), cur = null, last = null, cache = {};
     var bar = $('kinds');
-    var GRP = [['한국 증시', ['treemap', 'ranked', 'breadth', 'contrib', 'dumbbell', 'radial', 'compare']], ['순위·역사', ['bump', 'slope', 'thennow', 'drawdown', 'monthly', 'calendar']],
-      ['실적·배당', ['sankey', 'surprise', 'margin', 'profit', 'profitshare', 'scatter', 'dividend']], ['미국·세계', ['voronoi', 'usmap', 'usranked', 'world', 'rivals']],
+    var GRP = [['한국 증시', ['treemap', 'ranked', 'sectors', 'tiers', 'breadth', 'contrib', 'dumbbell', 'radial', 'compare']], ['순위·역사', ['bump', 'slope', 'thennow', 'drawdown', 'monthly', 'calendar']],
+      ['실적·배당', ['sankey', 'surprise', 'margin', 'profit', 'profitshare', 'scatter', 'dividend']], ['미국·세계', ['voronoi', 'usmap', 'usranked', 'world', 'rivals', 'fx']],
       ['투자·주주', ['quilt', 'growth', 'waffle', 'holders']]], gbox = {};
     GRP.forEach(function (g) { var d = document.createElement('div'); d.className = 'kgrp'; d.innerHTML = '<span>' + g[0] + '</span>'; bar.appendChild(d); g[1].forEach(function (id) { gbox[id] = d; }); });
     CARDS.forEach(function (c) {

@@ -30,7 +30,7 @@
   /* 1) 부호 있는 막대 — 행: {n, sub, v, lab, logo, c} · 음수가 있으면 가운데 0 축 */
   function bars(X, o) {
     head(X, o);
-    var rows = o.rows, n = rows.length, top = o.top || 280, avail = (o.bottom || 1240) - top, rowH = Math.min(78, avail / n);
+    var rows = o.rows, n = rows.length, top = o.top || 280, avail = (o.bottom || 1240) - top, rowH = Math.min(n <= 8 ? 120 : 78, avail / n);
     var neg = rows.some(function (r) { return r.v < 0; }), pos = rows.some(function (r) { return r.v > 0; });
     var mx = Math.max.apply(null, rows.map(function (r) { return Math.abs(r.v); })) || 1;
     var x0 = L + 340, bw = R - 120 - x0, zero = neg && pos ? x0 + bw * 0.35 : neg ? R - 120 : x0;

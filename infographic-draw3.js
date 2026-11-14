@@ -227,5 +227,31 @@
     foot(X, o.src);
   }
 
+
+  /* 8) 선 하나 — o.pts:[[t(0~1), v, 라벨]], o.ticks:[[t, 라벨]], o.fmt(v), o.marks:[인덱스] (최고·최저 등) */
+  function line(X, o) {
+    head(X, o);
+    var top = 300, bot = 1130, x0 = L + 70, x1 = R - 20, vs = o.pts.map(function (p) { return p[1]; });
+    var lo = Math.min.apply(null, vs), hi = Math.max.apply(null, vs), pad = (hi - lo) * 0.08; lo -= pad; hi += pad;
+    var xp = function (t) { return x0 + (x1 - x0) * t; }, yp = function (v) { return bot - (bot - top) * (v - lo) / (hi - lo); };
+    var step = Math.pow(10, Math.floor(Math.log10((hi - lo) / 5))); while ((hi - lo) / step > 7) step *= 2;
+    for (var g = Math.ceil(lo / step) * step; g <= hi; g += step) { var y = yp(g); X.strokeStyle = T.rule; X.lineWidth = 1; X.beginPath(); X.moveTo(x0, y); X.lineTo(x1, y); X.stroke(); X.fillStyle = T.soft; X.font = font(700, 18); X.textAlign = 'right'; X.textBaseline = 'middle'; X.fillText(o.fmt(g), x0 - 10, y); }
+    X.textBaseline = 'alphabetic';
+    o.ticks.forEach(function (t) { X.fillStyle = T.soft; X.font = font(700, 18); X.textAlign = 'center'; X.fillText(t[1], xp(t[0]), bot + 30); });
+    X.beginPath(); o.pts.forEach(function (p, i) { if (i) X.lineTo(xp(p[0]), yp(p[1])); else X.moveTo(xp(p[0]), yp(p[1])); });
+    X.lineTo(xp(o.pts[o.pts.length - 1][0]), bot); X.lineTo(xp(o.pts[0][0]), bot); X.closePath(); X.fillStyle = 'rgba(43,108,217,0.10)'; X.fill();
+    X.strokeStyle = o.c || T.down; X.lineWidth = 4; X.lineJoin = 'round'; X.beginPath(); o.pts.forEach(function (p, i) { if (i) X.lineTo(xp(p[0]), yp(p[1])); else X.moveTo(xp(p[0]), yp(p[1])); }); X.stroke();
+    (o.marks || []).forEach(function (k) {
+      var p = o.pts[k], x = xp(p[0]), y = yp(p[1]), hiPt = p[1] > (lo + hi) / 2;
+      X.fillStyle = T.ink; X.beginPath(); X.arc(x, y, 7, 0, 7); X.fill();
+      X.font = font(800, 20); X.textAlign = x > x1 - 120 ? 'right' : x < x0 + 120 ? 'left' : 'center';
+      X.fillText(o.fmt(p[1]) + ' (' + p[2] + ')', x, hiPt ? y - 16 : y + 32);
+    });
+    var e = o.pts[o.pts.length - 1];
+    X.fillStyle = o.c || T.down; X.beginPath(); X.arc(xp(e[0]), yp(e[1]), 9, 0, 7); X.fill();
+    if (o.note) { X.textAlign = 'left'; X.fillStyle = T.ink; X.font = font(800, 26); X.fillText(o.note, L, 1240); }
+    foot(X, o.src);
+  }
+  base.line = line;
   base.hist = hist; base.butterfly = butterfly; base.calendar = calendar; base.heatgrid = heatgrid; base.underwater = underwater; base.scatter = scatter; base.slope = slope;
 })();
