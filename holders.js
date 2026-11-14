@@ -96,56 +96,63 @@
     X.fillStyle = T.ink; X.fillText(opt.name, nx, y0);
     X.font = font(900, 56); X.fillText(opt.title || '주주 구성', L, y0 + 82);
 
-    // 큰 도넛 하나: 최대주주 측은 사람별로 (회사 색을 진하게→옅게), 5% 주주 · 자기주식 · 기타
+    // 큰 도넛 하나 (연합뉴스 주주구성 그래픽처럼 조각 위에 이름·지분을 바로 쓴다)
+    // 최대주주 측은 사람별로 (회사 색을 진하게→옅게), 그다음 5% 주주 · 자기주식 · 기타
     var sg = segments(h, color), segs = [];
-    // 1% 넘는 사람만 따로 (최대 3명), 나머지는 '그 외 특수관계인'
-    var top = h.major.filter(function (p, i) { return i < 3 && (i === 0 || p.pct >= 1); });
+    var top = h.major.filter(function (p, i) { return i < 4 && (i === 0 || p.pct >= 1); });
     var restMaj = h.major.slice(top.length).reduce(function (s0, p) { return s0 + p.pct; }, 0);
-    var boss = h.major.some(function (p) { return /본인/.test(p.rel); });
-    top.forEach(function (p, i) {
-      segs.push({ k: shortName(p.n), sub: !boss && i === 0 ? '최대주주' : relShort(p.rel), v: p.pct, c: shade(color, [1, 0.72, 0.5][i]), txt: i === 0 ? '#fff' : null });
-    });
-    if (restMaj >= 0.05) segs.push({ k: '그 외 특수관계인', v: restMaj, c: shade(color, 0.32) });
+    top.forEach(function (p, i) { segs.push({ k: shortName(p.n), v: p.pct, c: shade(color, [1, 0.78, 0.6, 0.45][i]) }); });
+    if (restMaj >= 0.05) segs.push({ k: '그 외 특수관계인', v: restMaj, c: shade(color, 0.3) });
     sg.segs.forEach(function (x) { if (!x.main) segs.push(x); });
 
-    var cx = CW / 2, cy = 650, ro = 330, ri = 205, a = -Math.PI / 2;
+    var cx = L + 300, cy = 740, ro = 300, ri = 135, a = -Math.PI / 2;   // 왼쪽에 두고 오른쪽을 이름표 자리로
     segs.forEach(function (x) {
       var da = Math.max(0, x.v) / 100 * Math.PI * 2;
+      x.a0 = a; x.da = da; x.mid = a + da / 2; a += da;
       if (da <= 0) return;
-      X.beginPath(); X.arc(cx, cy, ro, a, a + da); X.arc(cx, cy, ri, a + da, a, true); X.closePath();
+      X.beginPath(); X.arc(cx, cy, ro, x.a0, x.a0 + da); X.arc(cx, cy, ri, x.a0 + da, x.a0, true); X.closePath();
       X.fillStyle = x.c; X.fill();
-      X.strokeStyle = T.paper; X.lineWidth = 5; X.stroke();          // 조각 사이 얇은 틈
-      x.mid = a + da / 2; x.da = da;
-      a += da;
+      X.strokeStyle = T.paper; X.lineWidth = 4; X.stroke();          // 조각 사이 얇은 틈
     });
-    // 조각 안 숫자 (충분히 큰 조각만)
+
+    // 조각 안에 들어가면 안에 (이름 위 · 지분 아래), 아니면 바깥에 꺾은 선으로
+    var outs = [];
     X.textAlign = 'center'; X.textBaseline = 'middle';
     segs.forEach(function (x) {
-      if (!x.da || x.rest) return;
-      var rr = (ro + ri) / 2, tx = cx + Math.cos(x.mid) * rr, ty = cy + Math.sin(x.mid) * rr;
-      X.font = font(900, x.v >= 8 ? 34 : 28);
-      if (X.measureText(pctTxt(x.v)).width + 18 > x.da * rr) return;   // 조각이 글자보다 좁으면 범례에만
-      X.fillStyle = lum(x.c) < 0.6 ? '#fff' : T.ink;
-      X.fillText(pctTxt(x.v), tx, ty);
+      if (!(x.da > 0)) return;
+      var rr = x.rest ? (ro + ri) / 2 + 20 : (ro + ri) / 2 + 22, pt = pctTxt(x.v);
+      var nfs = 28, pfs = x.v >= 10 ? 46 : 38;
+      X.font = font(800, nfs); var nw = X.measureText(x.k).width;
+      X.font = font(900, pfs); var pw = X.measureText(pt).width;
+      var room = x.da * rr;                                        // 그 반지름에서 조각 폭
+      if (room > Math.max(nw, pw) + 26 && x.da > 0.32) {
+        var tx = cx + Math.cos(x.mid) * rr, ty = cy + Math.sin(x.mid) * rr;
+        var ink = lum(x.c) < 0.62 ? '#fff' : (x.rest ? T.inkSoft : T.ink);
+        X.fillStyle = ink; X.font = font(800, nfs); X.fillText(x.k, tx, ty - 24);
+        X.font = font(900, pfs); X.fillText(pt, tx, ty + 18);
+      } else outs.push(x);
     });
-    X.textBaseline = 'alphabetic';
-    X.fillStyle = T.inkSoft; X.font = font(700, 32); X.fillText('최대주주 측', cx, cy - 26);
-    X.fillStyle = color; X.font = font(900, 96); X.fillText(pctTxt(sg.maj), cx, cy + 66);
-
-    // 범례 두 줄씩
-    var items = segs.filter(function (x) { return x.v > 0 && !x.rest; }).slice(0, 7)
-      .concat(segs.filter(function (x) { return x.rest; }));
-    var colW = (R - L - 40) / 2, rows = Math.ceil(items.length / 2), rowH = rows > 3 ? 54 : 60, ly = 1045;
-    X.textBaseline = 'middle';
-    items.forEach(function (x, i) {
-      var col = i < rows ? 0 : 1, row = col ? i - rows : i;
-      var x0 = L + col * (colW + 40), yy = ly + row * rowH;
-      X.fillStyle = x.c; X.beginPath(); X.arc(x0 + 11, yy, 11, 0, 7); X.fill();
-      X.textAlign = 'right'; X.font = font(800, 30); X.fillStyle = x.rest ? T.inkSoft : T.ink;
-      var pt = pctTxt(x.v), pw = X.measureText(pt).width; X.fillText(pt, x0 + colW, yy);
-      X.textAlign = 'left'; X.font = font(x.rest ? 700 : 800, 30); X.fillStyle = x.rest ? T.inkSoft : T.ink;
-      var nm = fit(X, x.k, colW - 36 - pw - 16); X.fillText(nm, x0 + 36, yy);
+    // 바깥 이름표: 모두 오른쪽 한 줄로 (이름 위 · 지분 아래), 위아래로 겹치지 않게 민다
+    var col = cx + ro + 60, GAP = 74;
+    var Lb = outs.map(function (x) { return { x: x, y: cy + Math.sin(x.mid) * (ro + 20) }; })
+      .sort(function (p, q) { return p.y - q.y; });
+    for (var k = 1; k < Lb.length; k++) if (Lb[k].y - Lb[k - 1].y < GAP) Lb[k].y = Lb[k - 1].y + GAP;
+    var over = Lb.length ? Lb[Lb.length - 1].y - 1225 : 0;
+    if (over > 0) Lb.forEach(function (p) { p.y -= over; });
+    var under = Lb.length ? 330 - Lb[0].y : 0;
+    if (under > 0) Lb.forEach(function (p) { p.y += under; });
+    Lb.forEach(function (p) {
+      var x = p.x, ex = cx + Math.cos(x.mid) * (ro + 4), ey = cy + Math.sin(x.mid) * (ro + 4);
+      X.strokeStyle = '#A9AEB5'; X.lineWidth = 2;
+      X.beginPath(); X.moveTo(ex, ey); X.lineTo(col - 34, p.y); X.lineTo(col - 12, p.y); X.stroke();
+      X.fillStyle = x.c; X.beginPath(); X.arc(col + 9, p.y - 16, 9, 0, 7); X.fill();
+      X.textAlign = 'left'; X.textBaseline = 'middle';
+      X.font = font(700, 26); X.fillStyle = T.inkSoft; X.fillText(fit(X, x.k, R + 40 - col - 28), col + 28, p.y - 16);
+      X.font = font(900, 34); X.fillStyle = T.ink; X.fillText(pctTxt(x.v), col + 28, p.y + 20);
     });
+    X.textBaseline = 'middle'; X.textAlign = 'center';
+    X.fillStyle = T.inkSoft; X.font = font(700, 24); X.fillText('최대주주 측', cx, cy - 26);
+    X.fillStyle = color; X.font = font(900, 50); X.fillText(pctTxt(sg.maj), cx, cy + 20);
     X.textBaseline = 'alphabetic';
 
     // 바닥
