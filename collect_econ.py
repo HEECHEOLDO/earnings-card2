@@ -97,6 +97,7 @@ FRED = [  # id, 시리즈, 이름, 단위
     ("us_unemp", "UNRATE", "미국 실업률", "%"), ("us_jobs", "PAYEMS", "미국 비농업 고용", "천 명"), ("us_mort", "MORTGAGE30US", "미국 30년 주택담보대출 금리", "%"),
     ("us_gas", "GASREGW", "미국 휘발유 (갤런당)", "달러"), ("us_sent", "UMCSENT", "미국 소비자심리", "pt"), ("us_m2", "M2SL", "미국 통화량 M2", "십억 달러"),
     ("us_home", "CSUSHPINSA", "미국 집값 (케이스-실러)", "지수"), ("us_retail", "RSAFS", "미국 소매판매", "백만 달러"),
+    ("us_cars", "TOTALSA", "미국 자동차 판매 (연율)", "백만 대"),
     ("kr_cpi", "KORCPIALLMINMEI", "한국 소비자물가 (OECD)", "지수"), ("kr_unemp", "LRHUTTTTKRM156S", "한국 실업률 (OECD)", "%"),
     ("kr_10y_m", "IRLTLT01KRM156N", "한국 국채 10년 (월평균)", "%"), ("kr_3m", "IR3TIB01KRM156N", "한국 3개월 금리", "%"),
     ("kr_exp", "XTEXVA01KRM664S", "한국 수출액 (OECD, 계절조정)", "달러"), ("kr_imp", "XTIMVA01KRM664S", "한국 수입액 (OECD, 계절조정)", "달러"),
@@ -233,7 +234,10 @@ def main():
         old = json.load(open(p, encoding="utf-8")).get("items", {})
     for part in parts:
         print("==", part)
-        {"market": market, "fred": fred, "trade": trade, "ecos": ecos}[part]()
+        try:
+            {"market": market, "fred": fred, "trade": trade, "ecos": ecos}[part]()
+        except Exception as e:                    # noqa: BLE001 — 한 부분이 죽어도 나머지는 남긴다
+            print("  !! %s 실패: %s" % (part, e))
     items = dict(old)
     for k, v in STATUS.items():                  # 이번에 실패했어도 예전 파일이 있으면 그건 살린다
         if v.get("ok") or k not in old or not old[k].get("ok"):
