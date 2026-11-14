@@ -5,7 +5,7 @@
  "code": "060260",
  "market": "코스닥",
  "sector": "",
- "updated": "2026-10-20",
+ "updated": "2026-11-14",
  "annual": [
   {
    "p": 2016,
@@ -132,20 +132,13 @@
    "assets": 556.4,
    "liab": 328.2,
    "equity": 228.2,
-   "dps": null,
+   "dps": 10.0,
    "payout": null,
-   "yield": null,
-   "dps_adj": null
+   "yield": 0.8,
+   "dps_adj": 10.0
   }
  ],
  "quarterly": [
-  {
-   "y": 2024,
-   "q": 1,
-   "rev": 114.0,
-   "op": 5.0,
-   "ni": 6.5
-  },
   {
    "y": 2024,
    "q": 2,
@@ -208,6 +201,13 @@
    "rev": 103.9,
    "op": 1.8,
    "ni": 2.1
+  },
+  {
+   "y": 2026,
+   "q": 3,
+   "rev": 74.6,
+   "op": -2.1,
+   "ni": -1.1
   }
  ],
  "q_method": "strict"
