@@ -194,6 +194,7 @@
     .nav-i { height: 38px; }
   }
 </style>
+<script src="./card-theme.js"></script>
 </head>
 <body>
 <div class="shell">
@@ -1307,7 +1308,7 @@
     }, 'image/png');
   });
   $('btn-mode').addEventListener('click', function () {
-    var r = document.documentElement; r.setAttribute('data-mode', r.getAttribute('data-mode') === 'dark' ? 'light' : 'dark');
+    var r = document.documentElement; r.setAttribute('data-mode', r.getAttribute('data-mode') === 'dark' ? 'light' : 'dark'); draw();   // 카드도 어두운/밝은 바탕으로 다시
   });
 
   Promise.all([

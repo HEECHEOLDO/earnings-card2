@@ -202,6 +202,7 @@
     .nav-i { height: 38px; }
   }
 </style>
+<script src="./card-theme.js"></script>
 </head>
 <body>
 <div class="shell">
@@ -533,7 +534,7 @@
   var _grainBg = {};
   function paintGrain(ctx, lw, lh) {
     // lw/lh 는 논리 크기. 안 주면 캔버스 실제 크기를 쓴다.
-    var w = lw || ctx.canvas.width, h = lh || ctx.canvas.height, key = w + 'x' + h;
+    var w = lw || ctx.canvas.width, h = lh || ctx.canvas.height, key = w + 'x' + h + (window.CardTheme && CardTheme.isDark() ? 'd' : 'l');
     var bg = _grainBg[key];
     if (!bg) {
       bg = document.createElement('canvas');
@@ -1849,7 +1850,7 @@
 
   document.getElementById('btn-mode').addEventListener('click', function () {
     var r = document.documentElement;
-    r.setAttribute('data-mode', r.getAttribute('data-mode') === 'dark' ? 'light' : 'dark');
+    r.setAttribute('data-mode', r.getAttribute('data-mode') === 'dark' ? 'light' : 'dark'); refresh();   // 카드도 어두운/밝은 바탕으로 다시
   });
 
   document.getElementById('btn-png').addEventListener('click', function () {

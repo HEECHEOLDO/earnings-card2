@@ -222,6 +222,7 @@
     display:none; }
   .note.on { display:block; }
 </style>
+<script src="./card-theme.js"></script>
 <body>
 <div class="shell">
 
@@ -1208,7 +1209,7 @@ document.getElementById('handle').addEventListener('input', function(){
 });
 document.getElementById('btn-mode').addEventListener('click', function(){
   var r = document.documentElement;
-  r.setAttribute('data-mode', r.getAttribute('data-mode') === 'dark' ? 'light' : 'dark');
+  r.setAttribute('data-mode', r.getAttribute('data-mode') === 'dark' ? 'light' : 'dark'); draw();   // 카드도 어두운/밝은 바탕으로 다시
 });
 document.getElementById('btn-png').addEventListener('click', function(){
   if (state.picked.length < 2) { alert('종목을 2개 이상 골라주세요.'); return; }

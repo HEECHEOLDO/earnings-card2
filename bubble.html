@@ -94,7 +94,8 @@
   }
   var _bg = null;
   function grain() {
-    if (_bg) return _bg;
+    var _m = window.CardTheme && CardTheme.isDark() ? 'd' : 'l';     // 밝은/어두운 바탕을 따로 만들어 둔다
+    if (_bg && _bg.__m === _m) return _bg;
     var G = T.grain, S = 512, t = document.createElement('canvas'); t.width = t.height = S;
     var tc = t.getContext('2d'), img = tc.createImageData(S, S), d = img.data;
     for (var i = 0; i < d.length; i += 4) {
@@ -105,6 +106,7 @@
     tc.putImageData(img, 0, 0);
     _bg = document.createElement('canvas'); _bg.width = CW; _bg.height = CH;
     var b = _bg.getContext('2d'); b.fillStyle = b.createPattern(t, 'repeat'); b.fillRect(0, 0, CW, CH);
+    _bg.__m = _m;
     return _bg;
   }
 

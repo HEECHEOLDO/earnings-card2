@@ -178,6 +178,7 @@
     var key = T.paper;
     if (!GRAINS[key]) {
       var cv = document.createElement('canvas'); cv.width = CW; cv.height = CH;
+      cv.__noTheme = true;                          // 질감은 늘 밝은 종이로 만들고, 다크 모드면 card-theme.js 가 쓸 때 바꾼다
       var g = cv.getContext('2d'); g.fillStyle = T.paper; g.fillRect(0, 0, CW, CH);
       var dark = T.dark;
       if (dark) {                                   // 왼쪽 위에서 아주 옅게 빛이 번지는 느낌
@@ -504,7 +505,7 @@
     }, 'image/png');
   });
   $('btn-mode').addEventListener('click', function () {
-    var r = document.documentElement; r.setAttribute('data-mode', r.getAttribute('data-mode') === 'dark' ? 'light' : 'dark');
+    var r = document.documentElement; r.setAttribute('data-mode', r.getAttribute('data-mode') === 'dark' ? 'light' : 'dark'); render();
   });
 
   // 종목 목록: 국내는 data/index.json(실적 회사) + data/returns.json(ETF 포함), 해외는 returns.json 의 미국 종목

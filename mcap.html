@@ -103,6 +103,7 @@
     .nav-i { height: 38px; }
   }
 </style>
+<script src="./card-theme.js"></script>
 </head>
 <body>
 <div class="shell">
@@ -378,7 +379,8 @@
   }
   var _bg = null;
   function grain() {
-    if (_bg) return _bg;
+    var _m = window.CardTheme && CardTheme.isDark() ? 'd' : 'l';     // 밝은/어두운 바탕을 따로 만들어 둔다
+    if (_bg && _bg.__m === _m) return _bg;
     var G = T.grain, S = 512, t = document.createElement('canvas'); t.width = t.height = S;
     var tc = t.getContext('2d'), img = tc.createImageData(S, S), d = img.data;
     for (var i = 0; i < d.length; i += 4) {
@@ -389,6 +391,7 @@
     tc.putImageData(img, 0, 0);
     _bg = document.createElement('canvas'); _bg.width = CW; _bg.height = CH;
     var b = _bg.getContext('2d'); b.fillStyle = b.createPattern(t, 'repeat'); b.fillRect(0, 0, CW, CH);
+    _bg.__m = _m;
     return _bg;
   }
 
@@ -679,7 +682,7 @@
   document.getElementById('chk-icon').addEventListener('change', function () { draw(); });
   document.getElementById('btn-mode').addEventListener('click', function () {
     var r = document.documentElement;
-    r.setAttribute('data-mode', r.getAttribute('data-mode') === 'dark' ? 'light' : 'dark');
+    r.setAttribute('data-mode', r.getAttribute('data-mode') === 'dark' ? 'light' : 'dark'); draw();   // 카드도 어두운/밝은 바탕으로 다시
   });
   document.getElementById('dl').addEventListener('click', function () {
     // 다른 카드와 같이 3배(3240×4050)로 다시 그려 파일로 저장한다.
