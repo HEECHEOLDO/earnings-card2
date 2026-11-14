@@ -154,6 +154,64 @@
     var y0 = +D.asof.slice(0, 4) * 10000;
     return IDXS(code).then(function (p) { var b = p.filter(function (x) { return x[0] < y0; }).slice(-1)[0], e = p[p.length - 1]; return b ? (e[1] / b[1] - 1) * 100 : 0; });
   }
+
+  /* ---- 경제 지표 (data/econ) ---- */
+  var ECON_IDS = ['krdash', 'usdash', 'exportboard', 'exportitem', 'kconsumer', 'rates', 'inflation', 'goldkrw', 'commod', 'race1y', 'travel'];
+  var TRADE = [['t_semi', '반도체'], ['t_car', '승용차'], ['t_parts', '자동차 부품'], ['t_batt', '2차전지'], ['t_ship', '선박'], ['t_cosm', '화장품'], ['t_ramen', '라면'], ['t_laver', '조미김 등'],
+    ['t_gim', '마른김'], ['t_soju', '소주 등 증류주'], ['t_pharm', '의약품'], ['t_bio', '바이오 의약품'], ['t_phone', '스마트폰'], ['t_oil', '석유제품'], ['t_steel', '철강판'], ['t_display', '디스플레이'],
+    ['t_comp', '컴퓨터'], ['t_tire', '타이어'], ['t_food_snack', '과자·빵'], ['t_beauty_dev', '미용기기 등']];
+  function ECO(id) { return JJ('./data/econ/' + id + '.json'); }
+  function sum(a, k) { return a.reduce(function (t, x) { return t + (x[k] || 0); }, 0); }
+  function usdE(v) { var e = v / 1e8; return e >= 100 ? Math.round(e).toLocaleString() + '억 달러' : e >= 1 ? e.toFixed(1) + '억 달러' : Math.round(v / 1e4).toLocaleString() + '만 달러'; }
+  function manwon(v) { return v >= 1e8 ? (v / 1e8).toFixed(2) + '억 원' : Math.round(v / 1e4).toLocaleString() + '만 원'; }
+  function ym(k) { k = +k; if (k > 1e7) k = Math.floor(k / 100); return "'" + String(Math.floor(k / 100)).slice(2) + '년 ' + (k % 100) + '월'; }
+  function d8(k) { var s = String(k); return s.slice(0, 4) + '-' + s.slice(4, 6) + '-' + s.slice(6, 8); }
+  function ymd(years) { var t = new Date(D.asof); t.setFullYear(t.getFullYear() + years); return +(t.getFullYear() + ('0' + (t.getMonth() + 1)).slice(-2) + ('0' + t.getDate()).slice(-2)); }
+  function dnum(k) { k = +k; if (k < 1e7) k = k * 100 + 1; var s = String(k); return new Date(+s.slice(0, 4), +s.slice(4, 6) - 1, +s.slice(6, 8)).getTime(); }
+  // 여러 시리즈를 같은 가로축(0~1)으로 — cut(YYYYMMDD) 이후만
+  function TL(S, cut) {
+    var a = dnum(cut), b = 0;
+    S.forEach(function (s) { s.d = s.d.filter(function (x) { return dnum(x[0]) >= a; }); if (s.d.length) b = Math.max(b, dnum(s.d[s.d.length - 1][0])); });
+    var P = S.filter(function (s) { return s.d.length > 1; }).map(function (s) {
+      var step = Math.max(1, Math.floor(s.d.length / 600));
+      return { n: s.n, c: s.c, w: s.w, pts: s.d.filter(function (x, i) { return i % step === 0 || i === s.d.length - 1; }).map(function (x) { var k = String(x[0]); return [(dnum(x[0]) - a) / (b - a), x[1], "'" + k.slice(2, 4) + '.' + (+k.slice(4, 6))]; }) };
+    });
+    var ya = new Date(a).getFullYear(), yb = new Date(b).getFullYear(), every = yb - ya > 8 ? 2 : 1, ticks = [];
+    if (yb - ya >= 2) { for (var y = ya + 1; y <= yb; y++) if ((y - ya) % every === 0) { var t = (new Date(y, 0, 1).getTime() - a) / (b - a); if (t > 0.03 && t < 0.97) ticks.push([t, "'" + String(y).slice(2)]); } }
+    else { for (var m = 1; m <= 13; m++) { var dd = new Date(new Date(a).getFullYear(), new Date(a).getMonth() + m, 1), t2 = (dd.getTime() - a) / (b - a); if (t2 > 0.03 && t2 < 0.97 && m % 2 === 0) ticks.push([t2, (dd.getMonth() + 1) + '월']); } }
+    P.ticks = ticks; var e = new Date(b); P.end = e.getFullYear() + '-' + ('0' + (e.getMonth() + 1)).slice(-2) + '-' + ('0' + e.getDate()).slice(-2);
+    return P;
+  }
+  // 대시보드: K:[[id, 이름, 종류]] 종류 %·원·$·pt·대 = 값 그대로, yoy = 지수의 1년 변화율(월), yoym = ECOS 월(YYYYMM), exp = 수출 월액
+  function dash(K, col) {
+    var seen = {};
+    return Promise.all(K.map(function (k) { return ECO(k[0]); })).then(function (js) {
+      var last = 0, items = [];
+      js.forEach(function (j, i) {
+        var k = K[i]; if (!j || seen[k[1]]) return;
+        var d = j.d, pts, big, chg, up = null;
+        if (k[2] === 'yoy' || k[2] === 'yoym') {
+          var m = {}; d.forEach(function (x) { m[k[2] === 'yoym' ? x[0] : Math.floor(x[0] / 100)] = x[1]; });
+          var ks = Object.keys(m).map(Number).sort(), yv = ks.map(function (q) { return m[q - 100] ? (m[q] / m[q - 100] - 1) * 100 : null; }).filter(function (v) { return v != null; }).slice(-60);
+          if (!yv.length) return; pts = yv; big = yv[yv.length - 1].toFixed(1) + '%'; var p12 = yv[yv.length - 13]; chg = p12 != null ? '1년 전 ' + p12.toFixed(1) + '%' : '';
+        } else if (k[2] === 'exp') {
+          pts = d.slice(-36).map(function (x) { return x[1]; }); var e = d[d.length - 1], p = d.filter(function (x) { return x[0] === e[0] - 100; })[0];
+          big = usdE(e[1]); chg = p ? '1년 전보다 ' + pct1((e[1] / p[1] - 1) * 100) : ''; up = p ? e[1] >= p[1] : null;
+        } else {
+          var cut = ymd(-5), dd = d.filter(function (x) { return (x[0] < 1e7 ? x[0] * 100 + 1 : x[0]) >= cut; }); if (dd.length < 2) return;
+          var stp = Math.max(1, Math.floor(dd.length / 200)); pts = dd.filter(function (x, q) { return q % stp === 0 || q === dd.length - 1; }).map(function (x) { return x[1]; });
+          var v = dd[dd.length - 1][1], a1 = ymd(-1), o1 = dd.filter(function (x) { return (x[0] < 1e7 ? x[0] * 100 + 1 : x[0]) <= a1; }).slice(-1)[0];
+          big = k[2] === '%' ? v.toFixed(2) + '%' : k[2] === '원' ? Math.round(v).toLocaleString() + '원' : k[2] === '$' ? '$' + v.toFixed(2) : k[2] === '대' ? v.toFixed(1) + '백만 대' : v.toFixed(1);
+          if (o1) { var df = v - o1[1]; chg = '1년 전 ' + (k[2] === '%' ? o1[1].toFixed(2) + '%' : k[2] === '원' ? Math.round(o1[1]).toLocaleString() + '원' : k[2] === '$' ? '$' + o1[1].toFixed(2) : o1[1].toFixed(1)); up = df >= 0; }
+        }
+        var lk = d[d.length - 1][0]; lk = lk < 1e7 ? lk * 100 + 1 : lk; if (lk > last) last = lk;
+        seen[k[1]] = 1;
+        items.push({ n: k[1], sub: j.freq === 'M' ? '월별 · ' + ym(d[d.length - 1][0]) : j.freq === 'W' ? '주별' : '일별', big: big, chg: chg, up: up, pts: pts, c: col });
+      });
+      if (items.length < 2) throw new Error('지표 자료 준비 중');
+      return { fn: 'multiples', o: { h1: '', items: items.slice(0, 8) }, asof: d8(last), tail: '기준 · 최근 5년 흐름 (월별 지표는 발표 시점에 따라 1~2달 늦음)' };
+    });
+  }
   function ko(code, n) { return (window.US_KO && window.US_KO[code]) || n; }
 
   var CARDS = [
@@ -745,6 +803,132 @@
             src: '직전 연도까지 연간 실적 기준 (DART) · 시총 5,000억 이상' };
         });
       });
+    } },
+    /* ---------------- 5차: 경제·생활 (data/econ — 매일 자동 수집) ---------------- */
+    { id: 'exportboard', name: '수출 품목 성적표', icon: '⛴', build: function () {
+      return Promise.all(TRADE.map(function (t) { return ECO(t[0]); })).then(function (js) {
+        var last = 0;
+        var rows = js.map(function (j, i) {
+          if (!j || j.d.length < 25) return null; var d = j.d, n = d.length, a = sum(d.slice(n - 12), 1), b = sum(d.slice(n - 24, n - 12), 1);
+          if (d[n - 1][0] > last) last = d[n - 1][0]; if (!b) return null;
+          var v = (a / b - 1) * 100; return { n: TRADE[i][1], v: v, lab: pct1(v), sub: '최근 12개월 ' + usdE(a), c: v >= 0 ? '#D6362C' : '#2B6CD9' };
+        }).filter(Boolean).sort(function (a, b) { return b.v - a.v; });
+        if (!rows.length) throw new Error('수출 자료 준비 중');
+        return { fn: 'bars', o: { h1: '수출, 1년 새 가장 많이 늘어난 건 ' + rows[0].n, rows: rows }, src: ym(last) + '까지 관세청 수출입실적 · 최근 12개월 vs 그 전 12개월' };
+      });
+    } },
+    { id: 'exportitem', name: '품목별 월 수출', icon: '▥', opts: function () { return TRADE.map(function (t) { return [t[0], t[1]]; }); }, build: function (id) {
+      return ECO(id).then(function (j) {
+        if (!j) throw new Error('수출 자료 준비 중');
+        var d = j.d, n = d.length, nm = TRADE.filter(function (t) { return t[0] === id; })[0][1], L2 = d.slice(-24), lastM = d[n - 1], y = Math.floor(lastM[0] / 100), m = lastM[0] % 100;
+        var prev = d.filter(function (x) { return x[0] === lastM[0] - 100; })[0], yoy = prev && prev[1] ? (lastM[1] / prev[1] - 1) * 100 : null;
+        var ytd = sum(d.filter(function (x) { return Math.floor(x[0] / 100) === y; }), 1), ytd0 = sum(d.filter(function (x) { return Math.floor(x[0] / 100) === y - 1 && x[0] % 100 <= m; }), 1);
+        var rec = Math.max.apply(null, d.map(function (x) { return x[1]; })), isRec = lastM[1] >= rec;
+        var bars = L2.map(function (x, i) { var yy = Math.floor(x[0] / 100); return { v: x[1] / 1e8, c: yy === y ? '#D6362C' : yy === y - 1 ? '#E8A39D' : '#C9C6BC', tick: (x[0] % 100 === 1 || i === 0) ? "'" + String(yy).slice(2) + '.' + (x[0] % 100) : (x[0] % 100) % 3 === 1 ? (x[0] % 100) + '월' : '', hi: i === L2.length - 1 || x[1] === rec, hiLab: usdE(x[1]) }; });
+        return { fn: 'columns', o: { h1: isRec ? nm + ' 수출, ' + m + '월 역대 최대' : nm + ' 수출, ' + m + '월 ' + (yoy != null ? '1년 전보다 ' + pct1(yoy) : usdE(lastM[1])),
+          stats: [[usdE(lastM[1]), y + '년 ' + m + '월 수출', '#D6362C'], [yoy != null ? pct1(yoy) : '-', '1년 전 같은 달 대비', yoy >= 0 ? '#D6362C' : '#2B6CD9'], [usdE(ytd), '올해 1~' + m + '월 누적 (' + (ytd0 ? pct1((ytd / ytd0 - 1) * 100) : '-') + ')']],
+          bars: bars, fmt: function (v) { return v >= 10 ? Math.round(v) + '억$' : v.toFixed(1) + '억$'; }, legend: [[y + '년', '#D6362C'], [(y - 1) + '년', '#E8A39D']] }, src: ym(lastM[0]) + '까지 관세청 수출입실적 · HS ' + j.hs };
+      });
+    } },
+    { id: 'kconsumer', name: 'K-소비재 수출 10년', icon: '♨', build: function () {
+      var K = [['t_cosm', '화장품', '#D9677B'], ['t_ramen', '라면', '#E0A43A'], ['t_laver', '조미김 등', '#2E9E6B'], ['t_soju', '소주 등 증류주', '#5BB0C9'], ['t_food_snack', '과자·빵', '#8C6BD8'], ['t_pharm', '의약품', '#2B6CD9']];
+      return Promise.all(K.map(function (k) { return ECO(k[0]); })).then(function (js) {
+        var last = 0;
+        var items = js.map(function (j, i) {
+          if (!j || j.d.length < 24) return null; var d = j.d, pts = [];
+          for (var k = 11; k < d.length; k++) pts.push(sum(d.slice(k - 11, k + 1), 1));
+          var a = pts[pts.length - 1], b = pts[0]; if (d[d.length - 1][0] > last) last = d[d.length - 1][0];
+          var times = a / b;
+          return { n: K[i][1], sub: '12개월 누적 수출', big: usdE(a), chg: (times >= 1.95 ? Math.round(times * 10) / 10 + '배' : pct1((times - 1) * 100)) + ' (' + String(Math.floor(d[11][0] / 100)).slice(2) + "년 대비)", up: times >= 1, pts: pts, c: K[i][2], x0: "'" + String(Math.floor(d[11][0] / 100)).slice(2), x1: "'" + String(Math.floor(d[d.length - 1][0] / 100)).slice(2) + '.' + d[d.length - 1][0] % 100 };
+        }).filter(Boolean);
+        if (!items.length) throw new Error('수출 자료 준비 중');
+        var best = items.slice().sort(function (a, b) { return parseFloat(b.chg) - parseFloat(a.chg); })[0];
+        return { fn: 'multiples', o: { h1: 'K-소비재 수출, ' + best.n + ' ' + best.chg.split(' ')[0], items: items }, src: ym(last) + '까지 관세청 수출입실적 · 12개월 이동 합계' };
+      });
+    } },
+    { id: 'rates', name: '한미 금리', icon: '%', build: function () {
+      return Promise.all(['us_rate', 'kr_base', 'us10y', 'kr10y', 'kr3y'].map(ECO)).then(function (js) {
+        var S = [], cut = ymd(-5);
+        if (js[0]) S.push({ n: '미국 기준금리', c: '#2B6CD9', d: js[0].d }); if (js[1]) S.push({ n: '한국 기준금리', c: '#D6362C', d: js[1].d.map(function (x) { return [x[0] * 100 + 1, x[1]]; }) });
+        if (js[2]) S.push({ n: '미국 국채 10년', c: '#8FB3EE', d: js[2].d, w: 3 }); if (js[3]) S.push({ n: '한국 국채 10년', c: '#E8A39D', d: js[3].d, w: 3 });
+        if (!js[1] && js[4]) S.push({ n: '한국 국채 3년', c: '#D6362C', d: js[4].d });
+        if (S.length < 2) throw new Error('금리 자료 준비 중');
+        var P = TL(S, cut), lastOf = function (re) { var s = P.filter(function (x) { return re.test(x.n); })[0]; return s ? s.pts[s.pts.length - 1][1] : null; };
+        var us = lastOf(/미국 기준금리/), kv = lastOf(/한국 (기준금리|국채 3년)/), u10 = lastOf(/미국 국채 10년/), k10 = lastOf(/한국 국채 10년/);
+        var gapName = '한미 금리 차'; if (us == null || kv == null) { us = u10; kv = k10; gapName = '한미 10년 국채 금리 차'; }
+        return { fn: 'lines', o: { h1: us != null && kv != null ? gapName + ' ' + Math.abs(us - kv).toFixed(2) + '%p, ' + (us > kv ? '미국이 더 높다' : '한국이 더 높다') : '한미 금리', series: P, ticks: P.ticks, fmt: function (v) { return v.toFixed(1) + '%'; }, zero: 0 }, asof: P.end, tail: '기준 · 연준·CNBC' + (js[1] ? '·한국은행' : '') };
+      });
+    } },
+    { id: 'goldkrw', name: '금 한 돈 가격', icon: '◆', build: function () {
+      return Promise.all([ECO('gold'), ECO('usdkrw')]).then(function (js) {
+        if (!js[0] || !js[1]) throw new Error('금 시세 준비 중');
+        var fx = {}; js[1].d.forEach(function (x) { fx[x[0]] = x[1]; }); var lastFx = null;
+        var rows = js[0].d.map(function (x) { if (fx[x[0]]) lastFx = fx[x[0]]; return lastFx ? [x[0], x[1] / 31.1035 * 3.75 * lastFx] : null; }).filter(Boolean);
+        var P = TL([{ n: '금 한 돈', c: '#C9A227', d: rows }], ymd(-5)), pts = P[0].pts, now = pts[pts.length - 1][1];
+        var y1 = rows.filter(function (x) { return x[0] <= ymd(-1); }).slice(-1)[0], imax = 0; pts.forEach(function (p, i) { if (p[1] > pts[imax][1]) imax = i; });
+        return { fn: 'line', o: { h1: '금 한 돈(3.75g) = ' + manwon(now), pts: pts.map(function (p) { return [p[0], p[1], p[2]]; }), ticks: P.ticks, marks: [imax], c: '#C9A227', fmt: function (v) { return manwon(v); },
+          note: y1 ? '1년 전 ' + manwon(y1[1]) + ' → 지금 ' + pct1((now / y1[1] - 1) * 100) : '' }, asof: P.end, tail: '기준 · 국제 금 시세(달러) × 원·달러 환율, 세금·수수료 빼고' };
+      });
+    } },
+    { id: 'commod', name: '원자재·코인 성적표', icon: '⛏', build: function () {
+      var C = [['gold', '금'], ['silver', '은'], ['copper', '구리'], ['wti', '국제유가 WTI'], ['brent', '브렌트유'], ['natgas', '천연가스'], ['btc', '비트코인'], ['eth', '이더리움'], ['dxy', '달러지수']];
+      return Promise.all(C.map(function (c) { return ECO(c[0]); })).then(function (js) {
+        var y0 = +D.asof.slice(0, 4) * 10000, last = 0;
+        var rows = js.map(function (j, i) {
+          if (!j) return null; var b = j.d.filter(function (x) { return x[0] < y0; }).slice(-1)[0], e = j.d[j.d.length - 1]; if (!b) return null; if (e[0] > last) last = e[0];
+          var v = (e[1] / b[1] - 1) * 100; return { n: C[i][1], v: v, lab: pct1(v), sub: '지금 ' + (j.unit === '달러' ? '$' + e[1].toLocaleString(undefined, { maximumFractionDigits: e[1] < 10 ? 2 : 0 }) : e[1].toFixed(1)), c: v >= 0 ? '#D6362C' : '#2B6CD9' };
+        }).filter(Boolean).sort(function (a, b) { return b.v - a.v; });
+        if (!rows.length) throw new Error('시세 준비 중');
+        return { fn: 'bars', o: { h1: '올해 원자재·코인 1등은 ' + rows[0].n, rows: rows }, asof: d8(last), tail: '기준 · 연초 대비 (달러 가격)' };
+      });
+    } },
+    { id: 'travel', name: '환율로 본 해외여행', icon: '✈', build: function () {
+      var C = [['usdkrw', '미국', '달러', 1, 'US'], ['jpykrw', '일본', '100엔', 100, 'JP'], ['eurkrw', '유럽', '유로', 1, 'EU'], ['cnykrw', '중국', '위안', 1, 'CN']];
+      return Promise.all(C.map(function (c) { return ECO(c[0]); })).then(function (js) {
+        var a = ymd(-1), last = 0;
+        var rows = js.map(function (j, i) {
+          if (!j) return null; var e = j.d[j.d.length - 1], b = j.d.filter(function (x) { return x[0] <= a; }).slice(-1)[0]; if (!b) return null; if (e[0] > last) last = e[0];
+          var v = (b[1] / e[1] - 1) * 100;      // + 면 원화로 더 많이 산다 = 여행이 싸졌다
+          return { n: C[i][1], v: v, lab: pct1(v), sub: (C[i][3] === 1 ? '1' : '') + C[i][2] + ' = ' + Math.round(e[1] * C[i][3]).toLocaleString() + '원 (1년 전 ' + Math.round(b[1] * C[i][3]).toLocaleString() + '원)', c: v >= 0 ? '#2E9E6B' : '#D9677B', cc: C[i][4] };
+        }).filter(Boolean).sort(function (a, b) { return b.v - a.v; });
+        if (!rows.length) throw new Error('환율 준비 중');
+        return Promise.all(rows.map(function (r) { return img('./logo/idx/' + r.cc + '.png').then(function (i) { r.logo = i; }); })).then(function () {
+          var best = rows[0];
+          return { fn: 'bars', o: { h1: best.v > 0 ? '1년 전보다 여행비 싸진 곳 1위, ' + best.n : '1년 새 해외여행이 다 비싸졌다', rows: rows, legend: [['원화로 더 많이 산다 (싸짐)', '#2E9E6B'], ['덜 산다 (비싸짐)', '#D9677B']] }, asof: d8(last), tail: '기준 · 같은 원화로 살 수 있는 현지 돈이 1년 새 얼마나 변했나' };
+        });
+      });
+    } },
+    { id: 'inflation', name: '한미 물가', icon: '🛒', build: function () {
+      return Promise.all([ECO('us_cpi'), ECO('kr_cpi_e'), ECO('kr_cpi')]).then(function (js) {
+        function yoy(d, mon) { var m = {}; d.forEach(function (x) { m[mon ? x[0] : Math.floor(x[0] / 100)] = x[1]; }); return Object.keys(m).map(Number).sort().map(function (k) { return m[k - 100] ? [k * 100 + 1, (m[k] / m[k - 100] - 1) * 100] : null; }).filter(Boolean); }
+        var S = [];
+        if (js[0]) S.push({ n: '미국', c: '#2B6CD9', d: yoy(js[0].d) });
+        if (js[1]) S.push({ n: '한국', c: '#D6362C', d: yoy(js[1].d, true) }); else if (js[2]) S.push({ n: '한국', c: '#D6362C', d: yoy(js[2].d) });
+        if (!S.length) throw new Error('물가 자료 준비 중');
+        var P = TL(S, ymd(-10));
+        var txt = P.map(function (s) { return s.n + ' ' + s.pts[s.pts.length - 1][1].toFixed(1) + '%'; }).join(', ');
+        var lastK = Math.max.apply(null, js.filter(Boolean).map(function (j) { var k = j.d[j.d.length - 1][0]; return k < 1e7 ? k : Math.floor(k / 100); }));
+        return { fn: 'lines', o: { h1: '물가 상승률 ' + txt, series: P, ticks: P.ticks, fmt: function (v) { return v.toFixed(1) + '%'; }, zero: 0, note: '1년 전 같은 달보다 물가가 얼마나 올랐나 · 목표는 보통 2%' },
+          src: ym(lastK) + '까지 · ' + js.filter(Boolean).map(function (j) { return j.src.split(' · ')[0]; }).join(' · ') };
+      });
+    } },
+    { id: 'usdash', name: '미국 경제 한눈에', icon: '▦', build: function () {
+      var K = [['us_rate', '기준금리', '%'], ['us_cpi', '물가 상승률', 'yoy'], ['us_unemp', '실업률', '%'], ['us_mort', '30년 모기지 금리', '%'], ['us_gas', '휘발유 (갤런)', '$'], ['us_sent', '소비자심리', 'pt'], ['us_cars', '자동차 판매 (연율)', '대'], ['us10y', '국채 10년', '%']];
+      return dash(K, '#2B6CD9').then(function (r) { r.o.h1 = '미국 경제, 숫자 ' + r.o.items.length + '개로 보기'; return r; });
+    } },
+    { id: 'krdash', name: '한국 경제 한눈에', icon: '▦', build: function () {
+      var K = [['kr_base', '기준금리', '%'], ['kr10y', '국채 10년', '%'], ['usdkrw', '원·달러', '원'], ['kr_cpi_e', '물가 상승률', 'yoym'], ['kr_cpi', '물가 상승률', 'yoy'], ['kr_unemp', '실업률', '%'], ['t_semi', '반도체 수출 (월)', 'exp'], ['t_car', '승용차 수출 (월)', 'exp'], ['kr_house', '집값 (실질)', 'pt']];
+      return dash(K, '#D6362C').then(function (r) { r.o.h1 = '한국 경제, 숫자 ' + r.o.items.length + '개로 보기'; return r; });
+    } },
+    { id: 'race1y', name: '코인 vs 금 vs 주식', icon: '⇉', build: function () {
+      var C = [['btc', '비트코인', '#F7931A'], ['gold', '금', '#C9A227'], ['ndx', '나스닥 100', '#8C6BD8'], ['kospi', '코스피', '#D6362C']];
+      return Promise.all([ECO('btc'), ECO('gold'), JJ('./data/chart/idx/NDX.json'), JJ('./data/chart/idx/KOSPI.json')]).then(function (js) {
+        var a = ymd(-1), S = [];
+        js.forEach(function (j, i) { if (!j) return; var d = (j.d || []).filter(function (x) { return x[0] >= a; }); if (d.length < 20) return; var b = d[0][1]; S.push({ n: C[i][1], c: C[i][2], d: d.map(function (x) { return [x[0], (x[1] / b - 1) * 100]; }) }); });
+        if (S.length < 2) throw new Error('시세 준비 중');
+        var P = TL(S, a), best = P.slice().sort(function (x, y) { return y.pts[y.pts.length - 1][1] - x.pts[x.pts.length - 1][1]; })[0];
+        return { fn: 'lines', o: { h1: '1년 전 넣었다면, ' + best.n + josa(best.n, '이', '가') + ' ' + pct1(best.pts[best.pts.length - 1][1]), series: P, ticks: P.ticks, fmt: function (v) { return (v > 0 ? '+' : '') + Math.round(v) + '%'; }, zero: 0 }, asof: P.end };
+      });
     } }
 
   ];
@@ -756,7 +940,7 @@
     var bar = $('kinds');
     var GRP = [['한국 증시', ['treemap', 'ranked', 'sectors', 'tiers', 'breadth', 'contrib', 'concentration', 'range52', 'rotation', 'dumbbell', 'radial', 'compare']], ['순위·역사', ['bump', 'slope', 'thennow', 'drawdown', 'monthly', 'calendar']],
       ['실적·배당', ['sankey', 'surprise', 'margin', 'profit', 'profitshare', 'scatter', 'dividend', 'revgrowth', 'roe', 'streak', 'unlisted']], ['미국·세계', ['voronoi', 'usmap', 'usranked', 'world', 'rivals', 'fx']],
-      ['투자·주주', ['quilt', 'growth', 'waffle', 'gurucommon', 'holders']]], gbox = {};
+      ['투자·주주', ['quilt', 'growth', 'waffle', 'gurucommon', 'holders']], ['경제·생활', ['krdash', 'usdash', 'exportboard', 'exportitem', 'kconsumer', 'rates', 'inflation', 'goldkrw', 'commod', 'race1y', 'travel']]], gbox = {};
     GRP.forEach(function (g) { var d = document.createElement('div'); d.className = 'kgrp'; d.innerHTML = '<span>' + g[0] + '</span>'; bar.appendChild(d); g[1].forEach(function (id) { gbox[id] = d; }); });
     CARDS.forEach(function (c) {
       var b = document.createElement('button'); b.className = 'preset'; b.dataset.k = c.id; b.setAttribute('aria-pressed', 'false');
@@ -794,7 +978,10 @@
         var ed = edits[key]; r.o.kicker = ed ? ed.k : r.auto.k; r.o.h1 = ed ? ed.h : r.auto.h; last.key = key;
         $('c-title').value = r.o.h1;
         draw(); $('c-hint').textContent = c.name + ' · 최신 자료로 방금 다시 계산했어요. 제목은 직접 고칠 수 있어요.';
-      }).catch(function (e) { delete cache[key]; $('c-hint').textContent = '이 카드를 그리지 못했어요 (' + (e && e.message || e) + ').'; });
+      }).catch(function (e) {
+        delete cache[key]; last = null; $('c-hint').textContent = '이 카드를 그리지 못했어요 (' + (e && e.message || e) + ').';
+        X.setTransform(1, 0, 0, 1, 0, 0); window.__vc.grainOnly(X); X.fillStyle = '#6B7078'; X.font = "800 40px 'Noto Sans KR', sans-serif"; X.textAlign = 'center'; X.fillText((e && e.message) || '자료 준비 중', 540, 680);
+      });
     }
     var edits = {};
     function onEdit() { if (!last) return; last.o.h1 = $('c-title').value; edits[last.key] = { k: last.o.kicker, h: last.o.h1 }; draw(); }
@@ -817,6 +1004,15 @@
       $('src-pill').textContent = '인포그래픽 ' + CARDS.length + '종 · ' + md(D.asof) + ' 기준';
       var qs = new URLSearchParams(location.search), k0 = qs.get('k'); if (qs.get('o')) sel[k0] = qs.get('o');
       pick(CARDS.some(function (c) { return c.id === k0; }) ? k0 : CARDS[0].id);
+      // 경제·생활 카드는 자료가 아직 안 모인 게 있을 수 있다 → 미리 그려 보고 안 되면 단추를 숨긴다
+      CARDS.forEach(function (c) {
+        if (ECON_IDS.indexOf(c.id) < 0) return;
+        var list = optsOf(c), key = c.id + (list ? '|' + list[0][0] : '');
+        (cache[key] || (cache[key] = c.build(list ? list[0][0] : undefined))).catch(function () {
+          delete cache[key];
+          var b = bar.querySelector('button[data-k="' + c.id + '"]'); if (b) b.hidden = true;
+        });
+      });
     });
   }
   window.__ig = { cards: CARDS, data: D, load: loadAll };
