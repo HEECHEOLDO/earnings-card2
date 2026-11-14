@@ -18,9 +18,13 @@
   var MAP = {
     '#fafaf8': '#17191d', '#101216': '#f3f2ee', '#6b7078': '#a2a7af', '#e6e4dd': '#2e3137', '#eae8e1': '#2a2d33',
     '#c9c6bc': '#4a4e56', '#9aa0a8': '#80868f', '#f2f0ea': '#212429', '#f1efea': '#212429', '#4b4f58': '#b4b9c0',
-    '#3a3e46': '#c9ccd1', '#eceae3': '#2a2d33', '#e2dfd6': '#34373e', '#a3a8af': '#646a73', '#000000': '#f3f2ee'
+    '#3a3e46': '#c9ccd1', '#eceae3': '#2a2d33', '#e2dfd6': '#34373e', '#a3a8af': '#646a73', '#000000': '#f3f2ee',
+    '#8c6e14': '#e2b84a'                              // 금색 꼬리표 글자 (꼬리표 바탕이 어두워지니 밝게)
   };
   var PAPER_D = [23, 25, 29];
+  // 바꾸지 않는 색: 색 있는 막대·조각 위에 쓰는 진한 글자 (바탕이 아니라 그 색 위에 있으니 다크 모드여도 진해야 읽힌다)
+  var KEEP = { '#111214': 1 };
+  var paused = 0;                                   // raw() 안: 국기처럼 색이 정해진 그림은 그대로
 
   function hex2(v) { return ('0' + Math.max(0, Math.min(255, Math.round(v))).toString(16)).slice(-2); }
   function parse(s) {
@@ -65,7 +69,8 @@
     var res = c, p = parse(c);
     if (p) {
       var key = '#' + hex2(p[0]) + hex2(p[1]) + hex2(p[2]);
-      if (p[0] === 255 && p[1] === 255 && p[2] === 255) res = c;                       // 흰색은 그대로
+      if (KEEP[key]) res = c;
+      else if (p[0] === 255 && p[1] === 255 && p[2] === 255) res = c;                  // 흰색은 그대로
       else if (MAP[key]) { var q = parse(MAP[key]); res = out(q[0], q[1], q[2], p[3]); }
       else {
         var H = hsl(p[0], p[1], p[2]), lu = (0.299 * p[0] + 0.587 * p[1] + 0.114 * p[2]) / 255;
@@ -91,12 +96,12 @@
     if (!d || !d.set) return;
     Object.defineProperty(C2, prop, {
       configurable: true, enumerable: d.enumerable, get: d.get,
-      set: function (v) { d.set.call(this, isDark() && typeof v === 'string' && !this.canvas.__noTheme ? conv(v) : v); }
+      set: function (v) { d.set.call(this, !paused && isDark() && typeof v === 'string' && !this.canvas.__noTheme ? conv(v) : v); }
     });
   });
   if (window.CanvasGradient) {
     var addStop = CanvasGradient.prototype.addColorStop;
-    CanvasGradient.prototype.addColorStop = function (o, c) { return addStop.call(this, o, isDark() && !this.__noTheme ? conv(c) : c); };
+    CanvasGradient.prototype.addColorStop = function (o, c) { return addStop.call(this, o, !paused && isDark() && !this.__noTheme ? conv(c) : c); };
   }
 
   // 종이 질감: putImageData 로 만든 '거의 흰 무채색' 그림을 종이 질감으로 표시해 두고, 쓸 때 어두운 판으로 바꿔 쓴다
@@ -182,5 +187,8 @@
     }).observe(root, { attributes: true, attributeFilter: ['data-mode'] });
   }
 
-  window.CardTheme = { isDark: isDark, conv: conv, onChange: onChange };
+  // 국기·상표처럼 색이 정해진 그림을 그리는 함수를 감싸면, 그 안에서는 색을 바꾸지 않는다
+  function raw(fn) { return function () { paused++; try { return fn.apply(this, arguments); } finally { paused--; } }; }
+
+  window.CardTheme = { isDark: isDark, conv: conv, onChange: onChange, raw: raw, INK_ON_COLOR: '#111214' };
 })();

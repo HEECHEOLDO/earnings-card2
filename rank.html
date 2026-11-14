@@ -328,6 +328,7 @@
   }
 
   // 시총(억) → '333조' · '8,500억'
+  if (window.CardTheme) { drawTaegeuk = CardTheme.raw(drawTaegeuk); drawUSFlag = CardTheme.raw(drawUSFlag); }   // 국기는 다크 모드에서도 원래 색
   function won(v) {
     if (isUS()) { var u = v / 10000;            // 미국은 억 달러 → $5.1T · $850B
       return u >= 1 ? '$' + u.toFixed(1).replace(/\.0$/, '') + 'T' : '$' + Math.round(v / 10).toLocaleString('en-US') + 'B'; }
@@ -805,7 +806,7 @@
       var nm = NM[o.c] || o.c, val = won(o.v) + (us ? '' : ' 원');
       X.font = font(800, fs); var nw = X.measureText(nm).width, inside = nw + ld + 30 < bw;
       X.textAlign = 'left';
-      if (inside) { X.fillStyle = light(lineColor(o.c)) ? T.ink : '#fff'; X.fillText(nm, bx + 14, cy); }   // 막대 안에 이름
+      if (inside) { X.fillStyle = light(lineColor(o.c)) ? '#111214' : '#fff'; X.fillText(nm, bx + 14, cy); }   // 막대 안에 이름
       else { X.fillStyle = T.ink; X.fillText(nm, bx + bw + 12, cy); }                                      // 짧으면 막대 뒤에
       var vx = bx + bw + 12 + (inside ? 0 : nw + 14);
       X.fillStyle = T.inkSoft; X.font = font(800, Math.round(fs * 0.9));

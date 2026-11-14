@@ -160,7 +160,7 @@
       var room = x.da * rr;                                        // 그 반지름에서 조각 폭
       if (room > Math.max(nw, pw) + 26 && x.da > 0.32) {
         var tx = cx + Math.cos(x.mid) * rr, ty = cy + Math.sin(x.mid) * rr;
-        var ink = x.rest ? T.inkSoft : (lum(x.c) < 0.62 ? '#fff' : '#101216');
+        var ink = x.rest ? T.inkSoft : (lum(x.c) < 0.62 ? '#fff' : '#111214');
         X.fillStyle = ink; X.font = font(800, nfs); X.fillText(x.k, tx, ty - 24);
         X.font = font(900, pfs); X.fillText(pt, tx, ty + 18);
       } else outs.push(x);

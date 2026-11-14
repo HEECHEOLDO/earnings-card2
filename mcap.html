@@ -552,7 +552,7 @@
         var vf = Math.round(nf * 0.8);
         var base = cy + R * 0.62;                       // 이름 글자 바닥선
         var light = brightness(im, 0.5 - 0.45, 0.62 - 0.12, 0.9, 0.3) > 0.62;
-        var fg = light ? T.ink : '#ffffff';
+        var fg = light ? '#111214' : '#ffffff';   // 밝은 공 위 글자는 다크 모드에서도 진하게 (card-theme.js 가 안 바꾸는 색)
         var halo = light ? 'rgba(255,255,255,0.9)' : 'rgba(0,0,0,0.22)';   // 그림자는 옅게 — 글자가 탁해 보이지 않게
         ctx.save();
         ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
@@ -650,6 +650,7 @@
     return w;
   }
   // 아이콘을 그리고 그 폭(간격 포함)을 돌려준다. ns = 제목 글자 크기, y = 제목 기준선
+  if (window.CardTheme) { drawTaegeuk = CardTheme.raw(drawTaegeuk); drawUSFlag = CardTheme.raw(drawUSFlag); }   // 국기는 다크 모드에서도 원래 색
   function drawIcon(c, icon, x, y, ns, dry) {
     if (!icon) return 0;
     var mid = y - ns * 0.37;
