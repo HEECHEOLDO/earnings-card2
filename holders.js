@@ -15,12 +15,49 @@
   // 영문·긴 이름 줄이기 (DART 5% 보고자 이름은 띄어쓰기 없이 온다)
   var SHORT = [[/^국민연금/, '국민연금'], [/^BlackRock/i, '블랙록'], [/^CapitalResearch/i, '캐피탈 리서치'],
                [/^TheVanguard|^Vanguard/i, '뱅가드'], [/^막시모/, '막시모'], [/^StateStreet/i, '스테이트 스트리트'],
-               [/^NorgesBank/i, '노르웨이 국부펀드'], [/^GIC/i, '싱가포르투자청(GIC)']];
+               [/^NorgesBank/i, '노르웨이 국부펀드'], [/^GIC\b/i, '싱가포르투자청'], [/^JP ?Morgan|^J\.P\. ?MORGAN/i, 'JP모건'],
+               [/^Manulife/i, '매뉴라이프'], [/^Allianz/i, '알리안츠'], [/^Fidelity|^피델리티/i, '피델리티'], [/^Yuanta/i, '유안타'],
+               [/^Orbis/i, '오비스'], [/^Silchester/i, '실체스터'], [/^VanEck/i, '반에크'], [/^Federated ?Hermes/i, '페더레이티드 허미스'],
+               [/^Dalton/i, '달튼'], [/^Aramco/i, '아람코'], [/^Hanwha Energy/i, '한화에너지'], [/^Hanwha Impact/i, '한화임팩트'],
+               [/^Phillip Capital/i, '필립캐피탈'], [/^Templeton/i, '템플턴'], [/^Morgan ?Stanley/i, '모건스탠리'],
+               [/^Goldman/i, '골드만삭스'], [/^Citi/i, '씨티'], [/^UBS\b/i, 'UBS'], [/^Nomura/i, '노무라']];
+  // 이름 뒤에 붙는 회사 형태 말 (뜻은 그대로라 빼도 된다)
+  var LEGAL = /[\s,.]*(Co\.?,?\s*Ltd\.?|Company\s+Limited|Limited|Ltd\.?|Corporation|Corp\.?|Incorporated|Inc\.?|L\.?L\.?C\.?|L\.?L\.?P\.?|L\.?P\.?|PLC|P\.?T\.?E\.?|Pte\.?|B\.?V\.?|GmbH|S\.?A\.?|AG|AS|N\.?V\.?|Private|Company|Co\.?)\s*$/i;
 
   function shortName(s) {
-    s = (s || '').split('\n')[0].replace(/㈜|\(주\)|주식회사/g, '').trim();
+    s = (s || '').split('\n')[0]
+      .replace(/\(주\d*\)$/, '').replace(/㈜|\(주\)|주식회사|\(유\)|유한회사|\(사\)|재단법인|사단법인/g, '').trim();
     for (var i = 0; i < SHORT.length; i++) if (SHORT[i][0].test(s)) return SHORT[i][1];
-    return s;
+    // 띄어쓰기 없이 붙은 영문 이름 나누기 (CapitalResearchandManagementCompany → Capital Researchand …)
+    if (/^[A-Za-z0-9,.&()'\- ]+$/.test(s) && !/\s/.test(s) && s.length > 12) s = s.replace(/([a-z])([A-Z])/g, '$1 $2').replace(/([A-Z]{2,})([A-Z][a-z])/g, '$1 $2').replace(/,/g, ', ');
+    // 회사 형태 말을 뒤에서부터 걷어낸다 (Starlink Investment L.P. → Starlink Investment)
+    for (var k = 0; k < 4; k++) { var t = s.replace(LEGAL, '').trim(); if (t === s || t.length < 2) break; s = t; }
+    s = s.replace(/[\s,.]+$/, '').replace(/^\(\s*\)/, '').trim();
+    // 대문자만 쓴 영문은 첫 글자만 크게 (SON ROBERT INHO → Son Robert Inho, 너비도 준다)
+    if (/^[A-Z0-9 .,&'\-()]+$/.test(s) && /[A-Z]{4}/.test(s)) s = s.toLowerCase().replace(/(^|[\s\-(])([a-z])/g, function (m, a, b) { return a + b.toUpperCase(); });
+    // 한글로 적은 외국 회사 형태 말 (…리미티드·…,인크·…,엘피) · 법인 앞말 (사회복지법인 ○○재단 → ○○재단)
+    s = s.replace(/^유\)\s*/, '').replace(/^(사회복지법인|학교법인|의료법인|재단법인|사단법인)\s+/, '')
+         .replace(/[\s,]*(리미티드|인크|엘피|엘엘씨|엘엘피|코퍼레이션|컴퍼니|피엘씨|게엠베하)$/, '').trim();
+    // 국내 펀드 이름 줄이기 (…기관전용사모투자·…사모투자 → PEF, …투자목적회사 → SPC)
+    s = s.replace(/(기관전용)?사모투자(합자회사|전문회사)?$/, ' PEF').replace(/투자목적회사$/, ' SPC')
+    s = s.replace(/\s*기업재무안정\s*사모투자\s*합자회사$|\s*사모투자\s*합자회사$|\s*사모투자전문회사$/, ' PEF')
+         .replace(/\s*신기술(사업)?투자조합\s*(제\s*)?(\d+)\s*호$/, ' 신기술조합 $3호').replace(/\s*신기술조합\s*제\s*(\d+)\s*호$/, ' 신기술조합 $1호');
+    return s.replace(/\s{2,}/g, ' ').trim();
+  }
+  // 정해진 너비에 이름 넣기: 글자를 조금 줄여 보고, 그래도 길면 뒤 낱말부터 빼고, 마지막에만 '…'
+  function fitName(X, s, w, weight, sizes) {
+    for (var i = 0; i < sizes.length; i++) {
+      X.font = font(weight, sizes[i]);
+      if (X.measureText(s).width <= w) return { t: s, f: sizes[i] };
+    }
+    var f = sizes[sizes.length - 1]; X.font = font(weight, f);
+    var words = s.split(' ');
+    while (words.length > 1) {
+      words.pop();
+      var t = words.join(' ').replace(/[\s,\-&]+$/, '');
+      if (X.measureText(t).width <= w) return { t: t, f: f };
+    }
+    return { t: fit(X, s, w), f: f };
   }
   function relShort(r) {
     r = (r || '').replace(/\s/g, '');
@@ -45,6 +82,37 @@
   function shares(n) {
     if (n >= 1e8) return (n / 1e8).toFixed(n >= 1e9 ? 1 : 2).replace(/\.?0+$/, '') + '억 주';
     return Math.round(n / 1e4).toLocaleString() + '만 주';
+  }
+  // 바깥 이름표용: 한 줄(26→20px) → 두 줄(22px, 띄어쓰기에서 나누고 없으면 글자 가운데) → 그래도 길면 뒤를 줄임
+  function fitName2(X, s, w) {
+    var one = [26, 24, 22];
+    for (var i = 0; i < one.length; i++) { X.font = font(700, one[i]); if (X.measureText(s).width <= w) return { lines: [s], f: one[i] }; }
+    var f = 22; X.font = font(700, f);
+    var best = null, words = s.split(' ');
+    for (var c = 1; c < words.length; c++) {                     // 띄어쓰기에서 나누기: 두 줄 다 들어가고 길이가 고른 곳
+      var a = words.slice(0, c).join(' '), b = words.slice(c).join(' ');
+      var wa = X.measureText(a).width, wb = X.measureText(b).width;
+      if (wa <= w && wb <= w && (!best || Math.abs(wa - wb) < best.d)) best = { lines: [a, b], d: Math.abs(wa - wb) };
+    }
+    if (best) return { lines: best.lines, f: f };
+    if (words.length > 2) {                                      // 낱말이 많은 영문: 뒤 낱말을 빼 가며 두 줄에 맞춘다 (낱말 가운데서 끊지 않게)
+      for (var n = words.length - 1; n >= 2; n--) {
+        var ws = words.slice(0, n);
+        for (var c3 = 1; c3 < ws.length; c3++) {
+          var a3 = ws.slice(0, c3).join(' '), b3 = ws.slice(c3).join(' ').replace(/[\s,\-&]+$/, '');
+          if (X.measureText(a3).width <= w && X.measureText(b3).width <= w) return { lines: [a3, b3], f: f };
+        }
+      }
+    }
+    for (var cut = Math.ceil(s.length / 2), t = 0; t < 6; t++) {    // 띄어쓰기 없는 긴 한글: 가운데쯤에서 나누기
+      var c2 = cut + (t % 2 ? -1 : 1) * Math.ceil(t / 2), a2 = s.slice(0, c2), b2 = s.slice(c2);
+      if (X.measureText(a2).width <= w && X.measureText(b2).width <= w) return { lines: [a2, b2], f: f };
+    }
+    var r = fitName(X, s, w * 2 - 20, 700, [20]);               // 두 줄로도 안 되면: 긴 한 줄을 줄인 뒤 다시 나눈다
+    var h1 = Math.ceil(r.t.length / 2);
+    X.font = font(700, 20);
+    if (X.measureText(r.t.slice(0, h1)).width <= w && X.measureText(r.t.slice(h1)).width <= w) return { lines: [r.t.slice(0, h1), r.t.slice(h1)], f: 20 };
+    return { lines: [fit(X, s, w)], f: 20 };
   }
   function fit(X, s, w) {
     if (X.measureText(s).width <= w) return s;
@@ -132,18 +200,67 @@
     // 큰 도넛 하나 (연합뉴스 주주구성 그래픽처럼 조각 위에 이름·지분을 바로 쓴다)
     // 최대주주 측은 사람별로 (회사 색을 진하게→옅게), 그다음 5% 주주 · 자기주식 · 기타
     var sg = segments(h, color), segs = [];
+    function own(k) {                                           // 회사 이름으로 시작하는 주주 (케이피에프 사내근로복지기금 → 사내근로복지기금)
+      var nm = (h.name || '').trim();
+      return nm && k.indexOf(nm + ' ') === 0 && k.length > nm.length + 3 ? k.slice(nm.length + 1) : k;
+    }
     var top = h.major.filter(function (p, i) { return i < 4 && (i === 0 || p.pct >= 1); });
     var restMaj = h.major.slice(top.length).reduce(function (s0, p) { return s0 + p.pct; }, 0);
-    top.forEach(function (p, i) { segs.push({ k: shortName(p.n), v: p.pct, c: shade(color, [1, 0.78, 0.6, 0.45][i]) }); });
+    top.forEach(function (p, i) { segs.push({ k: own(shortName(p.n)), v: p.pct, c: shade(color, [1, 0.78, 0.6, 0.45][i]) }); });
     if (restMaj >= 0.05) segs.push({ k: '그 외 특수관계인', v: restMaj, c: shade(color, 0.3) });
     sg.segs.forEach(function (x) { if (!x.main) segs.push(x); });
 
-    var cx = L + 300, cy = 740, ro = 300, ri = 135, a = -Math.PI / 2;   // 왼쪽에 두고 오른쪽을 이름표 자리로
+    var cx = L + 300, cy = 740, ro = 300, ri = 135;                 // 왼쪽에 두고 오른쪽을 이름표 자리로
+
+    // 글자 상자(두 줄)의 네 귀퉁이와 변 가운데가 모두 그 조각 안(테두리에서 10px 안쪽)에 들어가야 안에 쓴다
+    function inside(x, bx, by, w, hh) {
+      var pts = [[bx - w / 2, by - hh / 2], [bx + w / 2, by - hh / 2], [bx - w / 2, by + hh / 2], [bx + w / 2, by + hh / 2],
+                 [bx, by - hh / 2], [bx, by + hh / 2], [bx - w / 2, by], [bx + w / 2, by]];
+      return pts.every(function (q) {
+        var dx = q[0] - cx, dy = q[1] - cy, r = Math.sqrt(dx * dx + dy * dy);
+        if (r < ri + 10 || r > ro - 10) return false;
+        var ang = Math.atan2(dy, dx), m = 10 / r;
+        while (ang < x.a0) ang += Math.PI * 2;
+        while (ang > x.a0 + Math.PI * 2) ang -= Math.PI * 2;
+        return ang >= x.a0 + m && ang <= x.a0 + x.da - m;
+      });
+    }
+    // 조각 안 글자 자리 찾기: 안 들어가면 글자를 조금씩 줄이고, 고리 두께 안에서 가운데→바깥→안쪽으로 옮겨 본다
+    var MW = {};
+    function mw(f, t) { var k = f + '|' + t; if (MW[k] === undefined) { X.font = f; MW[k] = X.measureText(t).width; } return MW[k]; }
+    function fit(x) {
+      if (!(x.da > 0)) return null;
+      var pt = pctTxt(x.v), sizes = [[28, x.v >= 10 ? 46 : 38], [25, 36], [22, 30]], radii = [0.5, 0.56, 0.44, 0.62, 0.38];
+      for (var si = 0; si < sizes.length; si++) {
+        var nfs = sizes[si][0], pfs = sizes[si][1];
+        var w = Math.max(mw(font(800, nfs), x.k), mw(font(900, pfs), pt)), hh = nfs * 0.9 + pfs * 0.85 + 8;
+        for (var k2 = 0; k2 < radii.length; k2++) {
+          var rr = ri + (ro - ri) * radii[k2], tx = cx + Math.cos(x.mid) * rr, ty = cy + Math.sin(x.mid) * rr;
+          if (inside(x, tx, ty, w, hh)) return { nfs: nfs, pfs: pfs, tx: tx, ty: ty, hh: hh, pt: pt };
+        }
+      }
+      return null;
+    }
+    function place(start) {
+      var a = start;
+      segs.forEach(function (x) { var da = Math.max(0, x.v) / 100 * Math.PI * 2; x.a0 = a; x.da = da; x.mid = a + da / 2; a += da; });
+    }
+    // 도는 각도 고르기: 조각 밖 이름표가 왼쪽(도넛 뒤편)에 생기지 않게, 그다음 밖 이름표가 적게.
+    // 처음엔 '기타 주주'가 아닌 조각들의 가운데를 3시 방향에 둔다 (작은 조각이 오른쪽 이름표 칸 쪽에 모인다)
+    var named = segs.filter(function (x) { return !x.rest; }).reduce(function (s0, x) { return s0 + Math.max(0, x.v); }, 0);
+    var base = -named / 100 * Math.PI, best = base, bestScore = 1e9;
+    for (var step = 0; step < 72; step++) {
+      var off = (step % 2 ? 1 : -1) * Math.ceil(step / 2) * Math.PI / 36;    // 0, +5°, -5°, +10° … 처음 자리에서 가까운 것부터
+      place(base + off);
+      var sc = 0;
+      segs.forEach(function (x) { if (x.da > 0 && !fit(x)) sc += Math.cos(x.mid) < 0.15 ? 100 : 1; });
+      if (sc < bestScore) { bestScore = sc; best = base + off; }
+      if (sc === 0) break;
+    }
+    place(best);
     segs.forEach(function (x) {
-      var da = Math.max(0, x.v) / 100 * Math.PI * 2;
-      x.a0 = a; x.da = da; x.mid = a + da / 2; a += da;
-      if (da <= 0) return;
-      X.beginPath(); X.arc(cx, cy, ro, x.a0, x.a0 + da); X.arc(cx, cy, ri, x.a0 + da, x.a0, true); X.closePath();
+      if (!(x.da > 0)) return;
+      X.beginPath(); X.arc(cx, cy, ro, x.a0, x.a0 + x.da); X.arc(cx, cy, ri, x.a0 + x.da, x.a0, true); X.closePath();
       X.fillStyle = x.c; X.fill();
       X.strokeStyle = T.paper; X.lineWidth = 4; X.stroke();          // 조각 사이 얇은 틈
     });
@@ -153,35 +270,48 @@
     X.textAlign = 'center'; X.textBaseline = 'middle';
     segs.forEach(function (x) {
       if (!(x.da > 0)) return;
-      var rr = x.rest ? (ro + ri) / 2 + 20 : (ro + ri) / 2 + 22, pt = pctTxt(x.v);
-      var nfs = 28, pfs = x.v >= 10 ? 46 : 38;
-      X.font = font(800, nfs); var nw = X.measureText(x.k).width;
-      X.font = font(900, pfs); var pw = X.measureText(pt).width;
-      var room = x.da * rr;                                        // 그 반지름에서 조각 폭
-      if (room > Math.max(nw, pw) + 26 && x.da > 0.32) {
-        var tx = cx + Math.cos(x.mid) * rr, ty = cy + Math.sin(x.mid) * rr;
-        var ink = x.rest ? T.inkSoft : (lum(x.c) < 0.62 ? '#fff' : '#111214');
-        X.fillStyle = ink; X.font = font(800, nfs); X.fillText(x.k, tx, ty - 24);
-        X.font = font(900, pfs); X.fillText(pt, tx, ty + 18);
-      } else outs.push(x);
+      var f = fit(x);
+      if (!f) { outs.push(x); return; }
+      var ink = x.rest ? T.inkSoft : (lum(x.c) < 0.62 ? '#fff' : '#111214');
+      X.fillStyle = ink; X.font = font(800, f.nfs); X.fillText(x.k, f.tx, f.ty - f.hh / 2 + f.nfs * 0.45);
+      X.font = font(900, f.pfs); X.fillText(f.pt, f.tx, f.ty + f.hh / 2 - f.pfs * 0.42);
     });
     // 바깥 이름표: 모두 오른쪽 한 줄로 (이름 위 · 지분 아래), 위아래로 겹치지 않게 민다
-    var col = cx + ro + 60, GAP = 74;
-    var Lb = outs.map(function (x) { return { x: x, y: cy + Math.sin(x.mid) * (ro + 20) }; })
-      .sort(function (p, q) { return p.y - q.y; });
-    for (var k = 1; k < Lb.length; k++) if (Lb[k].y - Lb[k - 1].y < GAP) Lb[k].y = Lb[k - 1].y + GAP;
-    var over = Lb.length ? Lb[Lb.length - 1].y - 1225 : 0;
+    var col = cx + ro + 60, NW = R + 40 - col - 28;
+    var shown = [];
+    // 이름이 한 줄에 안 들어가면 두 줄로 (그래도 길 때만 뒤 낱말 빼기·'…') — 이름표 높이가 달라지니 간격도 그에 맞춘다
+    var Lb = outs.map(function (x) {
+      var nm = fitName2(X, x.k, NW);
+      return { x: x, nm: nm, hgt: nm.lines.length * (nm.f + 4) + 40, y: cy + Math.sin(x.mid) * (ro + 20) };
+    }).sort(function (p, q) { return p.y - q.y; });
+    for (var k = 1; k < Lb.length; k++) {
+      var need = (Lb[k - 1].hgt + Lb[k].hgt) / 2 + 6;
+      if (Lb[k].y - Lb[k - 1].y < need) Lb[k].y = Lb[k - 1].y + need;
+    }
+    var over = Lb.length ? Lb[Lb.length - 1].y + Lb[Lb.length - 1].hgt / 2 - 1250 : 0;   // 바닥 줄(1282) 위까지
     if (over > 0) Lb.forEach(function (p) { p.y -= over; });
-    var under = Lb.length ? 330 - Lb[0].y : 0;
+    var under = Lb.length ? 318 - (Lb[0].y - Lb[0].hgt / 2) : 0;                          // 제목 아래부터
     if (under > 0) Lb.forEach(function (p) { p.y += under; });
     Lb.forEach(function (p) {
       var x = p.x, ex = cx + Math.cos(x.mid) * (ro + 4), ey = cy + Math.sin(x.mid) * (ro + 4);
       X.strokeStyle = T.dark ? '#5C6169' : '#A9AEB5'; X.lineWidth = 2;
+      if (Math.cos(x.mid) < 0.15) {                                  // 왼쪽 조각: 도넛 바깥 둘레를 따라 오른쪽으로 돌아 나온다 (도넛을 가로지르지 않게)
+        var m0 = Math.atan2(Math.sin(x.mid), Math.cos(x.mid)), down = m0 >= 0, rA = ro + 16;
+        var tgt = down ? 1.15 : -1.15;                                // 아래쪽이면 5시, 위쪽이면 1시 방향까지
+        X.beginPath(); X.moveTo(ex, ey); X.lineTo(cx + Math.cos(m0) * rA, cy + Math.sin(m0) * rA);
+        X.arc(cx, cy, rA, m0, tgt, down);                            // 아래: 시계 반대로(각도 줄며) · 위: 시계 방향
+        X.stroke();
+        ex = cx + Math.cos(tgt) * rA; ey = cy + Math.sin(tgt) * rA;
+      }
+      X.strokeStyle = T.dark ? '#5C6169' : '#A9AEB5'; X.lineWidth = 2;
       X.beginPath(); X.moveTo(ex, ey); X.lineTo(col - 34, p.y); X.lineTo(col - 12, p.y); X.stroke();
-      X.fillStyle = x.c; X.beginPath(); X.arc(col + 9, p.y - 16, 9, 0, 7); X.fill();
+      var nm = p.nm, lh = nm.f + 4, top0 = p.y - p.hgt / 2 + lh / 2;
+      X.fillStyle = x.c; X.beginPath(); X.arc(col + 9, top0, 9, 0, 7); X.fill();
       X.textAlign = 'left'; X.textBaseline = 'middle';
-      X.font = font(700, 26); X.fillStyle = T.inkSoft; X.fillText(fit(X, x.k, R + 40 - col - 28), col + 28, p.y - 16);
-      X.font = font(900, 34); X.fillStyle = T.ink; X.fillText(pctTxt(x.v), col + 28, p.y + 20);
+      shown.push([x.k, nm.lines.join(' ')]);
+      X.font = font(700, nm.f); X.fillStyle = T.inkSoft;
+      nm.lines.forEach(function (ln, li) { X.fillText(ln, col + 28, top0 + li * lh); });
+      X.font = font(900, 34); X.fillStyle = T.ink; X.fillText(pctTxt(x.v), col + 28, p.y + p.hgt / 2 - 18);
     });
     X.textBaseline = 'middle'; X.textAlign = 'center';
     X.fillStyle = T.inkSoft; X.font = font(700, 24); X.fillText('최대주주 측', cx, cy - 26);
@@ -195,7 +325,7 @@
     X.fillText('자료 : ' + (h.report || '').replace(/^20(\d\d) /, "'$1년 ").replace(/보고서$/, ' 보고서'), L, 1318);
     X.textAlign = 'right'; X.font = font(800, 24); X.fillText('@돈굴돈굴', R, 1318);
     X.restore();
-    return { segs: segs };
+    return { segs: segs, shown: shown, top: Lb.length ? Lb[0].y - Lb[0].hgt / 2 : null, bot: Lb.length ? Lb[Lb.length - 1].y + Lb[Lb.length - 1].hgt / 2 : null, outs: outs.length, left: outs.filter(function (x) { return Math.cos(x.mid) < 0.15; }).length };
   }
 
   /* ------------------------------------------------------------ 화면 (holders.html) */

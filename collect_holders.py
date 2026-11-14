@@ -195,6 +195,12 @@ def clean(out):
     for f in sorted(out.get("five") or [], key=lambda x: -x["pct"]):
         if abs(f["pct"] - ms) <= 0.6 or any(abs(f["pct"] - p["pct"]) <= 0.3 and f["pct"] >= 5 for p in out["major"][:3]):
             continue
+        # 최대주주 측 합계와 비슷한 큰 보고(합계의 ±10%)는 최대주주 쪽이 영문·약칭으로 낸 보고 (KC&A=케이씨엔에이, Lee Drew Sukhwan 이석환)
+        if ms >= 10 and abs(f["pct"] - ms) <= ms * 0.1:
+            continue
+        # 최대주주 표의 한글 이름이 보고자 이름 안에 그대로 들어 있으면 같은 사람
+        if any(len(p["n"]) >= 2 and p["n"] in f["n"] for p in out["major"][:5]):
+            continue
         if used + f["pct"] > 100.0:
             continue
         keep.append(f)
