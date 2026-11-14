@@ -165,5 +165,163 @@
     return { segs: segs };
   }
 
+  /* ------------------------------------------------------------ 화면 (holders.html) */
+  var $ = function (id) { return document.getElementById(id); };
+  var LOGO = {};
+  function logoImg(code, cb) {
+    var src = './logo/kr/' + code + '.png';
+    if (LOGO[src] !== undefined) { cb(LOGO[src]); return; }
+    var im = new Image();
+    im.onload = function () { LOGO[src] = im; cb(im); };
+    im.onerror = function () { LOGO[src] = null; cb(null); };
+    im.src = src;
+  }
+  function logoColor(im) {                    // 주가 추이 탭과 같은 방법: 로고에서 가장 눈에 띄는 색
+    if (!im || !im.naturalWidth) return null;
+    var n = 48, cv = document.createElement('canvas'); cv.width = cv.height = n;
+    var g = cv.getContext('2d'); g.drawImage(im, 0, 0, n, n);
+    var px; try { px = g.getImageData(0, 0, n, n).data; } catch (e) { return null; }
+    var bins = {}, dark = {};
+    for (var i = 0; i < px.length; i += 4) {
+      var r = px[i], gg = px[i + 1], b = px[i + 2], al = px[i + 3];
+      if (al < 200) continue;
+      var mx = Math.max(r, gg, b), mn = Math.min(r, gg, b), sat = mx ? (mx - mn) / mx : 0;
+      if (mn > 225) continue;
+      var key = (r >> 4) + ',' + (gg >> 4) + ',' + (b >> 4);
+      var lu = (0.299 * r + 0.587 * gg + 0.114 * b) / 255;
+      if (sat > 0.25 && mx > 50) bins[key] = (bins[key] || 0) + sat * sat * Math.max(0.05, 1.15 - lu);
+      else dark[key] = (dark[key] || 0) + 1;
+    }
+    function top(o) { var k = null, v = 0; for (var q in o) if (o[q] > v) { v = o[q]; k = q; } return k; }
+    var k = top(bins) || top(dark);
+    if (!k) return null;
+    var c = k.split(',').map(function (x) { return Math.min(255, (+x << 4) + 8); });
+    if (0.299 * c[0] + 0.587 * c[1] + 0.114 * c[2] > 200) return null;
+    return '#' + c.map(function (x) { return ('0' + x.toString(16)).slice(-2); }).join('');
+  }
+
+  function initPage() {
+    var cv = $('card'); if (!cv) return;
+    var X = cv.getContext('2d');
+    var state = { item: null, data: null, logo: null, color: '#2B59C3', colorUser: false, name: '', title: '주주 구성 현황' };
+    var LIST = [], BY = {};
+
+    function render() {
+      if (!state.item) return;
+      if (!state.data) {
+        grain(X); X.fillStyle = T.inkSoft; X.font = font(700, 34); X.textAlign = 'center';
+        X.fillText('주주 자료가 아직 없어요', CW / 2, CH / 2); X.textAlign = 'left';
+        $('c-hint').textContent = '정기보고서를 아직 읽지 못한 종목이에요. 주주현황은 매주 월·목에 채워집니다.';
+        return;
+      }
+      draw(X, state.data, { name: state.name || state.item.name, title: state.title, color: state.color, logo: state.logo });
+      var h = state.data;
+      $('c-hint').textContent = h.report.replace(/^20(\d\d) /, "'$1년 ") + ' 기준 (' + h.asof.replace(/-/g, '.') + ') · 최대주주 측 ' +
+        h.major.length + '명' + ((h.five || []).length ? ' · 5% 이상 주주 ' + h.five.length + '곳' : '');
+    }
+    function pick(it) {
+      state.item = it; state.data = null; state.logo = null;
+      state.name = it.name; $('c-name').value = it.name; qIn.value = it.name;
+      var p1 = fetch('./data/holders/' + it.code + '.json', { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : null; })
+        .catch(function () { return null; }).then(function (d) { state.data = d; });
+      var p2 = new Promise(function (res) { logoImg(it.code, function (im) { state.logo = im; res(); }); });
+      Promise.all([p1, p2]).then(function () {
+        if (!state.colorUser) { state.color = logoColor(state.logo) || '#2B59C3'; $('c-color').value = state.color; }
+        $('qmsg').textContent = it.name + ' · ' + it.code;
+        try { history.replaceState(null, '', '?code=' + it.code); } catch (e) { /* 미리보기 */ }
+        render();
+      });
+    }
+
+    // 검색 (실적 탭과 같은 드롭다운)
+    var sugItems = [], sugActive = -1, qIn = $('q'), sugBox = $('suggest');
+    function search(q) {
+      q = (q || '').trim().toLowerCase();
+      if (state.item && q === state.item.name.toLowerCase()) q = '';
+      if (!q) return { q: '', items: LIST };
+      var a = [], b = [], c = [];
+      LIST.forEach(function (x) {
+        var nm = x.name.toLowerCase(), k = x.code;
+        if (nm === q || k === q) a.push(x);
+        else if (nm.indexOf(q) === 0 || k.indexOf(q) === 0) b.push(x);
+        else if (nm.indexOf(q) >= 0 || k.indexOf(q) >= 0) c.push(x);
+      });
+      return { q: q, items: a.concat(b, c) };
+    }
+    function esc(t) { return String(t).replace(/[&<>"]/g, function (m) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[m]; }); }
+    function closeSuggest() { sugBox.style.display = 'none'; sugActive = -1; }
+    function openSuggest() {
+      var r = search(qIn.value);
+      sugItems = r.items.slice(0, 300);
+      var html = '<div class="head">' + (r.q ? r.items.length.toLocaleString() + '개 일치'
+        : '국내 ' + LIST.length.toLocaleString() + '종목 · 이름이나 코드를 입력해보세요') + '</div>';
+      html += sugItems.length ? sugItems.map(function (x, i) {
+        return '<li role="option" data-i="' + i + '"><span>' + esc(x.name) + '</span><span class="code">' + esc(x.code) + '</span></li>';
+      }).join('') : '<li class="empty">일치하는 종목이 없습니다</li>';
+      sugBox.innerHTML = html; sugBox.style.display = 'block'; sugBox.scrollTop = 0; sugActive = -1;
+    }
+    function choose(it) { if (!it) return; closeSuggest(); qIn.blur(); pick(it); }
+    qIn.addEventListener('focus', openSuggest);
+    qIn.addEventListener('input', openSuggest);
+    sugBox.addEventListener('mousedown', function (e) {
+      var li = e.target.closest('li[data-i]'); if (!li) return;
+      e.preventDefault(); choose(sugItems[+li.dataset.i]);
+    });
+    qIn.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') { e.preventDefault(); $('go').click(); return; }
+      if (sugBox.style.display !== 'block') return;
+      var lis = sugBox.querySelectorAll('li[data-i]');
+      if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+        e.preventDefault(); if (!lis.length) return;
+        sugActive += e.key === 'ArrowDown' ? 1 : -1;
+        if (sugActive < 0) sugActive = lis.length - 1; if (sugActive >= lis.length) sugActive = 0;
+        for (var i = 0; i < lis.length; i++) lis[i].setAttribute('aria-selected', String(i === sugActive));
+        lis[sugActive].scrollIntoView({ block: 'nearest' });
+      } else if (e.key === 'Escape') closeSuggest();
+    });
+    document.addEventListener('click', function (e) { if (!e.target.closest('.search-wrap')) closeSuggest(); });
+    $('go').addEventListener('click', function () {
+      var it = sugBox.style.display === 'block' && sugActive >= 0 ? sugItems[sugActive] : null;
+      if (!it) { var r = search(qIn.value); it = r.items[0]; }
+      if (it) choose(it); else $('qmsg').textContent = '찾는 종목이 없어요. 이름이나 종목코드로 찾아 보세요.';
+    });
+
+    $('c-name').addEventListener('input', function () { state.name = this.value; render(); });
+    $('c-title').value = state.title;
+    $('c-title').addEventListener('input', function () { state.title = this.value; render(); });
+    $('c-color').addEventListener('input', function () { state.color = this.value; state.colorUser = true; render(); });
+    $('c-auto').addEventListener('click', function () { state.colorUser = false; state.color = logoColor(state.logo) || '#2B59C3'; $('c-color').value = state.color; render(); });
+    $('c-dl').addEventListener('click', function () {
+      if (!state.data) return;
+      var big = document.createElement('canvas'); big.width = CW * 3; big.height = CH * 3;
+      var g = big.getContext('2d'); g.scale(3, 3);
+      draw(g, state.data, { name: state.name || state.item.name, title: state.title, color: state.color, logo: state.logo });
+      big.toBlob(function (blob) {
+        if (!blob) { alert('그림을 만들지 못했습니다. 새로고침 후 다시 눌러 주세요.'); return; }
+        var el = document.createElement('a'); el.href = URL.createObjectURL(blob);
+        el.download = (state.name || state.item.name) + '_주주구성.png';
+        document.body.appendChild(el); el.click(); el.remove(); setTimeout(function () { URL.revokeObjectURL(el.href); }, 10000);
+      }, 'image/png');
+    });
+    $('btn-mode').addEventListener('click', function () {
+      var r = document.documentElement; r.setAttribute('data-mode', r.getAttribute('data-mode') === 'dark' ? 'light' : 'dark');
+    });
+
+    fetch('./data/holders/index.json', { cache: 'no-cache' }).then(function (r) { return r.json(); }).catch(function () { return {}; })
+      .then(function (j) {
+        var items = (j && j.items) || {};
+        Object.keys(items).forEach(function (code) {
+          var it = { code: code, name: items[code][0] || code, asof: items[code][1] };
+          LIST.push(it); BY[code] = it;
+        });
+        LIST.sort(function (p, q) { return p.name.localeCompare(q.name, 'ko'); });
+        $('src-pill').textContent = '정기보고서 기준 · ' + LIST.length.toLocaleString() + '종목';
+        var c0 = new URLSearchParams(location.search).get('code');
+        var first = BY[c0] || BY['005930'] || LIST[0];
+        if (first) (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(function () { pick(first); });
+      });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initPage); else initPage();
+
   window.__hd = { draw: draw, segments: segments, shortName: shortName };
 })();
