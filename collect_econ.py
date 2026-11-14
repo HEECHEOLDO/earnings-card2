@@ -106,8 +106,14 @@ FRED = [  # id, 시리즈, 이름, 단위
 
 
 def fred():
+    t0 = get("https://fred.stlouisfed.org/graph/fredgraph.csv?id=UNRATE&cosd=2024-01-01", tries=2, timeout=25)
+    print("  FRED 점검 응답:", (t0 or "없음")[:120].replace("\n", " | "))
+    if not t0:
+        for id_, sid, name, unit in FRED:
+            STATUS[id_] = {"ok": False, "name": name, "why": "FRED 응답 없음"}
+        return
     for id_, sid, name, unit in FRED:
-        t = get("https://fred.stlouisfed.org/graph/fredgraph.csv?id=" + sid + "&cosd=2005-01-01")
+        t = get("https://fred.stlouisfed.org/graph/fredgraph.csv?id=" + sid + "&cosd=2005-01-01", tries=2, timeout=30)
         if not t or "DATE" not in t.upper()[:40] and "observation_date" not in t[:40]:
             STATUS[id_] = {"ok": False, "name": name, "why": "FRED 응답 없음"}
             continue
@@ -233,6 +239,7 @@ def ecos():
 
 
 def main():
+    sys.stdout.reconfigure(line_buffering=True)
     parts = sys.argv[1:] or ["market", "fred", "trade", "ecos"]
     os.makedirs(OUT, exist_ok=True)
     old = {}
