@@ -917,7 +917,7 @@
       var ly = h >= d + 26 ? y + 14 + d / 2 : null;
       // 위 라벨
       var cxm = x + bw / 2, ty = y - 14;
-      var val = state.fundTotal ? wonOf(state.fundTotal * r.pct / 100) : '';   // 비중 × 전체 금액 — 같은 이름(옵션 등)이 겹쳐도 비중과 금액이 어긋나지 않는다
+      var val = '';   // 금액은 적지 않는다 — 비중(%)만   // 비중 × 전체 금액 — 같은 이름(옵션 등)이 겹쳐도 비중과 금액이 어긋나지 않는다
       if (im && ly == null) { ly = y - 14 - d / 2; ty = y - 28 - d; }
       ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
       if (val) { ctx.fillStyle = T.footer; fitText(ctx, val, 700, 24, 15, bw + gap * 0.8); ctx.fillText(val, cxm, ty); ty -= 32; }
@@ -1265,7 +1265,7 @@
     var ruleY = footBase - T.type.footer*0.85 - T.gap.ruleToText;
     var chartTop = y + T.gap.headToChart;
     // 원화로 바꿔 적은 금액이 있으면(해외 13F · 막대) 제목 아래 오른쪽 줄에 환율 — 돈의 흐름 탭 해외 카드와 같은 자리·글씨
-    if (state.chart === 'bar' && FX && state.fundVal && state.fundKind !== 'kr5' && Object.keys(state.fundVal).length) {
+    if (false) {                                  // 금액을 빼서 환율 줄도 필요 없다
       ctx.font = font(700, 20); ctx.fillStyle = '#6B7078'; ctx.textAlign = 'right';
       ctx.fillText('환율 ' + Math.round(FX).toLocaleString('ko-KR') + '원 기준', CX + CWID, chartTop + 12);
       ctx.textAlign = 'left';
