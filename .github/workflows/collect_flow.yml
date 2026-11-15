@@ -39,7 +39,7 @@ jobs:
           DART_API_KEY: ${{ secrets.DART_API_KEY }}
           SEC_UA: ${{ secrets.SEC_UA }}
           FLOW_MINUTES: '72'
-          FLOW_WORKERS: '6'
+          FLOW_WORKERS: '12'
         run: |
           mkdir -p data/flow
           python3 -u collect_flow.py --${{ matrix.part }}-only 2>&1 | tee "$RUNNER_TEMP/flow_log.txt"
