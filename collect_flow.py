@@ -357,15 +357,15 @@ def work_us(job):
     FX.WHY = ""
     try:
         x = us_xbrl(cik, old)
-    except Exception as e:                          # noqa: BLE001
-        x, FX.WHY = None, "오류 %s" % e
+    except (Exception, SystemExit) as e:            # noqa: BLE001  (SEC 403 이면 collect_us.get 이 멈추려 한다 — 이 회사만 건너뛴다)
+        x, FX.WHY = None, "오류 %r" % e
     if x == "SAME":
         return job, "SAME", "", time.time() - t0
     d = scaled(x, 1e6) if x else None
     if not d:
         try:
             d = us_one(t, cik)
-        except Exception:                           # noqa: BLE001
+        except (Exception, SystemExit):             # noqa: BLE001
             d = None
         if d:
             d["xbrl_err"] = FX.WHY or "까닭 모름"
