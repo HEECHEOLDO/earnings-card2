@@ -571,12 +571,43 @@
       });
   }
 
+  /* 기본 색 — 로고가 있으면 로고의 대표색(가장 많이 쓴 진한 색), 없으면 처음 파랑 */
+  var DEFAULT_BASE = '#2E6FD9';
+  function logoMainColor(im) {
+    var c = document.createElement('canvas'); c.width = c.height = 48;
+    var g = c.getContext('2d'); g.drawImage(im, 0, 0, 48, 48);
+    var px = g.getImageData(0, 0, 48, 48).data, box = {};
+    for (var i = 0; i < px.length; i += 4) {
+      var r = px[i], gg = px[i + 1], b = px[i + 2], a = px[i + 3];
+      if (a < 200) continue;
+      var mx = Math.max(r, gg, b), mn = Math.min(r, gg, b);
+      if (mn > 225) continue;                                   // 흰 바탕은 빼고
+      var sat = mx ? (mx - mn) / mx : 0, k = (r >> 5) + ',' + (gg >> 5) + ',' + (b >> 5);
+      var e = box[k] || (box[k] = { n: 0, w: 0, r: 0, g: 0, b: 0 });
+      var w = sat > 0.25 ? 3 : 1;                               // 색이 있는 픽셀을 더 쳐준다 (글자 검정보다 로고 색)
+      e.n++; e.w += w; e.r += r; e.g += gg; e.b += b;
+    }
+    var best = null;
+    Object.keys(box).forEach(function (k) { if (!best || box[k].w > best.w) best = box[k]; });
+    if (!best) return null;
+    return '#' + [best.r, best.g, best.b].map(function (v) { return Math.round(v / best.n).toString(16).padStart(2, '0'); }).join('');
+  }
+  function baseFromLogo(path) {
+    if (!window.__pickBaseColor) return;
+    if (!path) { window.__pickBaseColor(DEFAULT_BASE); return; }
+    var im = new Image();
+    im.onload = function () { try { window.__pickBaseColor(logoMainColor(im) || DEFAULT_BASE); } catch (e) { window.__pickBaseColor(DEFAULT_BASE); } };
+    im.onerror = function () { window.__pickBaseColor(DEFAULT_BASE); };
+    im.src = './logo/' + path + '.png';
+  }
+
   function applyFund(key) {
     var f = F13.funds && F13.funds[key];
     var note = document.getElementById('fund-note');
     if (!f) { note.style.display = 'none'; state.fundLogo = null; state.fundVal = null; return; }
     document.getElementById('f-name').value = f.title;
     state.fundLogo = (f.kind === 'corp' || f.kind === 'manager') ? (CORP_LOGO[key] || null) : null;   // 기업·운용사는 제목 앞에 로고
+    baseFromLogo(state.fundLogo);
     document.getElementById('f-josa').value = topic(f.title).slice(f.title.length);
     document.getElementById('f-sub').value = '어디에 투자하고 있을까?';
     document.getElementById('f-basis').value = "'" + (f.kind === 'kr5' ? monthLabel(f.period) : quarterLabel(f.period)) + ' 기준';
@@ -878,8 +909,7 @@
       if (val) { ctx.fillStyle = T.footer; fitText(ctx, val, 700, 24, 15, bw + gap * 0.8); ctx.fillText(val, cxm, ty); ty -= 32; }
       ctx.fillStyle = T.ink; fitText(ctx, r.pct.toFixed(1) + '%', 900, 38, 20, bw + gap * 0.8); ctx.fillText(r.pct.toFixed(1) + '%', cxm, ty);
       if (im) {
-        ctx.save(); ctx.beginPath(); ctx.arc(cxm, ly, d / 2 + 3, 0, 7); ctx.fillStyle = '#FFFFFF'; ctx.fill();
-        ctx.beginPath(); ctx.arc(cxm, ly, d / 2, 0, 7); ctx.clip(); ctx.drawImage(im, cxm - d / 2, ly - d / 2, d, d); ctx.restore();
+        ctx.save(); ctx.beginPath(); ctx.arc(cxm, ly, d / 2, 0, 7); ctx.clip();   // 흰 테두리 없이 로고만 ctx.drawImage(im, cxm - d / 2, ly - d / 2, d, d); ctx.restore();
       }
       // 이름
       ctx.fillStyle = T.ink;
@@ -1086,6 +1116,33 @@
         if (best) placed.push({ r: it.r, box: best });
       });
     }
+
+    /* 한 군데가 붐벼 원 전체가 밀려나면, 붐비지 않는 라벨(마켈의 '기타'·버크셔)까지 도넛에서 멀어진다.
+       자리를 잡은 뒤 라벨마다 다시 도넛 쪽으로 당겨 본다 — 다른 라벨과 안 겹치는 가장 가까운 자리로.
+       큰 조각부터, 두 번 돌린다. 글자 크기는 그대로. */
+    for (var pass = 0; pass < 2; pass++) {
+      placed.map(function (p, i) { return i; })
+        .sort(function (a, b) { return placed[b].r.pct - placed[a].r.pct; })
+        .forEach(function (i) {
+          var p = placed[i]; if (!p.box) return;
+          var it = null; for (var k = 0; k < items.length; k++) if (items[k].r === p.r) it = items[k];
+          if (!it) return;
+          var limit = Math.min(D.swingMax, it.sweep * 90 / Math.PI * D.swingFrac);
+          for (var o = 0; o <= D.pushMax + D.pullMax; o += 4) {
+            var got = null;
+            for (var sw = 0; sw < swings.length && !got; sw++) {
+              if (Math.abs(swings[sw]) > limit) continue;
+              var box = boxOnRing(it, it.mid + swings[sw] * Math.PI / 180, D.labelGap + o, p.box.size);
+              if (onDonut(box) || outside(box)) continue;
+              var clash = false;
+              for (var q = 0; q < placed.length && !clash; q++) if (q !== i && placed[q].box && hits(box, placed[q].box)) clash = true;
+              if (!clash) got = box;
+            }
+            if (got) { got.size = p.box.size; got.ps = p.box.ps; p.box = got; break; }
+          }
+        });
+    }
+    window.__donutDbg = { cx: cx, cy: cy, R: R, boxes: placed.map(function (p) { return p.box && { n: p.r.name, x1: p.box.x1, x2: p.box.x2, y1: p.box.y1, y2: p.box.y2 }; }) };
 
     /* 비중이 큰 라벨이 작은 라벨보다 작아 보이면 안 된다.
        배치는 앞에서부터 자리 되는 대로 잡혀서, 붐비는 구간 가운데에 낀
@@ -1811,6 +1868,7 @@
       sync(c);
       onPick();
     }
+    window.__pickBaseColor = pick;          // 포트폴리오를 고르면 로고 대표색으로 바꿀 때 쓴다
 
     grid.addEventListener('click', function (e) {
       var b = e.target.closest ? e.target.closest('.cp-sw') : null;
