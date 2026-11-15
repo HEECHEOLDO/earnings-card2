@@ -28,6 +28,7 @@ jobs:
           SEC_UA: ${{ secrets.SEC_UA }}
         run: |
           python3 collect_13f.py --verify 2>&1 | grep -iE "blackrock|vanguard|state|fmr|jpmorgan|morgan|goldman|bank of america|rowe|geode|invesco|northern|wellington|ubs|\?\?" || true
+          python3 collect_13f.py --find vanguard 2>&1 | head -20 || true
           python3 collect_13f.py
       - name: 커밋
         run: |

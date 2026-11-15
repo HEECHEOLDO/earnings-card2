@@ -29,7 +29,7 @@ from datetime import datetime, timezone, timedelta
 UA = "fincard personal project heecheoldo@gmail.com"
 OUT = "data/13f.json"
 TOP_N = 40                 # 종목이 수천 개인 기관도 있어 상위만 저장
-NAME_VER = 8               # 종목명 규칙 판. 올리면 공시가 그대로여도 다시 만든다
+NAME_VER = 9               # 종목명 규칙 판. 올리면 공시가 그대로여도 다시 만든다
 SLEEP = 0.15
 
 # (키, 카드 제목, 공시 주체, CIK)
@@ -860,8 +860,13 @@ def build(rows):
         b["shares"] += shares
         if len(name) > len(b["raw"]):
             b["raw"] = name
-    total = sum(b["value"] for b in by.values()) or 1.0
     items = sorted(by.values(), key=lambda b: -b["value"])
+    # 금액을 천 달러 단위로 적은 공시(예: T. 로우 프라이스)가 있다 — 큰 종목의 '주당 금액'이 2달러도 안 되면 천 배
+    px = sorted(b["value"] / b["shares"] for b in items[:15] if b["shares"] > 0)
+    if px and px[len(px) // 2] < 2:
+        for b in by.values():
+            b["value"] *= 1000
+    total = sum(b["value"] for b in by.values()) or 1.0
     out = []
     for b in items[:TOP_N]:
         name = final_name(b["raw"])
