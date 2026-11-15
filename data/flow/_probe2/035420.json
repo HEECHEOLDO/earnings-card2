@@ -1,0 +1,1171 @@
+{
+"report": "사업보고서 (2025.12)",
+"rows": [
+[
+"dart:ProvisionOfGuaranteesByToEntityOfNonPF",
+"기업의(으로의) 보증금액 (비 PF)",
+"2025-01-01",
+[
+[
+"지급보증의 구분 [축]",
+"이행보증 [구성요소]"
+]
+],
+174800000000.0
+],
+[
+"ifrs-full:DepreciationPropertyPlantAndEquipment",
+"감가상각비, 유형자산",
+"2025-01-01",
+[
+[
+"유형자산의 분류 [축]",
+"건물 [구성요소]"
+]
+],
+57656898000.0
+],
+[
+"ifrs-full:DepreciationPropertyPlantAndEquipment",
+"감가상각비, 유형자산",
+"2025-01-01",
+[
+[
+"유형자산의 분류 [축]",
+"구축물 [구성요소]"
+]
+],
+10610465000.0
+],
+[
+"ifrs-full:DepreciationPropertyPlantAndEquipment",
+"감가상각비, 유형자산",
+"2025-01-01",
+[
+[
+"유형자산의 분류 [축]",
+"기계장치 [구성요소]"
+]
+],
+379256393000.0
+],
+[
+"ifrs-full:ActuarialGainsLossesArisingFromExperienceAdjustmentsNetDefinedBenefitLiabilityAsset",
+"경험조정에서 발생하는 보험수리적 이익(손실), 순확정급여부채(자산)",
+"2025-01-01",
+[
+[
+"순확정급여부채(자산) [축]",
+"확정급여채무의 현재가치 [구성요소]"
+]
+],
+-64150780000.0
+],
+[
+"ifrs-full:ActuarialGainsLossesArisingFromChangesInFinancialAssumptionsNetDefinedBenefitLiabilityAsset",
+"재무적 가정의 변동에서 발생하는 보험수리적이익(손실), 순 확정급여부채(자산)",
+"2025-01-01",
+[
+[
+"순확정급여부채(자산) [축]",
+"확정급여채무의 현재가치 [구성요소]"
+]
+],
+119670919000.0
+],
+[
+"ifrs-full:OperatingExpense",
+"영업비용",
+"2025-01-01",
+[],
+9826868830255.0
+],
+[
+"ifrs-full:DeferredTaxExpenseIncomeRecognisedInProfitOrLoss",
+"손익계산서",
+"2025-01-01",
+[
+[
+"일시적차이, 미사용 세무상 결손금과 미사용 세액공제 [축]",
+"이월결손금 및 이월세액공제"
+]
+],
+-88110322000.0
+],
+[
+"ifrs-full:DeferredTaxExpenseIncomeRecognisedInProfitOrLoss",
+"손익계산서",
+"2025-01-01",
+[
+[
+"일시적차이, 미사용 세무상 결손금과 미사용 세액공제 [축]",
+"순확정급여부채(자산) [구성요소]"
+]
+],
+-42195095000.0
+],
+[
+"ifrs-full:ResearchAndDevelopmentExpense",
+"연구와 개발 비용",
+"2025-01-01",
+[
+[
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축]",
+"공시금액 [구성요소]"
+]
+],
+2221750000000.0
+],
+[
+"ifrs-full:DeferredTaxExpenseIncomeRecognisedInProfitOrLoss",
+"손익계산서",
+"2025-01-01",
+[
+[
+"일시적차이, 미사용 세무상 결손금과 미사용 세액공제 [축]",
+"이연법인세자산"
+]
+],
+-175471316000.0
+],
+[
+"ifrs-full:DeferredTaxExpenseIncomeRecognisedInProfitOrLoss",
+"손익계산서",
+"2025-01-01",
+[],
+-111966714000.0
+],
+[
+"ifrs-full:AdjustmentsForInterestExpense",
+"이자비용에 대한 조정",
+"2025-01-01",
+[
+[
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축]",
+"공시금액 [구성요소]"
+]
+],
+108717362000.0
+],
+[
+"ifrs-full:AdjustmentsForAmortisationExpense",
+"무형자산상각비에 대한 조정",
+"2025-01-01",
+[
+[
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축]",
+"공시금액 [구성요소]"
+]
+],
+65259246000.0
+],
+[
+"dart:AdjustmentsForDepreciationRightofuseAssets",
+"사용권자산감가상각비 조정",
+"2025-01-01",
+[
+[
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축]",
+"공시금액 [구성요소]"
+]
+],
+189557722000.0
+],
+[
+"entity00266961:TheAmountOfTreasurySharesGrantedFreeOfChargeToEmployeesOfExplanationRegardingTheAmountOfTreasurySharesGrantedFreeOfChargeOfExplanationRegardingTheAmountOfTreasurySharesGrantedFreeOfChargeTableOfItems",
+"종업원 자사주 무상교부액",
+"2025-01-01",
+[
+[
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축]",
+"공시금액 [구성요소]"
+]
+],
+20999000000.0
+],
+[
+"dart:BadDebtExpenses",
+"대손상각비(대손충당금환입)",
+"2025-01-01",
+[
+[
+"금융자산의 종류 [축]",
+"매출채권 및 미수금 [구성요소]"
+]
+],
+12512476000.0
+],
+[
+"ifrs-full:EmployeeBenefitsExpense",
+"종업원급여비용",
+"2025-01-01",
+[
+[
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축]",
+"공시금액 [구성요소]"
+]
+],
+1937348010000.0
+],
+[
+"ifrs-full:ExpenseFromSharebasedPaymentTransactionsWithEmployees",
+"종업원 주식기준보상거래로부터의 비용",
+"2025-01-01",
+[
+[
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축]",
+"공시금액 [구성요소]"
+]
+],
+166878985000.0
+],
+[
+"dart:EmployeeBenefits",
+"복리후생비",
+"2025-01-01",
+[
+[
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축]",
+"공시금액 [구성요소]"
+]
+],
+320844519000.0
+],
+[
+"dart:TravelExpenses",
+"여비교통비",
+"2025-01-01",
+[
+[
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축]",
+"공시금액 [구성요소]"
+]
+],
+24170896000.0
+],
+[
+"ifrs-full:DepreciationExpense",
+"감가상각비",
+"2025-01-01",
+[
+[
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축]",
+"공시금액 [구성요소]"
+]
+],
+490481270000.0
+],
+[
+"ifrs-full:DepreciationRightofuseAssets",
+"감가상각비, 사용권자산",
+"2025-01-01",
+[
+[
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축]",
+"공시금액 [구성요소]"
+]
+],
+189557722000.0
+],
+[
+"ifrs-full:AmortisationExpense",
+"무형자산상각비",
+"2025-01-01",
+[
+[
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축]",
+"공시금액 [구성요소]"
+]
+],
+65259246000.0
+],
+[
+"ifrs-full:CommunicationExpense",
+"통신비",
+"2025-01-01",
+[
+[
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축]",
+"공시금액 [구성요소]"
+]
+],
+260167697000.0
+],
+[
+"dart:UtilityExpenses",
+"수도광열비",
+"2025-01-01",
+[
+[
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축]",
+"공시금액 [구성요소]"
+]
+],
+56992573000.0
+],
+[
+"ifrs-full:InterestExpense",
+"이자비용",
+"2025-01-01",
+[
+[
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축]",
+"공시금액 [구성요소]"
+]
+],
+108717362000.0
+],
+[
+"entity00266961:ForeignCurrencyExchangeLossFinanceExpenseOfFinanceCostsOfFinanceIncomeAndFinanceCostTableOfItems",
+"외환차이(금융비용)",
+"2025-01-01",
+[
+[
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축]",
+"공시금액 [구성요소]"
+]
+],
+147672897000.0
+],
+[
+"dart:LossesOnValuationOfFairValueFinancialAssetFinancialExpense",
+"당기손익인식금융자산평가손실(금융원가)",
+"2025-01-01",
+[
+[
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축]",
+"공시금액 [구성요소]"
+]
+],
+291344836000.0
+],
+[
+"ifrs-full:OtherComprehensiveIncomeBeforeTaxGainsLossesOnRemeasurementsOfDefinedBenefitPlans",
+"세전기타포괄손익, 확정급여제도의 재측정차익(차손)",
+"2025-01-01",
+[
+[
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축]",
+"공시금액 [구성요소]"
+]
+],
+48600419000.0
+],
+[
+"ifrs-full:DeferredTaxExpenseIncomeRecognisedInProfitOrLoss",
+"손익계산서",
+"2025-01-01",
+[
+[
+"일시적차이, 미사용 세무상 결손금과 미사용 세액공제 [축]",
+"이연법인세부채"
+]
+],
+63504602000.0
+],
+[
+"dart:BadDebtExpenses",
+"대손상각비(대손충당금환입)",
+"2025-01-01",
+[],
+12311270000.0
+],
+[
+"dart:Commissions",
+"지급수수료",
+"2025-01-01",
+[
+[
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축]",
+"공시금액 [구성요소]"
+]
+],
+4042124442000.0
+],
+[
+"dart:AdvertisingExpenses",
+"광고선전비",
+"2025-01-01",
+[
+[
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축]",
+"공시금액 [구성요소]"
+]
+],
+1920299459000.0
+],
+[
+"dart:FreightExpenses",
+"운반비",
+"2025-01-01",
+[
+[
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축]",
+"공시금액 [구성요소]"
+]
+],
+73434128000.0
+],
+[
+"dart:SupplyExpenses",
+"소모품비",
+"2025-01-01",
+[
+[
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축]",
+"공시금액 [구성요소]"
+]
+],
+24869656000.0
+],
+[
+"dart:TrainingExpenses",
+"교육훈련비",
+"2025-01-01",
+[
+[
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축]",
+"공시금액 [구성요소]"
+]
+],
+11502126000.0
+],
+[
+"ifrs-full:MiscellaneousOtherOperatingExpense",
+"그밖의 기타영업비용",
+"2025-01-01",
+[
+[
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축]",
+"공시금액 [구성요소]"
+]
+],
+186557686000.0
+],
+[
+"ifrs-full:OperatingExpense",
+"영업비용",
+"2025-01-01",
+[
+[
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축]",
+"공시금액 [구성요소]"
+]
+],
+9826868830000.0
+],
+[
+"entity00266961:OtherIncomesOfOtherGainsOfOtherIncomeAndExpensesTableOfItems",
+"기타",
+"2025-01-01",
+[
+[
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축]",
+"공시금액 [구성요소]"
+]
+],
+13543089000.0
+],
+[
+"entity00266961:CorporateSocialResponsibilityExpensesOfOtherLossesOfOtherIncomeAndExpensesTableOfItems",
+"사회공헌비",
+"2025-01-01",
+[
+[
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축]",
+"공시금액 [구성요소]"
+]
+],
+60991690000.0
+],
+[
+"entity00266961:NonOperatingServiceFeesOfOtherLossesOfOtherIncomeAndExpensesTableOfItems",
+"영업외지급수수료",
+"2025-01-01",
+[
+[
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축]",
+"공시금액 [구성요소]"
+]
+],
+12187106000.0
+],
+[
+"entity00266961:OtherLossesOfOtherLossesOfOtherIncomeAndExpensesTableOfItems",
+"기타",
+"2025-01-01",
+[
+[
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축]",
+"공시금액 [구성요소]"
+]
+],
+10283127000.0
+],
+[
+"ifrs-full:TaxExpenseIncomeAtApplicableTaxRate",
+"적용세율에 의한 법인세비용(수익)",
+"2025-01-01",
+[
+[
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축]",
+"공시금액 [구성요소]"
+]
+],
+734181691000.0
+],
+[
+"ifrs-full:TaxEffectOfExpenseNotDeductibleInDeterminingTaxableProfitTaxLoss",
+"과세소득(세무상결손금) 결정시 차감되지 않는 비용의 법인세효과",
+"2025-01-01",
+[
+[
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축]",
+"공시금액 [구성요소]"
+]
+],
+32501293000.0
+],
+[
+"ifrs-full:IncomeTaxRelatingToRemeasurementsOfDefinedBenefitPlansOfOtherComprehensiveIncome",
+"기타포괄손익에 포함되는, 확정급여제도의 재측정에 관련되는 법인세",
+"2025-01-01",
+[
+[
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축]",
+"공시금액 [구성요소]"
+]
+],
+12430758000.0
+],
+[
+"ifrs-full:AdjustmentsForDepreciationExpense",
+"감가상각비에 대한 조정",
+"2025-01-01",
+[
+[
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축]",
+"공시금액 [구성요소]"
+]
+],
+490481270000.0
+],
+[
+"dart:AdjustmentsForBadDebtExpenses",
+"대손상각비 조정",
+"2025-01-01",
+[
+[
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축]",
+"공시금액 [구성요소]"
+]
+],
+10264160000.0
+],
+[
+"ifrs-full:ExpenseFromSharebasedPaymentTransactionsWithEmployees",
+"종업원 주식기준보상거래로부터의 비용",
+"2025-01-01",
+[
+[
+"주식기준보상약정의 유형 [축]",
+"현금결제형 주식기준보상 [구성요소]"
+]
+],
+14744000000.0
+],
+[
+"ifrs-full:ExpenseFromSharebasedPaymentTransactionsWithEmployees",
+"종업원 주식기준보상거래로부터의 비용",
+"2025-01-01",
+[
+[
+"주식기준보상약정의 유형 [축]",
+"주식결제형 주식기준보상 [구성요소]"
+]
+],
+33635000000.0
+],
+[
+"ifrs-full:ExpenseFromSharebasedPaymentTransactionsWithEmployees",
+"종업원 주식기준보상거래로부터의 비용",
+"2025-01-01",
+[
+[
+"주식기준보상약정의 유형 [축]",
+"양도제한조건부 주식 [구성요소]"
+]
+],
+118500000000.0
+],
+[
+"ifrs-full:ActuarialGainsLossesArisingFromExperienceAdjustmentsNetDefinedBenefitLiabilityAsset",
+"경험조정에서 발생하는 보험수리적 이익(손실), 순확정급여부채(자산)",
+"2025-01-01",
+[],
+-64150780000.0
+],
+[
+"ifrs-full:ActuarialGainsLossesArisingFromChangesInFinancialAssumptionsNetDefinedBenefitLiabilityAsset",
+"재무적 가정의 변동에서 발생하는 보험수리적이익(손실), 순 확정급여부채(자산)",
+"2025-01-01",
+[],
+119670919000.0
+],
+[
+"ifrs-full:AmortisationIntangibleAssetsOtherThanGoodwill",
+"기타 상각비, 영업권 이외의 무형자산",
+"2025-01-01",
+[
+[
+"무형자산 및 영업권의 분류 [축]",
+"고객관련 무형자산 [구성요소]"
+]
+],
+24482005000.0
+],
+[
+"ifrs-full:AmortisationIntangibleAssetsOtherThanGoodwill",
+"기타 상각비, 영업권 이외의 무형자산",
+"2025-01-01",
+[
+[
+"무형자산 및 영업권의 분류 [축]",
+"기타무형자산 [구성요소]"
+]
+],
+16442734000.0
+],
+[
+"ifrs-full:AmortisationIntangibleAssetsOtherThanGoodwill",
+"기타 상각비, 영업권 이외의 무형자산",
+"2025-01-01",
+[],
+65259246000.0
+],
+[
+"ifrs-full:InterestExpenseOnLeaseLiabilities",
+"리스부채에 대한 이자비용",
+"2025-01-01",
+[
+[
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축]",
+"공시금액 [구성요소]"
+]
+],
+40263378000.0
+],
+[
+"ifrs-full:ExpenseRelatingToVariableLeasePaymentsNotIncludedInMeasurementOfLeaseLiabilities",
+"리스부채 측정에 포함되지 않은 변동리스료에 관련되는 비용",
+"2025-01-01",
+[
+[
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축]",
+"공시금액 [구성요소]"
+]
+],
+19844873000.0
+],
+[
+"dart:InterestExpenseFinanceExpense",
+"이자비용(금융원가)",
+"2025-01-01",
+[
+[
+"자산과 부채 [축]",
+"상각후원가로 측정하는 금융부채, 범주 [구성요소]"
+]
+],
+66064293000.0
+],
+[
+"ifrs-full:CostOfInventoriesRecognisedAsExpenseDuringPeriod",
+"기간동안 비용으로 인식한 재고자산의 원가",
+"2025-01-01",
+[
+[
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축]",
+"공시금액 [구성요소]"
+]
+],
+148952000000.0
+],
+[
+"ifrs-full:DepreciationPropertyPlantAndEquipment",
+"감가상각비, 유형자산",
+"2025-01-01",
+[
+[
+"유형자산의 분류 [축]",
+"사무용비품 [구성요소]"
+]
+],
+42782795000.0
+],
+[
+"ifrs-full:DepreciationPropertyPlantAndEquipment",
+"감가상각비, 유형자산",
+"2025-01-01",
+[],
+490481264000.0
+],
+[
+"ifrs-full:ServicesReceivedRelatedPartyTransactions",
+"제공받은용역, 특수관계자거래",
+"2025-01-01",
+[
+[
+"특수관계자의 범주 [축]",
+"기타 관계기업 [구성요소]"
+]
+],
+27365864000.0
+],
+[
+"ifrs-full:RevenueFromRenderingOfServicesRelatedPartyTransactions",
+"용역의 제공으로 인한 수익, 특수관계자거래",
+"2025-01-01",
+[
+[
+"특수관계자의 범주 [축]",
+"기타 관계기업 [구성요소]"
+]
+],
+12348947000.0
+],
+[
+"ifrs-full:ServicesReceivedRelatedPartyTransactions",
+"제공받은용역, 특수관계자거래",
+"2025-01-01",
+[
+[
+"특수관계자의 범주 [축]",
+"LY Communications Corporation"
+]
+],
+10127143000.0
+],
+[
+"ifrs-full:ServicesReceivedRelatedPartyTransactions",
+"제공받은용역, 특수관계자거래",
+"2025-01-01",
+[
+[
+"특수관계자의 범주 [축]",
+"주식회사 더그림엔터테인먼트"
+]
+],
+12857821000.0
+],
+[
+"ifrs-full:InterestExpenseOnLeaseLiabilities",
+"리스부채에 대한 이자비용",
+"2025-01-01",
+[],
+28988709000.0
+],
+[
+"entity00266961:StockGrantExpenseOfTheAmountRecognizedAsAnOperatingExpenseRelatedToStockGrantsOfTheAmountRecognizedAsAnOperatingExpenseRelatedToStockGrantsTableOfItems",
+"스톡그랜트 비용",
+"2025-01-01",
+[
+[
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축]",
+"공시금액 [구성요소]"
+]
+],
+80180000000.0
+],
+[
+"ifrs-full:DeferredTaxExpenseIncomeRecognisedInProfitOrLoss",
+"손익계산서",
+"2025-01-01",
+[
+[
+"일시적차이, 미사용 세무상 결손금과 미사용 세액공제 [축]",
+"선수수익"
+]
+],
+-19609707000.0
+],
+[
+"ifrs-full:DeferredTaxExpenseIncomeRecognisedInProfitOrLoss",
+"손익계산서",
+"2025-01-01",
+[
+[
+"일시적차이, 미사용 세무상 결손금과 미사용 세액공제 [축]",
+"미지급비용"
+]
+],
+-18963932000.0
+],
+[
+"ifrs-full:AdjustmentsForIncreaseDecreaseInEmployeeBenefitLiabilities",
+"종업원급여부채의 증가(감소)",
+"2025-01-01",
+[
+[
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축]",
+"공시금액 [구성요소]"
+]
+],
+-46195029000.0
+],
+[
+"ifrs-full:DeferredTaxExpenseIncomeRecognisedInProfitOrLoss",
+"손익계산서",
+"2025-01-01",
+[
+[
+"일시적차이, 미사용 세무상 결손금과 미사용 세액공제 [축]",
+"기타일시적차이 [구성요소]"
+]
+],
+46278253000.0
+],
+[
+"dart:AdjustmentsForProvisionForSeveranceIndemnities",
+"퇴직급여 조정",
+"2025-01-01",
+[
+[
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축]",
+"공시금액 [구성요소]"
+]
+],
+154396031000.0
+],
+[
+"ifrs-full:AdjustmentsForIncomeTaxExpense",
+"법인세비용 조정",
+"2025-01-01",
+[
+[
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축]",
+"공시금액 [구성요소]"
+]
+],
+601396983000.0
+],
+[
+"dart:AdjustmentsForIncreasedecreaseInLongTermAccruedExpenses",
+"장기미지급비용의 증가(감소)",
+"2025-01-01",
+[
+[
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축]",
+"공시금액 [구성요소]"
+]
+],
+-14607923000.0
+],
+[
+"ifrs-full:ServicesReceivedRelatedPartyTransactions",
+"제공받은용역, 특수관계자거래",
+"2025-01-01",
+[
+[
+"특수관계자의 범주 [축]",
+"레드아이스스튜디오 주식회사"
+]
+],
+12860907000.0
+],
+[
+"ifrs-full:ServicesReceivedRelatedPartyTransactions",
+"제공받은용역, 특수관계자거래",
+"2025-01-01",
+[
+[
+"특수관계자의 범주 [축]",
+"주식회사 작가컴퍼니"
+]
+],
+13745977000.0
+],
+[
+"ifrs-full:ServicesReceivedRelatedPartyTransactions",
+"제공받은용역, 특수관계자거래",
+"2025-01-01",
+[
+[
+"특수관계자의 범주 [축]",
+"카페24 주식회사"
+]
+],
+29429645000.0
+],
+[
+"ifrs-full:RevenueFromRenderingOfServicesRelatedPartyTransactions",
+"용역의 제공으로 인한 수익, 특수관계자거래",
+"2025-01-01",
+[
+[
+"특수관계자의 범주 [축]",
+"네이버제트 주식회사"
+]
+],
+10870321000.0
+],
+[
+"ifrs-full:ServicesReceivedRelatedPartyTransactions",
+"제공받은용역, 특수관계자거래",
+"2025-01-01",
+[
+[
+"특수관계자의 범주 [축]",
+"LY Corporation"
+]
+],
+72347914000.0
+],
+[
+"ifrs-full:IncomeTaxExpenseContinuingOperations",
+"법인세비용(수익)",
+"2025-01-01",
+[
+[
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축]",
+"공시금액 [구성요소]"
+]
+],
+601396983000.0
+],
+[
+"ifrs-full:OtherTaxEffectsForReconciliationBetweenAccountingProfitAndTaxExpenseIncome",
+"회계이익과 법인세비용(수익)간의 조정에 대한 기타법인세효과",
+"2025-01-01",
+[
+[
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축]",
+"공시금액 [구성요소]"
+]
+],
+-17572019000.0
+],
+[
+"ifrs-full:DeferredTaxExpenseIncomeRelatingToOriginationAndReversalOfTemporaryDifferences",
+"일시적차이의 발생과 소멸로 인한 이연법인세비용(수익)",
+"2025-01-01",
+[
+[
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축]",
+"공시금액 [구성요소]"
+]
+],
+-106711492000.0
+],
+[
+"ifrs-full:CurrentTaxExpenseIncome",
+"당기법인세비용(수익)",
+"2025-01-01",
+[
+[
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축]",
+"공시금액 [구성요소]"
+]
+],
+728507240000.0
+],
+[
+"ifrs-full:OtherComprehensiveIncomeNetOfTaxGainsLossesOnRemeasurementsOfDefinedBenefitPlans",
+"세후기타포괄손익, 확정급여제도의 재측정손익",
+"2025-01-01",
+[
+[
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축]",
+"공시금액 [구성요소]"
+]
+],
+36169661000.0
+],
+[
+"ifrs-full:DeferredTaxExpenseIncomeRecognisedInProfitOrLoss",
+"손익계산서",
+"2025-01-01",
+[
+[
+"일시적차이, 미사용 세무상 결손금과 미사용 세액공제 [축]",
+"종속기업및관계기업투자"
+]
+],
+13001865000.0
+],
+[
+"ifrs-full:AmortisationIntangibleAssetsOtherThanGoodwill",
+"기타 상각비, 영업권 이외의 무형자산",
+"2025-01-01",
+[
+[
+"무형자산 및 영업권의 분류 [축]",
+"컴퓨터소프트웨어 [구성요소]"
+]
+],
+23957473000.0
+],
+[
+"ifrs-full:OtherComprehensiveIncomeNetOfTaxGainsLossesOnRemeasurementsOfDefinedBenefitPlans",
+"세후기타포괄손익, 확정급여제도의 재측정손익",
+"2025-01-01",
+[
+[
+"자본의 구성요소 [축]",
+"지배기업의 소유주에게 귀속되는 지분 [구성요소]"
+]
+],
+33188805453.0
+],
+[
+"ifrs-full:OtherComprehensiveIncomeNetOfTaxGainsLossesOnRemeasurementsOfDefinedBenefitPlans",
+"세후기타포괄손익, 확정급여제도의 재측정손익",
+"2025-01-01",
+[
+[
+"자본의 구성요소 [축]",
+"이익잉여금 [구성요소]"
+]
+],
+33188805453.0
+],
+[
+"ifrs-full:ServicesReceivedRelatedPartyTransactions",
+"제공받은용역, 특수관계자거래",
+"2025-01-01",
+[
+[
+"특수관계자의 범주 [축]",
+"재단법인 해피빈"
+]
+],
+10000260000.0
+],
+[
+"ifrs-full:RevenueFromRenderingOfServicesRelatedPartyTransactions",
+"용역의 제공으로 인한 수익, 특수관계자거래",
+"2025-01-01",
+[
+[
+"특수관계자의 범주 [축]",
+"LY Corporation"
+]
+],
+160147270000.0
+],
+[
+"ifrs-full:IncomeTaxExpenseContinuingOperations",
+"법인세비용(수익)",
+"2025-01-01",
+[],
+601396983055.0
+],
+[
+"ifrs-full:OtherComprehensiveIncomeNetOfTaxGainsLossesOnRemeasurementsOfDefinedBenefitPlans",
+"세후기타포괄손익, 확정급여제도의 재측정손익",
+"2025-01-01",
+[],
+36169661078.0
+],
+[
+"ifrs-full:DepreciationRightofuseAssets",
+"감가상각비, 사용권자산",
+"2025-01-01",
+[
+[
+"자산과 부채 [축]",
+"부동산 [구성요소]"
+]
+],
+43484740000.0
+],
+[
+"ifrs-full:DepreciationRightofuseAssets",
+"감가상각비, 사용권자산",
+"2025-01-01",
+[
+[
+"자산과 부채 [축]",
+"IDC 건물 [구성요소]"
+]
+],
+103917829000.0
+],
+[
+"ifrs-full:DepreciationRightofuseAssets",
+"감가상각비, 사용권자산",
+"2025-01-01",
+[
+[
+"자산과 부채 [축]",
+"기계장치 [구성요소]"
+]
+],
+39360120000.0
+],
+[
+"ifrs-full:DepreciationRightofuseAssets",
+"감가상각비, 사용권자산",
+"2025-01-01",
+[],
+189557722000.0
+],
+[
+"ifrs-full:CurrentServiceCostNetDefinedBenefitLiabilityAsset",
+"당기근무원가, 순확정급여부채(자산)",
+"2025-01-01",
+[
+[
+"순확정급여부채(자산) [축]",
+"확정급여채무의 현재가치 [구성요소]"
+]
+],
+117920123000.0
+],
+[
+"ifrs-full:InterestExpenseIncomeNetDefinedBenefitLiabilityAsset",
+"이자비용(수익), 순확정급여부채(자산)",
+"2025-01-01",
+[
+[
+"순확정급여부채(자산) [축]",
+"확정급여채무의 현재가치 [구성요소]"
+]
+],
+34475430000.0
+],
+[
+"ifrs-full:PaymentsFromPlanNetDefinedBenefitLiabilityAsset",
+"제도에서 지급한 금액, 순확정급여부채(자산)",
+"2025-01-01",
+[
+[
+"순확정급여부채(자산) [축]",
+"확정급여채무의 현재가치 [구성요소]"
+]
+],
+44717946000.0
+],
+[
+"ifrs-full:CurrentServiceCostNetDefinedBenefitLiabilityAsset",
+"당기근무원가, 순확정급여부채(자산)",
+"2025-01-01",
+[],
+117920123000.0
+],
+[
+"ifrs-full:InterestExpenseIncomeNetDefinedBenefitLiabilityAsset",
+"이자비용(수익), 순확정급여부채(자산)",
+"2025-01-01",
+[],
+33898153000.0
+],
+[
+"ifrs-full:PaymentsFromPlanNetDefinedBenefitLiabilityAsset",
+"제도에서 지급한 금액, 순확정급여부채(자산)",
+"2025-01-01",
+[],
+44089625000.0
+]
+]
+}
