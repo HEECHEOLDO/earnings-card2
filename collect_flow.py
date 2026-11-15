@@ -141,7 +141,7 @@ def us_one(t, cik):
 
 
 # ------------------------------------------------------------------ 공시 원본(XBRL): 3개월 손익 + 매출 종류
-VER = 2                                            # 계산 방식이 바뀌면 올려서 다시 계산
+VER = 3                                            # 계산 방식이 바뀌면 올려서 다시 계산
 
 
 def kr_xbrl(corp, old=None):
@@ -173,11 +173,13 @@ def kr_xbrl(corp, old=None):
                         fa = files if a is r0 else XD.unzip(C.api_get("fnlttXbrl.xml", {"rcept_no": a["rcept_no"], "reprt_code": "11011"}, raw=True) or b"")
                         ia = [n for n in fa if n.endswith(".xbrl")]
                         mix = FX.kr_sga_mix(fa[ia[0]]) if ia else None
-                    if mix:
+                    if mix and "mix" in mix:
                         v["items"] = FX.split_sga(v["sga"], mix)
                         v["items_from"] = mix["year"]
+                    else:
+                        v["mix_err"] = (mix or {}).get("err", "사업보고서 못 찾음")
                 except Exception as e:              # noqa: BLE001
-                    print("  .. 판관비 세부 실패", e)
+                    v["mix_err"] = str(e)[:120]
             return v
     return None
 

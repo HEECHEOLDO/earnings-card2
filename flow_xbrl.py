@@ -228,10 +228,11 @@ def kr_sga_mix(text):
     ctx, facts = XD.parse(text)
     cons = any(m.endswith("ConsolidatedMember") for p in ctx.values() for a, m in p["dims"])
     want = "ConsolidatedMember" if cons else "SeparateMember"
-    ok = lambda p: all("ConsolidatedAndSeparate" in a for a, m in p["dims"]) and (not p["dims"] or any(m.endswith(want) for a, m in p["dims"]))  # noqa: E731
+    gen = lambda a, m: "ConsolidatedAndSeparate" in a or re.search(r"CarryingAmount|ReportedAmount|Disclos", a + m)   # 공시금액 같은 일반 축은 허용  # noqa: E731
+    ok = lambda p: all(gen(a, m) for a, m in p["dims"]) and (not p["dims"] or any(m.endswith(want) for a, m in p["dims"]))  # noqa: E731
     ann = [ctx[c] for n, c, v in facts if (ctx[c].get("start") or "")[5:] == "01-01" and ctx[c]["end"][5:] == "12-31"]
     if not ann:
-        return None
+        return {"err": "연간 기간 없음"}
     end = max(p["end"] for p in ann)
     vals = {}
     for n, c, v in facts:
@@ -240,11 +241,11 @@ def kr_sga_mix(text):
             vals[n] = v
     tot = vals.get("dart:TotalSellingGeneralAdministrativeExpenses") or vals.get("ifrs-full:SellingGeneralAndAdministrativeExpense")
     if not tot or tot <= 0:
-        return None
+        return {"err": "판관비 합계 없음 %d" % len(vals)}
     det = {n: v for n, v in vals.items() if v > 0 and "Total" not in n and "TableOfItems" not in n and "ExceptFor" not in n
            and (n.endswith("SellingGeneralAdministrativeExpenses") or n.split(":")[-1] in ("SalariesWages", "ProvisionForSeveranceIndemnities"))}
     if sum(det.values()) < tot * 0.6:
-        return None
+        return {"err": "세부 부족 %.2f %d" % (sum(det.values()) / tot, len(det))}
     cat = {}
     for n, v in det.items():
         k = next((c for c, rx in SGA_CAT if re.search(rx, n.split(":")[-1])), None)
@@ -255,7 +256,7 @@ def kr_sga_mix(text):
 
 def split_sga(sga, mix, keep=3):
     """분기 판관비를 연간 비율로 나눔 → 큰 묶음 keep 개 + 기타"""
-    if not sga or not mix:
+    if not sga or not mix or "mix" not in mix:
         return []
     top = sorted(mix["mix"].items(), key=lambda x: -x[1])[:keep]
     top = [(k, r) for k, r in top if r >= 0.04]
