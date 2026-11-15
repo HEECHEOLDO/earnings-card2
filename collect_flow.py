@@ -141,7 +141,7 @@ def us_one(t, cik):
 
 
 # ------------------------------------------------------------------ 공시 원본(XBRL): 3개월 손익 + 매출 종류
-VER = 3                                            # 계산 방식이 바뀌면 올려서 다시 계산
+VER = 4                                            # 계산 방식이 바뀌면 올려서 다시 계산
 
 
 def kr_xbrl(corp, old=None):
@@ -202,11 +202,13 @@ def us_xbrl(cik, old=None):
         lab = [n for n in names if n.endswith("_lab.xml")]
         cal = [n for n in names if n.endswith("_cal.xml")]
         if not inst:
+            FX.WHY = "공시에 XBRL 파일 없음 %s" % acc
             return None
         raw = U.get(base + inst[0])
         lr = U.get(base + lab[0]) if lab else None
         cr = U.get(base + cal[0]) if cal else None
         if not raw:
+            FX.WHY = "XBRL 내려받기 실패"
             return None
         v = FX.from_instance(raw.decode("utf-8", "replace"), lr.decode("utf-8", "replace") if lr else "", us=True,
                              caltext=cr.decode("utf-8", "replace") if cr else "")
@@ -296,7 +298,11 @@ def main():
         try:
             fp = os.path.join(OUT, t + ".json")
             old = json.load(open(fp, encoding="utf-8")) if os.path.exists(fp) else None
-            x = us_xbrl(cik, old)
+            FX.WHY = ""
+            try:
+                x = us_xbrl(cik, old)
+            except Exception as e:                  # noqa: BLE001
+                x, FX.WHY = None, "오류 %s" % e
             if x == "SAME":
                 idx[t] = {"n": old["name"], "m": "US", "p": old["period"]}
                 print("  = %s 그대로" % t)
@@ -307,6 +313,8 @@ def main():
                 d["unit"] = "백만달러"
             else:
                 d = us_one(t, cik)
+                if d:
+                    d["xbrl_err"] = FX.WHY or "까닭 모름"
         except Exception as e:                      # noqa: BLE001
             print("  !! %s %s" % (t, e))
             d = None

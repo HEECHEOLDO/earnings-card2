@@ -344,7 +344,7 @@
     base.grainOnly(X); X.fillStyle = INK; window.__vcTitle(X, o.h1, o.logo, { tail: /[은는]$/ });
     var m = o.money, rev = o.rev, cogs = Math.max(0, o.cogs || 0), gross = rev - cogs, op = o.op, opex = gross - op, ni = o.ni, tax = Math.max(0, o.tax || 0);
     var nonop = op - tax - ni, exIn = nonop < -rev * 0.002 ? -nonop : 0, exOut = nonop > rev * 0.002 ? nonop : 0;   // 영업외 손익은 작아도 그린다 — 안 그리면 막대 높이가 안 맞아 리본이 끊긴다
-    var segs = (o.segs || []).filter(function (x) { return x.v > rev * 0.004; }), items = (o.items || []).filter(function (x) { return x.v > rev * 0.002; });
+    var segs = (o.segs || []).filter(function (x) { return x.v > rev * 0.002; }), items = (o.items || []).filter(function (x) { return x.v > rev * 0.002; });
     var hasSeg = segs.length >= 2, hasG = cogs > rev * 0.005, hasItems = items.length >= 2;
     // 범례 · 로고
     var lx = L, ly = TOP + 2;

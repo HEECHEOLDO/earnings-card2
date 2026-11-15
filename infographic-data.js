@@ -452,8 +452,10 @@
             used = items.reduce(function (t, x) { return t + x.v; }, 0);
             if (used > opex * 1.02 && opex > 0) { items.forEach(function (x) { x.v = x.v * opex / used; }); }   // 판관비 세부가 영업비용보다 크면 비율대로 줄임
             var sg = (f.segs || []).map(function (x) { return Array.isArray(x) ? { n: flowKo(x[0]), v: x[1] } : x; }), sgT = sg.reduce(function (t, x) { return t + x.v; }, 0), small = 0;
+            var sg0 = sg.slice();
             sg = sg.filter(function (x) { if (x.v < sgT * 0.04 || /^기타/.test(x.n)) { small += x.v; return false; } return true; }).slice(0, 6);   // 작은 건 '기타'로
             if (small > sgT * 0.02 && sg.length) sg.push({ n: '기타', v: small });
+            if (sg.length < 2 && sg0.length >= 2 && sg0.length <= 6) sg = sg0.sort(function (a, b) { return b.v - a.v; });   // 하나만 남으면(메타: 앱 99%·리얼리티 랩스 1%) 작아도 그대로 보여준다
             return { fn: 'sankey3', o: { h1: nm2, segs: sg, rev: f.rev, cogs: f.cogs, op: f.op, items: items, ni: f.ni, tax: f.tax, money: money, logo: r.logo, fxNote: us ? '환율 ' + Math.round(D.fx).toLocaleString() + '원 기준' : '' },
               src: flowPeriod(f) + ' 기준' };
           });

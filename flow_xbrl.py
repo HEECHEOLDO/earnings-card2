@@ -10,7 +10,7 @@ import xbrl_dims as XD
 GEO = re.compile(r"Geograph|지역|국가|Countr|Timing|이전하는|이행하는|고객|Customer|Consolidat|Equity|Investee|Secondary|Related|관계|Carrying|Subsidiar|Joint|Associate|Range|Scenario|Restatement|Adjust")
 SKIP_M = re.compile(r"공시금액|ReportedAmount|조정|제거|Elimination|Adjust|Reconcil|연결|Consolidat|Intersegment|부문간|Corporate|전사|수행의무|한 시점|기간에 걸쳐|PointInTime|OverTime", re.I)
 GEO_M = re.compile(r"Americas|Europe|China|Japan|Asia|Pacific|EMEA|United States|International|미주|유럽|중국|아시아|국내|해외|북미|재화의 판매|용역의 제공", re.I)
-TOTAL_M = re.compile(r"OperatingSegmentsMember|영업부문 \[구성요소\]|SegmentsTotal|AllSegments", re.I)
+TOTAL_M = re.compile(r"(?:^|:)(?:OperatingSegmentsMember|\w*SegmentsTotal\w*|AllSegments\w*)$|^영업부문 \[구성요소\]$", re.I)   # 회사가 만든 멤버 이름 안의 'OfOperatingSegmentsMember' 는 합계가 아니다
 KO = {"Online Stores": "온라인 스토어", "Third-Party Seller Services": "판매자 서비스", "Amazon Web Services": "AWS", "Advertising Services": "광고", "Subscription Services": "구독",
       "Physical Stores": "오프라인 매장", "Automotive Sales": "자동차 판매", "Services And Other": "서비스 등", "Energy Generation And Storage Sales": "에너지 저장",
       "Energy Generation And Storage Leasing": "에너지 리스", "Automotive Leasing": "자동차 리스", "Automotive Regulatory Credits": "탄소 배출권", "Hyperscale": "하이퍼스케일",
@@ -149,6 +149,9 @@ def opex_items(ctx, facts, per, base_ok, CAL, L, us, val):
     return []
 
 
+WHY = ""
+
+
 def from_instance(text, labtext, us, caltext=""):
     ctx, facts = XD.parse(text)
     L = XD.labels(labtext) if labtext else {}
@@ -171,8 +174,10 @@ def from_instance(text, labtext, us, caltext=""):
              "sga": ["dart:TotalSellingGeneralAdministrativeExpenses", "ifrs-full:SellingGeneralAndAdministrativeExpense"],
              "op": ["dart:OperatingIncomeLoss", "ifrs-full:ProfitLossFromOperatingActivities"], "tax": ["ifrs-full:IncomeTaxExpenseContinuingOperations"],
              "ni": ["ifrs-full:ProfitLoss"]}
+    global WHY
     per = pick_period(ctx, facts, set(N["rev"]), base_ok)
     if not per:
+        WHY = "매출 기간 없음 (facts %d)" % len(facts)
         return None
     val = {}
     for k, names in N.items():
@@ -185,6 +190,7 @@ def from_instance(text, labtext, us, caltext=""):
             if k in val:
                 break
     if not val.get("rev") or val.get("op") is None or val.get("ni") is None:
+        WHY = "빠진 값 %s · 기간 %s" % ([k for k in ("rev", "op", "ni") if val.get(k) is None], per)
         return None
     if val.get("gross") is None and val.get("cogs") is not None:
         val["gross"] = val["rev"] - val["cogs"]
