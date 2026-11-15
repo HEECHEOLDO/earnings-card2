@@ -352,6 +352,17 @@ def jl(p, d=None):
         return d
 
 
+def items_off(d):
+    """영업비용 세부 합이 영업비용(매출총이익 - 영업이익)과 1% 넘게 다르면 True"""
+    try:
+        g = d.get("gross") if d.get("gross") is not None else d["rev"] - (d.get("cogs") or 0)
+        opex = g - d["op"]
+        s = sum(v for _, v in d.get("items") or [])
+        return opex > 0 and abs(s - opex) > opex * 0.01
+    except Exception:                                   # noqa: BLE001
+        return False
+
+
 def save(code, d, market, name):
     d.update({"code": code, "name": name, "market": market, "updated": TODAY.isoformat(), "ver": VER})
     json.dump(d, open(os.path.join(OUT, code + ".json"), "w", encoding="utf-8"), ensure_ascii=False)
@@ -540,7 +551,7 @@ def main():
                 continue
             old = jl(os.path.join(OUT, t + ".json"))
             pr = need(t, old, cik in ru)
-            if old and old.get("usver") != US_VER and len(old.get("items") or []) < 2:
+            if old and old.get("usver") != US_VER and (len(old.get("items") or []) < 2 or items_off(old)):
                 pr, old = 2, None                       # 영업비용 세부가 없던 회사 — 새 방식으로 다시
             if pr is not None:
                 jobs.append((pr, i, t, cik, old))
