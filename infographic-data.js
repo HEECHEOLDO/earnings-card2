@@ -129,6 +129,7 @@
     if (/(ng|[lmnkp]|[^e]c)$/i.test(wd)) return w + '은';                            // ELECTRIC(일렉트릭), Amazon
     return w + '는';
   }
+  var EMOJI = {treemap: '🗺️', ranked: '🚀', bump: '🏆', dumbbell: '↕️', voronoi: '🇺🇸', radial: '🎯', thennow: '⏳', compare: '⚖️', surprise: '📊', margin: '💰', world: '🌍', quilt: '🧩', growth: '🌱', holders: '👥', waffle: '🧇', usmap: '🗽', usranked: '🚀', rivals: '🥊', breadth: '📈', contrib: '🏗️', profitshare: '🍰', calendar: '📅', monthly: '🗓️', drawdown: '📉', scatter: '🔍', dividend: '💵', slope: '🔀', profit: '🏦', tiers: '🐘', sectors: '🏭', fx: '💱', concentration: '🎯', range52: '📏', revgrowth: '📈', roe: '⚙️', gurucommon: '🧠', rotation: '🔄', unlisted: '🔒', streak: '🔥', exportboard: '🚢', exportitem: '📦', kconsumer: '🛍️', rates: '🏛️', goldkrw: '🥇', commod: '🛢️', travel: '✈️', inflation: '🛒', usdash: '🇺🇸', krdash: '🇰🇷', race1y: '🏁'};   // 제목 첫 줄 앞 이모지 (돈의 흐름은 로고가 있어 빼고)
   var TITLE = {    // 모든 제목은 두 줄: 첫 줄 = 무엇(크게), 둘째 줄 = 궁금한 점 — ' / ' 로 나눈다
     treemap: function (o) { return (MK(o) || '한국 증시') + ' / 돈은 어디에 몰렸을까'; },
     ranked: function (o) { return (MK(o) || '코스피·코스닥') + ' / 올해 가장 많이 오른 종목은?'; },
@@ -1129,7 +1130,7 @@
         var a = r.asof || (id === 'voronoi' ? D.us.asof : D.asof) || '', p = a.split('-');
         r.o.h2 = ''; r.o.note = ''; r.o.src = r.src || (p.length === 3 ? "'" + p[0].slice(2) + '년 ' + (+p[1]) + '월 ' + (+p[2]) + '일 ' + (r.tail || '종가 기준') : '');
         last = r; last.name = c.name + (list ? '_' + list.filter(function (o) { return o[0] === sel[id]; })[0][1] : '');
-        if (!r.auto) r.auto = { k: '', h: TITLE[id] ? TITLE[id](list ? sel[id] : undefined, r) : r.o.h1 };   // 빨간 윗줄은 쓰지 않는다
+        if (!r.auto) r.auto = { k: '', h: (EMOJI[id] ? EMOJI[id] + ' ' : '') + (TITLE[id] ? TITLE[id](list ? sel[id] : undefined, r) : r.o.h1) };   // 빨간 윗줄은 쓰지 않는다 · 앞에 이모지
         r.auto.src = r.o.src;
         // 직접 고친 제목·아래 글은 같은 카드·같은 선택지로 돌아와도 남는다
         var ed = edits[key]; r.o.kicker = ''; r.o.h1 = ed ? ed.h : r.auto.h; r.o.src = ed ? ed.src : r.auto.src; last.key = key;
