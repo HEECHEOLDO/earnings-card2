@@ -215,12 +215,19 @@ def doc_fallback(v, r0, annual, fa, ia):
     import probe_audit as P
     SGA_H = re.compile(r"^(판매비와관리비|판매비와일반관리비|판매관리비)(합계|계)?$")
     REV_H = re.compile(r"^(매출액|영업수익|수익|매출)(합계|계)?$")
+    # 현금흐름표 조정 표 같은 엉뚱한 표가 합만 우연히 맞는 일을 막는다 — 판관비 계정 같지 않은 줄은 빼고(그러면 합이 안 맞아 탈락)
+    BAD = re.compile(r"조정|증\s*\(?감|증가|감소|평가|처분|채무|채권|자산|부채|현금|손상차손|외화|이자|배당|법인세|지분|파생|환산|환차|투자|차입|매출액|매출원가")
+    SGA_DROP = re.compile(FA.SGA_DROP.pattern + "|" + BAD.pattern)
+    SGA_OK = re.compile(r"급여|상여|퇴직|복리|감가|상각|수수료|광고|판매촉진|운반|임차|세금|공과|여비|교통|통신|소모품|접대|교육|보험|연구|개발|대손|차량|수선|용역|수도|광열|전력|도서|회의|포장|보관|견본|판매|인건|사용권|임금|경상")
+    def sga_ok(det):
+        s = sum(x for _, x in det)
+        return det and sum(x for n, x in det if SGA_OK.search(n)) >= s * 0.6
     want_i, want_s = not v.get("items") and v.get("sga"), not v.get("segs")
     doc = P.fetch_doc(r0["rcept_no"])
     tabs = FA._tables(doc) if doc else []
     if want_i and tabs:
-        det = FA._breakdown(tabs, v["sga"], SGA_H, FA.SGA_KEEP, FA.SGA_DROP, min_rows=4)
-        it = FA._group(det, v["sga"], "기타 판관비") if det else []
+        det = FA._breakdown(tabs, v["sga"], SGA_H, FA.SGA_KEEP, SGA_DROP, min_rows=4)
+        it = FA._group(det, v["sga"], "기타 판관비") if sga_ok(det) else []
         if it:
             v["items"], v["items_from"], want_i = it, "본문", False
     if want_s and tabs:
@@ -244,8 +251,8 @@ def doc_fallback(v, r0, annual, fa, ia):
     if not tabs:
         return
     if want_i and av.get("sga"):
-        det = FA._breakdown(tabs, av["sga"], SGA_H, FA.SGA_KEEP, FA.SGA_DROP, min_rows=4)
-        it = FA._group(det, av["sga"], "기타 판관비") if det else []
+        det = FA._breakdown(tabs, av["sga"], SGA_H, FA.SGA_KEEP, SGA_DROP, min_rows=4)
+        it = FA._group(det, av["sga"], "기타 판관비") if sga_ok(det) else []
         if it:
             k = v["sga"] / av["sga"]
             v["items"], v["items_from"] = [[n, x * k] for n, x in it], "'%s년 연간 비중" % av["end"][2:4]
