@@ -109,7 +109,15 @@
     [/Professional fees/i, '전문가 수수료'], [/Personnel|Compensation|Employee|Labor/i, '인건비'], [/Marketing|Advertising/i, '마케팅비'],
     [/General and administrative/i, '일반관리비'], [/Selling,? general/i, '판매·관리비'], [/Research and development/i, '연구개발비'],
     [/in-process|IPR&D/i, '인수 연구개발비'], [/Acquisition|Merger/i, '인수 관련 비용'], [/Occupancy|Rent/i, '임차료'], [/Fulfillment/i, '물류·배송비']];
-  function flowKo(n) { n = String(n).replace(/,\s*보고부문$|\s*사업부문$|\s*보고부문$|(?<=..)부문$/, '').trim().replace(/^모듈 및 부품제조.*/, '모듈·부품').replace(/^A\/S.*부품.*/, 'A/S 부품'); if (/[가-힣]/.test(n) && !/㈜|종속기업/.test(n)) return n; for (var i = 0; i < FLOW_KO.length; i++) if (FLOW_KO[i][0].test(n)) return FLOW_KO[i][1]; return n.replace(/㈜와 그 종속기업|㈜|\s*\(.*\)$/g, ''); }
+  function flowKo(n) { return flowShort(flowKo0(n)); }
+  function flowShort(n) {                       // 긴 이름은 카드 밖으로 나가지 않게 줄인다 (괄호 설명·', 판관비' 꼬리 떼고, '및'·쉼표 앞까지, 그래도 길면 앞 두 단어)
+    n = String(n).replace(/,\s*판관비$/, '').replace(/^판매비와\s*관리비.*$/, '판매·관리비').replace(/\s*\([^)]*\)\s*/g, ' ').replace(/\s+/g, ' ').trim();
+    if (n.length > 11) n = n.split(/\s+및\s+|,\s*|·/)[0].trim();
+    if (n.length > 11) { var w = n.split(' '); n = w.length > 1 ? w.slice(0, 2).join(' ') : n; }
+    if (n.length > 13 && /[가-힣]/.test(n)) n = n.slice(0, 12);
+    return n;
+  }
+  function flowKo0(n) { n = String(n).replace(/,\s*보고부문$|\s*사업부문$|\s*보고부문$|(?<=..)부문$/, '').trim().replace(/^모듈 및 부품제조.*/, '모듈·부품').replace(/^A\/S.*부품.*/, 'A/S 부품'); if (/[가-힣]/.test(n) && !/㈜|종속기업/.test(n)) return n; for (var i = 0; i < FLOW_KO.length; i++) if (FLOW_KO[i][0].test(n)) return FLOW_KO[i][1]; return n.replace(/㈜와 그 종속기업|㈜|\s*\(.*\)$/g, ''); }
   function eunNeun(w) {                         // 받침 있으면 '은', 없으면 '는' (영문·숫자는 읽는 소리로)
     var t = String(w).replace(/[\s)\]'"’.]+$/, ''), c = t.slice(-1), k = c.charCodeAt(0);
     if (k >= 0xAC00 && k <= 0xD7A3) return w + ((k - 0xAC00) % 28 ? '은' : '는');

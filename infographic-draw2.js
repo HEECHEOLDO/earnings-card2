@@ -340,6 +340,19 @@
     X.fillStyle = col; X.textAlign = align || 'left'; X.fillText(s, x, y); return px;
   }
   /* 영업손실인 회사 — 영업비용이 매출총이익보다 크다. 모자란 만큼(영업손실)을 위에서 들여와 영업비용을 채운다 */
+  /* 매출 종류 이름표 — 막대 옆에. 많아서 아래로 밀리면 간격·글자를 줄이고, 바닥을 넘지 않게 위로 되민다 */
+  function segLabels(X, segs, x0, top, bot, m) {
+    var n = segs.length, step = Math.min(60, (bot - top) / n), k = step / 60, ys = [];
+    segs.forEach(function (sg, i) { ys[i] = Math.max(sg.y + sg.h / 2 - 12 * k, i ? ys[i - 1] + step : top + 18); });
+    for (var i = n - 1; i >= 0; i--) {                                  // 바닥 넘으면 위로
+      var lim = (i === n - 1 ? bot - 30 * k : ys[i + 1] - step);
+      if (ys[i] > lim) ys[i] = lim;
+    }
+    segs.forEach(function (sg, i) {
+      txt(X, sg.n, x0 - 10, ys[i], 700, Math.round(21 * Math.max(0.8, k)), BL, 'right', x0 - L - 12);
+      txt(X, m(sg.v), x0 - 10, ys[i] + 29 * Math.max(0.8, k), 900, Math.round(26 * Math.max(0.8, k)), BL, 'right', x0 - L - 12);
+    });
+  }
   function sankeyLoss(X, o) {
     var m = o.money, rev = o.rev, cogs = Math.max(0, o.cogs || 0), gross = rev - cogs, op = o.op, L0 = -op, opex = gross - op, ni = o.ni;
     var segs = (o.segs || []).filter(function (x) { return x.v > rev * 0.002; }), items = (o.items || []).filter(function (x) { return x.v > opex * 0.004; });
@@ -366,7 +379,7 @@
     for (k = 0; k < 12 && g.low < bot - 60; k++) { var g2 = place(sc * 1.06); if (g2.low > bot) break; sc *= 1.06; g = g2; }
     var s = g.s;
     if (hasSeg) {
-      var gapS = Math.min(30, (bot - top - g.hR) / (segs.length + 1)), tot = g.hR + gapS * (segs.length - 1), ys = Math.max(top, g.yR + g.hR / 2 - tot / 2), cur = g.yR;
+      var nS = segs.length, gapS = Math.max(Math.min(30, (bot - top - g.hR) / (nS + 1)), Math.min((58 * nS - g.hR) / Math.max(1, nS - 1), (bot - top - g.hR) / Math.max(1, nS - 1))), tot = g.hR + gapS * (nS - 1), ys = Math.min(Math.max(top, g.yR + g.hR / 2 - tot / 2), bot - tot), cur = g.yR;   // 이름표가 막대 옆에 들어갈 만큼 막대 사이를 띄운다
       var kS = rev / segs.reduce(function (a, x) { return a + x.v; }, 0);
       segs.forEach(function (sg) { var h = sg.v * s * kS; sg.y = ys; sg.h = h; rib(X, x0 + nw, ys, ys + h, x1, cur, cur + h, BLS); ys += h + gapS; cur += h; });
     }
@@ -383,7 +396,7 @@
     bar(X, x3, g.yE, nw, Math.max(2, g.hE), RD);
     g.right.forEach(function (r) { bar(X, x4, r.y, nw, Math.max(2, r.h), RD); });
     X.textBaseline = 'alphabetic';
-    if (hasSeg) { var lastY = -1e9; segs.forEach(function (sg) { var y = Math.max(sg.y + sg.h / 2 - 12, lastY + 60); lastY = y; txt(X, sg.n, x0 - 10, y, 700, 21, BL, 'right', x0 - L - 12); txt(X, m(sg.v), x0 - 10, y + 29, 900, 26, BL, 'right', x0 - L - 12); }); }
+    if (hasSeg) segLabels(X, segs, x0, top, bot, m);
     function above(x, y, name, val, col) { txt(X, val, x, y - 8, 900, 30, col, 'center'); txt(X, name, x, y - 44, 800, 22, col, 'center'); }
     above(x1 + nw / 2, g.yR, '총 매출', m(rev), BL);
     above(x2 + nw / 2, g.yL, '영업손실', m(op), DK);
@@ -440,7 +453,7 @@
     var s = g.s;
     // ---- 리본
     if (hasSeg) {
-      var gapS = Math.min(30, (bot - top - g.hR) / (segs.length + 1)), tot = g.hR + gapS * (segs.length - 1), ys = Math.max(top, g.yR + g.hR / 2 - tot / 2), cur = g.yR;
+      var nS = segs.length, gapS = Math.max(Math.min(30, (bot - top - g.hR) / (nS + 1)), Math.min((58 * nS - g.hR) / Math.max(1, nS - 1), (bot - top - g.hR) / Math.max(1, nS - 1))), tot = g.hR + gapS * (nS - 1), ys = Math.min(Math.max(top, g.yR + g.hR / 2 - tot / 2), bot - tot), cur = g.yR;   // 이름표가 막대 옆에 들어갈 만큼 막대 사이를 띄운다
       var kS = rev / segs.reduce(function (t, x) { return t + x.v; }, 0);          // 부문 합이 총매출보다 크면(내부 거래) 비율로 맞춘다
       segs.forEach(function (sg) { var h = sg.v * s * kS; sg.y = ys; sg.h = h; rib(X, x0 + nw, ys, ys + h, x1, cur, cur + h, BLS); ys += h + gapS; cur += h; });
     }
@@ -448,15 +461,28 @@
     if (hasG) { rib(X, x1 + nw, g.yR, g.yR + g.hG, x2, g.yG, g.yG + g.hG, GNS); rib(X, x1 + nw, g.yR + g.hG, g.yR + g.hR, x2, g.yC, g.yC + g.hC, RDS); }
     rib(X, sx + nw, sy, sy + g.hO, x3, g.yO, g.yO + g.hO, GNS);
     rib(X, sx + nw, sy + g.hO, sy + g.hO + g.hE, x3, g.yE, g.yE + g.hE, RDS);
-    var take = Math.min(g.hO, g.hN - g.hEx);
-    if (exIn) rib(X, xm + nw, g.yX, g.yX + g.hEx, x4, g.yN, g.yN + g.hEx, GNS);
-    if (take > 0) rib(X, x3 + nw, g.yO, g.yO + take, x4, g.yN + g.hEx, g.yN + g.hEx + take, GNS);
-    var cu = g.yO + Math.max(0, take), ce = g.yE;
-    var needO = g.right.reduce(function (t, r) { return t + (r.from === 'op' ? r.h : 0); }, 0), kO = needO > 0 ? Math.max(0, g.hO - Math.max(0, take)) / needO : 1;   // 영업이익 막대를 정확히 나눠 쓴다(적자면 줄여서)
+    /* 이익 쪽 나눠 주기 — 들어오는 곳: 영업외 이익(위) · 영업이익. 나가는 곳: 순이익 · 법인세 · 영업외 손실 (위에서부터).
+       순서대로 채워서 막대마다 들어오고 나가는 양이 꼭 맞게 한다 (세금이 영업이익보다 큰 지주회사도). */
+    var pools = [], outs = [{ y: g.yN, h: g.hN, c: GNS }];
+    if (exIn) pools.push({ x: xm + nw, y: g.yX, h: g.hEx });
+    if (g.hO > 0) pools.push({ x: x3 + nw, y: g.yO, h: g.hO });
+    g.right.forEach(function (r) { if (r.from === 'op') outs.push({ y: r.y, h: r.h, c: RDS }); });
+    var supply = pools.reduce(function (a, p) { return a + p.h; }, 0), demand = outs.reduce(function (a, o) { return a + o.h; }, 0);
+    var kD = demand > 0 && supply > 0 ? supply / demand : 1;            // 반올림·적자로 어긋나면 나가는 쪽을 비율로 맞춘다
+    var pi = 0, pu = 0;
+    outs.forEach(function (o) {
+      var need = o.h * kD, yo = o.y, oh = o.h;
+      while (need > 0.2 && pi < pools.length) {
+        var p = pools[pi], h = Math.min(need, p.h - pu);
+        if (h > 0.2) rib(X, p.x, p.y + pu, p.y + pu + h, x4, yo, yo + h / kD, o.c);
+        need -= h; pu += h; yo += h / kD;
+        if (p.h - pu < 0.2) { pi++; pu = 0; }
+      }
+    });
+    var ce = g.yE;
     var needE = g.right.reduce(function (t, r) { return t + (r.from === 'ex' ? r.h : 0); }, 0), kE = needE > 0 ? g.hE / needE : 1;
     g.right.forEach(function (r) {
-      if (r.from === 'op') { var h = r.h * kO; if (h > 0.3) rib(X, x3 + nw, cu, cu + h, x4, r.y, r.y + r.h, RDS); cu += h; }
-      else { var h2 = r.h * kE; rib(X, x3 + nw, ce, ce + h2, x4, r.y, r.y + r.h, RDS); ce += h2; }
+      if (r.from === 'ex') { var h2 = r.h * kE; rib(X, x3 + nw, ce, ce + h2, x4, r.y, r.y + r.h, RDS); ce += h2; }
     });
     // ---- 막대
     if (hasSeg) segs.forEach(function (sg) { bar(X, x0, sg.y, nw, Math.max(2, sg.h), BL); });
@@ -471,7 +497,7 @@
     var pc = function (v) { return Math.round(v / rev * 100) + '%'; };
     if (hasSeg) {
       var lastY = -1e9;
-      segs.forEach(function (sg) { var y = Math.max(sg.y + sg.h / 2 - 12, lastY + 60); lastY = y; txt(X, sg.n, x0 - 10, y, 700, 21, BL, 'right', x0 - L - 12); txt(X, m(sg.v), x0 - 10, y + 29, 900, 26, BL, 'right', x0 - L - 12); });
+      segLabels(X, segs, x0, top, bot, m);
     }
     function above(x, y, name, val, sub, col) {
       if (sub) { txt(X, sub, x, y - 8, 700, 17, SOFT, 'center'); y -= 26; }
