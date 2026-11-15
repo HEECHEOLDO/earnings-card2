@@ -443,7 +443,7 @@
               else { if (f.sm) items.push({ n: '마케팅비', v: f.sm }); if (f.ga) items.push({ n: '일반관리비', v: f.ga }); }
             }
             var used = items.reduce(function (t, x) { return t + x.v; }, 0);
-            if (items.length && opex - used > f.rev * 0.01) items.push({ n: '기타 영업비용', v: opex - used });
+            if (items.length && opex - used > f.rev * 0.003) items.push({ n: '기타 영업비용', v: opex - used });
             var mg = {}, etc = 0, hasEtc = {};                // 같은 이름은 합치고, '기타 …'는 하나로
             items.forEach(function (x) { if (/^기타/.test(x.n)) { etc += x.v; hasEtc[x.n] = 1; } else mg[x.n] = (mg[x.n] || 0) + x.v; });
             items = Object.keys(mg).map(function (k) { return { n: k, v: mg[k] }; }).sort(function (a, b) { return b.v - a.v; });

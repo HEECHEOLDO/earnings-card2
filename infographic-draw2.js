@@ -331,16 +331,19 @@
   function rib(X, xa, ya0, ya1, xb, yb0, yb1, col) {
     var m = (xa + xb) / 2;
     X.fillStyle = col; X.beginPath(); X.moveTo(xa, ya0); X.bezierCurveTo(m, ya0, m, yb0, xb, yb0); X.lineTo(xb, yb1); X.bezierCurveTo(m, yb1, m, ya1, xa, ya1); X.closePath(); X.fill();
+    if (window.__sankeyDbg) window.__sankeyDbg.ribs.push([xa, ya0, ya1, xb, yb0, yb1]);
   }
+  function bar(X, x, y, w, h, col) { X.fillStyle = col; X.fillRect(x, y, w, h); if (window.__sankeyDbg) window.__sankeyDbg.bars.push([x, y, w, h]); }
   function logoAt(X, im, x, y, r) { if (!im) return; X.save(); X.beginPath(); X.arc(x, y, r, 0, 7); X.clip(); X.fillStyle = '#fff'; X.fillRect(x - r, y - r, 2 * r, 2 * r); X.drawImage(im, x - r, y - r, 2 * r, 2 * r); X.restore(); }
   function txt(X, s, x, y, w, px, col, align, maxW) {
     X.font = font(w, px); if (maxW) while (px > 14 && X.measureText(s).width > maxW) { px -= 1; X.font = font(w, px); }
     X.fillStyle = col; X.textAlign = align || 'left'; X.fillText(s, x, y); return px;
   }
   function sankey3(X, o) {
+    if (window.__sankeyDbg) { window.__sankeyDbg.ribs = []; window.__sankeyDbg.bars = []; window.__sankeyDbg.o = o; }
     base.grainOnly(X); X.fillStyle = INK; window.__vcTitle(X, o.h1, o.logo, { tail: /[은는]$/ });
     var m = o.money, rev = o.rev, cogs = Math.max(0, o.cogs || 0), gross = rev - cogs, op = o.op, opex = gross - op, ni = o.ni, tax = Math.max(0, o.tax || 0);
-    var nonop = op - tax - ni, exIn = nonop < -rev * 0.03 ? -nonop : 0, exOut = nonop > rev * 0.01 ? nonop : 0;   // 작은 영업외 손익은 따로 그리지 않는다
+    var nonop = op - tax - ni, exIn = nonop < -rev * 0.002 ? -nonop : 0, exOut = nonop > rev * 0.002 ? nonop : 0;   // 영업외 손익은 작아도 그린다 — 안 그리면 막대 높이가 안 맞아 리본이 끊긴다
     var segs = (o.segs || []).filter(function (x) { return x.v > rev * 0.004; }), items = (o.items || []).filter(function (x) { return x.v > rev * 0.002; });
     var hasSeg = segs.length >= 2, hasG = cogs > rev * 0.005, hasItems = items.length >= 2;
     // 범례 · 로고
@@ -386,18 +389,20 @@
     if (exIn) rib(X, xm + nw, g.yX, g.yX + g.hEx, x4, g.yN, g.yN + g.hEx, GNS);
     if (take > 0) rib(X, x3 + nw, g.yO, g.yO + take, x4, g.yN + g.hEx, g.yN + g.hEx + take, GNS);
     var cu = g.yO + Math.max(0, take), ce = g.yE;
+    var needO = g.right.reduce(function (t, r) { return t + (r.from === 'op' ? r.h : 0); }, 0), kO = needO > 0 ? Math.max(0, g.hO - Math.max(0, take)) / needO : 1;   // 영업이익 막대를 정확히 나눠 쓴다(적자면 줄여서)
+    var needE = g.right.reduce(function (t, r) { return t + (r.from === 'ex' ? r.h : 0); }, 0), kE = needE > 0 ? g.hE / needE : 1;
     g.right.forEach(function (r) {
-      if (r.from === 'op') { rib(X, x3 + nw, cu, cu + r.h, x4, r.y, r.y + r.h, RDS); cu += r.h; }
-      else { rib(X, x3 + nw, ce, ce + r.h, x4, r.y, r.y + r.h, RDS); ce += r.h; }
+      if (r.from === 'op') { var h = r.h * kO; if (h > 0.3) rib(X, x3 + nw, cu, cu + h, x4, r.y, r.y + r.h, RDS); cu += h; }
+      else { var h2 = r.h * kE; rib(X, x3 + nw, ce, ce + h2, x4, r.y, r.y + r.h, RDS); ce += h2; }
     });
     // ---- 막대
-    if (hasSeg) segs.forEach(function (sg) { X.fillStyle = BL; X.fillRect(x0, sg.y, nw, Math.max(2, sg.h)); });
-    X.fillStyle = BL; X.fillRect(x1, g.yR, nw, g.hR);
-    if (hasG) { X.fillStyle = GN; X.fillRect(x2, g.yG, nw, g.hG); X.fillStyle = RD; X.fillRect(x2, g.yC, nw, Math.max(2, g.hC)); }
-    X.fillStyle = GN; X.fillRect(x3, g.yO, nw, Math.max(2, g.hO)); X.fillStyle = RD; X.fillRect(x3, g.yE, nw, Math.max(2, g.hE));
-    if (exIn) { X.fillStyle = GN; X.fillRect(xm, g.yX, nw, g.hEx); }
-    if (g.hN > 0) { X.fillStyle = GN; X.fillRect(x4, g.yN, nw, g.hN); }
-    g.right.forEach(function (r) { X.fillStyle = RD; X.fillRect(x4, r.y, nw, Math.max(2, r.h)); });
+    if (hasSeg) segs.forEach(function (sg) { bar(X, x0, sg.y, nw, Math.max(2, sg.h), BL); });
+    bar(X, x1, g.yR, nw, g.hR, BL);
+    if (hasG) { bar(X, x2, g.yG, nw, g.hG, GN); bar(X, x2, g.yC, nw, Math.max(2, g.hC), RD); }
+    bar(X, x3, g.yO, nw, Math.max(2, g.hO), GN); bar(X, x3, g.yE, nw, Math.max(2, g.hE), RD);
+    if (exIn) bar(X, xm, g.yX, nw, Math.max(2, g.hEx), GN);
+    if (g.hN > 0) bar(X, x4, g.yN, nw, g.hN, GN);
+    g.right.forEach(function (r) { bar(X, x4, r.y, nw, Math.max(2, r.h), RD); });
     // ---- 이름표
     X.textBaseline = 'alphabetic';
     var pc = function (v) { return Math.round(v / rev * 100) + '%'; };
