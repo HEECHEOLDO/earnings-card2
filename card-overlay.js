@@ -133,8 +133,17 @@
     if (IS_PHONE && model === 'isnet') model = 'isnet_fp16';
     if (IS_PHONE && model === 'isnet_fp16' && device() === 'cpu') model = 'isnet_quint8';    // 폰 CPU 는 가벼운 모델만
     onProgress = onProgress || function () {};
-    return Promise.resolve(src instanceof Blob || (src && src.naturalWidth) ? scaledBlob(src, BG_MAX) : src).then(function (small) {
+    // 주소(blob:/data:)로 온 사진도 받아서 줄인다 — 예전엔 주소면 원래 크기(1600px) 그대로 보내 폰 메모리가 튀었다
+    var asBlob = typeof src === 'string' ? fetch(src).then(function (r) { return r.blob(); }).catch(function () { return src; }) : Promise.resolve(src);
+    return asBlob.then(function (s0) {
+      return s0 instanceof Blob || (s0 && s0.naturalWidth) ? scaledBlob(s0, BG_MAX) : s0;
+    }).then(function (small) {
       return inWorker(small, model, onProgress).catch(function (e) {
+        // 폰에서 돌다가 메모리로 멈췄으면 더 작게(720px) 새 워커로 한 번만 다시
+        if (IS_PHONE && /메모리|응답이 없어/.test(e && e.message || '') && small instanceof Blob) {
+          onProgress('compute', 0, 0);
+          return scaledBlob(small, 720).then(function (tiny) { return inWorker(tiny, 'isnet_quint8', onProgress); });
+        }
         if (!/worker-/.test(e && e.message || '')) throw e;
         return loadLib().then(function (lib) {
           return lib.removeBackground(small, { model: model, device: device(), output: { format: 'image/png', quality: 1 }, progress: onProgress });

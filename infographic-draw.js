@@ -196,7 +196,10 @@ window.__vcFoot = function (X, src) {
   /* C) 순위 변천 (bump chart) */
   function bump(X, o) {
     base.grainOnly(X); head(X, o.kicker, o.h1);
-    var cols = o.cols, n = cols.length, x0 = L + 50, x1 = R - 200, top = TOP + 40, rowH = (BOT - 30 - top) / 9, N = 10;
+    var cols = o.cols, n = cols.length, x0 = L + 50, top = TOP + 40, rowH = (BOT - 30 - top) / 9, N = 10;
+    // 오른쪽 이름 자리 — 가장 긴 이름(+NEW 꼬리표)이 데드존 안에 들어오게 그래프 끝을 당긴다
+    var nmW = 0; o.series.forEach(function (s) { var rk = s.ranks[n - 1]; if (!(rk && rk <= N)) return; X.font = font(s.hi ? 800 : 700, 22); var w = X.measureText(s.n).width; if (s.isNew) { X.font = font(900, 15); w += X.measureText('NEW').width + 24; } nmW = Math.max(nmW, w); });
+    var x1 = Math.max(R - 300, Math.min(R - 200, R - 74 - nmW));
     function xp(i) { return x0 + (x1 - x0) * i / (n - 1); }
     function yp(rk) { return top + (rk - 1) * rowH; }
     // 연도 눈금
@@ -222,7 +225,13 @@ window.__vcFoot = function (X, src) {
       var x = xp(n - 1) + 40, y = yp(rk);
       logoAt(X, s.logo, x, y, 22);
       X.fillStyle = s.hi ? T.ink : T.soft; X.font = font(s.hi ? 800 : 700, 22); X.textAlign = 'left'; X.textBaseline = 'middle';
-      X.fillText(s.n, x + 30, y + 1); X.textBaseline = 'alphabetic';
+      X.fillText(s.n, x + 30, y + 1);
+      if (s.isNew) {                                         // 처음 TOP 10 에 든 회사 — 이름 옆 작은 꼬리표
+        var nx = x + 30 + X.measureText(s.n).width + 10; X.font = font(900, 15);
+        var w = X.measureText('NEW').width + 14; X.fillStyle = '#D6362C'; X.beginPath(); X.arc(nx + 12, y, 12, Math.PI / 2, Math.PI * 1.5); X.arc(nx + w - 12, y, 12, -Math.PI / 2, Math.PI / 2); X.closePath(); X.fill();
+        X.fillStyle = '#FFFFFF'; X.textAlign = 'center'; X.fillText('NEW', nx + w / 2, y + 1);
+      }
+      X.textBaseline = 'alphabetic';
     });
     // 주석
     (o.notes || []).forEach(function (t) {
@@ -329,14 +338,14 @@ window.__vcFoot = function (X, src) {
   function radial(X, o) {
     base.grainOnly(X); head(X, o.kicker, o.h1);
     var cx = CW / 2, cy = 735, r0 = 110, r1 = 262, n = o.rows.length, mx = o.max;   // 막대 끝 + 이름표가 카드 안에 들도록
-    var step = Math.PI * 2 / n;
+    var step = Math.PI * 2 / (n + 1);    // 맨 위 한 칸은 비워 눈금 글자(+50% · +100%) 자리로
     // 0 고리, 눈금 고리
     function rv(v) { return r0 + (r1 - r0) * Math.sqrt(Math.min(Math.max(0, v), mx) / mx); }   // 제곱근 눈금 (큰 값이 너무 길지 않게)
     [0, 50, 100, 200].forEach(function (t) { X.strokeStyle = t ? T.rule : '#B9B6AE'; X.lineWidth = t ? 1 : 2; X.setLineDash(t ? [6, 6] : []); X.beginPath(); X.arc(cx, cy, rv(t), 0, 7); X.stroke(); X.setLineDash([]); });
-    X.fillStyle = T.soft; X.font = font(700, 18); X.textAlign = 'left';
-    [50, 100].forEach(function (t) { X.fillText('+' + t + '%', cx + 6, cy - rv(t) + 18); });
+    X.fillStyle = T.soft; X.font = font(700, 17); X.textAlign = 'center';
+    [50, 100].forEach(function (t) { X.fillText('+' + t + '%', cx, cy - rv(t) + 18); });
     o.rows.forEach(function (r, i) {
-      var a = -Math.PI / 2 + i * step + step / 2, w = step * 0.62, up = r.v >= 0;
+      var a = -Math.PI / 2 + (i + 1) * step, w = step * 0.62, up = r.v >= 0;
       var ra = up ? rv(r.v) : r0 - Math.min(80, 80 * Math.sqrt(Math.abs(r.v) / 60));
       X.fillStyle = up ? r.c : T.down;
       X.beginPath(); X.arc(cx, cy, Math.max(ra, r0), a - w / 2, a + w / 2); X.arc(cx, cy, Math.min(ra, r0), a + w / 2, a - w / 2, true); X.closePath(); X.fill();
@@ -358,7 +367,9 @@ window.__vcFoot = function (X, src) {
   /* G) 그때 vs 지금: 1995 TOP 10 → 2026 TOP 10 (기울기) */
   function thenNow(X, o) {
     base.grainOnly(X); head(X, o.kicker, o.h1);
-    var top = TOP + 50, rowH = (BOT - 40 - top) / 9, xl = L + 230, xr = R - 240;
+    var top = TOP + 50, rowH = (BOT - 40 - top) / 9, xl = L + 230;
+    X.font = font(800, 26); var rW = Math.max.apply(null, o.right.map(function (r) { return X.measureText(r.n).width; }).concat([0]));
+    var xr = Math.max(R - 300, Math.min(R - 240, R - 76 - rW));      // 오른쪽 이름이 데드존을 넘지 않게
     X.fillStyle = T.soft; X.font = font(800, 30); X.textAlign = 'center';
     X.fillText(o.leftLabel, xl - 110, top - 40); X.fillText(o.rightLabel, xr + 110, top - 40);
     var same = {}; o.right.forEach(function (r, i) { same[r.key] = i; });

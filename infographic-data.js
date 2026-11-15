@@ -361,10 +361,10 @@
       S.forEach(function (s) { s.n = s.n.replace(/^POSCO$/, 'POSCO홀딩스'); });
       // 주석: 지금 처음 TOP 10 에 든 회사
       var notes = [], last = keys.length - 1;
-      S.forEach(function (s) { if (s.ranks[last] && s.ranks.slice(0, last).every(function (r) { return !r; })) notes.push({ i: last, rk: s.ranks[last], dy: -26, text: s.n + ' 첫 TOP 10', c: s.c || '#6B7078', align: 'right' }); });
+      S.forEach(function (s) { if (s.ranks[last] && s.ranks.slice(0, last).every(function (r) { return !r; })) s.isNew = true; });   // 처음 TOP 10 — 그래프 위 글씨 대신 오른쪽 이름 옆에 'NEW' 표시 (선과 겹치지 않게)
       return Promise.all(S.map(function (s) { return img('./logo/kr/' + s.code + '.png').then(function (i) { s.logo = i; }); })).then(function () {
         return { fn: 'bump', o: { kicker: '10년의 순위 싸움', h1: '코스피 TOP 10, 이렇게 바뀌었다', h2: '해마다 마지막 거래일 시가총액 순위',
-          cols: keys.map(function (k) { return { label: k === 'now' ? "'" + D.asof.slice(2, 4) + '.' + D.asof.slice(5, 7) : "'" + k.slice(2) }; }), series: S, notes: notes.slice(0, 2),
+          cols: keys.map(function (k) { return { label: k === 'now' ? '지금' : "'" + k.slice(2) }; }), series: S, notes: [],
           src: "한국거래소 연말 시가총액 · 마지막 칸은 " + md(D.asof) + ' 종가' } };
       });
     } },
@@ -1149,6 +1149,8 @@
       last.o.h1 = b ? a + ' / ' + b : a; last.o.src = $('c-src').value; edits[last.key] = { h: last.o.h1, src: last.o.src }; draw();
     }
     ['c-title1', 'c-title2', 'c-src'].forEach(function (i) { $(i).addEventListener('input', onEdit); });
+    if ($('c-margin')) { try { window.__flowMargin = $('c-margin').checked = localStorage.getItem('flowMargin') === '1'; } catch (e) {}
+      $('c-margin').addEventListener('change', function () { window.__flowMargin = this.checked; try { localStorage.setItem('flowMargin', this.checked ? '1' : '0'); } catch (e) {} draw(); }); }
     $('c-reset').addEventListener('click', function () { if (!last) return; delete edits[last.key]; last.o.h1 = last.auto.h; last.o.src = last.auto.src; fillInputs(); draw(); });
     $('c-dl').addEventListener('click', function () {
       if (!last) return;

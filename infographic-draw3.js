@@ -38,8 +38,13 @@
     });
     X.strokeStyle = T.ink; X.lineWidth = 2; X.beginPath(); X.moveTo(L, bot); X.lineTo(R, bot); X.stroke();
     X.fillStyle = T.soft; X.font = font(700, 18); X.textAlign = 'center';
-    o.bins.forEach(function (b, i) { if (i % 2 === 0) X.fillText(b.tick, L + i * bw, bot + 30); });
-    X.fillText(o.bins[n - 1].tickEnd || '', R, bot + 30);
+    var endT = o.bins[n - 1].tickEnd || '', endW = endT ? X.measureText(endT).width : 0;
+    o.bins.forEach(function (b, i) {      // 양 끝은 안쪽 정렬, 끝 글자와 부딪히는 눈금은 건너뜀
+      if (i % 2) return; var x = L + i * bw, w = X.measureText(b.tick).width;
+      if (endT && x + w / 2 > R - endW - 12) return;
+      X.textAlign = i === 0 ? 'left' : 'center'; X.fillText(b.tick, i === 0 ? L : x, bot + 30);
+    });
+    X.textAlign = 'right'; X.fillText(endT, R, bot + 30);
     if (o.mark) {
       var lo = o.bins[0].lo, hi = o.bins[n - 1].hi, mxv = Math.max(lo, Math.min(hi, o.mark.v)), x = L + (R - L) * (mxv - lo) / (hi - lo);
       X.strokeStyle = T.ink; X.setLineDash([8, 6]); X.lineWidth = 3; X.beginPath(); X.moveTo(x, top - 30); X.lineTo(x, bot); X.stroke(); X.setLineDash([]);
@@ -101,7 +106,8 @@
   /* 4) 월별 열지도 — o.years:[연], o.rows:{연:[12개월 %|null]}, o.total:{연:%} */
   function heatgrid(X, o) {
     head(X, o);
-    var NC = o.cols ? o.cols.length : 12, top = TOP + 30, ny = o.years.length, lw = o.lw || 76, tw = 104, cw = (R - L - lw - tw) / NC, ch = Math.min(80, (BOT - 30 - top) / (ny + 1));
+    X.font = font(800, 22); var lw0 = Math.max.apply(null, o.years.map(function (y) { return X.measureText(o.rowLabel ? o.rowLabel(y) : "'" + String(y).slice(2)).width; })) + 14;
+    var NC = o.cols ? o.cols.length : 12, top = TOP + 30, ny = o.years.length, lw = Math.max(o.lw || 76, lw0), tw = 104, cw = (R - L - lw - tw) / NC, ch = Math.min(80, (BOT - 30 - top) / (ny + 1));
     X.fillStyle = T.soft; X.font = font(800, 19); X.textAlign = 'center';
     for (var m = 0; m < NC; m++) X.fillText(o.cols ? o.cols[m] : (m + 1) + '월', L + lw + cw * m + cw / 2, top - 12);
     X.fillText(o.totalLabel || '1년', R - tw / 2, top - 12);
@@ -166,15 +172,16 @@
   /* 6) 산점도 — o.pts:[{n, x, y, v, c, logo, lab}], o.xr/yr:[lo,hi], 축 이름 o.xl/o.yl */
   function scatter(X, o) {
     head(X, o);
-    var top = TOP + 10, bot = BOT - 70, x0 = L + 50, x1 = R - 10, xr = o.xr, yr = o.yr;
+    X.font = font(700, 17); var yw = Math.max.apply(null, o.yt.map(function (v) { return X.measureText(pct(v)).width; }));
+    var top = TOP + 10, bot = BOT - 70, x0 = L + 34 + yw + 10, x1 = R - 10, xr = o.xr, yr = o.yr;   // 세로 눈금 글자가 데드존 안에
     var xp = function (v) { return x0 + (x1 - x0) * (Math.max(xr[0], Math.min(xr[1], v)) - xr[0]) / (xr[1] - xr[0]); }, yp = function (v) { return bot - (bot - top) * (Math.max(yr[0], Math.min(yr[1], v)) - yr[0]) / (yr[1] - yr[0]); };
     // 사분면 바탕
     X.fillStyle = 'rgba(214,54,44,0.06)'; X.fillRect(xp(0), top, x1 - xp(0), yp(0) - top);
     X.fillStyle = 'rgba(43,108,217,0.06)'; X.fillRect(x0, yp(0), xp(0) - x0, bot - yp(0));
-    o.xt.forEach(function (v) { X.strokeStyle = v === 0 ? T.ink : T.rule; X.lineWidth = v === 0 ? 2 : 1; X.beginPath(); X.moveTo(xp(v), top); X.lineTo(xp(v), bot); X.stroke(); X.fillStyle = T.soft; X.font = font(700, 17); X.textAlign = 'center'; X.fillText(pct(v), xp(v), bot + 26); });
+    o.xt.forEach(function (v) { X.strokeStyle = v === 0 ? T.ink : T.rule; X.lineWidth = v === 0 ? 2 : 1; X.beginPath(); X.moveTo(xp(v), top); X.lineTo(xp(v), bot); X.stroke(); X.fillStyle = T.soft; X.font = font(700, 17); var tw0 = X.measureText(pct(v)).width / 2, tx = Math.max(L + tw0, Math.min(R - tw0, xp(v))); X.textAlign = 'center'; X.fillText(pct(v), tx, bot + 26); });
     o.yt.forEach(function (v) { X.strokeStyle = v === 0 ? T.ink : T.rule; X.lineWidth = v === 0 ? 2 : 1; X.beginPath(); X.moveTo(x0, yp(v)); X.lineTo(x1, yp(v)); X.stroke(); X.fillStyle = T.soft; X.font = font(700, 17); X.textAlign = 'right'; X.textBaseline = 'middle'; X.fillText(pct(v), x0 - 8, yp(v)); X.textBaseline = 'alphabetic'; });
     X.fillStyle = T.soft; X.font = font(800, 20); X.textAlign = 'center'; X.fillText(o.xl, (x0 + x1) / 2, bot + 58);
-    X.save(); X.translate(L - 30, (top + bot) / 2); X.rotate(-Math.PI / 2); X.fillText(o.yl, 0, 0); X.restore();
+    X.save(); X.translate(L + 14, (top + bot) / 2); X.rotate(-Math.PI / 2); X.fillText(o.yl, 0, 0); X.restore();
     // 사분면 이름
     X.font = font(800, 20); X.fillStyle = T.up; X.textAlign = 'right'; X.fillText(o.q1 || '', x1 - 10, top + 28);
     X.fillStyle = T.down; X.textAlign = 'left'; X.fillText(o.q3 || '', x0 + 10, bot - 14);
@@ -192,7 +199,7 @@
       var r = 8 + 42 * Math.sqrt(p.v / mv), x = xp(p.x), y = yp(p.y) - r - 8;
       X.font = font(800, 18); var w = X.measureText(p.n).width, box = [x - w / 2, y - 16, x + w / 2, y + 4];
       if (box[0] < x0 || box[2] > x1 || placed.some(function (b) { return !(box[2] < b[0] || box[0] > b[2] || box[3] < b[1] || box[1] > b[3]); })) return;
-      placed.push(box); X.fillStyle = T.ink; X.textAlign = 'center'; X.fillText(p.n, x, y);
+      placed.push(box); X.textAlign = 'center'; X.lineJoin = 'round'; X.lineWidth = 5; X.strokeStyle = 'rgba(250,250,248,0.92)'; X.strokeText(p.n, x, y); X.fillStyle = T.ink; X.fillText(p.n, x, y);   // 바탕색 테두리 — 점·선 위에서도 읽히게
     });
     foot(X, o.src);
   }

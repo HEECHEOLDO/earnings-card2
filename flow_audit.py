@@ -189,6 +189,10 @@ def flow(code):
             d["cogs"] = -d["cogs"]
         if d["sga"] is not None and d["sga"] < 0:
             d["sga"] = -d["sga"]
+        # 매출원가가 0·빈칸인데 매출총이익이 따로 있으면(또는 셋이 안 맞으면) 매출총이익 쪽을 믿는다 — 매출총이익 - 판관비 = 영업이익으로 확인
+        if d["gross"] is not None and d["rev"] and d["sga"] is not None and abs(d["gross"] - d["sga"] - d["op"]) <= abs(d["rev"]) * 0.01 \
+                and abs(d["rev"] - (d["cogs"] or 0) - d["gross"]) > abs(d["rev"]) * 0.01:
+            d["cogs"] = d["rev"] - d["gross"]
         if d["gross"] is None and d["cogs"] is not None:
             d["gross"] = d["rev"] - d["cogs"]
         if d["cogs"] is None and d["gross"] is not None:
