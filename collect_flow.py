@@ -141,6 +141,7 @@ def us_one(t, cik):
 
 
 # ------------------------------------------------------------------ 공시 원본(XBRL): 3개월 손익 + 매출 종류
+DOC_VER = 1                                        # 국내: 보고서 원문 대체(매출 구분·판관비 세부) — 세부가 없던 회사만 다시
 US_VER = 2                                         # 미국 영업비용 세부 읽는 법이 바뀌면 올림 — 세부가 없던 미국 회사만 다시
 UL_VER = 2                                         # 비상장(감사보고서) 읽는 법이 바뀌면 올림 — 비상장만 다시
 VER = 8                                            # 계산 방식이 바뀌면 올려서 다시 계산
@@ -337,7 +338,25 @@ def usable(code):
     if not (80 <= days <= 100 or 350 <= days <= 380):
         return False
     lim = 520 if (len(code) == 8 and code.isdigit()) else 200          # 비상장(감사보고서·연간)은 1년 넘게 기다린다
-    return (TODAY - date.fromisoformat(d["end"])).days < lim            # 분기 끝 + 제출 기한(45~90일)보다 오래되면 뺌
+    if (TODAY - date.fromisoformat(d["end"])).days >= lim:              # 분기 끝 + 제출 기한(45~90일)보다 오래되면 뺌
+        return False
+    return cross_ok(code, d, days)
+
+
+def cross_ok(code, d, days):
+    """국내 상장사 — 국내 실적 탭 자료(data/<코드>.json)의 같은 분기 매출과 크게 다르면(달러로 공시한 회사·단위 실수) 뺀다"""
+    p = os.path.join("data", code + ".json")
+    if not (len(code) == 6 and os.path.exists(p)) or days > 100:
+        return True
+    try:
+        end = date.fromisoformat(d["end"])
+        q = [x for x in (json.load(open(p, encoding="utf-8")).get("quarterly") or []) if x.get("y") == end.year and x.get("q") == (end.month + 2) // 3]
+        if not q or not q[0].get("rev"):
+            return True
+        r = d["rev"] / q[0]["rev"]
+        return 0.8 <= r <= 1.25
+    except Exception:                                   # noqa: BLE001
+        return True
 
 
 def scaled(v, k):
@@ -453,6 +472,7 @@ def work_kr(job):
             d = kr_one(code, corp)
         if d:
             d["unit"] = "억원"
+            d["docv"] = DOC_VER
             if mk == "UL":
                 d["uver"] = UL_VER
         return job, d, why, C._call_count - c0, time.time() - t0
@@ -579,6 +599,8 @@ def main():
                 continue
             old = jl(os.path.join(OUT, code + ".json"))
             pr = need(code, old, info["corp_code"] in rk)
+            if old and old.get("docv") != DOC_VER and (len(old.get("items") or []) < 2 or len(old.get("segs") or []) < 2):
+                pr, old = 2, None                       # 매출 구분·판관비 세부가 없던 회사 — 보고서 원문에서 다시
             if pr is not None:
                 jobs.append((pr, i, "KR", code, info["corp_code"], old, mc[code].get("n")))
         for i, c in enumerate(ul):
