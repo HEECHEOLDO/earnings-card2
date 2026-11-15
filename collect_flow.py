@@ -154,9 +154,10 @@ def kr_xbrl(corp):
         files = XD.unzip(blob)
         inst = [n for n in files if n.endswith(".xbrl")]
         lab = [n for n in files if "lab-ko" in n]
+        cal = [n for n in files if n.endswith("_cal.xml") or "cal" in n.rsplit("/", 1)[-1]]
         if not inst:
             continue
-        v = FX.from_instance(files[inst[0]], files[lab[0]] if lab else "", us=False)
+        v = FX.from_instance(files[inst[0]], files[lab[0]] if lab else "", us=False, caltext=files[cal[0]] if cal else "")
         if v:
             v["report"] = nm
             return v
@@ -177,13 +178,16 @@ def us_xbrl(cik):
         names = [x.get("name", "") for x in ((idx or {}).get("directory", {}).get("item", []))]
         inst = [n for n in names if n.endswith("_htm.xml")]
         lab = [n for n in names if n.endswith("_lab.xml")]
+        cal = [n for n in names if n.endswith("_cal.xml")]
         if not inst:
             return None
         raw = U.get(base + inst[0])
         lr = U.get(base + lab[0]) if lab else None
+        cr = U.get(base + cal[0]) if cal else None
         if not raw:
             return None
-        v = FX.from_instance(raw.decode("utf-8", "replace"), lr.decode("utf-8", "replace") if lr else "", us=True)
+        v = FX.from_instance(raw.decode("utf-8", "replace"), lr.decode("utf-8", "replace") if lr else "", us=True,
+                             caltext=cr.decode("utf-8", "replace") if cr else "")
         if v:
             v["report"] = f + " " + rc["reportDate"][i]
         return v
@@ -195,7 +199,7 @@ def scaled(v, k):
     for a, b in v.items():
         if isinstance(b, (int, float)):
             out[a] = round(b / k, 1)
-        elif a == "segs":
+        elif a in ("segs", "items"):
             out[a] = [[n, round(x / k, 1)] for n, x in b]
         else:
             out[a] = b

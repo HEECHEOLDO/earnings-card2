@@ -114,9 +114,45 @@ def segments(ctx, facts, rev_names, per, rev, L, base_dim):
     return out
 
 
-def from_instance(text, labtext, us):
+
+OPEX_KO = {"ResearchAndDevelopmentExpense": "연구개발비", "SellingGeneralAndAdministrativeExpense": "판매·관리비", "SellingAndMarketingExpense": "마케팅비",
+           "MarketingExpense": "마케팅비", "GeneralAndAdministrativeExpense": "일반관리비", "FulfillmentExpense": "물류·배송비", "TechnologyAndInfrastructureExpense": "기술·인프라",
+           "TechnologyAndContentExpense": "기술·콘텐츠", "RestructuringCharges": "구조조정비", "AmortizationOfIntangibleAssets": "무형자산 상각", "SellingExpense": "판매비",
+           "DepreciationDepletionAndAmortization": "감가상각비", "OtherCostAndExpenseOperating": "기타 영업비용", "LaborAndRelatedExpense": "인건비",
+           "AdvertisingExpense": "광고비", "MarketingAndAdvertisingExpense": "마케팅·광고", "ResearchAndDevelopmentExpenseExcludingAcquiredInProcessCost": "연구개발비"}
+
+
+def opex_items(ctx, facts, per, base_ok, CAL, L, us, val):
+    if not CAL:
+        return []
+    vals = {}
+    for n, c, v in facts:
+        p = ctx[c]
+        if (p["start"], p["end"]) == per and base_ok(p) and n not in vals:
+            vals[n] = v
+    parents = (["us-gaap:OperatingExpenses", "us-gaap:CostsAndExpenses", "us-gaap:OperatingCostsAndExpenses"] if us
+               else ["dart:TotalSellingGeneralAdministrativeExpenses", "ifrs-full:SellingGeneralAndAdministrativeExpense"])
+    skip = {"us-gaap:CostOfRevenue", "us-gaap:CostOfGoodsAndServicesSold", "us-gaap:CostOfGoodsSold", "us-gaap:CostOfServices", "ifrs-full:CostOfSales"}
+    for par in parents:
+        kids = [(k, w) for k, w in CAL.get(par, []) if k in vals and k not in skip and w > 0]
+        if len(kids) < 2:
+            continue
+        out = []
+        for k, w in kids:
+            nm = k.split(":")[-1]
+            lab = OPEX_KO.get(nm) or re.sub(r"\\s*\\[.*?\\]\\s*$", "", L.get(k, "")) or re.sub(r"(?<=[a-z])(?=[A-Z])", " ", nm)
+            out.append([lab, vals[k]])
+        out = [x for x in out if x[1] > 0]
+        out.sort(key=lambda x: -x[1])
+        if len(out) >= 2:
+            return out[:6]
+    return []
+
+
+def from_instance(text, labtext, us, caltext=""):
     ctx, facts = XD.parse(text)
     L = XD.labels(labtext) if labtext else {}
+    CAL = XD.calc(caltext) if caltext else {}
     if us:
         base_dim = lambda d: False                              # noqa: E731
         base_ok = lambda p: not p["dims"]                       # noqa: E731
@@ -170,6 +206,8 @@ def from_instance(text, labtext, us):
                 segs = [[n, v * k] for n, v in sc]
                 val["seg_note"] = "매출 종류는 " + q_label(*cum[0]).split(" ")[-1] + " 비중"
     val["segs"] = segs
+    # 영업비용 세부 — 계산 링크베이스에서 영업비용(또는 판관비)의 자식 항목들
+    val["items"] = opex_items(ctx, facts, per, base_ok, CAL, L, us, val)
     val["start"], val["end"] = per
     val["period"] = q_label(*per)
     return val

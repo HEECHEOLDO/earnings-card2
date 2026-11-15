@@ -62,3 +62,26 @@ def labels(text):
 def unzip(blob):
     z = zipfile.ZipFile(io.BytesIO(blob))
     return {n: z.read(n).decode("utf-8", "replace") for n in z.namelist()}
+
+
+def calc(text):
+    """계산 링크베이스 → {부모 요소: [자식 요소들]} (요소 이름은 'prefix:Name')"""
+    loc = {}
+    for m in re.finditer(r'<(?:\w+:)?loc\b([^>]*)/?>', text):
+        a = m.group(1)
+        h = re.search(r'xlink:href="[^"#]*#([^"]+)"', a)
+        l = re.search(r'xlink:label="([^"]+)"', a)
+        if h and l:
+            loc[l.group(1)] = h.group(1).replace("_", ":", 1)
+    out = {}
+    for m in re.finditer(r'<(?:\w+:)?calculationArc\b([^>]*)/?>', text):
+        a = m.group(1)
+        f = re.search(r'xlink:from="([^"]+)"', a)
+        t = re.search(r'xlink:to="([^"]+)"', a)
+        w = re.search(r'weight="(-?[\d.]+)"', a)
+        if f and t and f.group(1) in loc and t.group(1) in loc:
+            out.setdefault(loc[f.group(1)], [])
+            c = (loc[t.group(1)], float(w.group(1)) if w else 1.0)
+            if c not in out[loc[f.group(1)]]:
+                out[loc[f.group(1)]].append(c)
+    return out
