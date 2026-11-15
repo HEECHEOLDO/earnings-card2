@@ -320,3 +320,109 @@
   }
   base.sankey2 = sankey2;
 })();
+/* 돈의 흐름 (레퍼런스 배치) — 왼쪽 매출 종류(파랑) → 총 매출 → 위로 이익(초록) 계단, 아래로 비용(빨강) 갈래
+   o: {segs:[{n,v}], rev, cogs, op, opex, items:[{n,v}] (영업비용 세부), ni, tax, nonop(+ 손실 / - 이익), money, period, logo} */
+(function () {
+  var L = 100, R = 980, TOP = 330, BOT = 1140;
+  var FF = "'Noto Sans KR', sans-serif";
+  function font(w, px) { return w + ' ' + px + 'px ' + FF; }
+  var base = window.__vc;
+  var BL = '#3E74D6', BLS = 'rgba(62,116,214,0.26)', GN = '#2E9E6B', GNS = 'rgba(46,158,107,0.30)', RD = '#C8434F', RDS = 'rgba(200,67,79,0.26)', INK = '#101216', SOFT = '#6B7078';
+  function rib(X, xa, ya0, ya1, xb, yb0, yb1, col) {
+    var m = (xa + xb) / 2;
+    X.fillStyle = col; X.beginPath(); X.moveTo(xa, ya0); X.bezierCurveTo(m, ya0, m, yb0, xb, yb0); X.lineTo(xb, yb1); X.bezierCurveTo(m, yb1, m, ya1, xa, ya1); X.closePath(); X.fill();
+  }
+  function logoAt(X, im, x, y, r) { if (!im) return; X.save(); X.beginPath(); X.arc(x, y, r, 0, 7); X.clip(); X.fillStyle = '#fff'; X.fillRect(x - r, y - r, 2 * r, 2 * r); X.drawImage(im, x - r, y - r, 2 * r, 2 * r); X.restore(); }
+  function txt(X, s, x, y, w, px, col, align, maxW) {
+    X.font = font(w, px); if (maxW) while (px > 14 && X.measureText(s).width > maxW) { px -= 1; X.font = font(w, px); }
+    X.fillStyle = col; X.textAlign = align || 'left'; X.fillText(s, x, y); return px;
+  }
+  function sankey3(X, o) {
+    base.grainOnly(X); X.fillStyle = INK; window.__vcTitle(X, o.h1);
+    var m = o.money, rev = o.rev, cogs = Math.max(0, o.cogs || 0), gross = rev - cogs, op = o.op, opex = gross - op, ni = o.ni, tax = Math.max(0, o.tax || 0);
+    var nonop = op - tax - ni, exIn = nonop < -rev * 0.03 ? -nonop : 0, exOut = nonop > rev * 0.01 ? nonop : 0;   // 작은 영업외 손익은 따로 그리지 않는다
+    var segs = (o.segs || []).filter(function (x) { return x.v > rev * 0.004; }), items = (o.items || []).filter(function (x) { return x.v > rev * 0.002; });
+    var hasSeg = segs.length >= 2, hasG = cogs > rev * 0.005, hasItems = items.length >= 2;
+    // 범례 · 로고
+    var lx = L, ly = TOP + 2;
+    [['매출', BL], ['이익', GN], ['비용', RD]].forEach(function (k) { X.fillStyle = k[1]; X.fillRect(lx, ly - 4, 30, 6); X.fillStyle = SOFT; X.font = font(700, 20); X.textAlign = 'left'; X.fillText(k[0], lx + 38, ly + 4); lx += 104; });
+    logoAt(X, o.logo, R - 36, TOP - 8, 34);
+    var nw = 18, x0 = L + 118, x1 = hasSeg ? L + 270 : L + 70, x4 = R - 150, x2 = x1 + (x4 - x1) * 0.33, x3 = hasG ? x1 + (x4 - x1) * 0.66 : x1 + (x4 - x1) * 0.45, xm = (x3 + x4) / 2;
+    var top = TOP + 60, bot = BOT - 8;
+    // 자리 잡기 — 맨 아래가 바닥을 넘으면 배율을 줄여 다시
+    function place(s) {
+      var g = { s: s };
+      g.hR = rev * s; g.hG = gross * s; g.hC = cogs * s; g.hO = Math.max(0, op) * s; g.hE = opex * s; g.hEx = exIn * s; g.hN = Math.max(0, ni) * s;
+      g.yO = top + 70 + (exIn ? g.hEx + 70 : 0);                        // 영업이익: 위 (영업외 이익이 있으면 그 아래)
+      g.yG = g.yO + 40; g.yR = g.yG + 40;                                  // 매출총이익·총 매출은 한 칸씩 아래 (계단)
+      g.yC = g.yG + g.hG + 50; g.yE = g.yO + g.hO + 50;
+      g.yX = g.yO - g.hEx - 60; g.yN = Math.max(top + 10, (exIn ? g.yX : g.yO) - 10);
+      var y = g.yN + g.hN + 20; g.right = [];
+      if (tax > 0) { g.right.push({ n: '법인세', v: tax, y: y, h: tax * s, from: 'op' }); y += tax * s + 22; }
+      if (exOut > 0) { g.right.push({ n: '영업외 손실', v: exOut, y: y, h: exOut * s, from: 'op' }); y += exOut * s + 22; }
+      if (hasItems) {
+        y = Math.max(y + 16, g.yE - 30);
+        var sum = items.reduce(function (t, x) { return t + x.v * s; }, 0), slot = Math.min(56, Math.max(18, (bot - y - sum) / items.length));
+        items.forEach(function (it) { g.right.push({ n: it.n, v: it.v, y: y, h: it.v * s, from: 'ex' }); y += it.v * s + slot; });
+      }
+      g.low = Math.max(g.yR + g.hR, hasG ? g.yC + g.hC + 60 : 0, g.yE + g.hE + 50, y - 10);
+      return g;
+    }
+    var sc = (bot - top) * 0.7 / Math.max(rev, gross + exIn), g = place(sc);
+    for (var k = 0; k < 14 && g.low > bot; k++) { sc *= 0.92; g = place(sc); }
+    var s = g.s;
+    // ---- 리본
+    if (hasSeg) {
+      var gapS = Math.min(26, (bot - top - g.hR) / (segs.length + 1)), tot = g.hR + gapS * (segs.length - 1), ys = Math.max(top, g.yR + g.hR / 2 - tot / 2), cur = g.yR;
+      segs.forEach(function (sg) { var h = sg.v * s; sg.y = ys; sg.h = h; rib(X, x0 + nw, ys, ys + h, x1, cur, cur + h, BLS); ys += h + gapS; cur += h; });
+    }
+    var sx = hasG ? x2 : x1, sy = hasG ? g.yG : g.yR;
+    if (hasG) { rib(X, x1 + nw, g.yR, g.yR + g.hG, x2, g.yG, g.yG + g.hG, GNS); rib(X, x1 + nw, g.yR + g.hG, g.yR + g.hR, x2, g.yC, g.yC + g.hC, RDS); }
+    rib(X, sx + nw, sy, sy + g.hO, x3, g.yO, g.yO + g.hO, GNS);
+    rib(X, sx + nw, sy + g.hO, sy + g.hO + g.hE, x3, g.yE, g.yE + g.hE, RDS);
+    var take = Math.min(g.hO, g.hN - g.hEx);
+    if (exIn) rib(X, xm + nw, g.yX, g.yX + g.hEx, x4, g.yN, g.yN + g.hEx, GNS);
+    if (take > 0) rib(X, x3 + nw, g.yO, g.yO + take, x4, g.yN + g.hEx, g.yN + g.hEx + take, GNS);
+    var cu = g.yO + Math.max(0, take), ce = g.yE;
+    g.right.forEach(function (r) {
+      if (r.from === 'op') { rib(X, x3 + nw, cu, cu + r.h, x4, r.y, r.y + r.h, RDS); cu += r.h; }
+      else { rib(X, x3 + nw, ce, ce + r.h, x4, r.y, r.y + r.h, RDS); ce += r.h; }
+    });
+    // ---- 막대
+    if (hasSeg) segs.forEach(function (sg) { X.fillStyle = BL; X.fillRect(x0, sg.y, nw, Math.max(2, sg.h)); });
+    X.fillStyle = BL; X.fillRect(x1, g.yR, nw, g.hR);
+    if (hasG) { X.fillStyle = GN; X.fillRect(x2, g.yG, nw, g.hG); X.fillStyle = RD; X.fillRect(x2, g.yC, nw, Math.max(2, g.hC)); }
+    X.fillStyle = GN; X.fillRect(x3, g.yO, nw, Math.max(2, g.hO)); X.fillStyle = RD; X.fillRect(x3, g.yE, nw, Math.max(2, g.hE));
+    if (exIn) { X.fillStyle = GN; X.fillRect(xm, g.yX, nw, g.hEx); }
+    if (g.hN > 0) { X.fillStyle = GN; X.fillRect(x4, g.yN, nw, g.hN); }
+    g.right.forEach(function (r) { X.fillStyle = RD; X.fillRect(x4, r.y, nw, Math.max(2, r.h)); });
+    // ---- 이름표
+    X.textBaseline = 'alphabetic';
+    var pc = function (v) { return Math.round(v / rev * 100) + '%'; };
+    if (hasSeg) {
+      var lastY = -1e9;
+      segs.forEach(function (sg) { var y = Math.max(sg.y + sg.h / 2 - 12, lastY + 54); lastY = y; txt(X, sg.n, x0 - 10, y, 700, 20, BL, 'right', x0 - L - 14); txt(X, m(sg.v), x0 - 10, y + 27, 900, 24, BL, 'right', x0 - L - 14); });
+    }
+    function above(x, y, name, val, sub, col) {
+      if (sub) { txt(X, sub, x, y - 8, 700, 17, SOFT, 'center'); y -= 26; }
+      txt(X, val, x, y - 8, 900, 30, col, 'center'); txt(X, name, x, y - 44, 800, 22, col, 'center');
+    }
+    above(x1 + nw / 2, g.yR, '총 매출', m(rev), '', BL);
+    if (hasG) {
+      above(x2 + nw / 2, g.yG, '매출총이익', m(gross), '이익률 ' + pc(gross), GN);
+      txt(X, '매출원가', x2 + nw + 12, g.yC + Math.min(g.hC, 220) / 2, 800, 24, RD, 'left'); txt(X, m(cogs), x2 + nw + 12, g.yC + Math.min(g.hC, 220) / 2 + 36, 900, 32, RD, 'left');
+    }
+    above(x3 + nw / 2, g.yO, '영업이익', m(op), '이익률 ' + pc(op), GN);
+    txt(X, '영업비용', x3 - 10, g.yE + Math.min(g.hE, 180) / 2 + 2, 800, 23, RD, 'right'); txt(X, m(opex), x3 - 10, g.yE + Math.min(g.hE, 180) / 2 + 34, 900, 30, RD, 'right');
+    if (exIn) above(xm + nw / 2, g.yX, '영업외 이익', '+' + m(exIn), '', GN);
+    var rx = x4 + nw + 10, mw = R - rx, lastR = -1e9;
+    var rl = [{ n: ni >= 0 ? '순이익' : '순손실', v: m(ni), sub: '순이익률 ' + pc(ni), y: g.yN + Math.min(g.hN, 120) / 2, c: GN }].concat(g.right.map(function (r) { return { n: r.n, v: m(r.v), y: r.y + r.h / 2, c: RD }; }));
+    rl.forEach(function (t) {
+      var h = t.sub ? 76 : 56, y0 = Math.max(t.y - h / 2, lastR + 4); lastR = y0 + h;
+      txt(X, t.n, rx, y0 + 19, 700, 19, t.c, 'left', mw); txt(X, t.v, rx, y0 + 47, 900, 26, t.c, 'left', mw);
+      if (t.sub) txt(X, t.sub, rx, y0 + 70, 700, 16, SOFT, 'left', mw);
+    });
+    window.__vcFoot(X, o.src);
+  }
+  base.sankey3 = sankey3;
+})();

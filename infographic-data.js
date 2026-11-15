@@ -403,7 +403,17 @@
         if (f && f.rev > 0 && f.op > 0 && f.op < f.rev && f.ni != null) {
           var nm2 = us ? ko(code, (D.us.stocks[code] || {}).n || code) : f.name;
           return logo({ code: code }, us).then(function (r) {
-            return { fn: 'sankey2', o: { h1: nm2, d: f, money: money, period: f.period.replace(' (달력 기준)', ''), logo: r.logo }, src: f.period + ' 실적 기준 · ' + (us ? '미국 SEC' : '금융감독원 DART') };
+            var gross = f.gross != null ? f.gross : f.rev - (f.cogs || 0), opex = gross - f.op, items = (f.items || []).slice();
+            if (!items.length) {                      // 영업비용 세부가 따로 없으면 손익계산서 항목으로
+              if (f.rnd) items.push({ n: '연구개발비', v: f.rnd });
+              if (f.sga) items.push({ n: f.rnd ? '판매·관리비' : '판관비', v: f.sga });
+              else { if (f.sm) items.push({ n: '마케팅비', v: f.sm }); if (f.ga) items.push({ n: '일반관리비', v: f.ga }); }
+            }
+            var used = items.reduce(function (t, x) { return t + x.v; }, 0);
+            if (items.length && opex - used > f.rev * 0.01) items.push({ n: '기타 영업비용', v: opex - used });
+            if (used > opex * 1.02) items = [];
+            return { fn: 'sankey3', o: { h1: nm2, segs: f.segs || [], rev: f.rev, cogs: f.cogs, op: f.op, items: items, ni: f.ni, tax: f.tax, money: money, logo: r.logo },
+              src: f.period + ' 실적 기준 · ' + (us ? '미국 SEC' : '금융감독원 DART') };
           });
         }
         return null;
