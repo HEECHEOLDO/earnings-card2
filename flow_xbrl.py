@@ -143,19 +143,53 @@ OPEX_KO = {"ResearchAndDevelopmentExpense": "연구개발비", "SellingGeneralAn
            "AdvertisingExpense": "광고비", "MarketingAndAdvertisingExpense": "마케팅·광고", "ResearchAndDevelopmentExpenseExcludingAcquiredInProcessCost": "연구개발비"}
 
 
-def opex_items(ctx, facts, per, base_ok, CAL, L, us, val):
-    if not CAL:
+def _fit_opex(out, val):
+    """영업비용(매출총이익 - 영업이익)과 맞춘다 — 모자라면 '기타 영업비용', 넘치면 버린다"""
+    if val.get("gross") is None or val.get("op") is None:
+        return out
+    opex = val["gross"] - val["op"]
+    s = sum(v for _, v in out)
+    if opex <= 0 or s > opex * 1.01:
         return []
+    if opex - s > opex * 0.01:
+        out = out + [["기타 영업비용", opex - s]]
+    return out
+
+
+def opex_items(ctx, facts, per, base_ok, CAL, L, us, val):
     vals = {}
     for n, c, v in facts:
         p = ctx[c]
         if (p["start"], p["end"]) == per and base_ok(p) and n not in vals:
             vals[n] = v
+    got = _opex_cal(vals, CAL, L, us) if CAL else []
+    if us:
+        if got:
+            got = _fit_opex(got, val)
+        if not got:
+            got = _opex_cal(vals, CAL, L, us, via_op=True) if CAL else []      # 영업비용 합계 줄이 없는 회사(MSFT 등): 영업이익 = 매출총이익 - 각 비용
+            got = _fit_opex(got, val) if got else []
+        if not got:                                                          # 계산 링크가 없거나 안 맞으면 알려진 비용 태그로
+            pick = ["ResearchAndDevelopmentExpense", "SellingAndMarketingExpense", "MarketingAndAdvertisingExpense", "GeneralAndAdministrativeExpense",
+                    "FulfillmentExpense", "TechnologyAndInfrastructureExpense"]
+            if not any("us-gaap:" + k in vals for k in ("SellingAndMarketingExpense", "GeneralAndAdministrativeExpense")):
+                pick.append("SellingGeneralAndAdministrativeExpense")
+            out = [[OPEX_KO.get(k, k), vals["us-gaap:" + k]] for k in pick if vals.get("us-gaap:" + k, 0) > 0]
+            out.sort(key=lambda x: -x[1])
+            got = _fit_opex(out, val) if len(out) >= 2 or (len(out) == 1 and val.get("gross") is not None and (val["gross"] - val["op"]) - out[0][1] > (val["gross"] - val["op"]) * 0.05) else []
+        return got if len(got) >= 2 else []
+    return got
+
+
+def _opex_cal(vals, CAL, L, us, via_op=False):
     parents = (["us-gaap:OperatingExpenses", "us-gaap:CostsAndExpenses", "us-gaap:OperatingCostsAndExpenses"] if us
                else ["dart:TotalSellingGeneralAdministrativeExpenses", "ifrs-full:SellingGeneralAndAdministrativeExpense"])
-    skip = {"us-gaap:CostOfRevenue", "us-gaap:CostOfGoodsAndServicesSold", "us-gaap:CostOfGoodsSold", "us-gaap:CostOfServices", "ifrs-full:CostOfSales"}
+    if via_op:
+        parents = ["us-gaap:OperatingIncomeLoss"]
+    skip = {"us-gaap:CostOfRevenue", "us-gaap:CostOfGoodsAndServicesSold", "us-gaap:CostOfGoodsSold", "us-gaap:CostOfServices", "ifrs-full:CostOfSales",
+            "us-gaap:GrossProfit", "us-gaap:Revenues", "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax", "us-gaap:OperatingExpenses", "us-gaap:CostsAndExpenses"}
     for par in parents:
-        kids = [(k, w) for k, w in CAL.get(par, []) if k in vals and k not in skip and w > 0]
+        kids = [(k, w) for k, w in CAL.get(par, []) if k in vals and k not in skip and (w < 0 if via_op else w > 0)]
         if len(kids) < 2:
             continue
         out = []

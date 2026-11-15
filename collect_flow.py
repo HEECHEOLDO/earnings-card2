@@ -141,6 +141,7 @@ def us_one(t, cik):
 
 
 # ------------------------------------------------------------------ 공시 원본(XBRL): 3개월 손익 + 매출 종류
+US_VER = 2                                         # 미국 영업비용 세부 읽는 법이 바뀌면 올림 — 세부가 없던 미국 회사만 다시
 UL_VER = 2                                         # 비상장(감사보고서) 읽는 법이 바뀌면 올림 — 비상장만 다시
 VER = 8                                            # 계산 방식이 바뀌면 올려서 다시 계산
 
@@ -406,6 +407,7 @@ def work_us(job):
             d["xbrl_err"] = FX.WHY or "까닭 모름"
     if d:
         d["unit"] = "백만달러"
+        d["usver"] = US_VER
     return job, d, FX.WHY, time.time() - t0
 
 
@@ -538,6 +540,8 @@ def main():
                 continue
             old = jl(os.path.join(OUT, t + ".json"))
             pr = need(t, old, cik in ru)
+            if old and old.get("usver") != US_VER and len(old.get("items") or []) < 2:
+                pr, old = 2, None                       # 영업비용 세부가 없던 회사 — 새 방식으로 다시
             if pr is not None:
                 jobs.append((pr, i, t, cik, old))
         jobs.sort(key=lambda j: (j[0], j[1]))
