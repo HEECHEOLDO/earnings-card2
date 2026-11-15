@@ -141,10 +141,15 @@ def us_one(t, cik):
 
 
 # ------------------------------------------------------------------ 공시 원본(XBRL): 3개월 손익 + 매출 종류
-def kr_xbrl(corp):
+VER = 2                                            # 계산 방식이 바뀌면 올려서 다시 계산
+
+
+def kr_xbrl(corp, old=None):
     res = C.api_get("list.json", {"corp_code": corp, "bgn_de": "%d0101" % (TODAY.year - 1), "pblntf_ty": "A", "page_count": 30})
     rows = [r for r in (res or {}).get("list", []) if re.search(r"(분기|반기|사업)보고서", r.get("report_nm", ""))]
     rows.sort(key=lambda r: r["rcept_dt"], reverse=True)
+    if rows and old and old.get("src") == rows[0]["rcept_no"] and old.get("ver") == VER:
+        return "SAME"                               # 새 보고서가 없으면 그대로
     for r0 in rows[:3]:
         nm = r0["report_nm"]
         rc = "11011" if "사업" in nm else "11012" if "반기" in nm else "11014" if ".09" in nm else "11013"
@@ -160,6 +165,7 @@ def kr_xbrl(corp):
         v = FX.from_instance(files[inst[0]], files[lab[0]] if lab else "", us=False, caltext=files[cal[0]] if cal else "")
         if v:
             v["report"] = nm
+            v["src"] = r0["rcept_no"]
             if not v.get("items") and v.get("sga"):
                 try:
                     mix = None
@@ -176,7 +182,7 @@ def kr_xbrl(corp):
     return None
 
 
-def us_xbrl(cik):
+def us_xbrl(cik, old=None):
     sub = U.get_json(U.SEC_SUBMIT % str(cik).zfill(10))
     if not sub:
         return None
@@ -185,6 +191,8 @@ def us_xbrl(cik):
         if f not in ("10-Q", "10-K"):
             continue
         acc = rc["accessionNumber"][i]
+        if old and old.get("src") == acc and old.get("ver") == VER:
+            return "SAME"
         base = U.SEC_ARCH % (int(cik), acc.replace("-", ""))
         idx = U.get_json(base + "index.json")
         names = [x.get("name", "") for x in ((idx or {}).get("directory", {}).get("item", []))]
@@ -202,6 +210,7 @@ def us_xbrl(cik):
                              caltext=cr.decode("utf-8", "replace") if cr else "")
         if v:
             v["report"] = f + " " + rc["reportDate"][i]
+            v["src"] = acc
         return v
     return None
 
@@ -233,9 +242,16 @@ def main():
             if not info:
                 continue
             try:
-                x = kr_xbrl(info["corp_code"])
+                fp = os.path.join(OUT, code + ".json")
+                old = json.load(open(fp, encoding="utf-8")) if os.path.exists(fp) else None
+                x = kr_xbrl(info["corp_code"], old)
+                if x == "SAME":
+                    idx[code] = {"n": old["name"], "m": "KR", "p": old["period"]}
+                    print("  = %s 그대로" % code)
+                    continue
                 d = scaled(x, 1e8) if x else None
                 if d:
+                    d["ver"] = VER
                     d["unit"] = "억원"
                 else:
                     d = kr_one(code, info["corp_code"])
@@ -255,9 +271,16 @@ def main():
         if not cik:
             continue
         try:
-            x = us_xbrl(cik)
+            fp = os.path.join(OUT, t + ".json")
+            old = json.load(open(fp, encoding="utf-8")) if os.path.exists(fp) else None
+            x = us_xbrl(cik, old)
+            if x == "SAME":
+                idx[t] = {"n": old["name"], "m": "US", "p": old["period"]}
+                print("  = %s 그대로" % t)
+                continue
             d = scaled(x, 1e6) if x else None
             if d:
+                d["ver"] = VER
                 d["unit"] = "백만달러"
             else:
                 d = us_one(t, cik)

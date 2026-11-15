@@ -23,7 +23,7 @@ concurrency:
 jobs:
   collect:
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -37,6 +37,7 @@ jobs:
           mkdir -p data/flow
           python3 collect_flow.py 2>&1 | tee "$RUNNER_TEMP/flow_log.txt"
       - name: 커밋
+        if: always()
         run: |
           if [ -z "$(git status --porcelain -- data/flow)" ]; then echo "변경 없음"; exit 0; fi
           git config user.name  "github-actions[bot]"
