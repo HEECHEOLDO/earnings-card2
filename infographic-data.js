@@ -417,7 +417,7 @@
         if (f && f.rev > 0 && f.op > 0 && f.op < f.rev && f.ni != null) {
           var nm2 = us ? ko(code, (D.us.stocks[code] || {}).n || code) : f.name;
           return logo({ code: code }, us).then(function (r) {
-            var gross = f.gross != null ? f.gross : f.rev - (f.cogs || 0), opex = gross - f.op, items = (f.items || []).slice();
+            var gross = f.gross != null ? f.gross : f.rev - (f.cogs || 0), opex = gross - f.op, items = (f.items || []).map(function (x) { return Array.isArray(x) ? { n: x[0], v: x[1] } : x; });
             if (!items.length) {                      // 영업비용 세부가 따로 없으면 손익계산서 항목으로
               if (f.rnd) items.push({ n: '연구개발비', v: f.rnd });
               if (f.sga) items.push({ n: f.rnd ? '판매·관리비' : '판관비', v: f.sga });
