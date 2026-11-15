@@ -9,7 +9,6 @@ on:
     paths:
       - 'collect_flow.py'
       - 'flow_xbrl.py'
-      - 'flow_probe2.py'
       - 'xbrl_dims.py'
       - '.github/workflows/collect_flow.yml'
   workflow_dispatch:
@@ -36,7 +35,6 @@ jobs:
           SEC_UA: ${{ secrets.SEC_UA }}
         run: |
           mkdir -p data/flow
-          python3 flow_probe2.py 2>&1 | tail -8 || true
           python3 collect_flow.py 2>&1 | tee "$RUNNER_TEMP/flow_log.txt"
       - name: 커밋
         run: |

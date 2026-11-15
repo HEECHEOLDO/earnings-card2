@@ -160,6 +160,18 @@ def kr_xbrl(corp):
         v = FX.from_instance(files[inst[0]], files[lab[0]] if lab else "", us=False, caltext=files[cal[0]] if cal else "")
         if v:
             v["report"] = nm
+            if not v.get("items") and v.get("sga"):
+                try:
+                    mix = None
+                    for a in [r for r in rows if "사업보고서" in r["report_nm"]][:1]:
+                        fa = files if a is r0 else XD.unzip(C.api_get("fnlttXbrl.xml", {"rcept_no": a["rcept_no"], "reprt_code": "11011"}, raw=True) or b"")
+                        ia = [n for n in fa if n.endswith(".xbrl")]
+                        mix = FX.kr_sga_mix(fa[ia[0]]) if ia else None
+                    if mix:
+                        v["items"] = FX.split_sga(v["sga"], mix)
+                        v["items_from"] = mix["year"]
+                except Exception as e:              # noqa: BLE001
+                    print("  .. 판관비 세부 실패", e)
             return v
     return None
 

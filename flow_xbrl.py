@@ -211,3 +211,56 @@ def from_instance(text, labtext, us, caltext=""):
     val["start"], val["end"] = per
     val["period"] = q_label(*per)
     return val
+
+
+# ------------------------------------------------------------------ 국내: 사업보고서(연간)의 판관비 세부 → 묶어서 비율로
+SGA_CAT = [("연구개발비", r"OrdinaryDevelopment|ExperimentalResearch|ResearchAndDevelopment"),
+           ("판매보증비", r"Warranty"),
+           ("광고·판촉비", r"Advertising|SalesPromotion|Marketing"),
+           ("인건비", r"SalariesWages|Bonus|Severance|EmployeeBenefits|Retirement|Wages"),
+           ("수수료·용역비", r"Commission|Outsourcing|ServiceFee"),
+           ("운반·수출비", r"Freight|ExportOverall|Transportation|Storage|Distribution"),
+           ("감가상각비", r"Depreciation|Amortisation|Amortization")]
+
+
+def kr_sga_mix(text):
+    """연간 판관비 세부를 몇 묶음으로 → {묶음: 비율}, 판관비 합계 대비. 세부가 합계의 60% 미만이면 None"""
+    ctx, facts = XD.parse(text)
+    cons = any(m.endswith("ConsolidatedMember") for p in ctx.values() for a, m in p["dims"])
+    want = "ConsolidatedMember" if cons else "SeparateMember"
+    ok = lambda p: all("ConsolidatedAndSeparate" in a for a, m in p["dims"]) and (not p["dims"] or any(m.endswith(want) for a, m in p["dims"]))  # noqa: E731
+    ann = [ctx[c] for n, c, v in facts if (ctx[c].get("start") or "")[5:] == "01-01" and ctx[c]["end"][5:] == "12-31"]
+    if not ann:
+        return None
+    end = max(p["end"] for p in ann)
+    vals = {}
+    for n, c, v in facts:
+        p = ctx[c]
+        if p["end"] == end and (p.get("start") or "")[5:] == "01-01" and ok(p) and n not in vals:
+            vals[n] = v
+    tot = vals.get("dart:TotalSellingGeneralAdministrativeExpenses") or vals.get("ifrs-full:SellingGeneralAndAdministrativeExpense")
+    if not tot or tot <= 0:
+        return None
+    det = {n: v for n, v in vals.items() if v > 0 and "Total" not in n and "TableOfItems" not in n and "ExceptFor" not in n
+           and (n.endswith("SellingGeneralAdministrativeExpenses") or n.split(":")[-1] in ("SalariesWages", "ProvisionForSeveranceIndemnities"))}
+    if sum(det.values()) < tot * 0.6:
+        return None
+    cat = {}
+    for n, v in det.items():
+        k = next((c for c, rx in SGA_CAT if re.search(rx, n.split(":")[-1])), None)
+        if k:
+            cat[k] = cat.get(k, 0) + v
+    return {"year": end[:4], "mix": {k: v / tot for k, v in cat.items()}}
+
+
+def split_sga(sga, mix, keep=3):
+    """분기 판관비를 연간 비율로 나눔 → 큰 묶음 keep 개 + 기타"""
+    if not sga or not mix:
+        return []
+    top = sorted(mix["mix"].items(), key=lambda x: -x[1])[:keep]
+    top = [(k, r) for k, r in top if r >= 0.04]
+    out = [[k, sga * r] for k, r in top]
+    rest = sga - sum(v for k, v in out)
+    if rest > sga * 0.02:
+        out.append(["기타 판관비", rest])
+    return out if len(out) >= 2 else []
