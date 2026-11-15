@@ -505,8 +505,15 @@
     function place(s) {
       var g = { s: s };
       g.hR = rev * s; g.hG = gross * s; g.hC = cogs * s; g.hO = Math.max(0, op) * s; g.hE = opex * s; g.hEx = exIn * s; g.hN = Math.max(0, ni) * s;
-      g.yO = Math.max(top + 70, TOP + 34 + HH) + (exIn ? g.hEx + Math.max(110, HH + 10) : 0);                        // 영업이익: 위 (영업외 이익이 있으면 그 아래)
-      g.yG = g.yO + stGO; g.yR = g.yG + stGR;                                  // 매출총이익·총 매출은 한 칸씩 아래 (계단)
+      var DIR = window.__flowDir || 'up', base = Math.max(top + 70, TOP + 34 + HH), exRoom = exIn ? g.hEx + Math.max(110, HH + 10) : 0;
+      if (DIR === 'down') {                                                    // 총 매출이 맨 위 → 오른쪽으로 갈수록 한 칸씩 내려간다
+        g.yR = base; g.yG = g.yR + stGR; g.yO = Math.max(g.yG + stGO, base + exRoom);
+      } else if (DIR === 'flat') {                                             // 윗선을 한 줄로 맞춘다
+        g.yR = g.yG = g.yO = base + exRoom;
+      } else {
+        g.yO = base + exRoom;                                                  // 영업이익: 위 (영업외 이익이 있으면 그 아래)
+        g.yG = g.yO + stGO; g.yR = g.yG + stGR;                                // 매출총이익·총 매출은 한 칸씩 아래 (계단)
+      }
       g.yC = g.yG + g.hG + 50; g.yE = g.yO + g.hO + 50;
       g.yX = g.yO - g.hEx - Math.max(110, HH + 10); g.yN = Math.max(top + 10, (exIn ? g.yX : g.yO) - 10);
       var LH = Math.max(62, 54 * FS);                                                          // 오른쪽 이름표 한 칸 높이 — 막대가 얇아도 이름표가 막대 옆에 오도록

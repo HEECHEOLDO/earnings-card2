@@ -146,6 +146,7 @@
     [/^natural gas$/i, '천연가스'], [/^subscription( and circulation)?$/i, '구독'], [/^casino$/i, '카지노'], [/^industrial$/i, '산업용'], [/^chemicals$/i, '화학'], [/^packaging$/i, '포장재'], [/^paper$/i, '종이'],
     [/^occupancy$/i, '객실'], [/^professional services$/i, '전문 서비스'], [/^financial services?$/i, '금융'], [/^consumables$/i, '소모품'], [/^seasonal$/i, '계절 상품'], [/^intermodal$/i, '복합 운송'],
     [/^revenue from contract with customer, measurement, recurring$/i, '반복 매출'], [/^revenue from contract with customer, measurement, nonrecurring$/i, '일회성 매출'], [/^technology service$/i, '기술 서비스'],
+    [/^automotive( segment)?$/i, '자동차'], [/^energy generation( and storage)?$/i, '에너지 발전·저장'], [/^services and other$/i, '서비스·기타'],
     [/^beverage$/i, '음료'], [/^food$/i, '식품'], [/^licensed coffeehouses$/i, '라이선스 매장'], [/^property revenue$/i, '임대 수익'], [/^services revenue$/i, '서비스']
   ];
   function segKo(n) {
