@@ -14,9 +14,7 @@
     base.grainOnly(X);
     X.textAlign = 'left'; X.textBaseline = 'alphabetic';
     X.fillStyle = T.up; X.font = font(800, 26); X.fillText(o.kicker, L, 110);
-    X.fillStyle = T.ink; var px = 64; X.font = font(900, px);
-    while (px > 40 && X.measureText(o.h1).width > R - L) { px -= 2; X.font = font(900, px); }
-    X.fillText(o.h1, L, 186);
+    X.fillStyle = T.ink; window.__vcTitle(X, o.h1, L, R, 186, 64);
   }
   function foot(X, src) {
     X.strokeStyle = T.rule; X.lineWidth = 2; X.beginPath(); X.moveTo(L, 1286); X.lineTo(R, 1286); X.stroke();

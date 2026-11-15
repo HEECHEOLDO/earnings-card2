@@ -1,3 +1,22 @@
+/* 제목: ' / ' 나 ', ' 에서 두 줄로 나눈다 (예: '금 한 돈, 지금은 얼마일까?' → 금 한 돈 / 지금은 얼마일까?).
+   두 줄이면 첫 줄을 한 줄 위(y-76)에 올리고 두 줄 모두 같은 크기로, 넓으면 글자를 줄인다 */
+window.__vcTitle = function (X, h1, L, R, y, px) {
+  h1 = String(h1 || ''); var i = h1.indexOf(' / '), k = i >= 0 ? 3 : 2;
+  if (i < 0) i = h1.indexOf(', ');
+  var lines = i > 0 ? [h1.slice(0, i), h1.slice(i + k)] : [h1];
+  var f = function (p) { return '900 ' + p + "px 'Noto Sans KR', sans-serif"; };
+  X.font = f(px);
+  if (lines.length === 1 && X.measureText(h1).width > R - L) {      // 쉼표가 없는데 길면 가운데 가까운 빈칸에서 나눈다
+    var best = -1, mid = h1.length / 2;
+    for (var j = 0; j < h1.length; j++) if (h1[j] === ' ' && (best < 0 || Math.abs(j - mid) < Math.abs(best - mid))) best = j;
+    if (best > 0) lines = [h1.slice(0, best), h1.slice(best + 1)];
+  }
+  var wide = function () { return Math.max.apply(null, lines.map(function (s) { return X.measureText(s).width; })); };
+  while (px > 40 && wide() > R - L) { px -= 2; X.font = f(px); }
+  X.textAlign = 'left'; X.textBaseline = 'alphabetic';
+  if (lines.length === 2) { X.fillText(lines[0], L, y - Math.round(px * 1.22)); X.fillText(lines[1], L, y); }
+  else X.fillText(lines[0], L, y);
+};
 /* Visual Capitalist 느낌 시안 — 트리맵(업종·종목) · 순위 막대 */
 (function () {
   var CW = 1080, CH = 1350, L = 70, R = 1010;
@@ -50,7 +69,7 @@
   function head(X, kicker, h1, h2) {
     X.textAlign = 'left'; X.textBaseline = 'alphabetic';
     X.fillStyle = T.up; X.font = font(800, 26); X.fillText(kicker, L, 110);
-    X.fillStyle = T.ink; var hp = 64; X.font = font(900, hp); while (hp > 40 && X.measureText(h1).width > R - L) { hp -= 2; X.font = font(900, hp); } X.fillText(h1, L, 186);
+    X.fillStyle = T.ink; window.__vcTitle(X, h1, L, R, 186, 64);
     X.fillStyle = T.soft; X.font = font(600, 30); X.fillText(h2, L, 236);
   }
   function foot(X, src) {
@@ -143,7 +162,7 @@
   function head(X, kicker, h1, h2) {
     X.textAlign = 'left'; X.textBaseline = 'alphabetic';
     X.fillStyle = T.up; X.font = font(800, 26); X.fillText(kicker, L, 110);
-    X.fillStyle = T.ink; var hp = 60; X.font = font(900, hp); while (hp > 40 && X.measureText(h1).width > R - L) { hp -= 2; X.font = font(900, hp); } X.fillText(h1, L, 184);
+    X.fillStyle = T.ink; window.__vcTitle(X, h1, L, R, 184, 60);
     X.fillStyle = T.soft; X.font = font(600, 30); X.fillText(h2, L, 232);
   }
   function foot(X, src) {
@@ -230,7 +249,7 @@
   function head(X, kicker, h1, h2) {
     X.textAlign = 'left'; X.textBaseline = 'alphabetic';
     X.fillStyle = T.up; X.font = font(800, 26); X.fillText(kicker, L, 110);
-    X.fillStyle = T.ink; var hp = 60; X.font = font(900, hp); while (hp > 40 && X.measureText(h1).width > R - L) { hp -= 2; X.font = font(900, hp); } X.fillText(h1, L, 184);
+    X.fillStyle = T.ink; window.__vcTitle(X, h1, L, R, 184, 60);
     X.fillStyle = T.soft; X.font = font(600, 30); X.fillText(h2, L, 232);
   }
   function foot(X, src) {
