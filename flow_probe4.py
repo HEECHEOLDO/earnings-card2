@@ -9,7 +9,7 @@ for f in sorted(glob.glob("data/unlisted/*.json")):
     d = json.load(open(f, encoding="utf-8"))
     if d.get("source") == "audit":
         codes.append((d["code"], d["name"]))
-for code, name in codes[:24]:
+for code, name in codes[24:56]:
     try:
         x = FA.flow(code)
     except Exception as e:

@@ -67,9 +67,9 @@ def _breakdown(tables, target, total_rx, keep, drop, min_rows=2, tol=0.02):
 
 
 REV_KEEP = re.compile(r"(매출|수익|수입|수수료)$|매출액$")
-REV_DROP = re.compile(r"^지급|판매수수료|잡수익|잡이익|고객과의\s*계약|기타\s*원천|원가|총이익|영업외|이자|금융|배당|기타수익|잡이익|환|평가|처분|지분법|법인세|시점|기간에\s*걸쳐|특수관계|채권|선수|미수|충당")
+REV_DROP = re.compile(r"^총수익|중단|^지급|판매수수료|잡수익|잡이익|고객과의\s*계약|기타\s*원천|원가|총이익|영업외|이자|금융|배당|기타수익|잡이익|환|평가|처분|지분법|법인세|시점|기간에\s*걸쳐|특수관계|채권|선수|미수|충당")
 SGA_KEEP = re.compile(r".")
-SGA_DROP = re.compile(r"^(판매비와관리비|판매비와일반관리비|영업비용|매출원가)$|원가|합계|소계")
+SGA_DROP = re.compile(r"^(판매비와관리비|판매비와일반관리비|영업비용|매출원가)$|원가|합계|소계|수익|영업외|금융|이자|법인세")
 
 
 def _block(rows, start_rx, end_rx, u, total):
@@ -95,6 +95,18 @@ def _block(rows, start_rx, end_rx, u, total):
     out = [x for x in out if x[1] > 0]
     s = sum(v for _, v in out)
     return out if len(out) >= 2 and abs(s - total) <= total * 0.03 else []
+
+
+def _first_block(grab, tables, start_rx, end_rx, u, total):
+    """손익계산서 표에서 먼저, 없으면 주석 표들(영업수익·영업비용 주석 등)에서 같은 방식으로"""
+    got = _block(grab, start_rx, end_rx, u, total)
+    if got:
+        return got
+    for rows, tu, ctx in tables:
+        got = _block(rows, start_rx, end_rx, tu, total)
+        if got:
+            return got
+    return []
 
 
 def _group(items, total, label_rest):
@@ -188,11 +200,11 @@ def flow(code):
         gross = d["gross"] if d["gross"] is not None else d["rev"]
         opex = gross - d["op"]
         REVH = re.compile(r"^(매출액|영업수익|매출|수익\(매출액\))$")
-        rv = _block(grab, REVH, re.compile(r"^(매출원가|영업비용|매출총이익|영업원가)"), u, d["rev"]) or \
+        rv = _first_block(grab, tables, REVH, re.compile(r"^(매출원가|영업비용|매출총이익|영업원가)"), u, d["rev"]) or \
             _breakdown(tables, d["rev"], re.compile(r"^(매출액|영업수익|수익|매출)(합계)?$"), REV_KEEP, REV_DROP)
         d["segs"] = _segments([x for x in rv if not REV_DROP.search(x[0])], d["rev"])
         ref = d["sga"] if d["sga"] else opex
-        det = _block(grab, re.compile(r"^(판매비와관리비|판매비와일반관리비|판매관리비|영업비용)$"), re.compile(r"^(영업이익|영업손실|영업손익|영업이익\(손실\)|영업손실\(이익\))"), u, ref) or \
+        det = _first_block(grab, tables, re.compile(r"^(판매비와관리비|판매비와일반관리비|판매관리비|영업비용)$"), re.compile(r"^(영업이익|영업손실|영업손익|영업이익\(손실\)|영업손실\(이익\))"), u, ref) or \
             (_breakdown(tables, ref, re.compile(r"^(판매비와관리비|판매비와일반관리비|영업비용)(합계)?$"), SGA_KEEP, SGA_DROP, min_rows=4) if ref and ref > 0 else [])
         d["items"] = _group(det, ref, "기타 판관비" if d["cogs"] is not None else "기타 영업비용")
         y, m = per
