@@ -154,6 +154,11 @@
     for (var i = 0; i < SEG_KO.length; i++) if (SEG_KO[i][0].test(n)) return SEG_KO[i][1];
     return n;
   }
+  // 국내 원문에서 읽은 이름 다듬기 — '급여, 판관비' → '급여', '제품매출액' → '제품매출', '재화의판매로인한수익' → '재화 판매'
+  function krTidy(n) {
+    return String(n).replace(/,\s*판관비$/, '').replace(/^재화의\s*판매로\s*인한\s*수익$/, '재화 판매').replace(/^용역의\s*제공으로\s*인한\s*수익$/, '용역 제공')
+      .replace(/^기타판매비와관리비$/, '기타 판관비').replace(/(매출|수익)액$/, '$1').replace(/^(대손상각비)\(.*\)$/, '$1');
+  }
   function flowKo(n) { return flowShort(flowKo0(n)); }
   function flowShort(n) {                       // 긴 이름은 카드 밖으로 나가지 않게 줄인다 (괄호 설명·', 판관비' 꼬리 떼고, '및'·쉼표 앞까지, 그래도 길면 앞 두 단어)
     n = String(n).replace(/,\s*판관비$/, '').replace(/^판매비와\s*관리비.*$/, '판매·관리비').replace(/\s*\([^)]*\)\s*/g, ' ').replace(/\s+/g, ' ').trim();
@@ -504,7 +509,7 @@
             // 매출총이익과 (매출 - 매출원가)가 다르면 맞는 쪽을 고른다 — 매출총이익 - 판관비 = 영업이익이면 매출총이익, 아니면 매출 - 매출원가 (보험사 등 다른 뜻의 GrossProfit)
             var g1 = f.gross, g2 = f.rev - (f.cogs || 0), gross = g1 != null ? g1 : g2;
             if (g1 != null && f.cogs != null && Math.abs(g1 - g2) > f.rev * 0.01) gross = (f.sga != null && Math.abs(g1 - f.sga - f.op) <= f.rev * 0.01) ? g1 : g2;
-            var opex = gross - f.op, items = (f.items || []).map(function (x) { return Array.isArray(x) ? { n: flowKo(enKo(x[0])), v: x[1] } : x; });
+            var opex = gross - f.op, items = (f.items || []).filter(function (x) { return !/총계$|합계$/.test(Array.isArray(x) ? x[0] : x.n); }).map(function (x) { return Array.isArray(x) ? { n: flowKo(enKo(krTidy(x[0]))), v: x[1] } : x; });
             if (!items.length) {                      // 영업비용 세부가 따로 없으면 손익계산서 항목으로
               if (f.rnd) items.push({ n: '연구개발비', v: f.rnd });
               if (f.sga) items.push({ n: f.rnd ? '판매·관리비' : '판관비', v: f.sga });
@@ -519,7 +524,7 @@
             if (etc > 0) items.push({ n: Object.keys(hasEtc).length === 1 ? Object.keys(hasEtc)[0] : '기타 영업비용', v: etc });
             used = items.reduce(function (t, x) { return t + x.v; }, 0);
             if (used > opex * 1.02 && opex > 0) items = [];   // 세부 합이 영업비용보다 크면(다른 기준) 숫자를 억지로 줄이지 않고 세부를 뺀다 — 값이 틀리면 안 된다
-            var sg = (f.segs || []).map(function (x) { return Array.isArray(x) ? { n: flowKo(segKo(x[0])), v: x[1] } : x; }), sgT = sg.reduce(function (t, x) { return t + x.v; }, 0), small = 0;
+            var sg = (f.segs || []).map(function (x) { return Array.isArray(x) ? { n: flowKo(segKo(krTidy(x[0]))), v: x[1] } : x; }), sgT = sg.reduce(function (t, x) { return t + x.v; }, 0), small = 0;
             var sg0 = sg.slice();
             sg = sg.filter(function (x) { if (x.v < sgT * 0.04 || /^기타/.test(x.n)) { small += x.v; return false; } return true; }).slice(0, 6);   // 작은 건 '기타'로
             if (small > sgT * 0.02 && sg.length) sg.push({ n: '기타', v: small });
