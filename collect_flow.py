@@ -295,7 +295,10 @@ def recent_us(days=12):
         d = TODAY - timedelta(days=k)
         if d.weekday() >= 5:
             continue
-        raw = U.get("https://www.sec.gov/Archives/edgar/daily-index/%d/QTR%d/form.%s.idx" % (d.year, (d.month - 1) // 3 + 1, d.strftime("%Y%m%d")))
+        try:                                        # 없는 날짜(휴일·아직 안 올라온 오늘)는 SEC 가 403 을 준다 — collect_us.get 은 403 이면 멈추므로 막는다
+            raw = U.get("https://www.sec.gov/Archives/edgar/daily-index/%d/QTR%d/form.%s.idx" % (d.year, (d.month - 1) // 3 + 1, d.strftime("%Y%m%d")), tries=1)
+        except SystemExit:
+            raw = None
         if not raw:
             continue
         for line in raw.decode("latin-1").splitlines():
