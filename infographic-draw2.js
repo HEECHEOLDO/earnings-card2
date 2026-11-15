@@ -13,7 +13,7 @@
   }
   function head(X, o) { base.grainOnly(X); X.fillStyle = T.ink; window.__vcTitle(X, o.h1); }
   function foot(X, src) { window.__vcFoot(X, src); }
-  function fit(X, s, w) { if (X.measureText(s).width <= w) return s; while (s.length > 1 && X.measureText(s + '…').width > w) s = s.slice(0, -1); return s + '…'; }
+  function fit(X, s, w) { var f = X.font, mm = f.match(/(\d+)px/), px = mm ? +mm[1] : 20; while (px > 15 && X.measureText(s).width > w) { px -= 1; X.font = f.replace(/\d+px/, px + 'px'); } if (X.measureText(s).width <= w) return s; while (s.length > 1 && X.measureText(s + '…').width > w) s = s.slice(0, -1); return s + '…'; }
 
   /* 1) 부호 있는 막대 — 행: {n, sub, v, lab, logo, c} · 음수가 있으면 가운데 0 축 */
   function bars(X, o) {
@@ -28,9 +28,9 @@
       var y = top + i * rowH, cy = y + rowH / 2, big = rowH >= 66;
       X.fillStyle = T.soft; X.font = font(800, 22); X.textAlign = 'right'; X.textBaseline = 'middle'; X.fillText(i + 1, L + 26, cy);
       logoAt(X, r.logo, L + 62, cy, huge ? 28 : big ? 24 : 21);
-      X.textAlign = 'left'; X.fillStyle = T.ink; X.font = font(800, huge ? 32 : big ? 27 : 25);
-      X.fillText(fit(X, r.n, x0 - L - 110), L + 100, r.sub ? cy - (huge ? 14 : 10) : cy);
-      if (r.sub) { X.fillStyle = T.soft; X.font = font(600, huge ? 21 : 18); X.fillText(fit(X, r.sub, x0 - L - 110), L + 100, cy + (huge ? 22 : 17)); }
+      X.textAlign = 'left'; X.fillStyle = T.ink; var nf = huge ? 34 : big ? 29 : 27; X.font = font(800, nf);
+      while (nf > 16 && X.measureText(r.n).width > x0 - L - 110) { nf -= 1; X.font = font(800, nf); }   // 이름은 자르지 않고 줄인다 · 회색 설명 줄은 없음
+      X.fillText(r.n, L + 100, cy + 1);
       var w = r.v >= 0 ? span * r.v / mx : nspan * (-r.v) / (mxn || mx), bh = huge ? Math.min(56, rowH * 0.45) : Math.min(36, rowH * 0.56);
       X.fillStyle = r.c || (r.v >= 0 ? T.up : T.down);
       if (r.v >= 0) rr(X, zero, cy - bh / 2, Math.max(w, 3), bh, 6); else rr(X, zero - w, cy - bh / 2, Math.max(w, 3), bh, 6);

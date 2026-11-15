@@ -102,58 +102,58 @@
      opt = 고른 선택지 값, r = 그린 결과(이름을 꺼낼 때만 씀) */
   function MK(opt) { return opt === 'kospi' ? '코스피' : opt === 'kosdaq' ? '코스닥' : ''; }
   function first(r) { return String(r.o.h1 || '').split(',')[0]; }
-  var TITLE = {
-    treemap: function (o) { return (MK(o) || '한국 증시') + ', 돈은 어디에 몰렸을까'; },
-    ranked: function (o) { return (MK(o) ? MK(o) + '에서 ' : '') + '올해 가장 많이 오른 종목은?'; },
-    bump: function () { return '코스피 TOP 10, 10년 동안 어떻게 바뀌었나'; },
-    dumbbell: function () { return '시총 TOP 15, 올해 누가 커지고 작아졌나'; },
-    voronoi: function () { return '미국 시총 TOP 50, 어떤 업종이 클까'; },
-    radial: function () { return '시총 TOP 20, 올해 성적은?'; },
-    thennow: function () { return '1995년 코스피 TOP 10, 지금은 어디에?'; },
-    compare: function (o, r) { var u = (r.o.items || []).filter(function (x) { return x.c === '#40444C' || x.c === '#4A5A78'; })[0]; return (u ? u.n : '미국 1등') + ' vs 한국 증시 전체, 누가 더 클까'; },
-    sankey: function (o, r) { return first(r) + ', 100원 팔면 얼마 남길까'; },
-    surprise: function () { return '이번 분기 실적, 웃은 회사와 운 회사'; },
-    margin: function (o) { return (MK(o) ? MK(o) + ', ' : '') + '100원 팔아 / 가장 많이 남기는 회사는?'; },
-    world: function () { return '올해 세계 증시 성적표'; },
-    quilt: function () { return '해마다 1등 자산은 무엇이었을까'; },
-    growth: function () { return '10년 전 100만 원을 넣었다면?'; },
-    holders: function () { return '시총 TOP 20, 회사의 주인은 누구일까'; },
-    waffle: function (o, r) { var n = first(r); return n + josa(n, '은', '는') + ' 어디에 투자할까'; },
-    usmap: function () { return '미국 시총 TOP 60, 올해 성적표'; },
-    usranked: function () { return '미국에서 / 올해 가장 많이 오른 종목은?'; },
-    rivals: function () { return '한국 vs 미국 맞수, 몸집 차이는 얼마나?'; },
-    breadth: function () { return '지수는 올랐는데, 내 종목은?'; },
-    contrib: function () { return '올해 늘어난 시가총액, 누가 끌어올렸나'; },
-    profitshare: function () { return '업종별 덩치와 실속, 시총 vs 이익'; },
-    calendar: function (o) { return (IDXN[o] || '') + ' 1년, 오른 날과 내린 날'; },
-    monthly: function (o) { return (IDXN[o] || '') + ', 몇 월이 좋았을까'; },
-    drawdown: function () { return '주식시장, 고점에서 얼마나 빠졌을까'; },
-    scatter: function () { return '이익이 늘면 주가도 오를까?'; },
-    dividend: function (o) { return (MK(o) ? MK(o) + ' · ' : '') + '1,000만 원 넣으면 배당은 얼마?'; },
-    slope: function () { return '작년 말 vs 지금, 시총 순위는 어떻게 바뀌었나'; },
-    profit: function () { return '한국에서 돈 가장 잘 버는 회사는?'; },
-    tiers: function (o) { return (MK(o) ? MK(o) + ', ' : '') + '큰 종목 vs 작은 종목, 올해 승자는?'; },
-    sectors: function (o) { return (o === 'us' ? '미국 ' : '') + '올해 업종 성적표'; },
-    fx: function (o) { return '원·달러 환율 ' + o + '년, 어디까지 왔나'; },
-    concentration: function () { return '한국 증시, 몇 종목에 쏠려 있을까'; },
-    range52: function (o) { return (o === 'us' ? '미국' : '한국') + ' 시총 TOP 15, 지금 1년 중 어디쯤?'; },
-    revgrowth: function () { return '10년 동안 / 매출이 가장 빨리 큰 회사는?'; },
-    roe: function () { return '내 돈 100원으로 / 가장 잘 버는 회사는?'; },
-    gurucommon: function () { return '투자 대가들이 함께 담은 종목은?'; },
-    rotation: function () { return '달마다 1등 업종은 어디였을까'; },
-    unlisted: function (o) { var n = { '프로스포츠': '프로 구단', '해외 IT·전자': '해외 IT 한국법인' }[o] || o; return n + ', 돈은 벌고 있을까'; },
-    streak: function () { return '매출이 한 번도 안 줄어든 회사는?'; },
-    exportboard: function () { return '요즘 잘 팔리는 수출 품목은?'; },
-    exportitem: function (o) { var t = TRADE.filter(function (x) { return x[0] === o; })[0]; return (t ? t[1] : '') + ' 수출, 요즘 얼마나 팔릴까'; },
-    kconsumer: function () { return 'K-소비재 수출, 10년 동안 얼마나 컸나'; },
-    rates: function () { return '한국 vs 미국 금리, 어디까지 왔나'; },
-    goldkrw: function () { return '금 한 돈, 지금은 얼마일까?'; },
-    commod: function () { return '올해 원자재·코인 성적표'; },
-    travel: function () { return '환율로 보면, 어디 여행이 싸졌을까'; },
-    inflation: function (o, r) { return ((r.o.series || []).length > 1 ? '한국 vs 미국' : (r.o.series || [{ n: '' }])[0].n) + ' 물가, 얼마나 올랐나'; },
-    usdash: function () { return '미국 경제, 지금 어떤가'; },
-    krdash: function () { return '한국 경제, 지금 어떤가'; },
-    race1y: function () { return '1년 전에 투자했다면?'; }
+  var TITLE = {    // 모든 제목은 두 줄: 첫 줄 = 무엇(크게), 둘째 줄 = 궁금한 점 — ' / ' 로 나눈다
+    treemap: function (o) { return (MK(o) || '한국 증시') + ' / 돈은 어디에 몰렸을까'; },
+    ranked: function (o) { return (MK(o) || '코스피·코스닥') + ' / 올해 가장 많이 오른 종목은?'; },
+    bump: function () { return '코스피 TOP 10 / 10년 동안 어떻게 바뀌었나'; },
+    dumbbell: function () { return '시총 TOP 15 / 올해 누가 커지고 작아졌나'; },
+    voronoi: function () { return '미국 시총 TOP 50 / 어떤 업종이 클까'; },
+    radial: function () { return '시총 TOP 20 / 올해 성적은?'; },
+    thennow: function () { return '1995년 코스피 TOP 10 / 지금은 어디에?'; },
+    compare: function (o, r) { var u = (r.o.items || []).filter(function (x) { return x.c === '#40444C' || x.c === '#4A5A78'; })[0]; return (u ? u.n : '미국 1등') + ' vs 한국 증시 전체 / 누가 더 클까'; },
+    sankey: function (o, r) { return first(r) + ' / 100원 팔면 얼마 남길까'; },
+    surprise: function () { return '이번 분기 실적 / 웃은 회사와 운 회사'; },
+    margin: function (o) { return (MK(o) || '국내 상장사') + ' / 100원 팔아 가장 많이 남기는 회사는?'; },
+    world: function () { return '세계 증시 / 올해 성적표'; },
+    quilt: function () { return '자산별 수익률 / 해마다 1등은 무엇이었을까'; },
+    growth: function () { return '10년 전 100만 원 / 어디에 넣었다면 좋았을까'; },
+    holders: function () { return '시총 TOP 20 / 회사의 주인은 누구일까'; },
+    waffle: function (o, r) { return first(r) + ' / 어디에 투자할까'; },
+    usmap: function () { return '미국 시총 TOP 60 / 올해 성적표'; },
+    usranked: function () { return '미국 증시 / 올해 가장 많이 오른 종목은?'; },
+    rivals: function () { return '한국 vs 미국 맞수 / 몸집 차이는 얼마나?'; },
+    breadth: function (o) { return '지수는 올랐는데 / 내 종목은?'; },
+    contrib: function () { return '올해 늘어난 시가총액 / 누가 끌어올렸나'; },
+    profitshare: function () { return '업종별 덩치와 실속 / 시총 비중 vs 이익 비중'; },
+    calendar: function (o) { return (IDXN[o] || '') + ' 1년 / 오른 날과 내린 날'; },
+    monthly: function (o) { return (IDXN[o] || '') + ' 월별 수익률 / 몇 월이 좋았을까'; },
+    drawdown: function () { return '주식시장 / 고점에서 얼마나 빠졌을까'; },
+    scatter: function () { return '이익과 주가 / 이익이 늘면 주가도 오를까?'; },
+    dividend: function (o) { return (MK(o) || '배당 많이 주는 회사') + ' / 1,000만 원 넣으면 배당은 얼마?'; },
+    slope: function () { return '코스피 시총 순위 / 작년 말과 지금, 어떻게 바뀌었나'; },
+    profit: function () { return '돈 잘 버는 회사 / 한국에서 가장 많이 버는 곳은?'; },
+    tiers: function (o) { return (MK(o) ? MK(o) + ' ' : '') + '큰 종목 vs 작은 종목 / 올해 승자는?'; },
+    sectors: function (o) { return (o === 'us' ? '미국' : '국내') + ' 업종 / 올해 성적표'; },
+    fx: function (o) { return '원·달러 환율 ' + o + '년 / 어디까지 왔나'; },
+    concentration: function () { return '한국 증시 / 몇 종목에 쏠려 있을까'; },
+    range52: function (o) { return (o === 'us' ? '미국' : '한국') + ' 시총 TOP 15 / 지금 1년 중 어디쯤?'; },
+    revgrowth: function () { return '10년 매출 성장 / 가장 빨리 큰 회사는?'; },
+    roe: function () { return 'ROE TOP 15 / 내 돈 100원으로 가장 잘 버는 회사는?'; },
+    gurucommon: function () { return '투자 대가들 / 함께 담은 종목은?'; },
+    rotation: function () { return '업종 로테이션 / 달마다 1등은 어디였을까'; },
+    unlisted: function (o) { var n = { '프로스포츠': '프로 구단', '해외 IT·전자': '해외 IT 한국법인' }[o] || o; return n + ' / 돈은 벌고 있을까'; },
+    streak: function () { return '연속 성장 기록 / 매출이 한 번도 안 줄어든 회사는?'; },
+    exportboard: function () { return '수출 품목 성적표 / 요즘 잘 팔리는 건?'; },
+    exportitem: function (o) { var t = TRADE.filter(function (x) { return x[0] === o; })[0]; return (t ? t[1] : '') + ' 수출 / 요즘 얼마나 팔릴까'; },
+    kconsumer: function () { return 'K-소비재 수출 / 10년 동안 얼마나 컸나'; },
+    rates: function () { return '한국 vs 미국 금리 / 어디까지 왔나'; },
+    goldkrw: function () { return '금 한 돈 / 지금은 얼마일까?'; },
+    commod: function () { return '원자재·코인 / 올해 성적표'; },
+    travel: function () { return '환율로 본 해외여행 / 어디가 싸졌을까'; },
+    inflation: function (o, r) { return ((r.o.series || []).length > 1 ? '한국 vs 미국' : (r.o.series || [{ n: '' }])[0].n) + ' 물가 / 얼마나 올랐나'; },
+    usdash: function () { return '미국 경제 / 지금 어떤가'; },
+    krdash: function () { return '한국 경제 / 지금 어떤가'; },
+    race1y: function () { return '코인 vs 금 vs 주식 / 1년 전에 투자했다면?'; }
   };
   var D = {};
   function loadAll() {
@@ -1051,19 +1051,25 @@
         r.o.h2 = ''; r.o.note = ''; r.o.src = r.src || (p.length === 3 ? "'" + p[0].slice(2) + '년 ' + (+p[1]) + '월 ' + (+p[2]) + '일 ' + (r.tail || '종가 기준') : '');
         last = r; last.name = c.name + (list ? '_' + list.filter(function (o) { return o[0] === sel[id]; })[0][1] : '');
         if (!r.auto) r.auto = { k: '', h: TITLE[id] ? TITLE[id](list ? sel[id] : undefined, r) : r.o.h1 };   // 빨간 윗줄은 쓰지 않는다
-        // 직접 고친 제목은 같은 카드·같은 선택지로 돌아와도 남는다
-        var ed = edits[key]; r.o.kicker = ed ? ed.k : r.auto.k; r.o.h1 = ed ? ed.h : r.auto.h; last.key = key;
-        $('c-title').value = r.o.h1;
-        draw(); $('c-hint').textContent = c.name + ' · 최신 자료로 방금 다시 계산했어요. 제목은 직접 고칠 수 있어요.';
+        r.auto.src = r.o.src;
+        // 직접 고친 제목·아래 글은 같은 카드·같은 선택지로 돌아와도 남는다
+        var ed = edits[key]; r.o.kicker = ''; r.o.h1 = ed ? ed.h : r.auto.h; r.o.src = ed ? ed.src : r.auto.src; last.key = key;
+        fillInputs();
+        draw(); $('c-hint').textContent = c.name + ' · 최신 자료로 방금 다시 계산했어요. 제목과 왼쪽 아래 글은 직접 고칠 수 있어요.';
       }).catch(function (e) {
         delete cache[key]; last = null; $('c-hint').textContent = '이 카드를 그리지 못했어요 (' + (e && e.message || e) + ').';
         X.setTransform(1, 0, 0, 1, 0, 0); window.__vc.grainOnly(X); X.fillStyle = '#6B7078'; X.font = "800 40px 'Noto Sans KR', sans-serif"; X.textAlign = 'center'; X.fillText((e && e.message) || '자료 준비 중', 540, 680);
       });
     }
     var edits = {};
-    function onEdit() { if (!last) return; last.o.h1 = $('c-title').value; edits[last.key] = { k: last.o.kicker, h: last.o.h1 }; draw(); }
-    $('c-title').addEventListener('input', onEdit);
-    $('c-reset').addEventListener('click', function () { if (!last) return; delete edits[last.key]; last.o.kicker = last.auto.k; last.o.h1 = last.auto.h; $('c-title').value = last.o.h1; draw(); });
+    function split2(h) { var i = h.indexOf(' / '), k = 3; if (i < 0) { i = h.indexOf(', '); k = 2; } return i > 0 ? [h.slice(0, i), h.slice(i + k)] : [h, '']; }
+    function fillInputs() { var t = split2(last.o.h1 || ''); $('c-title1').value = t[0]; $('c-title2').value = t[1]; $('c-src').value = last.o.src || ''; }
+    function onEdit() {
+      if (!last) return; var a = $('c-title1').value.trim(), b = $('c-title2').value.trim();
+      last.o.h1 = b ? a + ' / ' + b : a; last.o.src = $('c-src').value; edits[last.key] = { h: last.o.h1, src: last.o.src }; draw();
+    }
+    ['c-title1', 'c-title2', 'c-src'].forEach(function (i) { $(i).addEventListener('input', onEdit); });
+    $('c-reset').addEventListener('click', function () { if (!last) return; delete edits[last.key]; last.o.h1 = last.auto.h; last.o.src = last.auto.src; fillInputs(); draw(); });
     $('c-dl').addEventListener('click', function () {
       if (!last) return;
       var big = document.createElement('canvas'); big.width = 1080 * 3; big.height = 1350 * 3;

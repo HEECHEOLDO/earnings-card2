@@ -12,7 +12,7 @@
   }
   function head(X, o) { base.grainOnly(X); X.fillStyle = T.ink; window.__vcTitle(X, o.h1); }
   function foot(X, src) { window.__vcFoot(X, src); }
-  function fit(X, s, w) { if (X.measureText(s).width <= w) return s; while (s.length > 1 && X.measureText(s + '…').width > w) s = s.slice(0, -1); return s + '…'; }
+  function fit(X, s, w) { var f = X.font, mm = f.match(/(\d+)px/), px = mm ? +mm[1] : 20; while (px > 15 && X.measureText(s).width > w) { px -= 1; X.font = f.replace(/\d+px/, px + 'px'); } if (X.measureText(s).width <= w) return s; while (s.length > 1 && X.measureText(s + '…').width > w) s = s.slice(0, -1); return s + '…'; }
   // 등락률 → 색 (한국식: 오르면 빨강) · k 는 진하기 기준
   function heat(v, k) {
     var t = Math.max(-1, Math.min(1, v / k)), a = t >= 0 ? [214, 54, 44] : [43, 108, 217], n = [232, 229, 222], m = Math.pow(Math.abs(t), 0.7);

@@ -143,8 +143,9 @@ window.__vcFoot = function (X, src) {
       var y = top + i * rowH, cy = y + rowH / 2;
       X.fillStyle = T.soft; X.font = font(800, 22); X.textAlign = 'right'; X.textBaseline = 'middle'; X.fillText(i + 1, L + 26, cy);
       if (r.logo) { X.save(); X.beginPath(); X.arc(L + 62, cy, 22, 0, 7); X.clip(); X.fillStyle = '#fff'; X.fillRect(L + 40, cy - 22, 44, 44); X.drawImage(r.logo, L + 40, cy - 22, 44, 44); X.restore(); }
-      X.textAlign = 'left'; X.fillStyle = T.ink; X.font = font(800, 26); X.fillText(r.n, L + 96, cy - 9);
-      X.fillStyle = T.soft; X.font = font(600, 18); X.fillText(r.sector + ' · 시총 ' + r.capTxt, L + 96, cy + 17);
+      X.textAlign = 'left'; X.fillStyle = T.ink; var nf = rowH >= 56 ? 28 : 26; X.font = font(800, nf);
+      while (nf > 16 && X.measureText(r.n).width > x0 - L - 110) { nf -= 1; X.font = font(800, nf); }   // 이름은 자르지 않고 줄인다
+      X.fillText(r.n, L + 96, cy + 1);
       var w = bw * r.v / max;
       X.fillStyle = r.c; rr(X, x0, cy - 17, w, 34, 6); X.fill();
       X.fillStyle = T.ink; X.font = font(900, 26); X.textAlign = 'left'; X.fillText('+' + Math.round(r.v) + '%', x0 + w + 10, cy + 1);
