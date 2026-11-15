@@ -31,6 +31,10 @@ def kr(code):
     ctx, facts = XD.parse(files[inst[0]])
     L = XD.labels(files[lab[0]]) if lab else {}
     out["n_ctx"], out["n_facts"] = len(ctx), len(facts)
+    end = max(ctx[c]["end"] for n, c, v in facts)
+    out["dump"] = [[n, L.get(n, ""), ctx[c]["start"], [(L.get(a, a), L.get(m, m)) for a, m in ctx[c]["dims"] if "ConsolidatedAndSeparate" not in a], v]
+                   for n, c, v in facts if ctx[c]["end"] == end and ("ifrs-full:ConsolidatedMember", ) and
+                   any(m.endswith("ConsolidatedMember") for a, m in ctx[c]["dims"]) and abs(v) >= 1e9]
     per = {}
     for n, c, v in facts:
         p = ctx[c]; per[(p["start"], p["end"])] = per.get((p["start"], p["end"]), 0) + 1
@@ -59,13 +63,14 @@ def us(t):
     ctx, facts = XD.parse(text)
     L = XD.labels(U.get(base + labn[0]).decode("utf-8", "replace")) if labn else {}
     out = {"form": rc["form"][i], "report": rc["reportDate"][i], "inst": inst, "lab": labn}
-    out["seg_rev"] = [[n, ctx[c]["start"], ctx[c]["end"], [(a, b, L.get(b, "")) for a, b in ctx[c]["dims"]], v]
-                      for n, c, v in facts if ctx[c]["dims"] and re.search(r"Revenue", n)][:150]
+    end = max(ctx[c]["end"] for n, c, v in facts)
+    out["dump"] = [[n, ctx[c]["start"], [(a, m, L.get(m, "")) for a, m in ctx[c]["dims"]], v] for n, c, v in facts
+                   if ctx[c]["end"] == end and abs(v) >= 1e8 and re.search(r"Revenue|Expense|Cost|Income", n)][:900]
     out["exp"] = [[n, ctx[c]["start"], ctx[c]["end"], v] for n, c, v in facts if not ctx[c]["dims"] and re.search(r"Expense|Cost", n)][:150]
     return out
 
 
-for code in sys.argv[1:] or ["005930", "035420", "005380", "AAPL", "NVDA", "TSLA"]:
+for code in sys.argv[1:] or ["005930", "035420", "005380", "000660", "AAPL", "NVDA", "MSFT"]:
     try:
         o = us(code) if code.isalpha() else kr(code)
     except Exception as e:                       # noqa: BLE001
