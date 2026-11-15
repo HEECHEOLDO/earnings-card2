@@ -317,8 +317,96 @@ def save(code, d, market, name):
     json.dump(d, open(os.path.join(OUT, code + ".json"), "w", encoding="utf-8"), ensure_ascii=False)
 
 
+def work_kr(job):
+    """국내·비상장 한 곳 (다른 프로세스에서 돈다) → (job, d|None|'SAME', 까닭, 호출 수, 걸린 초)"""
+    pr, _, mk, code, corp, old, name = job
+    t0, c0 = time.time(), C._call_count
+    try:
+        ulmeta = (jl(os.path.join("data", "unlisted", code + ".json"), {}) or {}) if mk == "UL" else {}
+        if mk == "UL" and ulmeta.get("source") == "audit":
+            import flow_audit as FA
+            x = FA.flow(code)
+            why = FA.WHY
+            if x and old and old.get("src") == x.get("src") and old.get("ver") == VER:
+                x = "SAME"
+        else:
+            FX.WHY = ""
+            x = kr_xbrl(corp, old)
+            why = FX.WHY
+        if x == "SAME":
+            return job, "SAME", "", C._call_count - c0, time.time() - t0
+        d = scaled(x, 1e8) if x else None
+        if not d and mk == "KR":
+            d = kr_one(code, corp)
+        if d:
+            d["unit"] = "억원"
+        return job, d, why, C._call_count - c0, time.time() - t0
+    except Exception as e:                          # noqa: BLE001
+        return job, None, "오류 %s" % e, C._call_count - c0, time.time() - t0
+
+
+def work_us(job):
+    pr, _, t, cik, old = job
+    t0 = time.time()
+    FX.WHY = ""
+    try:
+        x = us_xbrl(cik, old)
+    except Exception as e:                          # noqa: BLE001
+        x, FX.WHY = None, "오류 %s" % e
+    if x == "SAME":
+        return job, "SAME", "", time.time() - t0
+    d = scaled(x, 1e6) if x else None
+    if not d:
+        try:
+            d = us_one(t, cik)
+        except Exception:                           # noqa: BLE001
+            d = None
+        if d:
+            d["xbrl_err"] = FX.WHY or "까닭 모름"
+    if d:
+        d["unit"] = "백만달러"
+    return job, d, FX.WHY, time.time() - t0
+
+
+def run_pool(fn, jobs, workers, on_done, budget_ok):
+    """여러 프로세스로 나눠 돌린다 — 시간이 다 되면 새 일은 넣지 않는다"""
+    from concurrent.futures import ProcessPoolExecutor, wait, FIRST_COMPLETED
+    it, live, n = iter(jobs), set(), 0
+    with ProcessPoolExecutor(max_workers=workers) as ex:
+        while True:
+            while len(live) < workers * 2 and budget_ok():
+                j = next(it, None)
+                if j is None:
+                    break
+                live.add(ex.submit(fn, j))
+            if not live:
+                break
+            done, live = wait(live, return_when=FIRST_COMPLETED)
+            for f in done:
+                n += 1
+                on_done(f.result())
+    return n
+
+
+def build_index():
+    idx = {}
+    for fn in os.listdir(OUT):
+        if not fn.endswith(".json") or fn.startswith(("_", "index")):
+            continue
+        code = fn[:-5]
+        if usable(code):
+            d = jl(os.path.join(OUT, fn), {})
+            m = d.get("market") or ("US" if not code.isdigit() else "UL" if len(code) == 8 else "KR")
+            idx[code] = {"n": d.get("name") or code, "m": m, "p": d.get("period")}
+    json.dump({"updated": TODAY.isoformat(), "items": idx}, open(os.path.join(OUT, "index.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=0)
+    return idx
+
+
 def main():
     os.makedirs(OUT, exist_ok=True)
+    if "--index-only" in sys.argv:
+        print("카드 %d곳" % len(build_index()))
+        return
     mc = json.load(open("data/mcap.json", encoding="utf-8"))["stocks"]
     mu = json.load(open("data/mcap_us.json", encoding="utf-8"))["stocks"]
     ul = (jl("data/unlisted/index.json", {}) or {}).get("companies", [])
@@ -327,14 +415,13 @@ def main():
     us = sorted([t for t in mu if mu[t].get("c")], key=lambda t: -mu[t]["c"])
     if "--top" in sys.argv:
         n = int(sys.argv[sys.argv.index("--top") + 1]); kr, us, ul = kr[:n], us[:n], ul[:n]
-    fail = jl(FAILP, {}) or {}
+    failp = FAILP.replace(".json", "_us.json") if "--us-only" in sys.argv else FAILP
+    fail = jl(failp, {}) or {}
+    W = int(os.environ.get("FLOW_WORKERS", "6"))
 
     def skip_fail(k):
         f = fail.get(k)
         return f and (TODAY - date.fromisoformat(f["d"])).days < 7
-
-    def mark_fail(k, why):
-        fail[k] = {"d": TODAY.isoformat(), "why": why}
 
     def need(key, old, recent_hit):
         """0: 새 보고서 · 1: 아직 없음 · 2: 계산 방식이 바뀜 · None: 그대로"""
@@ -346,12 +433,29 @@ def main():
             return None if skip_fail(key) else 1
         return 2 if not recent_hit else 0
 
-    done = {"kr": 0, "us": 0, "ul": 0, "same": 0, "fail": 0}
+    done = {"kr": 0, "us": 0, "ul": 0, "same": 0, "fail": 0, "sec": 0.0, "calls": 0}
+
+    def finish(code, d, mk, name, why, old):
+        if d == "SAME":
+            if old:
+                old["ver"] = VER
+                save(code, old, mk, old.get("name") or name)
+            done["same"] += 1
+        elif d:
+            save(code, d, mk, name)
+            fail.pop(code, None)
+            done[{"KR": "kr", "UL": "ul", "US": "us"}[mk]] += 1
+            print("  ok %s %s %s 매출 %s 영업 %s 순 %s 부문 %d 비용 %d %s" % (mk, code, name, d.get("rev"), d.get("op"), d.get("ni"),
+                  len(d.get("segs") or []), len(d.get("items") or []), d.get("xbrl_err", "")), flush=True)
+        else:
+            fail[code] = {"d": TODAY.isoformat(), "why": why or "자료 없음"}
+            done["fail"] += 1
+
     if "--us-only" not in sys.argv:
         C.API_KEY = C.get_key()
         cmap = C.load_corp_map()
         rk = recent_kr()
-        print("최근 정기·감사보고서 낸 국내 회사 %d곳" % len(rk))
+        print("최근 정기·감사보고서 낸 국내 회사 %d곳" % len(rk), flush=True)
         jobs = []
         for i, code in enumerate(kr):
             info = cmap.get(code)
@@ -367,48 +471,17 @@ def main():
             if pr is not None:
                 jobs.append((pr, i, "UL", c["code"], c["code"], old, c.get("name")))
         jobs.sort(key=lambda j: (j[0], j[1]))
-        print("국내·비상장 할 일 %d곳" % len(jobs))
-        for pr, _, mk, code, corp, old, name in jobs:
-            if not time_left() or C._call_count > DART_MAX:
-                print("  … 시간·호출 한도 — 남은 %d곳은 다음 번에" % (len(jobs) - done["kr"] - done["ul"] - done["same"] - done["fail"]))
-                break
-            try:
-                ulmeta = (jl(os.path.join("data", "unlisted", code + ".json"), {}) or {}) if mk == "UL" else {}
-                if mk == "UL" and ulmeta.get("source") == "audit":
-                    import flow_audit as FA
-                    x = FA.flow(code)
-                    why = FA.WHY
-                    if x and old and old.get("src") == x.get("src") and old.get("ver") == VER:
-                        x = "SAME"
-                else:
-                    FX.WHY = ""
-                    x = kr_xbrl(corp, old)
-                    why = FX.WHY
-                if x == "SAME":
-                    if old:
-                        old["ver"] = VER
-                        save(code, old, mk, old.get("name") or name)
-                    done["same"] += 1
-                    continue
-                d = scaled(x, 1e8) if x else None
-                if not d and mk == "KR":
-                    d = kr_one(code, corp)
-                if d:
-                    d["unit"] = "억원"
-                    save(code, d, mk, name)
-                    fail.pop(code, None)
-                    done["kr" if mk == "KR" else "ul"] += 1
-                    print("  ok %s %s %s 매출 %s 영업 %s 순 %s 부문 %d 비용 %d" % (mk, code, name, d.get("rev"), d.get("op"), d.get("ni"), len(d.get("segs") or []), len(d.get("items") or [])))
-                else:
-                    mark_fail(code, why or "자료 없음")
-                    done["fail"] += 1
-            except Exception as e:                  # noqa: BLE001
-                print("  !! %s %s" % (code, e))
-                mark_fail(code, "오류 %s" % e)
-                done["fail"] += 1
-    if time_left():
+        print("국내·비상장 할 일 %d곳 · 동시에 %d개" % (len(jobs), W), flush=True)
+
+        def on_kr(r):
+            job, d, why, calls, sec = r
+            done["calls"] += calls; done["sec"] += sec
+            finish(job[3], d, job[2], job[6], why, job[5])
+        n = run_pool(work_kr, jobs, W, on_kr, lambda: time_left() and C._call_count + done["calls"] < DART_MAX)
+        print("  국내 %d/%d곳 처리 · 한 곳 평균 %.1f초 · DART 호출 %d" % (n, len(jobs), done["sec"] / max(1, n), done["calls"]), flush=True)
+    if "--kr-only" not in sys.argv and time_left():
         ru = recent_us()
-        print("최근 10-Q·10-K 낸 미국 회사 %d곳" % len(ru))
+        print("최근 10-Q·10-K 낸 미국 회사 %d곳" % len(ru), flush=True)
         jobs = []
         for i, t in enumerate(us):
             cik = (jl(os.path.join("data", "us", t + ".json"), {}) or {}).get("cik")
@@ -419,51 +492,18 @@ def main():
             if pr is not None:
                 jobs.append((pr, i, t, cik, old))
         jobs.sort(key=lambda j: (j[0], j[1]))
-        print("미국 할 일 %d곳" % len(jobs))
-        for pr, _, t, cik, old in jobs:
-            if not time_left():
-                print("  … 시간 한도 — 남은 미국 회사는 다음 번에")
-                break
-            FX.WHY = ""
-            try:
-                x = us_xbrl(cik, old)
-            except Exception as e:                  # noqa: BLE001
-                x, FX.WHY = None, "오류 %s" % e
-            if x == "SAME":
-                old["ver"] = VER
-                save(t, old, "US", old.get("name") or mu[t].get("n"))
-                done["same"] += 1
-                continue
-            d = scaled(x, 1e6) if x else None
-            if not d:
-                try:
-                    d = us_one(t, cik)
-                except Exception:                   # noqa: BLE001
-                    d = None
-                if d:
-                    d["xbrl_err"] = FX.WHY or "까닭 모름"
-            if d:
-                d["unit"] = "백만달러"
-                save(t, d, "US", mu[t].get("n"))
-                fail.pop(t, None)
-                done["us"] += 1
-                print("  ok US %s 매출 %s 영업 %s 순 %s 부문 %d 비용 %d %s" % (t, d.get("rev"), d.get("op"), d.get("ni"), len(d.get("segs") or []), len(d.get("items") or []), d.get("xbrl_err", "")))
-            else:
-                mark_fail(t, FX.WHY or "자료 없음")
-                done["fail"] += 1
-    json.dump(fail, open(FAILP, "w", encoding="utf-8"), ensure_ascii=False, indent=0)
-    # 목록: 지금 있는 파일 중 카드로 그릴 수 있는 것만
-    idx = {}
-    for fn in os.listdir(OUT):
-        if not fn.endswith(".json") or fn.startswith(("_", "index")):
-            continue
-        code = fn[:-5]
-        if usable(code):
-            d = jl(os.path.join(OUT, fn), {})
-            m = d.get("market") or ("US" if not code.isdigit() else "UL" if len(code) == 8 else "KR")
-            idx[code] = {"n": d.get("name") or code, "m": m, "p": d.get("period")}
-    json.dump({"updated": TODAY.isoformat(), "items": idx}, open(os.path.join(OUT, "index.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=0)
-    print("끝: 국내 %(kr)d · 미국 %(us)d · 비상장 %(ul)d 새로 · 그대로 %(same)d · 실패 %(fail)d" % done, "· 카드 %d곳" % len(idx), "· DART 호출 %d" % C._call_count)
+        print("미국 할 일 %d곳 · 동시에 %d개" % (len(jobs), min(W, 4)), flush=True)
+        t_us = [0.0]
+
+        def on_us(r):
+            job, d, why, sec = r
+            t_us[0] += sec
+            finish(job[2], d, "US", mu[job[2]].get("n"), why, job[4])
+        n = run_pool(work_us, jobs, min(W, 4), on_us, time_left)      # SEC 는 초당 10번까지 — 4개면 넉넉
+        print("  미국 %d/%d곳 처리 · 한 곳 평균 %.1f초" % (n, len(jobs), t_us[0] / max(1, n)), flush=True)
+    json.dump(fail, open(failp, "w", encoding="utf-8"), ensure_ascii=False, indent=0)
+    idx = build_index()
+    print("끝: 국내 %(kr)d · 미국 %(us)d · 비상장 %(ul)d 새로 · 그대로 %(same)d · 실패 %(fail)d" % done, "· 카드 %d곳" % len(idx), flush=True)
 
 if __name__ == "__main__":
     main()

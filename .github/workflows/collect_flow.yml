@@ -18,11 +18,15 @@ permissions:
   contents: write
 
 concurrency:
-  group: flow
+  group: flow-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
   collect:
+    strategy:
+      fail-fast: false
+      matrix:
+        part: [kr, us]               # 국내·비상장 / 미국을 따로 (동시에) 돈다
     runs-on: ubuntu-latest
     timeout-minutes: 90
     steps:
@@ -34,10 +38,11 @@ jobs:
         env:
           DART_API_KEY: ${{ secrets.DART_API_KEY }}
           SEC_UA: ${{ secrets.SEC_UA }}
-          FLOW_MINUTES: '75'
+          FLOW_MINUTES: '72'
+          FLOW_WORKERS: '6'
         run: |
           mkdir -p data/flow
-          python3 collect_flow.py 2>&1 | tee "$RUNNER_TEMP/flow_log.txt"
+          python3 -u collect_flow.py --${{ matrix.part }}-only 2>&1 | tee "$RUNNER_TEMP/flow_log.txt"
       - name: 커밋
         if: always()
         run: |
@@ -45,10 +50,14 @@ jobs:
           git config user.name  "github-actions[bot]"
           git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
           git add data/flow
-          git commit -m "손익 흐름 $(TZ=Asia/Seoul date +%F)"
-          for i in 1 2 3 4 5; do
-            git pull --rebase -X theirs --autostash && git push && exit 0
+          git commit -m "손익 흐름 ${{ matrix.part }} $(TZ=Asia/Seoul date +%F)"
+          for i in 1 2 3 4 5 6; do
+            if git pull --rebase -X theirs --autostash; then
+              python3 collect_flow.py --index-only            # 다른 쪽이 먼저 올린 회사까지 목록에 넣는다
+              git add data/flow/index.json && (git diff --cached --quiet || git commit -m "손익 흐름 목록")
+              git push && exit 0
+            fi
             git rebase --abort 2>/dev/null || true
-            sleep 10
+            sleep $((RANDOM % 20 + 5))
           done
           exit 1
