@@ -576,7 +576,7 @@
     var note = document.getElementById('fund-note');
     if (!f) { note.style.display = 'none'; state.fundLogo = null; state.fundVal = null; return; }
     document.getElementById('f-name').value = f.title;
-    state.fundLogo = f.kind === 'corp' ? (CORP_LOGO[key] || null) : null;
+    state.fundLogo = (f.kind === 'corp' || f.kind === 'manager') ? (CORP_LOGO[key] || null) : null;   // 기업·운용사는 제목 앞에 로고
     document.getElementById('f-josa').value = topic(f.title).slice(f.title.length);
     document.getElementById('f-sub').value = '어디에 투자하고 있을까?';
     document.getElementById('f-basis').value = "'" + (f.kind === 'kr5' ? monthLabel(f.period) : quarterLabel(f.period)) + ' 기준';
@@ -795,7 +795,11 @@
     alphabet: 'us/GOOGL', nvidia: 'us/NVDA', amazon: 'us/AMZN', amd: 'us/AMD', intel: 'us/INTC',
     uber: 'us/UBER', cisco: 'us/CSCO', jnj: 'us/JNJ', pfizer: 'us/PFE', merck: 'us/MRK',
     gilead: 'us/GILD', regeneron: 'us/REGN', gsk: 'us/GSK', sanofi: 'us/SNY', toyota: 'us/TM',
-    alibaba: 'us/BABA', blackstone: 'us/BX', brookfield: 'us/BN', samsungct: 'kr/028260'
+    alibaba: 'us/BABA', blackstone: 'us/BX', brookfield: 'us/BN', samsungct: 'kr/028260',
+    // 자산운용사 — 상장사는 그 회사 주식 로고, 아닌 곳은 logo/fund (fund_logos.py)
+    blackrock: 'us/BLK', statestreet: 'us/STT', jpmorgan: 'us/JPM', morganstanley: 'us/MS', goldman: 'us/GS',
+    bofa: 'us/BAC', troweprice: 'us/TROW', invesco: 'us/IVZ', northern: 'us/NTRS', ubs: 'us/UBS',
+    vanguard: 'fund/vanguard', fidelity: 'fund/fidelity', geode: 'fund/geode', wellington: 'fund/wellington'
   };
   var _paths = {};
   function pathLogo(p) {
