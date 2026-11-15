@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-14",
+ "updated": "2026-11-15",
  "items": {
   "gold": {
    "ok": true,
@@ -35,7 +35,7 @@
    "freq": "D",
    "src": "CNBC",
    "last": 20261113,
-   "n": 916
+   "n": 915
   },
   "brent": {
    "ok": true,
@@ -44,7 +44,7 @@
    "freq": "D",
    "src": "CNBC",
    "last": 20261113,
-   "n": 932
+   "n": 931
   },
   "natgas": {
    "ok": true,
@@ -62,7 +62,7 @@
    "freq": "D",
    "src": "CNBC",
    "last": 20261113,
-   "n": 1146
+   "n": 1145
   },
   "eth": {
    "ok": true,
@@ -98,7 +98,7 @@
    "freq": "D",
    "src": "CNBC",
    "last": 20261113,
-   "n": 922
+   "n": 921
   },
   "us2y": {
    "ok": true,
@@ -107,7 +107,7 @@
    "freq": "D",
    "src": "CNBC",
    "last": 20261113,
-   "n": 924
+   "n": 923
   },
   "kr10y": {
    "ok": true,
