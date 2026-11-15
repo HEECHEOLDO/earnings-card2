@@ -89,16 +89,13 @@
     }
     logoAt(X, o.logo, xA - 70, yRev + hRev / 2 - 70, 40);
     lab(xA - 16, yRev + hRev / 2 - 6, 'right', '매출', o.money(rev), o.period);
-    lab(xB + nw + 14, yOp + Math.max(hOp, 0) / 2 - 20 - (hOp < 90 ? 30 : 0), 'left', o.op >= 0 ? '영업이익' : '영업손실', o.money(o.op), '매출의 ' + o.pct(o.op), GREEN);
+    lab(xB + nw + 14, yOp + Math.max(hOp, 0) / 2 - 20 - (hOp < 90 ? 30 : 0), 'left', o.op >= 0 ? '영업이익' : '영업손실', o.money(o.op), '100원 중 ' + Math.round(o.op / rev * 100) + '원', GREEN);
     lab(xB + nw + 14, yCost + Math.min(hCost / 2, 150) - 20, 'left', '영업비용', o.money(cost), '원가·판관비', RED);
-    if (nip > 0) lab(xC + nw + 14, yNi + Math.min(hNi / 2, 120) - 20 - (hNi < 90 ? 20 : 0), 'left', '순이익', o.money(ni), '매출의 ' + o.pct(ni), GREEN);
+    if (nip > 0) lab(xC + nw + 14, yNi + Math.min(hNi / 2, 120) - 20 - (hNi < 90 ? 20 : 0), 'left', '순이익', o.money(ni), '100원 중 ' + Math.round(ni / rev * 100) + '원', GREEN);
     else lab(xC + nw + 14, yNi + 20, 'left', '순손실', o.money(ni), '', T.down);
     if (hTax > 0.5) lab(xC + nw + 14, yTax + Math.min(hTax / 2, 60) - 10 + (hTax < 60 ? 10 : 0), 'left', '세금·영업외', o.money(-tax), '', T.soft);
     if (extra > 0) { X.textAlign = 'right'; X.fillStyle = GREEN; X.font = font(800, 20); X.fillText('영업외 이익 +' + o.money(extra), xB - 10, yEx + hEx / 2 + 7); }
     // 100원으로 다시 말하기
-    var y100 = BOT;
-    X.textAlign = 'left'; X.fillStyle = T.ink; X.font = font(800, 28);
-    X.fillText('100원어치 팔면 → 영업이익 ' + Math.round(o.op / rev * 100) + '원 → 순이익 ' + Math.round(ni / rev * 100) + '원', L, y100);
     foot(X, o.src);
   }
 
@@ -145,7 +142,6 @@
     });
     X.textBaseline = 'alphabetic';
     X.textAlign = 'left'; X.fillStyle = T.soft; X.font = font(700, 20);
-    X.fillText('▲ 그해 1등', L, top + na * ch + 34); X.textAlign = 'right'; X.fillText('칸 위에서 아래로 수익률 순서', R, top + na * ch + 34);
     foot(X, o.src);
   }
 
@@ -199,8 +195,6 @@
     });
     X.textBaseline = 'alphabetic';
     var by = gy + 10 * (cell + g) + 46;
-    X.textAlign = 'left'; X.fillStyle = T.ink; X.font = font(800, 28); X.fillText(o.note || '', L, by);
-    X.fillStyle = T.soft; X.font = font(700, 22); X.fillText('한 칸 = 포트폴리오의 1%', L, by + 40);
     foot(X, o.src);
   }
 

@@ -574,7 +574,7 @@
         var nm = mk === 'kosdaq' ? '코스닥' : '코스피';
         return { fn: 'hist', o: { kicker: MKN[mk] + ' ' + ys.length.toLocaleString() + '종목 올해 수익률', h1: nm + ' ' + pct1(iy) + ', 종목 중간값은 ' + pct1(med),
           stats: [[up.toLocaleString() + '곳', '올랐다', '#D6362C'], [(ys.length - up).toLocaleString() + '곳', '내렸다', '#2B6CD9'], [Math.round(beat / ys.length * 100) + '%', nm + ' 지수보다 더 오른 종목']],
-          bins: bins, mark: { v: iy, label: nm + ' 지수 ' + pct1(iy) }, axis: '연초 대비 수익률 (칸 하나 = 20%p)' } };
+          bins: bins, mark: { v: iy, label: nm + ' 지수 ' + pct1(iy) }, axis: '올해 수익률' } };
       });
     } },
     { id: 'contrib', name: '누가 시총을 올렸나', icon: '⊕', build: function () {
@@ -966,7 +966,7 @@
         var P = TL(S, ymd(-10));
         var txt = P.map(function (s) { return s.n + ' ' + s.pts[s.pts.length - 1][1].toFixed(1) + '%'; }).join(', ');
         var lastK = Math.max.apply(null, js.filter(Boolean).map(function (j) { var k = j.d[j.d.length - 1][0]; return k < 1e7 ? k : Math.floor(k / 100); }));
-        return { fn: 'lines', o: { h1: '물가 상승률 ' + txt, series: P, ticks: P.ticks, fmt: function (v) { return v.toFixed(1) + '%'; }, zero: 0, note: '1년 전 같은 달보다 물가가 얼마나 올랐나 · 목표는 보통 2%' },
+        return { fn: 'lines', o: { h1: '물가 상승률 ' + txt, series: P, ticks: P.ticks, fmt: function (v) { return v.toFixed(1) + '%'; }, zero: 0, target: 2, targetLabel: '물가 목표 2%' },
           src: ym(lastK) + '까지 · ' + js.filter(Boolean).map(function (j) { return j.src.split(' · ')[0]; }).join(' · ') };
       });
     } },
@@ -1029,7 +1029,7 @@
         if (cur !== id || (list && key !== id + '|' + sel[id])) return;
         // 카드 아래 한 줄은 날짜만, 제목 아래 회색 설명 줄은 넣지 않는다
         var a = r.asof || (id === 'voronoi' ? D.us.asof : D.asof) || '', p = a.split('-');
-        r.o.h2 = ''; r.o.src = r.src || (p.length === 3 ? "'" + p[0].slice(2) + '년 ' + (+p[1]) + '월 ' + (+p[2]) + '일 ' + (r.tail || '종가 기준') : '');
+        r.o.h2 = ''; r.o.note = ''; r.o.src = r.src || (p.length === 3 ? "'" + p[0].slice(2) + '년 ' + (+p[1]) + '월 ' + (+p[2]) + '일 ' + (r.tail || '종가 기준') : '');
         last = r; last.name = c.name + (list ? '_' + list.filter(function (o) { return o[0] === sel[id]; })[0][1] : '');
         if (!r.auto) r.auto = { k: '', h: TITLE[id] ? TITLE[id](list ? sel[id] : undefined, r) : r.o.h1 };   // 빨간 윗줄은 쓰지 않는다
         // 직접 고친 제목은 같은 카드·같은 선택지로 돌아와도 남는다

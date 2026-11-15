@@ -46,7 +46,6 @@
       X.fillStyle = T.ink; X.font = font(800, 22); X.textAlign = x > R - 200 ? 'right' : 'left'; X.fillText(o.mark.label, x + (x > R - 200 ? -10 : 10), top - 10);
     }
     X.fillStyle = T.soft; X.font = font(700, 20); X.textAlign = 'center'; X.fillText(o.axis || '', (L + R) / 2, bot + 66);
-    if (o.note) { X.textAlign = 'left'; X.fillStyle = T.ink; X.font = font(800, 26); X.fillText(o.note, L, BOT); }
     foot(X, o.src);
   }
 
@@ -66,7 +65,6 @@
       X.textAlign = 'left'; X.fillText(r.b.toFixed(1) + '%', mid + lab / 2 + wb + 8, cy);
       X.textBaseline = 'alphabetic';
     });
-    if (o.note) { X.textAlign = 'left'; X.fillStyle = T.ink; X.font = font(800, 26); X.fillText(o.note, L, BOT); }
     foot(X, o.src);
   }
 
@@ -74,6 +72,7 @@
   function calendar(X, o) {
     head(X, o);
     var by = {}; o.days.forEach(function (d) { var k = String(d[0]).slice(0, 6); (by[k] = by[k] || []).push(d); });
+    var vals = o.days.map(function (d) { return d[1]; }), best = Math.max.apply(null, vals), worst = Math.min.apply(null, vals), marks = [];
     var months = Object.keys(by).sort().slice(-12), cw = (R - L - 3 * 24) / 4, cell = Math.floor((cw - 6) / 7), top = TOP, mh = cell * 6 + 50;
     months.forEach(function (m, i) {
       var gx = L + (i % 4) * (cw + 24), gy = top + Math.floor(i / 4) * (mh + 14), y = +m.slice(0, 4), mo = +m.slice(4) - 1;
@@ -85,19 +84,24 @@
       for (var d = 1; d <= nd; d++) {
         var p = first + d - 1, cx = gx + (p % 7) * cell, cy = gy + 34 + Math.floor(p / 7) * cell, v = map[d];
         X.fillStyle = v == null ? 'rgba(16,18,22,0.05)' : heat(v, 3); rr(X, cx + 1.5, cy + 1.5, cell - 3, cell - 3, 4); X.fill();
+        if (v != null && (v === best || v === worst)) marks.push([cx, cy, v]);
       }
+    });
+    marks.forEach(function (m) {       // 1년 중 가장 크게 오른 날·내린 날
+      X.strokeStyle = T.ink; X.lineWidth = 3; rr(X, m[0], m[1], cell, cell, 5); X.stroke();
+      var tx = pct(m[2], 1), bx = m[0] + cell / 2; X.font = font(900, 17); var tw = X.measureText(tx).width + 12;
+      X.fillStyle = T.ink; rr(X, bx - tw / 2, m[1] - 26, tw, 22, 6); X.fill(); X.fillStyle = '#fafaf8'; X.textAlign = 'center'; X.fillText(tx, bx, m[1] - 9);
     });
     // 범례
     var ly = BOT - 70; X.fillStyle = T.soft; X.font = font(700, 20); X.textAlign = 'left'; X.fillText('하루 등락률', L, ly + 18);
     [-3, -1.5, -0.5, 0.5, 1.5, 3].forEach(function (v, i) { var x = L + 130 + i * 70; X.fillStyle = heat(v, 3); rr(X, x, ly, 62, 24, 4); X.fill(); X.fillStyle = T.soft; X.font = font(700, 16); X.textAlign = 'center'; X.fillText(pct(v, v % 1 ? 1 : 0), x + 31, ly + 46); });
-    if (o.note) { X.textAlign = 'right'; X.fillStyle = T.ink; X.font = font(800, 22); X.fillText(o.note, R, ly + 18); }
     foot(X, o.src);
   }
 
   /* 4) 월별 열지도 — o.years:[연], o.rows:{연:[12개월 %|null]}, o.total:{연:%} */
   function heatgrid(X, o) {
     head(X, o);
-    var NC = o.cols ? o.cols.length : 12, top = TOP + 30, ny = o.years.length, lw = o.lw || 76, tw = 104, cw = (R - L - lw - tw) / NC, ch = Math.min(74, (BOT - 100 - top) / (ny + 1));
+    var NC = o.cols ? o.cols.length : 12, top = TOP + 30, ny = o.years.length, lw = o.lw || 76, tw = 104, cw = (R - L - lw - tw) / NC, ch = Math.min(74, (BOT - 60 - top) / (ny + 1));
     X.fillStyle = T.soft; X.font = font(800, 19); X.textAlign = 'center';
     for (var m = 0; m < NC; m++) X.fillText(o.cols ? o.cols[m] : (m + 1) + '월', L + lw + cw * m + cw / 2, top - 12);
     X.fillText(o.totalLabel || '1년', R - tw / 2, top - 12);
@@ -122,14 +126,13 @@
       var vs = o.years.map(function (y) { return o.rows[y][m]; }).filter(function (v) { return v != null; }), a = vs.reduce(function (s, v) { return s + v; }, 0) / (vs.length || 1);
       X.fillStyle = a >= 0 ? T.up : T.down; X.font = font(900, 19); X.textAlign = 'center'; X.fillText(a.toFixed(1), L + lw + cw * m + cw / 2, ay + 26);
     }
-    if (o.note) { X.textAlign = 'left'; X.fillStyle = T.ink; X.font = font(800, 26); X.fillText(o.note, L, BOT); }
     foot(X, o.src);
   }
 
   /* 5) 고점 대비 하락 (언더워터) — o.series:[{n, c, pts:[[t, dd%]]}], t 는 0~1 위치. o.ticks:[[t, 라벨]] */
   function underwater(X, o) {
     head(X, o);
-    var top = TOP + 50, bot = BOT - 90, x0 = L + 60, x1 = R, lo = Math.min.apply(null, o.series.map(function (s) { return Math.min.apply(null, s.pts.map(function (p) { return p[1]; })); }));
+    var top = TOP + 50, bot = BOT - 40, x0 = L + 60, x1 = R - 120, lo = Math.min.apply(null, o.series.map(function (s) { return Math.min.apply(null, s.pts.map(function (p) { return p[1]; })); }));
     lo = Math.floor(lo / 10) * 10; if (lo > -20) lo = -20;
     var yp = function (v) { return top + (bot - top) * v / lo; }, xp = function (t) { return x0 + (x1 - x0) * t; };
     for (var g = 0; g >= lo; g -= 10) { var y = yp(g); X.strokeStyle = g === 0 ? T.ink : T.rule; X.lineWidth = g === 0 ? 2 : 1; X.beginPath(); X.moveTo(x0, y); X.lineTo(x1, y); X.stroke(); X.fillStyle = T.soft; X.font = font(700, 18); X.textAlign = 'right'; X.textBaseline = 'middle'; X.fillText(g + '%', x0 - 10, y); }
@@ -145,10 +148,18 @@
       X.fillStyle = s.c; rr(X, lx, TOP + 2, 26, 10, 3); X.fill(); X.fillStyle = T.ink; X.font = font(800, 22); X.textAlign = 'left'; X.fillText(s.n, lx + 34, TOP + 12);
       lx += X.measureText(s.n).width + 70;
       var m = s.pts.reduce(function (a, p) { return p[1] < a[1] ? p : a; }, s.pts[0]);
+      if (m[0] > 0.95) return;               // 최저점이 지금이면 오른쪽 '지금' 표시로 충분
       X.fillStyle = s.c; X.beginPath(); X.arc(xp(m[0]), yp(m[1]), 7, 0, 7); X.fill();
       X.font = font(800, 19); X.textAlign = xp(m[0]) > R - 160 ? 'right' : 'left'; X.fillText(s.n + ' ' + m[1].toFixed(0) + '%' + (m[2] ? ' (' + m[2] + ')' : ''), xp(m[0]) + (X.textAlign === 'right' ? -10 : 10), yp(m[1]) + 26);
     });
-    if (o.note) { X.textAlign = 'left'; X.fillStyle = T.ink; X.font = font(800, 26); X.fillText(o.note, L, BOT); }
+    // 오른쪽 끝: 지금 고점 대비 (겹치지 않게 아래로 민다)
+    var ends = o.series.map(function (s) { var p = s.pts[s.pts.length - 1]; return { s: s, v: p[1], y: yp(p[1]) }; }).sort(function (a, b) { return a.y - b.y; });
+    for (var q = 1; q < ends.length; q++) if (ends[q].y - ends[q - 1].y < 46) ends[q].y = ends[q - 1].y + 46;
+    ends.forEach(function (e) {
+      X.fillStyle = e.s.c; X.beginPath(); X.arc(x1, yp(e.v), 8, 0, 7); X.fill();
+      X.textAlign = 'left'; X.textBaseline = 'middle'; X.font = font(700, 17); X.fillText('지금', x1 + 16, e.y - 11);
+      X.font = font(900, 22); X.fillText(Math.abs(e.v) < 0.5 ? '최고치' : Math.round(e.v) + '%', x1 + 16, e.y + 11); X.textBaseline = 'alphabetic';
+    });
     foot(X, o.src);
   }
 
@@ -220,7 +231,7 @@
   /* 8) 선 하나 — o.pts:[[t(0~1), v, 라벨]], o.ticks:[[t, 라벨]], o.fmt(v), o.marks:[인덱스] (최고·최저 등) */
   function line(X, o) {
     head(X, o);
-    var top = TOP + 10, bot = BOT - 90, x0 = L + 70, x1 = R - 20, vs = o.pts.map(function (p) { return p[1]; });
+    var top = TOP + 10, bot = BOT - 40, x0 = L + 70, x1 = R - 150, vs = o.pts.map(function (p) { return p[1]; });
     var lo = Math.min.apply(null, vs), hi = Math.max.apply(null, vs), pad = (hi - lo) * 0.08; lo -= pad; hi += pad;
     var xp = function (t) { return x0 + (x1 - x0) * t; }, yp = function (v) { return bot - (bot - top) * (v - lo) / (hi - lo); };
     var step = Math.pow(10, Math.floor(Math.log10((hi - lo) / 5))); while ((hi - lo) / step > 7) step *= 2;
@@ -238,7 +249,8 @@
     });
     var e = o.pts[o.pts.length - 1];
     X.fillStyle = o.c || T.down; X.beginPath(); X.arc(xp(e[0]), yp(e[1]), 9, 0, 7); X.fill();
-    if (o.note) { X.textAlign = 'left'; X.fillStyle = T.ink; X.font = font(800, 26); X.fillText(o.note, L, BOT); }
+    X.textAlign = 'left'; X.textBaseline = 'middle'; X.font = font(700, 19); X.fillText('지금', xp(e[0]) + 18, yp(e[1]) - 16);
+    X.fillStyle = T.ink; X.font = font(900, 26); X.fillText(o.fmt(e[1]), xp(e[0]) + 18, yp(e[1]) + 14); X.textBaseline = 'alphabetic';
     foot(X, o.src);
   }
 
@@ -259,7 +271,6 @@
       X.fillStyle = t >= 0.5 ? T.up : T.down; X.font = font(900, 20); X.textAlign = 'right'; X.fillText(r.lab, R, cy);
       X.textBaseline = 'alphabetic';
     });
-    if (o.note) { X.textAlign = 'left'; X.fillStyle = T.ink; X.font = font(800, 24); X.fillText(o.note, L, BOT); }
     foot(X, o.src);
   }
   base.range = range;

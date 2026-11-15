@@ -35,7 +35,6 @@
       o.line.forEach(function (v, i) { if (v == null) { on = false; return; } var x = x0 + i * bw + bw / 2; if (on) X.lineTo(x, yp(v)); else X.moveTo(x, yp(v)); on = true; }); X.stroke(); X.setLineDash([]);
     }
     if (o.legend) { var lx = L, ly = bot + 64; o.legend.forEach(function (g2) { X.fillStyle = g2[1]; if (g2[2]) { X.fillRect(lx, ly - 9, 26, 3); } else { rr(X, lx, ly - 18, 22, 22, 4); X.fill(); } X.fillStyle = T.ink; X.font = font(700, 21); X.textAlign = 'left'; X.fillText(g2[0], lx + 32, ly); lx += X.measureText(g2[0]).width + 66; }); }
-    if (o.note) { X.textAlign = 'left'; X.fillStyle = T.ink; X.font = font(800, 25); X.fillText(o.note, L, BOT); }
     foot(X, o.src);
   }
 
@@ -67,7 +66,7 @@
   /* 3) 여러 선 — o.series:[{n, c, pts:[[t(0~1), v]], w}], o.ticks:[[t, 라벨]], o.fmt, o.zero(가로 기준선) */
   function lines(X, o) {
     head(X, o);
-    var top = TOP + 10, bot = BOT - 90, x0 = L + 70, x1 = R - 190, all = [];
+    var top = TOP + 10, bot = BOT - 40, x0 = L + 70, x1 = R - 190, all = [];
     o.series.forEach(function (s) { s.pts.forEach(function (p) { all.push(p[1]); }); });
     var lo = Math.min.apply(null, all), hi = Math.max.apply(null, all), pad = (hi - lo) * 0.08 || 1; lo -= pad; hi += pad; if (o.zero != null) { lo = Math.min(lo, o.zero); hi = Math.max(hi, o.zero); }
     var xp = function (t) { return x0 + (x1 - x0) * t; }, yp = function (v) { return bot - (bot - top) * (v - lo) / (hi - lo); };
@@ -75,6 +74,7 @@
     for (var g = Math.ceil(lo / st) * st; g <= hi; g += st) { var y = yp(g); X.strokeStyle = (o.zero != null && Math.abs(g - o.zero) < st / 1e3) ? T.ink : T.rule; X.lineWidth = 1.5; X.beginPath(); X.moveTo(x0, y); X.lineTo(x1, y); X.stroke(); X.fillStyle = T.soft; X.font = font(700, 17); X.textAlign = 'right'; X.textBaseline = 'middle'; X.fillText(o.fmt(g), x0 - 8, y); }
     X.textBaseline = 'alphabetic';
     o.ticks.forEach(function (t) { X.fillStyle = T.soft; X.font = font(700, 18); X.textAlign = 'center'; X.fillText(t[1], xp(t[0]), bot + 30); });
+    if (o.target != null) { var ty = yp(o.target); X.strokeStyle = T.ink; X.globalAlpha = 0.55; X.setLineDash([10, 8]); X.lineWidth = 2; X.beginPath(); X.moveTo(x0, ty); X.lineTo(x1, ty); X.stroke(); X.setLineDash([]); X.globalAlpha = 1; X.fillStyle = T.ink; X.font = font(800, 19); X.textAlign = 'right'; X.fillText(o.targetLabel || '', x1 - 8, ty - 10); }
     (o.bands || []).forEach(function (b) { X.fillStyle = 'rgba(16,18,22,0.05)'; X.fillRect(xp(b[0]), top, xp(b[1]) - xp(b[0]), bot - top); X.fillStyle = T.soft; X.font = font(700, 16); X.textAlign = 'center'; X.fillText(b[2], (xp(b[0]) + xp(b[1])) / 2, top + 20); });
     o.series.slice().reverse().forEach(function (s) {
       X.strokeStyle = s.c; X.lineWidth = s.w || 4; X.lineJoin = 'round'; X.beginPath();
@@ -87,7 +87,6 @@
       X.textAlign = 'left'; X.textBaseline = 'middle'; X.fillStyle = T.ink; X.font = font(800, 20); X.fillText(e.s.n, x1 + 22, e.y - 11);
       X.fillStyle = e.s.c; X.font = font(900, 22); X.fillText(o.fmt(e.v), x1 + 22, e.y + 13); X.textBaseline = 'alphabetic';
     });
-    if (o.note) { X.textAlign = 'left'; X.fillStyle = T.ink; X.font = font(800, 25); X.fillText(o.note, L, BOT); }
     foot(X, o.src);
   }
 

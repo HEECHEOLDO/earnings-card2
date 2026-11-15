@@ -240,7 +240,7 @@ window.__vcFoot = function (X, src) {
     X.fillStyle = '#B9B6AE'; X.beginPath(); X.arc(L + 10, ly - 7, 9, 0, 7); X.fill();
     X.fillStyle = T.soft; X.font = font(700, 22); X.textAlign = 'left'; X.fillText('연초 시총', L + 28, ly);
     X.fillStyle = T.up; X.beginPath(); X.arc(L + 170, ly - 7, 12, 0, 7); X.fill();
-    X.fillStyle = T.soft; X.fillText('지금 시총 (점 사이가 올해 움직임)', L + 192, ly);
+    X.fillStyle = T.soft; X.fillText('지금 시총', L + 192, ly);
     foot(X, o.src);
   }
   base.bump = bump; base.dumbbell = dumbbell;
@@ -364,7 +364,6 @@ window.__vcFoot = function (X, src) {
       X.fillStyle = T.soft; X.font = font(700, 18); X.fillText(r.cap, xr + 72, y + 20);
     });
     X.textBaseline = 'alphabetic';
-    X.fillStyle = T.ink; X.font = font(800, 28); X.textAlign = 'left'; X.fillText(o.note || '', L, BOT);
     foot(X, o.src);
   }
 
@@ -394,7 +393,6 @@ window.__vcFoot = function (X, src) {
       }
       X.textBaseline = 'alphabetic';
     });
-    if (o.note) { X.fillStyle = T.ink; X.font = font(800, 28); X.textAlign = 'left'; X.fillText(o.note, L, BOT); }
     foot(X, o.src);
   }
   base.voronoi = voronoi; base.radial = radial; base.thenNow = thenNow; base.compare = compare;
