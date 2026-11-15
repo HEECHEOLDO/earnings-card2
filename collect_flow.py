@@ -141,6 +141,7 @@ def us_one(t, cik):
 
 
 # ------------------------------------------------------------------ 공시 원본(XBRL): 3개월 손익 + 매출 종류
+UL_VER = 2                                         # 비상장(감사보고서) 읽는 법이 바뀌면 올림 — 비상장만 다시
 VER = 7                                            # 계산 방식이 바뀌면 올려서 다시 계산
 
 
@@ -327,7 +328,7 @@ def work_kr(job):
             import flow_audit as FA
             x = FA.flow(code)
             why = FA.WHY
-            if x and old and old.get("src") == x.get("src") and old.get("ver") == VER:
+            if x and old and old.get("src") == x.get("src") and old.get("ver") == VER and old.get("uver") == UL_VER:
                 x = "SAME"
         else:
             FX.WHY = ""
@@ -340,6 +341,8 @@ def work_kr(job):
             d = kr_one(code, corp)
         if d:
             d["unit"] = "억원"
+            if mk == "UL":
+                d["uver"] = UL_VER
         return job, d, why, C._call_count - c0, time.time() - t0
     except Exception as e:                          # noqa: BLE001
         return job, None, "오류 %s" % e, C._call_count - c0, time.time() - t0
@@ -468,6 +471,8 @@ def main():
         for i, c in enumerate(ul):
             old = jl(os.path.join(OUT, c["code"] + ".json"))
             pr = need(c["code"], old, c["code"] in rk)
+            if old and old.get("uver") != UL_VER:
+                pr, old = -1, None                       # 비상장은 탭 회사 수가 적어 먼저 다시 읽는다
             if pr is not None:
                 jobs.append((pr, i, "UL", c["code"], c["code"], old, c.get("name")))
         jobs.sort(key=lambda j: (j[0], j[1]))
