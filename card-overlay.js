@@ -97,9 +97,10 @@
         "    self.postMessage({ err: String((err && err.message) || err) });\n" +
         "  }\n" +
         "};\n";
-      var wUrl = null, w = null, done = false, alive = false;
+      var wUrl = null, w = null, done = false, alive = false, dog = null;
+      function kick() { clearTimeout(dog); dog = setTimeout(function () { finish(reject, new Error('응답이 없어 멈췄습니다 (3분)')); }, 180000); }   // 멈춘 채로 붙잡혀 있지 않게
       function finish(fn, arg) {
-        if (done) return; done = true;
+        if (done) return; done = true; clearTimeout(dog);
         try { if (w) w.terminate(); } catch (e) {}          // ← 여기서 메모리가 돌아온다
         try { if (wUrl) URL.revokeObjectURL(wUrl); } catch (e) {}
         w = null; fn(arg);
@@ -115,13 +116,13 @@
         else finish(reject, new Error('메모리가 모자라 멈췄습니다'));
       };
       w.onmessage = function (ev) {
-        var d = ev.data || {}; alive = true;
+        var d = ev.data || {}; alive = true; kick();
         if (d.up) return;
         if (d.p) { onProgress(d.k, d.c, d.t); return; }
         if (d.err) { finish(reject, new Error(d.err)); return; }
         if (d.ok) finish(resolve, d.blob);
       };
-      w.postMessage({ src: src, model: model, cdn: BG_CDN, device: device() });
+      kick(); w.postMessage({ src: src, model: model, cdn: BG_CDN, device: device() });
     });
   }
 
