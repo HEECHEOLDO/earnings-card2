@@ -430,7 +430,7 @@
     /* ---------------- 2차: 실적 · 지수 · 수익률 · 주주 · 포트폴리오 · 미국 · 맞수 ---------------- */
     { id: 'sankey', name: '돈의 흐름', icon: '⤳', opts: function () { return SANKEY_OPTS(); }, build: function (key) {
       var us = key.slice(0, 3) === 'us:', ul = key.slice(0, 3) === 'ul:', code = key.slice(3);
-      var won = function (v) { var a = Math.abs(v); return (v < 0 ? '-' : '') + (a >= 1e4 ? (a / 1e4).toFixed(a >= 1e5 ? 0 : 1) + '조' : Math.round(a).toLocaleString() + '억'); };
+      var won = function (v) { var a = Math.abs(v); return (v < 0 ? '-' : '') + (a >= 1e4 ? (a / 1e4).toFixed(a >= 1e6 - 500 ? 0 : 1) + '조' : Math.round(a).toLocaleString() + '억'); };   // 1~99.9조는 소수 한 자리, 100조부터는 정수
       var money = us ? function (v) { return won(v * D.fx / 100); } : won;      // 해외: 백만달러 × 오늘 환율 → 억원
       // 세부 손익(data/flow)이 있으면 매출원가·판관비·연구개발비·법인세까지 나눈 그림으로
       return JJ('./data/flow/' + code + '.json').then(function (f) {
