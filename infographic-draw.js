@@ -1,25 +1,48 @@
-/* 제목: ' / ' 나 ', ' 에서 두 줄로 나눈다 (예: '금 한 돈, 지금은 얼마일까?' → 금 한 돈 / 지금은 얼마일까?).
-   두 줄이면 첫 줄을 한 줄 위(y-76)에 올리고 두 줄 모두 같은 크기로, 넓으면 글자를 줄인다 */
-window.__vcTitle = function (X, h1, L, R, y, px) {
+/* 카드 틀 — 다른 탭(국내 실적·주가 추이·주주 현황)과 같은 디자인 시스템.
+   인스타그램 데드존: 위·아래 135px, 좌우 100px 안에만 글자를 둔다 (index.html TOKENS.card.safe)
+   제목: 첫 줄 900/최대 92px, 둘째 줄 900/최대 60px — 쉼표(', ')나 ' / ' 에서 나눈다
+   바닥: 구분선 + '자료 …'(왼쪽) · '@돈굴돈굴'(오른쪽) 700/27px, 기준선 1211 */
+window.__VC = { L: 100, R: 980, TOP: 330, BOT: 1140, SAFE: 135 };
+window.__vcTitle = function (X, h1) {
+  var B = window.__VC, W = B.R - B.L;
   h1 = String(h1 || ''); var i = h1.indexOf(' / '), k = i >= 0 ? 3 : 2;
   if (i < 0) i = h1.indexOf(', ');
   var lines = i > 0 ? [h1.slice(0, i), h1.slice(i + k)] : [h1];
   var f = function (p) { return '900 ' + p + "px 'Noto Sans KR', sans-serif"; };
-  X.font = f(px);
-  if (lines.length === 1 && X.measureText(h1).width > R - L) {      // 쉼표가 없는데 길면 가운데 가까운 빈칸에서 나눈다
-    var best = -1, mid = h1.length / 2;
-    for (var j = 0; j < h1.length; j++) if (h1[j] === ' ' && (best < 0 || Math.abs(j - mid) < Math.abs(best - mid))) best = j;
-    if (best > 0) lines = [h1.slice(0, best), h1.slice(best + 1)];
+  function fit(s, mx, mn) { var p = mx; X.font = f(p); while (p > mn && X.measureText(s).width > W) { p -= 2; X.font = f(p); } return p; }
+  var track = 'letterSpacing' in X;
+  if (track) X.letterSpacing = '-0.02em';
+  if (lines.length === 1) {                       // 한 줄인데 52px 로도 넘치면 가운데 빈칸에서 나눈다
+    X.font = f(52);
+    if (X.measureText(h1).width > W) {
+      var best = -1, mid = h1.length / 2;
+      for (var j = 0; j < h1.length; j++) if (h1[j] === ' ' && (best < 0 || Math.abs(j - mid) < Math.abs(best - mid))) best = j;
+      if (best > 0) lines = [h1.slice(0, best), h1.slice(best + 1)];
+    }
   }
-  var wide = function () { return Math.max.apply(null, lines.map(function (s) { return X.measureText(s).width; })); };
-  while (px > 40 && wide() > R - L) { px -= 2; X.font = f(px); }
   X.textAlign = 'left'; X.textBaseline = 'alphabetic';
-  if (lines.length === 2) { X.fillText(lines[0], L, y - Math.round(px * 1.22)); X.fillText(lines[1], L, y); }
-  else X.fillText(lines[0], L, y);
+  var s1 = fit(lines[0], 92, 52), y = B.SAFE + s1 * 0.86;
+  X.fillText(lines[0], B.L, y);
+  if (lines.length === 2) {
+    if (track) X.letterSpacing = '0px';
+    var s2 = fit(lines[1], 60, 34); y += s1 * 0.22 + s2 * 0.86; X.font = f(s2); X.fillText(lines[1], B.L, y);
+  }
+  if (track) X.letterSpacing = '0px';
+  return y;
+};
+window.__vcFoot = function (X, src) {
+  var B = window.__VC, base = 1350 - B.SAFE - 4, rule = Math.round(base - 27 * 0.85 - 18);
+  X.strokeStyle = '#E6E4DD'; X.lineWidth = 2; X.beginPath(); X.moveTo(B.L, rule); X.lineTo(B.R, rule); X.stroke();
+  X.fillStyle = '#3A3E46'; X.font = "700 27px 'Noto Sans KR', sans-serif"; X.textBaseline = 'alphabetic';
+  var hw = X.measureText('@돈굴돈굴').width + 30, fs = 27;          // 자료 줄이 길면 글자를 줄여 손잡이와 안 겹치게
+  while (fs > 17 && X.measureText(src || '').width > B.R - B.L - hw) { fs -= 1; X.font = "700 " + fs + "px 'Noto Sans KR', sans-serif"; }
+  X.textAlign = 'left'; X.fillText(src || '', B.L, base);
+  X.font = "700 27px 'Noto Sans KR', sans-serif";
+  X.textAlign = 'right'; X.fillText('@돈굴돈굴', B.R, base); X.textAlign = 'left';
 };
 /* Visual Capitalist 느낌 시안 — 트리맵(업종·종목) · 순위 막대 */
 (function () {
-  var CW = 1080, CH = 1350, L = 70, R = 1010;
+  var CW = 1080, CH = 1350, L = 100, R = 980, TOP = 330, BOT = 1140;
   var T = { paper: '#fafaf8', ink: '#101216', soft: '#6B7078', rule: '#E6E4DD', up: '#D6362C', down: '#2B6CD9' };
   var FF = "'Noto Sans KR', sans-serif";
   function font(w, px) { return w + ' ' + px + 'px ' + FF; }
@@ -66,22 +89,13 @@ window.__vcTitle = function (X, h1, L, R, y, px) {
     var a = t >= 0 ? [214, 54, 44] : [43, 108, 217], k = Math.pow(Math.abs(t), 0.6), n = [214, 210, 202];
     return 'rgb(' + a.map(function (v, i) { return Math.round(n[i] + (v - n[i]) * (0.25 + 0.75 * k)); }).join(',') + ')';
   }
-  function head(X, kicker, h1, h2) {
-    X.textAlign = 'left'; X.textBaseline = 'alphabetic';
-    X.fillStyle = T.up; X.font = font(800, 26); X.fillText(kicker, L, 110);
-    X.fillStyle = T.ink; window.__vcTitle(X, h1, L, R, 186, 64);
-    X.fillStyle = T.soft; X.font = font(600, 30); X.fillText(h2, L, 236);
-  }
-  function foot(X, src) {
-    X.strokeStyle = T.rule; X.lineWidth = 2; X.beginPath(); X.moveTo(L, 1286); X.lineTo(R, 1286); X.stroke();
-    X.fillStyle = '#3A3E46'; X.textAlign = 'left'; X.font = font(700, 22); X.fillText(src, L, 1320);
-    X.textAlign = 'right'; X.font = font(800, 24); X.fillText('@돈굴돈굴', R, 1320);
-  }
+  function head(X, kicker, h1) { X.fillStyle = T.ink; window.__vcTitle(X, h1); }
+  function foot(X, src) { window.__vcFoot(X, src); }
 
   /* A) 업종 트리맵 */
   function treemap(X, o) {
-    grain(X); head(X, o.kicker, o.h1, o.h2);
-    var top = 280, bot = 1180, gx = L, gw = R - L;
+    grain(X); head(X, o.kicker, o.h1);
+    var top = TOP, bot = BOT - 84, gx = L, gw = R - L;
     var groups = squarify(o.groups, gx, top, gw, bot - top);
     groups.forEach(function (gc) {
       var g = gc.it, pad = 3, hb = 34;
@@ -112,7 +126,7 @@ window.__vcTitle = function (X, h1, L, R, y, px) {
       X.fillText(lab, gc.x + 8, gc.y + 24);
     });
     // 색 범례
-    var ly0 = 1218, lx0 = L;
+    var ly0 = BOT - 58, lx0 = L;
     X.fillStyle = T.soft; X.font = font(700, 22); X.textAlign = 'left'; X.fillText(o.legendTitle || '올해 수익률', lx0, ly0 + 18); var lw = X.measureText(o.legendTitle || '올해 수익률').width;
     (o.stops || [-60, -20, 0, 20, 60, 120]).forEach(function (v, i) {
       var x = lx0 + Math.max(140, lw + 20) + i * 90; X.fillStyle = retColor(v / (o.k || 1)); X.fillRect(x, ly0, 84, 24);
@@ -123,8 +137,8 @@ window.__vcTitle = function (X, h1, L, R, y, px) {
 
   /* B) 순위 막대 (로고 + 업종 꼬리표) */
   function ranked(X, o) {
-    grain(X); head(X, o.kicker, o.h1, o.h2);
-    var top = 290, rowH = 61, max = o.rows[0].v, x0 = L + 330, bw = R - 110 - x0;
+    grain(X); head(X, o.kicker, o.h1);
+    var top = TOP, rowH = Math.min(61, (BOT - 50 - TOP) / o.rows.length), max = o.rows[0].v, x0 = L + 300, bw = R - 100 - x0;
     o.rows.forEach(function (r, i) {
       var y = top + i * rowH, cy = y + rowH / 2;
       X.fillStyle = T.soft; X.font = font(800, 22); X.textAlign = 'right'; X.textBaseline = 'middle'; X.fillText(i + 1, L + 26, cy);
@@ -149,7 +163,7 @@ window.__vcTitle = function (X, h1, L, R, y, px) {
   window.__vc = { treemap: treemap, ranked: ranked, grainOnly: grain };
 })();
 (function () {
-  var CW = 1080, CH = 1350, L = 70, R = 1010;
+  var CW = 1080, CH = 1350, L = 100, R = 980, TOP = 330, BOT = 1140;
   var T = { ink: '#101216', soft: '#6B7078', rule: '#E6E4DD', up: '#D6362C', down: '#2B6CD9', faint: '#D9D6CE' };
   var FF = "'Noto Sans KR', sans-serif";
   function font(w, px) { return w + ' ' + px + 'px ' + FF; }
@@ -159,28 +173,19 @@ window.__vcTitle = function (X, h1, L, R, y, px) {
     X.save(); X.beginPath(); X.arc(x, y, r, 0, 7); X.clip(); X.fillStyle = '#fff'; X.fillRect(x - r, y - r, 2 * r, 2 * r); X.drawImage(im, x - r, y - r, 2 * r, 2 * r); X.restore();
     X.strokeStyle = 'rgba(0,0,0,0.1)'; X.lineWidth = 2; X.beginPath(); X.arc(x, y, r, 0, 7); X.stroke();
   }
-  function head(X, kicker, h1, h2) {
-    X.textAlign = 'left'; X.textBaseline = 'alphabetic';
-    X.fillStyle = T.up; X.font = font(800, 26); X.fillText(kicker, L, 110);
-    X.fillStyle = T.ink; window.__vcTitle(X, h1, L, R, 184, 60);
-    X.fillStyle = T.soft; X.font = font(600, 30); X.fillText(h2, L, 232);
-  }
-  function foot(X, src) {
-    X.strokeStyle = T.rule; X.lineWidth = 2; X.beginPath(); X.moveTo(L, 1286); X.lineTo(R, 1286); X.stroke();
-    X.fillStyle = '#3A3E46'; X.textAlign = 'left'; X.font = font(700, 22); X.fillText(src, L, 1320);
-    X.textAlign = 'right'; X.font = font(800, 24); X.fillText('@돈굴돈굴', R, 1320);
-  }
+  function head(X, kicker, h1) { X.fillStyle = T.ink; window.__vcTitle(X, h1); }
+  function foot(X, src) { window.__vcFoot(X, src); }
 
   /* C) 순위 변천 (bump chart) */
   function bump(X, o) {
-    base.grainOnly(X); head(X, o.kicker, o.h1, o.h2);
-    var cols = o.cols, n = cols.length, x0 = L + 40, x1 = R - 190, top = 320, rowH = 86, N = 10;
+    base.grainOnly(X); head(X, o.kicker, o.h1);
+    var cols = o.cols, n = cols.length, x0 = L + 50, x1 = R - 200, top = TOP + 40, rowH = (BOT - 30 - top) / 9, N = 10;
     function xp(i) { return x0 + (x1 - x0) * i / (n - 1); }
     function yp(rk) { return top + (rk - 1) * rowH; }
     // 연도 눈금
     X.fillStyle = T.soft; X.font = font(700, 22); X.textAlign = 'center';
     cols.forEach(function (c, i) { X.fillText(c.label, xp(i), top - 40); });
-    for (var k = 1; k <= N; k++) { X.fillStyle = T.soft; X.font = font(700, 20); X.textAlign = 'right'; X.fillText(k, L + 6, yp(k) + 7); }
+    for (var k = 1; k <= N; k++) { X.fillStyle = T.soft; X.font = font(700, 20); X.textAlign = 'right'; X.fillText(k, L + 24, yp(k) + 7); }
     // 선 (흐린 것 먼저)
     var order = o.series.slice().sort(function (a, b) { return (a.hi ? 1 : 0) - (b.hi ? 1 : 0); });
     order.forEach(function (s) {
@@ -212,8 +217,8 @@ window.__vcTitle = function (X, h1, L, R, y, px) {
 
   /* D) 연초 → 지금 (dumbbell) */
   function dumbbell(X, o) {
-    base.grainOnly(X); head(X, o.kicker, o.h1, o.h2);
-    var top = 300, rowH = 62, x0 = L + 250, x1 = R - 20, max = o.max;
+    base.grainOnly(X); head(X, o.kicker, o.h1);
+    var top = TOP + 30, rowH = Math.min(62, (BOT - 50 - top) / o.rows.length), x0 = L + 230, x1 = R - 60, max = o.max;
     function xp(v) { return x0 + (x1 - x0) * Math.sqrt(v / max); }   // 큰 차이가 많아 제곱근 눈금
     [10, 50, 100, 300, 600, 1000].forEach(function (t) {
       if (t > max) return; var x = xp(t);
@@ -241,22 +246,13 @@ window.__vcTitle = function (X, h1, L, R, y, px) {
   base.bump = bump; base.dumbbell = dumbbell;
 })();
 (function () {
-  var CW = 1080, CH = 1350, L = 70, R = 1010;
+  var CW = 1080, CH = 1350, L = 100, R = 980, TOP = 330, BOT = 1140;
   var T = { ink: '#101216', soft: '#6B7078', rule: '#E6E4DD', up: '#D6362C', down: '#2B6CD9', faint: '#D9D6CE' };
   var FF = "'Noto Sans KR', sans-serif";
   function font(w, px) { return w + ' ' + px + 'px ' + FF; }
   var base = window.__vc;
-  function head(X, kicker, h1, h2) {
-    X.textAlign = 'left'; X.textBaseline = 'alphabetic';
-    X.fillStyle = T.up; X.font = font(800, 26); X.fillText(kicker, L, 110);
-    X.fillStyle = T.ink; window.__vcTitle(X, h1, L, R, 184, 60);
-    X.fillStyle = T.soft; X.font = font(600, 30); X.fillText(h2, L, 232);
-  }
-  function foot(X, src) {
-    X.strokeStyle = T.rule; X.lineWidth = 2; X.beginPath(); X.moveTo(L, 1286); X.lineTo(R, 1286); X.stroke();
-    X.fillStyle = '#3A3E46'; X.textAlign = 'left'; X.font = font(700, 22); X.fillText(src, L, 1320);
-    X.textAlign = 'right'; X.font = font(800, 24); X.fillText('@돈굴돈굴', R, 1320);
-  }
+  function head(X, kicker, h1) { X.fillStyle = T.ink; window.__vcTitle(X, h1); }
+  function foot(X, src) { window.__vcFoot(X, src); }
   function logoAt(X, im, x, y, r) {
     if (!im) return;
     X.save(); X.beginPath(); X.arc(x, y, r, 0, 7); X.clip(); X.fillStyle = '#fff'; X.fillRect(x - r, y - r, 2 * r, 2 * r); X.drawImage(im, x - r, y - r, 2 * r, 2 * r); X.restore();
@@ -275,7 +271,7 @@ window.__vcTitle = function (X, h1, L, R, y, px) {
 
   /* E) 보로노이: 업종 → 종목 */
   function voronoi(X, o) {
-    base.grainOnly(X); head(X, o.kicker, o.h1, o.h2);
+    base.grainOnly(X); head(X, o.kicker, o.h1);
     o.cells.forEach(function (g) {
       var col = o.colors[g.g] || '#7A8794';
       g.kids.forEach(function (k, i) {
@@ -300,7 +296,7 @@ window.__vcTitle = function (X, h1, L, R, y, px) {
       });
     });
     // 업종 범례
-    var lx = L, ly = 1238;
+    var lx = L, ly = BOT - 26;
     o.legend.forEach(function (s) {
       X.font = font(800, 22); var w = X.measureText(s[0] + ' ' + s[1]).width + 44;
       if (lx + w > R) { lx = L; ly += 32; }
@@ -314,8 +310,8 @@ window.__vcTitle = function (X, h1, L, R, y, px) {
 
   /* F) 원형 막대: TOP 20 올해 수익률 */
   function radial(X, o) {
-    base.grainOnly(X); head(X, o.kicker, o.h1, o.h2);
-    var cx = CW / 2, cy = 770, r0 = 140, r1 = 330, n = o.rows.length, mx = o.max;   // 막대 끝 + 이름표가 카드 안에 들도록
+    base.grainOnly(X); head(X, o.kicker, o.h1);
+    var cx = CW / 2, cy = 735, r0 = 110, r1 = 262, n = o.rows.length, mx = o.max;   // 막대 끝 + 이름표가 카드 안에 들도록
     var step = Math.PI * 2 / n;
     // 0 고리, 눈금 고리
     function rv(v) { return r0 + (r1 - r0) * Math.sqrt(Math.min(Math.max(0, v), mx) / mx); }   // 제곱근 눈금 (큰 값이 너무 길지 않게)
@@ -344,8 +340,8 @@ window.__vcTitle = function (X, h1, L, R, y, px) {
 
   /* G) 그때 vs 지금: 1995 TOP 10 → 2026 TOP 10 (기울기) */
   function thenNow(X, o) {
-    base.grainOnly(X); head(X, o.kicker, o.h1, o.h2);
-    var top = 330, rowH = 86, xl = L + 250, xr = R - 250;
+    base.grainOnly(X); head(X, o.kicker, o.h1);
+    var top = TOP + 50, rowH = (BOT - 40 - top) / 9, xl = L + 230, xr = R - 240;
     X.fillStyle = T.soft; X.font = font(800, 30); X.textAlign = 'center';
     X.fillText(o.leftLabel, xl - 110, top - 40); X.fillText(o.rightLabel, xr + 110, top - 40);
     var same = {}; o.right.forEach(function (r, i) { same[r.key] = i; });
@@ -368,16 +364,16 @@ window.__vcTitle = function (X, h1, L, R, y, px) {
       X.fillStyle = T.soft; X.font = font(700, 18); X.fillText(r.cap, xr + 72, y + 20);
     });
     X.textBaseline = 'alphabetic';
-    X.fillStyle = T.ink; X.font = font(800, 28); X.textAlign = 'left'; X.fillText(o.note, L, top + 10 * rowH + 20);
+    X.fillStyle = T.ink; X.font = font(800, 28); X.textAlign = 'left'; X.fillText(o.note || '', L, BOT);
     foot(X, o.src);
   }
 
   /* H) 크기 비교: 원 넓이 = 시총 — 위 줄 큰 둘, 아래 줄 작은 것들 */
   function compare(X, o) {
-    base.grainOnly(X); head(X, o.kicker, o.h1, o.h2);
+    base.grainOnly(X); head(X, o.kicker, o.h1);
     var a = o.items[0], b = o.items[1], gap = 30;
     var k = (R - L - gap) / (2 * (Math.sqrt(a.v) + Math.sqrt(b.v)));
-    var ra = k * Math.sqrt(a.v), rb = k * Math.sqrt(b.v), y1 = 300 + ra + 30;
+    var ra = k * Math.sqrt(a.v), rb = k * Math.sqrt(b.v), y1 = TOP + ra + 10;
     var pos = [[L + ra, y1], [R - rb, y1 - ra + rb + 40]];
     var x = R, y2 = Math.max(pos[0][1] + ra, pos[1][1] + rb) + 40;
     o.items.slice(2).forEach(function (it) { var r = k * Math.sqrt(it.v); x -= r; pos.push([x, y2 + r]); x -= r + 24; });
@@ -398,7 +394,7 @@ window.__vcTitle = function (X, h1, L, R, y, px) {
       }
       X.textBaseline = 'alphabetic';
     });
-    if (o.note) { X.fillStyle = T.ink; X.font = font(800, 28); X.textAlign = 'left'; X.fillText(o.note, L, 1240); }
+    if (o.note) { X.fillStyle = T.ink; X.font = font(800, 28); X.textAlign = 'left'; X.fillText(o.note, L, BOT); }
     foot(X, o.src);
   }
   base.voronoi = voronoi; base.radial = radial; base.thenNow = thenNow; base.compare = compare;

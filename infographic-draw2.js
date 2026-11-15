@@ -1,7 +1,7 @@
 /* 인포그래픽 2차 — 부호 있는 막대 · 돈의 흐름(생키) · 100% 막대 · 수익률 퀼트 · 성장 곡선 · 와플 · 맞수 비교
    window.__vc 에 덧붙인다 (infographic-draw.js 다음에 읽는다). 색은 밝은 모드 기준으로 쓰고, 어두운 모드는 card-theme.js 가 바꾼다. */
 (function () {
-  var CW = 1080, CH = 1350, L = 70, R = 1010;
+  var CW = 1080, CH = 1350, L = 100, R = 980, TOP = 330, BOT = 1140;
   var T = { ink: '#101216', soft: '#6B7078', rule: '#E6E4DD', up: '#D6362C', down: '#2B6CD9', faint: '#D9D6CE', gray: '#C9C6BC' };
   var FF = "'Noto Sans KR', sans-serif";
   function font(w, px) { return w + ' ' + px + 'px ' + FF; }
@@ -11,29 +11,19 @@
     if (!im) return;
     X.save(); X.beginPath(); X.arc(x, y, r, 0, 7); X.clip(); X.fillStyle = '#fff'; X.fillRect(x - r, y - r, 2 * r, 2 * r); X.drawImage(im, x - r, y - r, 2 * r, 2 * r); X.restore();
   }
-  function head(X, o) {
-    base.grainOnly(X);
-    X.textAlign = 'left'; X.textBaseline = 'alphabetic';
-    X.fillStyle = T.up; X.font = font(800, 26); X.fillText(o.kicker, L, 110);
-    X.fillStyle = T.ink; window.__vcTitle(X, o.h1, L, R, 186, 64);
-    if (o.h2) { X.fillStyle = T.soft; X.font = font(600, 30); X.fillText(o.h2, L, 236); }
-  }
-  function foot(X, src) {
-    X.strokeStyle = T.rule; X.lineWidth = 2; X.beginPath(); X.moveTo(L, 1286); X.lineTo(R, 1286); X.stroke();
-    X.fillStyle = '#3A3E46'; X.textAlign = 'left'; X.textBaseline = 'alphabetic'; X.font = font(700, 22); X.fillText(src, L, 1320);
-    X.textAlign = 'right'; X.font = font(800, 24); X.fillText('@돈굴돈굴', R, 1320);
-  }
+  function head(X, o) { base.grainOnly(X); X.fillStyle = T.ink; window.__vcTitle(X, o.h1); }
+  function foot(X, src) { window.__vcFoot(X, src); }
   function fit(X, s, w) { if (X.measureText(s).width <= w) return s; while (s.length > 1 && X.measureText(s + '…').width > w) s = s.slice(0, -1); return s + '…'; }
 
   /* 1) 부호 있는 막대 — 행: {n, sub, v, lab, logo, c} · 음수가 있으면 가운데 0 축 */
   function bars(X, o) {
     head(X, o);
-    var rows = o.rows, n = rows.length, top = o.top || 280, avail = (o.bottom || 1240) - top, rowH = Math.min(n <= 8 ? 120 : 78, avail / n);
+    var rows = o.rows, n = rows.length, top = TOP, avail = BOT - top - (o.legend ? 46 : 0), rowH = Math.min(n <= 8 ? 120 : 78, avail / n);
     var neg = rows.some(function (r) { return r.v < 0; }), pos = rows.some(function (r) { return r.v > 0; });
     var mx = Math.max.apply(null, rows.map(function (r) { return Math.abs(r.v); })) || 1;
-    var x0 = L + 340, bw = R - 120 - x0, zero = neg && pos ? x0 + bw * 0.35 : neg ? R - 120 : x0;
+    var x0 = L + 310, bw = R - 110 - x0, zero = neg && pos ? x0 + bw * 0.35 : neg ? R - 110 : x0;
     var span = neg && pos ? bw * 0.65 : bw, nspan = neg && pos ? bw * 0.35 - 10 : bw;
-    if (neg && pos) { var mp = Math.max.apply(null, rows.map(function (r) { return r.v; })), mn = -Math.min.apply(null, rows.map(function (r) { return r.v; })); var f = mp / (mp + mn); zero = x0 + 90 + (bw - 90) * (1 - f) * 0.85; span = R - 120 - zero; nspan = zero - x0 - 90; mx = Math.max(mp, 1e-9); var mxn = Math.max(mn, 1e-9); }
+    if (neg && pos) { var mp = Math.max.apply(null, rows.map(function (r) { return r.v; })), mn = -Math.min.apply(null, rows.map(function (r) { return r.v; })); var f = mp / (mp + mn); zero = x0 + 90 + (bw - 90) * (1 - f) * 0.85; span = R - 110 - zero; nspan = zero - x0 - 90; mx = Math.max(mp, 1e-9); var mxn = Math.max(mn, 1e-9); }
     rows.forEach(function (r, i) {
       var y = top + i * rowH, cy = y + rowH / 2, big = rowH >= 66;
       X.fillStyle = T.soft; X.font = font(800, 22); X.textAlign = 'right'; X.textBaseline = 'middle'; X.fillText(i + 1, L + 26, cy);
@@ -53,7 +43,7 @@
     if (neg && pos) { X.strokeStyle = T.soft; X.lineWidth = 2; X.beginPath(); X.moveTo(zero, top - 6); X.lineTo(zero, top + n * rowH + 6); X.stroke(); }
     X.textBaseline = 'alphabetic';
     if (o.legend) {
-      var lx = L, ly = top + n * rowH + 44;
+      var lx = L, ly = top + n * rowH + 40;
       o.legend.forEach(function (g) {
         X.fillStyle = g[1]; rr(X, lx, ly - 16, 22, 22, 4); X.fill();
         X.fillStyle = T.ink; X.font = font(700, 22); X.textAlign = 'left'; X.fillText(g[0], lx + 30, ly + 2);
@@ -72,8 +62,8 @@
     head(X, o);
     var GREEN = '#2E9E6B', RED = '#D9677B', GR = '#5D636D', GS = 'rgba(46,158,107,0.30)', RS = 'rgba(217,103,123,0.28)', NS = 'rgba(93,99,109,0.22)';
     var rev = o.rev, op = Math.max(o.op, 0), ni = o.ni, cost = rev - op, extra = Math.max(ni - op, 0), tax = Math.max(op - Math.max(ni, 0), 0), nip = Math.max(ni, 0);
-    var top = 330, H = 760, s = H / Math.max(rev, op + extra) * 0.86, gap = 46, nw = 30;
-    var xA = L + 150, xB = 520, xC = 830;
+    var top = TOP + 10, H = BOT - TOP - 120, s = H / Math.max(rev, op + extra) * 0.86, gap = 40, nw = 28;
+    var xA = L + 150, xB = 490, xC = 780;
     // 노드
     var hRev = rev * s, yRev = top + (H - hRev) / 2 - 20;
     var hOp = op * s, hCost = cost * s, yOp = top, hEx = extra * s, yEx = yOp + hOp + gap * 0.5, yCost = extra > 0 ? yEx + hEx + gap * 0.7 : yOp + hOp + gap;
@@ -106,7 +96,7 @@
     if (hTax > 0.5) lab(xC + nw + 14, yTax + Math.min(hTax / 2, 60) - 10 + (hTax < 60 ? 10 : 0), 'left', '세금·영업외', o.money(-tax), '', T.soft);
     if (extra > 0) { X.textAlign = 'right'; X.fillStyle = GREEN; X.font = font(800, 20); X.fillText('영업외 이익 +' + o.money(extra), xB - 10, yEx + hEx / 2 + 7); }
     // 100원으로 다시 말하기
-    var y100 = 1200;
+    var y100 = BOT;
     X.textAlign = 'left'; X.fillStyle = T.ink; X.font = font(800, 28);
     X.fillText('100원어치 팔면 → 영업이익 ' + Math.round(o.op / rev * 100) + '원 → 순이익 ' + Math.round(ni / rev * 100) + '원', L, y100);
     foot(X, o.src);
@@ -115,9 +105,9 @@
   /* 3) 100% 쌓은 막대 — 행: {n, logo, parts:[v...]} · o.keys:[[이름, 색, 글자색]] */
   function stack100(X, o) {
     head(X, o);
-    var rows = o.rows, top = 300, rowH = Math.min(rows.length <= 6 ? 120 : 46, 880 / rows.length), x0 = L + 250, w = R - x0;
+    var rows = o.rows, top = TOP + 50, rowH = Math.min(rows.length <= 6 ? 120 : 46, (BOT - top) / rows.length), x0 = L + 230, w = R - x0;
     // 범례
-    var lx = L, ly = 262;
+    var lx = L, ly = TOP + 10;
     o.keys.forEach(function (k) { X.fillStyle = k[1]; rr(X, lx, ly - 18, 22, 22, 4); X.fill(); X.fillStyle = T.ink; X.font = font(700, 22); X.textAlign = 'left'; X.fillText(k[0], lx + 30, ly); lx += X.measureText(k[0]).width + 62; });
     rows.forEach(function (r, i) {
       var cy = top + i * rowH + rowH / 2, x = x0, bh = rowH - 10;
@@ -140,7 +130,7 @@
   /* 4) 해마다 1등부터 꼴찌까지 (수익률 퀼트) — o.cols:[라벨], o.assets:[{n, c, ink, years:[v|null]}] */
   function quilt(X, o) {
     head(X, o);
-    var nc = o.cols.length, na = o.assets.length, top = 300, cw = (R - L) / nc, ch = Math.min(96, 900 / na);
+    var nc = o.cols.length, na = o.assets.length, top = TOP + 30, cw = (R - L) / nc, ch = Math.min(96, (BOT - 46 - top) / na);
     X.textAlign = 'center'; X.fillStyle = T.soft; X.font = font(800, 22);
     o.cols.forEach(function (c, i) { X.fillText(c, L + cw * i + cw / 2, top - 16); });
     o.cols.forEach(function (c, i) {
@@ -162,7 +152,7 @@
   /* 5) 성장 곡선 — o.cols:[라벨], o.series:[{n, c, vals:[원]}], 로그 눈금 */
   function growth(X, o) {
     head(X, o);
-    var top = 300, bot = 1160, x0 = L + 60, x1 = R - 210, all = [];
+    var top = TOP + 10, bot = BOT - 44, x0 = L + 60, x1 = R - 200, all = [];
     o.series.forEach(function (s) { s.vals.forEach(function (v) { if (v) all.push(v); }); });
     var lo = Math.min.apply(null, all) * 0.9, hi = Math.max.apply(null, all) * 1.1, LL = Math.log(lo), LH = Math.log(hi);
     var xp = function (i) { return x0 + (x1 - x0) * i / (o.cols.length - 1); }, yp = function (v) { return bot - (bot - top) * (Math.log(v) - LL) / (LH - LL); };
@@ -194,11 +184,11 @@
   /* 6) 와플 (100칸) — o.items:[{n, w(%), c, logo}] 남는 칸은 '그 외' */
   function waffle(X, o) {
     head(X, o);
-    var gx = L, gy = 300, cell = 58, g = 6, cells = [], used = 0;
+    var gx = L, gy = TOP + 10, cell = 48, g = 5, cells = [], used = 0;
     o.items.forEach(function (it, i) { var k = Math.round(it.w); if (used + k > 100) k = 100 - used; for (var j = 0; j < k; j++) cells.push(it.c); used += k; });
     while (cells.length < 100) cells.push(T.gray);
     for (var i = 0; i < 100; i++) { var cx = gx + (i % 10) * (cell + g), cy = gy + Math.floor(i / 10) * (cell + g); X.fillStyle = cells[i]; rr(X, cx, cy, cell, cell, 8); X.fill(); }
-    var lx = gx + 10 * (cell + g) + 40, ly = gy + 8, rowH = Math.min(62, 620 / (o.items.length + 1));
+    var lx = gx + 10 * (cell + g) + 40, ly = gy + 4, rowH = Math.min(52, 530 / (o.items.length + 1));
     o.items.concat([{ n: '그 외', w: Math.max(0, 100 - o.items.reduce(function (s, x) { return s + x.w; }, 0)), c: T.gray }]).forEach(function (it, i) {
       var cy = ly + i * rowH + rowH / 2;
       X.fillStyle = it.c; rr(X, lx, cy - 13, 26, 26, 6); X.fill();
@@ -217,10 +207,10 @@
   /* 7) 맞수 비교 — o.pairs:[{cat, a:{n,cap,v,logo,c}, b:{...}}] 원 넓이 = 시총 */
   function rivals(X, o) {
     head(X, o);
-    var top = 270, rowH = Math.min(165, 960 / o.pairs.length), mx = 0;
+    var top = TOP, rowH = Math.min(150, (BOT - TOP) / o.pairs.length), mx = 0;
     o.pairs.forEach(function (p) { mx = Math.max(mx, p.a.v, p.b.v); });
     var rmax = rowH * 0.36, rad = function (v) { return Math.max(5, rmax * Math.sqrt(v / mx)); };
-    var xa = 330, xb = 590;
+    var xa = 350, xb = 600;
     o.pairs.forEach(function (p, i) {
       var y = top + i * rowH, cy = y + rowH / 2 + 10;
       X.fillStyle = T.up; X.font = font(800, 20); X.textAlign = 'left'; X.textBaseline = 'alphabetic'; X.fillText(p.cat, L, y + 26);

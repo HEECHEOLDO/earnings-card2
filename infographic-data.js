@@ -136,7 +136,7 @@
     sectors: function (o) { return (o === 'us' ? '미국 ' : '') + '올해 업종 성적표'; },
     fx: function (o) { return '원·달러 환율 ' + o + '년, 어디까지 왔나'; },
     concentration: function () { return '한국 증시, 몇 종목에 쏠려 있을까'; },
-    range52: function (o) { return (o === 'us' ? '미국' : '한국') + ' 시총 TOP 20, 지금 1년 중 어디쯤?'; },
+    range52: function (o) { return (o === 'us' ? '미국' : '한국') + ' 시총 TOP 15, 지금 1년 중 어디쯤?'; },
     revgrowth: function () { return '10년 동안 / 매출이 가장 빨리 큰 회사는?'; },
     roe: function () { return '내 돈 100원으로 / 가장 잘 버는 회사는?'; },
     gurucommon: function () { return '투자 대가들이 함께 담은 종목은?'; },
@@ -340,7 +340,7 @@
       top.forEach(function (k) { var s = SECTOR_US[st[k].s] || st[k].s || '기타'; if (!g[s]) { g[s] = []; order.push(s); } g[s].push({ code: k, n: st[k].n, ko: ko(k, st[k].n), v: st[k].c, cap: usd(st[k].c) }); });
       var groups = order.map(function (s) { return { g: s, v: g[s].reduce(function (t, x) { return t + x.v; }, 0), kids: g[s] }; });
       var tot = groups.reduce(function (s, x) { return s + x.v; }, 0);
-      var bound = circle(540, 760, 440, 96), G = best(bound, groups.map(function (x) { return x.v; }), 300, 3);
+      var bound = circle(540, 712, 372, 96), G = best(bound, groups.map(function (x) { return x.v; }), 300, 3);
       groups.forEach(function (x, i) {
         x.poly = G[i];
         if (x.poly.length < 3) { x.kids = []; return; }
@@ -751,9 +751,9 @@
       return Promise.resolve({ fn: 'stack100', o: { kicker: '시가총액 쏠림', h1: '한국 증시, TOP 10이 ' + Math.round(top10) + '%를 차지한다', rows: rows,
         keys: [['1위', '#C0392B', '#fff'], ['2~5위', '#E0A43A', '#111214'], ['6~10위', '#F2C94C', '#111214'], ['11~50위', '#7A8794', '#fff'], ['나머지', '#E3E0D8', '#3A3E46']] } });
     } },
-    { id: 'range52', name: '52주 최고·최저 사이', icon: '⊢', opts: [['kr', '한국 TOP 20'], ['us', '미국 TOP 20']], build: function (cc) {
+    { id: 'range52', name: '52주 최고·최저 사이', icon: '⊢', opts: [['kr', '한국 TOP 15'], ['us', '미국 TOP 15']], build: function (cc) {
       var us = cc === 'us', st = us ? D.us.stocks : D.st;
-      var codes = Object.keys(st).filter(function (c) { return st[c].c && (us || c.slice(-1) === '0'); }).sort(function (a, b) { return st[b].c - st[a].c; }).slice(0, 20);
+      var codes = Object.keys(st).filter(function (c) { return st[c].c && (us || c.slice(-1) === '0'); }).sort(function (a, b) { return st[b].c - st[a].c; }).slice(0, 15);
       return Promise.all(codes.map(function (c) { return JJ('./data/chart/' + (us ? 'us/' : 'kr/') + c + '.json'); })).then(function (js) {
         var last = '';
         var rows = codes.map(function (c, i) {

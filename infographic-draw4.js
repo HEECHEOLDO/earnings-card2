@@ -1,31 +1,22 @@
 /* 인포그래픽 4차 — 경제 지표용: 월별 막대 · 작은 그래프 여러 개 · 여러 선 */
 (function () {
-  var L = 70, R = 1010;
+  var L = 100, R = 980, TOP = 330, BOT = 1140;
   var T = { ink: '#101216', soft: '#6B7078', rule: '#E6E4DD', up: '#D6362C', down: '#2B6CD9', gray: '#C9C6BC' };
   var FF = "'Noto Sans KR', sans-serif";
   function font(w, px) { return w + ' ' + px + 'px ' + FF; }
   var base = window.__vc;
   function rr(X, x, y, w, h, r) { r = Math.max(0, Math.min(r, w / 2, Math.abs(h) / 2)); X.beginPath(); X.moveTo(x + r, y); X.arcTo(x + w, y, x + w, y + h, r); X.arcTo(x + w, y + h, x, y + h, r); X.arcTo(x, y + h, x, y, r); X.arcTo(x, y, x + w, y, r); X.closePath(); }
-  function head(X, o) {
-    base.grainOnly(X);
-    X.textAlign = 'left'; X.textBaseline = 'alphabetic';
-    if (o.kicker) { X.fillStyle = T.up; X.font = font(800, 26); X.fillText(o.kicker, L, 110); }
-    X.fillStyle = T.ink; window.__vcTitle(X, o.h1, L, R, 186, 64);
-  }
-  function foot(X, src) {
-    X.strokeStyle = T.rule; X.lineWidth = 2; X.beginPath(); X.moveTo(L, 1286); X.lineTo(R, 1286); X.stroke();
-    X.fillStyle = '#3A3E46'; X.textAlign = 'left'; X.textBaseline = 'alphabetic'; X.font = font(700, 22); X.fillText(src, L, 1320);
-    X.textAlign = 'right'; X.font = font(800, 24); X.fillText('@돈굴돈굴', R, 1320);
-  }
+  function head(X, o) { base.grainOnly(X); X.fillStyle = T.ink; window.__vcTitle(X, o.h1); }
+  function foot(X, src) { window.__vcFoot(X, src); }
   function nice(lo, hi, n) { var st = Math.pow(10, Math.floor(Math.log10((hi - lo) / n || 1))); while ((hi - lo) / st > n + 1) st *= st.toString()[0] === '2' ? 2.5 : 2; return st; }
 
   /* 1) 월별 막대 — o.bars:[{lab, v, c, hi}], o.fmt(v), o.stats:[[큰 글자, 설명, 색]] · o.line: [v|null] (전년 같은 달 등 겹쳐 그리기) */
   function columns(X, o) {
     head(X, o);
-    var top = o.stats ? 420 : 300, bot = 1130;
+    var top = o.stats ? TOP + 150 : TOP + 10, bot = BOT - 100;
     if (o.stats) {
       var sw = (R - L) / o.stats.length;
-      o.stats.forEach(function (s, i) { var x = L + sw * i; X.textAlign = 'left'; X.fillStyle = s[2] || T.ink; X.font = font(900, 52); X.fillText(s[0], x, 300); X.fillStyle = T.soft; X.font = font(700, 21); X.fillText(s[1], x, 336); });
+      o.stats.forEach(function (s, i) { var x = L + sw * i; X.textAlign = 'left'; X.fillStyle = s[2] || T.ink; X.font = font(900, 52); X.fillText(s[0], x, TOP + 44); X.fillStyle = T.soft; X.font = font(700, 21); X.fillText(s[1], x, TOP + 80); });
     }
     var vs = o.bars.map(function (b) { return b.v; }).concat((o.line || []).filter(function (v) { return v != null; }));
     var mx = Math.max.apply(null, vs) * 1.12, mn = Math.min(0, Math.min.apply(null, vs));
@@ -44,14 +35,14 @@
       o.line.forEach(function (v, i) { if (v == null) { on = false; return; } var x = x0 + i * bw + bw / 2; if (on) X.lineTo(x, yp(v)); else X.moveTo(x, yp(v)); on = true; }); X.stroke(); X.setLineDash([]);
     }
     if (o.legend) { var lx = L, ly = bot + 64; o.legend.forEach(function (g2) { X.fillStyle = g2[1]; if (g2[2]) { X.fillRect(lx, ly - 9, 26, 3); } else { rr(X, lx, ly - 18, 22, 22, 4); X.fill(); } X.fillStyle = T.ink; X.font = font(700, 21); X.textAlign = 'left'; X.fillText(g2[0], lx + 32, ly); lx += X.measureText(g2[0]).width + 66; }); }
-    if (o.note) { X.textAlign = 'left'; X.fillStyle = T.ink; X.font = font(800, 25); X.fillText(o.note, L, 1250); }
+    if (o.note) { X.textAlign = 'left'; X.fillStyle = T.ink; X.font = font(800, 25); X.fillText(o.note, L, BOT); }
     foot(X, o.src);
   }
 
   /* 2) 작은 그래프 여러 개 — o.items:[{n, sub, big, chg, up, pts:[v...], c}] 2열 */
   function multiples(X, o) {
     head(X, o);
-    var cols = o.cols || 2, n = o.items.length, rows = Math.ceil(n / cols), top = 260, gap = 22, cw = (R - L - gap * (cols - 1)) / cols, ch = Math.min(260, (1230 - top - gap * (rows - 1)) / rows);
+    var cols = o.cols || 2, n = o.items.length, rows = Math.ceil(n / cols), top = TOP, gap = 20, cw = (R - L - gap * (cols - 1)) / cols, ch = Math.min(260, (BOT - top - gap * (rows - 1)) / rows);
     o.items.forEach(function (it, i) {
       var x = L + (i % cols) * (cw + gap), y = top + Math.floor(i / cols) * (ch + gap);
       X.fillStyle = 'rgba(16,18,22,0.035)'; rr(X, x, y, cw, ch, 14); X.fill();
@@ -76,7 +67,7 @@
   /* 3) 여러 선 — o.series:[{n, c, pts:[[t(0~1), v]], w}], o.ticks:[[t, 라벨]], o.fmt, o.zero(가로 기준선) */
   function lines(X, o) {
     head(X, o);
-    var top = 300, bot = 1140, x0 = L + 70, x1 = R - 190, all = [];
+    var top = TOP + 10, bot = BOT - 90, x0 = L + 70, x1 = R - 190, all = [];
     o.series.forEach(function (s) { s.pts.forEach(function (p) { all.push(p[1]); }); });
     var lo = Math.min.apply(null, all), hi = Math.max.apply(null, all), pad = (hi - lo) * 0.08 || 1; lo -= pad; hi += pad; if (o.zero != null) { lo = Math.min(lo, o.zero); hi = Math.max(hi, o.zero); }
     var xp = function (t) { return x0 + (x1 - x0) * t; }, yp = function (v) { return bot - (bot - top) * (v - lo) / (hi - lo); };
@@ -96,7 +87,7 @@
       X.textAlign = 'left'; X.textBaseline = 'middle'; X.fillStyle = T.ink; X.font = font(800, 20); X.fillText(e.s.n, x1 + 22, e.y - 11);
       X.fillStyle = e.s.c; X.font = font(900, 22); X.fillText(o.fmt(e.v), x1 + 22, e.y + 13); X.textBaseline = 'alphabetic';
     });
-    if (o.note) { X.textAlign = 'left'; X.fillStyle = T.ink; X.font = font(800, 25); X.fillText(o.note, L, 1240); }
+    if (o.note) { X.textAlign = 'left'; X.fillStyle = T.ink; X.font = font(800, 25); X.fillText(o.note, L, BOT); }
     foot(X, o.src);
   }
 
