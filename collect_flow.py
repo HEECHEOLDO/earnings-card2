@@ -232,7 +232,7 @@ def usable(code):
     if not d.get("start") or not d.get("end"):
         return False
     gross = d.get("gross") if d.get("gross") is not None else rev - (d.get("cogs") or 0)
-    if gross - op < 0:
+    if gross - op < 0 or gross < 0:
         return False
     days = (date.fromisoformat(d["end"]) - date.fromisoformat(d["start"])).days
     if not (80 <= days <= 100 or 350 <= days <= 380):

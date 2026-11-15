@@ -220,8 +220,9 @@
   }
   function SANKEY_OPTS() {
     if (ONLY && D.flow) {
-      var cap = function (k) { var x = D.flow[k]; return x.m === 'KR' ? ((D.st[k] || {}).c || 0) : ((D.us.stocks[k] || {}).c || 0) * D.fx / 1e4; };
-      return Object.keys(D.flow).sort(function (a, b) { return cap(b) - cap(a); }).map(function (k) { var x = D.flow[k]; return [(x.m === 'KR' ? 'kr:' : 'us:') + k, x.m === 'KR' ? x.n : ko(k, x.n)]; });
+      var cap = function (k) { var x = D.flow[k]; return x.m === 'KR' ? ((D.st[k] || {}).c || 0) : x.m === 'US' ? ((D.us.stocks[k] || {}).c || 0) * D.fx / 1e4 : 0; };
+      var pre = { KR: 'kr:', US: 'us:', UL: 'ul:' };
+      return Object.keys(D.flow).sort(function (a, b) { return cap(b) - cap(a) || String(D.flow[a].n).localeCompare(String(D.flow[b].n), 'ko'); }).map(function (k) { var x = D.flow[k]; return [(pre[x.m] || 'kr:') + k, x.m === 'US' ? ko(k, x.n) : x.n]; });
     }
     var st = D.st, kr = Object.keys(st).filter(function (c) { return c.slice(-1) === '0' && st[c].c; }).sort(function (a, b) { return st[b].c - st[a].c; }).slice(0, 15)
       .map(function (c) { return ['kr:' + c, st[c].n]; });
@@ -428,14 +429,14 @@
     } },
     /* ---------------- 2차: 실적 · 지수 · 수익률 · 주주 · 포트폴리오 · 미국 · 맞수 ---------------- */
     { id: 'sankey', name: '돈의 흐름', icon: '⤳', opts: function () { return SANKEY_OPTS(); }, build: function (key) {
-      var us = key.slice(0, 3) === 'us:', code = key.slice(3);
+      var us = key.slice(0, 3) === 'us:', ul = key.slice(0, 3) === 'ul:', code = key.slice(3);
       var won = function (v) { var a = Math.abs(v); return (v < 0 ? '-' : '') + (a >= 1e4 ? (a / 1e4).toFixed(a >= 1e5 ? 0 : 1) + '조' : Math.round(a).toLocaleString() + '억'); };
       var money = us ? function (v) { return won(v * D.fx / 100); } : won;      // 해외: 백만달러 × 오늘 환율 → 억원
       // 세부 손익(data/flow)이 있으면 매출원가·판관비·연구개발비·법인세까지 나눈 그림으로
       return JJ('./data/flow/' + code + '.json').then(function (f) {
-        if (f && f.rev > 0 && f.op > 0 && f.op < f.rev && f.ni != null) {
+        if (f && f.rev > 0 && f.op < f.rev && f.ni != null && f.rev - (f.cogs || 0) >= 0) {        // 영업손실이어도 그린다(손실 모양)
           var nm2 = us ? ko(code, (D.us.stocks[code] || {}).n || code) : f.name;
-          return logo({ code: code }, us).then(function (r) {
+          return (ul ? img('./logo/unlisted/' + code + '.png').then(function (i) { return { logo: i }; }) : logo({ code: code }, us)).then(function (r) {
             var gross = f.gross != null ? f.gross : f.rev - (f.cogs || 0), opex = gross - f.op, items = (f.items || []).map(function (x) { return Array.isArray(x) ? { n: flowKo(x[0]), v: x[1] } : x; });
             if (!items.length) {                      // 영업비용 세부가 따로 없으면 손익계산서 항목으로
               if (f.rnd) items.push({ n: '연구개발비', v: f.rnd });
@@ -1079,15 +1080,25 @@
     function drawOpts(c) {
       var box = $('opts'), list = optsOf(c); box.innerHTML = ''; box.hidden = !list;
       if (!list) return;
-      if (ONLY && c.id === 'sankey') {             // 회사가 많아서 국내/해외 + 고르기 상자
+      if (ONLY && c.id === 'sankey') {             // 회사가 많아서 국내/해외/비상장 + 찾기 + 고르기 상자
         var mk = (sel[c.id] || 'kr:').slice(0, 3);
-        [['kr:', '국내'], ['us:', '해외']].forEach(function (m) {
-          var b = document.createElement('button'); b.className = 'chip'; b.textContent = m[1]; b.setAttribute('aria-pressed', String(mk === m[0]));
+        [['kr:', '국내'], ['us:', '해외'], ['ul:', '비상장']].forEach(function (m) {
+          var n = list.filter(function (o) { return o[0].slice(0, 3) === m[0]; }).length; if (!n) return;
+          var b = document.createElement('button'); b.className = 'chip'; b.textContent = m[1] + ' ' + n.toLocaleString(); b.setAttribute('aria-pressed', String(mk === m[0]));
           b.addEventListener('click', function () { var f = list.filter(function (o) { return o[0].slice(0, 3) === m[0]; })[0]; if (f) { sel[c.id] = f[0]; pick(c.id); } }); box.appendChild(b);
         });
+        var q = document.createElement('input'); q.type = 'search'; q.className = 'co-q'; q.placeholder = '회사 이름 찾기'; q.setAttribute('aria-label', '회사 이름 찾기'); q.value = sel.__q || '';
         var se = document.createElement('select'); se.className = 'co-sel'; se.setAttribute('aria-label', '회사 고르기');
-        list.filter(function (o) { return o[0].slice(0, 3) === mk; }).forEach(function (o) { var op = document.createElement('option'); op.value = o[0]; op.textContent = o[1]; if (o[0] === sel[c.id]) op.selected = true; se.appendChild(op); });
-        se.addEventListener('change', function () { sel[c.id] = se.value; pick(c.id); }); box.appendChild(se);
+        function fill() {
+          var w = q.value.trim().toLowerCase(), pool = w ? list : list.filter(function (o) { return o[0].slice(0, 3) === mk; });
+          var hit = pool.filter(function (o) { return !w || o[1].toLowerCase().indexOf(w) >= 0 || o[0].slice(3).toLowerCase() === w; }).slice(0, 400);
+          if (!hit.some(function (o) { return o[0] === sel[c.id]; })) { var cur0 = list.filter(function (o) { return o[0] === sel[c.id]; })[0]; if (cur0) hit.unshift(cur0); }
+          se.innerHTML = ''; hit.forEach(function (o) { var op = document.createElement('option'); op.value = o[0]; op.textContent = o[1] + (w ? ' · ' + { 'kr:': '국내', 'us:': '해외', 'ul:': '비상장' }[o[0].slice(0, 3)] : ''); if (o[0] === sel[c.id]) op.selected = true; se.appendChild(op); });
+        }
+        q.addEventListener('input', function () { sel.__q = q.value; fill(); });
+        q.addEventListener('keydown', function (e) { if (e.key === 'Enter' && se.options.length) { var v = se.options[se.options[0].value === sel[c.id] && se.options.length > 1 ? 1 : 0].value; sel[c.id] = v; pick(c.id); } });
+        se.addEventListener('change', function () { sel[c.id] = se.value; pick(c.id); });
+        fill(); box.appendChild(q); box.appendChild(se);
         return;
       }
       list.forEach(function (o) {

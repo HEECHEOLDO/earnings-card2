@@ -339,9 +339,71 @@
     X.font = font(w, px); if (maxW) while (px > 14 && X.measureText(s).width > maxW) { px -= 1; X.font = font(w, px); }
     X.fillStyle = col; X.textAlign = align || 'left'; X.fillText(s, x, y); return px;
   }
+  /* 영업손실인 회사 — 영업비용이 매출총이익보다 크다. 모자란 만큼(영업손실)을 위에서 들여와 영업비용을 채운다 */
+  function sankeyLoss(X, o) {
+    var m = o.money, rev = o.rev, cogs = Math.max(0, o.cogs || 0), gross = rev - cogs, op = o.op, L0 = -op, opex = gross - op, ni = o.ni;
+    var segs = (o.segs || []).filter(function (x) { return x.v > rev * 0.002; }), items = (o.items || []).filter(function (x) { return x.v > opex * 0.004; });
+    var hasSeg = segs.length >= 2, hasG = cogs > rev * 0.005 && gross > 0, hasItems = items.length >= 2, DK = '#8E2430', DKS = 'rgba(142,36,48,0.30)';
+    var lx = L, ly = TOP + 2;
+    [['매출', BL], ['이익', GN], ['비용·손실', RD]].forEach(function (k) { X.fillStyle = k[1]; X.fillRect(lx, ly - 4, 30, 6); X.fillStyle = SOFT; X.font = font(700, 20); X.textAlign = 'left'; X.fillText(k[0], lx + 38, ly + 4); lx += k[0].length > 2 ? 134 : 104; });
+    if (o.fxNote) { X.fillStyle = SOFT; X.font = font(700, 20); X.textAlign = 'right'; X.fillText(o.fxNote, R, ly + 4); }
+    var nw = 18, x0 = L + 160, x1 = hasSeg ? L + 300 : L + 70, x4 = R - 150, x2 = x1 + (x4 - x1) * 0.36, x3 = x1 + (x4 - x1) * 0.68;
+    var top = TOP + 100, bot = BOT - 8, LH = 54;
+    function place(s) {
+      var g = { s: s, hR: rev * s, hG: Math.max(0, gross) * s, hC: cogs * s, hL: L0 * s, hE: opex * s };
+      g.yL = top + 40;                                            // 영업손실(모자란 돈) — 맨 위
+      g.yG = g.yL + g.hL + 50; g.yR = g.yG; g.yC = g.yG + g.hG + 50; g.yE = g.yL;
+      var y = g.yE; g.right = [];
+      if (hasItems) {
+        var sum = items.reduce(function (a, x) { return a + Math.max(x.v * s, LH); }, 0), slot = Math.min(40, Math.max(8, (bot - y - sum) / items.length));
+        items.forEach(function (it) { var h = it.v * s; g.right.push({ n: it.n, v: it.v, y: y + Math.max(0, (LH - h) / 2), h: h }); y += Math.max(h, LH) + slot; });
+      }
+      g.low = Math.max(g.yR + g.hR, hasG ? g.yC + g.hC + 60 : 0, g.yE + g.hE + 60, y - 10);
+      return g;
+    }
+    var sc = (bot - top) * 0.6 / Math.max(rev, L0 + gross), g = place(sc);
+    for (var k = 0; k < 16 && g.low > bot; k++) { sc *= 0.92; g = place(sc); }
+    for (k = 0; k < 12 && g.low < bot - 60; k++) { var g2 = place(sc * 1.06); if (g2.low > bot) break; sc *= 1.06; g = g2; }
+    var s = g.s;
+    if (hasSeg) {
+      var gapS = Math.min(30, (bot - top - g.hR) / (segs.length + 1)), tot = g.hR + gapS * (segs.length - 1), ys = Math.max(top, g.yR + g.hR / 2 - tot / 2), cur = g.yR;
+      var kS = rev / segs.reduce(function (a, x) { return a + x.v; }, 0);
+      segs.forEach(function (sg) { var h = sg.v * s * kS; sg.y = ys; sg.h = h; rib(X, x0 + nw, ys, ys + h, x1, cur, cur + h, BLS); ys += h + gapS; cur += h; });
+    }
+    if (hasG) { rib(X, x1 + nw, g.yR, g.yR + g.hG, x2, g.yG, g.yG + g.hG, GNS); rib(X, x1 + nw, g.yR + g.hG, g.yR + g.hR, x2, g.yC, g.yC + g.hC, RDS); }
+    var gx = hasG ? x2 : x1;
+    rib(X, x2 + nw, g.yL, g.yL + g.hL, x3, g.yE, g.yE + g.hL, DKS);                         // 영업손실 → 영업비용 위쪽
+    if (g.hG > 0) rib(X, gx + nw, g.yG, g.yG + g.hG, x3, g.yE + g.hL, g.yE + g.hE, hasG ? GNS : BLS);   // 매출총이익(원가 없으면 매출) → 영업비용 아래쪽
+    var need = g.right.reduce(function (a, r) { return a + r.h; }, 0), kE = need > 0 ? g.hE / need : 1, ce = g.yE;
+    g.right.forEach(function (r) { var h = r.h * kE; rib(X, x3 + nw, ce, ce + h, x4, r.y, r.y + r.h, RDS); ce += h; });
+    if (hasSeg) segs.forEach(function (sg) { bar(X, x0, sg.y, nw, Math.max(2, sg.h), BL); });
+    bar(X, x1, g.yR, nw, g.hR, BL);
+    if (hasG) { bar(X, x2, g.yG, nw, Math.max(2, g.hG), GN); bar(X, x2, g.yC, nw, Math.max(2, g.hC), RD); }
+    bar(X, x2, g.yL, nw, Math.max(2, g.hL), DK);
+    bar(X, x3, g.yE, nw, Math.max(2, g.hE), RD);
+    g.right.forEach(function (r) { bar(X, x4, r.y, nw, Math.max(2, r.h), RD); });
+    X.textBaseline = 'alphabetic';
+    if (hasSeg) { var lastY = -1e9; segs.forEach(function (sg) { var y = Math.max(sg.y + sg.h / 2 - 12, lastY + 60); lastY = y; txt(X, sg.n, x0 - 10, y, 700, 21, BL, 'right', x0 - L - 12); txt(X, m(sg.v), x0 - 10, y + 29, 900, 26, BL, 'right', x0 - L - 12); }); }
+    function above(x, y, name, val, col) { txt(X, val, x, y - 8, 900, 30, col, 'center'); txt(X, name, x, y - 44, 800, 22, col, 'center'); }
+    above(x1 + nw / 2, g.yR, '총 매출', m(rev), BL);
+    above(x2 + nw / 2, g.yL, '영업손실', m(op), DK);
+    if (hasG) {
+      txt(X, '매출총이익', x2 + nw + 12, g.yG + Math.min(g.hG, 120) / 2 + 4, 800, 22, GN, 'left'); txt(X, m(gross), x2 + nw + 12, g.yG + Math.min(g.hG, 120) / 2 + 36, 900, 28, GN, 'left');
+      txt(X, '매출원가', x2 + nw + 12, g.yC + Math.min(g.hC, 220) / 2, 800, 24, RD, 'left'); txt(X, m(cogs), x2 + nw + 12, g.yC + Math.min(g.hC, 220) / 2 + 36, 900, 32, RD, 'left');
+    }
+    above(x3 + nw / 2, g.yE, '영업비용', m(opex), RD);
+    var rx = x4 + nw + 10, mw = R - rx, lastR = -1e9;
+    g.right.forEach(function (r) { var y0 = Math.max(r.y + r.h / 2 - 28, lastR + 4); lastR = y0 + 56; txt(X, r.n, rx, y0 + 19, 700, 19, RD, 'left', mw); txt(X, m(r.v), rx, y0 + 47, 900, 26, RD, 'left', mw); });
+    if (!hasItems) { txt(X, '영업비용', x3 + nw + 12, g.yE + Math.min(g.hE, 200) / 2, 800, 23, RD, 'left'); }
+    // 순이익(손실)은 숫자로만 — 영업이익이 없어 흐름으로 이어 그릴 곳이 없다
+    var ny = Math.max(g.low + 20, bot - 40);
+    if (ni != null) { txt(X, (ni >= 0 ? '순이익 ' : '순손실 ') + m(ni), R, Math.min(bot - 4, ny), 900, 26, ni >= 0 ? GN : DK, 'right'); }
+    window.__vcFoot(X, o.src);
+  }
   function sankey3(X, o) {
     if (window.__sankeyDbg) { window.__sankeyDbg.ribs = []; window.__sankeyDbg.bars = []; window.__sankeyDbg.o = o; }
     base.grainOnly(X); X.fillStyle = INK; window.__vcTitle(X, o.h1, o.logo, { tail: /[은는]$/ });
+    if (o.op <= 0) { sankeyLoss(X, o); return; }
     var m = o.money, rev = o.rev, cogs = Math.max(0, o.cogs || 0), gross = rev - cogs, op = o.op, opex = gross - op, ni = o.ni, tax = Math.max(0, o.tax || 0);
     var nonop = op - tax - ni, exIn = nonop < -rev * 0.002 ? -nonop : 0, exOut = nonop > rev * 0.002 ? nonop : 0;   // 영업외 손익은 작아도 그린다 — 안 그리면 막대 높이가 안 맞아 리본이 끊긴다
     var segs = (o.segs || []).filter(function (x) { return x.v > rev * 0.002; }), items = (o.items || []).filter(function (x) { return x.v > rev * 0.002; });
