@@ -190,9 +190,9 @@
     })());
   }
   function SANKEY_OPTS() {
-    var st = D.st, kr = Object.keys(st).filter(function (c) { return c.slice(-1) === '0' && st[c].c; }).sort(function (a, b) { return st[b].c - st[a].c; }).slice(0, 10)
+    var st = D.st, kr = Object.keys(st).filter(function (c) { return c.slice(-1) === '0' && st[c].c; }).sort(function (a, b) { return st[b].c - st[a].c; }).slice(0, 15)
       .map(function (c) { return ['kr:' + c, st[c].n]; });
-    var us = D.us.stocks, u = Object.keys(us).filter(function (k) { return us[k].c; }).sort(function (a, b) { return us[b].c - us[a].c; }).slice(0, 8)
+    var us = D.us.stocks, u = Object.keys(us).filter(function (k) { return us[k].c; }).sort(function (a, b) { return us[b].c - us[a].c; }).slice(0, 12)
       .map(function (k) { return ['us:' + k, ko(k, us[k].n)]; });
     return kr.concat(u);
   }
@@ -396,18 +396,27 @@
     /* ---------------- 2차: 실적 · 지수 · 수익률 · 주주 · 포트폴리오 · 미국 · 맞수 ---------------- */
     { id: 'sankey', name: '돈의 흐름', icon: '⤳', opts: function () { return SANKEY_OPTS(); }, build: function (key) {
       var us = key.slice(0, 3) === 'us:', code = key.slice(3);
-      return JJ(us ? './data/us/' + code + '.json' : './data/' + code + '.json').then(function (d) {
+      var money = us ? function (v) { var b = v / 1000, a = Math.abs(b); return (b < 0 ? '-' : '') + (a >= 1000 ? '$' + (a / 1000).toFixed(2) + 'T' : '$' + (a >= 100 ? Math.round(a) : a.toFixed(1)) + 'B'); }
+        : function (v) { var a = Math.abs(v); return (v < 0 ? '-' : '') + (a >= 1e4 ? (a / 1e4).toFixed(a >= 1e5 ? 0 : 1) + '조' : Math.round(a).toLocaleString() + '억'); };
+      // 세부 손익(data/flow)이 있으면 매출원가·판관비·연구개발비·법인세까지 나눈 그림으로
+      return JJ('./data/flow/' + code + '.json').then(function (f) {
+        if (f && f.rev > 0 && f.op > 0 && f.op < f.rev && f.ni != null) {
+          var nm2 = us ? ko(code, (D.us.stocks[code] || {}).n || code) : f.name;
+          return logo({ code: code }, us).then(function (r) {
+            return { fn: 'sankey2', o: { h1: nm2, d: f, money: money, period: f.period.replace(' (달력 기준)', ''), logo: r.logo }, src: f.period + ' 실적 기준 · ' + (us ? '미국 SEC' : '금융감독원 DART') };
+          });
+        }
+        return null;
+      }).then(function (got) { return got || JJ(us ? './data/us/' + code + '.json' : './data/' + code + '.json').then(function (d) {
         if (!d || !d.quarterly || !d.quarterly.length) throw new Error('실적 자료 없음');
         var q = d.quarterly.filter(function (x) { return x.rev > 0 && x.op != null && x.ni != null; }).slice(-1)[0];
         var nm = us ? ko(code, (D.us.stocks[code] || {}).n || code) : d.name;
-        var money = us ? function (v) { var b = v / 1000, a = Math.abs(b); return (b < 0 ? '-' : '') + (a >= 1000 ? '$' + (a / 1000).toFixed(2) + 'T' : '$' + (a >= 100 ? Math.round(a) : a.toFixed(1)) + 'B'); }
-          : function (v) { var a = Math.abs(v); return (v < 0 ? '-' : '') + (a >= 1e4 ? (a / 1e4).toFixed(a >= 1e5 ? 0 : 1) + '조' : Math.round(a).toLocaleString() + '억'); };
         var fy = us && d.fye && d.fye !== 12;
         var period = (fy ? '회계 ' : '') + "'" + String(q.y).slice(2) + '년 ' + q.q + '분기';
         var o = { kicker: '돈의 흐름 · ' + period, h1: q.op > 0 ? nm + ', 100원 팔아 ' + Math.round(q.op / q.rev * 100) + '원 남겼다' : nm + ', 이번 분기는 영업손실',
           rev: q.rev, op: q.op, ni: q.ni, money: money, pct: function (v) { return Math.round(v / q.rev * 100) + '%'; }, period: period };
         return logo({ code: code }, us).then(function (r) { o.logo = r.logo; return { fn: 'sankey', o: o, src: period + ' 실적 기준' }; });
-      });
+      }); });
     } },
     { id: 'surprise', name: '실적 지도', icon: '▤', build: function () {
       return SCREEN().then(function (S) {

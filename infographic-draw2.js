@@ -229,3 +229,94 @@
 
   base.bars = bars; base.sankey = sankey; base.stack100 = stack100; base.quilt = quilt; base.growth = growth; base.waffle = waffle; base.rivals = rivals;
 })();
+/* 돈의 흐름 (세부) — 매출 → 매출총이익·매출원가 → 영업이익·판관비(연구개발·판매관리 등) → 순이익·법인세·영업외 */
+(function () {
+  var L = 100, R = 980, TOP = 330, BOT = 1140;
+  var T = { ink: '#101216', soft: '#6B7078' };
+  var FF = "'Noto Sans KR', sans-serif";
+  function font(w, px) { return w + ' ' + px + 'px ' + FF; }
+  var base = window.__vc;
+  function ribbon(X, xa, ya0, ya1, xb, yb0, yb1, col) {
+    var m = (xa + xb) / 2;
+    X.fillStyle = col; X.beginPath(); X.moveTo(xa, ya0); X.bezierCurveTo(m, ya0, m, yb0, xb, yb0); X.lineTo(xb, yb1); X.bezierCurveTo(m, yb1, m, ya1, xa, ya1); X.closePath(); X.fill();
+  }
+  function logoAt(X, im, x, y, r) { if (!im) return; X.save(); X.beginPath(); X.arc(x, y, r, 0, 7); X.clip(); X.fillStyle = '#fff'; X.fillRect(x - r, y - r, 2 * r, 2 * r); X.drawImage(im, x - r, y - r, 2 * r, 2 * r); X.restore(); }
+  var G1 = '#2E9E6B', GS = 'rgba(46,158,107,0.28)', RD = ['#D9677B', '#E58C6B', '#C77DB5', '#E3A35A'], RS = 'rgba(217,103,123,0.24)', GR = '#7A808A', GRS = 'rgba(122,128,138,0.24)';
+  function sankey2(X, o) {
+    base.grainOnly(X); X.fillStyle = T.ink; window.__vcTitle(X, o.h1);
+    var d = o.d, rev = d.rev, op = d.op, ni = d.ni, money = o.money, p100 = function (v) { return '100원 중 ' + Math.round(v / rev * 100) + '원'; };
+    var hasG = d.cogs != null && d.cogs > 0 && d.gross > 0;
+    var gross = hasG ? d.gross : rev, cogs = hasG ? d.cogs : 0;
+    // 영업비용 쪼개기
+    var ox = [];
+    if (d.rnd) ox.push(['연구개발비', d.rnd]);
+    if (d.sga) ox.push([d.rnd ? '판매·관리비' : '판관비', d.sga]);
+    else { if (d.sm) ox.push(['마케팅비', d.sm]); if (d.ga) ox.push(['일반관리비', d.ga]); }
+    var used = ox.reduce(function (s, x) { return s + x[1]; }, 0), etc = gross - op - used;
+    if (etc > rev * 0.01) ox.push([ox.length ? '기타 영업비용' : '영업비용', etc]);
+    else if (etc < -rev * 0.01 && ox.length) { var sc = (gross - op) / used; ox.forEach(function (x) { x[1] *= sc; }); }   // 기타 영업이익이 있으면 비례로 맞춘다
+    var tax = Math.max(0, d.tax || 0), nonop = op - tax - ni;   // + 면 영업외 손실, - 면 영업외 이익
+    var top = TOP + 10, gap = 16, H = BOT - top - 10;
+    var cnt3 = 1 + ox.length, s = (H - gap * Math.max(cnt3, 2)) / Math.max(rev, gross + Math.max(0, -nonop));
+    var nw = 22, xA = L + 120, xB = L + 330, xC = L + 555, xD = L + 760;
+    // 노드 위치
+    var hRev = rev * s, yRev = top;
+    var yG = top, hG = gross * s, yC = yG + hG + gap, hC = cogs * s;
+    var yOp = top, hOp = op * s, nodes3 = [], y = yOp + hOp + gap;
+    ox.forEach(function (x, i) { var h = x[1] * s; nodes3.push({ n: x[0], v: x[1], y: y, h: h, c: RD[i % RD.length] }); y += h + gap * 0.6; });
+    var yNi = top, hNi = Math.max(0, ni) * s, n4 = [], y4 = yNi + hNi + gap;
+    if (tax > 0) { n4.push({ n: '법인세', v: tax, y: y4, h: tax * s, c: GR }); y4 += tax * s + gap * 0.6; }
+    if (nonop > rev * 0.002) { n4.push({ n: '영업외 손실', v: nonop, y: y4, h: nonop * s, c: GR }); }
+    // 리본: 매출 → 매출총이익 / 매출원가
+    if (hasG) { ribbon(X, xA + nw, yRev, yRev + hG, xB, yG, yG + hG, GS); ribbon(X, xA + nw, yRev + hG, yRev + hRev, xB, yC, yC + hC, RS); }
+    var srcX = hasG ? xB : xA, srcY = hasG ? yG : yRev;
+    // 매출총이익 → 영업이익 / 영업비용들
+    ribbon(X, srcX + nw, srcY, srcY + hOp, xC, yOp, yOp + hOp, GS);
+    var cur = srcY + hOp; nodes3.forEach(function (n) { ribbon(X, srcX + nw, cur, cur + n.h, xC, n.y, n.y + n.h, RS); cur += n.h; });
+    // 영업이익 → 순이익 / 법인세 / 영업외
+    var cu = yOp, take = Math.min(hNi, hOp);
+    if (take > 0) ribbon(X, xC + nw, cu, cu + take, xD, yNi, yNi + take, GS); cu += take;
+    n4.forEach(function (n) { ribbon(X, xC + nw, cu, cu + n.h, xD, n.y, n.y + n.h, GRS); cu += n.h; });
+    var yEx = null;
+    if (nonop < -rev * 0.002) {                   // 영업외 이익이 순이익으로 들어온다
+      var hEx = -nonop * s; yEx = yOp + hOp + gap * 0.4;
+      ribbon(X, xC + nw, yEx, yEx + hEx, xD, yNi + take, yNi + hNi, GS);
+      X.fillStyle = G1; X.fillRect(xC, yEx, nw, hEx);
+      nodes3.forEach(function (n) { if (n.y < yEx + hEx + gap * 0.6) { var sh = yEx + hEx + gap * 0.6 - n.y; n.y += sh; } });
+    }
+    // 노드 막대
+    X.fillStyle = '#5D636D'; X.fillRect(xA, yRev, nw, hRev);
+    if (hasG) { X.fillStyle = G1; X.fillRect(xB, yG, nw, hG); X.fillStyle = RD[0]; X.fillRect(xB, yC, nw, Math.max(2, hC)); }
+    X.fillStyle = G1; X.fillRect(xC, yOp, nw, Math.max(2, hOp));
+    nodes3.forEach(function (n) { X.fillStyle = n.c; X.fillRect(xC, n.y, nw, Math.max(2, n.h)); });
+    if (hNi > 0) { X.fillStyle = G1; X.fillRect(xD, yNi, nw, hNi); }
+    n4.forEach(function (n) { X.fillStyle = n.c; X.fillRect(xD, n.y, nw, Math.max(2, n.h)); });
+    // 이름표 — 한 열 안에서 겹치지 않게 아래로 민다
+    function labels(list, x, maxW) {
+      list.sort(function (a, b) { return a.y - b.y; });
+      var last = -1e9;
+      list.forEach(function (t) {
+        var h = t.sub ? 82 : 58, y0 = Math.max(t.y - h / 2, last + 6); last = y0 + h;
+        X.textAlign = 'left'; X.textBaseline = 'alphabetic';
+        X.fillStyle = T.soft; X.font = font(700, 20); X.fillText(t.n, x, y0 + 20);
+        X.fillStyle = t.c || T.ink; var fs = t.big ? 32 : 27; X.font = font(900, fs); while (fs > 18 && X.measureText(t.v).width > maxW) { fs -= 1; X.font = font(900, fs); }
+        X.fillText(t.v, x, y0 + 20 + fs + 2);
+        if (t.sub) { X.fillStyle = T.soft; X.font = font(700, 18); X.fillText(t.sub, x, y0 + 20 + fs + 26); }
+      });
+    }
+    logoAt(X, o.logo, xA - 60, yRev + hRev / 2 - 70, 34);
+    X.textAlign = 'right'; X.fillStyle = T.soft; X.font = font(700, 20); X.fillText('매출', xA - 12, yRev + hRev / 2 - 16);
+    var rf = 34; X.fillStyle = T.ink; X.font = font(900, rf); while (rf > 22 && X.measureText(money(rev)).width > xA - L - 16) { rf -= 2; X.font = font(900, rf); } X.fillText(money(rev), xA - 12, yRev + hRev / 2 + 20);
+    X.fillStyle = T.soft; X.font = font(700, 18); X.fillText(o.period, xA - 12, yRev + hRev / 2 + 46);
+    if (hasG) labels([{ n: '매출총이익', v: money(gross), sub: p100(gross), y: yG + Math.min(hG, 160) / 2, c: G1, big: 1 }, { n: '매출원가', v: money(cogs), y: yC + Math.min(hC, 140) / 2, c: RD[0] }], xB + nw + 10, xC - xB - nw - 20);
+    var l3 = [{ n: '영업이익', v: money(op), sub: p100(op), y: yOp + Math.min(hOp, 140) / 2, c: G1, big: 1 }];
+    nodes3.forEach(function (n) { l3.push({ n: n.n, v: money(n.v), y: n.y + Math.min(n.h, 120) / 2, c: n.c }); });
+    if (yEx != null) l3.push({ n: '영업외 이익', v: '+' + money(-nonop), y: yEx + (-nonop * s) / 2, c: G1 });
+    labels(l3, xC + nw + 10, xD - xC - nw - 20);
+    var l4 = [{ n: ni >= 0 ? '순이익' : '순손실', v: money(ni), sub: p100(ni), y: yNi + Math.min(hNi, 140) / 2, c: G1, big: 1 }];
+    n4.forEach(function (n) { l4.push({ n: n.n, v: '-' + money(n.v), y: n.y + n.h / 2, c: T.soft }); });
+    labels(l4, xD + nw + 10, R - xD - nw - 10);
+    window.__vcFoot(X, o.src);
+  }
+  base.sankey2 = sankey2;
+})();
