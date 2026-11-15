@@ -111,7 +111,7 @@
     radial: function () { return '시총 TOP 20 / 올해 성적은?'; },
     thennow: function () { return '1995년 코스피 TOP 10 / 지금은 어디에?'; },
     compare: function (o, r) { var u = (r.o.items || []).filter(function (x) { return x.c === '#40444C' || x.c === '#4A5A78'; })[0]; return (u ? u.n : '미국 1등') + ' vs 한국 증시 전체 / 누가 더 클까'; },
-    sankey: function (o, r) { return first(r) + ' / 100원 팔면 얼마 남길까'; },
+    sankey: function (o, r) { return first(r) + ' / 어떻게 돈을 벌까?'; },
     surprise: function () { return '이번 분기 실적 / 웃은 회사와 운 회사'; },
     margin: function (o) { return (MK(o) || '국내 상장사') + ' / 100원 팔아 가장 많이 남기는 회사는?'; },
     world: function () { return '세계 증시 / 올해 성적표'; },
