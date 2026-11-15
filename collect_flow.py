@@ -217,6 +217,27 @@ def us_xbrl(cik, old=None):
     return None
 
 
+def usable(code):
+    p = os.path.join(OUT, code + ".json")
+    if not os.path.exists(p):
+        return False
+    d = json.load(open(p, encoding="utf-8"))
+    rev, op = d.get("rev"), d.get("op")
+    if not rev or rev <= 0 or op is None or op >= rev:
+        return False
+    if not d.get("start") and d.get("y") and d.get("q"):          # 예전 방식(분기 번호만 있는 자료)
+        d["start"], d["end"] = "%d-%02d-01" % (d["y"], d["q"] * 3 - 2), "%d-%02d-28" % (d["y"], d["q"] * 3)
+    if not d.get("start") or not d.get("end"):
+        return False
+    gross = d.get("gross") if d.get("gross") is not None else rev - (d.get("cogs") or 0)
+    if gross - op < 0:
+        return False
+    days = (date.fromisoformat(d["end"]) - date.fromisoformat(d["start"])).days
+    if not (80 <= days <= 100 or 350 <= days <= 380):
+        return False
+    return (TODAY - date.fromisoformat(d["end"])).days < 200            # 분기 끝 + 제출 기한(45~90일)보다 오래되면 뺌
+
+
 def scaled(v, k):
     out = {}
     for a, b in v.items():
@@ -300,6 +321,7 @@ def main():
     if os.path.exists(ip):
         old = json.load(open(ip, encoding="utf-8")).get("items", {})
     old.update(idx)
+    old = {c: v for c, v in old.items() if usable(c)}       # 이상한 자료(누적 기간·오래된 것·영업이익>매출)는 카드에서 뺌
     json.dump({"updated": TODAY.isoformat(), "items": old}, open(ip, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     print("== 끝: %d곳" % len(idx))
 

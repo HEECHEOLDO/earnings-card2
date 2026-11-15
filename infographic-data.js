@@ -102,6 +102,14 @@
      opt = 고른 선택지 값, r = 그린 결과(이름을 꺼낼 때만 씀) */
   function MK(opt) { return opt === 'kospi' ? '코스피' : opt === 'kosdaq' ? '코스닥' : ''; }
   function first(r) { return String(r.o.h1 || '').split(',')[0]; }
+  var FLOW_KO = [[/Home Appliance/i, '가전'], [/Media Entertainment/i, 'TV·미디어'], [/Vehicle (component )?Solution/i, '전장'], [/Eco Solution/i, '냉난방 공조'],
+    [/Business Solution/i, 'B2B 솔루션'], [/엘지이노텍|LG이노텍|LG Innotek/i, 'LG이노텍'], [/^기타부문$/, '기타'],
+    [/Amortization.*intangible/i, '무형자산 상각'], [/Restructuring|Impairment/i, '구조조정·손상'], [/Loss Contingency|Litigation/i, '소송 충당금'],
+    [/Depreciation|Amortization/i, '감가상각비'], [/Information Technology|Communications/i, 'IT·통신비'], [/Network and processing/i, '네트워크 비용'],
+    [/Professional fees/i, '전문가 수수료'], [/Personnel|Compensation|Employee|Labor/i, '인건비'], [/Marketing|Advertising/i, '마케팅비'],
+    [/General and administrative/i, '일반관리비'], [/Selling,? general/i, '판매·관리비'], [/Research and development/i, '연구개발비'],
+    [/in-process|IPR&D/i, '인수 연구개발비'], [/Acquisition|Merger/i, '인수 관련 비용'], [/Occupancy|Rent/i, '임차료'], [/Fulfillment/i, '물류·배송비']];
+  function flowKo(n) { n = String(n).replace(/,\s*보고부문$|\s*사업부문$|\s*보고부문$|(?<=..)부문$/, '').trim().replace(/^모듈 및 부품제조.*/, '모듈·부품').replace(/^A\/S.*부품.*/, 'A/S 부품'); if (/[가-힣]/.test(n) && !/㈜|종속기업/.test(n)) return n; for (var i = 0; i < FLOW_KO.length; i++) if (FLOW_KO[i][0].test(n)) return FLOW_KO[i][1]; return n.replace(/㈜와 그 종속기업|㈜|\s*\(.*\)$/g, ''); }
   function eunNeun(w) {                         // 받침 있으면 '은', 없으면 '는' (영문·숫자는 읽는 소리로)
     var t = String(w).replace(/[\s)\]'"’.]+$/, ''), c = t.slice(-1), k = c.charCodeAt(0);
     if (k >= 0xAC00 && k <= 0xD7A3) return w + ((k - 0xAC00) % 28 ? '은' : '는');
@@ -421,14 +429,14 @@
     /* ---------------- 2차: 실적 · 지수 · 수익률 · 주주 · 포트폴리오 · 미국 · 맞수 ---------------- */
     { id: 'sankey', name: '돈의 흐름', icon: '⤳', opts: function () { return SANKEY_OPTS(); }, build: function (key) {
       var us = key.slice(0, 3) === 'us:', code = key.slice(3);
-      var money = us ? function (v) { var b = v / 1000, a = Math.abs(b); return (b < 0 ? '-' : '') + (a >= 1000 ? '$' + (a / 1000).toFixed(2) + 'T' : '$' + (a >= 100 ? Math.round(a) : a.toFixed(1)) + 'B'); }
-        : function (v) { var a = Math.abs(v); return (v < 0 ? '-' : '') + (a >= 1e4 ? (a / 1e4).toFixed(a >= 1e5 ? 0 : 1) + '조' : Math.round(a).toLocaleString() + '억'); };
+      var won = function (v) { var a = Math.abs(v); return (v < 0 ? '-' : '') + (a >= 1e4 ? (a / 1e4).toFixed(a >= 1e5 ? 0 : 1) + '조' : Math.round(a).toLocaleString() + '억'); };
+      var money = us ? function (v) { return won(v * D.fx / 100); } : won;      // 해외: 백만달러 × 오늘 환율 → 억원
       // 세부 손익(data/flow)이 있으면 매출원가·판관비·연구개발비·법인세까지 나눈 그림으로
       return JJ('./data/flow/' + code + '.json').then(function (f) {
         if (f && f.rev > 0 && f.op > 0 && f.op < f.rev && f.ni != null) {
           var nm2 = us ? ko(code, (D.us.stocks[code] || {}).n || code) : f.name;
           return logo({ code: code }, us).then(function (r) {
-            var gross = f.gross != null ? f.gross : f.rev - (f.cogs || 0), opex = gross - f.op, items = (f.items || []).map(function (x) { return Array.isArray(x) ? { n: x[0], v: x[1] } : x; });
+            var gross = f.gross != null ? f.gross : f.rev - (f.cogs || 0), opex = gross - f.op, items = (f.items || []).map(function (x) { return Array.isArray(x) ? { n: flowKo(x[0]), v: x[1] } : x; });
             if (!items.length) {                      // 영업비용 세부가 따로 없으면 손익계산서 항목으로
               if (f.rnd) items.push({ n: '연구개발비', v: f.rnd });
               if (f.sga) items.push({ n: f.rnd ? '판매·관리비' : '판관비', v: f.sga });
@@ -436,12 +444,18 @@
             }
             var used = items.reduce(function (t, x) { return t + x.v; }, 0);
             if (items.length && opex - used > f.rev * 0.01) items.push({ n: '기타 영업비용', v: opex - used });
-            if (used > opex * 1.02) items = [];
-            var sg = (f.segs || []).map(function (x) { return Array.isArray(x) ? { n: x[0], v: x[1] } : x; }), sgT = sg.reduce(function (t, x) { return t + x.v; }, 0), small = 0;
+            var mg = {}, etc = 0, hasEtc = {};                // 같은 이름은 합치고, '기타 …'는 하나로
+            items.forEach(function (x) { if (/^기타/.test(x.n)) { etc += x.v; hasEtc[x.n] = 1; } else mg[x.n] = (mg[x.n] || 0) + x.v; });
+            items = Object.keys(mg).map(function (k) { return { n: k, v: mg[k] }; }).sort(function (a, b) { return b.v - a.v; });
+            if (items.length > 4) { etc += items.slice(4).reduce(function (t, x) { return t + x.v; }, 0); items = items.slice(0, 4); hasEtc['기타 영업비용'] = 1; }
+            if (etc > 0) items.push({ n: Object.keys(hasEtc).length === 1 ? Object.keys(hasEtc)[0] : '기타 영업비용', v: etc });
+            used = items.reduce(function (t, x) { return t + x.v; }, 0);
+            if (used > opex * 1.02 && opex > 0) { items.forEach(function (x) { x.v = x.v * opex / used; }); }   // 판관비 세부가 영업비용보다 크면 비율대로 줄임
+            var sg = (f.segs || []).map(function (x) { return Array.isArray(x) ? { n: flowKo(x[0]), v: x[1] } : x; }), sgT = sg.reduce(function (t, x) { return t + x.v; }, 0), small = 0;
             sg = sg.filter(function (x) { if (x.v < sgT * 0.04 || /^기타/.test(x.n)) { small += x.v; return false; } return true; }).slice(0, 6);   // 작은 건 '기타'로
             if (small > sgT * 0.02 && sg.length) sg.push({ n: '기타', v: small });
             return { fn: 'sankey3', o: { h1: nm2, segs: sg, rev: f.rev, cogs: f.cogs, op: f.op, items: items, ni: f.ni, tax: f.tax, money: money, logo: r.logo },
-              src: flowPeriod(f) + ' 기준' };
+              src: flowPeriod(f) + ' 기준' + (us ? ' (환율 ' + Math.round(D.fx).toLocaleString() + '원 기준)' : '') };
           });
         }
         return null;

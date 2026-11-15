@@ -338,7 +338,7 @@
     X.fillStyle = col; X.textAlign = align || 'left'; X.fillText(s, x, y); return px;
   }
   function sankey3(X, o) {
-    base.grainOnly(X); X.fillStyle = INK; window.__vcTitle(X, o.h1, o.logo);
+    base.grainOnly(X); X.fillStyle = INK; window.__vcTitle(X, o.h1, o.logo, { tail: /[은는]$/ });
     var m = o.money, rev = o.rev, cogs = Math.max(0, o.cogs || 0), gross = rev - cogs, op = o.op, opex = gross - op, ni = o.ni, tax = Math.max(0, o.tax || 0);
     var nonop = op - tax - ni, exIn = nonop < -rev * 0.03 ? -nonop : 0, exOut = nonop > rev * 0.01 ? nonop : 0;   // 작은 영업외 손익은 따로 그리지 않는다
     var segs = (o.segs || []).filter(function (x) { return x.v > rev * 0.004; }), items = (o.items || []).filter(function (x) { return x.v > rev * 0.002; });
@@ -352,23 +352,25 @@
     function place(s) {
       var g = { s: s };
       g.hR = rev * s; g.hG = gross * s; g.hC = cogs * s; g.hO = Math.max(0, op) * s; g.hE = opex * s; g.hEx = exIn * s; g.hN = Math.max(0, ni) * s;
-      g.yO = top + 70 + (exIn ? g.hEx + 70 : 0);                        // 영업이익: 위 (영업외 이익이 있으면 그 아래)
+      g.yO = top + 70 + (exIn ? g.hEx + 110 : 0);                        // 영업이익: 위 (영업외 이익이 있으면 그 아래)
       g.yG = g.yO + 40; g.yR = g.yG + 40;                                  // 매출총이익·총 매출은 한 칸씩 아래 (계단)
       g.yC = g.yG + g.hG + 50; g.yE = g.yO + g.hO + 50;
-      g.yX = g.yO - g.hEx - 60; g.yN = Math.max(top + 10, (exIn ? g.yX : g.yO) - 10);
-      var y = g.yN + g.hN + 20; g.right = [];
-      if (tax > 0) { g.right.push({ n: '법인세', v: tax, y: y, h: tax * s, from: 'op' }); y += tax * s + 22; }
-      if (exOut > 0) { g.right.push({ n: '영업외 손실', v: exOut, y: y, h: exOut * s, from: 'op' }); y += exOut * s + 22; }
+      g.yX = g.yO - g.hEx - 110; g.yN = Math.max(top + 10, (exIn ? g.yX : g.yO) - 10);
+      var LH = 54;                                                          // 오른쪽 이름표 한 칸 높이 — 막대가 얇아도 이름표가 막대 옆에 오도록
+      var y = g.yN + Math.max(g.hN, 56) + 14; g.right = [];
+      if (tax > 0) { g.right.push({ n: '법인세', v: tax, y: y + Math.max(0, (LH - tax * s) / 2), h: tax * s, from: 'op' }); y += Math.max(tax * s, LH) + 10; }
+      if (exOut > 0) { g.right.push({ n: '영업외 손실', v: exOut, y: y + Math.max(0, (LH - exOut * s) / 2), h: exOut * s, from: 'op' }); y += Math.max(exOut * s, LH) + 10; }
       if (hasItems) {
-        y = Math.max(y + 16, g.yE - 30);
-        var sum = items.reduce(function (t, x) { return t + x.v * s; }, 0), slot = Math.min(56, Math.max(18, (bot - y - sum) / items.length));
-        items.forEach(function (it) { g.right.push({ n: it.n, v: it.v, y: y, h: it.v * s, from: 'ex' }); y += it.v * s + slot; });
+        y = Math.max(y + 10, g.yE - 30);
+        var sum = items.reduce(function (t, x) { return t + Math.max(x.v * s, LH); }, 0), slot = Math.min(40, Math.max(8, (bot - y - sum) / items.length));
+        items.forEach(function (it) { var h = it.v * s; g.right.push({ n: it.n, v: it.v, y: y + Math.max(0, (LH - h) / 2), h: h, from: 'ex' }); y += Math.max(h, LH) + slot; });
       }
       g.low = Math.max(g.yR + g.hR, hasG ? g.yC + g.hC + 60 : 0, g.yE + g.hE + 50, y - 10);
       return g;
     }
     var sc = (bot - top) * 0.7 / Math.max(rev, gross + exIn), g = place(sc);
     for (var k = 0; k < 14 && g.low > bot; k++) { sc *= 0.92; g = place(sc); }
+    for (k = 0; k < 12 && g.low < bot - 60; k++) { var g2 = place(sc * 1.06); if (g2.low > bot) break; sc *= 1.06; g = g2; }   // 남는 아래 공간은 키워서 채운다
     var s = g.s;
     // ---- 리본
     if (hasSeg) {
@@ -409,14 +411,14 @@
     }
     above(x1 + nw / 2, g.yR, '총 매출', m(rev), '', BL);
     if (hasG) {
-      above(x2 + nw / 2, g.yG, '매출총이익', m(gross), '이익률 ' + pc(gross), GN);
+      above(x2 + nw / 2, g.yG, '매출총이익', m(gross), '', GN);
       txt(X, '매출원가', x2 + nw + 12, g.yC + Math.min(g.hC, 220) / 2, 800, 24, RD, 'left'); txt(X, m(cogs), x2 + nw + 12, g.yC + Math.min(g.hC, 220) / 2 + 36, 900, 32, RD, 'left');
     }
-    above(x3 + nw / 2, g.yO, '영업이익', m(op), '이익률 ' + pc(op), GN);
+    above(x3 + nw / 2, g.yO, '영업이익', m(op), '', GN);
     txt(X, '영업비용', x3 - 10, g.yE + Math.min(g.hE, 180) / 2 + 2, 800, 23, RD, 'right'); txt(X, m(opex), x3 - 10, g.yE + Math.min(g.hE, 180) / 2 + 34, 900, 30, RD, 'right');
     if (exIn) above(xm + nw / 2, g.yX, '영업외 이익', '+' + m(exIn), '', GN);
     var rx = x4 + nw + 10, mw = R - rx, lastR = -1e9;
-    var rl = [{ n: ni >= 0 ? '순이익' : '순손실', v: m(ni), sub: '순이익률 ' + pc(ni), y: g.yN + Math.min(g.hN, 120) / 2, c: GN }].concat(g.right.map(function (r) { return { n: r.n, v: m(r.v), y: r.y + r.h / 2, c: RD }; }));
+    var rl = [{ n: ni >= 0 ? '순이익' : '순손실', v: m(ni), y: g.yN + Math.min(g.hN, 120) / 2, c: GN }].concat(g.right.map(function (r) { return { n: r.n, v: m(r.v), y: r.y + r.h / 2, c: RD }; }));
     rl.forEach(function (t) {
       var h = t.sub ? 76 : 56, y0 = Math.max(t.y - h / 2, lastR + 4); lastR = y0 + h;
       txt(X, t.n, rx, y0 + 19, 700, 19, t.c, 'left', mw); txt(X, t.v, rx, y0 + 47, 900, 26, t.c, 'left', mw);

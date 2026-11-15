@@ -3,7 +3,7 @@
    제목: 첫 줄 900/최대 92px, 둘째 줄 900/최대 60px — 쉼표(', ')나 ' / ' 에서 나눈다
    바닥: 구분선 + '자료 …'(왼쪽) · '@돈굴돈굴'(오른쪽) 700/27px, 기준선 1211 */
 window.__VC = { L: 100, R: 980, TOP: 330, BOT: 1140, SAFE: 135 };
-window.__vcTitle = function (X, h1, logo) {
+window.__vcTitle = function (X, h1, logo, opt) {   // opt.tail: 첫 줄 끝 조사(은/는)를 둘째 줄 크기로
   var B = window.__VC, W = B.R - B.L;
   h1 = String(h1 || ''); var i = h1.indexOf(' / '), k = i >= 0 ? 3 : 2;
   if (i < 0) i = h1.indexOf(', ');
@@ -21,9 +21,16 @@ window.__vcTitle = function (X, h1, logo) {
     }
   }
   X.textAlign = 'left'; X.textBaseline = 'alphabetic';
-  var s1 = fit(lines[0], 92, 52), y = B.SAFE + s1 * 0.86, lx = B.L;
+  var tail = '', s2t = 60;
+  if (opt && opt.tail && lines.length === 2) {
+    var mt = lines[0].match(opt.tail); if (mt && mt.index > 0) { tail = mt[0]; lines[0] = lines[0].slice(0, mt.index); }
+    if (track) X.letterSpacing = '0px'; s2t = fit(lines[1], 60, 34); if (track) X.letterSpacing = '-0.02em';
+  }
+  var tw = function () { if (!tail) return 0; var o = X.font; X.font = f(s2t); var w = X.measureText(tail).width + 4; X.font = o; return w; };
+  var s1 = 92; X.font = f(s1); while (s1 > 52 && X.measureText(lines[0]).width + tw() > W) { s1 -= 2; X.font = f(s1); }
+  var y = B.SAFE + s1 * 0.86, lx = B.L;
   if (logo) {                                    // 국내·해외 실적 카드처럼 (로고) 회사명 — 지름 0.84·간격 0.22·중심 0.37 (글자 크기 대비)
-    var p = 92; X.font = f(p); while (p > 52 && X.measureText(lines[0]).width > W - p * 1.06) { p -= 2; X.font = f(p); } s1 = p; y = B.SAFE + s1 * 0.86;
+    var p = 92; X.font = f(p); while (p > 52 && X.measureText(lines[0]).width + tw() > W - p * 1.06) { p -= 2; X.font = f(p); } s1 = p; y = B.SAFE + s1 * 0.86;
     var d = s1 * 0.84, cy = y - s1 * 0.37;
     X.save(); if (track) X.letterSpacing = '0px';
     X.beginPath(); X.arc(B.L + d / 2, cy, d / 2, 0, 7); X.clip(); X.drawImage(logo, B.L, cy - d / 2, d, d); X.restore();
@@ -31,6 +38,7 @@ window.__vcTitle = function (X, h1, logo) {
     lx = B.L + d + s1 * 0.22;
   }
   X.fillText(lines[0], lx, y);
+  if (tail) { var w0 = X.measureText(lines[0]).width; X.font = f(s2t); X.fillText(tail, lx + w0 + 4, y); X.font = f(s1); }
   if (lines.length === 2) {
     if (track) X.letterSpacing = '0px';
     var s2 = fit(lines[1], 60, 34); y += s1 * 0.22 + s2 * 0.86; X.font = f(s2); X.fillText(lines[1], B.L, y);
