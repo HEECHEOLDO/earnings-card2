@@ -1,0 +1,49 @@
+# 돈의 흐름(생키) 카드용 손익 세부 — data/flow/ · 매일, 수집기를 고치면(push) 바로 한 번
+name: 손익 흐름 수집 (돈의 흐름 카드)
+
+on:
+  schedule:
+    - cron: '20 22 * * *'       # UTC 22:20 = KST 07:20 매일
+  push:
+    branches: [main]
+    paths:
+      - 'collect_flow.py'
+      - '.github/workflows/collect_flow.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: flow
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: 수집
+        env:
+          DART_API_KEY: ${{ secrets.DART_API_KEY }}
+          SEC_UA: ${{ secrets.SEC_UA }}
+        run: |
+          mkdir -p data/flow
+          python3 collect_flow.py 2>&1 | tee "$RUNNER_TEMP/flow_log.txt"
+      - name: 커밋
+        run: |
+          if [ -z "$(git status --porcelain -- data/flow)" ]; then echo "변경 없음"; exit 0; fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git add data/flow
+          git commit -m "손익 흐름 $(TZ=Asia/Seoul date +%F)"
+          for i in 1 2 3 4 5; do
+            git pull --rebase -X theirs --autostash && git push && exit 0
+            git rebase --abort 2>/dev/null || true
+            sleep 10
+          done
+          exit 1
