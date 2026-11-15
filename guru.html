@@ -604,7 +604,7 @@
   function applyFund(key) {
     var f = F13.funds && F13.funds[key];
     var note = document.getElementById('fund-note');
-    if (!f) { note.style.display = 'none'; state.fundLogo = null; state.fundVal = null; return; }
+    if (!f) { note.style.display = 'none'; state.fundLogo = null; state.fundVal = null; state.fundTotal = 0; return; }
     document.getElementById('f-name').value = f.title;
     state.fundLogo = (f.kind === 'corp' || f.kind === 'manager') ? (CORP_LOGO[key] || null) : null;   // 기업·운용사는 제목 앞에 로고
     baseFromLogo(state.fundLogo);
@@ -614,7 +614,7 @@
     // 상위 40개만 저장돼 있다 — 나머지는 '기타'로 넣어야 비중이 전체(100%) 기준이 된다
     // (안 넣으면 시타델 1위 7.8% 가 27.7% 로 부풀려졌다)
     var lines = f.holdings.map(function (h) { return h.name + ' ' + h.weight + '%'; });
-    state.fundVal = {}; state.fundKind = f.kind;
+    state.fundVal = {}; state.fundKind = f.kind; state.fundTotal = f.total_value || 0;
     f.holdings.forEach(function (h) { if (h.value) state.fundVal[h.name] = h.value; });   // 막대 그래프에 금액(원)을 함께 적는다
     var shown = f.holdings.reduce(function (a, h) { return a + h.weight; }, 0);
     if (100 - shown > 0.05) lines.push('기타 ' + (100 - shown).toFixed(2) + '%');
@@ -695,6 +695,20 @@
     return null;
   }
 
+  /* 긴 이름 줄이기 — 라벨이 길면 그 라벨만 작아져 읽기 어렵다.
+     자주 나오는 것은 짧은 우리말·티커로, 나머지 영문은 회사 꼬리말(Inc·Corp…)을 떼고 단어 단위로 12자 안쪽까지. */
+  var SHORT = [[/^ishares expanded tech/i, '소프트웨어 ETF'], [/^아이셰어즈 MSCI STH/, '한국 ETF(EWY)'], [/^아이셰어즈 MSCI BRA/, '브라질 ETF(EWZ)'],
+    [/^인베스코 PURBTA/, '인베스코 ETF'], [/^Telephone AND Data/i, 'TDS'], [/^Compagnie Financiere R/i, '리치몬트'], [/^Americas CAR Mart/i, '카마트'],
+    [/^Acacia Resh/i, '아카시아'], [/^Kaspi KZ/i, '카스피'], [/^Evaxion/i, '에박시온'], [/^Flexshares/i, '플렉스셰어즈 ETF']];
+  function shortName(n) {
+    n = String(n || '');
+    for (var i = 0; i < SHORT.length; i++) if (SHORT[i][0].test(n)) return SHORT[i][1];
+    if (n.length <= 12) return n;
+    var w = n.replace(/\b(Inc|Corp|Corporation|Ltd|Limited|AS|ASA|AG|SA|NV|JSC|PLC|Co|Holdings?|Group|Sys|Systems|Resh|Tr|Fd|ETF|ETP|US)\b\.?/gi, ' ')
+      .replace(/[-–,]/g, ' ').replace(/\s+/g, ' ').trim().split(' '), out = '';
+    for (var k = 0; k < w.length; k++) { var t = out ? out + ' ' + w[k] : w[k]; if (t.length > 12 && out) break; out = t; }
+    return out || n.slice(0, 12);
+  }
   function normalize(items, topN, labelMode, minPct) {
     var total = items.reduce(function (s, x) { return s + x.w; }, 0);
     if (!total) return [];
@@ -702,7 +716,7 @@
       var label = labelMode === 'company'
         ? (x.company || x.ticker || '(이름 없음)')
         : (x.ticker || x.company || '(이름 없음)');
-      return { name: label, pct: x.w / total * 100, logo: logoTicker(x) };
+      return { name: shortName(label), full: label, pct: x.w / total * 100, logo: logoTicker(x) };
     }).sort(function (a, b) { return b.pct - a.pct; });
 
     // 상위 N개를 고르되, 최소 비중에 못 미치는 조각은 기타로 묶는다.
@@ -903,7 +917,7 @@
       var ly = h >= d + 26 ? y + 14 + d / 2 : null;
       // 위 라벨
       var cxm = x + bw / 2, ty = y - 14;
-      var val = state.fundVal && state.fundVal[r.name] ? wonOf(state.fundVal[r.name]) : '';
+      var val = state.fundTotal ? wonOf(state.fundTotal * r.pct / 100) : '';   // 비중 × 전체 금액 — 같은 이름(옵션 등)이 겹쳐도 비중과 금액이 어긋나지 않는다
       if (im && ly == null) { ly = y - 14 - d / 2; ty = y - 28 - d; }
       ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
       if (val) { ctx.fillStyle = T.footer; fitText(ctx, val, 700, 24, 15, bw + gap * 0.8); ctx.fillText(val, cxm, ty); ty -= 32; }
@@ -996,8 +1010,9 @@
       // 이름이 길면 글자를 줄여 카드 밖으로 나가지 않게 한다
       ctx.font = font(800, size);
       var raw = ctx.measureText(it.r.name).width;
+      var wcut = false;
       if (raw > D.labelMaxW) {
-        size = Math.max(D.labelMinSize, Math.round(size * D.labelMaxW / raw));
+        size = Math.max(D.labelMinSize, Math.round(size * D.labelMaxW / raw)); wcut = true;
       }
       var ps = Math.round(size * T.type.labelPct / T.type.label);
       ctx.font = font(800, size);
@@ -1009,7 +1024,7 @@
 
       var x1 = anchor === 'left' ? x : (anchor === 'right' ? x - w : x - w/2);
       return { x1:x1, x2:x1+w, y1:y-h/2, y2:y+h/2, x:x, y:y, w:w, h:h,
-               anchor:anchor, size:size, ps:ps };
+               anchor:anchor, size:size, ps:ps, wcut:wcut };
     }
     // 글상자의 '도넛에 가장 가까운 모서리'가 목표 거리에 오도록 반지름을 맞춘다.
     // 앵커점을 기준으로 하면 12시·6시 라벨이 더 가까워 보여 원이 깨진다.
@@ -1157,7 +1172,7 @@
         if (it.box.size > cap) {
           it.box.size = cap;
           it.box.ps = Math.round(cap * T.type.labelPct / T.type.label);
-        } else {
+        } else if (!it.box.wcut) {        // 이름이 길어 줄어든 라벨은 다른 라벨 크기를 끌어내리지 않는다
           cap = it.box.size;
         }
       });
