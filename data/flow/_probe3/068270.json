@@ -1,0 +1,1656 @@
+{
+"reports": [
+"반기보고서 (2026.06) 20260814",
+"분기보고서 (2026.03) 20260515",
+"사업보고서 (2025.12) 20260316",
+"분기보고서 (2025.09) 20251114"
+],
+"반기보고서 (2026.06)": {
+"담보제공처 [축] | entity00413046:InsuranceIncomeProvidedAsCollateralOfPledgesForPropertyPlantAndEquipmentLineItemsOfPledgesForPropertyPlantAndEquipmentTableOfItems | 2025-01-01~2025-12-31": [
+[
+"한국산업은행 [구성요소]",
+"entity00413046:KdbMemberOfNameOfSecuredCreditorDomainOfPledgesForPropertyPlantAndEquipmentTableOfMember",
+284000000000.0
+],
+[
+"한국수출입은행 [구성요소]",
+"entity00413046:KoreaEximBankMemberOfNameOfSecuredCreditorDomainOfPledgesForPropertyPlantAndEquipmentTableOfMember",
+70000000000.0
+],
+[
+"신한은행 [구성요소]",
+"entity00413046:ShinhanBankMemberOfNameOfSecuredCreditorDomainOfPledgesForPropertyPlantAndEquipmentTableOfMember",
+342158000000.0
+],
+[
+"한국산업은행 [구성요소]",
+"entity00413046:KdbMemberOfNameOfSecuredCreditorDomainOfPledgesForPropertyPlantAndEquipmentTableOfMember",
+200000000000.0
+],
+[
+"한국수출입은행 [구성요소]",
+"entity00413046:KoreaEximBankMemberOfNameOfSecuredCreditorDomainOfPledgesForPropertyPlantAndEquipmentTableOfMember",
+70000000000.0
+],
+[
+"신한은행 [구성요소]",
+"entity00413046:ShinhanBankMemberOfNameOfSecuredCreditorDomainOfPledgesForPropertyPlantAndEquipmentTableOfMember",
+247358000000.0
+]
+],
+"담보제공처 [축] | entity00413046:InsuranceIncomeProvidedAsCollateralOfPledgesForPropertyPlantAndEquipmentLineItemsOfPledgesForPropertyPlantAndEquipmentTableOfItems | 2026-01-01~2026-06-30": [
+[
+"한국산업은행 [구성요소]",
+"entity00413046:KdbMemberOfNameOfSecuredCreditorDomainOfPledgesForPropertyPlantAndEquipmentTableOfMember",
+384000000000.0
+],
+[
+"한국수출입은행 [구성요소]",
+"entity00413046:KoreaEximBankMemberOfNameOfSecuredCreditorDomainOfPledgesForPropertyPlantAndEquipmentTableOfMember",
+70000000000.0
+],
+[
+"신한은행 [구성요소]",
+"entity00413046:ShinhanBankMemberOfNameOfSecuredCreditorDomainOfPledgesForPropertyPlantAndEquipmentTableOfMember",
+269358000000.0
+],
+[
+"한국산업은행 [구성요소]",
+"entity00413046:KdbMemberOfNameOfSecuredCreditorDomainOfPledgesForPropertyPlantAndEquipmentTableOfMember",
+300000000000.0
+],
+[
+"한국수출입은행 [구성요소]",
+"entity00413046:KoreaEximBankMemberOfNameOfSecuredCreditorDomainOfPledgesForPropertyPlantAndEquipmentTableOfMember",
+70000000000.0
+],
+[
+"신한은행 [구성요소]",
+"entity00413046:ShinhanBankMemberOfNameOfSecuredCreditorDomainOfPledgesForPropertyPlantAndEquipmentTableOfMember",
+247358000000.0
+]
+],
+"부문의 합계 [축] | ifrs-full:Revenue | 2025-01-01~2025-06-30": [
+[
+"부문간 제거한 금액 [구성요소]",
+"ifrs-full:EliminationOfIntersegmentAmountsMember",
+-1669540529000.0
+],
+[
+"중요한 조정사항 [구성요소]",
+"ifrs-full:MaterialReconcilingItemsMember",
+-1669540529000.0
+],
+[
+"영업부문 [구성요소]",
+"ifrs-full:OperatingSegmentsMember",
+3472909554000.0
+]
+],
+"부문의 합계 [축] | ifrs-full:Revenue | 2026-01-01~2026-06-30": [
+[
+"부문간 제거한 금액 [구성요소]",
+"ifrs-full:EliminationOfIntersegmentAmountsMember",
+-1844064074000.0
+],
+[
+"중요한 조정사항 [구성요소]",
+"ifrs-full:MaterialReconcilingItemsMember",
+-1844064074000.0
+],
+[
+"영업부문 [구성요소]",
+"ifrs-full:OperatingSegmentsMember",
+4382742787000.0
+]
+],
+"수행의무 [축] | ifrs-full:Revenue | 2025-01-01~2025-06-30": [
+[
+"한 시점에 이행하는 수행의무 [구성요소]",
+"ifrs-full:PerformanceObligationsSatisfiedAtPointInTimeMember",
+1798188221000.0
+],
+[
+"기간에 걸쳐 이행하는 수행의무 [구성요소]",
+"ifrs-full:PerformanceObligationsSatisfiedOverTimeMember",
+5180804000.0
+],
+[
+"한 시점에 이행하는 수행의무 [구성요소]",
+"ifrs-full:PerformanceObligationsSatisfiedAtPointInTimeMember",
+1785962442000.0
+],
+[
+"기간에 걸쳐 이행하는 수행의무 [구성요소]",
+"ifrs-full:PerformanceObligationsSatisfiedOverTimeMember",
+67017091000.0
+]
+],
+"수행의무 [축] | ifrs-full:Revenue | 2025-04-01~2025-06-30": [
+[
+"한 시점에 이행하는 수행의무 [구성요소]",
+"ifrs-full:PerformanceObligationsSatisfiedAtPointInTimeMember",
+958499027000.0
+],
+[
+"기간에 걸쳐 이행하는 수행의무 [구성요소]",
+"ifrs-full:PerformanceObligationsSatisfiedOverTimeMember",
+2958337000.0
+],
+[
+"한 시점에 이행하는 수행의무 [구성요소]",
+"ifrs-full:PerformanceObligationsSatisfiedAtPointInTimeMember",
+1182749814000.0
+],
+[
+"기간에 걸쳐 이행하는 수행의무 [구성요소]",
+"ifrs-full:PerformanceObligationsSatisfiedOverTimeMember",
+36222674000.0
+]
+],
+"수행의무 [축] | ifrs-full:Revenue | 2026-01-01~2026-06-30": [
+[
+"한 시점에 이행하는 수행의무 [구성요소]",
+"ifrs-full:PerformanceObligationsSatisfiedAtPointInTimeMember",
+2388925807000.0
+],
+[
+"기간에 걸쳐 이행하는 수행의무 [구성요소]",
+"ifrs-full:PerformanceObligationsSatisfiedOverTimeMember",
+149752906000.0
+],
+[
+"한 시점에 이행하는 수행의무 [구성요소]",
+"ifrs-full:PerformanceObligationsSatisfiedAtPointInTimeMember",
+1656530166000.0
+],
+[
+"기간에 걸쳐 이행하는 수행의무 [구성요소]",
+"ifrs-full:PerformanceObligationsSatisfiedOverTimeMember",
+155792370000.0
+]
+],
+"수행의무 [축] | ifrs-full:Revenue | 2026-04-01~2026-06-30": [
+[
+"한 시점에 이행하는 수행의무 [구성요소]",
+"ifrs-full:PerformanceObligationsSatisfiedAtPointInTimeMember",
+1341941845000.0
+],
+[
+"기간에 걸쳐 이행하는 수행의무 [구성요소]",
+"ifrs-full:PerformanceObligationsSatisfiedOverTimeMember",
+51750950000.0
+],
+[
+"한 시점에 이행하는 수행의무 [구성요소]",
+"ifrs-full:PerformanceObligationsSatisfiedAtPointInTimeMember",
+865313683000.0
+],
+[
+"기간에 걸쳐 이행하는 수행의무 [구성요소]",
+"ifrs-full:PerformanceObligationsSatisfiedOverTimeMember",
+28354147000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:DividendIncomeNonOperating | 2025-01-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+12581000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+12581000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:DividendIncomeNonOperating | 2025-04-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+12581000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+12581000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:DividendIncomeNonOperating | 2026-01-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+13431000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+4800977000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:DividendIncomeNonOperating | 2026-04-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+13431000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+13479000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:InterestIncomeFinanceIncome | 2025-01-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+13029390000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+11660983000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:InterestIncomeFinanceIncome | 2025-04-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+5501240000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+5042310000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:InterestIncomeFinanceIncome | 2026-01-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+15974284000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+25254447000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:InterestIncomeFinanceIncome | 2026-04-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+9781080000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+18227673000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | entity00413046:RevenueFromDomesticSalesOfDisclosureOfDisaggregationOfRevenueFromContractsWithCustomersLineItemsOfDisclosureOfDisaggregationOfRevenueFromContractsWithCustomersTableOfItems | 2025-01-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+184716197000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+56523891000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | entity00413046:RevenueFromDomesticSalesOfDisclosureOfDisaggregationOfRevenueFromContractsWithCustomersLineItemsOfDisclosureOfDisaggregationOfRevenueFromContractsWithCustomersTableOfItems | 2025-04-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+99246101000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+37290633000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | entity00413046:RevenueFromDomesticSalesOfDisclosureOfDisaggregationOfRevenueFromContractsWithCustomersLineItemsOfDisclosureOfDisaggregationOfRevenueFromContractsWithCustomersTableOfItems | 2026-01-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+212499820000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+46211631000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | entity00413046:RevenueFromDomesticSalesOfDisclosureOfDisaggregationOfRevenueFromContractsWithCustomersLineItemsOfDisclosureOfDisaggregationOfRevenueFromContractsWithCustomersTableOfItems | 2026-04-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+110962904000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+17781352000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | entity00413046:RevenueFromForeignSalesOfDisclosureOfDisaggregationOfRevenueFromContractsWithCustomersLineItemsOfDisclosureOfDisaggregationOfRevenueFromContractsWithCustomersTableOfItems | 2025-01-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+1618652828000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+1796455642000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | entity00413046:RevenueFromForeignSalesOfDisclosureOfDisaggregationOfRevenueFromContractsWithCustomersLineItemsOfDisclosureOfDisaggregationOfRevenueFromContractsWithCustomersTableOfItems | 2025-04-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+862211263000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+1181681855000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | entity00413046:RevenueFromForeignSalesOfDisclosureOfDisaggregationOfRevenueFromContractsWithCustomersLineItemsOfDisclosureOfDisaggregationOfRevenueFromContractsWithCustomersTableOfItems | 2026-01-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+2326178893000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+1766110905000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | entity00413046:RevenueFromForeignSalesOfDisclosureOfDisaggregationOfRevenueFromContractsWithCustomersLineItemsOfDisclosureOfDisaggregationOfRevenueFromContractsWithCustomersTableOfItems | 2026-04-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+1282729891000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+875886478000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:AdjustmentsForDecreaseIncreaseInTradeAccountReceivable | 2025-01-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+-135449436000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+-897672747000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:AdjustmentsForDecreaseIncreaseInTradeAccountReceivable | 2026-01-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+-201950797000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+-265048520000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:AdjustmentsForDividendIncome | 2025-01-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+12581000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+12581000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:AdjustmentsForDividendIncome | 2026-01-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+13431000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+4800977000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:AdjustmentsForInterestIncome | 2025-01-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+13029391000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+11660983000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:AdjustmentsForInterestIncome | 2026-01-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+15974284000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+25254447000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:FinanceIncome | 2025-01-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+29030296000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+28994466000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:FinanceIncome | 2025-04-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+7182184000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+6967775000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:FinanceIncome | 2026-01-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+37608212000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+48118529000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:FinanceIncome | 2026-04-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+18204149000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+27191328000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:FinanceIncomeCost | 2025-01-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+-27209204000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+-15998996000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:FinanceIncomeCost | 2025-04-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+-24763301000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+-17935134000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:FinanceIncomeCost | 2026-01-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+-30052013000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+-8152853000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:FinanceIncomeCost | 2026-04-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+-15413780000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+62439000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:IncomeFromSubleasingRightofuseAssets | 2025-01-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+44000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+44000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:IncomeFromSubleasingRightofuseAssets | 2026-01-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+0.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+18000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:IncreaseDecreaseThroughCumulativeCatchupAdjustmentsToRevenueArisingFromChangeInEstimateOfTransactionPriceContractAssets | 2025-01-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+-45549386000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+-46274633000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:IncreaseDecreaseThroughCumulativeCatchupAdjustmentsToRevenueArisingFromChangeInEstimateOfTransactionPriceContractAssets | 2026-01-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+13213639000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+14386971000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:IncreaseDecreaseThroughCumulativeCatchupAdjustmentsToRevenueArisingFromChangeInEstimateOfTransactionPriceContractLiabilities | 2025-01-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+0.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+0.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:IncreaseDecreaseThroughCumulativeCatchupAdjustmentsToRevenueArisingFromChangeInEstimateOfTransactionPriceContractLiabilities | 2026-01-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+0.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+0.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:InterestIncomeForFinancialAssetsMeasuredAtAmortisedCost | 2025-01-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+12987163000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+11618756000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:InterestIncomeForFinancialAssetsMeasuredAtAmortisedCost | 2025-04-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+5480416000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+5021486000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:InterestIncomeForFinancialAssetsMeasuredAtAmortisedCost | 2026-01-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+15930186000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+24995088000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:InterestIncomeForFinancialAssetsMeasuredAtAmortisedCost | 2026-04-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+9758523000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+18096323000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:InterestIncomeOnFinancialAssetsDesignatedAtFairValueThroughProfitOrLoss | 2025-01-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+42227000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+42227000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:InterestIncomeOnFinancialAssetsDesignatedAtFairValueThroughProfitOrLoss | 2025-04-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+20824000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+20824000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:InterestIncomeOnFinancialAssetsDesignatedAtFairValueThroughProfitOrLoss | 2026-01-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+44098000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+44098000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:InterestIncomeOnFinancialAssetsDesignatedAtFairValueThroughProfitOrLoss | 2026-04-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+22556000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+22557000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:Revenue | 2025-01-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+1803369025000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+1852979533000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:Revenue | 2025-04-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+961457364000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+1218972488000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:Revenue | 2026-01-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+2538678713000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+1812322536000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:Revenue | 2026-04-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+1393692795000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+893667830000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:RevenueThatWasIncludedInContractLiabilityBalanceAtBeginningOfPeriod | 2025-01-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+9611247000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+8036447000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:RevenueThatWasIncludedInContractLiabilityBalanceAtBeginningOfPeriod | 2026-01-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+43281148000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+41860548000.0
+]
+],
+"지역 [축] | ifrs-full:Revenue | 2025-01-01~2025-06-30": [
+[
+"아시아 [구성요소]",
+"dart:AsiaMember",
+107079644000.0
+],
+[
+"유럽 [구성요소]",
+"dart:EuropeMember",
+811493885000.0
+],
+[
+"북미 [구성요소]",
+"dart:NorthAmericaMember",
+154522540000.0
+],
+[
+"중남미 [구성요소]",
+"entity00413046:MiddlesouthAmericaMemberOfGeographicalAreasDomainOfDisclosureOfNetSalesByGeographicalAreaTableOfMember",
+68445633000.0
+],
+[
+"본사 소재지 국가 [구성요소]",
+"ifrs-full:CountryOfDomicileMember",
+661827323000.0
+]
+],
+"지역 [축] | ifrs-full:Revenue | 2026-01-01~2026-06-30": [
+[
+"아시아 [구성요소]",
+"dart:AsiaMember",
+137813507000.0
+],
+[
+"유럽 [구성요소]",
+"dart:EuropeMember",
+1147822046000.0
+],
+[
+"북미 [구성요소]",
+"dart:NorthAmericaMember",
+477361687000.0
+],
+[
+"중남미 [구성요소]",
+"entity00413046:MiddlesouthAmericaMemberOfGeographicalAreasDomainOfDisclosureOfNetSalesByGeographicalAreaTableOfMember",
+80372545000.0
+],
+[
+"본사 소재지 국가 [구성요소]",
+"ifrs-full:CountryOfDomicileMember",
+695308928000.0
+]
+],
+"특수관계자의 범주 [축] | dart:InterestIncomeRelatedPartyTransactions | 2025-01-01~2025-06-30": [
+[
+"Celltrion Asia Pacific PTE. LTD [구성요소]",
+"entity00413046:CelltrionAsiaPacificPteLtdMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"셀트리온바이오솔루션스 [구성요소]",
+"entity00413046:CelltrionBiosolutionsMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Celltrion Global Safety Data Center, Inc. [구성요소]",
+"entity00413046:CelltrionGlobalSafetyDataCenterIncMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Celltrion Healthcare Australia Pty Ltd [구성요소]",
+"entity00413046:CelltrionHealthcareAustraliaPtyLtdMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+3563000.0
+],
+[
+"Celltrion Healthcare Canada Ltd. [구성요소]",
+"entity00413046:CelltrionHealthcareCanadaLtdMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Celltrion Healthcare Chile SpA [구성요소]",
+"entity00413046:CelltrionHealthcareChileSpaMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Celltrion Healthcare Colombia S.A.S. [구성요소]",
+"entity00413046:CelltrionHealthcareColombiaSASMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+26169000.0
+],
+[
+"Celltrion Healthcare De Mexico S.A. de C.V. [구성요소]",
+"entity00413046:CelltrionHealthcareDeMexicoSADeCVMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Celltrion Healthcare Denmark ApS [구성요소]",
+"entity00413046:CelltrionHealthcareDenmarkApsMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Celltrion Healthcare Deutschland GmbH [구성요소]",
+"entity00413046:CelltrionHealthcareDeutschlandGmbhMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Celltrion Healthcare Distribuicao de Produtos Farmaceuticos do Brasil LTDA [구성요소]",
+"entity00413046:CelltrionHealthcareDistribuicaoDeProdutosFarmaceuticosDoBrasilLtdaMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Celltrion Healthcare Finland Oy [구성요소]",
+"entity00413046:CelltrionHealthcareFinlandOyMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Celltrion Healthcare France SAS [구성요소]",
+"entity00413046:CelltrionHealthcareFranceSasMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Celltrion Healthcare Hong Kong Limited [구성요소]",
+"entity00413046:CelltrionHealthcareHongKongLimitedMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Celltrion Healthcare Hungary, Kft. [구성요소]",
+"entity00413046:CelltrionHealthcareHungaryKftMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+1789267000.0
+],
+[
+"Celltrion Healthcare ILAC SANAYI VE TICARET LIMITED SIRKETI [구성요소]",
+"entity00413046:CelltrionHealthcareIlacSanayiVeTicaretLimitedSirketiMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+153482000.0
+],
+[
+"Celltrion Healthcare Ireland Limited [구성요소]",
+"entity00413046:CelltrionHealthcareIrelandLimitedMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Celltrion Healthcare Italy S.r.l [구성요소]",
+"entity00413046:CelltrionHealthcareItalySRLMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Celltrion Healthcare Japan K.K. [구성요소]",
+"entity00413046:CelltrionHealthcareJapanKKMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Celltrion Healthcare Malaysia SDN BHD [구성요소]",
+"entity00413046:CelltrionHealthcareMalaysiaSdnBhdMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Celltrion Healthcare Netherlands B.V. [구성요소]",
+"entity00413046:CelltrionHealthcareNetherlandsBVMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Celltrion Healthcare New Zealand Limited [구성요소]",
+"entity00413046:CelltrionHealthcareNewZealandLimitedMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Celltrion Healthcare Peru S.A.C. [구성요소]",
+"entity00413046:CelltrionHealthcarePeruSACMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+4097000.0
+],
+[
+"Celltrion Healthcare Philippines Inc. [구성요소]",
+"entity00413046:CelltrionHealthcarePhilippinesIncMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+16936000.0
+],
+[
+"Celltrion Healthcare Singapore Private Limited [구성요소]",
+"entity00413046:CelltrionHealthcareSingaporePrivateLimitedMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+27505000.0
+]
+],
+"특수관계자의 범주 [축] | dart:InterestIncomeRelatedPartyTransactions | 2026-01-01~2026-06-30": [
+[
+"Celltrion Asia Pacific PTE. LTD [구성요소]",
+"entity00413046:CelltrionAsiaPacificPteLtdMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"셀트리온바이오솔루션스 [구성요소]",
+"entity00413046:CelltrionBiosolutionsMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Celltrion Branchburg., LLC [구성요소]",
+"entity00413046:CelltrionBranchburgLlcMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Celltrion Farmaceutica(ESPANA),S.L. [구성요소]",
+"entity00413046:CelltrionFarmaceuticaEspanaSLMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Celltrion Global Safety Data Center, Inc. [구성요소]",
+"entity00413046:CelltrionGlobalSafetyDataCenterIncMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Celltrion Healthcare Australia Pty Ltd [구성요소]",
+"entity00413046:CelltrionHealthcareAustraliaPtyLtdMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+142951000.0
+],
+[
+"Celltrion Healthcare Canada Ltd. [구성요소]",
+"entity00413046:CelltrionHealthcareCanadaLtdMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+40861000.0
+],
+[
+"Celltrion Healthcare Chile SpA [구성요소]",
+"entity00413046:CelltrionHealthcareChileSpaMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+72276000.0
+],
+[
+"Celltrion Healthcare Colombia S.A.S. [구성요소]",
+"entity00413046:CelltrionHealthcareColombiaSASMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+128028000.0
+],
+[
+"Celltrion Healthcare De Mexico S.A. de C.V. [구성요소]",
+"entity00413046:CelltrionHealthcareDeMexicoSADeCVMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+10572000.0
+],
+[
+"Celltrion Healthcare Denmark ApS [구성요소]",
+"entity00413046:CelltrionHealthcareDenmarkApsMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Celltrion Healthcare Deutschland GmbH [구성요소]",
+"entity00413046:CelltrionHealthcareDeutschlandGmbhMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Celltrion Healthcare Distribuicao de Produtos Farmaceuticos do Brasil LTDA [구성요소]",
+"entity00413046:CelltrionHealthcareDistribuicaoDeProdutosFarmaceuticosDoBrasilLtdaMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+65088000.0
+],
+[
+"Celltrion Healthcare Finland Oy [구성요소]",
+"entity00413046:CelltrionHealthcareFinlandOyMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Celltrion Healthcare France SAS [구성요소]",
+"entity00413046:CelltrionHealthcareFranceSasMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Celltrion Healthcare Hong Kong Limited [구성요소]",
+"entity00413046:CelltrionHealthcareHongKongLimitedMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+17201000.0
+],
+[
+"Celltrion Healthcare Hungary, Kft. [구성요소]",
+"entity00413046:CelltrionHealthcareHungaryKftMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+13517449000.0
+],
+[
+"Celltrion Healthcare ILAC SANAYI VE TICARET LIMITED SIRKETI [구성요소]",
+"entity00413046:CelltrionHealthcareIlacSanayiVeTicaretLimitedSirketiMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Celltrion Healthcare Ireland Limited [구성요소]",
+"entity00413046:CelltrionHealthcareIrelandLimitedMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Celltrion Healthcare Italy S.r.l [구성요소]",
+"entity00413046:CelltrionHealthcareItalySRLMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Celltrion Healthcare Japan K.K. [구성요소]",
+"entity00413046:CelltrionHealthcareJapanKKMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Celltrion Healthcare Malaysia SDN BHD [구성요소]",
+"entity00413046:CelltrionHealthcareMalaysiaSdnBhdMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Celltrion Healthcare Netherlands B.V. [구성요소]",
+"entity00413046:CelltrionHealthcareNetherlandsBVMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Celltrion Healthcare New Zealand Limited [구성요소]",
+"entity00413046:CelltrionHealthcareNewZealandLimitedMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+17971000.0
+],
+[
+"Celltrion Healthcare Peru S.A.C. [구성요소]",
+"entity00413046:CelltrionHealthcarePeruSACMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+]
+],
+"특수관계자의 범주 [축] | dart:OtherIncomeRelatedPartyTransactions | 2025-01-01~2025-06-30": [
+[
+"셀트리온홀딩스 [구성요소]",
+"entity00413046:CelltrionHoldingsCoLtdMemberOfEntitiesWithJointControlOrSignificantInfluenceOverEntityMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+36955000.0
+],
+[
+"셀트리온스킨큐어 등 [구성요소]",
+"entity00413046:CelltrionSkincureCoLtdEtcMemberOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Cyron Therapeutics CO.,LTD. [구성요소]",
+"entity00413046:CyronTherapeuticsCoLtdMemberOfTotalForAllAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"(주)티에스이엔씨 등 [구성요소]",
+"entity00413046:TsEncCoLtdEtcMemberOfOthersMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+1068000.0
+],
+[
+"Celltrion Asia Pacific PTE. LTD [구성요소]",
+"entity00413046:CelltrionAsiaPacificPteLtdMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+620681000.0
+],
+[
+"셀트리온바이오솔루션스 [구성요소]",
+"entity00413046:CelltrionBiosolutionsMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+1122935000.0
+],
+[
+"Celltrion Global Safety Data Center, Inc. [구성요소]",
+"entity00413046:CelltrionGlobalSafetyDataCenterIncMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+69489000.0
+],
+[
+"Celltrion Healthcare Australia Pty Ltd [구성요소]",
+"entity00413046:CelltrionHealthcareAustraliaPtyLtdMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+205403000.0
+],
+[
+"Celltrion Healthcare Canada Ltd. [구성요소]",
+"entity00413046:CelltrionHealthcareCanadaLtdMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+247368000.0
+],
+[
+"Celltrion Healthcare Chile SpA [구성요소]",
+"entity00413046:CelltrionHealthcareChileSpaMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+56383000.0
+],
+[
+"Celltrion Healthcare Colombia S.A.S. [구성요소]",
+"entity00413046:CelltrionHealthcareColombiaSASMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+30238000.0
+],
+[
+"Celltrion Healthcare De Mexico S.A. de C.V. [구성요소]",
+"entity00413046:CelltrionHealthcareDeMexicoSADeCVMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+147529000.0
+],
+[
+"Celltrion Healthcare Denmark ApS [구성요소]",
+"entity00413046:CelltrionHealthcareDenmarkApsMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+19850000.0
+],
+[
+"Celltrion Healthcare Deutschland GmbH [구성요소]",
+"entity00413046:CelltrionHealthcareDeutschlandGmbhMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+551836000.0
+],
+[
+"Celltrion Healthcare Distribuicao de Produtos Farmaceuticos do Brasil LTDA [구성요소]",
+"entity00413046:CelltrionHealthcareDistribuicaoDeProdutosFarmaceuticosDoBrasilLtdaMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+191030000.0
+],
+[
+"Celltrion Healthcare Finland Oy [구성요소]",
+"entity00413046:CelltrionHealthcareFinlandOyMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+81271000.0
+],
+[
+"Celltrion Healthcare France SAS [구성요소]",
+"entity00413046:CelltrionHealthcareFranceSasMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+542454000.0
+],
+[
+"Celltrion Healthcare Hong Kong Limited [구성요소]",
+"entity00413046:CelltrionHealthcareHongKongLimitedMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+33022000.0
+],
+[
+"Celltrion Healthcare Hungary, Kft. [구성요소]",
+"entity00413046:CelltrionHealthcareHungaryKftMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+2830437000.0
+],
+[
+"Celltrion Healthcare ILAC SANAYI VE TICARET LIMITED SIRKETI [구성요소]",
+"entity00413046:CelltrionHealthcareIlacSanayiVeTicaretLimitedSirketiMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+74088000.0
+],
+[
+"Celltrion Healthcare Ireland Limited [구성요소]",
+"entity00413046:CelltrionHealthcareIrelandLimitedMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+68852000.0
+],
+[
+"Celltrion Healthcare Italy S.r.l [구성요소]",
+"entity00413046:CelltrionHealthcareItalySRLMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+202010000.0
+],
+[
+"Celltrion Healthcare Japan K.K. [구성요소]",
+"entity00413046:CelltrionHealthcareJapanKKMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+354957000.0
+],
+[
+"Celltrion Healthcare Malaysia SDN BHD [구성요소]",
+"entity00413046:CelltrionHealthcareMalaysiaSdnBhdMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+52449000.0
+],
+[
+"Celltrion Healthcare Netherlands B.V. [구성요소]",
+"entity00413046:CelltrionHealthcareNetherlandsBVMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+197967000.0
+]
+],
+"특수관계자의 범주 [축] | dart:OtherIncomeRelatedPartyTransactions | 2026-01-01~2026-06-30": [
+[
+"셀트리온홀딩스 [구성요소]",
+"entity00413046:CelltrionHoldingsCoLtdMemberOfEntitiesWithJointControlOrSignificantInfluenceOverEntityMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+108574000.0
+],
+[
+"셀트리온스킨큐어 등 [구성요소]",
+"entity00413046:CelltrionSkincureCoLtdEtcMemberOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+128188000.0
+],
+[
+"Cyron Therapeutics CO.,LTD. [구성요소]",
+"entity00413046:CyronTherapeuticsCoLtdMemberOfTotalForAllAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"(주)티에스이엔씨 등 [구성요소]",
+"entity00413046:TsEncCoLtdEtcMemberOfOthersMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+1068000.0
+],
+[
+"Celltrion Asia Pacific PTE. LTD [구성요소]",
+"entity00413046:CelltrionAsiaPacificPteLtdMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+320469000.0
+],
+[
+"셀트리온바이오솔루션스 [구성요소]",
+"entity00413046:CelltrionBiosolutionsMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+480497000.0
+],
+[
+"Celltrion Branchburg., LLC [구성요소]",
+"entity00413046:CelltrionBranchburgLlcMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+1312367000.0
+],
+[
+"Celltrion Farmaceutica(ESPANA),S.L. [구성요소]",
+"entity00413046:CelltrionFarmaceuticaEspanaSLMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+258081000.0
+],
+[
+"Celltrion Global Safety Data Center, Inc. [구성요소]",
+"entity00413046:CelltrionGlobalSafetyDataCenterIncMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+91069000.0
+],
+[
+"Celltrion Healthcare Australia Pty Ltd [구성요소]",
+"entity00413046:CelltrionHealthcareAustraliaPtyLtdMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+75232000.0
+],
+[
+"Celltrion Healthcare Canada Ltd. [구성요소]",
+"entity00413046:CelltrionHealthcareCanadaLtdMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+359607000.0
+],
+[
+"Celltrion Healthcare Chile SpA [구성요소]",
+"entity00413046:CelltrionHealthcareChileSpaMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+34156000.0
+],
+[
+"Celltrion Healthcare Colombia S.A.S. [구성요소]",
+"entity00413046:CelltrionHealthcareColombiaSASMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+26530000.0
+],
+[
+"Celltrion Healthcare De Mexico S.A. de C.V. [구성요소]",
+"entity00413046:CelltrionHealthcareDeMexicoSADeCVMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+90734000.0
+],
+[
+"Celltrion Healthcare Denmark ApS [구성요소]",
+"entity00413046:CelltrionHealthcareDenmarkApsMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+46320000.0
+],
+[
+"Celltrion Healthcare Deutschland GmbH [구성요소]",
+"entity00413046:CelltrionHealthcareDeutschlandGmbhMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+501740000.0
+],
+[
+"Celltrion Healthcare Distribuicao de Produtos Farmaceuticos do Brasil LTDA [구성요소]",
+"entity00413046:CelltrionHealthcareDistribuicaoDeProdutosFarmaceuticosDoBrasilLtdaMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+173936000.0
+],
+[
+"Celltrion Healthcare Finland Oy [구성요소]",
+"entity00413046:CelltrionHealthcareFinlandOyMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+65909000.0
+],
+[
+"Celltrion Healthcare France SAS [구성요소]",
+"entity00413046:CelltrionHealthcareFranceSasMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+631179000.0
+],
+[
+"Celltrion Healthcare Hong Kong Limited [구성요소]",
+"entity00413046:CelltrionHealthcareHongKongLimitedMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+15067000.0
+],
+[
+"Celltrion Healthcare Hungary, Kft. [구성요소]",
+"entity00413046:CelltrionHealthcareHungaryKftMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+1146456000.0
+],
+[
+"Celltrion Healthcare ILAC SANAYI VE TICARET LIMITED SIRKETI [구성요소]",
+"entity00413046:CelltrionHealthcareIlacSanayiVeTicaretLimitedSirketiMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+884000.0
+],
+[
+"Celltrion Healthcare Ireland Limited [구성요소]",
+"entity00413046:CelltrionHealthcareIrelandLimitedMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+87546000.0
+],
+[
+"Celltrion Healthcare Italy S.r.l [구성요소]",
+"entity00413046:CelltrionHealthcareItalySRLMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+217322000.0
+],
+[
+"Celltrion Healthcare Japan K.K. [구성요소]",
+"entity00413046:CelltrionHealthcareJapanKKMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+11635000.0
+]
+],
+"특수관계자의 범주 [축] | dart:RevenueRelatedPartyTransactions | 2025-01-01~2025-06-30": [
+[
+"셀트리온홀딩스 [구성요소]",
+"entity00413046:CelltrionHoldingsCoLtdMemberOfEntitiesWithJointControlOrSignificantInfluenceOverEntityMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"셀트리온스킨큐어 등 [구성요소]",
+"entity00413046:CelltrionSkincureCoLtdEtcMemberOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+25201000.0
+],
+[
+"Cyron Therapeutics CO.,LTD. [구성요소]",
+"entity00413046:CyronTherapeuticsCoLtdMemberOfTotalForAllAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"(주)티에스이엔씨 등 [구성요소]",
+"entity00413046:TsEncCoLtdEtcMemberOfOthersMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+]
+],
+"특수관계자의 범주 [축] | dart:RevenueRelatedPartyTransactions | 2026-01-01~2026-06-30": [
+[
+"셀트리온홀딩스 [구성요소]",
+"entity00413046:CelltrionHoldingsCoLtdMemberOfEntitiesWithJointControlOrSignificantInfluenceOverEntityMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"셀트리온스킨큐어 등 [구성요소]",
+"entity00413046:CelltrionSkincureCoLtdEtcMemberOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+20562000.0
+],
+[
+"Cyron Therapeutics CO.,LTD. [구성요소]",
+"entity00413046:CyronTherapeuticsCoLtdMemberOfTotalForAllAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"(주)티에스이엔씨 등 [구성요소]",
+"entity00413046:TsEncCoLtdEtcMemberOfOthersMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+]
+],
+"특수관계자의 범주 [축] | entity00413046:SalesRelatedPartyTransactionOfRelatedPartyTransactionsAbstractOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfItems | 2025-01-01~2025-06-30": [
+[
+"Celltrion Asia Pacific PTE. LTD [구성요소]",
+"entity00413046:CelltrionAsiaPacificPteLtdMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+1391145000.0
+],
+[
+"셀트리온바이오솔루션스 [구성요소]",
+"entity00413046:CelltrionBiosolutionsMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Celltrion Global Safety Data Center, Inc. [구성요소]",
+"entity00413046:CelltrionGlobalSafetyDataCenterIncMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Celltrion Healthcare Australia Pty Ltd [구성요소]",
+"entity00413046:CelltrionHealthcareAustraliaPtyLtdMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+17022390000.0
+],
+[
+"Celltrion Healthcare Canada Ltd. [구성요소]",
+"entity00413046:CelltrionHealthcareCanadaLtdMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+25428237000.0
+],
+[
+"Celltrion Healthcare Chile SpA [구성요소]",
+"entity00413046:CelltrionHealthcareChileSpaMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+7336383000.0
+],
+[
+"Celltrion Healthcare Colombia S.A.S. [구성요소]",
+"entity00413046:CelltrionHealthcareColombiaSASMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+6152501000.0
+],
+[
+"Celltrion Healthcare De Mexico S.A. de C.V. [구성요소]",
+"entity00413046:CelltrionHealthcareDeMexicoSADeCVMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+3520406000.0
+],
+[
+"Celltrion Healthcare Denmark ApS [구성요소]",
+"entity00413046:CelltrionHealthcareDenmarkApsMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Celltrion Healthcare Deutschland GmbH [구성요소]",
+"entity00413046:CelltrionHealthcareDeutschlandGmbhMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Celltrion Healthcare Distribuicao de Produtos Farmaceuticos do Brasil LTDA [구성요소]",
+"entity00413046:CelltrionHealthcareDistribuicaoDeProdutosFarmaceuticosDoBrasilLtdaMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+38426239000.0
+],
+[
+"Celltrion Healthcare Finland Oy [구성요소]",
+"entity00413046:CelltrionHealthcareFinlandOyMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Celltrion Healthcare France SAS [구성요소]",
+"entity00413046:CelltrionHealthcareFranceSasMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Celltrion Healthcare Hong Kong Limited [구성요소]",
+"entity00413046:CelltrionHealthcareHongKongLimitedMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+2437401000.0
+],
+[
+"Celltrion Healthcare Hungary, Kft. [구성요소]",
+"entity00413046:CelltrionHealthcareHungaryKftMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+706991321000.0
+],
+[
+"Celltrion Healthcare ILAC SANAYI VE TICARET LIMITED SIRKETI [구성요소]",
+"entity00413046:CelltrionHealthcareIlacSanayiVeTicaretLimitedSirketiMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+3330290000.0
+],
+[
+"Celltrion Healthcare Ireland Limited [구성요소]",
+"entity00413046:CelltrionHealthcareIrelandLimitedMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Celltrion Healthcare Italy S.r.l [구성요소]",
+"entity00413046:CelltrionHealthcareItalySRLMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Celltrion Healthcare Japan K.K. [구성요소]",
+"entity00413046:CelltrionHealthcareJapanKKMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+47453870000.0
+],
+[
+"Celltrion Healthcare Malaysia SDN BHD [구성요소]",
+"entity00413046:CelltrionHealthcareMalaysiaSdnBhdMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+8062000.0
+],
+[
+"Celltrion Healthcare Netherlands B.V. [구성요소]",
+"entity00413046:CelltrionHealthcareNetherlandsBVMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Celltrion Healthcare New Zealand Limited [구성요소]",
+"entity00413046:CelltrionHealthcareNewZealandLimitedMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+-135830000.0
+],
+[
+"Celltrion Healthcare Peru S.A.C. [구성요소]",
+"entity00413046:CelltrionHealthcarePeruSACMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+1005285000.0
+],
+[
+"Celltrion Healthcare Philippines Inc. [구성요소]",
+"entity00413046:CelltrionHealthcarePhilippinesIncMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+-135057000.0
+],
+[
+"Celltrion Healthcare Singapore Private Limited [구성요소]",
+"entity00413046:CelltrionHealthcareSingaporePrivateLimitedMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+2276689000.0
+]
+],
+"특수관계자의 범주 [축] | entity00413046:SalesRelatedPartyTransactionOfRelatedPartyTransactionsAbstractOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfItems | 2026-01-01~2026-06-30": [
+[
+"Celltrion Asia Pacific PTE. LTD [구성요소]",
+"entity00413046:CelltrionAsiaPacificPteLtdMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+291230000.0
+],
+[
+"셀트리온바이오솔루션스 [구성요소]",
+"entity00413046:CelltrionBiosolutionsMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Celltrion Branchburg., LLC [구성요소]",
+"entity00413046:CelltrionBranchburgLlcMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Celltrion Farmaceutica(ESPANA),S.L. [구성요소]",
+"entity00413046:CelltrionFarmaceuticaEspanaSLMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Celltrion Global Safety Data Center, Inc. [구성요소]",
+"entity00413046:CelltrionGlobalSafetyDataCenterIncMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Celltrion Healthcare Australia Pty Ltd [구성요소]",
+"entity00413046:CelltrionHealthcareAustraliaPtyLtdMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+28917399000.0
+],
+[
+"Celltrion Healthcare Canada Ltd. [구성요소]",
+"entity00413046:CelltrionHealthcareCanadaLtdMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+68451709000.0
+],
+[
+"Celltrion Healthcare Chile SpA [구성요소]",
+"entity00413046:CelltrionHealthcareChileSpaMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+10731455000.0
+],
+[
+"Celltrion Healthcare Colombia S.A.S. [구성요소]",
+"entity00413046:CelltrionHealthcareColombiaSASMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+4399361000.0
+],
+[
+"Celltrion Healthcare De Mexico S.A. de C.V. [구성요소]",
+"entity00413046:CelltrionHealthcareDeMexicoSADeCVMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+5408289000.0
+],
+[
+"Celltrion Healthcare Denmark ApS [구성요소]",
+"entity00413046:CelltrionHealthcareDenmarkApsMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Celltrion Healthcare Deutschland GmbH [구성요소]",
+"entity00413046:CelltrionHealthcareDeutschlandGmbhMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Celltrion Healthcare Distribuicao de Produtos Farmaceuticos do Brasil LTDA [구성요소]",
+"entity00413046:CelltrionHealthcareDistribuicaoDeProdutosFarmaceuticosDoBrasilLtdaMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+40197593000.0
+],
+[
+"Celltrion Healthcare Finland Oy [구성요소]",
+"entity00413046:CelltrionHealthcareFinlandOyMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Celltrion Healthcare France SAS [구성요소]",
+"entity00413046:CelltrionHealthcareFranceSasMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Celltrion Healthcare Hong Kong Limited [구성요소]",
+"entity00413046:CelltrionHealthcareHongKongLimitedMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+3493543000.0
+],
+[
+"Celltrion Healthcare Hungary, Kft. [구성요소]",
+"entity00413046:CelltrionHealthcareHungaryKftMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+994323236000.0
+],
+[
+"Celltrion Healthcare ILAC SANAYI VE TICARET LIMITED SIRKETI [구성요소]",
+"entity00413046:CelltrionHealthcareIlacSanayiVeTicaretLimitedSirketiMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+3578247000.0
+],
+[
+"Celltrion Healthcare Ireland Limited [구성요소]",
+"entity00413046:CelltrionHealthcareIrelandLimitedMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Celltrion Healthcare Italy S.r.l [구성요소]",
+"entity00413046:CelltrionHealthcareItalySRLMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Celltrion Healthcare Japan K.K. [구성요소]",
+"entity00413046:CelltrionHealthcareJapanKKMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+66397156000.0
+],
+[
+"Celltrion Healthcare Malaysia SDN BHD [구성요소]",
+"entity00413046:CelltrionHealthcareMalaysiaSdnBhdMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Celltrion Healthcare Netherlands B.V. [구성요소]",
+"entity00413046:CelltrionHealthcareNetherlandsBVMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Celltrion Healthcare New Zealand Limited [구성요소]",
+"entity00413046:CelltrionHealthcareNewZealandLimitedMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+2910855000.0
+],
+[
+"Celltrion Healthcare Peru S.A.C. [구성요소]",
+"entity00413046:CelltrionHealthcarePeruSACMemberOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+1130697000.0
+]
+]
+}
+}

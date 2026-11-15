@@ -1,0 +1,1280 @@
+{
+"reports": [
+"반기보고서 (2026.06) 20260814",
+"분기보고서 (2026.03) 20260515",
+"사업보고서 (2025.12) 20260310",
+"분기보고서 (2025.09) 20251114"
+],
+"반기보고서 (2026.06)": {
+"부문의 합계 [축] | ifrs-full:Revenue | 2025-01-01~2025-06-30": [
+[
+"부문간 제거한 금액 [구성요소]",
+"ifrs-full:EliminationOfIntersegmentAmountsMember",
+0.0
+],
+[
+"중요한 조정사항 [구성요소]",
+"ifrs-full:MaterialReconcilingItemsMember",
+-14082913000000.0
+],
+[
+"DS 부문 [구성요소]",
+"entity00126380:DsDivisionMemberOfOperatingSegmentsMemberOfDisclosureOfOperatingSegmentsTableOfMember",
+51732862000000.0
+],
+[
+"DX 부문 [구성요소]",
+"entity00126380:DxDivisionMemberOfOperatingSegmentsMemberOfDisclosureOfOperatingSegmentsTableOfMember",
+63023920000000.0
+]
+],
+"부문의 합계 [축] | ifrs-full:Revenue | 2025-04-01~2025-06-30": [
+[
+"부문간 제거한 금액 [구성요소]",
+"ifrs-full:EliminationOfIntersegmentAmountsMember",
+0.0
+],
+[
+"중요한 조정사항 [구성요소]",
+"ifrs-full:MaterialReconcilingItemsMember",
+-7088904000000.0
+],
+[
+"DS 부문 [구성요소]",
+"entity00126380:DsDivisionMemberOfOperatingSegmentsMemberOfDisclosureOfOperatingSegmentsTableOfMember",
+27074741000000.0
+],
+[
+"DX 부문 [구성요소]",
+"entity00126380:DxDivisionMemberOfOperatingSegmentsMemberOfDisclosureOfOperatingSegmentsTableOfMember",
+30000009000000.0
+]
+],
+"부문의 합계 [축] | ifrs-full:Revenue | 2026-01-01~2026-06-30": [
+[
+"부문간 제거한 금액 [구성요소]",
+"ifrs-full:EliminationOfIntersegmentAmountsMember",
+0.0
+],
+[
+"중요한 조정사항 [구성요소]",
+"ifrs-full:MaterialReconcilingItemsMember",
+-27108541000000.0
+],
+[
+"DS 부문 [구성요소]",
+"entity00126380:DsDivisionMemberOfOperatingSegmentsMemberOfDisclosureOfOperatingSegmentsTableOfMember",
+207516307000000.0
+],
+[
+"DX 부문 [구성요소]",
+"entity00126380:DxDivisionMemberOfOperatingSegmentsMemberOfDisclosureOfOperatingSegmentsTableOfMember",
+67378352000000.0
+]
+],
+"부문의 합계 [축] | ifrs-full:Revenue | 2026-04-01~2026-06-30": [
+[
+"부문간 제거한 금액 [구성요소]",
+"ifrs-full:EliminationOfIntersegmentAmountsMember",
+0.0
+],
+[
+"중요한 조정사항 [구성요소]",
+"ifrs-full:MaterialReconcilingItemsMember",
+-16091850000000.0
+],
+[
+"DS 부문 [구성요소]",
+"entity00126380:DsDivisionMemberOfOperatingSegmentsMemberOfDisclosureOfOperatingSegmentsTableOfMember",
+127481629000000.0
+],
+[
+"DX 부문 [구성요소]",
+"entity00126380:DxDivisionMemberOfOperatingSegmentsMemberOfDisclosureOfOperatingSegmentsTableOfMember",
+32477774000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:DividendIncomeNonOperating | 2025-01-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+66871000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+5803679000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:DividendIncomeNonOperating | 2025-04-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+31754000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+1494447000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:DividendIncomeNonOperating | 2026-01-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+69965000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+1911302000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:DividendIncomeNonOperating | 2026-04-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+34277000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+1519440000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:GainFromDerivatives | 2025-01-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+1106133000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+664223000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:GainFromDerivatives | 2025-04-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+275036000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+63617000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:GainFromDerivatives | 2026-01-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+2651570000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+0.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:GainFromDerivatives | 2026-04-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+2350310000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+0.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:InterestIncomeFinanceIncome | 2025-01-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+2290544000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+108672000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:InterestIncomeFinanceIncome | 2025-04-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+1051195000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+37189000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:InterestIncomeFinanceIncome | 2026-01-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+2833468000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+398034000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:InterestIncomeFinanceIncome | 2026-04-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+1605359000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+231249000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:SalesPromotionExpenses | 2025-01-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+4059321000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+868777000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:SalesPromotionExpenses | 2025-04-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+1915725000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+470771000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:SalesPromotionExpenses | 2026-01-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+3983881000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+897753000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:SalesPromotionExpenses | 2026-04-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+1948153000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+507955000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:SalesPromotionExpensesSellingGeneralAdministrativeExpenses | 2025-01-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+4059321000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+868777000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:SalesPromotionExpensesSellingGeneralAdministrativeExpenses | 2025-04-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+1915725000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+470771000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:SalesPromotionExpensesSellingGeneralAdministrativeExpenses | 2026-01-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+3983881000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+897753000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:SalesPromotionExpensesSellingGeneralAdministrativeExpenses | 2026-04-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+1948153000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+507955000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:AdjustmentsForDecreaseIncreaseInTradeAccountReceivable | 2025-01-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+-1223216000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+855231000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:AdjustmentsForDecreaseIncreaseInTradeAccountReceivable | 2026-01-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+-39341327000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+-72150439000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:AdjustmentsForDividendIncome | 2025-01-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+66871000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+5803679000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:AdjustmentsForDividendIncome | 2026-01-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+69965000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+1911302000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:AdjustmentsForFinanceIncome | 2025-01-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+4329620000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+1334480000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:AdjustmentsForFinanceIncome | 2026-01-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+9107541000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+2902052000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:FinanceIncome | 2025-01-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+8316736000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+3769731000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:FinanceIncome | 2025-04-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+4345852000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+1938932000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:FinanceIncome | 2026-01-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+14475364000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+6650572000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:FinanceIncome | 2026-04-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+8352399000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+3272909000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:InterestIncomeForFinancialAssetsMeasuredAtAmortisedCost | 2025-01-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+2290434000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+108672000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:InterestIncomeForFinancialAssetsMeasuredAtAmortisedCost | 2025-04-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+1051140000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+37189000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:InterestIncomeForFinancialAssetsMeasuredAtAmortisedCost | 2026-01-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+2833363000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+398034000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:InterestIncomeForFinancialAssetsMeasuredAtAmortisedCost | 2026-04-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+1605306000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+231249000000.0
+]
+],
+"제품과 용역 [축] | ifrs-full:Revenue | 2025-01-01~2025-06-30": [
+[
+"디스플레이 패널 [구성요소]",
+"entity00126380:DisplayPanelMemberOfProductsAndServicesMemberOfDisclosureOfProductsAndServicesTableOfMember",
+12246903000000.0
+],
+[
+"메모리 [구성요소]",
+"entity00126380:MemoryMemberOfProductsAndServicesMemberOfDisclosureOfProductsAndServicesTableOfMember",
+40247535000000.0
+],
+[
+"스마트폰 등 [구성요소]",
+"entity00126380:SmartphoneEtcMemberOfProductsAndServicesMemberOfDisclosureOfProductsAndServicesTableOfMember",
+64638470000000.0
+],
+[
+"TV, 모니터 등 [구성요소]",
+"entity00126380:TvMonitorEtcMemberOfProductsAndServicesMemberOfDisclosureOfProductsAndServicesTableOfMember",
+14767406000000.0
+]
+],
+"제품과 용역 [축] | ifrs-full:Revenue | 2025-04-01~2025-06-30": [
+[
+"디스플레이 패널 [구성요소]",
+"entity00126380:DisplayPanelMemberOfProductsAndServicesMemberOfDisclosureOfProductsAndServicesTableOfMember",
+6379981000000.0
+],
+[
+"메모리 [구성요소]",
+"entity00126380:MemoryMemberOfProductsAndServicesMemberOfDisclosureOfProductsAndServicesTableOfMember",
+21178497000000.0
+],
+[
+"스마트폰 등 [구성요소]",
+"entity00126380:SmartphoneEtcMemberOfProductsAndServicesMemberOfDisclosureOfProductsAndServicesTableOfMember",
+28450849000000.0
+],
+[
+"TV, 모니터 등 [구성요소]",
+"entity00126380:TvMonitorEtcMemberOfProductsAndServicesMemberOfDisclosureOfProductsAndServicesTableOfMember",
+7011061000000.0
+]
+],
+"제품과 용역 [축] | ifrs-full:Revenue | 2026-01-01~2026-06-30": [
+[
+"디스플레이 패널 [구성요소]",
+"entity00126380:DisplayPanelMemberOfProductsAndServicesMemberOfDisclosureOfProductsAndServicesTableOfMember",
+14178522000000.0
+],
+[
+"메모리 [구성요소]",
+"entity00126380:MemoryMemberOfProductsAndServicesMemberOfDisclosureOfProductsAndServicesTableOfMember",
+195620223000000.0
+],
+[
+"스마트폰 등 [구성요소]",
+"entity00126380:SmartphoneEtcMemberOfProductsAndServicesMemberOfDisclosureOfProductsAndServicesTableOfMember",
+69798593000000.0
+],
+[
+"TV, 모니터 등 [구성요소]",
+"entity00126380:TvMonitorEtcMemberOfProductsAndServicesMemberOfDisclosureOfProductsAndServicesTableOfMember",
+15445566000000.0
+]
+],
+"제품과 용역 [축] | ifrs-full:Revenue | 2026-04-01~2026-06-30": [
+[
+"디스플레이 패널 [구성요소]",
+"entity00126380:DisplayPanelMemberOfProductsAndServicesMemberOfDisclosureOfProductsAndServicesTableOfMember",
+7485065000000.0
+],
+[
+"메모리 [구성요소]",
+"entity00126380:MemoryMemberOfProductsAndServicesMemberOfDisclosureOfProductsAndServicesTableOfMember",
+120840243000000.0
+],
+[
+"스마트폰 등 [구성요소]",
+"entity00126380:SmartphoneEtcMemberOfProductsAndServicesMemberOfDisclosureOfProductsAndServicesTableOfMember",
+32294954000000.0
+],
+[
+"TV, 모니터 등 [구성요소]",
+"entity00126380:TvMonitorEtcMemberOfProductsAndServicesMemberOfDisclosureOfProductsAndServicesTableOfMember",
+7717749000000.0
+]
+],
+"특수관계자의 범주 [축] | dart:RevenueAndOtherTransactionsRelatedPartyTransactions | 2025-01-01~2025-06-30": [
+[
+"(주)제일기획 [구성요소]",
+"entity00126380:CheilWorldwideMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+36848000000.0
+],
+[
+"Harman과 그 종속기업",
+"entity00126380:HarmanInternationalIndustriesIncAndItsSubsidiariesOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+723000000.0
+],
+[
+"기타 관계기업 및 공동기업 [구성요소]",
+"entity00126380:OtherAssociatesAndJointVenturesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+368143000000.0
+],
+[
+"기타 대규모기업집단 소속회사 [구성요소]",
+"entity00126380:OtherLargeEnterpriseGroupMemberOfLargeBusinessGroupMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+95523000000.0
+],
+[
+"기타 그 밖의 특수관계자 [구성요소]",
+"entity00126380:OtherOtherRelatedPartiesMemberOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+280435000000.0
+],
+[
+"기타",
+"entity00126380:OtherSubsidiariesOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+28986926000000.0
+],
+[
+"(주)에스원 [구성요소]",
+"entity00126380:S1MemberOfLargeBusinessGroupMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+8873000000.0
+],
+[
+"Samsung Asia Pte. Ltd. (SAPL)",
+"entity00126380:SamsungAsiaPteLtdSaplOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+28000000.0
+],
+[
+"Samsung Austin Semiconductor LLC. (SAS)",
+"entity00126380:SamsungAustinSemiconductorLlcSasOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+7197000000.0
+],
+[
+"삼성물산(주) [구성요소]",
+"entity00126380:SamsungCTOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+569000000.0
+],
+[
+"Samsung (CHINA) Investment Co., Ltd. (SCIC)",
+"entity00126380:SamsungChinaInvestmentCoLtdScicOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+1012258000000.0
+],
+[
+"Samsung (China) Semiconductor Co., Ltd. (SCS)",
+"entity00126380:SamsungChinaSemiconductorCoLtdScsOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+1509819000000.0
+],
+[
+"삼성디스플레이㈜",
+"entity00126380:SamsungDisplayCoLtdOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+217893000000.0
+],
+[
+"Samsung Display Vietnam Co., Ltd. (SDV)",
+"entity00126380:SamsungDisplayVietnamCoLtdSdvOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+691779000000.0
+],
+[
+"삼성이앤에이(주) [구성요소]",
+"entity00126380:SamsungEACoLtdMemberOfLargeBusinessGroupMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+1071000000.0
+],
+[
+"삼성전기(주) [구성요소]",
+"entity00126380:SamsungElectroMechanicsMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+35751000000.0
+],
+[
+"Samsung Electronics America, Inc. (SEA)",
+"entity00126380:SamsungElectronicsAmericaIncSeaOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+16178748000000.0
+],
+[
+"Samsung Electronics Benelux B.V. (SEBN)",
+"entity00126380:SamsungElectronicsBeneluxBVSebnOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+415059000000.0
+],
+[
+"Samsung Electronics Europe Holding Cooperatief U.A. (SEEH)",
+"entity00126380:SamsungElectronicsEuropeHoldingCooperatiefUASeehOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Samsung Electronics Europe Logistics B.V. (SELS)",
+"entity00126380:SamsungElectronicsEuropeLogisticsBVSelsOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+3309948000000.0
+],
+[
+"Samsung Electronics GmbH (SEG)",
+"entity00126380:SamsungElectronicsGmbhSegOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+1880940000000.0
+],
+[
+"Samsung Electronics HCMC CE Complex Co., Ltd. (SEHC)",
+"entity00126380:SamsungElectronicsHcmcCeComplexCoLtdSehcOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+304167000000.0
+],
+[
+"Samsung Electronics Mexico S.A. De C.V. (SEM)",
+"entity00126380:SamsungElectronicsMexicoSADeCVSemOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+1668751000000.0
+],
+[
+"Samsung Electronics Taiwan Co., Ltd. (SET)",
+"entity00126380:SamsungElectronicsTaiwanCoLtdSetOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+3238886000000.0
+],
+[
+"Samsung Electronics (UK) Ltd. (SEUK)",
+"entity00126380:SamsungElectronicsUkLtdSeukOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+1175649000000.0
+]
+],
+"특수관계자의 범주 [축] | dart:RevenueAndOtherTransactionsRelatedPartyTransactions | 2026-01-01~2026-06-30": [
+[
+"(주)제일기획 [구성요소]",
+"entity00126380:CheilWorldwideMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+36949000000.0
+],
+[
+"Harman과 그 종속기업",
+"entity00126380:HarmanInternationalIndustriesIncAndItsSubsidiariesOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+3979000000.0
+],
+[
+"기타 관계기업 및 공동기업 [구성요소]",
+"entity00126380:OtherAssociatesAndJointVenturesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+384196000000.0
+],
+[
+"기타 대규모기업집단 소속회사 [구성요소]",
+"entity00126380:OtherLargeEnterpriseGroupMemberOfLargeBusinessGroupMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+94120000000.0
+],
+[
+"기타 그 밖의 특수관계자 [구성요소]",
+"entity00126380:OtherOtherRelatedPartiesMemberOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+23849000000.0
+],
+[
+"기타",
+"entity00126380:OtherSubsidiariesOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+33877799000000.0
+],
+[
+"(주)에스원 [구성요소]",
+"entity00126380:S1MemberOfLargeBusinessGroupMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+1712000000.0
+],
+[
+"Samsung Asia Pte. Ltd. (SAPL)",
+"entity00126380:SamsungAsiaPteLtdSaplOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+39000000.0
+],
+[
+"Samsung Austin Semiconductor LLC. (SAS)",
+"entity00126380:SamsungAustinSemiconductorLlcSasOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+80000000.0
+],
+[
+"삼성물산(주) [구성요소]",
+"entity00126380:SamsungCTOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+1257000000.0
+],
+[
+"Samsung (CHINA) Investment Co., Ltd. (SCIC)",
+"entity00126380:SamsungChinaInvestmentCoLtdScicOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+611806000000.0
+],
+[
+"Samsung (China) Semiconductor Co., Ltd. (SCS)",
+"entity00126380:SamsungChinaSemiconductorCoLtdScsOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+31646000000.0
+],
+[
+"삼성디스플레이㈜",
+"entity00126380:SamsungDisplayCoLtdOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+266940000000.0
+],
+[
+"Samsung Display Vietnam Co., Ltd. (SDV)",
+"entity00126380:SamsungDisplayVietnamCoLtdSdvOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+807813000000.0
+],
+[
+"삼성이앤에이(주) [구성요소]",
+"entity00126380:SamsungEACoLtdMemberOfLargeBusinessGroupMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+418000000.0
+],
+[
+"삼성전기(주) [구성요소]",
+"entity00126380:SamsungElectroMechanicsMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+45735000000.0
+],
+[
+"Samsung Electronics America, Inc. (SEA)",
+"entity00126380:SamsungElectronicsAmericaIncSeaOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+15113077000000.0
+],
+[
+"Samsung Electronics Europe Holding Cooperatief U.A. (SEEH)",
+"entity00126380:SamsungElectronicsEuropeHoldingCooperatiefUASeehOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Samsung Electronics Europe Logistics B.V. (SELS)",
+"entity00126380:SamsungElectronicsEuropeLogisticsBVSelsOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+2973450000000.0
+],
+[
+"Samsung Electronics HCMC CE Complex Co., Ltd. (SEHC)",
+"entity00126380:SamsungElectronicsHcmcCeComplexCoLtdSehcOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+445317000000.0
+],
+[
+"Samsung Electronics Mexico S.A. De C.V. (SEM)",
+"entity00126380:SamsungElectronicsMexicoSADeCVSemOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+1979314000000.0
+],
+[
+"Samsung Electronics Taiwan Co., Ltd. (SET)",
+"entity00126380:SamsungElectronicsTaiwanCoLtdSetOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+9144519000000.0
+],
+[
+"Samsung Electronics (UK) Ltd. (SEUK)",
+"entity00126380:SamsungElectronicsUkLtdSeukOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+1865408000000.0
+],
+[
+"Samsung Electronics Vietnam Co., Ltd. (SEV)",
+"entity00126380:SamsungElectronicsVietnamCoLtdSevOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+1129688000000.0
+],
+[
+"Samsung Electronics Vietnam THAINGUYEN Co., Ltd. (SEVT)",
+"entity00126380:SamsungElectronicsVietnamThainguyenCoLtdSevtOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+1713226000000.0
+]
+],
+"특수관계자의 범주 [축] | entity00126380:RevenueAndOthersRelatedPartyTransactionsOfDisclosureOfTransactionsBetweenRelatedPartiesLineItemsOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfItems | 2025-01-01~2025-06-30": [
+[
+"(주)제일기획 [구성요소]",
+"entity00126380:CheilWorldwideMemberOfAssociatesAndJointVenturesOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+37211000000.0
+],
+[
+"기타 관계기업 및 공동기업 [구성요소]",
+"entity00126380:OtherAssociatesAndJointVenturesMemberOfAssociatesAndJointVenturesOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+703487000000.0
+],
+[
+"기타 대규모기업집단 소속회사 [구성요소]",
+"entity00126380:OtherLargeEnterpriseGroupMemberOfLargeBusinessGroupMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+115319000000.0
+],
+[
+"기타 그 밖의 특수관계자 [구성요소]",
+"entity00126380:OtherOtherRelatedPartiesMemberOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+331908000000.0
+],
+[
+"(주)에스원 [구성요소]",
+"entity00126380:S1MemberOfLargeBusinessGroupMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+10259000000.0
+],
+[
+"삼성물산(주) [구성요소]",
+"entity00126380:SamsungCTOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+4854000000.0
+],
+[
+"삼성이앤에이(주) [구성요소]",
+"entity00126380:SamsungEACoLtdMemberOfLargeBusinessGroupMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+1496000000.0
+],
+[
+"삼성전기(주) [구성요소]",
+"entity00126380:SamsungElectroMechanicsMemberOfAssociatesAndJointVenturesOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+44375000000.0
+],
+[
+"삼성SDI(주) [구성요소]",
+"entity00126380:SamsungSdiMemberOfAssociatesAndJointVenturesOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+53932000000.0
+],
+[
+"삼성에스디에스(주) [구성요소]",
+"entity00126380:SamsungSdsMemberOfAssociatesAndJointVenturesOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+76392000000.0
+]
+],
+"특수관계자의 범주 [축] | entity00126380:RevenueAndOthersRelatedPartyTransactionsOfDisclosureOfTransactionsBetweenRelatedPartiesLineItemsOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfItems | 2026-01-01~2026-06-30": [
+[
+"(주)제일기획 [구성요소]",
+"entity00126380:CheilWorldwideMemberOfAssociatesAndJointVenturesOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+37406000000.0
+],
+[
+"기타 관계기업 및 공동기업 [구성요소]",
+"entity00126380:OtherAssociatesAndJointVenturesMemberOfAssociatesAndJointVenturesOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+691060000000.0
+],
+[
+"기타 대규모기업집단 소속회사 [구성요소]",
+"entity00126380:OtherLargeEnterpriseGroupMemberOfLargeBusinessGroupMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+121591000000.0
+],
+[
+"기타 그 밖의 특수관계자 [구성요소]",
+"entity00126380:OtherOtherRelatedPartiesMemberOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+70914000000.0
+],
+[
+"(주)에스원 [구성요소]",
+"entity00126380:S1MemberOfLargeBusinessGroupMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+3225000000.0
+],
+[
+"삼성물산(주) [구성요소]",
+"entity00126380:SamsungCTOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+4199000000.0
+],
+[
+"삼성이앤에이(주) [구성요소]",
+"entity00126380:SamsungEACoLtdMemberOfLargeBusinessGroupMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+585000000.0
+],
+[
+"삼성전기(주) [구성요소]",
+"entity00126380:SamsungElectroMechanicsMemberOfAssociatesAndJointVenturesOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+59596000000.0
+],
+[
+"삼성SDI(주) [구성요소]",
+"entity00126380:SamsungSdiMemberOfAssociatesAndJointVenturesOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+38142000000.0
+],
+[
+"삼성에스디에스(주) [구성요소]",
+"entity00126380:SamsungSdsMemberOfAssociatesAndJointVenturesOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+99697000000.0
+]
+],
+"특수관계자의 범주 [축] | entity00126380:RevenueAndOthersRelatedPartyTransactionsOfDisclosureOfTransactionsBetweenRelatedPartiesTotalLineItemsOfDisclosureOfTransactionsBetweenRelatedPartiesTotalTableTableOfItems | 2025-01-01~2025-06-30": [
+[
+"대규모기업집단 [구성요소]",
+"dart:LargeBusinessGroupMember",
+127074000000.0
+],
+[
+"관계기업 및 공동기업",
+"entity00126380:AssociatesAndJointVenturesOfRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTotalTableTableOfMember",
+915397000000.0
+],
+[
+"그 밖의 특수관계자 [구성요소]",
+"ifrs-full:OtherRelatedPartiesMember",
+336762000000.0
+],
+[
+"대규모기업집단 [구성요소]",
+"dart:LargeBusinessGroupMember",
+105467000000.0
+],
+[
+"관계기업 및 공동기업",
+"entity00126380:AssociatesAndJointVenturesOfRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTotalTableTableOfMember",
+557507000000.0
+],
+[
+"그 밖의 특수관계자 [구성요소]",
+"ifrs-full:OtherRelatedPartiesMember",
+281004000000.0
+],
+[
+"모든 종속기업의 합계 [구성요소]",
+"ifrs-full:SubsidiariesMember",
+101008729000000.0
+]
+],
+"특수관계자의 범주 [축] | entity00126380:RevenueAndOthersRelatedPartyTransactionsOfDisclosureOfTransactionsBetweenRelatedPartiesTotalLineItemsOfDisclosureOfTransactionsBetweenRelatedPartiesTotalTableTableOfItems | 2026-01-01~2026-06-30": [
+[
+"대규모기업집단 [구성요소]",
+"dart:LargeBusinessGroupMember",
+125401000000.0
+],
+[
+"관계기업 및 공동기업",
+"entity00126380:AssociatesAndJointVenturesOfRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTotalTableTableOfMember",
+925901000000.0
+],
+[
+"그 밖의 특수관계자 [구성요소]",
+"ifrs-full:OtherRelatedPartiesMember",
+75113000000.0
+],
+[
+"대규모기업집단 [구성요소]",
+"dart:LargeBusinessGroupMember",
+96250000000.0
+],
+[
+"관계기업 및 공동기업",
+"entity00126380:AssociatesAndJointVenturesOfRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTotalTableTableOfMember",
+592238000000.0
+],
+[
+"그 밖의 특수관계자 [구성요소]",
+"ifrs-full:OtherRelatedPartiesMember",
+25106000000.0
+],
+[
+"모든 종속기업의 합계 [구성요소]",
+"ifrs-full:SubsidiariesMember",
+243950958000000.0
+]
+],
+"특수관계자의 범주 [축] | ifrs-full:SalesOfPropertyAndOtherAssetsRelatedPartyTransactions | 2025-01-01~2025-06-30": [
+[
+"대규모기업집단 [구성요소]",
+"dart:LargeBusinessGroupMember",
+0.0
+],
+[
+"관계기업 및 공동기업",
+"entity00126380:AssociatesAndJointVenturesOfRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTotalTableTableOfMember",
+855000000.0
+],
+[
+"(주)제일기획 [구성요소]",
+"entity00126380:CheilWorldwideMemberOfAssociatesAndJointVenturesOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"기타 관계기업 및 공동기업 [구성요소]",
+"entity00126380:OtherAssociatesAndJointVenturesMemberOfAssociatesAndJointVenturesOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+794000000.0
+],
+[
+"기타 대규모기업집단 소속회사 [구성요소]",
+"entity00126380:OtherLargeEnterpriseGroupMemberOfLargeBusinessGroupMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"기타 그 밖의 특수관계자 [구성요소]",
+"entity00126380:OtherOtherRelatedPartiesMemberOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"(주)에스원 [구성요소]",
+"entity00126380:S1MemberOfLargeBusinessGroupMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"삼성물산(주) [구성요소]",
+"entity00126380:SamsungCTOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+20000000.0
+],
+[
+"삼성이앤에이(주) [구성요소]",
+"entity00126380:SamsungEACoLtdMemberOfLargeBusinessGroupMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"삼성전기(주) [구성요소]",
+"entity00126380:SamsungElectroMechanicsMemberOfAssociatesAndJointVenturesOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"삼성SDI(주) [구성요소]",
+"entity00126380:SamsungSdiMemberOfAssociatesAndJointVenturesOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"삼성에스디에스(주) [구성요소]",
+"entity00126380:SamsungSdsMemberOfAssociatesAndJointVenturesOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+61000000.0
+],
+[
+"그 밖의 특수관계자 [구성요소]",
+"ifrs-full:OtherRelatedPartiesMember",
+20000000.0
+],
+[
+"대규모기업집단 [구성요소]",
+"dart:LargeBusinessGroupMember",
+0.0
+],
+[
+"관계기업 및 공동기업",
+"entity00126380:AssociatesAndJointVenturesOfRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTotalTableTableOfMember",
+855000000.0
+],
+[
+"(주)제일기획 [구성요소]",
+"entity00126380:CheilWorldwideMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Harman과 그 종속기업",
+"entity00126380:HarmanInternationalIndustriesIncAndItsSubsidiariesOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"기타 관계기업 및 공동기업 [구성요소]",
+"entity00126380:OtherAssociatesAndJointVenturesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+794000000.0
+],
+[
+"기타 대규모기업집단 소속회사 [구성요소]",
+"entity00126380:OtherLargeEnterpriseGroupMemberOfLargeBusinessGroupMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"기타 그 밖의 특수관계자 [구성요소]",
+"entity00126380:OtherOtherRelatedPartiesMemberOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"기타",
+"entity00126380:OtherSubsidiariesOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+16355000000.0
+],
+[
+"(주)에스원 [구성요소]",
+"entity00126380:S1MemberOfLargeBusinessGroupMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Samsung Asia Pte. Ltd. (SAPL)",
+"entity00126380:SamsungAsiaPteLtdSaplOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Samsung Austin Semiconductor LLC. (SAS)",
+"entity00126380:SamsungAustinSemiconductorLlcSasOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"삼성물산(주) [구성요소]",
+"entity00126380:SamsungCTOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+20000000.0
+]
+],
+"특수관계자의 범주 [축] | ifrs-full:SalesOfPropertyAndOtherAssetsRelatedPartyTransactions | 2026-01-01~2026-06-30": [
+[
+"대규모기업집단 [구성요소]",
+"dart:LargeBusinessGroupMember",
+0.0
+],
+[
+"관계기업 및 공동기업",
+"entity00126380:AssociatesAndJointVenturesOfRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTotalTableTableOfMember",
+177000000.0
+],
+[
+"(주)제일기획 [구성요소]",
+"entity00126380:CheilWorldwideMemberOfAssociatesAndJointVenturesOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"기타 관계기업 및 공동기업 [구성요소]",
+"entity00126380:OtherAssociatesAndJointVenturesMemberOfAssociatesAndJointVenturesOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+177000000.0
+],
+[
+"기타 대규모기업집단 소속회사 [구성요소]",
+"entity00126380:OtherLargeEnterpriseGroupMemberOfLargeBusinessGroupMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"기타 그 밖의 특수관계자 [구성요소]",
+"entity00126380:OtherOtherRelatedPartiesMemberOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"(주)에스원 [구성요소]",
+"entity00126380:S1MemberOfLargeBusinessGroupMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"삼성물산(주) [구성요소]",
+"entity00126380:SamsungCTOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+113000000.0
+],
+[
+"삼성이앤에이(주) [구성요소]",
+"entity00126380:SamsungEACoLtdMemberOfLargeBusinessGroupMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"삼성전기(주) [구성요소]",
+"entity00126380:SamsungElectroMechanicsMemberOfAssociatesAndJointVenturesOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"삼성SDI(주) [구성요소]",
+"entity00126380:SamsungSdiMemberOfAssociatesAndJointVenturesOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"삼성에스디에스(주) [구성요소]",
+"entity00126380:SamsungSdsMemberOfAssociatesAndJointVenturesOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"그 밖의 특수관계자 [구성요소]",
+"ifrs-full:OtherRelatedPartiesMember",
+113000000.0
+],
+[
+"대규모기업집단 [구성요소]",
+"dart:LargeBusinessGroupMember",
+0.0
+],
+[
+"관계기업 및 공동기업",
+"entity00126380:AssociatesAndJointVenturesOfRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTotalTableTableOfMember",
+177000000.0
+],
+[
+"(주)제일기획 [구성요소]",
+"entity00126380:CheilWorldwideMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Harman과 그 종속기업",
+"entity00126380:HarmanInternationalIndustriesIncAndItsSubsidiariesOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"기타 관계기업 및 공동기업 [구성요소]",
+"entity00126380:OtherAssociatesAndJointVenturesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+177000000.0
+],
+[
+"기타 대규모기업집단 소속회사 [구성요소]",
+"entity00126380:OtherLargeEnterpriseGroupMemberOfLargeBusinessGroupMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"기타 그 밖의 특수관계자 [구성요소]",
+"entity00126380:OtherOtherRelatedPartiesMemberOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"기타",
+"entity00126380:OtherSubsidiariesOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+78000000.0
+],
+[
+"(주)에스원 [구성요소]",
+"entity00126380:S1MemberOfLargeBusinessGroupMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Samsung Asia Pte. Ltd. (SAPL)",
+"entity00126380:SamsungAsiaPteLtdSaplOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Samsung Austin Semiconductor LLC. (SAS)",
+"entity00126380:SamsungAustinSemiconductorLlcSasOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"삼성물산(주) [구성요소]",
+"entity00126380:SamsungCTOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+113000000.0
+]
+]
+}
+}

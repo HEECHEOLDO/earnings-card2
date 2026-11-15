@@ -1,0 +1,236 @@
+{
+"recent": [
+"4 2026-11-09 0000950103-26-017401",
+"4 2026-11-09 0000950103-26-017398",
+"CERT  0001354457-26-001064",
+"8-A12B  0001193125-26-458695",
+"8-K 2026-11-12 0001193125-26-458525",
+"144  0001921094-26-001151",
+"4 2026-11-04 0000950103-26-017123",
+"424B5  0001193125-26-450754",
+"8-K 2026-11-03 0001193125-26-450074",
+"424B5  0001193125-26-448015",
+"4 2026-11-02 0000950103-26-016962",
+"FWP  0001193125-26-447522"
+],
+"files": [
+"0001628280-26-066773-index-headers.html",
+"0001628280-26-066773-index.html",
+"0001628280-26-066773.txt",
+"0001628280-26-066773-xbrl.zip",
+"FilingSummary.xml",
+"meta-20260930.htm",
+"meta-20260930.xsd",
+"meta-20260930_cal.xml",
+"meta-20260930_def.xml",
+"meta-20260930_g1.jpg",
+"meta-20260930_g10.jpg",
+"meta-20260930_g11.jpg",
+"meta-20260930_g12.jpg",
+"meta-20260930_g13.jpg",
+"meta-20260930_g14.jpg",
+"meta-20260930_g15.jpg",
+"meta-20260930_g16.jpg",
+"meta-20260930_g17.jpg",
+"meta-20260930_g18.jpg",
+"meta-20260930_g19.jpg",
+"meta-20260930_g2.jpg",
+"meta-20260930_g20.jpg",
+"meta-20260930_g3.jpg",
+"meta-20260930_g4.jpg",
+"meta-20260930_g5.jpg",
+"meta-20260930_g6.jpg",
+"meta-20260930_g7.jpg",
+"meta-20260930_g8.jpg",
+"meta-20260930_g9.jpg",
+"meta-20260930_htm.xml",
+"meta-20260930_lab.xml",
+"meta-20260930_pre.xml",
+"meta09302026-ex311.htm",
+"meta09302026-ex312.htm",
+"meta09302026-ex321.htm",
+"meta09302026-ex322.htm",
+"MetaLinks.json",
+"R1.htm",
+"R10.htm",
+"R11.htm"
+],
+"dims": {
+"Geographical [Axis] | us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax | 2025-01-01~2025-09-30": [
+[
+"US &amp; Canada [Member]",
+"meta:USCanadaMember",
+55031000000.0
+],
+[
+"Europe [Member]",
+"srt:EuropeMember",
+32315000000.0
+],
+[
+"Asia Pacific [Member]",
+"srt:AsiaPacificMember",
+38401000000.0
+],
+[
+"Rest Of World [Member]",
+"meta:RestOfWorldMember",
+15326000000.0
+]
+],
+"Geographical [Axis] | us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax | 2025-07-01~2025-09-30": [
+[
+"US &amp; Canada [Member]",
+"meta:USCanadaMember",
+19708000000.0
+],
+[
+"Europe [Member]",
+"srt:EuropeMember",
+11566000000.0
+],
+[
+"Asia Pacific [Member]",
+"srt:AsiaPacificMember",
+14304000000.0
+],
+[
+"Rest Of World [Member]",
+"meta:RestOfWorldMember",
+5664000000.0
+]
+],
+"Geographical [Axis] | us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax | 2026-01-01~2026-09-30": [
+[
+"US &amp; Canada [Member]",
+"meta:USCanadaMember",
+71346000000.0
+],
+[
+"Europe [Member]",
+"srt:EuropeMember",
+41272000000.0
+],
+[
+"Asia Pacific [Member]",
+"srt:AsiaPacificMember",
+48511000000.0
+],
+[
+"Rest Of World [Member]",
+"meta:RestOfWorldMember",
+20583000000.0
+]
+],
+"Geographical [Axis] | us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax | 2026-07-01~2026-09-30": [
+[
+"US &amp; Canada [Member]",
+"meta:USCanadaMember",
+26217000000.0
+],
+[
+"Europe [Member]",
+"srt:EuropeMember",
+14023000000.0
+],
+[
+"Asia Pacific [Member]",
+"srt:AsiaPacificMember",
+16993000000.0
+],
+[
+"Rest Of World [Member]",
+"meta:RestOfWorldMember",
+7368000000.0
+]
+],
+"Segments [Axis] | us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax | 2025-01-01~2025-09-30": [
+[
+"Family of Apps [Member]",
+"meta:FamilyOfAppsMember",
+139821000000.0
+],
+[
+"Reality Labs [Member]",
+"meta:RealityLabsMember",
+1252000000.0
+],
+[
+"Family of Apps [Member]",
+"meta:FamilyOfAppsMember",
+139821000000.0
+],
+[
+"Reality Labs [Member]",
+"meta:RealityLabsMember",
+1252000000.0
+]
+],
+"Segments [Axis] | us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax | 2025-07-01~2025-09-30": [
+[
+"Family of Apps [Member]",
+"meta:FamilyOfAppsMember",
+50772000000.0
+],
+[
+"Reality Labs [Member]",
+"meta:RealityLabsMember",
+470000000.0
+],
+[
+"Family of Apps [Member]",
+"meta:FamilyOfAppsMember",
+50772000000.0
+],
+[
+"Reality Labs [Member]",
+"meta:RealityLabsMember",
+470000000.0
+]
+],
+"Segments [Axis] | us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax | 2026-01-01~2026-09-30": [
+[
+"Family of Apps [Member]",
+"meta:FamilyOfAppsMember",
+180436000000.0
+],
+[
+"Reality Labs [Member]",
+"meta:RealityLabsMember",
+1276000000.0
+],
+[
+"Family of Apps [Member]",
+"meta:FamilyOfAppsMember",
+180436000000.0
+],
+[
+"Reality Labs [Member]",
+"meta:RealityLabsMember",
+1276000000.0
+]
+],
+"Segments [Axis] | us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax | 2026-07-01~2026-09-30": [
+[
+"Family of Apps [Member]",
+"meta:FamilyOfAppsMember",
+64158000000.0
+],
+[
+"Reality Labs [Member]",
+"meta:RealityLabsMember",
+443000000.0
+],
+[
+"Family of Apps [Member]",
+"meta:FamilyOfAppsMember",
+64158000000.0
+],
+[
+"Reality Labs [Member]",
+"meta:RealityLabsMember",
+443000000.0
+]
+]
+}
+}

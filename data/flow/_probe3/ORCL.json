@@ -1,0 +1,158 @@
+{
+"recent": [
+"8-K 2026-11-02 0001193125-26-447507",
+"424B5  0001193125-26-445847",
+"424B2  0001193125-26-445846",
+"FWP  0001193125-26-443918",
+"424B5  0001193125-26-442729",
+"424B2  0001193125-26-442722",
+"S-3ASR  0001193125-26-442669",
+"8-K 2026-10-28 0001193125-26-435853",
+"4 2026-10-23 0001341439-26-000125",
+"4 2026-10-23 0001341439-26-000123",
+"4 2026-10-23 0001341439-26-000121",
+"4 2026-10-23 0001341439-26-000119"
+],
+"files": [
+"0001193125-26-389274-index-headers.html",
+"0001193125-26-389274-index.html",
+"0001193125-26-389274.txt",
+"0001193125-26-389274-xbrl.zip",
+"FilingSummary.xml",
+"MetaLinks.json",
+"orcl-20260831.htm",
+"orcl-20260831.xsd",
+"orcl-20260831_htm.xml",
+"orcl-ex10_07.htm",
+"orcl-ex31_01.htm",
+"orcl-ex31_02.htm",
+"orcl-ex31_03.htm",
+"orcl-ex32_01.htm",
+"R1.htm",
+"R10.htm",
+"R11.htm",
+"R12.htm",
+"R13.htm",
+"R14.htm",
+"R15.htm",
+"R16.htm",
+"R17.htm",
+"R18.htm",
+"R19.htm",
+"R2.htm",
+"R20.htm",
+"R21.htm",
+"R22.htm",
+"R23.htm",
+"R24.htm",
+"R25.htm",
+"R26.htm",
+"R27.htm",
+"R28.htm",
+"R29.htm",
+"R3.htm",
+"R30.htm",
+"R31.htm",
+"R32.htm"
+],
+"dims": {
+"srt:ProductOrServiceAxis | us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax | 2025-06-01~2025-08-31": [
+[
+"orcl:CloudApplicationsMember",
+"orcl:CloudApplicationsMember",
+3839000000.0
+],
+[
+"orcl:CloudInfrastructureMember",
+"orcl:CloudInfrastructureMember",
+3347000000.0
+],
+[
+"orcl:CloudRevenuesMember",
+"orcl:CloudRevenuesMember",
+7186000000.0
+],
+[
+"orcl:SoftwareLicenseMember",
+"orcl:SoftwareLicenseMember",
+766000000.0
+],
+[
+"orcl:SoftwareSupportMember",
+"orcl:SoftwareSupportMember",
+4955000000.0
+],
+[
+"orcl:SoftwareRevenuesMember",
+"orcl:SoftwareRevenuesMember",
+5721000000.0
+]
+],
+"srt:ProductOrServiceAxis | us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax | 2026-06-01~2026-08-31": [
+[
+"orcl:CloudApplicationsMember",
+"orcl:CloudApplicationsMember",
+4219000000.0
+],
+[
+"orcl:CloudInfrastructureMember",
+"orcl:CloudInfrastructureMember",
+7388000000.0
+],
+[
+"orcl:CloudRevenuesMember",
+"orcl:CloudRevenuesMember",
+11607000000.0
+],
+[
+"orcl:SoftwareLicenseMember",
+"orcl:SoftwareLicenseMember",
+655000000.0
+],
+[
+"orcl:SoftwareSupportMember",
+"orcl:SoftwareSupportMember",
+4895000000.0
+],
+[
+"orcl:SoftwareRevenuesMember",
+"orcl:SoftwareRevenuesMember",
+5550000000.0
+]
+],
+"srt:StatementGeographicalAxis | us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax | 2025-06-01~2025-08-31": [
+[
+"srt:AmericasMember",
+"srt:AmericasMember",
+9662000000.0
+],
+[
+"us-gaap:EMEAMember",
+"us-gaap:EMEAMember",
+3481000000.0
+],
+[
+"srt:AsiaPacificMember",
+"srt:AsiaPacificMember",
+1783000000.0
+]
+],
+"srt:StatementGeographicalAxis | us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax | 2026-06-01~2026-08-31": [
+[
+"srt:AmericasMember",
+"srt:AmericasMember",
+13711000000.0
+],
+[
+"us-gaap:EMEAMember",
+"us-gaap:EMEAMember",
+3726000000.0
+],
+[
+"srt:AsiaPacificMember",
+"srt:AsiaPacificMember",
+1908000000.0
+]
+]
+}
+}

@@ -1,0 +1,168 @@
+{
+"recent": [
+"4 2026-10-30 0001141391-26-000126",
+"144  0001950047-26-010574",
+"144  0001950047-26-010506",
+"144  0001950047-26-010502",
+"10-Q 2026-09-30 0001141391-26-000124",
+"8-K 2026-10-29 0001141391-26-000122",
+"4 2026-10-16 0001141391-26-000118",
+"144  0001950047-26-010290",
+"4 2026-10-09 0001141391-26-000116",
+"144  0001950047-26-010168",
+"144  0001950047-26-010147",
+"4 2026-10-01 0001141391-26-000114"
+],
+"files": [
+"0001141391-26-000124-index-headers.html",
+"0001141391-26-000124-index.html",
+"0001141391-26-000124.txt",
+"0001141391-26-000124-xbrl.zip",
+"exb311-09302026.htm",
+"exb312-09302026.htm",
+"exb321-09302026.htm",
+"exb322-09302026.htm",
+"FilingSummary.xml",
+"ma-20260930.htm",
+"ma-20260930.xsd",
+"ma-20260930_cal.xml",
+"ma-20260930_def.xml",
+"ma-20260930_g1.jpg",
+"ma-20260930_g2.jpg",
+"ma-20260930_htm.xml",
+"ma-20260930_lab.xml",
+"ma-20260930_pre.xml",
+"MetaLinks.json",
+"R1.htm",
+"R10.htm",
+"R11.htm",
+"R12.htm",
+"R13.htm",
+"R14.htm",
+"R15.htm",
+"R16.htm",
+"R17.htm",
+"R18.htm",
+"R19.htm",
+"R2.htm",
+"R20.htm",
+"R21.htm",
+"R22.htm",
+"R23.htm",
+"R24.htm",
+"R25.htm",
+"R26.htm",
+"R27.htm",
+"R28.htm"
+],
+"dims": {
+"Asset Class [Axis] | ma:EquitySecuritiesFVNISales | 2026-01-01~2026-09-30": [
+[
+"Marketable Securities [Member]",
+"ma:MarketableSecuritiesMember",
+-100000000.0
+],
+[
+"Nonmarketable Securities [Member]",
+"ma:NonmarketableSecuritiesMember",
+-9000000.0
+]
+],
+"Geographical [Axis] | us-gaap:Revenues | 2025-01-01~2025-09-30": [
+[
+"North America [Member]",
+"srt:NorthAmericaMember",
+10207000000.0
+],
+[
+"International Markets [Member]",
+"ma:InternationalMarketsMember",
+13778000000.0
+]
+],
+"Geographical [Axis] | us-gaap:Revenues | 2025-07-01~2025-09-30": [
+[
+"North America [Member]",
+"srt:NorthAmericaMember",
+3651000000.0
+],
+[
+"International Markets [Member]",
+"ma:InternationalMarketsMember",
+4951000000.0
+]
+],
+"Geographical [Axis] | us-gaap:Revenues | 2026-01-01~2026-09-30": [
+[
+"North America [Member]",
+"srt:NorthAmericaMember",
+11754000000.0
+],
+[
+"International Markets [Member]",
+"ma:InternationalMarketsMember",
+15728000000.0
+]
+],
+"Geographical [Axis] | us-gaap:Revenues | 2026-07-01~2026-09-30": [
+[
+"North America [Member]",
+"srt:NorthAmericaMember",
+4190000000.0
+],
+[
+"International Markets [Member]",
+"ma:InternationalMarketsMember",
+5617000000.0
+]
+],
+"Product and Service [Axis] | us-gaap:Revenues | 2025-01-01~2025-09-30": [
+[
+"Payment Network [Member]",
+"ma:PaymentNetworkMember",
+14556000000.0
+],
+[
+"Value-Added Services And Solutions [Member]",
+"ma:ValueAddedServicesAndSolutionsMember",
+9429000000.0
+]
+],
+"Product and Service [Axis] | us-gaap:Revenues | 2025-07-01~2025-09-30": [
+[
+"Payment Network [Member]",
+"ma:PaymentNetworkMember",
+5179000000.0
+],
+[
+"Value-Added Services And Solutions [Member]",
+"ma:ValueAddedServicesAndSolutionsMember",
+3423000000.0
+]
+],
+"Product and Service [Axis] | us-gaap:Revenues | 2026-01-01~2026-09-30": [
+[
+"Payment Network [Member]",
+"ma:PaymentNetworkMember",
+16148000000.0
+],
+[
+"Value-Added Services And Solutions [Member]",
+"ma:ValueAddedServicesAndSolutionsMember",
+11334000000.0
+]
+],
+"Product and Service [Axis] | us-gaap:Revenues | 2026-07-01~2026-09-30": [
+[
+"Payment Network [Member]",
+"ma:PaymentNetworkMember",
+5749000000.0
+],
+[
+"Value-Added Services And Solutions [Member]",
+"ma:ValueAddedServicesAndSolutionsMember",
+4058000000.0
+]
+]
+}
+}

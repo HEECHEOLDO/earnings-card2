@@ -1,0 +1,1376 @@
+{
+"reports": [
+"분기보고서 (2026.09) 20261113",
+"반기보고서 (2026.06) 20260813",
+"분기보고서 (2026.03) 20260514",
+"사업보고서 (2025.12) 20260312"
+],
+"분기보고서 (2026.09)": {
+"금융자산의 범주 [축] | dart:InterestIncomeFinanceIncome | 2025-01-01~2025-09-30": [
+[
+"파생상품자산 [구성요소]",
+"dart:DerivativeAssetsMember",
+0.0
+],
+[
+"상각후원가로 측정하는 금융자산, 범주 [구성요소]",
+"ifrs-full:FinancialAssetsAtAmortisedCostCategoryMember",
+150461000000.0
+],
+[
+"공정가치평가를 기타포괄손익으로 인식하는 금융자산 [구성요소]",
+"ifrs-full:FinancialAssetsAtFairValueThroughOtherComprehensiveIncomeCategoryMember",
+0.0
+],
+[
+"당기손익인식금융자산 [구성요소]",
+"ifrs-full:FinancialAssetsAtFairValueThroughProfitOrLossCategoryMember",
+20557000000.0
+],
+[
+"파생상품자산 [구성요소]",
+"dart:DerivativeAssetsMember",
+0.0
+],
+[
+"상각후원가로 측정하는 금융자산, 범주 [구성요소]",
+"ifrs-full:FinancialAssetsAtAmortisedCostCategoryMember",
+59490000000.0
+],
+[
+"공정가치평가를 기타포괄손익으로 인식하는 금융자산 [구성요소]",
+"ifrs-full:FinancialAssetsAtFairValueThroughOtherComprehensiveIncomeCategoryMember",
+0.0
+],
+[
+"당기손익인식금융자산 [구성요소]",
+"ifrs-full:FinancialAssetsAtFairValueThroughProfitOrLossCategoryMember",
+20557000000.0
+]
+],
+"금융자산의 범주 [축] | dart:InterestIncomeFinanceIncome | 2025-07-01~2025-09-30": [
+[
+"파생상품자산 [구성요소]",
+"dart:DerivativeAssetsMember",
+0.0
+],
+[
+"상각후원가로 측정하는 금융자산, 범주 [구성요소]",
+"ifrs-full:FinancialAssetsAtAmortisedCostCategoryMember",
+51749000000.0
+],
+[
+"공정가치평가를 기타포괄손익으로 인식하는 금융자산 [구성요소]",
+"ifrs-full:FinancialAssetsAtFairValueThroughOtherComprehensiveIncomeCategoryMember",
+0.0
+],
+[
+"당기손익인식금융자산 [구성요소]",
+"ifrs-full:FinancialAssetsAtFairValueThroughProfitOrLossCategoryMember",
+3735000000.0
+],
+[
+"파생상품자산 [구성요소]",
+"dart:DerivativeAssetsMember",
+0.0
+],
+[
+"상각후원가로 측정하는 금융자산, 범주 [구성요소]",
+"ifrs-full:FinancialAssetsAtAmortisedCostCategoryMember",
+21079000000.0
+],
+[
+"공정가치평가를 기타포괄손익으로 인식하는 금융자산 [구성요소]",
+"ifrs-full:FinancialAssetsAtFairValueThroughOtherComprehensiveIncomeCategoryMember",
+0.0
+],
+[
+"당기손익인식금융자산 [구성요소]",
+"ifrs-full:FinancialAssetsAtFairValueThroughProfitOrLossCategoryMember",
+3735000000.0
+]
+],
+"금융자산의 범주 [축] | dart:InterestIncomeFinanceIncome | 2026-01-01~2026-09-30": [
+[
+"파생상품자산 [구성요소]",
+"dart:DerivativeAssetsMember",
+0.0
+],
+[
+"상각후원가로 측정하는 금융자산, 범주 [구성요소]",
+"ifrs-full:FinancialAssetsAtAmortisedCostCategoryMember",
+192936000000.0
+],
+[
+"공정가치평가를 기타포괄손익으로 인식하는 금융자산 [구성요소]",
+"ifrs-full:FinancialAssetsAtFairValueThroughOtherComprehensiveIncomeCategoryMember",
+0.0
+],
+[
+"당기손익인식금융자산 [구성요소]",
+"ifrs-full:FinancialAssetsAtFairValueThroughProfitOrLossCategoryMember",
+2836000000.0
+],
+[
+"파생상품자산 [구성요소]",
+"dart:DerivativeAssetsMember",
+0.0
+],
+[
+"상각후원가로 측정하는 금융자산, 범주 [구성요소]",
+"ifrs-full:FinancialAssetsAtAmortisedCostCategoryMember",
+70362000000.0
+],
+[
+"공정가치평가를 기타포괄손익으로 인식하는 금융자산 [구성요소]",
+"ifrs-full:FinancialAssetsAtFairValueThroughOtherComprehensiveIncomeCategoryMember",
+0.0
+],
+[
+"당기손익인식금융자산 [구성요소]",
+"ifrs-full:FinancialAssetsAtFairValueThroughProfitOrLossCategoryMember",
+2836000000.0
+]
+],
+"금융자산의 범주 [축] | dart:InterestIncomeFinanceIncome | 2026-07-01~2026-09-30": [
+[
+"파생상품자산 [구성요소]",
+"dart:DerivativeAssetsMember",
+0.0
+],
+[
+"상각후원가로 측정하는 금융자산, 범주 [구성요소]",
+"ifrs-full:FinancialAssetsAtAmortisedCostCategoryMember",
+78762000000.0
+],
+[
+"공정가치평가를 기타포괄손익으로 인식하는 금융자산 [구성요소]",
+"ifrs-full:FinancialAssetsAtFairValueThroughOtherComprehensiveIncomeCategoryMember",
+0.0
+],
+[
+"당기손익인식금융자산 [구성요소]",
+"ifrs-full:FinancialAssetsAtFairValueThroughProfitOrLossCategoryMember",
+821000000.0
+],
+[
+"파생상품자산 [구성요소]",
+"dart:DerivativeAssetsMember",
+0.0
+],
+[
+"상각후원가로 측정하는 금융자산, 범주 [구성요소]",
+"ifrs-full:FinancialAssetsAtAmortisedCostCategoryMember",
+23171000000.0
+],
+[
+"공정가치평가를 기타포괄손익으로 인식하는 금융자산 [구성요소]",
+"ifrs-full:FinancialAssetsAtFairValueThroughOtherComprehensiveIncomeCategoryMember",
+0.0
+],
+[
+"당기손익인식금융자산 [구성요소]",
+"ifrs-full:FinancialAssetsAtFairValueThroughProfitOrLossCategoryMember",
+821000000.0
+]
+],
+"수행의무 [축] | ifrs-full:Revenue | 2025-01-01~2025-09-30": [
+[
+"한 시점에 이행하는 수행의무 [구성요소]",
+"ifrs-full:PerformanceObligationsSatisfiedAtPointInTimeMember",
+4578638000000.0
+],
+[
+"기간에 걸쳐 이행하는 수행의무 [구성요소]",
+"ifrs-full:PerformanceObligationsSatisfiedOverTimeMember",
+1097419000000.0
+]
+],
+"수행의무 [축] | ifrs-full:Revenue | 2025-07-01~2025-09-30": [
+[
+"한 시점에 이행하는 수행의무 [구성요소]",
+"ifrs-full:PerformanceObligationsSatisfiedAtPointInTimeMember",
+1406043000000.0
+],
+[
+"기간에 걸쳐 이행하는 수행의무 [구성요소]",
+"ifrs-full:PerformanceObligationsSatisfiedOverTimeMember",
+348112000000.0
+]
+],
+"수행의무 [축] | ifrs-full:Revenue | 2026-01-01~2026-09-30": [
+[
+"한 시점에 이행하는 수행의무 [구성요소]",
+"ifrs-full:PerformanceObligationsSatisfiedAtPointInTimeMember",
+5743921000000.0
+],
+[
+"기간에 걸쳐 이행하는 수행의무 [구성요소]",
+"ifrs-full:PerformanceObligationsSatisfiedOverTimeMember",
+1321674000000.0
+]
+],
+"수행의무 [축] | ifrs-full:Revenue | 2026-07-01~2026-09-30": [
+[
+"한 시점에 이행하는 수행의무 [구성요소]",
+"ifrs-full:PerformanceObligationsSatisfiedAtPointInTimeMember",
+1882318000000.0
+],
+[
+"기간에 걸쳐 이행하는 수행의무 [구성요소]",
+"ifrs-full:PerformanceObligationsSatisfiedOverTimeMember",
+490509000000.0
+]
+],
+"순확정급여부채(자산) [축] | ifrs-full:IncreaseDecreaseInNetDefinedBenefitLiabilityAssetResultingFromAdministrationCostsNotReflectedInReturnOnPlanAssets | 2025-01-01~2025-12-31": [
+[
+"사외적립자산 [구성요소]",
+"ifrs-full:PlanAssetsMember",
+1418000000.0
+],
+[
+"사외적립자산 [구성요소]",
+"ifrs-full:PlanAssetsMember",
+1418000000.0
+]
+],
+"순확정급여부채(자산) [축] | ifrs-full:IncreaseDecreaseInNetDefinedBenefitLiabilityAssetResultingFromAdministrationCostsNotReflectedInReturnOnPlanAssets | 2026-01-01~2026-09-30": [
+[
+"사외적립자산 [구성요소]",
+"ifrs-full:PlanAssetsMember",
+1105000000.0
+],
+[
+"사외적립자산 [구성요소]",
+"ifrs-full:PlanAssetsMember",
+1105000000.0
+]
+],
+"순확정급여부채(자산) [축] | ifrs-full:InterestExpenseIncomeNetDefinedBenefitLiabilityAsset | 2025-01-01~2025-12-31": [
+[
+"사외적립자산 [구성요소]",
+"ifrs-full:PlanAssetsMember",
+-32650000000.0
+],
+[
+"확정급여채무의 현재가치 [구성요소]",
+"ifrs-full:PresentValueOfDefinedBenefitObligationMember",
+25498000000.0
+],
+[
+"사외적립자산 [구성요소]",
+"ifrs-full:PlanAssetsMember",
+-32650000000.0
+],
+[
+"확정급여채무의 현재가치 [구성요소]",
+"ifrs-full:PresentValueOfDefinedBenefitObligationMember",
+25498000000.0
+]
+],
+"순확정급여부채(자산) [축] | ifrs-full:InterestExpenseIncomeNetDefinedBenefitLiabilityAsset | 2026-01-01~2026-09-30": [
+[
+"사외적립자산 [구성요소]",
+"ifrs-full:PlanAssetsMember",
+-29024000000.0
+],
+[
+"확정급여채무의 현재가치 [구성요소]",
+"ifrs-full:PresentValueOfDefinedBenefitObligationMember",
+25105000000.0
+],
+[
+"사외적립자산 [구성요소]",
+"ifrs-full:PlanAssetsMember",
+-29024000000.0
+],
+[
+"확정급여채무의 현재가치 [구성요소]",
+"ifrs-full:PresentValueOfDefinedBenefitObligationMember",
+25105000000.0
+]
+],
+"순확정급여부채(자산) [축] | ifrs-full:ReturnOnPlanAssetsNetDefinedBenefitLiabilityAsset | 2025-01-01~2025-12-31": [
+[
+"사외적립자산 [구성요소]",
+"ifrs-full:PlanAssetsMember",
+-2613000000.0
+],
+[
+"사외적립자산 [구성요소]",
+"ifrs-full:PlanAssetsMember",
+-2613000000.0
+]
+],
+"순확정급여부채(자산) [축] | ifrs-full:ReturnOnPlanAssetsNetDefinedBenefitLiabilityAsset | 2026-01-01~2026-09-30": [
+[
+"사외적립자산 [구성요소]",
+"ifrs-full:PlanAssetsMember",
+-8761000000.0
+],
+[
+"사외적립자산 [구성요소]",
+"ifrs-full:PlanAssetsMember",
+-8761000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:GainFromDerivatives | 2025-01-01~2025-09-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+1702000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+0.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:GainFromDerivatives | 2025-07-01~2025-09-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+68000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+0.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:GainFromDerivatives | 2026-01-01~2026-09-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+708000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+5000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:GainFromDerivatives | 2026-07-01~2026-09-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+-738590000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+-739023000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:GainsOnForeignCurrencyTransactionsFiancialIncome | 2025-01-01~2025-09-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+573908000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+538862000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:GainsOnForeignCurrencyTransactionsFiancialIncome | 2025-07-01~2025-09-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+-208206000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+-193335000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:GainsOnForeignCurrencyTransactionsFiancialIncome | 2026-01-01~2026-09-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+994776000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+937850000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:GainsOnForeignCurrencyTransactionsFiancialIncome | 2026-07-01~2026-09-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+685907000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+675346000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:InterestIncomeFinanceIncome | 2025-01-01~2025-09-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+171018000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+80047000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:InterestIncomeFinanceIncome | 2025-07-01~2025-09-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+55484000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+24814000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:InterestIncomeFinanceIncome | 2026-01-01~2026-09-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+195772000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+73198000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:InterestIncomeFinanceIncome | 2026-07-01~2026-09-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+79583000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+23992000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | entity01515323:PlanAssetsRevenueDefinedBenefitPlansOfPlanAssetsRevenueDefinedBenefitPlansOfPlanAssetsRevenueDefinedBenefitPlansTableOfItems | 2025-01-01~2025-09-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+25212000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+25212000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | entity01515323:PlanAssetsRevenueDefinedBenefitPlansOfPlanAssetsRevenueDefinedBenefitPlansOfPlanAssetsRevenueDefinedBenefitPlansTableOfItems | 2026-01-01~2026-09-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+20263000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+20263000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:AdjustmentsForDecreaseIncreaseInTradeAccountReceivable | 2025-01-01~2025-09-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+215696000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+293756000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:AdjustmentsForDecreaseIncreaseInTradeAccountReceivable | 2026-01-01~2026-09-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+-3700075000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+-25763000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:AdjustmentsForFinanceIncome | 2025-01-01~2025-09-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+624013000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+489628000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:AdjustmentsForFinanceIncome | 2026-01-01~2026-09-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+1108718000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+893569000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:CostOfMerchandiseSold | 2025-01-01~2025-09-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+723593000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+622949000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:CostOfMerchandiseSold | 2025-07-01~2025-09-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+324096000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+271392000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:CostOfMerchandiseSold | 2026-01-01~2026-09-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+6081530000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+730027000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:CostOfMerchandiseSold | 2026-07-01~2026-09-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+2616914000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+218421000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:CostOfSales | 2025-01-01~2025-09-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+14069070000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+4561497000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:CostOfSales | 2025-07-01~2025-09-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+4252880000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+1416066000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:CostOfSales | 2026-01-01~2026-09-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+18708885000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+5896491000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:CostOfSales | 2026-07-01~2026-09-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+7380314000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+2038179000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:DirectOperatingExpenseFromInvestmentPropertyGeneratingRentalIncome | 2026-01-01~2026-09-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+4361000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+4364000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:FinanceIncome | 2025-01-01~2025-09-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+746729000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+618909000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:FinanceIncome | 2025-07-01~2025-09-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+-152654000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+-168521000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:FinanceIncome | 2026-01-01~2026-09-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+1191256000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+1011053000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:FinanceIncome | 2026-07-01~2026-09-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+26900000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+-39685000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:GrossProfit | 2025-01-01~2025-09-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+4775179000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+1114560000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:GrossProfit | 2025-07-01~2025-09-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+1812489000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+338089000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:GrossProfit | 2026-01-01~2026-09-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+5049764000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+1169104000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:GrossProfit | 2026-07-01~2026-09-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+2263119000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+334648000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:InterestExpenseIncomeDefinedBenefitPlans | 2025-01-01~2025-09-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+-4389000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+-4389000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:InterestExpenseIncomeDefinedBenefitPlans | 2025-07-01~2025-09-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+-1463000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+-1463000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:InterestExpenseIncomeDefinedBenefitPlans | 2026-01-01~2026-09-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+-3919000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+-3919000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:InterestExpenseIncomeDefinedBenefitPlans | 2026-07-01~2026-09-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+-1306000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+-1306000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:InterestIncomeOnCashAndBankBalancesAtCentralBanks | 2025-01-01~2025-09-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+124032000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+54307000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:InterestIncomeOnCashAndBankBalancesAtCentralBanks | 2025-07-01~2025-09-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+44853000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+19350000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:InterestIncomeOnCashAndBankBalancesAtCentralBanks | 2026-01-01~2026-09-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+125925000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+63935000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:InterestIncomeOnCashAndBankBalancesAtCentralBanks | 2026-07-01~2026-09-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+41410000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+20481000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:InterestIncomeOnFinancialAssetsDesignatedAtFairValueThroughProfitOrLoss | 2025-01-01~2025-09-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+20557000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+20557000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:InterestIncomeOnFinancialAssetsDesignatedAtFairValueThroughProfitOrLoss | 2025-07-01~2025-09-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+3735000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+3735000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:InterestIncomeOnFinancialAssetsDesignatedAtFairValueThroughProfitOrLoss | 2026-01-01~2026-09-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+2836000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+2836000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:InterestIncomeOnFinancialAssetsDesignatedAtFairValueThroughProfitOrLoss | 2026-07-01~2026-09-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+821000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+821000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:RentalIncomeFromInvestmentProperty | 2026-01-01~2026-09-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+9122000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+9135000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:Revenue | 2025-01-01~2025-09-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+18844249000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+5676057000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:Revenue | 2025-07-01~2025-09-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+6065369000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+1754155000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:Revenue | 2026-01-01~2026-09-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+23758649000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+7065595000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:Revenue | 2026-07-01~2026-09-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+9643433000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+2372827000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:RevenueThatWasIncludedInContractLiabilityBalanceAtBeginningOfPeriod | 2025-01-01~2025-09-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+63270000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+284253000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:RevenueThatWasIncludedInContractLiabilityBalanceAtBeginningOfPeriod | 2025-07-01~2025-09-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+11101000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+610000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:RevenueThatWasIncludedInContractLiabilityBalanceAtBeginningOfPeriod | 2026-01-01~2026-09-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+173743000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+48522000000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:RevenueThatWasIncludedInContractLiabilityBalanceAtBeginningOfPeriod | 2026-07-01~2026-09-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+28102000000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+13158000000.0
+]
+],
+"주요 고객 [축] | ifrs-full:Revenue | 2025-01-01~2025-09-30": [
+[
+"외부고객2",
+"entity01515323:Externalcustomers2OfCustomersMemberOfDisclosureOfMajorCustomersTableOfMember",
+336236000000.0
+],
+[
+"외부고객1",
+"entity01515323:ExternalcustomersOfCustomersMemberOfDisclosureOfMajorCustomersTableOfMember",
+3254622000000.0
+]
+],
+"주요 고객 [축] | ifrs-full:Revenue | 2026-01-01~2026-09-30": [
+[
+"외부고객2",
+"entity01515323:Externalcustomers2OfCustomersMemberOfDisclosureOfMajorCustomersTableOfMember",
+3344922000000.0
+],
+[
+"외부고객1",
+"entity01515323:ExternalcustomersOfCustomersMemberOfDisclosureOfMajorCustomersTableOfMember",
+4662788000000.0
+]
+],
+"지역 [축] | ifrs-full:Revenue | 2025-01-01~2025-09-30": [
+[
+"미주 [구성요소]",
+"dart:AmericasMember",
+8564963000000.0
+],
+[
+"중국 [구성요소]",
+"dart:CNMember",
+3504894000000.0
+],
+[
+"유럽 [구성요소]",
+"dart:EuropeMember",
+3952757000000.0
+],
+[
+"아시아/오세아니아",
+"entity01515323:AsiaOceaniaOfGeographicalAreasMemberOfDisclosureOfGeographicalAreasTableOfMember",
+758592000000.0
+],
+[
+"본사 소재지 국가 [구성요소]",
+"ifrs-full:CountryOfDomicileMember",
+2063043000000.0
+]
+],
+"지역 [축] | ifrs-full:Revenue | 2025-07-01~2025-09-30": [
+[
+"미주 [구성요소]",
+"dart:AmericasMember",
+3123446000000.0
+],
+[
+"중국 [구성요소]",
+"dart:CNMember",
+1210844000000.0
+],
+[
+"유럽 [구성요소]",
+"dart:EuropeMember",
+764093000000.0
+],
+[
+"아시아/오세아니아",
+"entity01515323:AsiaOceaniaOfGeographicalAreasMemberOfDisclosureOfGeographicalAreasTableOfMember",
+246341000000.0
+],
+[
+"본사 소재지 국가 [구성요소]",
+"ifrs-full:CountryOfDomicileMember",
+720645000000.0
+]
+],
+"지역 [축] | ifrs-full:Revenue | 2026-01-01~2026-09-30": [
+[
+"미주 [구성요소]",
+"dart:AmericasMember",
+11875647000000.0
+],
+[
+"중국 [구성요소]",
+"dart:CNMember",
+4897966000000.0
+],
+[
+"유럽 [구성요소]",
+"dart:EuropeMember",
+4114375000000.0
+],
+[
+"아시아/오세아니아",
+"entity01515323:AsiaOceaniaOfGeographicalAreasMemberOfDisclosureOfGeographicalAreasTableOfMember",
+883905000000.0
+],
+[
+"본사 소재지 국가 [구성요소]",
+"ifrs-full:CountryOfDomicileMember",
+1986756000000.0
+]
+],
+"지역 [축] | ifrs-full:Revenue | 2026-07-01~2026-09-30": [
+[
+"미주 [구성요소]",
+"dart:AmericasMember",
+5511644000000.0
+],
+[
+"중국 [구성요소]",
+"dart:CNMember",
+1554728000000.0
+],
+[
+"유럽 [구성요소]",
+"dart:EuropeMember",
+1572003000000.0
+],
+[
+"아시아/오세아니아",
+"entity01515323:AsiaOceaniaOfGeographicalAreasMemberOfDisclosureOfGeographicalAreasTableOfMember",
+274899000000.0
+],
+[
+"본사 소재지 국가 [구성요소]",
+"ifrs-full:CountryOfDomicileMember",
+730159000000.0
+]
+],
+"특수관계자의 범주 [축] | dart:RevenueAndOtherTransactionsRelatedPartyTransactions | 2025-01-01~2025-09-30": [
+[
+"(주)디앤오와 그 종속기업",
+"entity01515323:DOCoLtdAndItsSubsidiariesOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+66000000.0
+],
+[
+"(주)행복누리",
+"entity01515323:HaengboknuriCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+4000000.0
+],
+[
+"삼아알미늄주식회사",
+"entity01515323:HlGreenpowerCoLtdOfAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"주식회사 제주북촌베스발전소",
+"entity01515323:JejuBukchonBessPowerPlantCoLtdMemberOfAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"LEYOU NEW ENERGY MATERIALS(WUXI) Co.,Ltd.",
+"entity01515323:LeyouNewEnergyMaterialsWuxiCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"LG Chem America Advanced Materials, Inc.",
+"entity01515323:LgChemAmericaAdvancedMaterialsIncOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"LG Chem (China) Investment Co.,Ltd.",
+"entity01515323:LgChemChinaInvestmentCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"(주)LG화학",
+"entity01515323:LgChemLtdOfParentMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+4379000000.0
+],
+[
+"LG Chem Poland Sp. z o.o.",
+"entity01515323:LgChemPolandSpZOOOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"(주)엘지씨엔에스와 그 종속기업",
+"entity01515323:LgCnsCoLtdAndItsSubsidiariesOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+25616000000.0
+],
+[
+"(주)LG",
+"entity01515323:LgCorpOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"엘지디스플레이(주)와 그 종속기업",
+"entity01515323:LgDisplayCoLtdAndItsSubsidiariesOfLargeBusinessGroupMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"엘지전자(주)와 그 종속기업",
+"entity01515323:LgElectronicsCoLtdAndItsSubsidiariesOfLargeBusinessGroupMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+132494000000.0
+],
+[
+"주식회사 엘지에이치와이비씨엠",
+"entity01515323:LgHybcmCorpOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"(주)엘지경영개발원",
+"entity01515323:LgManagementDevelopmentInstituteOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"(주)민테크",
+"entity01515323:MintechCoLtdOfAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"주식회사 넥스포",
+"entity01515323:NexpoCoLtdOfAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"기타",
+"entity01515323:OthersOfLargeBusinessGroupMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+21000000.0
+],
+[
+"기타",
+"entity01515323:OthersOtherRelatedPartiesOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"PT LBM Energi Baru Indonesia",
+"entity01515323:PtLbmEnergiBaruIndonesiaOfAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+4875000000.0
+],
+[
+"(주)테크윈",
+"entity01515323:TecwinCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Uniseal, Inc.",
+"entity01515323:UnisealIncOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"모든 특수관계자의 합계 [구성요소]",
+"ifrs-full:RelatedPartiesMember",
+167455000000.0
+],
+[
+"(주)아름누리",
+"entity01515323:AreumnuriCoLtdOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+1911000000.0
+],
+[
+"(주)디앤오와 그 종속기업",
+"entity01515323:DOCoLtdAndItsSubsidiariesOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+66000000.0
+]
+],
+"특수관계자의 범주 [축] | dart:RevenueAndOtherTransactionsRelatedPartyTransactions | 2026-01-01~2026-09-30": [
+[
+"(주)디앤오와 그 종속기업",
+"entity01515323:DOCoLtdAndItsSubsidiariesOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+61000000.0
+],
+[
+"(주)행복누리",
+"entity01515323:HaengboknuriCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+2000000.0
+],
+[
+"삼아알미늄주식회사",
+"entity01515323:HlGreenpowerCoLtdOfAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"주식회사 제주북촌베스발전소",
+"entity01515323:JejuBukchonBessPowerPlantCoLtdMemberOfAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+794000000.0
+],
+[
+"LEYOU NEW ENERGY MATERIALS(WUXI) Co.,Ltd.",
+"entity01515323:LeyouNewEnergyMaterialsWuxiCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"LG Chem America Advanced Materials, Inc.",
+"entity01515323:LgChemAmericaAdvancedMaterialsIncOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"LG Chem (China) Investment Co.,Ltd.",
+"entity01515323:LgChemChinaInvestmentCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"(주)LG화학",
+"entity01515323:LgChemLtdOfParentMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+1846000000.0
+],
+[
+"LG Chem Poland Sp. z o.o.",
+"entity01515323:LgChemPolandSpZOOOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"(주)엘지씨엔에스와 그 종속기업",
+"entity01515323:LgCnsCoLtdAndItsSubsidiariesOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+35305000000.0
+],
+[
+"(주)LG",
+"entity01515323:LgCorpOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"엘지디스플레이(주)와 그 종속기업",
+"entity01515323:LgDisplayCoLtdAndItsSubsidiariesOfLargeBusinessGroupMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"엘지전자(주)와 그 종속기업",
+"entity01515323:LgElectronicsCoLtdAndItsSubsidiariesOfLargeBusinessGroupMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+63946000000.0
+],
+[
+"주식회사 엘지에이치와이비씨엠",
+"entity01515323:LgHybcmCorpOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"(주)엘지경영개발원",
+"entity01515323:LgManagementDevelopmentInstituteOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"(주)민테크",
+"entity01515323:MintechCoLtdOfAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"주식회사 넥스포",
+"entity01515323:NexpoCoLtdOfAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"기타",
+"entity01515323:OthersOfLargeBusinessGroupMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+21000000.0
+],
+[
+"기타",
+"entity01515323:OthersOtherRelatedPartiesOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"PT LBM Energi Baru Indonesia",
+"entity01515323:PtLbmEnergiBaruIndonesiaOfAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"(주)테크윈",
+"entity01515323:TecwinCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Uniseal, Inc.",
+"entity01515323:UnisealIncOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"모든 특수관계자의 합계 [구성요소]",
+"ifrs-full:RelatedPartiesMember",
+101975000000.0
+],
+[
+"(주)아름누리",
+"entity01515323:AreumnuriCoLtdOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+18000000.0
+],
+[
+"(주)디앤오와 그 종속기업",
+"entity01515323:DOCoLtdAndItsSubsidiariesOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+61000000.0
+]
+]
+}
+}

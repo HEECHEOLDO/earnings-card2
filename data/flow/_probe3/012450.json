@@ -1,0 +1,2022 @@
+{
+"reports": [
+"반기보고서 (2026.06) 20260814",
+"분기보고서 (2026.03) 20260513",
+"[첨부정정]사업보고서 (2025.12) 20260319",
+"사업보고서 (2025.12) 20260316"
+],
+"반기보고서 (2026.06)": {
+"부문 [축] | dart:ImpactOnProfitOrLossForTheSucceedingYearOfIncreaseDecreaseInTotalContractRevenueAndCostsByChangesInAccountingEstimates | 2026-01-01~2026-06-30": [
+[
+"항공우주부문",
+"entity00126566:AerospaceSegmentOfSegmentsMemberOfChangesInEstimatedTotalContractRevenueAndCostsTableOfMember",
+-3298368000.0
+],
+[
+"방산부문",
+"entity00126566:DefenseSegmentOfSegmentsMemberOfChangesInEstimatedTotalContractRevenueAndCostsTableOfMember",
+114925385000.0
+],
+[
+"항공엔진부문",
+"entity00126566:FlightSegmentOfSegmentsMemberOfChangesInEstimatedTotalContractRevenueAndCostsTableOfMember",
+12395713000.0
+],
+[
+"IT서비스부문",
+"entity00126566:IctSegmentOfSegmentsMemberOfChangesInEstimatedTotalContractRevenueAndCostsTableOfMember",
+-15830000.0
+],
+[
+"해양부문",
+"entity00126566:MarineSegmentOfSegmentsMemberOfChangesInEstimatedTotalContractRevenueAndCostsTableOfMember",
+1342827216000.0
+],
+[
+"방산부문",
+"entity00126566:DefenseSegmentOfSegmentsMemberOfChangesInEstimatedTotalContractRevenueAndCostsTableOfMember",
+-35297394000.0
+],
+[
+"항공엔진부문",
+"entity00126566:FlightSegmentOfSegmentsMemberOfChangesInEstimatedTotalContractRevenueAndCostsTableOfMember",
+12395713000.0
+]
+],
+"부문 [축] | dart:ImpactOnProfitOrLossForTheYearOfIncreaseDecreaseInTotalContractRevenueAndCostsByChangesInAccountingEstimates | 2026-01-01~2026-06-30": [
+[
+"항공우주부문",
+"entity00126566:AerospaceSegmentOfSegmentsMemberOfChangesInEstimatedTotalContractRevenueAndCostsTableOfMember",
+-3281148000.0
+],
+[
+"방산부문",
+"entity00126566:DefenseSegmentOfSegmentsMemberOfChangesInEstimatedTotalContractRevenueAndCostsTableOfMember",
+43084727000.0
+],
+[
+"항공엔진부문",
+"entity00126566:FlightSegmentOfSegmentsMemberOfChangesInEstimatedTotalContractRevenueAndCostsTableOfMember",
+7541157000.0
+],
+[
+"IT서비스부문",
+"entity00126566:IctSegmentOfSegmentsMemberOfChangesInEstimatedTotalContractRevenueAndCostsTableOfMember",
+1394733000.0
+],
+[
+"해양부문",
+"entity00126566:MarineSegmentOfSegmentsMemberOfChangesInEstimatedTotalContractRevenueAndCostsTableOfMember",
+348390705000.0
+],
+[
+"방산부문",
+"entity00126566:DefenseSegmentOfSegmentsMemberOfChangesInEstimatedTotalContractRevenueAndCostsTableOfMember",
+-20550104000.0
+],
+[
+"항공엔진부문",
+"entity00126566:FlightSegmentOfSegmentsMemberOfChangesInEstimatedTotalContractRevenueAndCostsTableOfMember",
+7541157000.0
+]
+],
+"부문 [축] | dart:IncreaseDecreaseInTotalContractRevenueByChangesInAccountingEstimates | 2026-01-01~2026-06-30": [
+[
+"항공우주부문",
+"entity00126566:AerospaceSegmentOfSegmentsMemberOfChangesInEstimatedTotalContractRevenueAndCostsTableOfMember",
+20591085000.0
+],
+[
+"방산부문",
+"entity00126566:DefenseSegmentOfSegmentsMemberOfChangesInEstimatedTotalContractRevenueAndCostsTableOfMember",
+149422027000.0
+],
+[
+"항공엔진부문",
+"entity00126566:FlightSegmentOfSegmentsMemberOfChangesInEstimatedTotalContractRevenueAndCostsTableOfMember",
+15499283000.0
+],
+[
+"IT서비스부문",
+"entity00126566:IctSegmentOfSegmentsMemberOfChangesInEstimatedTotalContractRevenueAndCostsTableOfMember",
+2461597000.0
+],
+[
+"해양부문",
+"entity00126566:MarineSegmentOfSegmentsMemberOfChangesInEstimatedTotalContractRevenueAndCostsTableOfMember",
+1209535962000.0
+],
+[
+"방산부문",
+"entity00126566:DefenseSegmentOfSegmentsMemberOfChangesInEstimatedTotalContractRevenueAndCostsTableOfMember",
+-56491066000.0
+],
+[
+"항공엔진부문",
+"entity00126566:FlightSegmentOfSegmentsMemberOfChangesInEstimatedTotalContractRevenueAndCostsTableOfMember",
+15499283000.0
+]
+],
+"부문 [축] | entity00126566:AccumulatedConstructionIncomeOfDisclosureOfDisaggregationOfRevenueFromContractsWithCustomersLineItemsOfDisclosureOfDisaggregationOfRevenueFromContractsWithCustomersTableOfItems | 2025-01-01~2025-12-31": [
+[
+"항공우주부문",
+"entity00126566:AerospaceSegmentOfSegmentsMemberOfDisclosureOfDisaggregationOfRevenueFromContractsWithCustomersTableOfMember",
+773087898000.0
+],
+[
+"방산부문",
+"entity00126566:DefenseSegmentOfSegmentsMemberOfDisclosureOfDisaggregationOfRevenueFromContractsWithCustomersTableOfMember",
+6095528980000.0
+],
+[
+"항공엔진부문",
+"entity00126566:FlightEngineSegmentOfSegmentsMemberOfDisclosureOfDisaggregationOfRevenueFromContractsWithCustomersTableOfMember",
+1515291078000.0
+],
+[
+"IT서비스부문",
+"entity00126566:IctSegmentOfSegmentsMemberOfDisclosureOfDisaggregationOfRevenueFromContractsWithCustomersTableOfMember",
+131213958000.0
+],
+[
+"해양부문",
+"entity00126566:MarineSegmentOfSegmentsMemberOfDisclosureOfDisaggregationOfRevenueFromContractsWithCustomersTableOfMember",
+19196900272000.0
+]
+],
+"부문 [축] | entity00126566:AccumulatedConstructionIncomeOfDisclosureOfDisaggregationOfRevenueFromContractsWithCustomersLineItemsOfDisclosureOfDisaggregationOfRevenueFromContractsWithCustomersTableOfItems | 2026-01-01~2026-06-30": [
+[
+"항공우주부문",
+"entity00126566:AerospaceSegmentOfSegmentsMemberOfDisclosureOfDisaggregationOfRevenueFromContractsWithCustomersTableOfMember",
+570983107000.0
+],
+[
+"방산부문",
+"entity00126566:DefenseSegmentOfSegmentsMemberOfDisclosureOfDisaggregationOfRevenueFromContractsWithCustomersTableOfMember",
+6119462449000.0
+],
+[
+"항공엔진부문",
+"entity00126566:FlightEngineSegmentOfSegmentsMemberOfDisclosureOfDisaggregationOfRevenueFromContractsWithCustomersTableOfMember",
+1544569854000.0
+],
+[
+"IT서비스부문",
+"entity00126566:IctSegmentOfSegmentsMemberOfDisclosureOfDisaggregationOfRevenueFromContractsWithCustomersTableOfMember",
+152517912000.0
+],
+[
+"해양부문",
+"entity00126566:MarineSegmentOfSegmentsMemberOfDisclosureOfDisaggregationOfRevenueFromContractsWithCustomersTableOfMember",
+20428098237000.0
+]
+],
+"부문 [축] | entity00126566:NetIncomeFromConstructionOfDisclosureOfDisaggregationOfRevenueFromContractsWithCustomersLineItemsOfDisclosureOfDisaggregationOfRevenueFromContractsWithCustomersTableOfItems | 2025-01-01~2025-12-31": [
+[
+"항공우주부문",
+"entity00126566:AerospaceSegmentOfSegmentsMemberOfDisclosureOfDisaggregationOfRevenueFromContractsWithCustomersTableOfMember",
+166705660000.0
+],
+[
+"방산부문",
+"entity00126566:DefenseSegmentOfSegmentsMemberOfDisclosureOfDisaggregationOfRevenueFromContractsWithCustomersTableOfMember",
+543554228000.0
+],
+[
+"항공엔진부문",
+"entity00126566:FlightEngineSegmentOfSegmentsMemberOfDisclosureOfDisaggregationOfRevenueFromContractsWithCustomersTableOfMember",
+53295033000.0
+],
+[
+"IT서비스부문",
+"entity00126566:IctSegmentOfSegmentsMemberOfDisclosureOfDisaggregationOfRevenueFromContractsWithCustomersTableOfMember",
+14865039000.0
+],
+[
+"해양부문",
+"entity00126566:MarineSegmentOfSegmentsMemberOfDisclosureOfDisaggregationOfRevenueFromContractsWithCustomersTableOfMember",
+1932773449000.0
+]
+],
+"부문 [축] | entity00126566:NetIncomeFromConstructionOfDisclosureOfDisaggregationOfRevenueFromContractsWithCustomersLineItemsOfDisclosureOfDisaggregationOfRevenueFromContractsWithCustomersTableOfItems | 2026-01-01~2026-06-30": [
+[
+"항공우주부문",
+"entity00126566:AerospaceSegmentOfSegmentsMemberOfDisclosureOfDisaggregationOfRevenueFromContractsWithCustomersTableOfMember",
+91087819000.0
+],
+[
+"방산부문",
+"entity00126566:DefenseSegmentOfSegmentsMemberOfDisclosureOfDisaggregationOfRevenueFromContractsWithCustomersTableOfMember",
+692364720000.0
+],
+[
+"항공엔진부문",
+"entity00126566:FlightEngineSegmentOfSegmentsMemberOfDisclosureOfDisaggregationOfRevenueFromContractsWithCustomersTableOfMember",
+60287703000.0
+],
+[
+"IT서비스부문",
+"entity00126566:IctSegmentOfSegmentsMemberOfDisclosureOfDisaggregationOfRevenueFromContractsWithCustomersTableOfMember",
+16005198000.0
+],
+[
+"해양부문",
+"entity00126566:MarineSegmentOfSegmentsMemberOfDisclosureOfDisaggregationOfRevenueFromContractsWithCustomersTableOfMember",
+2184863661000.0
+]
+],
+"부문 [축] | ifrs-full:IncreaseDecreaseThroughCumulativeCatchupAdjustmentsToRevenueArisingFromChangeInEstimateOfTransactionPriceContractAssets | 2026-01-01~2026-06-30": [
+[
+"항공우주부문",
+"entity00126566:AerospaceSegmentOfSegmentsMemberOfChangesInEstimatedTotalContractRevenueAndCostsTableOfMember",
+4610078000.0
+],
+[
+"방산부문",
+"entity00126566:DefenseSegmentOfSegmentsMemberOfChangesInEstimatedTotalContractRevenueAndCostsTableOfMember",
+70490492000.0
+],
+[
+"항공엔진부문",
+"entity00126566:FlightSegmentOfSegmentsMemberOfChangesInEstimatedTotalContractRevenueAndCostsTableOfMember",
+14058965000.0
+],
+[
+"IT서비스부문",
+"entity00126566:IctSegmentOfSegmentsMemberOfChangesInEstimatedTotalContractRevenueAndCostsTableOfMember",
+1953012000.0
+],
+[
+"해양부문",
+"entity00126566:MarineSegmentOfSegmentsMemberOfChangesInEstimatedTotalContractRevenueAndCostsTableOfMember",
+461934597000.0
+],
+[
+"방산부문",
+"entity00126566:DefenseSegmentOfSegmentsMemberOfChangesInEstimatedTotalContractRevenueAndCostsTableOfMember",
+3957557000.0
+],
+[
+"항공엔진부문",
+"entity00126566:FlightSegmentOfSegmentsMemberOfChangesInEstimatedTotalContractRevenueAndCostsTableOfMember",
+14058965000.0
+]
+],
+"부문 [축] | ifrs-full:IncreaseDecreaseThroughCumulativeCatchupAdjustmentsToRevenueArisingFromChangeInEstimateOfTransactionPriceContractLiabilities | 2026-01-01~2026-06-30": [
+[
+"항공우주부문",
+"entity00126566:AerospaceSegmentOfSegmentsMemberOfChangesInEstimatedTotalContractRevenueAndCostsTableOfMember",
+7891226000.0
+],
+[
+"방산부문",
+"entity00126566:DefenseSegmentOfSegmentsMemberOfChangesInEstimatedTotalContractRevenueAndCostsTableOfMember",
+27405765000.0
+],
+[
+"항공엔진부문",
+"entity00126566:FlightSegmentOfSegmentsMemberOfChangesInEstimatedTotalContractRevenueAndCostsTableOfMember",
+6517808000.0
+],
+[
+"IT서비스부문",
+"entity00126566:IctSegmentOfSegmentsMemberOfChangesInEstimatedTotalContractRevenueAndCostsTableOfMember",
+558279000.0
+],
+[
+"해양부문",
+"entity00126566:MarineSegmentOfSegmentsMemberOfChangesInEstimatedTotalContractRevenueAndCostsTableOfMember",
+113543892000.0
+],
+[
+"방산부문",
+"entity00126566:DefenseSegmentOfSegmentsMemberOfChangesInEstimatedTotalContractRevenueAndCostsTableOfMember",
+24507661000.0
+],
+[
+"항공엔진부문",
+"entity00126566:FlightSegmentOfSegmentsMemberOfChangesInEstimatedTotalContractRevenueAndCostsTableOfMember",
+6517808000.0
+]
+],
+"부문 [축] | ifrs-full:RevenueFromConstructionContracts | 2025-01-01~2025-06-30": [
+[
+"항공우주부문",
+"entity00126566:AerospaceSegmentOfSegmentsMemberOfChangesInContractStatusTableOfMember",
+85984630000.0
+],
+[
+"방산부문",
+"entity00126566:DefenseSegmentOfSegmentsMemberOfChangesInContractStatusTableOfMember",
+1082122601000.0
+],
+[
+"항공엔진부문",
+"entity00126566:FlightEngineSegmentOfSegmentsMemberOfChangesInContractStatusTableOfMember",
+262234480000.0
+],
+[
+"IT서비스부문",
+"entity00126566:IctSegmentOfSegmentsMemberOfChangesInContractStatusTableOfMember",
+70093095000.0
+],
+[
+"해양부문",
+"entity00126566:MarineSegmentOfSegmentsMemberOfChangesInContractStatusTableOfMember",
+7162096042000.0
+]
+],
+"부문 [축] | ifrs-full:RevenueFromConstructionContracts | 2026-01-01~2026-06-30": [
+[
+"항공우주부문",
+"entity00126566:AerospaceSegmentOfSegmentsMemberOfChangesInContractStatusTableOfMember",
+88724608000.0
+],
+[
+"방산부문",
+"entity00126566:DefenseSegmentOfSegmentsMemberOfChangesInContractStatusTableOfMember",
+1250207839000.0
+],
+[
+"항공엔진부문",
+"entity00126566:FlightEngineSegmentOfSegmentsMemberOfChangesInContractStatusTableOfMember",
+235083686000.0
+],
+[
+"IT서비스부문",
+"entity00126566:IctSegmentOfSegmentsMemberOfChangesInContractStatusTableOfMember",
+93243400000.0
+],
+[
+"해양부문",
+"entity00126566:MarineSegmentOfSegmentsMemberOfChangesInContractStatusTableOfMember",
+9129094239000.0
+]
+],
+"부문의 합계 [축] | ifrs-full:InterestRevenueExpense | 2025-01-01~2025-06-30": [
+[
+"항공우주부문",
+"entity00126566:AerospaceSegmentOfOperatingSegmentsMemberOfDisclosureOfOperatingSegmentsTableOfMember",
+1303227000.0
+],
+[
+"방산부문",
+"entity00126566:DefenseSegmentOfOperatingSegmentsMemberOfDisclosureOfOperatingSegmentsTableOfMember",
+41236690000.0
+],
+[
+"항공부문",
+"entity00126566:FlightSegmentOfOperatingSegmentsMemberOfDisclosureOfOperatingSegmentsTableOfMember",
+1561078000.0
+],
+[
+"정보통신(ICT)부문",
+"entity00126566:IctSegmentOfOperatingSegmentsMemberOfDisclosureOfOperatingSegmentsTableOfMember",
+777691000.0
+],
+[
+"해양사업부문",
+"entity00126566:MarineSegmentOfSegmentsMemberOfGoodsAndKeyCustomersInEachSectorTableOfMember",
+44538282000.0
+],
+[
+"부문간 제거한 금액 [구성요소]",
+"ifrs-full:EliminationOfIntersegmentAmountsMember",
+-3582383000.0
+]
+],
+"부문의 합계 [축] | ifrs-full:InterestRevenueExpense | 2026-01-01~2026-06-30": [
+[
+"항공우주부문",
+"entity00126566:AerospaceSegmentOfOperatingSegmentsMemberOfDisclosureOfOperatingSegmentsTableOfMember",
+581556000.0
+],
+[
+"방산부문",
+"entity00126566:DefenseSegmentOfOperatingSegmentsMemberOfDisclosureOfOperatingSegmentsTableOfMember",
+90056859000.0
+],
+[
+"항공부문",
+"entity00126566:FlightSegmentOfOperatingSegmentsMemberOfDisclosureOfOperatingSegmentsTableOfMember",
+1231298000.0
+],
+[
+"정보통신(ICT)부문",
+"entity00126566:IctSegmentOfOperatingSegmentsMemberOfDisclosureOfOperatingSegmentsTableOfMember",
+1021617000.0
+],
+[
+"해양사업부문",
+"entity00126566:MarineSegmentOfSegmentsMemberOfGoodsAndKeyCustomersInEachSectorTableOfMember",
+50492692000.0
+],
+[
+"부문간 제거한 금액 [구성요소]",
+"ifrs-full:EliminationOfIntersegmentAmountsMember",
+-12361781000.0
+]
+],
+"부문의 합계 [축] | ifrs-full:Revenue | 2025-01-01~2025-06-30": [
+[
+"항공우주부문",
+"entity00126566:AerospaceSegmentOfOperatingSegmentsMemberOfDisclosureOfOperatingSegmentsTableOfMember",
+138074848000.0
+],
+[
+"방산부문",
+"entity00126566:DefenseSegmentOfOperatingSegmentsMemberOfDisclosureOfOperatingSegmentsTableOfMember",
+3721535076000.0
+],
+[
+"항공부문",
+"entity00126566:FlightSegmentOfOperatingSegmentsMemberOfDisclosureOfOperatingSegmentsTableOfMember",
+1158333848000.0
+],
+[
+"정보통신(ICT)부문",
+"entity00126566:IctSegmentOfOperatingSegmentsMemberOfDisclosureOfOperatingSegmentsTableOfMember",
+293460224000.0
+],
+[
+"해양사업부문",
+"entity00126566:MarineSegmentOfSegmentsMemberOfGoodsAndKeyCustomersInEachSectorTableOfMember",
+7302513417000.0
+],
+[
+"부문간 제거한 금액 [구성요소]",
+"ifrs-full:EliminationOfIntersegmentAmountsMember",
+-818737731000.0
+]
+],
+"부문의 합계 [축] | ifrs-full:Revenue | 2026-01-01~2026-06-30": [
+[
+"항공우주부문",
+"entity00126566:AerospaceSegmentOfOperatingSegmentsMemberOfDisclosureOfOperatingSegmentsTableOfMember",
+124398674000.0
+],
+[
+"방산부문",
+"entity00126566:DefenseSegmentOfOperatingSegmentsMemberOfDisclosureOfOperatingSegmentsTableOfMember",
+4465226481000.0
+],
+[
+"항공부문",
+"entity00126566:FlightSegmentOfOperatingSegmentsMemberOfDisclosureOfOperatingSegmentsTableOfMember",
+1459024197000.0
+],
+[
+"정보통신(ICT)부문",
+"entity00126566:IctSegmentOfOperatingSegmentsMemberOfDisclosureOfOperatingSegmentsTableOfMember",
+362436374000.0
+],
+[
+"해양사업부문",
+"entity00126566:MarineSegmentOfSegmentsMemberOfGoodsAndKeyCustomersInEachSectorTableOfMember",
+9614216895000.0
+],
+[
+"부문간 제거한 금액 [구성요소]",
+"ifrs-full:EliminationOfIntersegmentAmountsMember",
+-981415528000.0
+]
+],
+"사업결합 [축] | dart:AdjustmentsForOtherRevenue | 2025-01-01~2025-06-30": [
+[
+"조정 금액",
+"entity00126566:AdjustmentAmountOfEntitysTotalForBusinessCombinationsMemberOfDisclosureOfBusinessCombinationsTableOfMember",
+0.0
+],
+[
+"조정 후 금액",
+"entity00126566:AmountAfterAdjustmentOfEntitysTotalForBusinessCombinationsMemberOfDisclosureOfBusinessCombinationsTableOfMember",
+220740402000.0
+],
+[
+"조정 전 금액",
+"entity00126566:AmountBeforeAdjustmentOfEntitysTotalForBusinessCombinationsMemberOfDisclosureOfBusinessCombinationsTableOfMember",
+220740402000.0
+]
+],
+"사업결합 [축] | ifrs-full:CostOfSales | 2025-01-01~2025-06-30": [
+[
+"조정 금액",
+"entity00126566:AdjustmentAmountOfEntitysTotalForBusinessCombinationsMemberOfDisclosureOfBusinessCombinationsTableOfMember",
+9001444000.0
+],
+[
+"조정 후 금액",
+"entity00126566:AmountAfterAdjustmentOfEntitysTotalForBusinessCombinationsMemberOfDisclosureOfBusinessCombinationsTableOfMember",
+9404733543000.0
+],
+[
+"조정 전 금액",
+"entity00126566:AmountBeforeAdjustmentOfEntitysTotalForBusinessCombinationsMemberOfDisclosureOfBusinessCombinationsTableOfMember",
+9395732099000.0
+]
+],
+"사업결합 [축] | ifrs-full:FinanceIncome | 2025-01-01~2025-06-30": [
+[
+"조정 금액",
+"entity00126566:AdjustmentAmountOfEntitysTotalForBusinessCombinationsMemberOfDisclosureOfBusinessCombinationsTableOfMember",
+0.0
+],
+[
+"조정 후 금액",
+"entity00126566:AmountAfterAdjustmentOfEntitysTotalForBusinessCombinationsMemberOfDisclosureOfBusinessCombinationsTableOfMember",
+861013795000.0
+],
+[
+"조정 전 금액",
+"entity00126566:AmountBeforeAdjustmentOfEntitysTotalForBusinessCombinationsMemberOfDisclosureOfBusinessCombinationsTableOfMember",
+861013795000.0
+]
+],
+"사업결합 [축] | ifrs-full:GrossProfit | 2025-01-01~2025-06-30": [
+[
+"조정 금액",
+"entity00126566:AdjustmentAmountOfEntitysTotalForBusinessCombinationsMemberOfDisclosureOfBusinessCombinationsTableOfMember",
+-9001444000.0
+],
+[
+"조정 후 금액",
+"entity00126566:AmountAfterAdjustmentOfEntitysTotalForBusinessCombinationsMemberOfDisclosureOfBusinessCombinationsTableOfMember",
+2390446139000.0
+],
+[
+"조정 전 금액",
+"entity00126566:AmountBeforeAdjustmentOfEntitysTotalForBusinessCombinationsMemberOfDisclosureOfBusinessCombinationsTableOfMember",
+2399447583000.0
+]
+],
+"사업결합 [축] | ifrs-full:IncomeTaxExpenseContinuingOperations | 2025-01-01~2025-06-30": [
+[
+"조정 금액",
+"entity00126566:AdjustmentAmountOfEntitysTotalForBusinessCombinationsMemberOfDisclosureOfBusinessCombinationsTableOfMember",
+-7184567000.0
+],
+[
+"조정 후 금액",
+"entity00126566:AmountAfterAdjustmentOfEntitysTotalForBusinessCombinationsMemberOfDisclosureOfBusinessCombinationsTableOfMember",
+227545264000.0
+],
+[
+"조정 전 금액",
+"entity00126566:AmountBeforeAdjustmentOfEntitysTotalForBusinessCombinationsMemberOfDisclosureOfBusinessCombinationsTableOfMember",
+234729831000.0
+]
+],
+"사업결합 [축] | ifrs-full:Revenue | 2025-01-01~2025-06-30": [
+[
+"조정 금액",
+"entity00126566:AdjustmentAmountOfEntitysTotalForBusinessCombinationsMemberOfDisclosureOfBusinessCombinationsTableOfMember",
+0.0
+],
+[
+"조정 후 금액",
+"entity00126566:AmountAfterAdjustmentOfEntitysTotalForBusinessCombinationsMemberOfDisclosureOfBusinessCombinationsTableOfMember",
+11795179682000.0
+],
+[
+"조정 전 금액",
+"entity00126566:AmountBeforeAdjustmentOfEntitysTotalForBusinessCombinationsMemberOfDisclosureOfBusinessCombinationsTableOfMember",
+11795179682000.0
+]
+],
+"자산과 부채 [축] | dart:DividendIncomeNonOperating | 2025-01-01~2025-06-30": [
+[
+"당기손익인식금융자산 [구성요소]",
+"ifrs-full:FinancialAssetsAtFairValueThroughProfitOrLossCategoryMember",
+10256482000.0
+],
+[
+"기타포괄손익-공정가치 지정 지분상품투자 [구성요소]",
+"ifrs-full:InvestmentsInEquityInstrumentsMeasuredAtFairValueThroughOtherComprehensiveIncomeMember",
+0.0
+]
+],
+"자산과 부채 [축] | dart:DividendIncomeNonOperating | 2026-01-01~2026-06-30": [
+[
+"당기손익인식금융자산 [구성요소]",
+"ifrs-full:FinancialAssetsAtFairValueThroughProfitOrLossCategoryMember",
+8706597000.0
+],
+[
+"기타포괄손익-공정가치 지정 지분상품투자 [구성요소]",
+"ifrs-full:InvestmentsInEquityInstrumentsMeasuredAtFairValueThroughOtherComprehensiveIncomeMember",
+2353450000.0
+],
+[
+"기타포괄손익-공정가치 지정 지분상품투자 [구성요소]",
+"ifrs-full:InvestmentsInEquityInstrumentsMeasuredAtFairValueThroughOtherComprehensiveIncomeMember",
+1655370000.0
+]
+],
+"자산과 부채 [축] | dart:GainsOnForeignCurrencyTransactionsFiancialIncome | 2026-01-01~2026-06-30": [
+[
+"상각후원가로 측정하는 금융자산, 범주 [구성요소]",
+"ifrs-full:FinancialAssetsAtAmortisedCostCategoryMember",
+116267417000.0
+],
+[
+"상각후원가로 측정하는 금융부채, 범주 [구성요소]",
+"ifrs-full:FinancialLiabilitiesAtAmortisedCostCategoryMember",
+137782555000.0
+],
+[
+"상각후원가로 측정하는 금융자산, 범주 [구성요소]",
+"ifrs-full:FinancialAssetsAtAmortisedCostCategoryMember",
+67995272000.0
+],
+[
+"상각후원가로 측정하는 금융부채, 범주 [구성요소]",
+"ifrs-full:FinancialLiabilitiesAtAmortisedCostCategoryMember",
+60912474000.0
+]
+],
+"자산과 부채 [축] | dart:LossesOnDispositionOfReceivables | 2025-01-01~2025-06-30": [
+[
+"상각후원가로 측정하는 금융자산, 범주 [구성요소]",
+"ifrs-full:FinancialAssetsAtAmortisedCostCategoryMember",
+-3616143000.0
+],
+[
+"상각후원가로 측정하는 금융자산, 범주 [구성요소]",
+"ifrs-full:FinancialAssetsAtAmortisedCostCategoryMember",
+-3456269000.0
+]
+],
+"자산과 부채 [축] | ifrs-full:RevenueFromInterest | 2025-01-01~2025-06-30": [
+[
+"상각후원가로 측정하는 금융자산, 범주 [구성요소]",
+"ifrs-full:FinancialAssetsAtAmortisedCostCategoryMember",
+79755118000.0
+],
+[
+"당기손익인식금융자산 [구성요소]",
+"ifrs-full:FinancialAssetsAtFairValueThroughProfitOrLossCategoryMember",
+6079467000.0
+],
+[
+"상각후원가로 측정하는 금융자산, 범주 [구성요소]",
+"ifrs-full:FinancialAssetsAtAmortisedCostCategoryMember",
+31614152000.0
+],
+[
+"당기손익인식금융자산 [구성요소]",
+"ifrs-full:FinancialAssetsAtFairValueThroughProfitOrLossCategoryMember",
+4535715000.0
+]
+],
+"자산과 부채 [축] | ifrs-full:RevenueFromInterest | 2026-01-01~2026-06-30": [
+[
+"상각후원가로 측정하는 금융자산, 범주 [구성요소]",
+"ifrs-full:FinancialAssetsAtAmortisedCostCategoryMember",
+120415575000.0
+],
+[
+"당기손익인식금융자산 [구성요소]",
+"ifrs-full:FinancialAssetsAtFairValueThroughProfitOrLossCategoryMember",
+10606666000.0
+],
+[
+"상각후원가로 측정하는 금융자산, 범주 [구성요소]",
+"ifrs-full:FinancialAssetsAtAmortisedCostCategoryMember",
+60303645000.0
+],
+[
+"당기손익인식금융자산 [구성요소]",
+"ifrs-full:FinancialAssetsAtFairValueThroughProfitOrLossCategoryMember",
+6677321000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:AdjustmentsForLossesOnDisposalsOfReceivables | 2025-01-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+3616143000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+3456269000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:AdjustmentsForLossesOnDisposalsOfReceivables | 2026-01-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+4625752000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+4043030000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:DividendIncomeNonOperating | 2025-01-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+10256482000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+36073493000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:DividendIncomeNonOperating | 2025-04-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+499614000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+0.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:DividendIncomeNonOperating | 2026-01-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+11060047000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+50622947000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:DividendIncomeNonOperating | 2026-04-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+3089446000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+1655370000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:GainsOnForeignCurrencyTransactionsFiancialIncome | 2025-01-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+255962093000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+88921711000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:GainsOnForeignCurrencyTransactionsFiancialIncome | 2025-04-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+137868145000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+59208759000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:GainsOnForeignCurrencyTransactionsFiancialIncome | 2026-01-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+517781187000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+221707748000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:GainsOnForeignCurrencyTransactionsFiancialIncome | 2026-04-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+230685208000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+106860928000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:GainsOnForeignExchangeTranslationsFinancialIncome | 2025-01-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+218781145000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+32306070000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:GainsOnForeignExchangeTranslationsFinancialIncome | 2025-04-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+181417526000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+25229337000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:GainsOnForeignExchangeTranslationsFinancialIncome | 2026-01-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+317174647000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+26097350000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:GainsOnForeignExchangeTranslationsFinancialIncome | 2026-04-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+23523307000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+-16444722000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:GainsOnTransactionOfDerivativeFinancialInstrumentsFinancialIncome | 2025-01-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+75753576000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+48857161000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:GainsOnTransactionOfDerivativeFinancialInstrumentsFinancialIncome | 2025-04-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+65008048000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+38807171000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:GainsOnTransactionOfDerivativeFinancialInstrumentsFinancialIncome | 2026-01-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+57742571000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+6382450000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:GainsOnTransactionOfDerivativeFinancialInstrumentsFinancialIncome | 2026-04-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+53804583000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+4271750000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:GainsOnValuationOfDerivativeFinancialInstrumentsFinancialIncome | 2025-01-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+143229435000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+349772237000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:GainsOnValuationOfDerivativeFinancialInstrumentsFinancialIncome | 2025-04-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+130375650000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+4798807000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:GainsOnValuationOfDerivativeFinancialInstrumentsFinancialIncome | 2026-01-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+41929820000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+41929820000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:GainsOnValuationOfDerivativeFinancialInstrumentsFinancialIncome | 2026-04-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+5979997000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+11474997000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:GainsOnValuationOfFairValueFinancialAssetFinancialIncome | 2025-01-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+81452961000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+120133000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:GainsOnValuationOfFairValueFinancialAssetFinancialIncome | 2025-04-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+78140569000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+119998000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:GainsOnValuationOfFairValueFinancialAssetFinancialIncome | 2026-01-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+10738474000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+8971458000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:GainsOnValuationOfFairValueFinancialAssetFinancialIncome | 2026-04-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+4637438000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+4499457000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:InterestIncomeFinanceIncome | 2025-01-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+85834585000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+36149867000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:InterestIncomeFinanceIncome | 2025-04-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+40586107000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+16496078000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:InterestIncomeFinanceIncome | 2026-01-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+131022241000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+66980966000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:InterestIncomeFinanceIncome | 2026-04-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+74395041000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+31619519000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:LossesOnDispositionOfReceivables | 2025-01-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+3616143000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+3456269000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:LossesOnDispositionOfReceivables | 2025-04-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+1725133000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+1625335000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:LossesOnDispositionOfReceivables | 2026-01-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+4625752000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+4043030000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | dart:LossesOnDispositionOfReceivables | 2026-04-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+2415655000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+2045546000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:AdjustmentsForDecreaseIncreaseInTradeAccountReceivable | 2025-01-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+-1224758779000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+462366954000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:AdjustmentsForDecreaseIncreaseInTradeAccountReceivable | 2026-01-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+-404899241000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+-235742391000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:AdjustmentsForDividendIncome | 2025-01-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+10256482000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+36073493000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:AdjustmentsForDividendIncome | 2026-01-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+11060047000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+50622947000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:AdjustmentsForInterestIncome | 2025-01-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+85834585000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+36149867000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:AdjustmentsForInterestIncome | 2026-01-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+131022241000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+66980966000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:CostOfMerchandiseSold | 2025-01-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+225443223000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+221043184000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:CostOfMerchandiseSold | 2025-04-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+120407294000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+108919679000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:CostOfMerchandiseSold | 2026-01-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+257568210000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+279795986000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:CostOfMerchandiseSold | 2026-04-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+148753642000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+152544597000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:FeeAndCommissionIncome | 2025-01-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+40921000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+2826232000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:FeeAndCommissionIncome | 2025-04-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+40921000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+1371629000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:FeeAndCommissionIncome | 2026-01-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+8257653000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+7381875000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:FeeAndCommissionIncome | 2026-04-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+4480146000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+4977216000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:FinanceIncome | 2025-01-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+861013795000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+556127179000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:FinanceIncome | 2025-04-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+633396045000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+144660150000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:FinanceIncome | 2026-01-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+1076388940000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+372069792000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:FinanceIncome | 2026-04-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+393025574000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+142281929000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:InterestExpenseIncomeDefinedBenefitPlans | 2025-01-01~2025-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+13956498000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+8361271000.0
+]
+],
+"장부금액, 감가상각누계액, 상각누계액 및 손상차손누계액 및 총장부금액 [축] | ifrs-full:InterestExpenseIncomeDefinedBenefitPlans | 2026-01-01~2026-06-30": [
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+9705699000.0
+],
+[
+"공시금액 [구성요소]",
+"dart:ReportedAmountMember",
+7315677000.0
+]
+],
+"재화나 용역의 이전 시기 [축] | ifrs-full:Revenue | 2025-01-01~2025-06-30": [
+[
+"한 시점에 이전하는 재화나 서비스 [구성요소]",
+"ifrs-full:GoodsOrServicesTransferredAtPointInTimeMember",
+2810449875000.0
+],
+[
+"기간에 걸쳐 이전하는 재화나 서비스 [구성요소]",
+"ifrs-full:GoodsOrServicesTransferredOverTimeMember",
+752362529000.0
+]
+],
+"재화나 용역의 이전 시기 [축] | ifrs-full:Revenue | 2026-01-01~2026-06-30": [
+[
+"한 시점에 이전하는 재화나 서비스 [구성요소]",
+"ifrs-full:GoodsOrServicesTransferredAtPointInTimeMember",
+3538950693000.0
+],
+[
+"기간에 걸쳐 이전하는 재화나 서비스 [구성요소]",
+"ifrs-full:GoodsOrServicesTransferredOverTimeMember",
+803970530000.0
+]
+],
+"지역 [축] | ifrs-full:Revenue | 2025-01-01~2025-06-30": [
+[
+"해외",
+"entity00126566:ForeignOfRegionOfTransferOfGoodsOrServicesMemberOfDisclosureOfRevenueByRegionOfRecognitionTableOfMember",
+1986303334000.0
+],
+[
+"국내",
+"entity00126566:LocalOfRegionOfTransferOfGoodsOrServicesMemberOfDisclosureOfRevenueByRegionOfRecognitionTableOfMember",
+1576509070000.0
+]
+],
+"지역 [축] | ifrs-full:Revenue | 2026-01-01~2026-06-30": [
+[
+"해외",
+"entity00126566:ForeignOfRegionOfTransferOfGoodsOrServicesMemberOfDisclosureOfRevenueByRegionOfRecognitionTableOfMember",
+2200501736000.0
+],
+[
+"국내",
+"entity00126566:LocalOfRegionOfTransferOfGoodsOrServicesMemberOfDisclosureOfRevenueByRegionOfRecognitionTableOfMember",
+2142419487000.0
+]
+],
+"특수관계자의 범주 [축] | entity00126566:SalesCashFlowRelatedPartyTransactionsOfDisclosureOfFinancialTransactionsBetweenRelatedPartiesLineItemsOfDisclosureOfFinancialTransactionsBetweenRelatedPartiesTableOfItems | 2025-01-01~2025-06-30": [
+[
+"HAA No.1 Pty Ltd.",
+"entity00126566:HaaNo1PtyLtdOfSubsidiariesMemberOfDisclosureOfFinancialTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Hanwha Aerospace Middle East &amp; North Africa Regional Headquarters",
+"entity00126566:HanwhaAerospaceMiddleEastNorthAfricaRegionalHeadquartersOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"한화자산운용㈜",
+"entity00126566:HanwhaAssetManagementCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfFinancialTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"한화에비에이션㈜",
+"entity00126566:HanwhaAviationCoLtdOfSubsidiariesMemberOfDisclosureOfFinancialTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"㈜한화",
+"entity00126566:HanwhaCoLtdOfParentMemberOfDisclosureOfFinancialTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Hanwha Global Defense, Inc.",
+"entity00126566:HanwhaGlobalDefenseIncOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"한화투자증권㈜",
+"entity00126566:HanwhaInvestmentSecuritiesCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfFinancialTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Hanwha Ocean SG Holdings Pte. Ltd.",
+"entity00126566:HanwhaOceanSgHoldingsPteLtdOfSubsidiariesMemberOfDisclosureOfFinancialTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"한화시스템㈜",
+"entity00126566:HanwhaSystemsCoLtdOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"㈜쎄트렉아이",
+"entity00126566:SatrecInitiativeCoLtdOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"㈜서머텍코리아",
+"entity00126566:SermatechKoreaCoLtdOfAssociatesMemberOfDisclosureOfFinancialTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+]
+],
+"특수관계자의 범주 [축] | entity00126566:SalesCashFlowRelatedPartyTransactionsOfDisclosureOfFinancialTransactionsBetweenRelatedPartiesLineItemsOfDisclosureOfFinancialTransactionsBetweenRelatedPartiesTableOfItems | 2026-01-01~2026-06-30": [
+[
+"Hanwha Defense USA, Inc.",
+"entity00126566:HanwhaAerospaceEuropeOfSubsidiariesMemberOfDetailsOfFundTransactionsWithRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Hanwha Aerospace USA Corporation",
+"entity00126566:HanwhaAerospaceUsaCorporationOfSubsidiariesMemberOfDisclosureOfContingentLiabilitiesForGuaranteesNonPfRelatedPartyTransactionsTableOfMember",
+0.0
+],
+[
+"한화자산운용㈜",
+"entity00126566:HanwhaAssetManagementCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfFinancialTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"㈜한화",
+"entity00126566:HanwhaCoLtdOfParentMemberOfDisclosureOfFinancialTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Hanwha Defence Deutschland GmbH",
+"entity00126566:HanwhaDefenceDeutschlandGmbhOfSubsidiariesMemberOfDisclosureOfFinancialTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Hanwha Defence Poland sp.z o.o.",
+"entity00126566:HanwhaDefencePolandSpZOOOfSubsidiariesMemberOfDisclosureOfFinancialTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"한화에너지㈜",
+"entity00126566:HanwhaEnergyCoLtdOfRelatedPartnersMemberOfDisclosureOfOtherTransactionWithRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Hanwha Energy Corporation Singapore Pte. Ltd.",
+"entity00126566:HanwhaEnergyCorporationSingaporePteLtdOfOtherRelatedPartiesMemberOfDisclosureOfFinancialTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Hanwha Defense USA, Inc.",
+"entity00126566:HanwhaImpactPartnersIncOfOtherRelatedPartiesMemberOfDisclosureOfFinancialTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"한화투자증권㈜",
+"entity00126566:HanwhaInvestmentSecuritiesCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfFinancialTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"한화시스템㈜",
+"entity00126566:HanwhaSystemsCoLtdOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"㈜쎄트렉아이",
+"entity00126566:SatrecInitiativeCoLtdOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"㈜서머텍코리아",
+"entity00126566:SermatechKoreaCoLtdOfAssociatesMemberOfDisclosureOfFinancialTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+]
+],
+"특수관계자의 범주 [축] | ifrs-full:RevenueFromSaleOfGoodsRelatedPartyTransactions | 2025-01-01~2025-06-30": [
+[
+"캐롯손해보험㈜",
+"entity00126566:CarrotInsuaranceCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+63083000.0
+],
+[
+"에이치앤지케미칼㈜",
+"entity00126566:HGChemicalCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+69024951000.0
+],
+[
+"㈜한화",
+"entity00126566:HanwhaCoLtdOfParentMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+39590004000.0
+],
+[
+"한화에너지㈜",
+"entity00126566:HanwhaEnergyCoLtdOfRelatedPartnersMemberOfDisclosureOfOtherTransactionWithRelatedPartiesTableOfMember",
+3295141000.0
+],
+[
+"한화엔진㈜",
+"entity00126566:HanwhaEngineCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+2439700000.0
+],
+[
+"㈜한화에스테이트서비스",
+"entity00126566:HanwhaEstateServiceCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+2056000.0
+],
+[
+"Hanwha Europe GmbH",
+"entity00126566:HanwhaEuropeGmbhOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+249243000.0
+],
+[
+"한화갤러리아㈜",
+"entity00126566:HanwhaGalleriaCorporationOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+5895881000.0
+],
+[
+"한화호텔앤드리조트㈜",
+"entity00126566:HanwhaHotelAndResortCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfOutstandingBalancesForRelatedPartyTransactionsTableOfMember",
+4585144000.0
+],
+[
+"한화손해보험㈜",
+"entity00126566:HanwhaInsuranceCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+19341649000.0
+],
+[
+"Hanwha International LLC",
+"entity00126566:HanwhaInternationalLlcOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+555230000.0
+],
+[
+"한화투자증권㈜",
+"entity00126566:HanwhaInvestmentSecuritiesCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfFinancialTransactionsBetweenRelatedPartiesTableOfMember",
+5639597000.0
+],
+[
+"한화생명보험㈜",
+"entity00126566:HanwhaLifeInsuranceCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+31297350000.0
+],
+[
+"한화파워㈜",
+"entity00126566:HanwhaPowerSystemCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+6189843000.0
+],
+[
+"Hanwha Q CELLS America Inc.",
+"entity00126566:HanwhaQCellsAmericaIncOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+1094677000.0
+],
+[
+"한화세미텍㈜",
+"entity00126566:HanwhaSemitechCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+6196780000.0
+],
+[
+"Hanwha Shipping LLC",
+"entity00126566:HanwhaShippingLlcOfJointVenturesWhereEntityIsVenturerMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+1968686000.0
+],
+[
+"한화솔루션㈜",
+"entity00126566:HanwhaSolutionsCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+46042330000.0
+],
+[
+"한화토탈에너지스㈜",
+"entity00126566:HanwhaTotalenergiesPetrochemicalCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+46953145000.0
+],
+[
+"한화비전㈜",
+"entity00126566:HanwhaVisionCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+7010222000.0
+],
+[
+"기타",
+"entity00126566:OthersOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+37529362000.0
+],
+[
+"P&amp;W NGPF Manufacturing Company Singapore Pte Ltd.",
+"entity00126566:PWNgpfManufacturingCompanySingaporePteLtdOfAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+112276000.0
+],
+[
+"㈜서머텍코리아",
+"entity00126566:SermatechKoreaCoLtdOfAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+5140633000.0
+],
+[
+"신안우이해상풍력㈜",
+"entity00126566:ShinanUiOffshoreWindpowerCorporationOfJointVenturesWhereEntityIsVenturerMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+1055000.0
+],
+[
+"㈜티피아이메가라인",
+"entity00126566:TpiMegalineCoLtdOfAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+961400000.0
+]
+],
+"특수관계자의 범주 [축] | ifrs-full:RevenueFromSaleOfGoodsRelatedPartyTransactions | 2026-01-01~2026-06-30": [
+[
+"TransGrid Energy LLC",
+"entity00126566:HanwhaAdvancedMaterialsAmericaLlcOfOtherRelatedPartiesMemberOfDisclosureOfOutstandingBalancesForRelatedPartyTransactionsTableOfMember",
+5313981000.0
+],
+[
+"Hanwha Aviation Pte Ltd.",
+"entity00126566:HanwhaAviationPteLtdOfAssociatesMemberOfDisclosureOfOutstandingBalancesForRelatedPartyTransactionsTableOfMember",
+220432000.0
+],
+[
+"㈜한화",
+"entity00126566:HanwhaCoLtdOfParentMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+25645694000.0
+],
+[
+"한화에너지㈜",
+"entity00126566:HanwhaEnergyCoLtdOfRelatedPartnersMemberOfDisclosureOfOtherTransactionWithRelatedPartiesTableOfMember",
+5114746000.0
+],
+[
+"한화엔진㈜",
+"entity00126566:HanwhaEngineCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+3559158000.0
+],
+[
+"㈜한화에스테이트서비스",
+"entity00126566:HanwhaEstateServiceCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+2056000.0
+],
+[
+"Hanwha Europe GmbH",
+"entity00126566:HanwhaEuropeGmbhOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+377948000.0
+],
+[
+"Hanwha Futureproof Corp.",
+"entity00126566:HanwhaFutureproofCorpOfJointVenturesWhereEntityIsVenturerMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+2068051000.0
+],
+[
+"한화갤러리아㈜",
+"entity00126566:HanwhaGalleriaCorporationOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+5827313000.0
+],
+[
+"한화호텔앤드리조트㈜",
+"entity00126566:HanwhaHotelAndResortCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfOutstandingBalancesForRelatedPartyTransactionsTableOfMember",
+4632531000.0
+],
+[
+"한화손해보험㈜",
+"entity00126566:HanwhaInsuranceCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+26689540000.0
+],
+[
+"Hanwha International LLC",
+"entity00126566:HanwhaInternationalLlcOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+3168000.0
+],
+[
+"한화투자증권㈜",
+"entity00126566:HanwhaInvestmentSecuritiesCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfFinancialTransactionsBetweenRelatedPartiesTableOfMember",
+6886818000.0
+],
+[
+"한화생명보험㈜",
+"entity00126566:HanwhaLifeInsuranceCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+31403140000.0
+],
+[
+"한화파워㈜",
+"entity00126566:HanwhaPowerSystemCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+7706746000.0
+],
+[
+"Hanwha Q Cells Technologies, Inc.",
+"entity00126566:HanwhaQCellsTechnologiesIncOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+5098019000.0
+],
+[
+"한화세미텍㈜",
+"entity00126566:HanwhaSemitechCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+5318573000.0
+],
+[
+"Hanwha Shipping LLC",
+"entity00126566:HanwhaShippingLlcOfJointVenturesWhereEntityIsVenturerMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+558356316000.0
+],
+[
+"한화솔루션㈜",
+"entity00126566:HanwhaSolutionsCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+19020339000.0
+],
+[
+"한화토탈에너지스㈜",
+"entity00126566:HanwhaTotalenergiesPetrochemicalCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+22638835000.0
+],
+[
+"한화비전㈜",
+"entity00126566:HanwhaVisionCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+8828666000.0
+],
+[
+"기타",
+"entity00126566:OthersOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+43740731000.0
+],
+[
+"㈜아워홈",
+"entity00126566:OurHomeCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+3850869000.0
+],
+[
+"P&amp;W NGPF Manufacturing Company Singapore Pte Ltd.",
+"entity00126566:PWNgpfManufacturingCompanySingaporePteLtdOfAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"㈜서머텍코리아",
+"entity00126566:SermatechKoreaCoLtdOfAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+4726298000.0
+]
+],
+"특수관계자의 범주 [축] | ifrs-full:SalesOfPropertyAndOtherAssetsRelatedPartyTransactions | 2025-01-01~2025-06-30": [
+[
+"캐롯손해보험㈜",
+"entity00126566:CarrotInsuaranceCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"에이치앤지케미칼㈜",
+"entity00126566:HGChemicalCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"㈜한화",
+"entity00126566:HanwhaCoLtdOfParentMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"한화에너지㈜",
+"entity00126566:HanwhaEnergyCoLtdOfRelatedPartnersMemberOfDisclosureOfOtherTransactionWithRelatedPartiesTableOfMember",
+0.0
+],
+[
+"한화엔진㈜",
+"entity00126566:HanwhaEngineCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"㈜한화에스테이트서비스",
+"entity00126566:HanwhaEstateServiceCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Hanwha Europe GmbH",
+"entity00126566:HanwhaEuropeGmbhOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"한화갤러리아㈜",
+"entity00126566:HanwhaGalleriaCorporationOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"한화호텔앤드리조트㈜",
+"entity00126566:HanwhaHotelAndResortCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfOutstandingBalancesForRelatedPartyTransactionsTableOfMember",
+0.0
+],
+[
+"한화손해보험㈜",
+"entity00126566:HanwhaInsuranceCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Hanwha International LLC",
+"entity00126566:HanwhaInternationalLlcOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"한화투자증권㈜",
+"entity00126566:HanwhaInvestmentSecuritiesCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfFinancialTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"한화생명보험㈜",
+"entity00126566:HanwhaLifeInsuranceCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"한화파워㈜",
+"entity00126566:HanwhaPowerSystemCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Hanwha Q CELLS America Inc.",
+"entity00126566:HanwhaQCellsAmericaIncOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"한화세미텍㈜",
+"entity00126566:HanwhaSemitechCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"한화솔루션㈜",
+"entity00126566:HanwhaSolutionsCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"한화토탈에너지스㈜",
+"entity00126566:HanwhaTotalenergiesPetrochemicalCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"한화비전㈜",
+"entity00126566:HanwhaVisionCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"기타",
+"entity00126566:OthersOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"P&amp;W NGPF Manufacturing Company Singapore Pte Ltd.",
+"entity00126566:PWNgpfManufacturingCompanySingaporePteLtdOfAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"㈜서머텍코리아",
+"entity00126566:SermatechKoreaCoLtdOfAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"㈜티피아이메가라인",
+"entity00126566:TpiMegalineCoLtdOfAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"캐롯손해보험㈜",
+"entity00126566:CarrotInsuaranceCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Hanwha Aero Engines Co., Ltd.",
+"entity00126566:HanwhaAeroEnginesCoLtdOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+]
+],
+"특수관계자의 범주 [축] | ifrs-full:SalesOfPropertyAndOtherAssetsRelatedPartyTransactions | 2026-01-01~2026-06-30": [
+[
+"TransGrid Energy LLC",
+"entity00126566:HanwhaAdvancedMaterialsAmericaLlcOfOtherRelatedPartiesMemberOfDisclosureOfOutstandingBalancesForRelatedPartyTransactionsTableOfMember",
+0.0
+],
+[
+"Hanwha Aviation Pte Ltd.",
+"entity00126566:HanwhaAviationPteLtdOfAssociatesMemberOfDisclosureOfOutstandingBalancesForRelatedPartyTransactionsTableOfMember",
+0.0
+],
+[
+"㈜한화",
+"entity00126566:HanwhaCoLtdOfParentMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"한화에너지㈜",
+"entity00126566:HanwhaEnergyCoLtdOfRelatedPartnersMemberOfDisclosureOfOtherTransactionWithRelatedPartiesTableOfMember",
+0.0
+],
+[
+"한화엔진㈜",
+"entity00126566:HanwhaEngineCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+15500000000.0
+],
+[
+"㈜한화에스테이트서비스",
+"entity00126566:HanwhaEstateServiceCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Hanwha Europe GmbH",
+"entity00126566:HanwhaEuropeGmbhOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Hanwha Futureproof Corp.",
+"entity00126566:HanwhaFutureproofCorpOfJointVenturesWhereEntityIsVenturerMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"한화갤러리아㈜",
+"entity00126566:HanwhaGalleriaCorporationOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"한화호텔앤드리조트㈜",
+"entity00126566:HanwhaHotelAndResortCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfOutstandingBalancesForRelatedPartyTransactionsTableOfMember",
+12104000.0
+],
+[
+"한화손해보험㈜",
+"entity00126566:HanwhaInsuranceCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Hanwha International LLC",
+"entity00126566:HanwhaInternationalLlcOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"한화투자증권㈜",
+"entity00126566:HanwhaInvestmentSecuritiesCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfFinancialTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"한화생명보험㈜",
+"entity00126566:HanwhaLifeInsuranceCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"한화파워㈜",
+"entity00126566:HanwhaPowerSystemCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"Hanwha Q Cells Technologies, Inc.",
+"entity00126566:HanwhaQCellsTechnologiesIncOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"한화세미텍㈜",
+"entity00126566:HanwhaSemitechCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"한화솔루션㈜",
+"entity00126566:HanwhaSolutionsCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"한화토탈에너지스㈜",
+"entity00126566:HanwhaTotalenergiesPetrochemicalCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"한화비전㈜",
+"entity00126566:HanwhaVisionCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"기타",
+"entity00126566:OthersOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"㈜아워홈",
+"entity00126566:OurHomeCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"P&amp;W NGPF Manufacturing Company Singapore Pte Ltd.",
+"entity00126566:PWNgpfManufacturingCompanySingaporePteLtdOfAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"㈜서머텍코리아",
+"entity00126566:SermatechKoreaCoLtdOfAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+],
+[
+"신안우이해상풍력㈜",
+"entity00126566:ShinanUiOffshoreWindpowerCoLtdOfTotalForAllAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+0.0
+]
+]
+}
+}

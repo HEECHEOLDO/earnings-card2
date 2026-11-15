@@ -1,0 +1,192 @@
+{
+"recent": [
+"4 2026-11-10 0001403161-26-000140",
+"144  0001964306-26-000509",
+"4 2026-11-09 0001403161-26-000138",
+"144  0001964306-26-000507",
+"4 2026-11-04 0001403161-26-000136",
+"10-K 2026-09-30 0001403161-26-000134",
+"144  0001964306-26-000497",
+"4 2026-11-02 0001403161-26-000130",
+"4 2026-11-02 0001403161-26-000129",
+"144  0001964306-26-000491",
+"144  0001964306-26-000486",
+"4 2026-10-30 0001403161-26-000128"
+],
+"files": [
+"0001403161-26-000134-index-headers.html",
+"0001403161-26-000134-index.html",
+"0001403161-26-000134.txt",
+"0001403161-26-000134-xbrl.zip",
+"FilingSummary.xml",
+"image_0a.jpg",
+"MetaLinks.json",
+"R1.htm",
+"R10.htm",
+"R100.htm",
+"R101.htm",
+"R102.htm",
+"R103.htm",
+"R104.htm",
+"R105.htm",
+"R106.htm",
+"R107.htm",
+"R108.htm",
+"R109.htm",
+"R11.htm",
+"R110.htm",
+"R111.htm",
+"R112.htm",
+"R12.htm",
+"R13.htm",
+"R14.htm",
+"R15.htm",
+"R16.htm",
+"R17.htm",
+"R18.htm",
+"R19.htm",
+"R2.htm",
+"R20.htm",
+"R21.htm",
+"R22.htm",
+"R23.htm",
+"R24.htm",
+"R25.htm",
+"R26.htm",
+"R27.htm"
+],
+"dims": {
+"Geographical [Axis] | us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax | 2023-10-01~2024-09-30": [
+[
+"UNITED STATES",
+"country:US",
+14780000000.0
+],
+[
+"Non-US [Member]",
+"us-gaap:NonUsMember",
+21146000000.0
+]
+],
+"Geographical [Axis] | us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax | 2024-10-01~2025-09-30": [
+[
+"UNITED STATES",
+"country:US",
+15633000000.0
+],
+[
+"Non-US [Member]",
+"us-gaap:NonUsMember",
+24367000000.0
+]
+],
+"Geographical [Axis] | us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax | 2025-10-01~2026-09-30": [
+[
+"UNITED STATES",
+"country:US",
+17423000000.0
+],
+[
+"Non-US [Member]",
+"us-gaap:NonUsMember",
+28480000000.0
+]
+],
+"Product and Service [Axis] | us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax | 2023-10-01~2024-09-30": [
+[
+"Service [Member]",
+"us-gaap:ServiceMember",
+16114000000.0
+],
+[
+"Data Processing Revenues [Member]",
+"v:DataProcessingRevenuesMember",
+17714000000.0
+],
+[
+"International Transaction Revenues [Member]",
+"v:InternationalTransactionRevenuesMember",
+12665000000.0
+],
+[
+"Service, Other [Member]",
+"us-gaap:ServiceOtherMember",
+3197000000.0
+],
+[
+"Client Incentives [Member]",
+"v:ClientIncentivesMember",
+-13764000000.0
+],
+[
+"Value-Added Services [Member]",
+"v:ValueAddedServicesMember",
+8800000000.0
+]
+],
+"Product and Service [Axis] | us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax | 2024-10-01~2025-09-30": [
+[
+"Service [Member]",
+"us-gaap:ServiceMember",
+17539000000.0
+],
+[
+"Data Processing Revenues [Member]",
+"v:DataProcessingRevenuesMember",
+19993000000.0
+],
+[
+"International Transaction Revenues [Member]",
+"v:InternationalTransactionRevenuesMember",
+14166000000.0
+],
+[
+"Service, Other [Member]",
+"us-gaap:ServiceOtherMember",
+4053000000.0
+],
+[
+"Client Incentives [Member]",
+"v:ClientIncentivesMember",
+-15751000000.0
+],
+[
+"Value-Added Services [Member]",
+"v:ValueAddedServicesMember",
+10900000000.0
+]
+],
+"Product and Service [Axis] | us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax | 2025-10-01~2026-09-30": [
+[
+"Service [Member]",
+"us-gaap:ServiceMember",
+19918000000.0
+],
+[
+"Data Processing Revenues [Member]",
+"v:DataProcessingRevenuesMember",
+23374000000.0
+],
+[
+"International Transaction Revenues [Member]",
+"v:InternationalTransactionRevenuesMember",
+15251000000.0
+],
+[
+"Service, Other [Member]",
+"us-gaap:ServiceOtherMember",
+5677000000.0
+],
+[
+"Client Incentives [Member]",
+"v:ClientIncentivesMember",
+-18317000000.0
+],
+[
+"Value-Added Services [Member]",
+"v:ValueAddedServicesMember",
+14200000000.0
+]
+]
+}
+}
