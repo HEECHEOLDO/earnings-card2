@@ -14,7 +14,7 @@ import json
 import os
 import sys
 import time
-from datetime import date
+from datetime import date, timedelta
 
 import collect as C
 import collect_us as U
@@ -141,7 +141,7 @@ def us_one(t, cik):
 
 
 # ------------------------------------------------------------------ 공시 원본(XBRL): 3개월 손익 + 매출 종류
-VER = 6                                            # 계산 방식이 바뀌면 올려서 다시 계산
+VER = 7                                            # 계산 방식이 바뀌면 올려서 다시 계산
 
 
 def kr_xbrl(corp, old=None):
@@ -237,7 +237,8 @@ def usable(code):
     days = (date.fromisoformat(d["end"]) - date.fromisoformat(d["start"])).days
     if not (80 <= days <= 100 or 350 <= days <= 380):
         return False
-    return (TODAY - date.fromisoformat(d["end"])).days < 200            # 분기 끝 + 제출 기한(45~90일)보다 오래되면 뺌
+    lim = 520 if (len(code) == 8 and code.isdigit()) else 200          # 비상장(감사보고서·연간)은 1년 넘게 기다린다
+    return (TODAY - date.fromisoformat(d["end"])).days < lim            # 분기 끝 + 제출 기한(45~90일)보다 오래되면 뺌
 
 
 def scaled(v, k):
@@ -252,87 +253,217 @@ def scaled(v, k):
     return out
 
 
+T0 = time.time()
+MINUTES = float(os.environ.get("FLOW_MINUTES", "75"))      # 한 번 돌 때 쓸 시간 — 남은 회사는 다음 번에
+DART_MAX = int(os.environ.get("FLOW_DART_MAX", "7000"))     # DART 하루 한도(2만)를 다른 수집기와 나눠 쓴다
+FAILP = os.path.join(OUT, "_fail.json")                     # 못 읽은 회사 — 1주일 뒤에 다시
+
+
+def time_left():
+    return time.time() - T0 < MINUTES * 60
+
+
+def recent_kr(days=12):
+    """최근 정기보고서(분기·반기·사업)를 낸 회사 corp_code — 이 회사들만 새로 읽는다"""
+    out = set()
+    for p in range(1, 60):
+        res = C.api_get("list.json", {"bgn_de": (TODAY - timedelta(days=days)).strftime("%Y%m%d"), "end_de": TODAY.strftime("%Y%m%d"),
+                                      "pblntf_ty": "A", "page_no": p, "page_count": 100})
+        if not res or res.get("status") != "000":
+            break
+        for r in res.get("list", []):
+            out.add(r.get("corp_code"))
+        if p >= int(res.get("total_page") or 1):
+            break
+    for p in range(1, 30):                                   # 감사보고서(비상장)
+        res = C.api_get("list.json", {"bgn_de": (TODAY - timedelta(days=days)).strftime("%Y%m%d"), "end_de": TODAY.strftime("%Y%m%d"),
+                                      "pblntf_ty": "F", "page_no": p, "page_count": 100})
+        if not res or res.get("status") != "000":
+            break
+        for r in res.get("list", []):
+            out.add(r.get("corp_code"))
+        if p >= int(res.get("total_page") or 1):
+            break
+    return out
+
+
+def recent_us(days=12):
+    """최근 10-Q·10-K 를 낸 회사 CIK — SEC 날짜별 목록(form.YYYYMMDD.idx)"""
+    out = set()
+    for k in range(days + 1):
+        d = TODAY - timedelta(days=k)
+        if d.weekday() >= 5:
+            continue
+        raw = U.get("https://www.sec.gov/Archives/edgar/daily-index/%d/QTR%d/form.%s.idx" % (d.year, (d.month - 1) // 3 + 1, d.strftime("%Y%m%d")))
+        if not raw:
+            continue
+        for line in raw.decode("latin-1").splitlines():
+            if line.startswith(("10-Q ", "10-K ", "10-Q/A", "10-K/A")):
+                m = re.search(r"\s(\d{3,10})\s+\d{4}-?\d{2}-?\d{2}\s", line)
+                if m:
+                    out.add(int(m.group(1)))
+    return out
+
+
+def jl(p, d=None):
+    try:
+        return json.load(open(p, encoding="utf-8"))
+    except Exception:                               # noqa: BLE001
+        return d
+
+
+def save(code, d, market, name):
+    d.update({"code": code, "name": name, "market": market, "updated": TODAY.isoformat(), "ver": VER})
+    json.dump(d, open(os.path.join(OUT, code + ".json"), "w", encoding="utf-8"), ensure_ascii=False)
+
+
 def main():
     os.makedirs(OUT, exist_ok=True)
     mc = json.load(open("data/mcap.json", encoding="utf-8"))["stocks"]
     mu = json.load(open("data/mcap_us.json", encoding="utf-8"))["stocks"]
-    kr = [c for c in sorted(mc, key=lambda c: -(mc[c].get("c") or 0)) if c.endswith("0")][:30]
-    us = sorted([t for t in mu if mu[t].get("c")], key=lambda t: -mu[t]["c"])[:30]
-    idx = {}
+    ul = (jl("data/unlisted/index.json", {}) or {}).get("companies", [])
+    # 대상: 국내 상장 보통주 전부 · 미국 전부 · 비상장 탭 회사 전부 (시총 큰 순서로)
+    kr = [c for c in sorted(mc, key=lambda c: -(mc[c].get("c") or 0)) if c.endswith("0") and mc[c].get("c")]
+    us = sorted([t for t in mu if mu[t].get("c")], key=lambda t: -mu[t]["c"])
+    if "--top" in sys.argv:
+        n = int(sys.argv[sys.argv.index("--top") + 1]); kr, us, ul = kr[:n], us[:n], ul[:n]
+    fail = jl(FAILP, {}) or {}
+
+    def skip_fail(k):
+        f = fail.get(k)
+        return f and (TODAY - date.fromisoformat(f["d"])).days < 7
+
+    def mark_fail(k, why):
+        fail[k] = {"d": TODAY.isoformat(), "why": why}
+
+    def need(key, old, recent_hit):
+        """0: 새 보고서 · 1: 아직 없음 · 2: 계산 방식이 바뀜 · None: 그대로"""
+        if old and old.get("ver") == VER and not recent_hit:
+            return None
+        if old and old.get("ver") == VER:
+            return 0
+        if not old:
+            return None if skip_fail(key) else 1
+        return 2 if not recent_hit else 0
+
+    done = {"kr": 0, "us": 0, "ul": 0, "same": 0, "fail": 0}
     if "--us-only" not in sys.argv:
         C.API_KEY = C.get_key()
         cmap = C.load_corp_map()
-        for code in kr:
+        rk = recent_kr()
+        print("최근 정기·감사보고서 낸 국내 회사 %d곳" % len(rk))
+        jobs = []
+        for i, code in enumerate(kr):
             info = cmap.get(code)
             if not info:
                 continue
+            old = jl(os.path.join(OUT, code + ".json"))
+            pr = need(code, old, info["corp_code"] in rk)
+            if pr is not None:
+                jobs.append((pr, i, "KR", code, info["corp_code"], old, mc[code].get("n")))
+        for i, c in enumerate(ul):
+            old = jl(os.path.join(OUT, c["code"] + ".json"))
+            pr = need(c["code"], old, c["code"] in rk)
+            if pr is not None:
+                jobs.append((pr, i, "UL", c["code"], c["code"], old, c.get("name")))
+        jobs.sort(key=lambda j: (j[0], j[1]))
+        print("국내·비상장 할 일 %d곳" % len(jobs))
+        for pr, _, mk, code, corp, old, name in jobs:
+            if not time_left() or C._call_count > DART_MAX:
+                print("  … 시간·호출 한도 — 남은 %d곳은 다음 번에" % (len(jobs) - done["kr"] - done["ul"] - done["same"] - done["fail"]))
+                break
             try:
-                fp = os.path.join(OUT, code + ".json")
-                old = json.load(open(fp, encoding="utf-8")) if os.path.exists(fp) else None
-                x = kr_xbrl(info["corp_code"], old)
+                ulmeta = (jl(os.path.join("data", "unlisted", code + ".json"), {}) or {}) if mk == "UL" else {}
+                if mk == "UL" and ulmeta.get("source") == "audit":
+                    import flow_audit as FA
+                    x = FA.flow(code)
+                    why = FA.WHY
+                    if x and old and old.get("src") == x.get("src") and old.get("ver") == VER:
+                        x = "SAME"
+                else:
+                    FX.WHY = ""
+                    x = kr_xbrl(corp, old)
+                    why = FX.WHY
                 if x == "SAME":
-                    idx[code] = {"n": old["name"], "m": "KR", "p": old["period"]}
-                    print("  = %s 그대로" % code)
+                    if old:
+                        old["ver"] = VER
+                        save(code, old, mk, old.get("name") or name)
+                    done["same"] += 1
                     continue
                 d = scaled(x, 1e8) if x else None
+                if not d and mk == "KR":
+                    d = kr_one(code, corp)
                 if d:
-                    d["ver"] = VER
                     d["unit"] = "억원"
+                    save(code, d, mk, name)
+                    fail.pop(code, None)
+                    done["kr" if mk == "KR" else "ul"] += 1
+                    print("  ok %s %s %s 매출 %s 영업 %s 순 %s 부문 %d 비용 %d" % (mk, code, name, d.get("rev"), d.get("op"), d.get("ni"), len(d.get("segs") or []), len(d.get("items") or [])))
                 else:
-                    d = kr_one(code, info["corp_code"])
+                    mark_fail(code, why or "자료 없음")
+                    done["fail"] += 1
             except Exception as e:                  # noqa: BLE001
                 print("  !! %s %s" % (code, e))
-                d = None
-            if d:
-                d.update({"code": code, "name": mc[code].get("n"), "market": "KR", "updated": TODAY.isoformat()})
-                json.dump(d, open(os.path.join(OUT, code + ".json"), "w", encoding="utf-8"), ensure_ascii=False)
-                idx[code] = {"n": d["name"], "m": "KR", "p": d["period"]}
-                print("  ok %s %s %s 매출 %s 원가 %s 판관비 %s 영업 %s 순 %s 부문 %s" % (code, d.get("name"), d.get("period"), d.get("rev"), d.get("cogs"), d.get("sga"), d.get("op"), d.get("ni"), d.get("segs")))
-    for t in us:
-        cik = None
-        p = os.path.join("data", "us", t + ".json")
-        if os.path.exists(p):
-            cik = json.load(open(p, encoding="utf-8")).get("cik")
-        if not cik:
-            continue
-        try:
-            fp = os.path.join(OUT, t + ".json")
-            old = json.load(open(fp, encoding="utf-8")) if os.path.exists(fp) else None
+                mark_fail(code, "오류 %s" % e)
+                done["fail"] += 1
+    if time_left():
+        ru = recent_us()
+        print("최근 10-Q·10-K 낸 미국 회사 %d곳" % len(ru))
+        jobs = []
+        for i, t in enumerate(us):
+            cik = (jl(os.path.join("data", "us", t + ".json"), {}) or {}).get("cik")
+            if not cik:
+                continue
+            old = jl(os.path.join(OUT, t + ".json"))
+            pr = need(t, old, int(cik) in ru)
+            if pr is not None:
+                jobs.append((pr, i, t, cik, old))
+        jobs.sort(key=lambda j: (j[0], j[1]))
+        print("미국 할 일 %d곳" % len(jobs))
+        for pr, _, t, cik, old in jobs:
+            if not time_left():
+                print("  … 시간 한도 — 남은 미국 회사는 다음 번에")
+                break
             FX.WHY = ""
             try:
                 x = us_xbrl(cik, old)
             except Exception as e:                  # noqa: BLE001
                 x, FX.WHY = None, "오류 %s" % e
             if x == "SAME":
-                idx[t] = {"n": old["name"], "m": "US", "p": old["period"]}
-                print("  = %s 그대로" % t)
+                old["ver"] = VER
+                save(t, old, "US", old.get("name") or mu[t].get("n"))
+                done["same"] += 1
                 continue
             d = scaled(x, 1e6) if x else None
-            if d:
-                d["ver"] = VER
-                d["unit"] = "백만달러"
-            else:
-                d = us_one(t, cik)
+            if not d:
+                try:
+                    d = us_one(t, cik)
+                except Exception:                   # noqa: BLE001
+                    d = None
                 if d:
                     d["xbrl_err"] = FX.WHY or "까닭 모름"
-        except Exception as e:                      # noqa: BLE001
-            print("  !! %s %s" % (t, e))
-            d = None
-        time.sleep(0.15)
-        if d:
-            d.update({"code": t, "name": mu[t].get("n"), "market": "US", "updated": TODAY.isoformat()})
-            json.dump(d, open(os.path.join(OUT, t + ".json"), "w", encoding="utf-8"), ensure_ascii=False)
-            idx[t] = {"n": d["name"], "m": "US", "p": d["period"]}
-            print("  ok %s %s 매출 %s 원가 %s R&D %s SG&A %s 영업 %s 순 %s" % (t, d.get("period"), d.get("rev"), d.get("cogs"), d.get("rnd"), d.get("sga"), d.get("op"), d.get("ni")))
-    old = {}
-    ip = os.path.join(OUT, "index.json")
-    if os.path.exists(ip):
-        old = json.load(open(ip, encoding="utf-8")).get("items", {})
-    old.update(idx)
-    old = {c: v for c, v in old.items() if usable(c)}       # 이상한 자료(누적 기간·오래된 것·영업이익>매출)는 카드에서 뺌
-    json.dump({"updated": TODAY.isoformat(), "items": old}, open(ip, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
-    print("== 끝: %d곳" % len(idx))
-
+            if d:
+                d["unit"] = "백만달러"
+                save(t, d, "US", mu[t].get("n"))
+                fail.pop(t, None)
+                done["us"] += 1
+                print("  ok US %s 매출 %s 영업 %s 순 %s 부문 %d 비용 %d %s" % (t, d.get("rev"), d.get("op"), d.get("ni"), len(d.get("segs") or []), len(d.get("items") or []), d.get("xbrl_err", "")))
+            else:
+                mark_fail(t, FX.WHY or "자료 없음")
+                done["fail"] += 1
+    json.dump(fail, open(FAILP, "w", encoding="utf-8"), ensure_ascii=False, indent=0)
+    # 목록: 지금 있는 파일 중 카드로 그릴 수 있는 것만
+    idx = {}
+    for fn in os.listdir(OUT):
+        if not fn.endswith(".json") or fn.startswith(("_", "index")):
+            continue
+        code = fn[:-5]
+        if usable(code):
+            d = jl(os.path.join(OUT, fn), {})
+            m = d.get("market") or ("US" if not code.isdigit() else "UL" if len(code) == 8 else "KR")
+            idx[code] = {"n": d.get("name") or code, "m": m, "p": d.get("period")}
+    json.dump({"updated": TODAY.isoformat(), "items": idx}, open(os.path.join(OUT, "index.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=0)
+    print("끝: 국내 %(kr)d · 미국 %(us)d · 비상장 %(ul)d 새로 · 그대로 %(same)d · 실패 %(fail)d" % done, "· 카드 %d곳" % len(idx), "· DART 호출 %d" % C._call_count)
 
 if __name__ == "__main__":
     main()

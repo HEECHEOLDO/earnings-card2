@@ -3,13 +3,14 @@ name: 손익 흐름 수집 (돈의 흐름 카드)
 
 on:
   schedule:
-    - cron: '20 22 * * *'       # UTC 22:20 = KST 07:20 매일
+    - cron: '20 */4 * * *'      # 4시간마다 — 새 보고서 낸 회사만 다시 읽어 금방 끝난다 (처음 채울 땐 여러 번에 나눠)
   push:
     branches: [main]
     paths:
       - 'collect_flow.py'
       - 'flow_xbrl.py'
       - 'xbrl_dims.py'
+      - 'flow_audit.py'
       - '.github/workflows/collect_flow.yml'
   workflow_dispatch:
 
@@ -33,6 +34,7 @@ jobs:
         env:
           DART_API_KEY: ${{ secrets.DART_API_KEY }}
           SEC_UA: ${{ secrets.SEC_UA }}
+          FLOW_MINUTES: '75'
         run: |
           mkdir -p data/flow
           python3 collect_flow.py 2>&1 | tee "$RUNNER_TEMP/flow_log.txt"
