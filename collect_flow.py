@@ -319,6 +319,68 @@ def us_xbrl(cik, old=None):
     return None
 
 
+def xcheck_kr(code, corp, d):
+    """DART 재무제표 API(fnlttSinglAcntAll) 로 같은 기간 매출·영업이익 — XBRL 원문과 다른 길이라 서로 검증이 된다"""
+    if not d.get("end"):
+        return {"err": "기간 없음"}
+    end = date.fromisoformat(d["end"])
+    days = (end - date.fromisoformat(d["start"])).days
+    q = 0 if days > 100 else (end.month + 2) // 3
+    rc = {1: "11013", 2: "11012", 3: "11014", 0: "11011", 4: "11011"}[q]
+    rows = C.fetch_fs(corp, end.year, rc)
+    if not rows:
+        return {"err": "API 자료 없음"}
+    o = {k: kr_pick(rows, k, q) for k in ("rev", "op")}
+    if not o["rev"] or o["op"] is None:
+        return {"err": "API 매출 없음"}
+    return {"src": "DART API", "rev": round(o["rev"] / 1e8, 1), "op": round(o["op"] / 1e8, 1)}
+
+
+def _same(a, b):
+    """두 출처 숫자가 같은가 — 매출 0.5%, 영업이익 3%(또는 매출의 0.5%) 안"""
+    if not b.get("rev"):
+        return False
+    if abs(a["rev"] - b["rev"]) > abs(b["rev"]) * 0.005 + 0.15:
+        return False
+    if b.get("op") is None:
+        return True
+    return abs(a["op"] - b["op"]) <= max(abs(b["op"]) * 0.03, abs(b["rev"]) * 0.005) + 0.15
+
+
+def ext_check(code, d, m, days):
+    """다른 탭 실적 자료(따로 수집한 것)와 같은 기간 숫자 비교 → ('ok'|'diff'|'none', 설명)"""
+    p = {"US": os.path.join("data", "us", code + ".json"), "KR": os.path.join("data", code + ".json"),
+         "UL": os.path.join("data", "unlisted", code + ".json")}[m]
+    src = jl(p, {}) or {}
+    rows = (src.get("annual") if days > 100 else src.get("quarterly")) or []
+    if not rows:
+        return "none", "비교할 실적 자료 없음"
+    if m == "US":                                   # 미국은 회계 분기 번호가 달라 숫자로 찾는다
+        return ("ok", "미국 실적 자료와 일치") if any(_same(d, r) for r in rows[-8:]) else ("diff", "미국 실적 자료와 다름")
+    end = date.fromisoformat(d["end"])
+    if days > 100:
+        same = [r for r in rows if (r.get("y") or r.get("p")) == end.year]
+    else:
+        same = [r for r in rows if r.get("y") == end.year and r.get("q") == (end.month + 2) // 3]
+    if not same or not same[0].get("rev"):
+        return "none", "같은 기간 실적 자료 없음"
+    return ("ok", "실적 자료와 일치") if _same(d, same[0]) else ("diff", "실적 자료와 다름 (매출 %s vs %s)" % (d["rev"], same[0]["rev"]))
+
+
+def verify(code, d, m, days):
+    """올리기 전 검증 — 서로 다른 두 출처가 같은 숫자를 말할 때만 통과. → (통과?, 까닭)"""
+    s, why = ext_check(code, d, m, days)
+    xc = d.get("xcheck") or {}
+    if s == "ok":
+        return True, why
+    if xc.get("rev") and _same(d, xc):              # 실적 탭 자료가 아직 없거나 다르면 DART API 와 맞는지
+        return (True, "DART API 와 일치") if s == "none" else (False, why + " · DART API 와는 일치 — 확인 필요")
+    return False, why + ("" if not xc else " · DART API " + (xc.get("err") or "와 다름"))
+
+
+HOLD = {}
+
+
 def usable(code):
     p = os.path.join(OUT, code + ".json")
     if not os.path.exists(p):
@@ -343,7 +405,11 @@ def usable(code):
     lim = 520 if (len(code) == 8 and code.isdigit()) else 200          # 비상장(감사보고서·연간)은 1년 넘게 기다린다
     if (TODAY - date.fromisoformat(d["end"])).days >= lim:              # 분기 끝 + 제출 기한(45~90일)보다 오래되면 뺌
         return False
-    return cross_ok(code, d, days)
+    m = "UL" if (len(code) == 8 and code.isdigit()) else ("KR" if (len(code) == 6 and code[:1].isdigit()) else "US")
+    ok, why = verify(code, d, m, days)
+    if not ok:
+        HOLD[code] = {"name": d.get("name"), "market": m, "why": why, "period": d.get("period")}
+    return ok
 
 
 def cross_ok(code, d, days):
@@ -473,6 +539,11 @@ def work_kr(job):
         d = scaled(x, 1e8) if x else None
         if not d and mk == "KR":
             d = kr_one(code, corp)
+        if d and mk == "KR" and x:                  # 다른 길(DART 재무제표 API)로 같은 분기 매출·영업이익을 한 번 더 받아 맞춰 본다
+            try:
+                d["xcheck"] = xcheck_kr(code, corp, d)
+            except Exception as e:                  # noqa: BLE001
+                d["xcheck"] = {"err": str(e)[:80]}
         if d:
             d["unit"] = "억원"
             d["docv"] = DOC_VER
@@ -529,6 +600,7 @@ def run_pool(fn, jobs, workers, on_done, budget_ok):
 
 def build_index():
     idx = {}
+    HOLD.clear()
     for fn in os.listdir(OUT):
         if not fn.endswith(".json") or fn.startswith(("_", "index")):
             continue
@@ -538,6 +610,8 @@ def build_index():
             m = d.get("market") or ("US" if not code.isdigit() else "UL" if len(code) == 8 else "KR")
             idx[code] = {"n": d.get("name") or code, "m": m, "p": d.get("period")}
     json.dump({"updated": TODAY.isoformat(), "items": idx}, open(os.path.join(OUT, "index.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=0)
+    json.dump({"updated": TODAY.isoformat(), "note": "두 출처가 같은 숫자를 말하지 않아 카드에 올리지 않은 회사", "items": HOLD},
+              open(os.path.join(OUT, "_hold.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=0)
     return idx
 
 
@@ -581,6 +655,13 @@ def main():
                 save(code, old, mk, old.get("name") or name)
             done["same"] += 1
         elif d:
+            try:                                    # 새 숫자가 검증을 못 넘고 예전 카드는 검증된 것이면 예전 카드를 그대로 둔다
+                days = (date.fromisoformat(d["end"]) - date.fromisoformat(d["start"])).days if d.get("end") and d.get("start") else 90
+                if old and not verify(code, d, mk, days)[0] and usable(code):
+                    print("  보류 %s %s — 새 숫자 검증 실패, 예전 카드 유지" % (code, name))
+                    return
+            except Exception:                       # noqa: BLE001
+                pass
             save(code, d, mk, name)
             fail.pop(code, None)
             done[{"KR": "kr", "UL": "ul", "US": "us"}[mk]] += 1
@@ -604,6 +685,8 @@ def main():
             pr = need(code, old, info["corp_code"] in rk)
             if old and old.get("docv") != DOC_VER and (len(old.get("items") or []) < 2 or len(old.get("segs") or []) < 2):
                 pr, old = 2, None                       # 매출 구분·판관비 세부가 없던 회사 — 보고서 원문에서 다시
+            elif old and "xcheck" not in old and pr is None and not usable(code):
+                pr, old = 2, None                       # 아직 검증 못 한 카드 — DART API 로 맞춰 보려고 다시
             if pr is not None:
                 jobs.append((pr, i, "KR", code, info["corp_code"], old, mc[code].get("n")))
         for i, c in enumerate(ul):

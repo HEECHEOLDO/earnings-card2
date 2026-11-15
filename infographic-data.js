@@ -525,6 +525,7 @@
             used = items.reduce(function (t, x) { return t + x.v; }, 0);
             if (used > opex * 1.02 && opex > 0) items = [];   // 세부 합이 영업비용보다 크면(다른 기준) 숫자를 억지로 줄이지 않고 세부를 뺀다 — 값이 틀리면 안 된다
             var sg = (f.segs || []).map(function (x) { return Array.isArray(x) ? { n: flowKo(segKo(krTidy(x[0]))), v: x[1] } : x; }), sgT = sg.reduce(function (t, x) { return t + x.v; }, 0), small = 0;
+            if (sgT > f.rev * 1.15 || sgT < f.rev * 0.85) { sg = []; sgT = 0; }   // 매출 구분 합이 총매출과 15% 넘게 다르면(다른 기준) 나누지 않는다 — 값이 틀리면 안 된다
             var sg0 = sg.slice();
             sg = sg.filter(function (x) { if (x.v < sgT * 0.04 || /^기타/.test(x.n)) { small += x.v; return false; } return true; }).slice(0, 6);   // 작은 건 '기타'로
             if (small > sgT * 0.02 && sg.length) sg.push({ n: '기타', v: small });
