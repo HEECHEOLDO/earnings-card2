@@ -347,7 +347,7 @@
     var lx = L, ly = TOP + 2;
     [['매출', BL], ['이익', GN], ['비용', RD]].forEach(function (k) { X.fillStyle = k[1]; X.fillRect(lx, ly - 4, 30, 6); X.fillStyle = SOFT; X.font = font(700, 20); X.textAlign = 'left'; X.fillText(k[0], lx + 38, ly + 4); lx += 104; });
     logoAt(X, o.logo, R - 36, TOP - 8, 34);
-    var nw = 18, x0 = L + 118, x1 = hasSeg ? L + 270 : L + 70, x4 = R - 150, x2 = x1 + (x4 - x1) * 0.33, x3 = hasG ? x1 + (x4 - x1) * 0.66 : x1 + (x4 - x1) * 0.45, xm = (x3 + x4) / 2;
+    var nw = 18, x0 = L + 160, x1 = hasSeg ? L + 300 : L + 70, x4 = R - 150, x2 = x1 + (x4 - x1) * 0.33, x3 = hasG ? x1 + (x4 - x1) * 0.66 : x1 + (x4 - x1) * 0.45, xm = (x3 + x4) / 2;
     var top = TOP + 60, bot = BOT - 8;
     // 자리 잡기 — 맨 아래가 바닥을 넘으면 배율을 줄여 다시
     function place(s) {
@@ -402,7 +402,7 @@
     var pc = function (v) { return Math.round(v / rev * 100) + '%'; };
     if (hasSeg) {
       var lastY = -1e9;
-      segs.forEach(function (sg) { var y = Math.max(sg.y + sg.h / 2 - 12, lastY + 54); lastY = y; txt(X, sg.n, x0 - 10, y, 700, 20, BL, 'right', x0 - L - 14); txt(X, m(sg.v), x0 - 10, y + 27, 900, 24, BL, 'right', x0 - L - 14); });
+      segs.forEach(function (sg) { var y = Math.max(sg.y + sg.h / 2 - 12, lastY + 60); lastY = y; txt(X, sg.n, x0 - 10, y, 700, 21, BL, 'right', x0 - L - 12); txt(X, m(sg.v), x0 - 10, y + 29, 900, 26, BL, 'right', x0 - L - 12); });
     }
     function above(x, y, name, val, sub, col) {
       if (sub) { txt(X, sub, x, y - 8, 700, 17, SOFT, 'center'); y -= 26; }

@@ -412,7 +412,10 @@
             var used = items.reduce(function (t, x) { return t + x.v; }, 0);
             if (items.length && opex - used > f.rev * 0.01) items.push({ n: '기타 영업비용', v: opex - used });
             if (used > opex * 1.02) items = [];
-            return { fn: 'sankey3', o: { h1: nm2, segs: (f.segs || []).map(function (x) { return Array.isArray(x) ? { n: x[0], v: x[1] } : x; }), rev: f.rev, cogs: f.cogs, op: f.op, items: items, ni: f.ni, tax: f.tax, money: money, logo: r.logo },
+            var sg = (f.segs || []).map(function (x) { return Array.isArray(x) ? { n: x[0], v: x[1] } : x; }), sgT = sg.reduce(function (t, x) { return t + x.v; }, 0), small = 0;
+            sg = sg.filter(function (x) { if (x.v < sgT * 0.04 || /^기타/.test(x.n)) { small += x.v; return false; } return true; }).slice(0, 6);   // 작은 건 '기타'로
+            if (small > sgT * 0.02 && sg.length) sg.push({ n: '기타', v: small });
+            return { fn: 'sankey3', o: { h1: nm2, segs: sg, rev: f.rev, cogs: f.cogs, op: f.op, items: items, ni: f.ni, tax: f.tax, money: money, logo: r.logo },
               src: f.period + ' 실적 기준' + (f.seg_note ? ' (' + f.seg_note + ')' : '') + ' · ' + (us ? '미국 SEC' : '금융감독원 DART') };
           });
         }
