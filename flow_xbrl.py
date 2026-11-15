@@ -101,6 +101,8 @@ def segments(ctx, facts, rev_names, per, rev, L, base_dim):
         if len(mem) < 2 or not (rev * 0.85 <= s <= rev * 1.45):
             continue
         geo = sum(1 for m in mem if GEO_M.search(L.get(m, "") or m)) / len(mem)          # 지역·거래 형태로 나눈 축은 뒤로
+        if geo >= 0.5:
+            continue                              # 지역별·거래 형태별(재화/용역)은 '매출 종류'로 쓰지 않는다
         score = abs(s / rev - 1) + (0.0 if re.search(r"Product|Business|Segment|부문|제품", a + L.get(a, "")) else 0.05) + (0.03 if tot else 0) + geo * 0.5
         if best is None or score < best[0]:
             best = (score, a, mem)
