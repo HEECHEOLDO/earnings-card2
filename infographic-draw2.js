@@ -446,7 +446,7 @@
     var rb = Math.max.apply(null, g.right.map(function (r) { return r.y + Math.max(2, r.h); }).concat([lastR, g.low])), nx = R, ny = rb + 34 * FS;
     if (ny > BOT + 12) { nx = x4 - 12; ny = Math.max(g.low + 20, bot - 40); ny = Math.min(bot - 4, ny); }
     if (ni != null) { GID++; txt(X, (ni >= 0 ? '순이익 ' : '순손실 ') + m(ni), nx, ny, 900, Math.round(26 * FS), ni >= 0 ? GN : DK, 'right');
-      if (MG) txt(X, (ni >= 0 ? '순이익률 ' : '순손실률 ') + pc(ni), nx, ny - 32 * FS, 700, Math.round(17 * FS), SOFT, 'right'); }
+      if (MG) txt(X, '이익률 ' + pc(ni), nx, ny - 32 * FS, 700, Math.round(17 * FS), SOFT, 'right'); }
     if (!o.__dry) window.__vcFoot(X, o.src);
   }
   /* 글자 크기 고르기 — 큰 글자부터 시험 삼아 그려 보고(글자 상자만 잼), 겹침·데드존 넘침이 없는 가장 큰 크기로 그린다 */
@@ -607,7 +607,7 @@
         GID++; txt(X, '+' + m(exIn), xm - 8, vb, 900, Math.round(30 * FS), GN, 'right'); txt(X, '영업외 이익', xm - 8, vb - 32 * FS, 800, Math.round(22 * FS), GN, 'right');
       } }
     var rx = x4 + nw + 10, mw = R - rx, lastR = -1e9;
-    var rl = [{ n: ni >= 0 ? '순이익' : '순손실', v: m(ni), sub: mg(ni >= 0 ? '순이익률' : '순손실률', ni), y: g.yN + Math.min(g.hN, 120) / 2, c: ni >= 0 ? GN : RD }].concat(g.right.map(function (r) { return { n: r.n, v: m(r.v), y: r.y + r.h / 2, c: RD }; }));
+    var rl = [{ n: ni >= 0 ? '순이익' : '순손실', v: m(ni), sub: mg('이익률', ni), y: g.yN + Math.min(g.hN, 120) / 2, c: ni >= 0 ? GN : RD }].concat(g.right.map(function (r) { return { n: r.n, v: m(r.v), y: r.y + r.h / 2, c: RD }; }));
     rl.forEach(function (t) {
       GID++;
       var h = (t.sub ? 80 : 54) * FS, y0 = Math.max(t.y - h / 2, lastR + 4); lastR = y0 + h;

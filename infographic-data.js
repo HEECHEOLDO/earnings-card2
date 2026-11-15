@@ -1214,8 +1214,9 @@
       last.o.h1 = b ? a + ' / ' + b : a; last.o.src = $('c-src').value; edits[last.key] = { h: last.o.h1, src: last.o.src }; draw();
     }
     ['c-title1', 'c-title2', 'c-src'].forEach(function (i) { $(i).addEventListener('input', onEdit); });
-    if ($('c-margin')) { try { window.__flowMargin = $('c-margin').checked = localStorage.getItem('flowMargin') === '1'; } catch (e) {}
-      $('c-margin').addEventListener('change', function () { window.__flowMargin = this.checked; try { localStorage.setItem('flowMargin', this.checked ? '1' : '0'); } catch (e) {} draw(); }); }
+    if ($('c-margin')) { window.__flowMargin = $('c-margin').checked = true;      // 이익률은 기본으로 보인다 (끄면 그 브라우저에서 기억)
+      try { if (localStorage.getItem('flowMargin2') === '0') window.__flowMargin = $('c-margin').checked = false; } catch (e) {}
+      $('c-margin').addEventListener('change', function () { window.__flowMargin = this.checked; try { localStorage.setItem('flowMargin2', this.checked ? '1' : '0'); } catch (e) {} draw(); }); }
     $('c-reset').addEventListener('click', function () { if (!last) return; delete edits[last.key]; last.o.h1 = last.auto.h; last.o.src = last.auto.src; fillInputs(); draw(); });
     $('c-dl').addEventListener('click', function () {
       if (!last) return;
