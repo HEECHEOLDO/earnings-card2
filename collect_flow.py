@@ -142,7 +142,7 @@ def us_one(t, cik):
 
 # ------------------------------------------------------------------ 공시 원본(XBRL): 3개월 손익 + 매출 종류
 UL_VER = 2                                         # 비상장(감사보고서) 읽는 법이 바뀌면 올림 — 비상장만 다시
-VER = 7                                            # 계산 방식이 바뀌면 올려서 다시 계산
+VER = 8                                            # 계산 방식이 바뀌면 올려서 다시 계산
 
 
 def kr_xbrl(corp, old=None):
@@ -167,13 +167,29 @@ def kr_xbrl(corp, old=None):
         if v:
             v["report"] = nm
             v["src"] = r0["rcept_no"]
+            fa, ia = None, []
+            if (not v.get("items") and v.get("sga")) or not v.get("segs"):
+                for a in [r for r in rows if "사업보고서" in r["report_nm"]][:1]:     # 최근 사업보고서(연간) 한 번만 받는다
+                    try:
+                        fa = files if a is r0 else XD.unzip(C.api_get("fnlttXbrl.xml", {"rcept_no": a["rcept_no"], "reprt_code": "11011"}, raw=True) or b"")
+                    except Exception:               # noqa: BLE001
+                        fa = None
+                    ia = [n for n in (fa or {}) if n.endswith(".xbrl")]
+            if not v.get("segs") and ia:          # 분기 보고서에 매출 종류가 없으면 연간 보고서의 비중으로 나눈다
+                try:
+                    la = [n for n in fa if "lab-ko" in n]
+                    av = FX.from_instance(fa[ia[0]], fa[la[0]] if la else "", us=False)
+                    if av and av.get("segs"):
+                        k = v["rev"] / sum(x for _, x in av["segs"])
+                        v["segs"] = [[n, x * k] for n, x in av["segs"]]
+                        v["seg_note"] = "매출 종류는 '%s년 연간 비중" % av["end"][2:4]
+                        if av.get("seg_kind"):
+                            v["seg_kind"] = av["seg_kind"]
+                except Exception:                   # noqa: BLE001
+                    pass
             if not v.get("items") and v.get("sga"):
                 try:
-                    mix = None
-                    for a in [r for r in rows if "사업보고서" in r["report_nm"]][:1]:
-                        fa = files if a is r0 else XD.unzip(C.api_get("fnlttXbrl.xml", {"rcept_no": a["rcept_no"], "reprt_code": "11011"}, raw=True) or b"")
-                        ia = [n for n in fa if n.endswith(".xbrl")]
-                        mix = FX.kr_sga_mix(fa[ia[0]]) if ia else None
+                    mix = FX.kr_sga_mix(fa[ia[0]]) if ia else None
                     if mix and "mix" in mix:
                         v["items"] = FX.split_sga(v["sga"], mix)
                         v["items_from"] = mix["year"]
@@ -183,6 +199,21 @@ def kr_xbrl(corp, old=None):
                     v["mix_err"] = str(e)[:120]
             return v
     return None
+
+
+def _us_files(cik, acc):
+    base = U.SEC_ARCH % (int(cik), acc.replace("-", ""))
+    idx = U.get_json(base + "index.json")
+    names = [x.get("name", "") for x in ((idx or {}).get("directory", {}).get("item", []))]
+    pick = lambda suf: next((n for n in names if n.endswith(suf)), None)      # noqa: E731
+    inst, lab, cal = pick("_htm.xml"), pick("_lab.xml"), pick("_cal.xml")
+    if not inst:
+        return None
+    raw = U.get(base + inst)
+    if not raw:
+        return None
+    dec = lambda n: (U.get(base + n) or b"").decode("utf-8", "replace") if n else ""      # noqa: E731
+    return raw.decode("utf-8", "replace"), dec(lab), dec(cal)
 
 
 def us_xbrl(cik, old=None):
@@ -196,26 +227,30 @@ def us_xbrl(cik, old=None):
         acc = rc["accessionNumber"][i]
         if old and old.get("src") == acc and old.get("ver") == VER:
             return "SAME"
-        base = U.SEC_ARCH % (int(cik), acc.replace("-", ""))
-        idx = U.get_json(base + "index.json")
-        names = [x.get("name", "") for x in ((idx or {}).get("directory", {}).get("item", []))]
-        inst = [n for n in names if n.endswith("_htm.xml")]
-        lab = [n for n in names if n.endswith("_lab.xml")]
-        cal = [n for n in names if n.endswith("_cal.xml")]
-        if not inst:
+        got = _us_files(cik, acc)
+        if not got:
             FX.WHY = "공시에 XBRL 파일 없음 %s" % acc
             return None
-        raw = U.get(base + inst[0])
-        lr = U.get(base + lab[0]) if lab else None
-        cr = U.get(base + cal[0]) if cal else None
-        if not raw:
-            FX.WHY = "XBRL 내려받기 실패"
-            return None
-        v = FX.from_instance(raw.decode("utf-8", "replace"), lr.decode("utf-8", "replace") if lr else "", us=True,
-                             caltext=cr.decode("utf-8", "replace") if cr else "")
+        v = FX.from_instance(got[0], got[1], us=True, caltext=got[2])
         if v:
             v["report"] = f + " " + rc["reportDate"][i]
             v["src"] = acc
+            if not v.get("segs"):                     # 분기 보고서에 매출 종류가 없으면 최근 10-K 의 비중으로
+                for k in range(i + (0 if f == "10-K" else 1), len(rc["form"])):
+                    if rc["form"][k] != "10-K":
+                        continue
+                    try:
+                        ga = got if k == i else _us_files(cik, rc["accessionNumber"][k])
+                        av = FX.from_instance(ga[0], ga[1], us=True) if ga else None
+                        if av and av.get("segs"):
+                            r = v["rev"] / sum(x for _, x in av["segs"])
+                            v["segs"] = [[n, x * r] for n, x in av["segs"]]
+                            v["seg_note"] = "매출 종류는 연간(%s) 비중" % rc["reportDate"][k]
+                            if av.get("seg_kind"):
+                                v["seg_kind"] = av["seg_kind"]
+                    except Exception:               # noqa: BLE001
+                        pass
+                    break
         return v
     return None
 
