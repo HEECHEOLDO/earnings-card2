@@ -1,0 +1,2067 @@
+{
+"report": "분기보고서 (2026.09)",
+"rcept": "20261113001140",
+"rc": "11014",
+"size": 570945,
+"files": [
+"entity00266961_2026-09-30.xbrl",
+"entity00266961_2026-09-30.xsd",
+"entity00266961_2026-09-30_def.xml",
+"entity00266961_2026-09-30_cal.xml",
+"entity00266961_2026-09-30_pre.xml",
+"entity00266961_2026-09-30_lab-ko.xml",
+"entity00266961_2026-09-30_lab-en.xml"
+],
+"n_ctx": 570,
+"n_facts": 2300,
+"periods": [
+[
+"2026-01-01",
+"2026-09-30",
+1141
+],
+[
+"2025-01-01",
+"2025-09-30",
+907
+],
+[
+"2025-01-01",
+"2025-12-31",
+146
+],
+[
+"2026-07-01",
+"2026-09-30",
+53
+],
+[
+"2025-07-01",
+"2025-09-30",
+53
+]
+],
+"seg_rev": [
+[
+"dart:ProceedsFromSalesOfCurrentFairValueFinancialAsset",
+"유동당기손익인식금융자산의 처분",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+]
+],
+122957299163.0
+],
+[
+"dart:ProceedsFromSalesOfCurrentFairValueFinancialAsset",
+"유동당기손익인식금융자산의 처분",
+"2025-01-01",
+"2025-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+]
+],
+8087579730.0
+],
+[
+"dart:ProceedsFromSalesOfInvestmentsInSubsidiariesJointVenturesAndAssociates",
+"종속기업, 조인트벤처와 관계기업에 대한 투자자산의 처분",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+]
+],
+260906471134.0
+],
+[
+"dart:ProceedsFromSalesOfInvestmentsInSubsidiariesJointVenturesAndAssociates",
+"종속기업, 조인트벤처와 관계기업에 대한 투자자산의 처분",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+]
+],
+471031284177.0
+],
+[
+"dart:ProceedsFromSalesOfInvestmentsInSubsidiariesJointVenturesAndAssociates",
+"종속기업, 조인트벤처와 관계기업에 대한 투자자산의 처분",
+"2025-01-01",
+"2025-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+]
+],
+634593340756.0
+],
+[
+"dart:ProceedsFromSalesOfInvestmentsInSubsidiariesJointVenturesAndAssociates",
+"종속기업, 조인트벤처와 관계기업에 대한 투자자산의 처분",
+"2025-01-01",
+"2025-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+]
+],
+49185982043.0
+],
+[
+"dart:ProceedsFromSalesOfLongTermFinancialInstruments",
+"장기금융상품의 처분",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+]
+],
+77079104888.0
+],
+[
+"dart:ProceedsFromSalesOfLongTermFinancialInstruments",
+"장기금융상품의 처분",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+]
+],
+71960000000.0
+],
+[
+"dart:ProceedsFromSalesOfLongTermFinancialInstruments",
+"장기금융상품의 처분",
+"2025-01-01",
+"2025-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+]
+],
+67160000000.0
+],
+[
+"dart:ProceedsFromSalesOfLongTermFinancialInstruments",
+"장기금융상품의 처분",
+"2025-01-01",
+"2025-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+]
+],
+66960000000.0
+],
+[
+"dart:ProceedsFromSalesOfLongTermLoansAndReceivables",
+"장기대여금및수취채권의 처분",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+]
+],
+7905491600.0
+],
+[
+"dart:ProceedsFromSalesOfLongTermLoansAndReceivables",
+"장기대여금및수취채권의 처분",
+"2025-01-01",
+"2025-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+]
+],
+262781600.0
+],
+[
+"dart:ProceedsFromSalesOfShortTermFinancialInstruments",
+"단기금융상품의 처분",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+]
+],
+3075842181313.0
+],
+[
+"dart:ProceedsFromSalesOfShortTermFinancialInstruments",
+"단기금융상품의 처분",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+]
+],
+2060981245260.0
+],
+[
+"dart:ProceedsFromSalesOfShortTermFinancialInstruments",
+"단기금융상품의 처분",
+"2025-01-01",
+"2025-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+]
+],
+3652159948233.0
+],
+[
+"dart:ProceedsFromSalesOfShortTermFinancialInstruments",
+"단기금융상품의 처분",
+"2025-01-01",
+"2025-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+]
+],
+2708087059123.0
+],
+[
+"dart:ProceedsFromSalesOfShortTermLoansAndReceivables",
+"단기대여금및수취채권의 처분",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+]
+],
+840000000.0
+],
+[
+"dart:ProceedsFromSalesOfShortTermLoansAndReceivables",
+"단기대여금및수취채권의 처분",
+"2025-01-01",
+"2025-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+]
+],
+1210000000.0
+],
+[
+"entity00266961:RevenueOfTheConsolidatedEntityThatWouldHaveBeenRecognizedInTheConsolidatedStatementOfComprehensiveIncomeIfTheSubsidiaryHadBeenConsolidatedFromTheBeginningOfTheCurrentPeriodOfAmountThatWouldHaveBeenRecognizedInTheStatementOfComprehensiveIncomeIfConsolidatedFromTheBeginningOfThePeriodOfAmountThatWouldHaveBeenRecognizedInTheStatementOfComprehensiveIncomeIfConsolidatedFromTheBeginningOfThePeriodTableOfItems",
+"당기 기초시점부터 연결됐다면, 연결포괄손익계산서에 계상되었을 연결회사의 영업수익",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CarryingAmountAccumulatedDepreciationAmortisationAndImpairmentAndGrossCarryingAmountAxis",
+"dart:ReportedAmountMember",
+"공시금액 [구성요소]"
+]
+],
+10121285000000.0
+],
+[
+"entity00266961:RevenueOfWallapopSLRecognizedAfterTheAcquisitionDateOfProfitOrLossRecognizedAfterTheAcquisitionDateOfProfitOrLossRecognizedAfterTheAcquisitionDateTableOfItems",
+"취득일 이후 반영된 Wallapop, S.L의 영업수익",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CarryingAmountAccumulatedDepreciationAmortisationAndImpairmentAndGrossCarryingAmountAxis",
+"dart:ReportedAmountMember",
+"공시금액 [구성요소]"
+]
+],
+140314000000.0
+],
+[
+"ifrs-full:PercentageOfEntitysRevenue",
+"기업전체 수익에 대한 비율",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+]
+],
+1.0
+],
+[
+"ifrs-full:PercentageOfEntitysRevenue",
+"기업전체 수익에 대한 비율",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:SegmentConsolidationItemsAxis",
+"entity00266961:FinancialPlatformOfOperatingSegmentsMemberOfDisclosureOfOperatingSegmentsTableOfMember",
+"파이낸셜 플랫폼"
+]
+],
+0.14
+],
+[
+"ifrs-full:PercentageOfEntitysRevenue",
+"기업전체 수익에 대한 비율",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:SegmentConsolidationItemsAxis",
+"entity00266961:GlobalExpandingOfOperatingSegmentsMemberOfDisclosureOfOperatingSegmentsTableOfMember",
+"글로벌 도전"
+]
+],
+0.297
+],
+[
+"ifrs-full:PercentageOfEntitysRevenue",
+"기업전체 수익에 대한 비율",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:SegmentConsolidationItemsAxis",
+"entity00266961:NaverPlatformOfOperatingSegmentsMemberOfDisclosureOfOperatingSegmentsTableOfMember",
+"네이버 플랫폼"
+]
+],
+0.563
+],
+[
+"ifrs-full:PercentageOfEntitysRevenue",
+"기업전체 수익에 대한 비율",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+]
+],
+1.0
+],
+[
+"ifrs-full:PercentageOfEntitysRevenue",
+"기업전체 수익에 대한 비율",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:SegmentConsolidationItemsAxis",
+"entity00266961:AdvertisementOfOperatingSegmentsMemberOfDisclosureOfOperatingSegmentsTableOfMember",
+"광고"
+]
+],
+0.7486
+],
+[
+"ifrs-full:PercentageOfEntitysRevenue",
+"기업전체 수익에 대한 비율",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:SegmentConsolidationItemsAxis",
+"entity00266961:ServicesOfOperatingSegmentsMemberOfDisclosureOfOperatingSegmentsTableOfMember",
+"서비스"
+]
+],
+0.2514
+],
+[
+"ifrs-full:PercentageOfEntitysRevenue",
+"기업전체 수익에 대한 비율",
+"2025-01-01",
+"2025-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+]
+],
+1.0
+],
+[
+"ifrs-full:PercentageOfEntitysRevenue",
+"기업전체 수익에 대한 비율",
+"2025-01-01",
+"2025-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:SegmentConsolidationItemsAxis",
+"entity00266961:FinancialPlatformOfOperatingSegmentsMemberOfDisclosureOfOperatingSegmentsTableOfMember",
+"파이낸셜 플랫폼"
+]
+],
+0.138
+],
+[
+"ifrs-full:PercentageOfEntitysRevenue",
+"기업전체 수익에 대한 비율",
+"2025-01-01",
+"2025-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:SegmentConsolidationItemsAxis",
+"entity00266961:GlobalExpandingOfOperatingSegmentsMemberOfDisclosureOfOperatingSegmentsTableOfMember",
+"글로벌 도전"
+]
+],
+0.283
+],
+[
+"ifrs-full:PercentageOfEntitysRevenue",
+"기업전체 수익에 대한 비율",
+"2025-01-01",
+"2025-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:SegmentConsolidationItemsAxis",
+"entity00266961:NaverPlatformOfOperatingSegmentsMemberOfDisclosureOfOperatingSegmentsTableOfMember",
+"네이버 플랫폼"
+]
+],
+0.579
+],
+[
+"ifrs-full:PercentageOfEntitysRevenue",
+"기업전체 수익에 대한 비율",
+"2025-01-01",
+"2025-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+]
+],
+1.0
+],
+[
+"ifrs-full:PercentageOfEntitysRevenue",
+"기업전체 수익에 대한 비율",
+"2025-01-01",
+"2025-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:SegmentConsolidationItemsAxis",
+"entity00266961:AdvertisementOfOperatingSegmentsMemberOfDisclosureOfOperatingSegmentsTableOfMember",
+"광고"
+]
+],
+0.7807
+],
+[
+"ifrs-full:PercentageOfEntitysRevenue",
+"기업전체 수익에 대한 비율",
+"2025-01-01",
+"2025-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:SegmentConsolidationItemsAxis",
+"entity00266961:ServicesOfOperatingSegmentsMemberOfDisclosureOfOperatingSegmentsTableOfMember",
+"서비스"
+]
+],
+0.2193
+],
+[
+"ifrs-full:ProceedsFromSalesOfIntangibleAssetsClassifiedAsInvestingActivities",
+"투자활동으로 분류된 무형자산의 처분",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+]
+],
+4163525818.0
+],
+[
+"ifrs-full:ProceedsFromSalesOfIntangibleAssetsClassifiedAsInvestingActivities",
+"투자활동으로 분류된 무형자산의 처분",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+]
+],
+2503525818.0
+],
+[
+"ifrs-full:ProceedsFromSalesOfIntangibleAssetsClassifiedAsInvestingActivities",
+"투자활동으로 분류된 무형자산의 처분",
+"2025-01-01",
+"2025-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+]
+],
+312417467.0
+],
+[
+"ifrs-full:ProceedsFromSalesOfIntangibleAssetsClassifiedAsInvestingActivities",
+"투자활동으로 분류된 무형자산의 처분",
+"2025-01-01",
+"2025-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+]
+],
+237505371.0
+],
+[
+"ifrs-full:ProceedsFromSalesOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+"투자활동으로 분류된 유형자산의 처분",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+]
+],
+18223550849.0
+],
+[
+"ifrs-full:ProceedsFromSalesOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+"투자활동으로 분류된 유형자산의 처분",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+]
+],
+15741530344.0
+],
+[
+"ifrs-full:ProceedsFromSalesOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+"투자활동으로 분류된 유형자산의 처분",
+"2025-01-01",
+"2025-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+]
+],
+13706307098.0
+],
+[
+"ifrs-full:ProceedsFromSalesOfPropertyPlantAndEquipmentClassifiedAsInvestingActivities",
+"투자활동으로 분류된 유형자산의 처분",
+"2025-01-01",
+"2025-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+]
+],
+3510884748.0
+],
+[
+"ifrs-full:ProceedsFromSalesOrMaturityOfFinancialAssetsMeasuredAtFairValueThroughOtherComprehensiveIncomeClassifiedAsInvestingActivities",
+"투자활동으로 분류하는 기타포괄손익-공정가치로 측정하는 금융자산의 매도 또는 만기 도래로 수취하는 대가",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+]
+],
+2939766665.0
+],
+[
+"ifrs-full:ProceedsFromSalesOrMaturityOfFinancialAssetsMeasuredAtFairValueThroughOtherComprehensiveIncomeClassifiedAsInvestingActivities",
+"투자활동으로 분류하는 기타포괄손익-공정가치로 측정하는 금융자산의 매도 또는 만기 도래로 수취하는 대가",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+]
+],
+2939766665.0
+],
+[
+"ifrs-full:ProceedsFromSalesOrMaturityOfFinancialAssetsMeasuredAtFairValueThroughOtherComprehensiveIncomeClassifiedAsInvestingActivities",
+"투자활동으로 분류하는 기타포괄손익-공정가치로 측정하는 금융자산의 매도 또는 만기 도래로 수취하는 대가",
+"2025-01-01",
+"2025-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+]
+],
+11321418402.0
+],
+[
+"ifrs-full:ProceedsFromSalesOrMaturityOfFinancialAssetsMeasuredAtFairValueThroughOtherComprehensiveIncomeClassifiedAsInvestingActivities",
+"투자활동으로 분류하는 기타포괄손익-공정가치로 측정하는 금융자산의 매도 또는 만기 도래로 수취하는 대가",
+"2025-01-01",
+"2025-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+]
+],
+8606849759.0
+],
+[
+"ifrs-full:ProceedsFromSalesOrMaturityOfFinancialAssetsMeasuredAtFairValueThroughProfitOrLossClassifiedAsInvestingActivities",
+"투자활동으로 분류하는 당기손익-공정가치로 측정하는 금융자산의 매도 또는 만기 도래로 수취하는 대가",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+]
+],
+704803227298.0
+],
+[
+"ifrs-full:ProceedsFromSalesOrMaturityOfFinancialAssetsMeasuredAtFairValueThroughProfitOrLossClassifiedAsInvestingActivities",
+"투자활동으로 분류하는 당기손익-공정가치로 측정하는 금융자산의 매도 또는 만기 도래로 수취하는 대가",
+"2025-01-01",
+"2025-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+]
+],
+464341628881.0
+],
+[
+"ifrs-full:Revenue",
+"수익",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+]
+],
+10102181150131.0
+],
+[
+"ifrs-full:Revenue",
+"수익",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:GeographicalAreasAxis",
+"dart:JPMember",
+"일본 [구성요소]"
+]
+],
+861743005000.0
+],
+[
+"ifrs-full:Revenue",
+"수익",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:GeographicalAreasAxis",
+"dart:OtherCountriesMember",
+"기타 국가 [구성요소]"
+]
+],
+224423774000.0
+],
+[
+"ifrs-full:Revenue",
+"수익",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:GeographicalAreasAxis",
+"dart:USMember",
+"미국 [구성요소]"
+]
+],
+554608516000.0
+],
+[
+"ifrs-full:Revenue",
+"수익",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:GeographicalAreasAxis",
+"ifrs-full:CountryOfDomicileMember",
+"본사 소재지 국가 [구성요소]"
+]
+],
+8461405855000.0
+],
+[
+"ifrs-full:Revenue",
+"수익",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:SegmentConsolidationItemsAxis",
+"entity00266961:FinancialPlatformOfOperatingSegmentsMemberOfDisclosureOfOperatingSegmentsTableOfMember",
+"파이낸셜 플랫폼"
+]
+],
+1417968784000.0
+],
+[
+"ifrs-full:Revenue",
+"수익",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:SegmentConsolidationItemsAxis",
+"entity00266961:GlobalExpandingOfOperatingSegmentsMemberOfDisclosureOfOperatingSegmentsTableOfMember",
+"글로벌 도전"
+]
+],
+2993910529000.0
+],
+[
+"ifrs-full:Revenue",
+"수익",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:SegmentConsolidationItemsAxis",
+"entity00266961:NaverPlatformOfOperatingSegmentsMemberOfDisclosureOfOperatingSegmentsTableOfMember",
+"네이버 플랫폼"
+]
+],
+5690301837000.0
+],
+[
+"ifrs-full:Revenue",
+"수익",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:TimingOfTransferOfGoodsOrServicesAxis",
+"ifrs-full:GoodsOrServicesTransferredAtPointInTimeMember",
+"한 시점에 이전하는 재화나 서비스 [구성요소]"
+]
+],
+8578095162000.0
+],
+[
+"ifrs-full:Revenue",
+"수익",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:TimingOfTransferOfGoodsOrServicesAxis",
+"ifrs-full:GoodsOrServicesTransferredOverTimeMember",
+"기간에 걸쳐 이전하는 재화나 서비스 [구성요소]"
+]
+],
+1524085988000.0
+],
+[
+"ifrs-full:Revenue",
+"수익",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+]
+],
+5768780716576.0
+],
+[
+"ifrs-full:Revenue",
+"수익",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:SegmentConsolidationItemsAxis",
+"entity00266961:AdvertisementOfOperatingSegmentsMemberOfDisclosureOfOperatingSegmentsTableOfMember",
+"광고"
+]
+],
+4318411274000.0
+],
+[
+"ifrs-full:Revenue",
+"수익",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:SegmentConsolidationItemsAxis",
+"entity00266961:ServicesOfOperatingSegmentsMemberOfDisclosureOfOperatingSegmentsTableOfMember",
+"서비스"
+]
+],
+1450369443000.0
+],
+[
+"ifrs-full:Revenue",
+"수익",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:TimingOfTransferOfGoodsOrServicesAxis",
+"ifrs-full:GoodsOrServicesTransferredAtPointInTimeMember",
+"한 시점에 이전하는 재화나 서비스 [구성요소]"
+]
+],
+4919196143000.0
+],
+[
+"ifrs-full:Revenue",
+"수익",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:TimingOfTransferOfGoodsOrServicesAxis",
+"ifrs-full:GoodsOrServicesTransferredOverTimeMember",
+"기간에 걸쳐 이전하는 재화나 서비스 [구성요소]"
+]
+],
+849584574000.0
+],
+[
+"ifrs-full:Revenue",
+"수익",
+"2026-07-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+]
+],
+3472364966936.0
+],
+[
+"ifrs-full:Revenue",
+"수익",
+"2026-07-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+]
+],
+1971994567016.0
+],
+[
+"ifrs-full:Revenue",
+"수익",
+"2025-01-01",
+"2025-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+]
+],
+8839922977621.0
+],
+[
+"ifrs-full:Revenue",
+"수익",
+"2025-01-01",
+"2025-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:GeographicalAreasAxis",
+"dart:JPMember",
+"일본 [구성요소]"
+]
+],
+804767421000.0
+],
+[
+"ifrs-full:Revenue",
+"수익",
+"2025-01-01",
+"2025-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:GeographicalAreasAxis",
+"dart:OtherCountriesMember",
+"기타 국가 [구성요소]"
+]
+],
+92060431000.0
+],
+[
+"ifrs-full:Revenue",
+"수익",
+"2025-01-01",
+"2025-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:GeographicalAreasAxis",
+"dart:USMember",
+"미국 [구성요소]"
+]
+],
+398825302000.0
+],
+[
+"ifrs-full:Revenue",
+"수익",
+"2025-01-01",
+"2025-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:GeographicalAreasAxis",
+"ifrs-full:CountryOfDomicileMember",
+"본사 소재지 국가 [구성요소]"
+]
+],
+7544269824000.0
+],
+[
+"ifrs-full:Revenue",
+"수익",
+"2025-01-01",
+"2025-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:SegmentConsolidationItemsAxis",
+"entity00266961:FinancialPlatformOfOperatingSegmentsMemberOfDisclosureOfOperatingSegmentsTableOfMember",
+"파이낸셜 플랫폼"
+]
+],
+1219597118000.0
+],
+[
+"ifrs-full:Revenue",
+"수익",
+"2025-01-01",
+"2025-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:SegmentConsolidationItemsAxis",
+"entity00266961:GlobalExpandingOfOperatingSegmentsMemberOfDisclosureOfOperatingSegmentsTableOfMember",
+"글로벌 도전"
+]
+],
+2505915565000.0
+],
+[
+"ifrs-full:Revenue",
+"수익",
+"2025-01-01",
+"2025-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:SegmentConsolidationItemsAxis",
+"entity00266961:NaverPlatformOfOperatingSegmentsMemberOfDisclosureOfOperatingSegmentsTableOfMember",
+"네이버 플랫폼"
+]
+],
+5114410295000.0
+],
+[
+"ifrs-full:Revenue",
+"수익",
+"2025-01-01",
+"2025-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:TimingOfTransferOfGoodsOrServicesAxis",
+"ifrs-full:GoodsOrServicesTransferredAtPointInTimeMember",
+"한 시점에 이전하는 재화나 서비스 [구성요소]"
+]
+],
+6904155265000.0
+],
+[
+"ifrs-full:Revenue",
+"수익",
+"2025-01-01",
+"2025-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:TimingOfTransferOfGoodsOrServicesAxis",
+"ifrs-full:GoodsOrServicesTransferredOverTimeMember",
+"기간에 걸쳐 이전하는 재화나 서비스 [구성요소]"
+]
+],
+1935767713000.0
+],
+[
+"ifrs-full:Revenue",
+"수익",
+"2025-01-01",
+"2025-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+]
+],
+5153109056366.0
+],
+[
+"ifrs-full:Revenue",
+"수익",
+"2025-01-01",
+"2025-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:SegmentConsolidationItemsAxis",
+"entity00266961:AdvertisementOfOperatingSegmentsMemberOfDisclosureOfOperatingSegmentsTableOfMember",
+"광고"
+]
+],
+4023146192000.0
+],
+[
+"ifrs-full:Revenue",
+"수익",
+"2025-01-01",
+"2025-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:SegmentConsolidationItemsAxis",
+"entity00266961:ServicesOfOperatingSegmentsMemberOfDisclosureOfOperatingSegmentsTableOfMember",
+"서비스"
+]
+],
+1129962864000.0
+],
+[
+"ifrs-full:Revenue",
+"수익",
+"2025-01-01",
+"2025-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:TimingOfTransferOfGoodsOrServicesAxis",
+"ifrs-full:GoodsOrServicesTransferredAtPointInTimeMember",
+"한 시점에 이전하는 재화나 서비스 [구성요소]"
+]
+],
+4021602201000.0
+],
+[
+"ifrs-full:Revenue",
+"수익",
+"2025-01-01",
+"2025-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:TimingOfTransferOfGoodsOrServicesAxis",
+"ifrs-full:GoodsOrServicesTransferredOverTimeMember",
+"기간에 걸쳐 이전하는 재화나 서비스 [구성요소]"
+]
+],
+1131506855000.0
+],
+[
+"ifrs-full:Revenue",
+"수익",
+"2025-07-01",
+"2025-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+]
+],
+3138054569501.0
+],
+[
+"ifrs-full:Revenue",
+"수익",
+"2025-07-01",
+"2025-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+]
+],
+1830375427935.0
+],
+[
+"ifrs-full:RevenueFromInterest",
+"이자수익",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+]
+],
+173440834268.0
+],
+[
+"ifrs-full:RevenueFromInterest",
+"이자수익",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+]
+],
+75546917228.0
+],
+[
+"ifrs-full:RevenueFromInterest",
+"이자수익",
+"2026-07-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+]
+],
+58522742676.0
+],
+[
+"ifrs-full:RevenueFromInterest",
+"이자수익",
+"2026-07-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+]
+],
+24808285254.0
+],
+[
+"ifrs-full:RevenueFromInterest",
+"이자수익",
+"2025-01-01",
+"2025-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+]
+],
+165930972417.0
+],
+[
+"ifrs-full:RevenueFromInterest",
+"이자수익",
+"2025-01-01",
+"2025-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+]
+],
+86509422337.0
+],
+[
+"ifrs-full:RevenueFromInterest",
+"이자수익",
+"2025-07-01",
+"2025-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+]
+],
+53217003064.0
+],
+[
+"ifrs-full:RevenueFromInterest",
+"이자수익",
+"2025-07-01",
+"2025-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+]
+],
+29027157024.0
+],
+[
+"ifrs-full:RevenueFromRenderingOfServicesRelatedPartyTransactions",
+"용역의 제공으로 인한 수익, 특수관계자거래",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00266961:Cafe24CorpOfAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"카페24 주식회사"
+]
+],
+141334000.0
+],
+[
+"ifrs-full:RevenueFromRenderingOfServicesRelatedPartyTransactions",
+"용역의 제공으로 인한 수익, 특수관계자거래",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00266961:DohandsCorporationOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"주식회사 두핸즈 외"
+]
+],
+779000.0
+],
+[
+"ifrs-full:RevenueFromRenderingOfServicesRelatedPartyTransactions",
+"용역의 제공으로 인한 수익, 특수관계자거래",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00266961:JakgaCompanyCoLtdOfTotalForAllAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"주식회사 작가컴퍼니"
+]
+],
+609243000.0
+],
+[
+"ifrs-full:RevenueFromRenderingOfServicesRelatedPartyTransactions",
+"용역의 제공으로 인한 수익, 특수관계자거래",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00266961:JayplemediaCoLtdOfTotalForAllAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"제이플미디어 주식회사"
+]
+],
+285834000.0
+],
+[
+"ifrs-full:RevenueFromRenderingOfServicesRelatedPartyTransactions",
+"용역의 제공으로 인한 수익, 특수관계자거래",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00266961:JqComicsCoLtdOfTotalForAllAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"제이큐코믹스 주식회사"
+]
+],
+2418000.0
+],
+[
+"ifrs-full:RevenueFromRenderingOfServicesRelatedPartyTransactions",
+"용역의 제공으로 인한 수익, 특수관계자거래",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00266961:LinePlusCorporationOfAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"라인플러스 주식회사"
+]
+],
+938756000.0
+],
+[
+"ifrs-full:RevenueFromRenderingOfServicesRelatedPartyTransactions",
+"용역의 제공으로 인한 수익, 특수관계자거래",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00266961:LyCommunicationsCorporationOfTotalForAllAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"LY Communications Corporation"
+]
+],
+1660000.0
+],
+[
+"ifrs-full:RevenueFromRenderingOfServicesRelatedPartyTransactions",
+"용역의 제공으로 인한 수익, 특수관계자거래",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00266961:LyCorporationOfAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"LY Corporation"
+]
+],
+34840026000.0
+],
+[
+"ifrs-full:RevenueFromRenderingOfServicesRelatedPartyTransactions",
+"용역의 제공으로 인한 수익, 특수관계자거래",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00266961:N3CloudCoLtdOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"주식회사 엔삼클라우드"
+]
+],
+7575304000.0
+],
+[
+"ifrs-full:RevenueFromRenderingOfServicesRelatedPartyTransactions",
+"용역의 제공으로 인한 수익, 특수관계자거래",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00266961:NaverInnovationCompanyOfJointVenturesWhereEntityIsVenturerMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"NAVER Innovation Company"
+]
+],
+43169941000.0
+],
+[
+"ifrs-full:RevenueFromRenderingOfServicesRelatedPartyTransactions",
+"용역의 제공으로 인한 수익, 특수관계자거래",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00266961:NaverZCorpOfAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"네이버제트 주식회사"
+]
+],
+9432953000.0
+],
+[
+"ifrs-full:RevenueFromRenderingOfServicesRelatedPartyTransactions",
+"용역의 제공으로 인한 수익, 특수관계자거래",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00266961:OtherAssociatesMemberOfAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"기타 관계기업 [구성요소]"
+]
+],
+8778227000.0
+],
+[
+"ifrs-full:RevenueFromRenderingOfServicesRelatedPartyTransactions",
+"용역의 제공으로 인한 수익, 특수관계자거래",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00266961:OtherJointVenturesMemberOfJointVenturesWhereEntityIsVenturerMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"기타 공동기업 [구성요소]"
+]
+],
+50917000.0
+],
+[
+"ifrs-full:RevenueFromRenderingOfServicesRelatedPartyTransactions",
+"용역의 제공으로 인한 수익, 특수관계자거래",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00266961:OtherOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"기타"
+]
+],
+3632561000.0
+],
+[
+"ifrs-full:RevenueFromRenderingOfServicesRelatedPartyTransactions",
+"용역의 제공으로 인한 수익, 특수관계자거래",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00266961:RedicestudioCorpOfAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"레드아이스스튜디오 주식회사"
+]
+],
+661354000.0
+],
+[
+"ifrs-full:RevenueFromRenderingOfServicesRelatedPartyTransactions",
+"용역의 제공으로 인한 수익, 특수관계자거래",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00266961:RiverseCoLtdOfTotalForAllAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"주식회사 리버스"
+]
+],
+307330000.0
+],
+[
+"ifrs-full:RevenueFromRenderingOfServicesRelatedPartyTransactions",
+"용역의 제공으로 인한 수익, 특수관계자거래",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00266961:TheGrimmEntertainmentCoLtdOfAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"주식회사 더그림엔터테인먼트"
+]
+],
+569991000.0
+],
+[
+"ifrs-full:RevenueFromRenderingOfServicesRelatedPartyTransactions",
+"용역의 제공으로 인한 수익, 특수관계자거래",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00266961:WeverseCompanyIncOfTotalForAllAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"주식회사 위버스컴퍼니"
+]
+],
+4382760000.0
+],
+[
+"ifrs-full:RevenueFromRenderingOfServicesRelatedPartyTransactions",
+"용역의 제공으로 인한 수익, 특수관계자거래",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00266961:YlabCorporationOfTotalForAllAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"주식회사 와이랩"
+]
+],
+66030000.0
+],
+[
+"ifrs-full:RevenueFromRenderingOfServicesRelatedPartyTransactions",
+"용역의 제공으로 인한 수익, 특수관계자거래",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00266961:Cafe24CorporationOfTotalForAllAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"카페24 주식회사"
+]
+],
+124190000.0
+],
+[
+"ifrs-full:RevenueFromRenderingOfServicesRelatedPartyTransactions",
+"용역의 제공으로 인한 수익, 특수관계자거래",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00266961:ChengduNccTechnologyCorporationOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"Chengdu NCC Technology Corporation"
+]
+],
+0.0
+],
+[
+"ifrs-full:RevenueFromRenderingOfServicesRelatedPartyTransactions",
+"용역의 제공으로 인한 수익, 특수관계자거래",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00266961:CommpartnersCorpOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"주식회사 컴파트너스"
+]
+],
+48887000.0
+],
+[
+"ifrs-full:RevenueFromRenderingOfServicesRelatedPartyTransactions",
+"용역의 제공으로 인한 수익, 특수관계자거래",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00266961:DohandsCorporationOfOtherRelatedPartiesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"주식회사 두핸즈 외"
+]
+],
+2058000.0
+],
+[
+"ifrs-full:RevenueFromRenderingOfServicesRelatedPartyTransactions",
+"용역의 제공으로 인한 수익, 특수관계자거래",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00266961:GreenWebServiceCorpOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"주식회사 그린웹서비스"
+]
+],
+59791000.0
+],
+[
+"ifrs-full:RevenueFromRenderingOfServicesRelatedPartyTransactions",
+"용역의 제공으로 인한 수익, 특수관계자거래",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00266961:IncommsCorpOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"주식회사 인컴즈"
+]
+],
+74450000.0
+],
+[
+"ifrs-full:RevenueFromRenderingOfServicesRelatedPartyTransactions",
+"용역의 제공으로 인한 수익, 특수관계자거래",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00266961:NTechServiceCorpOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"엔테크서비스 주식회사"
+]
+],
+78518000.0
+],
+[
+"ifrs-full:RevenueFromRenderingOfServicesRelatedPartyTransactions",
+"용역의 제공으로 인한 수익, 특수관계자거래",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00266961:NaverChinaCorporationOfTotalForAllSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"NAVER CHINA CORPORATION"
+]
+],
+0.0
+],
+[
+"ifrs-full:RevenueFromRenderingOfServicesRelatedPartyTransactions",
+"용역의 제공으로 인한 수익, 특수관계자거래",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00266961:NaverCloudCorporationOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"네이버클라우드 주식회사"
+]
+],
+64625118000.0
+],
+[
+"ifrs-full:RevenueFromRenderingOfServicesRelatedPartyTransactions",
+"용역의 제공으로 인한 수익, 특수관계자거래",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00266961:NaverFinancialCorporationOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"네이버파이낸셜 주식회사"
+]
+],
+14060996000.0
+],
+[
+"ifrs-full:RevenueFromRenderingOfServicesRelatedPartyTransactions",
+"용역의 제공으로 인한 수익, 특수관계자거래",
+"2026-01-01",
+"2026-09-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00266961:NaverFranceSasOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"NAVER France SAS"
+]
+],
+0.0
+]
+],
+"exp": []
+}

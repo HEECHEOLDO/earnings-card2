@@ -1,0 +1,2277 @@
+{
+"report": "반기보고서 (2026.06)",
+"rcept": "20260814003521",
+"rc": "11012",
+"size": 694434,
+"files": [
+"entity00164742_2026-06-30.xbrl",
+"entity00164742_2026-06-30.xsd",
+"entity00164742_2026-06-30_def.xml",
+"entity00164742_2026-06-30_cal.xml",
+"entity00164742_2026-06-30_pre.xml",
+"entity00164742_2026-06-30_lab-ko.xml",
+"entity00164742_2026-06-30_lab-en.xml"
+],
+"n_ctx": 488,
+"n_facts": 2686,
+"periods": [
+[
+"2026-01-01",
+"2026-06-30",
+1211
+],
+[
+"2025-01-01",
+"2025-06-30",
+1030
+],
+[
+"2026-04-01",
+"2026-06-30",
+193
+],
+[
+"2025-04-01",
+"2025-06-30",
+193
+],
+[
+"2025-01-01",
+"2025-12-31",
+59
+]
+],
+"seg_rev": [
+[
+"dart:AdjustmentsForOtherRevenue",
+"기타수익",
+"2026-01-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CarryingAmountAccumulatedDepreciationAmortisationAndImpairmentAndGrossCarryingAmountAxis",
+"dart:ReportedAmountMember",
+"공시금액 [구성요소]"
+]
+],
+1517079000000.0
+],
+[
+"dart:AdjustmentsForOtherRevenue",
+"기타수익",
+"2026-01-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CarryingAmountAccumulatedDepreciationAmortisationAndImpairmentAndGrossCarryingAmountAxis",
+"dart:ReportedAmountMember",
+"공시금액 [구성요소]"
+]
+],
+666961000000.0
+],
+[
+"dart:AdjustmentsForOtherRevenue",
+"기타수익",
+"2026-04-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CarryingAmountAccumulatedDepreciationAmortisationAndImpairmentAndGrossCarryingAmountAxis",
+"dart:ReportedAmountMember",
+"공시금액 [구성요소]"
+]
+],
+650394000000.0
+],
+[
+"dart:AdjustmentsForOtherRevenue",
+"기타수익",
+"2026-04-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CarryingAmountAccumulatedDepreciationAmortisationAndImpairmentAndGrossCarryingAmountAxis",
+"dart:ReportedAmountMember",
+"공시금액 [구성요소]"
+]
+],
+234048000000.0
+],
+[
+"dart:AdjustmentsForOtherRevenue",
+"기타수익",
+"2025-01-01",
+"2025-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CarryingAmountAccumulatedDepreciationAmortisationAndImpairmentAndGrossCarryingAmountAxis",
+"dart:ReportedAmountMember",
+"공시금액 [구성요소]"
+]
+],
+1064018000000.0
+],
+[
+"dart:AdjustmentsForOtherRevenue",
+"기타수익",
+"2025-01-01",
+"2025-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CarryingAmountAccumulatedDepreciationAmortisationAndImpairmentAndGrossCarryingAmountAxis",
+"dart:ReportedAmountMember",
+"공시금액 [구성요소]"
+]
+],
+238683000000.0
+],
+[
+"dart:AdjustmentsForOtherRevenue",
+"기타수익",
+"2025-04-01",
+"2025-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CarryingAmountAccumulatedDepreciationAmortisationAndImpairmentAndGrossCarryingAmountAxis",
+"dart:ReportedAmountMember",
+"공시금액 [구성요소]"
+]
+],
+576811000000.0
+],
+[
+"dart:AdjustmentsForOtherRevenue",
+"기타수익",
+"2025-04-01",
+"2025-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CarryingAmountAccumulatedDepreciationAmortisationAndImpairmentAndGrossCarryingAmountAxis",
+"dart:ReportedAmountMember",
+"공시금액 [구성요소]"
+]
+],
+140405000000.0
+],
+[
+"dart:ImpactOnProfitOrLossForTheSucceedingYearOfIncreaseDecreaseInTotalContractRevenueAndCostsByChangesInAccountingEstimates",
+"총계약수익과 원가의 추정 변동이 미래손익에 미치는 영향",
+"2026-01-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:SignificantInvestmentsInSubsidiariesAxis",
+"entity00164742:HyundaiRotemCompanyMemberOfEntitysTotalForSubsidiariesMemberOfChangesInEstimatedTotalContractRevenueAndCostsTableOfMember",
+"현대로템(주) [구성요소]"
+]
+],
+284595000000.0
+],
+[
+"dart:ImpactOnProfitOrLossForTheYearOfIncreaseDecreaseInTotalContractRevenueAndCostsByChangesInAccountingEstimates",
+"총계약수익과 원가의 추정 변동이 당기손익에 미치는 영향",
+"2026-01-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:SignificantInvestmentsInSubsidiariesAxis",
+"entity00164742:HyundaiRotemCompanyMemberOfEntitysTotalForSubsidiariesMemberOfChangesInEstimatedTotalContractRevenueAndCostsTableOfMember",
+"현대로템(주) [구성요소]"
+]
+],
+235729000000.0
+],
+[
+"dart:IncreaseDecreaseInTotalContractRevenueByChangesInAccountingEstimates",
+"총계약수익의 추정의 변동",
+"2026-01-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:SignificantInvestmentsInSubsidiariesAxis",
+"entity00164742:HyundaiRotemCompanyMemberOfEntitysTotalForSubsidiariesMemberOfChangesInEstimatedTotalContractRevenueAndCostsTableOfMember",
+"현대로템(주) [구성요소]"
+]
+],
+865924000000.0
+],
+[
+"dart:ProceedsFromSalesOfInvestmentsInSubsidiariesJointVenturesAndAssociates",
+"종속기업, 조인트벤처와 관계기업에 대한 투자자산의 처분",
+"2026-01-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+]
+],
+7438000000.0
+],
+[
+"dart:ProceedsFromSalesOfInvestmentsInSubsidiariesJointVenturesAndAssociates",
+"종속기업, 조인트벤처와 관계기업에 대한 투자자산의 처분",
+"2025-01-01",
+"2025-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+]
+],
+14169000000.0
+],
+[
+"dart:ProceedsFromSalesOfLongTermFinancialInstruments",
+"장기금융상품의 처분",
+"2026-01-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+]
+],
+54550000000.0
+],
+[
+"dart:ProceedsFromSalesOfLongTermFinancialInstruments",
+"장기금융상품의 처분",
+"2026-01-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+]
+],
+7379000000.0
+],
+[
+"dart:ProceedsFromSalesOfLongTermFinancialInstruments",
+"장기금융상품의 처분",
+"2025-01-01",
+"2025-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+]
+],
+305000000.0
+],
+[
+"dart:ProceedsFromSalesOfLongTermFinancialInstruments",
+"장기금융상품의 처분",
+"2025-01-01",
+"2025-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+]
+],
+300000000.0
+],
+[
+"dart:ProceedsFromSalesOfOtherNonCurrentFinancialAssets",
+"기타비유동금융자산의 처분",
+"2026-01-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+]
+],
+249656000000.0
+],
+[
+"dart:ProceedsFromSalesOfOtherNonCurrentFinancialAssets",
+"기타비유동금융자산의 처분",
+"2026-01-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+]
+],
+44907000000.0
+],
+[
+"dart:ProceedsFromSalesOfOtherNonCurrentFinancialAssets",
+"기타비유동금융자산의 처분",
+"2025-01-01",
+"2025-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+]
+],
+144543000000.0
+],
+[
+"dart:ProceedsFromSalesOfOtherNonCurrentFinancialAssets",
+"기타비유동금융자산의 처분",
+"2025-01-01",
+"2025-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+]
+],
+88540000000.0
+],
+[
+"dart:RevenueFromRenderingOfServicesFinanceBusiness",
+"금융업매출액",
+"2026-01-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CarryingAmountAccumulatedDepreciationAmortisationAndImpairmentAndGrossCarryingAmountAxis",
+"dart:ReportedAmountMember",
+"공시금액 [구성요소]"
+]
+],
+13229740000000.0
+],
+[
+"dart:RevenueFromRenderingOfServicesFinanceBusiness",
+"금융업매출액",
+"2026-04-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CarryingAmountAccumulatedDepreciationAmortisationAndImpairmentAndGrossCarryingAmountAxis",
+"dart:ReportedAmountMember",
+"공시금액 [구성요소]"
+]
+],
+6578829000000.0
+],
+[
+"dart:RevenueFromRenderingOfServicesFinanceBusiness",
+"금융업매출액",
+"2025-01-01",
+"2025-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CarryingAmountAccumulatedDepreciationAmortisationAndImpairmentAndGrossCarryingAmountAxis",
+"dart:ReportedAmountMember",
+"공시금액 [구성요소]"
+]
+],
+11459942000000.0
+],
+[
+"dart:RevenueFromRenderingOfServicesFinanceBusiness",
+"금융업매출액",
+"2025-04-01",
+"2025-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CarryingAmountAccumulatedDepreciationAmortisationAndImpairmentAndGrossCarryingAmountAxis",
+"dart:ReportedAmountMember",
+"공시금액 [구성요소]"
+]
+],
+6137808000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2026-01-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"dart:LargeBusinessGroupMember",
+"대규모기업집단 계열회사 [구성요소]"
+]
+],
+574047000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2026-01-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:BhmcMemberOfJointVenturesAndAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"BHMC [구성요소]"
+]
+],
+76201000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2026-01-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:HmgcMemberOfJointVenturesAndAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"HMGC [구성요소]"
+]
+],
+8715000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2026-01-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:HyundaiMobisCoLtdMemberOfEntitiesWithJointControlOrSignificantInfluenceOverEntityMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"현대모비스(주) [구성요소]"
+]
+],
+379763000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2026-01-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:HyundaiWiaCorporationMemberOfJointVenturesAndAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"현대위아(주) [구성요소]"
+]
+],
+74426000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2026-01-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:KiaCorporationMemberOfJointVenturesAndAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"기아(주) [구성요소]"
+]
+],
+833601000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2026-01-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:KiaGeorgiaIncMemberOfJointVenturesAndAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"Kia Georgia, Inc. [구성요소]"
+]
+],
+318705000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2026-01-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:KiaRussiaCisLlcMemberOfJointVenturesAndAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"Kia Russia &amp; CIS, LLC [구성요소]"
+]
+],
+139000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2026-01-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:KiaSlovakiaSROMemberOfJointVenturesAndAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"Kia Slovakia s.r.o. [구성요소]"
+]
+],
+5847000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2026-01-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:MobisAlabamaLlcMemberOfEntitiesWithJointControlOrSignificantInfluenceOverEntityMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"Mobis Alabama, LLC [구성요소]"
+]
+],
+58368000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2026-01-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:MobisAutomotiveCzechSROMemberOfEntitiesWithJointControlOrSignificantInfluenceOverEntityMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"Mobis Automotive Czech s.r.o. [구성요소]"
+]
+],
+402000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2026-01-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:MobisIndiaLtdMemberOfEntitiesWithJointControlOrSignificantInfluenceOverEntityMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"Mobis India, Ltd. [구성요소]"
+]
+],
+14414000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2026-01-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:MobisModuleCisLlcMemberOfEntitiesWithJointControlOrSignificantInfluenceOverEntityMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"Mobis Module CIS, LLC [구성요소]"
+]
+],
+58000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2026-01-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:MobisPartsAmericaLlcMemberOfEntitiesWithJointControlOrSignificantInfluenceOverEntityMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"Mobis Parts America, LLC [구성요소]"
+]
+],
+91565000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2026-01-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:MobisPartsEuropeNVMemberOfEntitiesWithJointControlOrSignificantInfluenceOverEntityMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"Mobis Parts Europe N.V. [구성요소]"
+]
+],
+25156000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2026-01-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:OtherJointVenturesAndAssociatesMemberOfJointVenturesAndAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"기타 공동기업 및 관계기업 [구성요소]"
+]
+],
+902217000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2026-01-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:OthersMemberOfEntitiesWithJointControlOrSignificantInfluenceOverEntityMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"기타 [구성요소]"
+]
+],
+36696000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2026-01-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"ifrs-full:OtherRelatedPartiesMember",
+"그 밖의 특수관계자 [구성요소]"
+]
+],
+21061000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2026-01-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"dart:LargeBusinessGroupMember",
+"대규모기업집단 계열회사 [구성요소]"
+]
+],
+31161000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2026-01-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:BhmcMemberOfJointVenturesAndAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"BHMC [구성요소]"
+]
+],
+45049000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2026-01-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:HaccMemberOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"HACC [구성요소]"
+]
+],
+3076938000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2026-01-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:HmaMemberOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"HMA [구성요소]"
+]
+],
+10389801000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2026-01-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:HmcaMemberOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"HMCA [구성요소]"
+]
+],
+1544199000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2026-01-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:HmeMemberOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"HME [구성요소]"
+]
+],
+3458826000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2026-01-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:HmiMemberOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"HMI [구성요소]"
+]
+],
+319684000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2026-01-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:HyundaiCapitalServicesIncMemberOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"현대캐피탈(주) [구성요소]"
+]
+],
+764293000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2026-01-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:HyundaiEngineeringConstructionCoLtdMemberOfJointVenturesAndAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"현대건설(주) [구성요소]"
+]
+],
+101000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2026-01-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:HyundaiMobisCoLtdMemberOfEntitiesWithJointControlOrSignificantInfluenceOverEntityMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"현대모비스(주) [구성요소]"
+]
+],
+243827000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2026-01-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:HyundaiMotorSecuritiesCoLtdMemberOfJointVenturesAndAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"현대차증권(주) [구성요소]"
+]
+],
+1085000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2026-01-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:HyundaiRotemCompanyMemberOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"현대로템(주) [구성요소]"
+]
+],
+5493000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2026-01-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:HyundaiWiaCorporationMemberOfJointVenturesAndAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"현대위아(주) [구성요소]"
+]
+],
+12646000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2026-01-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:KiaCorporationMemberOfJointVenturesAndAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"기아(주) [구성요소]"
+]
+],
+302895000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2026-01-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:OtherJointVenturesAndAssociatesMemberOfJointVenturesAndAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"기타 공동기업 및 관계기업 [구성요소]"
+]
+],
+78826000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2026-01-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:OtherSubsidiariesMemberOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"기타 종속기업 [구성요소]"
+]
+],
+2146156000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2026-01-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:OthersMemberOfEntitiesWithJointControlOrSignificantInfluenceOverEntityMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"기타 [구성요소]"
+]
+],
+1901000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2026-01-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"ifrs-full:OtherRelatedPartiesMember",
+"그 밖의 특수관계자 [구성요소]"
+]
+],
+86000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2025-01-01",
+"2025-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"dart:LargeBusinessGroupMember",
+"대규모기업집단 계열회사 [구성요소]"
+]
+],
+518889000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2025-01-01",
+"2025-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:BhmcMemberOfJointVenturesAndAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"BHMC [구성요소]"
+]
+],
+119261000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2025-01-01",
+"2025-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:HmgcMemberOfJointVenturesAndAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"HMGC [구성요소]"
+]
+],
+7932000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2025-01-01",
+"2025-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:HyundaiMobisCoLtdMemberOfEntitiesWithJointControlOrSignificantInfluenceOverEntityMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"현대모비스(주) [구성요소]"
+]
+],
+429167000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2025-01-01",
+"2025-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:HyundaiWiaCorporationMemberOfJointVenturesAndAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"현대위아(주) [구성요소]"
+]
+],
+87960000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2025-01-01",
+"2025-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:KiaCorporationMemberOfJointVenturesAndAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"기아(주) [구성요소]"
+]
+],
+753772000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2025-01-01",
+"2025-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:KiaGeorgiaIncMemberOfJointVenturesAndAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"Kia Georgia, Inc. [구성요소]"
+]
+],
+326055000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2025-01-01",
+"2025-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:KiaRussiaCisLlcMemberOfJointVenturesAndAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"Kia Russia &amp; CIS, LLC [구성요소]"
+]
+],
+175000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2025-01-01",
+"2025-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:KiaSlovakiaSROMemberOfJointVenturesAndAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"Kia Slovakia s.r.o. [구성요소]"
+]
+],
+6626000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2025-01-01",
+"2025-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:MobisAlabamaLlcMemberOfEntitiesWithJointControlOrSignificantInfluenceOverEntityMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"Mobis Alabama, LLC [구성요소]"
+]
+],
+103695000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2025-01-01",
+"2025-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:MobisAutomotiveCzechSROMemberOfEntitiesWithJointControlOrSignificantInfluenceOverEntityMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"Mobis Automotive Czech s.r.o. [구성요소]"
+]
+],
+548000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2025-01-01",
+"2025-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:MobisIndiaLtdMemberOfEntitiesWithJointControlOrSignificantInfluenceOverEntityMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"Mobis India, Ltd. [구성요소]"
+]
+],
+12632000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2025-01-01",
+"2025-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:MobisModuleCisLlcMemberOfEntitiesWithJointControlOrSignificantInfluenceOverEntityMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"Mobis Module CIS, LLC [구성요소]"
+]
+],
+24000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2025-01-01",
+"2025-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:MobisPartsAmericaLlcMemberOfEntitiesWithJointControlOrSignificantInfluenceOverEntityMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"Mobis Parts America, LLC [구성요소]"
+]
+],
+92405000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2025-01-01",
+"2025-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:MobisPartsEuropeNVMemberOfEntitiesWithJointControlOrSignificantInfluenceOverEntityMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"Mobis Parts Europe N.V. [구성요소]"
+]
+],
+14619000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2025-01-01",
+"2025-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:OtherJointVenturesAndAssociatesMemberOfJointVenturesAndAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"기타 공동기업 및 관계기업 [구성요소]"
+]
+],
+738605000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2025-01-01",
+"2025-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:OthersMemberOfEntitiesWithJointControlOrSignificantInfluenceOverEntityMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"기타 [구성요소]"
+]
+],
+47147000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2025-01-01",
+"2025-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"ifrs-full:OtherRelatedPartiesMember",
+"그 밖의 특수관계자 [구성요소]"
+]
+],
+22312000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2025-01-01",
+"2025-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"dart:LargeBusinessGroupMember",
+"대규모기업집단 계열회사 [구성요소]"
+]
+],
+19510000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2025-01-01",
+"2025-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:BhmcMemberOfJointVenturesAndAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"BHMC [구성요소]"
+]
+],
+75673000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2025-01-01",
+"2025-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:HaccMemberOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"HACC [구성요소]"
+]
+],
+2098026000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2025-01-01",
+"2025-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:HmaMemberOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"HMA [구성요소]"
+]
+],
+10480623000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2025-01-01",
+"2025-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:HmcaMemberOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"HMCA [구성요소]"
+]
+],
+1088854000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2025-01-01",
+"2025-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:HmeMemberOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"HME [구성요소]"
+]
+],
+3361626000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2025-01-01",
+"2025-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:HmiMemberOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"HMI [구성요소]"
+]
+],
+336408000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2025-01-01",
+"2025-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:HyundaiCapitalServicesIncMemberOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"현대캐피탈(주) [구성요소]"
+]
+],
+828663000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2025-01-01",
+"2025-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:HyundaiEngineeringConstructionCoLtdMemberOfJointVenturesAndAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"현대건설(주) [구성요소]"
+]
+],
+0.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2025-01-01",
+"2025-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:HyundaiMobisCoLtdMemberOfEntitiesWithJointControlOrSignificantInfluenceOverEntityMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"현대모비스(주) [구성요소]"
+]
+],
+308854000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2025-01-01",
+"2025-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:HyundaiMotorSecuritiesCoLtdMemberOfJointVenturesAndAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"현대차증권(주) [구성요소]"
+]
+],
+1294000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2025-01-01",
+"2025-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:HyundaiRotemCompanyMemberOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"현대로템(주) [구성요소]"
+]
+],
+4733000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2025-01-01",
+"2025-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:HyundaiWiaCorporationMemberOfJointVenturesAndAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"현대위아(주) [구성요소]"
+]
+],
+26820000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2025-01-01",
+"2025-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:KiaCorporationMemberOfJointVenturesAndAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"기아(주) [구성요소]"
+]
+],
+281530000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2025-01-01",
+"2025-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:OtherJointVenturesAndAssociatesMemberOfJointVenturesAndAssociatesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"기타 공동기업 및 관계기업 [구성요소]"
+]
+],
+52815000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2025-01-01",
+"2025-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:OtherSubsidiariesMemberOfSubsidiariesMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"기타 종속기업 [구성요소]"
+]
+],
+2395176000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2025-01-01",
+"2025-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"entity00164742:OthersMemberOfEntitiesWithJointControlOrSignificantInfluenceOverEntityMemberOfDisclosureOfTransactionsBetweenRelatedPartiesTableOfMember",
+"기타 [구성요소]"
+]
+],
+1859000000.0
+],
+[
+"dart:RevenueRelatedPartyTransactions",
+"매출, 특수관계자거래",
+"2025-01-01",
+"2025-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CategoriesOfRelatedPartiesAxis",
+"ifrs-full:OtherRelatedPartiesMember",
+"그 밖의 특수관계자 [구성요소]"
+]
+],
+149000000.0
+],
+[
+"entity00164742:AdvertisementsAndSalesPromotionSellingAndGeneralAdministrativeExpensesOfSellingExpenseOfSellingGeneralAndAdministrativeExpensesTableOfItems",
+"광고선전비 및 판매촉진비, 판관비",
+"2026-01-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CarryingAmountAccumulatedDepreciationAmortisationAndImpairmentAndGrossCarryingAmountAxis",
+"dart:ReportedAmountMember",
+"공시금액 [구성요소]"
+]
+],
+1918749000000.0
+],
+[
+"entity00164742:AdvertisementsAndSalesPromotionSellingAndGeneralAdministrativeExpensesOfSellingExpenseOfSellingGeneralAndAdministrativeExpensesTableOfItems",
+"광고선전비 및 판매촉진비, 판관비",
+"2026-01-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CarryingAmountAccumulatedDepreciationAmortisationAndImpairmentAndGrossCarryingAmountAxis",
+"dart:ReportedAmountMember",
+"공시금액 [구성요소]"
+]
+],
+206085000000.0
+],
+[
+"entity00164742:AdvertisementsAndSalesPromotionSellingAndGeneralAdministrativeExpensesOfSellingExpenseOfSellingGeneralAndAdministrativeExpensesTableOfItems",
+"광고선전비 및 판매촉진비, 판관비",
+"2026-04-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CarryingAmountAccumulatedDepreciationAmortisationAndImpairmentAndGrossCarryingAmountAxis",
+"dart:ReportedAmountMember",
+"공시금액 [구성요소]"
+]
+],
+994463000000.0
+],
+[
+"entity00164742:AdvertisementsAndSalesPromotionSellingAndGeneralAdministrativeExpensesOfSellingExpenseOfSellingGeneralAndAdministrativeExpensesTableOfItems",
+"광고선전비 및 판매촉진비, 판관비",
+"2026-04-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CarryingAmountAccumulatedDepreciationAmortisationAndImpairmentAndGrossCarryingAmountAxis",
+"dart:ReportedAmountMember",
+"공시금액 [구성요소]"
+]
+],
+108682000000.0
+],
+[
+"entity00164742:AdvertisementsAndSalesPromotionSellingAndGeneralAdministrativeExpensesOfSellingExpenseOfSellingGeneralAndAdministrativeExpensesTableOfItems",
+"광고선전비 및 판매촉진비, 판관비",
+"2025-01-01",
+"2025-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CarryingAmountAccumulatedDepreciationAmortisationAndImpairmentAndGrossCarryingAmountAxis",
+"dart:ReportedAmountMember",
+"공시금액 [구성요소]"
+]
+],
+1792290000000.0
+],
+[
+"entity00164742:AdvertisementsAndSalesPromotionSellingAndGeneralAdministrativeExpensesOfSellingExpenseOfSellingGeneralAndAdministrativeExpensesTableOfItems",
+"광고선전비 및 판매촉진비, 판관비",
+"2025-01-01",
+"2025-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CarryingAmountAccumulatedDepreciationAmortisationAndImpairmentAndGrossCarryingAmountAxis",
+"dart:ReportedAmountMember",
+"공시금액 [구성요소]"
+]
+],
+161756000000.0
+],
+[
+"entity00164742:AdvertisementsAndSalesPromotionSellingAndGeneralAdministrativeExpensesOfSellingExpenseOfSellingGeneralAndAdministrativeExpensesTableOfItems",
+"광고선전비 및 판매촉진비, 판관비",
+"2025-04-01",
+"2025-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CarryingAmountAccumulatedDepreciationAmortisationAndImpairmentAndGrossCarryingAmountAxis",
+"dart:ReportedAmountMember",
+"공시금액 [구성요소]"
+]
+],
+875437000000.0
+],
+[
+"entity00164742:AdvertisementsAndSalesPromotionSellingAndGeneralAdministrativeExpensesOfSellingExpenseOfSellingGeneralAndAdministrativeExpensesTableOfItems",
+"광고선전비 및 판매촉진비, 판관비",
+"2025-04-01",
+"2025-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CarryingAmountAccumulatedDepreciationAmortisationAndImpairmentAndGrossCarryingAmountAxis",
+"dart:ReportedAmountMember",
+"공시금액 [구성요소]"
+]
+],
+97547000000.0
+],
+[
+"entity00164742:AllowanceForConstructionLossOfChangesInEstimatedTotalContractRevenueAndCostsLineItemsOfChangesInEstimatedTotalContractRevenueAndCostsTableOfItems",
+"공사손실충당부채",
+"2026-01-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:SignificantInvestmentsInSubsidiariesAxis",
+"entity00164742:HyundaiRotemCompanyMemberOfEntitysTotalForSubsidiariesMemberOfChangesInEstimatedTotalContractRevenueAndCostsTableOfMember",
+"현대로템(주) [구성요소]"
+]
+],
+57455000000.0
+],
+[
+"entity00164742:OthersOfAdjustmentsForOtherRevenueOfOtherIncomeAndExpensesTableOfItems",
+"기타, 기타수익",
+"2026-01-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CarryingAmountAccumulatedDepreciationAmortisationAndImpairmentAndGrossCarryingAmountAxis",
+"dart:ReportedAmountMember",
+"공시금액 [구성요소]"
+]
+],
+251333000000.0
+],
+[
+"entity00164742:OthersOfAdjustmentsForOtherRevenueOfOtherIncomeAndExpensesTableOfItems",
+"기타, 기타수익",
+"2026-01-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CarryingAmountAccumulatedDepreciationAmortisationAndImpairmentAndGrossCarryingAmountAxis",
+"dart:ReportedAmountMember",
+"공시금액 [구성요소]"
+]
+],
+154775000000.0
+],
+[
+"entity00164742:OthersOfAdjustmentsForOtherRevenueOfOtherIncomeAndExpensesTableOfItems",
+"기타, 기타수익",
+"2026-04-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CarryingAmountAccumulatedDepreciationAmortisationAndImpairmentAndGrossCarryingAmountAxis",
+"dart:ReportedAmountMember",
+"공시금액 [구성요소]"
+]
+],
+104341000000.0
+],
+[
+"entity00164742:OthersOfAdjustmentsForOtherRevenueOfOtherIncomeAndExpensesTableOfItems",
+"기타, 기타수익",
+"2026-04-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CarryingAmountAccumulatedDepreciationAmortisationAndImpairmentAndGrossCarryingAmountAxis",
+"dart:ReportedAmountMember",
+"공시금액 [구성요소]"
+]
+],
+71933000000.0
+],
+[
+"entity00164742:OthersOfAdjustmentsForOtherRevenueOfOtherIncomeAndExpensesTableOfItems",
+"기타, 기타수익",
+"2025-01-01",
+"2025-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CarryingAmountAccumulatedDepreciationAmortisationAndImpairmentAndGrossCarryingAmountAxis",
+"dart:ReportedAmountMember",
+"공시금액 [구성요소]"
+]
+],
+259379000000.0
+],
+[
+"entity00164742:OthersOfAdjustmentsForOtherRevenueOfOtherIncomeAndExpensesTableOfItems",
+"기타, 기타수익",
+"2025-01-01",
+"2025-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CarryingAmountAccumulatedDepreciationAmortisationAndImpairmentAndGrossCarryingAmountAxis",
+"dart:ReportedAmountMember",
+"공시금액 [구성요소]"
+]
+],
+153267000000.0
+],
+[
+"entity00164742:OthersOfAdjustmentsForOtherRevenueOfOtherIncomeAndExpensesTableOfItems",
+"기타, 기타수익",
+"2025-04-01",
+"2025-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CarryingAmountAccumulatedDepreciationAmortisationAndImpairmentAndGrossCarryingAmountAxis",
+"dart:ReportedAmountMember",
+"공시금액 [구성요소]"
+]
+],
+131856000000.0
+],
+[
+"entity00164742:OthersOfAdjustmentsForOtherRevenueOfOtherIncomeAndExpensesTableOfItems",
+"기타, 기타수익",
+"2025-04-01",
+"2025-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CarryingAmountAccumulatedDepreciationAmortisationAndImpairmentAndGrossCarryingAmountAxis",
+"dart:ReportedAmountMember",
+"공시금액 [구성요소]"
+]
+],
+83081000000.0
+],
+[
+"entity00164742:SalesCommissionsSellingAndGeneralAdministrativeExpensesOfSellingExpenseOfSellingGeneralAndAdministrativeExpensesTableOfItems",
+"판매수수료, 판관비",
+"2026-01-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CarryingAmountAccumulatedDepreciationAmortisationAndImpairmentAndGrossCarryingAmountAxis",
+"dart:ReportedAmountMember",
+"공시금액 [구성요소]"
+]
+],
+542178000000.0
+],
+[
+"entity00164742:SalesCommissionsSellingAndGeneralAdministrativeExpensesOfSellingExpenseOfSellingGeneralAndAdministrativeExpensesTableOfItems",
+"판매수수료, 판관비",
+"2026-01-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CarryingAmountAccumulatedDepreciationAmortisationAndImpairmentAndGrossCarryingAmountAxis",
+"dart:ReportedAmountMember",
+"공시금액 [구성요소]"
+]
+],
+568025000000.0
+],
+[
+"entity00164742:SalesCommissionsSellingAndGeneralAdministrativeExpensesOfSellingExpenseOfSellingGeneralAndAdministrativeExpensesTableOfItems",
+"판매수수료, 판관비",
+"2026-04-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CarryingAmountAccumulatedDepreciationAmortisationAndImpairmentAndGrossCarryingAmountAxis",
+"dart:ReportedAmountMember",
+"공시금액 [구성요소]"
+]
+],
+273930000000.0
+],
+[
+"entity00164742:SalesCommissionsSellingAndGeneralAdministrativeExpensesOfSellingExpenseOfSellingGeneralAndAdministrativeExpensesTableOfItems",
+"판매수수료, 판관비",
+"2026-04-01",
+"2026-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CarryingAmountAccumulatedDepreciationAmortisationAndImpairmentAndGrossCarryingAmountAxis",
+"dart:ReportedAmountMember",
+"공시금액 [구성요소]"
+]
+],
+286444000000.0
+],
+[
+"entity00164742:SalesCommissionsSellingAndGeneralAdministrativeExpensesOfSellingExpenseOfSellingGeneralAndAdministrativeExpensesTableOfItems",
+"판매수수료, 판관비",
+"2025-01-01",
+"2025-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:ConsolidatedMember",
+"연결재무제표 [구성요소]"
+],
+[
+"ifrs-full:CarryingAmountAccumulatedDepreciationAmortisationAndImpairmentAndGrossCarryingAmountAxis",
+"dart:ReportedAmountMember",
+"공시금액 [구성요소]"
+]
+],
+597263000000.0
+],
+[
+"entity00164742:SalesCommissionsSellingAndGeneralAdministrativeExpensesOfSellingExpenseOfSellingGeneralAndAdministrativeExpensesTableOfItems",
+"판매수수료, 판관비",
+"2025-01-01",
+"2025-06-30",
+[
+[
+"ifrs-full:ConsolidatedAndSeparateFinancialStatementsAxis",
+"ifrs-full:SeparateMember",
+"별도재무제표 [구성요소]"
+],
+[
+"ifrs-full:CarryingAmountAccumulatedDepreciationAmortisationAndImpairmentAndGrossCarryingAmountAxis",
+"dart:ReportedAmountMember",
+"공시금액 [구성요소]"
+]
+],
+646034000000.0
+]
+],
+"exp": []
+}
