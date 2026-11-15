@@ -349,6 +349,7 @@
     // 범례 · 로고
     var lx = L, ly = TOP + 2;
     [['매출', BL], ['이익', GN], ['비용', RD]].forEach(function (k) { X.fillStyle = k[1]; X.fillRect(lx, ly - 4, 30, 6); X.fillStyle = SOFT; X.font = font(700, 20); X.textAlign = 'left'; X.fillText(k[0], lx + 38, ly + 4); lx += 104; });
+    if (o.fxNote) { X.fillStyle = SOFT; X.font = font(700, 20); X.textAlign = 'right'; X.fillText(o.fxNote, R, ly + 4); }   // 해외 회사: 원화로 바꾼 환율
     var nw = 18, x0 = L + 160, x1 = hasSeg ? L + 300 : L + 70, x4 = R - 150, x2 = x1 + (x4 - x1) * 0.33, x3 = hasG ? x1 + (x4 - x1) * 0.66 : x1 + (x4 - x1) * 0.45, xm = (x3 + x4) / 2;
     var top = TOP + 60, bot = BOT - 8;
     // 자리 잡기 — 맨 아래가 바닥을 넘으면 배율을 줄여 다시

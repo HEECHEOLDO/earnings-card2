@@ -185,6 +185,7 @@
   }
 </style>
 <script src="./card-theme.js"></script>
+<script src="./card-overlay.js"></script>
 <style id="nav-wrap">
   .nav { flex-wrap: wrap; border-radius: 18px; gap: 4px; padding: 4px; }
   .nav-i { flex: 1 0 calc(14.28% - 4px); min-width: 0; border-radius: 12px; padding: 0 8px; }
@@ -1441,23 +1442,31 @@
   document.getElementById('ov-input').addEventListener('change', function (e) {
     var files = e.target.files ? Array.prototype.slice.call(e.target.files) : [];
     var self = this;
+    var q0 = Promise.resolve();
     files.forEach(function (file, idx) {
-      var reader = new FileReader();
-      reader.onload = function () {
-        var img = new Image();
-        img.onload = function () {
-          var aspect = img.naturalWidth/img.naturalHeight || 1;
-          var w = Math.max(90, Math.min(CW*0.34, img.naturalWidth));
-          overlays.push({ img:img, aspect:aspect, layer:'front', opacity:1, rot:0,
-            w:w, h:w/aspect, cx:CW/2 + idx*30, cy:CH/2 + idx*30 });
-          selected = overlays.length-1;
-          syncOverlayUI(); drawPreview();
-          if (idx === 0) { try { canvas.scrollIntoView({behavior:'smooth',block:'start'}); } catch (x) {} }
-        };
-        img.onerror = function () { alert('이미지를 불러오지 못했습니다.'); };
-        img.src = reader.result;
-      };
-      reader.readAsDataURL(file);
+      q0 = q0.then(function () {                 // 한 장씩, 줄여서 푼다 (card-overlay.js)
+        return window.CardBg.decodeSmall(file, 1600).then(function (d) {
+          return new Promise(function (res) {
+            var c = d; if (!c.toBlob) { c = document.createElement('canvas'); c.width = d.width; c.height = d.height; c.getContext('2d').drawImage(d, 0, 0); if (d.close) d.close(); }
+            c.toBlob(res, 'image/png');
+          });
+        }).then(function (blob) {
+          return new Promise(function (res, rej) {
+            var img = new Image();
+            img.onload = function () {
+              var aspect = img.naturalWidth/img.naturalHeight || 1;
+              var w = Math.max(90, Math.min(CW*0.34, img.naturalWidth));
+              overlays.push({ img:img, src:blob, aspect:aspect, layer:'front', opacity:1, rot:0,
+                w:w, h:w/aspect, cx:CW/2 + idx*30, cy:CH/2 + idx*30 });
+              selected = overlays.length-1;
+              syncOverlayUI(); drawPreview();
+              if (idx === 0) { try { canvas.scrollIntoView({behavior:'smooth',block:'start'}); } catch (x) {} }
+              res();
+            };
+            img.onerror = rej; img.src = URL.createObjectURL(blob);
+          });
+        }).catch(function () { alert('이미지를 불러오지 못했습니다.'); });
+      });
     });
     self.value = '';
   });
@@ -1494,20 +1503,9 @@
     // 원본은 남겨둔다 — 잘못 따지면 되돌릴 수 있게
     if (!ov.orig) ov.orig = ov.img;
 
-    loadBgLib().then(function (lib) {
-      var q = document.getElementById('ov-bg-q').value;
-      return lib.removeBackground(ov.orig.src, {
-        model: q,
-        device: 'gpu',                        // 그래픽카드가 있으면 쓰고, 없으면 알아서 CPU
-        output: { format: 'image/png', quality: 1 },
-        progress: function (key, cur, total) {
-          if (/fetch/.test(key)) {
-            bgStatus('모델 내려받는 중 ' + (total ? Math.round(cur / total * 100) : 0) + '%');
-          } else {
-            bgStatus('배경 지우는 중…');
-          }
-        }
-      });
+    // 워커에서 줄여서 지우고, 끝나면 워커를 없애 메모리를 돌려받는다 (card-overlay.js)
+    window.CardBg.remove(ov.src || ov.orig, document.getElementById('ov-bg-q').value, function (key, cur, total) {
+      bgStatus(/fetch/.test(key) ? '모델 내려받는 중 ' + (total ? Math.round(cur / total * 100) : 0) + '%' : '배경 지우는 중…');
     }).then(function (blob) {
       return new Promise(function (resolve, reject) {
         var img = new Image();
@@ -1543,6 +1541,7 @@
       sel.value = 'isnet_quint8';
       var best = sel.querySelector('option[value="isnet"]');
       if (best) best.disabled = true;
+      var mid = sel.querySelector('option[value="isnet_fp16"]'); if (mid) mid.disabled = true;   // 폰 CPU 로는 '보통'도 메모리가 빠듯하다
     }
   })();
 

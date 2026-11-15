@@ -170,6 +170,7 @@
   }
 </style>
 <script src="./card-theme.js"></script>
+<script src="./card-overlay.js"></script>
 <style id="nav-wrap">
   .nav { flex-wrap: wrap; border-radius: 18px; gap: 4px; padding: 4px; }
   .nav-i { flex: 1 0 calc(14.28% - 4px); min-width: 0; border-radius: 12px; padding: 0 8px; }
@@ -1366,6 +1367,20 @@
 
   var OV_MAX = 1600;
   function fitOverlay(file, done, fail) {
+    // 큰 폰 사진을 원본 크기로 풀지 않고 줄여서 푼다 · 여러 장은 한 장씩 (card-overlay.js)
+    _fitQ = _fitQ.then(function () {
+      return window.CardBg.decodeSmall(file, OV_MAX).then(function (d) {
+        return new Promise(function (res) {
+          var c = d; if (!c.toBlob) { c = document.createElement('canvas'); c.width = d.width; c.height = d.height; c.getContext('2d').drawImage(d, 0, 0); if (d.close) d.close(); }
+          c.toBlob(res, 'image/png');
+        });
+      }).then(function (blob) {
+        return new Promise(function (res, rej) { var im = new Image(); im.onload = function () { done(im, blob); res(); }; im.onerror = rej; im.src = URL.createObjectURL(blob); });
+      }).catch(function () { fail(); });
+    });
+  }
+  var _fitQ = Promise.resolve();
+  function fitOverlayOld(file, done, fail) {
     var url = URL.createObjectURL(file);
     var img = new Image();
     img.onload = function () {
@@ -1522,18 +1537,7 @@
 
     // 먼저 워커에서 시도한다. 끝나면 워커를 없애 메모리를 되돌려준다.
     // 워커가 안 되는 환경이면 예전처럼 페이지 안에서 돌린다.
-    removeInWorker(src, q, onProgress).catch(function (e) {
-      if (!/worker-/.test(e && e.message || '')) throw e;   // 모델 자체의 실패는 그대로
-      bgStatus('배경 지우는 중…');
-      return loadBgLib().then(function (lib) {
-        return lib.removeBackground(src, {
-          model: q,
-          device: 'gpu',
-          output: { format: 'image/png', quality: 1 },
-          progress: onProgress
-        });
-      });
-    }).then(function (blob) {
+    window.CardBg.remove(ov.origSrc || ov.orig, q, onProgress).then(function (blob) {
       return new Promise(function (resolve, reject) {
         var img = new Image();
         img.onload = function () { resolve(img); };
@@ -1583,6 +1587,7 @@
       sel.value = 'isnet_quint8';
       var best = sel.querySelector('option[value="isnet"]');
       if (best) best.disabled = true;
+      var mid = sel.querySelector('option[value="isnet_fp16"]'); if (mid) mid.disabled = true;   // 폰 CPU 로는 '보통'도 메모리가 빠듯하다
     }
   })();
 

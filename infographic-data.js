@@ -454,8 +454,8 @@
             var sg = (f.segs || []).map(function (x) { return Array.isArray(x) ? { n: flowKo(x[0]), v: x[1] } : x; }), sgT = sg.reduce(function (t, x) { return t + x.v; }, 0), small = 0;
             sg = sg.filter(function (x) { if (x.v < sgT * 0.04 || /^기타/.test(x.n)) { small += x.v; return false; } return true; }).slice(0, 6);   // 작은 건 '기타'로
             if (small > sgT * 0.02 && sg.length) sg.push({ n: '기타', v: small });
-            return { fn: 'sankey3', o: { h1: nm2, segs: sg, rev: f.rev, cogs: f.cogs, op: f.op, items: items, ni: f.ni, tax: f.tax, money: money, logo: r.logo },
-              src: flowPeriod(f) + ' 기준' + (us ? ' (환율 ' + Math.round(D.fx).toLocaleString() + '원 기준)' : '') };
+            return { fn: 'sankey3', o: { h1: nm2, segs: sg, rev: f.rev, cogs: f.cogs, op: f.op, items: items, ni: f.ni, tax: f.tax, money: money, logo: r.logo, fxNote: us ? '환율 ' + Math.round(D.fx).toLocaleString() + '원 기준' : '' },
+              src: flowPeriod(f) + ' 기준' };
           });
         }
         return null;
@@ -1068,7 +1068,10 @@
       b.innerHTML = '<span aria-hidden="true">' + c.icon + '</span> ' + c.name; (gbox[c.id] || bar.lastChild).appendChild(b);
       b.addEventListener('click', function () { pick(c.id); });
     });
-    function draw() { if (!last) return; X.setTransform(1, 0, 0, 1, 0, 0); window.__vc[last.fn](X, last.o); }
+    // 사진 얹기 — 국내·해외 실적 탭과 같은 기능 (뒤로 보낸 사진은 배경 바로 위, 앞 사진은 그림 위)
+    var OV = window.CardOverlay ? window.CardOverlay.attach({ canvas: cv, width: 1080, height: 1350, mount: document.querySelector('.cardctl'), redraw: function () { draw(); } }) : null;
+    if (OV && !window.__vc.__ovHooked) { var g0 = window.__vc.grainOnly; window.__vc.grainOnly = function (G) { g0(G); OV.paintBack(G); }; window.__vc.__ovHooked = true; }
+    function draw() { if (!last) return; X.setTransform(1, 0, 0, 1, 0, 0); window.__vc[last.fn](X, last.o); if (OV) { OV.paintFront(X); OV.paintSelection(X); } }
     var sel = {};
     function optsOf(c) { return typeof c.opts === 'function' ? c.opts() : c.opts; }
     function drawOpts(c) {
@@ -1128,7 +1131,7 @@
     $('c-dl').addEventListener('click', function () {
       if (!last) return;
       var big = document.createElement('canvas'); big.width = 1080 * 3; big.height = 1350 * 3;
-      var g = big.getContext('2d'); g.scale(3, 3); window.__vc[last.fn](g, last.o);
+      var g = big.getContext('2d'); g.scale(3, 3); window.__vc[last.fn](g, last.o); if (OV) OV.paintFront(g);
       big.toBlob(function (blob) {
         if (!blob) { alert('그림을 만들지 못했습니다. 새로고침 후 다시 눌러 주세요.'); return; }
         var a = document.createElement('a'); a.href = URL.createObjectURL(blob);
