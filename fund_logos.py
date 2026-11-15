@@ -4,6 +4,7 @@
 찾는 순서는 find_logos.py 와 같다: 영어 위키백과 문서의 로고 → 위키미디어 공용 → 홈페이지 아이콘.
 상장된 운용사(블랙록 BLK 등)는 logo/us 의 로고를 그대로 쓴다."""
 import os
+import re
 import sys
 
 from find_logos import from_page, from_commons, from_site, get
@@ -11,7 +12,7 @@ from make_old_logos import round_logo
 
 DIR = os.path.join("logo", "fund")
 LIST = {
-    "vanguard":   ("The Vanguard Group", ["Vanguard Group logo", "Vanguard logo"], "vanguard.com"),
+    "vanguard":   ("The Vanguard Group", ["Vanguard Group logo", "Vanguard logo", "Vanguard ship logo"], "investor.vanguard.com"),
     "fidelity":   ("Fidelity Investments", ["Fidelity Investments logo"], "fidelity.com"),
     "geode":      ("Geode Capital Management", ["Geode Capital Management logo"], "geodecapital.com"),
     "wellington": ("Wellington Management Company", ["Wellington Management logo"], "wellington.com"),
@@ -25,12 +26,14 @@ def main():
         dst = os.path.join(DIR, key + ".png")
         if (only and key not in only) or (not only and os.path.exists(dst)):
             continue
+        if os.path.exists(dst):
+            os.remove(dst)
         got = None
         for step in (lambda: from_page("en", en), lambda: from_commons(words), lambda: from_site(domain)):
             try:
                 r = step()
-                if not r:
-                    continue
+                if not r or re.search(r"Symbol category|Commons-logo|Wiki|Question|Edit-clear|Ambox", r[1] or "", re.I):
+                    continue                          # 위키 틀 아이콘(엉뚱한 그림)은 버린다
                 raw = get(r[0])
                 if len(raw) < 300:
                     continue

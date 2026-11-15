@@ -849,8 +849,9 @@
   /* 막대 — 비중 큰 순서로 세로 막대. 막대 위: 비중(크게)·금액(원), 막대 안 위쪽: 로고, 아래: 이름.
      '기타'는 막대로 그리지 않는다(상위 몇 개만 견주는 그림). 높이는 1위 막대 기준. */
   function wonOf(usd) {
-    if (!usd || !FX) return '';
-    var eok = usd * FX / 1e8;
+    if (!usd) return '';
+    var eok = state.fundKind === 'kr5' ? usd : (FX ? usd * FX / 1e8 : 0);   // 국내(5% 공시)는 이미 억원
+    if (!eok) return '';
     return eok >= 1e4 ? (eok / 1e4).toFixed(eok >= 1e6 - 500 ? 0 : 1) + '조원' : Math.round(eok).toLocaleString('ko-KR') + '억원';
   }
   function drawBars(ctx, x0, top, W, bottom) {
@@ -1191,6 +1192,13 @@
     var footBase = CH - S.bottom - 4;
     var ruleY = footBase - T.type.footer*0.85 - T.gap.ruleToText;
     var chartTop = y + T.gap.headToChart;
+    // 원화로 바꿔 적은 금액이 있으면(해외 13F · 막대) 제목 아래 오른쪽 줄에 환율 — 돈의 흐름 탭 해외 카드와 같은 자리·글씨
+    if (state.chart === 'bar' && FX && state.fundVal && state.fundKind !== 'kr5' && Object.keys(state.fundVal).length) {
+      ctx.font = font(700, 20); ctx.fillStyle = '#6B7078'; ctx.textAlign = 'right';
+      ctx.fillText('환율 ' + Math.round(FX).toLocaleString('ko-KR') + '원 기준', CX + CWID, chartTop + 12);
+      ctx.textAlign = 'left';
+      chartTop += 40;
+    }
     var chartBottom = ruleY - T.gap.chartToRule;
 
     /* 도넛 */
