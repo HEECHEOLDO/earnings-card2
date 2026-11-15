@@ -498,7 +498,7 @@
       var money = us ? function (v) { return won(v * D.fx / 100); } : won;      // 해외: 백만달러 × 오늘 환율 → 억원
       // 세부 손익(data/flow)이 있으면 매출원가·판관비·연구개발비·법인세까지 나눈 그림으로
       return JJ('./data/flow/' + code + '.json').then(function (f) {
-        if (f && f.rev > 0 && f.op < f.rev && f.ni != null && f.rev - (f.cogs || 0) >= 0) {        // 영업손실이어도 그린다(손실 모양)
+        if (f && f.rev > 0 && f.op < f.rev && f.ni != null && (f.rev - (f.cogs || 0) >= 0 || (f.gross != null && f.sga != null && Math.abs(f.gross - f.sga - f.op) <= f.rev * 0.01))) {        // 영업손실이어도 그린다(손실 모양)
           var nm2 = us ? ko(code, enShort((D.us.stocks[code] || {}).n || code)) : f.name;
           return (ul ? img('./logo/unlisted/' + code + '.png').then(function (i) { return { logo: i }; }) : logo({ code: code }, us)).then(function (r) {
             // 매출총이익과 (매출 - 매출원가)가 다르면 맞는 쪽을 고른다 — 매출총이익 - 판관비 = 영업이익이면 매출총이익, 아니면 매출 - 매출원가 (보험사 등 다른 뜻의 GrossProfit)
@@ -532,6 +532,7 @@
       }).then(function (got) { return got || JJ(us ? './data/us/' + code + '.json' : './data/' + code + '.json').then(function (d) {
         if (!d || !d.quarterly || !d.quarterly.length) throw new Error('실적 자료 없음');
         var q = d.quarterly.filter(function (x) { return x.rev > 0 && x.op != null && x.ni != null; }).slice(-1)[0];
+        if (!q) throw new Error('실적 자료 없음');
         var nm = us ? ko(code, (D.us.stocks[code] || {}).n || code) : d.name;
         var fy = us && d.fye && d.fye !== 12;
         var period = (fy ? '회계 ' : '') + "'" + String(q.y).slice(2) + '년 ' + q.q + '분기';
@@ -1195,7 +1196,7 @@
         fillInputs();
         draw(); $('c-hint').textContent = c.name + ' · 최신 자료로 방금 다시 계산했어요. 제목과 왼쪽 아래 글은 직접 고칠 수 있어요.';
       }).catch(function (e) {
-        delete cache[key]; last = null; $('c-hint').textContent = '이 카드를 그리지 못했어요 (' + (e && e.message || e) + ').';
+        delete cache[key]; last = null; try { console.error('draw-fail', e && e.stack); } catch (_) {} $('c-hint').textContent = '이 카드를 그리지 못했어요 (' + (e && e.message || e) + ').';
         X.setTransform(1, 0, 0, 1, 0, 0); window.__vc.grainOnly(X); X.fillStyle = '#6B7078'; X.font = "800 40px 'Noto Sans KR', sans-serif"; X.textAlign = 'center'; X.fillText((e && e.message) || '자료 준비 중', 540, 680);
       });
     }

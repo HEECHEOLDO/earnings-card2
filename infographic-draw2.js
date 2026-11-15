@@ -429,11 +429,17 @@
       var gxx = gl ? x2 - 10 : x2 + nw + 12, gal = gl ? 'right' : 'left';
       GID++; txt(X, '매출총이익', gxx, g.yG + Math.min(g.hG, 120) / 2 + 4, 800, Math.round(22 * FS), GN, gal); txt(X, m(gross), gxx, g.yG + Math.min(g.hG, 120) / 2 + 4 + 32 * FS, 900, Math.round(28 * FS), GN, gal);
       if (MG) txt(X, '이익률 ' + pc(gross), gxx, g.yG + Math.min(g.hG, 120) / 2 + 4 + 56 * FS, 700, Math.round(17 * FS), SOFT, gal);
-      GID++; txt(X, '매출원가', x2 + nw + 12, g.yC + Math.min(g.hC, 220) / 2, 800, Math.round(24 * FS), RD, 'left'); txt(X, m(cogs), x2 + nw + 12, g.yC + Math.min(g.hC, 220) / 2 + 36 * FS, 900, Math.round(32 * FS), RD, 'left');
+      var cyl = g.yC + Math.min(g.hC, 220) / 2;
+      if (!gl) cyl = Math.max(cyl, g.yG + Math.min(g.hG, 120) / 2 + 4 + (MG ? 56 : 32) * FS + 10 + 24 * FS);   // 매출총이익 이름표 밑으로
+      GID++; txt(X, '매출원가', x2 + nw + 12, cyl, 800, Math.round(24 * FS), RD, 'left'); txt(X, m(cogs), x2 + nw + 12, cyl + 36 * FS, 900, Math.round(32 * FS), RD, 'left');
     }
     above(x3 + nw / 2, g.yE, '영업비용', m(opex), RD);
     var rx = x4 + nw + 10, mw = R - rx, lastR = -1e9;
-    g.right.forEach(function (r) { GID++; var y0 = Math.max(r.y + r.h / 2 - 27 * FS, lastR + 4); lastR = y0 + 54 * FS; txt(X, r.n, rx, y0 + 18.6 * FS, 700, Math.round(19 * FS), RD, 'left', mw); txt(X, m(r.v), rx, y0 + 46.6 * FS, 900, Math.round(26 * FS), RD, 'left', mw); });
+    // 오른쪽 이름표 — 위에서부터 쌓고, 바닥(데드존)을 넘으면 아래에서부터 다시 밀어 올린다
+    var ys = g.right.map(function (r) { var y0 = Math.max(r.y + r.h / 2 - 27 * FS, lastR + 4); lastR = y0 + 54 * FS; return y0; });
+    for (var k = ys.length - 1, lim = BOT + 6 - 54 * FS; k >= 0; k--) { if (ys[k] > lim) ys[k] = lim; lim = ys[k] - 4 - 54 * FS; }
+    lastR = ys.length ? ys[ys.length - 1] + 54 * FS : lastR;
+    g.right.forEach(function (r, k) { GID++; var y0 = ys[k]; txt(X, r.n, rx, y0 + 18.6 * FS, 700, Math.round(19 * FS), RD, 'left', mw); txt(X, m(r.v), rx, y0 + 46.6 * FS, 900, Math.round(26 * FS), RD, 'left', mw); });
     if (false) { GID++; txt(X, '영업비용', x3 + nw + 12, g.yE + Math.min(g.hE, 200) / 2, 800, Math.round(23 * FS), RD, 'left'); }
     // 순이익(손실)은 숫자로만 — 영업이익이 없어 흐름으로 이어 그릴 곳이 없다
     // 순이익(손실) 글 — 오른쪽 막대들 아래에 자리가 있으면 거기, 없으면 막대 왼쪽에
@@ -516,7 +522,7 @@
       return g;
     }
     var sc = (bot - top) * 0.7 / Math.max(rev, gross + exIn), g = place(sc);
-    for (var k = 0; k < 14 && g.low > bot; k++) { sc *= 0.92; g = place(sc); }
+    for (var k = 0; k < 40 && g.low > bot; k++) { sc *= 0.92; g = place(sc); }
     for (k = 0; k < 12 && g.low < bot - 60; k++) { var g2 = place(sc * 1.06); if (g2.low > bot) break; sc *= 1.06; g = g2; }   // 남는 아래 공간은 키워서 채운다
     var s = g.s;
     // ---- 리본

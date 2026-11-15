@@ -325,13 +325,16 @@ def usable(code):
         return False
     d = json.load(open(p, encoding="utf-8"))
     rev, op = d.get("rev"), d.get("op")
-    if not rev or rev <= 0 or op is None or op >= rev:
+    if not rev or rev <= 0 or op is None or op >= rev or d.get("ni") is None:      # 순이익이 없으면 그림이 끊긴다
         return False
     if not d.get("start") and d.get("y") and d.get("q"):          # 예전 방식(분기 번호만 있는 자료)
         d["start"], d["end"] = "%d-%02d-01" % (d["y"], d["q"] * 3 - 2), "%d-%02d-28" % (d["y"], d["q"] * 3)
     if not d.get("start") or not d.get("end"):
         return False
-    gross = d.get("gross") if d.get("gross") is not None else rev - (d.get("cogs") or 0)
+    g1, g2 = d.get("gross"), rev - (d.get("cogs") or 0)      # 카드(화면)와 같은 규칙으로 매출총이익을 고른다
+    gross = g1 if g1 is not None else g2
+    if g1 is not None and d.get("cogs") is not None and abs(g1 - g2) > rev * 0.01:
+        gross = g1 if d.get("sga") is not None and abs(g1 - d["sga"] - op) <= rev * 0.01 else g2
     if gross - op < 0 or gross < 0:
         return False
     days = (date.fromisoformat(d["end"]) - date.fromisoformat(d["start"])).days
