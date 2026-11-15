@@ -32,6 +32,7 @@ PAGES = {
     "rank.html":    "rank",
     "vs.html":      "vs",
     "infographic.html": "infographic",
+    "flow.html":    "flow",
     "status.html":  "status",     # 데이터 상태 — 메뉴 칸은 없고 메뉴 아래 한 줄로 들어간다
 }
 
@@ -71,6 +72,9 @@ ITEMS = [
     ("rank",    "./rank.html",
      '<path d="M4 20v-8h5v8M9 20V5h6v15M15 20v-11h5v11"/>',
      "시총 순위", "순위"),
+    ("flow", "./flow.html",
+     '<path d="M3 6h5c4 0 4 6 8 6h5"/><path d="M3 6h5c4 0 4 12 8 12h5"/><path d="M3 4v4"/>',
+     "돈의 흐름", "흐름"),
     ("infographic", "./infographic.html",
      '<rect x="3" y="3" width="8" height="11" rx="1.5"/><rect x="13" y="3" width="8" height="6" rx="1.5"/><rect x="13" y="11" width="8" height="10" rx="1.5"/><rect x="3" y="16" width="8" height="5" rx="1.5"/>',
      "인포그래픽", "인포"),

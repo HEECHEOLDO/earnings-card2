@@ -155,7 +155,7 @@
     krdash: function () { return '한국 경제 / 지금 어떤가'; },
     race1y: function () { return '코인 vs 금 vs 주식 / 1년 전에 투자했다면?'; }
   };
-  var D = {};
+  var D = {}, ONLY = window.__IG_ONLY || '';
   function loadAll() {
     return Promise.all([J('./data/mcap.json'), J('./data/mcap_us.json'), J('./data/rank.json'), J('./data/fx.json')]).then(function (r) {
       D.kr = r[0]; D.us = r[1]; D.rank = r[2]; D.fx = (r[3] && r[3].usdkrw) || 1380;
@@ -164,6 +164,7 @@
       D.total = D.inds.reduce(function (s, g) { return s + g.sum; }, 0);
       D.sec = {}; D.inds.forEach(function (g) { g.codes.forEach(function (c) { if (!D.sec[c]) D.sec[c] = (g.short || g.name).trim(); }); });
       D.asof = (D.kr && D.kr.asof) || '';
+      return ONLY ? J('./data/flow/index.json').then(function (f) { D.flow = (f && f.items) || {}; }) : null;
     });
   }
 
@@ -189,7 +190,20 @@
       });
     })());
   }
+  // 바닥 글: 최신 분기면 '26년 2분기, 1년치(연간 보고서)면 '26년
+  function flowPeriod(f) {
+    if (f.start && f.end) {
+      var a = new Date(f.start), b = new Date(f.end), days = (b - a) / 864e5, y = String(b.getFullYear()).slice(2);
+      if (days > 300) return "'" + y + '년';
+      return "'" + y + '년 ' + Math.ceil((b.getMonth() + 1) / 3) + '분기';
+    }
+    return f.q ? "'" + String(f.y).slice(2) + '년 ' + f.q + '분기' : "'" + String(f.y).slice(2) + '년';
+  }
   function SANKEY_OPTS() {
+    if (ONLY && D.flow) {
+      var cap = function (k) { var x = D.flow[k]; return x.m === 'KR' ? ((D.st[k] || {}).c || 0) : ((D.us.stocks[k] || {}).c || 0) * D.fx / 1e4; };
+      return Object.keys(D.flow).sort(function (a, b) { return cap(b) - cap(a); }).map(function (k) { var x = D.flow[k]; return [(x.m === 'KR' ? 'kr:' : 'us:') + k, x.m === 'KR' ? x.n : ko(k, x.n)]; });
+    }
     var st = D.st, kr = Object.keys(st).filter(function (c) { return c.slice(-1) === '0' && st[c].c; }).sort(function (a, b) { return st[b].c - st[a].c; }).slice(0, 15)
       .map(function (c) { return ['kr:' + c, st[c].n]; });
     var us = D.us.stocks, u = Object.keys(us).filter(function (k) { return us[k].c; }).sort(function (a, b) { return us[b].c - us[a].c; }).slice(0, 12)
@@ -416,7 +430,7 @@
             sg = sg.filter(function (x) { if (x.v < sgT * 0.04 || /^기타/.test(x.n)) { small += x.v; return false; } return true; }).slice(0, 6);   // 작은 건 '기타'로
             if (small > sgT * 0.02 && sg.length) sg.push({ n: '기타', v: small });
             return { fn: 'sankey3', o: { h1: nm2, segs: sg, rev: f.rev, cogs: f.cogs, op: f.op, items: items, ni: f.ni, tax: f.tax, money: money, logo: r.logo },
-              src: f.period + ' 실적 기준' + (f.seg_note ? ' (' + f.seg_note + ')' : '') + ' · ' + (us ? '미국 SEC' : '금융감독원 DART') };
+              src: flowPeriod(f) + ' 기준' };
           });
         }
         return null;
@@ -1021,8 +1035,10 @@
     var GRP = [['한국 증시', ['treemap', 'ranked', 'sectors', 'tiers', 'breadth', 'contrib', 'concentration', 'range52', 'rotation', 'dumbbell', 'radial', 'compare']], ['순위·역사', ['bump', 'slope', 'thennow', 'drawdown', 'monthly', 'calendar']],
       ['실적·배당', ['sankey', 'surprise', 'margin', 'profit', 'profitshare', 'scatter', 'dividend', 'revgrowth', 'roe', 'streak', 'unlisted']], ['미국·세계', ['voronoi', 'usmap', 'usranked', 'world', 'rivals', 'fx']],
       ['투자·주주', ['quilt', 'growth', 'waffle', 'gurucommon', 'holders']], ['경제·생활', ['krdash', 'usdash', 'exportboard', 'exportitem', 'kconsumer', 'rates', 'inflation', 'goldkrw', 'commod', 'race1y', 'travel']]], gbox = {};
+    if (ONLY) bar.style.display = 'none';
     GRP.forEach(function (g) { var d = document.createElement('div'); d.className = 'kgrp'; d.innerHTML = '<span>' + g[0] + '</span>'; bar.appendChild(d); g[1].forEach(function (id) { gbox[id] = d; }); });
     CARDS.forEach(function (c) {
+      if (ONLY ? c.id !== ONLY : c.id === 'sankey') return;   // 돈의 흐름은 따로 탭
       var b = document.createElement('button'); b.className = 'preset'; b.dataset.k = c.id; b.setAttribute('aria-pressed', 'false');
       b.innerHTML = '<span aria-hidden="true">' + c.icon + '</span> ' + c.name; (gbox[c.id] || bar.lastChild).appendChild(b);
       b.addEventListener('click', function () { pick(c.id); });
@@ -1033,6 +1049,17 @@
     function drawOpts(c) {
       var box = $('opts'), list = optsOf(c); box.innerHTML = ''; box.hidden = !list;
       if (!list) return;
+      if (ONLY && c.id === 'sankey') {             // 회사가 많아서 국내/해외 + 고르기 상자
+        var mk = (sel[c.id] || 'kr:').slice(0, 3);
+        [['kr:', '국내'], ['us:', '해외']].forEach(function (m) {
+          var b = document.createElement('button'); b.className = 'chip'; b.textContent = m[1]; b.setAttribute('aria-pressed', String(mk === m[0]));
+          b.addEventListener('click', function () { var f = list.filter(function (o) { return o[0].slice(0, 3) === m[0]; })[0]; if (f) { sel[c.id] = f[0]; pick(c.id); } }); box.appendChild(b);
+        });
+        var se = document.createElement('select'); se.className = 'co-sel'; se.setAttribute('aria-label', '회사 고르기');
+        list.filter(function (o) { return o[0].slice(0, 3) === mk; }).forEach(function (o) { var op = document.createElement('option'); op.value = o[0]; op.textContent = o[1]; if (o[0] === sel[c.id]) op.selected = true; se.appendChild(op); });
+        se.addEventListener('change', function () { sel[c.id] = se.value; pick(c.id); }); box.appendChild(se);
+        return;
+      }
       list.forEach(function (o) {
         var b = document.createElement('button'); b.className = 'chip'; b.textContent = o[1]; b.setAttribute('aria-pressed', String(sel[c.id] === o[0]));
         b.addEventListener('click', function () { sel[c.id] = o[0]; pick(c.id); }); box.appendChild(b);
@@ -1087,9 +1114,9 @@
     $('btn-mode').addEventListener('click', function () { var r = document.documentElement; r.setAttribute('data-mode', r.getAttribute('data-mode') === 'dark' ? 'light' : 'dark'); draw(); });
     $('c-hint').textContent = '자료 불러오는 중…';
     loadAll().then(function () { return document.fonts && document.fonts.ready; }).then(function () {
-      $('src-pill').textContent = '인포그래픽 ' + CARDS.length + '종 · ' + md(D.asof) + ' 기준';
+      $('src-pill').textContent = ONLY ? '돈의 흐름 · 국내·미국 ' + Object.keys(D.flow || {}).length + '곳' : '인포그래픽 ' + (CARDS.length - 1) + '종 · ' + md(D.asof) + ' 기준';
       var qs = new URLSearchParams(location.search), k0 = qs.get('k'); if (qs.get('o')) sel[k0] = qs.get('o');
-      pick(CARDS.some(function (c) { return c.id === k0; }) ? k0 : CARDS[0].id);
+      pick(ONLY || (CARDS.some(function (c) { return c.id === k0 && c.id !== 'sankey'; }) ? k0 : CARDS[0].id));
       // 경제·생활 카드는 자료가 아직 안 모인 게 있을 수 있다 → 미리 그려 보고 안 되면 단추를 숨긴다
       CARDS.forEach(function (c) {
         if (ECON_IDS.indexOf(c.id) < 0) return;

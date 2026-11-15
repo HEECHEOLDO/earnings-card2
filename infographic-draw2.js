@@ -338,7 +338,7 @@
     X.fillStyle = col; X.textAlign = align || 'left'; X.fillText(s, x, y); return px;
   }
   function sankey3(X, o) {
-    base.grainOnly(X); X.fillStyle = INK; window.__vcTitle(X, o.h1);
+    base.grainOnly(X); X.fillStyle = INK; window.__vcTitle(X, o.h1, o.logo);
     var m = o.money, rev = o.rev, cogs = Math.max(0, o.cogs || 0), gross = rev - cogs, op = o.op, opex = gross - op, ni = o.ni, tax = Math.max(0, o.tax || 0);
     var nonop = op - tax - ni, exIn = nonop < -rev * 0.03 ? -nonop : 0, exOut = nonop > rev * 0.01 ? nonop : 0;   // 작은 영업외 손익은 따로 그리지 않는다
     var segs = (o.segs || []).filter(function (x) { return x.v > rev * 0.004; }), items = (o.items || []).filter(function (x) { return x.v > rev * 0.002; });
@@ -346,7 +346,6 @@
     // 범례 · 로고
     var lx = L, ly = TOP + 2;
     [['매출', BL], ['이익', GN], ['비용', RD]].forEach(function (k) { X.fillStyle = k[1]; X.fillRect(lx, ly - 4, 30, 6); X.fillStyle = SOFT; X.font = font(700, 20); X.textAlign = 'left'; X.fillText(k[0], lx + 38, ly + 4); lx += 104; });
-    logoAt(X, o.logo, R - 36, TOP - 8, 34);
     var nw = 18, x0 = L + 160, x1 = hasSeg ? L + 300 : L + 70, x4 = R - 150, x2 = x1 + (x4 - x1) * 0.33, x3 = hasG ? x1 + (x4 - x1) * 0.66 : x1 + (x4 - x1) * 0.45, xm = (x3 + x4) / 2;
     var top = TOP + 60, bot = BOT - 8;
     // 자리 잡기 — 맨 아래가 바닥을 넘으면 배율을 줄여 다시
