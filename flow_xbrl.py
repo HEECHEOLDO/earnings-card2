@@ -8,9 +8,18 @@ from datetime import date
 import xbrl_dims as XD
 
 GEO = re.compile(r"Geograph|지역|국가|Countr|Timing|이전하는|이행하는|고객|Customer|Consolidat|Equity|Investee|Secondary|Related|관계|Carrying|Subsidiar|Joint|Associate|Range|Scenario|Restatement|Adjust")
-SKIP_M = re.compile(r"공시금액|ReportedAmount|조정|제거|Elimination|Adjust|Reconcil|연결|Consolidat|Intersegment|부문간|Corporate|전사", re.I)
+SKIP_M = re.compile(r"공시금액|ReportedAmount|조정|제거|Elimination|Adjust|Reconcil|연결|Consolidat|Intersegment|부문간|Corporate|전사|수행의무|한 시점|기간에 걸쳐|PointInTime|OverTime", re.I)
+GEO_M = re.compile(r"Americas|Europe|China|Japan|Asia|Pacific|EMEA|United States|International|미주|유럽|중국|아시아|국내|해외|북미|재화의 판매|용역의 제공", re.I)
 TOTAL_M = re.compile(r"OperatingSegmentsMember|영업부문 \[구성요소\]|SegmentsTotal|AllSegments", re.I)
-KO = {"Service": "서비스", "Services": "서비스", "Product": "제품", "Products": "제품", "Data Center": "데이터센터", "Gaming": "게이밍", "Automotive": "자동차",
+KO = {"Online Stores": "온라인 스토어", "Third-Party Seller Services": "판매자 서비스", "Amazon Web Services": "AWS", "Advertising Services": "광고", "Subscription Services": "구독",
+      "Physical Stores": "오프라인 매장", "Automotive Sales": "자동차 판매", "Services And Other": "서비스 등", "Energy Generation And Storage Sales": "에너지 저장",
+      "Energy Generation And Storage Leasing": "에너지 리스", "Automotive Leasing": "자동차 리스", "Automotive Regulatory Credits": "탄소 배출권", "Hyperscale": "하이퍼스케일",
+      "AI Clouds, Industrial, & Enterprise": "AI 클라우드·기업", "Edge Computing": "엣지 컴퓨팅", "Client and Gaming": "PC·게이밍", "Embedded": "임베디드",
+      "DRAM Products": "DRAM", "NAND Products": "NAND", "Other Product Sales": "기타", "Subscriptions and Services": "구독·서비스", "Other Operating Segment": "기타",
+      "Walmart US": "월마트 미국", "Walmart International": "월마트 해외", "Sam's Club US": "샘스클럽", "Azure": "애저", "Productivity And Server Licensing": "오피스·서버",
+      "Search And Advertising": "검색·광고", "Industry Solutions": "기업 솔루션", "Windows OEM And Devices": "윈도·기기", "Frontier And Support Services": "지원 서비스",
+      "Microsoft Three Six Five Cloud": "M365 클라우드", "XBOX": "엑스박스", "Client": "PC", "Infrastructure Software": "인프라 소프트웨어", "Semiconductor Solutions": "반도체",
+      "Service": "서비스", "Services": "서비스", "Product": "제품", "Products": "제품", "Data Center": "데이터센터", "Gaming": "게이밍", "Automotive": "자동차",
       "Professional Visualization": "전문 시각화", "Wearables, Home and Accessories": "웨어러블·홈", "Advertising": "광고", "Subscriptions, platforms, and devices": "구독·기기",
       "Google Cloud": "구글 클라우드", "Google Services": "구글 서비스", "Other": "기타", "Others": "기타", "Energy generation and storage": "에너지 저장", "Automotive sales": "자동차 판매",
       "Regulatory credits": "탄소 배출권", "Services and other": "서비스 등", "Family of Apps": "앱(페이스북 등)", "Reality Labs": "리얼리티 랩스"}
@@ -71,7 +80,7 @@ def segments(ctx, facts, rev_names, per, rev, L, base_dim):
         mem = dict((m, v) for m, v in g.items() if v > 0)
         if len(mem) < 2:
             continue
-        generic = [m for m in mem if re.search(r"(us-gaap:(Product|Service|ServiceOther)Member)$", m)]
+        generic = [m for m in ("us-gaap:ServiceOtherMember", "us-gaap:ServiceMember", "us-gaap:ProductMember") if m in mem]
         for _ in range(6):                       # 합이 너무 크면 겹치는 묶음(제품/서비스 합계, 상위 범주)을 뺀다
             s = sum(mem.values())
             if s <= rev * 1.06 or len(mem) <= 2:
@@ -91,7 +100,8 @@ def segments(ctx, facts, rev_names, per, rev, L, base_dim):
         s = sum(mem.values())
         if len(mem) < 2 or not (rev * 0.85 <= s <= rev * 1.45):
             continue
-        score = abs(s / rev - 1) + (0.0 if re.search(r"Product|Business|Segment|부문|제품", a + L.get(a, "")) else 0.05) + (0.03 if tot else 0)
+        geo = sum(1 for m in mem if GEO_M.search(L.get(m, "") or m)) / len(mem)          # 지역·거래 형태로 나눈 축은 뒤로
+        score = abs(s / rev - 1) + (0.0 if re.search(r"Product|Business|Segment|부문|제품", a + L.get(a, "")) else 0.05) + (0.03 if tot else 0) + geo * 0.5
         if best is None or score < best[0]:
             best = (score, a, mem)
     if not best:
@@ -142,7 +152,21 @@ def from_instance(text, labtext, us):
         val["gross"] = val["rev"] - val["cogs"]
     if val.get("cogs") is None and val.get("gross") is not None:
         val["cogs"] = val["rev"] - val["gross"]
-    segs = segments(ctx, facts, set(N["rev"]), per, val["rev"], L, base_dim if not us else (lambda d: False))
+    bd = base_dim if not us else (lambda d: False)
+    segs = segments(ctx, facts, set(N["rev"]), per, val["rev"], L, bd)
+    if not segs:                                  # 부문 매출이 누적(1~6월 등)으로만 있으면 그 비중으로 나눈다
+        cum = None
+        for n, c, v in facts:
+            p = ctx[c]
+            if n in N["rev"] and p["end"] == per[1] and p["start"] < per[0] and base_ok(p):
+                if cum is None or p["start"] < cum[0][0]:
+                    cum = ((p["start"], p["end"]), v)
+        if cum:
+            sc = segments(ctx, facts, set(N["rev"]), cum[0], cum[1], L, bd)
+            if sc:
+                k = val["rev"] / sum(v for _, v in sc)
+                segs = [[n, v * k] for n, v in sc]
+                val["seg_note"] = "매출 종류는 " + q_label(*cum[0]).split(" ")[-1] + " 비중"
     val["segs"] = segs
     val["start"], val["end"] = per
     val["period"] = q_label(*per)
