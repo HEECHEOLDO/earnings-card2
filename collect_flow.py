@@ -685,8 +685,8 @@ def main():
             pr = need(code, old, info["corp_code"] in rk)
             if old and old.get("docv") != DOC_VER and (len(old.get("items") or []) < 2 or len(old.get("segs") or []) < 2):
                 pr, old = 2, None                       # 매출 구분·판관비 세부가 없던 회사 — 보고서 원문에서 다시
-            elif old and "xcheck" not in old and pr is None and not usable(code):
-                pr, old = 2, None                       # 아직 검증 못 한 카드 — DART API 로 맞춰 보려고 다시
+            elif old and "xcheck" not in old and not usable(code):
+                pr, old = (2 if pr is None else pr), None   # 아직 검증 못 한 카드 — DART API 로 맞춰 보려고 다시 (그대로 건너뛰지 않게)
             if pr is not None:
                 jobs.append((pr, i, "KR", code, info["corp_code"], old, mc[code].get("n")))
         for i, c in enumerate(ul):
