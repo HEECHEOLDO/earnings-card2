@@ -93,6 +93,21 @@ FUNDS = [
     ("mit",        "MIT 대학",         "Massachusetts Institute of Technology", 351051),
     ("wellcome",   "웰컴 트러스트",    "Wellcome Trust",                      1026720),
     ("mirae",      "미래에셋자산운용", "Mirae Asset Global Investments",      1569395),
+    # ---- 자산운용사·대형 금융사 (고객 돈을 굴리는 곳 — 지수펀드 비중이 커서 시가총액 순서와 비슷하다) ----
+    ("blackrock",  "블랙록",           "BlackRock Inc",                       2012383),   # 2024년 재편 뒤 새 모회사 (옛 1364742)
+    ("vanguard",   "뱅가드",           "Vanguard Group",                      102909),
+    ("statestreet","스테이트 스트리트", "State Street Corp",                  93751),
+    ("fidelity",   "피델리티",         "FMR LLC",                             315066),
+    ("jpmorgan",   "JP모건",           "JPMorgan Chase & Co",                 19617),
+    ("morganstanley","모건스탠리",     "Morgan Stanley",                      895421),
+    ("goldman",    "골드만삭스",       "Goldman Sachs Group",                 886982),
+    ("bofa",       "뱅크오브아메리카", "Bank of America Corp",                70858),
+    ("troweprice", "T. 로우 프라이스", "T. Rowe Price Associates",            80255),
+    ("geode",      "지오드 캐피털",    "Geode Capital Management",            1214717),
+    ("invesco",    "인베스코",         "Invesco Ltd",                         914208),
+    ("northern",   "노던 트러스트",    "Northern Trust Corp",                 73124),
+    ("wellington", "웰링턴",           "Wellington Management Group",         902219),
+    ("ubs",        "UBS",              "UBS Group AG",                        1610520),
     # ---- 유명 기업 (회사가 직접 들고 있는 상장 주식) ----
     # 애플·MS·메타·테슬라·오라클은 13F 를 내지 않는다 (상장 주식 1억 달러 이상 보유 기관만 의무).
     # 세일즈포스·퀄컴은 2023년 이후 공시가 끊겼다.
@@ -117,6 +132,8 @@ FUNDS = [
     ("blackstone", "블랙스톤",         "Blackstone Inc",                      1393818),
     ("brookfield", "브룩필드",         "Brookfield Corp",                     1001085),
 ]
+MANAGERS = {"blackrock", "vanguard", "statestreet", "fidelity", "jpmorgan", "morganstanley", "goldman", "bofa",
+            "troweprice", "geode", "invesco", "northern", "wellington", "ubs"}
 CORPS = {"alphabet", "nvidia", "amazon", "amd", "intel", "uber", "cisco", "jnj", "pfizer",
          "merck", "gilead", "regeneron", "gsk", "sanofi", "toyota", "siemens", "alibaba", "samsungct",
          "blackstone", "brookfield"}
@@ -995,7 +1012,7 @@ def main():
             "title": title, "entity": sec_name or expect, "cik": cik,
             "period": meta["period"], "filed": meta["filed"], "acc": meta["acc"],
             "count": n_all, "total_value": round(total), "namever": NAME_VER,
-            "kind": "corp" if key in CORPS else "investor",
+            "kind": "corp" if key in CORPS else "manager" if key in MANAGERS else "investor",
             "holdings": holdings,
         }
         log("  %-12s %s 보유분 · %d종목 · 1위 %s %.1f%%"

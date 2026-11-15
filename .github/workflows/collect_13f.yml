@@ -1,0 +1,40 @@
+# 13F 보유 현황 (포트폴리오 탭) — 수집기를 고치면 바로 한 번 · 매일은 '해외 실적 수집'이 함께 돌린다
+name: 13F 보유 현황 수집
+
+on:
+  push:
+    branches: [main]
+    paths: ['collect_13f.py', '.github/workflows/collect_13f.yml']
+  workflow_dispatch:
+
+concurrency:
+  group: sec-collect
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: 13F
+        env:
+          SEC_UA: ${{ secrets.SEC_UA }}
+        run: |
+          python3 collect_13f.py --verify 2>&1 | grep -iE "blackrock|vanguard|state|fmr|jpmorgan|morgan|goldman|bank of america|rowe|geode|invesco|northern|wellington|ubs|\?\?" || true
+          python3 collect_13f.py
+      - name: 커밋
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/13f.json
+          if git diff --cached --quiet; then echo "변경 없음"; exit 0; fi
+          git commit -m "13F 보유 현황 $(date -u +'%Y-%m-%d')"
+          for i in 1 2 3 4 5; do git pull --rebase -X theirs --autostash && git push && exit 0; sleep 10; done
+          exit 1
