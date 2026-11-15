@@ -528,10 +528,16 @@ def main():
         jobs = []
         for i, t in enumerate(us):
             cik = (jl(os.path.join("data", "us", t + ".json"), {}) or {}).get("cik")
+            if isinstance(cik, (list, tuple)):          # 여러 CIK 를 적어 둔 회사 — 첫 번째(본사)
+                cik = cik[0] if cik else None
+            try:
+                cik = int(cik) if cik else None
+            except (TypeError, ValueError):
+                cik = None
             if not cik:
                 continue
             old = jl(os.path.join(OUT, t + ".json"))
-            pr = need(t, old, int(cik) in ru)
+            pr = need(t, old, cik in ru)
             if pr is not None:
                 jobs.append((pr, i, t, cik, old))
         jobs.sort(key=lambda j: (j[0], j[1]))
