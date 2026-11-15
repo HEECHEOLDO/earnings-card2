@@ -95,7 +95,7 @@ FUNDS = [
     ("mirae",      "미래에셋자산운용", "Mirae Asset Global Investments",      1569395),
     # ---- 자산운용사·대형 금융사 (고객 돈을 굴리는 곳 — 지수펀드 비중이 커서 시가총액 순서와 비슷하다) ----
     ("blackrock",  "블랙록",           "BlackRock Inc",                       2012383),   # 2024년 재편 뒤 새 모회사 (옛 1364742)
-    ("vanguard",   "뱅가드",           "Vanguard Group",                      102909),
+    ("vanguard",   "뱅가드",           "Vanguard Portfolio Management",       (2100121, 2100119)),   # 2026년부터 지수(VPM)·액티브(VCM) 둘로 나눠 공시 → 합친다 (옛 102909)
     ("statestreet","스테이트 스트리트", "State Street Corp",                  93751),
     ("fidelity",   "피델리티",         "FMR LLC",                             315066),
     ("jpmorgan",   "JP모건",           "JPMorgan Chase & Co",                 19617),
@@ -886,7 +886,8 @@ def build(rows):
 def verify():
     log("CIK 확인 — SEC 등록명이 기대와 다르면 번호가 틀린 것")
     log("-" * 66)
-    for key, title, expect, cik in FUNDS:
+    for key, title, expect, cik0 in FUNDS:
+      for cik in (cik0 if isinstance(cik0, tuple) else (cik0,)):
         j, why = get("https://data.sec.gov/submissions/CIK%010d.json" % cik)
         name = (j or {}).get("name", "") if j else ("실패: " + why)
         ok = expect.split()[0].lower() in name.lower()
@@ -1000,21 +1001,30 @@ def main():
 
     result, fails = dict(prev), []
     for key, title, expect, cik in funds:
-        meta, sec_name, why = latest_13f(cik)
-        if not meta:
-            fails.append((key, why)); continue
+        ciks = cik if isinstance(cik, tuple) else (cik,)
+        metas = [latest_13f(c) for c in ciks]
+        if not all(m[0] for m in metas):
+            fails.append((key, next(m[2] for m in metas if not m[0]))); continue
+        meta, sec_name = dict(metas[0][0]), metas[0][1]
+        meta["acc"] = "+".join(m[0]["acc"] for m in metas)
         old = prev.get(key, {})
         if (old.get("acc") == meta["acc"]
                 and old.get("namever") == NAME_VER
                 and "--force" not in sys.argv):
             log("  %-12s 변화 없음 (%s 보유분)" % (key, meta["period"]))
             continue
-        rows, why = fetch_holdings(cik, meta["acc"])
+        rows, why = [], None
+        for c, m in zip(ciks, metas):
+            r, why = fetch_holdings(c, m[0]["acc"])
+            if not r:
+                rows = None
+                break
+            rows += r
         if not rows:
             fails.append((key, why)); continue
         holdings, n_all, total = build(rows)
         result[key] = {
-            "title": title, "entity": sec_name or expect, "cik": cik,
+            "title": title, "entity": (sec_name or expect) + (" 외 %d곳" % (len(ciks) - 1) if len(ciks) > 1 else ""), "cik": ciks[0],
             "period": meta["period"], "filed": meta["filed"], "acc": meta["acc"],
             "count": n_all, "total_value": round(total), "namever": NAME_VER,
             "kind": "corp" if key in CORPS else "manager" if key in MANAGERS else "investor",
