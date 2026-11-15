@@ -19,42 +19,89 @@ CAT = [("인건비", r"급여|상여|퇴직|복리후생|인건비|임금"), ("�
 WHY = ""
 
 
-def _sga_items(tables, sga):
-    """판관비 주석 표 — 급여·지급수수료 같은 줄이 여럿 있고 합계가 판관비와 맞는 표"""
-    for rows in tables:
-        names = [P.acct(r[0]) for r in rows if r]
-        if sum(1 for n in names if re.search(r"급여|지급수수료|감가상각|광고|임차료|복리후생", n)) < 3:
-            continue
-        cat, tot, other = {}, None, 0.0
+def _tables(doc):
+    """원문의 표마다 (줄들, 단위) — 단위는 표 바로 앞 글에서 읽는다(표마다 다를 수 있다)"""
+    out = []
+    for m in re.finditer(r"<TABLE[^>]*>(.*?)</TABLE>", doc, re.S | re.I):
+        before = doc[max(0, m.start() - 900):m.start()]
+        out.append((P.rows_of(m.group(1)), P.unit_of(before + m.group(1)[:300]), re.sub(r"<[^>]+>", " ", before)[-300:]))
+    return out
+
+
+TOTAL_RX = re.compile(r"^(합계|계|총계|소계|합\s*계|총\s*계)$")
+
+
+def _breakdown(tables, target, total_rx, keep, drop, min_rows=2, tol=0.02):
+    """합계(또는 합)가 target(원)과 맞는 표에서 항목들 → [[이름, 원], ...]. 못 찾으면 []"""
+    best = None
+    for rows, u, ctx in tables:
+        items, tot = [], None
         for r in rows:
             if not r:
                 continue
             n = P.acct(r[0])
             v = P.first_amount(r)
-            if v is None:
+            if v is None or not n:
                 continue
-            if re.fullmatch(r"(합계|계|판매비와관리비(합계)?|총계)", n):
-                tot = v
+            if TOTAL_RX.match(n) or total_rx.search(n):
+                if tot is None:
+                    tot = v * u
                 continue
-            k = next((c for c, rx in CAT if re.search(rx, n)), None)
-            if k:
-                cat[k] = cat.get(k, 0) + v
-            else:
-                other += v
-        s = sum(cat.values()) + other
-        if not cat or s <= 0:
+            if drop.search(n) or not keep.search(n):
+                continue
+            items.append([n, v * u])
+        items = [x for x in items if x[1] > 0]
+        if len(items) < min_rows:
             continue
-        ref = sga or tot or s
-        if abs(s - ref) / ref > 0.05 and not (tot and abs(tot - ref) / ref < 0.03):
-            continue                              # 다른 표(제조원가명세서 등)
-        k = ref / s                               # 단위·반올림 차이는 비율로 맞춘다
-        top = sorted(cat.items(), key=lambda x: -x[1])[:3]
-        out = [[c, v * k] for c, v in top if v > 0]
-        rest = ref - sum(v for _, v in out)
-        if rest > ref * 0.02:
-            out.append(["기타 판관비", rest])
-        return out if len(out) >= 2 else []
-    return []
+        s = sum(v for _, v in items)
+        ok_tot = tot is not None and abs(abs(tot) - target) <= target * tol
+        ok_sum = abs(s - target) <= target * tol
+        if not (ok_sum or (ok_tot and target * 0.9 <= s <= target * 1.1)):
+            continue
+        score = abs(s - target) / target
+        if best is None or score < best[0]:
+            best = (score, items)
+    return best[1] if best else []
+
+
+REV_KEEP = re.compile(r"(매출|수익|수입|수수료)$|매출액$")
+REV_DROP = re.compile(r"원가|총이익|영업외|이자|금융|배당|기타수익|잡이익|환|평가|처분|지분법|법인세|시점|기간에\s*걸쳐|특수관계|채권|선수|미수|충당")
+SGA_KEEP = re.compile(r".")
+SGA_DROP = re.compile(r"^(판매비와관리비|판매비와일반관리비|영업비용|매출원가)$|원가|합계|소계")
+
+
+def _group(items, total, label_rest):
+    """판관비 세부 → 묶음 상위 3 + 나머지"""
+    cat, other = {}, 0.0
+    for n, v in items:
+        k = next((c for c, rx in CAT if re.search(rx, n)), None)
+        if k:
+            cat[k] = cat.get(k, 0) + v
+        else:
+            other += v
+    if not cat:
+        return []
+    s = sum(cat.values()) + other
+    k = total / s if s else 1
+    top = sorted(cat.items(), key=lambda x: -x[1])[:3]
+    out = [[c, v * k] for c, v in top if v > 0]
+    rest = total - sum(v for _, v in out)
+    if rest > total * 0.02:
+        out.append([label_rest, rest])
+    return out if len(out) >= 2 else []
+
+
+def _segments(items, rev):
+    """매출 구분(제품·상품·용역 …) → 큰 순서, 6개 넘으면 기타로"""
+    nm = lambda n: re.sub(r"\(.*?\)", "", n).strip()      # noqa: E731
+    merged = {}
+    for n, v in items:
+        merged[nm(n)] = merged.get(nm(n), 0) + v
+    out = sorted(([k, v] for k, v in merged.items()), key=lambda x: -x[1])
+    if len(out) > 6:
+        out = out[:5] + [["기타", sum(v for _, v in out[5:])]]
+    k = rev / sum(v for _, v in out)
+    return [[n, v * k] for n, v in out] if len(out) >= 2 else []
 
 
 def flow(code):
@@ -98,10 +145,14 @@ def flow(code):
             d["cogs"] = d["rev"] - d["gross"]
         if not d["rev"] or d["rev"] <= 0:
             continue
-        # 판관비 주석 (단위는 표마다 다를 수 있어 비율로 맞춘다)
-        sg_ref = d["sga"] if d["sga"] else ((d["gross"] - d["op"]) if d["gross"] is not None else None)
-        items = _sga_items(rowsets, sg_ref / u if sg_ref else None)
-        d["items"] = [[n, x * u] for n, x in items]
+        # 주석에서 매출 구분 · 판관비(또는 영업비용) 세부 — 합계가 손익계산서 숫자와 맞는 표만 쓴다
+        tables = _tables(doc)
+        gross = d["gross"] if d["gross"] is not None else d["rev"]
+        opex = gross - d["op"]
+        d["segs"] = _segments(_breakdown(tables, d["rev"], re.compile(r"^(매출액|영업수익|수익|매출)(합계)?$"), REV_KEEP, REV_DROP), d["rev"])
+        ref = d["sga"] if d["sga"] else opex
+        det = _breakdown(tables, ref, re.compile(r"^(판매비와관리비|판매비와일반관리비|영업비용)(합계)?$"), SGA_KEEP, SGA_DROP, min_rows=4) if ref and ref > 0 else []
+        d["items"] = _group(det, ref, "기타 판관비" if d["cogs"] is not None else "기타 영업비용")
         y, m = per
         end = date(y, m, calendar.monthrange(y, m)[1])
         py, pm = (y - 1, m)
@@ -110,7 +161,6 @@ def flow(code):
         d["period"] = "'%s년" % str(y)[2:]
         d["report"] = r["report_nm"]
         d["src"] = r["rcept_no"]
-        d["segs"] = []
         return d
     WHY = "손익 표를 못 읽음"
     return None
