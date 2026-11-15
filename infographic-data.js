@@ -102,6 +102,17 @@
      opt = 고른 선택지 값, r = 그린 결과(이름을 꺼낼 때만 씀) */
   function MK(opt) { return opt === 'kospi' ? '코스피' : opt === 'kosdaq' ? '코스닥' : ''; }
   function first(r) { return String(r.o.h1 || '').split(',')[0]; }
+  function eunNeun(w) {                         // 받침 있으면 '은', 없으면 '는' (영문·숫자는 읽는 소리로)
+    var t = String(w).replace(/[\s)\]'"’.]+$/, ''), c = t.slice(-1), k = c.charCodeAt(0);
+    if (k >= 0xAC00 && k <= 0xD7A3) return w + ((k - 0xAC00) % 28 ? '은' : '는');
+    if (/[013678]/.test(c)) return w + '은';
+    if (/[0-9]/.test(c)) return w + '는';
+    var wd = (t.match(/[A-Za-z&]+$/) || [''])[0];
+    if (/^[A-Z&]{1,4}$/.test(wd)) return w + (/[LMNR]/.test(c) ? '은' : '는');      // HMM, KT&G 처럼 글자로 읽는 이름
+    if (/(er|or|ar|re|e)$/i.test(wd)) return w + '는';                             // NAVER(네이버), Apple
+    if (/(ng|[lmnkp]|[^e]c)$/i.test(wd)) return w + '은';                            // ELECTRIC(일렉트릭), Amazon
+    return w + '는';
+  }
   var TITLE = {    // 모든 제목은 두 줄: 첫 줄 = 무엇(크게), 둘째 줄 = 궁금한 점 — ' / ' 로 나눈다
     treemap: function (o) { return (MK(o) || '한국 증시') + ' / 돈은 어디에 몰렸을까'; },
     ranked: function (o) { return (MK(o) || '코스피·코스닥') + ' / 올해 가장 많이 오른 종목은?'; },
@@ -111,7 +122,7 @@
     radial: function () { return '시총 TOP 20 / 올해 성적은?'; },
     thennow: function () { return '1995년 코스피 TOP 10 / 지금은 어디에?'; },
     compare: function (o, r) { var u = (r.o.items || []).filter(function (x) { return x.c === '#40444C' || x.c === '#4A5A78'; })[0]; return (u ? u.n : '미국 1등') + ' vs 한국 증시 전체 / 누가 더 클까'; },
-    sankey: function (o, r) { return first(r) + ' / 어떻게 돈을 벌까?'; },
+    sankey: function (o, r) { return eunNeun(first(r)) + ' / 어떻게 돈을 벌까?'; },
     surprise: function () { return '이번 분기 실적 / 웃은 회사와 운 회사'; },
     margin: function (o) { return (MK(o) || '국내 상장사') + ' / 100원 팔아 가장 많이 남기는 회사는?'; },
     world: function () { return '세계 증시 / 올해 성적표'; },
