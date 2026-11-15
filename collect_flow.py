@@ -141,7 +141,7 @@ def us_one(t, cik):
 
 
 # ------------------------------------------------------------------ 공시 원본(XBRL): 3개월 손익 + 매출 종류
-VER = 5                                            # 계산 방식이 바뀌면 올려서 다시 계산
+VER = 6                                            # 계산 방식이 바뀌면 올려서 다시 계산
 
 
 def kr_xbrl(corp, old=None):
@@ -287,7 +287,7 @@ def main():
                 d.update({"code": code, "name": mc[code].get("n"), "market": "KR", "updated": TODAY.isoformat()})
                 json.dump(d, open(os.path.join(OUT, code + ".json"), "w", encoding="utf-8"), ensure_ascii=False)
                 idx[code] = {"n": d["name"], "m": "KR", "p": d["period"]}
-                print("  ok %s %s %s 매출 %s 원가 %s 판관비 %s 영업 %s 순 %s 부문 %s" % (code, d["name"], d["period"], d["rev"], d.get("cogs"), d.get("sga"), d["op"], d["ni"], d.get("segs")))
+                print("  ok %s %s %s 매출 %s 원가 %s 판관비 %s 영업 %s 순 %s 부문 %s" % (code, d.get("name"), d.get("period"), d.get("rev"), d.get("cogs"), d.get("sga"), d.get("op"), d.get("ni"), d.get("segs")))
     for t in us:
         cik = None
         p = os.path.join("data", "us", t + ".json")
@@ -323,7 +323,7 @@ def main():
             d.update({"code": t, "name": mu[t].get("n"), "market": "US", "updated": TODAY.isoformat()})
             json.dump(d, open(os.path.join(OUT, t + ".json"), "w", encoding="utf-8"), ensure_ascii=False)
             idx[t] = {"n": d["name"], "m": "US", "p": d["period"]}
-            print("  ok %s %s 매출 %s 원가 %s R&D %s SG&A %s 영업 %s 순 %s" % (t, d["period"], d["rev"], d["cogs"], d.get("rnd"), d.get("sga"), d["op"], d["ni"]))
+            print("  ok %s %s 매출 %s 원가 %s R&D %s SG&A %s 영업 %s 순 %s" % (t, d.get("period"), d.get("rev"), d.get("cogs"), d.get("rnd"), d.get("sga"), d.get("op"), d.get("ni")))
     old = {}
     ip = os.path.join(OUT, "index.json")
     if os.path.exists(ip):

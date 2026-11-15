@@ -82,7 +82,9 @@ def segments(ctx, facts, rev_names, per, rev, L, base_dim, geo_ok=False):
         al = a + " " + L.get(a, "")
         if SKIP_M.search(m) or SKIP_M.search(L.get(m, "")):
             continue
-        if GEO.search(al) and not (geo_ok and GEO_AX.search(al)):
+        if geo_ok and not GEO_AX.search(al):
+            continue                              # 지역 단계에서는 지역 축만
+        if GEO.search(al) and not geo_ok:
             continue
         g = groups.setdefault((a, tot), {})
         if m not in g:
@@ -95,7 +97,7 @@ def segments(ctx, facts, rev_names, per, rev, L, base_dim, geo_ok=False):
         generic = [m for m in ("us-gaap:ServiceOtherMember", "us-gaap:ServiceMember", "us-gaap:ProductMember") if m in mem]
         for _ in range(6):                       # 합이 너무 크면 겹치는 묶음(제품/서비스 합계, 상위 범주)을 뺀다
             s = sum(mem.values())
-            if s <= rev * 1.06 or len(mem) <= 2:
+            if s <= rev * 1.12 or len(mem) <= 2:    # 부문끼리 사고판 몫(내부 거래)만큼은 합이 조금 클 수 있다
                 break
             if generic:
                 mem.pop(generic.pop(), None)
@@ -105,12 +107,12 @@ def segments(ctx, facts, rev_names, per, rev, L, base_dim, geo_ok=False):
             drop = None
             for m, v in vals:
                 rest = s - v
-                if abs(rest - rev) / rev < 0.06:
+                if abs(rest - rev) / rev < 0.1:
                     drop = m
                     break
             mem.pop(drop or vals[0][0])
         s = sum(mem.values())
-        if len(mem) < 2 or not (rev * 0.85 <= s <= rev * 1.45):
+        if len(mem) < 2 or not (rev * 0.75 <= s <= rev * 1.45):
             continue
         geo = sum(1 for m in mem if GEO_M.search(L.get(m, "") or m)) / len(mem)          # 지역·거래 형태로 나눈 축은 뒤로
         if geo >= 0.5 and not geo_ok:
@@ -120,7 +122,14 @@ def segments(ctx, facts, rev_names, per, rev, L, base_dim, geo_ok=False):
             best = (score, a, mem)
     if not best:
         return []
-    out = sorted(([clean_member(L.get(m), m), v] for m, v in best[2].items()), key=lambda x: -x[1])
+    merged = {}
+    for m, v in best[2].items():                  # 이름이 같은 멤버(표가 달라 두 번 나온 것)는 합친다
+        k = clean_member(L.get(m), m)
+        merged[k] = merged.get(k, 0) + v
+    out = sorted(([k, v] for k, v in merged.items()), key=lambda x: -x[1])
+    s = sum(v for _, v in out)
+    if s < rev * 0.97:                            # 부문 합이 매출보다 모자라면 나머지는 '기타'
+        out.append(["기타", rev - s])
     if len(out) > 7:
         out = out[:6] + [["기타", sum(v for _, v in out[6:])]]
     return out
