@@ -198,8 +198,63 @@ def kr_xbrl(corp, old=None):
                         v["mix_err"] = (mix or {}).get("err", "사업보고서 못 찾음")
                 except Exception as e:              # noqa: BLE001
                     v["mix_err"] = str(e)[:120]
+            if (not v.get("items") and v.get("sga")) or not v.get("segs"):
+                try:                                # XBRL 에 세부가 없는 작은 회사 — 보고서 원문(주석 표)에서
+                    doc_fallback(v, r0, [r for r in rows if "사업보고서" in r["report_nm"]][:1], fa, ia)
+                except Exception as e:              # noqa: BLE001
+                    v["doc_err"] = str(e)[:120]
             return v
     return None
+
+
+def doc_fallback(v, r0, annual, fa, ia):
+    """보고서 원문의 주석 표 — 합계가 손익계산서 숫자와 맞는 표만 쓴다.
+    1) 이번 분기 보고서 원문에서 이번 분기 숫자와 맞는 표 → 그대로
+    2) 없으면 최근 사업보고서 원문에서 연간 숫자와 맞는 표 → 그 비중으로 이번 분기를 나눈다"""
+    import flow_audit as FA
+    import probe_audit as P
+    SGA_H = re.compile(r"^(판매비와관리비|판매비와일반관리비|판매관리비)(합계|계)?$")
+    REV_H = re.compile(r"^(매출액|영업수익|수익|매출)(합계|계)?$")
+    want_i, want_s = not v.get("items") and v.get("sga"), not v.get("segs")
+    doc = P.fetch_doc(r0["rcept_no"])
+    tabs = FA._tables(doc) if doc else []
+    if want_i and tabs:
+        det = FA._breakdown(tabs, v["sga"], SGA_H, FA.SGA_KEEP, FA.SGA_DROP, min_rows=4)
+        it = FA._group(det, v["sga"], "기타 판관비") if det else []
+        if it:
+            v["items"], v["items_from"], want_i = it, "본문", False
+    if want_s and tabs:
+        rv = FA._breakdown(tabs, v["rev"], REV_H, FA.REV_KEEP, FA.REV_DROP)
+        sg = FA._segments([x for x in rv if not FA.REV_DROP.search(x[0])], v["rev"]) if rv else []
+        if sg:
+            v["segs"], want_s = sg, False
+    if not (want_i or want_s) or not annual:
+        return
+    a = annual[0]
+    if a["rcept_no"] == r0["rcept_no"]:
+        return
+    av = None
+    if ia:
+        la = [n for n in fa if "lab-ko" in n]
+        av = FX.from_instance(fa[ia[0]], fa[la[0]] if la else "", us=False)
+    if not av:
+        return
+    doc = P.fetch_doc(a["rcept_no"])
+    tabs = FA._tables(doc) if doc else []
+    if not tabs:
+        return
+    if want_i and av.get("sga"):
+        det = FA._breakdown(tabs, av["sga"], SGA_H, FA.SGA_KEEP, FA.SGA_DROP, min_rows=4)
+        it = FA._group(det, av["sga"], "기타 판관비") if det else []
+        if it:
+            k = v["sga"] / av["sga"]
+            v["items"], v["items_from"] = [[n, x * k] for n, x in it], "'%s년 연간 비중" % av["end"][2:4]
+    if want_s and av.get("rev"):
+        rv = FA._breakdown(tabs, av["rev"], REV_H, FA.REV_KEEP, FA.REV_DROP)
+        sg = FA._segments([x for x in rv if not FA.REV_DROP.search(x[0])], av["rev"]) if rv else []
+        if sg:
+            k = v["rev"] / av["rev"]
+            v["segs"], v["seg_note"] = [[n, x * k] for n, x in sg], "매출 종류는 '%s년 연간 비중" % av["end"][2:4]
 
 
 def _us_files(cik, acc):

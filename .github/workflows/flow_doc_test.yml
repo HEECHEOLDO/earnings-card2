@@ -1,0 +1,24 @@
+# 시험용 — 돈의 흐름 원문 대체 확인 (손으로만 돈다)
+name: 돈의 흐름 원문 시험
+on:
+  workflow_dispatch:
+    inputs:
+      codes:
+        description: 종목코드 (쉼표)
+        default: '306620,004650,199730,191410,005930'
+permissions:
+  contents: read
+jobs:
+  t:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: 시험
+        env:
+          DART_API_KEY: ${{ secrets.DART_API_KEY }}
+          CODES: ${{ inputs.codes }}
+        run: python3 tools/flow_doc_test.py
