@@ -34,6 +34,8 @@ TOTAL_RX = re.compile(r"^(합계|계|총계|소계|합\s*계|총\s*계)$")
 def _breakdown(tables, target, total_rx, keep, drop, min_rows=2, tol=0.02):
     """합계(또는 합)가 target(원)과 맞는 표에서 항목들 → [[이름, 원], ...]. 못 찾으면 []"""
     best = None
+    if not target or target <= 0:
+        return []
     for rows, u, ctx in tables:
         items, tot = [], None
         for r in rows:
@@ -58,14 +60,14 @@ def _breakdown(tables, target, total_rx, keep, drop, min_rows=2, tol=0.02):
         ok_sum = abs(s - target) <= target * tol
         if not (ok_sum or (ok_tot and target * 0.9 <= s <= target * 1.1)):
             continue
-        score = abs(s - target) / target
+        score = abs(s - target) / max(target, 1)
         if best is None or score < best[0]:
             best = (score, items)
     return best[1] if best else []
 
 
 REV_KEEP = re.compile(r"(매출|수익|수입|수수료)$|매출액$")
-REV_DROP = re.compile(r"원가|총이익|영업외|이자|금융|배당|기타수익|잡이익|환|평가|처분|지분법|법인세|시점|기간에\s*걸쳐|특수관계|채권|선수|미수|충당")
+REV_DROP = re.compile(r"^지급|판매수수료|잡수익|잡이익|고객과의\s*계약|기타\s*원천|원가|총이익|영업외|이자|금융|배당|기타수익|잡이익|환|평가|처분|지분법|법인세|시점|기간에\s*걸쳐|특수관계|채권|선수|미수|충당")
 SGA_KEEP = re.compile(r".")
 SGA_DROP = re.compile(r"^(판매비와관리비|판매비와일반관리비|영업비용|매출원가)$|원가|합계|소계")
 
@@ -100,7 +102,10 @@ def _segments(items, rev):
     out = sorted(([k, v] for k, v in merged.items()), key=lambda x: -x[1])
     if len(out) > 6:
         out = out[:5] + [["기타", sum(v for _, v in out[5:])]]
-    k = rev / sum(v for _, v in out)
+    sm = sum(v for _, v in out)
+    if sm <= 0:
+        return []
+    k = rev / sm
     return [[n, v * k] for n, v in out] if len(out) >= 2 else []
 
 
