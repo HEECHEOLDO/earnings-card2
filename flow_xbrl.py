@@ -31,7 +31,16 @@ def clean_member(lab, name):
     if not lab:
         s = re.sub(r"Member$", "", s)
         s = re.sub(r"(?<=[a-z])(?=[A-Z])", " ", s)
+    s = REGION_KO.get(s, s)
     return KO.get(s, s)
+
+
+GEO_AX = re.compile(r"Geograph|지역|국가|Countr|Region", re.I)       # 지역 축 — 매출 종류가 없을 때만 쓴다
+REGION_KO = {"본사 소재지 국가": "국내", "대한민국": "국내", "한국": "국내", "UNITED STATES": "미국", "United States": "미국", "U.S.": "미국",
+             "Americas": "미주", "Europe": "유럽", "Greater China": "중화권", "China": "중국", "Japan": "일본", "Rest of Asia Pacific": "기타 아시아",
+             "Asia Pacific": "아시아·태평양", "EMEA": "유럽·중동·아프리카", "Non-US": "미국 외", "Non- U.S.": "미국 외", "International": "해외",
+             "Latin America": "중남미", "North America": "북미", "Other Countries": "기타 국가", "Rest of World": "기타", "Taiwan": "대만",
+             "Singapore": "싱가포르", "Other": "기타", "KUS": "미국(KUS)"}
 
 
 def q_label(start, end):
@@ -55,8 +64,8 @@ def pick_period(ctx, facts, rev_names, base_ok):
     return best[1] if best else None
 
 
-def segments(ctx, facts, rev_names, per, rev, L, base_dim):
-    """한 축(부문·제품)의 멤버별 매출. 합이 총매출과 맞는 축을 고른다."""
+def segments(ctx, facts, rev_names, per, rev, L, base_dim, geo_ok=False):
+    """한 축(부문·제품)의 멤버별 매출. 합이 총매출과 맞는 축을 고른다. geo_ok: 지역 축도 허용(제품·부문이 없을 때)"""
     groups = {}
     for n, c, v in facts:
         if n not in rev_names:
@@ -70,7 +79,10 @@ def segments(ctx, facts, rev_names, per, rev, L, base_dim):
         if len(dims) != 1:
             continue
         a, m = dims[0]
-        if GEO.search(a) or GEO.search(L.get(a, "")) or SKIP_M.search(m) or SKIP_M.search(L.get(m, "")):
+        al = a + " " + L.get(a, "")
+        if SKIP_M.search(m) or SKIP_M.search(L.get(m, "")):
+            continue
+        if GEO.search(al) and not (geo_ok and GEO_AX.search(al)):
             continue
         g = groups.setdefault((a, tot), {})
         if m not in g:
@@ -101,7 +113,7 @@ def segments(ctx, facts, rev_names, per, rev, L, base_dim):
         if len(mem) < 2 or not (rev * 0.85 <= s <= rev * 1.45):
             continue
         geo = sum(1 for m in mem if GEO_M.search(L.get(m, "") or m)) / len(mem)          # 지역·거래 형태로 나눈 축은 뒤로
-        if geo >= 0.5:
+        if geo >= 0.5 and not geo_ok:
             continue                              # 지역별·거래 형태별(재화/용역)은 '매출 종류'로 쓰지 않는다
         score = abs(s / rev - 1) + (0.0 if re.search(r"Product|Business|Segment|부문|제품", a + L.get(a, "")) else 0.05) + (0.03 if tot else 0) + geo * 0.5
         if best is None or score < best[0]:
@@ -197,20 +209,30 @@ def from_instance(text, labtext, us, caltext=""):
     if val.get("cogs") is None and val.get("gross") is not None:
         val["cogs"] = val["rev"] - val["gross"]
     bd = base_dim if not us else (lambda d: False)
-    segs = segments(ctx, facts, set(N["rev"]), per, val["rev"], L, bd)
-    if not segs:                                  # 부문 매출이 누적(1~6월 등)으로만 있으면 그 비중으로 나눈다
-        cum = None
-        for n, c, v in facts:
-            p = ctx[c]
-            if n in N["rev"] and p["end"] == per[1] and p["start"] < per[0] and base_ok(p):
-                if cum is None or p["start"] < cum[0][0]:
-                    cum = ((p["start"], p["end"]), v)
-        if cum:
-            sc = segments(ctx, facts, set(N["rev"]), cum[0], cum[1], L, bd)
-            if sc:
-                k = val["rev"] / sum(v for _, v in sc)
-                segs = [[n, v * k] for n, v in sc]
-                val["seg_note"] = "매출 종류는 " + q_label(*cum[0]).split(" ")[-1] + " 비중"
+    cum = None                                    # 같은 날 끝나는 누적 기간(1~6월 등)
+    for n, c, v in facts:
+        p = ctx[c]
+        if n in N["rev"] and p["end"] == per[1] and p["start"] < per[0] and base_ok(p):
+            if cum is None or p["start"] < cum[0][0]:
+                cum = ((p["start"], p["end"]), v)
+
+    def find(geo):
+        sg = segments(ctx, facts, set(N["rev"]), per, val["rev"], L, bd, geo)
+        if sg or not cum:
+            return sg, ""
+        sc = segments(ctx, facts, set(N["rev"]), cum[0], cum[1], L, bd, geo)   # 부문 매출이 누적으로만 있으면 그 비중으로 나눈다
+        if not sc:
+            return [], ""
+        k = val["rev"] / sum(v for _, v in sc)
+        return [[n, v * k] for n, v in sc], "매출 종류는 " + q_label(*cum[0]).split(" ")[-1] + " 비중"
+
+    segs, note = find(False)                      # 1) 제품·사업 부문
+    if not segs:
+        segs, note = find(True)                   # 2) 없으면 지역별 (미주·유럽·중국·국내 …)
+        if segs:
+            val["seg_kind"] = "지역"
+    if note:
+        val["seg_note"] = note
     val["segs"] = segs
     # 영업비용 세부 — 계산 링크베이스에서 영업비용(또는 판관비)의 자식 항목들
     val["items"] = opex_items(ctx, facts, per, base_ok, CAL, L, us, val)
