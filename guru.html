@@ -311,6 +311,13 @@
         <span class="hint">표를 붙여넣으면 티커만 골라 씁니다</span>
       </div>
       <div class="ctl-row">
+        <label>그래프 모양</label>
+        <div class="cp-tabs" role="group" aria-label="그래프 모양">
+          <button type="button" class="cp-tab ctype on" data-ct="donut">도넛</button>
+          <button type="button" class="cp-tab ctype" data-ct="bar">막대</button>
+        </div>
+      </div>
+      <div class="ctl-row">
         <label class="check"><input type="checkbox" id="chk-logo" checked> 조각 안에 기업 로고</label>
         <label class="check"><input type="checkbox" id="chk-title-logo" checked> 제목 앞에 기업 로고</label>
       </div>
@@ -483,7 +490,8 @@
   /* ============================================================
      유명 포트폴리오 — SEC 13F 를 미리 받아둔 data/13f.json 에서
      ============================================================ */
-  var F13 = { funds: {} };
+  var F13 = { funds: {} }, FX = 0;
+  fetch('./data/fx.json').then(function (r) { return r.json(); }).then(function (j) { FX = (j && j.usdkrw) || 0; }).catch(function () {});
 
   // 받침이 있으면 '은', 없으면 '는' — 알파벳(구글)은 / 손정의(소프트뱅크)는 / AMD는 / GSK는
   function topic(name) {
@@ -535,9 +543,10 @@
         F13 = j;
         var sel = document.getElementById('f-fund');
         // 투자자 / 유명 기업 두 묶음으로 나눠 보여준다
-        var groups = { investor: document.createElement('optgroup'), corp: document.createElement('optgroup'),
+        var groups = { investor: document.createElement('optgroup'), manager: document.createElement('optgroup'), corp: document.createElement('optgroup'),
                        kr5: document.createElement('optgroup') };
         groups.investor.label = '유명 투자자';
+        groups.manager.label = '자산운용사·대형 금융사';
         groups.corp.label = '유명 기업 (회사가 직접 투자한 종목)';
         groups.kr5.label = '국내 운용사·기관 (지분 5% 이상 종목)';
         Object.keys(j.funds || {}).forEach(function (k) {
@@ -548,9 +557,10 @@
           var o = document.createElement('option');
           o.value = k;
           o.textContent = f.title + '  (' + (f.kind === 'kr5' ? monthLabel(f.period) : quarterLabel(f.period)) + ')';
-          groups[f.kind === 'corp' ? 'corp' : f.kind === 'kr5' ? 'kr5' : 'investor'].appendChild(o);
+          groups[f.kind === 'corp' ? 'corp' : f.kind === 'kr5' ? 'kr5' : f.kind === 'manager' ? 'manager' : 'investor'].appendChild(o);
         });
         sel.appendChild(groups.investor);
+        if (groups.manager.children.length) sel.appendChild(groups.manager);
         if (groups.corp.children.length) sel.appendChild(groups.corp);
         if (groups.kr5.children.length) sel.appendChild(groups.kr5);
       })
@@ -564,7 +574,7 @@
   function applyFund(key) {
     var f = F13.funds && F13.funds[key];
     var note = document.getElementById('fund-note');
-    if (!f) { note.style.display = 'none'; state.fundLogo = null; return; }
+    if (!f) { note.style.display = 'none'; state.fundLogo = null; state.fundVal = null; return; }
     document.getElementById('f-name').value = f.title;
     state.fundLogo = f.kind === 'corp' ? (CORP_LOGO[key] || null) : null;
     document.getElementById('f-josa').value = topic(f.title).slice(f.title.length);
@@ -573,6 +583,8 @@
     // 상위 40개만 저장돼 있다 — 나머지는 '기타'로 넣어야 비중이 전체(100%) 기준이 된다
     // (안 넣으면 시타델 1위 7.8% 가 27.7% 로 부풀려졌다)
     var lines = f.holdings.map(function (h) { return h.name + ' ' + h.weight + '%'; });
+    state.fundVal = {}; state.fundKind = f.kind;
+    f.holdings.forEach(function (h) { if (h.value) state.fundVal[h.name] = h.value; });   // 막대 그래프에 금액(원)을 함께 적는다
     var shown = f.holdings.reduce(function (a, h) { return a + h.weight; }, 0);
     if (100 - shown > 0.05) lines.push('기타 ' + (100 - shown).toFixed(2) + '%');
     document.getElementById('f-data').value = lines.join('\n');
@@ -830,6 +842,60 @@
     });
   }
 
+  /* 막대 — 비중 큰 순서로 세로 막대. 막대 위: 비중(크게)·금액(원), 막대 안 위쪽: 로고, 아래: 이름.
+     '기타'는 막대로 그리지 않는다(상위 몇 개만 견주는 그림). 높이는 1위 막대 기준. */
+  function wonOf(usd) {
+    if (!usd || !FX) return '';
+    var eok = usd * FX / 1e8;
+    return eok >= 1e4 ? (eok / 1e4).toFixed(eok >= 1e6 - 500 ? 0 : 1) + '조원' : Math.round(eok).toLocaleString('ko-KR') + '억원';
+  }
+  function drawBars(ctx, x0, top, W, bottom) {
+    var T = TOKENS.card, rows = state.rows.filter(function (r) { return !r.etc; });
+    if (!rows.length) return;
+    var n = rows.length, gap = n > 8 ? 12 : 16, bw = (W - gap * (n - 1)) / n;
+    var nameH = 64, labTop = 92, base = bottom - nameH, mx = rows[0].pct;
+    rows.forEach(function (r) { if (r.pct > mx) mx = r.pct; });
+    var hMax = base - top - labTop;
+    rows.forEach(function (r, i) {
+      var x = x0 + i * (bw + gap), h = Math.max(6, hMax * r.pct / mx), y = base - h;
+      var col = state.colors[state.rows.indexOf(r)] || T.ink;
+      ctx.fillStyle = col;
+      ctx.beginPath(); var rr = Math.min(12, bw / 4);
+      ctx.moveTo(x, base); ctx.lineTo(x, y + rr); ctx.arcTo(x, y, x + rr, y, rr); ctx.lineTo(x + bw - rr, y); ctx.arcTo(x + bw, y, x + bw, y + rr, rr); ctx.lineTo(x + bw, base); ctx.closePath(); ctx.fill();
+      // 로고 — 막대 안 위쪽 (낮은 막대면 막대 위)
+      var im = state.logos ? logoImg(r.logo) : null, d = Math.min(bw * 0.62, 84);
+      var ly = h >= d + 26 ? y + 14 + d / 2 : null;
+      // 위 라벨
+      var cxm = x + bw / 2, ty = y - 14;
+      var val = state.fundVal && state.fundVal[r.name] ? wonOf(state.fundVal[r.name]) : '';
+      if (im && ly == null) { ly = y - 14 - d / 2; ty = y - 28 - d; }
+      ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
+      if (val) { ctx.fillStyle = T.footer; fitText(ctx, val, 700, 24, 15, bw + gap * 0.8); ctx.fillText(val, cxm, ty); ty -= 32; }
+      ctx.fillStyle = T.ink; fitText(ctx, r.pct.toFixed(1) + '%', 900, 38, 20, bw + gap * 0.8); ctx.fillText(r.pct.toFixed(1) + '%', cxm, ty);
+      if (im) {
+        ctx.save(); ctx.beginPath(); ctx.arc(cxm, ly, d / 2 + 3, 0, 7); ctx.fillStyle = '#FFFFFF'; ctx.fill();
+        ctx.beginPath(); ctx.arc(cxm, ly, d / 2, 0, 7); ctx.clip(); ctx.drawImage(im, cxm - d / 2, ly - d / 2, d, d); ctx.restore();
+      }
+      // 이름
+      ctx.fillStyle = T.ink;
+      var nmW = bw + gap * 0.6, px = fitText(ctx, r.name, 800, 26, 14, nmW), sp = r.name.indexOf(' ');
+      if (px < 20 && sp > 0) {                     // 이름이 길면 두 줄로 (자르지 않는다)
+        var mid = r.name.length / 2, best = sp;
+        for (var k = 0; k < r.name.length; k++) if (r.name[k] === ' ' && Math.abs(k - mid) < Math.abs(best - mid)) best = k;
+        var a1 = r.name.slice(0, best), a2 = r.name.slice(best + 1);
+        var p2 = Math.min(fitText(ctx, a1, 800, 22, 13, nmW), fitText(ctx, a2, 800, 22, 13, nmW)); ctx.font = font(800, p2);
+        ctx.fillText(a1, cxm, base + 30); ctx.fillText(a2, cxm, base + 30 + p2 + 4);
+      } else ctx.fillText(r.name, cxm, base + 36);
+    });
+    ctx.strokeStyle = T.rule; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(x0, base + 0.5); ctx.lineTo(x0 + W, base + 0.5); ctx.stroke();
+    ctx.textAlign = 'left';
+  }
+  function fitText(ctx, s, w, px, min, maxW) {
+    ctx.font = font(w, px);
+    while (px > min && ctx.measureText(s).width > maxW) { px -= 1; ctx.font = font(w, px); }
+    return px;
+  }
+
   function drawDonut(ctx, cx, cy, R, rows, colors, bounds) {
     var T = TOKENS.card, D = T.donut;
     var r0 = R * D.holeRatio;
@@ -1066,7 +1132,7 @@
   /* ============================================================
      카드
      ============================================================ */
-  var state = { rows: [], colors: [], guide:false, logos:true, showTitleLogo:true, fundLogo:null, hole:true, handle:'@돈굴돈굴',
+  var state = { rows: [], colors: [], guide:false, logos:true, showTitleLogo:true, fundLogo:null, hole:true, handle:'@돈굴돈굴', chart:'donut', fundVal:null,
                 name:'워런 버핏', sub:'' };
 
   function drawCard(ctx) {
@@ -1137,7 +1203,8 @@
       var maxByH = availH/2 - blockH*0.8;
       var R = Math.max(120, Math.min(maxByW, maxByH));
 
-      drawDonut(ctx, cx, cy, R, state.rows, state.colors,
+      if (state.chart === 'bar') drawBars(ctx, CX, chartTop, CWID, chartBottom);
+      else drawDonut(ctx, cx, cy, R, state.rows, state.colors,
                          { left: D.boundInset, right: CW - D.boundInset,
                            top: chartTop, bottom: chartBottom });
 
@@ -1218,7 +1285,7 @@
     }
 
     state.rows = normalize(items, topN, document.getElementById('f-label').value,
-                           parseFloat(document.getElementById('f-min').value));
+                           state.chart === 'bar' ? 0 : parseFloat(document.getElementById('f-min').value));   // 막대는 작은 것도 상위 N개를 그대로
     state.colors = ramp(document.getElementById('color-base').value,
                         state.rows.length, state.rows);
     renderList();
@@ -1752,9 +1819,9 @@
     });
     nat.addEventListener('input', function () { pick(this.value); });
 
-    Array.prototype.forEach.call(document.querySelectorAll('.cp-tab'), function (t) {
+    Array.prototype.forEach.call(document.querySelectorAll('.cp-tab[data-t]'), function (t) {
       t.addEventListener('click', function () {
-        Array.prototype.forEach.call(document.querySelectorAll('.cp-tab'), function (x) {
+        Array.prototype.forEach.call(document.querySelectorAll('.cp-tab[data-t]'), function (x) {
           x.classList.toggle('on', x === t);
         });
         var isGrid = t.dataset.t === 'grid';
@@ -1782,6 +1849,14 @@
   document.getElementById('f-top').addEventListener('input', refresh);
   document.getElementById('f-min').addEventListener('input', refresh);
   document.getElementById('f-label').addEventListener('change', refresh);
+  Array.prototype.forEach.call(document.querySelectorAll('.cp-tab.ctype'), function (b) {
+    b.addEventListener('click', function () {
+      state.chart = b.dataset.ct;
+      Array.prototype.forEach.call(document.querySelectorAll('.cp-tab.ctype'), function (x) { x.classList.toggle('on', x === b); });
+      var lg = document.getElementById('chk-logo'); if (lg && lg.parentNode) lg.parentNode.lastChild.textContent = state.chart === 'bar' ? ' 막대 안에 기업 로고' : ' 조각 안에 기업 로고';
+      refresh();
+    });
+  });
   document.getElementById('color-base').addEventListener('input', refresh);
   document.getElementById('chk-title-logo').addEventListener('change', function () {
     state.showTitleLogo = this.checked; drawPreview();
