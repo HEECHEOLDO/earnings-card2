@@ -373,8 +373,9 @@
     var s = g.s;
     // ---- 리본
     if (hasSeg) {
-      var gapS = Math.min(26, (bot - top - g.hR) / (segs.length + 1)), tot = g.hR + gapS * (segs.length - 1), ys = Math.max(top, g.yR + g.hR / 2 - tot / 2), cur = g.yR;
-      segs.forEach(function (sg) { var h = sg.v * s; sg.y = ys; sg.h = h; rib(X, x0 + nw, ys, ys + h, x1, cur, cur + h, BLS); ys += h + gapS; cur += h; });
+      var gapS = Math.min(30, (bot - top - g.hR) / (segs.length + 1)), tot = g.hR + gapS * (segs.length - 1), ys = Math.max(top, g.yR + g.hR / 2 - tot / 2), cur = g.yR;
+      var kS = rev / segs.reduce(function (t, x) { return t + x.v; }, 0);          // 부문 합이 총매출보다 크면(내부 거래) 비율로 맞춘다
+      segs.forEach(function (sg) { var h = sg.v * s * kS; sg.y = ys; sg.h = h; rib(X, x0 + nw, ys, ys + h, x1, cur, cur + h, BLS); ys += h + gapS; cur += h; });
     }
     var sx = hasG ? x2 : x1, sy = hasG ? g.yG : g.yR;
     if (hasG) { rib(X, x1 + nw, g.yR, g.yR + g.hG, x2, g.yG, g.yG + g.hG, GNS); rib(X, x1 + nw, g.yR + g.hG, g.yR + g.hR, x2, g.yC, g.yC + g.hC, RDS); }

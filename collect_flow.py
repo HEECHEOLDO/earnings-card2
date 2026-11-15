@@ -18,6 +18,9 @@ from datetime import date
 
 import collect as C
 import collect_us as U
+import flow_xbrl as FX
+import xbrl_dims as XD
+import re
 
 OUT = os.path.join("data", "flow")
 TODAY = date.today()
@@ -137,6 +140,68 @@ def us_one(t, cik):
     return out
 
 
+# ------------------------------------------------------------------ 공시 원본(XBRL): 3개월 손익 + 매출 종류
+def kr_xbrl(corp):
+    res = C.api_get("list.json", {"corp_code": corp, "bgn_de": "%d0101" % (TODAY.year - 1), "pblntf_ty": "A", "page_count": 30})
+    rows = [r for r in (res or {}).get("list", []) if re.search(r"(분기|반기|사업)보고서", r.get("report_nm", ""))]
+    rows.sort(key=lambda r: r["rcept_dt"], reverse=True)
+    for r0 in rows[:3]:
+        nm = r0["report_nm"]
+        rc = "11011" if "사업" in nm else "11012" if "반기" in nm else "11014" if ".09" in nm else "11013"
+        blob = C.api_get("fnlttXbrl.xml", {"rcept_no": r0["rcept_no"], "reprt_code": rc}, raw=True)
+        if not blob or blob[:2] != b"PK":
+            continue
+        files = XD.unzip(blob)
+        inst = [n for n in files if n.endswith(".xbrl")]
+        lab = [n for n in files if "lab-ko" in n]
+        if not inst:
+            continue
+        v = FX.from_instance(files[inst[0]], files[lab[0]] if lab else "", us=False)
+        if v:
+            v["report"] = nm
+            return v
+    return None
+
+
+def us_xbrl(cik):
+    sub = U.get_json(U.SEC_SUBMIT % str(cik).zfill(10))
+    if not sub:
+        return None
+    rc = sub["filings"]["recent"]
+    for i, f in enumerate(rc["form"]):
+        if f not in ("10-Q", "10-K"):
+            continue
+        acc = rc["accessionNumber"][i]
+        base = U.SEC_ARCH % (int(cik), acc.replace("-", ""))
+        idx = U.get_json(base + "index.json")
+        names = [x.get("name", "") for x in ((idx or {}).get("directory", {}).get("item", []))]
+        inst = [n for n in names if n.endswith("_htm.xml")]
+        lab = [n for n in names if n.endswith("_lab.xml")]
+        if not inst:
+            return None
+        raw = U.get(base + inst[0])
+        lr = U.get(base + lab[0]) if lab else None
+        if not raw:
+            return None
+        v = FX.from_instance(raw.decode("utf-8", "replace"), lr.decode("utf-8", "replace") if lr else "", us=True)
+        if v:
+            v["report"] = f + " " + rc["reportDate"][i]
+        return v
+    return None
+
+
+def scaled(v, k):
+    out = {}
+    for a, b in v.items():
+        if isinstance(b, (int, float)):
+            out[a] = round(b / k, 1)
+        elif a == "segs":
+            out[a] = [[n, round(x / k, 1)] for n, x in b]
+        else:
+            out[a] = b
+    return out
+
+
 def main():
     os.makedirs(OUT, exist_ok=True)
     mc = json.load(open("data/mcap.json", encoding="utf-8"))["stocks"]
@@ -152,7 +217,12 @@ def main():
             if not info:
                 continue
             try:
-                d = kr_one(code, info["corp_code"])
+                x = kr_xbrl(info["corp_code"])
+                d = scaled(x, 1e8) if x else None
+                if d:
+                    d["unit"] = "억원"
+                else:
+                    d = kr_one(code, info["corp_code"])
             except Exception as e:                  # noqa: BLE001
                 print("  !! %s %s" % (code, e))
                 d = None
@@ -160,7 +230,7 @@ def main():
                 d.update({"code": code, "name": mc[code].get("n"), "market": "KR", "updated": TODAY.isoformat()})
                 json.dump(d, open(os.path.join(OUT, code + ".json"), "w", encoding="utf-8"), ensure_ascii=False)
                 idx[code] = {"n": d["name"], "m": "KR", "p": d["period"]}
-                print("  ok %s %s %s 매출 %s 원가 %s 판관비 %s 영업 %s 순 %s" % (code, d["name"], d["period"], d["rev"], d["cogs"], d["sga"], d["op"], d["ni"]))
+                print("  ok %s %s %s 매출 %s 원가 %s 판관비 %s 영업 %s 순 %s 부문 %s" % (code, d["name"], d["period"], d["rev"], d.get("cogs"), d.get("sga"), d["op"], d["ni"], d.get("segs")))
     for t in us:
         cik = None
         p = os.path.join("data", "us", t + ".json")
@@ -169,7 +239,12 @@ def main():
         if not cik:
             continue
         try:
-            d = us_one(t, cik)
+            x = us_xbrl(cik)
+            d = scaled(x, 1e6) if x else None
+            if d:
+                d["unit"] = "백만달러"
+            else:
+                d = us_one(t, cik)
         except Exception as e:                      # noqa: BLE001
             print("  !! %s %s" % (t, e))
             d = None
