@@ -19,7 +19,7 @@ jobs:
         with:
           python-version: '3.11'
       - run: pip install pillow
-      - run: python3 fund_logos.py vanguard geode wellington
+      - run: python3 fund_logos.py vanguard fidelity geode wellington
       - name: 커밋
         run: |
           git config user.name  "github-actions[bot]"

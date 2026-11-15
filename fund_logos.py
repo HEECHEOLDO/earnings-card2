@@ -12,7 +12,7 @@ from make_old_logos import round_logo
 
 DIR = os.path.join("logo", "fund")
 LIST = {
-    "vanguard":   ("The Vanguard Group", ["Vanguard Group logo", "Vanguard logo", "Vanguard ship logo"], "investor.vanguard.com"),
+    "vanguard":   ("The Vanguard Group", ["Vanguard Group logo", "Vanguard logo", "Vanguard ship logo"], "vanguard.com"),
     "fidelity":   ("Fidelity Investments", ["Fidelity Investments logo"], "fidelity.com"),
     "geode":      ("Geode Capital Management", ["Geode Capital Management logo"], "geodecapital.com"),
     "wellington": ("Wellington Management Company", ["Wellington Management logo"], "wellington.com"),
@@ -29,7 +29,7 @@ def main():
         if os.path.exists(dst):
             os.remove(dst)
         got = None
-        for step in (lambda: from_page("en", en), lambda: from_commons(words), lambda: from_site(domain)):
+        for step in (lambda: from_site(domain), lambda: from_page("en", en), lambda: from_commons(words)):   # 홈페이지 아이콘(정사각 상징)이 원 안에서 가장 잘 보인다
             try:
                 r = step()
                 if not r or re.search(r"Symbol category|Commons-logo|Wiki|Question|Edit-clear|Ambox", r[1] or "", re.I):
