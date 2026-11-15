@@ -18,24 +18,24 @@
   /* 1) 부호 있는 막대 — 행: {n, sub, v, lab, logo, c} · 음수가 있으면 가운데 0 축 */
   function bars(X, o) {
     head(X, o);
-    var rows = o.rows, n = rows.length, top = TOP, avail = BOT - top - (o.legend ? 46 : 0), rowH = Math.min(n <= 8 ? 120 : 78, avail / n);
+    var rows = o.rows, n = rows.length, top = TOP, avail = BOT - top - (o.legend ? 46 : 0), rowH = Math.min(n <= 10 ? 190 : 78, avail / n), huge = rowH >= 100;
     var neg = rows.some(function (r) { return r.v < 0; }), pos = rows.some(function (r) { return r.v > 0; });
     var mx = Math.max.apply(null, rows.map(function (r) { return Math.abs(r.v); })) || 1;
     var x0 = L + 310, bw = R - 110 - x0, zero = neg && pos ? x0 + bw * 0.35 : neg ? R - 110 : x0;
     var span = neg && pos ? bw * 0.65 : bw, nspan = neg && pos ? bw * 0.35 - 10 : bw;
-    if (neg && pos) { var mp = Math.max.apply(null, rows.map(function (r) { return r.v; })), mn = -Math.min.apply(null, rows.map(function (r) { return r.v; })); var f = mp / (mp + mn); zero = x0 + 90 + (bw - 90) * (1 - f) * 0.85; span = R - 110 - zero; nspan = zero - x0 - 90; mx = Math.max(mp, 1e-9); var mxn = Math.max(mn, 1e-9); }
+    if (neg && pos) { var mp = Math.max.apply(null, rows.map(function (r) { return r.v; })), mn = -Math.min.apply(null, rows.map(function (r) { return r.v; })); var f = mp / (mp + mn); var lw0 = huge ? 140 : 90; zero = x0 + lw0 + (bw - lw0) * (1 - f) * 0.85; span = R - 110 - zero; nspan = zero - x0 - lw0; mx = Math.max(mp, 1e-9); var mxn = Math.max(mn, 1e-9); }
     rows.forEach(function (r, i) {
       var y = top + i * rowH, cy = y + rowH / 2, big = rowH >= 66;
       X.fillStyle = T.soft; X.font = font(800, 22); X.textAlign = 'right'; X.textBaseline = 'middle'; X.fillText(i + 1, L + 26, cy);
-      logoAt(X, r.logo, L + 62, cy, big ? 24 : 21);
-      X.textAlign = 'left'; X.fillStyle = T.ink; X.font = font(800, big ? 27 : 25);
-      X.fillText(fit(X, r.n, x0 - L - 110), L + 96, r.sub ? cy - 10 : cy);
-      if (r.sub) { X.fillStyle = T.soft; X.font = font(600, 18); X.fillText(fit(X, r.sub, x0 - L - 110 + (neg ? 0 : 0)), L + 96, cy + 17); }
-      var w = r.v >= 0 ? span * r.v / mx : nspan * (-r.v) / (mxn || mx), bh = Math.min(36, rowH * 0.56);
+      logoAt(X, r.logo, L + 62, cy, huge ? 28 : big ? 24 : 21);
+      X.textAlign = 'left'; X.fillStyle = T.ink; X.font = font(800, huge ? 32 : big ? 27 : 25);
+      X.fillText(fit(X, r.n, x0 - L - 110), L + 100, r.sub ? cy - (huge ? 14 : 10) : cy);
+      if (r.sub) { X.fillStyle = T.soft; X.font = font(600, huge ? 21 : 18); X.fillText(fit(X, r.sub, x0 - L - 110), L + 100, cy + (huge ? 22 : 17)); }
+      var w = r.v >= 0 ? span * r.v / mx : nspan * (-r.v) / (mxn || mx), bh = huge ? Math.min(56, rowH * 0.45) : Math.min(36, rowH * 0.56);
       X.fillStyle = r.c || (r.v >= 0 ? T.up : T.down);
       if (r.v >= 0) rr(X, zero, cy - bh / 2, Math.max(w, 3), bh, 6); else rr(X, zero - w, cy - bh / 2, Math.max(w, 3), bh, 6);
       X.fill();
-      X.fillStyle = T.ink; X.font = font(900, big ? 27 : 25);
+      X.fillStyle = T.ink; X.font = font(900, huge ? 34 : big ? 27 : 25);
       if (r.v >= 0) { X.textAlign = 'left'; X.fillText(r.lab, zero + w + 10, cy + 1); }
       else { X.textAlign = 'right'; X.fillText(r.lab, zero - w - 10, cy + 1); }
       X.strokeStyle = T.rule; X.lineWidth = 1; X.beginPath(); X.moveTo(L, y + rowH); X.lineTo(R, y + rowH); X.stroke();
@@ -62,7 +62,7 @@
     head(X, o);
     var GREEN = '#2E9E6B', RED = '#D9677B', GR = '#5D636D', GS = 'rgba(46,158,107,0.30)', RS = 'rgba(217,103,123,0.28)', NS = 'rgba(93,99,109,0.22)';
     var rev = o.rev, op = Math.max(o.op, 0), ni = o.ni, cost = rev - op, extra = Math.max(ni - op, 0), tax = Math.max(op - Math.max(ni, 0), 0), nip = Math.max(ni, 0);
-    var top = TOP + 10, H = BOT - TOP - 120, s = H / Math.max(rev, op + extra) * 0.86, gap = 40, nw = 28;
+    var top = TOP + 10, H = BOT - TOP - 20, s = H / Math.max(rev, op + extra) * 0.94, gap = 40, nw = 28;
     var xA = L + 150, xB = 490, xC = 780;
     // 노드
     var hRev = rev * s, yRev = top + (H - hRev) / 2 - 20;
@@ -102,12 +102,12 @@
   /* 3) 100% 쌓은 막대 — 행: {n, logo, parts:[v...]} · o.keys:[[이름, 색, 글자색]] */
   function stack100(X, o) {
     head(X, o);
-    var rows = o.rows, top = TOP + 50, rowH = Math.min(rows.length <= 6 ? 120 : 46, (BOT - top) / rows.length), x0 = L + 230, w = R - x0;
+    var rows = o.rows, top = TOP + 50, rowH = Math.min(rows.length <= 6 ? 170 : 46, (BOT - top) / rows.length), x0 = L + 230, w = R - x0;
     // 범례
     var lx = L, ly = TOP + 10;
     o.keys.forEach(function (k) { X.fillStyle = k[1]; rr(X, lx, ly - 18, 22, 22, 4); X.fill(); X.fillStyle = T.ink; X.font = font(700, 22); X.textAlign = 'left'; X.fillText(k[0], lx + 30, ly); lx += X.measureText(k[0]).width + 62; });
     rows.forEach(function (r, i) {
-      var cy = top + i * rowH + rowH / 2, x = x0, bh = rowH - 10;
+      var cy = top + i * rowH + rowH / 2, x = x0, bh = Math.min(rowH - 10, 100);
       logoAt(X, r.logo, L + 18, cy, 17);
       X.fillStyle = T.ink; X.font = font(800, 22); X.textAlign = 'left'; X.textBaseline = 'middle'; X.fillText(fit(X, r.n, x0 - L - 56), L + 46, cy);
       r.parts.forEach(function (v, j) {
@@ -127,7 +127,7 @@
   /* 4) 해마다 1등부터 꼴찌까지 (수익률 퀼트) — o.cols:[라벨], o.assets:[{n, c, ink, years:[v|null]}] */
   function quilt(X, o) {
     head(X, o);
-    var nc = o.cols.length, na = o.assets.length, top = TOP + 30, cw = (R - L) / nc, ch = Math.min(96, (BOT - 46 - top) / na);
+    var nc = o.cols.length, na = o.assets.length, top = TOP + 30, cw = (R - L) / nc, ch = Math.min(100, (BOT - 10 - top) / na);
     X.textAlign = 'center'; X.fillStyle = T.soft; X.font = font(800, 22);
     o.cols.forEach(function (c, i) { X.fillText(c, L + cw * i + cw / 2, top - 16); });
     o.cols.forEach(function (c, i) {
@@ -180,18 +180,18 @@
   /* 6) 와플 (100칸) — o.items:[{n, w(%), c, logo}] 남는 칸은 '그 외' */
   function waffle(X, o) {
     head(X, o);
-    var gx = L, gy = TOP + 10, cell = 48, g = 5, cells = [], used = 0;
+    var gx = L, cell = 58, g = 6, side = 10 * (cell + g) - g, gy = TOP + Math.max(0, (BOT - TOP - side) / 2), cells = [], used = 0;
     o.items.forEach(function (it, i) { var k = Math.round(it.w); if (used + k > 100) k = 100 - used; for (var j = 0; j < k; j++) cells.push(it.c); used += k; });
     while (cells.length < 100) cells.push(T.gray);
     for (var i = 0; i < 100; i++) { var cx = gx + (i % 10) * (cell + g), cy = gy + Math.floor(i / 10) * (cell + g); X.fillStyle = cells[i]; rr(X, cx, cy, cell, cell, 8); X.fill(); }
-    var lx = gx + 10 * (cell + g) + 40, ly = gy + 4, rowH = Math.min(52, 530 / (o.items.length + 1));
+    var lx = gx + side + 28, rowH = Math.min(64, side / (o.items.length + 1)), ly = gy + (side - rowH * (o.items.length + 1)) / 2;
     o.items.concat([{ n: '그 외', w: Math.max(0, 100 - o.items.reduce(function (s, x) { return s + x.w; }, 0)), c: T.gray }]).forEach(function (it, i) {
       var cy = ly + i * rowH + rowH / 2;
       X.fillStyle = it.c; rr(X, lx, cy - 13, 26, 26, 6); X.fill();
       if (it.logo) logoAt(X, it.logo, lx + 52, cy, 17);
-      X.fillStyle = T.ink; X.font = font(800, 22); X.textAlign = 'left'; X.textBaseline = 'middle';
-      X.fillText(fit(X, it.n, R - lx - 160), lx + (it.logo ? 78 : 40), cy);
-      X.textAlign = 'right'; X.font = font(900, 24); X.fillText(it.w.toFixed(1) + '%', R, cy);
+      var tx = lx + (it.logo ? 78 : 40); X.fillStyle = T.ink; X.font = font(800, 21); X.textAlign = 'left'; X.textBaseline = 'middle';
+      X.fillText(fit(X, it.n, R - tx), tx, cy - 11);
+      X.font = font(900, 22); X.fillText(it.w.toFixed(1) + '%', tx, cy + 13);
     });
     X.textBaseline = 'alphabetic';
     var by = gy + 10 * (cell + g) + 46;

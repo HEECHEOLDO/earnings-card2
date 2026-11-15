@@ -702,7 +702,7 @@
       var rows = T.filter(function (t) { return cs.length > t[1]; }).map(function (t) {
         var g = cs.slice(t[1], t[2]), cap = g.reduce(function (s, c) { return s + st[c].c; }, 0), c0 = g.reduce(function (s, c) { return s + st[c].c / (1 + st[c].y / 100); }, 0);
         var ew = g.reduce(function (s, c) { return s + st[c].y; }, 0) / g.length, v = (cap / c0 - 1) * 100;
-        return { n: t[0], v: v, lab: pct1(v), sub: g.length.toLocaleString() + '종목 · 단순 평균 ' + pct1(ew) };
+        return { n: t[0], v: v, lab: pct1(v), sub: g.length.toLocaleString() + '종목 · 평균 ' + pct1(ew) };
       });
       return Promise.resolve({ fn: 'bars', o: { kicker: MKN[mk] + ' 시총 규모별 올해 수익률', h1: '큰 종목일수록 더 올랐다?', rows: rows, top: 320 }, tail: '종가 기준 · 막대는 시총 가중 수익률' }).then(function (r) {
         var a = rows[0].v, z = rows[rows.length - 1].v; r.o.h1 = a > z ? 'TOP 10은 ' + pct1(a) + ', 1000위 밖은 ' + pct1(z) : '작은 종목이 더 올랐다: ' + pct1(z) + ' vs ' + pct1(a); return r;

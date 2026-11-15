@@ -52,7 +52,7 @@
   /* 2) 나비 막대 — 왼쪽 o.left 이름, 오른쪽 o.right 이름. rows:[{n, a, b}] (%) */
   function butterfly(X, o) {
     head(X, o);
-    var top = TOP + 40, rowH = Math.min(60, (BOT - 50 - top) / o.rows.length), mid = (L + R) / 2, lab = 150, half = (R - L - lab) / 2 - 70;
+    var top = TOP + 40, rowH = Math.min(64, (BOT - 10 - top) / o.rows.length), mid = (L + R) / 2, lab = 150, half = (R - L - lab) / 2 - 70;
     var mx = Math.max.apply(null, o.rows.map(function (r) { return Math.max(r.a, r.b); }));
     X.font = font(800, 24); X.textAlign = 'right'; X.fillStyle = o.ca; X.fillText(o.left, mid - lab / 2 - 10, top - 14);
     X.textAlign = 'left'; X.fillStyle = o.cb; X.fillText(o.right, mid + lab / 2 + 10, top - 14);
@@ -101,7 +101,7 @@
   /* 4) 월별 열지도 — o.years:[연], o.rows:{연:[12개월 %|null]}, o.total:{연:%} */
   function heatgrid(X, o) {
     head(X, o);
-    var NC = o.cols ? o.cols.length : 12, top = TOP + 30, ny = o.years.length, lw = o.lw || 76, tw = 104, cw = (R - L - lw - tw) / NC, ch = Math.min(74, (BOT - 60 - top) / (ny + 1));
+    var NC = o.cols ? o.cols.length : 12, top = TOP + 30, ny = o.years.length, lw = o.lw || 76, tw = 104, cw = (R - L - lw - tw) / NC, ch = Math.min(80, (BOT - 30 - top) / (ny + 1));
     X.fillStyle = T.soft; X.font = font(800, 19); X.textAlign = 'center';
     for (var m = 0; m < NC; m++) X.fillText(o.cols ? o.cols[m] : (m + 1) + '월', L + lw + cw * m + cw / 2, top - 12);
     X.fillText(o.totalLabel || '1년', R - tw / 2, top - 12);
@@ -257,7 +257,7 @@
   /* 9) 52주 범위 — rows:[{n, logo, lo, hi, now, lab}] 막대 = 최저~최고, 점 = 지금 (0~100% 위치) */
   function range(X, o) {
     head(X, o);
-    var rows = o.rows, top = TOP + 34, rowH = Math.min(60, (BOT - 50 - top) / rows.length), x0 = L + 260, x1 = R - 110;
+    var rows = o.rows, top = TOP + 34, rowH = Math.min(64, (BOT - 10 - top) / rows.length), x0 = L + 260, x1 = R - 110;
     X.fillStyle = T.soft; X.font = font(800, 20); X.textAlign = 'center'; X.fillText('52주 최저', x0, top - 16); X.fillText('52주 최고', x1, top - 16); X.fillText('중간', (x0 + x1) / 2, top - 16);
     X.strokeStyle = T.rule; X.setLineDash([4, 6]); X.lineWidth = 1; X.beginPath(); X.moveTo((x0 + x1) / 2, top); X.lineTo((x0 + x1) / 2, top + rows.length * rowH); X.stroke(); X.setLineDash([]);
     rows.forEach(function (r, i) {

@@ -376,6 +376,8 @@ window.__vcFoot = function (X, src) {
     var pos = [[L + ra, y1], [R - rb, y1 - ra + rb + 40]];
     var x = R, y2 = Math.max(pos[0][1] + ra, pos[1][1] + rb) + 40;
     o.items.slice(2).forEach(function (it) { var r = k * Math.sqrt(it.v); x -= r; pos.push([x, y2 + r]); x -= r + 24; });
+    var low = Math.max.apply(null, o.items.map(function (it, i) { return pos[i][1] + k * Math.sqrt(it.v) + (it.times ? 40 : 0); })), dy = Math.max(0, (BOT - low) / 2);
+    pos.forEach(function (p) { p[1] += dy; });   // 남는 높이는 위아래로 나눠 가운데에
     o.items.forEach(function (it, i) {
       var r = k * Math.sqrt(it.v), cx = pos[i][0], cy = pos[i][1];
       X.fillStyle = it.c; X.beginPath(); X.arc(cx, cy, r, 0, 7); X.fill();
