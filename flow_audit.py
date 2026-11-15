@@ -72,6 +72,31 @@ SGA_KEEP = re.compile(r".")
 SGA_DROP = re.compile(r"^(판매비와관리비|판매비와일반관리비|영업비용|매출원가)$|원가|합계|소계")
 
 
+def _block(rows, start_rx, end_rx, u, total):
+    """손익계산서 안에서 start 줄 다음부터 end 줄 전까지의 세부 줄들 (예전 회계기준 보고서는 세부를 표 안에 적는다)
+    → 합이 total(원)과 3% 안으로 맞으면 [[이름, 원], ...]"""
+    if not total or total <= 0:
+        return []
+    on, out = False, []
+    for r in rows:
+        if not r:
+            continue
+        n = re.sub(r"^[\(（]?\d{1,2}[\)）.]\s*", "", P.acct(r[0])).strip()
+        if not on:
+            if start_rx.match(n):
+                on = True
+            continue
+        if end_rx.match(n):
+            break
+        v = P.first_amount(r)
+        if v is None or not n or TOTAL_RX.match(n) or re.search(r"기초|기말|당기.*(매입|제조)|타계정|대체", n):
+            continue
+        out.append([n, v * u])
+    out = [x for x in out if x[1] > 0]
+    s = sum(v for _, v in out)
+    return out if len(out) >= 2 and abs(s - total) <= total * 0.03 else []
+
+
 def _group(items, total, label_rest):
     """판관비 세부 → 묶음 상위 3 + 나머지"""
     cat, other = {}, 0.0
@@ -81,9 +106,17 @@ def _group(items, total, label_rest):
             cat[k] = cat.get(k, 0) + v
         else:
             other += v
-    if not cat:
-        return []
     s = sum(cat.values()) + other
+    if not s:
+        return []
+    if sum(cat.values()) < s * 0.5:               # 묶음에 안 드는 항목이 대부분(선수단운영비·경기진행비 …) → 원래 이름 그대로 큰 3개
+        top = sorted(items, key=lambda x: -x[1])[:3]
+        k = total / s
+        out = [[n, v * k] for n, v in top]
+        rest = total - sum(v for _, v in out)
+        if rest > total * 0.02:
+            out.append([label_rest, rest])
+        return out if len(out) >= 2 else []
     k = total / s if s else 1
     top = sorted(cat.items(), key=lambda x: -x[1])[:3]
     out = [[c, v * k] for c, v in top if v > 0]
@@ -154,9 +187,13 @@ def flow(code):
         tables = _tables(doc)
         gross = d["gross"] if d["gross"] is not None else d["rev"]
         opex = gross - d["op"]
-        d["segs"] = _segments(_breakdown(tables, d["rev"], re.compile(r"^(매출액|영업수익|수익|매출)(합계)?$"), REV_KEEP, REV_DROP), d["rev"])
+        REVH = re.compile(r"^(매출액|영업수익|매출|수익\(매출액\))$")
+        rv = _block(grab, REVH, re.compile(r"^(매출원가|영업비용|매출총이익|영업원가)"), u, d["rev"]) or \
+            _breakdown(tables, d["rev"], re.compile(r"^(매출액|영업수익|수익|매출)(합계)?$"), REV_KEEP, REV_DROP)
+        d["segs"] = _segments([x for x in rv if not REV_DROP.search(x[0])], d["rev"])
         ref = d["sga"] if d["sga"] else opex
-        det = _breakdown(tables, ref, re.compile(r"^(판매비와관리비|판매비와일반관리비|영업비용)(합계)?$"), SGA_KEEP, SGA_DROP, min_rows=4) if ref and ref > 0 else []
+        det = _block(grab, re.compile(r"^(판매비와관리비|판매비와일반관리비|판매관리비|영업비용)$"), re.compile(r"^(영업이익|영업손실|영업손익|영업이익\(손실\)|영업손실\(이익\))"), u, ref) or \
+            (_breakdown(tables, ref, re.compile(r"^(판매비와관리비|판매비와일반관리비|영업비용)(합계)?$"), SGA_KEEP, SGA_DROP, min_rows=4) if ref and ref > 0 else [])
         d["items"] = _group(det, ref, "기타 판관비" if d["cogs"] is not None else "기타 영업비용")
         y, m = per
         end = date(y, m, calendar.monthrange(y, m)[1])
