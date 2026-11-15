@@ -109,6 +109,51 @@
     [/Professional fees/i, '전문가 수수료'], [/Personnel|Compensation|Employee|Labor/i, '인건비'], [/Marketing|Advertising/i, '마케팅비'],
     [/General and administrative/i, '일반관리비'], [/Selling,? general/i, '판매·관리비'], [/Research and development/i, '연구개발비'],
     [/in-process|IPR&D/i, '인수 연구개발비'], [/Acquisition|Merger/i, '인수 관련 비용'], [/Occupancy|Rent/i, '임차료'], [/Fulfillment/i, '물류·배송비']];
+  // 미국 공시 영문 영업비용 항목 → 짧은 한글 (위에서부터 처음 맞는 것)
+  var EN_KO = [
+    [/^goodwill/i, '영업권 손상'], [/program.*amortization/i, '콘텐츠 상각비'],
+    [/amortization.*intangible|intangible.*amortization|amortization of (acquisition|acquired|purchased)/i, '무형자산 상각'],
+    [/restructur|realignment|separation and other/i, '구조조정 비용'], [/impair/i, '자산 손상'],
+    [/business combination|acquisition[- ]related|acquisition and integration|integration|transaction expense|in-process research|asset acquired in transaction/i, '인수·통합 비용'],
+    [/litigation|legal settlement|antitrust|loss contingency/i, '소송·합의 비용'], [/cost of goods and service/i, '제품·서비스 원가'],
+    [/depreciation|depletion|amortization|accretion/i, '감가상각비'], [/real estate acquisition and development/i, '부동산 개발비'],
+    [/research.*develop|technology and development/i, '연구개발비'], [/transmission/i, '송전망 이용료'],
+    [/fuel|purchased power|electric|gas and petroleum purchased|purchased commodit|purchased oil|natural gas/i, '연료·전력 구입비'],
+    [/utilities operating expense,? (maintenance|operations)|operations and support|maintenance and operations|repairs and maintenance|maintenance and repair/i, '운영·유지보수비'],
+    [/property and other taxes|taxes other than income|taxes, (miscellaneous|other)|real estate tax|production tax|premium tax|tax and license|gaming revenue|utilities operating expense, taxes/i, '세금과 공과'],
+    [/policyholder benefits|claims incurred|catastroph|insurance expense|reinsurance/i, '보험금 지급'],
+    [/provision for (loan|transaction)|credit losses|loan losses|transaction losses/i, '대손 비용'],
+    [/landing fee|rentals and landing/i, '공항 이용·임차료'], [/information technology|technology|data processing|communications/i, 'IT·통신비'], [/occupancy|rent|lease/i, '임차료'],
+    [/transportation|freight|gathering|cargo|distribution|commissions/i, '운송·물류비'],
+    [/share-based|stock-based/i, '주식보상비용'], [/professional|contracted services|advisory|purchased services/i, '용역·자문비'],
+    [/marketing|advertising/i, '마케팅비'], [/labor|payroll|patient care|personnel|salaries|onboard/i, '인건비'],
+    [/coffeehouse|restaurant/i, '매장 운영비'], [/food/i, '식재료비'], [/exploration/i, '탐사비'], [/refinery/i, '정제비'], [/programming/i, '콘텐츠 제작비'],
+    [/direct material|materials/i, '재료비'], [/production/i, '생산비'],
+    [/customer (support|service)|client servicing/i, '고객 지원비'], [/licens|royalt/i, '로열티·라이선스'],
+    [/interest/i, '이자 비용'], [/wildfire/i, '산불 관련 비용'], [/environmental/i, '환경 복구 비용'], [/pre-opening|start-up/i, '개업 준비 비용'],
+    [/general and administrative|administrative|corporate expense|home and regional office|property management/i, '일반관리비'],
+    [/selling/i, '판매·관리비'], [/other|significant costs|segment|operating costs|costs and expenses|reimbursed|energy efficiency|transactions, net/i, '기타 영업비용']
+  ];
+  function enKo(n) { if (!/[A-Za-z]{3}/.test(n) || /[가-힣]/.test(n)) return n; for (var i = 0; i < EN_KO.length; i++) if (EN_KO[i][0].test(n)) return EN_KO[i][1]; return n; }
+  // 미국 매출 구분(부문·지역) — 나라·지역·흔한 말만 한글로, 고유한 사업 이름은 그대로 (Segment·Member 꼬리는 뗀다)
+  var SEG_KO = [
+    [/^(product and service|service|hotel|product), other$|^other( revenues?| products?( and services)?| services?| americas)?$|^all other segments?$/i, '기타'],
+    [/^china$/i, '중국'], [/^united kingdom$/i, '영국'], [/^korea, republic of$/i, '한국'], [/^taiwan$/i, '대만'], [/^germany$/i, '독일'], [/^mexico$/i, '멕시코'], [/^japan$/i, '일본'],
+    [/^canada$/i, '캐나다'], [/^france$/i, '프랑스'], [/^india$/i, '인도'], [/^singapore$/i, '싱가포르'], [/^ireland$/i, '아일랜드'], [/^netherlands$/i, '네덜란드'], [/^switzerland$/i, '스위스'],
+    [/^united states|^u\.?\s?s\.?$/i, '미국'], [/^north america$/i, '북미'], [/^latin america$/i, '중남미'], [/^(emea|europe, middle east and africa)$/i, '유럽·중동·아프리카'], [/^europe$/i, '유럽'],
+    [/^asia( pacific)?$/i, '아시아'], [/^americas$/i, '미주'], [/^international$/i, '해외'],
+    [/^food and beverage$/i, '식음료'], [/^cargo and freight$/i, '화물'], [/^passenger$/i, '여객'], [/^consumer$/i, '소비자'], [/^commercial$/i, '기업 고객'], [/^electric(ity)?(, us regulated)?$/i, '전력'],
+    [/^natural gas$/i, '천연가스'], [/^subscription( and circulation)?$/i, '구독'], [/^casino$/i, '카지노'], [/^industrial$/i, '산업용'], [/^chemicals$/i, '화학'], [/^packaging$/i, '포장재'], [/^paper$/i, '종이'],
+    [/^occupancy$/i, '객실'], [/^professional services$/i, '전문 서비스'], [/^financial services?$/i, '금융'], [/^consumables$/i, '소모품'], [/^seasonal$/i, '계절 상품'], [/^intermodal$/i, '복합 운송'],
+    [/^revenue from contract with customer, measurement, recurring$/i, '반복 매출'], [/^revenue from contract with customer, measurement, nonrecurring$/i, '일회성 매출'], [/^technology service$/i, '기술 서비스'],
+    [/^beverage$/i, '음료'], [/^food$/i, '식품'], [/^licensed coffeehouses$/i, '라이선스 매장'], [/^property revenue$/i, '임대 수익'], [/^services revenue$/i, '서비스']
+  ];
+  function segKo(n) {
+    if (!/[A-Za-z]{3}/.test(n) || /[가-힣]/.test(n)) return n;
+    n = String(n).replace(/\s+(Reportable\s+)?(Segment|Member)s?$/i, '').trim();
+    for (var i = 0; i < SEG_KO.length; i++) if (SEG_KO[i][0].test(n)) return SEG_KO[i][1];
+    return n;
+  }
   function flowKo(n) { return flowShort(flowKo0(n)); }
   function flowShort(n) {                       // 긴 이름은 카드 밖으로 나가지 않게 줄인다 (괄호 설명·', 판관비' 꼬리 떼고, '및'·쉼표 앞까지, 그래도 길면 앞 두 단어)
     n = String(n).replace(/,\s*판관비$/, '').replace(/^판매비와\s*관리비.*$/, '판매·관리비').replace(/\s*\([^)]*\)\s*/g, ' ').replace(/\s+/g, ' ').trim();
@@ -313,6 +358,16 @@
       return { fn: 'multiples', o: { h1: '', items: items.slice(0, 8) }, asof: d8(last), tail: '기준 · 최근 5년 흐름 (월별 지표는 발표 시점에 따라 1~2달 늦음)' };
     });
   }
+  // 한글 이름이 없는 미국 회사 — 법인 꼬리(Inc.·Corporation·plc …)와 괄호를 떼고, 그래도 길면 앞 두 단어
+  function enShort(n) {
+    n = String(n || '').replace(/\s*\(.*?\)\s*/g, ' ').replace(/[,.]?\s+(Inc|Incorporated|Corp|Corporation|Company|Co|plc|PLC|Ltd|Limited|N\.V|S\.A|SE|AG|Holdings?|Group|Trust|& Co)\.?$/i, '').trim();
+    n = n.replace(/[,.]?\s+(Inc|Corp|Corporation|Company|Holdings?|plc)\.?$/i, '').trim();
+    var w = n.split(/\s+/), gen = /^(International|Technologies|Laboratories|Industries|Worldwide|Enterprises|Investment|Realty|Properties|Communications|Pharmaceuticals|Therapeutics|Brands|Systems|Solutions|Services)$/i;
+    while (w.length > 2 && w.join(' ').length > 18 && gen.test(w[w.length - 1])) w.pop();
+    n = w.join(' ');
+    if (n.length > 18) n = n.split(/\s+/).slice(0, 2).join(' ');
+    return n;
+  }
   function ko(code, n) { return (window.US_KO && window.US_KO[code]) || n; }
 
   var CARDS = [
@@ -444,29 +499,32 @@
       // 세부 손익(data/flow)이 있으면 매출원가·판관비·연구개발비·법인세까지 나눈 그림으로
       return JJ('./data/flow/' + code + '.json').then(function (f) {
         if (f && f.rev > 0 && f.op < f.rev && f.ni != null && f.rev - (f.cogs || 0) >= 0) {        // 영업손실이어도 그린다(손실 모양)
-          var nm2 = us ? ko(code, (D.us.stocks[code] || {}).n || code) : f.name;
+          var nm2 = us ? ko(code, enShort((D.us.stocks[code] || {}).n || code)) : f.name;
           return (ul ? img('./logo/unlisted/' + code + '.png').then(function (i) { return { logo: i }; }) : logo({ code: code }, us)).then(function (r) {
-            var gross = f.gross != null ? f.gross : f.rev - (f.cogs || 0), opex = gross - f.op, items = (f.items || []).map(function (x) { return Array.isArray(x) ? { n: flowKo(x[0]), v: x[1] } : x; });
+            // 매출총이익과 (매출 - 매출원가)가 다르면 맞는 쪽을 고른다 — 매출총이익 - 판관비 = 영업이익이면 매출총이익, 아니면 매출 - 매출원가 (보험사 등 다른 뜻의 GrossProfit)
+            var g1 = f.gross, g2 = f.rev - (f.cogs || 0), gross = g1 != null ? g1 : g2;
+            if (g1 != null && f.cogs != null && Math.abs(g1 - g2) > f.rev * 0.01) gross = (f.sga != null && Math.abs(g1 - f.sga - f.op) <= f.rev * 0.01) ? g1 : g2;
+            var opex = gross - f.op, items = (f.items || []).map(function (x) { return Array.isArray(x) ? { n: flowKo(enKo(x[0])), v: x[1] } : x; });
             if (!items.length) {                      // 영업비용 세부가 따로 없으면 손익계산서 항목으로
               if (f.rnd) items.push({ n: '연구개발비', v: f.rnd });
               if (f.sga) items.push({ n: f.rnd ? '판매·관리비' : '판관비', v: f.sga });
               else { if (f.sm) items.push({ n: '마케팅비', v: f.sm }); if (f.ga) items.push({ n: '일반관리비', v: f.ga }); }
             }
             var used = items.reduce(function (t, x) { return t + x.v; }, 0);
-            if (items.length && opex - used > f.rev * 0.003) items.push({ n: '기타 영업비용', v: opex - used });
+            if (items.length && opex - used > opex * 0.005) items.push({ n: '기타 영업비용', v: opex - used });   // 세부 합이 모자라면 나머지는 기타로 (숫자 합이 영업비용과 맞게)
             var mg = {}, etc = 0, hasEtc = {};                // 같은 이름은 합치고, '기타 …'는 하나로
             items.forEach(function (x) { if (/^기타/.test(x.n)) { etc += x.v; hasEtc[x.n] = 1; } else mg[x.n] = (mg[x.n] || 0) + x.v; });
             items = Object.keys(mg).map(function (k) { return { n: k, v: mg[k] }; }).sort(function (a, b) { return b.v - a.v; });
             if (items.length > 4) { etc += items.slice(4).reduce(function (t, x) { return t + x.v; }, 0); items = items.slice(0, 4); hasEtc['기타 영업비용'] = 1; }
             if (etc > 0) items.push({ n: Object.keys(hasEtc).length === 1 ? Object.keys(hasEtc)[0] : '기타 영업비용', v: etc });
             used = items.reduce(function (t, x) { return t + x.v; }, 0);
-            if (used > opex * 1.02 && opex > 0) { items.forEach(function (x) { x.v = x.v * opex / used; }); }   // 판관비 세부가 영업비용보다 크면 비율대로 줄임
-            var sg = (f.segs || []).map(function (x) { return Array.isArray(x) ? { n: flowKo(x[0]), v: x[1] } : x; }), sgT = sg.reduce(function (t, x) { return t + x.v; }, 0), small = 0;
+            if (used > opex * 1.02 && opex > 0) items = [];   // 세부 합이 영업비용보다 크면(다른 기준) 숫자를 억지로 줄이지 않고 세부를 뺀다 — 값이 틀리면 안 된다
+            var sg = (f.segs || []).map(function (x) { return Array.isArray(x) ? { n: flowKo(segKo(x[0])), v: x[1] } : x; }), sgT = sg.reduce(function (t, x) { return t + x.v; }, 0), small = 0;
             var sg0 = sg.slice();
             sg = sg.filter(function (x) { if (x.v < sgT * 0.04 || /^기타/.test(x.n)) { small += x.v; return false; } return true; }).slice(0, 6);   // 작은 건 '기타'로
             if (small > sgT * 0.02 && sg.length) sg.push({ n: '기타', v: small });
             if (sg.length < 2 && sg0.length >= 2 && sg0.length <= 6) sg = sg0.sort(function (a, b) { return b.v - a.v; });   // 하나만 남으면(메타: 앱 99%·리얼리티 랩스 1%) 작아도 그대로 보여준다
-            return { fn: 'sankey3', o: { h1: nm2, segs: sg, rev: f.rev, cogs: f.cogs, op: f.op, items: items, ni: f.ni, tax: f.tax, money: money, logo: r.logo, fxNote: us ? '환율 ' + Math.round(D.fx).toLocaleString() + '원 기준' : '' },
+            return { fn: 'sankey3', o: { h1: nm2, segs: sg, rev: f.rev, cogs: f.rev - gross, op: f.op, items: items, ni: f.ni, tax: f.tax, money: money, logo: r.logo, fxNote: us ? '환율 ' + Math.round(D.fx).toLocaleString() + '원 기준' : '' },
               src: flowPeriod(f) + ' 기준' };
           });
         }

@@ -412,7 +412,7 @@
     g.right.forEach(function (r) { bar(X, x4, r.y, nw, Math.max(2, r.h), RD); });
     X.textBaseline = 'alphabetic';
     if (hasSeg) segLabels(X, segs, x0, top, bot, m, FS);
-    var MG = !!window.__flowMargin, pc = function (v) { return Math.round(v / rev * 100) + '%'; };
+    var MG = !!window.__flowMargin, pc = function (v) { var p = v / rev * 100; return (Math.abs(p) < 1 && p !== 0 ? p.toFixed(1) : Math.round(p)) + '%'; };
     var lboxes = [];
     function above(x, y, name, val, col, sub) {
       GID++;
@@ -434,7 +434,7 @@
     above(x3 + nw / 2, g.yE, '영업비용', m(opex), RD);
     var rx = x4 + nw + 10, mw = R - rx, lastR = -1e9;
     g.right.forEach(function (r) { GID++; var y0 = Math.max(r.y + r.h / 2 - 27 * FS, lastR + 4); lastR = y0 + 54 * FS; txt(X, r.n, rx, y0 + 18.6 * FS, 700, Math.round(19 * FS), RD, 'left', mw); txt(X, m(r.v), rx, y0 + 46.6 * FS, 900, Math.round(26 * FS), RD, 'left', mw); });
-    if (!hasItems) { GID++; txt(X, '영업비용', x3 + nw + 12, g.yE + Math.min(g.hE, 200) / 2, 800, Math.round(23 * FS), RD, 'left'); }
+    if (false) { GID++; txt(X, '영업비용', x3 + nw + 12, g.yE + Math.min(g.hE, 200) / 2, 800, Math.round(23 * FS), RD, 'left'); }
     // 순이익(손실)은 숫자로만 — 영업이익이 없어 흐름으로 이어 그릴 곳이 없다
     // 순이익(손실) 글 — 오른쪽 막대들 아래에 자리가 있으면 거기, 없으면 막대 왼쪽에
     var rb = Math.max.apply(null, g.right.map(function (r) { return r.y + Math.max(2, r.h); }).concat([lastR, g.low])), nx = R, ny = rb + 34 * FS;
@@ -562,7 +562,7 @@
     g.right.forEach(function (r) { bar(X, x4, r.y, nw, Math.max(2, r.h), RD); });
     // ---- 이름표
     X.textBaseline = 'alphabetic';
-    var pc = function (v) { return Math.round(v / rev * 100) + '%'; };
+    var pc = function (v) { var p = v / rev * 100; return (Math.abs(p) < 1 && p !== 0 ? p.toFixed(1) : Math.round(p)) + '%'; };
     if (hasSeg) {
       var lastY = -1e9;
       segLabels(X, segs, x0, top, bot, m, FS);

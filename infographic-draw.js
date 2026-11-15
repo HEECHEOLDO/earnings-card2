@@ -27,10 +27,10 @@ window.__vcTitle = function (X, h1, logo, opt) {   // opt.tail: 첫 줄 끝 조�
     if (track) X.letterSpacing = '0px'; s2t = fit(lines[1], 60, 34); if (track) X.letterSpacing = '-0.02em';
   }
   var tw = function () { if (!tail) return 0; var o = X.font; X.font = f(s2t); var w = X.measureText(tail).width + 4; X.font = o; return w; };
-  var s1 = 92; X.font = f(s1); while (s1 > 52 && X.measureText(lines[0]).width + tw() > W) { s1 -= 2; X.font = f(s1); }
+  var s1 = 92; X.font = f(s1); while (s1 > 40 && X.measureText(lines[0]).width + tw() > W) { s1 -= 2; X.font = f(s1); }
   var y = B.SAFE + s1 * 0.86, lx = B.L;
   if (logo) {                                    // 국내·해외 실적 카드처럼 (로고) 회사명 — 지름 0.84·간격 0.22·중심 0.37 (글자 크기 대비)
-    var p = 92; X.font = f(p); while (p > 52 && X.measureText(lines[0]).width + tw() > W - p * 1.06) { p -= 2; X.font = f(p); } s1 = p; y = B.SAFE + s1 * 0.86;
+    var p = 92; X.font = f(p); while (p > 40 && X.measureText(lines[0]).width + tw() > W - p * 1.06) { p -= 2; X.font = f(p); } s1 = p; y = B.SAFE + s1 * 0.86;
     var d = s1 * 0.84, cy = y - s1 * 0.37;
     X.save(); if (track) X.letterSpacing = '0px';
     X.beginPath(); X.arc(B.L + d / 2, cy, d / 2, 0, 7); X.clip(); X.drawImage(logo, B.L, cy - d / 2, d, d); X.restore();
@@ -41,7 +41,7 @@ window.__vcTitle = function (X, h1, logo, opt) {   // opt.tail: 첫 줄 끝 조�
   if (tail) { var w0 = X.measureText(lines[0]).width; X.font = f(s2t); X.fillText(tail, lx + w0 + 4, y); X.font = f(s1); }
   if (lines.length === 2) {
     if (track) X.letterSpacing = '0px';
-    var s2 = fit(lines[1], 60, 34); y += s1 * 0.22 + s2 * 0.86; X.font = f(s2); X.fillText(lines[1], B.L, y);
+    var s2 = fit(lines[1], 60, 34); y += s1 * (/[gjpqy]/.test(lines[0]) ? 0.34 : 0.22) + s2 * 0.86; X.font = f(s2); X.fillText(lines[1], B.L, y);   // 영문 g·y 꼬리가 둘째 줄에 닿지 않게
   }
   if (track) X.letterSpacing = '0px';
   return y;
