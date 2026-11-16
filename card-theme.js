@@ -225,7 +225,7 @@
       return r;
     }
     var rr = di.apply(this, arguments);
-    if (isDark() && !this.canvas.__noTheme && darkEdge(img)) ring(this, arguments);
+    if (window.__logoRing && isDark() && !this.canvas.__noTheme && darkEdge(img)) ring(this, arguments);   // 로고 테두리는 꺼 둠 (사용자 선택: 테두리 없음)
     return rr;
   };
   // 다크 모드: 가장자리가 검은 로고(기아·폴바셋 등)는 검정 바탕에 묻히니 옅은 테두리를 두른다
