@@ -1168,18 +1168,46 @@
           var b = document.createElement('button'); b.className = 'chip'; b.textContent = m[1] + ' ' + n.toLocaleString(); b.setAttribute('aria-pressed', String(mk === m[0]));
           b.addEventListener('click', function () { var f = list.filter(function (o) { return o[0].slice(0, 3) === m[0]; })[0]; if (f) { sel[c.id] = f[0]; pick(c.id); } }); box.appendChild(b);
         });
-        var q = document.createElement('input'); q.type = 'search'; q.className = 'co-q'; q.placeholder = '회사 이름 찾기'; q.setAttribute('aria-label', '회사 이름 찾기'); q.value = sel.__q || '';
-        var se = document.createElement('select'); se.className = 'co-sel'; se.setAttribute('aria-label', '회사 고르기');
-        function fill() {
-          var w = q.value.trim().toLowerCase(), pool = w ? list : list.filter(function (o) { return o[0].slice(0, 3) === mk; });
-          var hit = pool.filter(function (o) { return !w || o[1].toLowerCase().indexOf(w) >= 0 || o[0].slice(3).toLowerCase() === w; }).slice(0, 400);
-          if (!hit.some(function (o) { return o[0] === sel[c.id]; })) { var cur0 = list.filter(function (o) { return o[0] === sel[c.id]; })[0]; if (cur0) hit.unshift(cur0); }
-          se.innerHTML = ''; hit.forEach(function (o) { var op = document.createElement('option'); op.value = o[0]; op.textContent = o[1] + (w ? ' · ' + { 'kr:': '국내', 'us:': '해외', 'ul:': '비상장' }[o[0].slice(0, 3)] : ''); if (o[0] === sel[c.id]) op.selected = true; se.appendChild(op); });
+        // 회사 찾기 — 국내·해외 실적 탭처럼 입력칸을 누르면 목록이 펼쳐지고, 글자를 치면 바로 좁혀진다
+        var MK = { 'kr:': '국내', 'us:': '해외', 'ul:': '비상장' };
+        var wrap = document.createElement('div'); wrap.className = 'co-wrap';
+        var q = document.createElement('input'); q.type = 'text'; q.className = 'co-q'; q.autocomplete = 'off'; q.spellcheck = false;
+        q.setAttribute('autocorrect', 'off'); q.setAttribute('autocapitalize', 'off'); q.setAttribute('aria-label', '회사 이름 찾기');
+        var cur1 = list.filter(function (o) { return o[0] === sel[c.id]; })[0];
+        q.placeholder = (cur1 ? cur1[1] + ' · ' : '') + '회사 이름이나 코드 (눌러서 전체 보기)';
+        var ul = document.createElement('ul'); ul.className = 'co-sug'; ul.setAttribute('role', 'listbox');
+        var items = [], act = -1;
+        function norm(s) { return String(s).toLowerCase().replace(/[\s·.,()&-]/g, ''); }
+        function open() {
+          var w = norm(q.value), pool = w ? list : list.filter(function (o) { return o[0].slice(0, 3) === mk; });
+          items = w ? pool.filter(function (o) { var n = norm(o[1]), cd = o[0].slice(3).toLowerCase(); return n.indexOf(w) >= 0 || cd.indexOf(w) === 0; })
+            .sort(function (a, b) { return (norm(a[1]).indexOf(w) === 0 ? 0 : 1) - (norm(b[1]).indexOf(w) === 0 ? 0 : 1); }) : pool;
+          items = items.slice(0, 300);
+          var html = '<div class="head">' + (w ? items.length.toLocaleString() + '곳 일치' : MK[mk] + ' ' + pool.length.toLocaleString() + '곳 · 이름이나 코드를 입력해 보세요') + '</div>';
+          html += items.length ? items.map(function (o, i) {
+            return '<li role="option" data-i="' + i + '"' + (o[0] === sel[c.id] ? ' class="on"' : '') + '><span>' + o[1].replace(/</g, '&lt;') + '</span><span class="code">' + (w ? MK[o[0].slice(0, 3)] + ' · ' : '') + o[0].slice(3) + '</span></li>';
+          }).join('') : '<li class="empty">일치하는 회사가 없어요</li>';
+          ul.innerHTML = html; ul.style.display = 'block'; act = -1;
         }
-        q.addEventListener('input', function () { sel.__q = q.value; fill(); });
-        q.addEventListener('keydown', function (e) { if (e.key === 'Enter' && se.options.length) { var v = se.options[se.options[0].value === sel[c.id] && se.options.length > 1 ? 1 : 0].value; sel[c.id] = v; pick(c.id); } });
-        se.addEventListener('change', function () { sel[c.id] = se.value; pick(c.id); });
-        fill(); box.appendChild(q); box.appendChild(se);
+        function close() { ul.style.display = 'none'; act = -1; }
+        function choose(o) { if (!o) return; close(); q.value = ''; q.blur(); sel.__q = ''; sel[c.id] = o[0]; pick(c.id); }
+        q.addEventListener('focus', open); q.addEventListener('input', function () { sel.__q = q.value; open(); });
+        ul.addEventListener('mousedown', function (e) { var li = e.target.closest('li[data-i]'); if (!li) return; e.preventDefault(); choose(items[+li.dataset.i]); });
+        q.addEventListener('keydown', function (e) {
+          if (ul.style.display !== 'block') return;
+          var lis = ul.querySelectorAll('li[data-i]');
+          if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+            e.preventDefault(); if (!lis.length) return;
+            act += e.key === 'ArrowDown' ? 1 : -1; if (act < 0) act = lis.length - 1; if (act >= lis.length) act = 0;
+            for (var i = 0; i < lis.length; i++) lis[i].setAttribute('aria-selected', String(i === act));
+            lis[act].scrollIntoView({ block: 'nearest' });
+          } else if (e.key === 'Enter') { e.preventDefault(); choose(items[act >= 0 ? act : 0]); }
+          else if (e.key === 'Escape') close();
+        });
+        window.__coClose = close;
+        if (!window.__coHooked) { window.__coHooked = true; document.addEventListener('click', function (e) { if ((!e.target.closest || !e.target.closest('.co-wrap')) && window.__coClose) window.__coClose(); }); }
+        wrap.appendChild(q); wrap.appendChild(ul); box.appendChild(wrap);
+        if (sel.__q) { q.value = sel.__q; }
         return;
       }
       list.forEach(function (o) {
