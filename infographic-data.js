@@ -276,7 +276,11 @@
   function flowPeriod(f) {
     if (f.start && f.end) {
       var a = new Date(f.start), b = new Date(f.end), days = (b - a) / 864e5, y = String(b.getFullYear()).slice(2);
-      if (days > 300) return "'" + y + '년';
+      if (days > 300) {                                                 // 1년치: 1~12월이면 '25년, 회계연도가 다르면 실제 달 ('25.10~'26.9월)
+        var s1 = a.getMonth() + (a.getDate() > 20 ? 1 : 0), y1 = a.getFullYear() + (s1 > 11 ? 1 : 0); s1 = s1 % 12;
+        var e1 = b.getMonth() - (b.getDate() < 10 ? 1 : 0), y2 = b.getFullYear() - (e1 < 0 ? 1 : 0); e1 = (e1 + 12) % 12;
+        return s1 === 0 && e1 === 11 && y1 === y2 ? "'" + String(y2).slice(2) + '년' : "'" + String(y1).slice(2) + '.' + (s1 + 1) + "~'" + String(y2).slice(2) + '.' + (e1 + 1) + '월';
+      }
       // 달력 분기(1~3월·4~6월…)와 딱 맞을 때만 'N분기'. 회계연도가 다른 회사(엔비디아 5~7월 등)는 실제 달로 적는다 — 'N분기'로 쓰면 아직 안 나온 분기로 오해한다
       var sm = a.getMonth() + (a.getDate() > 20 ? 1 : 0), sy = a.getFullYear() + (sm > 11 ? 1 : 0); sm = sm % 12;
       var em = b.getMonth() - (b.getDate() < 10 ? 1 : 0), ey = b.getFullYear() - (em < 0 ? 1 : 0); em = (em + 12) % 12;

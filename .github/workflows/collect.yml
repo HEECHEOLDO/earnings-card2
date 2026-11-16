@@ -9,7 +9,7 @@ on:
       budget:
         description: '이번 실행에서 쓸 API 호출 수'
         required: false
-        default: '14000'
+        default: '12000'
       refresh_days:
         description: '며칠 넘은 데이터를 다시 받을지'
         required: false
@@ -52,7 +52,7 @@ jobs:
           DART_API_KEY: ${{ secrets.DART_API_KEY }}
         run: |
           python3 collect.py --all \
-            --budget ${{ github.event.inputs.budget || '14000' }} \
+            --budget ${{ github.event.inputs.budget || '12000' }} \
             --refresh-days ${{ github.event.inputs.refresh_days || '9' }} \
             --max-minutes 180
 

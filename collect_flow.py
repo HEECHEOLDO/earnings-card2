@@ -104,6 +104,9 @@ US_TAGS = {
 }
 
 
+US_SPAN = {}                                       # frame → (시작일, 끝일) — 카드 아래 기간을 실제 달로 적으려고
+
+
 def us_frames(facts, tags):
     """태그들 중 3개월 값(frame CYyyyyQn)을 {frame: 값} 으로"""
     g = (facts.get("facts") or {}).get("us-gaap") or {}
@@ -113,6 +116,8 @@ def us_frames(facts, tags):
             fr = u.get("frame") or ""
             if len(fr) == 8 and fr.startswith("CY") and fr[6] == "Q" and fr not in out:
                 out[fr] = u.get("val")
+                if u.get("start") and u.get("end"):
+                    US_SPAN.setdefault(fr, (u["start"], u["end"]))
     return out
 
 
@@ -120,11 +125,13 @@ def us_one(t, cik):
     facts = U.get_json(U.SEC_FACTS % str(cik).zfill(10))
     if not facts:
         return None
+    US_SPAN.clear()
     rv = us_frames(facts, US_TAGS["rev"])
     if not rv:
         return None
     fr = max(rv)
     d = {"rev": rv[fr]}
+    span = US_SPAN.get(fr)
     for k, tags in US_TAGS.items():
         if k != "rev":
             d[k] = us_frames(facts, tags).get(fr)
@@ -137,6 +144,8 @@ def us_one(t, cik):
     m = 1e6                                         # 달러 → 백만 달러
     out = {k: (round(v / m, 1) if isinstance(v, (int, float)) else None) for k, v in d.items()}
     out.update({"y": int(fr[2:6]), "q": int(fr[7]), "unit": "백만달러", "period": "'%s년 %s분기 (달력 기준)" % (fr[4:6], fr[7]), "frame": fr})
+    if span:
+        out.update({"start": span[0], "end": span[1]})      # 실제 기간 (회계연도가 다른 회사는 달력 분기와 어긋난다)
     return out
 
 
