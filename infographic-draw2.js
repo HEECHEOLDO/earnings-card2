@@ -58,7 +58,7 @@
   /* 2) 돈의 흐름 (생키) — 매출 → 영업이익·영업비용 → 순이익·세금 등. o: {rev, op, ni, money(v), pct(v), period, logo} */
   function ribbon(X, xa, ya0, ya1, xb, yb0, yb1, col) {
     var m = (xa + xb) / 2;
-    X.fillStyle = col; X.beginPath(); X.moveTo(xa, ya0); X.bezierCurveTo(m, ya0, m, yb0, xb, yb0); X.lineTo(xb, yb1); X.bezierCurveTo(m, yb1, m, ya1, xa, ya1); X.closePath(); X.fill();
+    X.fillStyle = darkRib(col); X.beginPath(); X.moveTo(xa, ya0); X.bezierCurveTo(m, ya0, m, yb0, xb, yb0); X.lineTo(xb, yb1); X.bezierCurveTo(m, yb1, m, ya1, xa, ya1); X.closePath(); X.fill();
   }
   function sankey(X, o) {
     head(X, o);
@@ -241,7 +241,7 @@
   var base = window.__vc;
   function ribbon(X, xa, ya0, ya1, xb, yb0, yb1, col) {
     var m = (xa + xb) / 2;
-    X.fillStyle = col; X.beginPath(); X.moveTo(xa, ya0); X.bezierCurveTo(m, ya0, m, yb0, xb, yb0); X.lineTo(xb, yb1); X.bezierCurveTo(m, yb1, m, ya1, xa, ya1); X.closePath(); X.fill();
+    X.fillStyle = darkRib(col); X.beginPath(); X.moveTo(xa, ya0); X.bezierCurveTo(m, ya0, m, yb0, xb, yb0); X.lineTo(xb, yb1); X.bezierCurveTo(m, yb1, m, ya1, xa, ya1); X.closePath(); X.fill();
   }
   function logoAt(X, im, x, y, r) { if (!im) return; X.save(); X.beginPath(); X.arc(x, y, r, 0, 7); X.clip(); X.fillStyle = '#fff'; X.fillRect(x - r, y - r, 2 * r, 2 * r); X.drawImage(im, x - r, y - r, 2 * r, 2 * r); X.restore(); }
   var G1 = '#2E9E6B', GS = 'rgba(46,158,107,0.28)', RD = ['#D9677B', '#E58C6B', '#C77DB5', '#E3A35A'], RS = 'rgba(217,103,123,0.24)', GR = '#7A808A', GRS = 'rgba(122,128,138,0.24)';
@@ -332,12 +332,47 @@
   var base = window.__vc;
   var REC = null, GID = 0;   // 글자 크기 고르기용 시험 그리기 — 글자·막대 상자를 모은다
   var BL = '#3E74D6', BLS = 'rgba(62,116,214,0.26)', GN = '#2E9E6B', GNS = 'rgba(46,158,107,0.30)', RD = '#C8434F', RDS = 'rgba(200,67,79,0.26)', INK = '#101216', SOFT = '#6B7078';
+  // 다크 모드: 옅은 리본은 검정 바탕에서 거의 안 보이니 진하기(불투명도)만 올린다 — 색은 그대로
+  function darkRib(col) {
+    var k = window.__ribK != null ? window.__ribK : 1.9;
+    if (!(window.CardTheme && CardTheme.isDark && CardTheme.isDark()) || k === 1) return col;
+    var mm = /^rgba\((\d+),\s*(\d+),\s*(\d+),\s*([\d.]+)\)$/.exec(col);
+    if (!mm) return col;
+    var RV = window.__ribV != null ? window.__ribV : 0.5;
+    if (RV) {                                                // 선명하게: 채도는 올리고 밝기는 중간 이상으로 (흰색을 섞지 않아 탁해지지 않게)
+      var v = vivid(+mm[1], +mm[2], +mm[3], RV);
+      return 'rgba(' + v[0] + ',' + v[1] + ',' + v[2] + ',' + Math.min(0.85, +mm[4] * k).toFixed(3) + ')';
+    }
+    var L = window.__ribL != null ? window.__ribL : 0, f = function (v) { return Math.round(+v + (255 - v) * L); };   // 색을 흰색 쪽으로 L 만큼 밝게 (검정에 섞여 탁해지지 않게)
+    return 'rgba(' + f(mm[1]) + ',' + f(mm[2]) + ',' + f(mm[3]) + ',' + Math.min(0.85, +mm[4] * k).toFixed(3) + ')';
+  }
+  function vivid(r, g, b, lv) {
+    r /= 255; g /= 255; b /= 255;
+    var mx = Math.max(r, g, b), mn = Math.min(r, g, b), l = (mx + mn) / 2, d = mx - mn, h = 0, s = 0;
+    if (d) { s = d / (1 - Math.abs(2 * l - 1)); h = mx === r ? ((g - b) / d) % 6 : mx === g ? (b - r) / d + 2 : (r - g) / d + 4; h *= 60; if (h < 0) h += 360; }
+    if (s > 0.15) s = Math.max(s, 0.72);
+    l = Math.max(l, lv + (h > 195 && h < 265 ? 0.1 : 0));              // 파랑은 같은 밝기여도 어둡게 보여서 한 단계 더 밝게
+    var C = (1 - Math.abs(2 * l - 1)) * s, x = C * (1 - Math.abs((h / 60) % 2 - 1)), m = l - C / 2;
+    var q = h < 60 ? [C, x, 0] : h < 120 ? [x, C, 0] : h < 180 ? [0, C, x] : h < 240 ? [0, x, C] : h < 300 ? [x, 0, C] : [C, 0, x];
+    return [Math.round((q[0] + m) * 255), Math.round((q[1] + m) * 255), Math.round((q[2] + m) * 255)];
+  }
+  function darkBar(col) {                                               // 다크 모드: 막대 색도 한 단계 밝게 (같은 색 계열)
+    var BV = window.__barV != null ? window.__barV : 0.58;
+    if (BV && window.CardTheme && CardTheme.isDark && CardTheme.isDark() && /^#[0-9a-f]{6}$/i.test(col)) {
+      var v = vivid(parseInt(col.substr(1, 2), 16), parseInt(col.substr(3, 2), 16), parseInt(col.substr(5, 2), 16), BV);
+      return '#' + v.map(function (z) { return ('0' + z.toString(16)).slice(-2); }).join('');
+    }
+    var L = window.__barL != null ? window.__barL : 0;
+    if (!L || !(window.CardTheme && CardTheme.isDark && CardTheme.isDark()) || !/^#[0-9a-f]{6}$/i.test(col)) return col;
+    var h = function (i) { var v = parseInt(col.substr(i, 2), 16); return ('0' + Math.round(v + (255 - v) * L).toString(16)).slice(-2); };
+    return '#' + h(1) + h(3) + h(5);
+  }
   function rib(X, xa, ya0, ya1, xb, yb0, yb1, col) {
     var m = (xa + xb) / 2;
-    X.fillStyle = col; X.beginPath(); X.moveTo(xa, ya0); X.bezierCurveTo(m, ya0, m, yb0, xb, yb0); X.lineTo(xb, yb1); X.bezierCurveTo(m, yb1, m, ya1, xa, ya1); X.closePath(); X.fill();
+    X.fillStyle = darkRib(col); X.beginPath(); X.moveTo(xa, ya0); X.bezierCurveTo(m, ya0, m, yb0, xb, yb0); X.lineTo(xb, yb1); X.bezierCurveTo(m, yb1, m, ya1, xa, ya1); X.closePath(); X.fill();
     if (window.__sankeyDbg) window.__sankeyDbg.ribs.push([xa, ya0, ya1, xb, yb0, yb1]);
   }
-  function bar(X, x, y, w, h, col, v) { if (REC) REC.push({ bar: 1, x0: x, x1: x + w, y0: y, y1: y + h }); X.fillStyle = col; X.fillRect(x, y, w, h); if (window.__sankeyDbg) window.__sankeyDbg.bars.push([x, y, w, h, v == null ? null : v]); }
+  function bar(X, x, y, w, h, col, v) { if (REC) REC.push({ bar: 1, x0: x, x1: x + w, y0: y, y1: y + h }); X.fillStyle = darkBar(col); X.fillRect(x, y, w, h); if (window.__sankeyDbg) window.__sankeyDbg.bars.push([x, y, w, h, v == null ? null : v]); }
   function logoAt(X, im, x, y, r) { if (!im) return; X.save(); X.beginPath(); X.arc(x, y, r, 0, 7); X.clip(); X.fillStyle = '#fff'; X.fillRect(x - r, y - r, 2 * r, 2 * r); X.drawImage(im, x - r, y - r, 2 * r, 2 * r); X.restore(); }
   function txt(X, s, x, y, w, px, col, align, maxW) {
     X.font = font(w, px); if (maxW) while (px > 14 && X.measureText(s).width > maxW) { px -= 1; X.font = font(w, px); }
