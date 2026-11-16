@@ -121,6 +121,38 @@
     return put.apply(this, arguments);
   };
   var DARKV = typeof WeakMap === 'function' ? new WeakMap() : null;
+  // (시안) 검정 바탕 위에 얹는 추가 질감 — 밝은 쪽으로만 더해져서 가장 어두운 곳은 #000 그대로
+  function texMap(W, H, fx) {
+    var film = fx.indexOf('film') >= 0, weave = fx.indexOf('weave') >= 0, mottle = fx.indexOf('mottle') >= 0;
+    if (!film && !weave && !mottle) return null;
+    var T = new Float32Array(W * H), s = 7;
+    function rnd() { s = (s * 16807) % 2147483647; return s / 2147483647; }
+    if (film) {                                                         // 필름 그레인: 2px 덩어리 입자 + 아주 고운 입자
+      var cw = Math.ceil(W / 2), ch = Math.ceil(H / 2), C = new Float32Array(cw * ch);
+      for (var c = 0; c < C.length; c++) { var r = rnd(); C[c] = r > 0.9 ? (r - 0.9) * 130 : 0; }
+      for (var y = 0; y < H; y++) for (var x = 0; x < W; x++) { var f = rnd(); T[y * W + x] += C[(y >> 1) * cw + (x >> 1)] + (f > 0.75 ? (f - 0.75) * 22 : 0); }
+    }
+    if (weave) {                                                        // 비단결: 아주 가는 사선 결 + 결마다 밝기 흔들림
+      for (var y2 = 0; y2 < H; y2++) for (var x2 = 0; x2 < W; x2++) {
+        var a = (x2 + y2 * 0.42), b = Math.sin(a * 0.9) * Math.sin(a * 0.031 + Math.sin(y2 * 0.011) * 2);
+        T[y2 * W + x2] += b > 0 ? b * 7 : 0;
+      }
+    }
+    if (mottle) {                                                       // 돌판 얼룩: 큰 덩어리 명암 (가장자리 70px 은 0 으로 사라짐)
+      var G = 44, gw = Math.ceil(W / G) + 2, gh = Math.ceil(H / G) + 2, N = new Float32Array(gw * gh);
+      for (var n = 0; n < N.length; n++) N[n] = rnd();
+      var N2 = new Float32Array(gw * gh);                               // 한 번 흐리게 해서 부드러운 덩어리로
+      for (var gy = 0; gy < gh; gy++) for (var gx = 0; gx < gw; gx++) { var t = 0, m = 0; for (var dy = -2; dy <= 2; dy++) for (var dx = -2; dx <= 2; dx++) { var yy = gy + dy, xx = gx + dx; if (yy >= 0 && yy < gh && xx >= 0 && xx < gw) { t += N[yy * gw + xx]; m++; } } N2[gy * gw + gx] = t / m; }
+      for (var y3 = 0; y3 < H; y3++) for (var x3 = 0; x3 < W; x3++) {
+        var fx3 = x3 / G, fy3 = y3 / G, ix = fx3 | 0, iy = fy3 | 0, u = fx3 - ix, w = fy3 - iy;
+        u = u * u * (3 - 2 * u); w = w * w * (3 - 2 * w);
+        var vv = (N2[iy * gw + ix] * (1 - u) + N2[iy * gw + ix + 1] * u) * (1 - w) + (N2[(iy + 1) * gw + ix] * (1 - u) + N2[(iy + 1) * gw + ix + 1] * u) * w;
+        var e = Math.min(x3, y3, W - 1 - x3, H - 1 - y3) / 70; e = e > 1 ? 1 : e;
+        var q = (vv - 0.45) * 80; T[y3 * W + x3] += q > 0 ? q * e : 0;
+      }
+    }
+    return T;
+  }
   function darkPaper(src) {
     if (!DARKV) return src;
     var hit = DARKV.get(src);
@@ -130,19 +162,28 @@
     g.drawImage(src, 0, 0);
     var im = g.getImageData(0, 0, cv.width, cv.height), d = im.data, base = src.__paperSum || 249, seed = 11;
     if (black() && flat()) { for (var j = 0; j < d.length; j += 4) { d[j] = d[j + 1] = d[j + 2] = 0; d[j + 3] = 255; } put.call(g, im, 0, 0); DARKV.set(src, cv); return cv; }
-    var PD = !black() ? PAPER_D : stone() ? [12, 12, 13] : [0, 0, 0], KK = !black() ? 1.1 : stone() ? 2.0 : 1.4;   // 기본: 피드와 같은 #000 바탕에 밝은 잔입자만 (어두운 쪽은 0 에서 멈춰 바탕은 그대로 검정)   // 검정 바탕에 돌판 잔무늬 (검정에서는 무늬를 조금 더 또렷하게)
+    var FXS = window.__cardFx != null ? window.__cardFx : 'mottle';   // 기본: 검정 바탕 + 돌판 얼룩 질감
+    var PD = !black() ? PAPER_D : stone() ? [12, 12, 13] : [0, 0, 0], KK = !black() ? 1.1 : stone() ? 2.0 : FXS.indexOf('grain') >= 0 ? 2.4 : 1.4;   // 기본: 피드와 같은 #000 바탕에 밝은 잔입자만 (어두운 쪽은 0 에서 멈춰 바탕은 그대로 검정)   // 검정 바탕에 돌판 잔무늬 (검정에서는 무늬를 조금 더 또렷하게)
+    var W = cv.width, H = cv.height, TX = black() && !stone() ? texMap(W, H, FXS) : null;
     for (var i = 0; i < d.length; i += 4) {
       var k = (d[i] + d[i + 1] + d[i + 2]) / 3 - base;                 // 원래 무늬(밝고 어두운 차이)만 가져온다
       seed = (seed * 16807) % 2147483647;
       if (seed / 2147483647 > 0.9993) k += 34;                          // 드문 밝은 입자 (돌판·종이 섬유)
-      d[i] = PD[0] + k * KK; d[i + 1] = PD[1] + k * KK; d[i + 2] = PD[2] + k * KK; d[i + 3] = 255;
+      var v = k * KK + (TX ? TX[i >> 2] : 0);
+      d[i] = PD[0] + v; d[i + 1] = PD[1] + v; d[i + 2] = PD[2] + v; d[i + 3] = 255;
     }
     put.call(g, im, 0, 0);
     DARKV.set(src, cv);
     return cv;
   }
   function glow(ctx, x, y, w, h) {                                      // 왼쪽 위 옅은 빛 번짐 + 가장자리 그늘
-    if (black() && !stone()) return;                                    // 피드와 같은 검정은 빛 번짐·그늘 없이 (바탕색이 달라지지 않게)
+    if (black() && !stone()) {                                          // 피드와 같은 검정은 가장자리를 #000 그대로 (바탕색이 달라지지 않게)
+      if ((window.__cardFx || '').indexOf('spot') < 0) return;
+      ctx.save();                                                       // (시안) 그래프 뒤 가운데만 아주 옅은 하늘빛 — 가장자리는 완전 검정
+      var sg = ctx.createRadialGradient(x + w * 0.5, y + h * 0.56, 20, x + w * 0.5, y + h * 0.56, Math.max(w, h) * 0.5);
+      sg.__noTheme = true; addStop.call(sg, 0, 'rgba(173,228,243,0.075)'); addStop.call(sg, 0.6, 'rgba(173,228,243,0.025)'); addStop.call(sg, 1, 'rgba(173,228,243,0)');
+      fillStyleRaw(ctx, sg); fillRectRaw.call(ctx, x, y, w, h); ctx.restore(); return;
+    }
     ctx.save();
     var rg = ctx.createRadialGradient(x + w * 0.28, y + h * 0.12, 40, x + w * 0.45, y + h * 0.35, Math.max(w, h) * 0.95);
     rg.__noTheme = true;
