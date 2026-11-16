@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-15",
+ "updated": "2026-11-16",
  "items": {
   "gold": {
    "ok": true,
@@ -8,7 +8,7 @@
    "freq": "D",
    "src": "CNBC",
    "last": 20261113,
-   "n": 919
+   "n": 918
   },
   "silver": {
    "ok": true,
@@ -17,7 +17,7 @@
    "freq": "D",
    "src": "CNBC",
    "last": 20261113,
-   "n": 918
+   "n": 917
   },
   "copper": {
    "ok": true,
@@ -26,7 +26,7 @@
    "freq": "D",
    "src": "CNBC",
    "last": 20261113,
-   "n": 918
+   "n": 917
   },
   "wti": {
    "ok": true,
@@ -53,7 +53,7 @@
    "freq": "D",
    "src": "CNBC",
    "last": 20261113,
-   "n": 917
+   "n": 916
   },
   "btc": {
    "ok": true,
@@ -61,8 +61,8 @@
    "unit": "달러",
    "freq": "D",
    "src": "CNBC",
-   "last": 20261113,
-   "n": 1145
+   "last": 20261114,
+   "n": 1146
   },
   "eth": {
    "ok": true,
@@ -70,7 +70,7 @@
    "unit": "달러",
    "freq": "D",
    "src": "CNBC",
-   "last": 20261113,
+   "last": 20261114,
    "n": 1146
   },
   "dxy": {
@@ -79,7 +79,7 @@
    "unit": "pt",
    "freq": "D",
    "src": "CNBC",
-   "last": 20261113,
+   "last": 20261115,
    "n": 956
   },
   "vix": {
@@ -89,7 +89,7 @@
    "freq": "D",
    "src": "CNBC",
    "last": 20261113,
-   "n": 933
+   "n": 932
   },
   "us10y": {
    "ok": true,
@@ -130,7 +130,7 @@
    "freq": "D",
    "src": "CNBC",
    "last": 20261114,
-   "n": 948
+   "n": 947
   },
   "usdkrw": {
    "ok": true,
@@ -139,7 +139,7 @@
    "freq": "D",
    "src": "CNBC",
    "last": 20261113,
-   "n": 975
+   "n": 974
   },
   "jpykrw": {
    "ok": true,
@@ -148,7 +148,7 @@
    "freq": "D",
    "src": "CNBC",
    "last": 20261113,
-   "n": 1003
+   "n": 989
   },
   "eurkrw": {
    "ok": true,
@@ -165,8 +165,8 @@
    "unit": "원",
    "freq": "D",
    "src": "CNBC",
-   "last": 20261113,
-   "n": 978
+   "last": 20261115,
+   "n": 970
   },
   "us_rate": {
    "ok": true,
