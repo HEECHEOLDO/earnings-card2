@@ -104,7 +104,7 @@
   function first(r) { return String(r.o.h1 || '').split(',')[0]; }
   var FLOW_KO = [[/Home Appliance/i, '가전'], [/Media Entertainment/i, 'TV·미디어'], [/Vehicle (component )?Solution/i, '전장'], [/Eco Solution/i, '냉난방 공조'],
     [/Business Solution/i, 'B2B 솔루션'], [/Payment Network/i, '결제 네트워크'], [/Value-Added/i, '부가 서비스'], [/Concentrate/i, '원액 판매'], [/Finished product/i, '완제품 판매'], [/엘지이노텍|LG이노텍|LG Innotek/i, 'LG이노텍'], [/^기타부문$/, '기타'],
-    [/Amortization.*intangible/i, '무형자산 상각'], [/Restructuring|Impairment/i, '구조조정·손상'], [/Loss Contingency|Litigation/i, '소송 충당금'],
+    [/Amortization.*intangible/i, '무형자산 상각'], [/Restructuring|Impairment/i, '구조조정·손상'], [/Special Charges?/i, '특별 비용'], [/Loss Contingency|Litigation/i, '소송 충당금'],
     [/Depreciation|Amortization/i, '감가상각비'], [/Information Technology|Communications/i, 'IT·통신비'], [/Network and processing/i, '네트워크 비용'],
     [/Professional fees/i, '전문가 수수료'], [/Personnel|Compensation|Employee|Labor/i, '인건비'], [/Marketing|Advertising/i, '마케팅비'],
     [/General and administrative/i, '일반관리비'], [/Selling,? general/i, '판매·관리비'], [/Research and development/i, '연구개발비'],
