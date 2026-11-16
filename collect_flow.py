@@ -330,10 +330,10 @@ def xcheck_kr(code, corp, d):
     rows = C.fetch_fs(corp, end.year, rc)
     if not rows:
         return {"err": "API 자료 없음"}
-    o = {k: kr_pick(rows, k, q) for k in ("rev", "op")}
+    o = {k: kr_pick(rows, k, q) for k in ("rev", "op", "ni")}
     if not o["rev"] or o["op"] is None:
         return {"err": "API 매출 없음"}
-    return {"src": "DART API", "rev": round(o["rev"] / 1e8, 1), "op": round(o["op"] / 1e8, 1)}
+    return {"src": "DART API", "rev": round(o["rev"] / 1e8, 1), "op": round(o["op"] / 1e8, 1), "ni": None if o["ni"] is None else round(o["ni"] / 1e8, 1)}
 
 
 def _same(a, b):
@@ -342,9 +342,11 @@ def _same(a, b):
         return False
     if abs(a["rev"] - b["rev"]) > abs(b["rev"]) * 0.005 + 0.15:
         return False
-    if b.get("op") is None:
-        return True
-    return abs(a["op"] - b["op"]) <= max(abs(b["op"]) * 0.03, abs(b["rev"]) * 0.005) + 0.15
+    if b.get("op") is not None and abs(a["op"] - b["op"]) > max(abs(b["op"]) * 0.03, abs(b["rev"]) * 0.005) + 0.15:
+        return False
+    if b.get("ni") is not None and a.get("ni") is not None and abs(a["ni"] - b["ni"]) > max(abs(b["ni"]) * 0.03, abs(b["rev"]) * 0.005) + 0.15:
+        return False                                # 순이익도 맞아야 한다 (지배주주 몫만 적은 경우 등)
+    return True
 
 
 def ext_check(code, d, m, days):
@@ -373,12 +375,28 @@ def verify(code, d, m, days):
     xc = d.get("xcheck") or {}
     if s == "ok":
         return True, why
-    if xc.get("rev") and _same(d, xc):              # 실적 탭 자료가 아직 없거나 다르면 DART API 와 맞는지
-        return (True, "DART API 와 일치") if s == "none" else (False, why + " · DART API 와는 일치 — 확인 필요")
+    if xc.get("rev") and _same(d, xc):              # 실적 탭 자료가 아직 없거나 다르면 DART API(공식 재무제표)와 맞는지
+        if s == "none":
+            return True, "DART API 와 일치"
+        r = ext_ratio(code, d, days)
+        if r and 1 / 3 <= r <= 3:                   # 공시 원문·DART API 가 서로 맞고 실적 탭만 다르면 카드를 믿는다 (실적 탭 쪽 확인 대상)
+            XTAB[code] = {"name": d.get("name"), "card_rev": d["rev"], "tab_ratio": round(r, 3)}
+            return True, "DART API 와 일치 (실적 탭과는 다름)"
+        return False, why + " · DART API 와는 일치하지만 실적 탭과 3배 넘게 달라(통화·단위) 보류"
     return False, why + ("" if not xc else " · DART API " + (xc.get("err") or "와 다름"))
 
 
 HOLD = {}
+XTAB = {}                                               # 카드·DART API 는 맞는데 실적 탭만 다른 회사 (실적 탭 점검용)
+
+
+def ext_ratio(code, d, days):
+    """카드 매출 ÷ 실적 탭 같은 기간 매출"""
+    src = jl(os.path.join("data", code + ".json"), {}) or {}
+    rows = (src.get("annual") if days > 100 else src.get("quarterly")) or []
+    end = date.fromisoformat(d["end"])
+    same = [r for r in rows if r.get("y") == end.year and (days > 100 or r.get("q") == (end.month + 2) // 3)]
+    return d["rev"] / same[0]["rev"] if same and same[0].get("rev") else None
 
 
 def usable(code):
@@ -397,7 +415,7 @@ def usable(code):
     gross = g1 if g1 is not None else g2
     if g1 is not None and d.get("cogs") is not None and abs(g1 - g2) > rev * 0.01:
         gross = g1 if d.get("sga") is not None and abs(g1 - d["sga"] - op) <= rev * 0.01 else g2
-    if gross - op < 0 or gross < 0:
+    if gross - op < 0 or gross < 0 or gross > rev * 1.0001:      # 매출원가가 음수(환입)라 매출총이익이 매출보다 큰 건 그리지 않는다
         return False
     days = (date.fromisoformat(d["end"]) - date.fromisoformat(d["start"])).days
     if not (80 <= days <= 100 or 350 <= days <= 380):
@@ -601,6 +619,7 @@ def run_pool(fn, jobs, workers, on_done, budget_ok):
 def build_index():
     idx = {}
     HOLD.clear()
+    XTAB.clear()
     for fn in os.listdir(OUT):
         if not fn.endswith(".json") or fn.startswith(("_", "index")):
             continue
@@ -610,6 +629,8 @@ def build_index():
             m = d.get("market") or ("US" if not code.isdigit() else "UL" if len(code) == 8 else "KR")
             idx[code] = {"n": d.get("name") or code, "m": m, "p": d.get("period")}
     json.dump({"updated": TODAY.isoformat(), "items": idx}, open(os.path.join(OUT, "index.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=0)
+    json.dump({"updated": TODAY.isoformat(), "note": "카드·DART API 는 맞는데 국내 실적 탭 숫자가 다른 회사 — 실적 탭 점검 대상", "items": XTAB},
+              open(os.path.join(OUT, "_tabdiff.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=0)
     json.dump({"updated": TODAY.isoformat(), "note": "두 출처가 같은 숫자를 말하지 않아 카드에 올리지 않은 회사", "items": HOLD},
               open(os.path.join(OUT, "_hold.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=0)
     return idx
