@@ -517,20 +517,23 @@
               else { if (f.sm) items.push({ n: '마케팅비', v: f.sm }); if (f.ga) items.push({ n: '일반관리비', v: f.ga }); }
             }
             var used = items.reduce(function (t, x) { return t + x.v; }, 0);
-            if (items.length && opex - used > opex * 0.005) items.push({ n: '기타 영업비용', v: opex - used });   // 세부 합이 모자라면 나머지는 기타로 (숫자 합이 영업비용과 맞게)
+            if (items.length && opex - used > opex * 0.001) items.push({ n: '기타 영업비용', v: opex - used });   // 세부 합이 모자라면 나머지는 기타로 (숫자 합이 영업비용과 맞게)
             var mg = {}, etc = 0, hasEtc = {};                // 같은 이름은 합치고, '기타 …'는 하나로
             items.forEach(function (x) { if (/^기타/.test(x.n)) { etc += x.v; hasEtc[x.n] = 1; } else mg[x.n] = (mg[x.n] || 0) + x.v; });
             items = Object.keys(mg).map(function (k) { return { n: k, v: mg[k] }; }).sort(function (a, b) { return b.v - a.v; });
             if (items.length > 4) { etc += items.slice(4).reduce(function (t, x) { return t + x.v; }, 0); items = items.slice(0, 4); hasEtc['기타 영업비용'] = 1; }
             if (etc > 0) items.push({ n: Object.keys(hasEtc).length === 1 ? Object.keys(hasEtc)[0] : '기타 영업비용', v: etc });
             used = items.reduce(function (t, x) { return t + x.v; }, 0);
-            if (used > opex * 1.02 && opex > 0) items = [];   // 세부 합이 영업비용보다 크면(다른 기준) 숫자를 억지로 줄이지 않고 세부를 뺀다 — 값이 틀리면 안 된다
+            if (opex <= 0 || used > opex * 1.005) items = [];   // 세부 합이 영업비용보다 크면(다른 기준) 숫자를 억지로 줄이지 않고 세부를 뺀다 — 값이 틀리면 안 된다
             var sg = (f.segs || []).map(function (x) { return Array.isArray(x) ? { n: flowKo(segKo(krTidy(x[0]))), v: x[1] } : x; }), sgT = sg.reduce(function (t, x) { return t + x.v; }, 0), small = 0;
             if (sgT > f.rev * 1.15 || sgT < f.rev * 0.85) { sg = []; sgT = 0; }   // 매출 구분 합이 총매출과 15% 넘게 다르면(다른 기준) 나누지 않는다 — 값이 틀리면 안 된다
             var sg0 = sg.slice();
             sg = sg.filter(function (x) { if (x.v < sgT * 0.04 || /^기타/.test(x.n)) { small += x.v; return false; } return true; }).slice(0, 6);   // 작은 건 '기타'로
-            if (small > sgT * 0.02 && sg.length) sg.push({ n: '기타', v: small });
-            if (sg.length < 2 && sg0.length >= 2 && sg0.length <= 6) sg = sg0.sort(function (a, b) { return b.v - a.v; });   // 하나만 남으면(메타: 앱 99%·리얼리티 랩스 1%) 작아도 그대로 보여준다
+            if (sg.length < 2 && sg0.length >= 2 && sg0.length <= 6) sg = sg0.filter(function (x) { return !/^기타/.test(x.n); }).sort(function (a, b) { return b.v - a.v; });   // 하나만 남으면(메타: 앱 99%·리얼리티 랩스 1%) 작아도 그대로 보여준다
+            // 막대 높이 = 금액 그대로: 부문 합이 총매출보다 크면(내부 거래 포함) 줄여 그리지 않고 나누지 않는다, 모자라면 나머지를 '기타'로 채운다
+            var sgS = sg.reduce(function (t, x) { return t + x.v; }, 0);
+            if (sgS > f.rev * 1.002) sg = [];
+            else if (sg.length && f.rev - sgS > f.rev * 0.0005) sg.push({ n: '기타', v: f.rev - sgS });
             return { fn: 'sankey3', o: { h1: nm2, segs: sg, rev: f.rev, cogs: f.rev - gross, op: f.op, items: items, ni: f.ni, tax: f.tax, money: money, logo: r.logo, fxNote: us ? '환율 ' + Math.round(D.fx).toLocaleString() + '원 기준' : '' },
               src: flowPeriod(f) + ' 기준' };
           });
