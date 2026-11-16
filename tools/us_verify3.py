@@ -29,7 +29,7 @@ for t in T:
     def get(tags):
         out = {}
         for tg in tags:
-            for m in re.finditer(r'<us-gaap:%s[^>]*contextRef="([^"]+)"[^>]*>([-\d.]+)<' % tg, x):
+            for m in re.finditer(r'<us-gaap:%s\s[^>]*contextRef="([^"]+)"[^>]*>([-\d.]+)<' % tg, x):
                 if m.group(1) in ctx:
                     out.setdefault(tg, float(m.group(2)) / 1e6)
         return out
