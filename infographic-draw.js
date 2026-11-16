@@ -65,7 +65,7 @@ window.__vcFoot = function (X, src) {
   var G = null;
   function grain(X) {
     if (!G) {
-      G = document.createElement('canvas'); G.width = CW; G.height = CH;
+      G = document.createElement('canvas'); G.width = CW; G.height = CH; G.__noTheme = true;   // 질감은 늘 밝은 종이로 만들고, 다크 모드면 card-theme.js 가 쓸 때 어두운 판으로 바꾼다
       var g = G.getContext('2d'); g.fillStyle = T.paper; g.fillRect(0, 0, CW, CH);
       var im = g.getImageData(0, 0, CW, CH), d = im.data, s = 7;
       for (var i = 0; i < d.length; i += 4) { s = (s * 16807) % 2147483647; var k = (s / 2147483647 - 0.5) * 14; d[i] += k; d[i + 1] += k; d[i + 2] += k; }

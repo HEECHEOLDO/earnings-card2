@@ -22,6 +22,11 @@
     '#8c6e14': '#e2b84a'                              // 금색 꼬리표 글자 (꼬리표 바탕이 어두워지니 밝게)
   };
   var PAPER_D = [23, 25, 29];
+  // 인스타 피드처럼 완전한 검정 바탕 (무늬·빛 번짐 없음) — window.__cardDark = 'gray' 이면 예전 회색 돌판
+  function black() { return window.__cardDark !== 'gray'; }
+  function flat() { return window.__cardDark === 'flat'; }            // 'flat': 무늬·빛 없이 완전 평평한 검정
+  function stone() { return window.__cardDark === 'stone'; }          // 'stone': 검정 + 돌판 잔무늬·빛 번짐 (기본은 인스타 피드와 같은 #000 + 고운 잔무늬만)
+  var MAP_BLACK = { '#fafaf8': '#000000', '#f2f0ea': '#151515', '#f1efea': '#151515', '#eceae3': '#1c1c1c', '#eae8e1': '#1c1c1c', '#e6e4dd': '#2a2a2a', '#e2dfd6': '#2f2f2f' };
   // 바꾸지 않는 색: 색 있는 막대·조각 위에 쓰는 진한 글자 (바탕이 아니라 그 색 위에 있으니 다크 모드여도 진해야 읽힌다)
   var KEEP = { '#111214': 1 };
   var paused = 0;                                   // raw() 안: 국기처럼 색이 정해진 그림은 그대로
@@ -71,6 +76,7 @@
       var key = '#' + hex2(p[0]) + hex2(p[1]) + hex2(p[2]);
       if (KEEP[key]) res = c;
       else if (p[0] === 255 && p[1] === 255 && p[2] === 255) res = c;                  // 흰색은 그대로
+      else if (black() && MAP_BLACK[key]) { var q0 = parse(MAP_BLACK[key]); res = out(q0[0], q0[1], q0[2], p[3]); }
       else if (MAP[key]) { var q = parse(MAP[key]); res = out(q[0], q[1], q[2], p[3]); }
       else {
         var H = hsl(p[0], p[1], p[2]), lu = (0.299 * p[0] + 0.587 * p[1] + 0.114 * p[2]) / 255;
@@ -123,17 +129,20 @@
     var g = cv.getContext('2d'); cv.__noTheme = true;
     g.drawImage(src, 0, 0);
     var im = g.getImageData(0, 0, cv.width, cv.height), d = im.data, base = src.__paperSum || 249, seed = 11;
+    if (black() && flat()) { for (var j = 0; j < d.length; j += 4) { d[j] = d[j + 1] = d[j + 2] = 0; d[j + 3] = 255; } put.call(g, im, 0, 0); DARKV.set(src, cv); return cv; }
+    var PD = !black() ? PAPER_D : stone() ? [12, 12, 13] : [0, 0, 0], KK = !black() ? 1.1 : stone() ? 2.0 : 1.4;   // 기본: 피드와 같은 #000 바탕에 밝은 잔입자만 (어두운 쪽은 0 에서 멈춰 바탕은 그대로 검정)   // 검정 바탕에 돌판 잔무늬 (검정에서는 무늬를 조금 더 또렷하게)
     for (var i = 0; i < d.length; i += 4) {
       var k = (d[i] + d[i + 1] + d[i + 2]) / 3 - base;                 // 원래 무늬(밝고 어두운 차이)만 가져온다
       seed = (seed * 16807) % 2147483647;
       if (seed / 2147483647 > 0.9993) k += 34;                          // 드문 밝은 입자 (돌판·종이 섬유)
-      d[i] = PAPER_D[0] + k * 1.1; d[i + 1] = PAPER_D[1] + k * 1.1; d[i + 2] = PAPER_D[2] + k * 1.1; d[i + 3] = 255;
+      d[i] = PD[0] + k * KK; d[i + 1] = PD[1] + k * KK; d[i + 2] = PD[2] + k * KK; d[i + 3] = 255;
     }
     put.call(g, im, 0, 0);
     DARKV.set(src, cv);
     return cv;
   }
   function glow(ctx, x, y, w, h) {                                      // 왼쪽 위 옅은 빛 번짐 + 가장자리 그늘
+    if (black() && !stone()) return;                                    // 피드와 같은 검정은 빛 번짐·그늘 없이 (바탕색이 달라지지 않게)
     ctx.save();
     var rg = ctx.createRadialGradient(x + w * 0.28, y + h * 0.12, 40, x + w * 0.45, y + h * 0.35, Math.max(w, h) * 0.95);
     rg.__noTheme = true;
