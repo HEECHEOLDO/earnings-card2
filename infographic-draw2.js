@@ -269,7 +269,7 @@
     ox.forEach(function (x, i) { var h = x[1] * s; nodes3.push({ n: x[0], v: x[1], y: y, h: h, c: RD[i % RD.length] }); y += h + gap * 0.6; });
     var yNi = top, hNi = Math.max(0, ni) * s, n4 = [], y4 = yNi + hNi + gap;
     if (tax > 0) { n4.push({ n: '법인세', v: tax, y: y4, h: tax * s, c: GR }); y4 += tax * s + gap * 0.6; }
-    if (nonop > rev * 0.002) { n4.push({ n: '영업외 손실', v: nonop, y: y4, h: nonop * s, c: GR }); }
+    if (nonop > rev * 0.002) { n4.push({ n: '영업외손실', v: nonop, y: y4, h: nonop * s, c: GR }); }
     // 리본: 매출 → 매출총이익 / 매출원가
     if (hasG) { ribbon(X, xA + nw, yRev, yRev + hG, xB, yG, yG + hG, GS); ribbon(X, xA + nw, yRev + hG, yRev + hRev, xB, yC, yC + hC, RS); }
     var srcX = hasG ? xB : xA, srcY = hasG ? yG : yRev;
@@ -647,7 +647,7 @@
     var FS = o.__FS || 1.18;
     function tw(s, w, px) { X.font = font(w, px); return X.measureText(s).width; }
     var segW = hasSeg ? Math.min(230, Math.max.apply(null, segs.map(function (sg) { return Math.max(tw(sg.n, 700, 21 * FS), tw(m(sg.v), 900, 26 * FS)); }))) : 0;
-    var rNames = [].concat(tax > 0 ? ['법인세', m(tax)] : []).concat(exOut > 0 ? ['영업외 손실', m(exOut)] : [])
+    var rNames = [].concat(tax > 0 ? ['법인세', m(tax)] : []).concat(exOut > 0 ? ['영업외손실', m(exOut)] : [])
       .concat(hasItems ? items.reduce(function (a, it) { return a.concat([it.n, m(it.v)]); }, []) : []);
     var rightW = Math.min(210, Math.max(96, Math.max.apply(null, rNames.map(function (s2, ix) { return tw(s2, ix % 2 ? 900 : 700, (ix % 2 ? 26 : 19) * FS); }).concat([tw(ni >= 0 ? '순이익' : '순손실', 800, 22 * FS), tw(m(ni), 900, 30 * FS)]))));   // 순이익은 영업이익과 같은 크기
     var nw = 20, x0 = hasSeg ? L + segW + 14 : L, x1 = hasSeg ? x0 + 150 : L + Math.max(40, tw(m(rev), 900, 30 * FS) / 2 + 4), x4 = R - rightW - nw - 12, x2 = x1 + (x4 - x1) * 0.33, x3 = hasG ? x1 + (x4 - x1) * 0.66 : x1 + (x4 - x1) * 0.45, xm = (window.__flowDir || 'down') === 'down' ? Math.max((x3 + x4) / 2, x4 - nw - 46) : (x3 + x4) / 2;   // 내려가는 배치: 영업외 이익 막대를 순이익 막대 바로 옆에 — 영업이익→순이익 흐름 위에 놓이지 않게
@@ -676,7 +676,7 @@
       var LH = Math.max(62, 54 * FS);                                                          // 오른쪽 이름표 한 칸 높이 — 막대가 얇아도 이름표가 막대 옆에 오도록
       var y = g.yN + Math.max(g.hN, 62) + 14; g.right = [];
       if (tax > 0) { g.right.push({ n: '법인세', v: tax, y: y + Math.max(0, (LH - tax * s) / 2), h: tax * s, from: 'op' }); y += Math.max(tax * s, LH) + 10; }
-      if (exOut > 0) { g.right.push({ n: '영업외 손실', v: exOut, y: y + Math.max(0, (LH - exOut * s) / 2), h: exOut * s, from: 'op' }); y += Math.max(exOut * s, LH) + 10; }
+      if (exOut > 0) { g.right.push({ n: '영업외손실', v: exOut, y: y + Math.max(0, (LH - exOut * s) / 2), h: exOut * s, from: 'op' }); y += Math.max(exOut * s, LH) + 10; }
       if (hasItems) {
         y = Math.max(y + 10, g.yE - 30);
         var sum = items.reduce(function (t, x) { return t + Math.max(x.v * s, LH); }, 0), slot = Math.min(40, Math.max(8, (bot - y - sum) / items.length));
