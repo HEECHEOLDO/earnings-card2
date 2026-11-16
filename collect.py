@@ -560,6 +560,14 @@ def collect_quarterly(corp_code, latest_year):
                 "op": pick_account(fs, "op", cumulative=use_cum),
                 "ni": pick_account(fs, "ni", cumulative=use_cum),
             }
+            # 반기·3분기 보고서에는 '이번 3개월' 숫자(thstrm_amount)가 따로 있다 — 누적끼리 빼면, 앞 보고서 뒤에
+            # 사업을 팔아 지난 숫자를 다시 쓴 회사(중단영업 재분류: 한화시스템 2026.3Q 4,390억 ↔ 실제 8,316억)에서 틀린다
+            if tag in ("HALF", "Q3"):
+                three = {"rev": pick_account(fs, "rev", cumulative=False), "op": pick_account(fs, "op", cumulative=False),
+                         "ni": pick_account(fs, "ni", cumulative=False)}
+                # 누적과 3개월이 다르게 나와야(=두 칸이 다 있는 보고서) 3개월 숫자로 믿는다
+                if three["rev"] is not None and rv is not None and three["op"] is not None and abs(three["rev"] - rv) > abs(rv) * 0.01:
+                    cum[tag + "3M"] = three
 
         def diff(a, b):
             if a is None or b is None:
@@ -571,8 +579,8 @@ def collect_quarterly(corp_code, latest_year):
 
         steps = [
             (1, lambda k: grab("Q1", k)),
-            (2, lambda k: diff(grab("HALF", k), grab("Q1", k))),
-            (3, lambda k: diff(grab("Q3", k), grab("HALF", k))),
+            (2, lambda k: grab("HALF3M", k) if "HALF3M" in cum else diff(grab("HALF", k), grab("Q1", k))),
+            (3, lambda k: grab("Q33M", k) if "Q33M" in cum else diff(grab("Q3", k), grab("HALF", k))),
             (4, lambda k: diff(grab("YEAR", k), grab("Q3", k))),
         ]
         for q, fn in steps:
