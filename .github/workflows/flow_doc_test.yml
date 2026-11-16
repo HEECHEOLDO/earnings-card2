@@ -6,6 +6,9 @@ on:
       codes:
         description: 종목코드 (쉼표)
         default: '306620,004650,199730,191410,005930'
+      script:
+        description: 실행할 시험 파일
+        default: 'flow_doc_test.py'
 permissions:
   contents: read
 jobs:
@@ -21,4 +24,4 @@ jobs:
         env:
           DART_API_KEY: ${{ secrets.DART_API_KEY }}
           CODES: ${{ inputs.codes }}
-        run: python3 tools/flow_doc_test.py
+        run: python3 tools/${{ inputs.script }}
