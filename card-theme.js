@@ -252,7 +252,7 @@
     var x, y, w, h;
     if (a.length === 9) { x = a[5]; y = a[6]; w = a[7]; h = a[8]; } else if (a.length === 5) { x = a[1]; y = a[2]; w = a[3]; h = a[4]; } else return;
     if (w < 16 || h < 16 || Math.abs(w - h) > w * 0.15) return;
-    var r = Math.min(w, h) / 2, lw = Math.max(1.5, r * 0.06);
+    var r = Math.min(w, h) / 2, lw = Math.max(1, r * 0.03);
     ctx.save();
     ctx.beginPath(); ctx.arc(x + w / 2, y + h / 2, r - lw / 2, 0, Math.PI * 2);
     ssRaw(ctx, 'rgba(255,255,255,0.32)'); ctx.lineWidth = lw; ctx.stroke();
