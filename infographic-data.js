@@ -243,7 +243,10 @@
       D.total = D.inds.reduce(function (s, g) { return s + g.sum; }, 0);
       D.sec = {}; D.inds.forEach(function (g) { g.codes.forEach(function (c) { if (!D.sec[c]) D.sec[c] = (g.short || g.name).trim(); }); });
       D.asof = (D.kr && D.kr.asof) || '';
-      return ONLY ? J('./data/flow/index.json').then(function (f) { D.flow = (f && f.items) || {}; }) : null;
+      return ONLY ? Promise.all([J('./data/flow/index.json'), J('./data/unlisted/index.json').catch(function () { return null; })]).then(function (r2) {
+        D.flow = (r2[0] && r2[0].items) || {};
+        D.ulBrand = {}; ((r2[1] && r2[1].companies) || []).forEach(function (c) { if (c.brand) D.ulBrand[c.code] = c.brand; });   // 비상장: 익숙한 서비스·브랜드 이름으로도 찾기 (비상장 실적 탭과 같은 목록)
+      }) : null;
     });
   }
 
@@ -282,7 +285,7 @@
     if (ONLY && D.flow) {
       var cap = function (k) { var x = D.flow[k]; return x.m === 'KR' ? ((D.st[k] || {}).c || 0) : x.m === 'US' ? ((D.us.stocks[k] || {}).c || 0) * D.fx / 1e4 : 0; };
       var pre = { KR: 'kr:', US: 'us:', UL: 'ul:' };
-      return Object.keys(D.flow).sort(function (a, b) { return cap(b) - cap(a) || String(D.flow[a].n).localeCompare(String(D.flow[b].n), 'ko'); }).map(function (k) { var x = D.flow[k]; return [(pre[x.m] || 'kr:') + k, x.m === 'US' ? ko(k, x.n) : x.n]; });
+      return Object.keys(D.flow).sort(function (a, b) { return cap(b) - cap(a) || String(D.flow[a].n).localeCompare(String(D.flow[b].n), 'ko'); }).map(function (k) { var x = D.flow[k]; return [(pre[x.m] || 'kr:') + k, x.m === 'US' ? ko(k, x.n) : x.n, x.m === 'UL' ? (D.ulBrand || {})[k] || '' : '', x.m === 'US' ? x.n : '']; });   // [키, 보이는 이름, 서비스·브랜드(비상장), 영어 이름(해외: 찾기용)]
     }
     var st = D.st, kr = Object.keys(st).filter(function (c) { return c.slice(-1) === '0' && st[c].c; }).sort(function (a, b) { return st[b].c - st[a].c; }).slice(0, 15)
       .map(function (c) { return ['kr:' + c, st[c].n]; });
@@ -1174,18 +1177,18 @@
         var q = document.createElement('input'); q.type = 'text'; q.className = 'co-q'; q.autocomplete = 'off'; q.spellcheck = false;
         q.setAttribute('autocorrect', 'off'); q.setAttribute('autocapitalize', 'off'); q.setAttribute('aria-label', '회사 이름 찾기');
         var cur1 = list.filter(function (o) { return o[0] === sel[c.id]; })[0];
-        q.placeholder = (cur1 ? cur1[1] + ' · ' : '') + '회사 이름이나 코드 (눌러서 전체 보기)';
+        q.placeholder = (cur1 ? cur1[1] + ' · ' : '') + '회사·서비스 이름이나 코드 (눌러서 전체 보기)';
         var ul = document.createElement('ul'); ul.className = 'co-sug'; ul.setAttribute('role', 'listbox');
         var items = [], act = -1;
         function norm(s) { return String(s).toLowerCase().replace(/[\s·.,()&-]/g, ''); }
         function open() {
           var w = norm(q.value), pool = w ? list : list.filter(function (o) { return o[0].slice(0, 3) === mk; });
-          items = w ? pool.filter(function (o) { var n = norm(o[1]), cd = o[0].slice(3).toLowerCase(); return n.indexOf(w) >= 0 || cd.indexOf(w) === 0; })
-            .sort(function (a, b) { return (norm(a[1]).indexOf(w) === 0 ? 0 : 1) - (norm(b[1]).indexOf(w) === 0 ? 0 : 1); }) : pool;
+          var rk = function (o) { var n = norm(o[1]); return n.indexOf(w) === 0 ? 0 : n.indexOf(w) >= 0 ? 1 : o[0].slice(3).toLowerCase().indexOf(w) === 0 ? 2 : norm(o[2] || '').indexOf(w) >= 0 || norm(o[3] || '').indexOf(w) >= 0 ? 3 : 9; };
+          items = w ? pool.filter(function (o) { return rk(o) < 9; }).sort(function (a, b) { return rk(a) - rk(b); }) : pool;
           items = items.slice(0, 300);
           var html = '<div class="head">' + (w ? items.length.toLocaleString() + '곳 일치' : MK[mk] + ' ' + pool.length.toLocaleString() + '곳 · 이름이나 코드를 입력해 보세요') + '</div>';
           html += items.length ? items.map(function (o, i) {
-            return '<li role="option" data-i="' + i + '"' + (o[0] === sel[c.id] ? ' class="on"' : '') + '><span>' + o[1].replace(/</g, '&lt;') + '</span><span class="code">' + (w ? MK[o[0].slice(0, 3)] + ' · ' : '') + o[0].slice(3) + '</span></li>';
+            return '<li role="option" data-i="' + i + '"' + (o[0] === sel[c.id] ? ' class="on"' : '') + '><span>' + o[1].replace(/</g, '&lt;') + '</span><span class="code">' + (w ? MK[o[0].slice(0, 3)] + ' · ' : '') + (o[2] ? String(o[2]).replace(/</g, '&lt;') : o[0].slice(3)) + '</span></li>';
           }).join('') : '<li class="empty">일치하는 회사가 없어요</li>';
           ul.innerHTML = html; ul.style.display = 'block'; act = -1;
         }
