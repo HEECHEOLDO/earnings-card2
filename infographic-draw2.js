@@ -377,10 +377,16 @@
     // 위 이름표(총 매출 · 영업손실 · 영업비용)가 옆끼리 겹칠 만큼 기둥이 가까우면, 겹치는 수만큼 맨 위 자리를 더 비운다
     var HHl = 13 + 56 * FS + (window.__flowMargin ? 26 * FS : 0), lwl = function (nm, v) { return Math.max(tw(nm, 800, Math.round(22 * FS)), tw(v, 900, Math.round(30 * FS)), window.__flowMargin ? tw('이익률 -00%', 700, Math.round(17 * FS)) : 0) / 2 + 6; };
     var wRl = lwl('총 매출', m(rev)), wLl = lwl('영업손실', m(op)), wEl = lwl('영업비용', m(opex)), lev = 1 + (x2 - x1 < wRl + wLl ? 1 : 0) + (x3 - x2 < wLl + wEl ? 1 : 0);
+    var LDOWN = (window.__flowDir || 'down') === 'down';
     function place(s) {
       var g = { s: s, hR: rev * s, hG: Math.max(0, gross) * s, hC: cogs * s, hL: L0 * s, hE: opex * s };
-      g.yL = Math.max(top + 40, TOP + 30 + HHl * lev);                                            // 영업손실(모자란 돈) — 맨 위
-      g.yG = g.yL + g.hL + 50; g.yR = g.yG; g.yC = g.yG + g.hG + 50; g.yE = g.yL;
+      if (LDOWN) {                                                                             // 내려가는 배치: 총 매출 맨 위 → 매출총이익·영업비용 한 칸씩 아래, 영업손실은 매출총이익 밑에서 영업비용 아래쪽을 채운다
+        g.yR = Math.max(top + 40, TOP + 30 + HHl * (hasG && x2 - x1 < wRl + lwl('매출총이익', m(gross)) ? 2 : 1)); g.yG = g.yR + (hasG ? 30 : 0); g.yE = g.yG + 40;   // 이름표가 옆으로 겹치면 한 줄 더 비운다
+        g.yL = g.yG + g.hG + HHl + 10; g.yC = g.yL + g.hL + 50;
+      } else {
+        g.yL = Math.max(top + 40, TOP + 30 + HHl * lev);                                          // 영업손실(모자란 돈) — 맨 위
+        g.yG = g.yL + g.hL + 50; g.yR = g.yG; g.yC = g.yG + g.hG + 50; g.yE = g.yL;
+      }
       var y = g.yE; g.right = [];
       if (hasItems) {
         var sum = items.reduce(function (a, x) { return a + Math.max(x.v * s, LH); }, 0), slot = Math.min(40, Math.max(8, (bot - y - sum) / items.length));
@@ -400,8 +406,13 @@
     }
     if (hasG) { rib(X, x1 + nw, g.yR, g.yR + g.hG, x2, g.yG, g.yG + g.hG, GNS); rib(X, x1 + nw, g.yR + g.hG, g.yR + g.hR, x2, g.yC, g.yC + g.hC, RDS); }
     var gx = hasG ? x2 : x1;
-    rib(X, x2 + nw, g.yL, g.yL + g.hL, x3, g.yE, g.yE + g.hL, DKS);                         // 영업손실 → 영업비용 위쪽
-    if (g.hG > 0) rib(X, gx + nw, g.yG, g.yG + g.hG, x3, g.yE + g.hL, g.yE + g.hE, hasG ? GNS : BLS);   // 매출총이익(원가 없으면 매출) → 영업비용 아래쪽
+    if (LDOWN) {
+      if (g.hG > 0) rib(X, gx + nw, g.yG, g.yG + g.hG, x3, g.yE, g.yE + g.hG, hasG ? GNS : BLS);          // 매출총이익(원가 없으면 매출) → 영업비용 위쪽
+      rib(X, x2 + nw, g.yL, g.yL + g.hL, x3, g.yE + g.hG, g.yE + g.hE, DKS);                               // 영업손실 → 영업비용 아래쪽
+    } else {
+      rib(X, x2 + nw, g.yL, g.yL + g.hL, x3, g.yE, g.yE + g.hL, DKS);                         // 영업손실 → 영업비용 위쪽
+      if (g.hG > 0) rib(X, gx + nw, g.yG, g.yG + g.hG, x3, g.yE + g.hL, g.yE + g.hE, hasG ? GNS : BLS);   // 매출총이익(원가 없으면 매출) → 영업비용 아래쪽
+    }
     var need = g.right.reduce(function (a, r) { return a + r.h; }, 0), kE = need > 0 ? g.hE / need : 1, ce = g.yE;
     g.right.forEach(function (r) { var h = r.h * kE; rib(X, x3 + nw, ce, ce + h, x4, r.y, r.y + r.h, RDS); ce += h; });
     if (hasSeg) segs.forEach(function (sg) { bar(X, x0, sg.y, nw, Math.max(2, sg.h), BL, sg.v); });
@@ -424,7 +435,10 @@
     }
     above(x1 + nw / 2, g.yR, '총 매출', m(rev), BL);
     above(x2 + nw / 2, g.yL, '영업손실', m(op), DK, MG ? '이익률 ' + pc(op) : '');
-    if (hasG) {
+    if (hasG && LDOWN) {                                                     // 내려가는 배치: 매출총이익 이름표는 막대 위, 매출원가는 막대 오른쪽
+      above(x2 + nw / 2, g.yG, '매출총이익', m(gross), GN, MG ? '이익률 ' + pc(gross) : '');
+      GID++; txt(X, '매출원가', x2 + nw + 12, g.yC + Math.min(g.hC, 220) / 2, 800, Math.round(24 * FS), RD, 'left'); txt(X, m(cogs), x2 + nw + 12, g.yC + Math.min(g.hC, 220) / 2 + 36 * FS, 900, Math.round(32 * FS), RD, 'left');
+    } else if (hasG) {
       var gw = Math.max(tw('매출총이익', 800, Math.round(22 * FS)), tw(m(gross), 900, Math.round(28 * FS))), gl = gw > x3 - (x2 + nw + 12) - 8 && x2 - 10 - gw > x1 + nw + 8;   // 영업비용 막대까지 자리가 없으면 막대 왼쪽에
       var gxx = gl ? x2 - 10 : x2 + nw + 12, gal = gl ? 'right' : 'left';
       GID++; txt(X, '매출총이익', gxx, g.yG + Math.min(g.hG, 120) / 2 + 4, 800, Math.round(22 * FS), GN, gal); txt(X, m(gross), gxx, g.yG + Math.min(g.hG, 120) / 2 + 4 + 32 * FS, 900, Math.round(28 * FS), GN, gal);
@@ -459,7 +473,8 @@
       REC = []; o.__FS = fs; o.__dry = true;
       try { sankey3c(TX, o); } catch (e) { REC = null; o.__dry = false; window.__sankeyDbg = dbg; throw e; }
       var b = REC, bad = 0, P = 6;    // 글자끼리·글자와 막대는 6px 넘게 떨어져야 한다
-      if (o.__span && o.__span < 118) { bad += 2; why.push(fs + ' 좁은 기둥 ' + Math.round(o.__span)); }   // 글자를 키우느라 그래프가 너무 좁아지면 안 된다
+      if (o.__span && o.__span < 118) { bad += 2; why.push(fs + ' 좁은 기둥 ' + Math.round(o.__span)); }
+      if (o.__hR != null && o.__hR < 200) { bad += 2; why.push(fs + ' 그래프가 너무 작음 ' + Math.round(o.__hR)); }   // 글자를 키우느라 막대가 쪼그라들면 안 된다   // 글자를 키우느라 그래프가 너무 좁아지면 안 된다
       b.forEach(function (a, i) {
         if (a.bar) { if (a.y1 > BOT + 4 || a.y0 < TOP + 20) { bad += 3; why.push(fs + ' 막대 넘침'); } return; }
         if (a.x0 < L - 4 || a.x1 > R + 4 || a.y0 < TOP + 24 || a.y1 > BOT + 22) { bad++; why.push(fs + ' OUT ' + a.t); }
@@ -494,7 +509,7 @@
     var rNames = [ni >= 0 ? '순이익' : '순손실', m(ni)].concat(tax > 0 ? ['법인세', m(tax)] : []).concat(exOut > 0 ? ['영업외 손실', m(exOut)] : [])
       .concat(hasItems ? items.reduce(function (a, it) { return a.concat([it.n, m(it.v)]); }, []) : []);
     var rightW = Math.min(210, Math.max(96, Math.max.apply(null, rNames.map(function (s2, ix) { return tw(s2, ix % 2 ? 900 : 700, (ix % 2 ? 26 : 19) * FS); }))));
-    var nw = 20, x0 = hasSeg ? L + segW + 14 : L, x1 = hasSeg ? x0 + 150 : L + Math.max(40, tw(m(rev), 900, 30 * FS) / 2 + 4), x4 = R - rightW - nw - 12, x2 = x1 + (x4 - x1) * 0.33, x3 = hasG ? x1 + (x4 - x1) * 0.66 : x1 + (x4 - x1) * 0.45, xm = (x3 + x4) / 2;
+    var nw = 20, x0 = hasSeg ? L + segW + 14 : L, x1 = hasSeg ? x0 + 150 : L + Math.max(40, tw(m(rev), 900, 30 * FS) / 2 + 4), x4 = R - rightW - nw - 12, x2 = x1 + (x4 - x1) * 0.33, x3 = hasG ? x1 + (x4 - x1) * 0.66 : x1 + (x4 - x1) * 0.45, xm = (window.__flowDir || 'down') === 'down' ? Math.max((x3 + x4) / 2, x4 - nw - 46) : (x3 + x4) / 2;   // 내려가는 배치: 영업외 이익 막대를 순이익 막대 바로 옆에 — 영업이익→순이익 흐름 위에 놓이지 않게
     o.__span = hasG ? Math.min(x2 - x1, x3 - x2, x4 - x3) : Math.min(x3 - x1, x4 - x3);
     var top = TOP + 60, bot = BOT - 8, HH = 13 + 56 * FS + (window.__flowMargin ? 26 * FS : 0);   // 위 이름표 높이
     // 기둥 사이가 좁아 위 이름표끼리 옆으로 겹치면 계단을 이름표 높이만큼 벌린다
@@ -507,9 +522,7 @@
       g.hR = rev * s; g.hG = gross * s; g.hC = cogs * s; g.hO = Math.max(0, op) * s; g.hE = opex * s; g.hEx = exIn * s; g.hN = Math.max(0, ni) * s;
       var DIR = window.__flowDir || 'down', base = Math.max(top + 70, TOP + 34 + HH), exRoom = exIn ? g.hEx + Math.max(110, HH + 10) : 0;
       if (DIR === 'down') {                                                    // 총 매출이 맨 위 → 오른쪽으로 갈수록 한 칸씩 내려간다
-        g.yR = base; g.yG = g.yR + stGR; g.yO = Math.max(g.yG + stGO, base + exRoom);
-        var wXl = lw('영업외 이익', '+' + m(exIn || 0));
-        if (EXPUSH && exIn && hasG && xm - 8 - 2 * wXl < x2 + nw / 2 + wG) g.yO = Math.max(g.yO, g.yG + 4 + HH + exRoom);   // 영업외 이익 이름표가 매출총이익 이름표 옆에 부딪히면 그 아래로   // 영업외 이익 이름표가 매출총이익 이름표보다 아래에 오게
+        g.yR = base; g.yG = g.yR + stGR; g.yO = g.yG + stGO;
       } else if (DIR === 'flat') {                                             // 윗선을 한 줄로 맞춘다
         g.yR = g.yG = g.yO = base + exRoom;
       } else {
@@ -518,7 +531,7 @@
       }
       g.yC = g.yG + g.hG + 50; g.yE = g.yO + g.hO + 50;
       g.yX = g.yO - g.hEx - Math.max(110, HH + 10); g.yN = Math.max(top + 10, (exIn ? g.yX : g.yO) - 10);
-      if (DIR === 'down') g.yN = Math.max(top + 10, Math.min(g.yN, base));      // 내려가는 배치: 오른쪽 줄은 위에서 시작해야 자리가 남는다
+      if (DIR === 'down') { g.yN = base; g.yX = base; }      // 내려가는 배치: 순이익은 맨 위, 영업외 이익은 순이익 윗부분과 같은 높이 — 법인세로 가는 흐름과 엇갈리지 않게
       var LH = Math.max(62, 54 * FS);                                                          // 오른쪽 이름표 한 칸 높이 — 막대가 얇아도 이름표가 막대 옆에 오도록
       var y = g.yN + Math.max(g.hN, 62) + 14; g.right = [];
       if (tax > 0) { g.right.push({ n: '법인세', v: tax, y: y + Math.max(0, (LH - tax * s) / 2), h: tax * s, from: 'op' }); y += Math.max(tax * s, LH) + 10; }
@@ -538,8 +551,9 @@
       return g;
     }
     var EXPUSH = true, g = fit();
+    o.__hR = null;
     if (exIn) { EXPUSH = false; var gNo = fit(); if (g.s < gNo.s * 0.8) g = gNo; else { EXPUSH = true; g = fit(); } }   // 영업외 이익 자리 때문에 그래프가 20% 넘게 작아지면 그 자리 비우기를 포기
-    var s = g.s;
+    var s = g.s; o.__hR = g.hR;
     // ---- 리본
     if (hasSeg) {
       var nS = segs.length, gapS = Math.max(Math.min(30, (bot - top - g.hR) / (nS + 1)), Math.min((66 * nS - g.hR) / Math.max(1, nS - 1), (bot - top - g.hR) / Math.max(1, nS - 1))), tot = g.hR + gapS * (nS - 1), ys = Math.min(Math.max(top, g.yR + g.hR / 2 - tot / 2), bot - tot), cur = g.yR;   // 이름표가 막대 옆에 들어갈 만큼 막대 사이를 띄운다
@@ -620,8 +634,19 @@
       GID++; txt(X, '매출원가', cx, cy, 800, Math.round(24 * FS), RD, ca); txt(X, m(cogs), cx, cy + 36 * FS, 900, Math.round(32 * FS), RD, ca);
     }
     if (exIn) { var wx = Math.max(tw('영업외 이익', 800, Math.round(22 * FS)), tw('+' + m(exIn), 900, Math.round(30 * FS))) / 2;   // 순이익 막대에 닿지 않게 왼쪽으로
-      if (x4 - 8 - (x3 + nw + 6) >= 2 * wx) above(Math.max(x3 + nw + 6 + wx, Math.min(xm + nw / 2, x4 - 8 - wx)), g.yX, '영업외 이익', '+' + m(exIn), '', GN);
-      else {   // 자리가 좁으면 막대 왼쪽에 (영업이익 이름표보다 위)
+      if ((window.__flowDir || 'down') === 'down') {     // 내려가는 배치: 늘 막대 위 (맨 위라 순이익 막대와 안 닿는다) — 글자는 오른쪽 항목들과 같은 크기
+        var wx2 = Math.max(tw('영업외 이익', 700, Math.round(19 * FS)), tw('+' + m(exIn), 900, Math.round(26 * FS))) / 2, ex2 = Math.min(xm + nw / 2, x4 + nw - wx2);
+        var eyb = g.yX - 14, eyt = eyb - 28 * FS - 19 * FS;
+        var hitE = function (cx) { return boxes.some(function (bx) { return cx - wx2 - 8 < bx[1] && cx + wx2 + 8 > bx[0] && eyt - 6 < bx[3] && eyb + 6 > bx[2]; }); };   // 6~8px 띄움
+        if (hitE(ex2)) { if (!hitE(x4 + nw - wx2)) ex2 = x4 + nw - wx2; else if (!hitE(R - wx2) && eyb + 8 < g.yN + Math.min(g.hN, 120) / 2 - (MG ? 80 : 54) * FS / 2) ex2 = R - wx2; else eyb = g.yX + Math.max(2, g.hEx) + 52 * FS; }   // 순이익 막대 끝 → 오른쪽 끝(순이익 글자보다 위)까지 밀어 본다   // 부딪히면 오른쪽(순이익 막대 끝)까지 밀고, 그래도 안 되면 막대 아래로
+        if (window.__sankeyDbg) window.__sankeyDbg.ex = { mode: eyb > g.yX ? 'below' : 'above', yX: g.yX, yN: g.yN, h: g.hEx };
+        GID++; txt(X, '+' + m(exIn), ex2, eyb, 900, Math.round(26 * FS), GN, 'center'); txt(X, '영업외 이익', ex2, eyb - 28 * FS, 700, Math.round(19 * FS), GN, 'center');
+      }
+      else if (x4 - 8 - (x3 + nw + 6) >= 2 * wx) above(Math.max(x3 + nw + 6 + wx, Math.min(xm + nw / 2, x4 - 8 - wx)), g.yX, '영업외 이익', '+' + m(exIn), '', GN);
+      else if ((window.__flowDir || 'down') === 'down') {   // 내려가는 배치: 자리가 좁으면 막대 바로 아래 (순이익 막대에 닿지 않게 왼쪽으로)
+        var bx = Math.min(xm + nw / 2, x4 - 8 - wx), by = g.yX + Math.max(2, g.hEx) + 24 * FS + 4;
+        GID++; txt(X, '영업외 이익', bx, by, 800, Math.round(22 * FS), GN, 'center'); txt(X, '+' + m(exIn), bx, by + 32 * FS, 900, Math.round(30 * FS), GN, 'center');
+      } else {   // 자리가 좁으면 막대 왼쪽에 (영업이익 이름표보다 위)
         var vb = g.yX + Math.max(g.hEx, 0) + 2 - 6;
         GID++; txt(X, '+' + m(exIn), xm - 8, vb, 900, Math.round(30 * FS), GN, 'right'); txt(X, '영업외 이익', xm - 8, vb - 32 * FS, 800, Math.round(22 * FS), GN, 'right');
       } }
