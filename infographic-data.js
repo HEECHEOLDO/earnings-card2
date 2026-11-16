@@ -277,7 +277,11 @@
     if (f.start && f.end) {
       var a = new Date(f.start), b = new Date(f.end), days = (b - a) / 864e5, y = String(b.getFullYear()).slice(2);
       if (days > 300) return "'" + y + '년';
-      return "'" + y + '년 ' + Math.ceil((b.getMonth() + 1) / 3) + '분기';
+      // 달력 분기(1~3월·4~6월…)와 딱 맞을 때만 'N분기'. 회계연도가 다른 회사(엔비디아 5~7월 등)는 실제 달로 적는다 — 'N분기'로 쓰면 아직 안 나온 분기로 오해한다
+      var sm = a.getMonth() + (a.getDate() > 20 ? 1 : 0), sy = a.getFullYear() + (sm > 11 ? 1 : 0); sm = sm % 12;
+      var em = b.getMonth() - (b.getDate() < 10 ? 1 : 0), ey = b.getFullYear() - (em < 0 ? 1 : 0); em = (em + 12) % 12;
+      if (sm % 3 === 0 && em === sm + 2 && sy === ey) return "'" + String(ey).slice(2) + '년 ' + (sm / 3 + 1) + '분기';
+      return sy === ey ? "'" + String(ey).slice(2) + '년 ' + (sm + 1) + '~' + (em + 1) + '월' : "'" + String(sy).slice(2) + '.' + (sm + 1) + "~'" + String(ey).slice(2) + '.' + (em + 1) + '월';
     }
     return f.q ? "'" + String(f.y).slice(2) + '년 ' + f.q + '분기' : "'" + String(f.y).slice(2) + '년';
   }
