@@ -533,9 +533,11 @@
             if (sg.length < 2 && sg0.length >= 2 && sg0.length <= 6) sg = sg0.filter(function (x) { return !/^기타/.test(x.n); }).sort(function (a, b) { return b.v - a.v; });   // 하나만 남으면(메타: 앱 99%·리얼리티 랩스 1%) 작아도 그대로 보여준다
             // 막대 높이 = 금액 그대로: 부문 합이 총매출보다 크면(내부 거래 포함) 줄여 그리지 않고 나누지 않는다, 모자라면 나머지를 '기타'로 채운다
             var sgS = sg.reduce(function (t, x) { return t + x.v; }, 0);
-            if (sgS > f.rev * 1.002) sg = [];
+            var sgElim = false;
+            if (sgS > f.rev * 1.25) sg = [];                                   // 25% 넘게 크면 기준이 다른 숫자 — 나누지 않는다
+            else if (sgS > f.rev * 1.002) sgElim = true;                       // 부문끼리 사고판 내부 거래 — 넘치는 만큼 '내부거래 제거'로 보여 준다
             else if (sg.length && f.rev - sgS > f.rev * 0.0005) sg.push({ n: '기타', v: f.rev - sgS });
-            return { fn: 'sankey3', o: { h1: nm2, segs: sg, rev: f.rev, cogs: f.rev - gross, op: f.op, items: items, ni: f.ni, tax: f.tax, money: money, logo: r.logo, fxNote: us ? '환율 ' + Math.round(D.fx).toLocaleString() + '원 기준' : '' },
+            return { fn: 'sankey3', o: { h1: nm2, segs: sg, segElim: sgElim, rev: f.rev, cogs: f.rev - gross, op: f.op, items: items, ni: f.ni, tax: f.tax, money: money, logo: r.logo, fxNote: us ? '환율 ' + Math.round(D.fx).toLocaleString() + '원 기준' : '' },
               src: flowPeriod(f) + ' 기준' };
           });
         }

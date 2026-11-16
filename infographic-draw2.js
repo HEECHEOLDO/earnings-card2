@@ -347,6 +347,25 @@
   }
   /* 영업손실인 회사 — 영업비용이 매출총이익보다 크다. 모자란 만큼(영업손실)을 위에서 들여와 영업비용을 채운다 */
   /* 매출 종류 이름표 — 막대 옆에. 많아서 아래로 밀리면 간격·글자를 줄이고, 바닥을 넘지 않게 위로 되민다 */
+  /* 매출 구분 → 총 매출 리본. 부문 합이 총매출보다 크면(부문끼리 사고판 내부 거래) 줄여 그리지 않고,
+     넘치는 만큼을 총 매출 막대 밑 회색 '내부거래 제거' 막대로 흘려 보낸다 — 막대 높이 = 금액 그대로 */
+  function segFlow(X, segs, s, g, x0, x1, nw, ys, gapS, rev, elim) {
+    var tS = segs.reduce(function (a, x) { return a + x.v; }, 0), E = elim ? Math.max(0, tS - rev) : 0, kS = E > 0 ? 1 : rev / tS;
+    var cur = g.yR, cum = 0, sy = g.yR + g.hR + 22, sc = sy;
+    segs.forEach(function (sg) {
+      var h = sg.v * s * kS, p1 = Math.max(0, Math.min(h, g.hR - cum)), p2 = h - p1; sg.y = ys; sg.h = h;
+      if (p1 > 0) rib(X, x0 + nw, ys, ys + p1, x1, cur, cur + p1, BLS);
+      if (p2 > 0.01) { rib(X, x0 + nw, ys + p1, ys + h, x1, sc, sc + p2, 'rgba(150,155,165,0.32)'); sc += p2; }
+      cum += h; cur += p1; ys += h + gapS;
+    });
+    return E > 0 ? { y: sy, h: E * s, v: E } : null;
+  }
+  function elimDraw(X, el, x1, nw, m, FS) {
+    if (!el) return;
+    bar(X, x1, el.y, nw, Math.max(2, el.h), '#9aa0a8', el.v);
+    var cx = x1 + nw / 2, by = el.y + Math.max(2, el.h) + 22 * FS;
+    GID++; txt(X, '내부거래 제거', cx, by, 700, Math.round(17 * FS), SOFT, 'center'); txt(X, '−' + m(el.v), cx, by + 26 * FS, 900, Math.round(22 * FS), SOFT, 'center');
+  }
   function segLabels(X, segs, x0, top, bot, m, FS) {
     FS = FS || 1;
     var n = segs.length, H0 = 60 * FS, step = Math.min(H0, (bot - top) / n), k = step / 60, ys = [];
@@ -400,9 +419,8 @@
     for (k = 0; k < 12 && g.low < bot - 60; k++) { var g2 = place(sc * 1.06); if (g2.low > bot) break; sc *= 1.06; g = g2; }
     var s = g.s;
     if (hasSeg) {
-      var nS = segs.length, gapS = Math.max(Math.min(30, (bot - top - g.hR) / (nS + 1)), Math.min((66 * nS - g.hR) / Math.max(1, nS - 1), (bot - top - g.hR) / Math.max(1, nS - 1))), tot = g.hR + gapS * (nS - 1), ys = Math.min(Math.max(top, g.yR + g.hR / 2 - tot / 2), bot - tot), cur = g.yR;   // 이름표가 막대 옆에 들어갈 만큼 막대 사이를 띄운다
-      var kS = rev / segs.reduce(function (a, x) { return a + x.v; }, 0);
-      segs.forEach(function (sg) { var h = sg.v * s * kS; sg.y = ys; sg.h = h; rib(X, x0 + nw, ys, ys + h, x1, cur, cur + h, BLS); ys += h + gapS; cur += h; });
+      var nS = segs.length, gapS = Math.max(Math.min(30, (bot - top - g.hR) / (nS + 1)), Math.min((66 * nS - g.hR) / Math.max(1, nS - 1), (bot - top - g.hR) / Math.max(1, nS - 1))), tot = g.hR * (o.segElim ? Math.max(1, segs.reduce(function (a, x) { return a + x.v; }, 0) / rev) : 1) + gapS * (nS - 1), ys = Math.min(Math.max(top, g.yR + g.hR / 2 - tot / 2), bot - tot), cur = g.yR;   // 이름표가 막대 옆에 들어갈 만큼 막대 사이를 띄운다
+      var EL = segFlow(X, segs, s, g, x0, x1, nw, ys, gapS, rev, o.segElim);
     }
     if (hasG) { rib(X, x1 + nw, g.yR, g.yR + g.hG, x2, g.yG, g.yG + g.hG, GNS); rib(X, x1 + nw, g.yR + g.hG, g.yR + g.hR, x2, g.yC, g.yC + g.hC, RDS); }
     var gx = hasG ? x2 : x1;
@@ -417,6 +435,7 @@
     g.right.forEach(function (r) { var h = r.h * kE; rib(X, x3 + nw, ce, ce + h, x4, r.y, r.y + r.h, RDS); ce += h; });
     if (hasSeg) segs.forEach(function (sg) { bar(X, x0, sg.y, nw, Math.max(2, sg.h), BL, sg.v); });
     bar(X, x1, g.yR, nw, g.hR, BL, rev);
+    if (hasSeg) elimDraw(X, EL, x1, nw, m, FS);
     if (hasG) { bar(X, x2, g.yG, nw, Math.max(2, g.hG), GN, gross); bar(X, x2, g.yC, nw, Math.max(2, g.hC), RD, cogs); }
     bar(X, x2, g.yL, nw, Math.max(2, g.hL), DK, -op);
     bar(X, x3, g.yE, nw, Math.max(2, g.hE), RD, opex);
@@ -556,9 +575,8 @@
     var s = g.s; o.__hR = g.hR;
     // ---- 리본
     if (hasSeg) {
-      var nS = segs.length, gapS = Math.max(Math.min(30, (bot - top - g.hR) / (nS + 1)), Math.min((66 * nS - g.hR) / Math.max(1, nS - 1), (bot - top - g.hR) / Math.max(1, nS - 1))), tot = g.hR + gapS * (nS - 1), ys = Math.min(Math.max(top, g.yR + g.hR / 2 - tot / 2), bot - tot), cur = g.yR;   // 이름표가 막대 옆에 들어갈 만큼 막대 사이를 띄운다
-      var kS = rev / segs.reduce(function (t, x) { return t + x.v; }, 0);          // 부문 합이 총매출보다 크면(내부 거래) 비율로 맞춘다
-      segs.forEach(function (sg) { var h = sg.v * s * kS; sg.y = ys; sg.h = h; rib(X, x0 + nw, ys, ys + h, x1, cur, cur + h, BLS); ys += h + gapS; cur += h; });
+      var nS = segs.length, gapS = Math.max(Math.min(30, (bot - top - g.hR) / (nS + 1)), Math.min((66 * nS - g.hR) / Math.max(1, nS - 1), (bot - top - g.hR) / Math.max(1, nS - 1))), tot = g.hR * (o.segElim ? Math.max(1, segs.reduce(function (a, x) { return a + x.v; }, 0) / rev) : 1) + gapS * (nS - 1), ys = Math.min(Math.max(top, g.yR + g.hR / 2 - tot / 2), bot - tot), cur = g.yR;   // 이름표가 막대 옆에 들어갈 만큼 막대 사이를 띄운다
+      var EL = segFlow(X, segs, s, g, x0, x1, nw, ys, gapS, rev, o.segElim);
     }
     var sx = hasG ? x2 : x1, sy = hasG ? g.yG : g.yR;
     if (hasG) { rib(X, x1 + nw, g.yR, g.yR + g.hG, x2, g.yG, g.yG + g.hG, GNS); rib(X, x1 + nw, g.yR + g.hG, g.yR + g.hR, x2, g.yC, g.yC + g.hC, RDS); }
@@ -590,6 +608,7 @@
     // ---- 막대
     if (hasSeg) segs.forEach(function (sg) { bar(X, x0, sg.y, nw, Math.max(2, sg.h), BL, sg.v); });
     bar(X, x1, g.yR, nw, g.hR, BL, rev);
+    if (hasSeg) elimDraw(X, EL, x1, nw, m, FS);
     if (hasG) { bar(X, x2, g.yG, nw, g.hG, GN, gross); bar(X, x2, g.yC, nw, Math.max(2, g.hC), RD, cogs); }
     bar(X, x3, g.yO, nw, Math.max(2, g.hO), GN, op); bar(X, x3, g.yE, nw, Math.max(2, g.hE), RD, opex);
     if (exIn) bar(X, xm, g.yX, nw, Math.max(2, g.hEx), GN, exIn);
