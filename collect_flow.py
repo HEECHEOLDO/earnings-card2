@@ -14,7 +14,7 @@ import json
 import os
 import sys
 import time
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta
 
 import collect as C
 import collect_us as U
@@ -461,6 +461,26 @@ def scaled(v, k):
 T0 = time.time()
 MINUTES = float(os.environ.get("FLOW_MINUTES", "75"))      # 한 번 돌 때 쓸 시간 — 남은 회사는 다음 번에
 DART_MAX = int(os.environ.get("FLOW_DART_MAX", "7000"))     # DART 하루 한도(2만)를 다른 수집기와 나눠 쓴다
+# DART 하루 한도 2만 번 나눠 쓰기 (자정 KST 초기화): 국내 실적 14,000 · 국내5 1,000 · 비상장 1,500 · 대주주 등 ~500 → 돈의 흐름은 하루 2,500
+FLOW_DAY = int(os.environ.get("FLOW_DART_DAY", "2500"))
+USAGE = os.path.join("data", "flow", "_dart_usage.json")
+
+
+def kst_now():
+    return datetime.utcnow() + timedelta(hours=9)
+
+
+def used_today():
+    u = jl(USAGE, {}) or {}
+    return int(u.get(kst_now().strftime("%Y-%m-%d"), 0))
+
+
+def add_usage(n):
+    day = kst_now().strftime("%Y-%m-%d")
+    u = jl(USAGE, {}) or {}
+    u = {k: v for k, v in u.items() if k >= (kst_now() - timedelta(days=7)).strftime("%Y-%m-%d")}
+    u[day] = int(u.get(day, 0)) + int(n)
+    json.dump(u, open(USAGE, "w", encoding="utf-8"))
 FAILP = os.path.join(OUT, "_fail.json")                     # 못 읽은 회사 — 1주일 뒤에 다시
 
 
@@ -724,7 +744,14 @@ def main():
             job, d, why, calls, sec = r
             done["calls"] += calls; done["sec"] += sec
             finish(job[3], d, job[2], job[6], why, job[5])
-        n = run_pool(work_kr, jobs, W, on_kr, lambda: time_left() and C._call_count + done["calls"] < DART_MAX)
+        left = min(DART_MAX, FLOW_DAY - used_today())
+        h = kst_now().hour
+        if 0 <= h < 7:                                   # 자정~아침 7시는 국내 실적·비상장 수집이 DART 를 쓰는 시간 — 돈의 흐름은 쉬기
+            left = 0
+        print("  DART 오늘 쓴 %d · 이번에 쓸 수 있는 %d" % (used_today(), max(0, left)), flush=True)
+        # 한 곳에 원문·API 를 여러 번 부르니 여유를 두고 멈춘다 (병렬로 도는 몫까지)
+        n = run_pool(work_kr, jobs, W, on_kr, lambda: time_left() and C._call_count + done["calls"] + W * 12 < left) if left > W * 12 else 0
+        add_usage(C._call_count + done["calls"])
         print("  국내 %d/%d곳 처리 · 한 곳 평균 %.1f초 · DART 호출 %d" % (n, len(jobs), done["sec"] / max(1, n), done["calls"]), flush=True)
     if "--kr-only" not in sys.argv and time_left():
         ru = recent_us()

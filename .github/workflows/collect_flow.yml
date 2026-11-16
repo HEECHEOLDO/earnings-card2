@@ -40,6 +40,7 @@ jobs:
           SEC_UA: ${{ secrets.SEC_UA }}
           FLOW_MINUTES: '72'
           FLOW_WORKERS: '12'
+          FLOW_DART_DAY: '2500'           # DART 하루 2만 번 중 돈의 흐름 몫 (국내 실적 14,000 · 국내5 1,000 · 비상장 1,500)
         run: |
           mkdir -p data/flow
           python3 -u collect_flow.py --${{ matrix.part }}-only 2>&1 | tee "$RUNNER_TEMP/flow_log.txt"
