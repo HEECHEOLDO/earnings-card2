@@ -224,8 +224,41 @@
       if (a.length <= 5 && img.width >= 900) glow(this, a[1] || 0, a[2] || 0, a.length === 5 ? a[3] : img.width, a.length === 5 ? a[4] : img.height);
       return r;
     }
-    return di.apply(this, arguments);
+    var rr = di.apply(this, arguments);
+    if (isDark() && !this.canvas.__noTheme && darkEdge(img)) ring(this, arguments);
+    return rr;
   };
+  // 다크 모드: 가장자리가 검은 로고(기아·폴바셋 등)는 검정 바탕에 묻히니 옅은 테두리를 두른다
+  var EDGE = typeof WeakMap === 'function' ? new WeakMap() : null;
+  function darkEdge(img) {
+    if (!EDGE || !img || !img.src || String(img.src).indexOf('/logo/') < 0 || !img.naturalWidth) return false;
+    var hit = EDGE.get(img); if (hit !== undefined) return hit;
+    var res = false;
+    try {
+      var n = 48, cv = document.createElement('canvas'); cv.width = cv.height = n; cv.__noTheme = true;
+      var g = cv.getContext('2d'); di.call(g, img, 0, 0, n, n);
+      var d = g.getImageData(0, 0, n, n).data, sum = 0, cnt = 0, tot = 0;
+      for (var k = 0; k < 72; k++) {                                  // 원 둘레 바로 안쪽 (반지름 90%)
+        var a = k / 72 * Math.PI * 2, x = Math.round(n / 2 + Math.cos(a) * n * 0.45), y = Math.round(n / 2 + Math.sin(a) * n * 0.45);
+        var i = (Math.min(n - 1, y) * n + Math.min(n - 1, x)) * 4; tot++;
+        if (d[i + 3] > 200) { sum += 0.299 * d[i] + 0.587 * d[i + 1] + 0.114 * d[i + 2]; cnt++; }
+      }
+      res = cnt > tot * 0.6 && sum / cnt < 40;
+    } catch (e) { res = false; }
+    EDGE.set(img, res);
+    return res;
+  }
+  function ring(ctx, a) {
+    var x, y, w, h;
+    if (a.length === 9) { x = a[5]; y = a[6]; w = a[7]; h = a[8]; } else if (a.length === 5) { x = a[1]; y = a[2]; w = a[3]; h = a[4]; } else return;
+    if (w < 16 || h < 16 || Math.abs(w - h) > w * 0.15) return;
+    var r = Math.min(w, h) / 2, lw = Math.max(1.5, r * 0.06);
+    ctx.save();
+    ctx.beginPath(); ctx.arc(x + w / 2, y + h / 2, r - lw / 2, 0, Math.PI * 2);
+    ssRaw(ctx, 'rgba(255,255,255,0.32)'); ctx.lineWidth = lw; ctx.stroke();
+    ctx.restore();
+  }
+  function ssRaw(ctx, v) { Object.getOwnPropertyDescriptor(CanvasRenderingContext2D.prototype, 'strokeStyle').set.call(ctx, v); }
 
   // ---------------------------------------------------------------- 모드 바뀔 때
   var subs = [];
