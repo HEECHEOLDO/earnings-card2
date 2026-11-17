@@ -658,6 +658,11 @@ def quick_update(code, corp_map, latest_year):
         return None
     if old.get("q_method") != "strict" or not any(a.get("p") == latest_year - 1 for a in old.get("annual") or []):
         return None
+    # 작년 분기 합이 연간과 2% 넘게 어긋나면(분할·재작성 등) 빠른 갱신 대신 전체를 새로 받는다
+    an = next((a for a in old.get("annual") or [] if a.get("p") == latest_year - 1), {})
+    qs0 = [r for r in old.get("quarterly") or [] if r.get("y") == latest_year - 1]
+    if an.get("rev") and len(qs0) == 4 and abs(sum(r.get("rev") or 0 for r in qs0) - an["rev"]) > abs(an["rev"]) * 0.02:
+        return None
     log("\n=== %s (%s) === [빠른 갱신: %d년 분기만]" % (old.get("name") or info["name"], code, latest_year))
     qs = collect_quarterly(info["corp_code"], latest_year, years=[latest_year])
     new_cur = [r for r in qs if r.get("y") == latest_year]
