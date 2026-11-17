@@ -523,7 +523,7 @@ def collect_annual(corp_code, latest_year):
     return rows[-YEARS:]
 
 
-def collect_quarterly(corp_code, latest_year):
+def collect_quarterly(corp_code, latest_year, years=None):
     """
     DART엔 '2분기 단독' 보고서가 없다. 누적에서 빼서 각 분기를 만든다.
         1Q = 1분기보고서
@@ -541,7 +541,7 @@ def collect_quarterly(corp_code, latest_year):
     아직 안 나온 보고서는 자연스럽게 None이 되어 건너뛴다.
     """
     out = []
-    for y in range(latest_year - 3, latest_year + 1):
+    for y in (years or range(latest_year - 3, latest_year + 1)):
         cum = {}
         fin_tags = set()
         for tag, code in (("Q1", REPRT["Q1"]), ("HALF", REPRT["HALF"]),
@@ -640,6 +640,35 @@ def collect_company(code, corp_map, latest_year, alias=None):
         "q_method": "strict",          # 앞 보고서가 있을 때만 분기를 만든 파일 (fix_quarters.py 가 건너뛴다)
         "_worst_gap": worst,
     }, None
+
+
+def quick_update(code, corp_map, latest_year):
+    """실적 시즌 빠른 갱신 — 이미 다 받아 둔 회사는 올해 분기만 다시 받아 끼운다 (호출 4번, 전체는 40번 안팎).
+    분기·반기보고서 철(4~12월)에만. 조건이 안 맞으면 None → 전체 받기"""
+    if datetime.now(timezone(timedelta(hours=9))).month < 4:
+        return None                                  # 1~3월은 사업보고서 철 — 연간까지 새로
+    path = os.path.join(OUT_DIR, code + ".json")
+    info = corp_map.get(code)
+    if not info or not os.path.exists(path):
+        return None
+    try:
+        with open(path, encoding="utf-8") as f:
+            old = json.load(f)
+    except Exception:      # noqa: BLE001
+        return None
+    if old.get("q_method") != "strict" or not any(a.get("p") == latest_year - 1 for a in old.get("annual") or []):
+        return None
+    log("\n=== %s (%s) === [빠른 갱신: %d년 분기만]" % (old.get("name") or info["name"], code, latest_year))
+    qs = collect_quarterly(info["corp_code"], latest_year, years=[latest_year])
+    new_cur = [r for r in qs if r.get("y") == latest_year]
+    old_cur = [r for r in old.get("quarterly") or [] if r.get("y") == latest_year]
+    if len(new_cur) < len(old_cur):
+        return None                                  # 새로 받은 분기가 더 적으면 이상 — 전체 받기로
+    data = dict(old)
+    data["quarterly"] = [r for r in old.get("quarterly") or [] if r.get("y") != latest_year] + new_cur
+    data["updated"] = datetime.now(timezone(timedelta(hours=9))).strftime("%Y-%m-%d")
+    data["_worst_gap"] = None
+    return data
 
 
 def check_quarters_vs_annual(annual, quarterly):
@@ -1379,6 +1408,7 @@ def main():
     refresh.sort(reverse=True)
     todo = fresh + [(c, a) for _, c, a in refresh]
 
+    quick_set = set()
     # 실적 시즌: 최근 정기보고서를 냈는데 그 뒤로 아직 안 받은 회사를 맨 앞으로 (오늘의 실적 발표 카드용)
     if not force and "--no-filers" not in sys.argv:
         try:
@@ -1394,6 +1424,7 @@ def main():
                      and failed.get(c, {}).get("reason") not in skip_reasons]
             if first:
                 fc = set(c for c, _ in first)
+                quick_set.update(fc)                 # 막 보고서를 낸 회사 — 올해 분기만 빠르게 받는다
                 todo = first + [(c, a) for c, a in todo if c not in fc]
                 log("최근 정기보고서 제출 %d곳 중 %d곳을 먼저 받습니다." % (len(filers), len(first)))
 
@@ -1438,7 +1469,7 @@ def main():
             stopped_early = True
             break
 
-        if _call_count + 45 > budget:
+        if _call_count + (6 if code in quick_set else 45) > budget:
             log("\n>> 예산 %s회에 도달했습니다. 여기서 멈추고 다음 실행에서 이어갑니다."
                 % f"{budget:,}")
             stopped_early = True
@@ -1446,7 +1477,9 @@ def main():
 
         log("\n[%d/%d] (호출 %d/%s)" % (i, len(todo), _call_count, f"{budget:,}"))
         try:
-            data, reason = collect_company(code, corp_map, latest_year, alias)
+            data, reason = (quick_update(code, corp_map, latest_year) if code in quick_set else None), None
+            if not data:
+                data, reason = collect_company(code, corp_map, latest_year, alias)
         except Exception as e:                       # noqa: BLE001
             log("! 예외 발생: %r" % e)
             failed[code] = {"name": alias or "?", "reason": "예외: %s" % type(e).__name__}
