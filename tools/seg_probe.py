@@ -3,7 +3,7 @@ import os, sys, re
 sys.argv = ['x']
 sys.path.insert(0, os.getcwd())
 import collect as C, collect_flow as CF
-import xbrl_dart as XD
+import xbrl_dims as XD
 C.API_KEY = C.get_key()
 cmap = C.load_corp_map()
 for code in (os.environ.get("CODES") or "257720").split(","):
