@@ -2,7 +2,7 @@
  "name": "ATO",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "ATMOS ENERGY CORP",
+ "legal_name": "Atmos Energy Corp",
  "code": "ATO",
  "cik": "0000731802",
  "market": "미국",
@@ -10,21 +10,8 @@
  "unit": "백만달러",
  "fiscal": true,
  "fye": 9,
- "updated": "2026-11-16",
+ "updated": "2026-11-17",
  "annual": [
-  {
-   "p": 2016,
-   "rev": 2454.6,
-   "op": 657.2,
-   "ni": 350.1,
-   "assets": 10010.9,
-   "liab": null,
-   "equity": 3463.1,
-   "dps": 1.68,
-   "payout": 50.0,
-   "yield": null,
-   "dps_adj": 1.68
-  },
   {
    "p": 2017,
    "rev": 2759.7,
@@ -123,7 +110,7 @@
    "ni": 1042.9,
    "assets": 25194.5,
    "liab": null,
-   "equity": 12780.5,
+   "equity": 12157.7,
    "dps": 3.22,
    "payout": 47.3,
    "yield": null,
@@ -136,21 +123,27 @@
    "ni": 1198.8,
    "assets": 28249.5,
    "liab": null,
-   "equity": 14282.9,
+   "equity": 13558.9,
    "dps": 3.48,
    "payout": 46.2,
    "yield": null,
    "dps_adj": 3.48
+  },
+  {
+   "p": 2026,
+   "rev": 4980.3,
+   "op": 1859.3,
+   "ni": 1426.5,
+   "assets": 32438.3,
+   "liab": null,
+   "equity": 15431.4,
+   "dps": 4,
+   "payout": 46.1,
+   "yield": null,
+   "dps_adj": 4.0
   }
  ],
  "quarterly": [
-  {
-   "y": 2024,
-   "q": 2,
-   "rev": 1647.2,
-   "op": 551.0,
-   "ni": 432.0
-  },
   {
    "y": 2024,
    "q": 3,
@@ -213,6 +206,13 @@
    "rev": 879.1,
    "op": 320.4,
    "ni": 242.7
+  },
+  {
+   "y": 2026,
+   "q": 4,
+   "rev": 796.2,
+   "op": 259.3,
+   "ni": 199.0
   }
  ]
 }
