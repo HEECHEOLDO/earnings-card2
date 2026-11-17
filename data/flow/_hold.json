@@ -2,34 +2,22 @@
 "updated": "2026-11-17",
 "note": "두 출처가 같은 숫자를 말하지 않아 카드에 올리지 않은 회사",
 "items": {
-"395400": {
-"name": "SK리츠",
-"market": "KR",
-"why": "비교할 실적 자료 없음 · DART API API 자료 없음",
-"period": "'26년 4~6월"
-},
-"298830": {
-"name": "슈어소프트테크",
-"market": "KR",
-"why": "같은 기간 실적 자료 없음",
-"period": "'26년 3분기"
-},
-"020180": {
-"name": "대신정보통신",
-"market": "KR",
-"why": "같은 기간 실적 자료 없음 · DART API API 자료 없음",
-"period": "'26년 4~6월"
-},
-"350520": {
-"name": "이지스레지던스리츠",
-"market": "KR",
-"why": "비교할 실적 자료 없음 · DART API API 자료 없음",
+"CMS": {
+"name": "CMS Energy",
+"market": "US",
+"why": "미국 실적 자료와 다름",
 "period": "'26년 7~9월"
 },
-"00907864": {
-"name": "야놀자",
-"market": "UL",
-"why": "같은 기간 실적 자료 없음",
+"REG": {
+"name": "Regency Centers",
+"market": "US",
+"why": "미국 실적 자료와 다름",
+"period": "'26년 7~9월"
+},
+"EIX": {
+"name": "Edison International",
+"market": "US",
+"why": "미국 실적 자료와 다름",
 "period": "'26년 7~9월"
 },
 "448730": {
@@ -38,47 +26,35 @@
 "why": "비교할 실적 자료 없음 · DART API API 자료 없음",
 "period": "'26년 5~7월"
 },
-"042520": {
-"name": "한스바이오메드",
-"market": "KR",
-"why": "같은 기간 실적 자료 없음 · DART API 와 다름",
-"period": "'26년 4~6월"
-},
-"400760": {
-"name": "NH올원리츠",
-"market": "KR",
-"why": "비교할 실적 자료 없음 · DART API API 자료 없음",
-"period": "'26년 7~9월"
-},
 "TKO": {
 "name": "TKO",
 "market": "US",
 "why": "미국 실적 자료와 다름",
 "period": "'26년 7~9월"
 },
-"MAS": {
-"name": "Masco",
-"market": "US",
-"why": "미국 실적 자료와 다름",
+"241560": {
+"name": "두산밥캣",
+"market": "KR",
+"why": "실적 자료와 다름 (매출 17.3 vs 24965.1) · DART API 와 다름",
 "period": "'26년 7~9월"
 },
-"389020": {
-"name": "자람테크놀로지",
+"950190": {
+"name": "고스트스튜디오",
 "market": "KR",
-"why": "실적 자료와 다름 (매출 61.0 vs 61.0)",
+"why": "실적 자료와 다름 (매출 0.1 vs 196.3) · DART API 와는 일치하지만 실적 탭과 3배 넘게 달라(통화·단위) 보류",
+"period": "'26년 7~9월"
+},
+"204020": {
+"name": "그리티",
+"market": "KR",
+"why": "실적 자료와 다름 (매출 598.9 vs 598.9)",
 "period": "'26년 4~6월"
 },
-"067010": {
-"name": "이씨에스",
-"market": "KR",
-"why": "같은 기간 실적 자료 없음 · DART API API 자료 없음",
-"period": "'26년 4~6월"
-},
-"217500": {
-"name": "러셀",
-"market": "KR",
-"why": "실적 자료와 다름 (매출 112.1 vs 112.1)",
-"period": "'26년 4~6월"
+"01538263": {
+"name": "슈퍼캣",
+"market": "UL",
+"why": "같은 기간 실적 자료 없음",
+"period": "'25년"
 },
 "003610": {
 "name": "방림",
@@ -86,14 +62,74 @@
 "why": "같은 기간 실적 자료 없음 · DART API 와 다름",
 "period": "'26년 4~6월"
 },
-"023760": {
-"name": "한국캐피탈",
+"451800": {
+"name": "한화리츠",
 "market": "KR",
-"why": "비교할 실적 자료 없음 · DART API API 매출 없음",
+"why": "비교할 실적 자료 없음 · DART API API 자료 없음",
+"period": "'26년 5~7월"
+},
+"030960": {
+"name": "양지사",
+"market": "KR",
+"why": "같은 기간 실적 자료 없음 · DART API 와 다름",
 "period": "'26년 7~9월"
 },
-"EXR": {
-"name": "Extra Space Storage",
+"475460": {
+"name": "미트박스",
+"market": "KR",
+"why": "같은 기간 실적 자료 없음",
+"period": "'26년 3분기"
+},
+"002630": {
+"name": "오리엔트바이오",
+"market": "KR",
+"why": "같은 기간 실적 자료 없음 · DART API API 자료 없음",
+"period": "'26년 4~6월"
+},
+"330590": {
+"name": "롯데리츠",
+"market": "KR",
+"why": "비교할 실적 자료 없음 · DART API API 자료 없음",
+"period": "'26년 7~9월"
+},
+"EQT": {
+"name": "EQT",
+"market": "US",
+"why": "미국 실적 자료와 다름",
+"period": "'26년 7~9월"
+},
+"190650": {
+"name": "코리아에셋투자증권",
+"market": "KR",
+"why": "같은 기간 실적 자료 없음 · DART API API 자료 없음",
+"period": "'26년 4~6월"
+},
+"417310": {
+"name": "코람코더원리츠",
+"market": "KR",
+"why": "비교할 실적 자료 없음 · DART API API 자료 없음",
+"period": "'26년 6~8월"
+},
+"950140": {
+"name": "잉글우드랩",
+"market": "KR",
+"why": "실적 자료와 다름 (매출 0.3 vs 463.8) · DART API 와는 일치하지만 실적 탭과 3배 넘게 달라(통화·단위) 보류",
+"period": "'26년 7~9월"
+},
+"00699354": {
+"name": "전북현대모터스에프씨",
+"market": "UL",
+"why": "실적 자료와 다름 (매출 554.8 vs 554.8)",
+"period": "'25년"
+},
+"001080": {
+"name": "MH머트리얼즈",
+"market": "KR",
+"why": "같은 기간 실적 자료 없음 · DART API 와 다름",
+"period": "'26년 7~9월"
+},
+"PLD": {
+"name": "Prologis",
 "market": "US",
 "why": "미국 실적 자료와 다름",
 "period": "'26년 7~9월"
@@ -104,17 +140,23 @@
 "why": "같은 기간 실적 자료 없음 · DART API API 자료 없음",
 "period": "'26년 7~9월"
 },
-"009440": {
-"name": "KC그린홀딩스",
+"084440": {
+"name": "유비온",
 "market": "KR",
-"why": "실적 자료와 다름 (매출 142.0 vs 21.2) · DART API 와는 일치하지만 실적 탭과 3배 넘게 달라(통화·단위) 보류",
-"period": "'26년 7~9월"
+"why": "같은 기간 실적 자료 없음 · DART API 와 다름",
+"period": "'26년 4~6월"
 },
-"MRNA": {
-"name": "Moderna",
-"market": "US",
-"why": "미국 실적 자료와 다름",
-"period": "'26년 7~9월"
+"041020": {
+"name": "폴라리스오피스",
+"market": "KR",
+"why": "같은 기간 실적 자료 없음",
+"period": "'26년 3분기"
+},
+"395400": {
+"name": "SK리츠",
+"market": "KR",
+"why": "비교할 실적 자료 없음 · DART API API 자료 없음",
+"period": "'26년 4~6월"
 },
 "338100": {
 "name": "NH프라임리츠",
@@ -122,82 +164,16 @@
 "why": "비교할 실적 자료 없음 · DART API API 자료 없음",
 "period": "'26년 6~8월"
 },
-"348950": {
-"name": "제이알글로벌리츠",
-"market": "KR",
-"why": "비교할 실적 자료 없음 · DART API API 자료 없음",
-"period": "'26년 7~9월"
-},
 "021320": {
 "name": "KCC건설",
 "market": "KR",
 "why": "같은 기간 실적 자료 없음",
 "period": "'26년 3분기"
 },
-"NTAP": {
-"name": "NetApp",
-"market": "US",
-"why": "미국 실적 자료와 다름",
-"period": "'26년 4~7월"
-},
-"330590": {
-"name": "롯데리츠",
-"market": "KR",
-"why": "비교할 실적 자료 없음 · DART API API 자료 없음",
-"period": "'26년 7~9월"
-},
-"CMS": {
-"name": "CMS Energy",
-"market": "US",
-"why": "미국 실적 자료와 다름",
-"period": "'26년 7~9월"
-},
-"01559558": {
-"name": "아이더스에프앤비",
+"00907864": {
+"name": "야놀자",
 "market": "UL",
-"why": "실적 자료와 다름 (매출 1364.8 vs 1364.8)",
-"period": "'25년"
-},
-"00699354": {
-"name": "전북현대모터스에프씨",
-"market": "UL",
-"why": "실적 자료와 다름 (매출 554.8 vs 554.8)",
-"period": "'25년"
-},
-"241560": {
-"name": "두산밥캣",
-"market": "KR",
-"why": "실적 자료와 다름 (매출 17.3 vs 24965.1) · DART API 와 다름",
-"period": "'26년 7~9월"
-},
-"030960": {
-"name": "양지사",
-"market": "KR",
-"why": "같은 기간 실적 자료 없음 · DART API 와 다름",
-"period": "'26년 7~9월"
-},
-"417310": {
-"name": "코람코더원리츠",
-"market": "KR",
-"why": "비교할 실적 자료 없음 · DART API API 자료 없음",
-"period": "'26년 6~8월"
-},
-"190650": {
-"name": "코리아에셋투자증권",
-"market": "KR",
-"why": "같은 기간 실적 자료 없음 · DART API API 자료 없음",
-"period": "'26년 4~6월"
-},
-"EQT": {
-"name": "EQT",
-"market": "US",
-"why": "미국 실적 자료와 다름",
-"period": "'26년 7~9월"
-},
-"TAP": {
-"name": "Molson Coors Beverage",
-"market": "US",
-"why": "미국 실적 자료와 다름",
+"why": "같은 기간 실적 자료 없음",
 "period": "'26년 7~9월"
 },
 "033200": {
@@ -212,59 +188,23 @@
 "why": "같은 기간 실적 자료 없음",
 "period": "'25년"
 },
-"094360": {
-"name": "칩스앤미디어",
-"market": "KR",
-"why": "같은 기간 실적 자료 없음",
-"period": "'26년 3분기"
-},
 "016600": {
 "name": "큐캐피탈",
 "market": "KR",
 "why": "실적 자료와 다름 (매출 46.0 vs 44.0)",
 "period": "'26년 3분기"
 },
-"REG": {
-"name": "Regency Centers",
-"market": "US",
-"why": "미국 실적 자료와 다름",
-"period": "'26년 7~9월"
-},
-"950190": {
-"name": "고스트스튜디오",
+"094360": {
+"name": "칩스앤미디어",
 "market": "KR",
-"why": "실적 자료와 다름 (매출 0.1 vs 196.3) · DART API 와는 일치하지만 실적 탭과 3배 넘게 달라(통화·단위) 보류",
-"period": "'26년 7~9월"
+"why": "같은 기간 실적 자료 없음",
+"period": "'26년 3분기"
 },
-"404990": {
-"name": "신한서부티엔디리츠",
-"market": "KR",
-"why": "비교할 실적 자료 없음 · DART API API 자료 없음",
-"period": "'26년 7~9월"
-},
-"365550": {
-"name": "ESR켄달스퀘어리츠",
-"market": "KR",
-"why": "비교할 실적 자료 없음 · DART API API 자료 없음",
-"period": "'26년 6~8월"
-},
-"008870": {
-"name": "금비",
-"market": "KR",
-"why": "같은 기간 실적 자료 없음 · DART API 와 다름",
-"period": "'26년 4~6월"
-},
-"099750": {
-"name": "이지케어텍",
+"060310": {
+"name": "3S",
 "market": "KR",
 "why": "같은 기간 실적 자료 없음 · DART API API 자료 없음",
 "period": "'26년 7~9월"
-},
-"002630": {
-"name": "오리엔트바이오",
-"market": "KR",
-"why": "같은 기간 실적 자료 없음 · DART API API 자료 없음",
-"period": "'26년 4~6월"
 },
 "950170": {
 "name": "JTC",
@@ -272,82 +212,22 @@
 "why": "같은 기간 실적 자료 없음 · DART API API 자료 없음",
 "period": "'26년 6~8월"
 },
-"01538263": {
-"name": "슈퍼캣",
-"market": "UL",
-"why": "같은 기간 실적 자료 없음",
-"period": "'25년"
-},
-"055550": {
-"name": "신한지주",
-"market": "KR",
-"why": "비교할 실적 자료 없음 · DART API API 매출 없음",
-"period": "'26년 7~9월"
-},
-"032830": {
-"name": "삼성생명",
-"market": "KR",
-"why": "비교할 실적 자료 없음 · DART API API 매출 없음",
-"period": "'26년 7~9월"
-},
-"EIX": {
-"name": "Edison International",
-"market": "US",
-"why": "미국 실적 자료와 다름",
-"period": "'26년 7~9월"
-},
-"289080": {
-"name": "SV인베스트먼트",
-"market": "KR",
-"why": "같은 기간 실적 자료 없음 · DART API API 자료 없음",
-"period": "'26년 7~9월"
-},
-"021880": {
-"name": "메이슨캐피탈",
-"market": "KR",
-"why": "같은 기간 실적 자료 없음 · DART API API 자료 없음",
-"period": "'26년 7~9월"
-},
-"204020": {
-"name": "그리티",
-"market": "KR",
-"why": "실적 자료와 다름 (매출 598.9 vs 598.9)",
-"period": "'26년 4~6월"
-},
-"238490": {
-"name": "힘스",
-"market": "KR",
-"why": "같은 기간 실적 자료 없음",
-"period": "'26년 3분기"
-},
-"950140": {
-"name": "잉글우드랩",
-"market": "KR",
-"why": "실적 자료와 다름 (매출 0.3 vs 463.8) · DART API 와는 일치하지만 실적 탭과 3배 넘게 달라(통화·단위) 보류",
-"period": "'26년 7~9월"
-},
-"451800": {
-"name": "한화리츠",
+"365550": {
+"name": "ESR켄달스퀘어리츠",
 "market": "KR",
 "why": "비교할 실적 자료 없음 · DART API API 자료 없음",
-"period": "'26년 5~7월"
-},
-"041020": {
-"name": "폴라리스오피스",
-"market": "KR",
-"why": "같은 기간 실적 자료 없음",
-"period": "'26년 3분기"
-},
-"088260": {
-"name": "이리츠코크렙",
-"market": "KR",
-"why": "비교할 실적 자료 없음 · DART API API 자료 없음",
-"period": "'26년 7~9월"
+"period": "'26년 6~8월"
 },
 "AWK": {
 "name": "American Water Works",
 "market": "US",
 "why": "미국 실적 자료와 다름",
+"period": "'26년 7~9월"
+},
+"088260": {
+"name": "이리츠코크렙",
+"market": "KR",
+"why": "비교할 실적 자료 없음 · DART API API 자료 없음",
 "period": "'26년 7~9월"
 },
 "357250": {
@@ -356,17 +236,101 @@
 "why": "비교할 실적 자료 없음 · DART API API 자료 없음",
 "period": "'26년 6~8월"
 },
-"060310": {
-"name": "3S",
+"032830": {
+"name": "삼성생명",
+"market": "KR",
+"why": "비교할 실적 자료 없음 · DART API API 매출 없음",
+"period": "'26년 7~9월"
+},
+"389020": {
+"name": "자람테크놀로지",
+"market": "KR",
+"why": "실적 자료와 다름 (매출 61.0 vs 61.0)",
+"period": "'26년 4~6월"
+},
+"020180": {
+"name": "대신정보통신",
+"market": "KR",
+"why": "같은 기간 실적 자료 없음 · DART API API 자료 없음",
+"period": "'26년 4~6월"
+},
+"238490": {
+"name": "힘스",
+"market": "KR",
+"why": "같은 기간 실적 자료 없음",
+"period": "'26년 3분기"
+},
+"NTAP": {
+"name": "NetApp",
+"market": "US",
+"why": "미국 실적 자료와 다름",
+"period": "'26년 4~7월"
+},
+"099750": {
+"name": "이지케어텍",
 "market": "KR",
 "why": "같은 기간 실적 자료 없음 · DART API API 자료 없음",
 "period": "'26년 7~9월"
 },
-"357120": {
-"name": "코람코라이프인프라리츠",
+"298830": {
+"name": "슈어소프트테크",
+"market": "KR",
+"why": "같은 기간 실적 자료 없음",
+"period": "'26년 3분기"
+},
+"348950": {
+"name": "제이알글로벌리츠",
 "market": "KR",
 "why": "비교할 실적 자료 없음 · DART API API 자료 없음",
-"period": "'26년 6~8월"
+"period": "'26년 7~9월"
+},
+"ED": {
+"name": "Consolidated Edison",
+"market": "US",
+"why": "미국 실적 자료와 다름",
+"period": "'26년 7~9월"
+},
+"009440": {
+"name": "KC그린홀딩스",
+"market": "KR",
+"why": "실적 자료와 다름 (매출 142.0 vs 21.2) · DART API 와는 일치하지만 실적 탭과 3배 넘게 달라(통화·단위) 보류",
+"period": "'26년 7~9월"
+},
+"023760": {
+"name": "한국캐피탈",
+"market": "KR",
+"why": "비교할 실적 자료 없음 · DART API API 매출 없음",
+"period": "'26년 7~9월"
+},
+"404990": {
+"name": "신한서부티엔디리츠",
+"market": "KR",
+"why": "비교할 실적 자료 없음 · DART API API 자료 없음",
+"period": "'26년 7~9월"
+},
+"289080": {
+"name": "SV인베스트먼트",
+"market": "KR",
+"why": "같은 기간 실적 자료 없음 · DART API API 자료 없음",
+"period": "'26년 7~9월"
+},
+"217500": {
+"name": "러셀",
+"market": "KR",
+"why": "실적 자료와 다름 (매출 112.1 vs 112.1)",
+"period": "'26년 4~6월"
+},
+"008870": {
+"name": "금비",
+"market": "KR",
+"why": "같은 기간 실적 자료 없음 · DART API 와 다름",
+"period": "'26년 4~6월"
+},
+"EXR": {
+"name": "Extra Space Storage",
+"market": "US",
+"why": "미국 실적 자료와 다름",
+"period": "'26년 7~9월"
 },
 "FCX": {
 "name": "Freeport-McMoRan",
@@ -374,35 +338,71 @@
 "why": "미국 실적 자료와 다름",
 "period": "'26년 7~9월"
 },
-"PLD": {
-"name": "Prologis",
+"MAS": {
+"name": "Masco",
 "market": "US",
 "why": "미국 실적 자료와 다름",
 "period": "'26년 7~9월"
 },
-"001080": {
-"name": "MH머트리얼즈",
+"01559558": {
+"name": "아이더스에프앤비",
+"market": "UL",
+"why": "실적 자료와 다름 (매출 1364.8 vs 1364.8)",
+"period": "'25년"
+},
+"021880": {
+"name": "메이슨캐피탈",
 "market": "KR",
-"why": "같은 기간 실적 자료 없음 · DART API 와 다름",
+"why": "같은 기간 실적 자료 없음 · DART API API 자료 없음",
 "period": "'26년 7~9월"
 },
-"084440": {
-"name": "유비온",
+"042520": {
+"name": "한스바이오메드",
 "market": "KR",
 "why": "같은 기간 실적 자료 없음 · DART API 와 다름",
 "period": "'26년 4~6월"
 },
-"475460": {
-"name": "미트박스",
+"350520": {
+"name": "이지스레지던스리츠",
 "market": "KR",
-"why": "같은 기간 실적 자료 없음",
-"period": "'26년 3분기"
+"why": "비교할 실적 자료 없음 · DART API API 자료 없음",
+"period": "'26년 7~9월"
 },
-"ED": {
-"name": "Consolidated Edison",
+"067010": {
+"name": "이씨에스",
+"market": "KR",
+"why": "같은 기간 실적 자료 없음 · DART API API 자료 없음",
+"period": "'26년 4~6월"
+},
+"MRNA": {
+"name": "Moderna",
 "market": "US",
 "why": "미국 실적 자료와 다름",
 "period": "'26년 7~9월"
+},
+"055550": {
+"name": "신한지주",
+"market": "KR",
+"why": "비교할 실적 자료 없음 · DART API API 매출 없음",
+"period": "'26년 7~9월"
+},
+"400760": {
+"name": "NH올원리츠",
+"market": "KR",
+"why": "비교할 실적 자료 없음 · DART API API 자료 없음",
+"period": "'26년 7~9월"
+},
+"TAP": {
+"name": "Molson Coors Beverage",
+"market": "US",
+"why": "미국 실적 자료와 다름",
+"period": "'26년 7~9월"
+},
+"357120": {
+"name": "코람코라이프인프라리츠",
+"market": "KR",
+"why": "비교할 실적 자료 없음 · DART API API 자료 없음",
+"period": "'26년 6~8월"
 }
 }
 }
