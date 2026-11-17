@@ -69,6 +69,7 @@ def _breakdown(tables, target, total_rx, keep, drop, min_rows=2, tol=0.02):
 REV_KEEP = re.compile(r"(매출|수익|수입|수수료)$|매출액$")
 REV_DROP = re.compile(r"^총수익|^총매출|중단|^지급|판매수수료|잡수익|잡이익|고객과의\s*계약|기타\s*원천|원가|총이익|영업외|이자|금융|배당|기타수익|잡이익|환|평가|처분|지분법|법인세|시점|기간에\s*걸쳐|특수관계|채권|선수|미수|충당")
 SGA_KEEP = re.compile(r".")
+SGA_OK = re.compile(r"급여|상여|퇴직|복리|감가|상각|수수료|광고|판매촉진|운반|임차|세금|공과|여비|교통|통신|소모품|접대|교육|보험|연구|개발|대손|차량|수선|용역|수도|광열|전력|도서|회의|포장|보관|견본|판매|인건|사용권|임금|경상|원재료|재료|외주|물류|유지|가스|연료|임대|로열티")
 SGA_DROP = re.compile(r"^(판매비와관리비|판매비와일반관리비|영업비용|매출원가)$|원가|합계|소계|수익|영업외|금융|이자|법인세")
 
 
@@ -210,6 +211,9 @@ def flow(code):
         ref = d["sga"] if d["sga"] else opex
         det = _first_block(grab, tables, re.compile(r"^(판매비와관리비|판매비와일반관리비|판매관리비|영업비용)$"), re.compile(r"^(영업이익|영업손실|영업손익|영업이익\(손실\)|영업손실\(이익\))"), u, ref) or \
             (_breakdown(tables, ref, re.compile(r"^(판매비와관리비|판매비와일반관리비|영업비용)(합계)?$"), SGA_KEEP, SGA_DROP, min_rows=4) if ref and ref > 0 else [])
+        # 특수관계자 거래 표처럼 합만 우연히 맞는 표(이름이 회사·관계자)는 버린다 — 비용 계정 같은 이름이 60% 이상이어야
+        if det and sum(x for n, x in det if SGA_OK.search(n)) < sum(x for _, x in det) * 0.6:
+            det = []
         d["items"] = _group(det, ref, "기타 판관비" if d["cogs"] is not None else "기타 영업비용")
         y, m = per
         end = date(y, m, calendar.monthrange(y, m)[1])

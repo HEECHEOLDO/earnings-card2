@@ -150,10 +150,10 @@ def us_one(t, cik):
 
 
 # ------------------------------------------------------------------ 공시 원본(XBRL): 3개월 손익 + 매출 종류
-DOC_VER = 1                                        # 국내: 보고서 원문 대체(매출 구분·판관비 세부) — 세부가 없던 회사만 다시
+DOC_VER = 2                                        # 국내: 보고서 원문 대체(매출 구분·판관비 세부) — 세부가 없던 회사만 다시
 US_VER = 2                                         # 미국 영업비용 세부 읽는 법이 바뀌면 올림 — 세부가 없던 미국 회사만 다시
-UL_VER = 2                                         # 비상장(감사보고서) 읽는 법이 바뀌면 올림 — 비상장만 다시
-VER = 8                                            # 계산 방식이 바뀌면 올려서 다시 계산
+UL_VER = 3                                         # 비상장(감사보고서) 읽는 법이 바뀌면 올림 — 비상장만 다시
+VER = 9                                            # 계산 방식이 바뀌면 올려서 다시 계산
 
 
 def kr_xbrl(corp, old=None):
@@ -245,6 +245,12 @@ def doc_fallback(v, r0, annual, fa, ia):
         sg = FA._segments([x for x in rv if not FA.REV_DROP.search(x[0])], v["rev"]) if rv else []
         if sg:
             v["segs"], want_s = sg, False
+    if want_s and tabs and v.get("cum_rev"):      # 분기보고서 '매출 현황' 표는 대개 누적(1~9월) — 누적 매출과 합이 맞는 표의 비중으로 이번 분기를 나눈다
+        rv = FA._breakdown(tabs, v["cum_rev"], REV_H, FA.REV_KEEP, FA.REV_DROP)
+        sg = FA._segments([x for x in rv if not FA.REV_DROP.search(x[0])], v["cum_rev"]) if rv else []
+        if sg:
+            k = v["rev"] / v["cum_rev"]
+            v["segs"], v["seg_note"], want_s = [[n, x * k] for n, x in sg], "매출 종류는 %s 누적 비중" % v.get("cum_lab", ""), False
     if not (want_i or want_s) or not annual:
         return
     a = annual[0]

@@ -111,6 +111,7 @@
     [/in-process|IPR&D/i, '인수 연구개발비'], [/Acquisition|Merger/i, '인수 관련 비용'], [/Occupancy|Rent/i, '임차료'], [/Fulfillment/i, '물류·배송비']];
   // 미국 공시 영문 영업비용 항목 → 짧은 한글 (위에서부터 처음 맞는 것)
   var EN_KO = [
+    [/^special charges?$/i, '특별 비용'], [/business exit/i, '사업 철수 비용'], [/acquisition and divestiture/i, '인수·매각 비용'], [/^processing expenses$/i, '처리 비용'], [/^cost of revenue/i, '매출원가'],
     [/^goodwill/i, '영업권 손상'], [/program.*amortization/i, '콘텐츠 상각비'],
     [/amortization.*intangible|intangible.*amortization|amortization of (acquisition|acquired|purchased)/i, '무형자산 상각'],
     [/restructur|realignment|separation and other/i, '구조조정 비용'], [/impair/i, '자산 손상'],
@@ -137,6 +138,7 @@
   function enKo(n) { if (!/[A-Za-z]{3}/.test(n) || /[가-힣]/.test(n)) return n; for (var i = 0; i < EN_KO.length; i++) if (EN_KO[i][0].test(n)) return EN_KO[i][1]; return n; }
   // 미국 매출 구분(부문·지역) — 나라·지역·흔한 말만 한글로, 고유한 사업 이름은 그대로 (Segment·Member 꼬리는 뗀다)
   var SEG_KO = [
+    [/^government( operating)?$/i, '정부 고객'],
     [/^(product and service|service|hotel|product), other$|^other( revenues?| products?( and services)?| services?| americas)?$|^all other segments?$/i, '기타'],
     [/^china$/i, '중국'], [/^united kingdom$/i, '영국'], [/^korea, republic of$/i, '한국'], [/^taiwan$/i, '대만'], [/^germany$/i, '독일'], [/^mexico$/i, '멕시코'], [/^japan$/i, '일본'],
     [/^canada$/i, '캐나다'], [/^france$/i, '프랑스'], [/^india$/i, '인도'], [/^singapore$/i, '싱가포르'], [/^ireland$/i, '아일랜드'], [/^netherlands$/i, '네덜란드'], [/^switzerland$/i, '스위스'],
@@ -153,8 +155,9 @@
     if (!/[A-Za-z]{3}/.test(n) || /[가-힣]/.test(n)) return n;
     n = String(n).replace(/\s+(Reportable\s+)?(Segment|Member)s?$/i, '').trim();
     for (var i = 0; i < SEG_KO.length; i++) if (SEG_KO[i][0].test(n)) return SEG_KO[i][1];
-    return n;
+    return SEG_MAP[n] || n;
   }
+  var SEG_MAP = {};
   // 국내 원문에서 읽은 이름 다듬기 — '급여, 판관비' → '급여', '제품매출액' → '제품매출', '재화의판매로인한수익' → '재화 판매'
   function krTidy(n) {
     return String(n).replace(/,\s*판관비$/, '').replace(/^재화의\s*판매로\s*인한\s*수익$/, '재화 판매').replace(/^용역의\s*제공으로\s*인한\s*수익$/, '용역 제공')
@@ -243,8 +246,9 @@
       D.total = D.inds.reduce(function (s, g) { return s + g.sum; }, 0);
       D.sec = {}; D.inds.forEach(function (g) { g.codes.forEach(function (c) { if (!D.sec[c]) D.sec[c] = (g.short || g.name).trim(); }); });
       D.asof = (D.kr && D.kr.asof) || '';
-      return ONLY ? Promise.all([J('./data/flow/index.json'), J('./data/unlisted/index.json').catch(function () { return null; })]).then(function (r2) {
+      return ONLY ? Promise.all([J('./data/flow/index.json'), J('./data/unlisted/index.json').catch(function () { return null; }), J('./data/flow/_seg_ko.json').catch(function () { return null; })]).then(function (r2) {
         D.flow = (r2[0] && r2[0].items) || {};
+        SEG_MAP = r2[2] || {};                                           // 영어 매출 구분 이름 → 한글 (사업 설명은 우리말로, 상표·제품 이름은 그대로)
         D.ulBrand = {}; ((r2[1] && r2[1].companies) || []).forEach(function (c) { if (c.brand) D.ulBrand[c.code] = c.brand; });   // 비상장: 익숙한 서비스·브랜드 이름으로도 찾기 (비상장 실적 탭과 같은 목록)
       }) : null;
     });
@@ -273,6 +277,12 @@
     })());
   }
   // 바닥 글: 최신 분기면 '26년 2분기, 1년치(연간 보고서)면 '26년
+  // 매출 구분을 이번 분기 숫자가 아니라 누적·연간 비중으로 나눈 카드는 바닥 글에 밝힌다 (예: '매출 구분은 1~9월 비중')
+  function segNote(f) {
+    var n = f && f.seg_note; if (!n || !(f.segs || []).length) return '';
+    n = String(n).replace('매출 종류는', '매출 구분은').replace(' 누적', '').replace(/연간\((\d{2})(\d{2})-\d{2}-\d{2}\)/, "'$2년 연간");
+    return ' · ' + n;
+  }
   function flowPeriod(f) {
     if (f.start && f.end) {
       var a = new Date(f.start), b = new Date(f.end), days = (b - a) / 864e5, y = String(b.getFullYear()).slice(2);
@@ -549,7 +559,7 @@
             else if (sgS > f.rev * 1.002) sgElim = true;                       // 부문끼리 사고판 내부 거래 — 넘치는 만큼 '내부거래 제거'로 보여 준다
             else if (sg.length && f.rev - sgS > f.rev * 0.0005) sg.push({ n: '기타', v: f.rev - sgS });
             return { fn: 'sankey3', o: { h1: nm2, segs: sg, segElim: sgElim, rev: f.rev, cogs: f.rev - gross, op: f.op, items: items, ni: f.ni, tax: f.tax, money: money, logo: r.logo, fxNote: us ? '환율 ' + Math.round(D.fx).toLocaleString() + '원 기준' : '' },
-              src: flowPeriod(f) + ' 기준' };
+              src: flowPeriod(f) + ' 기준' + segNote(f) };
           });
         }
         return null;

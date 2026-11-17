@@ -64,14 +64,17 @@ def pick_period(ctx, facts, rev_names, base_ok):
     return best[1] if best else None
 
 
-def segments(ctx, facts, rev_names, per, rev, L, base_dim, geo_ok=False):
-    """한 축(부문·제품)의 멤버별 매출. 합이 총매출과 맞는 축을 고른다. geo_ok: 지역 축도 허용(제품·부문이 없을 때)"""
+def segments(ctx, facts, rev_names, per, rev, L, base_dim, geo_ok=False, want=None):
+    """한 축(부문·제품)의 멤버별 매출. 합이 총매출과 맞는 축을 고른다. geo_ok: 지역 축도 허용(제품·부문이 없을 때)
+    want: 연결/별도 중 쓸 쪽 — 다른 쪽(예: 별도에만 있는 '호주')이 섞여 들어오지 않게"""
     groups = {}
     for n, c, v in facts:
         if n not in rev_names:
             continue
         p = ctx[c]
         if (p["start"], p["end"]) != per:
+            continue
+        if want and any(base_dim(d) and not d[1].endswith(want) for d in p["dims"]):
             continue
         dims = [d for d in p["dims"] if not base_dim(d)]
         tot = any(TOTAL_M.search(m) or TOTAL_M.search(L.get(m, "")) for a, m in dims)
@@ -260,10 +263,10 @@ def from_instance(text, labtext, us, caltext=""):
                 cum = ((p["start"], p["end"]), v)
 
     def find(geo):
-        sg = segments(ctx, facts, set(N["rev"]), per, val["rev"], L, bd, geo)
+        sg = segments(ctx, facts, set(N["rev"]), per, val["rev"], L, bd, geo, None if us else want)
         if sg or not cum:
             return sg, ""
-        sc = segments(ctx, facts, set(N["rev"]), cum[0], cum[1], L, bd, geo)   # 부문 매출이 누적으로만 있으면 그 비중으로 나눈다
+        sc = segments(ctx, facts, set(N["rev"]), cum[0], cum[1], L, bd, geo, None if us else want)   # 부문 매출이 누적으로만 있으면 그 비중으로 나눈다
         if not sc:
             return [], ""
         k = val["rev"] / sum(v for _, v in sc)
@@ -277,6 +280,8 @@ def from_instance(text, labtext, us, caltext=""):
     if note:
         val["seg_note"] = note
     val["segs"] = segs
+    if cum:                                       # 누적 매출 — 보고서 원문의 '매출 현황' 표가 누적(1~9월 등)으로만 있을 때 비중을 구하려고
+        val["cum_rev"], val["cum_lab"] = cum[1], q_label(*cum[0]).split(" ")[-1]
     # 영업비용 세부 — 계산 링크베이스에서 영업비용(또는 판관비)의 자식 항목들
     val["items"] = opex_items(ctx, facts, per, base_ok, CAL, L, us, val)
     val["start"], val["end"] = per

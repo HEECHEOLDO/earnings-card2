@@ -811,6 +811,18 @@
         var lnX = [['+' + m(exIn), 900, Math.round(26 * FS), GN, 0], ['영업외이익', 700, Math.round(19 * FS), GN, -28 * FS]], cX = [];
         [0, -12, -26, -42].forEach(function (dy) { [ex2, x4 + nw - wx2, R - wx2, ex2 - wx2 * 0.5].forEach(function (xx) { cX.push([xx, eyb + dy, 'center']); }); });
         [0, 20].forEach(function (dy) { cX.push([ex2, g.yX + Math.max(2, g.hEx) + 52 * FS + dy, 'center']); });
+        var EP = window.__exPos != null ? window.__exPos : 'bar', bc = xm + nw / 2;   // 기본: 막대 바로 위 가운데
+        if (EP === 'bar') {                                              // (시안) 막대 바로 위 가운데
+          var cB = []; [0, -10, -20, -32, -46].forEach(function (dy) { [0, -0.3, -0.6, 0.2].forEach(function (k) { cB.push([bc + k * wx2, g.yX - 12 + dy, 'center']); }); });
+          cX = cB.concat(cX);
+        } else if (EP === 'left') {                                      // (시안) 막대 왼쪽에 한 줄로
+          lnX = [['영업외이익 +' + m(exIn), 800, Math.round(20 * FS), GN, 0]];
+          var cL = []; [0, -8, 8, -16, 16].forEach(function (dy) { cL.push([xm - 10, g.yX + Math.max(2, g.hEx) / 2 + 7 * FS + dy, 'right']); });
+          cX = cL.concat(cX.map(function (c) { return [c[0], c[1], c[2]]; }));
+        } else if (EP === 'col') {                                       // (시안) 오른쪽 글자 줄에 맞춰 순이익 위에 (왼쪽 정렬)
+          var cC = []; [0, -10, -20, -32].forEach(function (dy) { cC.push([rx, ry[0] - 10 + dy, 'left']); });
+          cX = cC.concat(cX);
+        }
         group(X, lnX, cX);
       }
       else if (x4 - 8 - (x3 + nw + 6) >= 2 * wx) above(Math.max(x3 + nw + 6 + wx, Math.min(xm + nw / 2, x4 - 8 - wx)), g.yX, '영업외이익', '+' + m(exIn), '', GN);
