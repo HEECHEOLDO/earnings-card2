@@ -14,6 +14,10 @@ on:
         description: '며칠 넘은 데이터를 다시 받을지'
         required: false
         default: '9'
+      again:
+        description: '오늘 이미 돌았어도 한 번 더 (yes) — DART 하루 한도 안에서 예산을 줄여서'
+        required: false
+        default: 'no'
 
 permissions:
   contents: write
@@ -39,7 +43,7 @@ jobs:
           DAY=$(date -u -d @$(TZ=Asia/Seoul date -d "today 00:00" +%s) +%Y-%m-%dT%H:%M:%SZ)
           N=$(gh api "repos/${{ github.repository }}/actions/workflows/collect.yml/runs?created=>=$DAY&status=success&per_page=20" -q "[.workflow_runs[] | select(.id != ${{ github.run_id }})] | length")
           echo "오늘($DAY 이후) 끝난 수집: $N"
-          if [ "$N" != "0" ]; then echo "skip=1" >> $GITHUB_OUTPUT; fi
+          if [ "$N" != "0" ] && [ "${{ github.event.inputs.again }}" != "yes" ]; then echo "skip=1" >> $GITHUB_OUTPUT; fi
 
       - uses: actions/checkout@v4
         if: steps.guard.outputs.skip != '1'
