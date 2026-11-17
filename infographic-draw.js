@@ -41,7 +41,7 @@ window.__vcTitle = function (X, h1, logo, opt) {   // opt.tail: 첫 줄 끝 조�
   if (tail) { var w0 = X.measureText(lines[0]).width; X.font = f(s2t); X.fillText(tail, lx + w0 + 4, y); X.font = f(s1); }
   if (lines.length === 2) {
     if (track) X.letterSpacing = '0px';
-    var s2 = fit(lines[1], 60, 34); y += s1 * (/[gjpqy]/.test(lines[0]) ? 0.34 : 0.22) + s2 * 0.86; X.font = f(s2); X.fillText(lines[1], B.L, y);   // 영문 g·y 꼬리가 둘째 줄에 닿지 않게
+    var s2 = fit(lines[1], 60, 34); X.font = f(s1); var dsc = X.measureText(lines[0]).actualBoundingBoxDescent || 0; X.font = f(s2); y += Math.max(s1 * (/[gjpqy]/.test(lines[0]) ? 0.34 : 0.22), dsc + 6) + s2 * 0.86; X.font = f(s2); X.fillText(lines[1], B.L, y);   // 영문 g·y 꼬리가 둘째 줄에 닿지 않게
   }
   if (track) X.letterSpacing = '0px';
   return y;
@@ -154,7 +154,11 @@ window.__vcFoot = function (X, src) {
   /* B) 순위 막대 (로고 + 업종 꼬리표) */
   function ranked(X, o) {
     grain(X); head(X, o.kicker, o.h1);
-    var top = TOP, rowH = Math.min(61, (BOT - 50 - TOP) / o.rows.length), max = o.rows[0].v, x0 = L + 300, bw = R - 100 - x0;
+    // 업종 범례를 먼저 줄 나눔해 본다 — 오른쪽 끝(R)을 넘으면 다음 줄로 (카드 밖으로 잘리지 않게)
+    X.font = font(700, 22); var LG = [[]], lw0 = 0;
+    (o.legend || []).forEach(function (g) { var w = 30 + X.measureText(g[0]).width; if (lw0 && L + lw0 + w > R) { LG.push([]); lw0 = 0; } LG[LG.length - 1].push(g); lw0 += w + 40; });
+    var lgN = (o.legend || []).length ? LG.length : 0;
+    var top = TOP, rowH = Math.min(61, (BOT - 50 - 34 * Math.max(0, lgN - 1) - TOP) / o.rows.length), max = o.rows[0].v, x0 = L + 300, bw = R - 100 - x0;
     o.rows.forEach(function (r, i) {
       var y = top + i * rowH, cy = y + rowH / 2;
       X.fillStyle = T.soft; X.font = font(800, 22); X.textAlign = 'right'; X.textBaseline = 'middle'; X.fillText(i + 1, L + 26, cy);
@@ -169,11 +173,15 @@ window.__vcFoot = function (X, src) {
     });
     X.textBaseline = 'alphabetic';
     // 업종 범례
-    var lx = L, ly = top + o.rows.length * rowH + 40;
-    o.legend.forEach(function (g) {
-      X.fillStyle = g[1]; rr(X, lx, ly - 16, 22, 22, 4); X.fill();
-      X.fillStyle = T.ink; X.font = font(700, 22); X.textAlign = 'left'; X.fillText(g[0], lx + 30, ly + 2);
-      lx += X.measureText(g[0]).width + 70;
+    var ly = top + o.rows.length * rowH + 40;
+    LG.forEach(function (line) {
+      var lx = L;
+      line.forEach(function (g) {
+        X.fillStyle = g[1]; rr(X, lx, ly - 16, 22, 22, 4); X.fill();
+        X.fillStyle = T.ink; X.font = font(700, 22); X.textAlign = 'left'; X.fillText(g[0], lx + 30, ly + 2);
+        lx += X.measureText(g[0]).width + 70;
+      });
+      ly += 34;
     });
     foot(X, o.src);
   }

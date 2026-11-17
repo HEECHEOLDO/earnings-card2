@@ -1173,6 +1173,10 @@
       b.innerHTML = '<span aria-hidden="true">' + c.icon + '</span> ' + c.name; (gbox[c.id] || bar.lastChild).appendChild(b);
       b.addEventListener('click', function () { pick(c.id); });
     });
+    if (!ONLY) J('./data/econ/index.json').then(function (ix) {   // 수출 자료(관세청)가 아직 없으면 수출 카드 단추는 숨긴다
+      var it = (ix && ix.items) || {}, any = Object.keys(it).some(function (k) { return k.indexOf('t_') === 0 && it[k].ok; });
+      if (!any) ['exportboard', 'exportitem', 'kconsumer'].forEach(function (id) { var b = bar.querySelector('[data-k="' + id + '"]'); if (b) b.style.display = 'none'; });
+    }).catch(function () {});
     // 사진 얹기 — 국내·해외 실적 탭과 같은 기능 (뒤로 보낸 사진은 배경 바로 위, 앞 사진은 그림 위)
     var OV = window.CardOverlay ? window.CardOverlay.attach({ canvas: cv, width: 1080, height: 1350, mount: document.querySelector('.cardctl'), redraw: function () { draw(); } }) : null;
     if (OV && !window.__vc.__ovHooked) { var g0 = window.__vc.grainOnly; window.__vc.grainOnly = function (G) { g0(G); OV.paintBack(G); }; window.__vc.__ovHooked = true; }

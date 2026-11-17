@@ -47,8 +47,14 @@
     X.textAlign = 'right'; X.fillText(endT, R, bot + 30);
     if (o.mark) {
       var lo = o.bins[0].lo, hi = o.bins[n - 1].hi, mxv = Math.max(lo, Math.min(hi, o.mark.v)), x = L + (R - L) * (mxv - lo) / (hi - lo);
-      X.strokeStyle = T.ink; X.setLineDash([8, 6]); X.lineWidth = 3; X.beginPath(); X.moveTo(x, top - 30); X.lineTo(x, bot); X.stroke(); X.setLineDash([]);
-      X.fillStyle = T.ink; X.font = font(800, 22); X.textAlign = x > R - 200 ? 'right' : 'left'; X.fillText(o.mark.label, x + (x > R - 200 ? -10 : 10), top - 10);
+      X.font = font(800, 22); var rt = x > R - 200, mw = X.measureText(o.mark.label).width, ma = rt ? x - 10 - mw : x + 10, mb = ma + mw, my = top - 10;
+      o.bins.forEach(function (b, i) {   // 막대 위 개수 글자와 겹치지 않게 위로 올린다
+        var bx = L + i * bw, h = (bot - top) * b.n / mx; if (bx + bw < ma - 4 || bx > mb + 4) return;
+        my = Math.min(my, bot - h - (b.n && h > 26 ? 30 : 6));
+      });
+      X.strokeStyle = T.ink; X.setLineDash([8, 6]); X.lineWidth = 3; var gap = null; o.bins.forEach(function (b, i) { var bx = L + i * bw, h = (bot - top) * b.n / mx; if (b.n && h > 26 && x > bx && x < bx + bw) gap = [bot - h - 26, bot - h - 2]; });   // 막대 위 개수 글자 자리는 비운다
+      X.beginPath(); X.moveTo(x, Math.min(top - 30, my - 20)); if (gap) { X.lineTo(x, gap[0]); X.moveTo(x, gap[1]); } X.lineTo(x, bot); X.stroke(); X.setLineDash([]);
+      X.fillStyle = T.ink; X.textAlign = rt ? 'right' : 'left'; X.fillText(o.mark.label, x + (rt ? -10 : 10), my);
     }
     X.fillStyle = T.soft; X.font = font(700, 20); X.textAlign = 'center'; X.fillText(o.axis || '', (L + R) / 2, bot + 66);
     foot(X, o.src);
@@ -77,13 +83,13 @@
   function calendar(X, o) {
     head(X, o);
     var by = {}; o.days.forEach(function (d) { var k = String(d[0]).slice(0, 6); (by[k] = by[k] || []).push(d); });
-    var vals = o.days.map(function (d) { return d[1]; }), best = Math.max.apply(null, vals), worst = Math.min.apply(null, vals), marks = [];
+    var vals = o.days.map(function (d) { return d[1]; }), best = Math.max.apply(null, vals), worst = Math.min.apply(null, vals), marks = [], heads = [];
     var months = Object.keys(by).sort().slice(-12), cw = (R - L - 3 * 24) / 4, cell = Math.floor((cw - 6) / 7), top = TOP, mh = cell * 6 + 50;
     months.forEach(function (m, i) {
       var gx = L + (i % 4) * (cw + 24), gy = top + Math.floor(i / 4) * (mh + 14), y = +m.slice(0, 4), mo = +m.slice(4) - 1;
       var first = new Date(y, mo, 1).getDay(), sum = by[m].reduce(function (t, d) { return t * (1 + d[1] / 100); }, 1) - 1;
-      X.fillStyle = T.ink; X.font = font(800, 22); X.textAlign = 'left'; X.fillText((mo + 1) + '월', gx, gy + 22);
-      X.fillStyle = sum >= 0 ? T.up : T.down; X.font = font(800, 19); X.textAlign = 'right'; X.fillText(pct(sum * 100, 1), gx + cell * 7, gy + 22);
+      X.fillStyle = T.ink; X.font = font(800, 22); X.textAlign = 'left'; X.fillText((mo + 1) + '월', gx, gy + 22); heads.push([gx, gy + 4, gx + X.measureText((mo + 1) + '월').width, gy + 28]);
+      X.fillStyle = sum >= 0 ? T.up : T.down; X.font = font(800, 19); X.textAlign = 'right'; var sw0 = X.measureText(pct(sum * 100, 1)).width; X.fillText(pct(sum * 100, 1), gx + cell * 7, gy + 22); heads.push([gx + cell * 7 - sw0, gy + 6, gx + cell * 7, gy + 28]);
       var map = {}; by[m].forEach(function (d) { map[+String(d[0]).slice(6)] = d[1]; });
       var nd = new Date(y, mo + 1, 0).getDate();
       for (var d = 1; d <= nd; d++) {
@@ -92,10 +98,16 @@
         if (v != null && (v === best || v === worst)) marks.push([cx, cy, v]);
       }
     });
-    marks.forEach(function (m) {       // 1년 중 가장 크게 오른 날·내린 날
-      X.strokeStyle = T.ink; X.lineWidth = 3; rr(X, m[0], m[1], cell, cell, 5); X.stroke();
+    var used = heads.slice();
+    marks.forEach(function (m) { X.strokeStyle = T.ink; X.lineWidth = 3; rr(X, m[0], m[1], cell, cell, 5); X.stroke(); });
+    marks.forEach(function (m) {       // 1년 중 가장 크게 오른 날·내린 날 — 월 제목·서로 겹치지 않는 자리
       var tx = pct(m[2], 1), bx = m[0] + cell / 2; X.font = font(900, 17); var tw = X.measureText(tx).width + 12;
-      X.fillStyle = T.ink; rr(X, bx - tw / 2, m[1] - 26, tw, 22, 6); X.fill(); X.fillStyle = '#fafaf8'; X.textAlign = 'center'; X.fillText(tx, bx, m[1] - 9);
+      var hit = function (a) { return used.some(function (u) { return a[0] < u[2] + 2 && a[2] > u[0] - 2 && a[1] < u[3] + 2 && a[3] > u[1] - 2; }); };
+      var cs = [[0, -26], [0, cell + 4]], sh = [0, -tw / 2 - 4, tw / 2 + 4, -tw, tw], pick = null;
+      cs.forEach(function (c) { sh.forEach(function (d) { if (pick) return; var x0 = bx - tw / 2 + d, b = [x0, m[1] + c[1], x0 + tw, m[1] + c[1] + 22]; if (x0 >= L - 40 && x0 + tw <= R + 40 && !hit(b)) pick = b; }); });
+      if (!pick) pick = [bx - tw / 2, m[1] - 26, bx + tw / 2, m[1] - 4];
+      used.push(pick);
+      X.fillStyle = T.ink; rr(X, pick[0], pick[1], tw, 22, 6); X.fill(); X.fillStyle = '#fafaf8'; X.textAlign = 'center'; X.fillText(tx, pick[0] + tw / 2, pick[1] + 17);
     });
     // 범례
     var ly = BOT - 70; X.fillStyle = T.soft; X.font = font(700, 20); X.textAlign = 'left'; X.fillText('하루 등락률', L, ly + 18);

@@ -24,8 +24,9 @@
     var labF = font(900, huge ? 34 : rowH >= 66 ? 27 : 25); X.font = labF;
     var RP = R - Math.max(60, Math.max.apply(null, rows.map(function (r) { return r.v >= 0 ? X.measureText(r.lab).width : 0; })) + 14);   // 오른쪽 숫자가 데드존을 넘지 않게
     var x0 = L + 310, bw = RP - x0, zero = neg && pos ? x0 + bw * 0.35 : neg ? RP : x0;
-    var span = neg && pos ? bw * 0.65 : bw, nspan = neg && pos ? bw * 0.35 - 10 : bw;
-    if (neg && pos) { var mp = Math.max.apply(null, rows.map(function (r) { return r.v; })), mn = -Math.min.apply(null, rows.map(function (r) { return r.v; })); var f = mp / (mp + mn); var lw0 = huge ? 140 : 90; zero = x0 + lw0 + (bw - lw0) * (1 - f) * 0.85; span = RP - zero; nspan = zero - x0 - lw0; mx = Math.max(mp, 1e-9); var mxn = Math.max(mn, 1e-9); }
+    var nlw = Math.max.apply(null, rows.map(function (r) { return r.v < 0 ? X.measureText(r.lab).width : 0; })) + 16;   // 음수 숫자가 이름 칸을 침범하지 않게
+    var span = neg && pos ? bw * 0.65 : bw, nspan = neg && pos ? bw * 0.35 - 10 : neg ? bw - nlw : bw;
+    if (neg && pos) { var mp = Math.max.apply(null, rows.map(function (r) { return r.v; })), mn = -Math.min.apply(null, rows.map(function (r) { return r.v; })); var f = mp / (mp + mn); var lw0 = Math.max(huge ? 140 : 90, nlw); zero = x0 + lw0 + (bw - lw0) * (1 - f) * 0.85; span = RP - zero; nspan = zero - x0 - lw0; mx = Math.max(mp, 1e-9); var mxn = Math.max(mn, 1e-9); }
     rows.forEach(function (r, i) {
       var y = top + i * rowH, cy = y + rowH / 2, big = rowH >= 66;
       X.fillStyle = T.soft; X.font = font(800, 22); X.textAlign = 'right'; X.textBaseline = 'middle'; X.fillText(i + 1, L + 26, cy);
