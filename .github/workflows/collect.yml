@@ -17,6 +17,7 @@ on:
 
 permissions:
   contents: write
+  actions: read
 
 # 같은 워크플로가 겹쳐 돌지 않게 한다
 concurrency:
@@ -29,13 +30,27 @@ jobs:
     timeout-minutes: 300
 
     steps:
+      # 오늘(한국 시간) 이미 끝까지 돈 수집이 있으면 건너뛴다 — 예약 실행이 몇 시간씩 늦어 손으로 먼저 돌린 날, 두 번 돌아 DART 하루 한도(2만)를 넘지 않게
+      - name: 오늘 이미 돌았는지 확인
+        id: guard
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          DAY=$(date -u -d @$(TZ=Asia/Seoul date -d "today 00:00" +%s) +%Y-%m-%dT%H:%M:%SZ)
+          N=$(gh api "repos/${{ github.repository }}/actions/workflows/collect.yml/runs?created=>=$DAY&status=success&per_page=20" -q "[.workflow_runs[] | select(.id != ${{ github.run_id }})] | length")
+          echo "오늘($DAY 이후) 끝난 수집: $N"
+          if [ "$N" != "0" ]; then echo "skip=1" >> $GITHUB_OUTPUT; fi
+
       - uses: actions/checkout@v4
+        if: steps.guard.outputs.skip != '1'
 
       - uses: actions/setup-python@v5
+        if: steps.guard.outputs.skip != '1'
         with:
           python-version: '3.11'
 
       - name: 캐시 복원
+        if: steps.guard.outputs.skip != '1'
         uses: actions/cache@v4
         with:
           path: .cache
@@ -43,11 +58,13 @@ jobs:
           restore-keys: corpcode-
 
       - name: 전체 종목 목록 만들기
+        if: steps.guard.outputs.skip != '1'
         env:
           DART_API_KEY: ${{ secrets.DART_API_KEY }}
         run: python3 collect.py --build-tickers
 
       - name: 수집 (미수집 우선, 그다음 오래된 순서로 갱신)
+        if: steps.guard.outputs.skip != '1'
         env:
           DART_API_KEY: ${{ secrets.DART_API_KEY }}
         run: |
@@ -57,6 +74,7 @@ jobs:
             --max-minutes 180
 
       - name: 변경분 커밋
+        if: steps.guard.outputs.skip != '1'
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
