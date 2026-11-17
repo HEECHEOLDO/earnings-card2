@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-16",
+ "updated": "2026-11-17",
  "items": {
   "gold": {
    "ok": true,
@@ -7,8 +7,8 @@
    "unit": "달러",
    "freq": "D",
    "src": "CNBC",
-   "last": 20261113,
-   "n": 918
+   "last": 20261116,
+   "n": 919
   },
   "silver": {
    "ok": true,
@@ -16,8 +16,8 @@
    "unit": "달러",
    "freq": "D",
    "src": "CNBC",
-   "last": 20261113,
-   "n": 917
+   "last": 20261116,
+   "n": 918
   },
   "copper": {
    "ok": true,
@@ -25,8 +25,8 @@
    "unit": "달러",
    "freq": "D",
    "src": "CNBC",
-   "last": 20261113,
-   "n": 917
+   "last": 20261116,
+   "n": 918
   },
   "wti": {
    "ok": true,
@@ -34,8 +34,8 @@
    "unit": "달러",
    "freq": "D",
    "src": "CNBC",
-   "last": 20261113,
-   "n": 915
+   "last": 20261116,
+   "n": 916
   },
   "brent": {
    "ok": true,
@@ -43,8 +43,8 @@
    "unit": "달러",
    "freq": "D",
    "src": "CNBC",
-   "last": 20261113,
-   "n": 931
+   "last": 20261116,
+   "n": 932
   },
   "natgas": {
    "ok": true,
@@ -52,8 +52,8 @@
    "unit": "달러",
    "freq": "D",
    "src": "CNBC",
-   "last": 20261113,
-   "n": 916
+   "last": 20261116,
+   "n": 917
   },
   "btc": {
    "ok": true,
@@ -61,7 +61,7 @@
    "unit": "달러",
    "freq": "D",
    "src": "CNBC",
-   "last": 20261114,
+   "last": 20261116,
    "n": 1146
   },
   "eth": {
@@ -70,7 +70,7 @@
    "unit": "달러",
    "freq": "D",
    "src": "CNBC",
-   "last": 20261114,
+   "last": 20261116,
    "n": 1146
   },
   "dxy": {
@@ -79,8 +79,8 @@
    "unit": "pt",
    "freq": "D",
    "src": "CNBC",
-   "last": 20261115,
-   "n": 956
+   "last": 20261116,
+   "n": 957
   },
   "vix": {
    "ok": true,
@@ -88,8 +88,8 @@
    "unit": "pt",
    "freq": "D",
    "src": "CNBC",
-   "last": 20261113,
-   "n": 932
+   "last": 20261116,
+   "n": 933
   },
   "us10y": {
    "ok": true,
@@ -97,8 +97,8 @@
    "unit": "%",
    "freq": "D",
    "src": "CNBC",
-   "last": 20261113,
-   "n": 921
+   "last": 20261116,
+   "n": 922
   },
   "us2y": {
    "ok": true,
@@ -106,8 +106,8 @@
    "unit": "%",
    "freq": "D",
    "src": "CNBC",
-   "last": 20261113,
-   "n": 923
+   "last": 20261116,
+   "n": 924
   },
   "kr10y": {
    "ok": true,
@@ -115,8 +115,8 @@
    "unit": "%",
    "freq": "D",
    "src": "CNBC",
-   "last": 20261113,
-   "n": 948
+   "last": 20261116,
+   "n": 950
   },
   "kr3y": {
    "ok": false,
@@ -129,8 +129,8 @@
    "unit": "%",
    "freq": "D",
    "src": "CNBC",
-   "last": 20261114,
-   "n": 947
+   "last": 20261116,
+   "n": 948
   },
   "usdkrw": {
    "ok": true,
@@ -138,8 +138,8 @@
    "unit": "원",
    "freq": "D",
    "src": "CNBC",
-   "last": 20261113,
-   "n": 974
+   "last": 20261116,
+   "n": 987
   },
   "jpykrw": {
    "ok": true,
@@ -147,8 +147,8 @@
    "unit": "원",
    "freq": "D",
    "src": "CNBC",
-   "last": 20261113,
-   "n": 989
+   "last": 20261116,
+   "n": 988
   },
   "eurkrw": {
    "ok": true,
@@ -156,8 +156,8 @@
    "unit": "원",
    "freq": "D",
    "src": "CNBC",
-   "last": 20261113,
-   "n": 991
+   "last": 20261116,
+   "n": 972
   },
   "cnykrw": {
    "ok": true,
@@ -165,8 +165,8 @@
    "unit": "원",
    "freq": "D",
    "src": "CNBC",
-   "last": 20261115,
-   "n": 970
+   "last": 20261116,
+   "n": 980
   },
   "us_rate": {
    "ok": true,
@@ -174,8 +174,8 @@
    "unit": "%",
    "freq": "D",
    "src": "뉴욕 연준 · EFFR 목표 범위",
-   "last": 20261112,
-   "n": 2980
+   "last": 20261113,
+   "n": 2981
   },
   "us_cpi": {
    "ok": true,
