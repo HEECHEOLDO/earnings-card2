@@ -2,7 +2,7 @@
  "name": "FFIV",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "F5, INC.",
+ "legal_name": "F5, Inc.",
  "code": "FFIV",
  "cik": "0001048695",
  "market": "미국",
@@ -10,21 +10,8 @@
  "unit": "백만달러",
  "fiscal": true,
  "fye": 9,
- "updated": "2026-11-17",
+ "updated": "2026-11-18",
  "annual": [
-  {
-   "p": 2016,
-   "rev": 1995.0,
-   "op": 547.4,
-   "ni": 365.9,
-   "assets": 2306.3,
-   "liab": null,
-   "equity": 1185.3,
-   "dps": null,
-   "payout": null,
-   "yield": null,
-   "dps_adj": null
-  },
   {
    "p": 2017,
    "rev": 2090.0,
@@ -141,16 +128,22 @@
    "payout": null,
    "yield": null,
    "dps_adj": null
+  },
+  {
+   "p": 2026,
+   "rev": 3416.7,
+   "op": 818.2,
+   "ni": 722.1,
+   "assets": 7062.1,
+   "liab": null,
+   "equity": 4005.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
   }
  ],
  "quarterly": [
-  {
-   "y": 2024,
-   "q": 2,
-   "rev": 681.4,
-   "op": 140.0,
-   "ni": 119.0
-  },
   {
    "y": 2024,
    "q": 3,
@@ -213,6 +206,13 @@
    "rev": 865.1,
    "op": 213.3,
    "ni": 208.2
+  },
+  {
+   "y": 2026,
+   "q": 4,
+   "rev": 917.4,
+   "op": 211.7,
+   "ni": 186.1
   }
  ]
 }
