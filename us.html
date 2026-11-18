@@ -2020,7 +2020,9 @@
 
     y += nameSize * T.type.nameToSub + subSize * 0.86;
     ctx.font = font(900, subSize);
+    ctx.fillStyle = '#4B4F58';   // 둘째 줄은 중간 회색 — 이름이 먼저 읽히게
     ctx.fillText(line2, CX, y);
+    ctx.fillStyle = T.ink;
 
     /* 범례 + 단위 */
     y += T.gap.headToLegend;

@@ -41,7 +41,8 @@ window.__vcTitle = function (X, h1, logo, opt) {   // opt.tail: 첫 줄 끝 조�
   if (tail) { var w0 = X.measureText(lines[0]).width; X.font = f(s2t); X.fillText(tail, lx + w0 + 4, y); X.font = f(s1); }
   if (lines.length === 2) {
     if (track) X.letterSpacing = '0px';
-    var s2 = fit(lines[1], 60, 34); X.font = f(s1); var dsc = X.measureText(lines[0]).actualBoundingBoxDescent || 0; X.font = f(s2); y += Math.max(s1 * (/[gjpqy]/.test(lines[0]) ? 0.34 : 0.22), dsc + 6) + s2 * 0.86; X.font = f(s2); X.fillText(lines[1], B.L, y);   // 영문 g·y 꼬리가 둘째 줄에 닿지 않게
+    var s2 = fit(lines[1], 60, 34); X.font = f(s1); var dsc = X.measureText(lines[0]).actualBoundingBoxDescent || 0; X.font = f(s2); y += Math.max(s1 * (/[gjpqy]/.test(lines[0]) ? 0.34 : 0.22), dsc + 6) + s2 * 0.86; X.font = f(s2); var ink0 = X.fillStyle; X.fillStyle = '#4B4F58';   // 둘째 줄은 중간 회색 — 이름이 먼저 읽히게
+     X.fillText(lines[1], B.L, y); X.fillStyle = ink0;   // 영문 g·y 꼬리가 둘째 줄에 닿지 않게
   }
   if (track) X.letterSpacing = '0px';
   return y;
