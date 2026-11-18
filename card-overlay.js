@@ -129,7 +129,19 @@
   /* 누끼 다듬기 — 가벼운 모델(빠름)은 배경에 반투명 얼룩·자잘한 점을 남긴다 (어두운 카드 위에선 머리카락이 날리는 것처럼 보인다).
      ① 아주 옅은 픽셀은 지우고 ② 사람(큰 덩어리)과 떨어진 작은 조각은 버리고 ③ 덩어리 둘레 몇 px 밖의 반투명은 지운다.
      덩어리는 여러 개(두 사람)여도 큰 것 대비 3% 넘으면 남긴다. */
-  function cleanCut(blob) {
+  function loadImg(b) {
+    return new Promise(function (res) {
+      if (!(b instanceof Blob)) { res(null); return; }
+      var u = URL.createObjectURL(b), im = new Image();
+      im.onload = function () { res(im); setTimeout(function () { URL.revokeObjectURL(u); }, 0); };
+      im.onerror = function () { URL.revokeObjectURL(u); res(null); };
+      im.src = u;
+    });
+  }
+  function cleanCut(blob, origBlob) {
+    return loadImg(origBlob).then(function (orig) { return cleanCut1(blob, orig); });
+  }
+  function cleanCut1(blob, orig) {
     return new Promise(function (resolve) {
       var url = URL.createObjectURL(blob), img = new Image();
       img.onload = function () {
@@ -139,6 +151,22 @@
           var x = cv.getContext('2d'); x.drawImage(img, 0, 0);
           var id = x.getImageData(0, 0, w, h), px = id.data, i;
           var lab = new Int32Array(n), stack = new Int32Array(n), sizes = [0], big = 0;
+          if (orig) {                                       // 원래 배경색과 거의 같은 반투명 픽셀 = 배경 찌꺼기
+            var oc = document.createElement('canvas'); oc.width = w; oc.height = h; oc.__noTheme = true;
+            var ox = oc.getContext('2d'); ox.drawImage(orig, 0, 0, w, h);
+            var op = ox.getImageData(0, 0, w, h).data, hr = new Uint32Array(256), hg = new Uint32Array(256), hb = new Uint32Array(256), nb = 0;
+            for (i = 0; i < n; i += 3) if (px[i * 4 + 3] === 0) { hr[op[i * 4]]++; hg[op[i * 4 + 1]]++; hb[op[i * 4 + 2]]++; nb++; }
+            if (nb > n * 0.05) {
+              var med = function (hh) { var c = 0, j; for (j = 0; j < 256; j++) { c += hh[j]; if (c >= nb / 2) return j; } return 0; };
+              var br = med(hr), bgc = med(hg), bb = med(hb), T1 = 30, T2 = 55;
+              for (i = 0; i < n; i++) {
+                var a0 = px[i * 4 + 3]; if (!a0 || a0 >= 240) continue;
+                var dr = op[i * 4] - br, dg = op[i * 4 + 1] - bgc, db = op[i * 4 + 2] - bb, dd = Math.sqrt(dr * dr + dg * dg + db * db);
+                if (dd < T1) px[i * 4 + 3] = 0;
+                else if (dd < T2) px[i * 4 + 3] = Math.round(a0 * (dd - T1) / (T2 - T1));
+              }
+            }
+          }
           for (i = 0; i < n; i++) if (px[i * 4 + 3] < 60) px[i * 4 + 3] = 0;
           for (i = 0; i < n; i++) {                         // 진한 픽셀끼리 이어진 덩어리 번호
             if (lab[i] || px[i * 4 + 3] < 128) continue;
@@ -210,8 +238,8 @@
         return loadLib().then(function (lib) {
           return lib.removeBackground(small, { model: model, device: device(), output: { format: 'image/png', quality: 1 }, progress: onProgress });
         });
-      });
-    }).then(function (b) { return window.__noClean ? b : cleanCut(b); }).then(function (b) { _busy = false; return b; }, function (e) { _busy = false; throw e; });
+      }).then(function (b) { return window.__noClean ? b : cleanCut(b, small); });   // 결과가 작게 나와도 원본을 같은 크기로 맞춰 비교한다
+    }).then(function (b) { _busy = false; return b; }, function (e) { _busy = false; throw e; });
   }
   window.CardBg = { remove: removeBg, isPhone: IS_PHONE, maxSide: BG_MAX, scaledBlob: scaledBlob, decodeSmall: decodeSmall };
 
