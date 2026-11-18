@@ -1,0 +1,16 @@
+# 시험용 — 배경 지우기 모델을 임시 릴리스로 올린다 (손으로만 실행)
+name: 배경 지우기 모델 받기 (시험)
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  t:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 tools/bg_model_fetch.py
+      - env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create tmp-bgmodel isnet_quint8.onnx isnet_fp16.onnx --title "tmp bg model" --notes "시험용 · 곧 지움" --prerelease
