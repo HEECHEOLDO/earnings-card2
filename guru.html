@@ -438,7 +438,7 @@
      ============================================================ */
   var TOKENS = {
     card: {
-      paper:'#fafaf8', ink:'#101216', inkSoft:'#6B7078', rule:'#E6E4DD',
+      paper:'#fafaf8', ink:'#101216', inkSoft:'#6B7078', sub:'#4B4F58', rule:'#E6E4DD',
       axis:'#C9C6BC', tick:'#9AA0A8', footer:'#3A3E46',
       guide:'rgba(214,54,44,0.45)', etc:'#C9C6BC',
       safe:{ top:135, right:100, bottom:135, left:100 },
@@ -1257,7 +1257,9 @@
     if (ss) {
       y += ns*T.type.nameToSub + ss*0.86;
       ctx.font = font(900, ss);
+      ctx.fillStyle = T.sub;                 // 둘째 줄은 중간 회색 — 이름이 먼저 읽히게
       ctx.fillText(state.sub, CX, y);
+      ctx.fillStyle = T.ink;
     }
 
     /* 푸터부터 역산 */
@@ -1287,6 +1289,15 @@
       var maxByH = availH/2 - blockH*0.8;
       var R = Math.max(120, Math.min(maxByW, maxByH));
 
+      // 다크 모드: 도넛 뒤로 고른 색의 빛이 은은하게 번진다 (가운데 사진이 있으면 바깥 빛만 보인다)
+      if (state.chart !== 'bar' && window.CardTheme && CardTheme.isDark()) {
+        var bc = hexToHsl(document.getElementById('color-base').value || '#2E6FD9');
+        var gc = 'hsla(' + Math.round(bc.h) + ',' + Math.round(Math.max(bc.s, 55)) + '%,58%,';
+        var gl = ctx.createRadialGradient(cx, cy, R * 0.3, cx, cy, R * 1.9);
+        gl.__noTheme = 1;
+        gl.addColorStop(0, gc + '0.42)'); gl.addColorStop(0.55, gc + '0.12)'); gl.addColorStop(1, gc + '0)');
+        ctx.fillStyle = gl; ctx.fillRect(0, chartTop - 200, CW, chartBottom - chartTop + 400);
+      }
       if (state.chart === 'bar') drawBars(ctx, CX, chartTop, CWID, chartBottom);
       else drawDonut(ctx, cx, cy, R, state.rows, state.colors,
                          { left: D.boundInset, right: CW - D.boundInset,
