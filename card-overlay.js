@@ -126,6 +126,54 @@
     });
   }
 
+  /* 누끼 다듬기 — 가벼운 모델(빠름)은 배경에 반투명 얼룩·자잘한 점을 남긴다 (어두운 카드 위에선 머리카락이 날리는 것처럼 보인다).
+     ① 아주 옅은 픽셀은 지우고 ② 사람(큰 덩어리)과 떨어진 작은 조각은 버리고 ③ 덩어리 둘레 몇 px 밖의 반투명은 지운다.
+     덩어리는 여러 개(두 사람)여도 큰 것 대비 3% 넘으면 남긴다. */
+  function cleanCut(blob) {
+    return new Promise(function (resolve) {
+      var url = URL.createObjectURL(blob), img = new Image();
+      img.onload = function () {
+        try {
+          var w = img.naturalWidth, h = img.naturalHeight, n = w * h;
+          var cv = document.createElement('canvas'); cv.width = w; cv.height = h; cv.__noTheme = true;
+          var x = cv.getContext('2d'); x.drawImage(img, 0, 0);
+          var id = x.getImageData(0, 0, w, h), px = id.data, i;
+          var lab = new Int32Array(n), stack = new Int32Array(n), sizes = [0], big = 0;
+          for (i = 0; i < n; i++) if (px[i * 4 + 3] < 60) px[i * 4 + 3] = 0;
+          for (i = 0; i < n; i++) {                         // 진한 픽셀끼리 이어진 덩어리 번호
+            if (lab[i] || px[i * 4 + 3] < 128) continue;
+            var id2 = sizes.length, sp = 0, cnt = 0; lab[i] = id2; stack[sp++] = i;
+            while (sp) {
+              var q = stack[--sp], qx = q % w; cnt++;
+              if (qx > 0 && !lab[q - 1] && px[(q - 1) * 4 + 3] >= 128) { lab[q - 1] = id2; stack[sp++] = q - 1; }
+              if (qx < w - 1 && !lab[q + 1] && px[(q + 1) * 4 + 3] >= 128) { lab[q + 1] = id2; stack[sp++] = q + 1; }
+              if (q >= w && !lab[q - w] && px[(q - w) * 4 + 3] >= 128) { lab[q - w] = id2; stack[sp++] = q - w; }
+              if (q < n - w && !lab[q + w] && px[(q + w) * 4 + 3] >= 128) { lab[q + w] = id2; stack[sp++] = q + w; }
+            }
+            sizes.push(cnt); if (cnt > big) big = cnt;
+          }
+          if (!big) { resolve(blob); return; }
+          var keepMin = Math.max(big * 0.03, 30), keep = new Uint8Array(n);
+          for (i = 0; i < n; i++) if (lab[i] && sizes[lab[i]] >= keepMin) keep[i] = 1;
+          var r = Math.max(4, Math.round(Math.max(w, h) / 120)), tmp = new Uint8Array(n), yy, xx, k;   // 남길 덩어리를 r px 만큼 넓힌다 (머리카락 가장자리)
+          for (yy = 0; yy < h; yy++) { var run = -1e9; for (xx = 0; xx < w; xx++) { if (keep[yy * w + xx]) run = xx; if (xx - run <= r) tmp[yy * w + xx] = 1; } run = 1e9; for (xx = w - 1; xx >= 0; xx--) { if (keep[yy * w + xx]) run = xx; if (run - xx <= r) tmp[yy * w + xx] = 1; } }
+          var near = new Uint8Array(n);
+          for (xx = 0; xx < w; xx++) { var rn = -1e9; for (yy = 0; yy < h; yy++) { if (tmp[yy * w + xx]) rn = yy; if (yy - rn <= r) near[yy * w + xx] = 1; } rn = 1e9; for (yy = h - 1; yy >= 0; yy--) { if (tmp[yy * w + xx]) rn = yy; if (rn - yy <= r) near[yy * w + xx] = 1; } }
+          for (i = 0; i < n; i++) {
+            k = i * 4 + 3;
+            if (!px[k]) continue;
+            if (lab[i] && !keep[i]) px[k] = 0;                // 떨어진 작은 조각
+            else if (!lab[i] && !near[i]) px[k] = 0;          // 사람에서 먼 반투명 얼룩
+          }
+          x.putImageData(id, 0, 0);
+          cv.toBlob(function (b2) { URL.revokeObjectURL(url); resolve(b2 || blob); }, 'image/png');
+        } catch (e) { URL.revokeObjectURL(url); resolve(blob); }
+      };
+      img.onerror = function () { URL.revokeObjectURL(url); resolve(blob); };
+      img.src = url;
+    });
+  }
+
   // src: Blob / Image — 줄여서 워커로 보내고, 투명 PNG Blob 을 돌려준다
   function removeBg(src, model, onProgress) {
     if (_busy) return Promise.reject(new Error('이미 배경을 지우는 중입니다'));
@@ -149,7 +197,7 @@
           return lib.removeBackground(small, { model: model, device: device(), output: { format: 'image/png', quality: 1 }, progress: onProgress });
         });
       });
-    }).then(function (b) { _busy = false; return b; }, function (e) { _busy = false; throw e; });
+    }).then(function (b) { return window.__noClean ? b : cleanCut(b); }).then(function (b) { _busy = false; return b; }, function (e) { _busy = false; throw e; });
   }
   window.CardBg = { remove: removeBg, isPhone: IS_PHONE, maxSide: BG_MAX, scaledBlob: scaledBlob, decodeSmall: decodeSmall };
 
