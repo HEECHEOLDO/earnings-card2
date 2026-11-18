@@ -504,15 +504,17 @@ def time_left():
 
 
 def recent_kr(days=12):
-    """최근 정기보고서(분기·반기·사업)를 낸 회사 corp_code — 이 회사들만 새로 읽는다"""
-    out = set()
+    """최근 정기보고서(분기·반기·사업)를 낸 회사 corp_code → 가장 최근 접수번호 — 이 회사들만 새로 읽는다"""
+    out = {}
     for p in range(1, 60):
         res = C.api_get("list.json", {"bgn_de": (TODAY - timedelta(days=days)).strftime("%Y%m%d"), "end_de": TODAY.strftime("%Y%m%d"),
                                       "pblntf_ty": "A", "page_no": p, "page_count": 100})
         if not res or res.get("status") != "000":
             break
         for r in res.get("list", []):
-            out.add(r.get("corp_code"))
+            cc, rn = r.get("corp_code"), r.get("rcept_no") or ""
+            if rn > out.get(cc, ""):
+                out[cc] = rn
         if p >= int(res.get("total_page") or 1):
             break
     for p in range(1, 30):                                   # 감사보고서(비상장)
@@ -521,7 +523,9 @@ def recent_kr(days=12):
         if not res or res.get("status") != "000":
             break
         for r in res.get("list", []):
-            out.add(r.get("corp_code"))
+            cc, rn = r.get("corp_code"), r.get("rcept_no") or ""
+            if rn > out.get(cc, ""):
+                out[cc] = rn
         if p >= int(res.get("total_page") or 1):
             break
     return out
@@ -692,10 +696,22 @@ def main():
         f = fail.get(k)
         return f and (TODAY - date.fromisoformat(f["d"])).days < 7
 
-    def need(key, old, recent_hit):
+    def stale(old):
+        """다음 분기 보고서가 나왔어야 할 때가 지났는데 카드는 아직 예전 분기 (최근 12일 목록에서 빠진 회사도 놓치지 않게)"""
+        try:
+            end = date.fromisoformat(old["end"])
+        except Exception:                           # noqa: BLE001
+            return False
+        if (old.get("chk") or "") >= (TODAY - timedelta(days=7)).isoformat():
+            return False                            # 일주일 안에 확인했는데 새 보고서가 없었다
+        return end + timedelta(days=92 + 50) < TODAY
+
+    def need(key, old, recent_hit, latest=None):
         """0: 새 보고서 · 1: 아직 없음 · 2: 계산 방식이 바뀜 · None: 그대로"""
+        if old and old.get("ver") == VER and recent_hit and latest and old.get("src") == latest:
+            return None                             # 최근 보고서를 이미 카드에 담았다 — 매일 다시 읽지 않는다
         if old and old.get("ver") == VER and not recent_hit:
-            return None
+            return 1 if stale(old) else None       # 새 보고서 다음 차례
         if old and old.get("ver") == VER:
             return 0
         if not old:
@@ -708,6 +724,7 @@ def main():
         if d == "SAME":
             if old:
                 old["ver"] = VER
+                old["chk"] = TODAY.isoformat()
                 save(code, old, mk, old.get("name") or name)
             done["same"] += 1
         elif d:
@@ -738,7 +755,7 @@ def main():
             if not info:
                 continue
             old = jl(os.path.join(OUT, code + ".json"))
-            pr = need(code, old, info["corp_code"] in rk)
+            pr = need(code, old, info["corp_code"] in rk, rk.get(info["corp_code"]))
             if old and old.get("docv") != DOC_VER and (len(old.get("items") or []) < 2 or len(old.get("segs") or []) < 2):
                 pr, old = 2, None                       # 매출 구분·판관비 세부가 없던 회사 — 보고서 원문에서 다시
             elif old and "xcheck" not in old and not usable(code):
@@ -747,7 +764,7 @@ def main():
                 jobs.append((pr, i, "KR", code, info["corp_code"], old, mc[code].get("n")))
         for i, c in enumerate(ul):
             old = jl(os.path.join(OUT, c["code"] + ".json"))
-            pr = need(c["code"], old, c["code"] in rk)
+            pr = need(c["code"], old, c["code"] in rk, rk.get(c["code"]))
             if old and old.get("uver") != UL_VER:
                 pr, old = -1, None                       # 비상장은 탭 회사 수가 적어 먼저 다시 읽는다
             if pr is not None:
