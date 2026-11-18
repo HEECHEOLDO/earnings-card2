@@ -159,11 +159,25 @@
           for (yy = 0; yy < h; yy++) { var run = -1e9; for (xx = 0; xx < w; xx++) { if (keep[yy * w + xx]) run = xx; if (xx - run <= r) tmp[yy * w + xx] = 1; } run = 1e9; for (xx = w - 1; xx >= 0; xx--) { if (keep[yy * w + xx]) run = xx; if (run - xx <= r) tmp[yy * w + xx] = 1; } }
           var near = new Uint8Array(n);
           for (xx = 0; xx < w; xx++) { var rn = -1e9; for (yy = 0; yy < h; yy++) { if (tmp[yy * w + xx]) rn = yy; if (yy - rn <= r) near[yy * w + xx] = 1; } rn = 1e9; for (yy = h - 1; yy >= 0; yy--) { if (tmp[yy * w + xx]) rn = yy; if (rn - yy <= r) near[yy * w + xx] = 1; } }
+          // 옅은 픽셀(60 이상)끼리 이어진 덩어리 중 사람에 닿지 않는 것은 통째로 버린다 — 머리카락처럼 사람에 붙은 가닥은 남는다
+          var lab2 = new Int32Array(n), hit = [0], sp2, id3;
+          for (i = 0; i < n; i++) {
+            if (lab2[i] || !px[i * 4 + 3]) continue;
+            id3 = hit.length; hit.push(0); sp2 = 0; lab2[i] = id3; stack[sp2++] = i;
+            while (sp2) {
+              var q2 = stack[--sp2], q2x = q2 % w; if (keep[q2]) hit[id3] = 1;
+              if (q2x > 0 && !lab2[q2 - 1] && px[(q2 - 1) * 4 + 3]) { lab2[q2 - 1] = id3; stack[sp2++] = q2 - 1; }
+              if (q2x < w - 1 && !lab2[q2 + 1] && px[(q2 + 1) * 4 + 3]) { lab2[q2 + 1] = id3; stack[sp2++] = q2 + 1; }
+              if (q2 >= w && !lab2[q2 - w] && px[(q2 - w) * 4 + 3]) { lab2[q2 - w] = id3; stack[sp2++] = q2 - w; }
+              if (q2 < n - w && !lab2[q2 + w] && px[(q2 + w) * 4 + 3]) { lab2[q2 + w] = id3; stack[sp2++] = q2 + w; }
+            }
+          }
           for (i = 0; i < n; i++) {
             k = i * 4 + 3;
             if (!px[k]) continue;
             if (lab[i] && !keep[i]) px[k] = 0;                // 떨어진 작은 조각
-            else if (!lab[i] && !near[i]) px[k] = 0;          // 사람에서 먼 반투명 얼룩
+            else if (!hit[lab2[i]]) px[k] = 0;                // 사람에 닿지 않은 옅은 얼룩
+            else if (!lab[i] && !near[i] && px[k] < 110) px[k] = 0;   // 사람에서 먼 아주 옅은 안개
           }
           x.putImageData(id, 0, 0);
           cv.toBlob(function (b2) { URL.revokeObjectURL(url); resolve(b2 || blob); }, 'image/png');
