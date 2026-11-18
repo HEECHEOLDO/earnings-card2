@@ -1212,13 +1212,27 @@
   var state = { rows: [], colors: [], guide:false, logos:true, showTitleLogo:true, fundLogo:null, hole:true, handle:'@돈굴돈굴', chart:'donut', fundVal:null,
                 name:'워런 버핏', sub:'' };
 
+  var _glowKey = '', _glowGeo = null, _glowAgain = false;
   function drawCard(ctx) {
+    _glowAgain = false; drawCard1(ctx);
+    if (_glowAgain) { _glowAgain = false; drawCard1(ctx); }      // 빛 자리가 바뀌었으면 바탕부터 다시
+  }
+  function drawCard1(ctx) {
     var T = TOKENS.card, S = T.safe;
     var CX = S.left, CWID = CW - S.left - S.right;
 
     ctx.clearRect(0,0,CW,CH);
     ctx.fillStyle = T.paper; ctx.fillRect(0,0,CW,CH);
     paintGrain(ctx);
+    // 다크 모드: 도넛 뒤 바탕에만 고른 색의 빛이 은은하게 번진다 (사진·도넛보다 먼저 칠한다)
+    if (_glowGeo && window.CardTheme && CardTheme.isDark()) {
+      var g0 = _glowGeo, bc = hexToHsl(document.getElementById('color-base').value || '#2E6FD9');
+      var gc = 'hsla(' + Math.round(bc.h) + ',' + Math.round(Math.max(bc.s, 55)) + '%,58%,';
+      var gl = ctx.createRadialGradient(g0.cx, g0.cy, g0.R * 0.3, g0.cx, g0.cy, g0.R * 1.9);
+      gl.__noTheme = 1;
+      gl.addColorStop(0, gc + '0.42)'); gl.addColorStop(0.55, gc + '0.12)'); gl.addColorStop(1, gc + '0)');
+      ctx.fillStyle = gl; ctx.fillRect(0, g0.top - 200, CW, g0.bottom - g0.top + 400);
+    }
 
     overlays.forEach(function (ov) { if (ov.layer === 'back') paintOverlay(ctx, ov); });
 
@@ -1289,21 +1303,16 @@
       var maxByH = availH/2 - blockH*0.8;
       var R = Math.max(120, Math.min(maxByW, maxByH));
 
-      // 다크 모드: 도넛 뒤로 고른 색의 빛이 은은하게 번진다 (가운데 사진이 있으면 바깥 빛만 보인다)
-      if (state.chart !== 'bar' && window.CardTheme && CardTheme.isDark()) {
-        var bc = hexToHsl(document.getElementById('color-base').value || '#2E6FD9');
-        var gc = 'hsla(' + Math.round(bc.h) + ',' + Math.round(Math.max(bc.s, 55)) + '%,58%,';
-        var gl = ctx.createRadialGradient(cx, cy, R * 0.3, cx, cy, R * 1.9);
-        gl.__noTheme = 1;
-        gl.addColorStop(0, gc + '0.42)'); gl.addColorStop(0.55, gc + '0.12)'); gl.addColorStop(1, gc + '0)');
-        ctx.fillStyle = gl; ctx.fillRect(0, chartTop - 200, CW, chartBottom - chartTop + 400);
-      }
+      // 빛 번짐 자리를 기억해 두고, 지난번과 다르면 한 번 더 그린다 (빛은 바탕에만 — 뒤에 깐 사진은 물들이지 않는다)
+      var gk = state.chart !== 'bar' ? [cx, cy, R, chartTop, chartBottom].map(Math.round).join(',') : '';
+      if (gk !== _glowKey) { _glowKey = gk; _glowGeo = gk ? { cx: cx, cy: cy, R: R, top: chartTop, bottom: chartBottom } : null; _glowAgain = true; }
       if (state.chart === 'bar') drawBars(ctx, CX, chartTop, CWID, chartBottom);
       else drawDonut(ctx, cx, cy, R, state.rows, state.colors,
                          { left: D.boundInset, right: CW - D.boundInset,
                            top: chartTop, bottom: chartBottom });
 
     } else {
+      _glowGeo = null; _glowKey = '';
       ctx.textAlign = 'center';
       ctx.font = font(700, 34);
       ctx.fillStyle = T.tick;
