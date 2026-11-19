@@ -2,7 +2,7 @@
  "name": "PANW",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "Palo Alto Networks, Inc.",
+ "legal_name": "PALO ALTO NETWORKS, INC",
  "code": "PANW",
  "cik": "0001327567",
  "market": "미국",
@@ -10,7 +10,7 @@
  "unit": "백만달러",
  "fiscal": true,
  "fye": 7,
- "updated": "2026-11-19",
+ "updated": "2026-11-20",
  "annual": [
   {
    "p": 2017,
@@ -123,7 +123,7 @@
    "ni": 1134.0,
    "assets": 23576.0,
    "liab": 15752.0,
-   "equity": 7824.0,
+   "equity": 8665.0,
    "dps": null,
    "payout": null,
    "yield": null,
@@ -134,9 +134,9 @@
    "rev": 11480.0,
    "op": 695.0,
    "ni": 307.0,
-   "assets": 48460.0,
-   "liab": 20968.0,
-   "equity": 27492.0,
+   "assets": 49110.0,
+   "liab": 20445.0,
+   "equity": 28665.0,
    "dps": null,
    "payout": null,
    "yield": null,
@@ -144,13 +144,6 @@
   }
  ],
  "quarterly": [
-  {
-   "y": 2024,
-   "q": 3,
-   "rev": 1984.8,
-   "op": 176.7,
-   "ni": 278.8
-  },
   {
    "y": 2024,
    "q": 4,
@@ -213,6 +206,13 @@
    "rev": 3410.0,
    "op": 172.0,
    "ni": -282.0
+  },
+  {
+   "y": 2027,
+   "q": 1,
+   "rev": 3445.0,
+   "op": 96.0,
+   "ni": 482.0
   }
  ]
 }
