@@ -2,7 +2,7 @@
  "name": "HD",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "The Home Depot, Inc.",
+ "legal_name": "HOME DEPOT, INC.",
  "code": "HD",
  "cik": "0000354950",
  "market": "미국",
@@ -10,7 +10,7 @@
  "unit": "백만달러",
  "fiscal": true,
  "fye": 1,
- "updated": "2026-11-20",
+ "updated": "2026-11-21",
  "annual": [
   {
    "p": 2017,
@@ -123,7 +123,7 @@
    "ni": 14806.0,
    "assets": 96119.0,
    "liab": 89479.0,
-   "equity": 10665.0,
+   "equity": 12116.0,
    "dps": 9,
    "payout": 60.3,
    "yield": null,
@@ -134,9 +134,9 @@
    "rev": 164683.0,
    "op": 20890.0,
    "ni": 14156.0,
-   "assets": 109384.0,
-   "liab": 92767.0,
-   "equity": 16617.0,
+   "assets": 110102.0,
+   "liab": 91968.0,
+   "equity": 18134.0,
    "dps": 9.2,
    "payout": 64.7,
    "yield": null,
@@ -144,13 +144,6 @@
   }
  ],
  "quarterly": [
-  {
-   "y": 2025,
-   "q": 1,
-   "rev": 36418.0,
-   "op": 5079.0,
-   "ni": 3600.0
-  },
   {
    "y": 2025,
    "q": 2,
@@ -213,6 +206,13 @@
    "rev": 47861.0,
    "op": 6839.0,
    "ni": 4766.0
+  },
+  {
+   "y": 2027,
+   "q": 3,
+   "rev": 43398.0,
+   "op": 5479.0,
+   "ni": 3713.0
   }
  ]
 }
