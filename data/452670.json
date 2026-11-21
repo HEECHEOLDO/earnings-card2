@@ -5,8 +5,22 @@
  "code": "452670",
  "market": "기타",
  "sector": "",
- "updated": "2026-10-26",
- "annual": [],
+ "updated": "2026-11-21",
+ "annual": [
+  {
+   "p": 2023,
+   "rev": null,
+   "op": -0.3,
+   "ni": 0.6,
+   "assets": 110.5,
+   "liab": 12.3,
+   "equity": 98.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
  "quarterly": [
   {
    "y": 2024,
