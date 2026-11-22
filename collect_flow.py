@@ -151,7 +151,7 @@ def us_one(t, cik):
 
 # ------------------------------------------------------------------ 공시 원본(XBRL): 3개월 손익 + 매출 종류
 DOC_VER = 2                                        # 국내: 보고서 원문 대체(매출 구분·판관비 세부) — 세부가 없던 회사만 다시
-US_VER = 2                                         # 미국 영업비용 세부 읽는 법이 바뀌면 올림 — 세부가 없던 미국 회사만 다시
+US_VER = 3                                         # 미국 읽는 법이 바뀌면 올림 — 세부·매출 구분이 없던(또는 달력 분기 대체값) 미국 회사만 다시
 UL_VER = 3                                         # 비상장(감사보고서) 읽는 법이 바뀌면 올림 — 비상장만 다시
 VER = 9                                            # 계산 방식이 바뀌면 올려서 다시 계산
 
@@ -1345,7 +1345,7 @@ def main():
             old = jl(os.path.join(OUT, t + ".json"))
             pr = need(t, old, cik in ru)
             pr, old = retry_held(t, pr, old)
-            if old and old.get("usver") != US_VER and (len(old.get("items") or []) < 2 or items_off(old)):
+            if old and old.get("usver") != US_VER and (len(old.get("items") or []) < 2 or items_off(old) or old.get("frame") or not old.get("segs")):
                 pr, old = 2, None                       # 영업비용 세부가 없던 회사 — 새 방식으로 다시
             if pr is not None:
                 jobs.append((pr, i, t, cik, old))
