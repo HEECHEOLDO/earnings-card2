@@ -299,11 +299,11 @@ def _us_files(cik, acc):
 _MON = {m: i + 1 for i, m in enumerate(["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"])}
 # 줄 이름 → 항목 (앞에 있을수록 먼저 고른다)
 PR_ROWS = [("rev", [r"^total (net )?revenues?$", r"^total net sales and revenues?$", r"^(net )?revenues?$", r"^total net sales$", r"^net sales$", r"^sales$"]),
-           ("cogs", [r"^(total )?cost of (net )?(revenues?|sales|goods sold)( \(exclusive of .*\))?$", r"^cost of sales(, including .*)?$"]),
+           ("cogs", [r"^(total )?cost of (net )?(revenues?|sales|goods sold|products sold)( \(exclusive of .*\))?$", r"^cost of sales(, including .*)?$"]),
            ("gross", [r"^gross (profit|margin)$"]),
-           ("rnd", [r"^research and development( expenses?)?$", r"^research, development and related( expenses?)?$"]),
+           ("rnd", [r"^research and development( expenses?)?$", r"^research, development and (related|engineering)( expenses?)?$"]),
            ("sga", [r"^(operating, )?(sales|selling), general,? and administrative( expenses?)?$"]),
-           ("sm", [r"^(sales|selling) and marketing( expenses?)?$", r"^marketing and sales( expenses?)?$"]),
+           ("sm", [r"^(sales|selling) and marketing( expenses?)?$", r"^marketing and (sales|selling)( expenses?)?$"]),
            ("ga", [r"^general and administrative( expenses?)?$"]),
            ("opex", [r"^total operating expenses$", r"^total costs and expenses$"]),
            ("op", [r"^(total )?operating income( \(loss\))?$", r"^(income|earnings)( \(loss\))? from operations$", r"^operating (profit|earnings)$"]),
@@ -400,7 +400,9 @@ def _pr_table(tab, before):
     if rest > max(abs(opex) * 0.01, 1.5 * unit):
         items.append(["기타 영업비용", rest])
     elif rest < -1.5 * unit:
-        return None                                             # 세부 합이 영업비용보다 크다 — 표를 잘못 읽었다
+        if -rest > abs(opex) * 0.03:
+            return None                                         # 세부 합이 영업비용보다 크게 넘친다 — 표를 잘못 읽었다
+        items = []                                              # 구조조정 환입 등 마이너스 항목이 있으면 세부 없이 영업비용 하나로
     return {"rev": v["rev"], "cogs": v["cogs"], "gross": gross, "rnd": v.get("rnd") or 0, "sga": v.get("sga") or 0,
             "op": v["op"], "tax": v["tax"], "ni": v["ni"], "items": items, "segs": [], "end": end.isoformat()}
 

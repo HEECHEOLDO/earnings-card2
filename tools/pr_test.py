@@ -28,8 +28,12 @@ for t in (os.environ.get("CODES") or "").split(","):
         continue
     acc = rc["accessionNumber"][i]; base = U.SEC_ARCH % (cik, acc.replace("-", ""))
     names = [x["name"] for x in U.get_json(base + "index.json")["directory"]["item"]]
-    for n in [n for n in names if n.lower().endswith(".htm") and n != rc["primaryDocument"][i]][:2]:
+    print("-- 문서들", t, names)
+    for n in [n for n in names if n.lower().endswith(".htm") and n != rc["primaryDocument"][i]][:4]:
         h = (U.get(base + n) or b"").decode("utf-8", "replace")
+        for mm in re.finditer(r"statements? of", F._txt(h), re.I):
+            tx = F._txt(h)
+        print("-- 제목들", t, n, [F._txt(h)[max(0, m.start() - 60):m.start() + 60] for m in list(re.finditer(r"statements? of|statement of", F._txt(h), re.I))[:6]])
         for tm in re.finditer(r"<table\b.*?</table>", h, re.S | re.I):
             before = F._txt(h[max(0, tm.start() - 2500):tm.start()]).lower()
             if re.search(r"statements? of (income|operations|earnings)", before[-1200:]):
