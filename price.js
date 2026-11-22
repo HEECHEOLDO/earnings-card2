@@ -206,7 +206,7 @@
     var kr = opt.kr, color, pts = s.pts, n = pts.length, last = n - 1;
     X.save();
     X.textAlign = 'left'; X.textBaseline = 'alphabetic';
-    theme(!!opt.dark); grain(X); color = forDark(opt.color || '#2B59C3');
+    theme(!!opt.dark); grain(X); if (OV) OV.paintBack(X); color = forDark(opt.color || '#2B59C3');
 
     // 머리: 로고 + 이름 + 제목
     var y0 = 205, nx = L;
@@ -400,18 +400,21 @@
 
     X.fillStyle = T.rule; X.fillRect(L, 1180, R - L, 2);
     X.font = font(700, 26); X.fillStyle = T.footer; X.textAlign = 'right'; X.fillText('@돈굴돈굴', R, 1224); X.textAlign = 'left';
+    if (OV) { OV.paintFront(X); if (opt.sel) OV.paintSelection(X); }
     X.restore();
     return { shown: shown, iHi: nearEnd(iHi) ? last : iHi, iLo: nearEnd(iLo) ? last : iLo, last: last, n: n };
   }
 
   /* ------------------------------------------------------------ 화면 */
   var cv = $('card'), X = cv.getContext('2d');
+  // 이미지 넣기 — 다른 탭과 같은 card-overlay.js (끌어서 위치 · 크기·회전·투명도 · 앞/뒤 · 배경 지우기)
+  var OV = window.CardOverlay ? window.CardOverlay.attach({ canvas: cv, width: CW, height: CH, mount: document.querySelector('.cardctl'), redraw: function () { render(); } }) : null;
   function render() {
     var it = state.item;
     if (!it) return;
     var s = series(state.data, state.span);
     if (!s) {
-      grain(X);
+      X.setTransform(1, 0, 0, 1, 0, 0); grain(X);
       X.fillStyle = T.inkSoft; X.font = font(700, 34); X.textAlign = 'center';
       X.fillText(state.data ? '이 기간에는 주가가 없어요' : '주가 자료가 아직 없어요', CW / 2, CH / 2); X.textAlign = 'left';
       $('c-hint').textContent = state.data ? '상장한 지 얼마 안 됐거나 거래가 멈춘 종목일 수 있어요. 다른 기간을 골라 보세요.'
@@ -419,7 +422,7 @@
       return;
     }
     if (!state.titleUser) { state.title = autoTitle(s); $('c-title').value = state.title; }
-    draw(X, s, { kr: it.ix ? 'ix' : it.kr, color: state.color, name: state.name || it.name, title: state.title, logo: state.logo, ytd: state.span === 'ytd' });
+    draw(X, s, { kr: it.ix ? 'ix' : it.kr, color: state.color, name: state.name || it.name, title: state.title, logo: state.logo, ytd: state.span === 'ytd', sel: true });
     var a = s.pts[0], b = s.pts[s.pts.length - 1];
     $('c-hint').textContent = dlab(a) + ' ~ ' + dlab(b) + ' · ' + s.pts.length + '개 점' +
       (s.coarse ? ' · 이 종목은 아직 일별 주가가 없어 월말 종가로 그렸어요' : '') +
