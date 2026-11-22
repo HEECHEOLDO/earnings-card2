@@ -247,6 +247,12 @@ def from_instance(text, labtext, us, caltext=""):
                     break
             if k in val:
                 break
+    if us:                                          # 소수주주 몫 포함 순이익(ProfitLoss) — 실적 탭은 이 줄을 쓰는 회사가 있어 대조용으로 남긴다
+        for n, c, v in facts:
+            p = ctx[c]
+            if n == "us-gaap:ProfitLoss" and (p["start"], p["end"]) == per and base_ok(p):
+                val["ni_all"] = v
+                break
     if not val.get("rev") or val.get("op") is None or val.get("ni") is None:
         WHY = "빠진 값 %s · 기간 %s" % ([k for k in ("rev", "op", "ni") if val.get(k) is None], per)
         return None

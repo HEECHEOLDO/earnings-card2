@@ -697,6 +697,10 @@ def verify(code, d, m, days):
     xc = d.get("xcheck") or {}
     if s == "ok":
         return True, why
+    if m == "US" and d.get("ni_all") is not None and abs(d["ni_all"] - d["ni"]) > 0.05:
+        rows = ((jl(os.path.join("data", "us", code + ".json"), {}) or {}).get("quarterly") or [])[-8:]
+        if any(_same(dict(d, ni=d["ni_all"]), r) for r in rows):
+            return True, "매출·영업이익·순이익(소수주주 포함) 실적 탭과 일치 — 카드 순이익은 같은 공시의 지배주주 몫"
     if m == "US" and not d.get("pr"):
         try:
             if sec_check(code, d):
