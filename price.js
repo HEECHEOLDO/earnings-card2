@@ -448,7 +448,7 @@
     while (tFs > 34 && X.measureText(opt.title).width > R - L) { tFs -= 2; X.font = font(900, tFs); }
     X.fillStyle = SUB; X.fillText(opt.title, L, y0 + 82);
 
-    var col = mode === 'dd' ? T.down : T.up, n = eps.length;
+    var col = forDark(opt.color || '#2B59C3'), n = eps.length;   // 막대 색: 로고 색(기본) 또는 고른 색
     if (!n) {
       X.fillStyle = T.inkSoft; X.font = font(700, 34); X.textAlign = 'center';
       X.fillText(!eps0 ? '이 종목은 3년 이상 일별 주가를 아직 모으는 중이에요' : mode === 'dd' ? '이 기간에는 떨어진 날이 없어요' : '이 기간에는 오른 날이 없어요', CW / 2, 720);
@@ -516,7 +516,7 @@
     if (!state.titleUser) { state.title = autoTitle(s); $('c-title').value = state.title; }
     var a = s.pts[0], b = s.pts[s.pts.length - 1];
     if (state.view !== 'line') {
-      var eps = drawEp(X, s, { view: state.view, span: state.span, data: state.data, name: state.name || it.name, title: state.title, logo: state.logo, sel: true });
+      var eps = drawEp(X, s, { view: state.view, span: state.span, data: state.data, color: state.color, name: state.name || it.name, title: state.title, logo: state.logo, sel: true });
       $('c-hint').textContent = dlab(a) + ' ~ ' + dlab(b) + ' · 하루 등락률(그날 종가 ÷ 직전 거래일 종가) 큰 순서 ' + eps.length + '일';
       return;
     }
@@ -621,12 +621,10 @@
       render();
     });
   });
-  if (window.__MOVES) { $('c-color').closest('label').style.display = $('c-auto').style.display = 'none'; }   // 등락 순위 탭: 하락은 파랑, 상승은 빨강
   Array.prototype.forEach.call(document.querySelectorAll('#views .preset'), function (b) {
     b.addEventListener('click', function () {
       state.view = b.dataset.v; state.titleUser = false;
       Array.prototype.forEach.call(document.querySelectorAll('#views .preset'), function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
-      $('c-color').closest('label').style.display = $('c-auto').style.display = state.view === 'line' ? '' : 'none';   // 낙폭은 파랑, 상승은 빨강으로 고정
       render();
     });
   });
@@ -638,7 +636,7 @@
     var s = series(state.data, state.span); if (!s) return;
     var big = document.createElement('canvas'); big.width = CW * 3; big.height = CH * 3;
     var g = big.getContext('2d'); g.scale(3, 3);
-    if (state.view !== 'line') drawEp(g, s, { view: state.view, span: state.span, data: state.data, name: state.name || state.item.name, title: state.title, logo: state.logo });
+    if (state.view !== 'line') drawEp(g, s, { view: state.view, span: state.span, data: state.data, color: state.color, name: state.name || state.item.name, title: state.title, logo: state.logo });
     else draw(g, s, { kr: state.item.ix ? 'ix' : state.item.kr, color: state.color, name: state.name || state.item.name, title: state.title, logo: state.logo, ytd: state.span === 'ytd' });
     big.toBlob(function (blob) {
       if (!blob) { alert('그림을 만들지 못했습니다. 새로고침 후 다시 눌러 주세요.'); return; }
