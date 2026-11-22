@@ -92,7 +92,7 @@ FOREIGN = {"TSM", "ASML", "NVO", "SHEL", "BABA", "TM", "NT"}
 CUT = re.compile(r"\s+(Common Stock|Class [A-Z]\b|Ordinary Shares|American Depositary|Capital Stock|Depositary Shares|"
                  r"New York Registry|Units?\b|Warrants?\b).*$", re.I)
 TAIL = re.compile(r"[,\s]+(Inc\.?|Incorporated|Corporation|Corp\.?|Company|Co\.?|Ltd\.?|Limited|plc|PLC|N\.V\.|S\.A\.|"
-                  r"AG|SE|A/S|L\.P\.|LP|Holdings?|Group|\(The\)|\(DE\)|\(new\))$", re.I)
+                  r"AG|SE|A/S|L\.P\.|LP|PBC|Holdings?|Group|\(The\)|\(DE\)|\(new\))$", re.I)
 SKIP = re.compile(r"\b(Warrant|Rights?|Units?|Preferred|Depositary Shares? .*Pref|Notes? due|% )\b", re.I)
 
 
