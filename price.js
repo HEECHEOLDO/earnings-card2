@@ -228,7 +228,8 @@
     // 그래프는 안전 영역(L~R) 안에서 최대한 넓게 — 오른쪽은 끝값 글자 폭만큼만 남긴다
     X.font = font(900, 36); var endW = X.measureText(money(pts[last].v, kr)).width;
     X.font = font(700, 23); var chgW = X.measureText('▲ ' + pct((pts[last].v / pts[0].v - 1) * 100)).width;
-    var top = y0 + 160, bot = 1120, pl = L + 40, pr = R - Math.max(endW, chgW, 90) - 26;
+    var ENDTOP = !!window.__endTop;                 // 시안: 끝값을 점 위(오른쪽 끝 맞춤)로 — 그래프를 오른쪽 끝까지
+    var top = y0 + 160, bot = 1120, pl = L + 40, pr = ENDTOP ? R - 14 : R - Math.max(endW, chgW, 90) - 26;
     var vs = pts.map(function (p) { return p.v; });
     var mn = Math.min.apply(null, vs), mx = Math.max.apply(null, vs);
     var span0 = mx - mn; if (!(span0 > 0)) span0 = Math.max(Math.abs(mx) * 0.1, 1e-6);
@@ -348,8 +349,36 @@
     var lx = xA(last), ly = yA(pts[last].v);
     X.fillStyle = color; X.beginPath(); X.arc(lx, ly, 13, 0, 7); X.fill(); X.strokeStyle = T.paper; X.lineWidth = 5; X.stroke();
     var endTxt = money(pts[last].v, kr), efs = 36;
+    if (ENDTOP) {
+      // 끝값 상자 (값 + 등락) 를 오른쪽 끝에 맞추고, 그 아래를 지나는 선보다 위에 둔다 — 위가 모자라면 선 아래로
+      X.font = font(900, efs); var ew = X.measureText(endTxt).width;
+      var chg0 = (pts[last].v / pts[0].v - 1) * 100;
+      X.font = font(700, 23); var cw = X.measureText('▲ ' + pct(chg0)).width;
+      var bw = Math.max(ew, cw), bh = 76, cands = [];
+      // 점 왼쪽 → 점 바로 위·아래 → 조금씩 멀리, 선과 안 겹치는 가장 가까운 자리
+      for (var k = 0; k < 24; k++) {
+        cands.push([lx - 24 - bw, ly - bh / 2 - k * 18], [lx - 24 - bw, ly - bh / 2 + k * 18]);
+        cands.push([R - bw, ly - 26 - bh - k * 18], [R - bw, ly + 26 + k * 18]);
+      }
+      var by = null, bx = R - bw;
+      for (var c0 = 0; c0 < cands.length; c0++) {
+        var cb = [cands[c0][0], cands[c0][1], bw, bh];
+        if (cb[0] < L || cb[0] + bw > R || cb[1] < top - 40 || cb[1] + bh > bot - 4) continue;
+        var hitL = false, j0 = Math.max(1, Math.floor((cb[0] - 10 - pl) / (pr - pl) * (n - 1))), j1 = Math.min(last, Math.ceil((cb[0] + bw + 10 - pl) / (pr - pl) * (n - 1)) + 1);
+        for (var jj = j0; jj <= j1 && !hitL; jj++) if (segHit(xA(jj - 1), yA(pts[jj - 1].v), xA(jj), yA(pts[jj].v), cb)) hitL = true;
+        if (!hitL) { bx = cb[0]; by = cb[1]; break; }
+      }
+      if (by === null) { bx = R - bw; by = ly - 26 - bh; }
+      var cyb = Math.max(by, Math.min(by + bh, ly));
+      if (Math.abs(cyb - ly) > 40 && bx + bw > lx - 10) { X.strokeStyle = color; X.globalAlpha = 0.5; X.lineWidth = 1.5; X.beginPath(); X.moveTo(lx, ly + (cyb > ly ? 14 : -14)); X.lineTo(lx, cyb > ly ? by - 4 : by + bh + 2); X.stroke(); X.globalAlpha = 1; }
+      X.font = font(900, efs); X.fillStyle = T.ink; X.textAlign = 'right'; X.fillText(endTxt, bx + bw, by + 34);
+      X.font = font(700, 23); X.fillStyle = Math.abs(chg0) < 0.05 ? T.inkSoft : chg0 >= 0 ? T.up : T.down;
+      X.fillText((Math.abs(chg0) < 0.05 ? '− ' : chg0 >= 0 ? '▲ ' : '▼ ') + pct(chg0), bx + bw, by + 68); X.textAlign = 'left';
+      placed.push([bx - 6, by, bw + 6, bh]);
+    }
     var eShift = Math.min(0, bot - 10 - (ly + 52));       // 끝이 바닥 가까이면 글자를 올려 날짜 줄과 안 겹치게
     eShift = Math.max(eShift, top - 30 - (ly - 26));
+    if (!ENDTOP) {
     X.font = font(900, efs);
     while (efs > 26 && lx + 22 + X.measureText(endTxt).width > R) { efs -= 2; X.font = font(900, efs); }
     X.fillStyle = T.ink; X.fillText(endTxt, lx + 22, ly + 12 + eShift);
@@ -357,6 +386,7 @@
     X.font = font(700, 23); X.fillStyle = Math.abs(chg) < 0.05 ? T.inkSoft : up ? T.up : T.down;
     X.fillText((Math.abs(chg) < 0.05 ? '− ' : up ? '▲ ' : '▼ ') + pct(chg), lx + 22, ly + 46 + eShift);
     placed.push([lx + 16, ly - 26 + eShift, Math.max(X.measureText(endTxt).width, 120) + 12, 82]);
+    }
     X.font = font(600, 22); var lw = X.measureText(dlab(pts[last])).width;
     var llx = Math.min(R - lw, lx - lw / 2); dates.push([llx, lw]);
     X.fillStyle = T.inkSoft; X.fillText(dlab(pts[last]), llx, bot + 36);
