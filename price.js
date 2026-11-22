@@ -15,7 +15,7 @@
   var SPANS = { ytd: { label: '올해' }, '1m': { m: 1 }, '3m': { m: 3 }, '6m': { m: 6 }, '1y': { y: 1 },
                 '3y': { y: 3 }, '5y': { y: 5 }, '10y': { y: 10 } };
 
-  var state = { item: null, span: '1y', data: null, color: null, colorUser: false, name: '', title: '', titleUser: false, nameUser: false };
+  var state = { item: null, view: 'line', span: '1y', data: null, color: null, colorUser: false, name: '', title: '', titleUser: false, nameUser: false };
   var LIST = [], BY = {}, MON = null;
   // 주요 시장 지수 — data/chart/idx/{코드}.json (collect_chart_idx.py). 이름·코드는 그쪽 INDICES 와 맞춘다
   // 셋째 칸: 로고 자리에 넣을 국기 (logo/idx/{나라}.png)
@@ -113,6 +113,8 @@
   function pct(x) { var a = Math.abs(x); return (a >= 1000 ? Math.round(a).toLocaleString('en-US') : a.toFixed(1)) + '%'; }
   function autoTitle(s) {
     if (!s) return '';
+    if (state.view === 'dd') return '언제 가장 크게 떨어졌을까?';
+    if (state.view === 'up') return '언제 가장 크게 올랐을까?';
     var what = state.item && state.item.ix ? ' 지수 추이' : ' 주가 추이';
     if (state.span === 'ytd') return s.pts[s.pts.length - 1].y + '년' + what;
     var sp = SPANS[state.span];
@@ -405,6 +407,108 @@
     return { shown: shown, iHi: nearEnd(iHi) ? last : iHi, iLo: nearEnd(iLo) ? last : iLo, last: last, n: n };
   }
 
+
+  /* ------------------------------------------------------------ 최대 낙폭 · 최대 상승 */
+  // 낙폭: 기간 안의 최고가(직전 고점) → 그 뒤 최저가. 다시 고점을 넘으면 한 번이 끝난다. 큰 순서로 5번까지
+  // 상승: 저점 → 고점. 고점에서 TH 넘게 되돌리면 한 번이 끝난다 (짧은 기간일수록 작게 본다)
+  function episodes(pts, mode, span) {
+    var sp = SPANS[span] || {}, short = span === 'ytd' || !!sp.m, TH = short ? 0.05 : sp.y <= 1 ? 0.1 : 0.2, MIN = short ? 1 : 3;
+    var eps = [], i;
+    if (mode === 'dd') {
+      var pk = 0, tr = -1;
+      for (i = 1; i < pts.length; i++) {
+        if (pts[i].v >= pts[pk].v) { if (tr >= 0) eps.push({ a: pk, b: tr }); pk = i; tr = -1; }
+        else if (tr < 0 || pts[i].v < pts[tr].v) tr = i;
+      }
+      if (tr >= 0) eps.push({ a: pk, b: tr, open: true });
+    } else {
+      var lo = 0, hi = 0, up = true;
+      for (i = 1; i < pts.length; i++) {
+        var v = pts[i].v;
+        if (up) { if (v > pts[hi].v) hi = i; else if (v < pts[hi].v * (1 - TH)) { if (hi > lo) eps.push({ a: lo, b: hi }); lo = i; up = false; } }
+        else { if (v < pts[lo].v) lo = i; else if (v > pts[lo].v * (1 + TH)) { hi = i; up = true; } }
+      }
+      if (up && hi > lo) eps.push({ a: lo, b: hi, open: hi === pts.length - 1 });
+    }
+    eps.forEach(function (e) { e.v = (pts[e.b].v / pts[e.a].v - 1) * 100; });
+    eps = eps.filter(function (e) { return Math.abs(e.v) >= MIN; });
+    eps.sort(function (x, y) { return Math.abs(y.v) - Math.abs(x.v); });
+    return eps.slice(0, 5);
+  }
+  function josa(nm) {
+    var c = nm.charCodeAt(nm.length - 1);
+    if (c >= 0xAC00 && c <= 0xD7A3) return (c - 0xAC00) % 28 ? '은' : '는';
+    return /[013678LMNlmn]$/.test(nm) ? '은' : '는';
+  }
+  function drawEp(X, s, opt) {
+    var mode = opt.view, pts = s.pts, eps = episodes(pts, mode, opt.span);
+    X.save(); X.textAlign = 'left'; X.textBaseline = 'alphabetic';
+    theme(!!opt.dark); grain(X); if (OV) OV.paintBack(X);
+    var SUB = T.dark ? '#A2A7AF' : '#4B4F58';
+    // 머리 — 주가 추이 카드와 같은 자리·크기 + 조사
+    var y0 = 205, nx = L;
+    if (opt.logo) {
+      X.save(); X.beginPath(); X.arc(L + 36, y0 - 30, 36, 0, 7); X.clip();
+      X.fillStyle = '#fff'; X.fillRect(L, y0 - 66, 72, 72);
+      X.drawImage(opt.logo, L, y0 - 66, 72, 72); X.restore();
+      nx = L + 90;
+    }
+    var jo = josa(opt.name), nameFs = 92;
+    X.font = font(900, nameFs);
+    while (nameFs > 52 && X.measureText(opt.name).width + nameFs * 0.62 > R - nx) { nameFs -= 4; X.font = font(900, nameFs); }
+    X.fillStyle = T.ink; X.fillText(opt.name, nx, y0);
+    var nw = X.measureText(opt.name).width; X.font = font(900, Math.round(nameFs * 0.56)); X.fillText(jo, nx + nw + 8, y0);
+    var tFs = 56; X.font = font(900, tFs);
+    while (tFs > 34 && X.measureText(opt.title).width > R - L) { tFs -= 2; X.font = font(900, tFs); }
+    X.fillStyle = SUB; X.fillText(opt.title, L, y0 + 82);
+
+    var col = mode === 'dd' ? T.down : T.up, n = eps.length;
+    if (!n) {
+      X.fillStyle = T.inkSoft; X.font = font(700, 34); X.textAlign = 'center';
+      X.fillText(mode === 'dd' ? '이 기간에는 크게 떨어진 적이 없어요' : '이 기간에는 크게 오른 적이 없어요', CW / 2, 720);
+    } else {
+      var mx = Math.max.apply(null, eps.map(function (e) { return Math.abs(e.v); }));
+      var st = [1, 2, 2.5, 5, 10, 20, 25, 50, 100, 200, 250, 500, 1000, 2000, 5000].filter(function (k) { return mx / k <= 5; })[0] || 10000;
+      var maxLen = mode === 'dd' ? 610 : 590, sc = maxLen / mx;
+      var zeroY = mode === 'dd' ? 440 : 1020;
+      var yOf = function (p) { return mode === 'dd' ? zeroY + p * sc : zeroY - p * sc; };
+      X.font = font(600, 22); X.textAlign = 'right';
+      var tl = function (g) { return (mode === 'dd' ? '−' : '+') + (g % 1 ? g.toFixed(1) : g.toLocaleString('en-US')) + '%'; }, tw = 0, g;
+      for (g = st; g <= mx + 1e-9; g += st) tw = Math.max(tw, X.measureText(tl(g)).width);
+      var gl = L + Math.max(tw, 56) + 14;                                // 눈금 글자가 길면(+1,000%) 그만큼 안쪽에서
+      for (g = st; g <= mx + 1e-9; g += st) {
+        var gy = yOf(g); X.strokeStyle = T.grid; X.lineWidth = 1.5; X.beginPath(); X.moveTo(gl, gy); X.lineTo(R, gy); X.stroke();
+        X.fillStyle = T.tick; X.fillText(tl(g), gl - 14, gy + 8);
+      }
+      X.strokeStyle = T.rule; X.lineWidth = 2; X.beginPath(); X.moveTo(L, zeroY); X.lineTo(R, zeroY); X.stroke();
+      X.textAlign = 'center';
+      var cw = (R - (gl + 10)) / 5, x0 = gl + 10 + (5 - n) * cw / 2;      // 다섯 개보다 적으면 가운데로
+      eps.forEach(function (e, i) {
+        var cx = x0 + cw * (i + 0.5), len = Math.max(Math.abs(e.v) * sc, 6), dB = pts[e.b];
+        var hy = mode === 'dd' ? 380 : zeroY + 50;                     // 날짜: 낙폭은 저점, 상승은 고점
+        X.fillStyle = SUB; X.font = font(600, 26);
+        X.fillText(dB.y + '년', cx, hy); X.fillText(dB.m + '월 ' + dB.d + '일', cx, hy + 36);
+        var sw = Math.min(70, cw * 0.42), hw = Math.min(150, cw * 0.86), hh = Math.min(70, len * 0.45);
+        var sg = mode === 'dd' ? 1 : -1, y1 = zeroY + sg * 2, tip = zeroY + sg * len, neck = tip - sg * hh;
+        var gr = X.createLinearGradient(0, y1, 0, tip); gr.addColorStop(0, col + 'B3'); gr.addColorStop(1, col);
+        X.fillStyle = gr; X.beginPath();
+        X.moveTo(cx - sw / 2, y1); X.lineTo(cx + sw / 2, y1); X.lineTo(cx + sw / 2, neck); X.lineTo(cx + hw / 2, neck);
+        X.lineTo(cx, tip); X.lineTo(cx - hw / 2, neck); X.lineTo(cx - sw / 2, neck); X.closePath(); X.fill();
+        var vt = (e.v > 0 ? '+' : '−') + pct(e.v), vf = 44;
+        X.font = font(900, vf); while (vf > 26 && X.measureText(vt).width > cw - 10) { vf -= 2; X.font = font(900, vf); }
+        X.fillStyle = col; X.fillText(vt, cx, mode === 'dd' ? tip + 52 : tip - 22);
+      });
+    }
+    X.textAlign = 'left';
+    var p0 = pts[0], p1 = pts[pts.length - 1], yy = function (p) { return "'" + String(p.y).slice(2) + '.' + (p.m < 10 ? '0' : '') + p.m + '.' + (p.d < 10 ? '0' : '') + p.d; };
+    X.fillStyle = T.rule; X.fillRect(L, 1180, R - L, 2);
+    X.font = font(600, 24); X.fillStyle = SUB; X.fillText(yy(p0) + ' ~ ' + yy(p1), L, 1224);
+    X.font = font(700, 26); X.fillStyle = T.footer; X.textAlign = 'right'; X.fillText('@돈굴돈굴', R, 1224); X.textAlign = 'left';
+    if (OV) { OV.paintFront(X); if (opt.sel) OV.paintSelection(X); }
+    X.restore();
+    return eps;
+  }
+
   /* ------------------------------------------------------------ 화면 */
   var cv = $('card'), X = cv.getContext('2d');
   // 이미지 넣기 — 다른 탭과 같은 card-overlay.js (끌어서 위치 · 크기·회전·투명도 · 앞/뒤 · 배경 지우기)
@@ -422,8 +526,14 @@
       return;
     }
     if (!state.titleUser) { state.title = autoTitle(s); $('c-title').value = state.title; }
-    draw(X, s, { kr: it.ix ? 'ix' : it.kr, color: state.color, name: state.name || it.name, title: state.title, logo: state.logo, ytd: state.span === 'ytd', sel: true });
     var a = s.pts[0], b = s.pts[s.pts.length - 1];
+    if (state.view !== 'line') {
+      var eps = drawEp(X, s, { view: state.view, span: state.span, name: state.name || it.name, title: state.title, logo: state.logo, sel: true });
+      $('c-hint').textContent = dlab(a) + ' ~ ' + dlab(b) + ' 종가 기준 · ' + (state.view === 'dd' ? '직전 고점 → 저점, 날짜는 저점' : '저점 → 고점, 날짜는 고점') + ' · ' + eps.length + '번' +
+        ((SPANS[state.span].y || 0) >= 3 ? ' · 3년 이상은 주별 종가로 봐요' : '');
+      return;
+    }
+    draw(X, s, { kr: it.ix ? 'ix' : it.kr, color: state.color, name: state.name || it.name, title: state.title, logo: state.logo, ytd: state.span === 'ytd', sel: true });
     $('c-hint').textContent = dlab(a) + ' ~ ' + dlab(b) + ' · ' + s.pts.length + '개 점' +
       (s.coarse ? ' · 이 종목은 아직 일별 주가가 없어 월말 종가로 그렸어요' : '') +
       (s.listed ? ' · 기간 중간에 상장해 상장일부터 그렸어요' : '');
@@ -524,6 +634,14 @@
       render();
     });
   });
+  Array.prototype.forEach.call(document.querySelectorAll('#views .preset'), function (b) {
+    b.addEventListener('click', function () {
+      state.view = b.dataset.v; state.titleUser = false;
+      Array.prototype.forEach.call(document.querySelectorAll('#views .preset'), function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      $('c-color').closest('label').style.display = $('c-auto').style.display = state.view === 'line' ? '' : 'none';   // 낙폭은 파랑, 상승은 빨강으로 고정
+      render();
+    });
+  });
   $('c-name').addEventListener('input', function () { state.name = this.value; render(); });
   $('c-title').addEventListener('input', function () { state.title = this.value; state.titleUser = true; render(); });
   $('c-color').addEventListener('input', function () { state.color = this.value; state.colorUser = true; render(); });
@@ -532,11 +650,12 @@
     var s = series(state.data, state.span); if (!s) return;
     var big = document.createElement('canvas'); big.width = CW * 3; big.height = CH * 3;
     var g = big.getContext('2d'); g.scale(3, 3);
-    draw(g, s, { kr: state.item.ix ? 'ix' : state.item.kr, color: state.color, name: state.name || state.item.name, title: state.title, logo: state.logo, ytd: state.span === 'ytd' });
+    if (state.view !== 'line') drawEp(g, s, { view: state.view, span: state.span, name: state.name || state.item.name, title: state.title, logo: state.logo });
+    else draw(g, s, { kr: state.item.ix ? 'ix' : state.item.kr, color: state.color, name: state.name || state.item.name, title: state.title, logo: state.logo, ytd: state.span === 'ytd' });
     big.toBlob(function (blob) {
       if (!blob) { alert('그림을 만들지 못했습니다. 새로고침 후 다시 눌러 주세요.'); return; }
       var a = document.createElement('a'); a.href = URL.createObjectURL(blob);
-      a.download = (state.name || state.item.name) + '_주가추이_' + state.span + '.png';
+      a.download = (state.name || state.item.name) + '_' + ({ line: '주가추이', dd: '최대낙폭', up: '최대상승' })[state.view] + '_' + state.span + '.png';
       document.body.appendChild(a); a.click(); a.remove(); setTimeout(function () { URL.revokeObjectURL(a.href); }, 10000);
     }, 'image/png');
   });
@@ -574,11 +693,12 @@
       state.span = q.get('span');
       Array.prototype.forEach.call(document.querySelectorAll('#spans .preset'), function (x) { x.setAttribute('aria-pressed', x.dataset.s === state.span ? 'true' : 'false'); });
     }
+    if (/^(dd|up)$/.test(q.get('view') || '')) { var vb = document.querySelector('#views .preset[data-v="' + q.get('view') + '"]'); if (vb) vb.click(); }
     pick(BY[c0] || BY['005930'] || LIST[0]);
     Array.prototype.forEach.call(document.querySelectorAll('#ixs .preset'), function (b) {
       b.addEventListener('click', function () { var it = BY[b.dataset.c]; if (it) pick(it); });
     });
   });
 
-  window.__pc = { series: series, draw: draw, load: load, list: function () { return LIST; }, state: state };
+  window.__pc = { series: series, draw: draw, episodes: episodes, load: load, list: function () { return LIST; }, state: state };
 })();
