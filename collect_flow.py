@@ -310,7 +310,7 @@ PR_ROWS = [("rev", [r"^total (net )?revenues?$", r"^total net sales and revenues
            ("pretax", [r"^(income|earnings)( \(loss\))? before (provision for )?income tax(es)?( expense)?$", r"^pre-?tax (income|earnings)$"]),
            ("tax", [r"^(provision for|\(?benefit from\)?) income tax(es)?$", r"^provision for \(benefit from\) income taxes$", r"^income tax (expense|provision)( \(benefit\))?$", r"^income taxes$"]),
            ("cni", [r"^consolidated net (income|earnings)$"]),
-           ("ni", [r"^net (income|earnings) attributable to (?!non).*$", r"^net (income|earnings)( \(loss\))?$"])]
+           ("ni", [r"^(consolidated )?net (income|earnings)( \(loss\))? attributable to (?!non).*$", r"^net (income|earnings)( \(loss\))?$"])]
 
 
 def _cells(tr):
@@ -340,7 +340,8 @@ def pr_income(html):
     """실적 발표 자료의 손익계산서 표 → 이번 3개월 값. 서로 맞아떨어질 때만 돌려준다."""
     for tm in re.finditer(r"<table\b.*?</table>", html, re.S | re.I):
         before = _txt(html[max(0, tm.start() - 2500):tm.start()]).lower()
-        if not re.search(r"statements? of (income|operations|earnings)", before[-1200:]):
+        first = _txt(tm.group(0)[:3000]).lower()                 # 표 첫 줄에 제목을 넣은 회사도 있다
+        if not re.search(r"statements? of (consolidated )?(income|operations|earnings|current and retained earnings)", before[-1200:] + " " + first[:600]):
             continue
         v = _pr_table(tm.group(0), before)
         if v:
@@ -359,7 +360,7 @@ def _pr_table(tab, before):
     if not dm or not ym:
         return None
     end = date(int(ym.group(1)), _MON[dm.group(1).lower()], int(dm.group(2)))
-    unit = 1e6 if re.search(r"in millions", head + before[-1500:], re.I) else 1e3 if re.search(r"in thousands", head + before[-1500:], re.I) else None
+    unit = 1e6 if re.search(r"\bmillions\b", head + before[-1500:], re.I) else 1e3 if re.search(r"\bthousands\b", head + before[-1500:], re.I) else None
     if not unit:
         return None
     cand = {}
