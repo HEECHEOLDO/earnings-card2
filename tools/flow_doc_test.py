@@ -16,4 +16,4 @@ for code in (os.environ.get("CODES") or "306620,004650,199730,191410,005930").sp
     s_items = sum(x for _, x in v.get("items") or [])
     print(code, "rev", e(v["rev"]), "sga", e(v.get("sga") or 0), "op", e(v["op"]),
           "| segs", [(n, e(x)) for n, x in v.get("segs") or []][:7], v.get("seg_note"),
-          "| items", [(n, e(x)) for n, x in v.get("items") or []], "합", e(s_items), v.get("items_from"), v.get("mix_err"), v.get("doc_err"), flush=True)
+          "| items", [(n, e(x)) for n, x in v.get("items") or []], "합", e(s_items), v.get("items_from"), v.get("mix_err"), v.get("doc_err"), "| seg_from", v.get("seg_from"), v.get("seg_err"), "cum", e(v.get("cum_rev") or 0), flush=True)

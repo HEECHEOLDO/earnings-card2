@@ -342,8 +342,8 @@ def kr_xbrl(corp, old=None):
                         v["mix_err"] = (mix or {}).get("err", "사업보고서 못 찾음")
                 except Exception as e:              # noqa: BLE001
                     v["mix_err"] = str(e)[:120]
-            if (not v.get("items") and v.get("sga")) or not v.get("segs"):
-                try:                                # XBRL 에 세부가 없는 작은 회사 — 보고서 원문(주석 표)에서
+            if (not v.get("items") and v.get("sga")) or not v.get("segs") or "비중" in (v.get("seg_note") or ""):
+                try:                                # XBRL 에 세부가 없는 작은 회사 — 보고서 원문(주석 표)에서 · 비중으로 어림한 매출 구분도 원문 표로 실제 값을 찾는다
                     doc_fallback(v, r0, [r for r in rows if "사업보고서" in r["report_nm"]][:1], fa, ia, rows)
                 except Exception as e:              # noqa: BLE001
                     v["doc_err"] = str(e)[:120]
@@ -386,6 +386,85 @@ def prev_cum_segs(r0, rows, names):
     return got if got and set(names) <= set(got) else None
 
 
+SEGT_HEAD = re.compile(r"^(사업부문|부문|사업부|구분|사업구분|부문명)$")
+SEGT_AMT = re.compile(r"^(연결)?(매출액|매출|매출실적|영업수익)(\(.*\))?$")
+SEGT_ELIM = re.compile(r"연결조정|내부거래|부문간|조정|제거|상계")
+SEGT_TOT = re.compile(r"^(합계|계|총계|연결전체매출액|연결매출액|연결합계|총합계)$")
+
+
+def seg_table(tabs, total):
+    """'주요 제품 현황' 같은 사업부문별 매출 표 → ({부문: 원}, 연결조정 원). 합계 줄이 total(원)과 맞고
+    부문 합 + 연결조정 = 합계일 때만 (어림하지 않는다). 못 찾으면 None"""
+    import probe_audit as P
+    best = None
+    for rows, u, _ in tabs:
+        if len(rows) < 4 or not rows[0]:
+            continue
+        h = [re.sub(r"\s+", "", c) for c in rows[0]]
+        if not SEGT_HEAD.match(h[0]):
+            continue
+        ai = next((i for i, c in enumerate(h) if i and SEGT_AMT.match(c)), None)
+        if ai is None:
+            continue
+        segs, elim, tot = {}, 0.0, None
+        for r in rows[1:]:
+            if not r:
+                continue
+            n = re.sub(r"\s+", " ", r[0]).strip()
+            nn = n.replace(" ", "")
+            nums = [P.num(c) for c in r[1:] if c not in ("", "-")]
+            nums = [x for x in nums if x is not None]
+            if SEGT_TOT.match(nn):
+                if tot is None and nums:
+                    tot = nums[0] * u
+                continue
+            if SEGT_ELIM.search(nn):
+                if nums:
+                    elim += nums[0] * u
+                continue
+            if len(r) != len(rows[0]):
+                continue                                # 셀 병합으로 짧아진 줄(회사 이름만 있는 줄)
+            x = P.num(r[ai]) if r[ai] not in ("", "-") else 0.0
+            if x is None:
+                continue
+            segs[n] = segs.get(n, 0.0) + x * u
+        if len(segs) < 2 or tot is None:
+            continue
+        unit_tol = max(u, 1) * (len(segs) + 2)
+        if abs(tot - total) > max(unit_tol, abs(total) * 0.0002):
+            continue
+        if abs(sum(segs.values()) + elim - tot) > unit_tol:
+            continue
+        best = (segs, elim)
+        break
+    return best
+
+
+def prev_seg_table(r0, rows):
+    """바로 앞 정기보고서(1~6월 누적 또는 1분기)의 같은 사업부문 매출 표 → ({부문: 원}, 연결조정) 또는 None"""
+    import flow_audit as FA
+    import probe_audit as P
+    nm = r0["report_nm"]
+    want = ".06" if ".09" in nm else ".03" if ".06" in nm else None
+    yr = re.search(r"\((\d{4})\.", nm)
+    if not want or not yr:
+        return None
+    pv = next((r for r in rows if r["rcept_dt"] < r0["rcept_dt"] and "(%s%s" % (yr.group(1), want) in r["report_nm"]), None)
+    if not pv:
+        return None
+    doc = P.fetch_doc(pv["rcept_no"])
+    tabs = FA._tables(doc) if doc else []
+    for rows_, u, c in tabs:                          # 앞 보고서 표는 자기 합계와만 맞으면 된다 (이번 분기 합 검산으로 다시 확인)
+        if len(rows_) >= 4 and rows_[0] and SEGT_HEAD.match(re.sub(r"\s+", "", rows_[0][0])):
+            for r in rows_[1:]:
+                if r and SEGT_TOT.match(re.sub(r"\s+", "", r[0])):
+                    t = next((P.num(x) for x in r[1:] if x not in ("", "-") and P.num(x) is not None), None)
+                    got = seg_table([(rows_, u, c)], t * u) if t else None
+                    if got:
+                        return got
+    return None
+
+
 def doc_fallback(v, r0, annual, fa, ia, rows=None):
     """보고서 원문의 주석 표 — 합계가 손익계산서 숫자와 맞는 표만 쓴다.
     1) 이번 분기 보고서 원문에서 이번 분기 숫자와 맞는 표 → 그대로
@@ -401,9 +480,25 @@ def doc_fallback(v, r0, annual, fa, ia, rows=None):
     def sga_ok(det):
         s = sum(x for _, x in det)
         return det and sum(x for n, x in det if SGA_OK.search(n)) >= s * 0.6
-    want_i, want_s = not v.get("items") and v.get("sga"), not v.get("segs")
+    want_i, want_s = not v.get("items") and v.get("sga"), not v.get("segs") or "비중" in (v.get("seg_note") or "")
     doc = P.fetch_doc(r0["rcept_no"])
     tabs = FA._tables(doc) if doc else []
+    if want_s and tabs:                           # 사업부문별 매출 표 ('주요 제품 현황' 등) — 이번 분기 그대로이거나, 누적이면 앞 보고서 누적을 뺀다
+        tol = lambda a, b: abs(a - b) <= max(abs(b) * 0.0005, 5e6)      # noqa: E731
+        got = seg_table(tabs, v["rev"])
+        if got:
+            v["segs"] = [[n, x] for n, x in sorted(got[0].items(), key=lambda t: -t[1]) if x > 0]
+            v.pop("seg_note", None); v["seg_from"] = "부문 표"; want_s = False
+        elif v.get("cum_rev"):
+            got = seg_table(tabs, v["cum_rev"])
+            pv = prev_seg_table(r0, rows or []) if got else None
+            if got and pv and set(got[0]) == set(pv[0]):
+                q = {n: got[0][n] - pv[0][n] for n in got[0]}
+                if all(x >= 0 for x in q.values()) and tol(sum(q.values()) + (got[1] - pv[1]), v["rev"]):
+                    v["segs"] = [[n, x] for n, x in sorted(q.items(), key=lambda t: -t[1]) if x > 0]
+                    v.pop("seg_note", None); v["seg_from"] = "부문 표 누적 빼기"; want_s = False
+                else:
+                    v["seg_err"] = "부문 표 누적 빼기 검산 안 맞음"
     if want_i and tabs:
         det = FA._breakdown(tabs, v["sga"], SGA_H, FA.SGA_KEEP, SGA_DROP, min_rows=4)
         it = FA._group(det, v["sga"], "기타 판관비") if sga_ok(det) else []
