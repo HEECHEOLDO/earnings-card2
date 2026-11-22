@@ -547,6 +547,12 @@ def xcheck_kr(code, corp, d):
     q = 0 if days > 100 else (end.month + 2) // 3
     rc = {1: "11013", 2: "11012", 3: "11014", 0: "11011", 4: "11011"}[q]
     rows = C.fetch_fs(corp, end.year, rc)
+    if not rows:                                    # 전체 재무제표 API 가 비면 주요계정 API(fnlttSinglAcnt)로
+        res = C.api_get("fnlttSinglAcnt.json", {"corp_code": corp, "bsns_year": str(end.year), "reprt_code": rc}) or {}
+        al = res.get("list") or []
+        rows = [r for r in al if r.get("fs_div") == "CFS"] or [r for r in al if r.get("fs_div") == "OFS"]
+        if rows and any((r.get("currency") or "").upper() == "USD" for r in rows):
+            C.to_krw(rows, end.year)
     if not rows:
         return {"err": "API 자료 없음"}
     o = {k: kr_pick(rows, k, q) for k in ("rev", "op", "ni")}
@@ -853,7 +859,7 @@ def work_kr(job):
         d = scaled(x, 1e8) if x else None
         if not d and mk == "KR":
             d = kr_one(code, corp)
-        if d and mk == "KR" and x:                  # 다른 길(DART 재무제표 API)로 같은 분기 매출·영업이익을 한 번 더 받아 맞춰 본다
+        if d and mk in ("KR", "UL") and x:          # 다른 길(DART 재무제표 API)로 같은 분기 매출·영업이익을 한 번 더 받아 맞춰 본다 (분기보고서를 내는 비상장도)
             try:
                 d["xcheck"] = xcheck_kr(code, corp, d)
             except Exception as e:                  # noqa: BLE001
