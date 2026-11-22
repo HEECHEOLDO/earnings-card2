@@ -603,8 +603,62 @@ def _pr_table1(tab, before):
             "op": v["op"], "tax": v["tax"], "ni": v["ni"], "items": items, "segs": [], "end": end.isoformat()}
 
 
+def pr_segs(html, rev, end):
+    """실적 발표 자료의 부문·제품별 매출 표 → 이번 3개월 값. 합이 손익표 매출과 딱 맞을 때만 (지어내지 않는다).
+    rev 는 달러. 첫 숫자 칸이 이번 분기인지 머리줄 날짜로 확인한다."""
+    best = None
+    for tm in re.finditer(r"<table\b.*?</table>", html, re.S | re.I):
+        tab = tm.group(0)
+        before = _txt(html[max(0, tm.start() - 1500):tm.start()]).lower()
+        rows = [r for r in (_cells(tr) for tr in re.findall(r"<tr[^>]*>(.*?)</tr>", tab, re.S | re.I)) if r]
+        if len(rows) < 3:
+            continue
+        ht = " ".join(" ".join(r) for r in rows[:6])
+        if not re.search(r"revenue|net sales|sales", ht + " " + before[-500:], re.I):
+            continue
+        if re.search(r"statements? of (consolidated )?(income|operations|earnings)|balance sheets?|cash flows?", before[-400:] + " " + ht[:300], re.I):
+            continue
+        dm = re.search(r"(january|february|march|april|may|june|july|august|september|october|november|december)\s+(\d{1,2})\b", ht, re.I)
+        ym = re.search(r"\b(20\d\d)\b", ht[dm.end():]) if dm else None
+        if not dm or not ym:
+            continue
+        try:
+            if date(int(ym.group(1)), _MON[dm.group(1).lower()], int(dm.group(2))).isoformat() != end:
+                continue                               # 첫 칸이 이번 분기 끝날이 아니면 (누적·전년 칸일 수 있다)
+        except ValueError:
+            continue
+        if re.search(r"nine months|six months|twelve months|year ended|fiscal year", ht[:dm.start()], re.I):
+            continue
+        hb = ht + " " + before[-800:]
+        unit = 1e6 if re.search(r"\bmillions\b", hb, re.I) else 1e3 if re.search(r"\bthousands\b|\$\s?000\b|\(000", hb, re.I) else None
+        if not unit:
+            continue
+        lines = []
+        for c in rows:
+            if len(c) < 2 or _num(c[0]) is not None:
+                continue
+            n = next((_num(x) for x in c[1:] if _num(x) is not None), None)
+            if n is None:
+                continue
+            lines.append((re.sub(r"\s*\(\d\)$|[:*]+$", "", c[0]).strip(), n * unit))
+        tol = max(1.5 * unit, abs(rev) * 0.001)
+        for i in range(len(lines)):                    # 연속한 줄 묶음 중 합이 매출과 맞는 것 (합계 줄 바로 위)
+            acc, grp = 0.0, []
+            for j in range(i, len(lines)):
+                nm, x = lines[j]
+                if re.match(r"^(total|net)( net)? (revenues?|sales)|^total$|^revenues?$|^net sales$", nm, re.I):
+                    break
+                acc += x; grp.append([nm, x])
+                if len(grp) >= 2 and abs(acc - rev) <= tol and all(v > 0 for _, v in grp):
+                    nxt = lines[j + 1] if j + 1 < len(lines) else None
+                    closed = nxt and abs(nxt[1] - rev) <= tol            # 바로 아래 합계 줄이 매출과 같다
+                    if closed and (best is None or len(grp) > len(best)):
+                        best = grp
+    return best
+
+
 SEG_VER = "2"                                   # 누적 매출 표 → 앞 보고서 누적을 빼서 3개월 실제 값
-PR_VER = "3"                                    # 실적 발표 표 읽는 방식 — 바꾸면 그 카드를 다시 읽는다
+PR_VER = "4"                                    # 실적 발표 표 읽는 방식 — 바꾸면 그 카드를 다시 읽는다
 
 
 def us_pr(cik, rc, old):
@@ -624,11 +678,21 @@ def us_pr(cik, rc, old):
         prim = rc["primaryDocument"][i]
         docs = [n for n in names if n.lower().endswith((".htm", ".html")) and n != prim and "index" not in n.lower()]
         docs.sort(key=lambda n: (0 if re.search(r"ex-?99|pr|press|earn", n, re.I) else 1, n))
+        htmls = {}
         for n in docs[:3]:
             raw = U.get(base + n)
-            v = pr_income((raw or b"").decode("utf-8", "replace"))
+            htmls[n] = (raw or b"").decode("utf-8", "replace")
+            v = pr_income(htmls[n])
             if not v:
                 continue
+            for n2 in docs[:5]:                         # 부문·제품별 매출 — 손익표가 든 자료나 함께 낸 CFO 설명 자료에서
+                if n2 not in htmls:
+                    htmls[n2] = (U.get(base + n2) or b"").decode("utf-8", "replace")
+                sg = pr_segs(htmls[n2], v["rev"], v["end"])
+                if sg:
+                    v["segs"] = sg
+                    v["seg_from"] = "실적발표"
+                    break
             end = date.fromisoformat(v["end"])
             try:
                 oe = date.fromisoformat(old["end"]) if old else None
