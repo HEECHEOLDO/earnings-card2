@@ -360,12 +360,12 @@ def _pr_table(tab, before):
 
 
 def _pr_table1(tab, before):
-    rows = [_cells(tr) for tr in re.findall(r"<tr[^>]*>(.*?)</tr>", tab, re.S | re.I)]
+    rows = [r for r in (_cells(tr) for tr in re.findall(r"<tr[^>]*>(.*?)</tr>", tab, re.S | re.I)) if r]   # 빈 줄은 뺀다
     W = PR_WHY.append
-    head = " ".join(" ".join(r) for r in rows[:5]) + " " + before[-600:]
+    head = " ".join(" ".join(r) for r in rows[:9]) + " " + before[-600:]
     if not re.search(r"three months|quarter ended|thirteen weeks|13 weeks|fourth quarter|third quarter|second quarter|first quarter", head, re.I):
         W(1); return None
-    ht = " ".join(" ".join(r) for r in rows[:6])
+    ht = " ".join(" ".join(r) for r in rows[:9])
     dm = re.search(r"(january|february|march|april|may|june|july|august|september|october|november|december)\s+(\d{1,2})\b", ht, re.I)
     ym = re.search(r"\b(20\d\d)\b", ht[dm.end():]) if dm else None       # 'October 25, | October 26,' 다음 줄에 '2026 | 2025' 로 나뉜 표도 있다
     if not dm or not ym:
