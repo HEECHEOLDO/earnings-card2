@@ -313,7 +313,8 @@
     <div>
       <div class="panel">
         <div class="tabs2" role="tablist" aria-label="시장">
-          <button type="button" class="tab2 on" id="mkt-kr">국내</button>
+          <button type="button" class="tab2 on" id="mkt-all">전체</button>
+          <button type="button" class="tab2" id="mkt-kr">국내</button>
           <button type="button" class="tab2" id="mkt-us">해외</button>
         </div>
         <h3 class="sec">기간</h3>
@@ -410,7 +411,7 @@ var MK = {
 };
 function M(){ return MK[state.mkt]; }
 
-var state = { mkt:'kr', span:10, picked:[], title:'', handle:'@돈굴돈굴' };
+var state = { mkt:'kr', scope:'all', span:10, picked:[], title:'', handle:'@돈굴돈굴' };   // scope: 찾는 범위(전체·국내·해외), mkt: 지금 카드의 시장
 function store(){ return { spans:[], items:{}, order:[], asof:'', basis:'',
                            picked:[], span:10, why:'' }; }
 var ST = { kr: store(), us: store() };
@@ -1027,8 +1028,9 @@ function adoptUS(mj, fj, ij){
 }
 
 /* ---------- 시장 바꾸기 ---------- */
-function setMkt(m){
-  if (m === state.mkt) return;
+function setMkt(m, keepScope){
+  if (!keepScope) state.scope = m;
+  if (m === state.mkt) { buildMkt(); return; }
   if (!ST[m].order.length) { note(ST[m].why || (MK[m].nm + ' 자료가 없습니다.')); return; }
   ST[state.mkt].picked = state.picked.slice();     // 떠나는 쪽을 기억해 둔다
   ST[state.mkt].span = state.span;
@@ -1036,7 +1038,7 @@ function setMkt(m){
   state.picked = DB.picked.slice();
   state.span = DB.spans.indexOf(DB.span) >= 0 ? DB.span : (DB.spans.indexOf(10) >= 0 ? 10 : DB.spans[DB.spans.length-1]);
   document.getElementById('q').value = '';
-  document.getElementById('q').placeholder = m === 'us' ? '기호 또는 이름 (AAPL, 애플, SPY)' : '종목명 또는 코드';
+  document.getElementById('q').placeholder = state.scope === 'all' ? '국내·해외 종목명·코드·기호 (삼성전자, 애플, SPY)' : m === 'us' ? '기호 또는 이름 (AAPL, 애플, SPY)' : '종목명 또는 코드';
   document.getElementById('mkt-hint').textContent = MK[m].hint;
   document.getElementById('sg').classList.remove('on');
   if (!state.title || /^\d+년 전$/.test(state.title)) {
@@ -1045,9 +1047,12 @@ function setMkt(m){
   buildMkt(); note(''); setSpan(state.span);
 }
 function buildMkt(){
+  var ba = document.getElementById('mkt-all');
+  ba.className = 'tab2' + (state.scope === 'all' ? ' on' : '');
+  ba.title = '국내·해외를 한꺼번에 찾습니다. 다른 시장 종목을 고르면 그 시장 카드로 바뀝니다 (국내·해외는 기준이 달라 한 카드에 섞지 않습니다).';
   ['kr','us'].forEach(function(m){
     var b = document.getElementById('mkt-' + m);
-    b.className = 'tab2' + (state.mkt === m ? ' on' : '');
+    b.className = 'tab2' + (state.scope === m ? ' on' : '');
     var dead = !ST[m].order.length;
     b.disabled = dead;
     b.title = dead ? (ST[m].why || '') : (ST[m].order.length + '종목 · ' + dot(ST[m].asof) + ' 기준');
@@ -1083,6 +1088,19 @@ function setSpan(s){
 /* ---------- 검색 ---------- */
 function search(q){
   q = (q||'').trim().toLowerCase();
+  if (state.scope === 'all') {                       // 전체: 국내·해외를 한꺼번에 — 'kr:코드' / 'us:코드'
+    if (!q) return [];
+    var hh = [];
+    ['kr','us'].forEach(function(m){
+      var S = ST[m];
+      for (var i = 0; i < S.order.length && hh.length < 60; i++) {
+        var c = S.order[i], v = S.items[c];
+        if (c.toLowerCase().indexOf(q) === 0 || v.name.toLowerCase().indexOf(q) >= 0
+            || v.disp.toLowerCase().indexOf(q) >= 0 || (v.en && v.en.toLowerCase().indexOf(q) >= 0)) hh.push(m + ':' + c);
+      }
+    });
+    return hh;
+  }
   // 해외는 165종목 남짓이라 빈 칸이면 많이 찾는 순서로 그냥 보여준다.
   // 국내 2,500여 종목은 코드순으로 늘어놓아 봐야 쓸모가 없다.
   if (!q) return state.mkt === 'us' ? DB.order.slice(0, 40) : [];
@@ -1106,6 +1124,23 @@ function renderSuggest(){
     box.classList.add('on'); return;
   }
   // 고를 수 있는 것부터 보여준다. 꺼진 줄이 위에 쌓이면 찾기 나쁘다.
+  if (state.scope === 'all') {                       // 전체: 시장 표시 · 다른 시장 종목은 그 시장 카드로 바꾼 뒤 담는다
+    hit.forEach(function(k){
+      var m = k.slice(0, 2), code = k.slice(3), it = ST[m].items[code];
+      var picked = m === state.mkt && state.picked.indexOf(code) >= 0;
+      var d = document.createElement('div');
+      d.className = 'sg-item' + (picked ? ' off' : '');
+      d.innerHTML = '<span>' + it.name + '</span><span class="sg-code">' + MK[m].nm + ' · ' +
+        (m === 'us' && it.name === code ? (it.en || code) : code) + '</span>';
+      if (!picked) d.addEventListener('click', function(){
+        if (m !== state.mkt) { setMkt(m, true); note(MK[m].nm + ' 카드로 바꿨습니다 — 국내·해외는 기준(배당·환율)이 달라 한 카드에 섞지 않습니다.'); }
+        if (amount(code, state.span) === null) { note(it.name + '은(는) ' + state.span + '년 자료가 없습니다 (최대 ' + maxSpan(code) + '년).'); document.getElementById('sg').classList.remove('on'); return; }
+        add(code);
+      });
+      list.appendChild(d);
+    });
+    box.classList.add('on'); return;
+  }
   hit.sort(function(a,b){
     return (amount(b, state.span) !== null) - (amount(a, state.span) !== null); });
   hit.forEach(function(code){
@@ -1260,6 +1295,11 @@ function getJ(u){
     .then(function(r){ if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); });
 }
 function soft(p){ return p.catch(function(){ return null; }); }
+document.getElementById('mkt-all').addEventListener('click', function(){
+  state.scope = 'all'; buildMkt();
+  document.getElementById('q').placeholder = '국내·해외 종목명·코드·기호 (삼성전자, 애플, SPY)';
+  document.getElementById('q').focus();
+});
 document.getElementById('mkt-kr').addEventListener('click', function(){ setMkt('kr'); });
 document.getElementById('mkt-us').addEventListener('click', function(){ setMkt('us'); });
 
@@ -1290,7 +1330,7 @@ Promise.all([
   state.mkt = start; DB = ST[start];
   state.span = DB.span || 10; state.picked = DB.picked.slice();
   document.getElementById('mkt-hint').textContent = MK[start].hint;
-  if (start === 'us') document.getElementById('q').placeholder = '기호 또는 이름 (AAPL, 애플, SPY)';
+  document.getElementById('q').placeholder = '국내·해외 종목명·코드·기호 (삼성전자, 애플, SPY)';   // 처음엔 '전체'에서 찾는다
   document.getElementById('f-title').value = state.span + '년 전';
   buildMkt(); buildSpans(); renderPicked();
   if (why) note(why);

@@ -423,6 +423,7 @@
     [data-mode="dark"] .subnav a.on { color: #0E141B; }
   </style>
   <div class="subnav" aria-label="실적 구분">
+    <a href="./index.html?all=1" data-all>전체</a>
     <a href="./index.html" class="on" aria-current="page">국내</a>
     <a href="./us.html">해외</a>
     <a href="./unlisted.html">비상장</a>
@@ -2996,6 +2997,7 @@
 
   function pickCompany(hit) {
     if (!hit) return;
+    if (hit.__go) { closeSuggest(); location.href = hit.__go; return; }   // '전체' 찾기에서 다른 시장 회사 → 그 탭으로
     closeSuggest();
     qInput.value = hit.name;
     qInput.blur();
@@ -3018,6 +3020,10 @@
 
   function openSuggest() {
     var q = qInput.value;
+    if (window.AllSearch && AllSearch.on && AllSearch.list) {   // 세부 탭 '전체' — 국내·해외·비상장을 한꺼번에
+      AllSearch.open(q, sugBox, Adapter, function (items) { sugItems = items; sugActive = -1; });
+      return;
+    }
     sugItems = Adapter.search(q).slice(0, 300);
     var total = (Adapter.index || []).length;
     var html = '<div class="head">' +
@@ -3220,6 +3226,7 @@
   });
 })();
 </script>
+<script src="./allsearch.js"></script>
 <script src="./health.js" defer></script>
 </body>
 </html>

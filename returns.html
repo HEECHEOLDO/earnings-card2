@@ -300,6 +300,7 @@
             <div>
               <label class="fld" for="f-market">시장</label>
               <select id="f-market">
+                <option value="all" selected>전체</option>
                 <option value="kr">국내</option>
                 <option value="us">해외</option>
               </select>
@@ -444,6 +445,7 @@
   </div>
 </div>
 
+<script src="./us_ko.js"></script>
 <script>
 (function () {
   'use strict';
@@ -1638,7 +1640,7 @@
   }
   // 조회 시장을 바꾸면 색 기준도 같이 바뀐다 (따로 고를 수도 있다)
   document.getElementById('f-market').addEventListener('change', function () {
-    setColorMarket(this.value);
+    if (this.value !== 'all') setColorMarket(this.value);
   });
   document.getElementById('chk-guide').addEventListener('change', function () {
     state.guide = this.checked; drawPreview();
@@ -1648,7 +1650,7 @@
      종목 목록 · 수익률 — 미리 수집해둔 data/returns.json 하나로 해결
      ============================================================ */
   var RET = { items: {}, updated: '', source: '' };
-  var UNIVERSE = { us: [], kr: [] };
+  var UNIVERSE = { us: [], kr: [], all: [] };
 
   function loadReturns() {
     return fetch('./data/returns.json', { cache: 'no-cache' })
@@ -1657,9 +1659,9 @@
         RET = j;
         Object.keys(j.items || {}).forEach(function (code) {
           var it = j.items[code];
-          UNIVERSE[it.market === 'KR' ? 'kr' : 'us'].push({
-            code: code, name: it.name || code, desc: it.desc || ''
-          });
+          var ko = it.market !== 'KR' && window.US_KO && window.US_KO[code];   // 해외는 한글 이름으로도 찾는다 (테슬라 → TSLA)
+          var u = { code: code, name: ko || it.name || code, desc: ko ? (it.desc || '') : (it.desc || ''), mk: it.market === 'KR' ? 'kr' : 'us' };
+          UNIVERSE[u.mk].push(u); UNIVERSE.all.push(u);         // 전체: 국내·해외를 한꺼번에 찾는다
         });
         var n = Object.keys(j.items || {}).length;
         document.getElementById('src-note').textContent =
@@ -1750,7 +1752,7 @@
           html += '<div class="sg-head" id="sgh-' + jump.length + '">' + ini + '</div>';
         }
       }
-      var right = it.code === it.name ? (it.desc || '') : it.code;
+      var right = (document.getElementById('f-market').value === 'all' ? (it.mk === 'kr' ? '국내 · ' : '해외 · ') : '') + (it.code === it.name ? (it.desc || '') : it.code);
       html += '<div class="sg-item" data-i="' + i + '">' +
               '<span>' + it.name +
               (it.desc && it.code !== it.name ? ' <span class="sg-code">' + it.desc + '</span>' : '') +
@@ -1777,6 +1779,7 @@
       it.code === it.name ? it.code : it.name + ' (' + it.code + ')';
     document.getElementById('f-code').value = it.code;
     document.getElementById('f-name').value = it.title || it.name;
+    if (document.getElementById('f-market').value === 'all' && it.mk) setColorMarket(it.mk);   // 전체에서 고르면 그 종목 시장의 색 기준으로
     hideSuggest();
     refresh();
   }

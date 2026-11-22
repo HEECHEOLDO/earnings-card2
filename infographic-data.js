@@ -1208,14 +1208,16 @@
       var box = $('opts'), list = optsOf(c); box.innerHTML = ''; box.hidden = !list;
       if (!list) return;
       if (ONLY && c.id === 'sankey') {             // 회사가 많아서 국내/해외/비상장 + 찾기 + 고르기 상자
-        var mk = (sel[c.id] || 'kr:').slice(0, 3);
+        var mk = sel.__mk || 'all';                // 찾는 범위: 전체(기본) · 국내 · 해외 · 비상장
+        var b0 = document.createElement('button'); b0.className = 'chip'; b0.textContent = '전체 ' + list.length.toLocaleString(); b0.setAttribute('aria-pressed', String(mk === 'all'));
+        b0.addEventListener('click', function () { sel.__mk = 'all'; drawOpts(c); var qq = box.querySelector('.co-q'); if (qq) qq.focus(); }); box.appendChild(b0);
         [['kr:', '국내'], ['us:', '해외'], ['ul:', '비상장']].forEach(function (m) {
           var n = list.filter(function (o) { return o[0].slice(0, 3) === m[0]; }).length; if (!n) return;
           var b = document.createElement('button'); b.className = 'chip'; b.textContent = m[1] + ' ' + n.toLocaleString(); b.setAttribute('aria-pressed', String(mk === m[0]));
-          b.addEventListener('click', function () { var f = list.filter(function (o) { return o[0].slice(0, 3) === m[0]; })[0]; if (f) { sel[c.id] = f[0]; pick(c.id); } }); box.appendChild(b);
+          b.addEventListener('click', function () { sel.__mk = m[0]; var f = list.filter(function (o) { return o[0].slice(0, 3) === m[0]; })[0]; if (f && (sel[c.id] || '').slice(0, 3) !== m[0]) { sel[c.id] = f[0]; pick(c.id); } else drawOpts(c); }); box.appendChild(b);
         });
         // 회사 찾기 — 국내·해외 실적 탭처럼 입력칸을 누르면 목록이 펼쳐지고, 글자를 치면 바로 좁혀진다
-        var MK = { 'kr:': '국내', 'us:': '해외', 'ul:': '비상장' };
+        var MK = { 'kr:': '국내', 'us:': '해외', 'ul:': '비상장', all: '전체' };
         var wrap = document.createElement('div'); wrap.className = 'co-wrap';
         var q = document.createElement('input'); q.type = 'text'; q.className = 'co-q'; q.autocomplete = 'off'; q.spellcheck = false;
         q.setAttribute('autocorrect', 'off'); q.setAttribute('autocapitalize', 'off'); q.setAttribute('aria-label', '회사 이름 찾기');
@@ -1225,13 +1227,13 @@
         var items = [], act = -1;
         function norm(s) { return String(s).toLowerCase().replace(/[\s·.,()&-]/g, ''); }
         function open() {
-          var w = norm(q.value), pool = w ? list : list.filter(function (o) { return o[0].slice(0, 3) === mk; });
+          var w = norm(q.value), pool = mk === 'all' ? list : list.filter(function (o) { return o[0].slice(0, 3) === mk; });
           var rk = function (o) { var n = norm(o[1]); return n.indexOf(w) === 0 ? 0 : n.indexOf(w) >= 0 ? 1 : o[0].slice(3).toLowerCase().indexOf(w) === 0 ? 2 : norm(o[2] || '').indexOf(w) >= 0 || norm(o[3] || '').indexOf(w) >= 0 ? 3 : 9; };
           items = w ? pool.filter(function (o) { return rk(o) < 9; }).sort(function (a, b) { return rk(a) - rk(b); }) : pool;
           items = items.slice(0, 300);
           var html = '<div class="head">' + (w ? items.length.toLocaleString() + '곳 일치' : MK[mk] + ' ' + pool.length.toLocaleString() + '곳 · 이름이나 코드를 입력해 보세요') + '</div>';
           html += items.length ? items.map(function (o, i) {
-            return '<li role="option" data-i="' + i + '"' + (o[0] === sel[c.id] ? ' class="on"' : '') + '><span>' + o[1].replace(/</g, '&lt;') + '</span><span class="code">' + (w ? MK[o[0].slice(0, 3)] + ' · ' : '') + (o[2] ? String(o[2]).replace(/</g, '&lt;') : o[0].slice(3)) + '</span></li>';
+            return '<li role="option" data-i="' + i + '"' + (o[0] === sel[c.id] ? ' class="on"' : '') + '><span>' + o[1].replace(/</g, '&lt;') + '</span><span class="code">' + (w || mk === 'all' ? MK[o[0].slice(0, 3)] + ' · ' : '') + (o[2] ? String(o[2]).replace(/</g, '&lt;') : o[0].slice(3)) + '</span></li>';
           }).join('') : '<li class="empty">일치하는 회사가 없어요</li>';
           ul.innerHTML = html; ul.style.display = 'block'; act = -1;
         }
