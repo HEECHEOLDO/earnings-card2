@@ -118,6 +118,8 @@ def segments(ctx, facts, rev_names, per, rev, L, base_dim, geo_ok=False, want=No
         if len(mem) < 2 or not (rev * 0.75 <= s <= rev * 1.45):
             continue
         geo = sum(1 for m in mem if GEO_M.search(L.get(m, "") or m)) / len(mem)          # 지역·거래 형태로 나눈 축은 뒤로
+        if re.search(r"StatementBusinessSegmentsAxis", a):
+            geo = 0                                   # 회사가 정한 사업 부문 (맥도날드 '미국·해외 직영·해외 라이선스' 처럼 이름이 지역이어도 부문이다)
         if geo >= 0.5 and not geo_ok:
             continue                              # 지역별·거래 형태별(재화/용역)은 '매출 종류'로 쓰지 않는다
         score = abs(s / rev - 1) + (0.0 if re.search(r"Product|Business|Segment|부문|제품", a + L.get(a, "")) else 0.05) + (0.03 if tot else 0) + geo * 0.5
@@ -217,7 +219,8 @@ def from_instance(text, labtext, us, caltext=""):
     if us:
         base_dim = lambda d: False                              # noqa: E731
         base_ok = lambda p: not p["dims"]                       # noqa: E731
-        N = {"rev": ["us-gaap:Revenues", "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax", "us-gaap:SalesRevenueNet"],
+        N = {"rev": ["us-gaap:Revenues", "us-gaap:RevenueFromContractWithCustomerExcludingAssessedTax", "us-gaap:SalesRevenueNet",
+                     "us-gaap:RevenueFromContractWithCustomerIncludingAssessedTax", "us-gaap:RegulatedAndUnregulatedOperatingRevenue"],   # 뒤 둘: 앞 셋이 없는 회사만 (운송·전력 등)
              "cogs": ["us-gaap:CostOfRevenue", "us-gaap:CostOfGoodsAndServicesSold", "us-gaap:CostOfGoodsSold"],
              "gross": ["us-gaap:GrossProfit"], "rnd": ["us-gaap:ResearchAndDevelopmentExpense"],
              "sga": ["us-gaap:SellingGeneralAndAdministrativeExpense"], "sm": ["us-gaap:SellingAndMarketingExpense", "us-gaap:MarketingAndAdvertisingExpense"],
@@ -253,6 +256,8 @@ def from_instance(text, labtext, us, caltext=""):
             if n == "us-gaap:ProfitLoss" and (p["start"], p["end"]) == per and base_ok(p):
                 val["ni_all"] = v
                 break
+    rev_tag = next((nm for nm in N["rev"] for n, c, v in facts if n == nm and (ctx[c]["start"], ctx[c]["end"]) == per and base_ok(ctx[c])), None)
+    REVN = set(N["rev"][:3] if us else N["rev"]) | ({rev_tag} if rev_tag else set())   # 부문 매출은 총매출과 같은 태그(+기존 태그)로만
     if not val.get("rev") or val.get("op") is None or val.get("ni") is None:
         WHY = "빠진 값 %s · 기간 %s" % ([k for k in ("rev", "op", "ni") if val.get(k) is None], per)
         return None
@@ -269,17 +274,17 @@ def from_instance(text, labtext, us, caltext=""):
                 cum = ((p["start"], p["end"]), v)
 
     def find(geo):
-        sg = segments(ctx, facts, set(N["rev"]), per, val["rev"], L, bd, geo, None if us else want)
+        sg = segments(ctx, facts, REVN, per, val["rev"], L, bd, geo, None if us else want)
         if cum:                                   # 누적 기간 부문 매출 (원래 금액) — 앞 보고서 누적을 빼서 이번 3개월 실제 값을 구하려고 남긴다
             try:
-                sc0 = segments(ctx, facts, set(N["rev"]), cum[0], cum[1], L, bd, geo, None if us else want)
+                sc0 = segments(ctx, facts, REVN, cum[0], cum[1], L, bd, geo, None if us else want)
                 if sc0:
                     val["cum_segs_geo" if geo else "cum_segs"] = [[n, v] for n, v in sc0]
             except Exception:                     # noqa: BLE001
                 pass
         if sg or not cum:
             return sg, ""
-        sc = segments(ctx, facts, set(N["rev"]), cum[0], cum[1], L, bd, geo, None if us else want)   # 부문 매출이 누적으로만 있으면 그 비중으로 나눈다
+        sc = segments(ctx, facts, REVN, cum[0], cum[1], L, bd, geo, None if us else want)   # 부문 매출이 누적으로만 있으면 그 비중으로 나눈다
         if not sc:
             return [], ""
         k = val["rev"] / sum(v for _, v in sc)
