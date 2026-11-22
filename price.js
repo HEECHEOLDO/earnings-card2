@@ -228,7 +228,7 @@
     // 그래프는 안전 영역(L~R) 안에서 최대한 넓게 — 오른쪽은 끝값 글자 폭만큼만 남긴다
     X.font = font(900, 36); var endW = X.measureText(money(pts[last].v, kr)).width;
     X.font = font(700, 23); var chgW = X.measureText('▲ ' + pct((pts[last].v / pts[0].v - 1) * 100)).width;
-    var ENDTOP = !!window.__endTop;                 // 시안: 끝값을 점 위(오른쪽 끝 맞춤)로 — 그래프를 오른쪽 끝까지
+    var ENDTOP = window.__endTop !== false;         // 끝값을 점 옆 빈 곳에 — 그래프를 오른쪽 안전 영역 끝까지
     var top = y0 + 160, bot = 1120, pl = L + 40, pr = ENDTOP ? R - 14 : R - Math.max(endW, chgW, 90) - 26;
     var vs = pts.map(function (p) { return p.v; });
     var mn = Math.min.apply(null, vs), mx = Math.max.apply(null, vs);
