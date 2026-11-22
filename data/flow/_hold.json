@@ -14,12 +14,6 @@
 "why": "실적 자료와 다름 (매출 554.8 vs 554.8) · DART API API 자료 없음",
 "period": "'25년"
 },
-"REG": {
-"name": "Regency Centers",
-"market": "US",
-"why": "미국 실적 자료와 다름",
-"period": "'26년 7~9월"
-},
 "00259572": {
 "name": "코스트코코리아",
 "market": "UL",
@@ -31,12 +25,6 @@
 "market": "UL",
 "why": "실적 자료와 다름 (매출 1364.8 vs 1364.8) · DART API API 자료 없음",
 "period": "'25년"
-},
-"CMS": {
-"name": "CMS Energy",
-"market": "US",
-"why": "미국 실적 자료와 다름",
-"period": "'26년 7~9월"
 },
 "055550": {
 "name": "신한지주",
@@ -56,14 +44,8 @@
 "why": "비교할 실적 자료 없음 · DART API API 매출 없음",
 "period": "'26년 7~9월"
 },
-"PLD": {
-"name": "Prologis",
-"market": "US",
-"why": "미국 실적 자료와 다름",
-"period": "'26년 7~9월"
-},
-"023760": {
-"name": "한국캐피탈",
+"032830": {
+"name": "삼성생명",
 "market": "KR",
 "why": "비교할 실적 자료 없음 · DART API API 매출 없음",
 "period": "'26년 7~9월"
