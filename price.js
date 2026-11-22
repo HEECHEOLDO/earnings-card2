@@ -13,7 +13,7 @@
   function font(w, px) { return w + ' ' + px + 'px ' + FF; }
   var CW = 1080, CH = 1350, L = 100, R = 980;
   var SPANS = { ytd: { label: '올해' }, '1m': { m: 1 }, '3m': { m: 3 }, '6m': { m: 6 }, '1y': { y: 1 },
-                '3y': { y: 3 }, '5y': { y: 5 }, '10y': { y: 10 } };
+                '2y': { y: 2 }, '3y': { y: 3 }, '4y': { y: 4 }, '5y': { y: 5 }, '6y': { y: 6 }, '7y': { y: 7 }, '8y': { y: 8 }, '9y': { y: 9 }, '10y': { y: 10 } };   // 2·4·6~9년은 등락 순위 탭에서만
 
   var state = { item: null, view: window.__MOVES ? 'dd' : 'line', span: '1y', data: null, color: null, colorUser: false, name: '', title: '', titleUser: false, nameUser: false };
   var LIST = [], BY = {}, MON = null;
@@ -451,7 +451,7 @@
     var col = forDark(opt.color || '#2B59C3'), n = eps.length;   // 막대 색: 로고 색(기본) 또는 고른 색
     if (!n) {
       X.fillStyle = T.inkSoft; X.font = font(700, 34); X.textAlign = 'center';
-      X.fillText(!eps0 ? '이 종목은 3년 이상 일별 주가를 아직 모으는 중이에요' : mode === 'dd' ? '이 기간에는 떨어진 날이 없어요' : '이 기간에는 오른 날이 없어요', CW / 2, 720);
+      X.fillText(!eps0 ? '이 종목은 2년 이상 일별 주가를 아직 모으는 중이에요' : mode === 'dd' ? '이 기간에는 떨어진 날이 없어요' : '이 기간에는 오른 날이 없어요', CW / 2, 720);
       if (!eps0) { X.font = font(600, 26); X.fillText('1년 이하 기간을 골라 보세요', CW / 2, 770); }
     } else {
       var mx = Math.max.apply(null, eps.map(function (e) { return Math.abs(e.v); }));   // 하루 등락률
