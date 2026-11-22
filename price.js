@@ -15,7 +15,7 @@
   var SPANS = { ytd: { label: '올해' }, '1m': { m: 1 }, '3m': { m: 3 }, '6m': { m: 6 }, '1y': { y: 1 },
                 '3y': { y: 3 }, '5y': { y: 5 }, '10y': { y: 10 } };
 
-  var state = { item: null, view: 'line', span: '1y', data: null, color: null, colorUser: false, name: '', title: '', titleUser: false, nameUser: false };
+  var state = { item: null, view: window.__MOVES ? 'dd' : 'line', span: '1y', data: null, color: null, colorUser: false, name: '', title: '', titleUser: false, nameUser: false };
   var LIST = [], BY = {}, MON = null;
   // 주요 시장 지수 — data/chart/idx/{코드}.json (collect_chart_idx.py). 이름·코드는 그쪽 INDICES 와 맞춘다
   // 셋째 칸: 로고 자리에 넣을 국기 (logo/idx/{나라}.png)
@@ -621,6 +621,7 @@
       render();
     });
   });
+  if (window.__MOVES) { $('c-color').closest('label').style.display = $('c-auto').style.display = 'none'; }   // 등락 순위 탭: 하락은 파랑, 상승은 빨강
   Array.prototype.forEach.call(document.querySelectorAll('#views .preset'), function (b) {
     b.addEventListener('click', function () {
       state.view = b.dataset.v; state.titleUser = false;
@@ -642,7 +643,7 @@
     big.toBlob(function (blob) {
       if (!blob) { alert('그림을 만들지 못했습니다. 새로고침 후 다시 눌러 주세요.'); return; }
       var a = document.createElement('a'); a.href = URL.createObjectURL(blob);
-      a.download = (state.name || state.item.name) + '_' + ({ line: '주가추이', dd: '최대낙폭', up: '최대상승' })[state.view] + '_' + state.span + '.png';
+      a.download = (state.name || state.item.name) + '_' + ({ line: '주가추이', dd: '하락폭순위', up: '상승폭순위' })[state.view] + '_' + state.span + '.png';
       document.body.appendChild(a); a.click(); a.remove(); setTimeout(function () { URL.revokeObjectURL(a.href); }, 10000);
     }, 'image/png');
   });
