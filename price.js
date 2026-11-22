@@ -225,7 +225,10 @@
     X.fillText(opt.title, L, y0 + 82);
 
     // 눈금
-    var top = y0 + 160, bot = 1120, pl = L + 70, pr = R - 175;
+    // 그래프는 안전 영역(L~R) 안에서 최대한 넓게 — 오른쪽은 끝값 글자 폭만큼만 남긴다
+    X.font = font(900, 36); var endW = X.measureText(money(pts[last].v, kr)).width;
+    X.font = font(700, 23); var chgW = X.measureText('▲ ' + pct((pts[last].v / pts[0].v - 1) * 100)).width;
+    var top = y0 + 160, bot = 1120, pl = L + 40, pr = R - Math.max(endW, chgW, 90) - 26;
     var vs = pts.map(function (p) { return p.v; });
     var mn = Math.min.apply(null, vs), mx = Math.max.apply(null, vs);
     var span0 = mx - mn; if (!(span0 > 0)) span0 = Math.max(Math.abs(mx) * 0.1, 1e-6);
@@ -246,7 +249,7 @@
     var tickBoxes = [];
     for (var t = lo; t <= hi + st * 1e-6; t += st) {
       var gy = yA(t), tt = tickTxt(t, kr, st), tw2 = X.measureText(tt).width;
-      X.beginPath(); X.moveTo(pl, gy); X.lineTo(pr + 40, gy); X.stroke();
+      X.beginPath(); X.moveTo(pl, gy); X.lineTo(Math.min(R, pr + 40), gy); X.stroke();
       X.fillText(tt, pl - 12, gy + 7);
       tickBoxes.push([pl - 12 - tw2, gy - 12, tw2, 22]);         // 숫자 표시가 눈금 글자 위에 얹히지 않게
     }
@@ -259,7 +262,7 @@
     X.lineTo(xA(last), bot); X.closePath(); X.fillStyle = grad; X.fill();
     X.beginPath(); pts.forEach(function (p, i) { if (i) X.lineTo(xA(i), yA(p.v)); else X.moveTo(xA(i), yA(p.v)); });
     X.strokeStyle = color; X.lineWidth = n > 300 ? 4 : 5; X.lineJoin = 'round'; X.lineCap = 'round'; X.stroke();
-    X.strokeStyle = T.axis; X.lineWidth = 3; X.beginPath(); X.moveTo(pl, bot); X.lineTo(pr + 40, bot); X.stroke();
+    X.strokeStyle = T.axis; X.lineWidth = 3; X.beginPath(); X.moveTo(pl, bot); X.lineTo(Math.min(R, pr + 40), bot); X.stroke();
 
     // 표시점: 시작·최고·최저·마지막
     var iHi = vs.indexOf(mx), iLo = vs.lastIndexOf(mn);
@@ -348,7 +351,7 @@
     var eShift = Math.min(0, bot - 10 - (ly + 52));       // 끝이 바닥 가까이면 글자를 올려 날짜 줄과 안 겹치게
     eShift = Math.max(eShift, top - 30 - (ly - 26));
     X.font = font(900, efs);
-    while (efs > 26 && lx + 22 + X.measureText(endTxt).width > CW - 24) { efs -= 2; X.font = font(900, efs); }
+    while (efs > 26 && lx + 22 + X.measureText(endTxt).width > R) { efs -= 2; X.font = font(900, efs); }
     X.fillStyle = T.ink; X.fillText(endTxt, lx + 22, ly + 12 + eShift);
     var chg = (pts[last].v / pts[0].v - 1) * 100, up = chg >= 0;
     X.font = font(700, 23); X.fillStyle = Math.abs(chg) < 0.05 ? T.inkSoft : up ? T.up : T.down;
