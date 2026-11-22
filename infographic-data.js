@@ -149,7 +149,7 @@
     [/^occupancy$/i, '객실'], [/^professional services$/i, '전문 서비스'], [/^financial services?$/i, '금융'], [/^consumables$/i, '소모품'], [/^seasonal$/i, '계절 상품'], [/^intermodal$/i, '복합 운송'],
     [/^revenue from contract with customer, measurement, recurring$/i, '반복 매출'], [/^revenue from contract with customer, measurement, nonrecurring$/i, '일회성 매출'], [/^technology service$/i, '기술 서비스'],
     [/^automotive( segment)?$/i, '자동차'], [/^energy generation( and storage)?$/i, '에너지 발전·저장'], [/^services and other$/i, '서비스·기타'],
-    [/^merchandise sales$/i, '상품 판매'], [/^advertising revenue$/i, '광고'], [/^credit card profit sharing$/i, '신용카드 제휴 수익'], [/^onboard and other$/i, '선내 소비·기타'], [/^fuel surcharge$/i, '유류 할증료'], [/^service excluding fuel surcharge$/i, '운송 서비스'], [/^trinidad$/i, '트리니다드'], [/^ltl ?service revenue$/i, '소량 화물 운송'], [/^other service revenue$/i, '기타'],
+    [/^international operated markets?$/i, '해외 직영 시장'], [/^u\.s\. market$/i, '미국'], [/^merchandise sales$/i, '상품 판매'], [/^advertising revenue$/i, '광고'], [/^credit card profit sharing$/i, '신용카드 제휴 수익'], [/^onboard and other$/i, '선내 소비·기타'], [/^fuel surcharge$/i, '유류 할증료'], [/^service excluding fuel surcharge$/i, '운송 서비스'], [/^trinidad$/i, '트리니다드'], [/^ltl ?service revenue$/i, '소량 화물 운송'], [/^other service revenue$/i, '기타'],
     [/^beverage$/i, '음료'], [/^food$/i, '식품'], [/^licensed coffeehouses$/i, '라이선스 매장'], [/^property revenue$/i, '임대 수익'], [/^services revenue$/i, '서비스']
   ];
   function segKo(n) {
