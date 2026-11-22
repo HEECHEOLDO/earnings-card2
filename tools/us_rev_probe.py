@@ -16,7 +16,7 @@ for t in (os.environ.get("CODES") or "ODFL").split(","):
         seen = set()
         for n, c, v in facts:
             p = ctx.get(c) or {}
-            if len(p.get("dims") or []) <= 1 and re.search(r"Revenue|Sales", n) and not re.search(r"Cost|Deferred|Receivable|Tax|Percentage|Remaining|Unbilled|Liability|Asset", n) and p.get("start"):
+            if len(p.get("dims") or []) <= 1 and re.search(r"Revenue|Sales", n) and not re.search(r"Cost|Deferred|Receivable|IncomeTax|Percentage|Remaining|Unbilled|Liability|Asset", n) and p.get("start"):
                 k = (n, p["start"], p["end"])
                 if k in seen: continue
                 seen.add(k)
