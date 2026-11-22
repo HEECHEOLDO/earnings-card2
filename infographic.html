@@ -142,6 +142,8 @@
   .cardctl .row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
   .cardctl .chk{flex-direction:row;align-items:center;gap:8px;font-weight:600;font-size:13px}
   .cardctl .chk input{width:17px;height:17px;accent-color:var(--accent)}
+  .cardctl #cfg{display:flex;flex-direction:column;gap:8px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+  .cardctl .cfg-h{font-weight:800;font-size:13px;color:var(--text)}
   .cardctl .hint{font-size:12px;color:var(--text-mute);line-height:1.6}
   @media (max-width:760px){ .cardbox{grid-template-columns:1fr} .cardctl input[type=text],.cardctl select{font-size:16px} }
 
@@ -285,6 +287,7 @@
   <div class="cardbox">
     <canvas id="card" width="1080" height="1350" aria-label="인포그래픽 카드 미리보기"></canvas>
     <div class="cardctl">
+      <div id="cfg" hidden></div>
       <label>제목 첫 줄 <input type="text" id="c-title1" autocomplete="off"></label>
       <label>제목 둘째 줄 <input type="text" id="c-title2" autocomplete="off"></label>
       <label>왼쪽 아래 글 <input type="text" id="c-src" autocomplete="off"></label>

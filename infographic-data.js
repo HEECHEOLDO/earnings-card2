@@ -185,14 +185,25 @@
     return w + '는';
   }
   var EMOJI = {treemap: '🗺️', ranked: '🚀', bump: '🏆', dumbbell: '↕️', voronoi: '🇺🇸', radial: '🎯', thennow: '⏳', compare: '⚖️', surprise: '📊', margin: '💰', world: '🌍', quilt: '🧩', growth: '🌱', holders: '👥', waffle: '🧇', usmap: '🗽', usranked: '🚀', rivals: '🥊', breadth: '📈', contrib: '🏗️', profitshare: '🍰', calendar: '📅', monthly: '🗓️', drawdown: '📉', scatter: '🔍', dividend: '💵', slope: '🔀', profit: '🏦', tiers: '🐘', sectors: '🏭', fx: '💱', concentration: '🎯', range52: '📏', revgrowth: '📈', roe: '⚙️', gurucommon: '🧠', rotation: '🔄', unlisted: '🔒', streak: '🔥', exportboard: '🚢', exportitem: '📦', kconsumer: '🛍️', rates: '🏛️', goldkrw: '🥇', commod: '🛢️', travel: '✈️', inflation: '🛒', usdash: '🇺🇸', krdash: '🇰🇷', race1y: '🏁'};   // 제목 첫 줄 앞 이모지 (돈의 흐름은 로고가 있어 빼고)
+  // 카드별 세부 설정 (인포그래픽 탭 '세부 설정') — 항목 수 · 순서. 기본값은 예전 그대로
+  var CFG = {};
+  function K(id, k, def) { var v = CFG[id] && CFG[id][k]; return v == null ? def : v; }
+  var SPEC = {
+    treemap: [['n', '업종 수', 6, 30, 24]], ranked: [['n', '종목 수', 5, 20, 15], ['ord', '순서']], dumbbell: [['n', '종목 수', 10, 20, 15]],
+    radial: [['n', '종목 수', 8, 20, 20]], thennow: [['n', '순위 수', 5, 10, 10]], margin: [['n', '종목 수', 5, 20, 15]],
+    usmap: [['n', '종목 수', 20, 100, 60]], usranked: [['n', '종목 수', 5, 20, 15], ['ord', '순서']], dividend: [['n', '종목 수', 5, 20, 15]],
+    slope: [['n', '순위 수', 8, 20, 15]], profit: [['n', '종목 수', 5, 20, 15]], range52: [['n', '종목 수', 10, 20, 15]],
+    revgrowth: [['n', '종목 수', 5, 20, 15]], roe: [['n', '종목 수', 5, 20, 15]], gurucommon: [['n', '종목 수', 5, 20, 15]],
+    waffle: [['n', '종목 수', 3, 9, 9]], voronoi: [['n', '종목 수', 20, 80, 50]]
+  };
   var TITLE = {    // 모든 제목은 두 줄: 첫 줄 = 무엇(크게), 둘째 줄 = 궁금한 점 — ' / ' 로 나눈다
     treemap: function (o) { return (MK(o) || '한국 증시') + ' / 돈은 어디에 몰렸을까'; },
-    ranked: function (o) { return (MK(o) || '코스피·코스닥') + ' / 올해 가장 많이 오른 종목은?'; },
+    ranked: function (o) { return (MK(o) || '코스피·코스닥') + ' / 올해 가장 많이 ' + (K('ranked', 'ord', 'up') === 'down' ? '내린' : '오른') + ' 종목은?'; },
     bump: function () { return '코스피 TOP 10 / 10년 동안 어떻게 바뀌었나'; },
-    dumbbell: function () { return '시총 TOP 15 / 올해 누가 커지고 작아졌나'; },
-    voronoi: function () { return '미국 시총 TOP 50 / 어떤 업종이 클까'; },
-    radial: function () { return '시총 TOP 20 / 올해 성적은?'; },
-    thennow: function () { return '1995년 코스피 TOP 10 / 지금은 어디에?'; },
+    dumbbell: function () { return '시총 TOP ' + K('dumbbell', 'n', 15) + ' / 올해 누가 커지고 작아졌나'; },
+    voronoi: function () { return '미국 시총 TOP ' + K('voronoi', 'n', 50) + ' / 어떤 업종이 클까'; },
+    radial: function () { return '시총 TOP ' + K('radial', 'n', 20) + ' / 올해 성적은?'; },
+    thennow: function () { return '1995년 코스피 TOP ' + K('thennow', 'n', 10) + ' / 지금은 어디에?'; },
     compare: function (o, r) { var u = (r.o.items || []).filter(function (x) { return x.c === '#40444C' || x.c === '#4A5A78'; })[0]; return (u ? u.n : '미국 1등') + ' vs 한국 증시 전체 / 누가 더 클까'; },
     sankey: function (o, r) { return eunNeun(first(r)) + ' / 어떻게 돈을 벌까?'; },
     surprise: function () { return '이번 분기 실적 / 웃은 회사와 운 회사'; },
@@ -202,8 +213,8 @@
     growth: function () { return '10년 전 100만 원 / 어디에 넣었다면 좋았을까'; },
     holders: function () { return '시총 TOP 20 / 회사의 주인은 누구일까'; },
     waffle: function (o, r) { return first(r) + ' / 어디에 투자할까'; },
-    usmap: function () { return '미국 시총 TOP 60 / 올해 성적표'; },
-    usranked: function () { return '미국 증시 / 올해 가장 많이 오른 종목은?'; },
+    usmap: function () { return '미국 시총 TOP ' + K('usmap', 'n', 60) + ' / 올해 성적표'; },
+    usranked: function () { return '미국 증시 / 올해 가장 많이 ' + (K('usranked', 'ord', 'up') === 'down' ? '내린' : '오른') + ' 종목은?'; },
     rivals: function () { return '한국 vs 미국 맞수 / 몸집 차이는 얼마나?'; },
     breadth: function (o) { return '지수는 올랐는데 / 내 종목은?'; },
     contrib: function () { return '올해 늘어난 시가총액 / 누가 끌어올렸나'; },
@@ -219,9 +230,9 @@
     sectors: function (o) { return (o === 'us' ? '미국' : '국내') + ' 업종 / 올해 성적표'; },
     fx: function (o) { return '원·달러 환율 ' + o + '년 / 어디까지 왔나'; },
     concentration: function () { return '한국 증시 / 몇 종목에 쏠려 있을까'; },
-    range52: function (o) { return (o === 'us' ? '미국' : '한국') + ' 시총 TOP 15 / 지금 1년 중 어디쯤?'; },
+    range52: function (o) { return (o === 'us' ? '미국' : '한국') + ' 시총 TOP ' + K('range52', 'n', 15) + ' / 지금 1년 중 어디쯤?'; },
     revgrowth: function () { return '10년 매출 성장 / 가장 빨리 큰 회사는?'; },
-    roe: function () { return 'ROE TOP 15 / 내 돈 100원으로 가장 잘 버는 회사는?'; },
+    roe: function () { return 'ROE TOP ' + K('roe', 'n', 15) + ' / 내 돈 100원으로 가장 잘 버는 회사는?'; },
     gurucommon: function () { return '투자 대가들 / 함께 담은 종목은?'; },
     rotation: function () { return '업종 로테이션 / 달마다 1등은 어디였을까'; },
     unlisted: function (o) { var n = { '프로스포츠': '프로 구단', '해외 IT·전자': '해외 IT 한국법인' }[o] || o; return n + ' / 돈은 벌고 있을까'; },
@@ -412,7 +423,7 @@
 
   var CARDS = [
     { id: 'treemap', name: '한국 증시 지도', icon: '▦', opts: MKT, build: function (mk) {
-      var st = D.st, N = 24, ok = function (c) { return st[c] && st[c].c && (mk === 'all' || st[c].m === mk); };
+      var st = D.st, N = K('treemap', 'n', 24), ok = function (c) { return st[c] && st[c].c && (mk === 'all' || st[c].m === mk); };
       var all = D.inds.map(function (g) {
         var cs = g.codes.filter(ok).sort(function (a, b) { return st[b].c - st[a].c; });
         return { g: g, cs: cs, sum: cs.reduce(function (t, c) { return t + st[c].c; }, 0) };
@@ -430,12 +441,13 @@
       });
     } },
     { id: 'ranked', name: '올해 많이 오른 종목', icon: '☰', opts: MKT, build: function (mk) {
+      var dn = K('ranked', 'ord', 'up') === 'down';
       var st = D.st, rows = Object.keys(st).filter(function (c) { return st[c].c >= 10000 && st[c].y != null && (mk === 'all' || st[c].m === mk); })
-        .sort(function (a, b) { return st[b].y - st[a].y; }).slice(0, 15);
+        .sort(function (a, b) { return dn ? st[a].y - st[b].y : st[b].y - st[a].y; }).slice(0, K('ranked', 'n', 15));
       var secs = [], col = {};
       rows = rows.map(function (c) { var s = D.sec[c] || '기타'; if (!(s in col)) { col[s] = PAL[secs.length % PAL.length]; secs.push(s); } return { code: c, n: st[c].n, v: st[c].y, sector: s, capTxt: jo(st[c].c), c: col[s] }; });
       return Promise.all(rows.map(function (r) { return img('./logo/kr/' + r.code + '.png').then(function (i) { r.logo = i; }); })).then(function () {
-        return { fn: 'ranked', o: { kicker: 'RANKED · ' + MKN[mk], h1: '올해 가장 많이 오른 종목', rows: rows, legend: secs.map(function (s) { return [s, col[s]]; }) } };
+        return { fn: 'ranked', o: { kicker: 'RANKED · ' + MKN[mk], h1: '올해 가장 많이 ' + (dn ? '내린' : '오른') + ' 종목', rows: rows, legend: secs.map(function (s) { return [s, col[s]]; }) } };
       });
     } },
     { id: 'bump', name: '10년 순위 변천', icon: '〰', build: function () {
@@ -464,16 +476,16 @@
       });
     } },
     { id: 'dumbbell', name: '연초 대비 지금', icon: '⇢', build: function () {
-      var st = D.st, rows = Object.keys(st).filter(function (c) { return st[c].c && st[c].y != null; }).sort(function (a, b) { return st[b].c - st[a].c; }).slice(0, 15)
+      var st = D.st, rows = Object.keys(st).filter(function (c) { return st[c].c && st[c].y != null; }).sort(function (a, b) { return st[b].c - st[a].c; }).slice(0, K('dumbbell', 'n', 15))
         .map(function (c) { return { code: c, n: st[c].n, v1: st[c].c / 1e4, v0: st[c].c / 1e4 / (1 + st[c].y / 100), y: st[c].y }; });
       var mx = Math.max.apply(null, rows.map(function (r) { return Math.max(r.v0, r.v1); })) * 1.08;
       return Promise.all(rows.map(function (r) { return img('./logo/kr/' + r.code + '.png').then(function (i) { r.logo = i; }); })).then(function () {
-        return { fn: 'dumbbell', o: { kicker: '올해의 성적표', h1: '시총 TOP 15, 연초 대비 지금', h2: '점 두 개 사이가 올해 늘거나 줄어든 시가총액', rows: rows, max: mx,
+        return { fn: 'dumbbell', o: { kicker: '올해의 성적표', h1: '시총 TOP ' + rows.length + ', 연초 대비 지금', h2: '점 두 개 사이가 올해 늘거나 줄어든 시가총액', rows: rows, max: mx,
           src: md(D.asof) + ' 종가 · 연초 값은 올해 수익률로 역산' } };
       });
     } },
     { id: 'voronoi', name: '미국 증시 지도', icon: '⬡', build: function () {
-      var st = D.us.stocks, top = Object.keys(st).filter(function (k) { return st[k].c; }).sort(function (a, b) { return st[b].c - st[a].c; }).slice(0, 50);
+      var st = D.us.stocks, top = Object.keys(st).filter(function (k) { return st[k].c; }).sort(function (a, b) { return st[b].c - st[a].c; }).slice(0, K('voronoi', 'n', 50));
       var g = {}, order = [];
       top.forEach(function (k) { var s = SECTOR_US[st[k].s] || st[k].s || '기타'; if (!g[s]) { g[s] = []; order.push(s); } g[s].push({ code: k, n: st[k].n, ko: ko(k, st[k].n), v: st[k].c, cap: usd(st[k].c) }); });
       var groups = order.map(function (s) { return { g: s, v: g[s].reduce(function (t, x) { return t + x.v; }, 0), kids: g[s] }; });
@@ -487,31 +499,31 @@
       });
       var tech = groups.filter(function (x) { return x.g === '기술'; })[0], ts = tech ? Math.round(tech.v / tot * 100) : 0;
       return Promise.all([].concat.apply([], groups.map(function (x) { return x.kids.map(function (k) { return img('./logo/us/' + k.code + '.png').then(function (i) { k.logo = i; }); }); }))).then(function () {
-        return { fn: 'voronoi', o: { kicker: '미국 증시 지도', h1: '미국 시총 TOP 50, ' + (ts >= 50 ? '절반 넘게 기술주' : '기술주가 ' + ts + '%'), h2: '조각 넓이 = 시가총액 · 색 = 업종',
+        return { fn: 'voronoi', o: { kicker: '미국 증시 지도', h1: '미국 시총 TOP ' + top.length + ', ' + (ts >= 50 ? '절반 넘게 기술주' : '기술주가 ' + ts + '%'), h2: '조각 넓이 = 시가총액 · 색 = 업종',
           cells: groups, colors: SC_US, legend: groups.map(function (x) { return [x.g, '$' + (x.v / 1e4).toFixed(1) + 'T']; }),
           src: '나스닥 종목 검색표 업종 · ' + md(D.us.asof) + ' 종가' } };
       });
     } },
     { id: 'radial', name: '한 바퀴 수익률', icon: '✺', build: function () {
-      var st = D.st, rows = Object.keys(st).filter(function (c) { return st[c].c && st[c].y != null; }).sort(function (a, b) { return st[b].c - st[a].c; }).slice(0, 20)
+      var st = D.st, rows = Object.keys(st).filter(function (c) { return st[c].c && st[c].y != null; }).sort(function (a, b) { return st[b].c - st[a].c; }).slice(0, K('radial', 'n', 20))
         .map(function (c) { return { n: st[c].n, v: st[c].y, c: '#D6362C' }; });
       var up = rows.filter(function (r) { return r.v > 0; }).length;
-      return Promise.resolve({ fn: 'radial', o: { kicker: '한 바퀴로 보는 올해', h1: '시총 TOP 20, 올해 수익률', h2: '막대 길이 = 연초 대비 수익률 (파랑은 마이너스)', rows: rows, max: 120,
-        centerTop: 'TOP 20 중', centerBig: up + '곳 상승', src: md(D.asof) + ' 종가 (올해 수익률이 없는 금융주 등은 빠짐)' } });
+      return Promise.resolve({ fn: 'radial', o: { kicker: '한 바퀴로 보는 올해', h1: '시총 TOP ' + rows.length + ', 올해 수익률', h2: '막대 길이 = 연초 대비 수익률 (파랑은 마이너스)', rows: rows, max: 120,
+        centerTop: 'TOP ' + rows.length + ' 중', centerBig: up + '곳 상승', src: md(D.asof) + ' 종가 (올해 수익률이 없는 금융주 등은 빠짐)' } });
     } },
     { id: 'thennow', name: '30년 전과 지금', icon: '⇄', build: function () {
       var cols = D.rank.cols, first = Object.keys(cols).sort()[0];
       var nowList = (D.kr.kospi || []).filter(function (x) { return x.code.slice(-1) === '0'; });
       var nowRank = {}; nowList.forEach(function (x, i) { nowRank[x.code] = i + 1; });
-      var right = nowList.slice(0, 10).map(function (x) { return { key: x.code, code: x.code, n: x.name, cap: jo(x.cap) }; });
-      var left = cols[first].kospi.slice(0, 10).map(function (r) {
+      var TN = K('thennow', 'n', 10), right = nowList.slice(0, TN).map(function (x) { return { key: x.code, code: x.code, n: x.name, cap: jo(x.cap) }; });
+      var left = cols[first].kospi.slice(0, TN).map(function (r) {
         var f = FATE95[r[0]], succ = f ? f[0] : r[0], nm = f ? f[1] : r[1], rk = succ && nowRank[succ];
         return { key: succ || r[0], n: r[1], cap: jo(r[2]), fate: succ ? (nm + ' · ' + (rk ? '지금 ' + rk + '위' : '지금 시총 순위 밖')) : nm };
       });
       var kept = left.filter(function (l) { return right.some(function (r) { return r.key === l.key; }); });
       return Promise.all(right.map(function (r) { return img('./logo/kr/' + r.code + '.png').then(function (i) { r.logo = i; }); })).then(function () {
-        return { fn: 'thenNow', o: { kicker: (+D.asof.slice(0, 4) - +first) + '년 전과 지금', h1: first + '년 코스피 TOP 10, 지금은?',
-          h2: kept.length === 1 ? (+D.asof.slice(0, 4) - +first) + '년을 버틴 건 ' + kept[0].n + ' 하나' : '지금도 TOP 10 인 곳은 ' + kept.length + '곳',
+        return { fn: 'thenNow', o: { kicker: (+D.asof.slice(0, 4) - +first) + '년 전과 지금', h1: first + '년 코스피 TOP ' + TN + ', 지금은?',
+          h2: kept.length === 1 ? (+D.asof.slice(0, 4) - +first) + '년을 버틴 건 ' + kept[0].n + ' 하나' : '지금도 TOP ' + TN + ' 인 곳은 ' + kept.length + '곳',
           left: left, right: right, leftLabel: first + '년', rightLabel: D.asof.slice(0, 4) + '년', note: '',
           src: '한국거래소 연말 시가총액 · ' + D.asof.slice(0, 4) + '년은 ' + md(D.asof) + ' 종가' } };
       });
@@ -625,13 +637,13 @@
       return SCREEN().then(function (S) {
         var st = D.st, secs = [], col = {};
         var rows = Object.keys(S).filter(function (c) { var r = S[c]; return st[c] && st[c].c >= 10000 && (mk === 'all' || st[c].m === mk) && r.qRev >= 1000 && r.qMargin != null && r.qMargin <= 90; })
-          .sort(function (a, b) { return S[b].qMargin - S[a].qMargin; }).slice(0, 15).map(function (c) {
+          .sort(function (a, b) { return S[b].qMargin - S[a].qMargin; }).slice(0, K('margin', 'n', 15)).map(function (c) {
             var r = S[c], s = D.sec[c] || '기타'; if (!(s in col)) { col[s] = PAL[secs.length % PAL.length]; secs.push(s); }
             return { code: c, n: st[c].n, v: r.qMargin, lab: Math.round(r.qMargin) + '원', sub: s + ' · 분기 매출 ' + jo(r.qRev), c: col[s] };
           });
         return Promise.all(rows.map(function (r) { return logo(r); })).then(function () {
           var pk = String(S[rows[0].code].qPeriod || '');
-          return { fn: 'bars', o: { kicker: '영업이익률 TOP 15 · ' + MKN[mk], h1: '100원 팔아 가장 많이 남긴 회사', rows: rows, legend: secs.slice(0, 6).map(function (s) { return [s, col[s]]; }) },
+          return { fn: 'bars', o: { kicker: '영업이익률 TOP ' + rows.length + ' · ' + MKN[mk], h1: '100원 팔아 가장 많이 남긴 회사', rows: rows, legend: secs.slice(0, 6).map(function (s) { return [s, col[s]]; }) },
             src: "'" + pk.slice(2, 4) + '년 ' + pk.slice(4) + '분기 실적 기준 · 시총 1조·분기 매출 1,000억 이상' };
         });
       });
@@ -706,7 +718,7 @@
       return JJ('./data/13f.json').then(function (F) {
         var f = F && F.funds && F.funds[key]; if (!f) throw new Error('자료 없음');
         var C = ['#C0392B', '#2B6CD9', '#E0A43A', '#3FAE8C', '#8C6BD8', '#D9677B', '#5BB0C9', '#7A5B3A', '#9DBA3A'];
-        var items = f.holdings.slice().sort(function (a, b) { return b.weight - a.weight; }).slice(0, 9).map(function (h, i) { return { n: h.name, w: h.weight, c: C[i], lg: h.logo }; });
+        var items = f.holdings.slice().sort(function (a, b) { return b.weight - a.weight; }).slice(0, K('waffle', 'n', 9)).map(function (h, i) { return { n: h.name, w: h.weight, c: C[i], lg: h.logo }; });
         var top = items.reduce(function (t, x) { return t + x.w; }, 0);
         return Promise.all(items.map(function (x) { return x.lg ? img('./logo/' + (x.lg.indexOf('/') > 0 ? x.lg : 'us/' + x.lg) + '.png').then(function (i) { x.logo = i; }) : null; })).then(function () {
           return { fn: 'waffle', o: { kicker: '투자 대가 포트폴리오 · 미국 주식', h1: f.title + ', ' + items[0].n + josa(items[0].n, '이', '가') + ' ' + Math.round(items[0].w) + '%', items: items,
@@ -717,23 +729,24 @@
     { id: 'usmap', name: '미국 수익률 지도', icon: '▧', build: function () {
       return USY().then(function (Y) {
         var g = {}, order = [];
-        Y.slice(0, 60).forEach(function (x) { var s = x.sec; if (!g[s]) { g[s] = []; order.push(s); } g[s].push({ code: x.t, us: true, n: x.n, v: x.c, y: x.y == null ? 0 : x.y, nodata: x.y == null }); });
+        Y.slice(0, K('usmap', 'n', 60)).forEach(function (x) { var s = x.sec; if (!g[s]) { g[s] = []; order.push(s); } g[s].push({ code: x.t, us: true, n: x.n, v: x.c, y: x.y == null ? 0 : x.y, nodata: x.y == null }); });
         var groups = order.map(function (s) { var v = g[s].reduce(function (t, k) { return t + k.v; }, 0); return { n: s, v: v, capTxt: '$' + (v / 1e4).toFixed(1) + 'T', kids: g[s] }; });
-        var up = Y.slice(0, 60).filter(function (x) { return x.y > 0; }).length;
+        var up = Y.slice(0, K('usmap', 'n', 60)).filter(function (x) { return x.y > 0; }).length;
         return logos(groups).then(function () {
-          return { fn: 'treemap', o: { kicker: '미국 증시 지도 · 올해 수익률', h1: '미국 시총 TOP 60, ' + up + '곳 올랐다', groups: groups }, asof: D.us.asof };
+          return { fn: 'treemap', o: { kicker: '미국 증시 지도 · 올해 수익률', h1: '미국 시총 TOP ' + Math.min(Y.length, K('usmap', 'n', 60)) + ', ' + up + '곳 올랐다', groups: groups }, asof: D.us.asof };
         });
       });
     } },
     { id: 'usranked', name: '미국 많이 오른 종목', icon: '☰', build: function () {
       return USY().then(function (Y) {
         var secs = [], col = {};
-        var rows = Y.filter(function (x) { return x.y != null; }).sort(function (a, b) { return b.y - a.y; }).slice(0, 15).map(function (x) {
+        var dn = K('usranked', 'ord', 'up') === 'down';
+        var rows = Y.filter(function (x) { return x.y != null; }).sort(function (a, b) { return dn ? a.y - b.y : b.y - a.y; }).slice(0, K('usranked', 'n', 15)).map(function (x) {
           if (!(x.sec in col)) { col[x.sec] = SC_US[x.sec] || PAL[secs.length % PAL.length]; secs.push(x.sec); }
           return { code: x.t, n: x.n, v: x.y, lab: (x.y >= 0 ? '+' : '') + Math.round(x.y) + '%', sub: x.sec + ' · 시총 ' + usd(x.c), c: col[x.sec] };
         });
         return Promise.all(rows.map(function (r) { return logo(r, true); })).then(function () {
-          return { fn: 'bars', o: { kicker: 'RANKED · 미국 시총 상위 ' + Y.length, h1: '미국 올해 상승률 TOP 15', rows: rows, legend: secs.slice(0, 6).map(function (s) { return [s, col[s]]; }) }, asof: D.us.asof };
+          return { fn: 'bars', o: { kicker: 'RANKED · 미국 시총 상위 ' + Y.length, h1: '미국 올해 ' + (dn ? '하락률' : '상승률') + ' TOP ' + rows.length, rows: rows, legend: secs.slice(0, 6).map(function (s) { return [s, col[s]]; }) }, asof: D.us.asof };
         });
       });
     } },
@@ -851,17 +864,17 @@
     { id: 'dividend', name: '배당수익률 TOP', icon: '¤', opts: MKT, build: function (mk) {
       return SCREEN().then(function (S) {
         var st = D.st, rows = Object.keys(S).filter(function (c) { var r = S[c]; return st[c] && st[c].c >= 5000 && (mk === 'all' || st[c].m === mk) && r.yield != null && r.yield < 12 && r.divYears >= 3; })
-          .sort(function (a, b) { return S[b].yield - S[a].yield; }).slice(0, 15).map(function (c) {
+          .sort(function (a, b) { return S[b].yield - S[a].yield; }).slice(0, K('dividend', 'n', 15)).map(function (c) {
             var r = S[c]; return { code: c, n: st[c].n, v: r.yield, lab: r.yield.toFixed(1) + '%', sub: (D.sec[c] || '') + ' · 배당 ' + r.divYears + '년째' + (r.divGrowYears >= 3 ? ' · ' + r.divGrowYears + '년 연속 증가' : ''), c: r.divGrowYears >= 3 ? '#2E9E6B' : '#7FB89B' };
           });
         return Promise.all(rows.map(function (r) { return logo(r); })).then(function () {
-          return { fn: 'bars', o: { kicker: '배당수익률 TOP 15 · ' + MKN[mk], h1: '1,000만 원 넣으면 1년 배당 ' + Math.round(rows[0].v * 10) + '만 원', rows: rows,
+          return { fn: 'bars', o: { kicker: '배당수익률 TOP ' + rows.length + ' · ' + MKN[mk], h1: '1,000만 원 넣으면 1년 배당 ' + Math.round(rows[0].v * 10) + '만 원', rows: rows,
             legend: [['3년 이상 연속 배당 증가', '#2E9E6B'], ['그 외', '#7FB89B']] }, tail: '종가 · 직전 연도 주당 배당금 기준 (시총 5,000억 이상, 3년 이상 배당)' };
         });
       });
     } },
     { id: 'slope', name: '작년 말 vs 지금 순위', icon: '⟋', build: function () {
-      var y = String(+D.asof.slice(0, 4) - 1), A = (D.rank.cols[y] || {}).kospi || [], B = (D.kr.kospi || []).filter(function (x) { return x.code.slice(-1) === '0'; }), N = 15;
+      var y = String(+D.asof.slice(0, 4) - 1), A = (D.rank.cols[y] || {}).kospi || [], B = (D.kr.kospi || []).filter(function (x) { return x.code.slice(-1) === '0'; }), N = K('slope', 'n', 15);
       var ra = {}, rb = {}, nm = {}; A.forEach(function (r, i) { ra[r[0]] = i + 1; nm[r[0]] = r[1]; }); B.forEach(function (r, i) { rb[r.code] = i + 1; nm[r.code] = r.name; });
       var codes = Object.keys(nm).filter(function (c) { return (ra[c] && ra[c] <= N) || (rb[c] && rb[c] <= N); });
       var rows = codes.map(function (c) { var a = ra[c] || null, b = rb[c] || null, d = a && b ? a - b : null; return { code: c, n: nm[c], a: a, b: b, hi: d != null && Math.abs(d) >= 3, c: d == null ? (b && b <= N ? '#D6362C' : '#9A9890') : d > 0 ? '#D6362C' : d < 0 ? '#2B6CD9' : '#9A9890' }; });
@@ -872,13 +885,13 @@
     } },
     { id: 'profit', name: '돈 잘 버는 회사', icon: '₩', build: function () {
       return SCREEN().then(function (S) {
-        var st = D.st, secs = [], col = {}, rows = Object.keys(S).filter(function (c) { return S[c].op != null && st[c]; }).sort(function (a, b) { return S[b].op - S[a].op; }).slice(0, 15).map(function (c) {
+        var st = D.st, secs = [], col = {}, rows = Object.keys(S).filter(function (c) { return S[c].op != null && st[c]; }).sort(function (a, b) { return S[b].op - S[a].op; }).slice(0, K('profit', 'n', 15)).map(function (c) {
           var r = S[c], s = D.sec[c] || '기타'; if (!(s in col)) { col[s] = PAL[secs.length % PAL.length]; secs.push(s); }
           return { code: c, n: st[c].n, v: r.op, lab: jo(r.op), sub: s + ' · 영업이익률 ' + Math.round(r.margin) + '%', c: col[s] };
         });
         var y = String(+D.asof.slice(0, 4) - 1);
         return Promise.all(rows.map(function (r) { return logo(r); })).then(function () {
-          return { fn: 'bars', o: { kicker: "'" + y.slice(2) + '년 영업이익 TOP 15', h1: '한국에서 돈 제일 잘 버는 회사는 ' + rows[0].n, rows: rows, legend: secs.slice(0, 6).map(function (s) { return [s, col[s]]; }) },
+          return { fn: 'bars', o: { kicker: "'" + y.slice(2) + '년 영업이익 TOP ' + rows.length, h1: '한국에서 돈 제일 잘 버는 회사는 ' + rows[0].n, rows: rows, legend: secs.slice(0, 6).map(function (s) { return [s, col[s]]; }) },
             src: "'" + y.slice(2) + '년 연간 실적 기준 (DART)' };
         });
       });
@@ -938,9 +951,9 @@
       return Promise.resolve({ fn: 'stack100', o: { kicker: '시가총액 쏠림', h1: '한국 증시, TOP 10이 ' + Math.round(top10) + '%를 차지한다', rows: rows,
         keys: [['1위', '#C0392B', '#fff'], ['2~5위', '#E0A43A', '#111214'], ['6~10위', '#F2C94C', '#111214'], ['11~50위', '#7A8794', '#fff'], ['나머지', '#E3E0D8', '#3A3E46']] } });
     } },
-    { id: 'range52', name: '52주 최고·최저 사이', icon: '⊢', opts: [['kr', '한국 TOP 15'], ['us', '미국 TOP 15']], build: function (cc) {
+    { id: 'range52', name: '52주 최고·최저 사이', icon: '⊢', opts: [['kr', '한국'], ['us', '미국']], build: function (cc) {
       var us = cc === 'us', st = us ? D.us.stocks : D.st;
-      var codes = Object.keys(st).filter(function (c) { return st[c].c && (us || c.slice(-1) === '0'); }).sort(function (a, b) { return st[b].c - st[a].c; }).slice(0, 15);
+      var codes = Object.keys(st).filter(function (c) { return st[c].c && (us || c.slice(-1) === '0'); }).sort(function (a, b) { return st[b].c - st[a].c; }).slice(0, K('range52', 'n', 15));
       return Promise.all(codes.map(function (c) { return JJ('./data/chart/' + (us ? 'us/' : 'kr/') + c + '.json'); })).then(function (js) {
         var last = '';
         var rows = codes.map(function (c, i) {
@@ -951,7 +964,7 @@
         }).filter(Boolean);
         var near = rows.filter(function (r) { return r.now >= r.hi * 0.9; }).length;
         return Promise.all(rows.map(function (r) { return logo(r, us); })).then(function () {
-          return { fn: 'range', o: { kicker: (us ? '미국' : '한국') + ' 시총 TOP 20 · 1년 가격 범위', h1: rows.length + '곳 중 ' + near + '곳이 고점 근처(10% 이내)', rows: rows,
+          return { fn: 'range', o: { kicker: (us ? '미국' : '한국') + ' 시총 TOP ' + codes.length + ' · 1년 가격 범위', h1: rows.length + '곳 중 ' + near + '곳이 고점 근처(10% 이내)', rows: rows,
             note: '오른쪽 끝일수록 1년 최고가에 가깝다' }, asof: last.slice(0, 4) + '-' + last.slice(4, 6) + '-' + last.slice(6) };
         });
       });
@@ -959,13 +972,13 @@
     { id: 'revgrowth', name: '10년 매출 성장', icon: '⇗', build: function () {
       return SCREEN().then(function (S) {
         var st = D.st, secs = [], col = {};
-        var rows = Object.keys(S).filter(function (c) { return st[c] && st[c].c >= 10000 && S[c].revCagr10 != null && S[c].rev >= 1000; }).sort(function (a, b) { return S[b].revCagr10 - S[a].revCagr10; }).slice(0, 15).map(function (c) {
+        var rows = Object.keys(S).filter(function (c) { return st[c] && st[c].c >= 10000 && S[c].revCagr10 != null && S[c].rev >= 1000; }).sort(function (a, b) { return S[b].revCagr10 - S[a].revCagr10; }).slice(0, K('revgrowth', 'n', 15)).map(function (c) {
           var r = S[c], s = D.sec[c] || '기타', x = Math.pow(1 + r.revCagr10 / 100, 10); if (!(s in col)) { col[s] = PAL[secs.length % PAL.length]; secs.push(s); }
           return { code: c, n: st[c].n, v: r.revCagr10, lab: '연 ' + r.revCagr10.toFixed(0) + '%', sub: s + ' · 10년 새 매출 ' + (x >= 10 ? Math.round(x) : x.toFixed(1)) + '배 · 지금 ' + jo(r.rev), c: col[s] };
         });
         return Promise.all(rows.map(function (r) { return logo(r); })).then(function () {
           var t = rows[0], x = Math.pow(1 + t.v / 100, 10);
-          return { fn: 'bars', o: { kicker: '10년 매출 성장률 TOP 15 (연평균)', h1: t.n + ', 10년 새 매출 ' + Math.round(x) + '배', rows: rows, legend: secs.slice(0, 6).map(function (s) { return [s, col[s]]; }) },
+          return { fn: 'bars', o: { kicker: '10년 매출 성장률 TOP ' + rows.length + ' (연평균)', h1: t.n + ', 10년 새 매출 ' + Math.round(x) + '배', rows: rows, legend: secs.slice(0, 6).map(function (s) { return [s, col[s]]; }) },
             src: '직전 연도까지 10년 연간 실적 기준 (DART) · 시총 1조·매출 1,000억 이상' };
         });
       });
@@ -973,11 +986,11 @@
     { id: 'roe', name: 'ROE TOP', icon: 'R', build: function () {
       return SCREEN().then(function (S) {
         var st = D.st, rows = Object.keys(S).filter(function (c) { var r = S[c]; return st[c] && st[c].c >= 10000 && r.roeAvg != null && r.roeAvg < 80 && r.years >= 5 && r.lossCount === 0; })
-          .sort(function (a, b) { return S[b].roeAvg - S[a].roeAvg; }).slice(0, 15).map(function (c) {
+          .sort(function (a, b) { return S[b].roeAvg - S[a].roeAvg; }).slice(0, K('roe', 'n', 15)).map(function (c) {
             var r = S[c]; return { code: c, n: st[c].n, v: r.roeAvg, lab: r.roeAvg.toFixed(1) + '%', sub: (D.sec[c] || '') + ' · 최근 ROE ' + (r.roe != null ? r.roe.toFixed(0) + '%' : '-') + ' · 부채비율 ' + (r.debt != null ? Math.round(r.debt) + '%' : '-'), c: '#8C6BD8' };
           });
         return Promise.all(rows.map(function (r) { return logo(r); })).then(function () {
-          return { fn: 'bars', o: { kicker: '자기자본이익률(ROE) 평균 TOP 15', h1: '내 돈 100원으로 해마다 ' + Math.round(rows[0].v) + '원 버는 회사', rows: rows },
+          return { fn: 'bars', o: { kicker: '자기자본이익률(ROE) 평균 TOP ' + rows.length, h1: '내 돈 100원으로 해마다 ' + Math.round(rows[0].v) + '원 버는 회사', rows: rows },
             src: '최근 5년 평균 ROE · 연간 실적 기준 (DART) · 시총 1조 이상, 적자 없던 곳' };
         });
       });
@@ -990,7 +1003,7 @@
           var seen = {}; f.holdings.forEach(function (h) { var key = h.logo || h.name; if (seen[key]) return; seen[key] = 1; var x = cnt[key] = cnt[key] || { n: h.name, lg: h.logo, who: [], w: 0 }; x.who.push(f.title); x.w += h.weight; });
         });
         var funds = Object.keys(F.funds).filter(function (k) { return F.funds[k].kind === 'investor'; }).length;
-        var rows = Object.keys(cnt).map(function (k) { return cnt[k]; }).sort(function (a, b) { return b.who.length - a.who.length || b.w - a.w; }).slice(0, 15).map(function (x) {
+        var rows = Object.keys(cnt).map(function (k) { return cnt[k]; }).sort(function (a, b) { return b.who.length - a.who.length || b.w - a.w; }).slice(0, K('gurucommon', 'n', 15)).map(function (x) {
           return { code: x.lg, n: x.n, v: x.who.length, lab: x.who.length + '명', sub: x.who.slice(0, 3).join(' · ') + (x.who.length > 3 ? ' 외' : ''), c: '#2B6CD9' };
         });
         return Promise.all(rows.map(function (r) { return r.code ? logo(r, true) : null; })).then(function () {
@@ -1268,12 +1281,12 @@
       Array.prototype.forEach.call(bar.querySelectorAll('button'), function (b) { b.setAttribute('aria-pressed', String(b.dataset.k === id)); });
       var c = CARDS.filter(function (x) { return x.id === id; })[0], list = optsOf(c);
       if (list && !list.some(function (o) { return o[0] === sel[id]; })) sel[id] = list[0][0];
-      drawOpts(c);
-      var key = id + (list ? '|' + sel[id] : '');
+      drawOpts(c); drawCfg(c);
+      var keyOf = function () { return id + (list ? '|' + sel[id] : '') + (CFG[id] ? '|' + JSON.stringify(CFG[id]) : ''); }, key = keyOf();
       try { history.replaceState(null, '', '?k=' + id + (list ? '&o=' + encodeURIComponent(sel[id]) : '')); } catch (e) { /* 미리보기 */ }
       $('c-hint').textContent = '그리는 중…';
       (cache[key] || (cache[key] = c.build(list ? sel[id] : undefined))).then(function (r) {
-        if (cur !== id || (list && key !== id + '|' + sel[id])) return;
+        if (cur !== id || key !== keyOf()) return;
         // 카드 아래 한 줄은 날짜만, 제목 아래 회색 설명 줄은 넣지 않는다
         var a = r.asof || (id === 'voronoi' ? D.us.asof : D.asof) || '', p = a.split('-');
         r.o.h2 = ''; r.o.note = ''; r.o.src = r.src || (p.length === 3 ? "'" + p[0].slice(2) + '년 ' + (+p[1]) + '월 ' + (+p[2]) + '일 ' + (r.tail || '종가 기준') : '');
@@ -1287,6 +1300,29 @@
       }).catch(function (e) {
         delete cache[key]; last = null; try { console.error('draw-fail', e && e.stack); } catch (_) {} $('c-hint').textContent = '이 카드를 그리지 못했어요 (' + (e && e.message || e) + ').';
         X.setTransform(1, 0, 0, 1, 0, 0); window.__vc.grainOnly(X); X.fillStyle = '#6B7078'; X.font = "800 40px 'Noto Sans KR', sans-serif"; X.textAlign = 'center'; X.fillText((e && e.message) || '자료 준비 중', 540, 680);
+      });
+    }
+    // 세부 설정 — 카드마다 고를 수 있는 것(항목 수·순서)만 보여 준다
+    function drawCfg(c) {
+      var box = $('cfg'); if (!box) return;
+      var sp = SPEC[c.id]; box.innerHTML = ''; box.hidden = !sp;
+      if (!sp) return;
+      var h = document.createElement('div'); h.className = 'cfg-h'; h.textContent = '세부 설정'; box.appendChild(h);
+      var row = document.createElement('div'); row.className = 'row2'; box.appendChild(row);
+      sp.forEach(function (f) {
+        var lab = document.createElement('label'); lab.textContent = f[1] + ' ';
+        var se = document.createElement('select');
+        var opts = f[0] === 'ord' ? [['up', '많이 오른 순'], ['down', '많이 내린 순']] : (function () { var a = []; for (var v = f[2]; v <= f[3]; v += (f[3] - f[2] > 40 ? 10 : f[3] - f[2] > 20 ? 5 : 1)) a.push([v, v + (f[0] === 'n' ? '개' : '')]); if (a.map(function (x) { return x[0]; }).indexOf(f[4]) < 0) a.push([f[4], f[4] + '개']); return a.sort(function (x, y) { return x[0] - y[0]; }); })();
+        var curv = K(c.id, f[0], f[0] === 'ord' ? 'up' : f[4]);
+        opts.forEach(function (o) { var op = document.createElement('option'); op.value = o[0]; op.textContent = o[1] + (o[0] === f[4] ? ' (기본)' : ''); if (String(o[0]) === String(curv)) op.selected = true; se.appendChild(op); });
+        se.addEventListener('change', function () {
+          var v = f[0] === 'ord' ? se.value : +se.value;
+          CFG[c.id] = CFG[c.id] || {};
+          if ((f[0] === 'ord' && v === 'up') || v === f[4]) delete CFG[c.id][f[0]]; else CFG[c.id][f[0]] = v;
+          if (!Object.keys(CFG[c.id]).length) delete CFG[c.id];
+          pick(c.id);
+        });
+        lab.appendChild(se); row.appendChild(lab);
       });
     }
     var edits = {};
@@ -1316,7 +1352,7 @@
     $('c-hint').textContent = '자료 불러오는 중…';
     loadAll().then(function () { return document.fonts && document.fonts.ready; }).then(function () {
       $('src-pill').textContent = ONLY ? '돈의 흐름 · 국내·미국 ' + Object.keys(D.flow || {}).length + '곳' : '인포그래픽 ' + (CARDS.length - 1) + '종 · ' + md(D.asof) + ' 기준';
-      var qs = new URLSearchParams(location.search), k0 = qs.get('k'); if (qs.get('o')) sel[k0] = qs.get('o');
+      var qs = new URLSearchParams(location.search), k0 = qs.get('k'); if (qs.get('o')) sel[k0] = qs.get('o'); if (k0 && (qs.get('n') || qs.get('ord'))) { CFG[k0] = {}; if (qs.get('n')) CFG[k0].n = +qs.get('n'); if (qs.get('ord')) CFG[k0].ord = qs.get('ord'); }   // 세부 설정을 주소로도 (확인용)
       pick(ONLY || (CARDS.some(function (c) { return c.id === k0 && c.id !== 'sankey'; }) ? k0 : CARDS[0].id));
       // 경제·생활 카드는 자료가 아직 안 모인 게 있을 수 있다 → 미리 그려 보고 안 되면 단추를 숨긴다
       CARDS.forEach(function (c) {

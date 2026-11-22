@@ -159,7 +159,7 @@ window.__vcFoot = function (X, src) {
     X.font = font(700, 22); var LG = [[]], lw0 = 0;
     (o.legend || []).forEach(function (g) { var w = 30 + X.measureText(g[0]).width; if (lw0 && L + lw0 + w > R) { LG.push([]); lw0 = 0; } LG[LG.length - 1].push(g); lw0 += w + 40; });
     var lgN = (o.legend || []).length ? LG.length : 0;
-    var top = TOP, rowH = Math.min(61, (BOT - 50 - 34 * Math.max(0, lgN - 1) - TOP) / o.rows.length), max = o.rows[0].v, x0 = L + 300, bw = R - 100 - x0;
+    var top = TOP, rowH = Math.min(o.rows.length <= 10 ? 76 : 61, (BOT - 50 - 34 * Math.max(0, lgN - 1) - TOP) / o.rows.length), max = Math.max.apply(null, o.rows.map(function (r) { return Math.abs(r.v); })) || 1, x0 = L + 300, bw = R - 100 - x0;   // 적게 고르면 줄을 넓게 · 내린 순이면 음수
     o.rows.forEach(function (r, i) {
       var y = top + i * rowH, cy = y + rowH / 2;
       X.fillStyle = T.soft; X.font = font(800, 22); X.textAlign = 'right'; X.textBaseline = 'middle'; X.fillText(i + 1, L + 26, cy);
@@ -167,9 +167,9 @@ window.__vcFoot = function (X, src) {
       X.textAlign = 'left'; X.fillStyle = T.ink; var nf = rowH >= 56 ? 28 : 26; X.font = font(800, nf);
       while (nf > 16 && X.measureText(r.n).width > x0 - L - 110) { nf -= 1; X.font = font(800, nf); }   // 이름은 자르지 않고 줄인다
       X.fillText(r.n, L + 96, cy + 1);
-      var w = bw * r.v / max;
+      var w = bw * Math.abs(r.v) / max;
       X.fillStyle = r.c; rr(X, x0, cy - 17, w, 34, 6); X.fill();
-      X.fillStyle = T.ink; X.font = font(900, 26); X.textAlign = 'left'; X.fillText('+' + Math.round(r.v) + '%', x0 + w + 10, cy + 1);
+      X.fillStyle = T.ink; X.font = font(900, 26); X.textAlign = 'left'; X.fillText((r.v < 0 ? '−' : '+') + Math.abs(Math.round(r.v)) + '%', x0 + w + 10, cy + 1);
       X.strokeStyle = T.rule; X.lineWidth = 1; X.beginPath(); X.moveTo(L, y + rowH); X.lineTo(R, y + rowH); X.stroke();
     });
     X.textBaseline = 'alphabetic';
