@@ -181,6 +181,50 @@ def to_won(v, ccy, year):
     return v
 
 
+def api_card(corp, r0, rc):
+    """보고서 XBRL 파일이 아직 없을 때(DART '파일이 존재하지 않습니다') — 같은 보고서의 DART 재무제표 API 로 카드를 만든다.
+    접수번호가 카드 보고서와 같은 것만 쓴다. 분기·반기는 그 3개월 칸(thstrm_amount), 누적(thstrm_add_amount)은 매출 구분 계산용."""
+    m = re.search(r"\((\d{4})\.(\d{2})\)", r0["report_nm"])
+    if not m:
+        return None
+    y, mo = int(m.group(1)), int(m.group(2))
+    fs = None
+    for yy in (y, y + 1, y - 1):
+        r2 = C.fetch_fs(corp, yy, rc)
+        if r2 and r2[0].get("rcept_no") == r0["rcept_no"]:
+            fs = r2
+            break
+    if not fs:
+        return None
+    v = {k: kr_pick(fs, k, 0 if rc == "11011" else 3) for k in KR_IDS}
+    if not v.get("rev") or v.get("op") is None or v.get("ni") is None:
+        return None
+    if v.get("gross") is None and v.get("cogs") is not None:
+        v["gross"] = v["rev"] - v["cogs"]
+    if v.get("cogs") is None and v.get("gross") is not None:
+        v["cogs"] = v["rev"] - v["gross"]
+    import calendar
+    end = date(y, mo, calendar.monthrange(y, mo)[1])
+    if rc == "11011":
+        start = date(y - 1, mo % 12 + 1, 1) if mo != 12 else date(y, 1, 1)
+    else:
+        sm = mo - 2 if mo > 2 else mo + 10
+        start = date(y if mo > 2 else y - 1, sm, 1)
+    if rc in ("11012", "11014"):
+        for r in fs:                                # 누적 매출 (1~9월 등) — 매출 구분 표가 누적일 때 앞 보고서를 빼려고
+            if r.get("sj_div") in ("IS", "CIS") and (r.get("account_id") in KR_IDS["rev"] or (r.get("account_nm") or "").replace(" ", "") in KR_NM["rev"]):
+                cv = num(r.get("thstrm_add_amount"))
+                if cv:
+                    v["cum_rev"] = cv
+                    v["cum_lab"] = "%d~%d월" % ((mo - (9 if rc == "11014" else 6)) % 12 + 1, mo)
+                break
+    v = {k: x for k, x in v.items() if x is not None}
+    v["start"], v["end"] = start.isoformat(), end.isoformat()
+    v["period"] = FX.q_label(v["start"], v["end"])
+    v["from_api"] = "DART 재무제표 API (XBRL 파일 없음)"
+    return v
+
+
 def kr_xbrl(corp, old=None):
     res = C.api_get("list.json", {"corp_code": corp, "bgn_de": "%d0101" % (TODAY.year - 1), "pblntf_ty": "A", "page_count": 30})
     rows = [r for r in (res or {}).get("list", []) if re.search(r"(분기|반기|사업)보고서", r.get("report_nm", ""))]
@@ -192,6 +236,15 @@ def kr_xbrl(corp, old=None):
         rc = "11011" if "사업" in nm else "11012" if "반기" in nm else "11014" if ".09" in nm else "11013"
         blob = C.api_get("fnlttXbrl.xml", {"rcept_no": r0["rcept_no"], "reprt_code": rc}, raw=True)
         if not blob or blob[:2] != b"PK":
+            if r0 is rows[0]:                       # 가장 최근 보고서의 XBRL 이 아직 없으면 옛 보고서로 내려가지 말고 API 로 이번 보고서를
+                v = api_card(corp, r0, rc)
+                if v:
+                    v["report"], v["src"] = nm, r0["rcept_no"]
+                    try:
+                        doc_fallback(v, r0, [], None, [], rows)
+                    except Exception as e:          # noqa: BLE001
+                        v["doc_err"] = str(e)[:120]
+                    return v
             continue
         files = XD.unzip(blob)
         inst = [n for n in files if n.endswith(".xbrl")]
