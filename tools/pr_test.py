@@ -14,7 +14,9 @@ for t in (os.environ.get("CODES") or "NVDA").split(","):
     rc = sub["filings"]["recent"]
     F.FX.WHY = ""
     old2 = dict(old or {}); old2["src"] = "x"
+    F.PR_WHY.clear()
     v = F.us_pr(int(cik), rc, old2)
+    print("   까닭", F.PR_WHY[:20])
     print("==", t, "카드", (old or {}).get("period"), "→", None if not v or v == "SAME" else {k: (round(x / 1e6, 1) if isinstance(x, float) else x) for k, x in v.items() if k not in ("items",)}, v and v != "SAME" and [[n, round(x / 1e6, 1)] for n, x in v["items"]], F.FX.WHY)
 # 못 읽은 회사: 손익표 후보의 줄 이름과 첫 숫자
 import re

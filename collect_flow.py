@@ -351,21 +351,30 @@ def pr_income(html):
     return None
 
 
+PR_WHY = []
+
+
 def _pr_table(tab, before):
+    v = _pr_table1(tab, before)
+    return v
+
+
+def _pr_table1(tab, before):
     rows = [_cells(tr) for tr in re.findall(r"<tr[^>]*>(.*?)</tr>", tab, re.S | re.I)]
+    W = PR_WHY.append
     head = " ".join(" ".join(r) for r in rows[:5]) + " " + before[-600:]
     if not re.search(r"three months|quarter ended|thirteen weeks|13 weeks|fourth quarter|third quarter|second quarter|first quarter", head, re.I):
-        return None
+        W(1); return None
     ht = " ".join(" ".join(r) for r in rows[:6])
     dm = re.search(r"(january|february|march|april|may|june|july|august|september|october|november|december)\s+(\d{1,2})\b", ht, re.I)
     ym = re.search(r"\b(20\d\d)\b", ht[dm.end():]) if dm else None       # 'October 25, | October 26,' 다음 줄에 '2026 | 2025' 로 나뉜 표도 있다
     if not dm or not ym:
-        return None
+        W(2); return None
     end = date(int(ym.group(1)), _MON[dm.group(1).lower()], int(dm.group(2)))
     hb = head + " " + before[-1500:]
     unit = 1e6 if re.search(r"\bmillions\b", hb, re.I) else 1e3 if re.search(r"\bthousands\b|\$\s?000\b|\(000", hb, re.I) else None
     if not unit:
-        return None
+        W(3); return None
     cand = {}
     for c in rows:
         if len(c) < 2:
@@ -384,20 +393,20 @@ def _pr_table(tab, before):
     if "ni" not in v and "cni" in v:
         v["ni"] = v["cni"]
     if any(x not in v for x in ("rev", "cogs", "op", "tax", "ni", "pretax")):
-        return None
+        W((4, sorted(v), unit)); return None
     tol = lambda a, b: abs(a - b) <= max(1.5 * unit, abs(b) * 0.002)      # noqa: E731
     gross = v.get("gross", v["rev"] - v["cogs"])
     if not tol(v["rev"] - v["cogs"], gross):
-        return None                                             # 매출 − 원가 ≠ 매출총이익
+        W(5); return None                                             # 매출 − 원가 ≠ 매출총이익
     opex = v.get("opex", gross - v["op"])
     if "opex" in v and not tol(gross - opex, v["op"]):
-        return None                                             # 총이익 − 영업비용 ≠ 영업이익
+        W(6); return None                                             # 총이익 − 영업비용 ≠ 영업이익
     if "tce" in v and not tol(v["rev"] - v["tce"], v["op"]):
-        return None                                             # 매출 − 총비용 ≠ 영업이익
+        W(7); return None                                             # 매출 − 총비용 ≠ 영업이익
     if not (tol(v["pretax"] - v["tax"], v["ni"]) or any(k in v and tol(v["pretax"] - v["tax"], v[k]) for k in ("cni", "nic"))):
-        return None                                             # 세전이익 − 법인세 ≠ 순이익
+        W(8); return None                                             # 세전이익 − 법인세 ≠ 순이익
     if opex < 0 or v["rev"] <= 0:
-        return None
+        W(9); return None
     items = [["연구개발비", v["rnd"]]] if v.get("rnd") else []
     if v.get("sga"):
         items.append(["판매·관리비", v["sga"]])
@@ -406,7 +415,7 @@ def _pr_table(tab, before):
         items.append(["기타 영업비용", rest])
     elif rest < -1.5 * unit:
         if -rest > abs(opex) * 0.03:
-            return None                                         # 세부 합이 영업비용보다 크게 넘친다 — 표를 잘못 읽었다
+            W(10); return None                                         # 세부 합이 영업비용보다 크게 넘친다 — 표를 잘못 읽었다
         items = []                                              # 구조조정 환입 등 마이너스 항목이 있으면 세부 없이 영업비용 하나로
     return {"rev": v["rev"], "cogs": v["cogs"], "gross": gross, "rnd": v.get("rnd") or 0, "sga": v.get("sga") or 0,
             "op": v["op"], "tax": v["tax"], "ni": v["ni"], "items": items, "segs": [], "end": end.isoformat()}
