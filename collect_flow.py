@@ -299,17 +299,19 @@ def _us_files(cik, acc):
 _MON = {m: i + 1 for i, m in enumerate(["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"])}
 # 줄 이름 → 항목 (앞에 있을수록 먼저 고른다)
 PR_ROWS = [("rev", [r"^total (net )?revenues?$", r"^total net sales and revenues?$", r"^(net )?revenues?$", r"^total net sales$", r"^net sales$", r"^sales$"]),
-           ("cogs", [r"^(total )?cost of (net )?(revenues?|sales|goods sold|products sold)( \(exclusive of .*\))?$", r"^cost of sales(, including .*)?$"]),
+           ("cogs", [r"^(total )?cost of (net )?(revenues?|sales|goods sold|products sold|products and services|goods and services)( \(exclusive of .*\))?$", r"^cost of sales(, including .*)?$"]),
            ("gross", [r"^gross (profit|margin)$"]),
            ("rnd", [r"^research and development( expenses?)?$", r"^research, development and (related|engineering)( expenses?)?$"]),
            ("sga", [r"^(operating, )?(sales|selling), general,? and administrative( expenses?)?$"]),
            ("sm", [r"^(sales|selling) and marketing( expenses?)?$", r"^marketing and (sales|selling)( expenses?)?$"]),
            ("ga", [r"^general and administrative( expenses?)?$"]),
-           ("opex", [r"^total operating expenses$", r"^total costs and expenses$"]),
+           ("opex", [r"^total operating expenses$"]),
+           ("tce", [r"^total costs and expenses$"]),
            ("op", [r"^(total )?operating income( \(loss\))?$", r"^(income|earnings)( \(loss\))? from operations$", r"^operating (profit|earnings)$"]),
-           ("pretax", [r"^(income|earnings)( \(loss\))? before (provision for )?income tax(es)?( expense)?$", r"^pre-?tax (income|earnings)$"]),
-           ("tax", [r"^(provision for|\(?benefit from\)?) income tax(es)?$", r"^provision for \(benefit from\) income taxes$", r"^income tax (expense|provision)( \(benefit\))?$", r"^income taxes$"]),
+           ("pretax", [r"^(income|earnings)( \(loss\))? before (provision for )?income tax(es)?( expense)?$", r"^pre-?tax (income|earnings)$", r"^(income|earnings) (from continuing operations )?before (income )?taxes( on earnings)?$"]),
+           ("tax", [r"^(provision for|\(?benefit from\)?) income tax(es)?$", r"^provision for \(benefit from\) income taxes$", r"^income tax (expense|provision)( \(benefit\))?$", r"^income taxes$", r"^provision for (income )?taxes( on earnings)?$"]),
            ("cni", [r"^consolidated net (income|earnings)$"]),
+           ("nic", [r"^net (income|earnings) from continuing operations(, net of (income )?taxes)?$"]),
            ("ni", [r"^(consolidated )?net (income|earnings)( \(loss\))? attributable to (?!non).*$", r"^net (income|earnings)( \(loss\))?$"])]
 
 
@@ -390,7 +392,9 @@ def _pr_table(tab, before):
     opex = v.get("opex", gross - v["op"])
     if "opex" in v and not tol(gross - opex, v["op"]):
         return None                                             # 총이익 − 영업비용 ≠ 영업이익
-    if not (tol(v["pretax"] - v["tax"], v["ni"]) or ("cni" in v and tol(v["pretax"] - v["tax"], v["cni"]))):
+    if "tce" in v and not tol(v["rev"] - v["tce"], v["op"]):
+        return None                                             # 매출 − 총비용 ≠ 영업이익
+    if not (tol(v["pretax"] - v["tax"], v["ni"]) or any(k in v and tol(v["pretax"] - v["tax"], v[k]) for k in ("cni", "nic"))):
         return None                                             # 세전이익 − 법인세 ≠ 순이익
     if opex < 0 or v["rev"] <= 0:
         return None
