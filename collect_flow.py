@@ -724,6 +724,25 @@ HOLD = {}
 PREV_HOLD = None
 
 
+def tab_suspect(code, old):
+    """카드와 실적 탭 같은 분기 숫자가 수백 배 다르면(달러 공시를 원화로 안 바꾼 옛 카드 등) 다시 받는다"""
+    if not old or not old.get("end") or old.get("rev") is None:
+        return False
+    try:
+        e = date.fromisoformat(old["end"])
+    except Exception:                               # noqa: BLE001
+        return False
+    rows = (jl(os.path.join("data", code + ".json"), {}) or {}).get("quarterly") or []
+    r = next((x for x in rows if x.get("y") == e.year and x.get("q") == (e.month + 2) // 3), None)
+    if not r:
+        return False
+    for k in ("rev", "op"):
+        a, b = old.get(k), r.get(k)
+        if a is not None and b is not None and abs(b) >= 1 and abs(a) * 300 < abs(b):
+            return True
+    return False
+
+
 def retry_held(code, pr, old):
     """지난번 검증을 못 넘어 보류된 회사는 매번 다시 받아 (고친 방식으로) 다시 검증한다"""
     global PREV_HOLD
@@ -1088,6 +1107,8 @@ def main():
             old = jl(os.path.join(OUT, code + ".json"))
             pr = need(code, old, info["corp_code"] in rk, rk.get(info["corp_code"]))
             pr, old = retry_held(code, pr, old)
+            if pr is None and tab_suspect(code, old):
+                pr, old = 0, dict(old, src=None)
             if old and old.get("docv") != DOC_VER and (len(old.get("items") or []) < 2 or len(old.get("segs") or []) < 2):
                 pr, old = 2, None                       # 매출 구분·판관비 세부가 없던 회사 — 보고서 원문에서 다시
             elif old and "누적" in (old.get("seg_note") or "") and old.get("segv") != SEG_VER and pr is None:
