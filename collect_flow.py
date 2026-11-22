@@ -405,6 +405,9 @@ def _pr_table(tab, before):
             "op": v["op"], "tax": v["tax"], "ni": v["ni"], "items": items, "segs": [], "end": end.isoformat()}
 
 
+PR_VER = "3"                                    # 실적 발표 표 읽는 방식 — 바꾸면 그 카드를 다시 읽는다
+
+
 def us_pr(cik, rc, old):
     """10-Q·10-K 보다 새로운 실적 발표(8-K 2.02)가 있으면 그 손익표로 카드를 만든다 — 10-Q 가 나오면 그걸로 바뀐다"""
     last_q = next((rc["filingDate"][i] for i, f in enumerate(rc["form"]) if f in ("10-Q", "10-K")), "")
@@ -414,7 +417,7 @@ def us_pr(cik, rc, old):
         if f != "8-K" or "2.02" not in (rc.get("items") or [""] * len(rc["form"]))[i]:
             continue
         acc = rc["accessionNumber"][i]
-        if old and old.get("src") == acc and old.get("ver") == VER:
+        if old and old.get("src") == acc and old.get("ver") == VER and old.get("prv") == PR_VER:
             return "SAME"
         base = U.SEC_ARCH % (int(cik), acc.replace("-", ""))
         idx = U.get_json(base + "index.json")
@@ -437,6 +440,7 @@ def us_pr(cik, rc, old):
             v["period"] = FX.q_label(v["start"], v["end"])
             v["report"] = "실적발표 " + v["end"]
             v["src"] = acc
+            v["prv"] = PR_VER
             v["pr"] = "8-K"                         # 실적 발표 기준 — 매출 구분은 10-Q 가 나오면 채운다
             return v
         FX.WHY = "실적 발표 손익표를 못 읽음 %s" % acc
