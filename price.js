@@ -113,8 +113,8 @@
   function pct(x) { var a = Math.abs(x); return (a >= 1000 ? Math.round(a).toLocaleString('en-US') : a.toFixed(1)) + '%'; }
   function autoTitle(s) {
     if (!s) return '';
-    if (state.view === 'dd') return '언제 가장 크게 떨어졌을까?';
-    if (state.view === 'up') return '언제 가장 크게 올랐을까?';
+    if (state.view === 'dd') return '역대 하락폭 순위';
+    if (state.view === 'up') return '역대 상승폭 순위';
     var what = state.item && state.item.ix ? ' 지수 추이' : ' 주가 추이';
     if (state.span === 'ytd') return s.pts[s.pts.length - 1].y + '년' + what;
     var sp = SPANS[state.span];
@@ -435,11 +435,6 @@
     eps.sort(function (x, y) { return Math.abs(y.v) - Math.abs(x.v); });
     return eps.slice(0, 5);
   }
-  function josa(nm) {
-    var c = nm.charCodeAt(nm.length - 1);
-    if (c >= 0xAC00 && c <= 0xD7A3) return (c - 0xAC00) % 28 ? '은' : '는';
-    return /[013678LMNlmn]$/.test(nm) ? '은' : '는';
-  }
   function drawEp(X, s, opt) {
     var mode = opt.view, pts = s.pts, eps = episodes(pts, mode, opt.span);
     X.save(); X.textAlign = 'left'; X.textBaseline = 'alphabetic';
@@ -453,11 +448,10 @@
       X.drawImage(opt.logo, L, y0 - 66, 72, 72); X.restore();
       nx = L + 90;
     }
-    var jo = josa(opt.name), nameFs = 92;
+    var nameFs = 92;                                // 둘째 줄이 '역대 하락폭 순위'라 조사(는)는 붙이지 않는다
     X.font = font(900, nameFs);
-    while (nameFs > 52 && X.measureText(opt.name).width + nameFs * 0.62 > R - nx) { nameFs -= 4; X.font = font(900, nameFs); }
+    while (nameFs > 52 && X.measureText(opt.name).width > R - nx) { nameFs -= 4; X.font = font(900, nameFs); }
     X.fillStyle = T.ink; X.fillText(opt.name, nx, y0);
-    var nw = X.measureText(opt.name).width; X.font = font(900, Math.round(nameFs * 0.56)); X.fillText(jo, nx + nw + 8, y0);
     var tFs = 56; X.font = font(900, tFs);
     while (tFs > 34 && X.measureText(opt.title).width > R - L) { tFs -= 2; X.font = font(900, tFs); }
     X.fillStyle = SUB; X.fillText(opt.title, L, y0 + 82);
@@ -484,19 +478,20 @@
       X.textAlign = 'center';
       var cw = (R - (gl + 10)) / 5, x0 = gl + 10 + (5 - n) * cw / 2;      // 다섯 개보다 적으면 가운데로
       eps.forEach(function (e, i) {
-        var cx = x0 + cw * (i + 0.5), len = Math.max(Math.abs(e.v) * sc, 6), dB = pts[e.b];
+        var cx = x0 + cw * (i + 0.5), len = Math.max(Math.abs(e.v) * sc, 4), dB = pts[e.b];
         var hy = mode === 'dd' ? 380 : zeroY + 50;                     // 날짜: 낙폭은 저점, 상승은 고점
         X.fillStyle = SUB; X.font = font(600, 26);
         X.fillText(dB.y + '년', cx, hy); X.fillText(dB.m + '월 ' + dB.d + '일', cx, hy + 36);
-        var sw = Math.min(70, cw * 0.42), hw = Math.min(150, cw * 0.86), hh = Math.min(70, len * 0.45);
-        var sg = mode === 'dd' ? 1 : -1, y1 = zeroY + sg * 2, tip = zeroY + sg * len, neck = tip - sg * hh;
+        var bw = Math.min(110, cw * 0.62), sg = mode === 'dd' ? 1 : -1, y1 = zeroY + sg * 2, tip = zeroY + sg * len;   // 막대: 기준선에서 끝으로, 끝만 둥글게
+        var rr = Math.min(12, len / 2), xl = cx - bw / 2, xr = cx + bw / 2;
         var gr = X.createLinearGradient(0, y1, 0, tip); gr.addColorStop(0, col + 'B3'); gr.addColorStop(1, col);
         X.fillStyle = gr; X.beginPath();
-        X.moveTo(cx - sw / 2, y1); X.lineTo(cx + sw / 2, y1); X.lineTo(cx + sw / 2, neck); X.lineTo(cx + hw / 2, neck);
-        X.lineTo(cx, tip); X.lineTo(cx - hw / 2, neck); X.lineTo(cx - sw / 2, neck); X.closePath(); X.fill();
+        X.moveTo(xl, y1); X.lineTo(xr, y1); X.lineTo(xr, tip - sg * rr);
+        X.quadraticCurveTo(xr, tip, xr - rr, tip); X.lineTo(xl + rr, tip); X.quadraticCurveTo(xl, tip, xl, tip - sg * rr);
+        X.closePath(); X.fill();
         var vt = (e.v > 0 ? '+' : '−') + pct(e.v), vf = 44;
         X.font = font(900, vf); while (vf > 26 && X.measureText(vt).width > cw - 10) { vf -= 2; X.font = font(900, vf); }
-        X.fillStyle = col; X.fillText(vt, cx, mode === 'dd' ? tip + 52 : tip - 22);
+        X.fillStyle = col; X.fillText(vt, cx, mode === 'dd' ? tip + 50 : tip - 18);
       });
     }
     X.textAlign = 'left';
