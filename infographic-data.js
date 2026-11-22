@@ -540,7 +540,10 @@
         if (D.flow && !D.flow[code]) throw new Error('값 검증 중인 회사예요 — 두 출처 숫자가 맞으면 자동으로 올라와요');   // 검증 통과(목록에 있는) 카드만 그린다
         // 이 기간의 실제 숫자가 아닌 것(다른 기간 비중으로 나눈 매출 구분·영업비용 세부)은 그리지 않는다 — 실제 공시 숫자만
         if (f && f.seg_note) f.segs = [];
-        if (f && f.items_from) f.items = [];
+        if (f && f.items_from && f.items_from !== '본문') {   // '본문' = 이번 보고서 원문 표 (실제 값)
+          var fyr = String(f.end || '').slice(0, 4), annual = f.start && f.end && (new Date(f.end) - new Date(f.start)) / 864e5 > 300;
+          if (!(annual && String(f.items_from) === fyr)) f.items = [];        // 연간 카드에 그해 연간 표면 실제 값이라 둔다
+        }
         if (f && f.rev > 0 && f.op < f.rev && f.ni != null && (f.rev - (f.cogs || 0) >= 0 || (f.gross != null && f.sga != null && Math.abs(f.gross - f.sga - f.op) <= f.rev * 0.01))) {        // 영업손실이어도 그린다(손실 모양)
           var nm2 = us ? ko(code, enShort((D.us.stocks[code] || {}).n || code)) : f.name;
           return Promise.all([ul ? img('./logo/unlisted/' + code + '.png').then(function (i) { return { logo: i }; }) : logo({ code: code }, us),
