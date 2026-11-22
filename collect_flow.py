@@ -295,11 +295,150 @@ def _us_files(cik, acc):
     return raw.decode("utf-8", "replace"), dec(lab), dec(cal)
 
 
+# ------------------------------------------------------------------ 미국: 실적 발표(8-K 2.02) 손익표 — 10-Q 가 나오기 전 며칠 동안
+_MON = {m: i + 1 for i, m in enumerate(["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"])}
+PR_ROWS = [("rev", r"^(total )?(net )?(revenues?|net sales|sales)$"),
+           ("cogs", r"^(total )?cost of (revenues?|sales|goods sold)$"),
+           ("gross", r"^gross (profit|margin)$"),
+           ("rnd", r"^research and development$"),
+           ("sga", r"^(sales|selling), general and administrative$"),
+           ("sm", r"^(sales|selling) and marketing$"),
+           ("ga", r"^general and administrative$"),
+           ("opex", r"^total operating expenses$"),
+           ("op", r"^(operating income|income from operations|operating income \(loss\)|income \(loss\) from operations)$"),
+           ("pretax", r"^income( \(loss\))? before (provision for )?income taxes?$"),
+           ("tax", r"^(provision for income taxes|income tax expense|income tax provision|provision for \(benefit from\) income taxes|income tax expense \(benefit\))$"),
+           ("ni", r"^net income( \(loss\))?$")]
+
+
+def _cells(tr):
+    out = []
+    for td in re.findall(r"<t[dh][^>]*>(.*?)</t[dh]>", tr, re.S | re.I):
+        t = re.sub(r"<[^>]+>", " ", td)
+        t = re.sub(r"&nbsp;|&#160;|&#xa0;", " ", t, flags=re.I).replace("&amp;", "&").replace("&#8217;", "'")
+        t = re.sub(r"\s+", " ", t).strip()
+        if t and t not in ("$", ")", "%"):
+            out.append(t)
+    return out
+
+
+def _num(t):
+    m = re.fullmatch(r"\(?\$?\s*([\d,]+(?:\.\d+)?)\s*\)?", t)
+    if not m:
+        return None
+    v = float(m.group(1).replace(",", ""))
+    return -v if t.startswith("(") else v
+
+
+def pr_income(html):
+    """실적 발표 자료의 손익계산서 표 → 이번 3개월 값. 서로 맞아떨어질 때만 돌려준다."""
+    low = html.lower()
+    k = max(low.find("statements of income"), low.find("statements of operations"), low.find("statement of income"), low.find("statement of operations"))
+    if k < 0:
+        return None
+    seg = html[k:k + 200000]
+    t_end = seg.lower().find("</table>")
+    seg = seg[:t_end] if t_end > 0 else seg
+    head = re.sub(r"<[^>]+>", " ", seg[:6000])
+    head = re.sub(r"&nbsp;|&#160;|&#xa0;", " ", head, flags=re.I)
+    if not re.search(r"three months ended|quarter ended|three months", head, re.I):
+        return None
+    dm = re.search(r"(january|february|march|april|may|june|july|august|september|october|november|december)\s+(\d{1,2}),?\s+(\d{4})", head, re.I)
+    if not dm:
+        return None
+    end = date(int(dm.group(3)), _MON[dm.group(1).lower()], int(dm.group(2)))
+    unit = 1e6 if re.search(r"in millions", head, re.I) else 1e3 if re.search(r"in thousands", head, re.I) else None
+    if not unit:
+        return None
+    v = {}
+    for tr in re.findall(r"<tr[^>]*>(.*?)</tr>", seg, re.S | re.I):
+        c = _cells(tr)
+        if len(c) < 2:
+            continue
+        lab = re.sub(r"[:*]+$", "", c[0]).strip().lower()
+        n = next((_num(x) for x in c[1:] if _num(x) is not None), None)
+        if n is None:
+            continue
+        for key, rx in PR_ROWS:
+            if key not in v and re.match(rx, lab):
+                v[key] = n * unit
+                break
+    if "sga" not in v and ("sm" in v or "ga" in v):
+        v["sga"] = v.get("sm", 0) + v.get("ga", 0)
+    need = ("rev", "cogs", "op", "tax", "ni")
+    if any(x not in v for x in need):
+        return None
+    tol = lambda a, b: abs(a - b) <= max(1.5 * unit, abs(b) * 0.002)      # noqa: E731
+    gross = v.get("gross", v["rev"] - v["cogs"])
+    if not tol(v["rev"] - v["cogs"], gross):
+        return None                                             # 매출 − 원가 ≠ 매출총이익
+    opex = v.get("opex", gross - v["op"])
+    if not tol(gross - opex, v["op"]):
+        return None
+    if "pretax" in v and not tol(v["pretax"] - v["tax"], v["ni"]):
+        return None
+    items = [["연구개발비", v["rnd"]]] if v.get("rnd") else []
+    if v.get("sga"):
+        items.append(["판매·관리비", v["sga"]])
+    rest = opex - sum(x for _, x in items)
+    if rest > max(abs(opex) * 0.01, 1.5 * unit):
+        items.append(["기타 영업비용", rest])
+    elif rest < -1.5 * unit:
+        return None                                             # 세부 합이 영업비용보다 크다 — 표를 잘못 읽었다
+    return {"rev": v["rev"], "cogs": v["cogs"], "gross": gross, "rnd": v.get("rnd") or 0, "sga": v.get("sga") or 0,
+            "op": v["op"], "tax": v["tax"], "ni": v["ni"], "items": items, "segs": [], "end": end.isoformat()}
+
+
+def us_pr(cik, rc, old):
+    """10-Q·10-K 보다 새로운 실적 발표(8-K 2.02)가 있으면 그 손익표로 카드를 만든다 — 10-Q 가 나오면 그걸로 바뀐다"""
+    last_q = next((rc["filingDate"][i] for i, f in enumerate(rc["form"]) if f in ("10-Q", "10-K")), "")
+    for i, f in enumerate(rc["form"]):
+        if rc["filingDate"][i] <= last_q:
+            return None
+        if f != "8-K" or "2.02" not in (rc.get("items") or [""] * len(rc["form"]))[i]:
+            continue
+        acc = rc["accessionNumber"][i]
+        if old and old.get("src") == acc and old.get("ver") == VER:
+            return "SAME"
+        base = U.SEC_ARCH % (int(cik), acc.replace("-", ""))
+        idx = U.get_json(base + "index.json")
+        names = [x.get("name", "") for x in ((idx or {}).get("directory", {}).get("item", []))]
+        prim = rc["primaryDocument"][i]
+        docs = [n for n in names if n.lower().endswith((".htm", ".html")) and n != prim and "index" not in n.lower()]
+        docs.sort(key=lambda n: (0 if re.search(r"ex-?99|pr|press|earn", n, re.I) else 1, n))
+        for n in docs[:3]:
+            raw = U.get(base + n)
+            v = pr_income((raw or b"").decode("utf-8", "replace"))
+            if not v:
+                continue
+            end = date.fromisoformat(v["end"])
+            try:
+                oe = date.fromisoformat(old["end"]) if old else None
+            except Exception:                       # noqa: BLE001
+                oe = None
+            st = oe + timedelta(days=1) if oe and 80 <= (end - oe).days <= 100 else end - timedelta(days=90)
+            v["start"] = st.isoformat()
+            v["period"] = FX.q_label(v["start"], v["end"])
+            v["report"] = "실적발표 " + v["end"]
+            v["src"] = acc
+            v["pr"] = "8-K"                         # 실적 발표 기준 — 매출 구분은 10-Q 가 나오면 채운다
+            return v
+        FX.WHY = "실적 발표 손익표를 못 읽음 %s" % acc
+        return None
+    return None
+
+
 def us_xbrl(cik, old=None):
     sub = U.get_json(U.SEC_SUBMIT % str(cik).zfill(10))
     if not sub:
         return None
     rc = sub["filings"]["recent"]
+    try:
+        p = us_pr(cik, rc, old)
+    except Exception as e:                          # noqa: BLE001
+        p, FX.WHY = None, "실적 발표 읽기 오류 %r" % e
+    if p:
+        return p
     for i, f in enumerate(rc["form"]):
         if f not in ("10-Q", "10-K"):
             continue
@@ -390,6 +529,8 @@ def verify(code, d, m, days):
     xc = d.get("xcheck") or {}
     if s == "ok":
         return True, why
+    if m == "US" and d.get("pr"):                   # 10-Q 전 실적 발표 — 공시 손익표가 매출−원가=총이익, 총이익−영업비용=영업이익, 세전−법인세=순이익으로 맞아떨어진 것만 여기 온다
+        return True, "실적 발표 손익표 검산 일치 (10-Q 나오면 다시 대조)"
     if xc.get("rev") and _same(d, xc):              # 실적 탭 자료가 아직 없거나 다르면 DART API(공식 재무제표)와 맞는지
         if s == "none":
             return True, "DART API 와 일치"
@@ -545,7 +686,7 @@ def recent_us(days=12):
         if not raw:
             continue
         for line in raw.decode("latin-1").splitlines():
-            if line.startswith(("10-Q ", "10-K ", "10-Q/A", "10-K/A")):
+            if line.startswith(("10-Q ", "10-K ", "10-Q/A", "10-K/A", "8-K ")):
                 m = re.search(r"\s(\d{3,10})\s+\d{4}-?\d{2}-?\d{2}\s", line)
                 if m:
                     out.add(int(m.group(1)))
