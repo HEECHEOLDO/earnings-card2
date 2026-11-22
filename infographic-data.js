@@ -526,6 +526,9 @@
       // 세부 손익(data/flow)이 있으면 매출원가·판관비·연구개발비·법인세까지 나눈 그림으로
       return JJ('./data/flow/' + code + '.json').then(function (f) {
         if (D.flow && !D.flow[code]) throw new Error('값 검증 중인 회사예요 — 두 출처 숫자가 맞으면 자동으로 올라와요');   // 검증 통과(목록에 있는) 카드만 그린다
+        // 이 기간의 실제 숫자가 아닌 것(다른 기간 비중으로 나눈 매출 구분·영업비용 세부)은 그리지 않는다 — 실제 공시 숫자만
+        if (f && f.seg_note) f.segs = [];
+        if (f && f.items_from) f.items = [];
         if (f && f.rev > 0 && f.op < f.rev && f.ni != null && (f.rev - (f.cogs || 0) >= 0 || (f.gross != null && f.sga != null && Math.abs(f.gross - f.sga - f.op) <= f.rev * 0.01))) {        // 영업손실이어도 그린다(손실 모양)
           var nm2 = us ? ko(code, enShort((D.us.stocks[code] || {}).n || code)) : f.name;
           return (ul ? img('./logo/unlisted/' + code + '.png').then(function (i) { return { logo: i }; }) : logo({ code: code }, us)).then(function (r) {
