@@ -16,11 +16,11 @@ for t in (os.environ.get("CODES") or "ODFL").split(","):
         seen = set()
         for n, c, v in facts:
             p = ctx.get(c) or {}
-            if not p.get("dims") and re.search(r"Revenue|Sales", n) and not re.search(r"Cost|Deferred|Receivable|Tax|Percentage|Remaining|Unbilled|Contract", n) and p.get("start"):
+            if len(p.get("dims") or []) <= 1 and re.search(r"Revenue|Sales", n) and not re.search(r"Cost|Deferred|Receivable|Tax|Percentage|Remaining|Unbilled|Liability|Asset", n) and p.get("start"):
                 k = (n, p["start"], p["end"])
                 if k in seen: continue
                 seen.add(k)
                 if p["end"] >= rc["reportDate"][i][:7]:
-                    print("   ", n, p["start"], p["end"], round(v / 1e6, 1))
+                    print("   ", n, p["start"], p["end"], round(v / 1e6, 1), p.get("dims"))
     except Exception as e:                       # noqa: BLE001
         print("==", t, "오류", repr(e))
