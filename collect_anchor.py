@@ -121,7 +121,15 @@ def chart_of(rows, base):
         else:
             weekly.append(val)
             last_key = key
-    return {"u": "KRW", "d": daily, "w": weekly}
+    out = {"u": "KRW", "d": daily, "w": weekly}
+    try:                                      # 3·5·10년 하루 등락률 상위 5일 (주가 탭 '역대 상승폭·하락폭 순위')
+        import daily_rank
+        r = daily_rank.rank(rows, skip=lambda p, c, k: k > 1.305 or k < 0.695)   # 가격제한폭(±30%)을 넘는 날은 거래가 아니다(재상장·기준가 재산정 등)
+        if r:
+            out["r"] = r
+    except Exception:                         # noqa: BLE001
+        pass
+    return out
 
 
 def write_chart(code, rows, base):

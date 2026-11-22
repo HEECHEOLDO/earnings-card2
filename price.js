@@ -408,35 +408,27 @@
   }
 
 
-  /* ------------------------------------------------------------ 최대 낙폭 · 최대 상승 */
-  // 낙폭: 기간 안의 최고가(직전 고점) → 그 뒤 최저가. 다시 고점을 넘으면 한 번이 끝난다. 큰 순서로 5번까지
-  // 상승: 저점 → 고점. 고점에서 TH 넘게 되돌리면 한 번이 끝난다 (짧은 기간일수록 작게 본다)
-  function episodes(pts, mode, span) {
-    var sp = SPANS[span] || {}, short = span === 'ytd' || !!sp.m, TH = short ? 0.05 : sp.y <= 1 ? 0.1 : 0.2, MIN = short ? 1 : 3;
-    var eps = [], i;
-    if (mode === 'dd') {
-      var pk = 0, tr = -1;
-      for (i = 1; i < pts.length; i++) {
-        if (pts[i].v >= pts[pk].v) { if (tr >= 0) eps.push({ a: pk, b: tr }); pk = i; tr = -1; }
-        else if (tr < 0 || pts[i].v < pts[tr].v) tr = i;
+  /* ------------------------------------------------------------ 역대 상승폭 · 하락폭 순위 (하루 등락률) */
+  // 하루 등락률 = 그날 종가 ÷ 직전 거래일 종가 − 1. 큰 순서로 5일.
+  // 1년 이하는 화면의 일별 종가로 센다. 3·5·10년은 모으는 쪽이 긴 일별 종가로 미리 뽑은 data.r 을 쓴다 (daily_rank.py)
+  function episodes(pts, mode, span, data) {
+    var sp = SPANS[span] || {}, daily = span === 'ytd' || !!sp.m || sp.y <= 1, out = [];
+    if (daily) {
+      for (var i = 1; i < pts.length; i++) {
+        var r = pts[i].v / pts[i - 1].v, v = Math.round((r - 1) * 10000) / 100;
+        if (data && data.u === 'KRW' && (r > 1.305 || r < 0.695)) continue;      // 가격제한폭(±30%) 밖은 거래가 아니다
+        if (mode === 'up' ? v > 0 : v < 0) out.push({ d: pts[i], v: v });
       }
-      if (tr >= 0) eps.push({ a: pk, b: tr, open: true });
     } else {
-      var lo = 0, hi = 0, up = true;
-      for (i = 1; i < pts.length; i++) {
-        var v = pts[i].v;
-        if (up) { if (v > pts[hi].v) hi = i; else if (v < pts[hi].v * (1 - TH)) { if (hi > lo) eps.push({ a: lo, b: hi }); lo = i; up = false; } }
-        else { if (v < pts[lo].v) lo = i; else if (v > pts[lo].v * (1 + TH)) { hi = i; up = true; } }
-      }
-      if (up && hi > lo) eps.push({ a: lo, b: hi, open: hi === pts.length - 1 });
+      var rr = data && data.r && data.r[span];
+      if (!rr) return null;                                                     // 긴 일별 종가가 아직 없다
+      out = (mode === 'up' ? rr.up : rr.dn).map(function (x) { return { d: ymd(x[0]), v: x[1] }; });
     }
-    eps.forEach(function (e) { e.v = (pts[e.b].v / pts[e.a].v - 1) * 100; });
-    eps = eps.filter(function (e) { return Math.abs(e.v) >= MIN; });
-    eps.sort(function (x, y) { return Math.abs(y.v) - Math.abs(x.v); });
-    return eps.slice(0, 5);
+    out.sort(function (x, y) { return Math.abs(y.v) - Math.abs(x.v); });
+    return out.slice(0, 5);
   }
   function drawEp(X, s, opt) {
-    var mode = opt.view, pts = s.pts, eps = episodes(pts, mode, opt.span);
+    var mode = opt.view, pts = s.pts, eps0 = episodes(pts, mode, opt.span, opt.data), eps = eps0 || [];
     X.save(); X.textAlign = 'left'; X.textBaseline = 'alphabetic';
     theme(!!opt.dark); grain(X); if (OV) OV.paintBack(X);
     var SUB = T.dark ? '#A2A7AF' : '#4B4F58';
@@ -459,9 +451,10 @@
     var col = mode === 'dd' ? T.down : T.up, n = eps.length;
     if (!n) {
       X.fillStyle = T.inkSoft; X.font = font(700, 34); X.textAlign = 'center';
-      X.fillText(mode === 'dd' ? '이 기간에는 크게 떨어진 적이 없어요' : '이 기간에는 크게 오른 적이 없어요', CW / 2, 720);
+      X.fillText(!eps0 ? '이 종목은 3년 이상 일별 주가를 아직 모으는 중이에요' : mode === 'dd' ? '이 기간에는 떨어진 날이 없어요' : '이 기간에는 오른 날이 없어요', CW / 2, 720);
+      if (!eps0) { X.font = font(600, 26); X.fillText('1년 이하 기간을 골라 보세요', CW / 2, 770); }
     } else {
-      var mx = Math.max.apply(null, eps.map(function (e) { return Math.abs(e.v); }));
+      var mx = Math.max.apply(null, eps.map(function (e) { return Math.abs(e.v); }));   // 하루 등락률
       var st = [1, 2, 2.5, 5, 10, 20, 25, 50, 100, 200, 250, 500, 1000, 2000, 5000].filter(function (k) { return mx / k <= 5; })[0] || 10000;
       var maxLen = mode === 'dd' ? 610 : 590, sc = maxLen / mx;
       var zeroY = mode === 'dd' ? 440 : 1020;
@@ -478,8 +471,8 @@
       X.textAlign = 'center';
       var cw = (R - (gl + 10)) / 5, x0 = gl + 10 + (5 - n) * cw / 2;      // 다섯 개보다 적으면 가운데로
       eps.forEach(function (e, i) {
-        var cx = x0 + cw * (i + 0.5), len = Math.max(Math.abs(e.v) * sc, 4), dB = pts[e.b];
-        var hy = mode === 'dd' ? 380 : zeroY + 50;                     // 날짜: 낙폭은 저점, 상승은 고점
+        var cx = x0 + cw * (i + 0.5), len = Math.max(Math.abs(e.v) * sc, 4), dB = e.d;
+        var hy = mode === 'dd' ? 380 : zeroY + 50;                     // 그날 날짜
         X.fillStyle = SUB; X.font = font(600, 26);
         X.fillText(dB.y + '년', cx, hy); X.fillText(dB.m + '월 ' + dB.d + '일', cx, hy + 36);
         var bw = Math.min(110, cw * 0.62), sg = mode === 'dd' ? 1 : -1, y1 = zeroY + sg * 2, tip = zeroY + sg * len;   // 막대: 기준선에서 끝으로, 끝만 둥글게
@@ -489,7 +482,7 @@
         X.moveTo(xl, y1); X.lineTo(xr, y1); X.lineTo(xr, tip - sg * rr);
         X.quadraticCurveTo(xr, tip, xr - rr, tip); X.lineTo(xl + rr, tip); X.quadraticCurveTo(xl, tip, xl, tip - sg * rr);
         X.closePath(); X.fill();
-        var vt = (e.v > 0 ? '+' : '−') + pct(e.v), vf = 44;
+        var vt = (e.v > 0 ? '+' : '−') + Math.abs(e.v).toFixed(2) + '%', vf = 44;
         X.font = font(900, vf); while (vf > 26 && X.measureText(vt).width > cw - 10) { vf -= 2; X.font = font(900, vf); }
         X.fillStyle = col; X.fillText(vt, cx, mode === 'dd' ? tip + 50 : tip - 18);
       });
@@ -523,9 +516,8 @@
     if (!state.titleUser) { state.title = autoTitle(s); $('c-title').value = state.title; }
     var a = s.pts[0], b = s.pts[s.pts.length - 1];
     if (state.view !== 'line') {
-      var eps = drawEp(X, s, { view: state.view, span: state.span, name: state.name || it.name, title: state.title, logo: state.logo, sel: true });
-      $('c-hint').textContent = dlab(a) + ' ~ ' + dlab(b) + ' 종가 기준 · ' + (state.view === 'dd' ? '직전 고점 → 저점, 날짜는 저점' : '저점 → 고점, 날짜는 고점') + ' · ' + eps.length + '번' +
-        ((SPANS[state.span].y || 0) >= 3 ? ' · 3년 이상은 주별 종가로 봐요' : '');
+      var eps = drawEp(X, s, { view: state.view, span: state.span, data: state.data, name: state.name || it.name, title: state.title, logo: state.logo, sel: true });
+      $('c-hint').textContent = dlab(a) + ' ~ ' + dlab(b) + ' · 하루 등락률(그날 종가 ÷ 직전 거래일 종가) 큰 순서 ' + eps.length + '일';
       return;
     }
     draw(X, s, { kr: it.ix ? 'ix' : it.kr, color: state.color, name: state.name || it.name, title: state.title, logo: state.logo, ytd: state.span === 'ytd', sel: true });
@@ -645,7 +637,7 @@
     var s = series(state.data, state.span); if (!s) return;
     var big = document.createElement('canvas'); big.width = CW * 3; big.height = CH * 3;
     var g = big.getContext('2d'); g.scale(3, 3);
-    if (state.view !== 'line') drawEp(g, s, { view: state.view, span: state.span, name: state.name || state.item.name, title: state.title, logo: state.logo });
+    if (state.view !== 'line') drawEp(g, s, { view: state.view, span: state.span, data: state.data, name: state.name || state.item.name, title: state.title, logo: state.logo });
     else draw(g, s, { kr: state.item.ix ? 'ix' : state.item.kr, color: state.color, name: state.name || state.item.name, title: state.title, logo: state.logo, ytd: state.span === 'ytd' });
     big.toBlob(function (blob) {
       if (!blob) { alert('그림을 만들지 못했습니다. 새로고침 후 다시 눌러 주세요.'); return; }

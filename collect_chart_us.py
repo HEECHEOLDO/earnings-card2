@@ -233,7 +233,38 @@ def build(sym, mon, today, probe=False):
     # CNBC 5년 차트가 실제로는 약 10년 치 주별을 주므로 그것만 쓴다
     w = [[a, rnd(b)] for a, b in wk if a >= w0]
     d, w = fix_jumps(d, w, mon_map(mon, sym))
-    return {"u": "USD", "d": d, "w": w, "src": "+".join(src)}, "+".join(src)
+    out = {"u": "USD", "d": d, "w": w, "src": "+".join(src)}
+    r = long_rank(sym, today, daily if "nasdaq" in src else None, w)
+    if r:
+        out["r"] = r
+    return out, "+".join(src)
+
+
+def long_rank(sym, today, rows, w):
+    """3·5·10년 하루 등락률 상위 5일 (주가 탭 '역대 상승폭·하락폭 순위'). 나스닥 10년 일별 종가를 받아
+    주별 파일과 같은 날 값이 98% 넘게 1% 안에서 맞을 때만 쓴다 (분할 반영 기준이 다르면 틀린 날이 순위에 오른다).
+    못 받으면 있던 파일의 r 을 30일까지 그대로 둔다."""
+    import daily_rank
+    try:
+        if not rows:
+            time.sleep(PAUSE)
+            rows = nasdaq_bars(sym, (today - timedelta(days=int(10.2 * 365.25))).strftime("%Y-%m-%d"))
+        if rows:
+            wm = {a: b for a, b in w}
+            m = [abs(b / wm[a] - 1) < 0.01 for a, b in rows if a in wm]
+            if len(m) >= 50 and sum(m) >= len(m) * 0.98:
+                return daily_rank.rank(rows)
+            log("  %-6s 10년 일별이 주별과 안 맞음 (%d/%d) — 순위 안 만듦" % (sym, sum(m), len(m)))
+    except Exception as e:                        # noqa: BLE001
+        log("  %-6s 10년 일별 오류 %s" % (sym, e))
+    try:
+        with open(os.path.join(OUT_DIR, sym + ".json"), encoding="utf-8") as f:
+            old = json.load(f).get("r")
+        if old and int(old.get("end", 0)) >= int((today - timedelta(days=30)).strftime("%Y%m%d")):
+            return old
+    except Exception:                             # noqa: BLE001
+        pass
+    return None
 
 
 def mon_map(mon, sym):

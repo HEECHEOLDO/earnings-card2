@@ -79,6 +79,14 @@ def main():
         j = {"u": "PT", "src": src,
              "d": [[a, round(b, 2)] for a, b in daily if a >= d0],
              "w": [[a, round(b, 2)] for a, b in wk if a >= w0]}
+        if src == "naver":                    # 11년 일별이 있을 때만 — 3·5·10년 하루 등락률 상위 5일
+            try:
+                import daily_rank
+                r = daily_rank.rank(daily)
+                if r:
+                    j["r"] = r
+            except Exception:                 # noqa: BLE001
+                pass
         with open(os.path.join(OUT_DIR, code + ".json"), "w", encoding="utf-8") as f:
             json.dump(j, f, separators=(",", ":"))
         ok += 1
