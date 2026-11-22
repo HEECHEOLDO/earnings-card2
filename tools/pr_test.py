@@ -36,7 +36,7 @@ for t in (os.environ.get("CODES") or "").split(","):
         print("-- 제목들", t, n, [F._txt(h)[max(0, m.start() - 60):m.start() + 60] for m in list(re.finditer(r"statements? of|statement of", F._txt(h), re.I))[:6]])
         for tm in re.finditer(r"<table\b.*?</table>", h, re.S | re.I):
             before = F._txt(h[max(0, tm.start() - 2500):tm.start()]).lower()
-            if re.search(r"statements? of (income|operations|earnings)", before[-1200:]):
+            if re.search(r"statements? of", before[-1200:] + F._txt(tm.group(0)[:3000]).lower()[:600]) and "cash flow" not in before[-300:]:
                 rows = [F._cells(tr) for tr in re.findall(r"<tr[^>]*>(.*?)</tr>", tm.group(0), re.S | re.I)]
                 print("--", t, n, "| 앞:", before[-200:].replace("\n", " "))
                 for r in rows[:40]:

@@ -341,7 +341,7 @@ def pr_income(html):
     for tm in re.finditer(r"<table\b.*?</table>", html, re.S | re.I):
         before = _txt(html[max(0, tm.start() - 2500):tm.start()]).lower()
         first = _txt(tm.group(0)[:3000]).lower()                 # 표 첫 줄에 제목을 넣은 회사도 있다
-        if not re.search(r"statements? of (consolidated )?(income|operations|earnings|current and retained earnings)", before[-1200:] + " " + first[:600]):
+        if not re.search(r"statements? of (consolidated )?(income|operations|earnings|current (and retained )?earnings)", before[-1200:] + " " + first[:600]):
             continue
         v = _pr_table(tm.group(0), before)
         if v:
@@ -360,7 +360,8 @@ def _pr_table(tab, before):
     if not dm or not ym:
         return None
     end = date(int(ym.group(1)), _MON[dm.group(1).lower()], int(dm.group(2)))
-    unit = 1e6 if re.search(r"\bmillions\b", head + before[-1500:], re.I) else 1e3 if re.search(r"\bthousands\b", head + before[-1500:], re.I) else None
+    hb = head + " " + before[-1500:]
+    unit = 1e6 if re.search(r"\bmillions\b", hb, re.I) else 1e3 if re.search(r"\bthousands\b|\$\s?000\b|\(000", hb, re.I) else None
     if not unit:
         return None
     cand = {}
