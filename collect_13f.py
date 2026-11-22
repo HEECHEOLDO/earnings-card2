@@ -29,7 +29,7 @@ from datetime import datetime, timezone, timedelta
 UA = "fincard personal project heecheoldo@gmail.com"
 OUT = "data/13f.json"
 TOP_N = 40                 # 종목이 수천 개인 기관도 있어 상위만 저장
-NAME_VER = 9               # 종목명 규칙 판. 올리면 공시가 그대로여도 다시 만든다
+NAME_VER = 10               # 종목명 규칙 판. 올리면 공시가 그대로여도 다시 만든다
 SLEEP = 0.15
 
 # (키, 카드 제목, 공시 주체, CIK)
