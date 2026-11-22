@@ -189,11 +189,12 @@ def flow(code):
         v = lambda x: None if not x or x[1] is None else x[1] * u      # noqa: E731
         d = {"rev": v(rev), "cogs": v(cogs), "gross": v(gross), "sga": v(sga), "op": v(op), "tax": v(tax), "ni": v(ni)}
         # 순이익 줄에 금액이 하나뿐이면(당기 칸이 비거나 못 읽어 전기 숫자를 집는 일) 세전이익 − 법인세로 — 둘 다 당기·전기 두 칸이 있을 때만
-        if ni[2] is None and rev[2] is not None:
-            pt = A.pick2(grab, PRETAX, True)
-            if pt and pt[2] is not None and tax and tax[1] is not None:
-                d["ni"] = v(pt) - v(tax)
-                d["ni_from"] = "세전이익-법인세"
+        # 순이익이 '세전이익 − 법인세'와 안 맞으면(다른 줄·전기 칸을 집은 것) 같은 표의 세전이익 − 법인세로
+        pt = A.pick2(grab, PRETAX, True)
+        if pt and pt[1] is not None and tax and tax[1] is not None and d["ni"] is not None and d["rev"]:
+            calc = v(pt) - v(tax)
+            if abs(calc - d["ni"]) > abs(d["rev"]) * 0.002:
+                d["ni"], d["ni_from"] = calc, "세전이익-법인세"
         if d["cogs"] is not None and d["cogs"] < 0:
             d["cogs"] = -d["cogs"]
         if d["sga"] is not None and d["sga"] < 0:
