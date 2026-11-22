@@ -12,6 +12,8 @@ import probe_audit as P
 COGS = ["매출원가", "영업원가", "매출원가및영업비용"]
 GROSS = ["매출총이익", "매출총이익(손실)", "매출총손익", "매출총손실"]
 SGA = ["판매비와관리비", "판매비와일반관리비", "판매관리비", "판매비및관리비", "판매비와관리비합계"]
+PRETAX = ["법인세비용차감전순이익", "법인세비용차감전순이익(손실)", "법인세비용차감전순손실", "법인세비용차감전순손익",
+          "법인세차감전순이익", "법인세차감전순이익(손실)", "법인세비용차감전계속사업이익", "법인세비용차감전이익"]
 TAX = ["법인세비용", "법인세비용(수익)", "법인세비용(이익)", "법인세수익(비용)", "법인세등", "법인세비용(환급)"]
 CAT = [("인건비", r"급여|상여|퇴직|복리후생|인건비|임금"), ("광고·판촉비", r"광고|판매촉진|판촉|마케팅|홍보"), ("수수료·용역비", r"수수료|용역"),
        ("임차료", r"임차료|사용권|리스료"), ("감가상각비", r"감가상각|상각비"), ("운반·물류비", r"운반|물류|보관|배송|포장"),
@@ -186,6 +188,12 @@ def flow(code):
         u = P.unit_of(before + doc[tabs[i].start():tabs[i].start() + 400])
         v = lambda x: None if not x or x[1] is None else x[1] * u      # noqa: E731
         d = {"rev": v(rev), "cogs": v(cogs), "gross": v(gross), "sga": v(sga), "op": v(op), "tax": v(tax), "ni": v(ni)}
+        # 순이익 줄에 금액이 하나뿐이면(당기 칸이 비거나 못 읽어 전기 숫자를 집는 일) 세전이익 − 법인세로 — 둘 다 당기·전기 두 칸이 있을 때만
+        if ni[2] is None and rev[2] is not None:
+            pt = A.pick2(grab, PRETAX, True)
+            if pt and pt[2] is not None and tax and tax[1] is not None:
+                d["ni"] = v(pt) - v(tax)
+                d["ni_from"] = "세전이익-법인세"
         if d["cogs"] is not None and d["cogs"] < 0:
             d["cogs"] = -d["cogs"]
         if d["sga"] is not None and d["sga"] < 0:
