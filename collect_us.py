@@ -1310,9 +1310,10 @@ def collect_one(ticker, info):
 
 FX_SOURCES = [
     ("frankfurter", "https://api.frankfurter.app/latest?from=USD&to=KRW",
-     lambda j: j.get("rates", {}).get("KRW")),
+     lambda j: j.get("rates", {}).get("KRW"), lambda j: j.get("date")),
     ("open.er-api", "https://open.er-api.com/v6/latest/USD",
-     lambda j: j.get("rates", {}).get("KRW")),
+     lambda j: j.get("rates", {}).get("KRW"),
+     lambda j: (lambda t: datetime.utcfromtimestamp(t).strftime("%Y-%m-%d") if t else None)(j.get("time_last_update_unix"))),
 ]
 
 
@@ -1325,7 +1326,7 @@ def update_fx():
     except Exception:                     # noqa: BLE001
         pass
 
-    for name, url, pick in FX_SOURCES:
+    for name, url, pick, day in FX_SOURCES:
         j = get_json(url)
         if not j:
             continue
@@ -1335,6 +1336,11 @@ def update_fx():
                     "source": name,
                     "updated": datetime.now(timezone(timedelta(hours=9)))
                     .strftime("%Y-%m-%d")}
+            try:
+                if day(j):
+                    data["asof"] = day(j)       # 환율이 정해진 날 (주말·휴일엔 직전 영업일)
+            except Exception:             # noqa: BLE001
+                pass
             os.makedirs(os.path.dirname(FX_PATH), exist_ok=True)
             with open(FX_PATH, "w", encoding="utf-8") as f:
                 json.dump(data, f, ensure_ascii=False)

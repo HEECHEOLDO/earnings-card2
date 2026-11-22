@@ -240,7 +240,7 @@
   var D = {}, ONLY = window.__IG_ONLY || '';
   function loadAll() {
     return Promise.all([J('./data/mcap.json'), J('./data/mcap_us.json'), J('./data/rank.json'), J('./data/fx.json')]).then(function (r) {
-      D.kr = r[0]; D.us = r[1]; D.rank = r[2]; D.fx = (r[3] && r[3].usdkrw) || 1380;
+      D.kr = r[0]; D.us = r[1]; D.rank = r[2]; D.fx = (r[3] && r[3].usdkrw) || 1380; D.fxDay = (r[3] && r[3].asof) || '';
       D.st = (D.kr && D.kr.stocks) || {};
       D.inds = ((D.kr && D.kr.groups && D.kr.groups.industry) || []).slice().sort(function (a, b) { return b.sum - a.sum; });
       D.total = D.inds.reduce(function (s, g) { return s + g.sum; }, 0);
@@ -578,7 +578,7 @@
             if (sgS > f.rev * 1.25) sg = [];                                   // 25% 넘게 크면 기준이 다른 숫자 — 나누지 않는다
             else if (sgS > f.rev * 1.002) sgElim = true;                       // 부문끼리 사고판 내부 거래 — 넘치는 만큼 '내부거래 제거'로 보여 준다
             else if (sg.length && f.rev - sgS > f.rev * 0.0005) sg.push({ n: '기타', v: f.rev - sgS });
-            return { fn: 'sankey3', o: { h1: nm2, segs: sg, segElim: sgElim, rev: f.rev, cogs: f.rev - gross, op: f.op, items: items, ni: f.ni, tax: f.tax, money: money, logo: r.logo, fxNote: us ? '환율 ' + Math.round(D.fx).toLocaleString() + '원 기준' : '' },
+            return { fn: 'sankey3', o: { h1: nm2, segs: sg, segElim: sgElim, rev: f.rev, cogs: f.rev - gross, op: f.op, items: items, ni: f.ni, tax: f.tax, money: money, logo: r.logo, fxNote: us ? '환율 ' + Math.round(D.fx).toLocaleString() + '원' + (D.fxDay ? ' (' + +D.fxDay.slice(5, 7) + '.' + +D.fxDay.slice(8, 10) + ' 기준)' : ' 기준') : '' },
               src: flowPeriod(f) + ' 기준' + fq + segNote(f) };
           });
         }
