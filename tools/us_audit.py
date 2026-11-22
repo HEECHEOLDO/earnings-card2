@@ -17,7 +17,13 @@ for code in codes:
         d = json.load(open("data/flow/%s.json" % code))
         cik = (json.load(open("data/us/%s.json" % code)).get("cik"))
         cik = int(cik[0] if isinstance(cik, list) else cik)
-        f = U.get_json(U.SEC_FACTS % str(cik).zfill(10)); time.sleep(0.15)
+        f = None
+        for _ in range(3):
+            f = U.get_json(U.SEC_FACTS % str(cik).zfill(10)); time.sleep(0.3)
+            if f:
+                break
+        if not f:
+            print("%-6s 받기실패" % code, flush=True); continue
         g = ((f or {}).get("facts") or {}).get("us-gaap") or {}
         sub = U.get_json(U.SEC_SUBMIT % str(cik).zfill(10)) or {}; time.sleep(0.15)
         rc = (sub.get("filings") or {}).get("recent") or {}

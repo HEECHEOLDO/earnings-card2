@@ -647,7 +647,7 @@ def pr_segs(html, rev, end):
             n = next((_num(x) for x in c[1:] if _num(x) is not None), None)
             if n is None:
                 continue
-            lines.append((re.sub(r"\s*\(\d\)$|\s+\d$|[:*]+$", "", c[0]).strip(), n * unit))
+            lines.append((re.sub(r"\s*\([a-z0-9]\)$|\s+\d$|[:*]+$", "", c[0]).strip(), n * unit))
         tol = max(1.5 * unit, abs(rev) * 0.0002)
         for i in range(len(lines)):                    # 연속한 줄 묶음 중 합이 매출과 맞고, 바로 아래 합계 줄도 매출과 같은 것
             acc, grp = 0.0, []
