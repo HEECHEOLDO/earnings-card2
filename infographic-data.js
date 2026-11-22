@@ -299,6 +299,18 @@
     }
     return f.q ? "'" + String(f.y).slice(2) + '년 ' + f.q + '분기' : "'" + String(f.y).slice(2) + '년';
   }
+  // 해외: 회계연도가 달력과 다른 회사는 그 회사가 부르는 분기를 괄호로 (엔비디아 '26년 8~10월 → 회계연도 '27년 3분기)
+  function fiscalNote(f, ud) {
+    var rows = ud && ud.quarterly;
+    if (!f.end || !f.start || !rows || !rows.length || (new Date(f.end) - new Date(f.start)) / 864e5 > 120) return '';
+    var m = rows.filter(function (x) { return x.rev && Math.abs(x.rev - f.rev) <= Math.abs(f.rev) * 0.003; }).pop(), y, q;
+    if (m) { y = m.y; q = m.q; }
+    else if (f.pr) { var l = rows[rows.length - 1]; y = l.y + (l.q === 4 ? 1 : 0); q = l.q % 4 + 1; }   // 10-Q 전 실적 발표 — 실적 탭 마지막 분기의 다음
+    else return '';
+    var b = new Date(f.end), em = b.getMonth() - (b.getDate() < 10 ? 1 : 0), ey = b.getFullYear() - (em < 0 ? 1 : 0); em = (em + 12) % 12;
+    if (y === ey && q === Math.floor(em / 3) + 1) return '';                // 달력 분기와 같으면 적지 않는다
+    return " (회계연도 '" + String(y).slice(2) + '년 ' + q + '분기)';
+  }
   function SANKEY_OPTS() {
     if (ONLY && D.flow) {
       var cap = function (k) { var x = D.flow[k]; return x.m === 'KR' ? ((D.st[k] || {}).c || 0) : x.m === 'US' ? ((D.us.stocks[k] || {}).c || 0) * D.fx / 1e4 : 0; };
@@ -531,7 +543,9 @@
         if (f && f.items_from) f.items = [];
         if (f && f.rev > 0 && f.op < f.rev && f.ni != null && (f.rev - (f.cogs || 0) >= 0 || (f.gross != null && f.sga != null && Math.abs(f.gross - f.sga - f.op) <= f.rev * 0.01))) {        // 영업손실이어도 그린다(손실 모양)
           var nm2 = us ? ko(code, enShort((D.us.stocks[code] || {}).n || code)) : f.name;
-          return (ul ? img('./logo/unlisted/' + code + '.png').then(function (i) { return { logo: i }; }) : logo({ code: code }, us)).then(function (r) {
+          return Promise.all([ul ? img('./logo/unlisted/' + code + '.png').then(function (i) { return { logo: i }; }) : logo({ code: code }, us),
+                              us ? JJ('./data/us/' + code + '.json').catch(function () { return null; }) : null]).then(function (rr) {
+            var r = rr[0], fq = us ? fiscalNote(f, rr[1]) : '';
             // 매출총이익과 (매출 - 매출원가)가 다르면 맞는 쪽을 고른다 — 매출총이익 - 판관비 = 영업이익이면 매출총이익, 아니면 매출 - 매출원가 (보험사 등 다른 뜻의 GrossProfit)
             var g1 = f.gross, g2 = f.rev - (f.cogs || 0), gross = g1 != null ? g1 : g2;
             if (g1 != null && f.cogs != null && Math.abs(g1 - g2) > f.rev * 0.01) gross = (f.sga != null && Math.abs(g1 - f.sga - f.op) <= f.rev * 0.01) ? g1 : g2;
@@ -562,7 +576,7 @@
             else if (sgS > f.rev * 1.002) sgElim = true;                       // 부문끼리 사고판 내부 거래 — 넘치는 만큼 '내부거래 제거'로 보여 준다
             else if (sg.length && f.rev - sgS > f.rev * 0.0005) sg.push({ n: '기타', v: f.rev - sgS });
             return { fn: 'sankey3', o: { h1: nm2, segs: sg, segElim: sgElim, rev: f.rev, cogs: f.rev - gross, op: f.op, items: items, ni: f.ni, tax: f.tax, money: money, logo: r.logo, fxNote: us ? '환율 ' + Math.round(D.fx).toLocaleString() + '원 기준' : '' },
-              src: flowPeriod(f) + ' 기준' + segNote(f) };
+              src: flowPeriod(f) + ' 기준' + fq + segNote(f) };
           });
         }
         return null;
