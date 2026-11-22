@@ -14,8 +14,7 @@ for code in (os.environ.get("CODES") or "030000").split(","):
         print("==", code, "카드 없음", F.FX.WHY); continue
     d = F.scaled(v, 1e8)
     print("==", code, cm[code]["name"], d.get("report"), "매출", d.get("rev"), "누적", d.get("cum_rev"), d.get("cum_lab"), "| 구분", d.get("segs"), d.get("seg_from"), d.get("seg_note"), d.get("seg_err"), d.get("doc_err"))
-    if d.get("segs") and not d.get("seg_note"):
-        continue
+    continue
     doc = P.fetch_doc(v["src"])
     tabs = list(re.finditer(r"<TABLE[^>]*>(.*?)</TABLE>", doc or "", re.S | re.I))
     shown = 0

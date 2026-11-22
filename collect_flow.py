@@ -225,6 +225,50 @@ def api_card(corp, r0, rc):
     return v
 
 
+def xbrl_cum_diff(v, r0, rows):
+    """이번 보고서 누적(1~9월) 부문 매출 − 앞 보고서 누적(1~6월) 부문 매출. 이름이 다 맞고 합이 이번 3개월 매출과 맞을 때만."""
+    nm = r0["report_nm"]
+    want = ".06" if ".09" in nm else ".03" if ".06" in nm else None
+    yr = re.search(r"\((\d{4})\.", nm)
+    if not want or not yr:
+        return None
+    pv = next((r for r in rows if r["rcept_dt"] < r0["rcept_dt"] and "(%s%s" % (yr.group(1), want) in r["report_nm"]), None)
+    if not pv:
+        return None
+    rc = "11012" if want == ".06" else "11013"
+    blob = C.api_get("fnlttXbrl.xml", {"rcept_no": pv["rcept_no"], "reprt_code": rc}, raw=True)
+    if not blob or blob[:2] != b"PK":
+        return None
+    files = XD.unzip(blob)
+    inst = [n for n in files if n.endswith(".xbrl")]
+    lab = [n for n in files if "lab-ko" in n]
+    if not inst:
+        return None
+    p = FX.from_instance(files[inst[0]], files[lab[0]] if lab else "", us=False)
+    if not p:
+        return None
+    try:
+        p = to_won(p, inst_ccy(files[inst[0]]), int(p["end"][:4]))
+    except Exception:                               # noqa: BLE001
+        pass
+    geo = v.get("seg_kind") == "지역"
+    cur = v.get("cum_segs_geo" if geo else "cum_segs") or []
+    if want == ".03":                               # 1분기 보고서는 3개월이 곧 누적
+        prev = p.get("segs") if not p.get("seg_note") else None
+    else:
+        prev = p.get("cum_segs_geo" if geo else "cum_segs")
+    if not cur or not prev:
+        return None
+    pm = dict((n, x) for n, x in prev)
+    if not all(n in pm for n, _ in cur):
+        return None
+    q = [[n, x - pm[n]] for n, x in cur]
+    tol = abs(v["rev"]) * 0.005
+    if any(x < -tol for _, x in q) or abs(sum(x for _, x in q) - v["rev"]) > max(tol, abs(v["rev"]) * 0.005):
+        return None
+    return [[n, x] for n, x in q if x > 0]
+
+
 def kr_xbrl(corp, old=None):
     res = C.api_get("list.json", {"corp_code": corp, "bgn_de": "%d0101" % (TODAY.year - 1), "pblntf_ty": "A", "page_count": 30})
     rows = [r for r in (res or {}).get("list", []) if re.search(r"(분기|반기|사업)보고서", r.get("report_nm", ""))]
@@ -260,6 +304,14 @@ def kr_xbrl(corp, old=None):
                 pass
             v["report"] = nm
             v["src"] = r0["rcept_no"]
+            if "비중" in (v.get("seg_note") or "") and (v.get("cum_segs") or v.get("cum_segs_geo")):
+                try:                                # 누적 부문 매출 − 앞 보고서 누적 부문 매출 = 이번 3개월 실제 값 (XBRL 끼리)
+                    ex = xbrl_cum_diff(v, r0, rows)
+                    if ex:
+                        v["segs"], v["seg_from"] = ex, "누적 빼기"
+                        v.pop("seg_note", None)
+                except Exception as e:              # noqa: BLE001
+                    v["seg_err"] = str(e)[:100]
             fa, ia = None, []
             if (not v.get("items") and v.get("sga")) or not v.get("segs"):
                 for a in [r for r in rows if "사업보고서" in r["report_nm"]][:1]:     # 최근 사업보고서(연간) 한 번만 받는다
@@ -551,7 +603,7 @@ def _pr_table1(tab, before):
             "op": v["op"], "tax": v["tax"], "ni": v["ni"], "items": items, "segs": [], "end": end.isoformat()}
 
 
-SEG_VER = "1"                                   # 누적 매출 표 → 앞 보고서 누적을 빼서 3개월 실제 값
+SEG_VER = "2"                                   # 누적 매출 표 → 앞 보고서 누적을 빼서 3개월 실제 값
 PR_VER = "3"                                    # 실적 발표 표 읽는 방식 — 바꾸면 그 카드를 다시 읽는다
 
 
@@ -1164,7 +1216,7 @@ def main():
                 pr, old = 0, dict(old, src=None)
             if old and old.get("docv") != DOC_VER and (len(old.get("items") or []) < 2 or len(old.get("segs") or []) < 2):
                 pr, old = 2, None                       # 매출 구분·판관비 세부가 없던 회사 — 보고서 원문에서 다시
-            elif old and "누적" in (old.get("seg_note") or "") and old.get("segv") != SEG_VER and pr is None:
+            elif old and "비중" in (old.get("seg_note") or "") and old.get("segv") != SEG_VER and pr is None:
                 pr, old = 2, dict(old, src=None)             # 누적 비중으로 어림했던 매출 구분 — 앞 보고서 누적을 빼서 실제 값으로 다시
             elif old and "xcheck" not in old and not usable(code):
                 pr, old = (2 if pr is None else pr), None   # 아직 검증 못 한 카드 — DART API 로 맞춰 보려고 다시 (그대로 건너뛰지 않게)

@@ -270,6 +270,13 @@ def from_instance(text, labtext, us, caltext=""):
 
     def find(geo):
         sg = segments(ctx, facts, set(N["rev"]), per, val["rev"], L, bd, geo, None if us else want)
+        if cum:                                   # 누적 기간 부문 매출 (원래 금액) — 앞 보고서 누적을 빼서 이번 3개월 실제 값을 구하려고 남긴다
+            try:
+                sc0 = segments(ctx, facts, set(N["rev"]), cum[0], cum[1], L, bd, geo, None if us else want)
+                if sc0:
+                    val["cum_segs_geo" if geo else "cum_segs"] = [[n, v] for n, v in sc0]
+            except Exception:                     # noqa: BLE001
+                pass
         if sg or not cum:
             return sg, ""
         sc = segments(ctx, facts, set(N["rev"]), cum[0], cum[1], L, bd, geo, None if us else want)   # 부문 매출이 누적으로만 있으면 그 비중으로 나눈다
