@@ -57,7 +57,8 @@ FUNDS = [
     ("coatue",     "코튜",             "Coatue Management",                   1135730),
     ("norges",     "노르웨이 국부펀드", "Norges Bank",                        1374170),
     ("nps",        "국민연금",         "National Pension Service",            1608046),
-    ("softbank",   "손정의(소프트뱅크)", "SB Investment Advisers",              1731509),   # 비전펀드
+    ("softbank",   "손정의(소프트뱅크)", "SoftBank Group Corp",                 1065521),   # 소프트뱅크그룹 본사 공시 (언론의 '손정의 포트폴리오')
+    ("visionfund", "소프트뱅크 비전펀드", "SB Investment Advisers",            1731509),   # 비전펀드 운용사 — 본사와 따로 공시
     ("duan",       "돤융핑",           "H&H International Investment",        1759760),
     ("tci",        "크리스 혼",        "TCI Fund Management",                 1647251),
     ("akre",       "척 아크레",        "Akre Capital Management",             1112520),
