@@ -3,6 +3,7 @@ import json, os, sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 os.chdir(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import collect as C
+C.API_KEY = C.get_key()
 cm = C.load_corp_map() if hasattr(C, "load_corp_map") else None
 for code in (os.environ.get("CODES") or "032800").split(","):
     corp = None
