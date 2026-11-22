@@ -297,25 +297,27 @@ def _us_files(cik, acc):
 
 # ------------------------------------------------------------------ 미국: 실적 발표(8-K 2.02) 손익표 — 10-Q 가 나오기 전 며칠 동안
 _MON = {m: i + 1 for i, m in enumerate(["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"])}
-PR_ROWS = [("rev", r"^(total )?(net )?(revenues?|net sales|sales)$"),
-           ("cogs", r"^(total )?cost of (revenues?|sales|goods sold)$"),
-           ("gross", r"^gross (profit|margin)$"),
-           ("rnd", r"^research and development$"),
-           ("sga", r"^(sales|selling), general and administrative$"),
-           ("sm", r"^(sales|selling) and marketing$"),
-           ("ga", r"^general and administrative$"),
-           ("opex", r"^total operating expenses$"),
-           ("op", r"^(operating income|income from operations|operating income \(loss\)|income \(loss\) from operations)$"),
-           ("pretax", r"^income( \(loss\))? before (provision for )?income taxes?$"),
-           ("tax", r"^(provision for income taxes|income tax expense|income tax provision|provision for \(benefit from\) income taxes|income tax expense \(benefit\))$"),
-           ("ni", r"^net income( \(loss\))?$")]
+# 줄 이름 → 항목 (앞에 있을수록 먼저 고른다)
+PR_ROWS = [("rev", [r"^total (net )?revenues?$", r"^total net sales and revenues?$", r"^(net )?revenues?$", r"^total net sales$", r"^net sales$", r"^sales$"]),
+           ("cogs", [r"^(total )?cost of (net )?(revenues?|sales|goods sold)( \(exclusive of .*\))?$", r"^cost of sales(, including .*)?$"]),
+           ("gross", [r"^gross (profit|margin)$"]),
+           ("rnd", [r"^research and development( expenses?)?$", r"^research, development and related( expenses?)?$"]),
+           ("sga", [r"^(operating, )?(sales|selling), general,? and administrative( expenses?)?$"]),
+           ("sm", [r"^(sales|selling) and marketing( expenses?)?$", r"^marketing and sales( expenses?)?$"]),
+           ("ga", [r"^general and administrative( expenses?)?$"]),
+           ("opex", [r"^total operating expenses$", r"^total costs and expenses$"]),
+           ("op", [r"^(total )?operating income( \(loss\))?$", r"^(income|earnings)( \(loss\))? from operations$", r"^operating (profit|earnings)$"]),
+           ("pretax", [r"^(income|earnings)( \(loss\))? before (provision for )?income tax(es)?( expense)?$", r"^pre-?tax (income|earnings)$"]),
+           ("tax", [r"^(provision for|\(?benefit from\)?) income tax(es)?$", r"^provision for \(benefit from\) income taxes$", r"^income tax (expense|provision)( \(benefit\))?$", r"^income taxes$"]),
+           ("cni", [r"^consolidated net (income|earnings)$"]),
+           ("ni", [r"^net (income|earnings) attributable to (?!non).*$", r"^net (income|earnings)( \(loss\))?$"])]
 
 
 def _cells(tr):
     out = []
     for td in re.findall(r"<t[dh][^>]*>(.*?)</t[dh]>", tr, re.S | re.I):
         t = re.sub(r"<[^>]+>", " ", td)
-        t = re.sub(r"&nbsp;|&#160;|&#xa0;", " ", t, flags=re.I).replace("&amp;", "&").replace("&#8217;", "'")
+        t = re.sub(r"&nbsp;|&#160;|&#xa0;", " ", t, flags=re.I).replace("&amp;", "&").replace("&#8217;", "'").replace("&#8212;", "—")
         t = re.sub(r"\s+", " ", t).strip()
         if t and t not in ("$", ")", "%"):
             out.append(t)
@@ -330,52 +332,63 @@ def _num(t):
     return -v if t.startswith("(") else v
 
 
+def _txt(h):
+    return re.sub(r"\s+", " ", re.sub(r"&nbsp;|&#160;|&#xa0;", " ", re.sub(r"<[^>]+>", " ", h), flags=re.I))
+
+
 def pr_income(html):
     """실적 발표 자료의 손익계산서 표 → 이번 3개월 값. 서로 맞아떨어질 때만 돌려준다."""
-    low = html.lower()
-    k = max(low.find("statements of income"), low.find("statements of operations"), low.find("statement of income"), low.find("statement of operations"))
-    if k < 0:
+    for tm in re.finditer(r"<table\b.*?</table>", html, re.S | re.I):
+        before = _txt(html[max(0, tm.start() - 2500):tm.start()]).lower()
+        if not re.search(r"statements? of (income|operations|earnings)", before[-1200:]):
+            continue
+        v = _pr_table(tm.group(0), before)
+        if v:
+            return v
+    return None
+
+
+def _pr_table(tab, before):
+    rows = [_cells(tr) for tr in re.findall(r"<tr[^>]*>(.*?)</tr>", tab, re.S | re.I)]
+    head = " ".join(" ".join(r) for r in rows[:5]) + " " + before[-600:]
+    if not re.search(r"three months|quarter ended|thirteen weeks|13 weeks|fourth quarter|third quarter|second quarter|first quarter", head, re.I):
         return None
-    seg = html[k:k + 200000]
-    t_end = seg.lower().find("</table>")
-    seg = seg[:t_end] if t_end > 0 else seg
-    head = re.sub(r"<[^>]+>", " ", seg[:6000])
-    head = re.sub(r"&nbsp;|&#160;|&#xa0;", " ", head, flags=re.I)
-    if not re.search(r"three months ended|quarter ended|three months", head, re.I):
-        return None
-    dm = re.search(r"(january|february|march|april|may|june|july|august|september|october|november|december)\s+(\d{1,2}),?\s+(\d{4})", head, re.I)
+    dm = re.search(r"(january|february|march|april|may|june|july|august|september|october|november|december)\s+(\d{1,2}),?\s+(\d{4})", " ".join(" ".join(r) for r in rows[:5]), re.I)
     if not dm:
         return None
     end = date(int(dm.group(3)), _MON[dm.group(1).lower()], int(dm.group(2)))
-    unit = 1e6 if re.search(r"in millions", head, re.I) else 1e3 if re.search(r"in thousands", head, re.I) else None
+    unit = 1e6 if re.search(r"in millions", head + before[-1500:], re.I) else 1e3 if re.search(r"in thousands", head + before[-1500:], re.I) else None
     if not unit:
         return None
-    v = {}
-    for tr in re.findall(r"<tr[^>]*>(.*?)</tr>", seg, re.S | re.I):
-        c = _cells(tr)
+    cand = {}
+    for c in rows:
         if len(c) < 2:
             continue
-        lab = re.sub(r"[:*]+$", "", c[0]).strip().lower()
+        lab = re.sub(r"\s*\(\d\)$|[:*]+$", "", c[0]).strip().lower()
         n = next((_num(x) for x in c[1:] if _num(x) is not None), None)
         if n is None:
             continue
-        for key, rx in PR_ROWS:
-            if key not in v and re.match(rx, lab):
-                v[key] = n * unit
-                break
+        for key, rxs in PR_ROWS:
+            for pri, rx in enumerate(rxs):
+                if re.match(rx, lab) and (key not in cand or pri < cand[key][0]):
+                    cand[key] = (pri, n * unit)
+    v = {k: x[1] for k, x in cand.items()}
     if "sga" not in v and ("sm" in v or "ga" in v):
         v["sga"] = v.get("sm", 0) + v.get("ga", 0)
-    need = ("rev", "cogs", "op", "tax", "ni")
-    if any(x not in v for x in need):
+    if "ni" not in v and "cni" in v:
+        v["ni"] = v["cni"]
+    if any(x not in v for x in ("rev", "cogs", "op", "tax", "ni", "pretax")):
         return None
     tol = lambda a, b: abs(a - b) <= max(1.5 * unit, abs(b) * 0.002)      # noqa: E731
     gross = v.get("gross", v["rev"] - v["cogs"])
     if not tol(v["rev"] - v["cogs"], gross):
         return None                                             # 매출 − 원가 ≠ 매출총이익
     opex = v.get("opex", gross - v["op"])
-    if not tol(gross - opex, v["op"]):
-        return None
-    if "pretax" in v and not tol(v["pretax"] - v["tax"], v["ni"]):
+    if "opex" in v and not tol(gross - opex, v["op"]):
+        return None                                             # 총이익 − 영업비용 ≠ 영업이익
+    if not (tol(v["pretax"] - v["tax"], v["ni"]) or ("cni" in v and tol(v["pretax"] - v["tax"], v["cni"]))):
+        return None                                             # 세전이익 − 법인세 ≠ 순이익
+    if opex < 0 or v["rev"] <= 0:
         return None
     items = [["연구개발비", v["rnd"]]] if v.get("rnd") else []
     if v.get("sga"):
