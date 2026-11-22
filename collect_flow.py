@@ -596,6 +596,20 @@ def xcheck_kr(code, corp, d):
     q = 0 if days > 100 else (end.month + 2) // 3
     rc = {1: "11013", 2: "11012", 3: "11014", 0: "11011", 4: "11011"}[q]
     rows = C.fetch_fs(corp, end.year, rc)
+    src = d.get("src") or ""
+    if src and (not rows or rows[0].get("rcept_no") != src):
+        # 회계연도가 1~12월이 아닌 회사(6월·9월 결산 등)는 사업연도·보고서 번호가 달력과 달라 — 카드와 같은 보고서(접수번호)를 찾아 그걸로 맞춘다
+        for yy in (end.year + 1, end.year, end.year - 1):
+            hit = None
+            for rc2 in ("11013", "11012", "11014", "11011"):
+                r2 = C.fetch_fs(corp, yy, rc2)
+                if r2 and r2[0].get("rcept_no") == src:
+                    hit = (r2, rc2)
+                    break
+            if hit:
+                rows, rc = hit
+                q = 0 if rc == "11011" else q
+                break
     if not rows:                                    # 전체 재무제표 API 가 비면 주요계정 API(fnlttSinglAcnt)로
         res = C.api_get("fnlttSinglAcnt.json", {"corp_code": corp, "bsns_year": str(end.year), "reprt_code": rc}) or {}
         al = res.get("list") or []
