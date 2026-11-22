@@ -156,6 +156,31 @@ UL_VER = 3                                         # 비상장(감사보고서) 
 VER = 9                                            # 계산 방식이 바뀌면 올려서 다시 계산
 
 
+def inst_ccy(text):
+    """XBRL 원문 금액이 어느 통화인가 — 달러로 공시하는 국내 회사(두산밥캣·아남전자·엑세스바이오 등)"""
+    units = dict((m.group(1), m.group(2).upper()) for m in re.finditer(r'<(?:\w+:)?unit\s+id="([^"]+)"\s*>\s*<(?:\w+:)?measure>\s*iso4217:(\w+)', text))
+    cnt = {}
+    for m in re.finditer(r'unitRef="([^"]+)"', text):
+        c = units.get(m.group(1))
+        if c:
+            cnt[c] = cnt.get(c, 0) + 1
+    return max(cnt, key=cnt.get) if cnt else "KRW"
+
+
+def to_won(v, ccy, year):
+    """달러 숫자를 원화로 — 실적 탭(collect.py)과 같은 그해 평균 환율"""
+    if ccy != "USD":
+        return v
+    r = C.fx_avg(year)
+    for k, x in list(v.items()):
+        if isinstance(x, (int, float)) and not isinstance(x, bool):
+            v[k] = x * r
+        elif k in ("segs", "items") and isinstance(x, list):
+            v[k] = [[n, y * r] for n, y in x]
+    v["ccy_note"] = "달러 공시 · %d년 평균 환율 %s원" % (year, format(round(r), ","))
+    return v
+
+
 def kr_xbrl(corp, old=None):
     res = C.api_get("list.json", {"corp_code": corp, "bgn_de": "%d0101" % (TODAY.year - 1), "pblntf_ty": "A", "page_count": 30})
     rows = [r for r in (res or {}).get("list", []) if re.search(r"(분기|반기|사업)보고서", r.get("report_nm", ""))]
@@ -176,6 +201,10 @@ def kr_xbrl(corp, old=None):
             continue
         v = FX.from_instance(files[inst[0]], files[lab[0]] if lab else "", us=False, caltext=files[cal[0]] if cal else "")
         if v:
+            try:
+                v = to_won(v, inst_ccy(files[inst[0]]), int(v["end"][:4]))
+            except Exception:                       # noqa: BLE001
+                pass
             v["report"] = nm
             v["src"] = r0["rcept_no"]
             fa, ia = None, []
@@ -559,12 +588,52 @@ def ext_check(code, d, m, days):
     return ("ok", "실적 자료와 일치") if _same(d, same[0]) else ("diff", "실적 자료와 다름 (매출 %s vs %s)" % (d["rev"], same[0]["rev"]))
 
 
+SEC_REV = ["Revenues", "RevenueFromContractWithCustomerExcludingAssessedTax", "RevenueFromContractWithCustomerIncludingAssessedTax",
+           "SalesRevenueNet", "RevenuesNetOfInterestExpense", "SalesRevenueGoodsNet", "RegulatedAndUnregulatedOperatingRevenue",
+           "ElectricUtilityRevenue", "RevenuesExcludingInterestAndDividends", "OperatingLeasesIncomeStatementLeaseRevenue"]
+SEC_NI = ["NetIncomeLoss", "ProfitLoss", "NetIncomeLossAvailableToCommonStockholdersBasic"]
+
+
+def sec_check(code, d):
+    """미국: SEC 가 정리한 XBRL 사실표(companyfacts)에서 같은 기간(시작·끝 날짜)의 매출·영업이익·순이익을 찾아 카드와 맞춰 본다.
+    실적 탭은 순이익을 '전체(소수주주 몫 포함)'로, 카드는 '지배주주 몫'으로 적는 등 고르는 줄이 달라 어긋나는 회사가 있어서."""
+    cik = (jl(os.path.join("data", "us", code + ".json"), {}) or {}).get("cik")
+    cik = cik[0] if isinstance(cik, list) else cik
+    if not cik or not d.get("start") or not d.get("end"):
+        return False
+    f = U.get_json(U.SEC_FACTS % str(int(cik)).zfill(10))
+    g = ((f or {}).get("facts") or {}).get("us-gaap") or {}
+
+    def vals(tags):
+        out = []
+        for t in tags:
+            for u in ((g.get(t) or {}).get("units") or {}).get("USD", []):
+                if u.get("start") == d["start"] and u.get("end") == d["end"]:
+                    out.append(u["val"] / 1e6)
+        return out
+    near = lambda a, b, tol: abs(a - b) <= max(abs(b) * tol, 0.6)      # noqa: E731
+    rv = vals(SEC_REV)
+    if not rv or not any(near(d["rev"], x, 0.005) for x in rv):
+        return False
+    ov = vals(["OperatingIncomeLoss"])
+    if ov and not any(near(d["op"], x, 0.01) for x in ov):
+        return False
+    nv = vals(SEC_NI)
+    return bool(nv) and any(near(d["ni"], x, 0.01) for x in nv)
+
+
 def verify(code, d, m, days):
     """올리기 전 검증 — 서로 다른 두 출처가 같은 숫자를 말할 때만 통과. → (통과?, 까닭)"""
     s, why = ext_check(code, d, m, days)
     xc = d.get("xcheck") or {}
     if s == "ok":
         return True, why
+    if m == "US" and not d.get("pr"):
+        try:
+            if sec_check(code, d):
+                return True, "SEC 사실표(companyfacts)와 같은 기간 매출·영업이익·순이익 일치"
+        except Exception:                           # noqa: BLE001
+            pass
     if m == "US" and d.get("pr"):                   # 10-Q 전 실적 발표 — 공시 손익표가 매출−원가=총이익, 총이익−영업비용=영업이익, 세전−법인세=순이익으로 맞아떨어진 것만 여기 온다
         return True, "실적 발표 손익표 검산 일치 (10-Q 나오면 다시 대조)"
     if xc.get("rev") and _same(d, xc):              # 실적 탭 자료가 아직 없거나 다르면 DART API(공식 재무제표)와 맞는지
@@ -579,6 +648,17 @@ def verify(code, d, m, days):
 
 
 HOLD = {}
+PREV_HOLD = None
+
+
+def retry_held(code, pr, old):
+    """지난번 검증을 못 넘어 보류된 회사는 매번 다시 받아 (고친 방식으로) 다시 검증한다"""
+    global PREV_HOLD
+    if PREV_HOLD is None:
+        PREV_HOLD = set(((jl(os.path.join("data", "flow", "_hold.json"), {}) or {}).get("items") or {}).keys())
+    if code in PREV_HOLD:
+        return (1 if pr is None else pr), (dict(old, src=None) if old else old)
+    return pr, old
 XTAB = {}                                               # 카드·DART API 는 맞는데 실적 탭만 다른 회사 (실적 탭 점검용)
 
 
@@ -933,6 +1013,7 @@ def main():
                 continue
             old = jl(os.path.join(OUT, code + ".json"))
             pr = need(code, old, info["corp_code"] in rk, rk.get(info["corp_code"]))
+            pr, old = retry_held(code, pr, old)
             if old and old.get("docv") != DOC_VER and (len(old.get("items") or []) < 2 or len(old.get("segs") or []) < 2):
                 pr, old = 2, None                       # 매출 구분·판관비 세부가 없던 회사 — 보고서 원문에서 다시
             elif old and "xcheck" not in old and not usable(code):
@@ -942,6 +1023,7 @@ def main():
         for i, c in enumerate(ul):
             old = jl(os.path.join(OUT, c["code"] + ".json"))
             pr = need(c["code"], old, c["code"] in rk, rk.get(c["code"]))
+            pr, old = retry_held(c["code"], pr, old)
             if old and old.get("uver") != UL_VER:
                 pr, old = -1, None                       # 비상장은 탭 회사 수가 적어 먼저 다시 읽는다
             if pr is not None:
@@ -978,6 +1060,7 @@ def main():
                 continue
             old = jl(os.path.join(OUT, t + ".json"))
             pr = need(t, old, cik in ru)
+            pr, old = retry_held(t, pr, old)
             if old and old.get("usver") != US_VER and (len(old.get("items") or []) < 2 or items_off(old)):
                 pr, old = 2, None                       # 영업비용 세부가 없던 회사 — 새 방식으로 다시
             if pr is not None:
