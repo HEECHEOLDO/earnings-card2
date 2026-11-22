@@ -353,10 +353,12 @@ def _pr_table(tab, before):
     head = " ".join(" ".join(r) for r in rows[:5]) + " " + before[-600:]
     if not re.search(r"three months|quarter ended|thirteen weeks|13 weeks|fourth quarter|third quarter|second quarter|first quarter", head, re.I):
         return None
-    dm = re.search(r"(january|february|march|april|may|june|july|august|september|october|november|december)\s+(\d{1,2}),?\s+(\d{4})", " ".join(" ".join(r) for r in rows[:5]), re.I)
-    if not dm:
+    ht = " ".join(" ".join(r) for r in rows[:6])
+    dm = re.search(r"(january|february|march|april|may|june|july|august|september|october|november|december)\s+(\d{1,2})\b", ht, re.I)
+    ym = re.search(r"\b(20\d\d)\b", ht[dm.end():]) if dm else None       # 'October 25, | October 26,' 다음 줄에 '2026 | 2025' 로 나뉜 표도 있다
+    if not dm or not ym:
         return None
-    end = date(int(dm.group(3)), _MON[dm.group(1).lower()], int(dm.group(2)))
+    end = date(int(ym.group(1)), _MON[dm.group(1).lower()], int(dm.group(2)))
     unit = 1e6 if re.search(r"in millions", head + before[-1500:], re.I) else 1e3 if re.search(r"in thousands", head + before[-1500:], re.I) else None
     if not unit:
         return None
