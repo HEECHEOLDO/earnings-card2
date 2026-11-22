@@ -140,7 +140,7 @@
   var SEG_KO = [
     [/^government( operating)?$/i, '정부 고객'],
     [/^(product and service|service|hotel|product), other$|^other( revenues?| products?( and services)?| services?| americas)?$|^all other segments?$/i, '기타'],
-    [/^china$/i, '중국'], [/^united kingdom$/i, '영국'], [/^korea, republic of$/i, '한국'], [/^taiwan$/i, '대만'], [/^germany$/i, '독일'], [/^mexico$/i, '멕시코'], [/^japan$/i, '일본'],
+    [/^china$/i, '중국'], [/^china \(including hong kong\)$/i, '중국·홍콩'], [/^united kingdom$/i, '영국'], [/^korea, republic of$/i, '한국'], [/^taiwan$/i, '대만'], [/^germany$/i, '독일'], [/^mexico$/i, '멕시코'], [/^japan$/i, '일본'],
     [/^canada$/i, '캐나다'], [/^france$/i, '프랑스'], [/^india$/i, '인도'], [/^singapore$/i, '싱가포르'], [/^ireland$/i, '아일랜드'], [/^netherlands$/i, '네덜란드'], [/^switzerland$/i, '스위스'],
     [/^united states|^u\.?\s?s\.?$/i, '미국'], [/^north america$/i, '북미'], [/^latin america$/i, '중남미'], [/^(emea|europe, middle east and africa)$/i, '유럽·중동·아프리카'], [/^europe$/i, '유럽'],
     [/^asia( pacific)?$/i, '아시아'], [/^americas$/i, '미주'], [/^international$/i, '해외'],

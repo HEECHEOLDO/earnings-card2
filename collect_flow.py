@@ -603,9 +603,13 @@ def _pr_table1(tab, before):
             "op": v["op"], "tax": v["tax"], "ni": v["ni"], "items": items, "segs": [], "end": end.isoformat()}
 
 
+_MON3 = r"(jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)[a-z]*\.?"
+
+
 def pr_segs(html, rev, end):
-    """실적 발표 자료의 부문·제품별 매출 표 → 이번 3개월 값. 합이 손익표 매출과 딱 맞을 때만 (지어내지 않는다).
-    rev 는 달러. 첫 숫자 칸이 이번 분기인지 머리줄 날짜로 확인한다."""
+    """실적 발표 자료의 부문·제품·지역별 매출 표 → 이번 3개월 값. 합이 손익표 매출과 딱 맞을 때만 (지어내지 않는다).
+    rev 는 달러. 첫 숫자 칸이 이번 분기여야 한다 — 머리줄의 첫 날짜가 분기 끝날이거나, 첫 기간 말이 3개월·분기일 것.
+    십억 달러로 반올림한 표는 쓰지 않는다 (백만·천 달러 표만)."""
     best = None
     for tm in re.finditer(r"<table\b.*?</table>", html, re.S | re.I):
         tab = tm.group(0)
@@ -618,31 +622,34 @@ def pr_segs(html, rev, end):
             continue
         if re.search(r"statements? of (consolidated )?(income|operations|earnings)|balance sheets?|cash flows?", before[-400:] + " " + ht[:300], re.I):
             continue
-        dm = re.search(r"(january|february|march|april|may|june|july|august|september|october|november|december)\s+(\d{1,2})\b", ht, re.I)
+        per = re.search(r"three months|thirteen weeks|13 weeks|quarter|six months|nine months|twelve months|twenty-six weeks|thirty-nine weeks|52 weeks|year ended|\bq[1-4]\b|\bfy\s?20\d\d\b", ht, re.I)
+        if not per or re.match(r"six|nine|twelve|twenty|thirty|52|year|fy", per.group(0), re.I):
+            continue                                   # 첫 칸이 누적·연간이면 안 된다
+        dm = re.search(r"\b" + _MON3 + r"\s+(\d{1,2})\b", ht, re.I)
         ym = re.search(r"\b(20\d\d)\b", ht[dm.end():]) if dm else None
-        if not dm or not ym:
-            continue
-        try:
-            if date(int(ym.group(1)), _MON[dm.group(1).lower()], int(dm.group(2))).isoformat() != end:
-                continue                               # 첫 칸이 이번 분기 끝날이 아니면 (누적·전년 칸일 수 있다)
-        except ValueError:
-            continue
-        if re.search(r"nine months|six months|twelve months|year ended|fiscal year", ht[:dm.start()], re.I):
-            continue
+        if dm and ym:
+            try:
+                d0 = date(int(ym.group(1)), _MON[next(m for m in _MON if m.startswith(dm.group(1).lower()[:3]))], int(dm.group(2)))
+            except (ValueError, StopIteration):
+                continue
+            if abs((d0 - date.fromisoformat(end)).days) > 3:
+                continue                               # 첫 날짜가 이번 분기 끝날이 아니다
         hb = ht + " " + before[-800:]
+        if re.search(r"\bbillions\b", ht, re.I):
+            continue
         unit = 1e6 if re.search(r"\bmillions\b", hb, re.I) else 1e3 if re.search(r"\bthousands\b|\$\s?000\b|\(000", hb, re.I) else None
         if not unit:
             continue
         lines = []
         for c in rows:
-            if len(c) < 2 or _num(c[0]) is not None:
+            if len(c) < 2 or _num(c[0]) is not None or re.search(r"%|percent|growth|change", c[0], re.I):
                 continue
             n = next((_num(x) for x in c[1:] if _num(x) is not None), None)
             if n is None:
                 continue
-            lines.append((re.sub(r"\s*\(\d\)$|[:*]+$", "", c[0]).strip(), n * unit))
-        tol = max(1.5 * unit, abs(rev) * 0.001)
-        for i in range(len(lines)):                    # 연속한 줄 묶음 중 합이 매출과 맞는 것 (합계 줄 바로 위)
+            lines.append((re.sub(r"\s*\(\d\)$|\s+\d$|[:*]+$", "", c[0]).strip(), n * unit))
+        tol = max(1.5 * unit, abs(rev) * 0.0002)
+        for i in range(len(lines)):                    # 연속한 줄 묶음 중 합이 매출과 맞고, 바로 아래 합계 줄도 매출과 같은 것
             acc, grp = 0.0, []
             for j in range(i, len(lines)):
                 nm, x = lines[j]
@@ -651,10 +658,17 @@ def pr_segs(html, rev, end):
                 acc += x; grp.append([nm, x])
                 if len(grp) >= 2 and abs(acc - rev) <= tol and all(v > 0 for _, v in grp):
                     nxt = lines[j + 1] if j + 1 < len(lines) else None
-                    closed = nxt and abs(nxt[1] - rev) <= tol            # 바로 아래 합계 줄이 매출과 같다
-                    if closed and (best is None or len(grp) > len(best)):
-                        best = grp
+                    if nxt and abs(nxt[1] - rev) <= tol and (best is None or _seg_score(grp) > _seg_score(best)):
+                        best = list(grp)
     return best
+
+
+_GEO = r"united states|u\.s\.|americas?|europe|emea|asia|china|japan|taiwan|korea|international|domestic|foreign|other countries|rest of (the )?world|canada|mexico|india|singapore|germany|united kingdom|apac|latin"
+
+
+def _seg_score(g):
+    geo = sum(1 for n, _ in g if re.search(_GEO, n, re.I)) >= max(1, len(g) // 2)
+    return (0 if geo else 1, len(g))
 
 
 SEG_VER = "2"                                   # 누적 매출 표 → 앞 보고서 누적을 빼서 3개월 실제 값
@@ -685,14 +699,18 @@ def us_pr(cik, rc, old):
             v = pr_income(htmls[n])
             if not v:
                 continue
-            for n2 in docs[:5]:                         # 부문·제품별 매출 — 손익표가 든 자료나 함께 낸 CFO 설명 자료에서
+            best = None
+            for n2 in docs[:5]:                         # 부문·제품별 매출 — 손익표가 든 자료나 함께 낸 설명·보충 자료에서 (사업 구분 > 지역)
                 if n2 not in htmls:
                     htmls[n2] = (U.get(base + n2) or b"").decode("utf-8", "replace")
                 sg = pr_segs(htmls[n2], v["rev"], v["end"])
-                if sg:
-                    v["segs"] = sg
-                    v["seg_from"] = "실적발표"
-                    break
+                if sg and (best is None or _seg_score(sg) > _seg_score(best)):
+                    best = sg
+            if best:
+                v["segs"] = best
+                v["seg_from"] = "실적발표"
+                if _seg_score(best)[0] == 0:
+                    v["seg_kind"] = "지역"
             end = date.fromisoformat(v["end"])
             try:
                 oe = date.fromisoformat(old["end"]) if old else None
