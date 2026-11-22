@@ -239,14 +239,49 @@ def kr_xbrl(corp, old=None):
                     v["mix_err"] = str(e)[:120]
             if (not v.get("items") and v.get("sga")) or not v.get("segs"):
                 try:                                # XBRL 에 세부가 없는 작은 회사 — 보고서 원문(주석 표)에서
-                    doc_fallback(v, r0, [r for r in rows if "사업보고서" in r["report_nm"]][:1], fa, ia)
+                    doc_fallback(v, r0, [r for r in rows if "사업보고서" in r["report_nm"]][:1], fa, ia, rows)
                 except Exception as e:              # noqa: BLE001
                     v["doc_err"] = str(e)[:120]
             return v
     return None
 
 
-def doc_fallback(v, r0, annual, fa, ia):
+def prev_cum_segs(r0, rows, names):
+    """이번 보고서 매출 표가 누적(1~9월)뿐일 때 — 바로 앞 보고서(1~6월 누적)의 같은 표를 찾아 빼면 이번 3개월 실제 값이 된다.
+    → {이름: 앞 보고서 누적 금액} 또는 None"""
+    import flow_audit as FA
+    import probe_audit as P
+    nm = r0["report_nm"]
+    want = ".06" if ".09" in nm else ".03" if ".06" in nm else None
+    if not want:
+        return None
+    yr = re.search(r"\((\d{4})\.", nm)
+    pv = next((r for r in rows if r["rcept_dt"] < r0["rcept_dt"] and want in r["report_nm"] and yr and "(%s%s" % (yr.group(1), want) in r["report_nm"]), None)
+    if not pv:
+        return None
+    rc = "11012" if want == ".06" else "11013"
+    blob = C.api_get("fnlttXbrl.xml", {"rcept_no": pv["rcept_no"], "reprt_code": rc}, raw=True)
+    if not blob or blob[:2] != b"PK":
+        return None
+    files = XD.unzip(blob)
+    inst = [n for n in files if n.endswith(".xbrl")]
+    lab = [n for n in files if "lab-ko" in n]
+    if not inst:
+        return None
+    pvv = FX.from_instance(files[inst[0]], files[lab[0]] if lab else "", us=False)
+    if not pvv:
+        return None
+    pcum = pvv.get("cum_rev") or pvv.get("rev")              # 1분기 보고서는 3개월이 곧 누적
+    doc = P.fetch_doc(pv["rcept_no"])
+    tabs = FA._tables(doc) if doc else []
+    REV_H = re.compile(r"^(매출액|영업수익|수익|매출)(합계|계)?$")
+    rv = FA._breakdown(tabs, pcum, REV_H, FA.REV_KEEP, FA.REV_DROP) if tabs and pcum else None
+    sg = FA._segments([x for x in rv if not FA.REV_DROP.search(x[0])], pcum) if rv else []
+    got = {n: x for n, x in sg}
+    return got if got and set(names) <= set(got) else None
+
+
+def doc_fallback(v, r0, annual, fa, ia, rows=None):
     """보고서 원문의 주석 표 — 합계가 손익계산서 숫자와 맞는 표만 쓴다.
     1) 이번 분기 보고서 원문에서 이번 분기 숫자와 맞는 표 → 그대로
     2) 없으면 최근 사업보고서 원문에서 연간 숫자와 맞는 표 → 그 비중으로 이번 분기를 나눈다"""
@@ -278,8 +313,21 @@ def doc_fallback(v, r0, annual, fa, ia):
         rv = FA._breakdown(tabs, v["cum_rev"], REV_H, FA.REV_KEEP, FA.REV_DROP)
         sg = FA._segments([x for x in rv if not FA.REV_DROP.search(x[0])], v["cum_rev"]) if rv else []
         if sg:
-            k = v["rev"] / v["cum_rev"]
-            v["segs"], v["seg_note"], want_s = [[n, x * k] for n, x in sg], "매출 종류는 %s 누적 비중" % v.get("cum_lab", ""), False
+            exact = None
+            try:                                    # 앞 보고서 누적을 빼서 이번 3개월 실제 값 (어림하지 않는다)
+                pc = prev_cum_segs(r0, rows or [], [n for n, _ in sg])
+                if pc:
+                    q = [[n, x - pc[n]] for n, x in sg]
+                    if all(x >= -abs(v["rev"]) * 0.002 for _, x in q) and abs(sum(x for _, x in q) - v["rev"]) <= abs(v["rev"]) * 0.005:
+                        exact = [[n, max(0.0, x)] for n, x in q if x > 0]
+            except Exception as e:                  # noqa: BLE001
+                v["seg_err"] = str(e)[:100]
+            if exact:
+                v["segs"], want_s = exact, False
+                v["seg_from"] = "누적 빼기"
+            else:
+                k = v["rev"] / v["cum_rev"]
+                v["segs"], v["seg_note"], want_s = [[n, x * k] for n, x in sg], "매출 종류는 %s 누적 비중" % v.get("cum_lab", ""), False
     if not (want_i or want_s) or not annual:
         return
     a = annual[0]
@@ -450,6 +498,7 @@ def _pr_table1(tab, before):
             "op": v["op"], "tax": v["tax"], "ni": v["ni"], "items": items, "segs": [], "end": end.isoformat()}
 
 
+SEG_VER = "1"                                   # 누적 매출 표 → 앞 보고서 누적을 빼서 3개월 실제 값
 PR_VER = "3"                                    # 실적 발표 표 읽는 방식 — 바꾸면 그 카드를 다시 읽는다
 
 
@@ -867,6 +916,7 @@ def work_kr(job):
         if d:
             d["unit"] = "억원"
             d["docv"] = DOC_VER
+            d["segv"] = SEG_VER
             if mk == "UL":
                 d["uver"] = UL_VER
         return job, d, why, C._call_count - c0, time.time() - t0
@@ -1022,6 +1072,8 @@ def main():
             pr, old = retry_held(code, pr, old)
             if old and old.get("docv") != DOC_VER and (len(old.get("items") or []) < 2 or len(old.get("segs") or []) < 2):
                 pr, old = 2, None                       # 매출 구분·판관비 세부가 없던 회사 — 보고서 원문에서 다시
+            elif old and "누적" in (old.get("seg_note") or "") and old.get("segv") != SEG_VER and pr is None:
+                pr, old = 2, dict(old, src=None)             # 누적 비중으로 어림했던 매출 구분 — 앞 보고서 누적을 빼서 실제 값으로 다시
             elif old and "xcheck" not in old and not usable(code):
                 pr, old = (2 if pr is None else pr), None   # 아직 검증 못 한 카드 — DART API 로 맞춰 보려고 다시 (그대로 건너뛰지 않게)
             if pr is not None:
