@@ -761,23 +761,26 @@
     function q(v){ return Math.round((v+m)*255).toString(16).padStart(2,'0'); }
     return '#'+q(r)+q(g)+q(b);
   }
+  // 비중이 클수록 고른 색 그대로, 작을수록 바탕 쪽으로 옅어진다 (밝은 바탕: 밝게 · 어두운 바탕: 어둡게)
   function ramp(base, n, rows) {
     var c = hexToHsl(base);
-    // 무채색을 고르면 채도를 올리지 않고 회색 계조로 간다
-    var sat = c.s < 8 ? 0 : Math.min(Math.max(c.s, 22), 95);
-    var D = TOKENS.card.donut;
-    // 고른 색의 밝기를 1위 조각에 반영한다.
-    // (검정을 고르면 검게, 밝은 색을 고르면 밝게)
-    var L0 = Math.max(D.lightMin, Math.min(D.lightMaxStart, c.l - D.lightLift));
-    var L1 = Math.min(D.lightCap, L0 + D.lightSpan);
-    var out = [];
-    for (var i = 0; i < n; i++) {
-      var t = n === 1 ? 0 : i/(n-1);
-      out.push(hslToHex(c.h, sat, L0 + (L1 - L0)*t));
-    }
-    // '기타'는 계열에서 빼서 무채색으로
-    rows.forEach(function (r, i) { if (r.etc) out[i] = TOKENS.card.etc; });
+    var sat = c.s < 8 ? 0 : Math.min(Math.max(c.s, 22), 95);      // 무채색을 고르면 회색 계조
+    var dark = window.CardTheme && CardTheme.isDark();
+    var m = rows.filter(function (r) { return !r.etc; }).length, k = 0, out = [];
+    var L0 = dark ? Math.max(45, Math.min(68, c.l)) : Math.max(16, Math.min(60, c.l));
+    var L1 = dark ? Math.max(32, L0 - 17) : Math.min(88, L0 + 38);
+    rows.forEach(function (r) {
+      if (r.etc) { out.push(TOKENS.card.etc); return; }           // '기타'는 계열에서 빼서 무채색으로
+      var t = m <= 1 ? 0 : k / (m - 1); k++;
+      out.push(hslToHex(c.h, sat * (dark ? 1 - 0.2 * t : 1), L0 + (L1 - L0) * t));
+    });
+    while (out.length < n) out.push(TOKENS.card.etc);
+    state.rawCol = !!dark;                                          // 다크 변환을 거치지 않고 이 색 그대로 칠한다
     return out;
+  }
+  function fillSlice(ctx, col, etc) {
+    if (state.rawCol && !etc && window.CardTheme) CardTheme.raw(function () { ctx.fillStyle = col; })();
+    else ctx.fillStyle = col;
   }
 
   /* ============================================================
@@ -909,7 +912,7 @@
     rows.forEach(function (r, i) {
       var x = x0 + i * (bw + gap), h = Math.max(6, hMax * r.pct / mx), y = base - h;
       var col = state.colors[state.rows.indexOf(r)] || T.ink;
-      ctx.fillStyle = col;
+      fillSlice(ctx, col, r.etc);
       ctx.beginPath(); var rr = Math.min(12, bw / 4);
       ctx.moveTo(x, base); ctx.lineTo(x, y + rr); ctx.arcTo(x, y, x + rr, y, rr); ctx.lineTo(x + bw - rr, y); ctx.arcTo(x + bw, y, x + bw, y + rr, rr); ctx.lineTo(x + bw, base); ctx.closePath(); ctx.fill();
       // 로고 — 막대 안 위쪽 (낮은 막대면 막대 위)
@@ -958,7 +961,7 @@
       ctx.arc(cx, cy, R, ang, ang + sweep, false);
       ctx.arc(cx, cy, r0, ang + sweep, ang, true);
       ctx.closePath();
-      ctx.fillStyle = colors[i];
+      fillSlice(ctx, colors[i], r.etc);
       ctx.fill();
       ang += sweep;
     });
@@ -1218,6 +1221,7 @@
     if (_glowAgain) { _glowAgain = false; drawCard1(ctx); }      // 빛 자리가 바뀌었으면 바탕부터 다시
   }
   function drawCard1(ctx) {
+    if (state.rows && state.rows.length) state.colors = ramp(document.getElementById('color-base').value, state.rows.length, state.rows);   // 밝게·어둡게 바꿔도 맞는 색
     var T = TOKENS.card, S = T.safe;
     var CX = S.left, CWID = CW - S.left - S.right;
 
