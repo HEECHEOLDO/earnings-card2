@@ -541,6 +541,7 @@ def collect_quarterly(corp_code, latest_year, years=None):
     아직 안 나온 보고서는 자연스럽게 None이 되어 건너뛴다.
     """
     out = []
+    votes = {}                                       # 결산월 추정: 보고서 접수일 → 그 보고서 기간이 끝난 달 → 회계연도 끝 달
     for y in (years or range(latest_year - 3, latest_year + 1)):
         cum = {}
         fin_tags = set()
@@ -549,6 +550,9 @@ def collect_quarterly(corp_code, latest_year, years=None):
             fs = fetch_fs(corp_code, y, code)
             if not fs:
                 continue
+            fe = fy_end_from(fs[0].get("rcept_no"), tag)
+            if fe:
+                votes[fe] = votes.get(fe, 0) + 1
             use_cum = tag != "YEAR"
             rv = pick_account(fs, "rev", cumulative=use_cum)
             if rv is None and _GROSS_OK.get(corp_code):          # 연간에서 맞는지 확인된 금융사만
@@ -577,10 +581,12 @@ def collect_quarterly(corp_code, latest_year, years=None):
         def grab(tag, k):
             return cum.get(tag, {}).get(k)
 
+        # 결산월이 12월이 아니면 같은 사업연도 번호 안의 3분기와 반기가 서로 다른 회계연도라 누적끼리 빼면 안 된다
+        nondec = bool(votes) and max(votes, key=votes.get) != 12
         steps = [
             (1, lambda k: grab("Q1", k)),
             (2, lambda k: grab("HALF3M", k) if "HALF3M" in cum else diff(grab("HALF", k), grab("Q1", k))),
-            (3, lambda k: grab("Q33M", k) if "Q33M" in cum else diff(grab("Q3", k), grab("HALF", k))),
+            (3, lambda k: grab("Q33M", k) if "Q33M" in cum else (None if nondec else diff(grab("Q3", k), grab("HALF", k)))),
             (4, lambda k: diff(grab("YEAR", k), grab("Q3", k))),
         ]
         for q, fn in steps:
@@ -590,7 +596,39 @@ def collect_quarterly(corp_code, latest_year, years=None):
             out.append({"y": y, "q": q, "rev": eok(rev), "op": eok(op), "ni": eok(ni)})
             log("  %d.%dQ  매출 %s억  영업이익 %s억" % (y, q, f"{eok(rev):,.0f}" if rev is not None else "-", f"{eok(op):,.0f}"))
 
+    fe = max(votes, key=votes.get) if votes else 12
+    if fe != 12:
+        # DART 사업연도 번호는 그 보고서 기간이 끝나는 해다 (6월 결산: 1분기 7~9월 → 그해, 3분기 1~3월 → 그해).
+        # 회계 분기 번호 대신 달력 분기로 바꿔 적는다 — 안 그러면 6월 결산 회사의 7~9월이 '1분기' 자리에 들어간다.
+        for r in out:
+            m = (fe + 3 * r["q"] - 1) % 12 + 1
+            r["fq"], r["q"] = r["q"], (m - 1) // 3 + 1
+        log("  · 결산월 %d월 — 분기를 달력 기준으로 바꿔 적음" % fe)
+        out.sort(key=lambda r: (r["y"], r["q"]))
+    LAST_FY_END[corp_code] = fe
     return out[-QUARTERS:]
+
+
+LAST_FY_END = {}
+
+
+def fy_end_from(rcept_no, tag):
+    """접수일로 보고서 기간이 끝난 달을 짐작 → 회계연도 끝 달 (12 = 12월 결산). 분기·반기는 45~60일, 사업보고서는 90일 안에 낸다."""
+    try:
+        d = datetime.strptime(str(rcept_no)[:8], "%Y%m%d")
+    except Exception:      # noqa: BLE001
+        return None
+    lim = 100 if tag == "YEAR" else 75
+    for back in range(0, 13):
+        mm = (d.month - back - 1) % 12 + 1
+        if mm % 3:
+            continue
+        yy = d.year - (1 if d.month - back <= 0 else 0)
+        end = datetime(yy, mm, 28)
+        if 0 < (d - end).days <= lim:
+            off = {"Q1": 3, "HALF": 6, "Q3": 9, "YEAR": 0}[tag]
+            return (mm - off - 1) % 12 + 1
+    return None
 
 
 def collect_company(code, corp_map, latest_year, alias=None):
@@ -617,7 +655,7 @@ def collect_company(code, corp_map, latest_year, alias=None):
         log("  은행·보험·증권·금융지주는 이 API로 안 나올 수 있습니다.")
         return None, "재무 데이터 없음(금융업?)"
 
-    worst = check_quarters_vs_annual(annual, quarterly)
+    worst = check_quarters_vs_annual(annual, quarterly) if LAST_FY_END.get(corp_code, 12) == 12 else None   # 결산월이 다르면 달력 분기 합 ≠ 회계연도
 
     split = adjust_for_splits(annual)
     if split:
@@ -638,6 +676,7 @@ def collect_company(code, corp_map, latest_year, alias=None):
         "annual": annual,
         "quarterly": quarterly,
         "q_method": "strict",          # 앞 보고서가 있을 때만 분기를 만든 파일 (fix_quarters.py 가 건너뛴다)
+        "fy_end": LAST_FY_END.get(corp_code, 12),   # 결산월 (12 가 아니면 분기는 달력 기준으로 바꿔 적은 것)
         "_worst_gap": worst,
     }, None
 
@@ -665,6 +704,9 @@ def quick_update(code, corp_map, latest_year):
         return None
     log("\n=== %s (%s) === [빠른 갱신: %d년 분기만]" % (old.get("name") or info["name"], code, latest_year))
     qs = collect_quarterly(info["corp_code"], latest_year, years=[latest_year])
+    if LAST_FY_END.get(info["corp_code"], 12) != 12 and old.get("fy_end") != LAST_FY_END.get(info["corp_code"]):
+        log("  · 결산월이 %d월 — 분기를 달력 기준으로 다시 맞추려고 전체를 새로 받습니다" % LAST_FY_END[info["corp_code"]])
+        return None
     new_cur = [r for r in qs if r.get("y") == latest_year]
     old_cur = [r for r in old.get("quarterly") or [] if r.get("y") == latest_year]
     if len(new_cur) < len(old_cur):
