@@ -104,11 +104,17 @@ def unjump(rows):
     return [(d, v) for d, v in out]
 
 
-def chart_of(rows, base):
+def chart_of(rows, base, code=None):
     rows = unjump(rows)
     d0 = (base - timedelta(days=CHART_DAYS)).strftime("%Y%m%d")
     w0 = years_back(base, CHART_YEARS).strftime("%Y%m%d")
     daily = [[int(d), round(v, 2) if v % 1 else int(v)] for d, v in rows if d >= d0]
+    if code:                                  # 하루만 틀린 종가(장 마감 뒤 거래 가격 섞임 등)는 거래소 정규장 종가로 (fix_close.py)
+        try:
+            import fix_close
+            fix_close.fix(code, daily)
+        except Exception:                     # noqa: BLE001
+            pass
     weekly, last_key = [], None
     for d, v in rows:
         if d < w0:
@@ -137,7 +143,7 @@ def write_chart(code, rows, base):
         return False
     os.makedirs(CHART_DIR, exist_ok=True)
     with open(os.path.join(CHART_DIR, code + ".json"), "w", encoding="utf-8") as f:
-        json.dump(chart_of(rows, base), f, separators=(",", ":"))
+        json.dump(chart_of(rows, base, code), f, separators=(",", ":"))
     return True
 
 
