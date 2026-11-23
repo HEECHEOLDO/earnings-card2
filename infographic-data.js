@@ -1521,7 +1521,8 @@
     $('c-reset').addEventListener('click', function () { if (!last) return; delete edits[last.key]; last.o.h1 = last.auto.h; last.o.src = last.auto.src; fillInputs(); draw(); });
     $('c-dl').addEventListener('click', function () {
       if (!last) return;
-      window.CARD_RATIO_CAP = /^(radial|waffle|compare)$/.test(last.fn) ? 1 : 0;   // 원·네모 칸 그림은 넓은 비율에서도 가로로 펼치지 않는다
+      window.CARD_RATIO_CAP = /^(radial|waffle|compare)$/.test(last.fn) ? 1 : 0;
+      window.CARD_RATIO_FLEX = last.fn === 'bars';   // 가로 막대는 넓은 폭에 맞춰 막대만 길게   // 원·네모 칸 그림은 넓은 비율에서도 가로로 펼치지 않는다
       var big = document.createElement('canvas'); big.width = 1080 * 3; big.height = 1350 * 3;
       var g = big.getContext('2d'); g.scale(3, 3); window.__vc[last.fn](g, last.o); if (OV) OV.paintFront(g);
       big.toBlob(function (blob) {

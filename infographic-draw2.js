@@ -1,7 +1,7 @@
 /* 인포그래픽 2차 — 부호 있는 막대 · 돈의 흐름(생키) · 100% 막대 · 수익률 퀼트 · 성장 곡선 · 와플 · 맞수 비교
    window.__vc 에 덧붙인다 (infographic-draw.js 다음에 읽는다). 색은 밝은 모드 기준으로 쓰고, 어두운 모드는 card-theme.js 가 바꾼다. */
 (function () {
-  var CW = 1080, CH = 1350, L = 100, R = 980, TOP = 330, BOT = 1140;
+  var CW = 1080, CH = 1350, L = 100, R = 980, R0 = 980, TOP = 330, BOT = 1140;
   var T = { ink: '#101216', soft: '#6B7078', rule: '#E6E4DD', up: '#D6362C', down: '#2B6CD9', faint: '#D9D6CE', gray: '#C9C6BC' };
   var FF = "'Noto Sans KR', sans-serif";
   function font(w, px) { return w + ' ' + px + 'px ' + FF; }
@@ -17,6 +17,7 @@
 
   /* 1) 부호 있는 막대 — 행: {n, sub, v, lab, logo, c} · 음수가 있으면 가운데 0 축 */
   function bars(X, o) {
+    var R = X.__cardR || R0;          // 넓은 비율로 저장할 때는 오른쪽 끝이 더 멀다 (card-ratio.js)
     head(X, o);
     var rows = o.rows, n = rows.length, top = TOP, avail = BOT - top - (o.legend ? 46 : 0), rowH = Math.min(n <= 10 ? 190 : 78, avail / n), huge = rowH >= 100;
     var neg = rows.some(function (r) { return r.v < 0; }), pos = rows.some(function (r) { return r.v > 0; });

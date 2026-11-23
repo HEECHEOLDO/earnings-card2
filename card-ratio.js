@@ -29,7 +29,12 @@
     var r = R[cur], W = r[0], H = r[1], one = cur === '11', cap = +window.CARD_RATIO_CAP || 99;
     var x0 = 70, x1 = 1010, y0 = 95, y1 = one ? 1165 : 1235, m = 40, TB = window.CARD_RATIO_TB || 285, FB = 1165;
     var sy = (H - 2 * m) / (y1 - y0), sx = Math.min((W - 2 * m) / (x1 - x0), sy * cap);
-    var c = { edge: true, S: S, W: W, H: H, one: one, sx: sx, sy: sy, k: sy / sx, tx: W / 2 - (x0 + x1) / 2 * sx, ty: m - y0 * sy, x0: x0, m: m, TB: TB, FB: FB };
+    var tx = W / 2 - (x0 + x1) / 2 * sx;
+    if (window.CARD_RATIO_FLEX && !one) {          // 넓은 폭을 아는 그림(가로 막대 등): 펼치지 않고 그 그림이 오른쪽 끝을 넓혀 그린다
+      sx = sy; tx = m - x0 * sy;
+      ctx.__cardR = (W - m - tx) / sx - (x1 - 980);
+    } else ctx.__cardR = 0;
+    var c = { edge: true, S: S, W: W, H: H, one: one, sx: sx, sy: sy, k: sy / sx, tx: tx, ty: m - y0 * sy, x0: x0, m: m, TB: TB, FB: FB };
     var cv = ctx.canvas; cv.width = W * S; cv.height = H * S;         // 크기를 바꾸면 그리기 상태가 처음으로 돌아간다
     M.set(ctx, c); DONE.add(cv); base(ctx, c, 1, 0, 0, 1, 0, 0);
   }

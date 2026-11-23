@@ -48,14 +48,14 @@ window.__vcTitle = function (X, h1, logo, opt) {   // opt.tail: 첫 줄 끝 조�
   return y;
 };
 window.__vcFoot = function (X, src) {
-  var B = window.__VC, base = 1350 - B.SAFE - 4, rule = Math.round(base - 27 * 0.85 - 18);
-  X.strokeStyle = '#E6E4DD'; X.lineWidth = 2; X.beginPath(); X.moveTo(B.L, rule); X.lineTo(B.R, rule); X.stroke();
+  var B = window.__VC, BR = X.__cardR || B.R, base = 1350 - B.SAFE - 4, rule = Math.round(base - 27 * 0.85 - 18);
+  X.strokeStyle = '#E6E4DD'; X.lineWidth = 2; X.beginPath(); X.moveTo(B.L, rule); X.lineTo(BR, rule); X.stroke();
   X.fillStyle = '#3A3E46'; X.font = "700 27px 'Noto Sans KR', sans-serif"; X.textBaseline = 'alphabetic';
   var hw = X.measureText('@돈굴돈굴').width + 30, fs = 27;          // 자료 줄이 길면 글자를 줄여 손잡이와 안 겹치게
-  while (fs > 17 && X.measureText(src || '').width > B.R - B.L - hw) { fs -= 1; X.font = "700 " + fs + "px 'Noto Sans KR', sans-serif"; }
+  while (fs > 17 && X.measureText(src || '').width > BR - B.L - hw) { fs -= 1; X.font = "700 " + fs + "px 'Noto Sans KR', sans-serif"; }
   X.textAlign = 'left'; X.fillText(src || '', B.L, base);
   X.font = "700 27px 'Noto Sans KR', sans-serif";
-  X.textAlign = 'right'; X.fillText('@돈굴돈굴', B.R, base); X.textAlign = 'left';
+  X.textAlign = 'right'; X.fillText('@돈굴돈굴', BR, base); X.textAlign = 'left';
 };
 /* Visual Capitalist 느낌 시안 — 트리맵(업종·종목) · 순위 막대 */
 (function () {
