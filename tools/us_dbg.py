@@ -11,7 +11,7 @@ for t in tk:
 r = subprocess.run([sys.executable, "collect_us.py", "--debug"] + tk, capture_output=True, text=True, timeout=900)
 out = r.stdout + r.stderr
 import re
-print("\n".join(l for l in out.splitlines() if "보충" in l or "인스턴스" in l or "못 받음" in l))
+print("\n".join(l for l in out.splitlines() if "보충" in l or "인스턴스" in l or "못 받음" in l or "버림" in l or "결산월" in l or "FY2026" in l or "FY2025" in l or "===" in l))
 import json
 for t in tk:
     try:
