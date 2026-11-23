@@ -1,8 +1,8 @@
 {
- "updated": "2026-11-23",
- "count": 318,
+ "updated": "2026-11-24",
+ "count": 344,
  "markets": {
-  "비상장": 318
+  "비상장": 344
  },
  "companies": [
   {
@@ -15,6 +15,24 @@
    "updated": "2026-10-23"
   },
   {
+   "name": "GS칼텍스",
+   "code": "00165459",
+   "market": "비상장",
+   "sector": "에너지",
+   "brand": "GS칼텍스 주유소, Kixx",
+   "annual_only": false,
+   "updated": "2026-11-24"
+  },
+  {
+   "name": "HD현대오일뱅크",
+   "code": "00105174",
+   "market": "비상장",
+   "sector": "에너지",
+   "brand": "현대오일뱅크 주유소",
+   "annual_only": false,
+   "updated": "2026-11-24"
+  },
+  {
    "name": "LG스포츠",
    "code": "00100090",
    "market": "비상장",
@@ -22,6 +40,69 @@
    "brand": "LG트윈스",
    "annual_only": true,
    "updated": "2026-10-27"
+  },
+  {
+   "name": "SK렌터카",
+   "code": "00201450",
+   "market": "비상장",
+   "sector": "렌털",
+   "brand": "SK렌터카",
+   "annual_only": false,
+   "updated": "2026-11-24"
+  },
+  {
+   "name": "SK브로드밴드",
+   "code": "00243988",
+   "market": "비상장",
+   "sector": "통신",
+   "brand": "B tv, SK브로드밴드 인터넷",
+   "annual_only": false,
+   "updated": "2026-11-24"
+  },
+  {
+   "name": "SK실트론",
+   "code": "00138020",
+   "market": "비상장",
+   "sector": "반도체",
+   "brand": "",
+   "annual_only": false,
+   "updated": "2026-11-24"
+  },
+  {
+   "name": "SK에너지",
+   "code": "00852175",
+   "market": "비상장",
+   "sector": "에너지",
+   "brand": "SK주유소, 엔크린",
+   "annual_only": false,
+   "updated": "2026-11-24"
+  },
+  {
+   "name": "SK에코플랜트",
+   "code": "00131799",
+   "market": "비상장",
+   "sector": "건설",
+   "brand": "SK뷰",
+   "annual_only": false,
+   "updated": "2026-11-24"
+  },
+  {
+   "name": "SK온",
+   "code": "01592447",
+   "market": "비상장",
+   "sector": "배터리",
+   "brand": "",
+   "annual_only": false,
+   "updated": "2026-11-24"
+  },
+  {
+   "name": "고운세상코스메틱",
+   "code": "01104932",
+   "market": "비상장",
+   "sector": "패션·명품·뷰티",
+   "brand": "닥터지",
+   "annual_only": true,
+   "updated": "2026-11-24"
   },
   {
    "name": "공차코리아",
@@ -276,6 +357,15 @@
    "updated": "2026-10-23"
   },
   {
+   "name": "더파운더즈",
+   "code": "01655968",
+   "market": "비상장",
+   "sector": "패션·명품·뷰티",
+   "brand": "아누아",
+   "annual_only": true,
+   "updated": "2026-11-24"
+  },
+  {
    "name": "데브캣",
    "code": "01506282",
    "market": "비상장",
@@ -438,6 +528,24 @@
    "updated": "2026-10-27"
   },
   {
+   "name": "롯데건설",
+   "code": "00120438",
+   "market": "비상장",
+   "sector": "건설",
+   "brand": "롯데캐슬",
+   "annual_only": false,
+   "updated": "2026-11-24"
+  },
+  {
+   "name": "롯데글로벌로지스",
+   "code": "00207676",
+   "market": "비상장",
+   "sector": "물류",
+   "brand": "롯데택배",
+   "annual_only": false,
+   "updated": "2026-11-24"
+  },
+  {
    "name": "롯데네슬레코리아",
    "code": "00157016",
    "market": "비상장",
@@ -445,6 +553,15 @@
    "brand": "네스카페",
    "annual_only": true,
    "updated": "2026-10-23"
+  },
+  {
+   "name": "롯데물산",
+   "code": "00120483",
+   "market": "비상장",
+   "sector": "부동산",
+   "brand": "롯데월드타워, 롯데월드몰",
+   "annual_only": false,
+   "updated": "2026-11-24"
   },
   {
    "name": "롯데아사히주류",
@@ -607,6 +724,15 @@
    "brand": "벤츠",
    "annual_only": true,
    "updated": "2026-10-23"
+  },
+  {
+   "name": "명륜당",
+   "code": "01460315",
+   "market": "비상장",
+   "sector": "카페·외식",
+   "brand": "명륜진사갈비",
+   "annual_only": true,
+   "updated": "2026-11-24"
   },
   {
    "name": "몽클레르코리아",
@@ -807,6 +933,15 @@
    "updated": "2026-10-23"
   },
   {
+   "name": "비나우",
+   "code": "01721793",
+   "market": "비상장",
+   "sector": "패션·명품·뷰티",
+   "brand": "넘버즈인",
+   "annual_only": true,
+   "updated": "2026-11-24"
+  },
+  {
    "name": "비알코리아",
    "code": "00124665",
    "market": "비상장",
@@ -906,6 +1041,15 @@
    "updated": "2026-10-23"
   },
   {
+   "name": "서린컴퍼니",
+   "code": "01542512",
+   "market": "비상장",
+   "sector": "패션·명품·뷰티",
+   "brand": "라운드랩",
+   "annual_only": true,
+   "updated": "2026-11-24"
+  },
+  {
    "name": "서울랜드",
    "code": "00160889",
    "market": "비상장",
@@ -940,6 +1084,15 @@
    "brand": "설빙",
    "annual_only": true,
    "updated": "2026-10-27"
+  },
+  {
+   "name": "세라젬",
+   "code": "00372916",
+   "market": "비상장",
+   "sector": "생활가전·렌털",
+   "brand": "세라젬 마스터, 안마의료기",
+   "annual_only": true,
+   "updated": "2026-11-24"
   },
   {
    "name": "세븐일레븐",
@@ -1039,6 +1192,15 @@
    "brand": "스와로브스키",
    "annual_only": true,
    "updated": "2026-10-27"
+  },
+  {
+   "name": "스와치그룹코리아",
+   "code": "00414780",
+   "market": "비상장",
+   "sector": "패션·명품·뷰티",
+   "brand": "오메가, 스와치, 티쏘",
+   "annual_only": true,
+   "updated": "2026-11-24"
   },
   {
    "name": "스테이션3",
@@ -2085,6 +2247,15 @@
    "updated": "2026-11-23"
   },
   {
+   "name": "코스알엑스",
+   "code": "01364491",
+   "market": "비상장",
+   "sector": "패션·명품·뷰티",
+   "brand": "코스알엑스, 달팽이 에센스",
+   "annual_only": true,
+   "updated": "2026-11-24"
+  },
+  {
    "name": "코스트코코리아",
    "code": "00259572",
    "market": "비상장",
@@ -2166,6 +2337,15 @@
    "updated": "2026-10-26"
   },
   {
+   "name": "크레이버코퍼레이션",
+   "code": "01208007",
+   "market": "비상장",
+   "sector": "패션·명품·뷰티",
+   "brand": "스킨1004",
+   "annual_only": true,
+   "updated": "2026-11-24"
+  },
+  {
    "name": "크록스코리아",
    "code": "00831589",
    "market": "비상장",
@@ -2227,6 +2407,15 @@
    "brand": "테슬라",
    "annual_only": true,
    "updated": "2026-10-23"
+  },
+  {
+   "name": "토리든",
+   "code": "01830781",
+   "market": "비상장",
+   "sector": "패션·명품·뷰티",
+   "brand": "토리든",
+   "annual_only": true,
+   "updated": "2026-11-24"
   },
   {
    "name": "토스",
@@ -2382,6 +2571,24 @@
    "updated": "2026-10-26"
   },
   {
+   "name": "포스코",
+   "code": "01620971",
+   "market": "비상장",
+   "sector": "철강",
+   "brand": "",
+   "annual_only": false,
+   "updated": "2026-11-24"
+  },
+  {
+   "name": "포스코이앤씨",
+   "code": "00100814",
+   "market": "비상장",
+   "sector": "건설",
+   "brand": "더샵",
+   "annual_only": false,
+   "updated": "2026-11-24"
+  },
+  {
    "name": "폭스바겐그룹코리아",
    "code": "00534066",
    "market": "비상장",
@@ -2425,6 +2632,15 @@
    "brand": "필립스",
    "annual_only": true,
    "updated": "2026-10-23"
+  },
+  {
+   "name": "하고하우스",
+   "code": "01743856",
+   "market": "비상장",
+   "sector": "패션·명품·뷰티",
+   "brand": "마뗑킴, 드파운드",
+   "annual_only": true,
+   "updated": "2026-11-24"
   },
   {
    "name": "하이네켄코리아",
@@ -2733,6 +2949,15 @@
    "updated": "2026-10-27"
   },
   {
+   "name": "한솥",
+   "code": "00876740",
+   "market": "비상장",
+   "sector": "카페·외식",
+   "brand": "한솥도시락",
+   "annual_only": true,
+   "updated": "2026-11-24"
+  },
+  {
    "name": "한화이글스",
    "code": "00234050",
    "market": "비상장",
@@ -2776,6 +3001,15 @@
    "brand": "현대백화점면세점",
    "annual_only": true,
    "updated": "2026-10-23"
+  },
+  {
+   "name": "현대엔지니어링",
+   "code": "00349927",
+   "market": "비상장",
+   "sector": "건설",
+   "brand": "힐스테이트",
+   "annual_only": false,
+   "updated": "2026-11-24"
   },
   {
    "name": "현대홈쇼핑",

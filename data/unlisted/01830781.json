@@ -1,0 +1,59 @@
+{
+ "name": "토리든",
+ "legal_name": "토리든",
+ "code": "01830781",
+ "market": "비상장",
+ "sector": "패션·명품·뷰티",
+ "brand": "토리든",
+ "basis": "별도",
+ "source": "audit",
+ "fy_end": 12,
+ "updated": "2026-11-24",
+ "annual": [
+  {
+   "p": 2023,
+   "rev": 673.1,
+   "op": 98.5,
+   "ni": 87.6,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2024,
+   "rev": 1859.6,
+   "op": 519.9,
+   "ni": 436.6,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2025,
+   "rev": 2742.8,
+   "op": 604.2,
+   "ni": 494.8,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  }
+ ],
+ "quarterly": [],
+ "reports": {
+  "2023": "전기:20250407002451",
+  "2024": "20250407002451",
+  "2025": "20260407003222"
+ }
+}

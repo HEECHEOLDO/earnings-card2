@@ -1,0 +1,73 @@
+{
+ "name": "하고하우스",
+ "legal_name": "하고하우스",
+ "code": "01743856",
+ "market": "비상장",
+ "sector": "패션·명품·뷰티",
+ "brand": "마뗑킴, 드파운드",
+ "basis": "연결·별도",
+ "source": "audit",
+ "fy_end": 12,
+ "updated": "2026-11-24",
+ "annual": [
+  {
+   "p": 2022,
+   "rev": 98.6,
+   "op": -18.5,
+   "ni": -9.4,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2023,
+   "rev": 159.1,
+   "op": -41.0,
+   "ni": -206.6,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2024,
+   "rev": 1644.5,
+   "op": 387.6,
+   "ni": 199.1,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": true
+  },
+  {
+   "p": 2025,
+   "rev": 2201.4,
+   "op": 445.7,
+   "ni": 331.5,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": true
+  }
+ ],
+ "quarterly": [],
+ "reports": {
+  "2022": "전기:20240409002766",
+  "2023": "20240409002766",
+  "2024": "20250418000191",
+  "2025": "20260416000555"
+ }
+}

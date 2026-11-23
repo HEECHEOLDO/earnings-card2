@@ -1,0 +1,87 @@
+{
+ "name": "더파운더즈",
+ "legal_name": "더파운더즈",
+ "code": "01655968",
+ "market": "비상장",
+ "sector": "패션·명품·뷰티",
+ "brand": "아누아",
+ "basis": "연결·별도",
+ "source": "audit",
+ "fy_end": 12,
+ "updated": "2026-11-24",
+ "annual": [
+  {
+   "p": 2021,
+   "rev": 299.4,
+   "op": 79.5,
+   "ni": 80.1,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2022,
+   "rev": 576.2,
+   "op": 93.9,
+   "ni": 94.9,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2023,
+   "rev": 1432.4,
+   "op": 400.3,
+   "ni": 317.3,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2024,
+   "rev": 4277.7,
+   "op": 1456.9,
+   "ni": 1165.2,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2025,
+   "rev": 7176.7,
+   "op": 1294.9,
+   "ni": 866.4,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": true
+  }
+ ],
+ "quarterly": [],
+ "reports": {
+  "2021": "전기:20230628000349",
+  "2022": "20230628000349",
+  "2023": "20240426000858",
+  "2024": "20250430000317",
+  "2025": "20260430000051"
+ }
+}

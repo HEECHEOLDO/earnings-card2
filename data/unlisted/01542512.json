@@ -1,0 +1,101 @@
+{
+ "name": "서린컴퍼니",
+ "legal_name": "서린컴퍼니",
+ "code": "01542512",
+ "market": "비상장",
+ "sector": "패션·명품·뷰티",
+ "brand": "라운드랩",
+ "basis": "연결·별도",
+ "source": "audit",
+ "fy_end": 12,
+ "updated": "2026-11-24",
+ "annual": [
+  {
+   "p": 2020,
+   "rev": 363.5,
+   "op": 163.4,
+   "ni": 142.5,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2021,
+   "rev": 530.0,
+   "op": 220.7,
+   "ni": 197.9,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2022,
+   "rev": 572.7,
+   "op": 219.1,
+   "ni": 152.9,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2023,
+   "rev": 1155.9,
+   "op": 552.5,
+   "ni": 444.7,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2024,
+   "rev": 935.2,
+   "op": 249.9,
+   "ni": 361.7,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2025,
+   "rev": 2269.0,
+   "op": 845.8,
+   "ni": 657.7,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": true
+  }
+ ],
+ "quarterly": [],
+ "reports": {
+  "2020": "전기:20220413002379",
+  "2021": "20220413002379",
+  "2022": "20230414000066",
+  "2023": "20240329000180",
+  "2024": "20250411003501",
+  "2025": "20260410002193"
+ }
+}

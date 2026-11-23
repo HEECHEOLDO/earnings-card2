@@ -1,0 +1,73 @@
+{
+ "name": "비나우",
+ "legal_name": "비나우",
+ "code": "01721793",
+ "market": "비상장",
+ "sector": "패션·명품·뷰티",
+ "brand": "넘버즈인",
+ "basis": "연결·별도",
+ "source": "audit",
+ "fy_end": 12,
+ "updated": "2026-11-24",
+ "annual": [
+  {
+   "p": 2022,
+   "rev": 592.0,
+   "op": 123.3,
+   "ni": 109.8,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2023,
+   "rev": 1144.6,
+   "op": 271.5,
+   "ni": 246.1,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2024,
+   "rev": 2664.3,
+   "op": 750.6,
+   "ni": 690.4,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": true
+  },
+  {
+   "p": 2025,
+   "rev": 3249.6,
+   "op": 670.8,
+   "ni": 534.3,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": true
+  }
+ ],
+ "quarterly": [],
+ "reports": {
+  "2022": "전기:20240403002337",
+  "2023": "20240403002337",
+  "2024": "20250401002664",
+  "2025": "20260331002615"
+ }
+}
