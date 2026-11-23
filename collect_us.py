@@ -439,7 +439,7 @@ def quarter_series(facts, kind, fy_end_month=12):
     if not groups:
         return {}
     byend, tagof = {}, {}
-    first = {}
+    first, formof = {}, {}
     for _, tag, rows in groups:
         seen = {}
         one = {}
@@ -471,6 +471,7 @@ def quarter_series(facts, kind, fy_end_month=12):
             if key not in seen or filed >= seen[key]:
                 seen[key] = filed
                 one[key] = r["val"]
+                formof[key] = r.get("form") or ""
             if key not in first or filed < first[key][0]:
                 first[key] = (filed, r["val"])
         for k, v in one.items():
@@ -500,7 +501,7 @@ def quarter_series(facts, kind, fy_end_month=12):
             for end, val in items:
                 others = sorted(v for e, v in items if e != end and v)
                 med = others[len(others) // 2] if others else 0
-                if val and med > 0 and val > 3 * med:
+                if val and med > 0 and val > 3 * med and str(formof.get(end, "")).startswith("10-K"):   # 연간보고서에서 온 칸만 (모더나 2026년 3분기처럼 분기 매출이 진짜로 뛴 경우는 그대로)
                     log("  [버림] %s 끝 분기 매출 %s — 같은 해 다른 분기(%s)의 3배 넘음 (연간 값 오기)"
                         % (end, f"{val / 1e6:,.0f}", f"{med / 1e6:,.0f}"))
                     continue
