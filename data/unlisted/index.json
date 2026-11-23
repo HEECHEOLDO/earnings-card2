@@ -1,8 +1,8 @@
 {
  "updated": "2026-11-24",
- "count": 344,
+ "count": 345,
  "markets": {
-  "비상장": 344
+  "비상장": 345
  },
  "companies": [
   {
@@ -2740,6 +2740,15 @@
    "brand": "BMS",
    "annual_only": true,
    "updated": "2026-10-27"
+  },
+  {
+   "name": "한국수력원자력",
+   "code": "00382001",
+   "market": "비상장",
+   "sector": "에너지",
+   "brand": "원자력·수력 발전",
+   "annual_only": true,
+   "updated": "2026-11-24"
   },
   {
    "name": "한국시세이도",
