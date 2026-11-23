@@ -255,7 +255,7 @@ def collect_one(item, old):
             c2, p2, f2 = parse(doc2) if doc2 else (None, None, None)
             if c2 and sane(c2) and c2["rev"] > cur["rev"]:
                 log("  %d년은 결산월 변경으로 짧은 기간 — %s 보고서(12개월)를 씀" % (y, alt[y][1]))
-                cur, cfs, r = c2, f2, r2
+                cur, prev, cfs, r = c2, p2, f2, r2
         if prev and prev.get("rev") is None and y - 1 in rows and rows[y - 1].get("rev") is not None \
                 and cur["rev"] is not None and abs(C.eok(cur["rev"]) - rows[y - 1]["rev"]) < 0.05:
             log("  - %d년 매출이 전년과 똑같이 읽힘 — 표를 잘못 읽은 것으로 보고 그해는 뺀다" % y)   # 이스타항공 2021
