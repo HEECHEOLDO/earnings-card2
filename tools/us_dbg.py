@@ -7,9 +7,7 @@ shutil.copytree("data/us", "/tmp/us_bak", dirs_exist_ok=True)
 r = subprocess.run([sys.executable, "collect_us.py", "--debug"] + tk, capture_output=True, text=True, timeout=900)
 out = r.stdout + r.stderr
 import re
-for line in out.splitlines():
-    if re.search(r"2026|분기|quarter|10-Q|Q3|rev|매출|skip|건너|없음|오류|error", line, re.I):
-        print(line[:220])
+print(out[-6000:])
 import json
 for t in tk:
     try:
