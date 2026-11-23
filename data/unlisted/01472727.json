@@ -5,10 +5,10 @@
  "market": "비상장",
  "sector": "플랫폼·앱",
  "brand": "타다",
- "basis": "별도",
+ "basis": "연결·별도",
  "source": "audit",
  "fy_end": 12,
- "updated": "2026-10-26",
+ "updated": "2026-11-23",
  "annual": [
   {
    "p": 2019,
@@ -35,11 +35,53 @@
    "payout": null,
    "yield": null,
    "_cfs": false
+  },
+  {
+   "p": 2021,
+   "rev": 38.1,
+   "op": -177.3,
+   "ni": -74.2,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2022,
+   "rev": 41.9,
+   "op": -262.4,
+   "ni": -275.5,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2023,
+   "rev": 52.9,
+   "op": -167.6,
+   "ni": -194.3,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": true
   }
  ],
  "quarterly": [],
  "reports": {
   "2019": "전기:20210407000266",
-  "2020": "20210407000266"
+  "2020": "20210407000266",
+  "2021": "전기:20230331004316",
+  "2022": "20230331004316",
+  "2023": "20240401000124"
  }
 }

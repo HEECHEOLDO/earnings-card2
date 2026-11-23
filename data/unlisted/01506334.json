@@ -8,7 +8,7 @@
  "basis": "별도",
  "source": "audit",
  "fy_end": 12,
- "updated": "2026-10-26",
+ "updated": "2026-11-23",
  "annual": [
   {
    "p": 2020,
@@ -35,11 +35,53 @@
    "payout": null,
    "yield": null,
    "_cfs": false
+  },
+  {
+   "p": 2022,
+   "rev": 56.3,
+   "op": -192.8,
+   "ni": -162.3,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2023,
+   "rev": 47.3,
+   "op": -244.5,
+   "ni": -342.9,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2024,
+   "rev": 47.8,
+   "op": -182.5,
+   "ni": -214.3,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
   }
  ],
  "quarterly": [],
  "reports": {
   "2020": "전기:20220408000058",
-  "2021": "20220408000058"
+  "2021": "20220408000058",
+  "2022": "20230412001203",
+  "2023": "20240409000146",
+  "2024": "20250410000188"
  }
 }
