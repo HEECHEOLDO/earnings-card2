@@ -3,10 +3,30 @@ data/krx/YYYYMMDD.json (거래소 전 종목 종가) 로 날마다 센다 → da
   days: [[날짜, 오른, 내린, 보합, 상한가, 하한가, 52주신고가, 52주신저가], ...]
   lim: {날짜: {"u": [코드...], "d": [코드...]}}   (상한가·하한가 종목, 상위 날만)
 상한가·하한가: 직전 거래일 종가 대비 +29.5%~+30.5% / −30.5%~−29.5% (가격제한폭 ±30%, 호가 단위로 30%보다 조금 작다).
-±30.5% 를 넘는 날은 거래가 아니라(액면분할·감자·재상장 등 기준가 재산정) 오른·내린 수에서도 뺀다.
+±30.5% 를 넘는 날은 기준가가 다시 정해진 날(주식 병합·분할·감자 등)이라, 수정주가(네이버 일별, data/chart/kr)의
+그날 등락률로 다시 본다 (예: 아이에이 2026-06-26 5:1 병합 → 거래소 종가는 +250% 이지만 실제로는 하한가 −30%).
+수정주가로도 ±30.5% 를 넘으면(재상장 첫날 등) 뺀다.
 52주 신고가·신저가: 그날 종가가 직전 250거래일 종가의 최고·최저를 넘을 때 (자료가 250일 넘게 쌓인 날부터).
 """
 import glob, json, os
+
+_ADJ = {}
+
+
+def adj_ret(code, dt):
+    """수정주가 일별로 그날 등락률 (없으면 None)"""
+    if code not in _ADJ:
+        try:
+            d = json.load(open(os.path.join("data", "chart", "kr", code + ".json"), encoding="utf-8")).get("d") or []
+            _ADJ[code] = {a: (i, b) for i, (a, b) in enumerate(d)}, d
+        except Exception:                          # noqa: BLE001
+            _ADJ[code] = ({}, [])
+    m, d = _ADJ[code]
+    if dt not in m or m[dt][0] == 0:
+        return None
+    i = m[dt][0]
+    return d[i][1] / d[i - 1][1] - 1
+
 
 def main():
     fs = sorted(f for f in glob.glob("data/krx/2*.json"))
@@ -22,7 +42,9 @@ def main():
                     continue
                 r = v / p - 1
                 if abs(r) > 0.305:
-                    continue
+                    r = adj_ret(k, dt)
+                    if r is None or abs(r) > 0.305:
+                        continue
                 if r > 0: a += 1
                 elif r < 0: dn += 1
                 else: fl += 1
