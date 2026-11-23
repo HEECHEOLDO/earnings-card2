@@ -11,6 +11,8 @@ name: collect_anchor_kr
 on:
   schedule:
     - cron: "40 7 * * 1-5"     # UTC 07:40 = KST 16:40, 월~금
+    - cron: "40 10 * * 1-5"    # 예비 KST 19:40 — GitHub 예약 실행이 밀리거나 빠지는 날이 있어서 (2026-11-23 월 빠짐)
+    - cron: "40 13 * * 1-5"    # 예비 KST 22:40 · 오늘 자료가 이미 있으면 바로 끝난다
   workflow_dispatch: {}        # Actions 탭에서 수동 실행 버튼
 
 permissions:
@@ -27,25 +29,37 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: 오늘 이미 받았으면 건너뛰기 (예비 예약 실행용)
+        id: done
+        run: |
+          T=$(TZ=Asia/Seoul date +%Y%m%d)
+          if [ "${{ github.event_name }}" = "schedule" ] && [ -f "data/krx/$T.json" ] && python3 -c "import json,sys;d=json.load(open('data/chart/kr/005930.json'))['d'];sys.exit(0 if str(d[-1][0])=='$T' else 1)"; then echo "오늘($T) 자료 있음 — 건너뜀"; echo "skip=1" >> "$GITHUB_OUTPUT"; fi
+
       - uses: actions/setup-python@v5
+        if: steps.done.outputs.skip != '1'
         with:
           python-version: "3.11"
 
       - name: KRX 정규장 종가 (공공데이터포털 — 넥스트레이드 애프터마켓 값 바로잡기용)
+        if: steps.done.outputs.skip != '1'
         env:
           DATA_GO_KEY: ${{ secrets.DATA_GO_KEY }}
         run: python3 krx_close.py || true
 
       - name: 국내 기준점 수집
+        if: steps.done.outputs.skip != '1'
         run: python3 collect_anchor.py --kr
 
       - name: 금융주 보충 (은행·보험 — 실적 수집에서 빠진 종목)
+        if: steps.done.outputs.skip != '1'
         run: python3 collect_anchor_extra.py || true
 
       - name: 주요 지수 (주가 추이 카드 — 국내 장 마감 반영)
+        if: steps.done.outputs.skip != '1'
         run: python3 collect_chart_idx.py || true
 
       - name: 바뀌었으면 커밋      # 앞 단계가 실패하면 건너뛴다
+        if: steps.done.outputs.skip != '1'
         run: |
           if git diff --quiet -- data/anchor.json && [ -z "$(git status --porcelain -- data/chart data/krx)" ]; then
             echo "변경 없음"; exit 0
