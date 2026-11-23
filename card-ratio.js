@@ -92,7 +92,8 @@
   };
   P.drawImage = function () {
     if (this.canvas === DISP) poke();
-    var c = M.get(this), a = Array.prototype.slice.call(arguments); if (!c || a.length < 5) return O.drawImage.apply(this, a);
+    var c = M.get(this), a = Array.prototype.slice.call(arguments); if (!c) return O.drawImage.apply(this, a);
+    if (a.length === 3) { var im0 = a[0]; a.push(im0.width || im0.naturalWidth || 0, im0.height || im0.naturalHeight || 0); }   // drawImage(그림, x, y) 도 크기를 붙여서 (종이결 바탕이 이 꼴)
     var n = a.length, dw = a[n - 2], dh = a[n - 1];
     if (dw >= 900 && dh >= 1100) { this.save(); O.setTransform.call(this, 1, 0, 0, 1, 0, 0); a[n - 4] = 0; a[n - 3] = 0; a[n - 2] = c.W * c.S; a[n - 1] = c.H * c.S; O.drawImage.apply(this, a); this.restore(); return; }   // 종이결 바탕은 펼친다
     if (band(this, c, a[n - 4] + dw / 2, a[n - 3] + dh / 2)) { if (c.one && c.ly > c.FB) return; return asEdge(this, c, O.drawImage, a); }
