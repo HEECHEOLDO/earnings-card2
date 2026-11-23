@@ -194,7 +194,7 @@
     usmap: [['n', '종목 수', 20, 100, 60]], usranked: [['n', '종목 수', 5, 20, 15], ['ord', '순서']], dividend: [['n', '종목 수', 5, 20, 15]],
     slope: [['n', '순위 수', 8, 20, 15]], profit: [['n', '종목 수', 5, 20, 15]], range52: [['n', '종목 수', 10, 20, 15]],
     revgrowth: [['n', '종목 수', 5, 20, 15]], roe: [['n', '종목 수', 5, 20, 15]], gurucommon: [['n', '종목 수', 5, 20, 15]],
-    waffle: [['n', '종목 수', 3, 9, 9]], voronoi: [['n', '종목 수', 20, 80, 50]], buyback: [['n', '회사 수', 5, 15, 10]], ipo: [['n', '종목 수', 5, 20, 15]]
+    waffle: [['n', '종목 수', 3, 9, 9]], voronoi: [['n', '종목 수', 20, 80, 50]], buyback: [['n', '회사 수', 5, 15, 10]], ipo: [['n', '종목 수', 5, 20, 15]], insider: [['n', '사람 수', 5, 15, 10]]
   };
   var TITLE = {    // 모든 제목은 두 줄: 첫 줄 = 무엇(크게), 둘째 줄 = 궁금한 점 — ' / ' 로 나눈다
     treemap: function (o) { return (MK(o) || '한국 증시') + ' / 돈은 어디에 몰렸을까'; },
@@ -1286,9 +1286,16 @@
     } },
     { id: 'insider', name: '미국 내부자 매수', icon: '🕴️', build: function () {
       return JJ('./data/market/insider_us.json').then(function (j) {
-        var rows = j.buy.slice(0, 10).map(function (z) { var k = window.US_KO && window.US_KO[z.t]; return { n: (k || z.t) + ' · ' + z.who2, v: z.usd / 1e6, lab: '$' + (z.usd / 1e6).toFixed(1) + 'M', c: '#2E9E6B', t: z.t }; });
+        var who = function (z) {                         // SEC 이름은 '성 이름' 순 · 직책은 한글로
+          if (/\b(trust)\b/i.test(z.who)) return '대주주(신탁)';
+          if (/\b(inc|llc|l\.?p\.?|corp|ltd|holdings|partners|fund)\b/i.test(z.who)) return '대주주(법인)';
+          var nm = z.who.split(/[\s,]+/)[0]; nm = nm.charAt(0) + nm.slice(1).toLowerCase();
+          var r = /chief executive|\bceo\b/i.test(z.title) ? 'CEO' : /chair/i.test(z.title) ? '회장' : /chief financial|\bcfo\b/i.test(z.title) ? 'CFO' : /president/i.test(z.title) ? '사장' : z.title ? '임원' : z.dir ? '이사' : z.ten ? '대주주' : '내부자';
+          return r + ' ' + nm;
+        };
+        var rows = j.buy.slice(0, K('insider', 'n', 10)).map(function (z) { var k = window.US_KO && window.US_KO[z.t]; return { n: (k || z.t) + ' · ' + (z.who2 || who(z)), v: z.usd / 1e6, lab: '$' + (z.usd >= 1e6 ? (z.usd / 1e6).toFixed(1) + 'M' : Math.round(z.usd / 1e3) + 'K'), c: '#2E9E6B', t: z.t }; });
         return Promise.all(rows.map(function (r) { return img('./logo/us/' + r.t + '.png').then(function (i) { r.logo = i; }); })).then(function () {
-          return { fn: 'bars', o: { kicker: '최근 30일 · 자기 회사 주식을 산 임원', h1: '내부자가 가장 크게 산 주식', rows: rows }, asof: j.updated, tail: '기준 · SEC Form 4 장내 매수(P)' };
+          return { fn: 'bars', o: { kicker: '최근 30일 · 자기 회사 주식을 장내에서 산 내부자 ' + j.n_buy + '명', h1: '내부자가 가장 크게 산 주식', rows: rows }, asof: j.updated, tail: '기준 · SEC Form 4 장내 매수(P)' };
         });
       });
     } },

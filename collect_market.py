@@ -217,7 +217,7 @@ def insider():
                         pr = re.search(r"<transactionPricePerShare>\s*<value>([\d.]+)", blk)
                         dt = re.search(r"<transactionDate>\s*<value>([\d-]+)", blk)
                         if code and code.group(1) in ("P", "S") and sh and pr and float(pr.group(1)) > 0:
-                            rows.append({"t": c["code"], "who": (who.group(1) if who else "").replace("&amp;", "&"), "title": (ttl.group(1) if ttl else "").replace("&amp;", "&"),
+                            rows.append({"acc": acc, "t": c["code"], "who": (who.group(1) if who else "").replace("&amp;", "&"), "title": (ttl.group(1) if ttl else "").replace("&amp;", "&"),
                                          "dir": 1 if dirr else 0, "ten": 1 if ten else 0, "code": code.group(1),
                                          "usd": round(float(sh.group(1)) * float(pr.group(1))), "date": dt.group(1) if dt else rc["filingDate"][i]})
                 cache[acc] = {"acc": acc, "filed": rc["filingDate"][i], "rows": rows}
@@ -231,6 +231,13 @@ def insider():
     if nerr > len(idx) / 3:
         log("내부자: SEC 오류가 많아(%d/%d) 이번엔 저장하지 않음" % (nerr, len(idx))); return
     tx = [r for r in tx if r["date"] >= since]
+    uq, seen = [], set()
+    for r in tx:                                       # 공동 보고(신탁·법인이 같은 거래를 함께 신고)는 한 번만
+        k = (r["t"], r["code"], r["usd"], r["date"])         # 신탁·법인이 각자 따로 낸 같은 거래(회사·금액·날짜 동일)
+        if k in seen:
+            continue
+        seen.add(k); uq.append(r)
+    tx = uq
     keep = [v for v in cache.values() if v["filed"] >= since]
     agg = {}
     for r in tx:                                       # 같은 사람·같은 회사·같은 방향은 합친다 (여러 줄로 나눠 신고)
