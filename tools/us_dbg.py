@@ -1,6 +1,7 @@
 # 시험용 — 미국 종목 수집 과정 보기 (저장 안 함). CODES=티커(쉼표)
 import os, sys, subprocess
 os.chdir(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+os.environ["TAIL"] = "1"
 tk = [x.strip() for x in os.environ.get("CODES", "").split(",") if x.strip()]
 import shutil, json
 shutil.copytree("data/us", "/tmp/us_bak", dirs_exist_ok=True)
@@ -11,7 +12,7 @@ for t in tk:
 r = subprocess.run([sys.executable, "collect_us.py", "--debug"] + tk, capture_output=True, text=True, timeout=900)
 out = r.stdout + r.stderr
 import re
-print("\n".join(l for l in out.splitlines() if "보충" in l or "인스턴스" in l or "못 받음" in l or "버림" in l or "결산월" in l or "FY2026" in l or "FY2025" in l or "===" in l))
+print(out[-2500:]) if os.environ.get("TAIL") else print("\n".join(l for l in out.splitlines() if "보충" in l or "인스턴스" in l or "못 받음" in l or "버림" in l or "결산월" in l or "FY2026" in l or "FY2025" in l or "===" in l))
 import json
 for t in tk:
     try:
