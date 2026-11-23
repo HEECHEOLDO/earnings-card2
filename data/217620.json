@@ -5,7 +5,7 @@
  "code": "217620",
  "market": "기타",
  "sector": "",
- "updated": "2026-10-25",
+ "updated": "2026-11-24",
  "annual": [
   {
    "p": 2017,
@@ -184,5 +184,6 @@
    "ni": 6.2
   }
  ],
- "q_method": "strict"
+ "q_method": "strict",
+ "fy_end": 12
 }

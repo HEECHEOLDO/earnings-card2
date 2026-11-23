@@ -5,7 +5,7 @@
  "code": "131390",
  "market": "기타",
  "sector": "",
- "updated": "2026-10-25",
+ "updated": "2026-11-24",
  "annual": [
   {
    "p": 2016,
@@ -87,5 +87,6 @@
   }
  ],
  "quarterly": [],
- "q_method": "strict"
+ "q_method": "strict",
+ "fy_end": 12
 }

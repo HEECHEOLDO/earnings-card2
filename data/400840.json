@@ -5,9 +5,30 @@
  "code": "400840",
  "market": "기타",
  "sector": "",
- "updated": "2026-09-05",
- "annual": [],
+ "updated": "2026-11-24",
+ "annual": [
+  {
+   "p": 2023,
+   "rev": 0.0,
+   "op": -0.3,
+   "ni": 2.9,
+   "assets": 121.9,
+   "liab": 16.4,
+   "equity": 105.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
  "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": 0.0,
+   "op": -0.1,
+   "ni": 0.7
+  },
   {
    "y": 2024,
    "q": 2,
@@ -15,5 +36,7 @@
    "op": -0.1,
    "ni": 0.5
   }
- ]
+ ],
+ "q_method": "strict",
+ "fy_end": 12
 }
