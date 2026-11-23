@@ -37,13 +37,14 @@ import collect as C
 C.API_KEY = C.get_key()
 # ---- 공모주 성적표 (올해 코스피·코스닥 신규상장: 증권신고서(지분) 공모가 + 상장 뒤 첫날·지금 종가)
 if W in ("all", "ipo"):
+    INV = {v["corp_code"]: k for k, v in C.load_corp_map().items()}
     seen, rows = set(), []
     for a, b in (("20250901", "20251231"), ("20260101", "20260430"), ("20260501", "20260831"), ("20260901", "20261120")):
         for pg in range(1, 6):
             r = C.api_get("list.json", {"bgn_de": a, "end_de": b, "pblntf_detail_ty": "C001", "page_count": 100, "page_no": pg})
             L = r.get("list") or []
             for x in L:
-                if "지분증권" in x["report_nm"] and "기업인수목적" not in x["corp_name"] and "스팩" not in x["corp_name"] and x["corp_code"] not in seen and x.get("stock_code"):
+                if "지분증권" in x["report_nm"] and "기업인수목적" not in x["corp_name"] and "스팩" not in x["corp_name"] and x["corp_code"] not in seen and not x.get("stock_code"):   # 신고 때 아직 상장 전(종목코드 없음) = 공모주
                     seen.add(x["corp_code"]); rows.append(x)
             if len(L) < 100: break
     print("== ipo 후보", len(rows), flush=True)
@@ -54,7 +55,7 @@ if W in ("all", "ipo"):
             g = {gg["title"]: gg["list"] for gg in (r.get("group") or [])}
             kinds = g.get("증권의종류") or []
             prc = next((k.get("slprc") for k in kinds[::-1] if k.get("stksen") == "보통주" and k.get("slprc") not in (None, "-")), None)
-            res.append({"code": x["stock_code"], "name": x["corp_name"], "cls": x["corp_cls"], "rcept": x["rcept_no"], "prc": prc})
+            res.append({"code": INV.get(x["corp_code"]), "name": x["corp_name"], "cls": x["corp_cls"], "rcept": x["rcept_no"], "prc": prc})
         except Exception as e:
             pass
     out("ipo", res)
@@ -101,6 +102,8 @@ if W in ("all", "form4"):
                 acc = rc["accessionNumber"][i].replace("-", ""); doc = rc["primaryDocument"][i].split("/")[-1]
                 x = sj("https://www.sec.gov/Archives/edgar/data/%d/%s/%s" % (cik, acc, doc)); time.sleep(0.12)
                 who = re.search(r"<rptOwnerName>([^<]+)", x); ttl = re.search(r"<officerTitle>([^<]+)", x)
+                ic = re.search(r"<issuerCik>0*(\d+)", x)
+                if not ic or int(ic.group(1)) != cik: continue           # 이 회사가 '보고자'로 다른 회사 주식을 산 건 빼고, 이 회사 주식 거래만
                 for t in re.findall(r"<nonDerivativeTransaction>(.*?)</nonDerivativeTransaction>", x, re.S):
                     code = re.search(r"<transactionCode>(\w)", t); sh = re.search(r"<transactionShares>\s*<value>([\d.]+)", t); pr = re.search(r"<transactionPricePerShare>\s*<value>([\d.]+)", t)
                     dt = re.search(r"<transactionDate>\s*<value>([\d-]+)", t)
