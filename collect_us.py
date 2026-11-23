@@ -1569,6 +1569,15 @@ def main():
     for i, (t, cik) in enumerate(tickers, 1):
         log("\n[%d/%d]" % (i, len(tickers)))
         info = {"cik": cik, "name": t} if cik else cmap.get(t)
+        if not info:                      # SEC 티커 목록에서 빠졌으면(이름·티커 변경 직후 등) 예전에 받은 CIK 로 (파라마운트 스카이댄스 2026-11)
+            try:
+                old = json.load(open(os.path.join(OUT_DIR, t + ".json"), encoding="utf-8")).get("cik")
+                old = old[-1] if isinstance(old, list) else old
+                if old:
+                    info = {"cik": old, "name": t}
+                    log("  · SEC 목록에 없어 예전 CIK %s 로 받음" % old)
+            except Exception:             # noqa: BLE001
+                pass
         if not info:
             log("! %s : SEC 목록에 없습니다" % t)
             report.append((t, "실패", 0, 0, "티커 없음"))

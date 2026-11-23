@@ -1,7 +1,7 @@
 # 시험용 — 미국 종목 수집 과정 보기 (저장 안 함). CODES=티커(쉼표)
 import os, sys, subprocess
 os.chdir(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-os.environ["TAIL"] = "1"
+
 tk = [x.strip() for x in os.environ.get("CODES", "").split(",") if x.strip()]
 import shutil, json
 shutil.copytree("data/us", "/tmp/us_bak", dirs_exist_ok=True)
