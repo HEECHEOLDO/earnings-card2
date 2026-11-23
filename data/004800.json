@@ -5,7 +5,7 @@
  "code": "004800",
  "market": "코스피",
  "sector": "",
- "updated": "2026-11-14",
+ "updated": "2026-11-23",
  "annual": [
   {
    "p": 2016,
@@ -73,6 +73,15 @@
    "dps_adj": 3000.0
   }
  ],
- "quarterly": [],
- "q_method": "strict"
+ "quarterly": [
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": 6019.1,
+   "op": 991.4,
+   "ni": 897.4
+  }
+ ],
+ "q_method": "strict",
+ "fy_end": 12
 }

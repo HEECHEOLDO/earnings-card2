@@ -5,15 +5,17 @@
  "code": "403360",
  "market": "코넥스",
  "sector": "",
- "updated": "2026-09-05",
+ "updated": "2026-11-23",
  "annual": [],
  "quarterly": [
   {
    "y": 2026,
    "q": 2,
-   "rev": 247.4,
-   "op": 14.7,
-   "ni": 15.4
+   "rev": 149.8,
+   "op": 12.9,
+   "ni": 12.5
   }
- ]
+ ],
+ "q_method": "strict",
+ "fy_end": 12
 }
