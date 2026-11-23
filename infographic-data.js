@@ -1251,7 +1251,7 @@
         var P = TL([{ n: 'VIX', c: '#7A3FC2', d: d }], a), now = d[d.length - 1][1];
         var t0 = dnum(a), t1 = dnum(d[d.length - 1][0]);
         d.forEach(function (x, i) { if (x[1] >= 30 && st == null) st = x[0]; if ((x[1] < 30 || i === d.length - 1) && st != null) { bands.push([(dnum(st) - t0) / (t1 - t0), (dnum(x[0]) - t0) / (t1 - t0), '']); st = null; } });
-        return { fn: 'lines', o: { h1: '공포지수 지금 ' + now.toFixed(1) + (now >= 30 ? ', 공포 구간' : now >= 20 ? ', 불안' : ', 평온'), series: P, ticks: P.ticks, fmt: function (v) { return Math.round(v); }, target: 30, targetLabel: '30 넘으면 공포' }, asof: P.end, tail: '기준 · CBOE VIX (CNBC)' };
+        return { fn: 'lines', o: { h1: '공포지수 지금 ' + now.toFixed(1) + (now >= 30 ? ', 공포 구간' : now >= 20 ? ', 불안' : ', 평온'), series: P, ticks: P.ticks, fmt: function (v) { return Math.round(v); }, target: 30, targetLabel: '30 넘으면 공포', targetLeft: true }, asof: P.end, tail: '기준 · CBOE VIX (CNBC)' };
       });
     } },
     { id: 'curve', name: '장단기 금리 역전', icon: '↯', build: function () {
@@ -1276,7 +1276,7 @@
     } },
     { id: 'buyback', name: '자사주 매입 TOP', icon: '🔁', build: function () {
       return JJ('./data/market/buyback.json').then(function (j) {
-        var by = {}; j.items.forEach(function (x) { var k = x.code || x.name; by[k] = by[k] || { n: x.name, code: x.code, v: 0, k: 0 }; by[k].v += x.won; by[k].k++; });
+        var by = {}; j.items.filter(function (x) { return x.code; }).forEach(function (x) {   /* 상장사만 */ var k = x.code || x.name; by[k] = by[k] || { n: x.name, code: x.code, v: 0, k: 0 }; by[k].v += x.won; by[k].k++; });
         var rows = Object.keys(by).map(function (k) { return by[k]; }).sort(function (a, b) { return b.v - a.v; }).slice(0, K('buyback', 'n', 10));
         rows.forEach(function (r) { r.lab = r.v >= 1e12 ? (r.v / 1e12).toFixed(1) + '조' : Math.round(r.v / 1e8).toLocaleString() + '억'; r.v = r.v / 1e8; r.c = '#2E7D6B'; });
         return Promise.all(rows.map(function (r) { return r.code ? img('./logo/kr/' + r.code + '.png').then(function (i) { r.logo = i; }) : null; })).then(function () {

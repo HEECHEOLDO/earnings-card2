@@ -74,12 +74,13 @@
     for (var g = Math.ceil(lo / st) * st; g <= hi; g += st) { var y = yp(g); X.strokeStyle = (o.zero != null && Math.abs(g - o.zero) < st / 1e3) ? T.ink : T.rule; X.lineWidth = 1.5; X.beginPath(); X.moveTo(x0, y); X.lineTo(x1, y); X.stroke(); X.fillStyle = T.soft; X.font = font(700, 17); X.textAlign = 'right'; X.textBaseline = 'middle'; X.fillText(o.fmt(g), x0 - 8, y); }
     X.textBaseline = 'alphabetic';
     o.ticks.forEach(function (t) { X.fillStyle = T.soft; X.font = font(700, 18); X.textAlign = 'center'; X.fillText(t[1], xp(t[0]), bot + 30); });
-    if (o.target != null) { var ty = yp(o.target); X.strokeStyle = T.ink; X.globalAlpha = 0.55; X.setLineDash([10, 8]); X.lineWidth = 2; X.beginPath(); X.moveTo(x0, ty); X.lineTo(x1, ty); X.stroke(); X.setLineDash([]); X.globalAlpha = 1; X.fillStyle = T.ink; X.font = font(800, 19); X.textAlign = 'right'; X.fillText(o.targetLabel || '', x1 - 8, ty - 10); }
+    if (o.target != null) { var ty = yp(o.target); X.strokeStyle = T.ink; X.globalAlpha = 0.55; X.setLineDash([10, 8]); X.lineWidth = 2; X.beginPath(); X.moveTo(x0, ty); X.lineTo(x1, ty); X.stroke(); X.setLineDash([]); X.globalAlpha = 1; var tlab = function () { X.font = font(800, 19); var tl = o.targetLabel || '', tw = X.measureText(tl).width, tx = o.targetLeft ? x0 + 8 : x1 - 8 - tw; if (o.targetLeft) { X.fillStyle = 'rgba(250,250,248,0.92)'; X.fillRect(tx - 6, ty - 34, tw + 12, 30); } X.fillStyle = T.ink; X.textAlign = 'left'; X.fillText(tl, tx, ty - 12); }; if (!o.targetLeft) tlab(); }   // 왼쪽에 둘 때는 선을 다 그린 뒤 바탕을 깔고 쓴다
     (o.bands || []).forEach(function (b) { X.fillStyle = 'rgba(16,18,22,0.05)'; X.fillRect(xp(b[0]), top, xp(b[1]) - xp(b[0]), bot - top); X.fillStyle = T.soft; X.font = font(700, 16); X.textAlign = 'center'; X.fillText(b[2], (xp(b[0]) + xp(b[1])) / 2, top + 20); });
     o.series.slice().reverse().forEach(function (s) {
       X.strokeStyle = s.c; X.lineWidth = s.w || 4; X.lineJoin = 'round'; X.beginPath();
       s.pts.forEach(function (p, i) { if (i) X.lineTo(xp(p[0]), yp(p[1])); else X.moveTo(xp(p[0]), yp(p[1])); }); X.stroke();
     });
+    if (o.target != null && o.targetLeft) tlab();
     var ends = o.series.map(function (s) { var p = s.pts[s.pts.length - 1]; return { s: s, v: p[1], x: xp(p[0]), y: yp(p[1]) }; }).sort(function (a, b) { return a.y - b.y; });
     for (var k = 1; k < ends.length; k++) if (ends[k].y - ends[k - 1].y < 50) ends[k].y = ends[k - 1].y + 50;
     ends.forEach(function (e) {
