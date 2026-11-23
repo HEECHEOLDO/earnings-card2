@@ -225,13 +225,14 @@ def collect_one(item, old):
     if item.get("basis"):                     # 목록 다섯째 칸에 '별도' 라고 적은 회사
         want_cfs = item["basis"] == "연결"
     fy_month = pers[0][1]
+    alt = {p[0]: p for p in pers if p[1] != fy_month}       # 결산월을 바꾼 해: 그해의 다른 결산월 보고서 (예: 삼성라이온즈 2021.11 → 2021.12)
     pers = [p for p in pers if p[1] == fy_month][:YEARS]   # 결산월을 바꾼 해는 뺀다
 
     old = old if (old and old.get("source") == "audit") else {}
     have = {a["p"]: a for a in old.get("annual", [])}
     srcs = dict(old.get("reports", {}))
     rows, prevs, kinds = {}, {}, {}
-    for per in pers:
+    for per in sorted(pers):                  # 오래된 해부터 (전년 값과 견주려고)
         y = per[0]
         r = choose(by[per], want_cfs)
         if y in have and srcs.get(str(y)) == r["rcept_no"]:
@@ -246,6 +247,18 @@ def collect_one(item, old):
         cur, prev, cfs = parse(doc) if doc else (None, None, None)
         if not cur or not sane(cur):
             log("  - %d년 표를 못 읽음 (%s)" % (y, r["rcept_no"]))
+            continue
+        if y in alt and prev and prev.get("rev") and cur["rev"] < prev["rev"] * 0.3:
+            # 결산월을 바꾼 해의 짧은 기간(1~몇 달) 보고서 — 그해 12개월은 다른 결산월 보고서로
+            r2 = choose(by[alt[y]], want_cfs)
+            doc2 = P.fetch_doc(r2["rcept_no"])
+            c2, p2, f2 = parse(doc2) if doc2 else (None, None, None)
+            if c2 and sane(c2) and c2["rev"] > cur["rev"]:
+                log("  %d년은 결산월 변경으로 짧은 기간 — %s 보고서(12개월)를 씀" % (y, alt[y][1]))
+                cur, cfs, r = c2, f2, r2
+        if prev and prev.get("rev") is None and y - 1 in rows and rows[y - 1].get("rev") is not None \
+                and cur["rev"] is not None and abs(C.eok(cur["rev"]) - rows[y - 1]["rev"]) < 0.05:
+            log("  - %d년 매출이 전년과 똑같이 읽힘 — 표를 잘못 읽은 것으로 보고 그해는 뺀다" % y)   # 이스타항공 2021
             continue
         rows[y] = {k: C.eok(v) for k, v in cur.items()}
         prevs[y - 1] = {k: C.eok(v) for k, v in prev.items()}
@@ -410,7 +423,7 @@ def main():
         log("\n=== %s (%s) ===" % (x["name"], "+".join(x["codes"])))
         path = os.path.join(OUT, x["code"] + ".json")
         try:
-            data, notes = collect_one(x, U.jload(path, None))
+            data, notes = collect_one(x, None if args else U.jload(path, None))   # 이름을 지정하면 보고서를 모두 다시 읽는다
         except Exception as e:                # noqa: BLE001
             log("! 예외: %r" % e)
             failed[x["code"]] = {"name": x["name"], "reason": "예외 %s" % type(e).__name__,

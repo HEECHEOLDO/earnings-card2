@@ -7,6 +7,11 @@ on:
     # 여기서는 1,500회까지만 써서 두 수집을 합쳐도 한도 안에 든다.
     - cron: '30 16 * * *'
   workflow_dispatch:
+    inputs:
+      audit:
+        description: '감사보고서 회사만 8자리 회사코드로 바로 다시 받기 — 빈칸으로 띄어'
+        required: false
+        default: ''
 
 permissions:
   contents: write
@@ -27,6 +32,7 @@ jobs:
           python-version: '3.11'
 
       - name: 수집 (새 회사 먼저, 그다음 7일 지난 회사)
+        if: github.event.inputs.audit == '' || github.event.inputs.audit == null
         env:
           DART_API_KEY: ${{ secrets.DART_API_KEY }}
         run: python3 collect_unlisted.py --budget 1500 --refresh-days 7
@@ -34,7 +40,10 @@ jobs:
       - name: 감사보고서 회사 수집 (남은 예산으로)
         env:
           DART_API_KEY: ${{ secrets.DART_API_KEY }}
-        run: python3 collect_audit.py --total 1500
+          IN_AUDIT: ${{ github.event.inputs.audit }}
+        run: |
+          A=$(printf '%s' "$IN_AUDIT" | tr -cd '0-9 ')
+          python3 collect_audit.py --total 1500 $A
 
       - name: 변경분 커밋
         run: |
