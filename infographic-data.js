@@ -184,7 +184,7 @@
     if (/(ng|[lmnkp]|[^e]c)$/i.test(wd)) return w + '은';                            // ELECTRIC(일렉트릭), Amazon
     return w + '는';
   }
-  var EMOJI = {treemap: '🗺️', ranked: '🚀', bump: '🏆', dumbbell: '↕️', voronoi: '🇺🇸', radial: '🎯', thennow: '⏳', compare: '⚖️', surprise: '📊', margin: '💰', world: '🌍', quilt: '🧩', growth: '🌱', holders: '👥', waffle: '🧇', usmap: '🗽', usranked: '🚀', rivals: '🥊', breadth: '📈', contrib: '🏗️', profitshare: '🍰', calendar: '📅', monthly: '🗓️', drawdown: '📉', scatter: '🔍', dividend: '💵', slope: '🔀', profit: '🏦', tiers: '🐘', sectors: '🏭', fx: '💱', concentration: '🎯', range52: '📏', revgrowth: '📈', roe: '⚙️', gurucommon: '🧠', rotation: '🔄', unlisted: '🔒', streak: '🔥', exportboard: '🚢', exportitem: '📦', kconsumer: '🛍️', rates: '🏛️', goldkrw: '🥇', commod: '🛢️', travel: '✈️', inflation: '🛒', usdash: '🇺🇸', krdash: '🇰🇷', race1y: '🏁'};   // 제목 첫 줄 앞 이모지 (돈의 흐름은 로고가 있어 빼고)
+  var EMOJI = {treemap: '🗺️', ranked: '🚀', bump: '🏆', dumbbell: '↕️', voronoi: '🇺🇸', radial: '🎯', thennow: '⏳', compare: '⚖️', surprise: '📊', margin: '💰', world: '🌍', quilt: '🧩', growth: '🌱', holders: '👥', waffle: '🧇', usmap: '🗽', usranked: '🚀', rivals: '🥊', breadth: '📈', contrib: '🏗️', profitshare: '🍰', calendar: '📅', monthly: '🗓️', drawdown: '📉', scatter: '🔍', dividend: '💵', slope: '🔀', profit: '🏦', tiers: '🐘', sectors: '🏭', fx: '💱', concentration: '🎯', range52: '📏', revgrowth: '📈', roe: '⚙️', gurucommon: '🧠', rotation: '🔄', unlisted: '🔒', streak: '🔥', exportboard: '🚢', exportitem: '📦', kconsumer: '🛍️', rates: '🏛️', goldkrw: '🥇', commod: '🛢️', travel: '✈️', inflation: '🛒', usdash: '🇺🇸', krdash: '🇰🇷', race1y: '🏁', limits: '🚨', advdec: '⚖️', hilo: '🏔️', crash: '⚡', vix: '😱', curve: '↩️', king: '👑', investor: '👥', buyback: '🔁', insider: '🕴️', ipo: '🎟️'};   // 제목 첫 줄 앞 이모지 (돈의 흐름은 로고가 있어 빼고)
   // 카드별 세부 설정 (인포그래픽 탭 '세부 설정') — 항목 수 · 순서. 기본값은 예전 그대로
   var CFG = {};
   function K(id, k, def) { var v = CFG[id] && CFG[id][k]; return v == null ? def : v; }
@@ -194,7 +194,7 @@
     usmap: [['n', '종목 수', 20, 100, 60]], usranked: [['n', '종목 수', 5, 20, 15], ['ord', '순서']], dividend: [['n', '종목 수', 5, 20, 15]],
     slope: [['n', '순위 수', 8, 20, 15]], profit: [['n', '종목 수', 5, 20, 15]], range52: [['n', '종목 수', 10, 20, 15]],
     revgrowth: [['n', '종목 수', 5, 20, 15]], roe: [['n', '종목 수', 5, 20, 15]], gurucommon: [['n', '종목 수', 5, 20, 15]],
-    waffle: [['n', '종목 수', 3, 9, 9]], voronoi: [['n', '종목 수', 20, 80, 50]]
+    waffle: [['n', '종목 수', 3, 9, 9]], voronoi: [['n', '종목 수', 20, 80, 50]], buyback: [['n', '회사 수', 5, 15, 10]], ipo: [['n', '종목 수', 5, 20, 15]], insider: [['n', '사람 수', 5, 15, 10]]
   };
   var TITLE = {    // 모든 제목은 두 줄: 첫 줄 = 무엇(크게), 둘째 줄 = 궁금한 점 — ' / ' 로 나눈다
     treemap: function (o) { return (MK(o) || '한국 증시') + ' / 돈은 어디에 몰렸을까'; },
@@ -247,7 +247,18 @@
     inflation: function (o, r) { return ((r.o.series || []).length > 1 ? '한국 vs 미국' : (r.o.series || [{ n: '' }])[0].n) + ' 물가 / 얼마나 올랐나'; },
     usdash: function () { return '미국 경제 / 지금 어떤가'; },
     krdash: function () { return '한국 경제 / 지금 어떤가'; },
-    race1y: function () { return '코인 vs 금 vs 주식 / 1년 전에 투자했다면?'; }
+    race1y: function () { return '코인 vs 금 vs 주식 / 1년 전에 투자했다면?'; },
+    limits: function () { return '상한가·하한가 / 달마다 몇 번 나왔나'; },
+    advdec: function () { return '오른 종목 vs 내린 종목 / 지수만 보면 모른다'; },
+    hilo: function () { return '신고가·신저가 / 몇 종목이 새 기록을 썼나'; },
+    crash: function (o) { return IDXN[o] + ' / 가장 크게 움직인 날'; },
+    vix: function () { return '공포지수 VIX / 시장은 지금 얼마나 무서워하나'; },
+    curve: function () { return '미국 장단기 금리 / 역전되면 경기 침체 신호?'; },
+    king: function () { return '코스피 시총 1위 / 30년 동안 누가 왕좌에?'; },
+    investor: function (o) { return (o === 'KOSDAQ' ? '코스닥' : '코스피') + ' / 개인·외국인·기관 누가 샀나'; },
+    buyback: function () { return '자사주 매입 / 올해 가장 많이 사겠다는 회사'; },
+    insider: function () { return '미국 내부자 매수 / CEO가 자기 회사 주식을 샀다'; },
+    ipo: function () { return '공모주 성적표 / 공모가보다 올랐을까'; }
   };
   var D = {}, ONLY = window.__IG_ONLY || '';
   function loadAll() {
@@ -1187,6 +1198,123 @@
         var P = TL(S, a), best = P.slice().sort(function (x, y) { return y.pts[y.pts.length - 1][1] - x.pts[x.pts.length - 1][1]; })[0];
         return { fn: 'lines', o: { h1: '1년 전 넣었다면, ' + best.n + josa(best.n, '이', '가') + ' ' + pct1(best.pts[best.pts.length - 1][1]), series: P, ticks: P.ticks, fmt: function (v) { return (v > 0 ? '+' : '') + Math.round(v) + '%'; }, zero: 0 }, asof: P.end };
       });
+    } },
+    /* ---- 2026-11 시장 이벤트 카드 (data/market/breadth.json = 거래소 전 종목 종가로 센 하루 통계, build_market.py) */
+    { id: 'limits', name: '상한가·하한가', icon: '⇅', build: function () {
+      return JJ('./data/market/breadth.json').then(function (b) {
+        var by = {}, y0 = String(b.days[b.days.length - 1][0]).slice(0, 4), U = 0, Dn = 0, best = null;
+        b.days.forEach(function (d) { var m = String(d[0]).slice(0, 6); by[m] = by[m] || [0, 0]; by[m][0] += d[4]; by[m][1] += d[5]; if (String(d[0]).slice(0, 4) === y0) { U += d[4]; Dn += d[5]; if (!best || d[4] > best[4]) best = d; } });
+        var ms = Object.keys(by).sort().slice(-12), bars = [];
+        ms.forEach(function (m) { bars.push({ v: by[m][0], c: '#D6362C', tick: (+m.slice(4)) + '월', hi: true, hiLab: by[m][0] }); bars.push({ v: -by[m][1], c: '#2B6CD9', hi: by[m][1] > 0, hiLab: by[m][1] }); });
+        var bs = String(best[0]);
+        return { fn: 'columns', o: { h1: y0 + '년 상한가 ' + U.toLocaleString() + '번', bars: bars, fmt: function (v) { return Math.abs(Math.round(v)); },
+          stats: [[U.toLocaleString() + '번', '올해 상한가', '#D6362C'], [Dn.toLocaleString() + '번', '올해 하한가', '#2B6CD9'], [(+bs.slice(4, 6)) + '/' + (+bs.slice(6)) + ' ' + best[4] + '종목', '하루 최다 상한가']],
+          legend: [['상한가 (종목 수)', '#D6362C'], ['하한가', '#2B6CD9']] }, asof: b.updated.slice(0, 4) + '-' + b.updated.slice(4, 6) + '-' + b.updated.slice(6), tail: '기준 · 거래소 정규장 종가, 직전 종가 대비 ±29.5% 이상' };
+      });
+    } },
+    { id: 'advdec', name: '오른 종목 vs 내린 종목', icon: '⇵', build: function () {
+      return Promise.all([JJ('./data/market/breadth.json'), JJ('./data/chart/idx/KOSPI.json')]).then(function (js) {
+        var b = js[0], k = {}, kd = js[1].d; for (var i = 1; i < kd.length; i++) k[kd[i][0]] = kd[i][1] / kd[i - 1][1] - 1;
+        var days = b.days.slice(-250), odd = 0, S = [], A = [];
+        days.forEach(function (d, i) {
+          var share = d[1] / Math.max(1, d[1] + d[2]) * 100; A.push(share);
+          if (k[d[0]] > 0 && d[2] > d[1]) odd++;
+          if (i >= 19) { var a = A.slice(-20).reduce(function (t, x) { return t + x; }, 0) / 20; S.push([d[0], a]); }
+        });
+        var P = TL([{ n: '오른 종목 비율', c: '#D6362C', d: S }], String(S[0][0]));
+        return { fn: 'lines', o: { h1: '코스피는 올랐는데 더 많이 내린 날 ' + odd + '일', series: P, ticks: P.ticks, fmt: function (v) { return Math.round(v) + '%'; }, target: 50, targetLabel: '절반' }, asof: P.end, tail: '기준 · 국내 전 종목, 오른 종목 비율 20일 평균' };
+      });
+    } },
+    { id: 'hilo', name: '신고가·신저가', icon: '⇕', build: function () {
+      return JJ('./data/market/breadth.json').then(function (b) {
+        var d = b.days.filter(function (x) { return x[6] + x[7] > 0; }), H = [], Lo = [];
+        d.forEach(function (x, i) { if (i < 4) return; var w = d.slice(i - 4, i + 1); H.push([x[0], w.reduce(function (t, y) { return t + y[6]; }, 0) / 5]); Lo.push([x[0], w.reduce(function (t, y) { return t + y[7]; }, 0) / 5]); });
+        var P = TL([{ n: '52주 신고가', c: '#D6362C', d: H }, { n: '52주 신저가', c: '#2B6CD9', d: Lo }], String(H[0][0])), last = d[d.length - 1];
+        return { fn: 'lines', o: { h1: '어제 신고가 ' + last[6] + '종목, 신저가 ' + last[7] + '종목', series: P, ticks: P.ticks, fmt: function (v) { return Math.round(v); }, zero: 0 }, asof: P.end, tail: '기준 · 국내 전 종목, 5일 평균 (52주 = 직전 250거래일 종가)' };
+      });
+    } },
+    { id: 'crash', name: '증시 폭락·폭등의 날', icon: '⚡', opts: [['KOSPI', '코스피'], ['KOSDAQ', '코스닥'], ['SPX', 'S&P 500'], ['IXIC', '나스닥']], build: function (code) {
+      return JJ('./data/chart/idx/' + code + '.json').then(function (j) {
+        var r = j.r && j.r['10y'], rows = [];
+        if (!r) throw new Error('10년 일별 자료 준비 중');
+        var lab = function (x) { var s = String(x[0]); return "'" + s.slice(2, 4) + '.' + (+s.slice(4, 6)) + '.' + (+s.slice(6)); };
+        r.dn.forEach(function (x) { rows.push({ n: lab(x), v: x[1], lab: x[1].toFixed(2) + '%', c: '#2B6CD9' }); });
+        r.up.forEach(function (x) { rows.push({ n: lab(x), v: x[1], lab: '+' + x[1].toFixed(2) + '%', c: '#D6362C' }); });
+        rows.sort(function (a, b) { return a.v - b.v; });
+        var e = String(j.r.end);
+        return { fn: 'bars', o: { kicker: '최근 10년', h1: IDXN[code] + ' 하루 최대 낙폭 ' + r.dn[0][1].toFixed(2) + '%', rows: rows }, asof: e.slice(0, 4) + '-' + e.slice(4, 6) + '-' + e.slice(6), tail: '기준 · 하루 등락률 (그날 종가 ÷ 직전 거래일 종가)' };
+      });
+    } },
+    { id: 'vix', name: '공포지수 VIX', icon: '😱', build: function () {
+      return ECO('vix').then(function (v) {
+        var a = ymd(-5), d = v.d.filter(function (x) { return x[0] >= a; }), bands = [], st = null;
+        var P = TL([{ n: 'VIX', c: '#7A3FC2', d: d }], a), now = d[d.length - 1][1];
+        var t0 = dnum(a), t1 = dnum(d[d.length - 1][0]);
+        d.forEach(function (x, i) { if (x[1] >= 30 && st == null) st = x[0]; if ((x[1] < 30 || i === d.length - 1) && st != null) { bands.push([(dnum(st) - t0) / (t1 - t0), (dnum(x[0]) - t0) / (t1 - t0), '']); st = null; } });
+        return { fn: 'lines', o: { h1: '공포지수 지금 ' + now.toFixed(1) + (now >= 30 ? ', 공포 구간' : now >= 20 ? ', 불안' : ', 평온'), series: P, ticks: P.ticks, fmt: function (v) { return Math.round(v); }, target: 30, targetLabel: '30 넘으면 공포', targetLeft: true }, asof: P.end, tail: '기준 · CBOE VIX (CNBC)' };
+      });
+    } },
+    { id: 'curve', name: '장단기 금리 역전', icon: '↯', build: function () {
+      return Promise.all([ECO('us10y'), ECO('us2y')]).then(function (js) {
+        var m = {}; js[1].d.forEach(function (x) { m[x[0]] = x[1]; });
+        var a = ymd(-10), S = js[0].d.filter(function (x) { return x[0] >= a && m[x[0]] != null; }).map(function (x) { return [x[0], x[1] - m[x[0]]]; });
+        var P = TL([{ n: '10년 − 2년', c: '#2E7D6B', d: S }], a), t0 = dnum(S[0][0]), t1 = dnum(S[S.length - 1][0]), bands = [], st = null, now = S[S.length - 1][1];
+        S.forEach(function (x, i) { if (x[1] < 0 && st == null) st = x[0]; if ((x[1] >= 0 || i === S.length - 1) && st != null) { var ba = (dnum(st) - t0) / (t1 - t0), bb = (dnum(x[0]) - t0) / (t1 - t0), pv = bands[bands.length - 1]; if (pv && ba - pv[1] < 0.03) pv[1] = bb; else bands.push([ba, bb, '']); st = null; } });
+        bands = bands.filter(function (b) { return b[1] - b[0] > 0.01; }); bands.forEach(function (b) { if (b[1] - b[0] > 0.08) b[2] = '역전'; });   // 잠깐씩 들락날락한 건 한 구간으로
+        return { fn: 'lines', o: { h1: '미국 장단기 금리차 ' + (now >= 0 ? '+' : '') + now.toFixed(2) + '%p', series: P, ticks: P.ticks, fmt: function (v) { return v.toFixed(1) + '%p'; }, zero: 0, bands: bands }, asof: P.end, tail: '기준 · 미국 국채 10년 − 2년 (CNBC)' };
+      });
+    } },
+    { id: 'investor', name: '개인·외국인·기관', icon: '👥', opts: [['KOSPI', '코스피'], ['KOSDAQ', '코스닥']], build: function (ix) {
+      return JJ('./data/market/investor.json').then(function (j) {
+        var d = j[ix], acc = [0, 0, 0], S = [[], [], []];
+        d.forEach(function (x) { for (var k = 0; k < 3; k++) { acc[k] += x[k + 1]; S[k].push([x[0], acc[k] / 1e4]); } });
+        var C = [['개인', '#E0A100'], ['외국인', '#2B6CD9'], ['기관', '#2E9E6B']];
+        var P = TL(C.map(function (c, k) { return { n: c[0], c: c[1], d: S[k] }; }), String(d[0][0]));
+        var win = C[[0, 1, 2].sort(function (a, b) { return acc[b] - acc[a]; })[0]][0];
+        return { fn: 'lines', o: { h1: '1년 동안 가장 많이 산 건 ' + win, series: P, ticks: P.ticks, fmt: function (v) { return (v > 0 ? '+' : '') + Math.round(v) + '조'; }, zero: 0 }, asof: P.end, tail: '기준 · 순매수 누적 (거래소 집계, 네이버 증권)' };
+      });
+    } },
+    { id: 'buyback', name: '자사주 매입 TOP', icon: '🔁', build: function () {
+      return JJ('./data/market/buyback.json').then(function (j) {
+        var by = {}; j.items.filter(function (x) { return x.code; }).forEach(function (x) {   /* 상장사만 */ var k = x.code || x.name; by[k] = by[k] || { n: x.name, code: x.code, v: 0, k: 0 }; by[k].v += x.won; by[k].k++; });
+        var rows = Object.keys(by).map(function (k) { return by[k]; }).sort(function (a, b) { return b.v - a.v; }).slice(0, K('buyback', 'n', 10));
+        rows.forEach(function (r) { r.lab = r.v >= 1e12 ? (r.v / 1e12).toFixed(1) + '조' : Math.round(r.v / 1e8).toLocaleString() + '억'; r.v = r.v / 1e8; r.c = '#2E7D6B'; });
+        return Promise.all(rows.map(function (r) { return r.code ? img('./logo/kr/' + r.code + '.png').then(function (i) { r.logo = i; }) : null; })).then(function () {
+          return { fn: 'bars', o: { kicker: j.year + '년 자기주식 취득 결정', h1: '자사주 가장 많이 사겠다는 회사', rows: rows }, asof: j.updated, tail: '기준 · DART 주요사항보고서 (취득 예정 금액 합)' };
+        });
+      });
+    } },
+    { id: 'insider', name: '미국 내부자 매수', icon: '🕴️', build: function () {
+      return JJ('./data/market/insider_us.json').then(function (j) {
+        var who = function (z) {                         // SEC 이름은 '성 이름' 순 · 직책은 한글로
+          if (/\b(trust)\b/i.test(z.who)) return '대주주(신탁)';
+          if (/\b(inc|llc|l\.?p\.?|corp|ltd|holdings|partners|fund)\b/i.test(z.who)) return '대주주(법인)';
+          var nm = z.who.split(/[\s,]+/)[0]; nm = nm.charAt(0) + nm.slice(1).toLowerCase();
+          var r = /chief executive|\bceo\b/i.test(z.title) ? 'CEO' : /chair/i.test(z.title) ? '회장' : /chief financial|\bcfo\b/i.test(z.title) ? 'CFO' : /president/i.test(z.title) ? '사장' : z.title ? '임원' : z.dir ? '이사' : z.ten ? '대주주' : '내부자';
+          return r + ' ' + nm;
+        };
+        var rows = j.buy.slice(0, K('insider', 'n', 10)).map(function (z) { var k = window.US_KO && window.US_KO[z.t]; return { n: (k || z.t) + ' · ' + (z.who2 || who(z)), v: z.usd / 1e6, lab: '$' + (z.usd >= 1e6 ? (z.usd / 1e6).toFixed(1) + 'M' : Math.round(z.usd / 1e3) + 'K'), c: '#2E9E6B', t: z.t }; });
+        return Promise.all(rows.map(function (r) { return img('./logo/us/' + r.t + '.png').then(function (i) { r.logo = i; }); })).then(function () {
+          return { fn: 'bars', o: { kicker: '최근 30일 · 자기 회사 주식을 장내에서 산 내부자 ' + j.n_buy + '명', h1: '내부자가 가장 크게 산 주식', rows: rows }, asof: j.updated, tail: '기준 · SEC Form 4 장내 매수(P)' };
+        });
+      });
+    } },
+    { id: 'ipo', name: '공모주 성적표', icon: '🎟️', build: function () {
+      return JJ('./data/market/ipo.json').then(function (j) {
+        var rows = j.items.map(function (r) { var v = (r.now / r.prc - 1) * 100; return { n: r.name, code: r.code, v: v, lab: (v >= 0 ? '+' : '') + Math.round(v) + '%' }; }).sort(function (a, b) { return b.v - a.v; }).slice(0, K('ipo', 'n', 15));
+        var up = j.items.filter(function (r) { return r.now > r.prc; }).length;
+        return Promise.all(rows.map(function (r) { return img('./logo/kr/' + r.code + '.png').then(function (i) { r.logo = i; }); })).then(function () {
+          return { fn: 'bars', o: { kicker: '최근 1년 새로 상장한 ' + j.items.length + '곳', h1: '공모가보다 오른 곳 ' + up + '곳', rows: rows }, asof: j.updated, tail: '기준 · 공모가 대비 지금 (DART 증권신고서 공모가)' };
+        });
+      });
+    } },
+    { id: 'king', name: '시총 1위의 역사', icon: '👑', build: function () {
+      return JJ('./data/rank_monthly.json').then(function (rm) {
+        var ks = Object.keys(rm.months).sort(), seg = [];
+        ks.forEach(function (k) { var t = (rm.months[k].kospi || [])[0]; if (!t) return; var nm = t[1]; if (seg.length && seg[seg.length - 1].code === t[0]) { seg[seg.length - 1].b = k; seg[seg.length - 1].n++; } else seg.push({ code: t[0], nm: nm, a: k, b: k, n: 1 }); });
+        var rows = seg.map(function (s) { return { n: s.nm, v: s.n / 12, lab: s.a.slice(0, 4) + '.' + (+s.a.slice(5)) + ' ~ ' + s.b.slice(0, 4) + '.' + (+s.b.slice(5)) + ' (' + (s.n >= 12 ? (s.n / 12).toFixed(1) + '년' : s.n + '개월') + ')', c: s.code === '005930' ? '#1428A0' : '#8A94A6' }; });
+        return { fn: 'bars', o: { kicker: '코스피 시가총액 1위', h1: '1위가 바뀐 건 ' + (seg.length - 1) + '번', rows: rows }, asof: rm.updated, tail: '기준 · 월말 시가총액 (거래소)' };
+      });
     } }
 
   ];
@@ -1196,7 +1324,7 @@
     var cv = $('card'); if (!cv) return;
     var X = cv.getContext('2d'), cur = null, last = null, cache = {};
     var bar = $('kinds');
-    var GRP = [['한국 증시', ['treemap', 'ranked', 'sectors', 'tiers', 'breadth', 'contrib', 'concentration', 'range52', 'rotation', 'dumbbell', 'radial', 'compare']], ['순위·역사', ['bump', 'slope', 'thennow', 'drawdown', 'monthly', 'calendar']],
+    var GRP = [['한국 증시', ['treemap', 'ranked', 'sectors', 'tiers', 'breadth', 'contrib', 'concentration', 'range52', 'rotation', 'dumbbell', 'radial', 'compare']], ['순위·역사', ['bump', 'slope', 'thennow', 'drawdown', 'monthly', 'calendar', 'king']], ['시장 이벤트', ['limits', 'advdec', 'hilo', 'crash', 'vix', 'curve', 'investor', 'buyback', 'insider', 'ipo']],
       ['실적·배당', ['sankey', 'surprise', 'margin', 'profit', 'profitshare', 'scatter', 'dividend', 'revgrowth', 'roe', 'streak', 'unlisted']], ['미국·세계', ['voronoi', 'usmap', 'usranked', 'world', 'rivals', 'fx']],
       ['투자·주주', ['quilt', 'growth', 'waffle', 'gurucommon', 'holders']], ['경제·생활', ['krdash', 'usdash', 'exportboard', 'exportitem', 'kconsumer', 'rates', 'inflation', 'goldkrw', 'commod', 'race1y', 'travel']]], gbox = {};
     if (ONLY) bar.style.display = 'none';

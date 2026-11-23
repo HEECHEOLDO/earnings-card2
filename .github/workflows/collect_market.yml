@@ -1,0 +1,56 @@
+# 인포그래픽 '시장 이벤트' 카드 자료 — data/market/ (collect_market.py)
+# 평일 저녁: 거래소 종가(data/krx, 국내 기준점 수집이 받아 둔 것)로 상한가·등락·신고가를 다시 세고,
+# 투자자별 순매수·자사주·공모주·미국 내부자 거래를 새로 받는다. 수집기를 고치면(push) 바로 한 번 돈다.
+name: 시장 이벤트 수집
+
+on:
+  schedule:
+    - cron: '35 11 * * 1-5'     # UTC 11:35 = KST 20:35 평일
+    - cron: '35 23 * * 0-4'     # UTC 23:35 = KST 08:35 (전날 거래소 종가가 늦게 올라온 날 대비)
+  push:
+    branches: [main]
+    paths:
+      - 'collect_market.py'
+      - 'build_market.py'
+      - '.github/workflows/collect_market.yml'
+  workflow_dispatch:
+    inputs:
+      parts:
+        description: "비우면 전체 · 'breadth investor buyback ipo insider' 중 일부"
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+concurrency:
+  group: market-v1
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: 수집
+        env:
+          DART_API_KEY: ${{ secrets.DART_API_KEY }}
+          PARTS: ${{ github.event.inputs.parts }}
+        run: python3 collect_market.py $PARTS
+      - name: 커밋
+        run: |
+          if [ -z "$(git status --porcelain -- data/market)" ]; then echo "변경 없음"; exit 0; fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git add data/market
+          git commit -m "시장 이벤트 자료 $(TZ=Asia/Seoul date +%F)"
+          for i in 1 2 3 4 5; do
+            git pull --rebase -X theirs --autostash && git push && exit 0
+            git rebase --abort 2>/dev/null || true
+            sleep 10
+          done
+          exit 1
