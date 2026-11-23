@@ -113,8 +113,10 @@
   function pct(x) { var a = Math.abs(x); return (a >= 1000 ? Math.round(a).toLocaleString('en-US') : a.toFixed(1)) + '%'; }
   function autoTitle(s) {
     if (!s) return '';
-    if (state.view === 'dd') return '역대 하락폭 순위';
-    if (state.view === 'up') return '역대 상승폭 순위';
+    if (state.view === 'dd' || state.view === 'up') {             // 고른 기간에 맞춰: 올해 / 최근 3개월간 / 최근 10년간
+      var sq = SPANS[state.span] || {}, per = state.span === 'ytd' ? '올해' : '최근 ' + (sq.m ? sq.m + '개월간' : sq.y + '년간');
+      return per + ' ' + (state.view === 'dd' ? '하락폭' : '상승폭') + ' 순위';
+    }
     var what = state.item && state.item.ix ? ' 지수 추이' : ' 주가 추이';
     if (state.span === 'ytd') return s.pts[s.pts.length - 1].y + '년' + what;
     var sp = SPANS[state.span];
