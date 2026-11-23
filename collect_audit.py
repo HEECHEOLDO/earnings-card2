@@ -206,7 +206,7 @@ def sane(row):
     if rev is None or rev <= 0:
         return False
     if op is not None and abs(op) > rev * 3 and rev > 1e9:
-        return op < 0 and ni is not None and ni < 0     # 적자가 매출보다 훨씬 큰 회사(타다·니트로 등)는 영업·순손실이 둘 다 마이너스면 맞는 표
+        return op < 0     # 적자가 매출보다 훨씬 큰 회사(타다·니트로·슈퍼캣 등) — 영업손실이면 맞는 표
     return True
 
 
