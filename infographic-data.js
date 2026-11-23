@@ -184,7 +184,7 @@
     if (/(ng|[lmnkp]|[^e]c)$/i.test(wd)) return w + '은';                            // ELECTRIC(일렉트릭), Amazon
     return w + '는';
   }
-  var EMOJI = {treemap: '🗺️', ranked: '🚀', bump: '🏆', dumbbell: '↕️', voronoi: '🇺🇸', radial: '🎯', thennow: '⏳', compare: '⚖️', surprise: '📊', margin: '💰', world: '🌍', quilt: '🧩', growth: '🌱', holders: '👥', waffle: '🧇', usmap: '🗽', usranked: '🚀', rivals: '🥊', breadth: '📈', contrib: '🏗️', profitshare: '🍰', calendar: '📅', monthly: '🗓️', drawdown: '📉', scatter: '🔍', dividend: '💵', slope: '🔀', profit: '🏦', tiers: '🐘', sectors: '🏭', fx: '💱', concentration: '🎯', range52: '📏', revgrowth: '📈', roe: '⚙️', gurucommon: '🧠', rotation: '🔄', unlisted: '🔒', streak: '🔥', exportboard: '🚢', exportitem: '📦', kconsumer: '🛍️', rates: '🏛️', goldkrw: '🥇', commod: '🛢️', travel: '✈️', inflation: '🛒', usdash: '🇺🇸', krdash: '🇰🇷', race1y: '🏁', limits: '🚨', advdec: '⚖️', hilo: '🏔️', crash: '⚡', vix: '😱', curve: '↩️', king: '👑', investor: '👥', buyback: '🔁', insider: '🕴️', ipo: '🎟️'};   // 제목 첫 줄 앞 이모지 (돈의 흐름은 로고가 있어 빼고)
+  var EMOJI = {treemap: '🗺️', ranked: '🚀', bump: '🏆', dumbbell: '↕️', voronoi: '🇺🇸', radial: '🎯', thennow: '⏳', compare: '⚖️', surprise: '📊', margin: '💰', world: '🌍', quilt: '🧩', growth: '🌱', holders: '👥', waffle: '🧇', usmap: '🗽', usranked: '🚀', rivals: '🥊', breadth: '📈', contrib: '🏗️', profitshare: '🍰', calendar: '📅', monthly: '🗓️', drawdown: '📉', scatter: '🔍', dividend: '💵', slope: '🔀', profit: '🏦', tiers: '🐘', sectors: '🏭', fx: '💱', concentration: '🎯', range52: '📏', revgrowth: '📈', roe: '⚙️', gurucommon: '🧠', rotation: '🔄', unlisted: '🔒', streak: '🔥', exportboard: '🚢', exportitem: '📦', kconsumer: '🛍️', rates: '🏛️', goldkrw: '🥇', commod: '🛢️', travel: '✈️', inflation: '🛒', usdash: '🇺🇸', krdash: '🇰🇷', race1y: '🏁', limits: '🚨', advdec: '⚖️', hilo: '🏔️', crash: '⚡', vix: '😱', curve: '↩️', king: '👑', investor: '👥', buyback: '🔁', insider: '🕴️', ipo: '🎟️', season: '📊', indgrowth: '🏭', marginchg: '📈', kqrel: '⚖️', fedpath: '🏦'};   // 제목 첫 줄 앞 이모지 (돈의 흐름은 로고가 있어 빼고)
   // 카드별 세부 설정 (인포그래픽 탭 '세부 설정') — 항목 수 · 순서. 기본값은 예전 그대로
   var CFG = {};
   function K(id, k, def) { var v = CFG[id] && CFG[id][k]; return v == null ? def : v; }
@@ -194,7 +194,7 @@
     usmap: [['n', '종목 수', 20, 100, 60]], usranked: [['n', '종목 수', 5, 20, 15], ['ord', '순서']], dividend: [['n', '종목 수', 5, 20, 15]],
     slope: [['n', '순위 수', 8, 20, 15]], profit: [['n', '종목 수', 5, 20, 15]], range52: [['n', '종목 수', 10, 20, 15]],
     revgrowth: [['n', '종목 수', 5, 20, 15]], roe: [['n', '종목 수', 5, 20, 15]], gurucommon: [['n', '종목 수', 5, 20, 15]],
-    waffle: [['n', '종목 수', 3, 9, 9]], voronoi: [['n', '종목 수', 20, 80, 50]], buyback: [['n', '회사 수', 5, 15, 10]], ipo: [['n', '종목 수', 5, 20, 15]], insider: [['n', '사람 수', 5, 15, 10]]
+    waffle: [['n', '종목 수', 3, 9, 9]], voronoi: [['n', '종목 수', 20, 80, 50]], buyback: [['n', '회사 수', 5, 15, 10]], ipo: [['n', '종목 수', 5, 20, 15]], insider: [['n', '사람 수', 5, 15, 10]], indgrowth: [['n', '업종 수', 6, 15, 12]], marginchg: [['n', '회사 수', 5, 15, 10]]
   };
   var TITLE = {    // 모든 제목은 두 줄: 첫 줄 = 무엇(크게), 둘째 줄 = 궁금한 점 — ' / ' 로 나눈다
     treemap: function (o) { return (MK(o) || '한국 증시') + ' / 돈은 어디에 몰렸을까'; },
@@ -255,6 +255,11 @@
     vix: function () { return '공포지수 VIX / 시장은 지금 얼마나 무서워하나'; },
     curve: function () { return '미국 장단기 금리 / 역전되면 경기 침체 신호?'; },
     king: function () { return '코스피 시총 1위 / 30년 동안 누가 왕좌에?'; },
+    season: function () { return '실적 시즌 성적표 / 상장사는 얼마나 벌었나'; },
+    indgrowth: function () { return '업종별 이익 증가율 / 어디가 더 벌었나'; },
+    marginchg: function () { return '이익률 개선 TOP / 장사가 확 좋아진 회사'; },
+    kqrel: function () { return '코스닥 vs 코스피 / 누가 더 강했나'; },
+    fedpath: function () { return '미국 기준금리 vs 2년물 / 시장은 금리를 어떻게 보나'; },
     investor: function (o) { return (o === 'KOSDAQ' ? '코스닥' : '코스피') + ' / 개인·외국인·기관 누가 샀나'; },
     buyback: function () { return '자사주 매입 / 올해 가장 많이 사겠다는 회사'; },
     insider: function () { return '미국 내부자 매수 / CEO가 자기 회사 주식을 샀다'; },
@@ -364,7 +369,7 @@
   }
 
   /* ---- 경제 지표 (data/econ) ---- */
-  var ECON_IDS = ['krdash', 'usdash', 'exportboard', 'exportitem', 'kconsumer', 'rates', 'inflation', 'goldkrw', 'commod', 'race1y', 'travel'];
+  var ECON_IDS = ['krdash', 'usdash', 'exportboard', 'exportitem', 'kconsumer', 'rates', 'fedpath', 'inflation', 'goldkrw', 'commod', 'race1y', 'travel'];
   var TRADE = [['t_semi', '반도체'], ['t_car', '승용차'], ['t_parts', '자동차 부품'], ['t_batt', '2차전지'], ['t_ship', '선박'], ['t_cosm', '화장품'], ['t_ramen', '라면'], ['t_laver', '조미김 등'],
     ['t_gim', '마른김'], ['t_soju', '소주 등 증류주'], ['t_pharm', '의약품'], ['t_bio', '바이오 의약품'], ['t_phone', '스마트폰'], ['t_oil', '석유제품'], ['t_steel', '철강판'], ['t_display', '디스플레이'],
     ['t_comp', '컴퓨터'], ['t_tire', '타이어'], ['t_food_snack', '과자·빵'], ['t_beauty_dev', '미용기기 등']];
@@ -1315,6 +1320,53 @@
         var rows = seg.map(function (s) { return { n: s.nm, v: s.n / 12, lab: s.a.slice(0, 4) + '.' + (+s.a.slice(5)) + ' ~ ' + s.b.slice(0, 4) + '.' + (+s.b.slice(5)) + ' (' + (s.n >= 12 ? (s.n / 12).toFixed(1) + '년' : s.n + '개월') + ')', c: s.code === '005930' ? '#1428A0' : '#8A94A6' }; });
         return { fn: 'bars', o: { kicker: '코스피 시가총액 1위', h1: '1위가 바뀐 건 ' + (seg.length - 1) + '번', rows: rows }, asof: rm.updated, tail: '기준 · 월말 시가총액 (거래소)' };
       });
+    } },
+    /* ---- 2026-11 증권사 보고서식 카드 (data/market/earn_q.json = build_earn.py, 상장사 분기 실적 합계) */
+    { id: 'season', name: '실적 시즌 성적표', icon: '📊', build: function () {
+      return JJ('./data/market/earn_q.json').then(function (j) {
+        var n = j.q.length, last = j.tot[n - 1][0], ya = j.tot[n - 5][0], g = (last / ya - 1) * 100, qn = function (k) { return "'" + k.slice(2, 4) + '.' + k.slice(5) + 'Q'; };
+        var bars = j.tot.map(function (t, i) { return { v: t[0] / 1e4, c: i === n - 1 ? '#2E7D6B' : '#A9C9BF', tick: qn(j.q[i]), hi: i === n - 1 || i === n - 5, hiLab: Math.round(t[0] / 1e4) + '조' }; });
+        var y = j.yoy, share = j.semi[n - 1] / last * 100;
+        return { fn: 'columns', o: { h1: (+j.last.slice(5)) + '분기 상장사 영업이익 ' + Math.round(last / 1e4) + '조', bars: bars, line: j.semi.map(function (v) { return v / 1e4; }), fmt: function (v) { return Math.round(v) + '조'; },
+          stats: [[(g >= 0 ? '+' : '') + Math.round(g) + '%', '1년 전 같은 분기보다', g >= 0 ? '#D6362C' : '#2B6CD9'], [Math.round(y.up / y.n * 100) + '%', '이익이 늘어난 회사 (' + y.up.toLocaleString() + '곳)'], [Math.round(share) + '%', '반도체 업종 몫']],
+          legend: [['상장사 영업이익 합', '#2E7D6B'], ['반도체 업종', '#101216', true]] }, asof: j.updated, tail: '기준 · 9개 분기를 모두 낸 ' + j.tot[n - 1][2].toLocaleString() + '곳 합계 (금융사 제외, DART 분기 실적)' };
+      });
+    } },
+    { id: 'indgrowth', name: '업종별 이익 증가율', icon: '🏭', build: function () {
+      return JJ('./data/market/earn_q.json').then(function (j) {
+        var rows = j.ind.filter(function (r) { return r[3] >= 5; }).slice(0, K('indgrowth', 'n', 12)).map(function (r) {
+          var turn = r[2] <= 0 && r[1] > 0, loss = r[1] <= 0 && r[2] > 0, v = turn ? 300 : loss ? -100 : (r[1] / r[2] - 1) * 100;
+          return { n: r[0], v: Math.max(-100, Math.min(300, v)), lab: turn ? '흑자전환' : loss ? '적자전환' : r[2] < 0 ? '적자 지속' : (v >= 0 ? '+' : '') + Math.round(v).toLocaleString() + '%', c: v >= 0 ? '#D6362C' : '#2B6CD9' };
+        });
+        var up = rows.filter(function (r) { return r.v > 0; }).length;
+        return { fn: 'bars', o: { kicker: "'" + j.last.slice(2, 4) + '년 ' + j.last.slice(5) + '분기 · 1년 전 같은 분기 대비', h1: '시총 큰 업종 ' + rows.length + '곳 중 ' + up + '곳 이익 늘었다', rows: rows }, asof: j.updated, tail: '기준 · 업종 영업이익 합 (막대는 +300%에서 자름 · 네이버 업종, DART)' };
+      });
+    } },
+    { id: 'marginchg', name: '이익률 개선 TOP', icon: '📈', build: function () {
+      return JJ('./data/market/earn_q.json').then(function (j) {
+        var ok = j.marg.filter(function (r) { return Math.abs(r[2]) <= 90 && Math.abs(r[3]) <= 90; });
+        var rows = ok.map(function (r) { return { n: r[1], code: r[0], v: r[2] - r[3], lab: '+' + (r[2] - r[3]).toFixed(1) + '%p (' + r[3].toFixed(1) + '→' + r[2].toFixed(1) + '%)', c: '#2E9E6B' }; })
+          .sort(function (a, b) { return b.v - a.v; }).slice(0, K('marginchg', 'n', 10));
+        return Promise.all(rows.map(function (r) { return img('./logo/kr/' + r.code + '.png').then(function (i) { r.logo = i; }); })).then(function () {
+          return { fn: 'bars', o: { kicker: "'" + j.last.slice(2, 4) + '년 ' + j.last.slice(5) + '분기 · 시가총액 1조 이상 ' + ok.length + '곳', h1: '1년 새 영업이익률이 가장 많이 오른 회사', rows: rows }, asof: j.updated, tail: '기준 · 영업이익 ÷ 매출, 1년 전 같은 분기와 비교 (DART)' };
+        });
+      });
+    } },
+    { id: 'kqrel', name: '코스닥 vs 코스피', icon: '⚖️', build: function () {
+      return Promise.all([IDXS('KOSPI'), IDXS('KOSDAQ')]).then(function (js) {
+        var a = ymd(-5), k = {}; js[0].forEach(function (p) { k[p[0]] = p[1]; });
+        var d = js[1].filter(function (p) { return p[0] >= a && k[p[0]]; }), b0 = d[0][1] / k[d[0][0]];
+        var S = d.map(function (p) { return [p[0], (p[1] / k[p[0]]) / b0 * 100]; }), now = S[S.length - 1][1];
+        var P = TL([{ n: '코스닥 ÷ 코스피', c: '#7A3FC2', d: S }], String(S[0][0]));
+        return { fn: 'lines', o: { h1: '5년 동안 코스닥이 코스피보다 ' + Math.abs(Math.round(now - 100)) + '% ' + (now >= 100 ? '더 올랐다' : '뒤처졌다'), series: P, ticks: P.ticks, fmt: function (v) { return Math.round(v); }, target: 100, targetLabel: '5년 전 = 100' }, asof: P.end, tail: '기준 · 코스닥 지수 ÷ 코스피 지수 (5년 전 = 100, 올라가면 코스닥이 더 강함)' };
+      });
+    } },
+    { id: 'fedpath', name: '미국 기준금리 vs 2년물', icon: '🏦', build: function () {
+      return Promise.all([ECO('us_rate'), ECO('us2y')]).then(function (js) {
+        var a = ymd(-5), R = js[0].d.filter(function (x) { return x[0] >= a; }), Y = js[1].d.filter(function (x) { return x[0] >= a; });
+        var P = TL([{ n: '기준금리', c: '#101216', d: R }, { n: '국채 2년', c: '#D6362C', d: Y }], String(a)), r = R[R.length - 1][1], y2 = Y[Y.length - 1][1], gap = y2 - r;
+        return { fn: 'lines', o: { h1: Math.abs(gap) < 0.1 ? '2년물 ≈ 기준금리, 시장은 동결을 본다' : gap < 0 ? '2년물이 기준금리보다 ' + Math.abs(gap).toFixed(2) + '%p 낮다 → 인하 예상' : '2년물이 기준금리보다 ' + gap.toFixed(2) + '%p 높다 → 인상 예상', series: P, ticks: P.ticks, fmt: function (v) { return v.toFixed(1) + '%'; } }, asof: P.end, tail: '기준 · 미국 연방기금금리(FRED) · 국채 2년 금리(CNBC)' };
+      });
     } }
 
   ];
@@ -1324,8 +1376,8 @@
     var cv = $('card'); if (!cv) return;
     var X = cv.getContext('2d'), cur = null, last = null, cache = {};
     var bar = $('kinds');
-    var GRP = [['한국 증시', ['treemap', 'ranked', 'sectors', 'tiers', 'breadth', 'contrib', 'concentration', 'range52', 'rotation', 'dumbbell', 'radial', 'compare']], ['순위·역사', ['bump', 'slope', 'thennow', 'drawdown', 'monthly', 'calendar', 'king']], ['시장 이벤트', ['limits', 'advdec', 'hilo', 'crash', 'vix', 'curve', 'investor', 'buyback', 'insider', 'ipo']],
-      ['실적·배당', ['sankey', 'surprise', 'margin', 'profit', 'profitshare', 'scatter', 'dividend', 'revgrowth', 'roe', 'streak', 'unlisted']], ['미국·세계', ['voronoi', 'usmap', 'usranked', 'world', 'rivals', 'fx']],
+    var GRP = [['한국 증시', ['treemap', 'ranked', 'sectors', 'tiers', 'breadth', 'contrib', 'concentration', 'range52', 'rotation', 'dumbbell', 'radial', 'compare', 'kqrel']], ['순위·역사', ['bump', 'slope', 'thennow', 'drawdown', 'monthly', 'calendar', 'king']], ['시장 이벤트', ['limits', 'advdec', 'hilo', 'crash', 'vix', 'curve', 'investor', 'buyback', 'insider', 'ipo']],
+      ['실적·배당', ['sankey', 'season', 'indgrowth', 'marginchg', 'surprise', 'margin', 'profit', 'profitshare', 'scatter', 'dividend', 'revgrowth', 'roe', 'streak', 'unlisted']], ['미국·세계', ['voronoi', 'usmap', 'usranked', 'world', 'rivals', 'fx']],
       ['투자·주주', ['quilt', 'growth', 'waffle', 'gurucommon', 'holders']], ['경제·생활', ['krdash', 'usdash', 'exportboard', 'exportitem', 'kconsumer', 'rates', 'inflation', 'goldkrw', 'commod', 'race1y', 'travel']]], gbox = {};
     if (ONLY) bar.style.display = 'none';
     GRP.forEach(function (g) { var d = document.createElement('div'); d.className = 'kgrp'; d.innerHTML = '<span>' + g[0] + '</span>'; bar.appendChild(d); g[1].forEach(function (id) { gbox[id] = d; }); });
@@ -1338,6 +1390,8 @@
     if (!ONLY) J('./data/econ/index.json').then(function (ix) {   // 수출 자료(관세청)가 아직 없으면 수출 카드 단추는 숨긴다
       var it = (ix && ix.items) || {}, any = Object.keys(it).some(function (k) { return k.indexOf('t_') === 0 && it[k].ok; });
       if (!any) ['exportboard', 'exportitem', 'kconsumer'].forEach(function (id) { var b = bar.querySelector('[data-k="' + id + '"]'); if (b) b.style.display = 'none'; });
+      var kr = Object.keys(it).filter(function (k) { return k.indexOf('kr_') === 0 && it[k].ok; }).length;   // 한국 지표(한국은행)가 아직 없으면 한국 경제 카드도 숨긴다
+      if (kr < 2) { var kb = bar.querySelector('[data-k="krdash"]'); if (kb) kb.style.display = 'none'; }
     }).catch(function () {});
     // 사진 얹기 — 국내·해외 실적 탭과 같은 기능 (뒤로 보낸 사진은 배경 바로 위, 앞 사진은 그림 위)
     var OV = window.CardOverlay ? window.CardOverlay.attach({ canvas: cv, width: 1080, height: 1350, mount: document.querySelector('.cardctl'), redraw: function () { draw(); } }) : null;

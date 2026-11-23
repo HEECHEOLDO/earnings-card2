@@ -12,6 +12,7 @@ on:
     paths:
       - 'collect_market.py'
       - 'build_market.py'
+      - 'build_earn.py'
       - '.github/workflows/collect_market.yml'
   workflow_dispatch:
     inputs:

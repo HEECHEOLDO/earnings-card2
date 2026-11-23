@@ -61,6 +61,11 @@ def breadth():
     build_market.main()
 
 
+def earn():
+    import build_earn                                  # 상장사 분기 실적 합계 (DART 수집 결과로, 호출 0회)
+    build_earn.main()
+
+
 # ------------------------------------------------------------------ investor
 def investor():
     p = os.path.join(OUT, "investor.json")
@@ -253,7 +258,7 @@ def insider():
     log("내부자: 새 신고 %d건 · 매수 %d명 · 매도 %d명" % (nfil, len(buy), len(sell)))
 
 
-PARTS = {"breadth": breadth, "investor": investor, "buyback": buyback, "ipo": ipo, "insider": insider}
+PARTS = {"breadth": breadth, "earn": earn, "investor": investor, "buyback": buyback, "ipo": ipo, "insider": insider}
 
 if __name__ == "__main__":
     want = [a for a in sys.argv[1:] if a in PARTS] or list(PARTS)
