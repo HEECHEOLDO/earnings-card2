@@ -26,7 +26,8 @@
     var hasLogo = rows.some(function (r) { return r.logo; }), NX = hasLogo ? L + 100 : L + 56, nf0 = huge ? 34 : rowH >= 66 ? 29 : 27;
     X.font = font(800, nf0); var nmW = Math.max.apply(null, rows.map(function (r) { return X.measureText(r.n).width; }));
     X.font = labF;
-    var x0 = Math.min(L + 310, Math.max(L + 180, NX + nmW + 36)), bw = RP - x0;   // 이름이 짧으면(날짜 등) 이름 칸을 좁혀 막대를 길게 zero = neg && pos ? x0 + bw * 0.35 : neg ? RP : x0;
+    var x0 = Math.min(L + 310, Math.max(L + 180, NX + nmW + 36)), bw = RP - x0;   // 이름이 짧으면(날짜 등) 이름 칸을 좁혀 막대를 길게
+    var zero = neg && pos ? x0 + bw * 0.35 : neg ? RP : x0;
     var nlw = Math.max.apply(null, rows.map(function (r) { return r.v < 0 ? X.measureText(r.lab).width : 0; })) + 16;   // 음수 숫자가 이름 칸을 침범하지 않게
     var span = neg && pos ? bw * 0.65 : bw, nspan = neg && pos ? bw * 0.35 - 10 : neg ? bw - nlw : bw;
     if (neg && pos) { var mp = Math.max.apply(null, rows.map(function (r) { return r.v; })), mn = -Math.min.apply(null, rows.map(function (r) { return r.v; })); var f = mp / (mp + mn); var lw0 = Math.max(huge ? 140 : 90, nlw); zero = x0 + lw0 + (bw - lw0) * (1 - f) * 0.85; span = RP - zero; nspan = zero - x0 - lw0; mx = Math.max(mp, 1e-9); var mxn = Math.max(mn, 1e-9); }
