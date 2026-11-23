@@ -4,7 +4,9 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 os.chdir(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import collect as C
 C.API_KEY = C.get_key()
+cm = C.load_corp_map()
 for cc in [x.strip() for x in os.environ.get("CODES", "").split(",") if x.strip()]:
+    if len(cc) == 6: cc = cm[cc]["corp_code"]
     info = C.api_get("company.json", {"corp_code": cc}) or {}
     print("=====", cc, info.get("corp_name"), "|", info.get("corp_cls"), "| 법인형태?", info.get("jurir_no"), "| 설립", info.get("est_dt"), "| 결산월", info.get("acc_mt"))
     res = C.api_get("list.json", {"corp_code": cc, "bgn_de": "20200101", "end_de": "20261123", "page_count": "100"}) or {}
