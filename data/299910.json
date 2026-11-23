@@ -5,7 +5,7 @@
  "code": "299910",
  "market": "기타",
  "sector": "",
- "updated": "2026-10-23",
+ "updated": "2026-11-23",
  "annual": [
   {
    "p": 2018,
@@ -97,9 +97,9 @@
   {
    "y": 2023,
    "q": 2,
-   "rev": null,
-   "op": null,
-   "ni": null
+   "rev": 0.9,
+   "op": -2.6,
+   "ni": -3.0
   },
   {
    "y": 2023,
@@ -137,5 +137,6 @@
    "ni": -2.2
   }
  ],
- "q_method": "strict"
+ "q_method": "strict",
+ "fy_end": 12
 }

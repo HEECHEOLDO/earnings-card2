@@ -5,7 +5,7 @@
  "code": "267080",
  "market": "코넥스",
  "sector": "",
- "updated": "2026-10-24",
+ "updated": "2026-11-23",
  "annual": [
   {
    "p": 2023,
@@ -50,11 +50,19 @@
  "quarterly": [
   {
    "y": 2023,
+   "q": 3,
+   "rev": 19.5,
+   "op": -23.9,
+   "ni": -27.6
+  },
+  {
+   "y": 2023,
    "q": 4,
    "rev": 14.6,
    "op": -22.6,
    "ni": -37.2
   }
  ],
- "q_method": "strict"
+ "q_method": "strict",
+ "fy_end": 12
 }

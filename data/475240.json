@@ -5,7 +5,7 @@
  "code": "475240",
  "market": "기타",
  "sector": "",
- "updated": "2026-11-11",
+ "updated": "2026-11-23",
  "annual": [
   {
    "p": 2024,
@@ -78,5 +78,6 @@
    "ni": 0.2
   }
  ],
- "q_method": "strict"
+ "q_method": "strict",
+ "fy_end": 12
 }

@@ -5,7 +5,7 @@
  "code": "432320",
  "market": "코스피",
  "sector": "",
- "updated": "2026-10-27",
+ "updated": "2026-11-23",
  "annual": [
   {
    "p": 2023,
@@ -61,5 +61,6 @@
   }
  ],
  "quarterly": [],
- "q_method": "strict"
+ "q_method": "strict",
+ "fy_end": 9
 }

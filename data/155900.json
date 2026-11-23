@@ -5,7 +5,7 @@
  "code": "155900",
  "market": "기타",
  "sector": "",
- "updated": "2026-10-24",
+ "updated": "2026-11-23",
  "annual": [
   {
    "p": 2016,
@@ -112,7 +112,7 @@
    "q": 2,
    "rev": 6.9,
    "op": -5.6,
-   "ni": 63.2
+   "ni": 13.0
   },
   {
    "y": 2023,
@@ -122,5 +122,6 @@
    "ni": null
   }
  ],
- "q_method": "strict"
+ "q_method": "strict",
+ "fy_end": 12
 }

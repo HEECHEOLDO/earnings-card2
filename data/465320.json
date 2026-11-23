@@ -5,7 +5,7 @@
  "code": "465320",
  "market": "기타",
  "sector": "",
- "updated": "2026-10-25",
+ "updated": "2026-11-23",
  "annual": [
   {
    "p": 2023,
@@ -119,5 +119,6 @@
    "ni": 0.3
   }
  ],
- "q_method": "strict"
+ "q_method": "strict",
+ "fy_end": 12
 }

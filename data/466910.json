@@ -5,8 +5,21 @@
  "code": "466910",
  "market": "기타",
  "sector": "",
- "updated": "2026-10-25",
+ "updated": "2026-11-23",
  "annual": [
+  {
+   "p": 2023,
+   "rev": null,
+   "op": -0.3,
+   "ni": 0.3,
+   "assets": 198.1,
+   "liab": 24.1,
+   "equity": 174.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
   {
    "p": 2024,
    "rev": 0.0,
@@ -36,6 +49,34 @@
  ],
  "quarterly": [
   {
+   "y": 2024,
+   "q": 1,
+   "rev": null,
+   "op": -0.1,
+   "ni": 1.4
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": null,
+   "op": -0.1,
+   "ni": 1.4
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": null,
+   "op": -0.1,
+   "ni": 0.3
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": null,
+   "op": -0.1,
+   "ni": 1.2
+  },
+  {
    "y": 2025,
    "q": 1,
    "rev": 0.0,
@@ -64,5 +105,6 @@
    "ni": 0.7
   }
  ],
- "q_method": "strict"
+ "q_method": "strict",
+ "fy_end": 12
 }

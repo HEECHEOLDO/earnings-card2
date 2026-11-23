@@ -5,15 +5,104 @@
  "code": "471050",
  "market": "기타",
  "sector": "",
- "updated": "2026-10-25",
- "annual": [],
+ "updated": "2026-11-23",
+ "annual": [
+  {
+   "p": 2023,
+   "rev": null,
+   "op": -0.2,
+   "ni": -0.3,
+   "assets": 19.8,
+   "liab": 10.5,
+   "equity": 9.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2024,
+   "rev": null,
+   "op": -0.6,
+   "ni": 1.6,
+   "assets": 131.0,
+   "liab": 12.0,
+   "equity": 119.0,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2025,
+   "rev": null,
+   "op": -0.8,
+   "ni": 1.6,
+   "assets": 133.3,
+   "liab": 12.7,
+   "equity": 120.6,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  }
+ ],
  "quarterly": [
+  {
+   "y": 2024,
+   "q": 1,
+   "rev": null,
+   "op": -0.4,
+   "ni": 0.0
+  },
+  {
+   "y": 2024,
+   "q": 2,
+   "rev": null,
+   "op": -0.1,
+   "ni": 0.5
+  },
+  {
+   "y": 2024,
+   "q": 3,
+   "rev": null,
+   "op": -0.1,
+   "ni": 0.5
+  },
+  {
+   "y": 2024,
+   "q": 4,
+   "rev": null,
+   "op": -0.1,
+   "ni": 0.5
+  },
   {
    "y": 2025,
    "q": 1,
    "rev": 0.0,
    "op": -0.1,
    "ni": 0.5
+  },
+  {
+   "y": 2025,
+   "q": 2,
+   "rev": null,
+   "op": -0.1,
+   "ni": 1.1
+  },
+  {
+   "y": 2025,
+   "q": 3,
+   "rev": null,
+   "op": -0.5,
+   "ni": -0.1
+  },
+  {
+   "y": 2025,
+   "q": 4,
+   "rev": null,
+   "op": -0.1,
+   "ni": 0.1
   },
   {
    "y": 2026,
@@ -30,5 +119,6 @@
    "ni": -0.6
   }
  ],
- "q_method": "strict"
+ "q_method": "strict",
+ "fy_end": 12
 }
