@@ -1054,9 +1054,11 @@ def patch_recent_filings(facts, ciks):
             inst = [n for n in names if n.endswith(".xml") and not n.endswith(skip)
                     and n not in ("FilingSummary.xml",) and not n.startswith("Financial")]
         if not inst:
+            log("  · %s(%s) 공시 원본에 XBRL 인스턴스 파일이 없음: %s" % (form, rd, [n for n in names if n.endswith('.xml') or n.endswith('.htm')][:8]))
             continue
         raw = get(base + inst[0])
         if not raw:
+            log("  · %s(%s) %s 를 못 받음" % (form, rd, inst[0]))
             continue
         got = parse_instance(raw.decode("utf-8", "replace"), cik)
         for tag, rows in got.items():
