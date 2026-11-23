@@ -5,7 +5,7 @@
  "code": "389470",
  "market": "코스닥",
  "sector": "",
- "updated": "2026-10-25",
+ "updated": "2026-11-23",
  "annual": [
   {
    "p": 2022,
@@ -132,5 +132,6 @@
    "ni": -42.2
   }
  ],
- "q_method": "strict"
+ "q_method": "strict",
+ "fy_end": 12
 }
