@@ -66,6 +66,7 @@
   P.resetTransform = function () { var c = M.get(this); if (!c) return O.resetTransform.call(this); base(this, c, 1, 0, 0, 1, 0, 0); };
   function txt(fn) {
     return function (t, x, y, mw) {
+      if (this.canvas === DISP) poke();
       var c = M.get(this); if (!c) return fn.apply(this, arguments);
       if (/@돈굴/.test(String(t))) return;
       if (band(this, c, x, y, true)) { if (c.one && c.ly > c.FB) return; return asEdge(this, c, fn, arguments); }   // 1:1 은 출처 줄도 뺀다
@@ -85,6 +86,7 @@
     this.ellipse(x, y, rad * c.k, rad, 0, a0, a1, ccw);
   };
   P.drawImage = function () {
+    if (this.canvas === DISP) poke();
     var c = M.get(this), a = Array.prototype.slice.call(arguments); if (!c || a.length < 5) return O.drawImage.apply(this, a);
     var n = a.length, dw = a[n - 2], dh = a[n - 1];
     if (dw >= 900 && dh >= 1100) { this.save(); O.setTransform.call(this, 1, 0, 0, 1, 0, 0); a[n - 4] = 0; a[n - 3] = 0; a[n - 2] = c.W * c.S; a[n - 1] = c.H * c.S; O.drawImage.apply(this, a); this.restore(); return; }   // 종이결 바탕은 펼친다
@@ -93,6 +95,7 @@
     a[n - 4] = cx - nw / 2; a[n - 2] = nw; return O.drawImage.apply(this, a);
   };
   P.fillRect = function (x, y, w, h) {
+    if (this.canvas === DISP) poke();
     var c = M.get(this); if (!c) return O.fillRect.apply(this, arguments);
     if (w >= 1000 && h >= 1100 || w >= c.W * c.S * 0.9) { this.save(); O.setTransform.call(this, 1, 0, 0, 1, 0, 0); O.fillRect.call(this, 0, 0, c.W * c.S, c.H * c.S); this.restore(); return; }
     if (c.one && h <= 3 && band(this, c, x, y) && c.ly > c.FB) return;
@@ -109,6 +112,45 @@
     this.save(); var t = O.getTransform.call(this); O.setTransform.call(this, t.a * c.k, 0, 0, t.d, 0, 0); O.stroke.apply(this, arguments); this.restore();   // 선 굵기는 세로 배율로만
   };
 
+  // ---- 미리보기: 4:5 가 아니면 화면 카드 대신 '저장될 그림'을 보여 준다
+  //   저장 단추를 몰래 눌러 만든 그림(내려받기는 막는다)을 화면 카드 자리에 띄운다. 카드가 다시 그려지면 잠시 뒤 다시 만든다.
+  var DISP = null, IMG = null, BTN = null, CAP = 0, busy = 0, tmr = 0;
+  var aclick = HTMLAnchorElement.prototype.click;
+  HTMLAnchorElement.prototype.click = function () {
+    if (CAP && this.download) { CAP = 0; show(this.href); if (pend) setTimeout(refresh, 50); return; }
+    return aclick.apply(this, arguments);
+  };
+  function show(url) {
+    if (!IMG) return;
+    var im = new Image(); im.onload = function () { IMG.src = im.src; busy = Date.now(); }; im.src = url;
+  }
+  function poke() {
+    if (cur === '45' || !BTN) return;
+    if (CAP) { pend = 1; return; }
+    if (Date.now() - busy < 700) return;
+    clearTimeout(tmr); tmr = setTimeout(refresh, 450);
+  }
+  var pend = 0;
+  function refresh() {
+    if (cur === '45' || !BTN) return;
+    if (CAP) { pend = 1; return; }                // 만드는 중이면 끝난 뒤 한 번 더
+    var tok = CAP = Date.now(); busy = tok; pend = 0;
+    try { BTN.click(); } catch (e) { CAP = 0; }
+    setTimeout(function () { if (CAP === tok) CAP = 0; if (pend) refresh(); }, 4000);
+  }
+  function view() {
+    if (!DISP) return;
+    var on = cur !== '45';
+    if (!IMG) {
+      IMG = document.createElement('img'); IMG.alt = '저장될 카드 미리보기';
+      IMG.className = DISP.className; IMG.style.cssText = DISP.style.cssText;
+      IMG.style.width = '100%'; IMG.style.height = 'auto'; IMG.style.display = 'none';
+      DISP.parentNode.insertBefore(IMG, DISP.nextSibling);
+    }
+    DISP.style.display = on ? 'none' : ''; IMG.style.display = on ? 'block' : 'none';
+    if (on) refresh();
+  }
+
   // ---- 저장 단추 옆 '비율' 고르기
   function mount() {
     var btn = document.getElementById('btn-png') || document.getElementById('c-dl') || document.getElementById('dl');
@@ -117,12 +159,17 @@
     w.innerHTML = '비율 <select id="card-ratio" style="flex:1;min-height:38px;border-radius:6px;padding:4px 8px;font:inherit">' +
       Object.keys(R).map(function (k) { return '<option value="' + k + '"' + (k === cur ? ' selected' : '') + '>' + R[k][2] + ' (' + R[k][0] + '×' + R[k][1] + ')' + (k === '45' ? ' · 기본' : k === '11' ? ' · 출처 없이' : '') + '</option>'; }).join('') + '</select>';
     btn.parentNode.insertBefore(w, btn);
-    w.querySelector('select').addEventListener('change', function () { cur = this.value; try { localStorage.setItem('cardRatio', cur); } catch (e) { /* 무시 */ } label(); });
+    BTN = btn;
+    DISP = ['card', 'card-canvas', 'cv'].map(function (id) { return document.getElementById(id); }).filter(function (c) { return c && c.tagName === 'CANVAS'; })[0] || null;
+    var note = document.createElement('div'); note.style.cssText = 'font-size:12px;opacity:.7;margin:-2px 0 6px'; note.textContent = '4:5 가 아니면 미리보기도 그 비율로 보여요 · 사진 위치 옮기기는 4:5 에서';
+    btn.parentNode.insertBefore(note, btn);
+    w.querySelector('select').addEventListener('change', function () { cur = this.value; try { localStorage.setItem('cardRatio', cur); } catch (e) { /* 무시 */ } label(); view(); });
     function label() {     // 단추 글자의 크기 표시도 고른 비율로
       var r = R[cur], m = btn.textContent.match(/\((\d+)×(\d+)\)/);
       if (m) btn.textContent = btn.textContent.replace(m[0], '(' + r[0] * 3 + '×' + r[1] * 3 + ')');
     }
     label();
+    if (cur !== '45') setTimeout(view, 1500);   // 처음 그릴 때까지 기다렸다가
   }
   window.CardRatio = { get: function () { return cur; }, set: function (k) { if (R[k]) cur = k; }, sizes: R };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mount); else mount();
