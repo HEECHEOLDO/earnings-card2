@@ -4,6 +4,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 os.chdir(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import collect as C
 import probe_audit as P
+import collect_audit as A
 C.API_KEY = C.get_key()
 for rc in [x.strip() for x in os.environ.get("CODES", "").split(",") if x.strip()]:
     blob = C.api_get("document.xml", {"rcept_no": rc}, raw=True)
@@ -11,6 +12,7 @@ for rc in [x.strip() for x in os.environ.get("CODES", "").split(",") if x.strip(
     doc = P.fetch_doc(rc)
     if not doc:
         continue
+    cur, prev, cfs = A.parse(doc); print('  parse:', cur, prev, cfs, 'sane', A.sane(cur) if cur else None)
     tabs = list(re.finditer(r"<TABLE[^>]*>(.*?)</TABLE>", doc, re.S | re.I))
     print("  표", len(tabs), "글자", len(doc), "TABLE 태그 수(소문자 포함)", len(re.findall(r"<table", doc, re.I)))
     shown = 0
