@@ -24,7 +24,7 @@ from datetime import date, datetime, timedelta, timezone
 KST = timezone(timedelta(hours=9))
 OUT = os.path.join("data", "market")
 UA = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124 Safari/537.36"}
-SEC_UA = {"User-Agent": "earnings-card2 research (github.com/HEECHEOLDO/earnings-card2)"}
+SEC_UA = {"User-Agent": os.environ.get("SEC_UA") or "fincard personal project heecheoldo@gmail.com"}   # SEC 는 "이름 이메일" 형식 (collect_us.py 와 같은 것)
 
 
 def log(*a):
@@ -191,7 +191,7 @@ def insider():
     cache = {x["acc"]: x for x in (old.get("tx") or [])}
     t = today(); since = (t - timedelta(days=30)).isoformat()
     idx = (jload(os.path.join("data", "us", "index.json"), {}) or {}).get("companies") or []
-    tx, nfil = [], 0
+    tx, nfil, nerr = [], 0, 0
     for c in idx:
         try:
             cik = c.get("cik") or (jload(os.path.join("data", "us", c["code"] + ".json"), {}) or {}).get("cik")
@@ -223,7 +223,13 @@ def insider():
                 cache[acc] = {"acc": acc, "filed": rc["filingDate"][i], "rows": rows}
                 tx += rows
         except Exception as e:                         # noqa: BLE001
-            log("  form4", c.get("code"), repr(e)[:80])
+            nerr += 1
+            if nerr <= 5 or nerr % 50 == 0:
+                log("  form4", c.get("code"), repr(e)[:80])
+            if "429" in repr(e):
+                time.sleep(5)
+    if nerr > len(idx) / 3:
+        log("내부자: SEC 오류가 많아(%d/%d) 이번엔 저장하지 않음" % (nerr, len(idx))); return
     tx = [r for r in tx if r["date"] >= since]
     keep = [v for v in cache.values() if v["filed"] >= since]
     agg = {}
