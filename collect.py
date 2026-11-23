@@ -329,6 +329,16 @@ def pick_account(rows, kind, cumulative, prior=False):
         if gp is not None and cg is not None:
             dbg("rev <- 매출총이익 + 매출원가")
             return gp + cg
+        # 매출이 아예 없는 회사(임상 단계 바이오 등): 손익계산서에 매출·영업수익 줄이 하나도 없고 영업이익 줄은 있으면 매출 0
+        skip = ("영업외", "기타", "금융", "이자", "배당", "외환", "외화", "지분법", "처분", "평가", "환입", "잡")
+        is_rows = [r for r in pool if r.get("sj_div") in ("IS", "CIS")]
+        has_rev_line = any(("매출" in (r.get("account_nm") or "") or "수익" in (r.get("account_nm") or ""))
+                           and not any(w in (r.get("account_nm") or "") for w in skip) for r in is_rows)
+        has_op = any((r.get("account_id") or "").strip() in ("dart_OperatingIncomeLoss", "ifrs-full_ProfitLossFromOperatingActivities")
+                     or "영업이익" in (r.get("account_nm") or "") or "영업손실" in (r.get("account_nm") or "") for r in is_rows)
+        if is_rows and has_op and not has_rev_line:
+            dbg("rev <- 0 (매출 줄 없음)")
+            return 0.0
     return None
 
 
