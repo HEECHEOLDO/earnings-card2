@@ -231,7 +231,7 @@ def collect_one(item, old):
     old = old if (old and old.get("source") == "audit") else {}
     have = {a["p"]: a for a in old.get("annual", [])}
     srcs = dict(old.get("reports", {}))
-    rows, prevs, kinds = {}, {}, {}
+    rows, prevs, kinds, skip = {}, {}, {}, set()
     for per in sorted(pers):                  # 오래된 해부터 (전년 값과 견주려고)
         y = per[0]
         r = choose(by[per], want_cfs)
@@ -260,6 +260,7 @@ def collect_one(item, old):
         if moved and prev and prev.get("rev") and cur["rev"] < prev["rev"] * 0.45:
             log("  - %d년은 결산월을 바꾼 짧은 기간이라 뺀다 (매출 %.0f억 · 직전 12개월 %.0f억)" % (y, C.eok(cur["rev"]), C.eok(prev["rev"])))   # 라인플러스 2021.03 (3개월)
             prevs[y - 1] = {k: C.eok(v) for k, v in prev.items()}
+            skip.add(y)
             continue
         if prev and prev.get("rev") is None and y - 1 in rows and rows[y - 1].get("rev") is not None \
                 and cur["rev"] is not None and abs(C.eok(cur["rev"]) - rows[y - 1]["rev"]) < 0.05:
@@ -290,7 +291,8 @@ def collect_one(item, old):
             a, b = rows[y]["rev"], pv["rev"]
             if a and abs(a - b) / abs(a) > 0.01:
                 notes.append("%d년 매출이 다음 해 보고서와 %.1f%% 다름(재작성)" % (y, abs(a - b) / abs(a) * 100))
-        elif y >= latest - YEARS and sane(pv):
+        elif y >= latest - YEARS and sane(pv) and y not in skip \
+                and not (y + 1 in rows and rows[y + 1].get("rev") is not None and abs(pv["rev"] - rows[y + 1]["rev"]) < 0.05):   # 짧은 기간으로 뺀 해·다음 해와 똑같은 숫자는 채우지 않는다
             rows[y] = dict(pv)
             kinds[y] = kinds.get(y + 1, want_cfs)
             srcs[str(y)] = "전기:" + srcs.get(str(y + 1), "")
