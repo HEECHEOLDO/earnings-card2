@@ -275,10 +275,11 @@ def to_num(v):
     return -n if neg else n
 
 
-def pick_account(rows, kind, cumulative):
+def pick_account(rows, kind, cumulative, prior=False):
     """
     손익계산서에서 원하는 계정 하나를 뽑는다.
     cumulative=True면 누적치(thstrm_add_amount)를 우선한다.
+    prior=True면 분기·반기 보고서에 함께 실린 '작년 같은 분기 3개월' 숫자 (회사가 다시 분류한 기준)
     """
     if not rows:
         return None
@@ -288,6 +289,9 @@ def pick_account(rows, kind, cumulative):
     pool = sub or rows
 
     def value_of(r):
+        if prior:
+            v = to_num(r.get("frmtrm_q_amount"))
+            return v if v is not None else to_num(r.get("frmtrm_amount"))
         if cumulative:
             v = to_num(r.get("thstrm_add_amount"))
             if v is not None:
@@ -552,6 +556,7 @@ def collect_quarterly(corp_code, latest_year, years=None):
     아직 안 나온 보고서는 자연스럽게 None이 되어 건너뛴다.
     """
     out = []
+    PRIOR_Q = {}                                     # {분기: 작년 같은 분기 값} — 올해 보고서 기준
     votes = {}                                       # 결산월 추정: 보고서 접수일 → 그 보고서 기간이 끝난 달 → 회계연도 끝 달
     for y in (years or range(latest_year - 3, latest_year + 1)):
         cum = {}
@@ -577,6 +582,10 @@ def collect_quarterly(corp_code, latest_year, years=None):
             }
             # 반기·3분기 보고서에는 '이번 3개월' 숫자(thstrm_amount)가 따로 있다 — 누적끼리 빼면, 앞 보고서 뒤에
             # 사업을 팔아 지난 숫자를 다시 쓴 회사(중단영업 재분류: 한화시스템 2026.3Q 4,390억 ↔ 실제 8,316억)에서 틀린다
+            if tag in ("Q1", "HALF", "Q3") and y == latest_year:     # 올해 보고서에 실린 '작년 같은 분기' (다시 분류한 숫자)
+                pv = {k: pick_account(fs, k, cumulative=False, prior=True) for k in ("rev", "op", "ni")}
+                if pv["rev"] is not None and pv["op"] is not None:
+                    PRIOR_Q[{"Q1": 1, "HALF": 2, "Q3": 3}[tag]] = pv
             if tag in ("HALF", "Q3"):
                 three = {"rev": pick_account(fs, "rev", cumulative=False), "op": pick_account(fs, "op", cumulative=False),
                          "ni": pick_account(fs, "ni", cumulative=False)}
@@ -608,6 +617,17 @@ def collect_quarterly(corp_code, latest_year, years=None):
             log("  %d.%dQ  매출 %s억  영업이익 %s억" % (y, q, f"{eok(rev):,.0f}" if rev is not None else "-", f"{eok(op):,.0f}"))
 
     fe = max(votes, key=votes.get) if votes else 12
+    # 회사가 작년 분기 숫자를 다시 분류했으면(사업 매각·중단영업 등) 올해 보고서에 실린 작년 숫자로 바꾼다 —
+    # 그래야 '1년 전 같은 분기 대비'가 같은 기준이 된다 (동진쎄미켐 2025 등). 12월 결산만.
+    if fe == 12:
+        for q, pv in PRIOR_Q.items():
+            for r in out:
+                if r["y"] == latest_year - 1 and r["q"] == q and r.get("rev") is not None and pv.get("rev") is not None:
+                    nr, no = eok(pv["rev"]), eok(pv["op"])
+                    if abs(nr - r["rev"]) > max(abs(r["rev"]) * 0.02, 1) or abs(no - r["op"]) > max(abs(r["op"]) * 0.05, 1):
+                        log("  · %d.%dQ 를 올해 보고서의 다시 분류한 숫자로: 매출 %s → %s억, 영업이익 %s → %s억"
+                            % (r["y"], q, f"{r['rev']:,.0f}", f"{nr:,.0f}", f"{r['op']:,.0f}", f"{no:,.0f}"))
+                        r.update({"rev": nr, "op": no, "ni": eok(pv["ni"]) if pv.get("ni") is not None else r.get("ni"), "restated": True})
     if fe != 12:
         # DART 사업연도 번호는 그 보고서 기간이 끝나는 해다 (6월 결산: 1분기 7~9월 → 그해, 3분기 1~3월 → 그해).
         # 회계 분기 번호 대신 달력 분기로 바꿔 적는다 — 안 그러면 6월 결산 회사의 7~9월이 '1분기' 자리에 들어간다.
@@ -740,8 +760,8 @@ def check_quarters_vs_annual(annual, quarterly):
     for y, qs in sorted(by_year.items()):
         if len(qs) != 4 or y not in amap:
             continue
-        if any(q.get("rev") is None for q in qs):
-            continue
+        if any(q.get("rev") is None for q in qs) or any(q.get("restated") for q in qs):
+            continue                      # 다시 분류한 분기가 섞인 해는 연간(옛 기준)과 맞을 수 없다
         s = sum(q["rev"] for q in qs)
         a = amap[y]["rev"]
         if not a:
