@@ -256,6 +256,11 @@ def collect_one(item, old):
             if c2 and sane(c2) and c2["rev"] > cur["rev"]:
                 log("  %d년은 결산월 변경으로 짧은 기간 — %s 보고서(12개월)를 씀" % (y, alt[y][1]))
                 cur, prev, cfs, r = c2, p2, f2, r2
+        moved = any(k[1] != per[1] and k[0] in (y - 1, y) for k in by)
+        if moved and prev and prev.get("rev") and cur["rev"] < prev["rev"] * 0.45:
+            log("  - %d년은 결산월을 바꾼 짧은 기간이라 뺀다 (매출 %.0f억 · 직전 12개월 %.0f억)" % (y, C.eok(cur["rev"]), C.eok(prev["rev"])))   # 라인플러스 2021.03 (3개월)
+            prevs[y - 1] = {k: C.eok(v) for k, v in prev.items()}
+            continue
         if prev and prev.get("rev") is None and y - 1 in rows and rows[y - 1].get("rev") is not None \
                 and cur["rev"] is not None and abs(C.eok(cur["rev"]) - rows[y - 1]["rev"]) < 0.05:
             log("  - %d년 매출이 전년과 똑같이 읽힘 — 표를 잘못 읽은 것으로 보고 그해는 뺀다" % y)   # 이스타항공 2021
