@@ -506,16 +506,25 @@ def quarter_series(facts, kind, fy_end_month=12):
                     continue
                 keep.append((end, val))
             groups2[fy] = keep
+    def q_no(end):                        # 결산월 기준 몇 분기인지 — 끝난 달로 센다 (빠진 분기가 있어도 뒤 분기가 밀리지 않게)
+        m, d = int(end[5:7]), int(end[8:10])
+        if d <= 10:                       # 52/53주 회계연도: 다음 달 초에 끝난 분기
+            m = 12 if m == 1 else m - 1
+        return ((m - fy_end_month - 1) % 12) // 3 + 1
+
     out = {}
     for fy, items in groups2.items():
         items.sort()
         for i, (end, val) in enumerate(items[:4]):
-            out[(fy, i + 1)] = val
-            QTAG[(kind, fy, i + 1)] = tagof.get(end)
+            qn = q_no(end)
+            if (fy, qn) in out:           # 같은 분기 칸이 둘이면(드문 기간) 앞 순서대로
+                qn = i + 1
+            out[(fy, qn)] = val
+            QTAG[(kind, fy, qn)] = tagof.get(end)
             # 나중 공시가 그 분기를 25% 넘게 고쳐 적었으면(사업 분할·매각 후 기준) 표시한다 — 하니웰 2025·2026년 3분기
             f0 = first.get(end)
             if kind == "rev" and f0 and f0[1] and val and abs(val / f0[1] - 1) > 0.25:
-                QRESTATED.add((fy, i + 1))
+                QRESTATED.add((fy, qn))
     dbg("%s 분기: %d개 (결산 %d월 기준)" % (kind, len(out), fy_end_month))
     return out
 
@@ -1027,8 +1036,12 @@ def patch_recent_filings(facts, ciks):
     if not latest:
         return 0
     age = (datetime.now(timezone.utc).date() - datetime.strptime(latest, "%Y-%m-%d").date()).days
-    if age < 105:                         # 최근 분기까지 있으면 확인할 필요 없음
-        return 0
+    known = set()                         # companyfacts 에 있는 분기 끝날 (매출·영업이익·순이익)
+    for k in ("rev", "op", "ni"):
+        for tag in set(TAGS[k]) | set(FALLBACK.get(k, [])):
+            for r in ((facts.get("facts", {}).get("us-gaap", {}).get(tag) or {}).get("units", {}).get("USD", [])):
+                if r.get("start") and r.get("end"):
+                    known.add(r["end"])
     cik = ciks[-1]
     sub = get_json(SEC_SUBMIT % cik)
     if not sub:
@@ -1039,7 +1052,8 @@ def patch_recent_filings(facts, ciks):
         if form not in ("10-Q", "10-K", "10-Q/A", "10-K/A"):
             continue
         rd = rc["reportDate"][i]
-        if rd and rd > latest:
+        recent = rd and (datetime.now(timezone.utc).date() - datetime.strptime(rd, "%Y-%m-%d").date()).days < 400
+        if rd and (rd > latest or (recent and rd not in known)):     # companyfacts 에 빠진 최근 분기도 (다우 2026년 2분기)
             todo.append((rd, rc["filingDate"][i], rc["accessionNumber"][i], form))
     todo = sorted(todo)[-4:]
     us = facts.setdefault("facts", {}).setdefault("us-gaap", {})
