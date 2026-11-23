@@ -1444,8 +1444,8 @@ def main():
     for code, alias in tickers:
         if code in done:
             continue
-        if not force and failed.get(code, {}).get("reason") in skip_reasons:
-            continue
+        if not force and failed.get(code, {}).get("reason") in skip_reasons and not os.path.exists(os.path.join(OUT_DIR, code + ".json")):
+            continue        # 금융사 등 처음부터 못 받은 회사만 건너뛴다 — 예전에 받은 회사는 한 번 실패해도 다시 시도 (2026-11: 현대차·POSCO홀딩스 등 3분기 누락)
         if code in stale:
             refresh.append((stale[code], code, alias))
         else:
@@ -1468,7 +1468,7 @@ def main():
             alias_of = dict(tickers)
             first = [(c, alias_of.get(c)) for c, d in sorted(filers.items(), key=lambda x: x[1])
                      if c in alias_of and chk.get(c, "") <= d
-                     and failed.get(c, {}).get("reason") not in skip_reasons]
+                     and (failed.get(c, {}).get("reason") not in skip_reasons or os.path.exists(os.path.join(OUT_DIR, c + ".json")))]
             if first:
                 fc = set(c for c, _ in first)
                 quick_set.update(fc)                 # 막 보고서를 낸 회사 — 올해 분기만 빠르게 받는다
@@ -1539,6 +1539,8 @@ def main():
                 log(">> 중단: %s" % ABORT)
                 stopped_early = True
                 break
+            if os.path.exists(os.path.join(OUT_DIR, code + ".json")):
+                reason = "갱신 실패(기존 값 유지): %s" % reason      # 받아 둔 회사는 다음에 다시 시도한다
             failed[code] = {"name": alias or "?", "reason": reason}
             report.append((code, alias or "?", "실패", 0, 0, reason))
             continue
