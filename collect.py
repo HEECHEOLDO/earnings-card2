@@ -314,6 +314,17 @@ def pick_account(rows, kind, cumulative):
                 if v is not None:
                     dbg("%s <- account_nm %s" % (kind, nm))
                     return v
+    if kind == "rev":                       # 매출 줄 이름이 표준과 달라 못 찾으면 매출총이익 + 매출원가 (LG·효성 2026-11: 매출 줄이 '-표준계정코드 미사용-')
+        gp = cg = None
+        for r in pool:
+            aid = (r.get("account_id") or "").strip()
+            if aid == "ifrs-full_GrossProfit" and gp is None:
+                gp = value_of(r)
+            elif aid == "ifrs-full_CostOfSales" and cg is None:
+                cg = value_of(r)
+        if gp is not None and cg is not None:
+            dbg("rev <- 매출총이익 + 매출원가")
+            return gp + cg
     return None
 
 
