@@ -37,14 +37,20 @@
     var S = c.S; O.setTransform.call(ctx, S * c.sx * a, S * c.sy * b, S * c.sx * cc, S * c.sy * d, S * (c.sx * e + c.tx), S * (c.sy * f + c.ty));
   }
   // 지금 변환에서 (x, y) 가 제목·바닥 줄이면 펼치지 않은 x 로 바꾼다. ly: 1080×1350 기준 세로 위치
-  function band(ctx, c, x, y) {
-    var t = O.getTransform.call(ctx), dx = t.a * x + t.c * y + t.e, dy = t.b * x + t.d * y + t.f;
-    var ly = (dy / c.S - c.ty) / c.sy, lx = (dx / c.S - c.tx) / c.sx, fpx = +((/(\d+(?:\.\d+)?)px/.exec(ctx.font) || [])[1] || 0);
-    var edge = ly < c.TB || ly > c.FB || (ly < 420 && fpx >= 40);   // 큰 글자의 둘째 줄 제목도 제목으로
-    c.edge = edge; c.ly = ly;
-    if (!edge) return x;
-    var want = c.S * (c.m + (lx - c.x0) * c.sy);
-    return x + (want - dx) / t.a;
+  // (x, y) 가 제목·바닥 줄인지 — ly: 1080×1350 기준 세로 위치
+  function band(ctx, c, x, y, isText) {
+    var t = O.getTransform.call(ctx), dy = t.b * x + t.d * y + t.f;
+    var ly = (dy / c.S - c.ty) / c.sy, fpx = +((/(\d+(?:\.\d+)?)px/.exec(ctx.font) || [])[1] || 0);
+    c.edge = ly < c.TB || ly > c.FB || (isText && window.CARD_RATIO_BIGTITLE !== false && ly < 340 && fpx >= 40);   // 큰 글자의 둘째 줄 제목도 제목으로
+    c.ly = ly;
+    return c.edge;
+  }
+  // 제목·바닥 줄은 펼치지 않는다: 지금 변환 앞에 '가로를 세로 배율로 되돌리고 왼쪽 끝에 붙이는' 변환을 얹어 원래 함수로 그린다
+  // (회전·원·국기 그림도 그대로 맞는다)
+  function asEdge(ctx, c, fn, args) {
+    var t = O.getTransform.call(ctx), k = c.k, e0 = c.S * (c.m - c.x0 * c.sy) - k * c.S * c.tx;
+    ctx.save(); O.setTransform.call(ctx, k * t.a, t.b, k * t.c, t.d, k * t.e + e0, t.f);
+    var r = fn.apply(ctx, args); ctx.restore(); return r;
   }
   P.scale = function (a, b) {
     var cv = this.canvas, S = a;
@@ -62,9 +68,8 @@
     return function (t, x, y, mw) {
       var c = M.get(this); if (!c) return fn.apply(this, arguments);
       if (/@돈굴/.test(String(t))) return;
-      x = band(this, c, x, y);
-      if (c.one && c.ly > c.FB) return;                                // 1:1 은 출처 줄도 뺀다
-      this.save(); this.translate(x, y); if (!c.edge) O.scale.call(this, c.k, 1); else O.scale.call(this, c.k, 1);
+      if (band(this, c, x, y, true)) { if (c.one && c.ly > c.FB) return; return asEdge(this, c, fn, arguments); }   // 1:1 은 출처 줄도 뺀다
+      this.save(); this.translate(x, y); O.scale.call(this, c.k, 1);
       fn.call(this, t, 0, 0, mw == null ? undefined : mw / c.k); this.restore();
     };
   }
@@ -74,19 +79,24 @@
     var w = r.width * c.k;
     return new Proxy(r, { get: function (tg, p) { return p === 'width' ? w : (typeof tg[p] === 'function' ? tg[p].bind(tg) : tg[p]); } });
   };
-  P.arc = function (x, y, rad, a0, a1, ccw) { var c = M.get(this); if (!c) return O.arc.apply(this, arguments); this.ellipse(band(this, c, x, y), y, rad * c.k, rad, 0, a0, a1, ccw); };
+  P.arc = function (x, y, rad, a0, a1, ccw) {
+    var c = M.get(this); if (!c) return O.arc.apply(this, arguments);
+    if (band(this, c, x, y)) return asEdge(this, c, O.arc, arguments);
+    this.ellipse(x, y, rad * c.k, rad, 0, a0, a1, ccw);
+  };
   P.drawImage = function () {
     var c = M.get(this), a = Array.prototype.slice.call(arguments); if (!c || a.length < 5) return O.drawImage.apply(this, a);
     var n = a.length, dw = a[n - 2], dh = a[n - 1];
     if (dw >= 900 && dh >= 1100) { this.save(); O.setTransform.call(this, 1, 0, 0, 1, 0, 0); a[n - 4] = 0; a[n - 3] = 0; a[n - 2] = c.W * c.S; a[n - 1] = c.H * c.S; O.drawImage.apply(this, a); this.restore(); return; }   // 종이결 바탕은 펼친다
-    var cx = band(this, c, a[n - 4] + dw / 2, a[n - 3] + dh / 2), nw = dw * c.k;
-    if (c.one && c.ly > c.FB) return;
+    if (band(this, c, a[n - 4] + dw / 2, a[n - 3] + dh / 2)) { if (c.one && c.ly > c.FB) return; return asEdge(this, c, O.drawImage, a); }
+    var cx = a[n - 4] + dw / 2, nw = dw * c.k;
     a[n - 4] = cx - nw / 2; a[n - 2] = nw; return O.drawImage.apply(this, a);
   };
   P.fillRect = function (x, y, w, h) {
     var c = M.get(this); if (!c) return O.fillRect.apply(this, arguments);
     if (w >= 1000 && h >= 1100 || w >= c.W * c.S * 0.9) { this.save(); O.setTransform.call(this, 1, 0, 0, 1, 0, 0); O.fillRect.call(this, 0, 0, c.W * c.S, c.H * c.S); this.restore(); return; }
-    if (c.one && h <= 3) { band(this, c, x, y); if (c.ly > c.FB) return; }   // 1:1: 바닥 줄 위 가는 선도 뺀다
+    if (c.one && h <= 3 && band(this, c, x, y) && c.ly > c.FB) return;
+    if (band(this, c, x + w / 2, y + h / 2) && h <= 80 && w <= 700) { if (c.one && c.ly > c.FB) return; return asEdge(this, c, O.fillRect, arguments); }   // 제목 옆 작은 칸(꼬리표 등)도 제목과 같이 · 1:1 은 바닥 가는 선도 뺀다
     return O.fillRect.apply(this, arguments);
   };
   P.putImageData = function (im, x, y) {
