@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-22",
+ "updated": "2026-11-23",
  "items": {
   "gold": {
    "ok": true,
@@ -61,8 +61,8 @@
    "unit": "달러",
    "freq": "D",
    "src": "CNBC",
-   "last": 20261120,
-   "n": 1145
+   "last": 20261121,
+   "n": 1146
   },
   "eth": {
    "ok": true,
@@ -70,8 +70,8 @@
    "unit": "달러",
    "freq": "D",
    "src": "CNBC",
-   "last": 20261120,
-   "n": 1145
+   "last": 20261121,
+   "n": 1146
   },
   "dxy": {
    "ok": true,
@@ -79,8 +79,8 @@
    "unit": "pt",
    "freq": "D",
    "src": "CNBC",
-   "last": 20261120,
-   "n": 955
+   "last": 20261122,
+   "n": 956
   },
   "vix": {
    "ok": true,
@@ -116,7 +116,7 @@
    "freq": "D",
    "src": "CNBC",
    "last": 20261120,
-   "n": 949
+   "n": 950
   },
   "kr3y": {
    "ok": false,
@@ -130,7 +130,7 @@
    "freq": "D",
    "src": "CNBC",
    "last": 20261121,
-   "n": 945
+   "n": 948
   },
   "usdkrw": {
    "ok": true,
@@ -139,7 +139,7 @@
    "freq": "D",
    "src": "CNBC",
    "last": 20261120,
-   "n": 986
+   "n": 974
   },
   "jpykrw": {
    "ok": true,
@@ -148,7 +148,7 @@
    "freq": "D",
    "src": "CNBC",
    "last": 20261120,
-   "n": 1002
+   "n": 988
   },
   "eurkrw": {
    "ok": true,
