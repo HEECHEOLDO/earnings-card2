@@ -471,7 +471,7 @@
       }
       X.strokeStyle = T.rule; X.lineWidth = 2; X.beginPath(); X.moveTo(L, zeroY); X.lineTo(R, zeroY); X.stroke();
       X.textAlign = 'center';
-      var cw = (R - (gl + 10)) / N, x0 = gl + 10 + (N - n) * cw / 2;      // 고른 개수보다 적으면 가운데로
+      var cw = (R - (gl + 10)) / Math.max(n, 3), x0 = gl + 10 + (Math.max(n, 3) - n) * cw / 2;      // 자료가 고른 개수보다 적으면 있는 막대로 폭을 채운다
       var vtx = function (e) { return (e.v > 0 ? '+' : '−') + Math.abs(e.v).toFixed(2) + '%'; }, dtx = function (e) { return e.d.m + '월 ' + e.d.d + '일'; };
       var fit = function (w0, w1, f, txt) { var fs = w0; X.font = font(w1, fs); while (fs > f && eps.some(function (e) { return X.measureText(txt(e)).width > cw - 8; })) { fs -= 1; X.font = font(w1, fs); } return fs; };
       var DF = fit(26, 600, 15, dtx), VF = fit(44, 900, 17, vtx);   // 막대가 많으면 날짜·숫자 글자를 모두 같은 크기로 줄인다
