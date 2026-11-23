@@ -1,8 +1,8 @@
 {
  "updated": "2026-11-23",
- "count": 321,
+ "count": 318,
  "markets": {
-  "비상장": 321
+  "비상장": 318
  },
  "companies": [
   {
@@ -103,15 +103,6 @@
    "brand": "나이키",
    "annual_only": true,
    "updated": "2026-10-23"
-  },
-  {
-   "name": "난다",
-   "code": "00888268",
-   "market": "비상장",
-   "sector": "패션·명품·뷰티",
-   "brand": "3CE",
-   "annual_only": true,
-   "updated": "2026-10-27"
   },
   {
    "name": "네오플",
@@ -1163,15 +1154,6 @@
    "market": "비상장",
    "sector": "배달·커머스",
    "brand": "올리브영",
-   "annual_only": true,
-   "updated": "2026-10-23"
-  },
-  {
-   "name": "아디다스코리아",
-   "code": "00148133",
-   "market": "비상장",
-   "sector": "패션·명품·뷰티",
-   "brand": "아디다스",
    "annual_only": true,
    "updated": "2026-10-23"
   },
@@ -2452,15 +2434,6 @@
    "brand": "하이네켄",
    "annual_only": true,
    "updated": "2026-10-27"
-  },
-  {
-   "name": "하이퍼커넥트",
-   "code": "01151231",
-   "market": "비상장",
-   "sector": "플랫폼·앱",
-   "brand": "아자르",
-   "annual_only": true,
-   "updated": "2026-10-26"
   },
   {
    "name": "한국경제신문",
