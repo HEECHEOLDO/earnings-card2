@@ -327,6 +327,7 @@
     <div class="cardctl">
       <label>이름 <input type="text" id="c-name"></label>
       <label>제목 <input type="text" id="c-title"></label>
+      <label>막대 개수 <select id="c-n"><option value="3">3개</option><option value="4">4개</option><option value="5" selected>5개</option><option value="6">6개</option><option value="7">7개</option><option value="8">8개</option><option value="9">9개</option><option value="10">10개</option></select></label>
       <label>막대 색 <input type="color" id="c-color" value="#2B59C3" style="width:100%;height:38px;padding:2px;border-radius:6px;border:1px solid var(--border-strong);background:var(--bg)"></label>
       <button class="btn" id="c-auto">막대 색을 로고 색으로</button>
       <button class="btn btn-primary" id="c-dl">PNG 내려받기 (3240×4050)</button>
@@ -335,7 +336,7 @@
   </div>
 
   <p class="note">
-    하루 등락률 = 그날 종가 ÷ 직전 거래일 종가 − 1 입니다. 고른 기간 안에서 큰 순서로 5일을 보여 줍니다.
+    하루 등락률 = 그날 종가 ÷ 직전 거래일 종가 − 1 입니다. 고른 기간 안에서 큰 순서로 고른 개수(3~10일, 기본 5일)만큼 보여 줍니다.
     국내는 한국거래소 일별 종가(수정주가)이고 가격제한폭(±30%)을 넘는 날(재상장·기준가 재산정 등)은 뺍니다. 해외는 미국 거래소 종가(달러, 분할 반영)입니다.
     1년 이하는 화면의 일별 종가로, 2~10년은 따로 모은 긴 일별 종가(국내 네이버·해외 나스닥, 주별 종가와 대조해 맞는 것만)로 셉니다.
   </p>
@@ -343,7 +344,7 @@
 <script src="./us_ko.js"></script>
 <script src="./card-overlay.js?v=1118c"></script>
 <script>window.__MOVES = 1;</script>
-<script src="./price.js?v=1123a"></script>
+<script src="./price.js?v=1123b"></script>
 <script src="./health.js" defer></script>
 </body>
 </html>

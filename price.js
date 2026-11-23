@@ -15,7 +15,7 @@
   var SPANS = { ytd: { label: '올해' }, '1m': { m: 1 }, '3m': { m: 3 }, '6m': { m: 6 }, '1y': { y: 1 },
                 '2y': { y: 2 }, '3y': { y: 3 }, '4y': { y: 4 }, '5y': { y: 5 }, '6y': { y: 6 }, '7y': { y: 7 }, '8y': { y: 8 }, '9y': { y: 9 }, '10y': { y: 10 } };   // 2·4·6~9년은 등락 순위 탭에서만
 
-  var state = { item: null, view: window.__MOVES ? 'dd' : 'line', span: '1y', data: null, color: null, colorUser: false, name: '', title: '', titleUser: false, nameUser: false };
+  var state = { item: null, view: window.__MOVES ? 'dd' : 'line', span: '1y', data: null, color: null, nEp: 5, colorUser: false, name: '', title: '', titleUser: false, nameUser: false };
   var LIST = [], BY = {}, MON = null;
   // 주요 시장 지수 — data/chart/idx/{코드}.json (collect_chart_idx.py). 이름·코드는 그쪽 INDICES 와 맞춘다
   // 셋째 칸: 로고 자리에 넣을 국기 (logo/idx/{나라}.png)
@@ -413,7 +413,7 @@
   /* ------------------------------------------------------------ 역대 상승폭 · 하락폭 순위 (하루 등락률) */
   // 하루 등락률 = 그날 종가 ÷ 직전 거래일 종가 − 1. 큰 순서로 5일.
   // 1년 이하는 화면의 일별 종가로 센다. 3·5·10년은 모으는 쪽이 긴 일별 종가로 미리 뽑은 data.r 을 쓴다 (daily_rank.py)
-  function episodes(pts, mode, span, data) {
+  function episodes(pts, mode, span, data, N) {
     var sp = SPANS[span] || {}, daily = span === 'ytd' || !!sp.m || sp.y <= 1, out = [];
     if (daily) {
       for (var i = 1; i < pts.length; i++) {
@@ -427,10 +427,10 @@
       out = (mode === 'up' ? rr.up : rr.dn).map(function (x) { return { d: ymd(x[0]), v: x[1] }; });
     }
     out.sort(function (x, y) { return Math.abs(y.v) - Math.abs(x.v); });
-    return out.slice(0, 5);
+    return out.slice(0, N || 5);
   }
   function drawEp(X, s, opt) {
-    var mode = opt.view, pts = s.pts, eps0 = episodes(pts, mode, opt.span, opt.data), eps = eps0 || [];
+    var mode = opt.view, pts = s.pts, N = opt.n || 5, eps0 = episodes(pts, mode, opt.span, opt.data, N), eps = eps0 || [];
     X.save(); X.textAlign = 'left'; X.textBaseline = 'alphabetic';
     theme(!!opt.dark); grain(X); if (OV) OV.paintBack(X);
     var SUB = T.dark ? '#A2A7AF' : '#4B4F58';
@@ -471,12 +471,16 @@
       }
       X.strokeStyle = T.rule; X.lineWidth = 2; X.beginPath(); X.moveTo(L, zeroY); X.lineTo(R, zeroY); X.stroke();
       X.textAlign = 'center';
-      var cw = (R - (gl + 10)) / 5, x0 = gl + 10 + (5 - n) * cw / 2;      // 다섯 개보다 적으면 가운데로
+      var cw = (R - (gl + 10)) / N, x0 = gl + 10 + (N - n) * cw / 2;      // 고른 개수보다 적으면 가운데로
+      var vtx = function (e) { return (e.v > 0 ? '+' : '−') + Math.abs(e.v).toFixed(2) + '%'; }, dtx = function (e) { return e.d.m + '월 ' + e.d.d + '일'; };
+      var fit = function (w0, w1, f, txt) { var fs = w0; X.font = font(w1, fs); while (fs > f && eps.some(function (e) { return X.measureText(txt(e)).width > cw - 8; })) { fs -= 1; X.font = font(w1, fs); } return fs; };
+      var DF = fit(26, 600, 15, dtx), VF = fit(44, 900, 17, vtx);   // 막대가 많으면 날짜·숫자 글자를 모두 같은 크기로 줄인다
       eps.forEach(function (e, i) {
         var cx = x0 + cw * (i + 0.5), len = Math.max(Math.abs(e.v) * sc, 4), dB = e.d;
         var hy = mode === 'dd' ? 380 : zeroY + 50;                     // 그날 날짜
-        X.fillStyle = SUB; X.font = font(600, 26);
-        X.fillText(dB.y + '년', cx, hy); X.fillText(dB.m + '월 ' + dB.d + '일', cx, hy + 36);
+        var df = DF, dt = dtx(e); X.font = font(600, df);
+        X.fillStyle = SUB;
+        X.fillText(dB.y + '년', cx, hy); X.fillText(dt, cx, hy + Math.round(df * 1.38));
         var bw = Math.min(110, cw * 0.62), sg = mode === 'dd' ? 1 : -1, y1 = zeroY + sg * 2, tip = zeroY + sg * len;   // 막대: 기준선에서 끝으로, 끝만 둥글게
         var rr = Math.min(12, len / 2), xl = cx - bw / 2, xr = cx + bw / 2;
         var gr = X.createLinearGradient(0, y1, 0, tip); gr.addColorStop(0, col + 'B3'); gr.addColorStop(1, col);
@@ -484,9 +488,8 @@
         X.moveTo(xl, y1); X.lineTo(xr, y1); X.lineTo(xr, tip - sg * rr);
         X.quadraticCurveTo(xr, tip, xr - rr, tip); X.lineTo(xl + rr, tip); X.quadraticCurveTo(xl, tip, xl, tip - sg * rr);
         X.closePath(); X.fill();
-        var vt = (e.v > 0 ? '+' : '−') + Math.abs(e.v).toFixed(2) + '%', vf = 44;
-        X.font = font(900, vf); while (vf > 26 && X.measureText(vt).width > cw - 10) { vf -= 2; X.font = font(900, vf); }
-        X.fillStyle = col; X.fillText(vt, cx, mode === 'dd' ? tip + 50 : tip - 18);
+        var vt = vtx(e), vf = VF; X.font = font(900, vf);
+        X.fillStyle = col; X.fillText(vt, cx, mode === 'dd' ? tip + Math.round(vf * 0.6 + 24) : tip - 18);
       });
     }
     X.textAlign = 'left';
@@ -518,8 +521,8 @@
     if (!state.titleUser) { state.title = autoTitle(s); $('c-title').value = state.title; }
     var a = s.pts[0], b = s.pts[s.pts.length - 1];
     if (state.view !== 'line') {
-      var eps = drawEp(X, s, { view: state.view, span: state.span, data: state.data, color: state.color, name: state.name || it.name, title: state.title, logo: state.logo, sel: true });
-      $('c-hint').textContent = dlab(a) + ' ~ ' + dlab(b) + ' · 하루 등락률(그날 종가 ÷ 직전 거래일 종가) 큰 순서 ' + eps.length + '일';
+      var eps = drawEp(X, s, { view: state.view, span: state.span, data: state.data, n: state.nEp, color: state.color, name: state.name || it.name, title: state.title, logo: state.logo, sel: true });
+      $('c-hint').textContent = dlab(a) + ' ~ ' + dlab(b) + ' · 하루 등락률(그날 종가 ÷ 직전 거래일 종가) 큰 순서 ' + eps.length + '일' + (eps.length < state.nEp && !SPANS[state.span].m && state.span !== 'ytd' && SPANS[state.span].y > 1 ? ' (이 기간 순위는 오늘 밤 수집 뒤 ' + state.nEp + '개까지 나와요)' : '');
       return;
     }
     draw(X, s, { kr: it.ix ? 'ix' : it.kr, color: state.color, name: state.name || it.name, title: state.title, logo: state.logo, ytd: state.span === 'ytd', sel: true });
@@ -632,13 +635,14 @@
   });
   $('c-name').addEventListener('input', function () { state.name = this.value; render(); });
   $('c-title').addEventListener('input', function () { state.title = this.value; state.titleUser = true; render(); });
+  if ($('c-n')) $('c-n').addEventListener('change', function () { state.nEp = +this.value; render(); });
   $('c-color').addEventListener('input', function () { state.color = this.value; state.colorUser = true; render(); });
   $('c-auto').addEventListener('click', function () { state.colorUser = false; state.color = (state.item && state.item.ix ? null : logoColor(state.logo)) || '#2B59C3'; $('c-color').value = state.color; render(); });
   $('c-dl').addEventListener('click', function () {
     var s = series(state.data, state.span); if (!s) return;
     var big = document.createElement('canvas'); big.width = CW * 3; big.height = CH * 3;
     var g = big.getContext('2d'); g.scale(3, 3);
-    if (state.view !== 'line') drawEp(g, s, { view: state.view, span: state.span, data: state.data, color: state.color, name: state.name || state.item.name, title: state.title, logo: state.logo });
+    if (state.view !== 'line') drawEp(g, s, { view: state.view, span: state.span, data: state.data, n: state.nEp, color: state.color, name: state.name || state.item.name, title: state.title, logo: state.logo });
     else draw(g, s, { kr: state.item.ix ? 'ix' : state.item.kr, color: state.color, name: state.name || state.item.name, title: state.title, logo: state.logo, ytd: state.span === 'ytd' });
     big.toBlob(function (blob) {
       if (!blob) { alert('그림을 만들지 못했습니다. 새로고침 후 다시 눌러 주세요.'); return; }
@@ -681,6 +685,7 @@
       state.span = q.get('span');
       Array.prototype.forEach.call(document.querySelectorAll('#spans .preset'), function (x) { x.setAttribute('aria-pressed', x.dataset.s === state.span ? 'true' : 'false'); });
     }
+    if (+q.get('n') >= 3 && +q.get('n') <= 10 && $('c-n')) { state.nEp = +q.get('n'); $('c-n').value = String(state.nEp); }
     if (/^(dd|up)$/.test(q.get('view') || '')) { var vb = document.querySelector('#views .preset[data-v="' + q.get('view') + '"]'); if (vb) vb.click(); }
     pick(BY[c0] || BY['005930'] || LIST[0]);
     Array.prototype.forEach.call(document.querySelectorAll('#ixs .preset'), function (b) {

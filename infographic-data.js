@@ -1238,8 +1238,8 @@
         var r = j.r && j.r['10y'], rows = [];
         if (!r) throw new Error('10년 일별 자료 준비 중');
         var lab = function (x) { var s = String(x[0]); return "'" + s.slice(2, 4) + '.' + (+s.slice(4, 6)) + '.' + (+s.slice(6)); };
-        r.dn.forEach(function (x) { rows.push({ n: lab(x), v: x[1], lab: x[1].toFixed(2) + '%', c: '#2B6CD9' }); });
-        r.up.forEach(function (x) { rows.push({ n: lab(x), v: x[1], lab: '+' + x[1].toFixed(2) + '%', c: '#D6362C' }); });
+        r.dn.slice(0, 5).forEach(function (x) { rows.push({ n: lab(x), v: x[1], lab: x[1].toFixed(2) + '%', c: '#2B6CD9' }); });
+        r.up.slice(0, 5).forEach(function (x) { rows.push({ n: lab(x), v: x[1], lab: '+' + x[1].toFixed(2) + '%', c: '#D6362C' }); });
         rows.sort(function (a, b) { return a.v - b.v; });
         var e = String(j.r.end);
         return { fn: 'bars', o: { kicker: '최근 10년', h1: IDXN[code] + ' 하루 최대 낙폭 ' + r.dn[0][1].toFixed(2) + '%', rows: rows }, asof: e.slice(0, 4) + '-' + e.slice(4, 6) + '-' + e.slice(6), tail: '기준 · 하루 등락률 (그날 종가 ÷ 직전 거래일 종가)' };
