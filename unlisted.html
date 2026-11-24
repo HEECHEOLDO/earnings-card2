@@ -1054,7 +1054,8 @@
     var bot = mn < 0 ? mn - span * 0.14 : 0;
     var step = niceStep(top - bot, targetTicks || 4);
     var ticks = [];
-    for (var k = Math.ceil(bot / step); k <= Math.floor(top / step); k++) ticks.push(k * step);
+    for (var k = Math.ceil(bot / step); k <= Math.floor(top / step); k++) ticks.push(k * step || 0);   // -0 이 '-0' 으로 찍히지 않게
+    if (ticks.length < 3 && (targetTicks || 4) < 32) return axisFor(values, (targetTicks || 4) * 2);           // 눈금이 하나·둘뿐이면 더 촘촘히 (토스 영업이익률 0.0% 하나만 나오던 것)
     return { min: bot, max: top, step: step, ticks: ticks };
   }
 
@@ -1198,7 +1199,7 @@
     // 구간이 적으면 막대 위에 값을 적는다
     if (showVals) {
       ctx.textAlign = 'center';
-      ctx.font = font(800, T.type.valueLabel);
+      ctx.font = font(700, T.type.tick);       // T.type.valueLabel 은 없는 값 — 음수 막대 글자 자리가 NaN 이 되어 빠졌다 (토스 '23 -2,065)
       rows.forEach(function (r, i) {
         var gx = plotL + slot * i + (slot - gw) / 2;
         barDefs.forEach(function (b, j) {
@@ -1206,7 +1207,7 @@
           var cx = gx + bw * j + (bw - (nBars === 1 ? 0 : 4)) / 2;
           ctx.fillStyle = onPaper(colors[b.color]);
           if (v >= 0) ctx.fillText(fmtAmount(v, unit), cx, y - 12);
-          else ctx.fillText(fmtAmount(v, unit), cx, y + 12 + T.type.valueLabel * 0.82);
+          else ctx.fillText(fmtAmount(v, unit), cx, y + 12 + T.type.tick * 0.82);
         });
       });
       ctx.textAlign = 'left';
@@ -2648,6 +2649,6 @@
 </script>
 <script src="./allsearch.js"></script>
 <script src="./health.js" defer></script>
-<script src="./card-ratio.js?v=1124c"></script>
+<script src="./card-ratio.js?v=1124f"></script>
 </body>
 </html>
