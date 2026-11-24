@@ -561,7 +561,8 @@
       <div class="ctl-row">
         <label class="check"><input type="checkbox" id="chk-guide"> 안전영역 표시</label>
         <label class="check"><input type="checkbox" id="chk-logo" checked> 회사 로고 표시</label>
-        <label class="check"><input type="checkbox" id="chk-source" checked> DART 출처 표기</label>
+        <label class="check"><input type="checkbox" id="chk-summary"> 아래 요약 칸 (기준 · 매출 · 영업이익 · 이익률)</label>
+        <label class="check"><input type="checkbox" id="chk-source"> DART 출처 표기 (왼쪽 아래 기준 뒤에)</label>
       </div>
 
       <div class="ctl-row">
@@ -1956,6 +1957,7 @@
 
     var footBase = CH - S.bottom - 4;
     var ruleY = footBase - T.type.footer * 0.85 - T.gap.ruleToText;
+    var CM = window.__chipMode || (state.showSummary ? 'chips' : 'bare');   // 요약 칸 끄면(기본) 그래프만 크게
     var chipsTop = ruleY - T.gap.chipsToRule - chipH;
     var basisBaseline = chipsTop - T.gap.basisToChips;
     var chartTop = legendY + T.gap.legendToChart;
@@ -1963,6 +1965,7 @@
       T.chartMinH,
       (basisBaseline - T.type.basis * 0.8) - T.gap.chartToBasis - chartTop
     );
+    chartH = Math.max(T.chartMinH, (CM === 'bare' ? ruleY : chipsTop) - 24 - chartTop);   // 기준 줄·칸 모두 빼고 바닥 줄 바로 위까지
 
     /* 차트 */
     if (lineMode) drawLineChart(ctx, CX, chartTop, CWID, chartH, rows, colors, unit, spec);
@@ -1971,7 +1974,7 @@
     /* 기준 라벨 */
     ctx.font = font(700, T.type.basis);
     ctx.fillStyle = T.inkSoft;
-    ctx.fillText(spec.basisFmt(last), CX, basisBaseline);
+    // 기준은 왼쪽 아래 바닥 줄에 적는다 (위 기준 줄은 두지 않는다)
 
     /* 요약 3칸 */
     var palette = { ink: T.ink, bar1: colors.bar1, bar2: colors.bar2, line: colors.line, mid: colors.mid, ni: colors.ni };
@@ -1980,6 +1983,7 @@
     var chips = chipDefs.map(function (c) {
       return { l: c.l, v: c.v, c: palette[c.c] || T.ink };
     });
+    if (CM === 'bare') chips = [];
     var gap = T.gap.chipGap, cw = (CWID - gap * 2) / 3;
     var labelBase = T.chip.padTop + T.type.chipLabel * 0.8;
     var valueBase = labelBase + T.chip.labelToValue + T.type.chipValue * 0.82;
@@ -2002,7 +2006,7 @@
     ctx.moveTo(CX, ruleY); ctx.lineTo(CX + CWID, ruleY); ctx.stroke();
     ctx.font = font(700, T.type.footer);
     ctx.fillStyle = T.footer;
-    if (state.showSource) ctx.fillText('자료 : 금융감독원 전자공시시스템(DART)', CX, footBase);
+    ctx.fillText(spec.basisFmt(last) + (state.showSource ? '  ·  자료 DART' : ''), CX, footBase);   // 왼쪽 아래는 기준 ('26년 1~3분기 누적 기준) — 출처는 고르면 뒤에 짧게
     ctx.textAlign = 'right';
     ctx.fillText(state.handle, CX + CWID, footBase);
     ctx.textAlign = 'left';
@@ -2222,7 +2226,7 @@
     lineHide: { '순이익': true },  // 선 모양에서 끈 선 — 처음엔 매출·영업이익만 (순이익은 꺼 둔다)
     lineHideUser: false,           // 사용자가 버튼을 한 번이라도 눌렀나
     rows: null, spec: null, colors: null,
-    guide: false, showSource: true, showLogo: true,
+    guide: false, showSource: false, showLogo: true, showSummary: false,
     title: '', sub: '',            // 비워두면 자동 문구
     handle: '@돈굴돈굴'
   };
@@ -3148,6 +3152,9 @@
     state.showLogo = this.checked; drawPreview();
   });
 
+  document.getElementById('chk-summary').addEventListener('change', function () {
+    state.showSummary = this.checked; drawPreview();       // 끄면(기본) 요약 칸·기준 줄 없이 그래프를 크게
+  });
   document.getElementById('chk-source').addEventListener('change', function () {
     state.showSource = this.checked; drawPreview();
   });
