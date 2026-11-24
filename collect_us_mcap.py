@@ -236,7 +236,8 @@ def refresh(rows):
     try:
         sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
         from collect_chart_us import cnbc_quotes
-        for sym, (d8, p) in cnbc_quotes([r["code"] for r in targets]).items():
+        for sym, q in cnbc_quotes([r["code"] for r in targets]).items():
+            d8, p = q[0], q[1]                     # (날짜, 종가, 전일 대비, 시각) — 앞 둘만
             cn[sym] = (p, "%04d-%02d-%02d" % (d8 // 10000, d8 // 100 % 100, d8 % 100))
         log("  CNBC 종가 %d / %d종목" % (len(cn), len(targets)))
     except Exception as e:                         # noqa: BLE001
@@ -315,9 +316,10 @@ def daily(dry=False):
         asof = last_us_close(today)
         log("  기준일 = 가장 최근 미국 장 마감 %s" % asof)
     else:
-        asof = (today - timedelta(hours=16)).strftime("%Y-%m-%d")
-        log("  ! 종목별 시세를 충분히 받지 못했습니다 (%d/%d) — 검색표 값 그대로, 기준일은 짐작(%s)"
-            % (info["fixed"], info["targets"], asof))
+        # 검색표 값은 하루 늦은 종가일 때가 많다 — 날짜를 짐작해 붙이면 '11/23 기준'에 11/20 값이 실린다 (2026-11-24).
+        # 확인 못 한 날은 파일을 바꾸지 않는다 (예비 실행이 다시 받는다)
+        sys.exit("!! 종목별 종가를 충분히 받지 못했습니다 (%d/%d) — 기준일을 확인할 수 없어 파일을 바꾸지 않습니다"
+                 % (info["fixed"], info["targets"]))
     if info.get("failed"):
         log("  시세 못 받은 종목 %d개: %s" % (len(info["failed"]), ", ".join(info["failed"][:10])))
     if dry:
