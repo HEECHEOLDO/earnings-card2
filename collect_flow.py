@@ -150,7 +150,7 @@ def us_one(t, cik):
 
 
 # ------------------------------------------------------------------ 공시 원본(XBRL): 3개월 손익 + 매출 종류
-DOC_VER = 2                                        # 국내: 보고서 원문 대체(매출 구분·판관비 세부) — 세부가 없던 회사만 다시
+DOC_VER = 3                                        # 국내: 보고서 원문 대체(매출 구분·판관비 세부) — 세부가 없던 회사만 다시 · 3: 매출유형·품목 표(행 병합)
 US_VER = 3                                         # 미국 읽는 법이 바뀌면 올림 — 세부·매출 구분이 없던(또는 달력 분기 대체값) 미국 회사만 다시
 UL_VER = 3                                         # 비상장(감사보고서) 읽는 법이 바뀌면 올림 — 비상장만 다시
 VER = 9                                            # 계산 방식이 바뀌면 올려서 다시 계산
@@ -389,6 +389,7 @@ def prev_cum_segs(r0, rows, names):
 SEGT_HEAD = re.compile(r"^(사업부문|부문|사업부|구분|사업구분|부문명|매출유형|품목|제품구분|제품)$")
 SEGT_NAME = re.compile(r"^(품목|제품명|품목명|주요제품)$")      # '매출유형 | 품목 | … | 매출액' 표는 품목 칸이 이름 (샘씨엔에스 NAND·DRAM STF)
 SEGT_SUB = re.compile(r"^(소계|소합계)$")
+SEGT_PER = re.compile(r"^(제\d+기|당기|당분기|당반기|\d{4}년)")
 SEGT_AMT = re.compile(r"^(연결)?(매출액|매출|매출실적|영업수익)(\(.*\))?$")
 SEGT_ELIM = re.compile(r"연결조정|내부거래|부문간|조정|제거|상계")
 SEGT_TOT = re.compile(r"^(합계|계|총계|연결전체매출액|연결매출액|연결합계|총합계)$")
@@ -406,6 +407,8 @@ def seg_table(tabs, total):
         if not SEGT_HEAD.match(h[0]):
             continue
         ai = next((i for i, c in enumerate(h) if i and SEGT_AMT.match(c)), None)
+        if ai is None:                                  # '사업부문 | 매출품목 | 제9기(2026년1~9월) | 제8기 …' — 맨 앞 기간 칸이 이번 기간 (효성중공업)
+            ai = next((i for i, c in enumerate(h) if i and SEGT_PER.match(c)), None)
         if ai is None:
             continue
         ni = next((i for i, c in enumerate(h) if SEGT_NAME.match(c)), 0)
@@ -415,10 +418,12 @@ def seg_table(tabs, total):
                 continue
             sh = len(rows[0]) - len(r)                  # 위 칸과 합친(행 병합) 줄은 앞 칸이 빠져 짧다 — 오른쪽 끝을 맞춰 읽는다
             n = re.sub(r"\s+", " ", r[ni] if sh == 0 else r[max(0, ni - sh)] if ni - sh >= 0 else r[0]).strip()
+            if sh == 0 and ni and re.sub(r"\s+", "", r[0]) in ("기타", "기타매출"):
+                n = "기타"                              # '기타 | 기타제품,상품,용역등 | …' 줄은 짧게 '기타'로 (인바디)
             nn = n.replace(" ", "")
             if SEGT_SUB.match(nn) or SEGT_SUB.match(re.sub(r"\s+", "", r[0])):
                 continue
-            nums = [P.num(c) for c in r[1:] if c not in ("", "-")]
+            nums = [P.num(re.sub(r"\(\s*[\d.,]+\s*%\s*\)$", "", c.strip())) for c in r[1:] if c not in ("", "-")]
             nums = [x for x in nums if x is not None]
             if SEGT_TOT.match(nn):
                 if tot is None and nums:
@@ -430,7 +435,7 @@ def seg_table(tabs, total):
                 continue
             if sh and (ni == 0 or ai - sh < 1):
                 continue                                # 셀 병합으로 짧아진 줄(회사 이름만 있는 줄) — 품목 칸이 따로 있는 표만 오른쪽 맞춤으로 읽는다
-            c_ = r[ai - sh]
+            c_ = re.sub(r"\(\s*[\d.,]+\s*%\s*\)$", "", r[ai - sh].strip())   # '97,168(37.3%)' — 괄호 속 비율은 뗀다 (한국컴퓨터)
             x = P.num(c_) if c_ not in ("", "-") else 0.0
             if x is None:
                 continue
