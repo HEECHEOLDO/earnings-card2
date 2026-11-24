@@ -842,7 +842,9 @@
 
     if (rows.length) {
       var hasYtd = rows.some(function (d) { return d.ytd; });
-      var g = layout(rows.length, CWID, gridBot - gridTop, hasYtd);
+      // 넓은 비율(7:5·16:9) 저장: 가로가 실제로는 1/KW 배 넓다 — 그 폭으로 열 수를 정하고 칸 폭만 원래 단위로 돌린다
+      var KW = ctx.__cardK || 1;
+      var g = layout(rows.length, CWID / KW, gridBot - gridTop, hasYtd); g.cell *= KW;
       var R = g.R;
       var startY = gridTop + (gridBot - gridTop - g.blockH) / 2 + R;
       ctx.textAlign = 'center';
