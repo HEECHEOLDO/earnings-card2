@@ -167,9 +167,15 @@
   function flowKo(n) { return flowShort(flowKo0(n)); }
   function flowShort(n, long) {                       // 긴 이름은 카드 밖으로 나가지 않게 줄인다 (괄호 설명·', 판관비' 꼬리 떼고, '및'·쉼표 앞까지, 그래도 길면 앞 두 단어)
     n = String(n).replace(/,\s*판관비$/, '').replace(/^판매비와\s*관리비.*$/, '판매·관리비').replace(/\s*\([^)]*\)\s*/g, ' ').replace(/\s+/g, ' ').trim();
+    var n0 = n;
     if (n.length > 11) n = n.split(/\s+및\s+|,\s*|·/)[0].trim();
     if (n.length > 11) { var w = n.split(' '); n = w.length > 1 ? w.slice(0, 2).join(' ') : n; }
-    if (long) return n.length > 26 ? n.slice(0, 25) + '…' : n;   // 매출 구분 이름은 그림에서 두 줄로 나눠 쓴다 (샘씨엔에스 'NAND프로브카드용세라믹STF')
+    if (long) {
+      var parts = n0.split(/\s*,\s*|\s+및\s+|·/).filter(Boolean);
+      if (parts.length > 2 && n0.length > 16) n = parts[0].replace(/등$/, '') + ' 등';   // '디스펜서,다이본더,…그부품' → '디스펜서 등' (프로텍)
+      else n = n0.length <= 26 ? n0 : n;
+      return n.length > 26 ? n.slice(0, 25) + '…' : n;
+    }   // 매출 구분 이름은 그림에서 두 줄로 나눠 쓴다 (샘씨엔에스 'NAND프로브카드용세라믹STF')
     if (n.length > 13 && /[가-힣]/.test(n)) n = n.slice(0, 12);
     return n;
   }

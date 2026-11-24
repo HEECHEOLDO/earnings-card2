@@ -693,7 +693,7 @@
     // 글자를 키우고(×1.18), 양옆 이름표 폭을 실제 글자 길이로 재서 그래프를 데드존(L·R) 끝까지 넓힌다
     var FS = o.__FS || 1.18;
     function tw(s, w, px) { X.font = font(w, px); return X.measureText(s).width; }
-    var segW = hasSeg ? Math.min(230, Math.max.apply(null, segs.map(function (sg) { return Math.max(tw(sg.n, 700, 21 * FS), tw(m(sg.v), 900, 26 * FS)); }))) : 0;
+    var segW = hasSeg ? Math.min(230, Math.max.apply(null, segs.map(function (sg) { return Math.max(Math.max.apply(null, split2(X, sg.n, Math.round(21 * FS), 230).map(function (t) { return tw(t, 700, 21 * FS); })), tw(m(sg.v), 900, 26 * FS)); }))) : 0;   // 두 줄로 나눌 이름은 긴 줄 폭만큼만 — 남는 폭은 그래프로
     var rNames = [].concat(tax > 0 ? ['법인세', m(tax)] : []).concat(exOut > 0 ? ['영업외손실', m(exOut)] : [])
       .concat(hasItems ? items.reduce(function (a, it) { return a.concat([it.n, m(it.v)]); }, []) : []);
     var rightW = Math.min(210, Math.max(96, Math.max.apply(null, rNames.map(function (s2, ix) { return tw(s2, ix % 2 ? 900 : 700, (ix % 2 ? 26 : 19) * FS); }).concat([tw(ni >= 0 ? '순이익' : '순손실', 800, 22 * FS), tw(m(ni), 900, 30 * FS)]))));   // 순이익은 영업이익과 같은 크기
