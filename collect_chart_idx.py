@@ -16,7 +16,7 @@ import time
 from datetime import date, timedelta
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from collect_chart_us import add_latest, cnbc_bars, get, weekly  # noqa: E402
+from collect_chart_us import add_latest, keep_tail, cnbc_bars, get, weekly  # noqa: E402
 
 OUT_DIR = os.path.join("data", "chart", "idx")
 DAYS = 400
@@ -92,6 +92,8 @@ def main():
                     j["r"] = r
             except Exception:                 # noqa: BLE001
                 pass
+        if src == "cnbc":
+            j = keep_tail(os.path.join(OUT_DIR, code + ".json"), j)
         with open(os.path.join(OUT_DIR, code + ".json"), "w", encoding="utf-8") as f:
             json.dump(j, f, separators=(",", ":"))
         ok += 1

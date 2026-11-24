@@ -383,6 +383,32 @@ def add_latest(syms, path_of, proxy=None):
     return n
 
 
+def keep_tail(path, j):
+    """CNBC 일별이 아직 안 붙은 마지막 거래일을, 앞서 확인해 붙여 둔 값으로 남긴다 (다시 받을 때 지워지지 않게).
+    있던 파일의 마지막 며칠 중 새 일별 마지막 날보다 뒤이고 10일 안인 날만. 새 일별에 그날이 생기면 그 값을 쓴다."""
+    try:
+        with open(path, encoding="utf-8") as f:
+            old = json.load(f)
+    except Exception:                             # noqa: BLE001
+        return j
+    if not j.get("d") or not old.get("d"):
+        return j
+    last = j["d"][-1][0]
+    lim = int((date.today() + timedelta(days=1)).strftime("%Y%m%d"))
+    dd = lambda x: date(x // 10000, x // 100 % 100, x % 100)   # noqa: E731
+    add = [r for r in old["d"][-5:] if last < r[0] <= lim and (dd(r[0]) - dd(last)).days <= 10]
+    for r in add:
+        j["d"].append(list(r))
+        w = j.get("w") or []
+        k = date(r[0] // 10000, r[0] // 100 % 100, r[0] % 100).isocalendar()[:2]
+        if w and date(w[-1][0] // 10000, w[-1][0] // 100 % 100, w[-1][0] % 100).isocalendar()[:2] == k:
+            w[-1] = list(r)
+        else:
+            w.append(list(r))
+        j["w"] = w
+    return j
+
+
 def append_quote(path, q):
     """출처가 다 막힌 날: 있는 파일에 오늘 시세 한 줄만 붙인다."""
     try:
@@ -431,6 +457,7 @@ def main():
             log("  %-6s %-24s %s" % (s, src or "(막힘)", got))
             continue
         if got and len(got["d"]) >= 2:
+            got = keep_tail(os.path.join(OUT_DIR, s + ".json"), got)
             with open(os.path.join(OUT_DIR, s + ".json"), "w", encoding="utf-8") as f:
                 json.dump(got, f, separators=(",", ":"))
             ok += 1
