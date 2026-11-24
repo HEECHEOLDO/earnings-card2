@@ -34,6 +34,7 @@
       sx = sy; tx = m - x0 * sy;
       ctx.__cardR = (W - m - tx) / sx - (x1 - 980);
     } else ctx.__cardR = 0;
+    ctx.__cardAR = W / H; ctx.__cardK = sy / sx;   // 가로 1 이 세로 1 의 몇 배로 그려지는지 (원·간격을 맞출 때)                           // 그리는 쪽이 넓은 비율인지 알 수 있게 (두 열로 나누기 등)
     var c = { edge: true, S: S, W: W, H: H, one: one, sx: sx, sy: sy, k: sy / sx, tx: tx, ty: m - y0 * sy, x0: x0, m: m, TB: TB, FB: FB };
     var cv = ctx.canvas; cv.width = W * S; cv.height = H * S;         // 크기를 바꾸면 그리기 상태가 처음으로 돌아간다
     M.set(ctx, c); DONE.add(cv); base(ctx, c, 1, 0, 0, 1, 0, 0);

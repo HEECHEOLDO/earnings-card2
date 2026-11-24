@@ -876,20 +876,23 @@
     c.fillStyle = T.inkSoft; c.font = F(700, 27); c.fillText(labs[m] + (m === 'cap' ? ' · 최근 종가 기준' : main ? ' · ' + basisTxt(main) : ''), lx + sw + 10, ly);
     rule(c, ly + 30);
     var ry = footer(c, today() + ' 기준');
-    var top = ly + 30, bot = ry - 24, n = rows.length, rh = (bot - top) / n;
+    var top = ly + 30, bot = ry - 24, n = rows.length;
+    // 넓은 비율(7:5·16:9)로 저장할 때 4곳 넘으면 두 열로 — 한 줄이 너무 길고 낮아지지 않게 (card-ratio.js 가 __cardAR 를 준다)
+    var NC = (c.__cardAR || 0) > 1.2 && n >= 4 ? 2 : 1, PER = Math.ceil(n / NC), GAP = 70, COLW = (CWID - GAP * (NC - 1)) / NC, rh = (bot - top) / PER;
     var key = $('c-sort').value === 'rev' ? 'rev' : m;
     rows.sort(function (a, b) {
       var x = a.f && !a.f.missing ? a.f[key] : null, z = b.f && !b.f.missing ? b.f[key] : null;
       return (z == null ? -1e18 : z) - (x == null ? -1e18 : x);
     });
     var maxRev = 0; ready.forEach(function (r) { maxRev = Math.max(maxRev, r.f.rev || 0); });
-    var lr = Math.min(rh * 0.36, 52), nameX = CX + lr * 2 + 22;
-    var vf = Math.min(64, rh * 0.46), vw = 0;
+    var WK = NC > 1 ? (c.__cardK || 1) : 1, lr = Math.min(rh * 0.36, NC > 1 ? 60 : 52), nameOff = (lr * 2 + 22) * WK;   // 넓은 비율: 로고는 둥글게 그려지니 가로 간격도 그만큼만
+    var vf = Math.min(NC > 1 ? 72 : 64, rh * 0.46), vw = 0;
     ready.forEach(function (r) { var nu = numOf(r.f, m); vw = Math.max(vw, vp(c, nu[0], vf, nu[1]).w); });
-    var trackW = CX + CWID - vw - 28 - nameX, bh = Math.min(rh * 0.20, 26), nf = Math.min(36, rh * 0.30);
+    var trackW = COLW - vw - 28 - nameOff, bh = Math.min(rh * 0.20, 26), nf = Math.min(NC > 1 ? 40 : 36, rh * 0.30);
     rows.forEach(function (r, i) {
-      var cy = top + rh * i + rh / 2;
-      logo(c, r.it, CX + lr, cy, lr);
+      var col = Math.floor(i / PER), k = i % PER, X0 = CX + col * (COLW + GAP), XR = X0 + COLW, nameX = X0 + nameOff;
+      var cy = top + rh * k + rh / 2;
+      logo(c, r.it, X0 + lr * WK, cy, lr);
       var nfi = fit(c, r.it.b, 800, nf, 20, trackW, '-0.01em');
       c.fillStyle = T.ink; c.font = F(800, nfi); LS(c, '-0.01em'); c.fillText(r.it.b, nameX, cy - rh * 0.05); LS(c, '0px');
       if (r.f && !r.f.missing) {
@@ -899,15 +902,15 @@
         c.fillStyle = T.inkSoft; c.textBaseline = 'middle'; c.fillText(rv[0] + rv[1].replace('원', ''), nameX + len + 10, by + 1); c.textBaseline = 'alphabetic';
         var v = m === 'margin' ? r.f.margin : m === 'growth' ? r.f.growth : r.f[m], nu = numOf(r.f, m);
         if (m === 'cap' && v == null) {      // 비상장사는 시가총액이 없다
-          c.font = F(800, Math.round(vf * 0.42)); c.fillStyle = T.inkSoft; c.textAlign = 'right'; c.fillText(r.it.u ? '비상장' : '–', CX + CWID, cy + vf * 0.2); c.textAlign = 'left';
-        } else valAt(c, CX + CWID, cy + vf * 0.34, nu[0], vf, v != null && v < 0 ? T.down : T.up, nu[1], 'right');
+          c.font = F(800, Math.round(vf * 0.42)); c.fillStyle = T.inkSoft; c.textAlign = 'right'; c.fillText(r.it.u ? '비상장' : '–', XR, cy + vf * 0.2); c.textAlign = 'left';
+        } else valAt(c, XR, cy + vf * 0.34, nu[0], vf, v != null && v < 0 ? T.down : T.up, nu[1], 'right');
         if (m !== 'cap' && main && bk(r.f) !== main) {     // 기준이 다른 숫자(비상장 연간 ↔ 상장 최근 4분기)면 작게 표시
-          c.font = F(700, 20); c.fillStyle = T.inkSoft; c.textAlign = 'right'; c.fillText(basisTxt(bk(r.f), true), CX + CWID, cy + vf * 0.34 + 26); c.textAlign = 'left';
+          c.font = F(700, 20); c.fillStyle = T.inkSoft; c.textAlign = 'right'; c.fillText(basisTxt(bk(r.f), true), XR, cy + vf * 0.34 + 26); c.textAlign = 'left';
         }
       } else if (r.f && r.f.missing) {
         c.font = F(700, 22); c.fillStyle = T.inkSoft; c.fillText('자료 없음', nameX, cy + rh * 0.22);
       }
-      if (i < n - 1) rule(c, top + rh * (i + 1));
+      if (k < PER - 1 && i < n - 1) { var yy = Math.round(top + rh * (k + 1)) + 0.5; c.strokeStyle = T.rule; c.lineWidth = 1; c.beginPath(); c.moveTo(X0, yy); c.lineTo(XR, yy); c.stroke(); }
     });
   }
 
@@ -1329,6 +1332,6 @@
 })();
 </script>
 <script src="./health.js" defer></script>
-<script src="./card-ratio.js?v=1124a"></script>
+<script src="./card-ratio.js?v=1124c"></script>
 </body>
 </html>

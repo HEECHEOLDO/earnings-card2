@@ -733,8 +733,10 @@ function drawCard(c){
 
   var FOOT = dot(back) + ' ~ ' + dot(now) + ' · ' + M().foot;
 
-  /* 2~3종목 — 줄형. 격자로 깔면 한 줄이 허공에 뜬다. */
-  if (n <= 3) {
+  /* 2~3종목 — 줄형. 격자로 깔면 한 줄이 허공에 뜬다.
+     넓은 비율(7:5·16:9 저장)에서는 줄이 너무 길어져 이름과 금액 사이가 비므로 나란히 칸으로 그린다. */
+  var WIDE = (c.__cardAR || 0) > 1.2;
+  if (n <= 3 && !WIDE) {
     var rh = (bot-top)/n;
     var rad = Math.min(120, rh*0.40), tx = CX + rad*2 + rad*0.52;
     var vf = Math.min(150, rh*0.46);
@@ -763,12 +765,13 @@ function drawCard(c){
   }
 
   /* 4종목 2열 · 5~9종목 3열 */
-  var cols = (n === 4) ? 2 : 3, nrow = Math.ceil(n/cols);
+  var cols = WIDE ? (n <= 4 ? n : Math.ceil(n/2)) : (n === 4) ? 2 : 3, nrow = Math.ceil(n/cols);   // 넓은 비율: 한두 줄로 나란히
   var cw = CWID/cols, ch = (bot-top)/nrow;
   // 로고가 먼저 눈에 들어와야 어느 회사인지 알아본다. 숫자는 그다음이다.
   // 예전 비율(로고 0.20 / 금액 0.29)은 숫자 폭이 칸을 꽉 채워 로고를
   // 눌러버렸다. 세로로 37~54px 이 놀고 있었으므로 그만큼 로고로 돌린다.
   var rad2 = ch * (nrow === 3 ? 0.235 : 0.25);
+  if (WIDE && nrow === 1) rad2 = Math.min(rad2, ch * 0.2);      // 한 줄이면 칸이 높아 로고가 너무 커진다
   var g1 = ch*0.055, g2 = ch*0.03, pad = cw*0.05;
   // 글자 크기는 칸마다 재지 않고 가장 작은 값으로 통일한다.
   // 그래야 로고 줄·이름 줄·금액 줄이 가로로 맞는다.
@@ -1338,6 +1341,6 @@ Promise.all([
 });
 </script>
 <script src="./health.js" defer></script>
-<script src="./card-ratio.js?v=1124a"></script>
+<script src="./card-ratio.js?v=1124c"></script>
 </body>
 </html>
