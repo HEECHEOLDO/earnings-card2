@@ -825,7 +825,7 @@
     c.font = F(700, T.footer); c.textAlign = 'right'; c.fillText(sign, CX + CWID, fb); c.textAlign = 'left';
     return ry;
   }
-  function today() { var d = new Date(Date.now() + 9 * 3600e3); return d.getUTCFullYear() + '. ' + ('0' + (d.getUTCMonth() + 1)).slice(-2) + '. ' + ('0' + d.getUTCDate()).slice(-2); }
+  function today() { var d = new Date(Date.now() + 9 * 3600e3); return "'" + String(d.getUTCFullYear()).slice(2) + '년 ' + (d.getUTCMonth() + 1) + '월 ' + d.getUTCDate() + '일'; }
 
 
   // 비교 묶음 제목 — 고른 지표(영업이익률·영업이익·매출·성장률)와 실제 숫자에 맞춰 만든다

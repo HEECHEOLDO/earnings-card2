@@ -403,7 +403,9 @@
     if (iLo !== last && iLo !== 0 && iLo !== iHi && !nearEnd(iLo)) shown.lo = mark(iLo, money(mn, kr), false, '최저');
 
     X.fillStyle = T.rule; X.fillRect(L, 1180, R - L, 2);
-    X.font = font(700, 26); X.fillStyle = T.footer; X.textAlign = 'right'; X.fillText('@돈굴돈굴', R, 1224); X.textAlign = 'left';
+    var pz = pts[pts.length - 1];                                        // 왼쪽 아래는 기준일 (다른 탭과 같게)
+    X.font = font(700, 26); X.fillStyle = T.footer; X.fillText("'" + String(pz.y).slice(2) + '년 ' + pz.m + '월 ' + pz.d + '일 기준', L, 1224);
+    X.textAlign = 'right'; X.fillText('@돈굴돈굴', R, 1224); X.textAlign = 'left';
     if (OV) { OV.paintFront(X); if (opt.sel) OV.paintSelection(X); }
     X.restore();
     return { shown: shown, iHi: nearEnd(iHi) ? last : iHi, iLo: nearEnd(iLo) ? last : iLo, last: last, n: n };

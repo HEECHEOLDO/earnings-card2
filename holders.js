@@ -206,11 +206,13 @@
     X.textBaseline = 'alphabetic';
     X.strokeStyle = T.rule; X.lineWidth = 2; X.beginPath(); X.moveTo(L, 1282); X.lineTo(WR, 1282); X.stroke();
     X.textAlign = 'left'; X.fillStyle = T.footer; X.font = font(700, 23);
-    X.fillText('자료 : ' + (h.report || '').replace(/^20(\d\d) /, "'$1년 ").replace(/보고서$/, ' 보고서'), L, 1318);
+    X.fillText(repBasis(h.report), L, 1318);
     X.restore();
     return { segs: segs, shown: rows.map(function (x) { return [x.k, x.k]; }), top: null, bot: null, outs: 0, left: 0 };
   }
 
+  // '2026 3분기보고서' → "'26년 3분기 기준" (실적 탭처럼 왼쪽 아래는 기준만)
+  function repBasis(r) { var m = /^20(\d\d)\s*(.*?)\s*보고서$/.exec(r || ''); if (!m) return r || ''; var k = m[2].replace(/^사업$/, '연간').replace(/^반기$/, '2분기'); return "'" + m[1] + '년 ' + k + ' 기준'; }
   function draw(X, h, opt) {
     var color;
     X.save(); X.textAlign = 'left'; X.textBaseline = 'alphabetic';
@@ -357,7 +359,7 @@
     X.strokeStyle = T.rule; X.lineWidth = 2; X.beginPath(); X.moveTo(L, 1282); X.lineTo(R, 1282); X.stroke();
     var d = (h.asof || '').split('-');
     X.textAlign = 'left'; X.fillStyle = T.footer; X.font = font(700, 23);
-    X.fillText('자료 : ' + (h.report || '').replace(/^20(\d\d) /, "'$1년 ").replace(/보고서$/, ' 보고서'), L, 1318);
+    X.fillText(repBasis(h.report), L, 1318);
     X.textAlign = 'right'; X.font = font(800, 24); X.fillText('@돈굴돈굴', R, 1318);
     X.restore();
     return { segs: segs, shown: shown, top: Lb.length ? Lb[0].y - Lb[0].hgt / 2 : null, bot: Lb.length ? Lb[Lb.length - 1].y + Lb[Lb.length - 1].hgt / 2 : null, outs: outs.length, left: outs.filter(function (x) { return Math.cos(x.mid) < 0.15; }).length };

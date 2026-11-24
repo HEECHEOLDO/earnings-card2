@@ -598,7 +598,7 @@
     var foot = '';
     if (DATA && ON.now && DATA.cols.now && chosen().indexOf('now') >= 0) {
       var a = nowDate().split('-');
-      foot = a[0] + '년 ' + (+a[1]) + '월 ' + (+a[2]) + '일 기준';
+      foot = "'" + a[0].slice(2) + '년 ' + (+a[1]) + '월 ' + (+a[2]) + '일 기준';
     }
     ctx.fillText(foot, S.left, footY);
     ctx.textAlign = 'right'; ctx.fillText('@돈굴돈굴', CW - S.right, footY); ctx.textAlign = 'left';
@@ -674,7 +674,7 @@
     if (nr && nr.length) {                   // 마지막 = 지금
       var d = nowDate().split('-'), lab = d.length === 3 ? d[0] + '.' + d[1] : '현재';
       if (out.length && out[out.length - 1].label === lab) out.pop();
-      out.push({ k: 'now', y: d[0], label: lab, foot: d.length === 3 ? d[0] + '년 ' + (+d[1]) + '월 ' + (+d[2]) + '일 기준' : '현재 기준', rows: nr });
+      out.push({ k: 'now', y: d[0], label: lab, foot: d.length === 3 ? "'" + String(d[0]).slice(2) + '년 ' + (+d[1]) + '월 ' + (+d[2]) + '일 기준' : '현재 기준', rows: nr });
     }
     return out;
   }

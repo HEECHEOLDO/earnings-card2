@@ -912,7 +912,8 @@
     ctx.moveTo(CX, ruleY); ctx.lineTo(CX + CWID, ruleY); ctx.stroke();
     ctx.font = font(700, T.type.footer);
     ctx.fillStyle = T.footer;
-    if (state.source) ctx.fillText(state.source, CX, footBase);
+    var am = /^(\d{4})-(\d\d)-(\d\d)/.exec(state.asof || ''), asofTxt = am ? "'" + am[1].slice(2) + '년 ' + (+am[2]) + '월 ' + (+am[3]) + '일 기준' : '';
+    if (state.source || asofTxt) ctx.fillText(state.source || asofTxt, CX, footBase);   // 출처를 적지 않았으면 기준일 (다른 탭과 같게)
     ctx.textAlign = 'right';
     ctx.fillText(state.handle, CX + CWID, footBase);
     ctx.textAlign = 'left';

@@ -757,7 +757,7 @@
     var fb = CH - T.safe.bottom - 4, ry = fb - T.type.footer * 0.85 - 18;
     var top = hr + 38, bot = ry - 32;
     var a = (DATA.updated || '').split('-');
-    var FOOT = a.length === 3 ? a[0] + '. ' + a[1] + '. ' + a[2] + ' 기준' : '';
+    var FOOT = a.length === 3 ? "'" + a[0].slice(2) + '년 ' + (+a[1]) + '월 ' + (+a[2]) + '일 기준' : '';
     var layF = layoutFor(k);
     if (MDESC[k] && layF !== 'growth' && layF !== 'yearbars' && layF !== 'streak' && layF !== 'years')
       FOOT += (FOOT ? ' · ' : '') + MDESC[k][0];

@@ -373,7 +373,7 @@
     else if (!isUSmk(mk)) won += ' 원';                                      // 국내: 3,091조 원
     var sumTxt = k ? (pc ? a[0] + '년 말 · ' : '') + (k < +n ? k + '개' : '상위 ' + k + '개') + ' 시가총액 : ' + won : '';
     document.getElementById('sub').value = [extra, sumTxt].filter(Boolean).join(' · ');
-    window.MCAP_FOOT = a ? a[0] + '년 ' + (+a[1]) + '월 ' + (+a[2]) + '일 기준' : '';
+    window.MCAP_FOOT = a ? "'" + a[0].slice(2) + '년 ' + (+a[1]) + '월 ' + (+a[2]) + '일 기준' : '';
     window.MCAP_ICON = mcapIcon(mk, (mk === 'industry' || mk === 'theme' || mk === 'us_sector' || mk === 'us_industry') ? gg : null);
   }
 
@@ -762,7 +762,7 @@
         cols['h' + ly] = hc[ly][mk]; label['h' + ly] = ly; foot['h' + ly] = ly + '년 6월 말 기준'; fx['h' + ly] = hc[ly].usdkrw || FX; keys.push('h' + ly);
       }
       label.now = a.length === 3 ? a[0] + '.' + a[1] : '현재'; keys.push('now');
-      var asof = a.length === 3 ? a[0] + '년 ' + (+a[1]) + '월 ' + (+a[2]) + '일 기준' : '현재 기준';
+      var asof = a.length === 3 ? "'" + a[0].slice(2) + '년 ' + (+a[1]) + '월 ' + (+a[2]) + '일 기준' : '현재 기준';
       foot.now = asof;
     }
     var n = +document.getElementById('n').value || 20;
