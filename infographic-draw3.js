@@ -1,6 +1,6 @@
 /* 인포그래픽 3차 — 분포(히스토그램) · 나비 막대 · 달력 · 월별 열지도 · 고점 대비 하락 · 산점도 · 기울기 */
 (function () {
-  var L = 100, R = 980, TOP = 330, BOT = 1140;
+  var L = 100, R0 = 980, R = 980, TOP = 330, BOT = 1140;   // R: 넓은 비율로 저장하면 오른쪽 끝이 더 멀다 (card-ratio.js · head 에서 정함)
   var T = { ink: '#101216', soft: '#6B7078', rule: '#E6E4DD', up: '#D6362C', down: '#2B6CD9', faint: '#D9D6CE', gray: '#C9C6BC' };
   var FF = "'Noto Sans KR', sans-serif";
   function font(w, px) { return w + ' ' + px + 'px ' + FF; }
@@ -10,7 +10,7 @@
     if (!im) return;
     X.save(); X.beginPath(); X.arc(x, y, r, 0, 7); X.clip(); X.fillStyle = '#fff'; X.fillRect(x - r, y - r, 2 * r, 2 * r); X.drawImage(im, x - r, y - r, 2 * r, 2 * r); X.restore();
   }
-  function head(X, o) { base.grainOnly(X); X.fillStyle = T.ink; window.__vcTitle(X, o.h1); }
+  function head(X, o) { R = X.__cardR || R0; base.grainOnly(X); X.fillStyle = T.ink; window.__vcTitle(X, o.h1); }
   function foot(X, src) { window.__vcFoot(X, src); }
   function fit(X, s, w) { var f = X.font, mm = f.match(/(\d+)px/), px = mm ? +mm[1] : 20; while (px > 15 && X.measureText(s).width > w) { px -= 1; X.font = f.replace(/\d+px/, px + 'px'); } if (X.measureText(s).width <= w) return s; while (s.length > 1 && X.measureText(s + '…').width > w) s = s.slice(0, -1); return s + '…'; }
   // 등락률 → 색 (한국식: 오르면 빨강) · k 는 진하기 기준

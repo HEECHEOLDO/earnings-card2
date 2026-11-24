@@ -1,12 +1,12 @@
 /* 인포그래픽 4차 — 경제 지표용: 월별 막대 · 작은 그래프 여러 개 · 여러 선 */
 (function () {
-  var L = 100, R = 980, TOP = 330, BOT = 1140;
+  var L = 100, R0 = 980, R = 980, TOP = 330, BOT = 1140;   // R: 넓은 비율로 저장하면 오른쪽 끝이 더 멀다 (card-ratio.js · head 에서 정함)
   var T = { ink: '#101216', soft: '#6B7078', rule: '#E6E4DD', up: '#D6362C', down: '#2B6CD9', gray: '#C9C6BC' };
   var FF = "'Noto Sans KR', sans-serif";
   function font(w, px) { return w + ' ' + px + 'px ' + FF; }
   var base = window.__vc;
   function rr(X, x, y, w, h, r) { r = Math.max(0, Math.min(r, w / 2, Math.abs(h) / 2)); X.beginPath(); X.moveTo(x + r, y); X.arcTo(x + w, y, x + w, y + h, r); X.arcTo(x + w, y + h, x, y + h, r); X.arcTo(x, y + h, x, y, r); X.arcTo(x, y, x + w, y, r); X.closePath(); }
-  function head(X, o) { base.grainOnly(X); X.fillStyle = T.ink; window.__vcTitle(X, o.h1); }
+  function head(X, o) { R = X.__cardR || R0; base.grainOnly(X); X.fillStyle = T.ink; window.__vcTitle(X, o.h1); }
   function foot(X, src) { window.__vcFoot(X, src); }
   function nice(lo, hi, n) { var st = Math.pow(10, Math.floor(Math.log10((hi - lo) / n || 1))); while ((hi - lo) / st > n + 1) st *= st.toString()[0] === '2' ? 2.5 : 2; return st; }
 

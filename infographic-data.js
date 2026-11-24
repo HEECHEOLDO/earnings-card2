@@ -1522,7 +1522,7 @@
     $('c-dl').addEventListener('click', function () {
       if (!last) return;
       window.CARD_RATIO_CAP = /^(radial|waffle|compare)$/.test(last.fn) ? 1 : 0;
-      window.CARD_RATIO_FLEX = last.fn === 'bars';   // 가로 막대는 넓은 폭에 맞춰 막대만 길게   // 원·네모 칸 그림은 넓은 비율에서도 가로로 펼치지 않는다
+      window.CARD_RATIO_FLEX = /^(bars|growth|line|lines|columns|multiples|hist|butterfly|heatgrid|underwater|scatter|slope|range)$/.test(last.fn);   // 축이 있는 그림(막대·선·열지도 등): 넓은 비율에서 글자는 그대로, 그림만 오른쪽 끝까지 넓힌다 · 원·네모 칸 그림은 펼치지 않는다 (CAP)
       var big = document.createElement('canvas'); big.width = 1080 * 3; big.height = 1350 * 3;
       var g = big.getContext('2d'); g.scale(3, 3); window.__vc[last.fn](g, last.o); if (OV) OV.paintFront(g);
       big.toBlob(function (blob) {

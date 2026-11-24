@@ -155,6 +155,7 @@
 
   /* 5) 성장 곡선 — o.cols:[라벨], o.series:[{n, c, vals:[원]}], 로그 눈금 */
   function growth(X, o) {
+    var R = X.__cardR || R0;          // 넓은 비율: 선을 오른쪽 끝까지 (card-ratio.js)
     head(X, o);
     var top = TOP + 10, bot = BOT - 44, x1 = R - 200, all = [];
     o.series.forEach(function (s) { s.vals.forEach(function (v) { if (v) all.push(v); }); });
