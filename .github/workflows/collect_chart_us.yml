@@ -1,10 +1,11 @@
 # 해외 주가 추이 카드(price.html)용 일별·주별 종가 — data/chart/us/ · 주요 지수 data/chart/idx/
-# 미국 장 마감(KST 06:00) 뒤 평일 아침에 돈다. 출처가 다 막히면 오늘 시세 한 줄만 붙인다.
+# 미국 장 마감(KST 06:00 · 서머타임 05:00) 뒤 평일 아침 07:10 에 돈다. 종목 98% 와 S&P 500 이 지난 거래일까지 있으면 예비 실행은 건너뛴다. 출처가 다 막히면 오늘 시세 한 줄만 붙인다.
 name: 해외 주가 추이 수집
 
 on:
   schedule:
-    - cron: '10 23 * * 1-5'     # UTC 23:10 = KST 08:10 (화~토)
+    - cron: '10 22 * * 1-5'     # UTC 22:10 = KST 07:10 (화~토) · 미국 지수 확정 종가(장 마감 40분쯤 뒤) 다음
+    - cron: '40 23 * * 1-5'     # 예비 KST 08:40 — CNBC 일별이 늦게 붙어 못 채운 종목이 있으면 다시
     - cron: '10 1 * * 2-6'      # 예비 KST 10:10 — GitHub 예약 실행이 밀리거나 빠지는 날 대비 (2026-11-24 빠짐)
     - cron: '10 4 * * 2-6'      # 예비 KST 13:10 · 지난 미국 거래일 자료가 이미 있으면 바로 끝난다
   workflow_dispatch:
@@ -34,8 +35,10 @@ jobs:
           import datetime as D,json
           t=D.datetime.utcnow()+D.timedelta(hours=9); d=t.date()-D.timedelta(days=1)
           while d.weekday()>4: d-=D.timedelta(days=1)
+          import glob; k=int(d.strftime('%Y%m%d'))
           last=json.load(open('data/chart/idx/SPX.json'))['d'][-1][0]
-          print(1 if last>=int(d.strftime('%Y%m%d')) else 0)" 2>/dev/null || echo 0)
+          fs=glob.glob('data/chart/us/*.json'); n=sum(1 for f in fs if json.load(open(f))['d'][-1][0]>=k)
+          print(1 if last>=k and n>=len(fs)*0.98 else 0)" 2>/dev/null || echo 0)
           if [ "${{ github.event_name }}" = "schedule" ] && [ "$W" = "1" ]; then echo "지난 거래일 자료 있음 — 건너뜀"; echo "skip=1" >> "$GITHUB_OUTPUT"; fi
       - uses: actions/setup-python@v5
         if: steps.done.outputs.skip != '1'
