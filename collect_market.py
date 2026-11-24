@@ -82,7 +82,11 @@ def investor():
                 try:
                     j = json.loads(get("https://m.stock.naver.com/api/index/%s/trend?bizdate=%s" % (ix, d.strftime("%Y%m%d"))))
                     if j.get("bizdate") == d.strftime("%Y%m%d"):
-                        k = int(j["bizdate"]); res[ix][k] = [k, f(j["personalValue"]), f(j["foreignValue"]), f(j["institutionalValue"])]; n += 1
+                        k = int(j["bizdate"]); row = [k, f(j["personalValue"]), f(j["foreignValue"]), f(j["institutionalValue"])]
+                        if any(row[1:]):               # 장 전에는 0·0·0 으로 온다 — 그런 날은 넣지 않는다
+                            res[ix][k] = row; n += 1
+                        else:
+                            res[ix].pop(k, None)
                 except Exception as e:                 # noqa: BLE001
                     log("  투자자", ix, d, e)
                 time.sleep(0.05)

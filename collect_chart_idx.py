@@ -16,7 +16,7 @@ import time
 from datetime import date, timedelta
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from collect_chart_us import cnbc_bars, get, weekly  # noqa: E402
+from collect_chart_us import add_latest, cnbc_bars, get, weekly  # noqa: E402
 
 OUT_DIR = os.path.join("data", "chart", "idx")
 DAYS = 400
@@ -51,6 +51,11 @@ def naver_rows(sym, today):
         if c > 0:
             out.append((int(m.group(1)), c))
     out.sort()
+    # 장이 끝나기 전에는 네이버가 오늘 날짜 줄(장 전·장중 값)을 준다 → 서울 15:40 전이면 오늘 줄은 뺀다
+    from datetime import datetime, timezone
+    now = datetime.now(timezone.utc) + timedelta(hours=9)
+    t = int(now.strftime("%Y%m%d"))
+    out = [r for r in out if r[0] < t or (r[0] == t and now.hour * 60 + now.minute >= 15 * 60 + 40)]
     return out if len(out) > 100 else None
 
 
@@ -91,6 +96,13 @@ def main():
             json.dump(j, f, separators=(",", ":"))
         ok += 1
         print("  %-9s %-10s %-6s 일별 %d · 주별 %d · 마지막 %s %.2f" % (code, name, src, len(j["d"]), len(j["w"]), j["d"][-1][0], j["d"][-1][1]))
+    cn = [c for c, v in INDICES.items() if not v[1] and v[2]]   # 해외 지수: CNBC 일별이 늦으면 정규장 종가로 마지막 날을 채운다
+    sym = {INDICES[c][2].replace(".", "-").upper(): c for c in cn}
+    try:
+        n = add_latest(list(sym), lambda s: os.path.join(OUT_DIR, sym[s] + ".json"))
+        print("  마지막 거래일 종가를 붙인 지수 %d / %d" % (n, len(sym)))
+    except Exception as e:                    # noqa: BLE001
+        print("  마지막 거래일 종가 붙이기 실패 %s" % e)
     print("끝: %d / %d" % (ok, len(INDICES)))
 
 

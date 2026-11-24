@@ -315,6 +315,24 @@ def fix_jumps(d, w, mm):
     return d, w
 
 
+def done_session(d):
+    """미국 정규장이 끝난 날인가 — 장중 가격을 종가로 넣지 않는다 (뉴욕 16:20 뒤부터 그날을 넣는다)"""
+    try:
+        from zoneinfo import ZoneInfo
+        now = datetime.now(ZoneInfo("America/New_York"))
+    except Exception:                             # noqa: BLE001
+        now = datetime.now(timezone.utc) - timedelta(hours=5)
+    t = int(now.strftime("%Y%m%d"))
+    return d < t or (d == t and now.hour * 60 + now.minute >= 16 * 60 + 20)
+
+
+def add_latest(syms, path_of):
+    """CNBC 1년 일별은 마지막 거래일 막대가 몇 시간~하루 늦게 붙는다 → 정규장 종가(시간외 제외)로 그날을 채운다.
+    장이 끝난 날만, 파일 마지막 날보다 뒤일 때만 붙인다. 붙인 종목 수를 돌려준다."""
+    q = cnbc_quotes(syms)
+    return sum(1 for s in syms if s in q and done_session(q[s][0]) and append_quote(path_of(s), q[s]))
+
+
 def append_quote(path, q):
     """출처가 다 막힌 날: 있는 파일에 오늘 시세 한 줄만 붙인다."""
     try:
@@ -378,11 +396,13 @@ def main():
             failed = syms
             break
     if probe:
+        q = cnbc_quotes(syms)
+        for s in syms:
+            log("  %-6s 오늘 시세 %s · 장 끝난 날 %s" % (s, q.get(s), q.get(s) and done_session(q[s][0])))
         return
-    if failed:
-        q = cnbc_quotes(failed)
-        n = sum(1 for s in failed if s in q and append_quote(os.path.join(OUT_DIR, s + ".json"), q[s]))
-        log("  오늘 시세만 붙인 종목 %d / %d (CNBC)" % (n, len(failed)))
+    path_of = lambda s: os.path.join(OUT_DIR, s + ".json")   # noqa: E731
+    n = add_latest(syms, path_of)
+    log("  마지막 거래일 종가를 붙인 종목 %d / %d (CNBC 정규장 시세 · 일별 막대가 아직 안 붙은 종목)" % (n, len(syms)))
     log("끝: 새로 받은 종목 %d · 출처 %s" % (ok, srcs))
 
 
