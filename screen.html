@@ -1134,9 +1134,11 @@
      로고가 먼저 눈에 들어와야 어느 회사인지 알아본다 — 칸을 로고에 크게 내준다 */
   function drawGrid(c, list, k, top, bot) {
     var n = list.length;
-    var cols = n <= 2 ? n : n === 4 ? 2 : n <= 9 ? 3 : 4, nrow = Math.ceil(n / cols);
+    // 넓은 비율(7:5·16:9) 저장: 한두 줄로 나란히 — 가로가 실제로는 1/KW 배 넓다 (card-ratio.js)
+    var KW = c.__cardK || 1, WIDE = (c.__cardAR || 0) > 1.2;
+    var cols = WIDE ? (n <= 4 ? n : n <= 6 ? 3 : n <= 12 ? Math.ceil(n / 2) : Math.ceil(n / 3)) : n <= 2 ? n : n === 4 ? 2 : n <= 9 ? 3 : 4, nrow = Math.ceil(n / cols);
     var cw = CWID / cols, ch = (bot - top) / nrow;
-    var rad2 = Math.min(ch * (nrow >= 3 ? 0.25 : 0.29), cw * 0.34);
+    var rad2 = Math.min(ch * (nrow >= 3 ? 0.25 : nrow === 1 ? 0.22 : 0.29), cw / KW * 0.34);
     var g1 = ch * 0.05, g2 = ch * 0.025, pad = cw * 0.04;
     // 글자 크기는 가장 작은 칸에 맞춰 통일 — 로고·이름·숫자 줄이 가로로 맞는다
     var nf2 = Math.min(42, ch * 0.125), vf2 = Math.min(ch * 0.21, 92);
