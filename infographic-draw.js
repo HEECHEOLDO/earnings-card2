@@ -347,6 +347,8 @@ window.__vcFoot = function (X, src) {
   function radial(X, o) {
     base.grainOnly(X); head(X, o.kicker, o.h1);
     var cx = CW / 2, cy = 735, r0 = 110, r1 = 262, n = o.rows.length, mx = o.max;   // 막대 끝 + 이름표가 카드 안에 들도록
+    var RW = X.__cardR || 0;             // 넓은 비율(7:5·16:9): 원은 왼쪽, 오른쪽에 수익률 순 목록
+    if (RW) cx = L + 440;
     var step = Math.PI * 2 / (n + 1);    // 맨 위 한 칸은 비워 눈금 글자(+50% · +100%) 자리로
     // 0 고리, 눈금 고리
     function rv(v) { return r0 + (r1 - r0) * Math.sqrt(Math.min(Math.max(0, v), mx) / mx); }   // 제곱근 눈금 (큰 값이 너무 길지 않게)
@@ -370,6 +372,22 @@ window.__vcFoot = function (X, src) {
     X.fillStyle = T.soft; X.font = font(700, 24); X.fillText(o.centerTop, cx, cy - 26);
     X.fillStyle = T.ink; X.font = font(900, 46); X.fillText(o.centerBig, cx, cy + 22);
     X.textBaseline = 'alphabetic';
+    if (RW) {                                                   // 수익률 높은 순 두 열 (열마다 10줄까지)
+      var rows = o.rows.slice().sort(function (p, q) { return q.v - p.v; }), x0 = cx + r1 + 230, gap = 50;
+      var two = (RW - x0 - gap) / 2 >= 440, per = two ? Math.ceil(rows.length / 2) : rows.length;    // 7:5 는 폭이 좁아 한 열
+      var cw = two ? (RW - x0 - gap) / 2 : RW - x0, rh = Math.min(84, (BOT - TOP) / per), y0 = TOP + ((BOT - TOP) - rh * per) / 2, fz = Math.min(30, rh * 0.62);
+      rows.forEach(function (r, i) {
+        var col = Math.floor(i / per), k = i % per, xa = x0 + col * (cw + gap), xb = xa + cw, y = y0 + rh * k + rh / 2;
+        X.textBaseline = 'middle'; X.fillStyle = T.soft; X.font = font(800, Math.min(24, fz * 0.8)); X.textAlign = 'right'; X.fillText(i + 1, xa + 30, y);
+        X.fillStyle = r.v >= 0 ? (r.c || T.up) : T.down; X.beginPath(); X.arc(xa + 52, y, 9, 0, 7); X.fill();
+        X.fillStyle = T.ink; X.font = font(800, fz); X.textAlign = 'left';
+        var nm = r.n, mw = cw - 72 - fz * 4.6; while (nm.length > 1 && X.measureText(nm).width > mw) nm = nm.slice(0, -1);
+        X.fillText(nm === r.n ? nm : nm + '…', xa + 72, y);
+        X.fillStyle = r.v >= 0 ? T.up : T.down; X.font = font(900, fz + 2); X.textAlign = 'right'; X.fillText((r.v >= 0 ? '+' : '') + Math.round(r.v) + '%', xb, y);
+        if (k < per - 1) { X.strokeStyle = T.rule; X.lineWidth = 1; X.beginPath(); X.moveTo(xa, y0 + rh * (k + 1)); X.lineTo(xb, y0 + rh * (k + 1)); X.stroke(); }
+      });
+      X.textBaseline = 'alphabetic'; X.textAlign = 'left';
+    }
     foot(X, o.src);
   }
 
@@ -405,9 +423,33 @@ window.__vcFoot = function (X, src) {
   }
 
   /* H) 크기 비교: 원 넓이 = 시총 — 위 줄 큰 둘, 아래 줄 작은 것들 */
+  // 넓은 비율: 원을 한 줄로 나란히 (밑을 맞춰), 크기는 세로 높이에 맞춘다. 작은 원 이름은 원 아래에
+  function compareWide(X, o, RW) {
+    var gap = 50, sq = o.items.map(function (it) { return Math.sqrt(it.v); }), mxs = Math.max.apply(null, sq), sum = sq.reduce(function (s0, v) { return s0 + v; }, 0);
+    var k = Math.min((BOT - TOP - 110) / (2 * mxs), (RW - L - gap * (o.items.length - 1)) / (2 * sum));
+    var tot = sum * 2 * k + gap * (o.items.length - 1), x = L + (RW - L - tot) / 2, base = TOP + 2 * mxs * k + 20 + ((BOT - TOP) - (2 * mxs * k + 110)) / 2;
+    o.items.forEach(function (it, i) {
+      var r = k * sq[i], cx = x + r, cy = base - r; x += 2 * r + gap;
+      X.fillStyle = it.c; X.beginPath(); X.arc(cx, cy, r, 0, 7); X.fill();
+      X.textAlign = 'center'; X.textBaseline = 'middle';
+      if (r > 70) {
+        if (it.logo) logoAt(X, it.logo, cx, cy - r * 0.32, Math.min(60, r * 0.24));
+        X.fillStyle = '#fff'; X.font = font(800, Math.min(36, r * 0.13)); X.fillText(it.n, cx, cy + (it.logo ? r * 0.08 : -r * 0.1));
+        X.font = font(900, Math.min(56, r * 0.2)); X.fillText(it.cap, cx, cy + (it.logo ? r * 0.3 : r * 0.14));
+        if (it.times) { X.fillStyle = T.soft; X.font = font(800, 28); X.fillText(it.times, cx, base + 40); }
+      } else {
+        if (it.logo) logoAt(X, it.logo, cx, cy, Math.min(r * 0.55, 40));
+        X.fillStyle = T.ink; X.font = font(800, 26); X.fillText(it.n + '  ' + it.cap, cx, base + 36);
+        if (it.times) { X.fillStyle = T.soft; X.font = font(700, 24); X.fillText(it.times, cx, base + 70); }
+      }
+      X.textBaseline = 'alphabetic';
+    });
+    foot(X, o.src);
+  }
   function compare(X, o) {
     base.grainOnly(X); head(X, o.kicker, o.h1);
     var a = o.items[0], b = o.items[1], gap = 30;
+    if (X.__cardR) return compareWide(X, o, X.__cardR);
     var k = (R - L - gap) / (2 * (Math.sqrt(a.v) + Math.sqrt(b.v)));
     var ra = k * Math.sqrt(a.v), rb = k * Math.sqrt(b.v), y1 = TOP + ra + 10;
     var pos = [[L + ra, y1], [R - rb, y1 - ra + rb + 40]];

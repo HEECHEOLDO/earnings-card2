@@ -84,9 +84,9 @@
     head(X, o);
     var by = {}; o.days.forEach(function (d) { var k = String(d[0]).slice(0, 6); (by[k] = by[k] || []).push(d); });
     var vals = o.days.map(function (d) { return d[1]; }), best = Math.max.apply(null, vals), worst = Math.min.apply(null, vals), marks = [], heads = [];
-    var months = Object.keys(by).sort().slice(-12), cw = (R - L - 3 * 24) / 4, cell = Math.floor((cw - 6) / 7), top = TOP, mh = cell * 6 + 50;
+    var NCm = R > R0 + 300 ? 6 : 4, months = Object.keys(by).sort().slice(-12), cw = (R - L - (NCm - 1) * 24) / NCm, cell = Math.min(Math.floor((cw - 6) / 7), Math.floor(((BOT - 90 - TOP) / (12 / NCm) - 64) / 6)), top = TOP, mh = cell * 6 + 50;   // 넓은 비율: 6×2
     months.forEach(function (m, i) {
-      var gx = L + (i % 4) * (cw + 24), gy = top + Math.floor(i / 4) * (mh + 14), y = +m.slice(0, 4), mo = +m.slice(4) - 1;
+      var gx = L + (i % NCm) * (cw + 24), gy = top + Math.floor(i / NCm) * (mh + 14), y = +m.slice(0, 4), mo = +m.slice(4) - 1;
       var first = new Date(y, mo, 1).getDay(), sum = by[m].reduce(function (t, d) { return t * (1 + d[1] / 100); }, 1) - 1;
       X.fillStyle = T.ink; X.font = font(800, 22); X.textAlign = 'left'; X.fillText((mo + 1) + '월', gx, gy + 22); heads.push([gx, gy + 4, gx + X.measureText((mo + 1) + '월').width, gy + 28]);
       X.fillStyle = sum >= 0 ? T.up : T.down; X.font = font(800, 19); X.textAlign = 'right'; var sw0 = X.measureText(pct(sum * 100, 1)).width; X.fillText(pct(sum * 100, 1), gx + cell * 7, gy + 22); heads.push([gx + cell * 7 - sw0, gy + 6, gx + cell * 7, gy + 28]);
@@ -111,7 +111,8 @@
     });
     // 범례
     var ly = BOT - 70; X.fillStyle = T.soft; X.font = font(700, 20); X.textAlign = 'left'; X.fillText('하루 등락률', L, ly + 18);
-    [-3, -1.5, -0.5, 0.5, 1.5, 3].forEach(function (v, i) { var x = L + 130 + i * 70; X.fillStyle = heat(v, 3); rr(X, x, ly, 62, 24, 4); X.fill(); X.fillStyle = T.soft; X.font = font(700, 16); X.textAlign = 'center'; X.fillText(pct(v, v % 1 ? 1 : 0), x + 31, ly + 46); });
+    var lx0 = Math.max(L + 130, L + X.measureText('하루 등락률').width + 24);   // 글자가 커져도(넓은 비율) 첫 칸과 겹치지 않게
+    [-3, -1.5, -0.5, 0.5, 1.5, 3].forEach(function (v, i) { var x = lx0 + i * 70; X.fillStyle = heat(v, 3); rr(X, x, ly, 62, 24, 4); X.fill(); X.fillStyle = T.soft; X.font = font(700, 16); X.textAlign = 'center'; X.fillText(pct(v, v % 1 ? 1 : 0), x + 31, ly + 46); });
     foot(X, o.src);
   }
 

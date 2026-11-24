@@ -944,6 +944,34 @@
     return px;
   }
 
+  /* 넓은 비율 목록 — 색 점 · 로고 · 이름 · 비중(오른쪽 끝 정렬). 줄 높이는 칸에 맞춰, 글자는 줄 높이에 맞춰 */
+  function drawWideList(ctx, x0, x1, top, bottom, rows, colors, withBar) {
+    var n = rows.length; if (!n) return;
+    var rh = Math.min(96, (bottom - top) / n), y0 = top + ((bottom - top) - rh * n) / 2;
+    var nf = Math.round(Math.min(40, rh * 0.44)), pf = Math.round(Math.min(44, rh * 0.48)), lr = Math.min(26, rh * 0.3);
+    var NW = 0, PW = 0;                           // 이름 칸·비중 칸 폭 (막대 자리 계산용)
+    rows.forEach(function (r) { ctx.font = font(800, nf); NW = Math.max(NW, 40 + (r.etc ? 0 : lr * 2 + 16) + ctx.measureText(r.name).width); ctx.font = font(900, pf); PW = Math.max(PW, ctx.measureText(r.pct.toFixed(1) + '%').width); });
+    rows.forEach(function (r, i) {
+      var cy = y0 + rh * i + rh / 2, x = x0;
+      ctx.beginPath(); ctx.arc(x + 12, cy, 12, 0, 7); fillSlice(ctx, colors[i], r.etc); ctx.fill(); x += 40;
+      var im = !r.etc && logoImg(r.logo);
+      if (im) { ctx.save(); ctx.beginPath(); ctx.arc(x + lr, cy, lr, 0, 7); ctx.clip(); ctx.drawImage(im, x, cy - lr, lr * 2, lr * 2); ctx.restore(); x += lr * 2 + 16; }
+      var pct = r.pct.toFixed(1) + '%';
+      ctx.font = font(900, pf); var pw = ctx.measureText(pct).width;
+      ctx.textBaseline = 'middle';
+      ctx.fillStyle = TOKENS.card.ink || '#101216'; ctx.textAlign = 'right'; ctx.fillText(pct, x1, cy + 1);
+      ctx.textAlign = 'left'; ctx.fillStyle = TOKENS.card.ink || '#101216';
+      var px = fitText(ctx, r.name, 800, nf, 18, x1 - pw - 30 - x); ctx.font = font(800, px); ctx.fillText(r.name, x, cy + 1);
+      if (withBar) {                              // 이름과 비중 사이를 비중 막대로 (가장 큰 비중 = 가득)
+        var b0 = x0 + NW + 40, b1 = x1 - PW - 30, mx = Math.max.apply(null, rows.map(function (q) { return q.pct; }));
+        var bh = Math.min(22, rh * 0.26), bl = Math.max(4, (b1 - b0) * r.pct / mx);
+        if (b1 - b0 > 60) { ctx.beginPath(); if (ctx.roundRect) ctx.roundRect(b0, cy - bh / 2, bl, bh, bh / 2); else ctx.rect(b0, cy - bh / 2, bl, bh); fillSlice(ctx, colors[i], r.etc); ctx.fill(); }
+      }
+      ctx.textBaseline = 'alphabetic';
+      if (i < n - 1) { ctx.beginPath(); ctx.strokeStyle = TOKENS.card.rule; ctx.lineWidth = 1; ctx.moveTo(x0, y0 + rh * (i + 1)); ctx.lineTo(x1, y0 + rh * (i + 1)); ctx.stroke(); }
+    });
+  }
+
   function drawDonut(ctx, cx, cy, R, rows, colors, bounds) {
     var T = TOKENS.card, D = T.donut;
     var r0 = R * D.holeRatio;
@@ -980,6 +1008,7 @@
     }
 
     if (state.logos) drawSliceLogos(ctx, cx, cy, R, r0, rows);
+    if (bounds.noLabels) return;            // 넓은 비율: 이름·비중은 오른쪽 목록으로 (drawWideList)
 
     /* ---- 라벨 배치 ----
        연결선 없이 각 라벨을 자기 조각 옆에 붙인다.
@@ -1306,7 +1335,15 @@
       // 빛 번짐 자리를 기억해 두고, 지난번과 다르면 한 번 더 그린다 (빛은 바탕에만 — 뒤에 깐 사진은 물들이지 않는다)
       var gk = state.chart !== 'bar' ? [cx, cy, R, chartTop, chartBottom].map(Math.round).join(',') : '';
       if (gk !== _glowKey) { _glowKey = gk; _glowGeo = gk ? { cx: cx, cy: cy, R: R, top: chartTop, bottom: chartBottom } : null; _glowAgain = true; }
-      if (state.chart === 'bar') drawBars(ctx, CX, chartTop, CWID, chartBottom);
+      var WR = ctx.__cardR || 0;            // 넓은 비율(7:5·16:9) 저장 — card-ratio.js 가 오른쪽 끝을 알려 준다
+      if (WR && state.chart !== 'bar') {
+        // 도넛은 왼쪽에 세로 높이만큼 크게, 이름·비중은 오른쪽에 큰 글씨 목록으로 (원 둘레 작은 이름표 대신)
+        R = Math.min(availH / 2 - 4, (WR - CX) * 0.27);
+        cx = CX + R + 6;
+        var L0 = cx + R + 90, L1 = WR;
+        drawDonut(ctx, cx, cy, R, state.rows, state.colors, { noLabels: true, left: CX, right: cx + R, top: chartTop, bottom: chartBottom });
+        drawWideList(ctx, L0, L1, chartTop, chartBottom, state.rows, state.colors, (ctx.__cardAR || 0) > 1.6);   // 16:9 는 이름–비중 사이가 넓다 → 비중 막대로 채운다
+      } else if (state.chart === 'bar') drawBars(ctx, CX, chartTop, CWID, chartBottom);
       else drawDonut(ctx, cx, cy, R, state.rows, state.colors,
                          { left: D.boundInset, right: CW - D.boundInset,
                            top: chartTop, bottom: chartBottom });
@@ -1323,7 +1360,7 @@
     /* 푸터 */
     ctx.beginPath();
     ctx.strokeStyle = T.rule; ctx.lineWidth = 2;
-    ctx.moveTo(CX, ruleY); ctx.lineTo(CX + CWID, ruleY); ctx.stroke();
+    ctx.moveTo(CX, ruleY); ctx.lineTo(ctx.__cardR || (CX + CWID), ruleY); ctx.stroke();
     ctx.font = font(700, T.type.footer);
     ctx.fillStyle = T.footer;
     ctx.textAlign = 'right';
@@ -2006,7 +2043,7 @@
 })();
 </script>
 <script src="./health.js" defer></script>
-<script>window.CARD_RATIO_CAP = 1;</script>
+<script>window.CARD_RATIO_CAP = 1; window.CARD_RATIO_FLEX = 1;   // 1:1 은 원을 펼치지 않고, 7:5·16:9 는 도넛 왼쪽 + 목록 오른쪽 (drawWideList)</script>
 <script src="./card-ratio.js?v=1124h"></script>
 </body>
 </html>

@@ -189,12 +189,33 @@
   }
 
   /* 6) 와플 (100칸) — o.items:[{n, w(%), c, logo}] 남는 칸은 '그 외' */
+  /* 넓은 비율 범례 — 색 칸 · 로고 · 이름 · (16:9 는 비중 막대) · 비중. 마지막 줄은 '그 외' */
+  function wideLegend(X, o, x0, x1, top, h) {
+    var rows = o.items.concat([{ n: '그 외', w: Math.max(0, 100 - o.items.reduce(function (s, x) { return s + x.w; }, 0)), c: T.gray, etc: 1 }]);
+    var n = rows.length, rh = Math.min(96, h / n), y0 = top + (h - rh * n) / 2, nf = Math.round(Math.min(36, rh * 0.42)), pf = Math.round(Math.min(40, rh * 0.46));
+    var bar = (X.__cardAR || 0) > 1.6, NW = 0, PW = 0, mx = Math.max.apply(null, o.items.map(function (x) { return x.w; }).concat([0.01]));
+    rows.forEach(function (it) { X.font = font(800, nf); NW = Math.max(NW, (it.logo ? 86 : 44) + X.measureText(it.n).width); X.font = font(900, pf); PW = Math.max(PW, X.measureText(it.w.toFixed(1) + '%').width); });
+    NW = Math.min(NW, (x1 - x0) * 0.5);
+    rows.forEach(function (it, i) {
+      var cy = y0 + rh * i + rh / 2;
+      X.fillStyle = it.c; rr(X, x0, cy - 14, 28, 28, 6); X.fill();
+      if (it.logo) logoAt(X, it.logo, x0 + 60, cy, Math.min(22, rh * 0.28));
+      var tx = x0 + (it.logo ? 94 : 44); X.textBaseline = 'middle';
+      X.fillStyle = it.etc ? T.soft : T.ink; X.font = font(800, nf); X.textAlign = 'left'; X.fillText(fit(X, it.n, (bar ? x0 + NW : x1 - PW - 30) - tx), tx, cy + 1);
+      X.fillStyle = T.ink; X.font = font(900, pf); X.textAlign = 'right'; X.fillText(it.w.toFixed(1) + '%', x1, cy + 1);
+      if (bar && !it.etc) { var b0 = x0 + NW + 40, b1 = x1 - PW - 30, bh = Math.min(22, rh * 0.26); if (b1 - b0 > 60) { X.fillStyle = it.c; rr(X, b0, cy - bh / 2, Math.max(4, (b1 - b0) * it.w / mx), bh, bh / 2); X.fill(); } }
+      if (i < n - 1) { X.strokeStyle = T.rule; X.lineWidth = 1; X.beginPath(); X.moveTo(x0, y0 + rh * (i + 1)); X.lineTo(x1, y0 + rh * (i + 1)); X.stroke(); }
+    });
+    X.textBaseline = 'alphabetic'; X.textAlign = 'left';
+  }
   function waffle(X, o) {
     head(X, o);
-    var gx = L, cell = 58, g = 6, side = 10 * (cell + g) - g, gy = TOP + Math.max(0, (BOT - TOP - side) / 2), cells = [], used = 0;
+    var gx = L, cell = X.__cardR ? (BOT - TOP + 6) / 10 - 6 : 58, g = 6, side = 10 * (cell + g) - g, gy = TOP + Math.max(0, (BOT - TOP - side) / 2), cells = [], used = 0;
     o.items.forEach(function (it, i) { var k = Math.round(it.w); if (used + k > 100) k = 100 - used; for (var j = 0; j < k; j++) cells.push(it.c); used += k; });
     while (cells.length < 100) cells.push(T.gray);
     for (var i = 0; i < 100; i++) { var cx = gx + (i % 10) * (cell + g), cy = gy + Math.floor(i / 10) * (cell + g); X.fillStyle = cells[i]; rr(X, cx, cy, cell, cell, 8); X.fill(); }
+    var RW = X.__cardR || 0;            // 넓은 비율(7:5·16:9): 네모를 세로 높이만큼 크게 그렸다 — 목록은 오른쪽 끝까지 큰 글씨로
+    if (RW) { wideLegend(X, o, gx + side + 80, RW, gy, side); foot(X, o.src); return; }
     var lx = gx + side + 28, rowH = Math.min(64, side / (o.items.length + 1)), ly = gy + (side - rowH * (o.items.length + 1)) / 2;
     o.items.concat([{ n: '그 외', w: Math.max(0, 100 - o.items.reduce(function (s, x) { return s + x.w; }, 0)), c: T.gray }]).forEach(function (it, i) {
       var cy = ly + i * rowH + rowH / 2;

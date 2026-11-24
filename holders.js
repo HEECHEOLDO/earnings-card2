@@ -179,6 +179,38 @@
     return { segs: segs, maj: maj };
   }
 
+  /* 넓은 비율 목록 — 색 점 · 이름 · (16:9 는 지분 막대) · 지분. 도넛 가운데는 '최대주주 측' 합계 */
+  function wideList(X, h, segs, cx, cy, sg, color, WR) {
+    X.textBaseline = 'middle'; X.textAlign = 'center';
+    X.fillStyle = T.inkSoft; X.font = font(700, 34); X.fillText('최대주주 측', cx, cy - 38);
+    X.fillStyle = color; X.font = font(900, 74); X.fillText(pctTxt(sg.maj), cx, cy + 30);
+    var rows = segs.filter(function (x) { return x.da > 0; }), n = rows.length;
+    var x0 = cx + 440 + 90, x1 = WR, top = 330, bot = 1250, rh = Math.min(100, (bot - top) / n), y0 = top + ((bot - top) - rh * n) / 2;
+    var nf = Math.round(Math.min(38, rh * 0.42)), pf = Math.round(Math.min(44, rh * 0.48)), bar = (X.__cardAR || 0) > 1.6;
+    var NW = 0, PW = 0;
+    rows.forEach(function (x) { X.font = font(800, nf); NW = Math.max(NW, X.measureText(x.k).width); X.font = font(900, pf); PW = Math.max(PW, X.measureText(pctTxt(x.v)).width); });
+    NW = Math.min(NW, (x1 - x0) * 0.45);
+    var mx = Math.max.apply(null, rows.filter(function (x) { return !x.rest; }).map(function (x) { return x.v; }).concat([0.01]));   // 막대 길이는 이름 있는 주주 중 가장 큰 곳 기준 ('기타 주주'는 막대 없이)
+    rows.forEach(function (x, i) {
+      var y = y0 + rh * i + rh / 2;
+      X.fillStyle = x.c; X.beginPath(); X.arc(x0 + 12, y, 12, 0, 7); X.fill();
+      X.textAlign = 'left'; X.fillStyle = x.rest ? T.inkSoft : T.ink; X.font = font(800, nf);
+      X.fillText(fit(X, x.k, (bar ? NW : x1 - PW - 40 - (x0 + 40))), x0 + 40, y);
+      X.textAlign = 'right'; X.fillStyle = T.ink; X.font = font(900, pf); X.fillText(pctTxt(x.v), x1, y);
+      if (bar && !x.rest) {                                          // 16:9 는 이름–지분 사이를 지분 막대로 (가장 큰 조각 = 가득)
+        var b0 = x0 + 40 + NW + 40, b1 = x1 - PW - 30, bh = Math.min(22, rh * 0.26);
+        if (b1 - b0 > 60) { X.fillStyle = x.c; X.beginPath(); if (X.roundRect) X.roundRect(b0, y - bh / 2, Math.max(4, (b1 - b0) * x.v / mx), bh, bh / 2); else X.rect(b0, y - bh / 2, Math.max(4, (b1 - b0) * x.v / mx), bh); X.fill(); }
+      }
+      if (i < n - 1) { X.strokeStyle = T.rule; X.lineWidth = 1; X.beginPath(); X.moveTo(x0, y0 + rh * (i + 1)); X.lineTo(x1, y0 + rh * (i + 1)); X.stroke(); }
+    });
+    X.textBaseline = 'alphabetic';
+    X.strokeStyle = T.rule; X.lineWidth = 2; X.beginPath(); X.moveTo(L, 1282); X.lineTo(WR, 1282); X.stroke();
+    X.textAlign = 'left'; X.fillStyle = T.footer; X.font = font(700, 23);
+    X.fillText('자료 : ' + (h.report || '').replace(/^20(\d\d) /, "'$1년 ").replace(/보고서$/, ' 보고서'), L, 1318);
+    X.restore();
+    return { segs: segs, shown: rows.map(function (x) { return [x.k, x.k]; }), top: null, bot: null, outs: 0, left: 0 };
+  }
+
   function draw(X, h, opt) {
     var color;
     X.save(); X.textAlign = 'left'; X.textBaseline = 'alphabetic';
@@ -211,6 +243,8 @@
     sg.segs.forEach(function (x) { if (!x.main) segs.push(x); });
 
     var cx = L + 300, cy = 740, ro = 300, ri = 135;                 // 왼쪽에 두고 오른쪽을 이름표 자리로
+    var WR = X.__cardR || 0;                                         // 넓은 비율(7:5·16:9) 저장 — card-ratio.js 가 오른쪽 끝을 준다
+    if (WR) { ro = 440; ri = 200; cx = L + ro + 6; cy = 790; }       // 도넛을 왼쪽에 세로 높이만큼 크게, 이름·지분은 오른쪽 목록 (wideList)
 
     // 글자 상자(두 줄)의 네 귀퉁이와 변 가운데가 모두 그 조각 안(테두리에서 10px 안쪽)에 들어가야 안에 쓴다
     function inside(x, bx, by, w, hh) {
@@ -265,6 +299,7 @@
       X.strokeStyle = T.paper; X.lineWidth = 4; X.stroke();          // 조각 사이 얇은 틈
     });
 
+    if (WR) return wideList(X, h, segs, cx, cy, sg, color, WR);
     // 조각 안에 들어가면 안에 (이름 위 · 지분 아래), 아니면 바깥에 꺾은 선으로
     var outs = [];
     X.textAlign = 'center'; X.textBaseline = 'middle';
