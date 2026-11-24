@@ -499,7 +499,9 @@
     var best = null;
     for (var i = 2; i < s.length - 1; i++) {
       var a = s.slice(0, i), b = s.slice(i), sc = Math.abs(a.length - b.length);
-      if (s[i - 1] === '용' || s[i - 1] === ' ' || s[i - 1] === '·') sc -= 6;
+      if (s[i - 1] === ',') sc -= 9;                                                  // 쉼표 뒤가 가장 좋다 ('screenprinter, / ballplacer등')
+      else if (s[i - 1] === '용' || s[i - 1] === ' ' || s[i - 1] === '·') sc -= 6;
+      else if (/[A-Za-z]/.test(s[i - 1]) && /[A-Za-z]/.test(s[i])) sc += 20;          // 영어 낱말 가운데는 자르지 않는다
       else if (/[가-힣]/.test(s[i - 1]) !== /[가-힣]/.test(s[i])) sc -= 3;
       if (!best || sc < best[0]) best = [sc, a.trim(), b.trim()];
     }
