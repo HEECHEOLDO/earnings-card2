@@ -470,7 +470,8 @@ def prev_seg_table(r0, rows):
         if len(rows_) >= 4 and rows_[0] and SEGT_HEAD.match(re.sub(r"\s+", "", rows_[0][0])):
             for r in rows_[1:]:
                 if r and SEGT_TOT.match(re.sub(r"\s+", "", r[0])):
-                    t = next((P.num(x) for x in r[1:] if x not in ("", "-") and P.num(x) is not None), None)
+                    xs = [re.sub(r"\(\s*[\d.,]+\s*%\s*\)$", "", x.strip()) for x in r[1:]]   # '160,844(100%)' — 괄호 속 비율은 뗀다 (한국컴퓨터 반기)
+                    t = next((P.num(x) for x in xs if x not in ("", "-") and P.num(x) is not None), None)
                     got = seg_table([(rows_, u, c)], t * u) if t else None
                     if got:
                         return got
