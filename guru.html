@@ -1340,6 +1340,8 @@
         // 도넛은 왼쪽에 세로 높이만큼 크게, 이름·비중은 오른쪽에 큰 글씨 목록으로 (원 둘레 작은 이름표 대신)
         R = Math.min(availH / 2 - 4, (WR - CX) * 0.27);
         cx = CX + R + 6;
+        var gk2 = [cx, cy, R, chartTop, chartBottom].map(Math.round).join(',') + 'w';   // 다크 모드 빛 번짐도 옮긴 도넛 자리로
+        if (gk2 !== _glowKey) { _glowKey = gk2; _glowGeo = { cx: cx, cy: cy, R: R, top: chartTop, bottom: chartBottom }; _glowAgain = true; }
         var L0 = cx + R + 90, L1 = WR;
         drawDonut(ctx, cx, cy, R, state.rows, state.colors, { noLabels: true, left: CX, right: cx + R, top: chartTop, bottom: chartBottom });
         drawWideList(ctx, L0, L1, chartTop, chartBottom, state.rows, state.colors, (ctx.__cardAR || 0) > 1.6);   // 16:9 는 이름–비중 사이가 넓다 → 비중 막대로 채운다
