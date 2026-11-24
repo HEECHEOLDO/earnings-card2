@@ -2,10 +2,22 @@
 "updated": "2026-11-24",
 "note": "두 출처가 같은 숫자를 말하지 않아 카드에 올리지 않은 회사",
 "items": {
+"EXR": {
+"name": "Extra Space Storage",
+"market": "US",
+"why": "미국 실적 자료와 다름",
+"period": "'26년 7~9월"
+},
 "00138020": {
 "name": "SK실트론",
 "market": "UL",
 "why": "실적 자료와 다름 (매출 5789.1 vs 5742.7) · DART API 와는 일치하지만 실적 탭과 3배 넘게 달라(통화·단위) 보류",
+"period": "'26년 7~9월"
+},
+"EQT": {
+"name": "EQT",
+"market": "US",
+"why": "미국 실적 자료와 다름",
 "period": "'26년 7~9월"
 },
 "417310": {
@@ -19,6 +31,12 @@
 "market": "UL",
 "why": "같은 기간 실적 자료 없음 · DART API API 자료 없음",
 "period": "'26년"
+},
+"FCX": {
+"name": "Freeport-McMoRan",
+"market": "US",
+"why": "미국 실적 자료와 다름",
+"period": "'26년 7~9월"
 },
 "055550": {
 "name": "신한지주",
@@ -48,6 +66,24 @@
 "name": "SK렌터카",
 "market": "UL",
 "why": "실적 자료와 다름 (매출 3993.9 vs 3993.9) · DART API 와는 일치하지만 실적 탭과 3배 넘게 달라(통화·단위) 보류",
+"period": "'26년 7~9월"
+},
+"TAP": {
+"name": "Molson Coors Beverage",
+"market": "US",
+"why": "미국 실적 자료와 다름",
+"period": "'26년 7~9월"
+},
+"NTAP": {
+"name": "NetApp",
+"market": "US",
+"why": "미국 실적 자료와 다름",
+"period": "'26년 4~7월"
+},
+"AWK": {
+"name": "American Water Works",
+"market": "US",
+"why": "미국 실적 자료와 다름",
 "period": "'26년 7~9월"
 }
 }
