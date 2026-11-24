@@ -2,7 +2,7 @@
  "name": "J",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "JACOBS SOLUTIONS INC.",
+ "legal_name": "Jacobs Solutions Inc.",
  "code": "J",
  "cik": "0000052988",
  "market": "미국",
@@ -12,19 +12,6 @@
  "fye": 9,
  "updated": "2026-11-24",
  "annual": [
-  {
-   "p": 2016,
-   "rev": 10964.2,
-   "op": 338.6,
-   "ni": 210.5,
-   "assets": 7360.0,
-   "liab": null,
-   "equity": 4330.2,
-   "dps": null,
-   "payout": 2.8,
-   "yield": null,
-   "dps_adj": null
-  },
   {
    "p": 2017,
    "rev": 10022.8,
@@ -73,7 +60,7 @@
    "liab": null,
    "equity": 5855.7,
    "dps": 0.19,
-   "payout": 29.3,
+   "payout": 19.9,
    "yield": null,
    "dps_adj": 0.19
   },
@@ -86,7 +73,7 @@
    "liab": null,
    "equity": 5974.8,
    "dps": null,
-   "payout": 32.7,
+   "payout": 22.5,
    "yield": null,
    "dps_adj": null
   },
@@ -128,17 +115,22 @@
    "payout": 52.9,
    "yield": null,
    "dps_adj": null
+  },
+  {
+   "p": 2026,
+   "rev": 15776.9,
+   "op": 769.7,
+   "ni": 381.7,
+   "assets": 12023.7,
+   "liab": null,
+   "equity": 3326.9,
+   "dps": null,
+   "payout": 43.4,
+   "yield": null,
+   "dps_adj": null
   }
  ],
  "quarterly": [
-  {
-   "y": 2024,
-   "q": 2,
-   "rev": 2847.2,
-   "op": 183.2,
-   "ni": 162.1,
-   "restated": true
-  },
   {
    "y": 2024,
    "q": 3,
@@ -202,6 +194,13 @@
    "rev": 4076.4,
    "op": 286.7,
    "ni": 136.6
+  },
+  {
+   "y": 2026,
+   "q": 4,
+   "rev": 4712.3,
+   "op": 331.6,
+   "ni": 165.5
   }
  ]
 }

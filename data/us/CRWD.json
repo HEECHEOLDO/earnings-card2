@@ -2,7 +2,7 @@
  "name": "CRWD",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "CrowdStrike Holdings, Inc.",
+ "legal_name": "CROWDSTRIKE HOLDINGS, INC.",
  "code": "CRWD",
  "cik": "0001535527",
  "market": "미국",
@@ -110,7 +110,7 @@
    "ni": -15.2,
    "assets": 8701.6,
    "liab": 5382.7,
-   "equity": 3794.7,
+   "equity": 4059.0,
    "dps": null,
    "payout": null,
    "yield": null,
@@ -121,9 +121,9 @@
    "rev": 4812.0,
    "op": -293.3,
    "ni": -162.5,
-   "assets": 12025.0,
-   "liab": 6885.5,
-   "equity": 5139.5,
+   "assets": 13120.7,
+   "liab": 7167.7,
+   "equity": 5953.0,
    "dps": null,
    "payout": null,
    "yield": null,
@@ -131,13 +131,6 @@
   }
  ],
  "quarterly": [
-  {
-   "y": 2025,
-   "q": 1,
-   "rev": 921.0,
-   "op": 6.9,
-   "ni": 42.8
-  },
   {
    "y": 2025,
    "q": 2,
@@ -177,15 +170,15 @@
    "y": 2026,
    "q": 3,
    "rev": 1234.2,
-   "op": -69.4,
-   "ni": -34.0
+   "op": -62.2,
+   "ni": -26.8
   },
   {
    "y": 2026,
    "q": 4,
    "rev": 1305.4,
-   "op": 0.3,
-   "ni": 45.9
+   "op": -6.9,
+   "ni": 38.7
   },
   {
    "y": 2027,
@@ -200,6 +193,13 @@
    "rev": 1470.9,
    "op": -33.2,
    "ni": 5.3
+  },
+  {
+   "y": 2027,
+   "q": 3,
+   "rev": 1583.4,
+   "op": -0.8,
+   "ni": 24.9
   }
  ]
 }
