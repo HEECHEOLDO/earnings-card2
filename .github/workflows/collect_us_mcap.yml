@@ -5,6 +5,8 @@ on:
     # 화~토 07:30 KST (UTC 22:30, 월~금) — 미국 장 마감(새벽 5~6시 KST) 뒤.
     # 나스닥 종목 검색표 한 번 → data/mcap_us.json + 시총 순위 '현재' 칸의 미국. 키 필요 없음.
     - cron: '30 22 * * 1-5'
+    - cron: '40 0 * * 2-6'     # 예비 KST 09:40 — 예약 실행이 빠지는 날 대비 (2026-11-24 빠짐)
+    - cron: '40 3 * * 2-6'     # 예비 KST 12:40 · 지난 미국 거래일 자료가 이미 있으면 바로 끝난다
   workflow_dispatch:
 
 permissions:
@@ -21,15 +23,27 @@ jobs:
     timeout-minutes: 40
     steps:
       - uses: actions/checkout@v4
+      - name: 이미 받았으면 건너뛰기 (예비 예약 실행용)
+        id: done
+        run: |
+          W=$(python3 -c "
+          import datetime as D,json
+          t=D.datetime.utcnow()+D.timedelta(hours=9); d=t.date()-D.timedelta(days=1)
+          while d.weekday()>4: d-=D.timedelta(days=1)
+          print(1 if json.load(open('data/mcap_us.json'))['asof']>=d.isoformat() else 0)" 2>/dev/null || echo 0)
+          if [ "${{ github.event_name }}" = "schedule" ] && [ "$W" = "1" ]; then echo "지난 거래일 자료 있음 — 건너뜀"; echo "skip=1" >> "$GITHUB_OUTPUT"; fi
       - uses: actions/setup-python@v5
+        if: steps.done.outputs.skip != '1'
         with:
           python-version: '3.11'
       - name: 수집
+        if: steps.done.outputs.skip != '1'
         run: |
           # 나스닥이 잠깐 막으면(403) 10분 쉬고 한 번 더
           python3 collect_us_mcap.py || (sleep 600 && python3 collect_us_mcap.py)
           python3 collect_us_mcap.py --half-if-needed   # 7월이 되면 한 번: 그 해 6월 말 미국 순위 (영상용)
       - name: 커밋
+        if: steps.done.outputs.skip != '1'
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
