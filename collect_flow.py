@@ -1332,6 +1332,9 @@ def main():
     us = sorted([t for t in mu if mu[t].get("c")], key=lambda t: -mu[t]["c"])
     if "--top" in sys.argv:
         n = int(sys.argv[sys.argv.index("--top") + 1]); kr, us, ul = kr[:n], us[:n], ul[:n]
+    FORCE = set(x for x in re.split(r"[,\s]+", os.environ.get("FLOW_CODES", "")) if x)   # 손으로 몇 곳만 다시 (예: FLOW_CODES=053610)
+    if FORCE:
+        kr, us, ul = [c for c in kr if c in FORCE], [t for t in us if t in FORCE], [c for c in ul if c.get("code") in FORCE]
     failp = FAILP.replace(".json", "_us.json") if "--us-only" in sys.argv else FAILP
     fail = jl(failp, {}) or {}
     W = int(os.environ.get("FLOW_WORKERS", "6"))
@@ -1401,6 +1404,8 @@ def main():
             old = jl(os.path.join(OUT, code + ".json"))
             pr = need(code, old, info["corp_code"] in rk, rk.get(info["corp_code"]))
             pr, old = retry_held(code, pr, old)
+            if FORCE:
+                pr, old = 0, (dict(old, src=None) if old else None)   # 손으로 고른 회사는 무조건 다시
             if pr is None and tab_suspect(code, old):
                 pr, old = 0, dict(old, src=None)
             if old and old.get("docv") != DOC_VER and (len(old.get("items") or []) < 2 or len(old.get("segs") or []) < 2):

@@ -13,6 +13,11 @@ on:
       - 'flow_audit.py'
       - '.github/workflows/collect_flow.yml'
   workflow_dispatch:
+    inputs:
+      codes:
+        description: "몇 곳만 다시 (쉼표 · 예: 053610,041830) — 비우면 평소대로"
+        required: false
+        default: ''
 
 permissions:
   contents: write
@@ -40,6 +45,7 @@ jobs:
           SEC_UA: ${{ secrets.SEC_UA }}
           FLOW_MINUTES: '72'
           FLOW_WORKERS: '12'
+          FLOW_CODES: ${{ github.event.inputs.codes }}
           FLOW_DART_DAY: '4500'           # DART 하루 2만 번 중 돈의 흐름 몫 (국내 실적 12,000 · 국내5 1,000 · 비상장 1,500 · 합 19,000) — 3분기 보고서 철이라 돈의 흐름 몫을 늘림
         run: |
           mkdir -p data/flow
