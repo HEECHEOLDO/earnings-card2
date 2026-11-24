@@ -386,7 +386,9 @@ def prev_cum_segs(r0, rows, names):
     return got if got and set(names) <= set(got) else None
 
 
-SEGT_HEAD = re.compile(r"^(사업부문|부문|사업부|구분|사업구분|부문명)$")
+SEGT_HEAD = re.compile(r"^(사업부문|부문|사업부|구분|사업구분|부문명|매출유형|품목|제품구분|제품)$")
+SEGT_NAME = re.compile(r"^(품목|제품명|품목명|주요제품)$")      # '매출유형 | 품목 | … | 매출액' 표는 품목 칸이 이름 (샘씨엔에스 NAND·DRAM STF)
+SEGT_SUB = re.compile(r"^(소계|소합계)$")
 SEGT_AMT = re.compile(r"^(연결)?(매출액|매출|매출실적|영업수익)(\(.*\))?$")
 SEGT_ELIM = re.compile(r"연결조정|내부거래|부문간|조정|제거|상계")
 SEGT_TOT = re.compile(r"^(합계|계|총계|연결전체매출액|연결매출액|연결합계|총합계)$")
@@ -406,12 +408,16 @@ def seg_table(tabs, total):
         ai = next((i for i, c in enumerate(h) if i and SEGT_AMT.match(c)), None)
         if ai is None:
             continue
+        ni = next((i for i, c in enumerate(h) if SEGT_NAME.match(c)), 0)
         segs, elim, tot = {}, 0.0, None
         for r in rows[1:]:
             if not r:
                 continue
-            n = re.sub(r"\s+", " ", r[0]).strip()
+            sh = len(rows[0]) - len(r)                  # 위 칸과 합친(행 병합) 줄은 앞 칸이 빠져 짧다 — 오른쪽 끝을 맞춰 읽는다
+            n = re.sub(r"\s+", " ", r[ni] if sh == 0 else r[max(0, ni - sh)] if ni - sh >= 0 else r[0]).strip()
             nn = n.replace(" ", "")
+            if SEGT_SUB.match(nn) or SEGT_SUB.match(re.sub(r"\s+", "", r[0])):
+                continue
             nums = [P.num(c) for c in r[1:] if c not in ("", "-")]
             nums = [x for x in nums if x is not None]
             if SEGT_TOT.match(nn):
@@ -422,9 +428,10 @@ def seg_table(tabs, total):
                 if nums:
                     elim += nums[0] * u
                 continue
-            if len(r) != len(rows[0]):
-                continue                                # 셀 병합으로 짧아진 줄(회사 이름만 있는 줄)
-            x = P.num(r[ai]) if r[ai] not in ("", "-") else 0.0
+            if sh and (ni == 0 or ai - sh < 1):
+                continue                                # 셀 병합으로 짧아진 줄(회사 이름만 있는 줄) — 품목 칸이 따로 있는 표만 오른쪽 맞춤으로 읽는다
+            c_ = r[ai - sh]
+            x = P.num(c_) if c_ not in ("", "-") else 0.0
             if x is None:
                 continue
             segs[n] = segs.get(n, 0.0) + x * u
@@ -766,7 +773,7 @@ def _seg_score(g):
     return (0 if geo else 1, len(g))
 
 
-SEG_VER = "2"                                   # 누적 매출 표 → 앞 보고서 누적을 빼서 3개월 실제 값
+SEG_VER = "3"                                   # 3: 매출유형·품목 칸이 있는 표(행 병합)도 읽는다 · 2: 누적 매출 표 → 앞 보고서 누적을 빼서 3개월 실제 값
 PR_VER = "5"                                    # 실적 발표 표 읽는 방식 — 바꾸면 그 카드를 다시 읽는다
 
 
