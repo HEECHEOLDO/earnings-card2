@@ -175,13 +175,14 @@
     });
     // 끝 이름표 (겹치지 않게 아래로 민다)
     var ends = o.series.map(function (s) { var v = s.vals[s.vals.length - 1]; return { s: s, v: v, y: yp(v) }; }).sort(function (a, b) { return a.y - b.y; });
-    for (var k = 1; k < ends.length; k++) if (ends[k].y - ends[k - 1].y < 54) ends[k].y = ends[k - 1].y + 54;
+    var GAP = X.__cardR ? 64 : 54, DY = X.__cardR ? 3 : 0;   // 넓은 비율은 글자가 커진다 (card-ratio.js) — 줄 사이를 더 벌린다
+    for (var k = 1; k < ends.length; k++) if (ends[k].y - ends[k - 1].y < GAP) ends[k].y = ends[k - 1].y + GAP;
     var over = ends.length ? ends[ends.length - 1].y - (bot + 10) : 0; if (over > 0) ends.forEach(function (e) { e.y -= over; });
     ends.forEach(function (e) {
       X.fillStyle = e.s.c; X.beginPath(); X.arc(xp(o.cols.length - 1), yp(e.v), 9, 0, 7); X.fill();
       logoAt(X, e.s.logo, x1 + 34, e.y, 17);
-      X.textAlign = 'left'; X.textBaseline = 'middle'; X.fillStyle = T.ink; X.font = font(800, 20); X.fillText(fit(X, e.s.n, 150), x1 + 58, e.y - 11);
-      X.fillStyle = e.s.c; X.font = font(900, 22); X.fillText(o.money(e.v), x1 + 58, e.y + 13);
+      X.textAlign = 'left'; X.textBaseline = 'middle'; X.fillStyle = T.ink; X.font = font(800, 20); X.fillText(fit(X, e.s.n, 150), x1 + 58, e.y - 11 - DY);
+      X.fillStyle = e.s.c; X.font = font(900, 22); X.fillText(o.money(e.v), x1 + 58, e.y + 13 + DY);
     });
     X.textBaseline = 'alphabetic';
     foot(X, o.src);

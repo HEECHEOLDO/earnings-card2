@@ -71,9 +71,9 @@
   };
   P.resetTransform = function () { var c = M.get(this); if (!c) return O.resetTransform.call(this); base(this, c, 1, 0, 0, 1, 0, 0); };
   // 넓은 비율(7:5·16:9)은 세로가 1080 이라 글자가 4:5 의 88% 로 줄어든다. 큰 글자(제목·큰 숫자)는 그래도 충분하지만
-  // 축 눈금·날짜·작은 숫자(30px 이하)는 15~16px 까지 내려가 읽기 어렵다 → 작은 글자만 키운다 (14%, 16px 이하는 최대 25%).
+  // 축 눈금·날짜·작은 숫자(30px 이하)는 15~16px 까지 내려가 읽기 어렵다 → 작은 글자만 키운다 (26px 이상 14% · 18px 이하 38%).
   // 그림이 가로로 넓어져 자리가 남는다. 제목 줄(꼬리표 글자 등 바탕 칸이 따로 있는 글자)은 건드리지 않는다.
-  function boostPx(px) { return px <= 30 ? px * (1.14 + 0.11 * Math.max(0, Math.min(1, (22 - px) / 6))) : px; }   // 4:5 와 같은 크기(÷0.88)로 되돌리고, 16px 이하는 25% 까지
+  function boostPx(px) { return px <= 30 ? px * (1.14 + 0.24 * Math.max(0, Math.min(1, (26 - px) / 8))) : px; }   // 4:5 와 같은 크기(÷0.88)에 더해 작은 글자일수록 더 — 18px 은 38%, 22px 은 26%, 26px 이상은 14%
   function boosted(ctx, c) {
     if (!c.boost) return null;
     var f = ctx.font, m = /(\d+(?:\.\d+)?)px/.exec(f); if (!m) return null;

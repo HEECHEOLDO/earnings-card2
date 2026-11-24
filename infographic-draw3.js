@@ -168,7 +168,8 @@
       var m = s.pts.reduce(function (a, p) { return p[1] < a[1] ? p : a; }, s.pts[0]);
       if (m[0] > 0.95) return;               // 최저점이 지금이면 오른쪽 '지금' 표시로 충분
       X.fillStyle = s.c; X.beginPath(); X.arc(xp(m[0]), yp(m[1]), 7, 0, 7); X.fill();
-      X.font = font(800, 19); X.textAlign = xp(m[0]) > R - 160 ? 'right' : 'left'; X.fillText(s.n + ' ' + m[1].toFixed(0) + '%' + (m[2] ? ' (' + m[2] + ')' : ''), xp(m[0]) + (X.textAlign === 'right' ? -10 : 10), yp(m[1]) + 26);
+      X.font = font(800, 19); X.textAlign = xp(m[0]) > R - 160 ? 'right' : 'left'; var my = yp(m[1]) + 26; if (my > bot - 6) my = yp(m[1]) - 14;   // 바닥 눈금 줄에 닿으면 점 위로
+      X.fillText(s.n + ' ' + m[1].toFixed(0) + '%' + (m[2] ? ' (' + m[2] + ')' : ''), xp(m[0]) + (X.textAlign === 'right' ? -10 : 10), my);
     });
     // 오른쪽 끝: 지금 고점 대비 (겹치지 않게 아래로 민다)
     var ends = o.series.map(function (s) { var p = s.pts[s.pts.length - 1]; return { s: s, v: p[1], y: yp(p[1]) }; }).sort(function (a, b) { return a.y - b.y; });
