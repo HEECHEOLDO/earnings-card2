@@ -141,8 +141,9 @@ def cnbc_quotes(syms):
         url = ("https://quote.cnbc.com/quote-html-webservice/restQuote/symbolType/symbol?symbols=%s"
                "&requestMethod=itv&noform=1&partnerId=2&fund=1&exthrs=0&output=json"   # 정규장 종가만 (시간외 가격 X)
                % urllib.parse.quote("|".join(s.replace("-", ".") for s in part), safe="|."))
-        t = get(url)
+        t = get(url) or (time.sleep(2) or get(url))     # 40종목 묶음이 통째로 빠지는 일이 있다 (2026-11-24 LEN~MKC) — 한 번 더
         if not t:
+            log("  시세 묶음 실패: %s…" % part[0])
             continue
         try:
             q = ((json.loads(t).get("FormattedQuoteResult") or {}).get("FormattedQuote")) or []
@@ -238,7 +239,19 @@ def build(sym, mon, today, probe=False):
     # 월말 종가(알파밴티지, 배당까지 고친 값)는 기준이 달라 이어 붙이면 계단이 생긴다 (알트리아 33 → 62).
     # CNBC 5년 차트가 실제로는 약 10년 치 주별을 주므로 그것만 쓴다
     w = [[a, rnd(b)] for a, b in wk if a >= w0]
-    d, w = fix_jumps(d, w, mon_map(mon, sym))
+    mm = mon_map(mon, sym)
+    # 다른 종목 자료가 섞였는지: 최근 6개월 월말 종가(알파밴티지)와 일별 마지막 날 값이 2배 넘게 다르면 버린다
+    # (2026-11 켄뷰 KVUE — 상장 폐지 뒤 CNBC 가 276~376 달러 자료를 줬다 · 실제 주가는 19 달러 안팎)
+    dm = {}
+    for a, b in d:
+        dm[a // 100] = b
+    ks = [k for k in sorted(mm)[-6:] if k in dm and mm[k]]
+    rs = [dm[k] / mm[k] for k in ks[:-1]] if len(ks) > 2 else []   # 마지막 달은 월 중간 값일 수 있어 뺀다
+    # 배율이 달마다 고르면(분할 반영 차이, 아이셰어즈 SOXX 3배) 같은 종목이다 — 달마다 들쭉날쭉할 때만 버린다
+    if rs and sum(1 for r in rs if not 0.5 <= r <= 2) * 2 > len(rs) and max(rs) / min(rs) > 1.05:
+        log("  %-6s 일별 자료가 월말 종가와 2배 넘게 달라 버림 (다른 종목 자료로 보임)" % sym)
+        return None, ""
+    d, w = fix_jumps(d, w, mm)
     out = {"u": "USD", "d": d, "w": w, "src": "+".join(src)}
     r = long_rank(sym, today, daily if "nasdaq" in src else None, w)
     if r:
