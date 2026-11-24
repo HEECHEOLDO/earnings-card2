@@ -493,18 +493,35 @@
     [0, 14, 28, 44].forEach(function (dy) { cI.push([cx, by + dy, 'center']); cI.push([x1 - 8, by - 10 + dy, 'right']); cI.push([cx - 30, by + dy, 'center']); });
     group(X, lnI, cI);
   }
+  // 한 줄에 안 들어가는 이름을 두 줄로 — '…용 | 세라믹STF', 띄어쓰기, 한글↔영문 경계 순으로 가운데에 가까운 자리
+  function split2(X, s, px, mw) {
+    X.font = font(700, px); if (X.measureText(s).width <= mw || s.length < 6) return [s];
+    var best = null;
+    for (var i = 2; i < s.length - 1; i++) {
+      var a = s.slice(0, i), b = s.slice(i), sc = Math.abs(a.length - b.length);
+      if (s[i - 1] === '용' || s[i - 1] === ' ' || s[i - 1] === '·') sc -= 6;
+      else if (/[가-힣]/.test(s[i - 1]) !== /[가-힣]/.test(s[i])) sc -= 3;
+      if (!best || sc < best[0]) best = [sc, a.trim(), b.trim()];
+    }
+    return [best[1], best[2]];
+  }
   function segLabels(X, segs, x0, top, bot, m, FS) {
     FS = FS || 1;
-    var n = segs.length, H0 = 60 * FS, step = Math.min(H0, (bot - top) / n), k = step / 60, ys = [];
-    segs.forEach(function (sg, i) { ys[i] = Math.max(sg.y + sg.h / 2 - 12 * k, i ? ys[i - 1] + step : top + 18); });
+    var two = segs.some(function (sg) { return split2(X, sg.n, Math.round(21 * FS), x0 - L - 12).length > 1; });   // 두 줄 이름이 있으면 칸을 그만큼 높게
+    var U = two ? 84 : 60, n = segs.length, H0 = U * FS, step = Math.min(H0, (bot - top) / n), k = step / U, ys = [];
+    segs.forEach(function (sg, i) { ys[i] = Math.max(sg.y + sg.h / 2 - 12 * k, i ? ys[i - 1] + step : top + 18 + (two ? 24 * k : 0)); });
     for (var i = n - 1; i >= 0; i--) {                                  // 바닥 넘으면 위로
       var lim = (i === n - 1 ? bot - 32 * k : ys[i + 1] - step);
       if (ys[i] > lim) ys[i] = lim;
     }
     segs.forEach(function (sg, i) {
       GID++; var kk = Math.min(FS, Math.max(0.62, k * 0.94));                  // 줄 간격(step)보다 글자가 크면 겹친다 — 간격에 맞춰 줄인다
-      txt(X, sg.n, x0 - 10, ys[i], 700, Math.round(21 * kk), BL, 'right', x0 - L - 12);
-      txt(X, m(sg.v), x0 - 10, ys[i] + 31 * kk, 900, Math.round(26 * kk), BL, 'right', x0 - L - 12);
+      var px = Math.round(21 * kk), mw = x0 - L - 12, ln = split2(X, sg.n, px, mw);
+      if (ln.length > 1) {                                                      // 긴 이름은 두 줄로 (줄이기보다 읽히게) — 첫 줄을 위로 올려 금액 자리는 그대로
+        txt(X, ln[0], x0 - 10, ys[i] - 24 * kk, 700, px, BL, 'right', mw);
+        txt(X, ln[1], x0 - 10, ys[i], 700, px, BL, 'right', mw);
+      } else txt(X, sg.n, x0 - 10, ys[i], 700, px, BL, 'right', mw);
+      txt(X, m(sg.v), x0 - 10, ys[i] + 31 * kk, 900, Math.round(26 * kk), BL, 'right', mw);
     });
   }
   function sankeyLoss(X, o) {

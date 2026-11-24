@@ -165,10 +165,11 @@
       .replace(/^기타판매비와관리비$/, '기타 판관비').replace(/(매출|수익)액$/, '$1').replace(/^(대손상각비)\(.*\)$/, '$1');
   }
   function flowKo(n) { return flowShort(flowKo0(n)); }
-  function flowShort(n) {                       // 긴 이름은 카드 밖으로 나가지 않게 줄인다 (괄호 설명·', 판관비' 꼬리 떼고, '및'·쉼표 앞까지, 그래도 길면 앞 두 단어)
+  function flowShort(n, long) {                       // 긴 이름은 카드 밖으로 나가지 않게 줄인다 (괄호 설명·', 판관비' 꼬리 떼고, '및'·쉼표 앞까지, 그래도 길면 앞 두 단어)
     n = String(n).replace(/,\s*판관비$/, '').replace(/^판매비와\s*관리비.*$/, '판매·관리비').replace(/\s*\([^)]*\)\s*/g, ' ').replace(/\s+/g, ' ').trim();
     if (n.length > 11) n = n.split(/\s+및\s+|,\s*|·/)[0].trim();
     if (n.length > 11) { var w = n.split(' '); n = w.length > 1 ? w.slice(0, 2).join(' ') : n; }
+    if (long) return n.length > 26 ? n.slice(0, 25) + '…' : n;   // 매출 구분 이름은 그림에서 두 줄로 나눠 쓴다 (샘씨엔에스 'NAND프로브카드용세라믹STF')
     if (n.length > 13 && /[가-힣]/.test(n)) n = n.slice(0, 12);
     return n;
   }
@@ -596,7 +597,7 @@
             if (etc > 0) items.push({ n: Object.keys(hasEtc).length === 1 ? Object.keys(hasEtc)[0] : '기타 영업비용', v: etc });
             used = items.reduce(function (t, x) { return t + x.v; }, 0);
             if (opex <= 0 || used > opex * 1.005) items = [];   // 세부 합이 영업비용보다 크면(다른 기준) 숫자를 억지로 줄이지 않고 세부를 뺀다 — 값이 틀리면 안 된다
-            var sg = (f.segs || []).map(function (x) { return Array.isArray(x) ? { n: flowKo(segKo(krTidy(x[0]))), v: x[1] } : x; }), sgT = sg.reduce(function (t, x) { return t + x.v; }, 0), small = 0;
+            var sg = (f.segs || []).map(function (x) { return Array.isArray(x) ? { n: flowShort(flowKo0(segKo(krTidy(x[0]))), true), v: x[1] } : x; }), sgT = sg.reduce(function (t, x) { return t + x.v; }, 0), small = 0;
             if (sgT > f.rev * 1.15 || sgT < f.rev * 0.85) { sg = []; sgT = 0; }   // 매출 구분 합이 총매출과 15% 넘게 다르면(다른 기준) 나누지 않는다 — 값이 틀리면 안 된다
             var sg0 = sg.slice();
             sg = sg.filter(function (x) { if (x.v < sgT * 0.04 || /^기타/.test(x.n)) { small += x.v; return false; } return true; }).slice(0, 6);   // 작은 건 '기타'로
