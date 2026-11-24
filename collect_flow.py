@@ -1435,6 +1435,9 @@ def main():
         h = kst_now().hour
         if 0 <= h < 7:                                   # 자정~아침 7시는 국내 실적·비상장 수집이 DART 를 쓰는 시간 — 돈의 흐름은 쉬기
             left = 0
+        if FORCE:                                        # 손으로 고른 몇 곳: 오늘 몫을 다 썼어도 한 곳당 40번까지 (DART 하루 2만 번 중 남겨 둔 1천 번 안에서)
+            W = max(1, min(W, len(jobs)))
+            left = max(left, min(300, 40 * len(jobs)) + W * 12 + 1)
         print("  DART 오늘 쓴 %d · 이번에 쓸 수 있는 %d" % (used_today(), max(0, left)), flush=True)
         # 한 곳에 원문·API 를 여러 번 부르니 여유를 두고 멈춘다 (병렬로 도는 몫까지)
         n = run_pool(work_kr, jobs, W, on_kr, lambda: time_left() and C._call_count + done["calls"] + W * 12 < left) if left > W * 12 else 0
