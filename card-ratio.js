@@ -108,6 +108,16 @@
     if (band(this, c, x + w / 2, y + h / 2) && h <= 80 && w <= 700) { if (c.one && c.ly > c.FB) return; return asEdge(this, c, O.fillRect, arguments); }   // 제목 옆 작은 칸(꼬리표 등)도 제목과 같이 · 1:1 은 바닥 가는 선도 뺀다
     return O.fillRect.apply(this, arguments);
   };
+  // 제목 옆 꼬리표 바탕(둥근 칸)도 글자와 같이 왼쪽 끝에 붙인다 — 길에 넣는 순간의 변환으로 점이 정해지므로 asEdge 로 감싸면 된다
+  // (예: '그때 샀다면' 제목 옆 '2016 ~ 2026년' 바탕이 글자와 떨어져 길게 늘어나던 것)
+  if (P.roundRect) {
+    O.roundRect = P.roundRect;
+    P.roundRect = function (x, y, w, h) {
+      var c = M.get(this); if (!c) return O.roundRect.apply(this, arguments);
+      if (band(this, c, x + w / 2, y + h / 2) && h <= 80 && w <= 700) return asEdge(this, c, O.roundRect, arguments);
+      return O.roundRect.apply(this, arguments);
+    };
+  }
   P.putImageData = function (im, x, y) {
     var c = M.get(this); if (!c || im.width < 1000) return O.putImageData.apply(this, arguments);
     var t = document.createElement('canvas'); t.width = im.width; t.height = im.height; t.getContext('2d').putImageData(im, 0, 0);
