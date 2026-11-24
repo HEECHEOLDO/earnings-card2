@@ -151,9 +151,15 @@ def cnbc_quotes(syms):
             for x in q:
                 sym = str(x.get("symbol") or "").replace(".", "-").upper()
                 p = float(str(x.get("last") or "").replace(",", ""))
-                d = n8(str(x.get("last_time") or "")[:10])
+                lt = str(x.get("last_time") or "")
+                d = n8(lt[:10])
+                try:
+                    ch = float(str(x.get("change") or "").replace(",", "").replace("+", ""))
+                except ValueError:
+                    ch = None
+                hm = int(lt[11:13]) * 60 + int(lt[14:16]) if len(lt) >= 16 and lt[11:13].isdigit() else 0
                 if sym and p > 0 and d:
-                    out[sym] = (d, p)
+                    out[sym] = (d, p, ch, hm)          # 날짜, 정규장 종가, 전일 대비, 시세 시각(뉴욕 분)
         except Exception:                         # noqa: BLE001
             continue
         time.sleep(PAUSE)
@@ -326,11 +332,42 @@ def done_session(d):
     return d < t or (d == t and now.hour * 60 + now.minute >= 16 * 60 + 20)
 
 
-def add_latest(syms, path_of):
+def add_latest(syms, path_of, proxy=None):
     """CNBC 1년 일별은 마지막 거래일 막대가 몇 시간~하루 늦게 붙는다 → 정규장 종가(시간외 제외)로 그날을 채운다.
-    장이 끝난 날만, 파일 마지막 날보다 뒤일 때만 붙인다. 붙인 종목 수를 돌려준다."""
-    q = cnbc_quotes(syms)
-    return sum(1 for s in syms if s in q and done_session(q[s][0]) and append_quote(path_of(s), q[s]))
+    붙이는 조건 (어긋나면 안 붙이고 다음 수집 때 CNBC 일별 막대를 기다린다):
+      · 장이 끝난 날이고 파일 마지막 날보다 뒤
+      · 시세의 '종가 − 전일 대비'가 파일의 마지막 종가와 같다 (0.05% 안 · 분할·하루 건너뜀 걸러냄)
+      · proxy {지수: ETF} 가 있으면 (지수) — 뉴욕 16:15 뒤 확정 시세이고 등락률이 같은 지수 ETF 와 0.3%p 안
+        (2026-11-23 S&P 500 시세가 한때 7,260.30 으로 나왔다 — 확정 종가 7,237.17, SPY 등락률과 0.35%p 차이)
+    붙인 종목 수를 돌려준다."""
+    proxy = proxy or {}
+    q = cnbc_quotes(list(syms) + [e for e in proxy.values() if e not in syms])
+    n = 0
+    for s in syms:
+        if s not in q or not done_session(q[s][0]):
+            continue
+        d, p, ch, hm = q[s]
+        try:
+            with open(path_of(s), encoding="utf-8") as f:
+                last = (json.load(f).get("d") or [[0, 0]])[-1]
+        except Exception:                         # noqa: BLE001
+            continue
+        if last[0] >= d or ch is None or not last[1] or abs((p - ch) / last[1] - 1) > 0.0005:
+            if last[0] < d:
+                log("  %-6s 시세 %s %.2f (전일 대비 %s) 가 파일 마지막 %s 와 안 이어짐 — 안 붙임" % (s, d, p, ch, last))
+            continue
+        if s in proxy:
+            e = q.get(proxy[s])
+            if hm < 16 * 60 + 15 or not e or e[0] != d or e[2] is None or e[1] == e[2]:
+                log("  %-6s 확정 시세 확인 못 함 (시각 %d:%02d · ETF %s) — 안 붙임" % (s, hm // 60, hm % 60, e))
+                continue
+            gap = abs(ch / (p - ch) - e[2] / (e[1] - e[2])) * 100
+            if gap > 0.3:
+                log("  %-6s 등락률이 %s 와 %.2f%%p 달라 안 붙임 (시세 %.2f)" % (s, proxy[s], gap, p))
+                continue
+        if append_quote(path_of(s), (d, p)):
+            n += 1
+    return n
 
 
 def append_quote(path, q):

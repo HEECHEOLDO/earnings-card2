@@ -99,8 +99,9 @@ def main():
     cn = [c for c, v in INDICES.items() if not v[1] and v[2]]   # 해외 지수: CNBC 일별이 늦으면 정규장 종가로 마지막 날을 채운다
     sym = {INDICES[c][2].replace(".", "-").upper(): c for c in cn}
     try:
-        n = add_latest(list(sym), lambda s: os.path.join(OUT_DIR, sym[s] + ".json"))
-        print("  마지막 거래일 종가를 붙인 지수 %d / %d" % (n, len(sym)))
+        etf = {"-SPX": "SPY", "-IXIC": "ONEQ", "-NDX": "QQQ", "-DJI": "DIA", "-SOX": "SOXX", "-RUT": "IWM"}
+        n = add_latest([s for s in sym if s in etf], lambda s: os.path.join(OUT_DIR, sym[s] + ".json"), etf)
+        print("  마지막 거래일 종가를 붙인 지수 %d / %d (닛케이·항셍·상하이는 견줄 ETF 가 없어 CNBC 일별만)" % (n, len(etf)))
     except Exception as e:                    # noqa: BLE001
         print("  마지막 거래일 종가 붙이기 실패 %s" % e)
     print("끝: %d / %d" % (ok, len(INDICES)))
