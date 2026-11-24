@@ -34,8 +34,8 @@
       sx = sy; tx = m - x0 * sy;
       ctx.__cardR = (W - m - tx) / sx - (x1 - 980);
     } else ctx.__cardR = 0;
-    ctx.__cardAR = W / H; ctx.__cardK = sy / sx;   // 가로 1 이 세로 1 의 몇 배로 그려지는지 (원·간격을 맞출 때)                           // 그리는 쪽이 넓은 비율인지 알 수 있게 (두 열로 나누기 등)
-    var c = { edge: true, S: S, W: W, H: H, one: one, sx: sx, sy: sy, k: sy / sx, tx: tx, ty: m - y0 * sy, x0: x0, m: m, TB: TB, FB: FB };
+    ctx.__cardAR = W / H; ctx.__cardBoost = 0; ctx.__cardK = sy / sx;   // 가로 1 이 세로 1 의 몇 배로 그려지는지 (원·간격을 맞출 때)                           // 그리는 쪽이 넓은 비율인지 알 수 있게 (두 열로 나누기 등)
+    var c = { boost: W / H > 1.2 && !(+window.CARD_RATIO_CAP), edge: true, S: S, W: W, H: H, one: one, sx: sx, sy: sy, k: sy / sx, tx: tx, ty: m - y0 * sy, x0: x0, m: m, TB: TB, FB: FB, y1: y1 };
     var cv = ctx.canvas; cv.width = W * S; cv.height = H * S;         // 크기를 바꾸면 그리기 상태가 처음으로 돌아간다
     M.set(ctx, c); DONE.add(cv); base(ctx, c, 1, 0, 0, 1, 0, 0);
   }
@@ -70,19 +70,38 @@
     base(this, c, a[0] / c.S, a[1] / c.S, a[2] / c.S, a[3] / c.S, a[4] / c.S, a[5] / c.S);   // 이미 S배로 준 변환
   };
   P.resetTransform = function () { var c = M.get(this); if (!c) return O.resetTransform.call(this); base(this, c, 1, 0, 0, 1, 0, 0); };
+  // 넓은 비율(7:5·16:9)은 세로가 1080 이라 글자가 4:5 의 88% 로 줄어든다. 큰 글자(제목·큰 숫자)는 그래도 충분하지만
+  // 축 눈금·날짜·작은 숫자(30px 이하)는 15~16px 까지 내려가 읽기 어렵다 → 작은 글자만 키운다 (14%, 16px 이하는 최대 25%).
+  // 그림이 가로로 넓어져 자리가 남는다. 제목 줄(꼬리표 글자 등 바탕 칸이 따로 있는 글자)은 건드리지 않는다.
+  function boostPx(px) { return px <= 30 ? px * (1.14 + 0.11 * Math.max(0, Math.min(1, (22 - px) / 6))) : px; }   // 4:5 와 같은 크기(÷0.88)로 되돌리고, 16px 이하는 25% 까지
+  function boosted(ctx, c) {
+    if (!c.boost) return null;
+    var f = ctx.font, m = /(\d+(?:\.\d+)?)px/.exec(f); if (!m) return null;
+    var px = +m[1], nx = boostPx(px); if (nx === px) return null;
+    ctx.font = f.replace(m[0], (Math.round(nx * 10) / 10) + 'px'); return f;
+  }
   function txt(fn) {
     return function (t, x, y, mw) {
       if (this.canvas === DISP) poke();
       var c = M.get(this); if (!c) return fn.apply(this, arguments);
       if (/@돈굴/.test(String(t))) return;
-      if (band(this, c, x, y, true)) { if (c.one && c.ly > c.FB) return; return asEdge(this, c, fn, arguments); }   // 1:1 은 출처 줄도 뺀다
+      if (band(this, c, x, y, true)) {
+        if (c.one && c.ly > c.FB) return;                                                     // 1:1 은 출처 줄도 뺀다
+        var f0 = c.ly > c.FB ? boosted(this, c) : null, lift = c.ly > c.y1 - 8 ? c.y1 - 8 - c.ly : 0;   // 바닥 출처 줄은 키운다
+        if (lift) { this.save(); this.translate(0, lift); }        // 4:5 맨 아래(1318 등)에 적은 출처는 넓은 비율에서 화면 밖 — 안으로 올린다 (주주 탭)
+        var r0 = asEdge(this, c, fn, arguments); if (lift) this.restore();
+        if (f0) this.font = f0; return r0;
+      }
+      var f1 = boosted(this, c);
       this.save(); this.translate(x, y); O.scale.call(this, c.k, 1);
       fn.call(this, t, 0, 0, mw == null ? undefined : mw / c.k); this.restore();
+      if (f1) this.font = f1;
     };
   }
   P.fillText = txt(O.fillText); P.strokeText = txt(O.strokeText);
   P.measureText = function (t) {
-    var r = O.measureText.call(this, t), c = M.get(this); if (!c || c.edge) return r;
+    var c = M.get(this); if (!c || c.edge) return O.measureText.call(this, t);
+    var f1 = boosted(this, c), r = O.measureText.call(this, t); if (f1) this.font = f1;   // 키워 그릴 글자는 키운 폭으로 잰다 (자리 맞춤·줄이기가 맞게)
     var w = r.width * c.k;
     return new Proxy(r, { get: function (tg, p) { return p === 'width' ? w : (typeof tg[p] === 'function' ? tg[p].bind(tg) : tg[p]); } });
   };
