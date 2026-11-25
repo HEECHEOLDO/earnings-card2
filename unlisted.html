@@ -317,7 +317,7 @@
   .divider { height: 1px; background: var(--border); margin: 2px 0; }
 </style>
 <script src="./card-theme.js"></script>
-<script src="./card-overlay.js?v=1118c"></script>
+<script src="./card-overlay.js?v=1125a"></script>
 <style id="nav-wrap">
   .nav { flex-wrap: wrap; border-radius: 18px; gap: 4px; padding: 4px; }
   .nav-i { flex: 1 0 calc(14.28% - 4px); min-width: 0; border-radius: 12px; padding: 0 8px; }
@@ -2065,14 +2065,7 @@
   // 폰은 메모리·데이터가 빠듯하다 — 빠름을 기본으로 하고 최고는 숨긴다
   (function () {
     var sel = document.getElementById('ov-bg-q');
-    var isPhone = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) ||
-                  (navigator.maxTouchPoints > 1 && Math.min(screen.width, screen.height) < 900);
-    if (isPhone && sel) {
-      sel.value = 'isnet_quint8';
-      var best = sel.querySelector('option[value="isnet"]');
-      if (best) best.disabled = true;
-      var mid = sel.querySelector('option[value="isnet_fp16"]'); if (mid) mid.disabled = true;   // 폰 CPU 로는 '보통'도 메모리가 빠듯하다
-    }
+    if (sel && window.CardBg && window.CardBg.applyPolicy) window.CardBg.applyPolicy(sel);   // 폰도 GPU(WebGPU)가 있으면 '보통'이 기본 · 없으면 '빠름'만 (card-overlay.js)
   })();
 
   document.getElementById('ov-bg').addEventListener('click', removeBackground);

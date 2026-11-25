@@ -76,7 +76,21 @@
   /* ---------------------------------------------------------------- 배경 지우기 (공용) */
   var _lib = null, _workerBroken = false, _busy = false;
   function loadLib() { return _lib ? Promise.resolve(_lib) : import(BG_CDN).then(function (m) { _lib = m; return m; }); }
-  function device() { return IS_PHONE ? 'cpu' : 'gpu'; }
+  // 폰도 WebGPU 가 있으면(아이폰 iOS 26 사파리 · 최근 안드로이드 크롬) GPU 로 — 모델을 GPU 메모리에 올려 '보통'도 돌릴 수 있다
+  var HAS_GPU = typeof navigator !== 'undefined' && !!navigator.gpu, _gpuFailed = false;
+  function device() { return IS_PHONE && (!HAS_GPU || _gpuFailed) ? 'cpu' : 'gpu'; }
+  // 품질 고르기 칸에 쓸 규칙 (탭마다 같은 규칙): 폰 GPU = 보통 기본·최고도 고를 수 있음, 폰 CPU = 빠름만
+  function policy() {
+    if (!IS_PHONE) return { def: 'isnet_fp16', fp16: true, best: true };
+    if (device() === 'gpu') return { def: 'isnet_fp16', fp16: true, best: true };
+    return { def: 'isnet_quint8', fp16: false, best: false };
+  }
+  function applyPolicy(sel) {
+    if (!sel) return; var P = policy();
+    var mid = sel.querySelector('option[value="isnet_fp16"]'), best = sel.querySelector('option[value="isnet"]');
+    if (mid) mid.disabled = !P.fp16; if (best) best.disabled = !P.best;
+    sel.value = P.def;
+  }
 
   function inWorker(src, model, onProgress) {
     return new Promise(function (resolve, reject) {
@@ -138,6 +152,55 @@
       im.src = u;
     });
   }
+  /* 가장자리 다듬기 — 가이드 필터 (He et al.). 모델이 낸 투명도(알파)를 원본 사진의 밝기 경계에 맞춰 다시 맞춘다.
+     모델 입력이 1024px 이라 커진 가장자리가 뭉개지고 계단처럼 보이는데, 원본의 실제 경계(머리카락·옷 테두리)를 따라 부드럽게 붙는다.
+     box(): 적분 영상으로 반경 r 평균 — 크기와 상관없이 픽셀당 몇 번 계산이라 폰에서도 빠르다. */
+  function boxMean(src, w, h, r, out) {
+    var W1 = w + 1, I = new Float64Array(W1 * (h + 1)), x, y;
+    for (y = 0; y < h; y++) { var rs = 0; for (x = 0; x < w; x++) { rs += src[y * w + x]; I[(y + 1) * W1 + x + 1] = I[y * W1 + x + 1] + rs; } }
+    for (y = 0; y < h; y++) {
+      var y0 = Math.max(0, y - r), y1 = Math.min(h, y + r + 1);
+      for (x = 0; x < w; x++) {
+        var x0 = Math.max(0, x - r), x1 = Math.min(w, x + r + 1);
+        out[y * w + x] = (I[y1 * W1 + x1] - I[y0 * W1 + x1] - I[y1 * W1 + x0] + I[y0 * W1 + x0]) / ((y1 - y0) * (x1 - x0));
+      }
+    }
+    return out;
+  }
+  function guidedAlpha(px, op, w, h) {
+    var n = w * h, i, r = window.__gr || Math.max(3, Math.round(Math.max(w, h) / 128)), eps = window.__ge || 0.0002;
+    var I = new Float32Array(n), p = new Float32Array(n), t = new Float32Array(n);
+    for (i = 0; i < n; i++) { I[i] = (op[i * 4] * 0.299 + op[i * 4 + 1] * 0.587 + op[i * 4 + 2] * 0.114) / 255; p[i] = px[i * 4 + 3] / 255; }
+    var mI = boxMean(I, w, h, r, new Float32Array(n)), mp = boxMean(p, w, h, r, new Float32Array(n));
+    for (i = 0; i < n; i++) t[i] = I[i] * p[i];
+    var mIp = boxMean(t, w, h, r, new Float32Array(n));
+    for (i = 0; i < n; i++) t[i] = I[i] * I[i];
+    var mII = boxMean(t, w, h, r, new Float32Array(n)), a = new Float32Array(n), b = new Float32Array(n);
+    for (i = 0; i < n; i++) { var v = mII[i] - mI[i] * mI[i]; a[i] = (mIp[i] - mI[i] * mp[i]) / (v + eps); b[i] = mp[i] - a[i] * mI[i]; }
+    var ma = boxMean(a, w, h, r, mIp), mb = boxMean(b, w, h, r, mII);
+    for (i = 0; i < n; i++) {
+      var q = ma[i] * I[i] + mb[i], a0 = p[i];
+      if (a0 > 0.98 && q > 0.6) continue;                 // 확실한 안쪽은 그대로 (몸 안쪽에 구멍이 나지 않게)
+      if (a0 < 0.02 && q < 0.4) continue;                 // 확실한 바깥도 그대로
+      px[i * 4 + 3] = Math.max(0, Math.min(255, Math.round(q * 255)));
+    }
+  }
+  /* 가장자리 색 빼기 — 반투명 가장자리 픽셀엔 원래 배경색이 섞여 있어 어두운 카드 위에서 흰 테두리(헤일로)로 보인다.
+     둘레의 확실한 안쪽 픽셀 색 평균으로, 투명할수록 많이 바꾼다. */
+  function decontaminate(px, w, h) {
+    var n = w * h, i, r = Math.max(3, Math.round(Math.max(w, h) / 200)), m = new Float32Array(n), c = new Float32Array(n), t = new Float32Array(n), mm;
+    for (i = 0; i < n; i++) m[i] = px[i * 4 + 3] >= 245 ? 1 : 0;
+    mm = boxMean(m, w, h, r, new Float32Array(n));
+    for (var ch = 0; ch < 3; ch++) {
+      for (i = 0; i < n; i++) c[i] = m[i] * px[i * 4 + ch];
+      boxMean(c, w, h, r, t);
+      for (i = 0; i < n; i++) {
+        var a = px[i * 4 + 3]; if (!a || a >= 245 || mm[i] < 0.02) continue;
+        var f = t[i] / mm[i], k = 1 - a / 255;
+        px[i * 4 + ch] = Math.round(px[i * 4 + ch] * (1 - k) + f * k);
+      }
+    }
+  }
   function cleanCut(blob, origBlob) {
     return loadImg(origBlob).then(function (orig) { return cleanCut1(blob, orig); });
   }
@@ -167,6 +230,7 @@
               }
             }
           }
+          if (orig && !window.__noGuided) guidedAlpha(px, op, w, h);   // 가장자리를 원본 경계에 맞춘다
           for (i = 0; i < n; i++) if (px[i * 4 + 3] < 60) px[i * 4 + 3] = 0;
           for (i = 0; i < n; i++) {                         // 진한 픽셀끼리 이어진 덩어리 번호
             if (lab[i] || px[i * 4 + 3] < 128) continue;
@@ -207,6 +271,7 @@
             else if (!hit[lab2[i]]) px[k] = 0;                // 사람에 닿지 않은 옅은 얼룩
             else if (!lab[i] && !near[i] && px[k] < 110) px[k] = 0;   // 사람에서 먼 아주 옅은 안개
           }
+          if (!window.__noGuided) decontaminate(px, w, h);   // 가장자리에 섞인 배경색(헤일로) 빼기
           x.putImageData(id, 0, 0);
           cv.toBlob(function (b2) { URL.revokeObjectURL(url); resolve(b2 || blob); }, 'image/png');
         } catch (e) { URL.revokeObjectURL(url); resolve(blob); }
@@ -220,8 +285,7 @@
   function removeBg(src, model, onProgress) {
     if (_busy) return Promise.reject(new Error('이미 배경을 지우는 중입니다'));
     _busy = true;
-    if (IS_PHONE && model === 'isnet') model = 'isnet_fp16';
-    if (IS_PHONE && model === 'isnet_fp16' && device() === 'cpu') model = 'isnet_quint8';    // 폰 CPU 는 가벼운 모델만
+    if (IS_PHONE && device() === 'cpu') model = 'isnet_quint8';    // 폰 CPU 는 가벼운 모델만 (GPU 가 있으면 고른 대로)
     onProgress = onProgress || function () {};
     // 주소(blob:/data:)로 온 사진도 받아서 줄인다 — 예전엔 주소면 원래 크기(1600px) 그대로 보내 폰 메모리가 튀었다
     var asBlob = typeof src === 'string' ? fetch(src).then(function (r) { return r.blob(); }).catch(function () { return src; }) : Promise.resolve(src);
@@ -230,6 +294,10 @@
     }).then(function (small) {
       return inWorker(small, model, onProgress).catch(function (e) {
         // 폰에서 돌다가 메모리로 멈췄으면 더 작게(720px) 새 워커로 한 번만 다시
+        if (IS_PHONE && device() === 'gpu' && small instanceof Blob) {     // 폰 GPU 로 못 돌렸으면 CPU '빠름'으로 한 번 더 (이 페이지에서는 계속 CPU)
+          _gpuFailed = true; onProgress('compute', 0, 0);
+          return inWorker(small, 'isnet_quint8', onProgress);
+        }
         if (IS_PHONE && /메모리|응답이 없어/.test(e && e.message || '') && small instanceof Blob) {
           onProgress('compute', 0, 0);
           return scaledBlob(small, 720).then(function (tiny) { return inWorker(tiny, 'isnet_quint8', onProgress); });
@@ -241,7 +309,7 @@
       }).then(function (b) { return window.__noClean ? b : cleanCut(b, small); });   // 결과가 작게 나와도 원본을 같은 크기로 맞춰 비교한다
     }).then(function (b) { _busy = false; return b; }, function (e) { _busy = false; throw e; });
   }
-  window.CardBg = { remove: removeBg, isPhone: IS_PHONE, maxSide: BG_MAX, scaledBlob: scaledBlob, decodeSmall: decodeSmall };
+  window.CardBg = { remove: removeBg, isPhone: IS_PHONE, maxSide: BG_MAX, scaledBlob: scaledBlob, decodeSmall: decodeSmall, applyPolicy: applyPolicy, policy: policy, _cleanCut1: cleanCut1 };
 
   /* ---------------------------------------------------------------- 카드 위 사진 (인포그래픽·돈의 흐름 탭) */
   var CSS =
@@ -284,8 +352,7 @@
     (opt.mount || canvas.parentNode).appendChild(sec);
     var q = function (s) { return sec.querySelector(s); }, edit = q('.ovx-edit'), fileIn = q('input[type=file]');
     var sel = q('[data-a=q]');
-    if (IS_PHONE) { sel.value = 'isnet_quint8'; sel.querySelector('option[value=isnet]').disabled = true; sel.querySelector('option[value=isnet_fp16]').disabled = true; }
-    else sel.value = 'isnet_fp16';
+    applyPolicy(sel);
 
     var list = [], cur = -1;
     function status(t) { var el = q('[data-v=status]'); el.textContent = t || ''; el.style.display = t ? '' : 'none'; }
