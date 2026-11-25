@@ -2,29 +2,16 @@
  "name": "ADI",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "ANALOG DEVICES INC",
+ "legal_name": "Analog Devices, Inc.",
  "code": "ADI",
  "cik": "0000006281",
  "market": "미국",
  "currency": "USD",
  "unit": "백만달러",
  "fiscal": true,
- "fye": 10,
- "updated": "2026-11-24",
+ "fye": 11,
+ "updated": "2026-11-25",
  "annual": [
-  {
-   "p": 2016,
-   "rev": 3421.4,
-   "op": 1028.1,
-   "ni": 861.7,
-   "assets": 7970.3,
-   "liab": null,
-   "equity": 5165.6,
-   "dps": 1.66,
-   "payout": 59.6,
-   "yield": null,
-   "dps_adj": 1.66
-  },
   {
    "p": 2017,
    "rev": 5107.5,
@@ -141,16 +128,22 @@
    "payout": 84.9,
    "yield": null,
    "dps_adj": 3.89
+  },
+  {
+   "p": 2026,
+   "rev": 15179.0,
+   "op": 5858.2,
+   "ni": 4997.4,
+   "assets": 51526.7,
+   "liab": null,
+   "equity": 33908.7,
+   "dps": 4.29,
+   "payout": 41.8,
+   "yield": null,
+   "dps_adj": 4.29
   }
  ],
  "quarterly": [
-  {
-   "y": 2024,
-   "q": 2,
-   "rev": 2159.0,
-   "op": 386.1,
-   "ni": 302.2
-  },
   {
    "y": 2024,
    "q": 3,
@@ -213,6 +206,13 @@
    "rev": 4021.9,
    "op": 1613.0,
    "ni": 1340.1
+  },
+  {
+   "y": 2026,
+   "q": 4,
+   "rev": 4373.4,
+   "op": 1868.5,
+   "ni": 1650.2
   }
  ]
 }

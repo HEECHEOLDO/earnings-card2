@@ -2,7 +2,7 @@
  "name": "BDX",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "BECTON, DICKINSON AND COMPANY",
+ "legal_name": "BECTON DICKINSON & CO",
  "code": "BDX",
  "cik": "0000010795",
  "market": "미국",
@@ -10,21 +10,8 @@
  "unit": "백만달러",
  "fiscal": true,
  "fye": 9,
- "updated": "2026-11-24",
+ "updated": "2026-11-25",
  "annual": [
-  {
-   "p": 2016,
-   "rev": 12483.0,
-   "op": 1430.0,
-   "ni": 976.0,
-   "assets": 25586.0,
-   "liab": null,
-   "equity": 7633.0,
-   "dps": 2.64,
-   "payout": 57.6,
-   "yield": null,
-   "dps_adj": 2.64
-  },
   {
    "p": 2017,
    "rev": 12093.0,
@@ -118,8 +105,8 @@
   },
   {
    "p": 2024,
-   "rev": 20178.0,
-   "op": 2397.0,
+   "rev": 16820.0,
+   "op": 1713.0,
    "ni": 1705.0,
    "assets": 57286.0,
    "liab": null,
@@ -131,8 +118,8 @@
   },
   {
    "p": 2025,
-   "rev": 21840.0,
-   "op": 2579.0,
+   "rev": 18544.0,
+   "op": 1941.0,
    "ni": 1678.0,
    "assets": 55325.0,
    "liab": null,
@@ -141,16 +128,22 @@
    "payout": 71.3,
    "yield": null,
    "dps_adj": 4.16
+  },
+  {
+   "p": 2026,
+   "rev": 19457.0,
+   "op": 2257.0,
+   "ni": 1145.0,
+   "assets": 50791.0,
+   "liab": null,
+   "equity": 24682.0,
+   "dps": 4.2,
+   "payout": 101.4,
+   "yield": null,
+   "dps_adj": 4.2
   }
  ],
  "quarterly": [
-  {
-   "y": 2024,
-   "q": 2,
-   "rev": 5045.0,
-   "op": 734.0,
-   "ni": 537.0
-  },
   {
    "y": 2024,
    "q": 3,
@@ -189,8 +182,8 @@
   {
    "y": 2025,
    "q": 4,
-   "rev": 7466.0,
-   "op": 1004.0,
+   "rev": 4170.0,
+   "op": 366.0,
    "ni": 493.0
   },
   {
@@ -213,6 +206,13 @@
    "rev": 4983.0,
    "op": 663.0,
    "ni": 377.0
+  },
+  {
+   "y": 2026,
+   "q": 4,
+   "rev": 4508.0,
+   "op": 949.0,
+   "ni": 697.0
   }
  ]
 }

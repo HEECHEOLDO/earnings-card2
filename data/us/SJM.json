@@ -2,7 +2,7 @@
  "name": "SJM",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "J M SMUCKER Co",
+ "legal_name": "The J. M. Smucker Company",
  "code": "SJM",
  "cik": "0000091419",
  "market": "미국",
@@ -10,7 +10,7 @@
  "unit": "백만달러",
  "fiscal": true,
  "fye": 4,
- "updated": "2026-11-24",
+ "updated": "2026-11-25",
  "annual": [
   {
    "p": 2017,
@@ -123,7 +123,7 @@
    "ni": -1230.8,
    "assets": 17563.3,
    "liab": 11480.7,
-   "equity": 5925.9,
+   "equity": 6060.2,
    "dps": 4.32,
    "payout": null,
    "yield": null,
@@ -134,9 +134,9 @@
    "rev": 9050.9,
    "op": 360.2,
    "ni": -138.7,
-   "assets": 16203.2,
-   "liab": 10452.4,
-   "equity": 5750.8,
+   "assets": 16326.8,
+   "liab": 10421.4,
+   "equity": 5905.4,
    "dps": 4.4,
    "payout": null,
    "yield": null,
@@ -144,13 +144,6 @@
   }
  ],
  "quarterly": [
-  {
-   "y": 2024,
-   "q": 4,
-   "rev": 2205.7,
-   "op": 406.0,
-   "ni": 245.1
-  },
   {
    "y": 2025,
    "q": 1,
@@ -213,6 +206,13 @@
    "rev": 2219.3,
    "op": 511.6,
    "ni": 324.3
+  },
+  {
+   "y": 2027,
+   "q": 2,
+   "rev": 2283.2,
+   "op": 410.7,
+   "ni": 248.7
   }
  ]
 }

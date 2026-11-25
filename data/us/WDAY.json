@@ -2,7 +2,7 @@
  "name": "WDAY",
  "split_adjusted": false,
  "restated_from": null,
- "legal_name": "Workday, Inc.",
+ "legal_name": "WORKDAY, INC.",
  "code": "WDAY",
  "cik": "0001327811",
  "market": "미국",
@@ -10,7 +10,7 @@
  "unit": "백만달러",
  "fiscal": true,
  "fye": 1,
- "updated": "2026-11-24",
+ "updated": "2026-11-25",
  "annual": [
   {
    "p": 2017,
@@ -123,7 +123,7 @@
    "ni": 526.0,
    "assets": 17977.0,
    "liab": 8943.0,
-   "equity": 9172.0,
+   "equity": 8879.0,
    "dps": null,
    "payout": null,
    "yield": null,
@@ -134,9 +134,9 @@
    "rev": 9552.0,
    "op": 721.0,
    "ni": 693.0,
-   "assets": 15857.0,
-   "liab": 9397.0,
-   "equity": 6460.0,
+   "assets": 18129.0,
+   "liab": 11854.0,
+   "equity": 6275.0,
    "dps": null,
    "payout": null,
    "yield": null,
@@ -144,13 +144,6 @@
   }
  ],
  "quarterly": [
-  {
-   "y": 2025,
-   "q": 1,
-   "rev": 1990.0,
-   "op": 64.0,
-   "ni": 107.0
-  },
   {
    "y": 2025,
    "q": 2,
@@ -213,6 +206,13 @@
    "rev": 2649.0,
    "op": 313.0,
    "ni": 632.0
+  },
+  {
+   "y": 2027,
+   "q": 3,
+   "rev": 2705.0,
+   "op": 329.0,
+   "ni": 237.0
   }
  ]
 }
