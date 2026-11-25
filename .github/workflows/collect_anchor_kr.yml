@@ -34,8 +34,14 @@ jobs:
       - name: 오늘 이미 받았으면 건너뛰기 (예비 예약 실행용)
         id: done
         run: |
-          T=$(TZ=Asia/Seoul date +%Y%m%d)
-          if [ "${{ github.event_name }}" = "schedule" ] && [ -f "data/krx/$T.json" ] && python3 -c "import json,sys;d=json.load(open('data/chart/kr/005930.json'))['d'];sys.exit(0 if str(d[-1][0])=='$T' else 1)"; then echo "오늘($T) 자료 있음 — 건너뜀"; echo "skip=1" >> "$GITHUB_OUTPUT"; fi
+          # 받을 날 T: 서울 15:40 뒤면 오늘, 그 전이면 지난 평일 (예약 실행이 몇 시간 밀려 다음 날 아침에 돌 때 장 전 값으로 덮어쓰지 않게)
+          T=$(python3 -c "
+          import datetime as D
+          t=D.datetime.utcnow()+D.timedelta(hours=9); d=t.date()
+          if t.hour*60+t.minute < 15*60+40: d-=D.timedelta(days=1)
+          while d.weekday()>4: d-=D.timedelta(days=1)
+          print(d.strftime('%Y%m%d'))")
+          if [ "${{ github.event_name }}" = "schedule" ] && python3 -c "import json,sys;d=json.load(open('data/chart/kr/005930.json'))['d'];sys.exit(0 if d[-1][0]>=int('$T') else 1)"; then echo "받을 날($T) 자료 있음 — 건너뜀"; echo "skip=1" >> "$GITHUB_OUTPUT"; fi
 
       - uses: actions/setup-python@v5
         if: steps.done.outputs.skip != '1'
@@ -71,7 +77,7 @@ jobs:
           git add data/anchor.json data/chart data/krx
           git commit -m "anchor: 국내 기준점 자동 갱신 $(TZ=Asia/Seoul date +%F)"
           for i in 1 2 3; do
-            git pull --rebase && git push && exit 0
+            if git pull --rebase; then git push && exit 0; else git rebase --abort || true; fi   # 같은 자료를 다른 실행이 먼저 올렸으면 겹친다
             sleep 5
           done
-          exit 1
+          echo "다른 실행이 먼저 올려 겹쳤습니다 — 이번 결과는 버립니다 (먼저 올린 자료가 사이트에 있음)"; exit 0
