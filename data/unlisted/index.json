@@ -1,8 +1,8 @@
 {
- "updated": "2026-11-24",
- "count": 345,
+ "updated": "2026-11-25",
+ "count": 347,
  "markets": {
-  "비상장": 345
+  "비상장": 347
  },
  "companies": [
   {
@@ -940,6 +940,15 @@
    "brand": "넘버즈인",
    "annual_only": true,
    "updated": "2026-11-24"
+  },
+  {
+   "name": "비브로스",
+   "code": "01537866",
+   "market": "비상장",
+   "sector": "플랫폼·앱",
+   "brand": "똑닥",
+   "annual_only": true,
+   "updated": "2026-11-25"
   },
   {
    "name": "비알코리아",
@@ -2146,6 +2155,15 @@
    "brand": "카카오워크",
    "annual_only": true,
    "updated": "2026-10-26"
+  },
+  {
+   "name": "카카오페이손해보험",
+   "code": "01603877",
+   "market": "비상장",
+   "sector": "플랫폼·앱",
+   "brand": "카카오페이손보",
+   "annual_only": true,
+   "updated": "2026-11-25"
   },
   {
    "name": "카카오페이증권",

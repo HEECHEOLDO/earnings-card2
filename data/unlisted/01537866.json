@@ -1,0 +1,45 @@
+{
+ "name": "비브로스",
+ "legal_name": "비브로스",
+ "code": "01537866",
+ "market": "비상장",
+ "sector": "플랫폼·앱",
+ "brand": "똑닥",
+ "basis": "별도",
+ "source": "audit",
+ "fy_end": 12,
+ "updated": "2026-11-25",
+ "annual": [
+  {
+   "p": 2020,
+   "rev": 8.6,
+   "op": -44.2,
+   "ni": -157.6,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  },
+  {
+   "p": 2021,
+   "rev": 16.6,
+   "op": -64.6,
+   "ni": 28.4,
+   "assets": null,
+   "liab": null,
+   "equity": null,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "_cfs": false
+  }
+ ],
+ "quarterly": [],
+ "reports": {
+  "2020": "전기:20220328001003",
+  "2021": "20220328001003"
+ }
+}
