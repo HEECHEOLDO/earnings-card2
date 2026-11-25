@@ -151,7 +151,10 @@ def cnbc_quotes(syms):
                 q = [q]
             for x in q:
                 sym = str(x.get("symbol") or "").replace(".", "-").upper()
-                p = float(str(x.get("last") or "").replace(",", ""))
+                try:                                    # 한 종목 값이 비어 있어도 묶음 전체를 버리지 않는다 (2026-11-24·25 LEN~MKC 40종목이 통째로 빠지던 것)
+                    p = float(str(x.get("last") or "").replace(",", ""))
+                except ValueError:
+                    continue
                 lt = str(x.get("last_time") or "")
                 d = n8(lt[:10])
                 try:
