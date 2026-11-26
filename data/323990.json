@@ -5,8 +5,47 @@
  "code": "323990",
  "market": "코스닥",
  "sector": "",
- "updated": "2026-11-17",
+ "updated": "2026-11-26",
  "annual": [
+  {
+   "p": 2020,
+   "rev": 0.0,
+   "op": -42.5,
+   "ni": -39.8,
+   "assets": 355.0,
+   "liab": 8.3,
+   "equity": 346.7,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2021,
+   "rev": 0.0,
+   "op": -59.0,
+   "ni": -47.6,
+   "assets": 312.8,
+   "liab": 12.0,
+   "equity": 300.8,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2022,
+   "rev": 0.0,
+   "op": -82.1,
+   "ni": -68.3,
+   "assets": 241.6,
+   "liab": 8.4,
+   "equity": 233.3,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
   {
    "p": 2023,
    "rev": 0.1,
@@ -48,13 +87,6 @@
   }
  ],
  "quarterly": [
-  {
-   "y": 2024,
-   "q": 1,
-   "rev": 0.3,
-   "op": -32.4,
-   "ni": -24.5
-  },
   {
    "y": 2024,
    "q": 2,
@@ -126,5 +158,6 @@
    "ni": -35.9
   }
  ],
- "q_method": "strict"
+ "q_method": "strict",
+ "fy_end": 12
 }

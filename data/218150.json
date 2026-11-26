@@ -5,8 +5,21 @@
  "code": "218150",
  "market": "코스닥",
  "sector": "",
- "updated": "2026-11-17",
+ "updated": "2026-11-26",
  "annual": [
+  {
+   "p": 2016,
+   "rev": 0.0,
+   "op": -0.1,
+   "ni": 0.6,
+   "assets": 85.8,
+   "liab": 15.3,
+   "equity": 70.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
   {
    "p": 2017,
    "rev": 409.3,
@@ -128,13 +141,6 @@
  "quarterly": [
   {
    "y": 2024,
-   "q": 1,
-   "rev": 144.5,
-   "op": -0.3,
-   "ni": 2.2
-  },
-  {
-   "y": 2024,
    "q": 2,
    "rev": 155.8,
    "op": -0.8,
@@ -173,7 +179,7 @@
    "q": 3,
    "rev": 186.9,
    "op": 12.4,
-   "ni": 12.6
+   "ni": 9.5
   },
   {
    "y": 2025,
@@ -204,5 +210,6 @@
    "ni": 14.6
   }
  ],
- "q_method": "strict"
+ "q_method": "strict",
+ "fy_end": 12
 }

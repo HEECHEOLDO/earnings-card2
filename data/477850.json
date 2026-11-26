@@ -5,7 +5,7 @@
  "code": "477850",
  "market": "코스닥",
  "sector": "",
- "updated": "2026-11-17",
+ "updated": "2026-11-26",
  "annual": [],
  "quarterly": [
   {
@@ -30,5 +30,6 @@
    "ni": -43.3
   }
  ],
- "q_method": "strict"
+ "q_method": "strict",
+ "fy_end": 12
 }

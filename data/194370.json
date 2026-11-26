@@ -5,7 +5,7 @@
  "code": "194370",
  "market": "코스피",
  "sector": "",
- "updated": "2026-11-17",
+ "updated": "2026-11-26",
  "annual": [
   {
    "p": 2016,
@@ -210,5 +210,6 @@
    "ni": 312.0
   }
  ],
- "q_method": "strict"
+ "q_method": "strict",
+ "fy_end": 12
 }

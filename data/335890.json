@@ -5,7 +5,7 @@
  "code": "335890",
  "market": "기타",
  "sector": "",
- "updated": "2026-11-17",
+ "updated": "2026-11-26",
  "annual": [
   {
    "p": 2020,
@@ -158,5 +158,6 @@
    "ni": -21.2
   }
  ],
- "q_method": "strict"
+ "q_method": "strict",
+ "fy_end": 12
 }

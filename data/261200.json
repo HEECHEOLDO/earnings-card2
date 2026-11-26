@@ -5,8 +5,34 @@
  "code": "261200",
  "market": "코스닥",
  "sector": "",
- "updated": "2026-11-17",
+ "updated": "2026-11-26",
  "annual": [
+  {
+   "p": 2017,
+   "rev": 0.0,
+   "op": -0.2,
+   "ni": 0.2,
+   "assets": 89.6,
+   "liab": 8.2,
+   "equity": 81.5,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
+  {
+   "p": 2018,
+   "rev": 0.0,
+   "op": -0.3,
+   "ni": 0.8,
+   "assets": 90.5,
+   "liab": 8.3,
+   "equity": 82.2,
+   "dps": null,
+   "payout": null,
+   "yield": null,
+   "dps_adj": null
+  },
   {
    "p": 2019,
    "rev": 0.0,
@@ -171,5 +197,6 @@
    "ni": -113.4
   }
  ],
- "q_method": "strict"
+ "q_method": "strict",
+ "fy_end": 12
 }
