@@ -5,7 +5,7 @@
  "code": "078020",
  "market": "코스닥",
  "sector": "",
- "updated": "2026-11-17",
+ "updated": "2026-11-27",
  "annual": [
   {
    "p": 2023,
@@ -119,5 +119,6 @@
    "ni": 63.5
   }
  ],
- "q_method": "strict"
+ "q_method": "strict",
+ "fy_end": 12
 }
